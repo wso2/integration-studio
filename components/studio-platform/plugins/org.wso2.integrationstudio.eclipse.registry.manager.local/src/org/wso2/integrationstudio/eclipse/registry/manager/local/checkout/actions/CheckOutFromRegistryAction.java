@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.local.checkout.actions;
+package org.wso2.integrationstudio.registry.manager.local.checkout.actions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
@@ -30,13 +30,13 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.Activator;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.dialog.RegistryCheckoutDialog;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.utils.RegistryCheckInClientUtils;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.utils.Utils;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.manager.local.Activator;
+import org.wso2.integrationstudio.registry.manager.local.dialog.RegistryCheckoutDialog;
+import org.wso2.integrationstudio.registry.manager.local.utils.RegistryCheckInClientUtils;
+import org.wso2.integrationstudio.registry.manager.local.utils.Utils;
 
 public class CheckOutFromRegistryAction extends BaseRegistryAction {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

@@ -4,10 +4,10 @@
    <extension
          point="org.eclipse.ui.newWizards">
          <wizard name="Endpoint" 
-         category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.message.mediation/org.wso2.integrationstudio.eclipse.message.mediation.features"
-			class="org.wso2.integrationstudio.eclipse.artifact.endpoint.ui.wizard.EndpointProjectCreationWizard"
+         category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.message.mediation/org.wso2.integrationstudio.message.mediation.features"
+			class="org.wso2.integrationstudio.artifact.endpoint.ui.wizard.EndpointProjectCreationWizard"
 			wizardManifest="project_wizard.xml"
-			id="org.wso2.integrationstudio.eclipse.artifact.newendpointartifact"
+			id="org.wso2.integrationstudio.artifact.newendpointartifact"
 			icon="icons/endpoint-normal.png">
 			<description>Endpoint</description>
 		</wizard>
@@ -18,9 +18,9 @@
 			id="org.eclipse.ui.navigator.resourceContent"
 			name="test">
 				<commonWizard 
-					menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
+					menuGroupId="2org.wso2.integrationstudio.artifact.esb"
 			  	 	type="new"
-					wizardId="org.wso2.integrationstudio.eclipse.artifact.newendpointartifact">
+					wizardId="org.wso2.integrationstudio.artifact.newendpointartifact">
 					<enablement>
 						<or>
 							<adapt type="org.eclipse.core.resources.IProject"/>
@@ -42,8 +42,8 @@
 	</extension>-->	
 		<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.newendpointartifact">
+                menuGroupId="2org.wso2.integrationstudio.artifact.esb"
+                wizardId="org.wso2.integrationstudio.artifact.newendpointartifact">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
@@ -66,30 +66,30 @@
             </commonWizard>
     </extension>	
 	<extension point="org.eclipse.core.resources.natures"
-		id="org.wso2.integrationstudio.eclipse.endpoint.project.nature" name="Endpoint Project Nature">
+		id="org.wso2.integrationstudio.endpoint.project.nature" name="Endpoint Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.artifact.endpoint.project.nature.EndpointProjectNature">
+				class="org.wso2.integrationstudio.artifact.endpoint.project.nature.EndpointProjectNature">
 			</run>
 		</runtime>
 	</extension>
 	<!--extension point="org.eclipse.ui.ide.projectNatureImages">
-		<image id="org.wso2.integrationstudio.eclipse.ep.project.natureImage"
-			natureId="org.wso2.integrationstudio.eclipse.endpoint.project.nature" icon="icons/endpoint-normal.png">
+		<image id="org.wso2.integrationstudio.ep.project.natureImage"
+			natureId="org.wso2.integrationstudio.endpoint.project.nature" icon="icons/endpoint-normal.png">
 		</image>
 	</extension-->
 	<extension
-         point="org.wso2.integrationstudio.eclipse.esb.configurationProvider">
+         point="org.wso2.integrationstudio.esb.configurationProvider">
       <endpoint
-            class="org.wso2.integrationstudio.eclipse.artifact.endpoint.provider.EndpointProvider"
-            id="org.wso2.integrationstudio.eclipse.artifact.endpoint"
+            class="org.wso2.integrationstudio.artifact.endpoint.provider.EndpointProvider"
+            id="org.wso2.integrationstudio.artifact.endpoint"
             name="Carbon Application Endpoints">
       </endpoint>
    </extension>
  <extension
        point="org.eclipse.ltk.core.refactoring.renameParticipants">
        <renameParticipant
-			class="org.wso2.integrationstudio.eclipse.artifact.endpoint.refactor.EndpointRenameRefactorParticipant"
+			class="org.wso2.integrationstudio.artifact.endpoint.refactor.EndpointRenameRefactorParticipant"
 			id="EndpointRenameRefactorParticipant"
 			name="EndpointRenameRefactor">
 				<enablement>
@@ -110,7 +110,7 @@
  <extension
          point="org.eclipse.ltk.core.refactoring.deleteParticipants">
        <deleteParticipant
-			class="org.wso2.integrationstudio.eclipse.artifact.endpoint.refactor.EndpointArtifactDeleteParticipant"
+			class="org.wso2.integrationstudio.artifact.endpoint.refactor.EndpointArtifactDeleteParticipant"
 			id="ESBArtifactDeleteParticipant"
 			name="ESBArtifactDeleteParticipantRefactor">
 				<enablement>
@@ -129,9 +129,9 @@
 		</deleteParticipant>
    </extension>
    
-   <extension point="org.wso2.integrationstudio.eclipse.dashboad.link">
+   <extension point="org.wso2.integrationstudio.dashboad.link">
       <wizardLink category="dashboard.category.esb.artifacts" id="2dashboard.wizardLink.esb.endpoint"
-	  wizard="org.wso2.integrationstudio.eclipse.artifact.newendpointartifact"
+	  wizard="org.wso2.integrationstudio.artifact.newendpointartifact"
 	  priority="2">
       </wizardLink>
   </extension>

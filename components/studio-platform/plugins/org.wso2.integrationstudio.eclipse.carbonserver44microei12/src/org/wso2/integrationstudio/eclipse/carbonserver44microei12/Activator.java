@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei12;
+package org.wso2.integrationstudio.carbonserver44microei12;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -26,7 +26,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
 
-    public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.carbonserver44microei12";
+    public static final String PLUGIN_ID = "org.wso2.integrationstudio.carbonserver44microei12";
 
     private static Activator plugin;
 

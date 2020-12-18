@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.local.utils;
+package org.wso2.integrationstudio.registry.manager.local.utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,14 +38,14 @@ import org.wso2.registry.checkin.Update;
 import org.wso2.registry.checkin.UserInputCode;
 import org.wso2.registry.checkin.UserInteractor;
 import org.wso2.carbon.registry.synchronization.Utils;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.InvalidRegistryURLException;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.RegistryContentRetrieveException;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.UnknownRegistryException;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.Activator;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.bean.RemoteRegistryInfo;
+import org.wso2.integrationstudio.registry.core.exception.InvalidRegistryURLException;
+import org.wso2.integrationstudio.registry.core.exception.RegistryContentRetrieveException;
+import org.wso2.integrationstudio.registry.core.exception.UnknownRegistryException;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.manager.local.Activator;
+import org.wso2.integrationstudio.registry.manager.local.bean.RemoteRegistryInfo;
 
 public class RegistryCheckInClientUtils {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -706,7 +706,7 @@ public class RegistryCheckInClientUtils {
 	
 	public static void download(String username, String password,String filePath, 
 	                			String registryUrl, String registryPath) throws InvalidRegistryURLException, UnknownRegistryException, RegistryContentRetrieveException, IOException{
-		org.wso2.integrationstudio.eclipse.registry.base.core.Registry registry = new org.wso2.integrationstudio.eclipse.registry.base.core.Registry(username,password,registryUrl);
+		org.wso2.integrationstudio.registry.base.core.Registry registry = new org.wso2.integrationstudio.registry.base.core.Registry(username,password,registryUrl);
 		File file = new File(filePath);
 		try {
 			if (!file.exists()){

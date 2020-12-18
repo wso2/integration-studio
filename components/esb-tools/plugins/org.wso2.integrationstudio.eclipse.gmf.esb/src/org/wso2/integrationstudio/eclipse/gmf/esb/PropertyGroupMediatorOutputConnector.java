@@ -12,7 +12,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 
 /**
@@ -21,7 +21,7 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * <!-- end-user-doc -->
  *
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPropertyGroupMediatorOutputConnector()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPropertyGroupMediatorOutputConnector()
  * @model
  * @generated
  */

@@ -17,7 +17,7 @@
  *
  */
 
-package org.wso2.integrationstudio.eclipse.ds.wizards.util;
+package org.wso2.integrationstudio.ds.wizards.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,11 +46,11 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.ds.editors.DSSMultiPageEditor;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditorPlugin;
-import org.wso2.integrationstudio.eclipse.ds.presentation.util.DSSVisualEditorConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.ds.editors.DSSMultiPageEditor;
+import org.wso2.integrationstudio.ds.presentation.DsEditorPlugin;
+import org.wso2.integrationstudio.ds.presentation.util.DSSVisualEditorConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * This class contains utility methods for the DSS editor.
@@ -64,7 +64,7 @@ public class DSSEditorUtils {
     private static final String PROPERTIES_FILE_PATH = File.separator + ".metadata" + File.separator
             + "integration-studio.dsseditor.properties";
 
-    private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.eclipse.ds.editor");
+    private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.ds.editor");
 
     public static DSSEditorUtils getInstance() {
         if (instance != null) {

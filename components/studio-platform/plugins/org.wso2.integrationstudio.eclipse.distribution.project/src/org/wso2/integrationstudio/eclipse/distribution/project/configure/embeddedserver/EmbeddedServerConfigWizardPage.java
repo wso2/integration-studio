@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.configure.embeddedserver;
+package org.wso2.integrationstudio.distribution.project.configure.embeddedserver;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -86,10 +86,10 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibImageUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.libraries.utils.LibImageUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import net.consensys.cava.toml.Toml;
 import net.consensys.cava.toml.TomlParseResult;

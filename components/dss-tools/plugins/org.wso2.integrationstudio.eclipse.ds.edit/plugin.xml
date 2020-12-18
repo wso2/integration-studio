@@ -13,7 +13,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http:///org/wso2/integrationstudio/eclipse/ds"
-            class="org.wso2.integrationstudio.eclipse.ds.provider.DsItemProviderAdapterFactory"
+            class="org.wso2.integrationstudio.ds.provider.DsItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

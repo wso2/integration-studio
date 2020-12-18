@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.preferences;
+package org.wso2.integrationstudio.platform.ui.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -23,7 +23,7 @@ import org.eclipse.ui.PlatformUI;
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
 	public static final String KERNEL_SAMPLES_GIT = "https://github.com/wso2/tooling-templates.git";
-	public static final String PREFERENCES_PLUGIN_ID = "org.wso2.integrationstudio.eclipse.platform.ui";
+	public static final String PREFERENCES_PLUGIN_ID = "org.wso2.integrationstudio.platform.ui";
 	// http://product-dist.wso2.com/p2/developer-studio-kernel/
 	public static final String currentDevSVersion = "4.3.0";
 	public static final String nextDevSVersion = "4.4.0";

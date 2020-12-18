@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.core.utils;
+package org.wso2.integrationstudio.esb.core.utils;
 
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.esb.core.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Refreshable;
+import org.wso2.integrationstudio.esb.core.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.editor.Refreshable;
 
 public class ESBUtils {
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	protected final static String DIST_EDITOR_ID = "org.wso2.integrationstudio.eclipse.distribution.project.editor.DistProjectEditor";
+	protected final static String DIST_EDITOR_ID = "org.wso2.integrationstudio.distribution.project.editor.DistProjectEditor";
 
 	/**
 	 * This method will refresh opened Composite Application project pom

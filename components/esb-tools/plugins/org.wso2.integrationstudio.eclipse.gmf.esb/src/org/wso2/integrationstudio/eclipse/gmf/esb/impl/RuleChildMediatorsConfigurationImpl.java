@@ -4,14 +4,14 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleChildMediatorsConfiguration;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RuleChildMediatorsConfiguration;
 
 /**
  * <!-- begin-user-doc -->

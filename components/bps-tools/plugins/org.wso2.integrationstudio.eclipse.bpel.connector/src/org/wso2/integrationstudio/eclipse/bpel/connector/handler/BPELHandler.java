@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.bpel.connector.handler;
+package org.wso2.integrationstudio.bpel.connector.handler;
 
 import java.io.File;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.integrationstudio.eclipse.bpel.core.handler.IBPELHandler;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.bpel.connector.utils.BPELConnectorUtils;
+import org.wso2.integrationstudio.bpel.connector.utils.BPELConnectorUtils;
 
 public class BPELHandler implements IBPELHandler{
 	

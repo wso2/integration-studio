@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,13 +21,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceInput;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceOutput;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Mediator;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbSequence;
+import org.wso2.integrationstudio.gmf.esb.EsbSequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbSequenceOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbSequenceInput;
+import org.wso2.integrationstudio.gmf.esb.EsbSequenceOutput;
+import org.wso2.integrationstudio.gmf.esb.Mediator;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,10 +37,10 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.Mediator;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getInput <em>Input</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getOutput <em>Output</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getChildMediators <em>Child Mediators</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbSequenceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbSequenceImpl#getInput <em>Input</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbSequenceImpl#getOutput <em>Output</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbSequenceImpl#getChildMediators <em>Child Mediators</em>}</li>
  * </ul>
  *
  * @generated

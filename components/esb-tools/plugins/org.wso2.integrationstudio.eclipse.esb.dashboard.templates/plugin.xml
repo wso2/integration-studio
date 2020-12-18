@@ -24,15 +24,15 @@
         <category
                 name="Templates"
                 id="org.wso2.integrationstudio.templates"
-                parentCategory="org.wso2.integrationstudio.eclipse.capp.project">
+                parentCategory="org.wso2.integrationstudio.capp.project">
         </category>
         <wizard
                 name="RabbitMQ Integration"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.rabbitMQSampleTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.rabbitMQSampleTemplate"/>
                 </class>
         </wizard>
@@ -40,9 +40,9 @@
                 name="JMS Integration"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.jmsProxyTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.jmsProxyTemplate"/>
                 </class>
         </wizard>
@@ -50,9 +50,9 @@
                 name="Database Polling"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.dataPolling">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.dataPolling"/>
                 </class>
         </wizard>
@@ -60,9 +60,9 @@
                 name="Hello World Service"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.template">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.template"/>
                 </class>
         </wizard>
@@ -70,9 +70,9 @@
                 name="Proxying a SOAP Service"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.proxyingASoapService">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.proxyingASoapService"/>
                 </class>
         </wizard>
@@ -80,9 +80,9 @@
                 name="Proxying a REST Service"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.proxyingARESTAPI">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.proxyingARESTAPI"/>
                 </class>
         </wizard>
@@ -90,9 +90,9 @@
                 name="Content Based Routing"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.contentBasedRoutingTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.contentBasedRoutingTemplate"/>
                 </class>
         </wizard>
@@ -100,9 +100,9 @@
                 name="Header Based Routing"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.headerBasedRoutingTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.headerBasedRoutingTemplate"/>
                 </class>
         </wizard>
@@ -110,9 +110,9 @@
                 name="Message Filtering"
                 icon="icons/template-default.pngg"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.messageFilteringTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.messageFilteringTemplate"/>
                 </class>
         </wizard>
@@ -120,9 +120,9 @@
                 name="Protocol Switching"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.protocolSwitchingTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.protocolSwitchingTemplate"/>
                 </class>
         </wizard>
@@ -130,9 +130,9 @@
                 name="Scatter Gather Integration Pattern"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.scatterGatherTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.scatterGatherTemplate"/>
                 </class>
         </wizard>
@@ -140,9 +140,9 @@
                 name="File Transfer"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.fileTransferTeamplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.fileTransferTeamplate"/>
                 </class>
         </wizard>
@@ -150,9 +150,9 @@
                 name="Guaranteed Delivery"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.guaranteedDeliveryTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.guaranteedDeliveryTemplate"/>
                 </class>
         </wizard>
@@ -160,9 +160,9 @@
                 name="REST to SOAP Conversion"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.restToSoapTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.restToSoapTemplate"/>
                 </class>
         </wizard>
@@ -170,9 +170,9 @@
                 name="Exception Handling"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.exceptionHandlingTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.exceptionHandlingTemplate"/>
                 </class>
         </wizard>
@@ -180,9 +180,9 @@
                 name="XML To JSON Transformation"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.xmlToJsonTransformationTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.xmlToJsonTransformationTemplate"/>
                 </class>
         </wizard>
@@ -190,9 +190,9 @@
                 name="Periodical Scheduled Tasks"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.scheduleTaskTeamplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.scheduleTaskTeamplate"/>
                 </class>
         </wizard>
@@ -200,9 +200,9 @@
                 name="Fetch SalesForce Accounts"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.readSalesforceAccountsTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.readSalesforceAccountsTemplate"/>
                 </class>
         </wizard>
@@ -210,9 +210,9 @@
                 name="JSON to XML Mapping"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.jsonToXmlMappingTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.jsonToXmlMappingTemplate"/>
                 </class>
         </wizard>
@@ -220,9 +220,9 @@
                 name="XML to JSON Mapping"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.xmlToJsonMappingTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.xmlToJsonMappingTemplate"/>
                 </class>
         </wizard>
@@ -230,9 +230,9 @@
                 name="Kafka Consumer and Producer"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.kafkaTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.kafkaTemplate"/>
                 </class>
         </wizard>
@@ -240,9 +240,9 @@
                 name="Email Service"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.emailServiceTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.emailServiceTemplate"/>
                 </class>
         </wizard>
@@ -250,9 +250,9 @@
                 name="Students Data Service"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.ds.studentDataServiceTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.ds.studentDataServiceTemplate"/>
                 </class>
         </wizard>
@@ -260,9 +260,9 @@
                 name="REST Data Service"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.ds.restDataServiceTemplate">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.ds.restDataServiceTemplate"/>
                 </class>
         </wizard>
@@ -270,9 +270,9 @@
                 name="Hello Docker"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.helloDocker">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.helloDocker"/>
                 </class>
         </wizard>
@@ -280,9 +280,9 @@
                 name="Hello Kubernetes"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.helloKubernetes">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.helloKubernetes"/>
                 </class>
         </wizard>
@@ -290,9 +290,9 @@
                 name="Unit Test Tutorial"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.unitTestTutorial">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.unitTestTutorial"/>
                 </class>
         </wizard>
@@ -300,15 +300,15 @@
                 name="API Testing"
                 icon="icons/template-default.png"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.apiTesting">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.apiTesting"/>
                 </class>
         </wizard>
     </extension>
     <extension
-            point="org.wso2.integrationstudio.eclipse.template.dashboad.link">
+            point="org.wso2.integrationstudio.template.dashboad.link">
         <wizardCategory category="org.wso2.integrationstudio.templates"/>
         <category id="dashboard.category.template.miscellaneous" showTitle="false"
                   title="Miscellaneous_Templates"

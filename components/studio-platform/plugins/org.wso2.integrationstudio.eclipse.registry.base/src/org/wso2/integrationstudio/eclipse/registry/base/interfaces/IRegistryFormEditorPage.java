@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.interfaces;
+package org.wso2.integrationstudio.registry.base.interfaces;
 
 public interface IRegistryFormEditorPage {
 	public final static int ACTION_ADD_ASSOCIATION = 0;

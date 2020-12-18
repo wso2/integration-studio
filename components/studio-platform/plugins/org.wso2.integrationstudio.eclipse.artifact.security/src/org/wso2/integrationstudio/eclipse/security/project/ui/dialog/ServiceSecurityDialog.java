@@ -15,7 +15,7 @@
  */
 
 
-package org.wso2.integrationstudio.eclipse.security.project.ui.dialog;
+package org.wso2.integrationstudio.security.project.ui.dialog;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;

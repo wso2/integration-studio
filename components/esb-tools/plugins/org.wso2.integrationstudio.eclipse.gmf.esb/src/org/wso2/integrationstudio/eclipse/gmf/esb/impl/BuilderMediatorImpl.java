@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediatorOutputConector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder;
+import org.wso2.integrationstudio.gmf.esb.BuilderMediator;
+import org.wso2.integrationstudio.gmf.esb.BuilderMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.BuilderMediatorOutputConector;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MessageBuilder;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,9 +35,9 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BuilderMediatorImpl#getMessageBuilders <em>Message Builders</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BuilderMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BuilderMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BuilderMediatorImpl#getMessageBuilders <em>Message Builders</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BuilderMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BuilderMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 
@@ -50,11 +50,11 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RespondMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RespondMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -326,7 +326,7 @@ public class RespondMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RespondMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RespondMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -336,7 +336,7 @@ public class RespondMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RespondMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RespondMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -358,7 +358,7 @@ public class RespondMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RespondMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RespondMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -368,7 +368,7 @@ public class RespondMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RespondMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RespondMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -390,7 +390,7 @@ public class RespondMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RespondMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RespondMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -400,7 +400,7 @@ public class RespondMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RespondMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RespondMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {

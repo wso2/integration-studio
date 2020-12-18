@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.synapse.validators;
+package org.wso2.integrationstudio.artifact.synapse.validators;
 
 import java.io.File;
 import java.util.List;
@@ -22,10 +22,10 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.wso2.integrationstudio.eclipse.artifact.synapse.model.SynapseModel;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.artifact.synapse.model.SynapseModel;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class SynapseFieldsController extends AbstractFieldController {
 

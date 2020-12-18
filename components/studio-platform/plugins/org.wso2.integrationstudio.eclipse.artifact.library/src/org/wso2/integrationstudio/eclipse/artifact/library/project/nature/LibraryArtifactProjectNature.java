@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.library.project.nature;
+package org.wso2.integrationstudio.artifact.library.project.nature;
 
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.platform.core.nature.AbstractWSO2ProjectNature;
+import org.wso2.integrationstudio.platform.core.nature.AbstractWSO2ProjectNature;
 
 public class LibraryArtifactProjectNature extends AbstractWSO2ProjectNature {
 

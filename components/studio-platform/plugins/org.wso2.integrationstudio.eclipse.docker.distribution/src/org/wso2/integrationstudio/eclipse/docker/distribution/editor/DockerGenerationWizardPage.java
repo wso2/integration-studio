@@ -14,7 +14,7 @@
  * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.editor;
+package org.wso2.integrationstudio.docker.distribution.editor;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -39,11 +39,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
-import org.wso2.integrationstudio.eclipse.docker.distribution.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.docker.distribution.utils.DockerProjectConstants;
+import org.wso2.integrationstudio.docker.distribution.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 
 public class DockerGenerationWizardPage extends WizardPage {
 

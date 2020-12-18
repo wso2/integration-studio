@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.utils;
+package org.wso2.integrationstudio.carbonserver.base.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,13 +46,13 @@ import org.eclipse.wst.server.core.ServerPort;
 import org.eclipse.wst.server.core.model.ServerDelegate;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.SSLUtils;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.carbonserver.base.Activator;
+import org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.utils.SSLUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 

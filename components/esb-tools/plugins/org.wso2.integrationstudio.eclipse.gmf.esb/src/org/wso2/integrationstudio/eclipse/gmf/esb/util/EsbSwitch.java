@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.util;
+package org.wso2.integrationstudio.gmf.esb.util;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.wso2.integrationstudio.eclipse.gmf.esb.*;
+import org.wso2.integrationstudio.gmf.esb.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +25,7 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage
  * @generated
  */
 public class EsbSwitch<T> extends Switch<T> {

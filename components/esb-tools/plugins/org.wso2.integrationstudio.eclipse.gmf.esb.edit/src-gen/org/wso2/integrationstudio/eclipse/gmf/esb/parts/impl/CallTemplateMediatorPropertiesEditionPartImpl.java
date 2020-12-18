@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -63,12 +63,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -475,7 +475,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -485,7 +485,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -507,7 +507,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -517,7 +517,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -558,7 +558,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -568,7 +568,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -590,7 +590,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#getAvailableTemplates()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#getAvailableTemplates()
 	 * 
 	 */
 	public String getAvailableTemplates() {
@@ -600,7 +600,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#setAvailableTemplates(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#setAvailableTemplates(String newValue)
 	 * 
 	 */
 	public void setAvailableTemplates(String newValue) {
@@ -624,7 +624,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#initTemplateParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#initTemplateParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initTemplateParameters(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -645,7 +645,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#updateTemplateParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#updateTemplateParameters()
 	 * 
 	 */
 	public void updateTemplateParameters() {
@@ -655,7 +655,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#addFilterTemplateParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#addFilterTemplateParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToTemplateParameters(ViewerFilter filter) {
@@ -668,7 +668,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#addBusinessFilterTemplateParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#addBusinessFilterTemplateParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToTemplateParameters(ViewerFilter filter) {
@@ -678,7 +678,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#isContainedInTemplateParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#isContainedInTemplateParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInTemplateParametersTable(EObject element) {
@@ -688,7 +688,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#getTargetTemplate()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#getTargetTemplate()
 	 * 
 	 */
 	public String getTargetTemplate() {
@@ -698,7 +698,7 @@ public class CallTemplateMediatorPropertiesEditionPartImpl extends CompositeProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#setTargetTemplate(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart#setTargetTemplate(String newValue)
 	 * 
 	 */
 	public void setTargetTemplate(String newValue) {

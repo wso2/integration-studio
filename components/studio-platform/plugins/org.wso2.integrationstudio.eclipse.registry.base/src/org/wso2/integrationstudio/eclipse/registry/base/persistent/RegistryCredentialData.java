@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.persistent;
+package org.wso2.integrationstudio.registry.base.persistent;
 
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.wso2.integrationstudio.eclipse.registry.base.Activator;
+import org.wso2.integrationstudio.registry.base.Activator;
 
 public class RegistryCredentialData {
 	private static RegistryCredentialData instance;

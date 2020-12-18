@@ -1,16 +1,16 @@
-package org.wso2.integrationstudio.eclipse.registry.core.utils;
+package org.wso2.integrationstudio.registry.core.utils;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-import org.wso2.integrationstudio.eclipse.platform.core.MediaManager;
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.GARFileType;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IGARImportDependency;
-import org.wso2.integrationstudio.eclipse.registry.core.internal.impl.GARImportDependencyImpl;
-import org.wso2.integrationstudio.eclipse.utils.archive.ArchiveManipulator;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.platform.core.MediaManager;
+import org.wso2.integrationstudio.platform.core.mediatype.PlatformMediaTypeConstants;
+import org.wso2.integrationstudio.registry.core.interfaces.GARFileType;
+import org.wso2.integrationstudio.registry.core.interfaces.IGARImportDependency;
+import org.wso2.integrationstudio.registry.core.internal.impl.GARImportDependencyImpl;
+import org.wso2.integrationstudio.utils.archive.ArchiveManipulator;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class GARUtils {
 	public static IGARImportDependency getGARDependencyModel(URL url) throws IOException{

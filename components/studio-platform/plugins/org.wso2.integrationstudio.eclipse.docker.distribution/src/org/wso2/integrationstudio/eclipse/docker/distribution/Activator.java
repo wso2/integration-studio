@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution;
+package org.wso2.integrationstudio.docker.distribution;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-import org.wso2.integrationstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
+import org.wso2.integrationstudio.docker.distribution.utils.DockerProjectConstants;
 
 /**
  * The activator class controls the plug-in life cycle

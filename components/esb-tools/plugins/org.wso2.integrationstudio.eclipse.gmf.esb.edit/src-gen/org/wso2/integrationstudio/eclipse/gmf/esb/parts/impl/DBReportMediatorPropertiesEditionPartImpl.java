@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -73,12 +73,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -1950,7 +1950,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionType()
 	 * 
 	 */
 	public Enumerator getConnectionType() {
@@ -1961,7 +1961,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initConnectionType(Object
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initConnectionType(Object
 	 *      input, Enumerator current)
 	 */
 	public void initConnectionType(Object input, Enumerator current) {
@@ -1981,7 +1981,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionType(Enumerator
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionType(Enumerator
 	 *      newValue)
 	 * 
 	 */
@@ -2001,7 +2001,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDsType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDsType()
 	 * 
 	 */
 	public Enumerator getConnectionDsType() {
@@ -2012,7 +2012,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initConnectionDsType(Object
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initConnectionDsType(Object
 	 *      input, Enumerator current)
 	 */
 	public void initConnectionDsType(Object input, Enumerator current) {
@@ -2032,7 +2032,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDsType(Enumerator
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDsType(Enumerator
 	 *      newValue)
 	 * 
 	 */
@@ -2052,7 +2052,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDbType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDbType()
 	 * 
 	 */
 	public Enumerator getConnectionDbType() {
@@ -2063,7 +2063,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initConnectionDbType(Object
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initConnectionDbType(Object
 	 *      input, Enumerator current)
 	 */
 	public void initConnectionDbType(Object input, Enumerator current) {
@@ -2083,7 +2083,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDbType(Enumerator
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDbType(Enumerator
 	 *      newValue)
 	 * 
 	 */
@@ -2103,7 +2103,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDbDriver()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDbDriver()
 	 * 
 	 */
 	public String getConnectionDbDriver() {
@@ -2113,7 +2113,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDbDriver(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDbDriver(String
 	 *      newValue)
 	 * 
 	 */
@@ -2137,7 +2137,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDsInitialContext()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDsInitialContext()
 	 * 
 	 */
 	public String getConnectionDsInitialContext() {
@@ -2147,7 +2147,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDsInitialContext(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDsInitialContext(String
 	 *      newValue)
 	 * 
 	 */
@@ -2171,7 +2171,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDsName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionDsName()
 	 * 
 	 */
 	public String getConnectionDsName() {
@@ -2181,7 +2181,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDsName(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionDsName(String
 	 *      newValue)
 	 * 
 	 */
@@ -2205,7 +2205,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionURL()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionURL()
 	 * 
 	 */
 	public String getConnectionURL() {
@@ -2215,7 +2215,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionURL(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionURL(String
 	 *      newValue)
 	 * 
 	 */
@@ -2239,7 +2239,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionUsername()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionUsername()
 	 * 
 	 */
 	public String getConnectionUsername() {
@@ -2249,7 +2249,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionUsername(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionUsername(String
 	 *      newValue)
 	 * 
 	 */
@@ -2273,7 +2273,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionPassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionPassword()
 	 * 
 	 */
 	public String getConnectionPassword() {
@@ -2283,7 +2283,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionPassword(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionPassword(String
 	 *      newValue)
 	 * 
 	 */
@@ -2307,7 +2307,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionUseTransaction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getConnectionUseTransaction()
 	 * 
 	 */
 	public Boolean getConnectionUseTransaction() {
@@ -2317,7 +2317,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionUseTransaction(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setConnectionUseTransaction(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -2341,7 +2341,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getIsRegistryBasedDriverConfig()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getIsRegistryBasedDriverConfig()
 	 * 
 	 */
 	public Boolean getIsRegistryBasedDriverConfig() {
@@ -2351,7 +2351,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setIsRegistryBasedDriverConfig(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setIsRegistryBasedDriverConfig(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -2375,7 +2375,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getIsRegistryBasedUrlConfig()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getIsRegistryBasedUrlConfig()
 	 * 
 	 */
 	public Boolean getIsRegistryBasedUrlConfig() {
@@ -2385,7 +2385,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setIsRegistryBasedUrlConfig(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setIsRegistryBasedUrlConfig(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -2409,7 +2409,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getIsRegistryBasedUserConfig()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getIsRegistryBasedUserConfig()
 	 * 
 	 */
 	public Boolean getIsRegistryBasedUserConfig() {
@@ -2419,7 +2419,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setIsRegistryBasedUserConfig(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setIsRegistryBasedUserConfig(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -2443,7 +2443,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getIsRegistryBasedPassConfig()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getIsRegistryBasedPassConfig()
 	 * 
 	 */
 	public Boolean getIsRegistryBasedPassConfig() {
@@ -2453,7 +2453,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setIsRegistryBasedPassConfig(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setIsRegistryBasedPassConfig(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -2477,7 +2477,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initSqlStatements(EObject
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initSqlStatements(EObject
 	 *      current, EReference containingFeature, EReference feature)
 	 */
 	public void initSqlStatements(ReferencesTableSettings settings) {
@@ -2500,7 +2500,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#updateSqlStatements()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#updateSqlStatements()
 	 * 
 	 */
 	public void updateSqlStatements() {
@@ -2510,7 +2510,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#addFilterSqlStatements(ViewerFilter
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#addFilterSqlStatements(ViewerFilter
 	 *      filter)
 	 * 
 	 */
@@ -2524,7 +2524,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#addBusinessFilterSqlStatements(ViewerFilter
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#addBusinessFilterSqlStatements(ViewerFilter
 	 *      filter)
 	 * 
 	 */
@@ -2535,7 +2535,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#isContainedInSqlStatementsTable(EObject
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#isContainedInSqlStatementsTable(EObject
 	 *      element)
 	 * 
 	 */
@@ -2546,7 +2546,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -2556,7 +2556,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setCommentsList(EList
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setCommentsList(EList
 	 *      newValue)
 	 * 
 	 */
@@ -2598,7 +2598,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -2608,7 +2608,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setReverse(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setReverse(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -2631,7 +2631,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyAutocommit()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyAutocommit()
 	 * 
 	 */
 	public Enumerator getPropertyAutocommit() {
@@ -2642,7 +2642,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initPropertyAutocommit(Object
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initPropertyAutocommit(Object
 	 *      input, Enumerator current)
 	 */
 	public void initPropertyAutocommit(Object input, Enumerator current) {
@@ -2662,7 +2662,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyAutocommit(Enumerator
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyAutocommit(Enumerator
 	 *      newValue)
 	 * 
 	 */
@@ -2682,7 +2682,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyIsolation()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyIsolation()
 	 * 
 	 */
 	public Enumerator getPropertyIsolation() {
@@ -2693,7 +2693,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initPropertyIsolation(Object
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initPropertyIsolation(Object
 	 *      input, Enumerator current)
 	 */
 	public void initPropertyIsolation(Object input, Enumerator current) {
@@ -2713,7 +2713,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyIsolation(Enumerator
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyIsolation(Enumerator
 	 *      newValue)
 	 * 
 	 */
@@ -2733,7 +2733,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyMaxactive()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyMaxactive()
 	 * 
 	 */
 	public String getPropertyMaxactive() {
@@ -2743,7 +2743,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyMaxactive(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyMaxactive(String
 	 *      newValue)
 	 * 
 	 */
@@ -2767,7 +2767,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyMaxidle()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyMaxidle()
 	 * 
 	 */
 	public String getPropertyMaxidle() {
@@ -2777,7 +2777,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyMaxidle(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyMaxidle(String
 	 *      newValue)
 	 * 
 	 */
@@ -2801,7 +2801,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyMaxopenstatements()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyMaxopenstatements()
 	 * 
 	 */
 	public String getPropertyMaxopenstatements() {
@@ -2811,7 +2811,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyMaxopenstatements(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyMaxopenstatements(String
 	 *      newValue)
 	 * 
 	 */
@@ -2835,7 +2835,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyMaxwait()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyMaxwait()
 	 * 
 	 */
 	public String getPropertyMaxwait() {
@@ -2845,7 +2845,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyMaxwait(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyMaxwait(String
 	 *      newValue)
 	 * 
 	 */
@@ -2869,7 +2869,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyMinidle()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyMinidle()
 	 * 
 	 */
 	public String getPropertyMinidle() {
@@ -2879,7 +2879,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyMinidle(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyMinidle(String
 	 *      newValue)
 	 * 
 	 */
@@ -2903,7 +2903,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyPoolstatements()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyPoolstatements()
 	 * 
 	 */
 	public Enumerator getPropertyPoolstatements() {
@@ -2915,7 +2915,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initPropertyPoolstatements(Object
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initPropertyPoolstatements(Object
 	 *      input, Enumerator current)
 	 */
 	public void initPropertyPoolstatements(Object input, Enumerator current) {
@@ -2935,7 +2935,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyPoolstatements(Enumerator
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyPoolstatements(Enumerator
 	 *      newValue)
 	 * 
 	 */
@@ -2955,7 +2955,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyTestonborrow()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyTestonborrow()
 	 * 
 	 */
 	public Enumerator getPropertyTestonborrow() {
@@ -2967,7 +2967,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initPropertyTestonborrow(Object
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initPropertyTestonborrow(Object
 	 *      input, Enumerator current)
 	 */
 	public void initPropertyTestonborrow(Object input, Enumerator current) {
@@ -2987,7 +2987,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyTestonborrow(Enumerator
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyTestonborrow(Enumerator
 	 *      newValue)
 	 * 
 	 */
@@ -3007,7 +3007,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyTestwhileidle()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyTestwhileidle()
 	 * 
 	 */
 	public Enumerator getPropertyTestwhileidle() {
@@ -3019,7 +3019,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initPropertyTestwhileidle(Object
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#initPropertyTestwhileidle(Object
 	 *      input, Enumerator current)
 	 */
 	public void initPropertyTestwhileidle(Object input, Enumerator current) {
@@ -3039,7 +3039,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyTestwhileidle(Enumerator
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyTestwhileidle(Enumerator
 	 *      newValue)
 	 * 
 	 */
@@ -3059,7 +3059,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyValidationquery()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyValidationquery()
 	 * 
 	 */
 	public String getPropertyValidationquery() {
@@ -3069,7 +3069,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyValidationquery(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyValidationquery(String
 	 *      newValue)
 	 * 
 	 */
@@ -3093,7 +3093,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyInitialsize()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getPropertyInitialsize()
 	 * 
 	 */
 	public String getPropertyInitialsize() {
@@ -3103,7 +3103,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyInitialsize(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setPropertyInitialsize(String
 	 *      newValue)
 	 * 
 	 */
@@ -3127,7 +3127,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -3137,7 +3137,7 @@ public class DBReportMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setDescription(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBReportMediatorPropertiesEditionPart#setDescription(String
 	 *      newValue)
 	 * 
 	 */

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.wst;
+package org.wso2.integrationstudio.utils.wst;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -42,13 +42,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.Activator;
-import org.wso2.integrationstudio.eclipse.utils.exception.Axis2ServiceUtilsException;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.Activator;
+import org.wso2.integrationstudio.utils.exception.Axis2ServiceUtilsException;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 import org.xml.sax.SAXException;
-import static org.wso2.integrationstudio.eclipse.utils.wst.Axis2Constants.*;
+import static org.wso2.integrationstudio.utils.wst.Axis2Constants.*;
 
 /**
  * This class provides static utility methods for Axis2 service project management tasks.
@@ -61,7 +61,7 @@ public class Axis2ServiceUtils {
 	 * This method provides logic for getting all Axis2 service folders with related project in workspace.
 	 *
 	 * @return a map contains all service folders with corresponding project
-	 * @throws org.wso2.integrationstudio.eclipse.utils.exception.Axis2ServiceUtilsException
+	 * @throws org.wso2.integrationstudio.utils.exception.Axis2ServiceUtilsException
 	 */
 	public static Map<IFolder, IProject> getServiceFolders() throws Axis2ServiceUtilsException {
 		Map<IFolder, IProject> map = new HashMap<IFolder, IProject>();
@@ -103,7 +103,7 @@ public class Axis2ServiceUtils {
 	 *
 	 * @param folderPath resources folder path
 	 * @return Axis2 service name
-	 * @throws org.wso2.integrationstudio.eclipse.utils.exception.Axis2ServiceUtilsException
+	 * @throws org.wso2.integrationstudio.utils.exception.Axis2ServiceUtilsException
 	 */
 	public static String getServiceNameFromFolder(String folderPath) throws Axis2ServiceUtilsException {
 		String path = FileUtils.addNodesToPath(folderPath, new String[]{META_INF_FOLDER_NAME, SERVICES_XML_FILE_NAME});
@@ -129,7 +129,7 @@ public class Axis2ServiceUtils {
 	 *
 	 * @param filePath zip file path
 	 * @return Axis2 service name
-	 * @throws org.wso2.integrationstudio.eclipse.utils.exception.Axis2ServiceUtilsException
+	 * @throws org.wso2.integrationstudio.utils.exception.Axis2ServiceUtilsException
 	 */
 	public static String getServiceNameFromFile(String filePath) throws Axis2ServiceUtilsException {
 		ZipFile resourcesZipFile;
@@ -169,7 +169,7 @@ public class Axis2ServiceUtils {
 	 *
 	 * @param folderPath resources folder path
 	 * @return Axis2 service class name
-	 * @throws org.wso2.integrationstudio.eclipse.utils.exception.Axis2ServiceUtilsException
+	 * @throws org.wso2.integrationstudio.utils.exception.Axis2ServiceUtilsException
 	 */
 	public static String getServiceClassNameFromFolder(String folderPath) throws Axis2ServiceUtilsException {
 		String path = FileUtils.addNodesToPath(folderPath, new String[]{META_INF_FOLDER_NAME, SERVICES_XML_FILE_NAME});
@@ -195,7 +195,7 @@ public class Axis2ServiceUtils {
 	 *
 	 * @param filePath zip file path
 	 * @return Axis2 service class name
-	 * @throws org.wso2.integrationstudio.eclipse.utils.exception.Axis2ServiceUtilsException
+	 * @throws org.wso2.integrationstudio.utils.exception.Axis2ServiceUtilsException
 	 */
 	public static String getServiceClassNameFromFile(String filePath) throws Axis2ServiceUtilsException {
 		ZipFile resourcesZipFile;
@@ -314,7 +314,7 @@ public class Axis2ServiceUtils {
 	 * Method that returns javax.xml.parsers.DocumentBuilder
 	 *
 	 * @return DocumentBuilder
-	 * @throws org.wso2.integrationstudio.eclipse.utils.exception.Axis2ServiceUtilsException
+	 * @throws org.wso2.integrationstudio.utils.exception.Axis2ServiceUtilsException
 	 */
 	private static DocumentBuilder getDocumentBuilder() throws Axis2ServiceUtilsException {
 		try {

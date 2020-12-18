@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -73,13 +73,13 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -554,7 +554,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -564,7 +564,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -586,7 +586,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -596,7 +596,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -637,7 +637,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -647,7 +647,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -669,7 +669,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#getXsltSchemaKeyType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#getXsltSchemaKeyType()
 	 * 
 	 */
 	public Enumerator getXsltSchemaKeyType() {
@@ -680,7 +680,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#initXsltSchemaKeyType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#initXsltSchemaKeyType(Object input, Enumerator current)
 	 */
 	public void initXsltSchemaKeyType(Object input, Enumerator current) {
 		xsltSchemaKeyType.setInput(input);
@@ -698,7 +698,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#setXsltSchemaKeyType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#setXsltSchemaKeyType(Enumerator newValue)
 	 * 
 	 */
 	public void setXsltSchemaKeyType(Enumerator newValue) {
@@ -718,7 +718,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initProperties(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -739,7 +739,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#updateProperties()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#updateProperties()
 	 * 
 	 */
 	public void updateProperties() {
@@ -749,7 +749,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToProperties(ViewerFilter filter) {
@@ -762,7 +762,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToProperties(ViewerFilter filter) {
@@ -772,7 +772,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInPropertiesTable(EObject element) {
@@ -784,7 +784,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#initFeatures(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#initFeatures(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initFeatures(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -805,7 +805,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#updateFeatures()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#updateFeatures()
 	 * 
 	 */
 	public void updateFeatures() {
@@ -815,7 +815,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#addFilterFeatures(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#addFilterFeatures(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToFeatures(ViewerFilter filter) {
@@ -828,7 +828,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#addBusinessFilterFeatures(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#addBusinessFilterFeatures(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToFeatures(ViewerFilter filter) {
@@ -838,7 +838,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#isContainedInFeaturesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#isContainedInFeaturesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInFeaturesTable(EObject element) {
@@ -850,7 +850,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#initResources(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#initResources(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initResources(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -871,7 +871,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#updateResources()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#updateResources()
 	 * 
 	 */
 	public void updateResources() {
@@ -881,7 +881,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#addFilterResources(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#addFilterResources(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToResources(ViewerFilter filter) {
@@ -894,7 +894,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#addBusinessFilterResources(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#addBusinessFilterResources(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToResources(ViewerFilter filter) {
@@ -904,7 +904,7 @@ public class XSLTMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#isContainedInResourcesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTMediatorPropertiesEditionPart#isContainedInResourcesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInResourcesTable(EObject element) {

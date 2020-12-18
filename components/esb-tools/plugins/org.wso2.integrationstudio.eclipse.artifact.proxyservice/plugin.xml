@@ -4,36 +4,36 @@
    <extension
          point="org.eclipse.ui.newWizards">
          <wizard name="Proxy Service" 
-         	category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.message.mediation/org.wso2.integrationstudio.eclipse.message.mediation.features"
-			class="org.wso2.integrationstudio.eclipse.artifact.proxyservice.ui.wizard.ProxyServiceProjectCreationWizard"
+         	category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.message.mediation/org.wso2.integrationstudio.message.mediation.features"
+			class="org.wso2.integrationstudio.artifact.proxyservice.ui.wizard.ProxyServiceProjectCreationWizard"
 			wizardManifest="project_wizard.xml"
-			id="org.wso2.integrationstudio.eclipse.artifact.newproxyservice"
+			id="org.wso2.integrationstudio.artifact.newproxyservice"
 			icon="icons/proxy.png">
 			<description>Proxy Service</description>
 		</wizard>
    </extension>
    
 
- <extension point="org.wso2.integrationstudio.eclipse.dashboad.link">
+ <extension point="org.wso2.integrationstudio.dashboad.link">
 	<category id="dashboard.category.esb.artifacts" showTitle="true" title="ESB Artifact Types" priority="2" />
      <wizardLink category="dashboard.category.esb.artifacts" id="1dashboard.wizardLink.esb.proxy"
-	    wizard="org.wso2.integrationstudio.eclipse.artifact.newproxyservice" 
+	    wizard="org.wso2.integrationstudio.artifact.newproxyservice" 
 	   priority="1">
      </wizardLink>
   </extension>
    
    
    	<!--extension point="org.eclipse.core.resources.natures"
-		id="org.wso2.integrationstudio.eclipse.proxy.project.nature" name="ProxyService Project Nature">
+		id="org.wso2.integrationstudio.proxy.project.nature" name="ProxyService Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.artifact.proxyservice.project.nature.ProxyServiceProjectNature">
+				class="org.wso2.integrationstudio.artifact.proxyservice.project.nature.ProxyServiceProjectNature">
 			</run>
 		</runtime>
 	</extension-->
 	<!--extension point="org.eclipse.ui.ide.projectNatureImages">
-		<image id="org.wso2.integrationstudio.eclipse.proxy.project.natureImage"
-			natureId="org.wso2.integrationstudio.eclipse.proxy.project.nature" icon="icons/proxy.png">
+		<image id="org.wso2.integrationstudio.proxy.project.natureImage"
+			natureId="org.wso2.integrationstudio.proxy.project.nature" icon="icons/proxy.png">
 		</image>
 	</extension-->
     <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
@@ -42,9 +42,9 @@
 			id="org.eclipse.ui.navigator.resourceContent"
 			name="test">
 				<commonWizard 
-					menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
+					menuGroupId="2org.wso2.integrationstudio.artifact.esb"
 			  	 	type="new"
-					wizardId="org.wso2.integrationstudio.eclipse.artifact.newproxyservice">
+					wizardId="org.wso2.integrationstudio.artifact.newproxyservice">
 					<enablement>
 						<or>
 							<adapt type="org.eclipse.core.resources.IProject"/>
@@ -66,8 +66,8 @@
 	  </extension>-->
 	  		<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.newproxyservice">
+                menuGroupId="2org.wso2.integrationstudio.artifact.esb"
+                wizardId="org.wso2.integrationstudio.artifact.newproxyservice">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
@@ -89,10 +89,10 @@
                 </enablement>
             </commonWizard>
     </extension>
-   	  <extension point="org.wso2.integrationstudio.eclipse.samples">
+   	  <extension point="org.wso2.integrationstudio.samples">
       <sample
-            class="org.wso2.integrationstudio.eclipse.artifact.proxyservice.sample.ProxyServiceSampleContributor"
-            id="org.wso2.integrationstudio.eclipse.capp.artifact.proxyservice.sample"
+            class="org.wso2.integrationstudio.artifact.proxyservice.sample.ProxyServiceSampleContributor"
+            id="org.wso2.integrationstudio.capp.artifact.proxyservice.sample"
             isCustomCreateSample="false"
             sampleProjectName="SimpleStockQuoteESBSample">
       </sample>

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.startup;
+package org.wso2.integrationstudio.platform.ui.startup;
 
 import java.io.File;
 import java.util.regex.Pattern;
@@ -25,8 +25,8 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class DataMapperEditor {
 	private static Openable openable;

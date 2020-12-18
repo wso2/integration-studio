@@ -6,13 +6,13 @@
       <runtimeType
             class="org.eclipse.jst.server.generic.core.internal.GenericServerRuntime"
             description="WSO2 Carbon 4.4 based server"
-            id="org.wso2.integrationstudio.eclipse.carbon.runtime44ei"
+            id="org.wso2.integrationstudio.carbon.runtime44ei"
             name="WSO2 Carbon 4.4 based server"
             vendor="WSO2"
             vendorId="wso2"
             version="4.4">
          <moduleType
-               types="org.wso2.integrationstudio.eclipse.carbon.module"
+               types="org.wso2.integrationstudio.carbon.module"
                versions="1.0">
          </moduleType>
           <moduleType
@@ -24,8 +24,8 @@
    <extension point="org.eclipse.jst.server.core.runtimeClasspathProviders">
       <runtimeClasspathProvider
             class="org.eclipse.jst.server.generic.core.internal.GenericServerRuntimeTargetHandler"
-            id="org.wso2.integrationstudio.eclipse.carbon.runtime44ei.runtimeClasspathProvider"
-            runtimeTypeIds="org.wso2.integrationstudio.eclipse.carbon.*">
+            id="org.wso2.integrationstudio.carbon.runtime44ei.runtimeClasspathProvider"
+            runtimeTypeIds="org.wso2.integrationstudio.carbon.*">
       </runtimeClasspathProvider>
    </extension>
    <extension
@@ -43,7 +43,7 @@
                version="2.2, 2.3, 2.4, 2.5, 3.0">
          </facet>
          <facet
-               id="org.wso2.integrationstudio.eclipse.carbon.facetId"
+               id="org.wso2.integrationstudio.carbon.facetId"
                version="1.0">
          </facet>         
          <runtime-component
@@ -78,33 +78,33 @@
          point="org.eclipse.jst.server.core.runtimeFacetMappings">
       <runtimeFacetMapping
             runtime-component="org.wso2.wsf.ide.server.carbon.v44ei"
-            runtimeTypeId="org.wso2.integrationstudio.eclipse.carbon.runtime44ei"
+            runtimeTypeId="org.wso2.integrationstudio.carbon.runtime44ei"
             version="1.0">
       </runtimeFacetMapping>
    </extension>
    
   <extension point="org.eclipse.wst.server.ui.wizardFragments">
       <fragment
-            class="org.wso2.integrationstudio.eclipse.carbonserver.base.internal.CarbonRuntimeWizardFragment"
+            class="org.wso2.integrationstudio.carbonserver.base.internal.CarbonRuntimeWizardFragment"
             id="org.eclipse.jst.server.generic.runtime"
-            typeIds="org.wso2.integrationstudio.eclipse.carbon.runtime44ei">
+            typeIds="org.wso2.integrationstudio.carbon.runtime44ei">
       </fragment>
       <fragment
-            class="org.wso2.integrationstudio.eclipse.carbonserver.base.internal.CarbonServerWizardFragment"
+            class="org.wso2.integrationstudio.carbonserver.base.internal.CarbonServerWizardFragment"
             id="org.eclipse.jst.server.generic.server"
-            typeIds="org.wso2.integrationstudio.eclipse.carbon.server44ei">
+            typeIds="org.wso2.integrationstudio.carbon.server44ei">
       </fragment>
    </extension>
    <extension point="org.eclipse.wst.server.ui.serverImages">
       <image
             icon="icons/wsas.ico"
             id="org.eclipse.jst.server.generic.image"
-            typeIds="org.wso2.integrationstudio.eclipse.carbon.runtime44ei">
+            typeIds="org.wso2.integrationstudio.carbon.runtime44ei">
       </image>
       <image
             icon="icons/wsas.ico"
             id="org.eclipse.jst.server.generic.image"
-            typeIds="org.wso2.integrationstudio.eclipse.carbon.server44ei">
+            typeIds="org.wso2.integrationstudio.carbon.server44ei">
       </image>
    </extension>
    
@@ -112,57 +112,57 @@
       <image
             icon="icons/wsas.ico"
             id="org.eclipse.jst.server.generic.image"
-            typeIds="org.wso2.integrationstudio.eclipse.carbon.runtime44ei">
+            typeIds="org.wso2.integrationstudio.carbon.runtime44ei">
       </image>
       <image
             icon="icons/wsas.ico"
             id="org.eclipse.jst.server.generic.image"
-            typeIds="org.wso2.integrationstudio.eclipse.carbon.server44ei">
+            typeIds="org.wso2.integrationstudio.carbon.server44ei">
       </image>
    </extension>
   <extension point="org.eclipse.jst.server.generic.core.serverdefinition">
       <serverdefinition
             definitionfile="serverdefinition/carbon.definition.xml"
-            id="org.wso2.integrationstudio.eclipse.carbon.runtime44ei">
+            id="org.wso2.integrationstudio.carbon.runtime44ei">
       </serverdefinition>
    </extension>
    
 	<extension
-         point="org.wso2.integrationstudio.eclipse.carbonserver.base.register">
+         point="org.wso2.integrationstudio.carbonserver.base.register">
          <server 
             name="WSO2 Carbon 4.4"
-            id="org.wso2.integrationstudio.eclipse.carbon.server44ei"
-            server-id="org.wso2.integrationstudio.eclipse.carbon.server44ei"
-            class="org.wso2.integrationstudio.eclipse.carbonserver44ei.operations.CarbonOperationsManager44ei" />
+            id="org.wso2.integrationstudio.carbon.server44ei"
+            server-id="org.wso2.integrationstudio.carbon.server44ei"
+            class="org.wso2.integrationstudio.carbonserver44ei.operations.CarbonOperationsManager44ei" />
    </extension>
   <extension point="org.eclipse.wst.server.ui.editorPageSections">
       <section
-         id="org.wso2.integrationstudio.eclipse.server.carbon.v44ei.configuration.editor.port"
+         id="org.wso2.integrationstudio.server.carbon.v44ei.configuration.editor.port"
          order="10"
          insertionId="org.eclipse.wst.server.editor.overview.left"
-         typeIds="org.wso2.integrationstudio.eclipse.carbon.server44ei"
-         class="org.wso2.integrationstudio.eclipse.carbonserver44ei.configuration.ConfigurationPortEditorSection">
+         typeIds="org.wso2.integrationstudio.carbon.server44ei"
+         class="org.wso2.integrationstudio.carbonserver44ei.configuration.ConfigurationPortEditorSection">
       </section>
       <section
-         id="org.wso2.integrationstudio.eclipse.server.carbon.v44ei.configuration.editor.other"
+         id="org.wso2.integrationstudio.server.carbon.v44ei.configuration.editor.other"
          order="10"
          insertionId="org.eclipse.wst.server.editor.overview.right"
-         typeIds="org.wso2.integrationstudio.eclipse.carbon.server44ei"
-         class="org.wso2.integrationstudio.eclipse.carbonserver44ei.configuration.ConfigurationOtherEditorSection">
+         typeIds="org.wso2.integrationstudio.carbon.server44ei"
+         class="org.wso2.integrationstudio.carbonserver44ei.configuration.ConfigurationOtherEditorSection">
       </section>
       <!--section
-         id="org.wso2.integrationstudio.eclipse.server.carbon.v40.configuration.editor.credentials"
+         id="org.wso2.integrationstudio.server.carbon.v40.configuration.editor.credentials"
          order="10"
          insertionId="org.eclipse.wst.server.editor.overview.right"
-         typeIds="org.wso2.integrationstudio.eclipse.carbon.server40"
-         class="org.wso2.integrationstudio.eclipse.carbonserver40.configuration.ConfigurationCredentialsEditorSection">
+         typeIds="org.wso2.integrationstudio.carbon.server40"
+         class="org.wso2.integrationstudio.carbonserver40.configuration.ConfigurationCredentialsEditorSection">
   	</section-->
    </extension>
   <extension
-        point="org.wso2.integrationstudio.eclipse.carbonserver.base.serverProperties">
+        point="org.wso2.integrationstudio.carbonserver.base.serverProperties">
      <properties
-           class="org.wso2.integrationstudio.eclipse.carbonserver44ei.ServerProperties"
-           serverId="org.wso2.integrationstudio.eclipse.carbon.runtime44ei">
+           class="org.wso2.integrationstudio.carbonserver44ei.ServerProperties"
+           serverId="org.wso2.integrationstudio.carbon.runtime44ei">
      </properties>
   </extension>
 </plugin>

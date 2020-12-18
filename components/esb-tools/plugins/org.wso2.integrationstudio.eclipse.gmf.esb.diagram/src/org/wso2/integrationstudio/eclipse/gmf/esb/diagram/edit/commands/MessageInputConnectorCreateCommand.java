@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.commands;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -11,9 +11,9 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.MessageInputConnector;
+import org.wso2.integrationstudio.gmf.esb.MessageMediator;
 
 /**
  * @generated

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.customvalidator.ui.wizard;
+package org.wso2.integrationstudio.ds.customvalidator.ui.wizard;
 
 import java.io.File;
 
@@ -28,9 +28,9 @@ import org.eclipse.jdt.ui.wizards.NewClassWizardPage;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.wso2.integrationstudio.eclipse.ds.customvalidator.utils.DataserviceConstants;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibraryUtils;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaUtils;
+import org.wso2.integrationstudio.ds.customvalidator.utils.DataserviceConstants;
+import org.wso2.integrationstudio.libraries.utils.LibraryUtils;
+import org.wso2.integrationstudio.utils.jdt.JavaUtils;
 
 public class NewDataserviceValidatorClassWizardPage extends NewClassWizardPage {
 	private String selectedProject;

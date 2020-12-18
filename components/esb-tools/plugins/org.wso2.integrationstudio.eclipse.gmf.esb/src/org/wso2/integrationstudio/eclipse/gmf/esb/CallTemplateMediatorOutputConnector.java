@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,7 +12,7 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * <!-- end-user-doc -->
  *
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateMediatorOutputConnector()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCallTemplateMediatorOutputConnector()
  * @model
  * @generated
  */

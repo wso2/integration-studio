@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Map;
 
@@ -24,15 +24,15 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EJBMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MethodArgument;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.EJBMediatorExt;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.EJBMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.LogProperty;
+import org.wso2.integrationstudio.gmf.esb.MethodArgument;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.EJBMediatorExt;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class EJBMediatorDeserializer extends AbstractEsbNodeDeserializer<EJBMediatorExt, EJBMediator> {
 

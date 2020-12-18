@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distributionproject.module.factory;
+package org.wso2.integrationstudio.distributionproject.module.factory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,10 +28,10 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.model.ModuleDelegate;
 import org.eclipse.wst.server.core.model.ModuleFactoryDelegate;
-import org.wso2.integrationstudio.eclipse.distributionproject.module.Activator;
-import org.wso2.integrationstudio.eclipse.distributionproject.module.utils.Constants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.distributionproject.module.Activator;
+import org.wso2.integrationstudio.distributionproject.module.utils.Constants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 
 public class CarbonModuleFactory extends ModuleFactoryDelegate{

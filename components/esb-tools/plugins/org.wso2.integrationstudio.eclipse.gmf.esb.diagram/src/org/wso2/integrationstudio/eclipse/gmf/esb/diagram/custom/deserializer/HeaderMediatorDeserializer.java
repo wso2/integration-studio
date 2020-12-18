@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,14 +9,14 @@ import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HeaderAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HeaderMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HeaderValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ScopeType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.HeaderAction;
+import org.wso2.integrationstudio.gmf.esb.HeaderMediator;
+import org.wso2.integrationstudio.gmf.esb.HeaderValueType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.ScopeType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class HeaderMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, HeaderMediator> {
 

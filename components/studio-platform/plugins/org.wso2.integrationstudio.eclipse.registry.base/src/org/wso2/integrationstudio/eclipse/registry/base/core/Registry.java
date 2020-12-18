@@ -11,7 +11,7 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.core;
+package org.wso2.integrationstudio.registry.base.core;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -55,18 +55,18 @@ import org.wso2.carbon.registry.core.utils.RegistryUtils;
 import org.wso2.carbon.registry.ws.client.registry.WSRegistryServiceClient;
 import org.wso2.carbon.registry.ws.stub.WSRegistryServiceRegistryExceptionException;
 import org.wso2.carbon.registry.ws.stub.xsd.WSResourceData;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.MediaManager;
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.SSLUtils;
-import org.wso2.integrationstudio.eclipse.registry.base.Activator;
-import org.wso2.integrationstudio.eclipse.registry.base.remote.RemoteRegistry;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.InvalidRegistryURLException;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.RegistryContentRetrieveException;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.UnknownRegistryException;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IGARImportDependency;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.GARUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.MediaManager;
+import org.wso2.integrationstudio.platform.core.mediatype.PlatformMediaTypeConstants;
+import org.wso2.integrationstudio.platform.ui.utils.SSLUtils;
+import org.wso2.integrationstudio.registry.base.Activator;
+import org.wso2.integrationstudio.registry.base.remote.RemoteRegistry;
+import org.wso2.integrationstudio.registry.core.exception.InvalidRegistryURLException;
+import org.wso2.integrationstudio.registry.core.exception.RegistryContentRetrieveException;
+import org.wso2.integrationstudio.registry.core.exception.UnknownRegistryException;
+import org.wso2.integrationstudio.registry.core.interfaces.IGARImportDependency;
+import org.wso2.integrationstudio.registry.core.utils.GARUtils;
 
 public class Registry {
 	private static final String _SYSTEM_GOVERNANCE = "/_system/governance";
@@ -278,11 +278,11 @@ public class Registry {
 		 * We are not setting setting SSLUtils to trust all calls 
 		 */
 /*
-		String clientTrustStoreLocation = preferenceStore.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		String clientTrustStoreLocation = preferenceStore.getString("org.wso2.integrationstudio.platform.ui",
 				ClientTrustStorePreferencePage.TRUST_STORE_LOCATION, null, null);
-		String clientTrustStoreType = preferenceStore.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		String clientTrustStoreType = preferenceStore.getString("org.wso2.integrationstudio.platform.ui",
 				ClientTrustStorePreferencePage.TRUST_STORE_TYPE, null, null);
-		String clientTrustStorePassword = preferenceStore.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		String clientTrustStorePassword = preferenceStore.getString("org.wso2.integrationstudio.platform.ui",
 				ClientTrustStorePreferencePage.TRUST_STORE_PASSWORD, null, null);
 
 		if (clientTrustStoreLocation != null && clientTrustStorePassword != null

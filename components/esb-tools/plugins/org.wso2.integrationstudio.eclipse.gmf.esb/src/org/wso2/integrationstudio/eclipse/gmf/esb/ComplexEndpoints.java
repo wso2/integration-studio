@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -26,19 +26,19 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpoints#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpoints#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpoints#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ComplexEndpoints#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ComplexEndpoints#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ComplexEndpoints#getName <em>Name</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getComplexEndpoints()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getComplexEndpoints()
  * @model
  * @generated
  */
 public interface ComplexEndpoints extends EsbElement {
     /**
      * Returns the value of the '<em><b>Output Connector</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpointsOutputConnector}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.ComplexEndpointsOutputConnector}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Output Connector</em>' containment reference list isn't clear,
@@ -46,7 +46,7 @@ public interface ComplexEndpoints extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getComplexEndpoints_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getComplexEndpoints_OutputConnector()
      * @model containment="true"
      * @generated
      */
@@ -62,14 +62,14 @@ public interface ComplexEndpoints extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getComplexEndpoints_MediatorFlow()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getComplexEndpoints_MediatorFlow()
      * @model containment="true"
      * @generated
      */
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpoints#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ComplexEndpoints#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
@@ -88,14 +88,14 @@ public interface ComplexEndpoints extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getComplexEndpoints_Name()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getComplexEndpoints_Name()
      * @model
      * @generated
      */
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpoints#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ComplexEndpoints#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Name</em>' attribute.

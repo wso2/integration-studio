@@ -16,17 +16,17 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei.operations;
+package org.wso2.integrationstudio.carbonserver44microei.operations;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerPort;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.operations.CommonCarbonServerOperations;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei.util.CarbonServer44eiUtils;
-import org.wso2.integrationstudio.eclipse.server.base.core.ServerController;
+import org.wso2.integrationstudio.carbon.server.model.operations.CommonCarbonServerOperations;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonConstants;
+import org.wso2.integrationstudio.carbonserver44microei.Activator;
+import org.wso2.integrationstudio.carbonserver44microei.util.CarbonServer44eiUtils;
+import org.wso2.integrationstudio.server.base.core.ServerController;
 
 @SuppressWarnings("restriction")
 public class CommonOperations extends CommonCarbonServerOperations{

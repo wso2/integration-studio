@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -73,12 +73,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -11656,7 +11656,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -11666,7 +11666,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -11688,7 +11688,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -11698,7 +11698,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -11739,7 +11739,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -11749,7 +11749,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -11771,7 +11771,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getType()
 	 * 
 	 */
 	public Enumerator getType() {
@@ -11782,7 +11782,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initType(Object input, Enumerator current)
 	 */
 	public void initType(Object input, Enumerator current) {
 		type.setInput(input);
@@ -11800,7 +11800,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setType(Enumerator newValue)
 	 * 
 	 */
 	public void setType(Enumerator newValue) {
@@ -11818,7 +11818,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getClass_()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getClass_()
 	 * 
 	 */
 	public String getClass_() {
@@ -11828,7 +11828,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setClass_(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setClass_(String newValue)
 	 * 
 	 */
 	public void setClass_(String newValue) {
@@ -11850,7 +11850,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getProtocol()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getProtocol()
 	 * 
 	 */
 	public String getProtocol() {
@@ -11860,7 +11860,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setProtocol(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setProtocol(String newValue)
 	 * 
 	 */
 	public void setProtocol(String newValue) {
@@ -11882,7 +11882,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundEndpointBehaviour()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundEndpointBehaviour()
 	 * 
 	 */
 	public Enumerator getInboundEndpointBehaviour() {
@@ -11893,7 +11893,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initInboundEndpointBehaviour(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initInboundEndpointBehaviour(Object input, Enumerator current)
 	 */
 	public void initInboundEndpointBehaviour(Object input, Enumerator current) {
 		inboundEndpointBehaviour.setInput(input);
@@ -11911,7 +11911,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundEndpointBehaviour(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundEndpointBehaviour(Enumerator newValue)
 	 * 
 	 */
 	public void setInboundEndpointBehaviour(Enumerator newValue) {
@@ -11929,7 +11929,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHttpPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHttpPort()
 	 * 
 	 */
 	public String getInboundHttpPort() {
@@ -11939,7 +11939,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHttpPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHttpPort(String newValue)
 	 * 
 	 */
 	public void setInboundHttpPort(String newValue) {
@@ -11961,7 +11961,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundWorkerPoolSizeCore()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundWorkerPoolSizeCore()
 	 * 
 	 */
 	public String getInboundWorkerPoolSizeCore() {
@@ -11971,7 +11971,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundWorkerPoolSizeCore(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundWorkerPoolSizeCore(String newValue)
 	 * 
 	 */
 	public void setInboundWorkerPoolSizeCore(String newValue) {
@@ -11993,7 +11993,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundWorkerPoolSizeMax()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundWorkerPoolSizeMax()
 	 * 
 	 */
 	public String getInboundWorkerPoolSizeMax() {
@@ -12003,7 +12003,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundWorkerPoolSizeMax(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundWorkerPoolSizeMax(String newValue)
 	 * 
 	 */
 	public void setInboundWorkerPoolSizeMax(String newValue) {
@@ -12025,7 +12025,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundWorkerThreadKeepAliveSec()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundWorkerThreadKeepAliveSec()
 	 * 
 	 */
 	public String getInboundWorkerThreadKeepAliveSec() {
@@ -12035,7 +12035,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundWorkerThreadKeepAliveSec(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundWorkerThreadKeepAliveSec(String newValue)
 	 * 
 	 */
 	public void setInboundWorkerThreadKeepAliveSec(String newValue) {
@@ -12057,7 +12057,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundWorkerPoolQueueLength()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundWorkerPoolQueueLength()
 	 * 
 	 */
 	public String getInboundWorkerPoolQueueLength() {
@@ -12067,7 +12067,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundWorkerPoolQueueLength(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundWorkerPoolQueueLength(String newValue)
 	 * 
 	 */
 	public void setInboundWorkerPoolQueueLength(String newValue) {
@@ -12089,7 +12089,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundThreadGroupId()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundThreadGroupId()
 	 * 
 	 */
 	public String getInboundThreadGroupId() {
@@ -12099,7 +12099,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundThreadGroupId(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundThreadGroupId(String newValue)
 	 * 
 	 */
 	public void setInboundThreadGroupId(String newValue) {
@@ -12121,7 +12121,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundThreadId()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundThreadId()
 	 * 
 	 */
 	public String getInboundThreadId() {
@@ -12131,7 +12131,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundThreadId(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundThreadId(String newValue)
 	 * 
 	 */
 	public void setInboundThreadId(String newValue) {
@@ -12153,7 +12153,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getDispatchFilterPattern()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getDispatchFilterPattern()
 	 * 
 	 */
 	public String getDispatchFilterPattern() {
@@ -12163,7 +12163,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setDispatchFilterPattern(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setDispatchFilterPattern(String newValue)
 	 * 
 	 */
 	public void setDispatchFilterPattern(String newValue) {
@@ -12185,7 +12185,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInterval()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInterval()
 	 * 
 	 */
 	public String getInterval() {
@@ -12195,7 +12195,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInterval(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInterval(String newValue)
 	 * 
 	 */
 	public void setInterval(String newValue) {
@@ -12217,7 +12217,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSequential()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSequential()
 	 * 
 	 */
 	public Boolean getSequential() {
@@ -12227,7 +12227,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSequential(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSequential(Boolean newValue)
 	 * 
 	 */
 	public void setSequential(Boolean newValue) {
@@ -12249,7 +12249,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getCoordination()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getCoordination()
 	 * 
 	 */
 	public Boolean getCoordination() {
@@ -12259,7 +12259,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setCoordination(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setCoordination(Boolean newValue)
 	 * 
 	 */
 	public void setCoordination(Boolean newValue) {
@@ -12281,7 +12281,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFileURI()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFileURI()
 	 * 
 	 */
 	public String getTransportVFSFileURI() {
@@ -12291,7 +12291,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFileURI(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFileURI(String newValue)
 	 * 
 	 */
 	public void setTransportVFSFileURI(String newValue) {
@@ -12313,7 +12313,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWso2mbConnectionUrl()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWso2mbConnectionUrl()
 	 * 
 	 */
 	public String getWso2mbConnectionUrl() {
@@ -12323,7 +12323,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWso2mbConnectionUrl(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWso2mbConnectionUrl(String newValue)
 	 * 
 	 */
 	public void setWso2mbConnectionUrl(String newValue) {
@@ -12345,7 +12345,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSContentType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSContentType()
 	 * 
 	 */
 	public String getTransportVFSContentType() {
@@ -12355,7 +12355,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSContentType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSContentType(String newValue)
 	 * 
 	 */
 	public void setTransportVFSContentType(String newValue) {
@@ -12377,7 +12377,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFileNamePattern()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFileNamePattern()
 	 * 
 	 */
 	public String getTransportVFSFileNamePattern() {
@@ -12387,7 +12387,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFileNamePattern(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFileNamePattern(String newValue)
 	 * 
 	 */
 	public void setTransportVFSFileNamePattern(String newValue) {
@@ -12409,7 +12409,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFileProcessInterval()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFileProcessInterval()
 	 * 
 	 */
 	public String getTransportVFSFileProcessInterval() {
@@ -12419,7 +12419,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFileProcessInterval(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFileProcessInterval(String newValue)
 	 * 
 	 */
 	public void setTransportVFSFileProcessInterval(String newValue) {
@@ -12441,7 +12441,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFileProcessCount()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFileProcessCount()
 	 * 
 	 */
 	public String getTransportVFSFileProcessCount() {
@@ -12451,7 +12451,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFileProcessCount(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFileProcessCount(String newValue)
 	 * 
 	 */
 	public void setTransportVFSFileProcessCount(String newValue) {
@@ -12473,7 +12473,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSLocking()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSLocking()
 	 * 
 	 */
 	public Enumerator getTransportVFSLocking() {
@@ -12484,7 +12484,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportVFSLocking(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportVFSLocking(Object input, Enumerator current)
 	 */
 	public void initTransportVFSLocking(Object input, Enumerator current) {
 		transportVFSLocking.setInput(input);
@@ -12502,7 +12502,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSLocking(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSLocking(Enumerator newValue)
 	 * 
 	 */
 	public void setTransportVFSLocking(Enumerator newValue) {
@@ -12520,7 +12520,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMaxRetryCount()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMaxRetryCount()
 	 * 
 	 */
 	public String getTransportVFSMaxRetryCount() {
@@ -12530,7 +12530,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMaxRetryCount(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMaxRetryCount(String newValue)
 	 * 
 	 */
 	public void setTransportVFSMaxRetryCount(String newValue) {
@@ -12552,7 +12552,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMoveAfterFailedMove()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMoveAfterFailedMove()
 	 * 
 	 */
 	public String getTransportVFSMoveAfterFailedMove() {
@@ -12562,7 +12562,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMoveAfterFailedMove(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMoveAfterFailedMove(String newValue)
 	 * 
 	 */
 	public void setTransportVFSMoveAfterFailedMove(String newValue) {
@@ -12584,7 +12584,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSReconnectTimeout()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSReconnectTimeout()
 	 * 
 	 */
 	public String getTransportVFSReconnectTimeout() {
@@ -12594,7 +12594,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSReconnectTimeout(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSReconnectTimeout(String newValue)
 	 * 
 	 */
 	public void setTransportVFSReconnectTimeout(String newValue) {
@@ -12616,7 +12616,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSSharedSubscription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSSharedSubscription()
 	 * 
 	 */
 	public Boolean getTransportJMSSharedSubscription() {
@@ -12626,7 +12626,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSSharedSubscription(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSSharedSubscription(Boolean newValue)
 	 * 
 	 */
 	public void setTransportJMSSharedSubscription(Boolean newValue) {
@@ -12648,7 +12648,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSSubscriptionName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSSubscriptionName()
 	 * 
 	 */
 	public String getTransportJMSSubscriptionName() {
@@ -12658,7 +12658,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSSubscriptionName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSSubscriptionName(String newValue)
 	 * 
 	 */
 	public void setTransportJMSSubscriptionName(String newValue) {
@@ -12680,7 +12680,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSPinnedServers()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSPinnedServers()
 	 * 
 	 */
 	public String getTransportJMSPinnedServers() {
@@ -12690,7 +12690,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSPinnedServers(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSPinnedServers(String newValue)
 	 * 
 	 */
 	public void setTransportJMSPinnedServers(String newValue) {
@@ -12712,7 +12712,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSActionAfterProcess()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSActionAfterProcess()
 	 * 
 	 */
 	public Enumerator getTransportVFSActionAfterProcess() {
@@ -12723,7 +12723,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportVFSActionAfterProcess(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportVFSActionAfterProcess(Object input, Enumerator current)
 	 */
 	public void initTransportVFSActionAfterProcess(Object input, Enumerator current) {
 		transportVFSActionAfterProcess.setInput(input);
@@ -12741,7 +12741,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSActionAfterProcess(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSActionAfterProcess(Enumerator newValue)
 	 * 
 	 */
 	public void setTransportVFSActionAfterProcess(Enumerator newValue) {
@@ -12759,7 +12759,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMoveAfterProcess()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMoveAfterProcess()
 	 * 
 	 */
 	public String getTransportVFSMoveAfterProcess() {
@@ -12769,7 +12769,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMoveAfterProcess(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMoveAfterProcess(String newValue)
 	 * 
 	 */
 	public void setTransportVFSMoveAfterProcess(String newValue) {
@@ -12791,7 +12791,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSActionAfterErrors()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSActionAfterErrors()
 	 * 
 	 */
 	public Enumerator getTransportVFSActionAfterErrors() {
@@ -12802,7 +12802,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportVFSActionAfterErrors(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportVFSActionAfterErrors(Object input, Enumerator current)
 	 */
 	public void initTransportVFSActionAfterErrors(Object input, Enumerator current) {
 		transportVFSActionAfterErrors.setInput(input);
@@ -12820,7 +12820,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSActionAfterErrors(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSActionAfterErrors(Enumerator newValue)
 	 * 
 	 */
 	public void setTransportVFSActionAfterErrors(Enumerator newValue) {
@@ -12838,7 +12838,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMoveAfterErrors()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMoveAfterErrors()
 	 * 
 	 */
 	public String getTransportVFSMoveAfterErrors() {
@@ -12848,7 +12848,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMoveAfterErrors(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMoveAfterErrors(String newValue)
 	 * 
 	 */
 	public void setTransportVFSMoveAfterErrors(String newValue) {
@@ -12870,7 +12870,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFailedRecordsFileName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFailedRecordsFileName()
 	 * 
 	 */
 	public String getTransportVFSFailedRecordsFileName() {
@@ -12880,7 +12880,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFailedRecordsFileName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFailedRecordsFileName(String newValue)
 	 * 
 	 */
 	public void setTransportVFSFailedRecordsFileName(String newValue) {
@@ -12902,7 +12902,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFailedRecordsFileDestination()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFailedRecordsFileDestination()
 	 * 
 	 */
 	public String getTransportVFSFailedRecordsFileDestination() {
@@ -12912,7 +12912,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFailedRecordsFileDestination(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFailedRecordsFileDestination(String newValue)
 	 * 
 	 */
 	public void setTransportVFSFailedRecordsFileDestination(String newValue) {
@@ -12934,7 +12934,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMoveFailedRecordTimestampFormat()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMoveFailedRecordTimestampFormat()
 	 * 
 	 */
 	public String getTransportVFSMoveFailedRecordTimestampFormat() {
@@ -12944,7 +12944,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMoveFailedRecordTimestampFormat(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMoveFailedRecordTimestampFormat(String newValue)
 	 * 
 	 */
 	public void setTransportVFSMoveFailedRecordTimestampFormat(String newValue) {
@@ -12966,7 +12966,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFailedRecordNextRetryDuration()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFailedRecordNextRetryDuration()
 	 * 
 	 */
 	public String getTransportVFSFailedRecordNextRetryDuration() {
@@ -12976,7 +12976,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFailedRecordNextRetryDuration(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFailedRecordNextRetryDuration(String newValue)
 	 * 
 	 */
 	public void setTransportVFSFailedRecordNextRetryDuration(String newValue) {
@@ -12998,7 +12998,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSActionAfterFailure()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSActionAfterFailure()
 	 * 
 	 */
 	public Enumerator getTransportVFSActionAfterFailure() {
@@ -13009,7 +13009,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportVFSActionAfterFailure(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportVFSActionAfterFailure(Object input, Enumerator current)
 	 */
 	public void initTransportVFSActionAfterFailure(Object input, Enumerator current) {
 		transportVFSActionAfterFailure.setInput(input);
@@ -13027,7 +13027,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSActionAfterFailure(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSActionAfterFailure(Enumerator newValue)
 	 * 
 	 */
 	public void setTransportVFSActionAfterFailure(Enumerator newValue) {
@@ -13045,7 +13045,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMoveAfterFailure()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMoveAfterFailure()
 	 * 
 	 */
 	public String getTransportVFSMoveAfterFailure() {
@@ -13055,7 +13055,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMoveAfterFailure(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMoveAfterFailure(String newValue)
 	 * 
 	 */
 	public void setTransportVFSMoveAfterFailure(String newValue) {
@@ -13077,7 +13077,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSReplyFileURI()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSReplyFileURI()
 	 * 
 	 */
 	public String getTransportVFSReplyFileURI() {
@@ -13087,7 +13087,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSReplyFileURI(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSReplyFileURI(String newValue)
 	 * 
 	 */
 	public void setTransportVFSReplyFileURI(String newValue) {
@@ -13109,7 +13109,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSReplyFileName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSReplyFileName()
 	 * 
 	 */
 	public String getTransportVFSReplyFileName() {
@@ -13119,7 +13119,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSReplyFileName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSReplyFileName(String newValue)
 	 * 
 	 */
 	public void setTransportVFSReplyFileName(String newValue) {
@@ -13141,7 +13141,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSAutoLockRelease()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSAutoLockRelease()
 	 * 
 	 */
 	public Boolean getTransportVFSAutoLockRelease() {
@@ -13151,7 +13151,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSAutoLockRelease(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSAutoLockRelease(Boolean newValue)
 	 * 
 	 */
 	public void setTransportVFSAutoLockRelease(Boolean newValue) {
@@ -13173,7 +13173,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSAutoLockReleaseInterval()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSAutoLockReleaseInterval()
 	 * 
 	 */
 	public String getTransportVFSAutoLockReleaseInterval() {
@@ -13183,7 +13183,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSAutoLockReleaseInterval(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSAutoLockReleaseInterval(String newValue)
 	 * 
 	 */
 	public void setTransportVFSAutoLockReleaseInterval(String newValue) {
@@ -13205,7 +13205,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSLockReleaseSameNode()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSLockReleaseSameNode()
 	 * 
 	 */
 	public Boolean getTransportVFSLockReleaseSameNode() {
@@ -13215,7 +13215,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSLockReleaseSameNode(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSLockReleaseSameNode(Boolean newValue)
 	 * 
 	 */
 	public void setTransportVFSLockReleaseSameNode(Boolean newValue) {
@@ -13237,7 +13237,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSDistributedLock()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSDistributedLock()
 	 * 
 	 */
 	public Boolean getTransportVFSDistributedLock() {
@@ -13247,7 +13247,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSDistributedLock(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSDistributedLock(Boolean newValue)
 	 * 
 	 */
 	public void setTransportVFSDistributedLock(Boolean newValue) {
@@ -13269,7 +13269,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSStreaming()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSStreaming()
 	 * 
 	 */
 	public Boolean getTransportVFSStreaming() {
@@ -13279,7 +13279,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSStreaming(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSStreaming(Boolean newValue)
 	 * 
 	 */
 	public void setTransportVFSStreaming(Boolean newValue) {
@@ -13301,7 +13301,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSBuild()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSBuild()
 	 * 
 	 */
 	public Boolean getTransportVFSBuild() {
@@ -13311,7 +13311,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSBuild(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSBuild(Boolean newValue)
 	 * 
 	 */
 	public void setTransportVFSBuild(Boolean newValue) {
@@ -13333,7 +13333,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSDistributedTimeout()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSDistributedTimeout()
 	 * 
 	 */
 	public String getTransportVFSDistributedTimeout() {
@@ -13343,7 +13343,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSDistributedTimeout(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSDistributedTimeout(String newValue)
 	 * 
 	 */
 	public void setTransportVFSDistributedTimeout(String newValue) {
@@ -13365,7 +13365,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSSFTPIdentities()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSSFTPIdentities()
    * 
    */
   public String getTransportVFSSFTPIdentities() {
@@ -13375,7 +13375,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSSFTPIdentities(String newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSSFTPIdentities(String newValue)
    * 
    */
   public void setTransportVFSSFTPIdentities(String newValue) {
@@ -13397,7 +13397,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSSFTPIdentityPassPhrase()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSSFTPIdentityPassPhrase()
    * 
    */
   public String getTransportVFSSFTPIdentityPassPhrase() {
@@ -13407,7 +13407,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSSFTPIdentityPassPhrase(String newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSSFTPIdentityPassPhrase(String newValue)
    * 
    */
   public void setTransportVFSSFTPIdentityPassPhrase(String newValue) {
@@ -13429,7 +13429,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSSFTPUserDirIsRoot()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSSFTPUserDirIsRoot()
    * 
    */
   public Boolean getTransportVFSSFTPUserDirIsRoot() {
@@ -13439,7 +13439,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSSFTPUserDirIsRoot(Boolean newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSSFTPUserDirIsRoot(Boolean newValue)
    * 
    */
   public void setTransportVFSSFTPUserDirIsRoot(Boolean newValue) {
@@ -13461,7 +13461,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getJavaNamingFactoryInitial()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getJavaNamingFactoryInitial()
 	 * 
 	 */
 	public String getJavaNamingFactoryInitial() {
@@ -13471,7 +13471,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setJavaNamingFactoryInitial(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setJavaNamingFactoryInitial(String newValue)
 	 * 
 	 */
 	public void setJavaNamingFactoryInitial(String newValue) {
@@ -13493,7 +13493,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getJavaNamingProviderUrl()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getJavaNamingProviderUrl()
 	 * 
 	 */
 	public String getJavaNamingProviderUrl() {
@@ -13503,7 +13503,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setJavaNamingProviderUrl(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setJavaNamingProviderUrl(String newValue)
 	 * 
 	 */
 	public void setJavaNamingProviderUrl(String newValue) {
@@ -13525,7 +13525,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSConnectionFactoryJNDIName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSConnectionFactoryJNDIName()
 	 * 
 	 */
 	public String getTransportJMSConnectionFactoryJNDIName() {
@@ -13535,7 +13535,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSConnectionFactoryJNDIName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSConnectionFactoryJNDIName(String newValue)
 	 * 
 	 */
 	public void setTransportJMSConnectionFactoryJNDIName(String newValue) {
@@ -13557,7 +13557,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSConnectionFactoryType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSConnectionFactoryType()
 	 * 
 	 */
 	public Enumerator getTransportJMSConnectionFactoryType() {
@@ -13568,7 +13568,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportJMSConnectionFactoryType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportJMSConnectionFactoryType(Object input, Enumerator current)
 	 */
 	public void initTransportJMSConnectionFactoryType(Object input, Enumerator current) {
 		transportJMSConnectionFactoryType.setInput(input);
@@ -13586,7 +13586,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSConnectionFactoryType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSConnectionFactoryType(Enumerator newValue)
 	 * 
 	 */
 	public void setTransportJMSConnectionFactoryType(Enumerator newValue) {
@@ -13604,7 +13604,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSConcurrentConsumers()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSConcurrentConsumers()
 	 * 
 	 */
 	public String getTransportJMSConcurrentConsumers() {
@@ -13614,7 +13614,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSConcurrentConsumers(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSConcurrentConsumers(String newValue)
 	 * 
 	 */
 	public void setTransportJMSConcurrentConsumers(String newValue) {
@@ -13636,7 +13636,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSDestination()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSDestination()
 	 * 
 	 */
 	public String getTransportJMSDestination() {
@@ -13646,7 +13646,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSDestination(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSDestination(String newValue)
 	 * 
 	 */
 	public void setTransportJMSDestination(String newValue) {
@@ -13668,7 +13668,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSSessionTransacted()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSSessionTransacted()
 	 * 
 	 */
 	public Boolean getTransportJMSSessionTransacted() {
@@ -13678,7 +13678,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSSessionTransacted(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSSessionTransacted(Boolean newValue)
 	 * 
 	 */
 	public void setTransportJMSSessionTransacted(Boolean newValue) {
@@ -13700,7 +13700,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSSessionAcknowledgement()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSSessionAcknowledgement()
 	 * 
 	 */
 	public Enumerator getTransportJMSSessionAcknowledgement() {
@@ -13711,7 +13711,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportJMSSessionAcknowledgement(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportJMSSessionAcknowledgement(Object input, Enumerator current)
 	 */
 	public void initTransportJMSSessionAcknowledgement(Object input, Enumerator current) {
 		transportJMSSessionAcknowledgement.setInput(input);
@@ -13729,7 +13729,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSSessionAcknowledgement(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSSessionAcknowledgement(Enumerator newValue)
 	 * 
 	 */
 	public void setTransportJMSSessionAcknowledgement(Enumerator newValue) {
@@ -13747,7 +13747,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSCacheLevel()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSCacheLevel()
 	 * 
 	 */
 	public Enumerator getTransportJMSCacheLevel() {
@@ -13758,7 +13758,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportJMSCacheLevel(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportJMSCacheLevel(Object input, Enumerator current)
 	 */
 	public void initTransportJMSCacheLevel(Object input, Enumerator current) {
 		transportJMSCacheLevel.setInput(input);
@@ -13776,7 +13776,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSCacheLevel(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSCacheLevel(Enumerator newValue)
 	 * 
 	 */
 	public void setTransportJMSCacheLevel(Enumerator newValue) {
@@ -13794,7 +13794,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSUserName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSUserName()
 	 * 
 	 */
 	public String getTransportJMSUserName() {
@@ -13804,7 +13804,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSUserName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSUserName(String newValue)
 	 * 
 	 */
 	public void setTransportJMSUserName(String newValue) {
@@ -13826,7 +13826,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSPassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSPassword()
 	 * 
 	 */
 	public String getTransportJMSPassword() {
@@ -13836,7 +13836,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSPassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSPassword(String newValue)
 	 * 
 	 */
 	public void setTransportJMSPassword(String newValue) {
@@ -13858,7 +13858,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSJMSSpecVersion()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSJMSSpecVersion()
 	 * 
 	 */
 	public String getTransportJMSJMSSpecVersion() {
@@ -13868,7 +13868,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSJMSSpecVersion(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSJMSSpecVersion(String newValue)
 	 * 
 	 */
 	public void setTransportJMSJMSSpecVersion(String newValue) {
@@ -13890,7 +13890,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSSubscriptionDurable()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSSubscriptionDurable()
 	 * 
 	 */
 	public String getTransportJMSSubscriptionDurable() {
@@ -13900,7 +13900,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSSubscriptionDurable(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSSubscriptionDurable(String newValue)
 	 * 
 	 */
 	public void setTransportJMSSubscriptionDurable(String newValue) {
@@ -13922,7 +13922,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSDurableSubscriberClientID()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSDurableSubscriberClientID()
 	 * 
 	 */
 	public String getTransportJMSDurableSubscriberClientID() {
@@ -13932,7 +13932,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSDurableSubscriberClientID(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSDurableSubscriberClientID(String newValue)
 	 * 
 	 */
 	public void setTransportJMSDurableSubscriberClientID(String newValue) {
@@ -13954,7 +13954,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSMessageSelector()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSMessageSelector()
 	 * 
 	 */
 	public String getTransportJMSMessageSelector() {
@@ -13964,7 +13964,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSMessageSelector(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSMessageSelector(String newValue)
 	 * 
 	 */
 	public void setTransportJMSMessageSelector(String newValue) {
@@ -13986,7 +13986,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSRetryDuration()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSRetryDuration()
 	 * 
 	 */
 	public String getTransportJMSRetryDuration() {
@@ -13996,7 +13996,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSRetryDuration(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSRetryDuration(String newValue)
 	 * 
 	 */
 	public void setTransportJMSRetryDuration(String newValue) {
@@ -14018,7 +14018,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMoveTimestampFormat()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSMoveTimestampFormat()
 	 * 
 	 */
 	public String getTransportVFSMoveTimestampFormat() {
@@ -14028,7 +14028,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMoveTimestampFormat(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSMoveTimestampFormat(String newValue)
 	 * 
 	 */
 	public void setTransportVFSMoveTimestampFormat(String newValue) {
@@ -14050,7 +14050,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFileSortAttribute()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFileSortAttribute()
 	 * 
 	 */
 	public Enumerator getTransportVFSFileSortAttribute() {
@@ -14061,7 +14061,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportVFSFileSortAttribute(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportVFSFileSortAttribute(Object input, Enumerator current)
 	 */
 	public void initTransportVFSFileSortAttribute(Object input, Enumerator current) {
 		transportVFSFileSortAttribute.setInput(input);
@@ -14079,7 +14079,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFileSortAttribute(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFileSortAttribute(Enumerator newValue)
 	 * 
 	 */
 	public void setTransportVFSFileSortAttribute(Enumerator newValue) {
@@ -14097,7 +14097,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFileSortAscending()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSFileSortAscending()
 	 * 
 	 */
 	public Boolean getTransportVFSFileSortAscending() {
@@ -14107,7 +14107,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFileSortAscending(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSFileSortAscending(Boolean newValue)
 	 * 
 	 */
 	public void setTransportVFSFileSortAscending(Boolean newValue) {
@@ -14129,7 +14129,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSSubFolderTimestampFormat()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSSubFolderTimestampFormat()
 	 * 
 	 */
 	public String getTransportVFSSubFolderTimestampFormat() {
@@ -14139,7 +14139,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSSubFolderTimestampFormat(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSSubFolderTimestampFormat(String newValue)
 	 * 
 	 */
 	public void setTransportVFSSubFolderTimestampFormat(String newValue) {
@@ -14161,7 +14161,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSCreateFolder()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSCreateFolder()
 	 * 
 	 */
 	public Boolean getTransportVFSCreateFolder() {
@@ -14171,7 +14171,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSCreateFolder(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSCreateFolder(Boolean newValue)
 	 * 
 	 */
 	public void setTransportVFSCreateFolder(Boolean newValue) {
@@ -14193,7 +14193,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSReceiveTimeout()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSReceiveTimeout()
 	 * 
 	 */
 	public String getTransportJMSReceiveTimeout() {
@@ -14203,7 +14203,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSReceiveTimeout(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSReceiveTimeout(String newValue)
 	 * 
 	 */
 	public void setTransportJMSReceiveTimeout(String newValue) {
@@ -14225,7 +14225,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSContentType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSContentType()
 	 * 
 	 */
 	public String getTransportJMSContentType() {
@@ -14235,7 +14235,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSContentType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSContentType(String newValue)
 	 * 
 	 */
 	public void setTransportJMSContentType(String newValue) {
@@ -14257,7 +14257,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSContentTypeProperty()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSContentTypeProperty()
 	 * 
 	 */
 	public String getTransportJMSContentTypeProperty() {
@@ -14267,7 +14267,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSContentTypeProperty(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSContentTypeProperty(String newValue)
 	 * 
 	 */
 	public void setTransportJMSContentTypeProperty(String newValue) {
@@ -14289,7 +14289,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSReplyDestination()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSReplyDestination()
 	 * 
 	 */
 	public String getTransportJMSReplyDestination() {
@@ -14299,7 +14299,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSReplyDestination(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSReplyDestination(String newValue)
 	 * 
 	 */
 	public void setTransportJMSReplyDestination(String newValue) {
@@ -14321,7 +14321,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSPubSubNoLocal()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSPubSubNoLocal()
 	 * 
 	 */
 	public String getTransportJMSPubSubNoLocal() {
@@ -14331,7 +14331,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSPubSubNoLocal(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSPubSubNoLocal(String newValue)
 	 * 
 	 */
 	public void setTransportJMSPubSubNoLocal(String newValue) {
@@ -14353,7 +14353,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSDurableSubscriberName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSDurableSubscriberName()
 	 * 
 	 */
 	public String getTransportJMSDurableSubscriberName() {
@@ -14363,7 +14363,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSDurableSubscriberName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSDurableSubscriberName(String newValue)
 	 * 
 	 */
 	public void setTransportJMSDurableSubscriberName(String newValue) {
@@ -14385,7 +14385,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSBrokerType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSBrokerType()
 	 * 
 	 */
 	public Enumerator getTransportJMSBrokerType() {
@@ -14396,7 +14396,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportJMSBrokerType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportJMSBrokerType(Object input, Enumerator current)
 	 */
 	public void initTransportJMSBrokerType(Object input, Enumerator current) {
 		transportJMSBrokerType.setInput(input);
@@ -14414,7 +14414,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSBrokerType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSBrokerType(Enumerator newValue)
 	 * 
 	 */
 	public void setTransportJMSBrokerType(Enumerator newValue) {
@@ -14432,7 +14432,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTConnectionFactory()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTConnectionFactory()
 	 * 
 	 */
 	public String getTransportMQTTConnectionFactory() {
@@ -14442,7 +14442,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTConnectionFactory(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTConnectionFactory(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTConnectionFactory(String newValue) {
@@ -14464,7 +14464,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTServerHostName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTServerHostName()
 	 * 
 	 */
 	public String getTransportMQTTServerHostName() {
@@ -14474,7 +14474,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTServerHostName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTServerHostName(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTServerHostName(String newValue) {
@@ -14496,7 +14496,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTServerPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTServerPort()
 	 * 
 	 */
 	public String getTransportMQTTServerPort() {
@@ -14506,7 +14506,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTServerPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTServerPort(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTServerPort(String newValue) {
@@ -14528,7 +14528,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTTopicName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTTopicName()
 	 * 
 	 */
 	public String getTransportMQTTTopicName() {
@@ -14538,7 +14538,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTTopicName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTTopicName(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTTopicName(String newValue) {
@@ -14560,7 +14560,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSubscriptionQOS()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSubscriptionQOS()
 	 * 
 	 */
 	public Enumerator getTransportMQTTSubscriptionQOS() {
@@ -14571,7 +14571,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportMQTTSubscriptionQOS(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportMQTTSubscriptionQOS(Object input, Enumerator current)
 	 */
 	public void initTransportMQTTSubscriptionQOS(Object input, Enumerator current) {
 		transportMQTTSubscriptionQOS.setInput(input);
@@ -14589,7 +14589,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSubscriptionQOS(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSubscriptionQOS(Enumerator newValue)
 	 * 
 	 */
 	public void setTransportMQTTSubscriptionQOS(Enumerator newValue) {
@@ -14607,7 +14607,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSessionClean()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSessionClean()
 	 * 
 	 */
 	public Boolean getTransportMQTTSessionClean() {
@@ -14617,7 +14617,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSessionClean(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSessionClean(Boolean newValue)
 	 * 
 	 */
 	public void setTransportMQTTSessionClean(Boolean newValue) {
@@ -14639,7 +14639,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslEnable()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslEnable()
 	 * 
 	 */
 	public String getTransportMQTTSslEnable() {
@@ -14649,7 +14649,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslEnable(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslEnable(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTSslEnable(String newValue) {
@@ -14671,7 +14671,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTTemporaryStoreDirectory()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTTemporaryStoreDirectory()
 	 * 
 	 */
 	public String getTransportMQTTTemporaryStoreDirectory() {
@@ -14681,7 +14681,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTTemporaryStoreDirectory(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTTemporaryStoreDirectory(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTTemporaryStoreDirectory(String newValue) {
@@ -14703,7 +14703,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSubscriptionUsername()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSubscriptionUsername()
 	 * 
 	 */
 	public String getTransportMQTTSubscriptionUsername() {
@@ -14713,7 +14713,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSubscriptionUsername(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSubscriptionUsername(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTSubscriptionUsername(String newValue) {
@@ -14735,7 +14735,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSubscriptionPassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSubscriptionPassword()
 	 * 
 	 */
 	public String getTransportMQTTSubscriptionPassword() {
@@ -14745,7 +14745,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSubscriptionPassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSubscriptionPassword(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTSubscriptionPassword(String newValue) {
@@ -14767,7 +14767,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTClientId()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTClientId()
 	 * 
 	 */
 	public String getTransportMQTTClientId() {
@@ -14777,7 +14777,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTClientId(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTClientId(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTClientId(String newValue) {
@@ -14799,7 +14799,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTruststore()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTruststore()
 	 * 
 	 */
 	public String getTruststore() {
@@ -14809,7 +14809,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTruststore(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTruststore(String newValue)
 	 * 
 	 */
 	public void setTruststore(String newValue) {
@@ -14831,7 +14831,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getKeystore()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getKeystore()
 	 * 
 	 */
 	public String getKeystore() {
@@ -14841,7 +14841,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setKeystore(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setKeystore(String newValue)
 	 * 
 	 */
 	public void setKeystore(String newValue) {
@@ -14863,7 +14863,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSslVerifyClient()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSslVerifyClient()
 	 * 
 	 */
 	public String getSslVerifyClient() {
@@ -14873,7 +14873,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSslVerifyClient(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSslVerifyClient(String newValue)
 	 * 
 	 */
 	public void setSslVerifyClient(String newValue) {
@@ -14895,7 +14895,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSslProtocol()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSslProtocol()
 	 * 
 	 */
 	public String getSslProtocol() {
@@ -14905,7 +14905,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSslProtocol(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSslProtocol(String newValue)
 	 * 
 	 */
 	public void setSslProtocol(String newValue) {
@@ -14927,7 +14927,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getHttpsProtocols()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getHttpsProtocols()
 	 * 
 	 */
 	public String getHttpsProtocols() {
@@ -14937,7 +14937,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setHttpsProtocols(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setHttpsProtocols(String newValue)
 	 * 
 	 */
 	public void setHttpsProtocols(String newValue) {
@@ -14959,7 +14959,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getCertificateRevocationVerifier()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getCertificateRevocationVerifier()
 	 * 
 	 */
 	public String getCertificateRevocationVerifier() {
@@ -14969,7 +14969,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setCertificateRevocationVerifier(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setCertificateRevocationVerifier(String newValue)
 	 * 
 	 */
 	public void setCertificateRevocationVerifier(String newValue) {
@@ -14991,7 +14991,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7Port()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7Port()
 	 * 
 	 */
 	public String getInboundHL7Port() {
@@ -15001,7 +15001,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7Port(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7Port(String newValue)
 	 * 
 	 */
 	public void setInboundHL7Port(String newValue) {
@@ -15023,7 +15023,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7AutoAck()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7AutoAck()
 	 * 
 	 */
 	public Boolean getInboundHL7AutoAck() {
@@ -15033,7 +15033,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7AutoAck(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7AutoAck(Boolean newValue)
 	 * 
 	 */
 	public void setInboundHL7AutoAck(Boolean newValue) {
@@ -15055,7 +15055,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7MessagePreProcessor()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7MessagePreProcessor()
 	 * 
 	 */
 	public String getInboundHL7MessagePreProcessor() {
@@ -15065,7 +15065,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7MessagePreProcessor(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7MessagePreProcessor(String newValue)
 	 * 
 	 */
 	public void setInboundHL7MessagePreProcessor(String newValue) {
@@ -15087,7 +15087,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7CharSet()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7CharSet()
 	 * 
 	 */
 	public String getInboundHL7CharSet() {
@@ -15097,7 +15097,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7CharSet(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7CharSet(String newValue)
 	 * 
 	 */
 	public void setInboundHL7CharSet(String newValue) {
@@ -15119,7 +15119,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7TimeOut()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7TimeOut()
 	 * 
 	 */
 	public String getInboundHL7TimeOut() {
@@ -15129,7 +15129,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7TimeOut(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7TimeOut(String newValue)
 	 * 
 	 */
 	public void setInboundHL7TimeOut(String newValue) {
@@ -15151,7 +15151,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7ValidateMessage()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7ValidateMessage()
 	 * 
 	 */
 	public Boolean getInboundHL7ValidateMessage() {
@@ -15161,7 +15161,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7ValidateMessage(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7ValidateMessage(Boolean newValue)
 	 * 
 	 */
 	public void setInboundHL7ValidateMessage(Boolean newValue) {
@@ -15183,7 +15183,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7BuildInvalidMessages()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7BuildInvalidMessages()
 	 * 
 	 */
 	public Boolean getInboundHL7BuildInvalidMessages() {
@@ -15193,7 +15193,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7BuildInvalidMessages(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7BuildInvalidMessages(Boolean newValue)
 	 * 
 	 */
 	public void setInboundHL7BuildInvalidMessages(Boolean newValue) {
@@ -15215,7 +15215,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7PassThroughInvalidMessages()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundHL7PassThroughInvalidMessages()
 	 * 
 	 */
 	public Boolean getInboundHL7PassThroughInvalidMessages() {
@@ -15225,7 +15225,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7PassThroughInvalidMessages(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundHL7PassThroughInvalidMessages(Boolean newValue)
 	 * 
 	 */
 	public void setInboundHL7PassThroughInvalidMessages(Boolean newValue) {
@@ -15247,7 +15247,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getZookeeperConnect()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getZookeeperConnect()
 	 * 
 	 */
 	public String getZookeeperConnect() {
@@ -15257,7 +15257,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setZookeeperConnect(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setZookeeperConnect(String newValue)
 	 * 
 	 */
 	public void setZookeeperConnect(String newValue) {
@@ -15279,7 +15279,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getGroupId()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getGroupId()
 	 * 
 	 */
 	public String getGroupId() {
@@ -15289,7 +15289,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setGroupId(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setGroupId(String newValue)
 	 * 
 	 */
 	public void setGroupId(String newValue) {
@@ -15311,7 +15311,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getContentType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getContentType()
 	 * 
 	 */
 	public String getContentType() {
@@ -15321,7 +15321,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setContentType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setContentType(String newValue)
 	 * 
 	 */
 	public void setContentType(String newValue) {
@@ -15343,7 +15343,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getConsumerType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getConsumerType()
 	 * 
 	 */
 	public Enumerator getConsumerType() {
@@ -15354,7 +15354,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initConsumerType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initConsumerType(Object input, Enumerator current)
 	 */
 	public void initConsumerType(Object input, Enumerator current) {
 		consumerType.setInput(input);
@@ -15372,7 +15372,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setConsumerType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setConsumerType(Enumerator newValue)
 	 * 
 	 */
 	public void setConsumerType(Enumerator newValue) {
@@ -15390,7 +15390,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTopicsOrTopicFilter()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTopicsOrTopicFilter()
 	 * 
 	 */
 	public Enumerator getTopicsOrTopicFilter() {
@@ -15401,7 +15401,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTopicsOrTopicFilter(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTopicsOrTopicFilter(Object input, Enumerator current)
 	 */
 	public void initTopicsOrTopicFilter(Object input, Enumerator current) {
 		topicsOrTopicFilter.setInput(input);
@@ -15419,7 +15419,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTopicsOrTopicFilter(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTopicsOrTopicFilter(Enumerator newValue)
 	 * 
 	 */
 	public void setTopicsOrTopicFilter(Enumerator newValue) {
@@ -15437,7 +15437,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTopicsName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTopicsName()
 	 * 
 	 */
 	public String getTopicsName() {
@@ -15447,7 +15447,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTopicsName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTopicsName(String newValue)
 	 * 
 	 */
 	public void setTopicsName(String newValue) {
@@ -15469,7 +15469,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTopicFilterFrom()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTopicFilterFrom()
 	 * 
 	 */
 	public Enumerator getTopicFilterFrom() {
@@ -15480,7 +15480,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTopicFilterFrom(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTopicFilterFrom(Object input, Enumerator current)
 	 */
 	public void initTopicFilterFrom(Object input, Enumerator current) {
 		topicFilterFrom.setInput(input);
@@ -15498,7 +15498,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTopicFilterFrom(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTopicFilterFrom(Enumerator newValue)
 	 * 
 	 */
 	public void setTopicFilterFrom(Enumerator newValue) {
@@ -15516,7 +15516,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTopicFilterName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTopicFilterName()
 	 * 
 	 */
 	public String getTopicFilterName() {
@@ -15526,7 +15526,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTopicFilterName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTopicFilterName(String newValue)
 	 * 
 	 */
 	public void setTopicFilterName(String newValue) {
@@ -15548,7 +15548,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSimpleConsumerTopic()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSimpleConsumerTopic()
 	 * 
 	 */
 	public String getSimpleConsumerTopic() {
@@ -15558,7 +15558,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSimpleConsumerTopic(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSimpleConsumerTopic(String newValue)
 	 * 
 	 */
 	public void setSimpleConsumerTopic(String newValue) {
@@ -15580,7 +15580,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSimpleConsumerBrokers()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSimpleConsumerBrokers()
 	 * 
 	 */
 	public String getSimpleConsumerBrokers() {
@@ -15590,7 +15590,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSimpleConsumerBrokers(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSimpleConsumerBrokers(String newValue)
 	 * 
 	 */
 	public void setSimpleConsumerBrokers(String newValue) {
@@ -15612,7 +15612,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSimpleConsumerPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSimpleConsumerPort()
 	 * 
 	 */
 	public String getSimpleConsumerPort() {
@@ -15622,7 +15622,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSimpleConsumerPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSimpleConsumerPort(String newValue)
 	 * 
 	 */
 	public void setSimpleConsumerPort(String newValue) {
@@ -15644,7 +15644,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSimpleConsumerPartition()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSimpleConsumerPartition()
 	 * 
 	 */
 	public String getSimpleConsumerPartition() {
@@ -15654,7 +15654,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSimpleConsumerPartition(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSimpleConsumerPartition(String newValue)
 	 * 
 	 */
 	public void setSimpleConsumerPartition(String newValue) {
@@ -15676,7 +15676,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSimpleConsumerMaxMessagesToRead()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSimpleConsumerMaxMessagesToRead()
 	 * 
 	 */
 	public String getSimpleConsumerMaxMessagesToRead() {
@@ -15686,7 +15686,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSimpleConsumerMaxMessagesToRead(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSimpleConsumerMaxMessagesToRead(String newValue)
 	 * 
 	 */
 	public void setSimpleConsumerMaxMessagesToRead(String newValue) {
@@ -15708,7 +15708,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getThreadCount()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getThreadCount()
 	 * 
 	 */
 	public String getThreadCount() {
@@ -15718,7 +15718,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setThreadCount(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setThreadCount(String newValue)
 	 * 
 	 */
 	public void setThreadCount(String newValue) {
@@ -15740,7 +15740,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getConsumerId()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getConsumerId()
 	 * 
 	 */
 	public String getConsumerId() {
@@ -15750,7 +15750,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setConsumerId(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setConsumerId(String newValue)
 	 * 
 	 */
 	public void setConsumerId(String newValue) {
@@ -15772,7 +15772,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSocketTimeoutMs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSocketTimeoutMs()
 	 * 
 	 */
 	public String getSocketTimeoutMs() {
@@ -15782,7 +15782,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSocketTimeoutMs(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSocketTimeoutMs(String newValue)
 	 * 
 	 */
 	public void setSocketTimeoutMs(String newValue) {
@@ -15804,7 +15804,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSocketReceiveBufferBytes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSocketReceiveBufferBytes()
 	 * 
 	 */
 	public String getSocketReceiveBufferBytes() {
@@ -15814,7 +15814,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSocketReceiveBufferBytes(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSocketReceiveBufferBytes(String newValue)
 	 * 
 	 */
 	public void setSocketReceiveBufferBytes(String newValue) {
@@ -15836,7 +15836,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getFetchMessageMaxBytes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getFetchMessageMaxBytes()
 	 * 
 	 */
 	public String getFetchMessageMaxBytes() {
@@ -15846,7 +15846,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setFetchMessageMaxBytes(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setFetchMessageMaxBytes(String newValue)
 	 * 
 	 */
 	public void setFetchMessageMaxBytes(String newValue) {
@@ -15868,7 +15868,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getNumConsumerFetches()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getNumConsumerFetches()
 	 * 
 	 */
 	public String getNumConsumerFetches() {
@@ -15878,7 +15878,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setNumConsumerFetches(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setNumConsumerFetches(String newValue)
 	 * 
 	 */
 	public void setNumConsumerFetches(String newValue) {
@@ -15900,7 +15900,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getAutoCommitEnable()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getAutoCommitEnable()
 	 * 
 	 */
 	public Boolean getAutoCommitEnable() {
@@ -15910,7 +15910,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setAutoCommitEnable(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setAutoCommitEnable(Boolean newValue)
 	 * 
 	 */
 	public void setAutoCommitEnable(Boolean newValue) {
@@ -15932,7 +15932,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getAutoCommitIntervalMs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getAutoCommitIntervalMs()
 	 * 
 	 */
 	public String getAutoCommitIntervalMs() {
@@ -15942,7 +15942,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setAutoCommitIntervalMs(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setAutoCommitIntervalMs(String newValue)
 	 * 
 	 */
 	public void setAutoCommitIntervalMs(String newValue) {
@@ -15964,7 +15964,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getQueuedMaxMessageChunks()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getQueuedMaxMessageChunks()
 	 * 
 	 */
 	public String getQueuedMaxMessageChunks() {
@@ -15974,7 +15974,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setQueuedMaxMessageChunks(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setQueuedMaxMessageChunks(String newValue)
 	 * 
 	 */
 	public void setQueuedMaxMessageChunks(String newValue) {
@@ -15996,7 +15996,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getRebalanceMaxRetries()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getRebalanceMaxRetries()
 	 * 
 	 */
 	public String getRebalanceMaxRetries() {
@@ -16006,7 +16006,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setRebalanceMaxRetries(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setRebalanceMaxRetries(String newValue)
 	 * 
 	 */
 	public void setRebalanceMaxRetries(String newValue) {
@@ -16028,7 +16028,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getFetchMinBytes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getFetchMinBytes()
 	 * 
 	 */
 	public String getFetchMinBytes() {
@@ -16038,7 +16038,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setFetchMinBytes(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setFetchMinBytes(String newValue)
 	 * 
 	 */
 	public void setFetchMinBytes(String newValue) {
@@ -16060,7 +16060,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getFetchWaitMaxMs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getFetchWaitMaxMs()
 	 * 
 	 */
 	public String getFetchWaitMaxMs() {
@@ -16070,7 +16070,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setFetchWaitMaxMs(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setFetchWaitMaxMs(String newValue)
 	 * 
 	 */
 	public void setFetchWaitMaxMs(String newValue) {
@@ -16092,7 +16092,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getRebalanceBackoffMs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getRebalanceBackoffMs()
 	 * 
 	 */
 	public String getRebalanceBackoffMs() {
@@ -16102,7 +16102,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setRebalanceBackoffMs(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setRebalanceBackoffMs(String newValue)
 	 * 
 	 */
 	public void setRebalanceBackoffMs(String newValue) {
@@ -16124,7 +16124,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getRefreshLeaderBackoffMs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getRefreshLeaderBackoffMs()
 	 * 
 	 */
 	public String getRefreshLeaderBackoffMs() {
@@ -16134,7 +16134,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setRefreshLeaderBackoffMs(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setRefreshLeaderBackoffMs(String newValue)
 	 * 
 	 */
 	public void setRefreshLeaderBackoffMs(String newValue) {
@@ -16156,7 +16156,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getAutoOffsetReset()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getAutoOffsetReset()
 	 * 
 	 */
 	public Enumerator getAutoOffsetReset() {
@@ -16167,7 +16167,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initAutoOffsetReset(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initAutoOffsetReset(Object input, Enumerator current)
 	 */
 	public void initAutoOffsetReset(Object input, Enumerator current) {
 		autoOffsetReset.setInput(input);
@@ -16185,7 +16185,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setAutoOffsetReset(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setAutoOffsetReset(Enumerator newValue)
 	 * 
 	 */
 	public void setAutoOffsetReset(Enumerator newValue) {
@@ -16203,7 +16203,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getConsumerTimeoutMs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getConsumerTimeoutMs()
 	 * 
 	 */
 	public String getConsumerTimeoutMs() {
@@ -16213,7 +16213,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setConsumerTimeoutMs(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setConsumerTimeoutMs(String newValue)
 	 * 
 	 */
 	public void setConsumerTimeoutMs(String newValue) {
@@ -16235,7 +16235,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getExcludeInternalTopics()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getExcludeInternalTopics()
 	 * 
 	 */
 	public Boolean getExcludeInternalTopics() {
@@ -16245,7 +16245,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setExcludeInternalTopics(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setExcludeInternalTopics(Boolean newValue)
 	 * 
 	 */
 	public void setExcludeInternalTopics(Boolean newValue) {
@@ -16267,7 +16267,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getPartitionAssignmentStrategy()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getPartitionAssignmentStrategy()
 	 * 
 	 */
 	public Enumerator getPartitionAssignmentStrategy() {
@@ -16278,7 +16278,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initPartitionAssignmentStrategy(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initPartitionAssignmentStrategy(Object input, Enumerator current)
 	 */
 	public void initPartitionAssignmentStrategy(Object input, Enumerator current) {
 		partitionAssignmentStrategy.setInput(input);
@@ -16296,7 +16296,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setPartitionAssignmentStrategy(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setPartitionAssignmentStrategy(Enumerator newValue)
 	 * 
 	 */
 	public void setPartitionAssignmentStrategy(Enumerator newValue) {
@@ -16314,7 +16314,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getClientId()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getClientId()
 	 * 
 	 */
 	public String getClientId() {
@@ -16324,7 +16324,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setClientId(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setClientId(String newValue)
 	 * 
 	 */
 	public void setClientId(String newValue) {
@@ -16346,7 +16346,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getZookeeperSessionTimeoutMs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getZookeeperSessionTimeoutMs()
 	 * 
 	 */
 	public String getZookeeperSessionTimeoutMs() {
@@ -16356,7 +16356,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setZookeeperSessionTimeoutMs(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setZookeeperSessionTimeoutMs(String newValue)
 	 * 
 	 */
 	public void setZookeeperSessionTimeoutMs(String newValue) {
@@ -16378,7 +16378,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getZookeeperConnectionTimeoutMs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getZookeeperConnectionTimeoutMs()
 	 * 
 	 */
 	public String getZookeeperConnectionTimeoutMs() {
@@ -16388,7 +16388,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setZookeeperConnectionTimeoutMs(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setZookeeperConnectionTimeoutMs(String newValue)
 	 * 
 	 */
 	public void setZookeeperConnectionTimeoutMs(String newValue) {
@@ -16410,7 +16410,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getZookeeperSyncTimeMs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getZookeeperSyncTimeMs()
 	 * 
 	 */
 	public String getZookeeperSyncTimeMs() {
@@ -16420,7 +16420,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setZookeeperSyncTimeMs(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setZookeeperSyncTimeMs(String newValue)
 	 * 
 	 */
 	public void setZookeeperSyncTimeMs(String newValue) {
@@ -16442,7 +16442,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getOffsetsStorage()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getOffsetsStorage()
 	 * 
 	 */
 	public Enumerator getOffsetsStorage() {
@@ -16453,7 +16453,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initOffsetsStorage(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initOffsetsStorage(Object input, Enumerator current)
 	 */
 	public void initOffsetsStorage(Object input, Enumerator current) {
 		offsetsStorage.setInput(input);
@@ -16471,7 +16471,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setOffsetsStorage(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setOffsetsStorage(Enumerator newValue)
 	 * 
 	 */
 	public void setOffsetsStorage(Enumerator newValue) {
@@ -16489,7 +16489,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getOffsetsChannelBackoffMs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getOffsetsChannelBackoffMs()
 	 * 
 	 */
 	public String getOffsetsChannelBackoffMs() {
@@ -16499,7 +16499,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setOffsetsChannelBackoffMs(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setOffsetsChannelBackoffMs(String newValue)
 	 * 
 	 */
 	public void setOffsetsChannelBackoffMs(String newValue) {
@@ -16521,7 +16521,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getOffsetsChannelSocketTimeoutMs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getOffsetsChannelSocketTimeoutMs()
 	 * 
 	 */
 	public String getOffsetsChannelSocketTimeoutMs() {
@@ -16531,7 +16531,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setOffsetsChannelSocketTimeoutMs(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setOffsetsChannelSocketTimeoutMs(String newValue)
 	 * 
 	 */
 	public void setOffsetsChannelSocketTimeoutMs(String newValue) {
@@ -16553,7 +16553,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getOffsetsCommitMaxRetries()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getOffsetsCommitMaxRetries()
 	 * 
 	 */
 	public String getOffsetsCommitMaxRetries() {
@@ -16563,7 +16563,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setOffsetsCommitMaxRetries(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setOffsetsCommitMaxRetries(String newValue)
 	 * 
 	 */
 	public void setOffsetsCommitMaxRetries(String newValue) {
@@ -16585,7 +16585,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getDualCommitEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getDualCommitEnabled()
 	 * 
 	 */
 	public Boolean getDualCommitEnabled() {
@@ -16595,7 +16595,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setDualCommitEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setDualCommitEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setDualCommitEnabled(Boolean newValue) {
@@ -16617,7 +16617,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundCxfRmHost()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundCxfRmHost()
 	 * 
 	 */
 	public String getInboundCxfRmHost() {
@@ -16627,7 +16627,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundCxfRmHost(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundCxfRmHost(String newValue)
 	 * 
 	 */
 	public void setInboundCxfRmHost(String newValue) {
@@ -16649,7 +16649,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundCxfRmPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundCxfRmPort()
 	 * 
 	 */
 	public String getInboundCxfRmPort() {
@@ -16659,7 +16659,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundCxfRmPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundCxfRmPort(String newValue)
 	 * 
 	 */
 	public void setInboundCxfRmPort(String newValue) {
@@ -16681,7 +16681,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundCxfRmConfigFile()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getInboundCxfRmConfigFile()
 	 * 
 	 */
 	public String getInboundCxfRmConfigFile() {
@@ -16691,7 +16691,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundCxfRmConfigFile(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setInboundCxfRmConfigFile(String newValue)
 	 * 
 	 */
 	public void setInboundCxfRmConfigFile(String newValue) {
@@ -16713,7 +16713,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getEnableSSL()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getEnableSSL()
 	 * 
 	 */
 	public Boolean getEnableSSL() {
@@ -16723,7 +16723,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setEnableSSL(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setEnableSSL(Boolean newValue)
 	 * 
 	 */
 	public void setEnableSSL(Boolean newValue) {
@@ -16747,7 +16747,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initServiceParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initServiceParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initServiceParameters(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -16768,7 +16768,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#updateServiceParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#updateServiceParameters()
 	 * 
 	 */
 	public void updateServiceParameters() {
@@ -16778,7 +16778,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#addFilterServiceParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#addFilterServiceParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToServiceParameters(ViewerFilter filter) {
@@ -16791,7 +16791,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#addBusinessFilterServiceParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#addBusinessFilterServiceParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToServiceParameters(ViewerFilter filter) {
@@ -16801,7 +16801,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#isContainedInServiceParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#isContainedInServiceParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInServiceParametersTable(EObject element) {
@@ -16811,7 +16811,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSuspend()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getSuspend()
 	 * 
 	 */
 	public Boolean getSuspend() {
@@ -16821,7 +16821,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSuspend(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setSuspend(Boolean newValue)
 	 * 
 	 */
 	public void setSuspend(Boolean newValue) {
@@ -16843,7 +16843,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionFactory()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionFactory()
 	 * 
 	 */
 	public String getTransportRabbitMqConnectionFactory() {
@@ -16853,7 +16853,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionFactory(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionFactory(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConnectionFactory(String newValue) {
@@ -16875,7 +16875,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqServerHostName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqServerHostName()
 	 * 
 	 */
 	public String getTransportRabbitMqServerHostName() {
@@ -16885,7 +16885,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqServerHostName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqServerHostName(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqServerHostName(String newValue) {
@@ -16907,7 +16907,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqServerPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqServerPort()
 	 * 
 	 */
 	public String getTransportRabbitMqServerPort() {
@@ -16917,7 +16917,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqServerPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqServerPort(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqServerPort(String newValue) {
@@ -16939,7 +16939,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqServerUserName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqServerUserName()
 	 * 
 	 */
 	public String getTransportRabbitMqServerUserName() {
@@ -16949,7 +16949,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqServerUserName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqServerUserName(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqServerUserName(String newValue) {
@@ -16971,7 +16971,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqServerPassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqServerPassword()
 	 * 
 	 */
 	public String getTransportRabbitMqServerPassword() {
@@ -16981,7 +16981,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqServerPassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqServerPassword(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqServerPassword(String newValue) {
@@ -17003,7 +17003,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueName()
 	 * 
 	 */
 	public String getTransportRabbitMqQueueName() {
@@ -17013,7 +17013,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueName(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqQueueName(String newValue) {
@@ -17035,7 +17035,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqExchangeName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqExchangeName()
 	 * 
 	 */
 	public String getTransportRabbitMqExchangeName() {
@@ -17045,7 +17045,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqExchangeName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqExchangeName(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqExchangeName(String newValue) {
@@ -17067,7 +17067,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueDurable()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueDurable()
 	 * 
 	 */
 	public String getTransportRabbitMqQueueDurable() {
@@ -17077,7 +17077,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueDurable(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueDurable(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqQueueDurable(String newValue) {
@@ -17099,7 +17099,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueExclusive()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueExclusive()
 	 * 
 	 */
 	public String getTransportRabbitMqQueueExclusive() {
@@ -17109,7 +17109,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueExclusive(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueExclusive(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqQueueExclusive(String newValue) {
@@ -17131,7 +17131,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueAutoDelete()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueAutoDelete()
 	 * 
 	 */
 	public String getTransportRabbitMqQueueAutoDelete() {
@@ -17141,7 +17141,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueAutoDelete(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueAutoDelete(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqQueueAutoDelete(String newValue) {
@@ -17163,7 +17163,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueAutoAck()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueAutoAck()
 	 * 
 	 */
 	public String getTransportRabbitMqQueueAutoAck() {
@@ -17173,7 +17173,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueAutoAck(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueAutoAck(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqQueueAutoAck(String newValue) {
@@ -17195,7 +17195,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueRoutingKey()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueRoutingKey()
 	 * 
 	 */
 	public String getTransportRabbitMqQueueRoutingKey() {
@@ -17205,7 +17205,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueRoutingKey(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueRoutingKey(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqQueueRoutingKey(String newValue) {
@@ -17227,7 +17227,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueDeliveryMode()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqQueueDeliveryMode()
 	 * 
 	 */
 	public String getTransportRabbitMqQueueDeliveryMode() {
@@ -17237,7 +17237,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueDeliveryMode(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqQueueDeliveryMode(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqQueueDeliveryMode(String newValue) {
@@ -17259,7 +17259,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqExchangeType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqExchangeType()
 	 * 
 	 */
 	public String getTransportRabbitMqExchangeType() {
@@ -17269,7 +17269,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqExchangeType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqExchangeType(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqExchangeType(String newValue) {
@@ -17291,7 +17291,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqExchangeDurable()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqExchangeDurable()
 	 * 
 	 */
 	public String getTransportRabbitMqExchangeDurable() {
@@ -17301,7 +17301,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqExchangeDurable(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqExchangeDurable(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqExchangeDurable(String newValue) {
@@ -17323,7 +17323,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqExchangeAutoDelete()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqExchangeAutoDelete()
 	 * 
 	 */
 	public String getTransportRabbitMqExchangeAutoDelete() {
@@ -17333,7 +17333,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqExchangeAutoDelete(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqExchangeAutoDelete(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqExchangeAutoDelete(String newValue) {
@@ -17355,7 +17355,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqServerVirtualHost()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqServerVirtualHost()
 	 * 
 	 */
 	public String getTransportRabbitMqServerVirtualHost() {
@@ -17365,7 +17365,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqServerVirtualHost(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqServerVirtualHost(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqServerVirtualHost(String newValue) {
@@ -17387,7 +17387,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqFactoryHeartbeat()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqFactoryHeartbeat()
 	 * 
 	 */
 	public String getTransportRabbitMqFactoryHeartbeat() {
@@ -17397,7 +17397,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqFactoryHeartbeat(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqFactoryHeartbeat(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqFactoryHeartbeat(String newValue) {
@@ -17419,7 +17419,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslEnabled()
 	 * 
 	 */
 	public String getTransportRabbitMqConnectionSslEnabled() {
@@ -17429,7 +17429,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslEnabled(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslEnabled(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConnectionSslEnabled(String newValue) {
@@ -17451,7 +17451,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslKeystoreLocation()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslKeystoreLocation()
 	 * 
 	 */
 	public String getTransportRabbitMqConnectionSslKeystoreLocation() {
@@ -17461,7 +17461,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslKeystoreLocation(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslKeystoreLocation(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConnectionSslKeystoreLocation(String newValue) {
@@ -17483,7 +17483,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslKeystoreType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslKeystoreType()
 	 * 
 	 */
 	public String getTransportRabbitMqConnectionSslKeystoreType() {
@@ -17493,7 +17493,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslKeystoreType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslKeystoreType(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConnectionSslKeystoreType(String newValue) {
@@ -17515,7 +17515,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslKeystorePassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslKeystorePassword()
 	 * 
 	 */
 	public String getTransportRabbitMqConnectionSslKeystorePassword() {
@@ -17525,7 +17525,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslKeystorePassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslKeystorePassword(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConnectionSslKeystorePassword(String newValue) {
@@ -17547,7 +17547,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslTruststoreLocation()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslTruststoreLocation()
 	 * 
 	 */
 	public String getTransportRabbitMqConnectionSslTruststoreLocation() {
@@ -17557,7 +17557,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslTruststoreLocation(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslTruststoreLocation(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConnectionSslTruststoreLocation(String newValue) {
@@ -17579,7 +17579,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslTruststoreType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslTruststoreType()
 	 * 
 	 */
 	public String getTransportRabbitMqConnectionSslTruststoreType() {
@@ -17589,7 +17589,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslTruststoreType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslTruststoreType(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConnectionSslTruststoreType(String newValue) {
@@ -17611,7 +17611,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslTruststorePassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslTruststorePassword()
 	 * 
 	 */
 	public String getTransportRabbitMqConnectionSslTruststorePassword() {
@@ -17621,7 +17621,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslTruststorePassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslTruststorePassword(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConnectionSslTruststorePassword(String newValue) {
@@ -17643,7 +17643,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslVersion()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionSslVersion()
 	 * 
 	 */
 	public String getTransportRabbitMqConnectionSslVersion() {
@@ -17653,7 +17653,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslVersion(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionSslVersion(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConnectionSslVersion(String newValue) {
@@ -17675,7 +17675,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqMessageContentType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqMessageContentType()
 	 * 
 	 */
 	public String getTransportRabbitMqMessageContentType() {
@@ -17685,7 +17685,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqMessageContentType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqMessageContentType(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqMessageContentType(String newValue) {
@@ -17707,7 +17707,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionRetryCount()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionRetryCount()
 	 * 
 	 */
 	public String getTransportRabbitMqConnectionRetryCount() {
@@ -17717,7 +17717,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionRetryCount(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionRetryCount(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConnectionRetryCount(String newValue) {
@@ -17739,7 +17739,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionRetryInterval()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConnectionRetryInterval()
 	 * 
 	 */
 	public String getTransportRabbitMqConnectionRetryInterval() {
@@ -17749,7 +17749,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionRetryInterval(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConnectionRetryInterval(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConnectionRetryInterval(String newValue) {
@@ -17771,7 +17771,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqServerRetryInterval()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqServerRetryInterval()
 	 * 
 	 */
 	public String getTransportRabbitMqServerRetryInterval() {
@@ -17781,7 +17781,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqServerRetryInterval(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqServerRetryInterval(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqServerRetryInterval(String newValue) {
@@ -17803,7 +17803,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsInboundPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsInboundPort()
 	 * 
 	 */
 	public String getWsInboundPort() {
@@ -17813,7 +17813,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsInboundPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsInboundPort(String newValue)
 	 * 
 	 */
 	public void setWsInboundPort(String newValue) {
@@ -17835,7 +17835,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsClientSideBroadcastLevel()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsClientSideBroadcastLevel()
 	 * 
 	 */
 	public Enumerator getWsClientSideBroadcastLevel() {
@@ -17846,7 +17846,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initWsClientSideBroadcastLevel(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initWsClientSideBroadcastLevel(Object input, Enumerator current)
 	 */
 	public void initWsClientSideBroadcastLevel(Object input, Enumerator current) {
 		wsClientSideBroadcastLevel.setInput(input);
@@ -17864,7 +17864,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsClientSideBroadcastLevel(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsClientSideBroadcastLevel(Enumerator newValue)
 	 * 
 	 */
 	public void setWsClientSideBroadcastLevel(Enumerator newValue) {
@@ -17882,7 +17882,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsOutflowDispatchSequence()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsOutflowDispatchSequence()
 	 * 
 	 */
 	public String getWsOutflowDispatchSequence() {
@@ -17892,7 +17892,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsOutflowDispatchSequence(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsOutflowDispatchSequence(String newValue)
 	 * 
 	 */
 	public void setWsOutflowDispatchSequence(String newValue) {
@@ -17914,7 +17914,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsOutflowDispatchFaultSequence()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsOutflowDispatchFaultSequence()
 	 * 
 	 */
 	public String getWsOutflowDispatchFaultSequence() {
@@ -17924,7 +17924,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsOutflowDispatchFaultSequence(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsOutflowDispatchFaultSequence(String newValue)
 	 * 
 	 */
 	public void setWsOutflowDispatchFaultSequence(String newValue) {
@@ -17946,7 +17946,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsBossThreadPoolSize()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsBossThreadPoolSize()
 	 * 
 	 */
 	public String getWsBossThreadPoolSize() {
@@ -17956,7 +17956,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsBossThreadPoolSize(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsBossThreadPoolSize(String newValue)
 	 * 
 	 */
 	public void setWsBossThreadPoolSize(String newValue) {
@@ -17978,7 +17978,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsWorkerThreadPoolSize()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsWorkerThreadPoolSize()
 	 * 
 	 */
 	public String getWsWorkerThreadPoolSize() {
@@ -17988,7 +17988,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsWorkerThreadPoolSize(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsWorkerThreadPoolSize(String newValue)
 	 * 
 	 */
 	public void setWsWorkerThreadPoolSize(String newValue) {
@@ -18010,7 +18010,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsSubprotocolHandlerClass()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsSubprotocolHandlerClass()
 	 * 
 	 */
 	public String getWsSubprotocolHandlerClass() {
@@ -18020,7 +18020,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsSubprotocolHandlerClass(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsSubprotocolHandlerClass(String newValue)
 	 * 
 	 */
 	public void setWsSubprotocolHandlerClass(String newValue) {
@@ -18042,7 +18042,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsPipelineHandlerClass()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsPipelineHandlerClass()
 	 * 
 	 */
 	public String getWsPipelineHandlerClass() {
@@ -18052,7 +18052,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsPipelineHandlerClass(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsPipelineHandlerClass(String newValue)
 	 * 
 	 */
 	public void setWsPipelineHandlerClass(String newValue) {
@@ -18074,7 +18074,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportFeedURL()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportFeedURL()
 	 * 
 	 */
 	public String getTransportFeedURL() {
@@ -18084,7 +18084,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportFeedURL(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportFeedURL(String newValue)
 	 * 
 	 */
 	public void setTransportFeedURL(String newValue) {
@@ -18106,7 +18106,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportFeedType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportFeedType()
 	 * 
 	 */
 	public Enumerator getTransportFeedType() {
@@ -18117,7 +18117,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportFeedType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportFeedType(Object input, Enumerator current)
 	 */
 	public void initTransportFeedType(Object input, Enumerator current) {
 		transportFeedType.setInput(input);
@@ -18135,7 +18135,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportFeedType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportFeedType(Enumerator newValue)
 	 * 
 	 */
 	public void setTransportFeedType(Enumerator newValue) {
@@ -18153,7 +18153,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTraceEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTraceEnabled()
 	 * 
 	 */
 	public Boolean getTraceEnabled() {
@@ -18163,7 +18163,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTraceEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTraceEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setTraceEnabled(Boolean newValue) {
@@ -18185,7 +18185,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getStatisticsEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getStatisticsEnabled()
 	 * 
 	 */
 	public Boolean getStatisticsEnabled() {
@@ -18195,7 +18195,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setStatisticsEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setStatisticsEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setStatisticsEnabled(Boolean newValue) {
@@ -18217,7 +18217,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSRetriesBeforeSuspension()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSRetriesBeforeSuspension()
 	 * 
 	 */
 	public String getTransportJMSRetriesBeforeSuspension() {
@@ -18227,7 +18227,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSRetriesBeforeSuspension(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSRetriesBeforeSuspension(String newValue)
 	 * 
 	 */
 	public void setTransportJMSRetriesBeforeSuspension(String newValue) {
@@ -18249,7 +18249,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSResetConnectionOnPollingSuspension()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSResetConnectionOnPollingSuspension()
 	 * 
 	 */
 	public Boolean getTransportJMSResetConnectionOnPollingSuspension() {
@@ -18259,7 +18259,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSResetConnectionOnPollingSuspension(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSResetConnectionOnPollingSuspension(Boolean newValue)
 	 * 
 	 */
 	public void setTransportJMSResetConnectionOnPollingSuspension(Boolean newValue) {
@@ -18281,7 +18281,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSPollingSuspensionPeriod()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSPollingSuspensionPeriod()
 	 * 
 	 */
 	public String getTransportJMSPollingSuspensionPeriod() {
@@ -18291,7 +18291,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSPollingSuspensionPeriod(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSPollingSuspensionPeriod(String newValue)
 	 * 
 	 */
 	public void setTransportJMSPollingSuspensionPeriod(String newValue) {
@@ -18313,7 +18313,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslKeystoreLocation()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslKeystoreLocation()
 	 * 
 	 */
 	public String getTransportMQTTSslKeystoreLocation() {
@@ -18323,7 +18323,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslKeystoreLocation(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslKeystoreLocation(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTSslKeystoreLocation(String newValue) {
@@ -18345,7 +18345,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslKeystoreType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslKeystoreType()
 	 * 
 	 */
 	public String getTransportMQTTSslKeystoreType() {
@@ -18355,7 +18355,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslKeystoreType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslKeystoreType(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTSslKeystoreType(String newValue) {
@@ -18377,7 +18377,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslKeystorePassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslKeystorePassword()
 	 * 
 	 */
 	public String getTransportMQTTSslKeystorePassword() {
@@ -18387,7 +18387,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslKeystorePassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslKeystorePassword(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTSslKeystorePassword(String newValue) {
@@ -18409,7 +18409,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslTruststoreLocation()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslTruststoreLocation()
 	 * 
 	 */
 	public String getTransportMQTTSslTruststoreLocation() {
@@ -18419,7 +18419,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslTruststoreLocation(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslTruststoreLocation(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTSslTruststoreLocation(String newValue) {
@@ -18441,7 +18441,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslTruststoreType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslTruststoreType()
 	 * 
 	 */
 	public String getTransportMQTTSslTruststoreType() {
@@ -18451,7 +18451,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslTruststoreType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslTruststoreType(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTSslTruststoreType(String newValue) {
@@ -18473,7 +18473,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslTruststorePassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslTruststorePassword()
 	 * 
 	 */
 	public String getTransportMQTTSslTruststorePassword() {
@@ -18483,7 +18483,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslTruststorePassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslTruststorePassword(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTSslTruststorePassword(String newValue) {
@@ -18505,7 +18505,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslVersion()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTSslVersion()
 	 * 
 	 */
 	public String getTransportMQTTSslVersion() {
@@ -18515,7 +18515,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslVersion(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportMQTTSslVersion(String newValue)
 	 * 
 	 */
 	public void setTransportMQTTSslVersion(String newValue) {
@@ -18537,7 +18537,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslKeyStoreFile()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslKeyStoreFile()
 	 * 
 	 */
 	public String getWssSslKeyStoreFile() {
@@ -18547,7 +18547,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslKeyStoreFile(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslKeyStoreFile(String newValue)
 	 * 
 	 */
 	public void setWssSslKeyStoreFile(String newValue) {
@@ -18569,7 +18569,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslKeyStorePass()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslKeyStorePass()
 	 * 
 	 */
 	public String getWssSslKeyStorePass() {
@@ -18579,7 +18579,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslKeyStorePass(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslKeyStorePass(String newValue)
 	 * 
 	 */
 	public void setWssSslKeyStorePass(String newValue) {
@@ -18601,7 +18601,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslTrustStoreFile()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslTrustStoreFile()
 	 * 
 	 */
 	public String getWssSslTrustStoreFile() {
@@ -18611,7 +18611,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslTrustStoreFile(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslTrustStoreFile(String newValue)
 	 * 
 	 */
 	public void setWssSslTrustStoreFile(String newValue) {
@@ -18633,7 +18633,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslTrustStorePass()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslTrustStorePass()
 	 * 
 	 */
 	public String getWssSslTrustStorePass() {
@@ -18643,7 +18643,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslTrustStorePass(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslTrustStorePass(String newValue)
 	 * 
 	 */
 	public void setWssSslTrustStorePass(String newValue) {
@@ -18665,7 +18665,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslCertPass()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslCertPass()
 	 * 
 	 */
 	public String getWssSslCertPass() {
@@ -18675,7 +18675,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslCertPass(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslCertPass(String newValue)
 	 * 
 	 */
 	public void setWssSslCertPass(String newValue) {
@@ -18697,7 +18697,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsDefaultContentType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsDefaultContentType()
 	 * 
 	 */
 	public String getWsDefaultContentType() {
@@ -18707,7 +18707,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsDefaultContentType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsDefaultContentType(String newValue)
 	 * 
 	 */
 	public void setWsDefaultContentType(String newValue) {
@@ -18729,7 +18729,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsShutdownStatusCode()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsShutdownStatusCode()
 	 * 
 	 */
 	public String getWsShutdownStatusCode() {
@@ -18739,7 +18739,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsShutdownStatusCode(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsShutdownStatusCode(String newValue)
 	 * 
 	 */
 	public void setWsShutdownStatusCode(String newValue) {
@@ -18761,7 +18761,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsShutdownStatusMessage()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsShutdownStatusMessage()
 	 * 
 	 */
 	public String getWsShutdownStatusMessage() {
@@ -18771,7 +18771,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsShutdownStatusMessage(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsShutdownStatusMessage(String newValue)
 	 * 
 	 */
 	public void setWsShutdownStatusMessage(String newValue) {
@@ -18793,7 +18793,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsUsePortOffset()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWsUsePortOffset()
 	 * 
 	 */
 	public Boolean getWsUsePortOffset() {
@@ -18803,7 +18803,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsUsePortOffset(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWsUsePortOffset(Boolean newValue)
 	 * 
 	 */
 	public void setWsUsePortOffset(Boolean newValue) {
@@ -18825,7 +18825,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslProtocols()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslProtocols()
 	 * 
 	 */
 	public String getWssSslProtocols() {
@@ -18835,7 +18835,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslProtocols(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslProtocols(String newValue)
 	 * 
 	 */
 	public void setWssSslProtocols(String newValue) {
@@ -18857,7 +18857,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslCipherSuites()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getWssSslCipherSuites()
 	 * 
 	 */
 	public String getWssSslCipherSuites() {
@@ -18867,7 +18867,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslCipherSuites(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setWssSslCipherSuites(String newValue)
 	 * 
 	 */
 	public void setWssSslCipherSuites(String newValue) {
@@ -18889,7 +18889,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConsumerQos()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConsumerQos()
 	 * 
 	 */
 	public String getTransportRabbitMqConsumerQos() {
@@ -18899,7 +18899,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConsumerQos(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConsumerQos(String newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConsumerQos(String newValue) {
@@ -18921,7 +18921,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConsumerQosType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConsumerQosType()
 	 * 
 	 */
 	public Enumerator getTransportRabbitMqConsumerQosType() {
@@ -18932,7 +18932,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportRabbitMqConsumerQosType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#initTransportRabbitMqConsumerQosType(Object input, Enumerator current)
 	 */
 	public void initTransportRabbitMqConsumerQosType(Object input, Enumerator current) {
 		transportRabbitMqConsumerQosType.setInput(input);
@@ -18950,7 +18950,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConsumerQosType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConsumerQosType(Enumerator newValue)
 	 * 
 	 */
 	public void setTransportRabbitMqConsumerQosType(Enumerator newValue) {
@@ -18968,7 +18968,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSDBUrl()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSDBUrl()
 	 * 
 	 */
 	public String getTransportJMSDBUrl() {
@@ -18978,7 +18978,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSDBUrl(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSDBUrl(String newValue)
 	 * 
 	 */
 	public void setTransportJMSDBUrl(String newValue) {
@@ -19005,7 +19005,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqAutoDeclare()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqAutoDeclare()
 	 * 
 	 */
 	public Boolean getTransportRabbitMqAutoDeclare() {
@@ -19015,7 +19015,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqAutoDeclare(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqAutoDeclare(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -19039,7 +19039,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	/**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqMaxDeadLetteredCount()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqMaxDeadLetteredCount()
    * 
    */
   public String getTransportRabbitMqMaxDeadLetteredCount() {
@@ -19049,7 +19049,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqMaxDeadLetteredCount(String newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqMaxDeadLetteredCount(String newValue)
    * 
    */
   public void setTransportRabbitMqMaxDeadLetteredCount(String newValue) {
@@ -19071,7 +19071,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqRequeueDelay()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqRequeueDelay()
    * 
    */
   public String getTransportRabbitMqRequeueDelay() {
@@ -19081,7 +19081,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqRequeueDelay(String newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqRequeueDelay(String newValue)
    * 
    */
   public void setTransportRabbitMqRequeueDelay(String newValue) {
@@ -19103,7 +19103,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqExchangeAutoDeclare()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqExchangeAutoDeclare()
    * 
    */
   public Boolean getTransportRabbitMqExchangeAutoDeclare() {
@@ -19113,7 +19113,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqExchangeAutoDeclare(Boolean newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqExchangeAutoDeclare(Boolean newValue)
    * 
    */
   public void setTransportRabbitMqExchangeAutoDeclare(Boolean newValue) {
@@ -19135,7 +19135,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConsumerTag()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqConsumerTag()
    * 
    */
   public String getTransportRabbitMqConsumerTag() {
@@ -19145,7 +19145,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConsumerTag(String newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqConsumerTag(String newValue)
    * 
    */
   public void setTransportRabbitMqConsumerTag(String newValue) {
@@ -19167,7 +19167,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqErrorQueueRoutingKey()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqErrorQueueRoutingKey()
    * 
    */
   public String getTransportRabbitMqErrorQueueRoutingKey() {
@@ -19177,7 +19177,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqErrorQueueRoutingKey(String newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqErrorQueueRoutingKey(String newValue)
    * 
    */
   public void setTransportRabbitMqErrorQueueRoutingKey(String newValue) {
@@ -19199,7 +19199,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqErrorExchangeName()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqErrorExchangeName()
    * 
    */
   public String getTransportRabbitMqErrorExchangeName() {
@@ -19209,7 +19209,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqErrorExchangeName(String newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqErrorExchangeName(String newValue)
    * 
    */
   public void setTransportRabbitMqErrorExchangeName(String newValue) {
@@ -19231,7 +19231,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqFactoryConnectionTimeout()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqFactoryConnectionTimeout()
    * 
    */
   public String getTransportRabbitMqFactoryConnectionTimeout() {
@@ -19241,7 +19241,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqFactoryConnectionTimeout(String newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqFactoryConnectionTimeout(String newValue)
    * 
    */
   public void setTransportRabbitMqFactoryConnectionTimeout(String newValue) {
@@ -19263,7 +19263,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqFactoryNetworkRecoveryInterval()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportRabbitMqFactoryNetworkRecoveryInterval()
    * 
    */
   public String getTransportRabbitMqFactoryNetworkRecoveryInterval() {
@@ -19273,7 +19273,7 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqFactoryNetworkRecoveryInterval(String newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportRabbitMqFactoryNetworkRecoveryInterval(String newValue)
    * 
    */
   public void setTransportRabbitMqFactoryNetworkRecoveryInterval(String newValue) {

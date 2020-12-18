@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.local.manager;
+package org.wso2.integrationstudio.registry.manager.local.manager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +26,10 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.Activator;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.decorators.RegistryResourceDecorator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.manager.local.Activator;
+import org.wso2.integrationstudio.registry.manager.local.decorators.RegistryResourceDecorator;
 
 public class FileModificationManager implements IResourceChangeListener {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

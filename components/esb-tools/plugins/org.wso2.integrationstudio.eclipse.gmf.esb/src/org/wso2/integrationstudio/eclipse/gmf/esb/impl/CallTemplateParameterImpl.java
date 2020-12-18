@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleOptionType;
+import org.wso2.integrationstudio.gmf.esb.CallTemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleOptionType;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,10 +27,10 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RuleOptionType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getParameterName <em>Parameter Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getTemplateParameterType <em>Template Parameter Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getParameterValue <em>Parameter Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getParameterExpression <em>Parameter Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CallTemplateParameterImpl#getParameterName <em>Parameter Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CallTemplateParameterImpl#getTemplateParameterType <em>Template Parameter Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CallTemplateParameterImpl#getParameterValue <em>Parameter Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CallTemplateParameterImpl#getParameterExpression <em>Parameter Expression</em>}</li>
  * </ul>
  *
  * @generated

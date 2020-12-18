@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -44,10 +44,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -202,7 +202,7 @@ public class CloneMediatorContainerPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart#initCloneTargetContainer(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart#initCloneTargetContainer(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initCloneTargetContainer(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -223,7 +223,7 @@ public class CloneMediatorContainerPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart#updateCloneTargetContainer()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart#updateCloneTargetContainer()
 	 * 
 	 */
 	public void updateCloneTargetContainer() {
@@ -233,7 +233,7 @@ public class CloneMediatorContainerPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart#addFilterCloneTargetContainer(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart#addFilterCloneTargetContainer(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToCloneTargetContainer(ViewerFilter filter) {
@@ -246,7 +246,7 @@ public class CloneMediatorContainerPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart#addBusinessFilterCloneTargetContainer(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart#addBusinessFilterCloneTargetContainer(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToCloneTargetContainer(ViewerFilter filter) {
@@ -256,7 +256,7 @@ public class CloneMediatorContainerPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart#isContainedInCloneTargetContainerTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorContainerPropertiesEditionPart#isContainedInCloneTargetContainerTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInCloneTargetContainerTable(EObject element) {

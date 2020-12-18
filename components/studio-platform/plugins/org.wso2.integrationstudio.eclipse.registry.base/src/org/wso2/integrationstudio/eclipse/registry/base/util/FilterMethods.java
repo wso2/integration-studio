@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.base.util;
+package org.wso2.integrationstudio.registry.base.util;
 
 import org.wso2.carbon.registry.core.jdbc.handlers.filters.Filter;
 

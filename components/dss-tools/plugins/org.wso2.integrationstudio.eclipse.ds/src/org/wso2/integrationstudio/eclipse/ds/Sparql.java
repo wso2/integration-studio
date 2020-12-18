@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,10 +17,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.Sparql#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.Sparql#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getSparql()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getSparql()
  * @model extendedMetaData="name='sparql_._type' kind='simple'"
  * @generated
  */
@@ -35,7 +35,7 @@ public interface Sparql extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getSparql_Value()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getSparql_Value()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="name=':0' kind='simple'"
 	 * @generated
@@ -43,7 +43,7 @@ public interface Sparql extends EObject {
 	String getValue();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.Sparql#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.Sparql#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.

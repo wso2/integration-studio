@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.provider;
+package org.wso2.integrationstudio.artifact.registry.provider;
 
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 public class ResourcesLabelProvider implements ILabelProvider {
 

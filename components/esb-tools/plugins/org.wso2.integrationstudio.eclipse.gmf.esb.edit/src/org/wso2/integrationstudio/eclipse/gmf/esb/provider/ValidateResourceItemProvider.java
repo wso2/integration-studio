@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.provider;
+package org.wso2.integrationstudio.gmf.esb.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -28,10 +28,10 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateResource;
+import org.wso2.integrationstudio.gmf.esb.ValidateResource;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateResource} object.
+ * This is the item provider adapter for a {@link org.wso2.integrationstudio.gmf.esb.ValidateResource} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

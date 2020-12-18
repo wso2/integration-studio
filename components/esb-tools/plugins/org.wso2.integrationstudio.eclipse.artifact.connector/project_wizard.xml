@@ -12,7 +12,7 @@
  			  		error="Please give a name to create the connector exporter project">
  		<data modelProperty="project.name"
  					type="string" 
- 					fieldController="org.wso2.integrationstudio.eclipse.artifact.connector.validator.ConnectorFieldsController">Project Name</data>
+ 					fieldController="org.wso2.integrationstudio.artifact.connector.validator.ConnectorFieldsController">Project Name</data>
  		
  		<projectNatures>
 			<nature>org.eclipse.jdt.core.javanature</nature>

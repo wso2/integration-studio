@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -26,15 +26,15 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint#getAddress <em>Address</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint#getTargetTemplate <em>Target Template</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint#getAvailableTemplates <em>Available Templates</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint#getAddress <em>Address</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint#getTargetTemplate <em>Target Template</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint#getAvailableTemplates <em>Available Templates</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTemplateEndpoint()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTemplateEndpoint()
  * @model
  * @generated
  */
@@ -49,14 +49,14 @@ public interface TemplateEndpoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(TemplateEndpointInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTemplateEndpoint_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTemplateEndpoint_InputConnector()
      * @model containment="true"
      * @generated
      */
     TemplateEndpointInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -75,14 +75,14 @@ public interface TemplateEndpoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(TemplateEndpointOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTemplateEndpoint_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTemplateEndpoint_OutputConnector()
      * @model containment="true"
      * @generated
      */
     TemplateEndpointOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -101,14 +101,14 @@ public interface TemplateEndpoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Address</em>' attribute.
      * @see #setAddress(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTemplateEndpoint_Address()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTemplateEndpoint_Address()
      * @model
      * @generated
      */
     String getAddress();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint#getAddress <em>Address</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint#getAddress <em>Address</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Address</em>' attribute.
@@ -127,14 +127,14 @@ public interface TemplateEndpoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Target Template</em>' attribute.
      * @see #setTargetTemplate(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTemplateEndpoint_TargetTemplate()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTemplateEndpoint_TargetTemplate()
      * @model
      * @generated
      */
     String getTargetTemplate();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint#getTargetTemplate <em>Target Template</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint#getTargetTemplate <em>Target Template</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Target Template</em>' attribute.
@@ -145,7 +145,7 @@ public interface TemplateEndpoint extends AbstractEndPoint {
 
     /**
      * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpointParameter}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.TemplateEndpointParameter}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Parameters</em>' containment reference isn't clear,
@@ -153,7 +153,7 @@ public interface TemplateEndpoint extends AbstractEndPoint {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Parameters</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTemplateEndpoint_Parameters()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTemplateEndpoint_Parameters()
      * @model containment="true"
      * @generated
      */
@@ -169,14 +169,14 @@ public interface TemplateEndpoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Available Templates</em>' attribute.
      * @see #setAvailableTemplates(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTemplateEndpoint_AvailableTemplates()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTemplateEndpoint_AvailableTemplates()
      * @model
      * @generated
      */
     String getAvailableTemplates();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint#getAvailableTemplates <em>Available Templates</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint#getAvailableTemplates <em>Available Templates</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Available Templates</em>' attribute.

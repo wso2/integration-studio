@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.ds.presentation.md;
+package org.wso2.integrationstudio.ds.presentation.md;
 
 import java.math.BigInteger;
 
@@ -50,12 +50,12 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.ds.DataService;
-import org.wso2.integrationstudio.eclipse.ds.DataServiceParameter;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.ds.presentation.ui.AddPolicyPathDialog;
-import org.wso2.integrationstudio.eclipse.ds.presentation.ui.AddUserRolesDialog;
+import org.wso2.integrationstudio.ds.DataService;
+import org.wso2.integrationstudio.ds.DataServiceParameter;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.RegistryKeyProperty;
+import org.wso2.integrationstudio.ds.presentation.ui.AddPolicyPathDialog;
+import org.wso2.integrationstudio.ds.presentation.ui.AddUserRolesDialog;
 
 public class DetailSectionUiUtil {
 

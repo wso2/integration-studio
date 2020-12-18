@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.ui.wizard;
+package org.wso2.integrationstudio.distribution.project.ui.wizard;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,15 +40,15 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.DependencyData;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.DistributionProjectModel;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.DistProjectUtils;
-import org.wso2.integrationstudio.eclipse.distribution.project.validator.ProjectList;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractComposite;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectOptionData;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.distribution.project.model.DependencyData;
+import org.wso2.integrationstudio.distribution.project.model.DistributionProjectModel;
+import org.wso2.integrationstudio.distribution.project.util.DistProjectUtils;
+import org.wso2.integrationstudio.distribution.project.validator.ProjectList;
+import org.wso2.integrationstudio.platform.core.model.AbstractComposite;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectOptionData;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 public class ArtifactExplorerComposite extends AbstractComposite {
 	private DistributionProjectModel model;

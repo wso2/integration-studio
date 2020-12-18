@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.mediator.project.export;
+package org.wso2.integrationstudio.artifact.mediator.project.export;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,13 +37,13 @@ import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.osgi.storagemanager.StorageManager;
-import org.wso2.integrationstudio.eclipse.platform.core.manifest.BundleManifest;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
-import org.wso2.integrationstudio.eclipse.utils.archive.ArchiveManipulator;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.artifact.mediator.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.*;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.manifest.BundleManifest;
+import org.wso2.integrationstudio.platform.core.project.export.ProjectArtifactHandler;
+import org.wso2.integrationstudio.utils.archive.ArchiveManipulator;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.mediator.Activator;
+import org.wso2.integrationstudio.logging.core.*;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
 
 public class MediatorExportHandler extends ProjectArtifactHandler {
 

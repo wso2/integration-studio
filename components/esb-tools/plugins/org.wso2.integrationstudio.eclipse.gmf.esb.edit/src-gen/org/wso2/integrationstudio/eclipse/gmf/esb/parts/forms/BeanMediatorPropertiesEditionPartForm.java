@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
@@ -69,15 +69,15 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediatorAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.BeanMediatorAction;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -948,7 +948,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -958,7 +958,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -980,7 +980,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -990,7 +990,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -1031,7 +1031,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -1041,7 +1041,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -1063,7 +1063,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getClass_()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getClass_()
 	 * 
 	 */
 	public String getClass_() {
@@ -1073,7 +1073,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setClass_(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setClass_(String newValue)
 	 * 
 	 */
 	public void setClass_(String newValue) {
@@ -1095,7 +1095,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getAction()
 	 * 
 	 */
 	public Enumerator getAction() {
@@ -1106,7 +1106,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#initAction(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#initAction(Object input, Enumerator current)
 	 */
 	public void initAction(Object input, Enumerator current) {
 		action.setInput(input);
@@ -1124,7 +1124,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setAction(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setAction(Enumerator newValue)
 	 * 
 	 */
 	public void setAction(Enumerator newValue) {
@@ -1142,7 +1142,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getVar()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getVar()
 	 * 
 	 */
 	public String getVar() {
@@ -1152,7 +1152,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setVar(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setVar(String newValue)
 	 * 
 	 */
 	public void setVar(String newValue) {
@@ -1174,7 +1174,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getProperty()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getProperty()
 	 * 
 	 */
 	public String getProperty() {
@@ -1184,7 +1184,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setProperty(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setProperty(String newValue)
 	 * 
 	 */
 	public void setProperty(String newValue) {
@@ -1206,7 +1206,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getValueType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getValueType()
 	 * 
 	 */
 	public Enumerator getValueType() {
@@ -1217,7 +1217,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#initValueType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#initValueType(Object input, Enumerator current)
 	 */
 	public void initValueType(Object input, Enumerator current) {
 		valueType.setInput(input);
@@ -1235,7 +1235,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setValueType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setValueType(Enumerator newValue)
 	 * 
 	 */
 	public void setValueType(Enumerator newValue) {
@@ -1253,7 +1253,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getValueLiteral()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getValueLiteral()
 	 * 
 	 */
 	public String getValueLiteral() {
@@ -1263,7 +1263,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setValueLiteral(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setValueLiteral(String newValue)
 	 * 
 	 */
 	public void setValueLiteral(String newValue) {
@@ -1285,7 +1285,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getTargetType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getTargetType()
 	 * 
 	 */
 	public Enumerator getTargetType() {
@@ -1296,7 +1296,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#initTargetType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#initTargetType(Object input, Enumerator current)
 	 */
 	public void initTargetType(Object input, Enumerator current) {
 		targetType.setInput(input);
@@ -1314,7 +1314,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setTargetType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setTargetType(Enumerator newValue)
 	 * 
 	 */
 	public void setTargetType(Enumerator newValue) {
@@ -1332,7 +1332,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getTargetLiteral()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#getTargetLiteral()
 	 * 
 	 */
 	public String getTargetLiteral() {
@@ -1342,7 +1342,7 @@ public class BeanMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setTargetLiteral(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorPropertiesEditionPart#setTargetLiteral(String newValue)
 	 * 
 	 */
 	public void setTargetLiteral(String newValue) {

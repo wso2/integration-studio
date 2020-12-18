@@ -1,10 +1,10 @@
-package org.wso2.integrationstudio.eclipse.esb.core.configuration.impl;
+package org.wso2.integrationstudio.esb.core.configuration.impl;
 
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbLocalEntry;
 
 public class EsbLocalEntryImpl implements IEsbLocalEntry {
 	private String name;

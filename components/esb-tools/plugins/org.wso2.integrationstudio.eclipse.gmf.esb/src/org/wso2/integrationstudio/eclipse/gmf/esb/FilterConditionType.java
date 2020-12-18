@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * 
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getFilterConditionType()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getFilterConditionType()
  * @model
  * @generated
  */

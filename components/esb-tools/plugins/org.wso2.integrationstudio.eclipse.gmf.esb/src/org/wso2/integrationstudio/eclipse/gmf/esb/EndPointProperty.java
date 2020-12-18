@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -26,14 +26,14 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty#getValue <em>Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty#getScope <em>Scope</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty#getValueExpression <em>Value Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EndPointProperty#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EndPointProperty#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EndPointProperty#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EndPointProperty#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EndPointProperty#getValueExpression <em>Value Expression</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEndPointProperty()
  * @model
  * @generated
  */
@@ -48,14 +48,14 @@ public interface EndPointProperty extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty_Name()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEndPointProperty_Name()
      * @model required="true"
      * @generated
      */
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EndPointProperty#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Name</em>' attribute.
@@ -74,14 +74,14 @@ public interface EndPointProperty extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty_Value()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEndPointProperty_Value()
      * @model
      * @generated
      */
     String getValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty#getValue <em>Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EndPointProperty#getValue <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value</em>' attribute.
@@ -92,7 +92,7 @@ public interface EndPointProperty extends EObject {
 
     /**
      * Returns the value of the '<em><b>Scope</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointPropertyScope}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.EndPointPropertyScope}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Scope</em>' attribute isn't clear,
@@ -100,20 +100,20 @@ public interface EndPointProperty extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Scope</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EndPointPropertyScope
+     * @see org.wso2.integrationstudio.gmf.esb.EndPointPropertyScope
      * @see #setScope(EndPointPropertyScope)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty_Scope()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEndPointProperty_Scope()
      * @model required="true"
      * @generated
      */
     EndPointPropertyScope getScope();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty#getScope <em>Scope</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EndPointProperty#getScope <em>Scope</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Scope</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EndPointPropertyScope
+     * @see org.wso2.integrationstudio.gmf.esb.EndPointPropertyScope
      * @see #getScope()
      * @generated
      */
@@ -121,7 +121,7 @@ public interface EndPointProperty extends EObject {
 
     /**
      * Returns the value of the '<em><b>Value Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.PropertyValueType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Value Type</em>' attribute isn't clear,
@@ -129,20 +129,20 @@ public interface EndPointProperty extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType
+     * @see org.wso2.integrationstudio.gmf.esb.PropertyValueType
      * @see #setValueType(PropertyValueType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty_ValueType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEndPointProperty_ValueType()
      * @model
      * @generated
      */
     PropertyValueType getValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty#getValueType <em>Value Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EndPointProperty#getValueType <em>Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType
+     * @see org.wso2.integrationstudio.gmf.esb.PropertyValueType
      * @see #getValueType()
      * @generated
      */
@@ -158,14 +158,14 @@ public interface EndPointProperty extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value Expression</em>' containment reference.
      * @see #setValueExpression(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty_ValueExpression()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEndPointProperty_ValueExpression()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty#getValueExpression <em>Value Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EndPointProperty#getValueExpression <em>Value Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value Expression</em>' containment reference.

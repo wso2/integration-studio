@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.distribution.project.ui.wizard;
+package org.wso2.integrationstudio.distribution.project.ui.wizard;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;

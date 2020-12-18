@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.interfaces;
+package org.wso2.integrationstudio.platform.core.interfaces;
 
 import java.util.List;
 import java.util.Map;

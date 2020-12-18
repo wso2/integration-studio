@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,10 +17,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServicePolicy#getPolicyKey <em>Policy Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyServicePolicy#getPolicyKey <em>Policy Key</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyServicePolicy()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyServicePolicy()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface ProxyServicePolicy extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Policy Key</em>' containment reference.
      * @see #setPolicyKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyServicePolicy_PolicyKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyServicePolicy_PolicyKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getPolicyKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServicePolicy#getPolicyKey <em>Policy Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyServicePolicy#getPolicyKey <em>Policy Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Policy Key</em>' containment reference.

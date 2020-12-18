@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -66,11 +66,11 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -693,7 +693,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#getDescription()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#getDescription()
      * 
      */
     public String getDescription() {
@@ -703,7 +703,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#setDescription(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#setDescription(String
      *      newValue)
      * 
      */
@@ -726,7 +726,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#getCommentsList()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#getCommentsList()
      * 
      */
     public EList getCommentsList() {
@@ -736,7 +736,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#setCommentsList(EList
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#setCommentsList(EList
      *      newValue)
      * 
      */
@@ -778,7 +778,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#getReverse()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#getReverse()
      * 
      */
     public Boolean getReverse() {
@@ -788,7 +788,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#setReverse(Boolean
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#setReverse(Boolean
      *      newValue)
      * 
      */
@@ -811,7 +811,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#getCloneID()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#getCloneID()
      * 
      */
     public String getCloneID() {
@@ -821,7 +821,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#setCloneID(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#setCloneID(String
      *      newValue)
      * 
      */
@@ -844,7 +844,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#getSequentialMediation()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#getSequentialMediation()
      * 
      */
     public Boolean getSequentialMediation() {
@@ -854,7 +854,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#setSequentialMediation(Boolean
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#setSequentialMediation(Boolean
      *      newValue)
      * 
      */
@@ -878,7 +878,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#getContinueParent()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#getContinueParent()
      * 
      */
     public Boolean getContinueParent() {
@@ -888,7 +888,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#setContinueParent(Boolean
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#setContinueParent(Boolean
      *      newValue)
      * 
      */
@@ -911,7 +911,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#initTargets(EObject
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#initTargets(EObject
      *      current, EReference containingFeature, EReference feature)
      */
     public void initTargets(ReferencesTableSettings settings) {
@@ -933,7 +933,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#updateTargets()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#updateTargets()
      * 
      */
     public void updateTargets() {
@@ -943,7 +943,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#addFilterTargets(ViewerFilter
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#addFilterTargets(ViewerFilter
      *      filter)
      * 
      */
@@ -957,7 +957,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#addBusinessFilterTargets(ViewerFilter
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#addBusinessFilterTargets(ViewerFilter
      *      filter)
      * 
      */
@@ -968,7 +968,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#isContainedInTargetsTable(EObject
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#isContainedInTargetsTable(EObject
      *      element)
      * 
      */
@@ -979,7 +979,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#initTargetsOutputConnector(EObject
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#initTargetsOutputConnector(EObject
      *      current, EReference containingFeature, EReference feature)
      */
     public void initTargetsOutputConnector(ReferencesTableSettings settings) {
@@ -1002,7 +1002,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#updateTargetsOutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#updateTargetsOutputConnector()
      * 
      */
     public void updateTargetsOutputConnector() {
@@ -1012,7 +1012,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#addFilterTargetsOutputConnector(ViewerFilter
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#addFilterTargetsOutputConnector(ViewerFilter
      *      filter)
      * 
      */
@@ -1026,7 +1026,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#addBusinessFilterTargetsOutputConnector(ViewerFilter
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#addBusinessFilterTargetsOutputConnector(ViewerFilter
      *      filter)
      * 
      */
@@ -1037,7 +1037,7 @@ public class CloneMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorPropertiesEditionPart#isContainedInTargetsOutputConnectorTable(EObject
+     * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorPropertiesEditionPart#isContainedInTargetsOutputConnectorTable(EObject
      *      element)
      * 
      */

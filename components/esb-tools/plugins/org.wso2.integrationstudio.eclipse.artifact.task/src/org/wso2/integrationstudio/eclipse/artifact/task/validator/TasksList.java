@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.task.validator;
+package org.wso2.integrationstudio.artifact.task.validator;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
-import org.wso2.integrationstudio.eclipse.artifact.task.model.TaskModel;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.artifact.task.model.TaskModel;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class TasksList extends AbstractListDataProvider{
 	@Override

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,18 +17,18 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getTaskName <em>Task Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getTaskGroup <em>Task Group</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getTriggerType <em>Trigger Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getCount <em>Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getInterval <em>Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getCron <em>Cron</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getPinnedServers <em>Pinned Servers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getTaskImplementation <em>Task Implementation</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getTaskProperties <em>Task Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Task#getTaskName <em>Task Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Task#getTaskGroup <em>Task Group</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Task#getTriggerType <em>Trigger Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Task#getCount <em>Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Task#getInterval <em>Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Task#getCron <em>Cron</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Task#getPinnedServers <em>Pinned Servers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Task#getTaskImplementation <em>Task Implementation</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Task#getTaskProperties <em>Task Properties</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTask()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTask()
  * @model
  * @generated
  */
@@ -43,14 +43,14 @@ public interface Task extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Task Name</em>' attribute.
      * @see #setTaskName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTask_TaskName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTask_TaskName()
      * @model
      * @generated
      */
     String getTaskName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getTaskName <em>Task Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Task#getTaskName <em>Task Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Task Name</em>' attribute.
@@ -70,14 +70,14 @@ public interface Task extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Task Group</em>' attribute.
      * @see #setTaskGroup(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTask_TaskGroup()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTask_TaskGroup()
      * @model default="synapse.simple.quartz"
      * @generated
      */
     String getTaskGroup();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getTaskGroup <em>Task Group</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Task#getTaskGroup <em>Task Group</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Task Group</em>' attribute.
@@ -88,7 +88,7 @@ public interface Task extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Trigger Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.TaskTriggerType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.TaskTriggerType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Trigger Type</em>' attribute isn't clear,
@@ -96,20 +96,20 @@ public interface Task extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Trigger Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.TaskTriggerType
+     * @see org.wso2.integrationstudio.gmf.esb.TaskTriggerType
      * @see #setTriggerType(TaskTriggerType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTask_TriggerType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTask_TriggerType()
      * @model
      * @generated
      */
     TaskTriggerType getTriggerType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getTriggerType <em>Trigger Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Task#getTriggerType <em>Trigger Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Trigger Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.TaskTriggerType
+     * @see org.wso2.integrationstudio.gmf.esb.TaskTriggerType
      * @see #getTriggerType()
      * @generated
      */
@@ -126,14 +126,14 @@ public interface Task extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Count</em>' attribute.
      * @see #setCount(long)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTask_Count()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTask_Count()
      * @model default="-1"
      * @generated
      */
     long getCount();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getCount <em>Count</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Task#getCount <em>Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Count</em>' attribute.
@@ -152,14 +152,14 @@ public interface Task extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Interval</em>' attribute.
      * @see #setInterval(long)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTask_Interval()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTask_Interval()
      * @model
      * @generated
      */
     long getInterval();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getInterval <em>Interval</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Task#getInterval <em>Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Interval</em>' attribute.
@@ -178,14 +178,14 @@ public interface Task extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Cron</em>' attribute.
      * @see #setCron(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTask_Cron()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTask_Cron()
      * @model
      * @generated
      */
     String getCron();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getCron <em>Cron</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Task#getCron <em>Cron</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Cron</em>' attribute.
@@ -204,14 +204,14 @@ public interface Task extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Pinned Servers</em>' attribute.
      * @see #setPinnedServers(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTask_PinnedServers()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTask_PinnedServers()
      * @model
      * @generated
      */
     String getPinnedServers();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getPinnedServers <em>Pinned Servers</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Task#getPinnedServers <em>Pinned Servers</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Pinned Servers</em>' attribute.
@@ -231,14 +231,14 @@ public interface Task extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Task Implementation</em>' attribute.
      * @see #setTaskImplementation(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTask_TaskImplementation()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTask_TaskImplementation()
      * @model default="org.apache.synapse.startup.tasks.MessageInjector" required="true"
      * @generated
      */
     String getTaskImplementation();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Task#getTaskImplementation <em>Task Implementation</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Task#getTaskImplementation <em>Task Implementation</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Task Implementation</em>' attribute.
@@ -249,7 +249,7 @@ public interface Task extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Task Properties</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.TaskProperty}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.TaskProperty}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Task Properties</em>' containment reference list isn't clear,
@@ -257,7 +257,7 @@ public interface Task extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Task Properties</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTask_TaskProperties()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTask_TaskProperties()
      * @model containment="true"
      * @generated
      */

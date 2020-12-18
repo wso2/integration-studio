@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.ds.validator.ui.wizard;
+package org.wso2.integrationstudio.artifact.ds.validator.ui.wizard;
 
 import java.io.File;
 import java.util.List;
@@ -37,19 +37,19 @@ import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.ui.JavaUI;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.ui.IEditorPart;
-import org.wso2.integrationstudio.eclipse.artifact.ds.validator.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.ds.validator.model.DataServiceValidatorModel;
-import org.wso2.integrationstudio.eclipse.artifact.ds.validator.template.DataServiceValidatorClassTemplate;
-import org.wso2.integrationstudio.eclipse.artifact.ds.validator.utils.DSValidatorImageUtils;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibraryUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.model.MavenInfo;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaUtils;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.artifact.ds.validator.Activator;
+import org.wso2.integrationstudio.artifact.ds.validator.model.DataServiceValidatorModel;
+import org.wso2.integrationstudio.artifact.ds.validator.template.DataServiceValidatorClassTemplate;
+import org.wso2.integrationstudio.artifact.ds.validator.utils.DSValidatorImageUtils;
+import org.wso2.integrationstudio.libraries.utils.LibraryUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.model.MavenInfo;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsDataPage;
+import org.wso2.integrationstudio.utils.jdt.JavaUtils;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 
 public class DataServiceValidatorCreationWizard extends AbstractWSO2ProjectCreationWizard {

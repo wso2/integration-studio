@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -19,10 +19,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Mediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.Mediator;
+import org.wso2.integrationstudio.gmf.esb.MediatorSequence;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,11 +32,11 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#isAnonymous <em>Anonymous</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#getSequenceName <em>Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#getMediators <em>Mediators</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#getOnError <em>On Error</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MediatorSequenceImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MediatorSequenceImpl#isAnonymous <em>Anonymous</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MediatorSequenceImpl#getSequenceName <em>Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MediatorSequenceImpl#getMediators <em>Mediators</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MediatorSequenceImpl#getOnError <em>On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MediatorSequenceImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated

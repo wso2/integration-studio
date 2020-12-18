@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.security.project.ui.dialog;
+package org.wso2.integrationstudio.security.project.ui.dialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +26,8 @@ import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.*;
-import org.wso2.integrationstudio.eclipse.artifact.security.utils.SecurityFormMessageConstants;
-import org.wso2.integrationstudio.eclipse.security.project.utils.UserManagerUtils;
+import org.wso2.integrationstudio.artifact.security.utils.SecurityFormMessageConstants;
+import org.wso2.integrationstudio.security.project.utils.UserManagerUtils;
 
 public class UserRolesDialog extends Dialog {
 

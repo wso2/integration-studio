@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.templates;
+package org.wso2.integrationstudio.platform.core.templates;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class ArtifactTemplate {
 

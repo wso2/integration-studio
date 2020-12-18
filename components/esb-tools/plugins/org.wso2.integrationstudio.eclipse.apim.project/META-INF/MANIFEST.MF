@@ -1,14 +1,14 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: API led Integration
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.apim.project;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.apim.project;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.apim.project.Activator
+Bundle-Activator: org.wso2.integrationstudio.apim.project.Activator
 Bundle-Vendor: WSO2 Inc
 Require-Bundle: org.eclipse.ui,
- org.wso2.integrationstudio.eclipse.kernel.libraries,
- org.wso2.integrationstudio.eclipse.platform.core,
- org.wso2.integrationstudio.eclipse.platform.ui,
+ org.wso2.integrationstudio.kernel.libraries,
+ org.wso2.integrationstudio.platform.core,
+ org.wso2.integrationstudio.platform.ui,
  org.eclipse.core.runtime,
  org.eclipse.equinox.registry,
  org.eclipse.jface,
@@ -40,5 +40,5 @@ Import-Package: org.apache.commons.lang3;version="3.1.0",
  org.eclipse.ui.forms.widgets,
  org.eclipse.ui.ide,
  org.eclipse.ui.navigator,
- org.wso2.integrationstudio.eclipse.logging.core,
- org.wso2.integrationstudio.eclipse.registry.base.ui.util
+ org.wso2.integrationstudio.logging.core,
+ org.wso2.integrationstudio.registry.base.ui.util

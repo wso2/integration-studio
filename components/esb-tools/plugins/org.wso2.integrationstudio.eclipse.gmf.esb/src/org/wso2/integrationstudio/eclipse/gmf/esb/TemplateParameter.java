@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -26,12 +26,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter#isIsMandatory <em>Is Mandatory</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.TemplateParameter#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.TemplateParameter#isIsMandatory <em>Is Mandatory</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.TemplateParameter#getDefaultValue <em>Default Value</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTemplateParameter()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTemplateParameter()
  * @model
  * @generated
  */
@@ -46,14 +46,14 @@ public interface TemplateParameter extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTemplateParameter_Name()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTemplateParameter_Name()
      * @model required="true"
      * @generated
      */
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.TemplateParameter#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Name</em>' attribute.
@@ -73,14 +73,14 @@ public interface TemplateParameter extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Is Mandatory</em>' attribute.
      * @see #setIsMandatory(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTemplateParameter_IsMandatory()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTemplateParameter_IsMandatory()
      * @model default="false"
      * @generated
      */
     boolean isIsMandatory();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter#isIsMandatory <em>Is Mandatory</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.TemplateParameter#isIsMandatory <em>Is Mandatory</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Is Mandatory</em>' attribute.
@@ -99,14 +99,14 @@ public interface TemplateParameter extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Default Value</em>' attribute.
      * @see #setDefaultValue(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTemplateParameter_DefaultValue()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTemplateParameter_DefaultValue()
      * @model
      * @generated
      */
     String getDefaultValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter#getDefaultValue <em>Default Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.TemplateParameter#getDefaultValue <em>Default Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Default Value</em>' attribute.

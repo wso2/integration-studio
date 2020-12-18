@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.project.export;
+package org.wso2.integrationstudio.apim.project.export;
 
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.platform.core.nature.AbstractWSO2ProjectNature;
+import org.wso2.integrationstudio.platform.core.nature.AbstractWSO2ProjectNature;
 
 /**
  * A nature to recognize docker projects in the workspace.

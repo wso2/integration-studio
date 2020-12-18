@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping#getColumnId <em>Column Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.SqlResultMapping#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.SqlResultMapping#getColumnId <em>Column Id</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSqlResultMapping()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSqlResultMapping()
  * @model
  * @generated
  */
@@ -37,14 +37,14 @@ public interface SqlResultMapping extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Property Name</em>' attribute.
      * @see #setPropertyName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSqlResultMapping_PropertyName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSqlResultMapping_PropertyName()
      * @model default="message_context_property_name"
      * @generated
      */
     String getPropertyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping#getPropertyName <em>Property Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.SqlResultMapping#getPropertyName <em>Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Property Name</em>' attribute.
@@ -64,14 +64,14 @@ public interface SqlResultMapping extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Column Id</em>' attribute.
      * @see #setColumnId(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSqlResultMapping_ColumnId()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSqlResultMapping_ColumnId()
      * @model default="column_name_or_index"
      * @generated
      */
     String getColumnId();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping#getColumnId <em>Column Id</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.SqlResultMapping#getColumnId <em>Column Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Column Id</em>' attribute.

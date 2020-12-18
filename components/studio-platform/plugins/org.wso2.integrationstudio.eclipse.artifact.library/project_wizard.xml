@@ -12,7 +12,7 @@
  			  		error="Please give a name to create the library artifact">
  		<data modelProperty="project.name"
  					type="string" 
- 					fieldController="org.wso2.integrationstudio.eclipse.artifact.library.validator.LibraryArtifactFieldsController">Project Name</data>
+ 					fieldController="org.wso2.integrationstudio.artifact.library.validator.LibraryArtifactFieldsController">Project Name</data>
  		
  		<projectNatures>
 			<nature>org.eclipse.jdt.core.javanature</nature>

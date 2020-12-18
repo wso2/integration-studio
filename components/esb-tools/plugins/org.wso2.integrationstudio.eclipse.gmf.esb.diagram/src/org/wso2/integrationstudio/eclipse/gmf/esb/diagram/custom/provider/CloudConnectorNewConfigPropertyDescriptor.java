@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.provider;
 
 import java.util.Collection;
 
@@ -17,12 +17,12 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui.CloudConnectorInitialConfigurationDialog;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui.CloudConnectorInitialConfigurationDialog;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class CloudConnectorNewConfigPropertyDescriptor extends PropertyDescriptor {
 

@@ -1,7 +1,7 @@
-package org.wso2.integrationstudio.eclipse.maven.internal.executor.impl;
+package org.wso2.integrationstudio.maven.internal.executor.impl;
 
-import org.wso2.integrationstudio.eclipse.maven.executor.IMavenDefiniton;
-import org.wso2.integrationstudio.eclipse.maven.executor.MavenExecuteMode;
+import org.wso2.integrationstudio.maven.executor.IMavenDefiniton;
+import org.wso2.integrationstudio.maven.executor.MavenExecuteMode;
 
 public abstract class MavenDefinitionImpl implements IMavenDefiniton{
 

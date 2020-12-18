@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.dataserviceProject.validators;
+package org.wso2.integrationstudio.artifact.dataserviceProject.validators;
 
-import org.wso2.integrationstudio.eclipse.artifact.dataserviceProject.utils.DataServiceProjectConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.artifact.dataserviceProject.utils.DataServiceProjectConstants;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
 
 import java.io.File;
 

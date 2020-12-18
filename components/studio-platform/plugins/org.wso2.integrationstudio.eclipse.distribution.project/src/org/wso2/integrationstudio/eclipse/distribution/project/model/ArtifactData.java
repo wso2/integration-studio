@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.model;
+package org.wso2.integrationstudio.distribution.project.model;
 
 import org.eclipse.core.resources.IResource;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.ArtifactPriorityMapping;
+import org.wso2.integrationstudio.distribution.project.util.ArtifactPriorityMapping;
 
 public class ArtifactData implements Comparable<ArtifactData> {
 	/**

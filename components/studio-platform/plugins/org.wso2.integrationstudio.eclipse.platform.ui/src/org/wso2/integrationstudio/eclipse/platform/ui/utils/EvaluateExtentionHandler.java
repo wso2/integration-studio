@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.utils;
+package org.wso2.integrationstudio.platform.ui.utils;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.SafeRunner;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProviderData;
-import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProviderData;
+import org.wso2.integrationstudio.platform.ui.Activator;
 
 public class EvaluateExtentionHandler {
 	private static final String ExtentionPoint_ID = "org.wso2.integrationstudio.platfom.ui.resourceManger";

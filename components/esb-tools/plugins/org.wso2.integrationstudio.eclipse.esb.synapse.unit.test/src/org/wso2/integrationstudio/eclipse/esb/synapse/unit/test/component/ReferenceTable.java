@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component;
+package org.wso2.integrationstudio.esb.synapse.unit.test.component;
 
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.jface.viewers.TableViewer;
@@ -25,7 +25,7 @@ import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 /**
  * Class responsible for creating Reference Table with add and remove buttons.

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.export;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.export;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -16,12 +16,12 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbObjectSourceEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.*;
+import org.wso2.integrationstudio.gmf.esb.EsbDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbObjectSourceEditor;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbModelTransformer;
+import org.wso2.integrationstudio.platform.core.project.export.ProjectArtifactHandler;
+import static org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils.*;
 
 public class SynapseArtfactExportHandler extends ProjectArtifactHandler {
 

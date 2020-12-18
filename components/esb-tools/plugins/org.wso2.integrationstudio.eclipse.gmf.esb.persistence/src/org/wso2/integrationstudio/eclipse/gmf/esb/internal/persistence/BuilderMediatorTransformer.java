@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 
@@ -6,11 +6,11 @@ import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.BuilderMediatorExt;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.BuilderMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.BuilderMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 public class BuilderMediatorTransformer extends AbstractEsbNodeTransformer {
 

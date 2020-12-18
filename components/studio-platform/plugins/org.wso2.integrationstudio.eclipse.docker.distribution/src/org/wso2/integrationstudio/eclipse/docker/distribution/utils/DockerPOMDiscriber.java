@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.docker.distribution.utils;
+package org.wso2.integrationstudio.docker.distribution.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,10 +26,10 @@ import org.eclipse.core.runtime.content.XMLContentDescriber;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.docker.distribution.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.docker.distribution.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 
 /**
  * Describer class to recognize docker project pom files

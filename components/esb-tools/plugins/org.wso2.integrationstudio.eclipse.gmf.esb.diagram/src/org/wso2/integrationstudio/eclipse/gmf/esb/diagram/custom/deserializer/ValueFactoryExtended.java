@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
@@ -12,7 +12,7 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 import javax.xml.namespace.QName;
 

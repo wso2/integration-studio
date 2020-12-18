@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
@@ -60,12 +60,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -1032,7 +1032,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -1042,7 +1042,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -1064,7 +1064,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -1074,7 +1074,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -1115,7 +1115,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -1125,7 +1125,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -1147,7 +1147,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getSoapVersion()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getSoapVersion()
 	 * 
 	 */
 	public Enumerator getSoapVersion() {
@@ -1158,7 +1158,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initSoapVersion(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initSoapVersion(Object input, Enumerator current)
 	 */
 	public void initSoapVersion(Object input, Enumerator current) {
 		soapVersion.setInput(input);
@@ -1176,7 +1176,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setSoapVersion(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setSoapVersion(Enumerator newValue)
 	 * 
 	 */
 	public void setSoapVersion(Enumerator newValue) {
@@ -1194,7 +1194,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getSerializeResponse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getSerializeResponse()
 	 * 
 	 */
 	public Boolean getSerializeResponse() {
@@ -1204,7 +1204,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setSerializeResponse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setSerializeResponse(Boolean newValue)
 	 * 
 	 */
 	public void setSerializeResponse(Boolean newValue) {
@@ -1226,7 +1226,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getMarkAsResponse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getMarkAsResponse()
 	 * 
 	 */
 	public Boolean getMarkAsResponse() {
@@ -1236,7 +1236,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setMarkAsResponse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setMarkAsResponse(Boolean newValue)
 	 * 
 	 */
 	public void setMarkAsResponse(Boolean newValue) {
@@ -1258,7 +1258,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultCodeSoap11()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultCodeSoap11()
 	 * 
 	 */
 	public Enumerator getFaultCodeSoap11() {
@@ -1269,7 +1269,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initFaultCodeSoap11(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initFaultCodeSoap11(Object input, Enumerator current)
 	 */
 	public void initFaultCodeSoap11(Object input, Enumerator current) {
 		faultCodeSoap11.setInput(input);
@@ -1287,7 +1287,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultCodeSoap11(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultCodeSoap11(Enumerator newValue)
 	 * 
 	 */
 	public void setFaultCodeSoap11(Enumerator newValue) {
@@ -1305,7 +1305,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultCodeType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultCodeType()
 	 * 
 	 */
 	public Enumerator getFaultCodeType() {
@@ -1316,7 +1316,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initFaultCodeType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initFaultCodeType(Object input, Enumerator current)
 	 */
 	public void initFaultCodeType(Object input, Enumerator current) {
 		faultCodeType.setInput(input);
@@ -1334,7 +1334,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultCodeType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultCodeType(Enumerator newValue)
 	 * 
 	 */
 	public void setFaultCodeType(Enumerator newValue) {
@@ -1352,7 +1352,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultStringType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultStringType()
 	 * 
 	 */
 	public Enumerator getFaultStringType() {
@@ -1363,7 +1363,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initFaultStringType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initFaultStringType(Object input, Enumerator current)
 	 */
 	public void initFaultStringType(Object input, Enumerator current) {
 		faultStringType.setInput(input);
@@ -1381,7 +1381,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultStringType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultStringType(Enumerator newValue)
 	 * 
 	 */
 	public void setFaultStringType(Enumerator newValue) {
@@ -1399,7 +1399,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultStringValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultStringValue()
 	 * 
 	 */
 	public String getFaultStringValue() {
@@ -1409,7 +1409,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultStringValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultStringValue(String newValue)
 	 * 
 	 */
 	public void setFaultStringValue(String newValue) {
@@ -1431,7 +1431,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultActor()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultActor()
 	 * 
 	 */
 	public String getFaultActor() {
@@ -1441,7 +1441,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultActor(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultActor(String newValue)
 	 * 
 	 */
 	public void setFaultActor(String newValue) {
@@ -1463,7 +1463,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultCodeSoap12()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultCodeSoap12()
 	 * 
 	 */
 	public Enumerator getFaultCodeSoap12() {
@@ -1474,7 +1474,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initFaultCodeSoap12(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initFaultCodeSoap12(Object input, Enumerator current)
 	 */
 	public void initFaultCodeSoap12(Object input, Enumerator current) {
 		faultCodeSoap12.setInput(input);
@@ -1492,7 +1492,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultCodeSoap12(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultCodeSoap12(Enumerator newValue)
 	 * 
 	 */
 	public void setFaultCodeSoap12(Enumerator newValue) {
@@ -1510,7 +1510,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultReasonType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultReasonType()
 	 * 
 	 */
 	public Enumerator getFaultReasonType() {
@@ -1521,7 +1521,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initFaultReasonType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initFaultReasonType(Object input, Enumerator current)
 	 */
 	public void initFaultReasonType(Object input, Enumerator current) {
 		faultReasonType.setInput(input);
@@ -1539,7 +1539,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultReasonType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultReasonType(Enumerator newValue)
 	 * 
 	 */
 	public void setFaultReasonType(Enumerator newValue) {
@@ -1557,7 +1557,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultReasonValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultReasonValue()
 	 * 
 	 */
 	public String getFaultReasonValue() {
@@ -1567,7 +1567,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultReasonValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultReasonValue(String newValue)
 	 * 
 	 */
 	public void setFaultReasonValue(String newValue) {
@@ -1589,7 +1589,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getRoleName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getRoleName()
 	 * 
 	 */
 	public String getRoleName() {
@@ -1599,7 +1599,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setRoleName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setRoleName(String newValue)
 	 * 
 	 */
 	public void setRoleName(String newValue) {
@@ -1621,7 +1621,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getNodeName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getNodeName()
 	 * 
 	 */
 	public String getNodeName() {
@@ -1631,7 +1631,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setNodeName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setNodeName(String newValue)
 	 * 
 	 */
 	public void setNodeName(String newValue) {
@@ -1653,7 +1653,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultDetailType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultDetailType()
 	 * 
 	 */
 	public Enumerator getFaultDetailType() {
@@ -1664,7 +1664,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initFaultDetailType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#initFaultDetailType(Object input, Enumerator current)
 	 */
 	public void initFaultDetailType(Object input, Enumerator current) {
 		faultDetailType.setInput(input);
@@ -1682,7 +1682,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultDetailType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultDetailType(Enumerator newValue)
 	 * 
 	 */
 	public void setFaultDetailType(Enumerator newValue) {
@@ -1700,7 +1700,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultDetailValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#getFaultDetailValue()
 	 * 
 	 */
 	public String getFaultDetailValue() {
@@ -1710,7 +1710,7 @@ public class FaultMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultDetailValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart#setFaultDetailValue(String newValue)
 	 * 
 	 */
 	public void setFaultDetailValue(String newValue) {

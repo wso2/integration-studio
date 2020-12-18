@@ -15,24 +15,24 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.client;
+package org.wso2.integrationstudio.apim.endpoint.central.client;
 
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.EndpointRegistryConnectException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.HttpClientException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.InvalidTokenException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.Registry;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.RegistryEntry;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.EndpointCentralConstants;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.EndpointRegistryServiceConstants;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils.EncoderUtil;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils.HTTPClientUtil;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils.JsonUtils;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils.UserSessionManager;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.EndpointRegistryConnectException;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.HttpClientException;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.InvalidTokenException;
+import org.wso2.integrationstudio.apim.endpoint.central.model.Registry;
+import org.wso2.integrationstudio.apim.endpoint.central.model.RegistryEntry;
+import org.wso2.integrationstudio.apim.endpoint.central.resources.EndpointCentralConstants;
+import org.wso2.integrationstudio.apim.endpoint.central.resources.EndpointRegistryServiceConstants;
+import org.wso2.integrationstudio.apim.endpoint.central.utils.EncoderUtil;
+import org.wso2.integrationstudio.apim.endpoint.central.utils.HTTPClientUtil;
+import org.wso2.integrationstudio.apim.endpoint.central.utils.JsonUtils;
+import org.wso2.integrationstudio.apim.endpoint.central.utils.UserSessionManager;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;

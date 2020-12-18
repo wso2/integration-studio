@@ -1,7 +1,7 @@
-package org.wso2.integrationstudio.eclipse.esb.core.internal.impl;
+package org.wso2.integrationstudio.esb.core.internal.impl;
 
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.ISequenceProvider;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.ISequenceProviderData;
+import org.wso2.integrationstudio.esb.core.interfaces.ISequenceProvider;
+import org.wso2.integrationstudio.esb.core.interfaces.ISequenceProviderData;
 
 public class SequenceProviderDataImpl implements ISequenceProviderData{
 	private String id;

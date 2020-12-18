@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleAccessType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleConditionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyEntry;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.ThrottleAccessType;
+import org.wso2.integrationstudio.gmf.esb.ThrottleConditionType;
+import org.wso2.integrationstudio.gmf.esb.ThrottlePolicyEntry;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,12 +26,12 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyEntry;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getThrottleType <em>Throttle Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getThrottleRange <em>Throttle Range</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getAccessType <em>Access Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getMaxRequestCount <em>Max Request Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getUnitTime <em>Unit Time</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottlePolicyEntryImpl#getProhibitPeriod <em>Prohibit Period</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottlePolicyEntryImpl#getThrottleType <em>Throttle Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottlePolicyEntryImpl#getThrottleRange <em>Throttle Range</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottlePolicyEntryImpl#getAccessType <em>Access Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottlePolicyEntryImpl#getMaxRequestCount <em>Max Request Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottlePolicyEntryImpl#getUnitTime <em>Unit Time</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottlePolicyEntryImpl#getProhibitPeriod <em>Prohibit Period</em>}</li>
  * </ul>
  *
  * @generated

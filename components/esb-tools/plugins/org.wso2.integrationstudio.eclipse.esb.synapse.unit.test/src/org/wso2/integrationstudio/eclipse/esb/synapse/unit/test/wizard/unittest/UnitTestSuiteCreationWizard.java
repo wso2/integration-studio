@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.unittest;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.unittest;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,17 +51,17 @@ import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.Activator;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.constant.Constants;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.RegistryResource;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.SynapseUnitTest;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.propertytester.UnitTestResourceTester;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.CommonUtil;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.esb.synapse.unit.test.Activator;
+import org.wso2.integrationstudio.esb.synapse.unit.test.constant.Constants;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.RegistryResource;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.SynapseUnitTest;
+import org.wso2.integrationstudio.esb.synapse.unit.test.propertytester.UnitTestResourceTester;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.CommonUtil;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 /**
  * Class responsible for creation of new or import Synapse unit test suite.

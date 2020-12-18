@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.model;
+package org.wso2.integrationstudio.platform.core.model;
 
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 import java.util.List;
 

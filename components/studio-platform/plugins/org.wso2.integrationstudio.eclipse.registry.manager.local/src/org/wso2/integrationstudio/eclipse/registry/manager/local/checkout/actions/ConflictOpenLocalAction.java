@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.local.checkout.actions;
+package org.wso2.integrationstudio.registry.manager.local.checkout.actions;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Path;
@@ -25,10 +25,10 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.Activator;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.utils.RegistryCheckInClientUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.manager.local.Activator;
+import org.wso2.integrationstudio.registry.manager.local.utils.RegistryCheckInClientUtils;
 
 public class ConflictOpenLocalAction extends ConflictAction {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

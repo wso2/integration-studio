@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import java.util.ArrayList;
 
@@ -30,17 +30,17 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariable;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariableType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariableValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.XQueryMediator;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariable;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariableType;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariableValueType;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
 
 public class ConfigureXQueryMediatorDialog extends Dialog {
 

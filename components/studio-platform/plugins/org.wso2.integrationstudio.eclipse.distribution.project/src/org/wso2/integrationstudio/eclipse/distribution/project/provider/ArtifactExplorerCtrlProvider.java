@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.provider;
+package org.wso2.integrationstudio.distribution.project.provider;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.wso2.integrationstudio.eclipse.distribution.project.ui.wizard.ArtifactExplorerComposite;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractComposite;
-import org.wso2.integrationstudio.eclipse.platform.core.model.ICompositeProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectOptionData;
+import org.wso2.integrationstudio.distribution.project.ui.wizard.ArtifactExplorerComposite;
+import org.wso2.integrationstudio.platform.core.model.AbstractComposite;
+import org.wso2.integrationstudio.platform.core.model.ICompositeProvider;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectOptionData;
 
 public class ArtifactExplorerCtrlProvider implements ICompositeProvider  {
 

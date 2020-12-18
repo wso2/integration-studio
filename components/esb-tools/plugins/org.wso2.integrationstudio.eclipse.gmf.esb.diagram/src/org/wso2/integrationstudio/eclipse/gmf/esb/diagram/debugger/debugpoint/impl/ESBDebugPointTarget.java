@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.debugpoint.impl;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_WIRE_LOGS_RECEIVED_EVENT;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_WIRE_LOGS_RECEIVED_EVENT;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -29,24 +29,24 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.channel.messagefactory.impl.JsonGsonMessageFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.IESBDebugPointBuilder;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.impl.ESBDebugPointBuilderFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model.ESBDebugModelPresentation;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.EsbDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.channel.messagefactory.impl.JsonGsonMessageFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.debugpoint.builder.IESBDebugPointBuilder;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.debugpoint.builder.impl.ESBDebugPointBuilderFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.model.ESBDebugModelPresentation;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbMultiPageEditor;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import com.google.gson.JsonObject;
 

@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Collection;
 
@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty;
-import org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
+import org.wso2.integrationstudio.ds.ConfigurationProperty;
+import org.wso2.integrationstudio.ds.DataSourceConfiguration;
+import org.wso2.integrationstudio.ds.DsPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,10 +37,10 @@ import org.wso2.integrationstudio.eclipse.ds.DsPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataSourceConfigurationImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataSourceConfigurationImpl#getProperty <em>Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataSourceConfigurationImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataSourceConfigurationImpl#isEnableOData <em>Enable OData</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataSourceConfigurationImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataSourceConfigurationImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataSourceConfigurationImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataSourceConfigurationImpl#isEnableOData <em>Enable OData</em>}</li>
  * </ul>
  *
  * @generated

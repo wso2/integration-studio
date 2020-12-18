@@ -1,19 +1,19 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Integration Studio WSO2 Plugin Sample
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.wso2plugin.template.manager;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.wso2plugin.template.manager;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.Activator
+Bundle-Activator: org.wso2.integrationstudio.wso2plugin.template.manager.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.wso2.integrationstudio.eclipse.platform.ui,
+ org.wso2.integrationstudio.platform.ui,
  org.eclipse.core.resources,
- org.wso2.integrationstudio.eclipse.logging,
+ org.wso2.integrationstudio.logging,
  org.eclipse.ui.ide,
  org.eclipse.ui.forms,
- org.wso2.integrationstudio.eclipse.kernel.libraries
-Export-Package: org.wso2.integrationstudio.eclipse.wso2plugin.template.manager,
- org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.wizard
+ org.wso2.integrationstudio.kernel.libraries
+Export-Package: org.wso2.integrationstudio.wso2plugin.template.manager,
+ org.wso2.integrationstudio.wso2plugin.template.manager.ui.wizard
 Import-Package: 
  org.eclipse.jgit.api;version="2.2.0",
  org.eclipse.jgit.api.errors;version="2.2.0",
@@ -26,15 +26,15 @@ Import-Package:
  org.eclipse.pde.internal.ui.wizards.plugin,
  org.eclipse.pde.ui,
  org.eclipse.ui.internal.wizards.datatransfer,
- org.wso2.integrationstudio.eclipse.platform.core.exception,
- org.wso2.integrationstudio.eclipse.platform.core.model,
- org.wso2.integrationstudio.eclipse.platform.core.project.model,
- org.wso2.integrationstudio.eclipse.platform.core.utils,
- org.wso2.integrationstudio.eclipse.utils.archive,
- org.wso2.integrationstudio.eclipse.utils.data,
- org.wso2.integrationstudio.eclipse.utils.file,
- org.wso2.integrationstudio.eclipse.utils.ui,
- org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.wizard
+ org.wso2.integrationstudio.platform.core.exception,
+ org.wso2.integrationstudio.platform.core.model,
+ org.wso2.integrationstudio.platform.core.project.model,
+ org.wso2.integrationstudio.platform.core.utils,
+ org.wso2.integrationstudio.utils.archive,
+ org.wso2.integrationstudio.utils.data,
+ org.wso2.integrationstudio.utils.file,
+ org.wso2.integrationstudio.utils.ui,
+ org.wso2.integrationstudio.wso2plugin.template.manager.ui.wizard
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,

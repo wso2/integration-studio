@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.usermgt.remote;
+package org.wso2.integrationstudio.usermgt.remote;
 
 import java.util.ArrayList;
 import java.util.List;

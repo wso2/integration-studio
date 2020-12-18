@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.utils;
+package org.wso2.integrationstudio.artifact.registry.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import org.wso2.integrationstudio.eclipse.artifact.registry.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.artifact.registry.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import org.osgi.framework.Bundle;
 

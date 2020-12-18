@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.internal.template;
+package org.wso2.integrationstudio.utils.internal.template;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.utils.Activator;
-import org.wso2.integrationstudio.eclipse.utils.template.TemplateUtil;
+import org.wso2.integrationstudio.utils.Activator;
+import org.wso2.integrationstudio.utils.template.TemplateUtil;
 
 public class TemplateUtilImpl extends TemplateUtil {
 

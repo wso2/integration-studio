@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -72,10 +72,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -352,7 +352,7 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#getPolicyType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#getPolicyType()
 	 * 
 	 */
 	public Enumerator getPolicyType() {
@@ -363,7 +363,7 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#initPolicyType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#initPolicyType(Object input, Enumerator current)
 	 */
 	public void initPolicyType(Object input, Enumerator current) {
 		policyType.setInput(input);
@@ -381,7 +381,7 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#setPolicyType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#setPolicyType(Enumerator newValue)
 	 * 
 	 */
 	public void setPolicyType(Enumerator newValue) {
@@ -399,7 +399,7 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#getMaxConcurrentAccessCount()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#getMaxConcurrentAccessCount()
 	 * 
 	 */
 	public String getMaxConcurrentAccessCount() {
@@ -409,7 +409,7 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#setMaxConcurrentAccessCount(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#setMaxConcurrentAccessCount(String newValue)
 	 * 
 	 */
 	public void setMaxConcurrentAccessCount(String newValue) {
@@ -433,7 +433,7 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#initPolicyEntries(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#initPolicyEntries(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initPolicyEntries(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -454,7 +454,7 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#updatePolicyEntries()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#updatePolicyEntries()
 	 * 
 	 */
 	public void updatePolicyEntries() {
@@ -464,7 +464,7 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#addFilterPolicyEntries(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#addFilterPolicyEntries(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToPolicyEntries(ViewerFilter filter) {
@@ -477,7 +477,7 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#addBusinessFilterPolicyEntries(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#addBusinessFilterPolicyEntries(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToPolicyEntries(ViewerFilter filter) {
@@ -487,7 +487,7 @@ public class ThrottlePolicyConfigurationPropertiesEditionPartForm extends Sectio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#isContainedInPolicyEntriesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyConfigurationPropertiesEditionPart#isContainedInPolicyEntriesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInPolicyEntriesTable(EObject element) {

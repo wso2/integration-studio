@@ -25,7 +25,7 @@
 }
 
 .MPartStack {
-	swt-tab-renderer: url('bundleclass://org.wso2.integrationstudio.eclipse.esb.theme/org.wso2.integrationstudio.eclipse.esb.theme.TabTopRenderer');
+	swt-tab-renderer: url('bundleclass://org.wso2.integrationstudio.esb.theme/org.wso2.integrationstudio.esb.theme.TabTopRenderer');
     swt-selected-tab-fill: #ffffff; 
     swt-unselected-tabs-color: #EDEDED;
     swt-outer-keyline-color: #EDEDED;

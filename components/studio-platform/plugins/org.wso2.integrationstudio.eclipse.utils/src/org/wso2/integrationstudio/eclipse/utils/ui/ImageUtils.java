@@ -29,7 +29,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.ui;
+package org.wso2.integrationstudio.utils.ui;
 
 import java.net.URL;
 import java.util.HashMap;

@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.proxyservice.validators;
+package org.wso2.integrationstudio.artifact.proxyservice.validators;
 
 import java.util.List;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.model.ProxyServiceModel;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.artifact.proxyservice.model.ProxyServiceModel;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class ProxyServiceSelectedWSDLNames extends AbstractListDataProvider {
 

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -38,10 +38,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -297,7 +297,7 @@ public class MemberPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart#getHostName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart#getHostName()
 	 * 
 	 */
 	public String getHostName() {
@@ -307,7 +307,7 @@ public class MemberPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart#setHostName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart#setHostName(String newValue)
 	 * 
 	 */
 	public void setHostName(String newValue) {
@@ -329,7 +329,7 @@ public class MemberPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart#getHttpPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart#getHttpPort()
 	 * 
 	 */
 	public String getHttpPort() {
@@ -339,7 +339,7 @@ public class MemberPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart#setHttpPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart#setHttpPort(String newValue)
 	 * 
 	 */
 	public void setHttpPort(String newValue) {
@@ -361,7 +361,7 @@ public class MemberPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart#getHttpsPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart#getHttpsPort()
 	 * 
 	 */
 	public String getHttpsPort() {
@@ -371,7 +371,7 @@ public class MemberPropertiesEditionPartImpl extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart#setHttpsPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart#setHttpsPort(String newValue)
 	 * 
 	 */
 	public void setHttpsPort(String newValue) {

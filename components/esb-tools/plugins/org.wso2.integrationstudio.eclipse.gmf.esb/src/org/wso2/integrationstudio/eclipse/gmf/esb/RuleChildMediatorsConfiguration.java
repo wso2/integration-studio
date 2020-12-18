@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRuleChildMediatorsConfiguration()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRuleChildMediatorsConfiguration()
  * @model
  * @generated
  */

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 /*
  * Copyright (c) 2013, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.

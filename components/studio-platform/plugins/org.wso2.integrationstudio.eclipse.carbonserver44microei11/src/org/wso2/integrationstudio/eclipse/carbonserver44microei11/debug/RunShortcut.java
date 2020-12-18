@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei11.debug;
+package org.wso2.integrationstudio.carbonserver44microei11.debug;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.debug.core.DebugPlugin;
@@ -25,10 +25,10 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.ui.ILaunchShortcut;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IEditorPart;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.handlers.PlatformEarlyStartUpHandler;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver44microei11.Activator;
+import org.wso2.integrationstudio.carbonserver44microei11.handlers.PlatformEarlyStartUpHandler;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class RunShortcut implements ILaunchShortcut {
 

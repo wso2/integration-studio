@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44.internal;
+package org.wso2.integrationstudio.carbonserver44.internal;
 
 
 import java.net.URL;
 
-import org.wso2.integrationstudio.eclipse.carbonserver.base.impl.CarbonServer;
+import org.wso2.integrationstudio.carbonserver.base.impl.CarbonServer;
 
 public class CarbonServer44 extends CarbonServer {
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,24 +43,24 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndpointDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Member;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndpointType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbTransformerRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbEditorInput;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EndpointDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.Member;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPoint;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndpointType;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.SequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbNodeTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbTransformerRegistry;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.RecipientListEndpointFormPage;
 
 public class RecipientListEndPointTransformer extends AbstractEndpointTransformer {

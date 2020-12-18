@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.proxyservice.helper;
+package org.wso2.integrationstudio.artifact.proxyservice.helper;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.ui.wizard.AdvancedConfigComposite;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractComposite;
-import org.wso2.integrationstudio.eclipse.platform.core.model.ICompositeProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectOptionData;
+import org.wso2.integrationstudio.artifact.proxyservice.ui.wizard.AdvancedConfigComposite;
+import org.wso2.integrationstudio.platform.core.model.AbstractComposite;
+import org.wso2.integrationstudio.platform.core.model.ICompositeProvider;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectOptionData;
 
 public class AdvancedConfigProvider implements ICompositeProvider {
 

@@ -1,11 +1,11 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.END_POINT__REVERSED;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT_REGISTRYKEY;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT_XPATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENABLE_BLOCKING_CALLS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.END_POINT__REVERSED;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT_REGISTRYKEY;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT_XPATH;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENABLE_BLOCKING_CALLS;
 
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.IndirectEndpoint;
@@ -16,13 +16,13 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallMediatorEndpointType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.CallMediator;
+import org.wso2.integrationstudio.gmf.esb.CallMediatorEndpointType;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class CallMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CallMediator> {
 

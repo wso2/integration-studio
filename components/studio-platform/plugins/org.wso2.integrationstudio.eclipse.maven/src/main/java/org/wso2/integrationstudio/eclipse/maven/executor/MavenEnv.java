@@ -1,8 +1,8 @@
-package org.wso2.integrationstudio.eclipse.maven.executor;
+package org.wso2.integrationstudio.maven.executor;
 
 import java.io.File;
 
-import org.wso2.integrationstudio.eclipse.maven.internal.executor.impl.MavenExecutorImpl;
+import org.wso2.integrationstudio.maven.internal.executor.impl.MavenExecutorImpl;
 
 public class MavenEnv {
 	private static IMavenExecutor executor=MavenExecutorImpl.getInstance();

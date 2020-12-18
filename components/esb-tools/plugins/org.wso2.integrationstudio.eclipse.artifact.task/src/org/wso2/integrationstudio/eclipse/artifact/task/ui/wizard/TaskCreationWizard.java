@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.task.ui.wizard;
+package org.wso2.integrationstudio.artifact.task.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,21 +39,21 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.wso2.integrationstudio.eclipse.artifact.task.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.task.model.TaskModel;
-import org.wso2.integrationstudio.eclipse.artifact.task.util.TaskImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.task.validator.TriggerTypeList.TriggerType;
-import org.wso2.integrationstudio.eclipse.esb.core.ESBMavenConstants;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.task.Activator;
+import org.wso2.integrationstudio.artifact.task.model.TaskModel;
+import org.wso2.integrationstudio.artifact.task.util.TaskImageUtils;
+import org.wso2.integrationstudio.artifact.task.validator.TriggerTypeList.TriggerType;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 /**
  * WSO2 ESB task creation wizard class

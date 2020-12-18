@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.cloudconnector;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.cloudconnector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.llom.OMElementImpl;
-import org.wso2.integrationstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
+import org.wso2.integrationstudio.platform.core.manifest.AbstractXMLDoc;
 
 public class Component extends AbstractXMLDoc {
 

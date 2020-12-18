@@ -12,7 +12,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.builtin.PropertyMediator;
@@ -20,9 +20,9 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class PropertyGroupMediatorDeserializer
         extends AbstractEsbNodeDeserializer<AbstractMediator, PropertyGroupMediator> {
@@ -35,16 +35,16 @@ public class PropertyGroupMediatorDeserializer
 
         org.apache.synapse.mediators.builtin.PropertyGroupMediator propertyGroupMediator = (org.apache.synapse.mediators.builtin.PropertyGroupMediator) mediator;
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator visualPropertyGroup = (org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator visualPropertyGroup = (org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.PropertyGroupMediator_3788);
         setElementToEdit(visualPropertyGroup);
         setCommonProperties(propertyGroupMediator, visualPropertyGroup);
 
         PropertyMediatorDeserializer propertyMediatorDeserializer = new PropertyMediatorDeserializer();
 
-        EList<org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator> propertyList = new BasicEList<org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator>();
+        EList<org.wso2.integrationstudio.gmf.esb.PropertyMediator> propertyList = new BasicEList<org.wso2.integrationstudio.gmf.esb.PropertyMediator>();
         for (PropertyMediator propretyMediator : propertyGroupMediator.getPropGroupList()) {
-            org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator propMediator = propertyMediatorDeserializer
+            org.wso2.integrationstudio.gmf.esb.PropertyMediator propMediator = propertyMediatorDeserializer
                     .createNode(part, propretyMediator);
             propertyList.add(propMediator);
         }

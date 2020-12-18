@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.model;
+package org.wso2.integrationstudio.capp.core.model;
 
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.IServerRole;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.IServerRole;
 
 public class ServerRole implements IServerRole {
 

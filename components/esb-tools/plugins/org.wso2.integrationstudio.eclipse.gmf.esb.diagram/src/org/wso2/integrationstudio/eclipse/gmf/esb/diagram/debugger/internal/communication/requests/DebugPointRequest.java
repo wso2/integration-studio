@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests;
 
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.IDebugTargetRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.DebugPointEventAction;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.IDebugTargetRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.DebugPointEventAction;
 
 /**
  * This class represent the request event from {@link ESBDebugTarget} to {@link ESBDebugger} when a

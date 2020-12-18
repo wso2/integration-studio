@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,10 +15,10 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SendMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SendMediatorEndpointOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SendMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SendMediatorEndpointOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceEditPart;
 
 public abstract class AbstractEndpointInputConnectorEditPart extends AbstractInputConnectorEditPart {
 

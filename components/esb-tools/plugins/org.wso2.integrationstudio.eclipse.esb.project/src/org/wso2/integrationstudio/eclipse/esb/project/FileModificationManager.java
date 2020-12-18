@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.project;
+package org.wso2.integrationstudio.esb.project;
 
 import java.io.File;
 import java.util.Iterator;
@@ -40,16 +40,16 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.ESBProjectUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.esb.project.utils.ESBProjectUtils;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class FileModificationManager implements IResourceChangeListener {
 

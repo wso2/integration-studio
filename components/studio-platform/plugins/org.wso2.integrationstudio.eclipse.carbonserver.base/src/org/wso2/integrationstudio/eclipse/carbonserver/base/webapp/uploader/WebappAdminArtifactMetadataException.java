@@ -6,13 +6,13 @@
  * UTC)
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader;
+package org.wso2.integrationstudio.carbonserver.base.webapp.uploader;
 
 public class WebappAdminArtifactMetadataException extends java.lang.Exception {
 
 	private static final long serialVersionUID = 1432114439142L;
 
-	private org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException faultMessage;
+	private org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException faultMessage;
 
 	public WebappAdminArtifactMetadataException() {
 		super("WebappAdminArtifactMetadataException");
@@ -30,11 +30,11 @@ public class WebappAdminArtifactMetadataException extends java.lang.Exception {
 		super(cause);
 	}
 
-	public void setFaultMessage(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException msg) {
+	public void setFaultMessage(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException msg) {
 		faultMessage = msg;
 	}
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException getFaultMessage() {
+	public org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException getFaultMessage() {
 		return faultMessage;
 	}
 }

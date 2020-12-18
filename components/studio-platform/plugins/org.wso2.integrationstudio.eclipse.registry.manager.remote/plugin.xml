@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="org.wso2.integrationstudio.eclipse.greg.viewer.action" name="WSO2 Registry Viewer Action Contributor" 
-   schema="schema/org.wso2.integrationstudio.eclipse.greg.viewer.action.exsd"/>
+   <extension-point id="org.wso2.integrationstudio.greg.viewer.action" name="WSO2 Registry Viewer Action Contributor" 
+   schema="schema/org.wso2.integrationstudio.greg.viewer.action.exsd"/>
    
    	<extension
        point="org.eclipse.ui.views">
     <view
-          class="org.wso2.integrationstudio.eclipse.registry.manager.remote.views.RegistryBrowserView"
+          class="org.wso2.integrationstudio.registry.manager.remote.views.RegistryBrowserView"
           icon="icons/registry.png"
           id="org.wso2.integrationstudio.registry.remote.registry.view"
           name="WSO2 Registry Browser">
@@ -17,9 +17,9 @@
  	<extension
        point="org.eclipse.ui.views">
     <view
-          class="org.wso2.integrationstudio.eclipse.registry.manager.remote.views.RegistryPropertyViewer"
+          class="org.wso2.integrationstudio.registry.manager.remote.views.RegistryPropertyViewer"
           icon="icons/registryProperties.png"
-          id="org.wso2.integrationstudio.eclipse.registry.properties"
+          id="org.wso2.integrationstudio.registry.properties"
           name="Resource Metadata">
     </view>
  </extension>
@@ -27,9 +27,9 @@
  	<extension
        point="org.eclipse.ui.views">
     <view
-          class="org.wso2.integrationstudio.eclipse.registry.manager.remote.views.ResourceInfoViewer"
+          class="org.wso2.integrationstudio.registry.manager.remote.views.ResourceInfoViewer"
           icon="icons/registryProperties.png"
-          id="org.wso2.integrationstudio.eclipse.registry.resource.info"
+          id="org.wso2.integrationstudio.registry.resource.info"
           name="Resource Info">
     </view>
  </extension>

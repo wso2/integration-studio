@@ -16,15 +16,15 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei12;
+package org.wso2.integrationstudio.carbonserver44microei12;
 
 import net.consensys.cava.toml.TomlParseResult;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.IProperties;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.util.ServerConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver.base.manager.IProperties;
+import org.wso2.integrationstudio.carbonserver44microei12.Activator;
+import org.wso2.integrationstudio.carbonserver44microei12.util.CarbonServer44eiUtils;
+import org.wso2.integrationstudio.carbonserver44microei12.util.ServerConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import java.util.HashMap;
 import java.util.Map;

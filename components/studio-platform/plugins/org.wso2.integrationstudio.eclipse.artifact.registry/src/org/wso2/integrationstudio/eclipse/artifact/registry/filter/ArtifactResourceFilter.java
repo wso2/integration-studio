@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.artifact.registry.filter;
+package org.wso2.integrationstudio.artifact.registry.filter;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;

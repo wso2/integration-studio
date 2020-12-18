@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.List;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IThread;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.Messages;
 
 /**
  * This class is the sequential flow of execution in a {@link ESBDebugTarget}.

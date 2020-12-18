@@ -20,9 +20,9 @@
 	<extension
          point="org.eclipse.ui.newWizards">
          <wizard name="WSO2 Plugin Project"
-         	category="org.wso2.integrationstudio.eclipse.capp.project"
-			class="org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.wizard.WSO2PluginProjectWizard"
-			id="org.wso2.integrationstudio.eclipse.artifact.newwso2pluginproject"
+         	category="org.wso2.integrationstudio.capp.project"
+			class="org.wso2.integrationstudio.wso2plugin.template.manager.ui.wizard.WSO2PluginProjectWizard"
+			id="org.wso2.integrationstudio.artifact.newwso2pluginproject"
 			wizardManifest="project_wizard.xml"
 			icon="icons/plugin-icon-16.png"
 			project="true">
@@ -33,9 +33,9 @@
         <menuContribution locationURI="menu:org.eclipse.ui.main.menu?before=file">
             <menu label="Integration Studio"
                   mnemonic="C"
-                  id="org.wso2.integrationstudio.eclipse.platform.ui.main">
+                  id="org.wso2.integrationstudio.platform.ui.main">
                 <command commandId="org.eclipse.ui.newWizard">
-            		<parameter name="newWizardId" value="org.wso2.integrationstudio.eclipse.artifact.newwso2pluginproject" />
+            		<parameter name="newWizardId" value="org.wso2.integrationstudio.artifact.newwso2pluginproject" />
          		</command>
             </menu>
         </menuContribution>

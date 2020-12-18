@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.carbonserver.base.utils;
+package org.wso2.integrationstudio.carbonserver.base.utils;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -21,14 +21,14 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadedFileItem;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.ClientTrustStorePreferencePage;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.SSLUtils;
+import org.wso2.integrationstudio.carbonserver.base.Activator;
+import org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub;
+import org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadedFileItem;
+import org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.preferences.ClientTrustStorePreferencePage;
+import org.wso2.integrationstudio.platform.ui.utils.SSLUtils;
 
 public class CAppDeployer {
 
@@ -80,15 +80,15 @@ public class CAppDeployer {
 		preferenceStore = Platform.getPreferencesService();
 
 		String clientTrustStoreLocation =
-		                                  preferenceStore.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		                                  preferenceStore.getString("org.wso2.integrationstudio.platform.ui",
 		                                                            ClientTrustStorePreferencePage.TRUST_STORE_LOCATION,
 		                                                            null, null);
 		String clientTrustStoreType =
-		                              preferenceStore.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		                              preferenceStore.getString("org.wso2.integrationstudio.platform.ui",
 		                                                        ClientTrustStorePreferencePage.TRUST_STORE_TYPE, null,
 		                                                        null);
 		String clientTrustStorePassword =
-		                                  preferenceStore.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		                                  preferenceStore.getString("org.wso2.integrationstudio.platform.ui",
 		                                                            ClientTrustStorePreferencePage.TRUST_STORE_PASSWORD,
 		                                                            null, null);
 

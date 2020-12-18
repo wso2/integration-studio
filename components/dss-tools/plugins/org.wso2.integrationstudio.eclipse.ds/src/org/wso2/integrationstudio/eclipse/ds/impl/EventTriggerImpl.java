@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList;
-import org.wso2.integrationstudio.eclipse.ds.EventTrigger;
-import org.wso2.integrationstudio.eclipse.ds.Expression;
-import org.wso2.integrationstudio.eclipse.ds.TargetTopic;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.EventSubscriptionList;
+import org.wso2.integrationstudio.ds.EventTrigger;
+import org.wso2.integrationstudio.ds.Expression;
+import org.wso2.integrationstudio.ds.TargetTopic;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,12 +33,12 @@ import org.wso2.integrationstudio.eclipse.ds.TargetTopic;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.EventTriggerImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.EventTriggerImpl#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.EventTriggerImpl#getTargetTopic <em>Target Topic</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.EventTriggerImpl#getSubscriptions <em>Subscriptions</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.EventTriggerImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.EventTriggerImpl#getLanguage <em>Language</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.EventTriggerImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.EventTriggerImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.EventTriggerImpl#getTargetTopic <em>Target Topic</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.EventTriggerImpl#getSubscriptions <em>Subscriptions</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.EventTriggerImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.EventTriggerImpl#getLanguage <em>Language</em>}</li>
  * </ul>
  *
  * @generated

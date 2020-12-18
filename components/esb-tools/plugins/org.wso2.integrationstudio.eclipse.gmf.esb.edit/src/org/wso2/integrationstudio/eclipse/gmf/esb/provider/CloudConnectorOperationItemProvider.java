@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.provider;
+package org.wso2.integrationstudio.gmf.esb.provider;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -34,17 +34,17 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperationParamEditorType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleOptionType;
+import org.wso2.integrationstudio.gmf.esb.CallTemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation;
+import org.wso2.integrationstudio.gmf.esb.CloudConnectorOperationParamEditorType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.PropertyMediator;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.RuleOptionType;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation} object.
+ * This is the item provider adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

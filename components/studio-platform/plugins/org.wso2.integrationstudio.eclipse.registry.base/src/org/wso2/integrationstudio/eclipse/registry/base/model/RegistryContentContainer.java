@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.model;
+package org.wso2.integrationstudio.registry.base.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.registry.core.exception.InvalidRegistryURLException;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.UnknownRegistryException;
+import org.wso2.integrationstudio.registry.core.exception.InvalidRegistryURLException;
+import org.wso2.integrationstudio.registry.core.exception.UnknownRegistryException;
 
 public class RegistryContentContainer {
 	private List<RegistryResourceNode> registryContent;

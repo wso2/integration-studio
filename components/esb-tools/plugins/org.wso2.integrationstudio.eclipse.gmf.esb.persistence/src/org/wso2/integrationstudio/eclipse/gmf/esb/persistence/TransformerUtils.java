@@ -1,15 +1,15 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.persistence;
+package org.wso2.integrationstudio.gmf.esb.persistence;
 
 import org.apache.synapse.endpoints.Endpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.AddressEndPointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.AddressEndPointTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.FailoverEndPointTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.TemplateEndPointTransformer;
+import org.wso2.integrationstudio.gmf.esb.AddressEndPoint;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPoint;
+import org.wso2.integrationstudio.gmf.esb.TemplateEndpoint;
+import org.wso2.integrationstudio.gmf.esb.impl.AddressEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.FailoverEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.TemplateEndpointImpl;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.AddressEndPointTransformer;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.FailoverEndPointTransformer;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.TemplateEndPointTransformer;
 
 public class TransformerUtils {
 
@@ -29,7 +29,7 @@ public class TransformerUtils {
         return information;
     }
     
-    public static Endpoint getSynapseEndpoint(org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint viEndpoint)
+    public static Endpoint getSynapseEndpoint(org.wso2.integrationstudio.gmf.esb.EndPoint viEndpoint)
             throws TransformerException {
         Endpoint endpoint = null;
         if (viEndpoint instanceof AddressEndPointImpl) {

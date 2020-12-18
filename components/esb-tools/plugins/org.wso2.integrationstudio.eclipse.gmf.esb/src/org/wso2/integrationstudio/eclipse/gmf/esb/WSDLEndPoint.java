@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,14 +17,14 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint#getWsdlUri <em>Wsdl Uri</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint#getService <em>Service</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint#getPort <em>Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.WSDLEndPoint#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.WSDLEndPoint#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.WSDLEndPoint#getWsdlUri <em>Wsdl Uri</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.WSDLEndPoint#getService <em>Service</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.WSDLEndPoint#getPort <em>Port</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getWSDLEndPoint()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getWSDLEndPoint()
  * @model
  * @generated
  */
@@ -39,14 +39,14 @@ public interface WSDLEndPoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(WSDLEndPointInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getWSDLEndPoint_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getWSDLEndPoint_InputConnector()
      * @model containment="true"
      * @generated
      */
     WSDLEndPointInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.WSDLEndPoint#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -65,14 +65,14 @@ public interface WSDLEndPoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(WSDLEndPointOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getWSDLEndPoint_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getWSDLEndPoint_OutputConnector()
      * @model containment="true"
      * @generated
      */
     WSDLEndPointOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.WSDLEndPoint#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -91,14 +91,14 @@ public interface WSDLEndPoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wsdl Uri</em>' attribute.
      * @see #setWsdlUri(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getWSDLEndPoint_WsdlUri()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getWSDLEndPoint_WsdlUri()
      * @model
      * @generated
      */
     String getWsdlUri();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint#getWsdlUri <em>Wsdl Uri</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.WSDLEndPoint#getWsdlUri <em>Wsdl Uri</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wsdl Uri</em>' attribute.
@@ -117,14 +117,14 @@ public interface WSDLEndPoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Service</em>' attribute.
      * @see #setService(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getWSDLEndPoint_Service()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getWSDLEndPoint_Service()
      * @model
      * @generated
      */
     String getService();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint#getService <em>Service</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.WSDLEndPoint#getService <em>Service</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Service</em>' attribute.
@@ -143,14 +143,14 @@ public interface WSDLEndPoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Port</em>' attribute.
      * @see #setPort(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getWSDLEndPoint_Port()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getWSDLEndPoint_Port()
      * @model
      * @generated
      */
     String getPort();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint#getPort <em>Port</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.WSDLEndPoint#getPort <em>Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Port</em>' attribute.

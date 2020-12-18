@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.artifact.dataservice.sample;
+package org.wso2.integrationstudio.artifact.dataservice.sample;
 
 import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.utils.DataServiceImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.utils.DataServiceTemplateUtils;
-import org.wso2.integrationstudio.eclipse.samples.contributor.AbstractSampleContributor;
+import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceImageUtils;
+import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceTemplateUtils;
+import org.wso2.integrationstudio.samples.contributor.AbstractSampleContributor;
 
 public class DataserviceSampleContributor extends AbstractSampleContributor{
 

@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.testcase;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.testcase;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,11 +24,11 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.Assertion;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.InputProperty;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.SynapseUnitTest;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.TestCase;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.CommonUtil;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.Assertion;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.InputProperty;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.SynapseUnitTest;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.TestCase;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.CommonUtil;
 
 /**
  * Class responsible for creation of wizard page for test cases.

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.updater;
+package org.wso2.integrationstudio.updater;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -24,7 +24,7 @@ import org.osgi.framework.BundleContext;
 public class UpdaterPlugin extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.updater"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.updater"; //$NON-NLS-1$
 
 	// The shared instance
 	private static UpdaterPlugin plugin;

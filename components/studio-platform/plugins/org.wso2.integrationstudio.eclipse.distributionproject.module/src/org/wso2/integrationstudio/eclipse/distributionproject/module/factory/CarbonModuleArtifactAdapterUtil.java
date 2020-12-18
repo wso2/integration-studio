@@ -15,13 +15,13 @@
  */
 
 
-package org.wso2.integrationstudio.eclipse.distributionproject.module.factory;
+package org.wso2.integrationstudio.distributionproject.module.factory;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IModuleArtifact;
 import org.eclipse.wst.server.core.ServerUtil;
-import org.wso2.integrationstudio.eclipse.distributionproject.module.utils.Constants;
+import org.wso2.integrationstudio.distributionproject.module.utils.Constants;
 
 public class CarbonModuleArtifactAdapterUtil {
 

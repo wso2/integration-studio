@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -77,10 +77,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -491,7 +491,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#getAnonymous()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#getAnonymous()
 	 * 
 	 */
 	public Boolean getAnonymous() {
@@ -501,7 +501,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#setAnonymous(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#setAnonymous(Boolean newValue)
 	 * 
 	 */
 	public void setAnonymous(Boolean newValue) {
@@ -523,7 +523,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#getSequenceName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#getSequenceName()
 	 * 
 	 */
 	public String getSequenceName() {
@@ -533,7 +533,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#setSequenceName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#setSequenceName(String newValue)
 	 * 
 	 */
 	public void setSequenceName(String newValue) {
@@ -557,7 +557,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#initMediators(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#initMediators(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
 	public void initMediators(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -580,7 +580,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#updateMediators()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#updateMediators()
 	 * 
 	 */
 	public void updateMediators() {
@@ -590,7 +590,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#addFilterMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#addFilterMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToMediators(ViewerFilter filter) {
@@ -600,7 +600,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#addBusinessFilterMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#addBusinessFilterMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToMediators(ViewerFilter filter) {
@@ -610,7 +610,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#isContainedInMediatorsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#isContainedInMediatorsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInMediatorsTable(EObject element) {
@@ -620,7 +620,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#getOnError()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#getOnError()
 	 * 
 	 */
 	public EObject getOnError() {
@@ -635,7 +635,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#initOnError(EObjectFlatComboSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#initOnError(EObjectFlatComboSettings)
 	 */
 	public void initOnError(EObjectFlatComboSettings settings) {
 		onError.setInput(settings);
@@ -655,7 +655,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#setOnError(EObject newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#setOnError(EObject newValue)
 	 * 
 	 */
 	public void setOnError(EObject newValue) {
@@ -677,7 +677,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#setOnErrorButtonMode(ButtonsModeEnum newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#setOnErrorButtonMode(ButtonsModeEnum newValue)
 	 */
 	public void setOnErrorButtonMode(ButtonsModeEnum newValue) {
 		onError.setButtonMode(newValue);
@@ -686,7 +686,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#addFilterOnError(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#addFilterOnError(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToOnError(ViewerFilter filter) {
@@ -696,7 +696,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#addBusinessFilterOnError(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#addBusinessFilterOnError(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToOnError(ViewerFilter filter) {
@@ -706,7 +706,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -716,7 +716,7 @@ public class MediatorSequencePropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorSequencePropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorSequencePropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {

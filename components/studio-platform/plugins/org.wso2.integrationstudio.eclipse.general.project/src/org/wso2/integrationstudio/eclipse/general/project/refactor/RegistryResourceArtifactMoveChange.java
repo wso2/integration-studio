@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.general.project.refactor;
+package org.wso2.integrationstudio.general.project.refactor;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;

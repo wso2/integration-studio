@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.templates.dashboard.handlers;
+package org.wso2.integrationstudio.templates.dashboard.handlers;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -8,9 +8,9 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.templates.dashboard.Activator;
 
 public class DocumentationViewerHandler extends AbstractHandler {
 

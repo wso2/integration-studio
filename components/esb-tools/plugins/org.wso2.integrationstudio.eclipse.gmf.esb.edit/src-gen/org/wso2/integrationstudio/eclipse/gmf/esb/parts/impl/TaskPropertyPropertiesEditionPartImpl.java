@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -52,10 +52,10 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertyPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.TaskPropertyPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -301,7 +301,7 @@ public class TaskPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertyPropertiesEditionPart#getPropertyName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertyPropertiesEditionPart#getPropertyName()
 	 * 
 	 */
 	public String getPropertyName() {
@@ -311,7 +311,7 @@ public class TaskPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertyPropertiesEditionPart#setPropertyName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertyPropertiesEditionPart#setPropertyName(String newValue)
 	 * 
 	 */
 	public void setPropertyName(String newValue) {
@@ -333,7 +333,7 @@ public class TaskPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertyPropertiesEditionPart#getPropertyValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertyPropertiesEditionPart#getPropertyValue()
 	 * 
 	 */
 	public String getPropertyValue() {
@@ -343,7 +343,7 @@ public class TaskPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertyPropertiesEditionPart#setPropertyValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertyPropertiesEditionPart#setPropertyValue(String newValue)
 	 * 
 	 */
 	public void setPropertyValue(String newValue) {
@@ -365,7 +365,7 @@ public class TaskPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertyPropertiesEditionPart#getPropertyType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertyPropertiesEditionPart#getPropertyType()
 	 * 
 	 */
 	public Enumerator getPropertyType() {
@@ -376,7 +376,7 @@ public class TaskPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertyPropertiesEditionPart#initPropertyType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertyPropertiesEditionPart#initPropertyType(Object input, Enumerator current)
 	 */
 	public void initPropertyType(Object input, Enumerator current) {
 		propertyType.setInput(input);
@@ -394,7 +394,7 @@ public class TaskPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertyPropertiesEditionPart#setPropertyType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertyPropertiesEditionPart#setPropertyType(Enumerator newValue)
 	 * 
 	 */
 	public void setPropertyType(Enumerator newValue) {

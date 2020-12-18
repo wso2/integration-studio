@@ -26,27 +26,27 @@
 		<settings optionId="create.api" title="Synapse API Artifact"
 			description="Create a new Synapse API Artifact" error="Please give a name and a context for the API">
 			<data modelProperty="api.name" type="string"
-				fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Name*</data>
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Name*</data>
 			<data modelProperty="api.context" type="string"
-				fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Context*</data>
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Context*</data>
 			<!-- <data modelProperty="api.hostname" type="string"
-				fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Hostname</data>
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Hostname</data>
 			<data modelProperty="api.port" type="string"
-				fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Port</data> -->
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Port</data> -->
 			<data modelProperty="api.versiontype" type="list"
-				fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"
-				controlData="select=single;modify=non-editable;class=org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.APIVersionTypes">Version Type</data>	
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.integrationstudio.artifact.synapse.api.validator.APIVersionTypes">Version Type</data>	
 			<data modelProperty="api.version" type="string"
-				fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Version</data>
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Version</data>
 			<group id ="location"/>	
 			<data modelProperty="api.publishswagger" type="string"
-				fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Path to Swagger Definition</data>
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Path to Swagger Definition</data>
 			<data modelProperty="save.location" type="workspacefolder"
-				fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController"
 				group="location"
-				controlData="filterClass=org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ESBProjectFilter">Save location:</data>
+				controlData="filterClass=org.wso2.integrationstudio.artifact.synapse.api.validator.ESBProjectFilter">Save location:</data>
 			<data modelProperty="create.esb.prj" type="link"
-				fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController"
 				group="location"
 				controlData="align=right">&lt;a&gt;Create a new ESB project...&lt;/a&gt;</data>
 		</settings>
@@ -54,31 +54,31 @@
 				  title="Synapse API Artifact" 
 				  description="Create a Synapse API Artifact using a configuration file with API defined" 
 				  error="Browse and select a API configuration file">
-			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">API Configuration File</data>
-			<data modelProperty="save.location" type="workspacefolder" fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController" 
-			controlData="filterClass=org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ESBProjectFilter" >Save API in: </data>
-			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController" 
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">API Configuration File</data>
+			<data modelProperty="save.location" type="workspacefolder" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" 
+			controlData="filterClass=org.wso2.integrationstudio.artifact.synapse.api.validator.ESBProjectFilter" >Save API in: </data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" 
 			controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
-			<data modelProperty="available.apis" type="list" fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController" 
-			controlData="select=multiple;selectAllbtn=true;modify=non-editable;class=org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.APIsList">Available APIs</data>
+			<data modelProperty="available.apis" type="list" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" 
+			controlData="select=multiple;selectAllbtn=true;modify=non-editable;class=org.wso2.integrationstudio.artifact.synapse.api.validator.APIsList">Available APIs</data>
 		</settings>
 		<settings optionId="create.swagger"
 				  title="Generate Synapse API using Swagger File"
 				  description="Create a Synapse API Artifact using a Swagger Definition file"
 				  error="Browse and select a Swagger file">
 			<data modelProperty="swagger.file" type="file" filter="*.yaml;*.json"
-				fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Swagger Definition File</data>
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Swagger Definition File</data>
 			<group id ="location"/>
-			<data modelProperty="swagger.reg.location" type="workspacefolder" fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController" 
-			controlData="filterClass=org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.RegistryProjectFilter" >Swagger Registry Path </data>
-			<data modelProperty="create.reg.prj" type="link" fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController" 
+			<data modelProperty="swagger.reg.location" type="workspacefolder" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" 
+			controlData="filterClass=org.wso2.integrationstudio.artifact.synapse.api.validator.RegistryProjectFilter" >Swagger Registry Path </data>
+			<data modelProperty="create.reg.prj" type="link" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" 
 			controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 			<data modelProperty="save.location" type="workspacefolder"
-				fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController"
 				group="location"
-				controlData="filterClass=org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ESBProjectFilter">Save location:</data>
+				controlData="filterClass=org.wso2.integrationstudio.artifact.synapse.api.validator.ESBProjectFilter">Save location:</data>
 			<data modelProperty="create.esb.prj" type="link"
-				fieldController="org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController"
 				group="location"
 				controlData="align=right">&lt;a&gt;Create a new ESB project...&lt;/a&gt;</data>
 		</settings>

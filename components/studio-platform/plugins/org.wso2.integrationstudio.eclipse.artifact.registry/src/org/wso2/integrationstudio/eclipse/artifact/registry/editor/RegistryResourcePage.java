@@ -15,7 +15,7 @@
  */
 
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.editor;
+package org.wso2.integrationstudio.artifact.registry.editor;
 
 import java.io.File;
 import java.util.HashMap;
@@ -51,17 +51,17 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.artifact.registry.Activator;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.RegistryArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryCollection;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryDump;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryElement;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryItem;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.MediaManager;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.artifact.registry.Activator;
+import org.wso2.integrationstudio.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.integrationstudio.general.project.artifact.RegistryArtifact;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryCollection;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryDump;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryElement;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryItem;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.MediaManager;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 public class RegistryResourcePage extends FormPage {
 	

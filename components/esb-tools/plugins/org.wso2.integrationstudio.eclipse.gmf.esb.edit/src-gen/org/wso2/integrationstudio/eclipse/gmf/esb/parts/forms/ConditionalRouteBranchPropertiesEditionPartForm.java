@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -38,12 +38,12 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouteBranchPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.EvaluatorExpressionProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouteBranchPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -195,7 +195,7 @@ public class ConditionalRouteBranchPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouteBranchPropertiesEditionPart#getBreakAfterRoute()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouteBranchPropertiesEditionPart#getBreakAfterRoute()
 	 * 
 	 */
 	public Boolean getBreakAfterRoute() {
@@ -205,7 +205,7 @@ public class ConditionalRouteBranchPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouteBranchPropertiesEditionPart#setBreakAfterRoute(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouteBranchPropertiesEditionPart#setBreakAfterRoute(Boolean newValue)
 	 * 
 	 */
 	public void setBreakAfterRoute(Boolean newValue) {

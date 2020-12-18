@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.logging.internal.impl;
+package org.wso2.integrationstudio.logging.internal.impl;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.wso2.integrationstudio.eclipse.logging.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 
 public class IntegrationStudioLog implements IIntegrationStudioLog {
 	private String pluginId;
@@ -37,13 +37,13 @@ public class IntegrationStudioLog implements IIntegrationStudioLog {
     }
 	
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.logging.internal.impl.IIntegrationStudioLog#setPluginId(java.lang.String)
+     * @see org.wso2.integrationstudio.logging.internal.impl.IIntegrationStudioLog#setPluginId(java.lang.String)
      */
 	public void setPluginId(String pluginId) {
 	    this.pluginId = pluginId;
     }
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.logging.internal.impl.IIntegrationStudioLog#getPluginId()
+     * @see org.wso2.integrationstudio.logging.internal.impl.IIntegrationStudioLog#getPluginId()
      */
 	public String getPluginId() {
 	    return pluginId;
@@ -54,14 +54,14 @@ public class IntegrationStudioLog implements IIntegrationStudioLog {
     }
 
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.logging.internal.impl.IIntegrationStudioLog#setClassObj(java.lang.Class)
+     * @see org.wso2.integrationstudio.logging.internal.impl.IIntegrationStudioLog#setClassObj(java.lang.Class)
      */
 	public void setClassObj(Class<Object> classObj) {
 	    this.classObj = classObj;
     }
 
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.logging.internal.impl.IIntegrationStudioLog#getClassObj()
+     * @see org.wso2.integrationstudio.logging.internal.impl.IIntegrationStudioLog#getClassObj()
      */
 	public Class<Object> getClassObj() {
 	    return classObj;
@@ -76,42 +76,42 @@ public class IntegrationStudioLog implements IIntegrationStudioLog {
 	}
 	
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.logging.internal.impl.IIntegrationStudioLog#info(java.lang.String)
+     * @see org.wso2.integrationstudio.logging.internal.impl.IIntegrationStudioLog#info(java.lang.String)
      */
 	public void info(String message){
 		info(message, null);
 	}
 
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.logging.internal.impl.IIntegrationStudioLog#info(java.lang.String, java.lang.Exception)
+     * @see org.wso2.integrationstudio.logging.internal.impl.IIntegrationStudioLog#info(java.lang.String, java.lang.Exception)
      */
 	public void info(String message, Exception e){
 		log(getStatusObject(IStatus.INFO, message, e));
 	}
 
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.logging.internal.impl.IIntegrationStudioLog#warn(java.lang.String)
+     * @see org.wso2.integrationstudio.logging.internal.impl.IIntegrationStudioLog#warn(java.lang.String)
      */
 	public void warn(String message){
 		warn(message, null);
 	}
 
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.logging.internal.impl.IIntegrationStudioLog#warn(java.lang.String, java.lang.Exception)
+     * @see org.wso2.integrationstudio.logging.internal.impl.IIntegrationStudioLog#warn(java.lang.String, java.lang.Exception)
      */
 	public void warn(String message, Exception e){
 		log(getStatusObject(IStatus.WARNING, message, e));
 	}
 
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.logging.internal.impl.IIntegrationStudioLog#error(java.lang.String)
+     * @see org.wso2.integrationstudio.logging.internal.impl.IIntegrationStudioLog#error(java.lang.String)
      */
 	public void error(String message){
 		error(message,null);
 	}
 
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.logging.internal.impl.IIntegrationStudioLog#error(java.lang.String, java.lang.Exception)
+     * @see org.wso2.integrationstudio.logging.internal.impl.IIntegrationStudioLog#error(java.lang.String, java.lang.Exception)
      */
 	public void error(String message, Exception e){
 		log(getStatusObject(IStatus.ERROR, message, e));

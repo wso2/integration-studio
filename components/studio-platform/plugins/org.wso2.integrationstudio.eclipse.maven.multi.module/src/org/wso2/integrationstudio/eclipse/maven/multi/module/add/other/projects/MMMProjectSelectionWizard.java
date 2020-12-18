@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.maven.multi.module.add.other.projects;
+package org.wso2.integrationstudio.maven.multi.module.add.other.projects;
 
 import java.io.File;
 import org.apache.commons.io.FileUtils;
@@ -29,12 +29,12 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.maven.multi.module.Activator;
-import org.wso2.integrationstudio.eclipse.maven.multi.module.handlers.MavenMultiModuleProjectImageUtils;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.MavenMultiModuleImportUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.maven.multi.module.Activator;
+import org.wso2.integrationstudio.maven.multi.module.handlers.MavenMultiModuleProjectImageUtils;
+import org.wso2.integrationstudio.distribution.project.util.MavenMultiModuleImportUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 
 public class MMMProjectSelectionWizard extends AbstractWSO2ProjectCreationWizard {
 

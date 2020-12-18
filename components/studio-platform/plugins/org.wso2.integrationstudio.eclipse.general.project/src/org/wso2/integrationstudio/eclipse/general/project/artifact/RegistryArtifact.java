@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.general.project.artifact;
+package org.wso2.integrationstudio.general.project.artifact;
 
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryElement;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryElement;
 
 import java.util.ArrayList;
 import java.util.Collections;

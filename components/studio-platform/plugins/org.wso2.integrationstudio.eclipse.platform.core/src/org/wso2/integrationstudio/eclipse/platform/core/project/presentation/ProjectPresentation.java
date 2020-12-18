@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.project.presentation;
+package org.wso2.integrationstudio.platform.core.project.presentation;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

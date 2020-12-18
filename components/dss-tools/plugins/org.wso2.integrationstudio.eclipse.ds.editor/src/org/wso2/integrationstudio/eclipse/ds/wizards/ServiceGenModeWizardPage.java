@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.wizards;
+package org.wso2.integrationstudio.ds.wizards;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -15,8 +15,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.UiUtil;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.ValidateUtil;
+import org.wso2.integrationstudio.ds.wizards.util.UiUtil;
+import org.wso2.integrationstudio.ds.wizards.util.ValidateUtil;
 
 public class ServiceGenModeWizardPage extends WizardPage implements Listener {
 

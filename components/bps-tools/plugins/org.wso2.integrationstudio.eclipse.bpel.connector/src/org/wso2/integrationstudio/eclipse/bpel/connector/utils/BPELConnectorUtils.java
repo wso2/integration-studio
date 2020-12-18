@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.bpel.connector.utils;
+package org.wso2.integrationstudio.bpel.connector.utils;
 
 import java.io.File;
 import java.util.ArrayList;

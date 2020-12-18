@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distributionproject.module.factory;
+package org.wso2.integrationstudio.distributionproject.module.factory;
 
 import org.eclipse.wst.common.componentcore.datamodel.FacetInstallDataModelProvider;
 import org.eclipse.wst.common.frameworks.datamodel.DataModelFactory;
@@ -24,7 +24,7 @@ public class CarbonFacetInstallDataModelProvider extends FacetInstallDataModelPr
 	public CarbonFacetInstallDataModelProvider() {
 		super();
 		setDataModel(DataModelFactory.createDataModel(this));
-	    setProperty(FACET_ID, "org.wso2.integrationstudio.eclipse.carbon.facetId");
-	    setProperty(FACET_VERSION, ProjectFacetsManager.getProjectFacet("org.wso2.integrationstudio.eclipse.carbon.facetId").getVersion("1.0"));//new FacetVersion());
+	    setProperty(FACET_ID, "org.wso2.integrationstudio.carbon.facetId");
+	    setProperty(FACET_VERSION, ProjectFacetsManager.getProjectFacet("org.wso2.integrationstudio.carbon.facetId").getVersion("1.0"));//new FacetVersion());
     }
 }

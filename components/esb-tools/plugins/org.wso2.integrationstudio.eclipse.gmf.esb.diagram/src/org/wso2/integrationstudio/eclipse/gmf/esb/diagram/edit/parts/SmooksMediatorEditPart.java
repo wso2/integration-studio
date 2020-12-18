@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.SMOOKS_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.SMOOKS_MEDIATOR_ICON_PATH;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
@@ -47,25 +47,25 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
 import org.wso2.carbon.mediator.transform.xml.SmooksMediatorSerializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputMethod;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolTip;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.SmooksMediatorCanonicalEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.SmooksMediatorItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.SmooksMediatorTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.OutputMethod;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.CustomToolTip;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.SmooksMediatorCanonicalEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.SmooksMediatorItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.validator.GraphicalValidatorUtil;
+import org.wso2.integrationstudio.gmf.esb.diagram.validator.MediatorValidationUtil;
+import org.wso2.integrationstudio.gmf.esb.impl.SmooksMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.SmooksMediatorTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * @generated NOT

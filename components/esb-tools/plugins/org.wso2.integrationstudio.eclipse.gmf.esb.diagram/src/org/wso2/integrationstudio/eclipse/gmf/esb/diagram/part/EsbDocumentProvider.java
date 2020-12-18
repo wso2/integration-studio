@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.part;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -146,7 +146,7 @@ public class EsbDocumentProvider extends AbstractDocumentProvider implements IDi
      */
     private TransactionalEditingDomain createEditingDomain() {
         TransactionalEditingDomain editingDomain = DiagramEditingDomainFactory.getInstance().createEditingDomain();
-        editingDomain.setID("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EditingDomain"); //$NON-NLS-1$
+        editingDomain.setID("org.wso2.integrationstudio.gmf.esb.diagram.EditingDomain"); //$NON-NLS-1$
         final NotificationFilter diagramResourceModifiedFilter = NotificationFilter
                 .createNotifierFilter(editingDomain.getResourceSet())
                 .and(NotificationFilter.createEventTypeFilter(Notification.ADD))

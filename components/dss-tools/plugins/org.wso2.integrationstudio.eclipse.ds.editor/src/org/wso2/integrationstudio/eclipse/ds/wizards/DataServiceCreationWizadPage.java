@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.wizards;
+package org.wso2.integrationstudio.ds.wizards;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,15 +26,15 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.CSVReader;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.DBUriConstants;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.DLoader;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.ExelReader;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.FileUtil;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.GSpreadReader;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.URIProcessor;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.UiUtil;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.ValidateUtil;
+import org.wso2.integrationstudio.ds.wizards.util.CSVReader;
+import org.wso2.integrationstudio.ds.wizards.util.DBUriConstants;
+import org.wso2.integrationstudio.ds.wizards.util.DLoader;
+import org.wso2.integrationstudio.ds.wizards.util.ExelReader;
+import org.wso2.integrationstudio.ds.wizards.util.FileUtil;
+import org.wso2.integrationstudio.ds.wizards.util.GSpreadReader;
+import org.wso2.integrationstudio.ds.wizards.util.URIProcessor;
+import org.wso2.integrationstudio.ds.wizards.util.UiUtil;
+import org.wso2.integrationstudio.ds.wizards.util.ValidateUtil;
 
 import com.google.gdata.util.ServiceException;
 

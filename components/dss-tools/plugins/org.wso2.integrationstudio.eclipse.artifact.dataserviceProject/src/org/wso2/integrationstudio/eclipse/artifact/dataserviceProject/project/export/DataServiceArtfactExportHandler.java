@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.dataserviceProject.project.export;
+package org.wso2.integrationstudio.artifact.dataserviceProject.project.export;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -28,10 +28,10 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
-import org.wso2.integrationstudio.eclipse.artifact.dataserviceProject.utils.DataServiceProjectConstants;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.dataserviceProject.utils.DataServiceProjectConstants;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.project.export.ProjectArtifactHandler;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class DataServiceArtfactExportHandler extends ProjectArtifactHandler {
 

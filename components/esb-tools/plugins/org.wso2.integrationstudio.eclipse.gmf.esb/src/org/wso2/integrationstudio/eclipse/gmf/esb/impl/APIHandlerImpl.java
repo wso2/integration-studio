@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -31,9 +31,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIHandlerProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.APIHandler;
+import org.wso2.integrationstudio.gmf.esb.APIHandlerProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,8 +43,8 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIHandlerImpl#getClassName <em>Class Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIHandlerImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIHandlerImpl#getClassName <em>Class Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIHandlerImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  *
  * @generated

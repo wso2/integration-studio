@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,24 +17,24 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getVariables <em>Variables</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getTargetXPath <em>Target XPath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getScriptKeyType <em>Script Key Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getStaticScriptKey <em>Static Script Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getDynamicScriptKey <em>Dynamic Script Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getQueryKey <em>Query Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getVariables <em>Variables</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getTargetXPath <em>Target XPath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getScriptKeyType <em>Script Key Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getStaticScriptKey <em>Static Script Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getDynamicScriptKey <em>Dynamic Script Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getQueryKey <em>Query Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getXQueryMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getXQueryMediator()
  * @model
  * @generated
  */
 public interface XQueryMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariable}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.XQueryVariable}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,
@@ -42,7 +42,7 @@ public interface XQueryMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Variables</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getXQueryMediator_Variables()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getXQueryMediator_Variables()
      * @model containment="true"
      * @generated
      */
@@ -58,14 +58,14 @@ public interface XQueryMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Target XPath</em>' containment reference.
      * @see #setTargetXPath(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getXQueryMediator_TargetXPath()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getXQueryMediator_TargetXPath()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getTargetXPath();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getTargetXPath <em>Target XPath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getTargetXPath <em>Target XPath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Target XPath</em>' containment reference.
@@ -76,7 +76,7 @@ public interface XQueryMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Script Key Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.KeyType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.KeyType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Script Key Type</em>' attribute isn't clear,
@@ -84,20 +84,20 @@ public interface XQueryMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Script Key Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.KeyType
+     * @see org.wso2.integrationstudio.gmf.esb.KeyType
      * @see #setScriptKeyType(KeyType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getXQueryMediator_ScriptKeyType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getXQueryMediator_ScriptKeyType()
      * @model
      * @generated
      */
     KeyType getScriptKeyType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getScriptKeyType <em>Script Key Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getScriptKeyType <em>Script Key Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Script Key Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.KeyType
+     * @see org.wso2.integrationstudio.gmf.esb.KeyType
      * @see #getScriptKeyType()
      * @generated
      */
@@ -113,14 +113,14 @@ public interface XQueryMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Static Script Key</em>' containment reference.
      * @see #setStaticScriptKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getXQueryMediator_StaticScriptKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getXQueryMediator_StaticScriptKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getStaticScriptKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getStaticScriptKey <em>Static Script Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getStaticScriptKey <em>Static Script Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Static Script Key</em>' containment reference.
@@ -139,14 +139,14 @@ public interface XQueryMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Dynamic Script Key</em>' containment reference.
      * @see #setDynamicScriptKey(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getXQueryMediator_DynamicScriptKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getXQueryMediator_DynamicScriptKey()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getDynamicScriptKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getDynamicScriptKey <em>Dynamic Script Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getDynamicScriptKey <em>Dynamic Script Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Dynamic Script Key</em>' containment reference.
@@ -165,14 +165,14 @@ public interface XQueryMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Query Key</em>' containment reference.
      * @see #setQueryKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getXQueryMediator_QueryKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getXQueryMediator_QueryKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getQueryKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getQueryKey <em>Query Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getQueryKey <em>Query Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Query Key</em>' containment reference.
@@ -191,14 +191,14 @@ public interface XQueryMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(XQueryMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getXQueryMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getXQueryMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     XQueryMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -217,14 +217,14 @@ public interface XQueryMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(XQueryMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getXQueryMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getXQueryMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     XQueryMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.XQueryMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.

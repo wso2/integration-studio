@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.BorderLayout;
@@ -46,10 +46,10 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontMetrics;
 import org.eclipse.swt.graphics.Image;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.SlidingBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.EsbServerCanonicalEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.EsbServerItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.SlidingBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.EsbServerCanonicalEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.EsbServerItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
 
 /**
  * @generated

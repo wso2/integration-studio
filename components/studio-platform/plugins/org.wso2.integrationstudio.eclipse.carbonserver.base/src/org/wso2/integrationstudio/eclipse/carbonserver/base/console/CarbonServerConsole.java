@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.console;
+package org.wso2.integrationstudio.carbonserver.base.console;
 
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.IConsoleManager;
 import org.eclipse.ui.console.IOConsole;
 import org.eclipse.ui.console.IOConsoleOutputStream;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver.base.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import java.io.IOException;
 

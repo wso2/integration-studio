@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.validators;
+package org.wso2.integrationstudio.artifact.registry.validators;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.wso2.integrationstudio.eclipse.artifact.registry.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.registry.utils.RegistryArtifactConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.artifact.registry.Activator;
+import org.wso2.integrationstudio.artifact.registry.utils.RegistryArtifactConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class ProjectFilter extends ViewerFilter {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

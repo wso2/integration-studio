@@ -1,9 +1,9 @@
-package org.wso2.integrationstudio.eclipse.capp.maven.utils;
+package org.wso2.integrationstudio.capp.maven.utils;
 
 import org.eclipse.osgi.util.NLS;
 
 public final class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.capp.maven.utils.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.capp.maven.utils.messages"; //$NON-NLS-1$
 	public static String MAVEN_LIBRARY_PLUGIN_VERSION;
 	public static String MAVEN_SYNAPSE_MEDIATOR_PLUGIN_VERSION;
 	public static String MAVEN_REGISTRY_RESOURCE_VERSION;

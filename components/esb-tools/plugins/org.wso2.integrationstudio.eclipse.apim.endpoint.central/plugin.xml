@@ -22,8 +22,8 @@
       point="org.eclipse.ui.commands">
       <command
          defaultHandler=
-             "org.wso2.integrationstudio.eclipse.apim.endpoint.central.handler.EndpointCentralOpenCommandHandler"
-         id="org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils.Config"
+             "org.wso2.integrationstudio.apim.endpoint.central.handler.EndpointCentralOpenCommandHandler"
+         id="org.wso2.integrationstudio.apim.endpoint.central.utils.Config"
          name="Config">
       </command>
    </extension>
@@ -32,9 +32,9 @@
       <menuContribution
          locationURI="toolbar:org.eclipse.ui.main.toolbar">
          <toolbar
-            id="org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils.toolbar1">
+            id="org.wso2.integrationstudio.apim.endpoint.central.utils.toolbar1">
             <command
-               commandId="org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils.Config"
+               commandId="org.wso2.integrationstudio.apim.endpoint.central.utils.Config"
                icon="icons/tool_bar_icon.png"
                label="Launch Configuration"
                style="push">
@@ -45,7 +45,7 @@
    <extension
       point="org.eclipse.ui.startup">
       <startup
-         class="org.wso2.integrationstudio.eclipse.apim.endpoint.central.handler.APIMEarlyStartupHandler">
+         class="org.wso2.integrationstudio.apim.endpoint.central.handler.APIMEarlyStartupHandler">
       </startup>
    </extension>
 </plugin>

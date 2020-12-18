@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.samples.contributor;
+package org.wso2.integrationstudio.samples.contributor;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,9 +25,9 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.utils.archive.ArchiveManipulator;
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.archive.ArchiveManipulator;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public abstract class AbstractSampleContributor implements IIntegrationStudioSampleContributor {
 	static String AXIS2_SAMPLE_TYPE="axis2";

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Iterator;
 import java.util.Properties;
@@ -27,7 +27,7 @@ import org.apache.synapse.config.xml.POJOCommandMediatorFactory;
 import org.apache.synapse.config.xml.SynapseXPathFactory;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.POJOCommandMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.POJOCommandMediatorExt;
 
 public class DummyPOJOCommandMediatorFactory extends POJOCommandMediatorFactory {
 

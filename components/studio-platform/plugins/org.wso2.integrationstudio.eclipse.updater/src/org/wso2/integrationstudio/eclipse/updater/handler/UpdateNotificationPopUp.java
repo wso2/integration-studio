@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.updater.handler;
+package org.wso2.integrationstudio.updater.handler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +39,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.updater.UpdaterPlugin;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.updater.UpdaterPlugin;
 
 public class UpdateNotificationPopUp extends AbstractNotificationPopup {
     
@@ -137,9 +137,9 @@ public class UpdateNotificationPopUp extends AbstractNotificationPopup {
                 IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench()
                         .getService(IHandlerService.class);
                 try {
-                    handlerService.executeCommand("org.wso2.integrationstudio.eclipse.updater.CheckUpdatesCmd", null);
+                    handlerService.executeCommand("org.wso2.integrationstudio.updater.CheckUpdatesCmd", null);
                 } catch (Exception err) {
-                    log.error("org.wso2.integrationstudio.eclipse.updater.CheckUpdatesCmd not found", err);
+                    log.error("org.wso2.integrationstudio.updater.CheckUpdatesCmd not found", err);
                 }
                 
                 updateNowLbl.setVisible(false);

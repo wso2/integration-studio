@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -32,7 +32,7 @@ import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.MessageProcessorFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.message.processor.MessageProcessor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageProcessor;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.DummyMessageProcessor;
 
 /**
  * Create an instance of the given Dummy Message Processor, and sets properties

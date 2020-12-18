@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.utils;
+package org.wso2.integrationstudio.platform.ui.utils;
 
 public class UnrecogizedArtifactTypeException extends Exception {
 

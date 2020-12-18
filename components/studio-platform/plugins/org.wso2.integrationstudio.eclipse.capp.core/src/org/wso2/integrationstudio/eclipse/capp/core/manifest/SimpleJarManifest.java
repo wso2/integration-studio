@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.manifest;
+package org.wso2.integrationstudio.capp.core.manifest;
 
 
 public class SimpleJarManifest extends AbstractManifest {

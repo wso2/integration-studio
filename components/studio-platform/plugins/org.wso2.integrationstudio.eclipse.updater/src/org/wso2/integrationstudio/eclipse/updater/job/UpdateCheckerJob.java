@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.updater.job;
+package org.wso2.integrationstudio.updater.job;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -23,11 +23,11 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.updater.Messages;
-import org.wso2.integrationstudio.eclipse.updater.UpdaterPlugin;
-import org.wso2.integrationstudio.eclipse.updater.core.UpdateManager;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.updater.Messages;
+import org.wso2.integrationstudio.updater.UpdaterPlugin;
+import org.wso2.integrationstudio.updater.core.UpdateManager;
 
 public class UpdateCheckerJob extends Job {
 

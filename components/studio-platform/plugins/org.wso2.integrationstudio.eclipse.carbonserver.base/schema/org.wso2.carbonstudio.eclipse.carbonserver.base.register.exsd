@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.carbonserver.base" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.carbonserver.base" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.carbonserver.base" id="org.wso2.integrationstudio.eclipse.carbonserver.base.register" name="Carbon Server Registration Extension Point"/>
+         <meta.schema plugin="org.wso2.integrationstudio.carbonserver.base" id="org.wso2.integrationstudio.carbonserver.base.register" name="Carbon Server Registration Extension Point"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -76,7 +76,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.carbonserver.base.manager.ICarbonOperationManager"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.carbonserver.base.manager.ICarbonOperationManager"/>
                </appinfo>
             </annotation>
          </attribute>

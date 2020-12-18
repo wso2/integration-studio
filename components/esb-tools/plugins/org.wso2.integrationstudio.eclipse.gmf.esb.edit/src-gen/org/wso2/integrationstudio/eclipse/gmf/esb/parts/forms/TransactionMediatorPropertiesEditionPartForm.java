@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
@@ -67,12 +67,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -385,7 +385,7 @@ public class TransactionMediatorPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -395,7 +395,7 @@ public class TransactionMediatorPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -417,7 +417,7 @@ public class TransactionMediatorPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -427,7 +427,7 @@ public class TransactionMediatorPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -468,7 +468,7 @@ public class TransactionMediatorPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -478,7 +478,7 @@ public class TransactionMediatorPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -500,7 +500,7 @@ public class TransactionMediatorPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getAction()
 	 * 
 	 */
 	public Enumerator getAction() {
@@ -511,7 +511,7 @@ public class TransactionMediatorPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#initAction(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#initAction(Object input, Enumerator current)
 	 */
 	public void initAction(Object input, Enumerator current) {
 		action.setInput(input);
@@ -529,7 +529,7 @@ public class TransactionMediatorPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setAction(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setAction(Enumerator newValue)
 	 * 
 	 */
 	public void setAction(Enumerator newValue) {

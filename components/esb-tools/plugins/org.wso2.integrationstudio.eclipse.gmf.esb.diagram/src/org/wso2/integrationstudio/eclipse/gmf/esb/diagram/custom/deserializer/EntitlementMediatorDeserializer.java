@@ -1,20 +1,20 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementCallbackHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementClientType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.EntitlementMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.EntitlementCallbackHandler;
+import org.wso2.integrationstudio.gmf.esb.EntitlementClientType;
+import org.wso2.integrationstudio.gmf.esb.EntitlementMediator;
+import org.wso2.integrationstudio.gmf.esb.EntitlementSequenceType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.EntitlementMediatorExt;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class EntitlementMediatorDeserializer
         extends AbstractEsbNodeDeserializer<AbstractMediator, EntitlementMediator> {

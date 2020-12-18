@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.provider;
+package org.wso2.integrationstudio.artifact.registry.provider;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -27,11 +27,11 @@ import java.util.regex.Pattern;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryCollection;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryDump;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryElement;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryItem;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryCollection;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryDump;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryElement;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryItem;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 public class NavigatorNode {
 	

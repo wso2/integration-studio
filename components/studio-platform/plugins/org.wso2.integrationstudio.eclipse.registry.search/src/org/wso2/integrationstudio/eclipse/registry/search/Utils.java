@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.search;
+package org.wso2.integrationstudio.registry.search;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,8 +26,8 @@ import org.wso2.carbon.registry.app.RemoteRegistry;
 import org.wso2.carbon.registry.core.RegistryConstants;
 import org.wso2.carbon.registry.core.Resource;
 import org.wso2.carbon.registry.core.exceptions.RegistryException;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryURLInfo;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryCredentialData.Credentials;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryURLInfo;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryCredentialData.Credentials;
 
 public class Utils {
 	public static String createSql(SearchQueryData searchQueryData) {

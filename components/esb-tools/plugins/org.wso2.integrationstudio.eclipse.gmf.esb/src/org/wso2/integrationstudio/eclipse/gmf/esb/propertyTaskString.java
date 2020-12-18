@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -16,12 +16,12 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.propertyTaskString#getName <em>Name</em>}</li>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.propertyTaskString#getValue <em>Value</em>}</li>
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.propertyTaskString#getName <em>Name</em>}</li>
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.propertyTaskString#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getpropertyTaskString()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getpropertyTaskString()
  * @model
  * @generated
  */
@@ -37,14 +37,14 @@ public interface propertyTaskString extends EObject {
      * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getpropertyTaskString_Name()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getpropertyTaskString_Name()
      * @model
      * @generated
      */
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.propertyTaskString#getName <em>Name</em>}'
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.propertyTaskString#getName <em>Name</em>}'
      * attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -66,14 +66,14 @@ public interface propertyTaskString extends EObject {
      * 
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getpropertyTaskString_Value()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getpropertyTaskString_Value()
      * @model
      * @generated
      */
     String getValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.propertyTaskString#getValue
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.propertyTaskString#getValue
      * <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

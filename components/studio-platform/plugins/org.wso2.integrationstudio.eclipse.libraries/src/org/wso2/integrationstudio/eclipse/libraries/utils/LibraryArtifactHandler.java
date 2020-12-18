@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.libraries.utils;
+package org.wso2.integrationstudio.libraries.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import org.osgi.framework.Bundle;
 public class LibraryArtifactHandler {
 	private static final String LIBRARY_ARTIFACT_EXTENSION="org.wso2.integrationstudio.libraries.libraryprovider";
 	private static Map<String,LibraryCategory> categoryList;
-	public static final String ALL_LIB_CATEGORY_ID = "org.wso2.integrationstudio.eclipse.libraries.alllibs";
+	public static final String ALL_LIB_CATEGORY_ID = "org.wso2.integrationstudio.libraries.alllibs";
 	
 	private static void addDefaultAllList(Map<String,LibraryCategory> categoryList){
 		LibraryCategory libraryCategory = new LibraryCategory();

@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.startup;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.startup;
 
 import org.eclipse.ui.IStartup;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.GraphicalEditorStartupUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.GraphicalEditorStartupUtils;
+import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
 
 public class GraphicalEditorStartup implements IStartup {
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.commands.CompoundCommand;
@@ -25,7 +25,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewAndElementRequest;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.emf.type.core.IHintedType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class ConnectionUtils {
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.core.utils;
+package org.wso2.integrationstudio.esb.core.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

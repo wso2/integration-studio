@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.maven.multi.module.handlers;
+package org.wso2.integrationstudio.maven.multi.module.handlers;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.multi.module.Activator;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.multi.module.Activator;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 
 import java.util.List;
 

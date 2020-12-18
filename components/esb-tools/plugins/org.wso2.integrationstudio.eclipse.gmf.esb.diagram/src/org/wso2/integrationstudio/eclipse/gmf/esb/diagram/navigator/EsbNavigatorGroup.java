@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator;
+package org.wso2.integrationstudio.gmf.esb.diagram.navigator;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -78,8 +78,8 @@ public class EsbNavigatorGroup extends EsbAbstractNavigatorItem {
      * @generated
      */
     public boolean equals(Object obj) {
-        if (obj instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorGroup) {
-            org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorGroup anotherGroup = (org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorGroup) obj;
+        if (obj instanceof org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbNavigatorGroup) {
+            org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbNavigatorGroup anotherGroup = (org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbNavigatorGroup) obj;
             if (getGroupName().equals(anotherGroup.getGroupName())) {
                 return getParent().equals(anotherGroup.getParent());
             }

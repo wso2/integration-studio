@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.core.internal.impl;
+package org.wso2.integrationstudio.registry.core.internal.impl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -22,11 +22,11 @@ import javax.wsdl.extensions.schema.Schema;
 import javax.wsdl.extensions.schema.SchemaImport;
 import javax.wsdl.extensions.schema.SchemaReference;
 
-import org.wso2.integrationstudio.eclipse.libraries.utils.WSDLUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.XMLUtil;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.GARFileType;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IGARImportDependency;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.libraries.utils.WSDLUtils;
+import org.wso2.integrationstudio.platform.core.utils.XMLUtil;
+import org.wso2.integrationstudio.registry.core.interfaces.GARFileType;
+import org.wso2.integrationstudio.registry.core.interfaces.IGARImportDependency;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class GARImportDependencyImpl implements IGARImportDependency {
 	private boolean exclude=false;

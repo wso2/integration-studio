@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;

@@ -13,23 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONTENT_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONTENT_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
+import org.wso2.integrationstudio.gmf.esb.persistence.InboundEndpointConstants;
 
 /**
  * This Enum represent MQTT inbound endpoint parameters with parameter name , related EAttribute and boolean value

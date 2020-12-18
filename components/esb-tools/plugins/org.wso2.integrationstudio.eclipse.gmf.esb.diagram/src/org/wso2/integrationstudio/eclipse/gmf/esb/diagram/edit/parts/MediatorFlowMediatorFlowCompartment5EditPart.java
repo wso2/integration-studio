@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
@@ -52,27 +52,27 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamedEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorFlowCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.SlidingBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.layout.XYRepossition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.SwitchMediatorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment5CanonicalEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment5ItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory.NodeToolEntry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.NamedEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpointInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpointOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorFlowCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.SlidingBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.layout.XYRepossition;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.SwitchMediatorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment5CanonicalEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment5ItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbPaletteFactory.NodeToolEntry;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * @generated NOT

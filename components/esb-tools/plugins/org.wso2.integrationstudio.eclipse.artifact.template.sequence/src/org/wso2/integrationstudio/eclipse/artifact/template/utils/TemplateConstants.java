@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.artifact.template.utils;
+package org.wso2.integrationstudio.artifact.template.utils;
 
 /**
  * Class for keeping constant values used in ESB template project creation and management module

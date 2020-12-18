@@ -1,6 +1,6 @@
-package org.wso2.integrationstudio.eclipse.registry.core.interfaces;
+package org.wso2.integrationstudio.registry.core.interfaces;
 
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProviderData;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProviderData;
 
 
 public interface IRegistryResourceProviderData extends IIntegrationStudioProviderData{

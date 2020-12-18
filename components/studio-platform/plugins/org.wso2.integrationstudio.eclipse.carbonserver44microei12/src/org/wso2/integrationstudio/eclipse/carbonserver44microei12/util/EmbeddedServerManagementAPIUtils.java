@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.integrationstudio.eclipse.carbonserver44microei12.util;
+package org.wso2.integrationstudio.carbonserver44microei12.util;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -36,9 +36,9 @@ import javax.net.ssl.X509TrustManager;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver44microei12.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import net.consensys.cava.toml.Toml;
 import net.consensys.cava.toml.TomlParseResult;

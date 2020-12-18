@@ -11,7 +11,7 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.refactor;
+package org.wso2.integrationstudio.artifact.endpoint.refactor;
 
 import java.util.Iterator;
 import java.util.List;
@@ -31,10 +31,10 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.Activator;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.artifact.endpoint.Activator;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class EndpointArtifactDeleteParticipant extends DeleteParticipant {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

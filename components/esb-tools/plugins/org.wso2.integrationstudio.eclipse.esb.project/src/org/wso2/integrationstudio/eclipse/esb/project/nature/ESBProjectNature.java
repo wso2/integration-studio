@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.nature;
+package org.wso2.integrationstudio.esb.project.nature;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,10 +27,10 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.wso2.integrationstudio.eclipse.esb.core.ESBMavenConstants;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.nature.AbstractWSO2ProjectNature;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.nature.AbstractWSO2ProjectNature;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class ESBProjectNature extends AbstractWSO2ProjectNature {
 	private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml,synapse/inbound-endpoint=xml";

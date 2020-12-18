@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.ui.utils;
+package org.wso2.integrationstudio.capp.core.ui.utils;
 
 public class EditorPageConstants {
-	public static final String GROUP_NEW_MENU = "1org.wso2.integrationstudio.eclipse.capp.newartifacts";
+	public static final String GROUP_NEW_MENU = "1org.wso2.integrationstudio.capp.newartifacts";
 }

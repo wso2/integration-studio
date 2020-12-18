@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ import java.util.Map;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.IStreamsProxy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.Messages;
 
 /**
  * This class represents a IProcess for a ESB Debugger

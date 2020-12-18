@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.artifact.registry.ui.actions;
+package org.wso2.integrationstudio.artifact.registry.ui.actions;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -23,7 +23,7 @@ public class ResourceEditorAction implements IActionDelegate{
 				    IFile arifactXml = project.getFile("artifact.xml");
 			        IWorkbenchWindow window=PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 		            IWorkbenchPage page = window.getActivePage();
-		      	    page.openEditor(new FileEditorInput(arifactXml), "org.wso2.integrationstudio.eclipse.artifact.registry.editor"); 
+		      	    page.openEditor(new FileEditorInput(arifactXml), "org.wso2.integrationstudio.artifact.registry.editor"); 
 			 }
 			 
 		} catch (Exception e) {

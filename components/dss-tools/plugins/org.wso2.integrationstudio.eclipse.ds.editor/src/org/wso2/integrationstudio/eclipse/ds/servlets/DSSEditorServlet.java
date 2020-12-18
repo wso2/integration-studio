@@ -17,7 +17,7 @@
  *
  */
 
-package org.wso2.integrationstudio.eclipse.ds.servlets;
+package org.wso2.integrationstudio.ds.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,9 +30,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.ds.editors.DSSMultiPageEditor;
-import org.wso2.integrationstudio.eclipse.ds.presentation.util.DSSVisualEditorConstants;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.DSSEditorUtils;
+import org.wso2.integrationstudio.ds.editors.DSSMultiPageEditor;
+import org.wso2.integrationstudio.ds.presentation.util.DSSVisualEditorConstants;
+import org.wso2.integrationstudio.ds.wizards.util.DSSEditorUtils;
 
 /**
  * The servlet class used to serve requests from the DSS editor.

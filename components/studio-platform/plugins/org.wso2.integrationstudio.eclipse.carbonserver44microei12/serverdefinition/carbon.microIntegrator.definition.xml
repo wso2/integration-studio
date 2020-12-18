@@ -86,7 +86,7 @@
         <protocol>https</protocol>
     </port>
     <module>
-        <type>org.wso2.integrationstudio.eclipse.carbon.module</type>
+        <type>org.wso2.integrationstudio.carbon.module</type>
         <publishDir>${carbon.home}/repository/services</publishDir>
         <publisherReference>org.eclipse.jst.server.generic.antpublisher</publisherReference>
     </module>

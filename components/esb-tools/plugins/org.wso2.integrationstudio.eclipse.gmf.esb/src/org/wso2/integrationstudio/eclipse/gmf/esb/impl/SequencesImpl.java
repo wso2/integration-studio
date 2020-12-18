@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -17,13 +17,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequences;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequencesInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequencesOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.Sequences;
+import org.wso2.integrationstudio.gmf.esb.SequencesInputConnector;
+import org.wso2.integrationstudio.gmf.esb.SequencesOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,16 +33,16 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl#isRecieveSequence <em>Recieve Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl#getAssociatedProxy <em>Associated Proxy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl#getOnError <em>On Error</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl#getTemplateParameters <em>Template Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl#isRecieveSequence <em>Recieve Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl#getAssociatedProxy <em>Associated Proxy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl#getOnError <em>On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl#getTemplateParameters <em>Template Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
  * </ul>
  *
  * @generated

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,14 +14,14 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceSequenceContainer#getInSequence <em>In
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyServiceSequenceContainer#getInSequence <em>In
  * Sequence</em>}</li>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceSequenceContainer#getOutSequence <em>Out
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyServiceSequenceContainer#getOutSequence <em>Out
  * Sequence</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyServiceSequenceContainer()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyServiceSequenceContainer()
  * @model
  * @generated
  */
@@ -37,7 +37,7 @@ public interface ProxyServiceSequenceContainer extends EsbNode {
      * 
      * @return the value of the '<em>In Sequence</em>' containment reference.
      * @see #setInSequence(ProxyServiceInSequence)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyServiceSequenceContainer_InSequence()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyServiceSequenceContainer_InSequence()
      * @model containment="true"
      * @generated
      */
@@ -45,7 +45,7 @@ public interface ProxyServiceSequenceContainer extends EsbNode {
 
     /**
      * Sets the value of the
-     * '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceSequenceContainer#getInSequence <em>In
+     * '{@link org.wso2.integrationstudio.gmf.esb.ProxyServiceSequenceContainer#getInSequence <em>In
      * Sequence</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -67,7 +67,7 @@ public interface ProxyServiceSequenceContainer extends EsbNode {
      * 
      * @return the value of the '<em>Out Sequence</em>' containment reference.
      * @see #setOutSequence(ProxyServiceOutSequence)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyServiceSequenceContainer_OutSequence()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyServiceSequenceContainer_OutSequence()
      * @model containment="true"
      * @generated
      */
@@ -75,7 +75,7 @@ public interface ProxyServiceSequenceContainer extends EsbNode {
 
     /**
      * Sets the value of the
-     * '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceSequenceContainer#getOutSequence <em>Out
+     * '{@link org.wso2.integrationstudio.gmf.esb.ProxyServiceSequenceContainer#getOutSequence <em>Out
      * Sequence</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

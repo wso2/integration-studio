@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.provider;
+package org.wso2.integrationstudio.artifact.endpoint.provider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +24,14 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.esb.core.configuration.impl.EsbEndpointImpl;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEndpointProvider;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbEndpoint;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioElement;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.ResourceManager;
+import org.wso2.integrationstudio.esb.core.configuration.impl.EsbEndpointImpl;
+import org.wso2.integrationstudio.esb.core.interfaces.IEndpointProvider;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbEndpoint;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.core.utils.ResourceManager;
 
 public class ProjectEndpointProvider implements IEndpointProvider {
 	private IProject project;

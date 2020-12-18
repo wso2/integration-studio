@@ -3,7 +3,7 @@
 <schema targetNamespace="org.wso2.wsf.ide.core" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.server.base" id="org.wso2.integrationstudio.eclipse.server.base.servermanager" name="Server Manager Extension point"/>
+         <meta.schema plugin="org.wso2.integrationstudio.server.base" id="org.wso2.integrationstudio.server.base.servermanager" name="Server Manager Extension point"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]

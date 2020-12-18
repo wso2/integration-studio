@@ -29,7 +29,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.constant;
+package org.wso2.integrationstudio.carbonserver.base.constant;
 
 public class CarbonConfigurationConstant {
 

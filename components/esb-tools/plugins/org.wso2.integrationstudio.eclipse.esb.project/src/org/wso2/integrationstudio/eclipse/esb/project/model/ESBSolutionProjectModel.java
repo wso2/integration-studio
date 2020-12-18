@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.project.model;
+package org.wso2.integrationstudio.esb.project.model;
 
-import org.wso2.integrationstudio.eclipse.esb.project.utils.SolutionProjectArtifactConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import static org.wso2.integrationstudio.eclipse.esb.project.utils.SolutionProjectArtifactConstants.*;
+import org.wso2.integrationstudio.esb.project.utils.SolutionProjectArtifactConstants;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import static org.wso2.integrationstudio.esb.project.utils.SolutionProjectArtifactConstants.*;
 
 public class ESBSolutionProjectModel extends ESBProjectModel {
 

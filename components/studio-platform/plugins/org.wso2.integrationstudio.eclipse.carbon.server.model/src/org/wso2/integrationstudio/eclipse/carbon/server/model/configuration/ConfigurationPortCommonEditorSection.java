@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.carbon.server.model.configuration;
+package org.wso2.integrationstudio.carbon.server.model.configuration;
 
 
 import org.eclipse.jface.viewers.CellEditor;
@@ -40,10 +40,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.wst.server.core.ServerPort;
 import org.eclipse.wst.server.ui.editor.ServerEditorSection;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.server.base.core.ServerController;
+import org.wso2.integrationstudio.carbon.server.model.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.server.base.core.ServerController;
 
 public abstract class ConfigurationPortCommonEditorSection extends ServerEditorSection {
 

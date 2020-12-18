@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.components;
+package org.wso2.integrationstudio.gmf.esb.components;
 
 // Start of user code for imports
 import java.util.Iterator;
@@ -51,19 +51,19 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.DBLookupMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlDatabaseType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorBooleanValue;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorIsolationLevel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.DBLookupMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SqlDatabaseType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorBooleanValue;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorConnectionType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorDatasourceType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorIsolationLevel;
+import org.wso2.integrationstudio.gmf.esb.SqlStatement;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
 
 // End of user code
 

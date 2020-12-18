@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils;
+package org.wso2.integrationstudio.utils;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
@@ -25,7 +25,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends Plugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.utils";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.utils";
 
 	// The shared instance
 	private static Activator plugin;

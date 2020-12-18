@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.runtest;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.runtest;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,10 +44,10 @@ import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.Activator;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.propertytester.RunTestResourceTester;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.esb.synapse.unit.test.Activator;
+import org.wso2.integrationstudio.esb.synapse.unit.test.propertytester.RunTestResourceTester;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * Class responsible for creation of wizard for mock service resource headers.

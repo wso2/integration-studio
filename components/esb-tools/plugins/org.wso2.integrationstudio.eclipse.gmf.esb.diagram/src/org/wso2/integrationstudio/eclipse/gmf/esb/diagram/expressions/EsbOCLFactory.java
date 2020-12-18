@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.expressions;
+package org.wso2.integrationstudio.gmf.esb.diagram.expressions;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -16,7 +16,7 @@ import org.eclipse.ocl.ecore.OCLExpression;
 import org.eclipse.ocl.ecore.Variable;
 import org.eclipse.ocl.ecore.OCL.Helper;
 import org.eclipse.ocl.options.ParsingOptions;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
 
 /**
  * @generated

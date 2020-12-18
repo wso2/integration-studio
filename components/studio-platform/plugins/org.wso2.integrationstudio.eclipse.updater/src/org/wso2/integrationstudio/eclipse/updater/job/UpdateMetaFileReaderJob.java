@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.updater.job;
+package org.wso2.integrationstudio.updater.job;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -37,13 +37,13 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.PreferenceConstants;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
-import org.wso2.integrationstudio.eclipse.updater.Messages;
-import org.wso2.integrationstudio.eclipse.updater.UpdaterPlugin;
-import org.wso2.integrationstudio.eclipse.updater.core.UpdateManager;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.preferences.PreferenceConstants;
+import org.wso2.integrationstudio.platform.ui.preferences.PreferenceInitializer;
+import org.wso2.integrationstudio.updater.Messages;
+import org.wso2.integrationstudio.updater.UpdaterPlugin;
+import org.wso2.integrationstudio.updater.core.UpdateManager;
 
 /**
  * This class defines the job in updater checker to read possible updates

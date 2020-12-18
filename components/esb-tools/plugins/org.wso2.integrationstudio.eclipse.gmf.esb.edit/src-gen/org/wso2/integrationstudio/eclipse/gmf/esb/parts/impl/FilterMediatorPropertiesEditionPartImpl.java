@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
@@ -60,12 +60,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.FilterMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -412,7 +412,7 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FilterMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -422,7 +422,7 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FilterMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -444,7 +444,7 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FilterMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -454,7 +454,7 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FilterMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -495,7 +495,7 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FilterMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -505,7 +505,7 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FilterMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -527,7 +527,7 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart#getConditionType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FilterMediatorPropertiesEditionPart#getConditionType()
 	 * 
 	 */
 	public Enumerator getConditionType() {
@@ -538,7 +538,7 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart#initConditionType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FilterMediatorPropertiesEditionPart#initConditionType(Object input, Enumerator current)
 	 */
 	public void initConditionType(Object input, Enumerator current) {
 		conditionType.setInput(input);
@@ -556,7 +556,7 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart#setConditionType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FilterMediatorPropertiesEditionPart#setConditionType(Enumerator newValue)
 	 * 
 	 */
 	public void setConditionType(Enumerator newValue) {
@@ -574,7 +574,7 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart#getRegex()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FilterMediatorPropertiesEditionPart#getRegex()
 	 * 
 	 */
 	public String getRegex() {
@@ -584,7 +584,7 @@ public class FilterMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FilterMediatorPropertiesEditionPart#setRegex(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FilterMediatorPropertiesEditionPart#setRegex(String newValue)
 	 * 
 	 */
 	public void setRegex(String newValue) {

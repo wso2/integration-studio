@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.editpolicy;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.editpolicy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,28 +40,28 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractBaseFigureEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorFlowCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AdditionalOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EndpoinMediatorFlowCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.EastPointerFigure;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.WestPointerFigure;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment11EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment5EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractBaseFigureEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorFlowCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AdditionalOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EndpoinMediatorFlowCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.EastPointerFigure;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.WestPointerFigure;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment11EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment5EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbMultiPageEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 /**
  * Installing <b>FeedbackIndicateDragDropEditPolicy</b> will indicate a feedback
@@ -291,22 +291,22 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
                 double xLeft = connectorFigureLocation.x;
                 // If the current connector is East Pointer
                 if ((figure instanceof EastPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.custom
                                 .AbstractMediatorInputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit
                                 .parts.ProxyOutputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit
                                 .parts.APIResourceOutputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit
                                 .parts.SequencesOutputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit
                                 .parts.SequencesInputConnectorEditPart.EastPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram
                                 .custom.AdditionalOutputConnector.EastPointerFigure)) {
 
-                    if ((figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit
+                    if ((figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit
                             .parts.ProxyOutputConnectorEditPart.EastPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram
                                     .edit.parts.APIResourceOutputConnectorEditPart.EastPointerFigure)) {
                         // WIDH_OF_PROXYCONNECTOR is the x position of a proxy or API Connector . the
                         // inside container is
@@ -328,19 +328,19 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
 
                     // If the current connector is West Pointer
                 } else if ((figure instanceof WestPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.custom
                                 .AbstractMediatorInputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit.parts
                                 .ProxyInputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit.parts
                                 .APIResourceInputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.custom
                                 .AbstractEndpointOutputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit.parts
                                 .ProxyFaultInputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit.parts
                                 .ProxyOutSequenceOutputConnectorEditPart.WestPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit.parts
                                 .APIResourceOutSequenceOutputConnectorEditPart.WestPointerFigure)) {
 
                     WestDistance = Math.abs(xLeft - actualCurrentPosition);

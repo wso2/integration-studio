@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.provider;
+package org.wso2.integrationstudio.gmf.esb.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -19,10 +19,10 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleSetCreationProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleSetCreationProperty;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleSetCreationProperty} object.
+ * This is the item provider adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleSetCreationProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.mediator.project.nature;
+package org.wso2.integrationstudio.artifact.mediator.project.nature;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -24,14 +24,14 @@ import java.util.Map;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.artifact.mediator.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.maven.util.ProjectDependencyConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.nature.AbstractWSO2ProjectNature;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaLibraryBean;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaLibraryUtil;
+import org.wso2.integrationstudio.artifact.mediator.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.maven.util.ProjectDependencyConstants;
+import org.wso2.integrationstudio.platform.core.nature.AbstractWSO2ProjectNature;
+import org.wso2.integrationstudio.utils.jdt.JavaLibraryBean;
+import org.wso2.integrationstudio.utils.jdt.JavaLibraryUtil;
 
 public class CustomMediatorProjectNature extends AbstractWSO2ProjectNature {
 

@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.utils;
+package org.wso2.integrationstudio.platform.ui.utils;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.utils.ui.ImageUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
+import org.wso2.integrationstudio.utils.ui.ImageUtils;
+import org.wso2.integrationstudio.platform.ui.Activator;
 
 public class PluginImageUtils extends ImageUtils {
 

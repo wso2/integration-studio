@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="org.wso2.integrationstudio.eclipse.samples" name="Integration Studio Samples" schema="schema/org.wso2.integrationstudio.eclipse.samples.exsd"/>
+   <extension-point id="org.wso2.integrationstudio.samples" name="Integration Studio Samples" schema="schema/org.wso2.integrationstudio.samples.exsd"/>
 	<extension point="org.eclipse.ui.menus">
        <menuContribution
-            locationURI="menu:org.wso2.integrationstudio.eclipse.platform.ui.main?=group.filter">
+            locationURI="menu:org.wso2.integrationstudio.platform.ui.main?=group.filter">
          <menu label="Samples" mnemonic="S"
-               id="org.wso2.integrationstudio.eclipse.samples.menu">
-			<dynamic class="org.wso2.integrationstudio.eclipse.samples.menu.contributors.IntegrationStudioSampleMenuContributor"
-				id="org.wso2.integrationstudio.eclipse.samples.menu.items" />
+               id="org.wso2.integrationstudio.samples.menu">
+			<dynamic class="org.wso2.integrationstudio.samples.menu.contributors.IntegrationStudioSampleMenuContributor"
+				id="org.wso2.integrationstudio.samples.menu.items" />
          </menu>
       </menuContribution>
 	</extension> 

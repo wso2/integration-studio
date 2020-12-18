@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.mediatype;
+package org.wso2.integrationstudio.platform.core.mediatype;
 
 public class PlatformMediaTypeConstants {
 	public final static String MEDIA_TYPE_WSDL = "application/wsdl+xml";

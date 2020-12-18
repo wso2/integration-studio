@@ -5,7 +5,7 @@
  * $Id$
  */
 /*
- * package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+ * package org.wso2.integrationstudio.gmf.esb.impl;
  * 
  * import org.eclipse.emf.common.notify.Notification;
  * import java.util.Collection;
@@ -18,13 +18,13 @@
  * import org.eclipse.emf.ecore.InternalEObject;
  * 
  * import org.eclipse.emf.ecore.impl.ENotificationImpl;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.EndpointFlow;
+ * import org.wso2.integrationstudio.gmf.esb.EndpointFlow;
  * import org.eclipse.emf.ecore.util.EObjectContainmentEList;
  * import org.eclipse.emf.ecore.util.InternalEList;
  * 
- * import org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceEndpointContainer;
+ * import org.wso2.integrationstudio.gmf.esb.EsbElement;
+ * import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+ * import org.wso2.integrationstudio.gmf.esb.ProxyServiceEndpointContainer;
  * 
  *//**
     * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@
     * <p>
     * The following features are implemented:
     * <ul>
-    * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceEndpointContainerImpl#getEndpointFlow
+    * <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceEndpointContainerImpl#getEndpointFlow
     * <em>Endpoint Flow</em>}</li>
     * </ul>
     * </p>

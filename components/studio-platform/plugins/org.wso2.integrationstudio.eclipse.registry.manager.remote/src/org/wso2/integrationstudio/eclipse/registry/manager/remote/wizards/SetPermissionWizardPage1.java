@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.remote.wizards;
+package org.wso2.integrationstudio.registry.manager.remote.wizards;
 
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -24,10 +24,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.dialog.UserPermissionDialog;
-import org.wso2.integrationstudio.eclipse.registry.base.usermgt.ui.controls.UserPermissionTreeViewer;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.ui.dialog.UserPermissionDialog;
+import org.wso2.integrationstudio.registry.base.usermgt.ui.controls.UserPermissionTreeViewer;
 
 import java.util.ArrayList;
 import java.util.List;

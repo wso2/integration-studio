@@ -39,16 +39,16 @@ import org.wso2.integrationstudio.datamapper.diagram.part.DataMapperDiagramEdito
 import org.wso2.integrationstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin;
 import org.wso2.integrationstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 import org.wso2.integrationstudio.datamapper.diagram.part.Messages;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-//import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-//import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-//import org.wso2.integrationstudio.eclipse.platform.ui.startup.DataMapperEditor;
-//import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
-//import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.DataMapperEditor;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+//import org.wso2.integrationstudio.logging.core.Logger;
+//import org.wso2.integrationstudio.platform.ui.editor.Openable;
+//import org.wso2.integrationstudio.platform.ui.startup.DataMapperEditor;
+//import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
+//import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.startup.DataMapperEditor;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 /**
  * @generated
@@ -113,7 +113,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 					if (contentDescription != null) {
 						IContentType contentType = contentDescription.getContentType();
 						if (contentType.getId() != null) {
-							if ("org.wso2.integrationstudio.eclipse.datamapper.contenttype.datamapperconfig"
+							if ("org.wso2.integrationstudio.datamapper.contenttype.datamapperconfig"
 									.equals(contentType.getId())) {
 								myOpenDiagramAction.setSelection(file);
 								actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, myOpenDiagramAction);

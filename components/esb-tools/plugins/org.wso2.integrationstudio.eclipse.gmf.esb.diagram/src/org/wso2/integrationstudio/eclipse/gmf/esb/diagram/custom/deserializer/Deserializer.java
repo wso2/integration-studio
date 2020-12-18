@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -65,19 +65,19 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator.ProcessSourceView;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EsbDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbElement;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbServerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.validator.ProcessSourceView;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.utils.UnrecogizedArtifactTypeException;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ESBFormEditor;
 
 /**

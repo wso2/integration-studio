@@ -1,11 +1,11 @@
-package org.wso2.integrationstudio.eclipse.libraries;
+package org.wso2.integrationstudio.libraries;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 public class Activator extends AbstractUIPlugin{
 	
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.libraries";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.libraries";
 
 	private static Activator plugin;
 	

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import java.util.Collections;
 import java.util.List;
@@ -60,11 +60,11 @@ import org.eclipse.swt.accessibility.AccessibleEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.MediatorFigureSelectionListener;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.EsbTextSelectionEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbParserProvider;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.MediatorFigureSelectionListener;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.EsbTextSelectionEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbParserProvider;
 
 /**
  * @generated
@@ -309,7 +309,7 @@ public class FastXSLTMediatorDescriptionEditPart extends CompartmentEditPart imp
         if (parser == null) {
             parser = EsbParserProvider.getParser(EsbElementTypes.FastXSLTMediator_3764, getParserElement(),
                     EsbVisualIDRegistry.getType(
-                            org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.FastXSLTMediatorDescriptionEditPart.VISUAL_ID));
+                            org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.FastXSLTMediatorDescriptionEditPart.VISUAL_ID));
         }
         return parser;
     }

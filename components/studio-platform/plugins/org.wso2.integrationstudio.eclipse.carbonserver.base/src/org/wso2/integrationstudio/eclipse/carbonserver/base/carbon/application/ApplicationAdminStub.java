@@ -5,7 +5,7 @@
  * by the Apache Axis2 version: 1.6-wso2v2 Built on : Sep 04, 2010 (05:02:54
  * UTC)
  */
-package org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application;
+package org.wso2.integrationstudio.carbonserver.base.carbon.application;
 
 /*
  * ApplicationAdminStub java implementation
@@ -73,57 +73,57 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 		                                                                                                "http://mgt.application.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getAppData"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://mgt.application.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getAppData"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://mgt.application.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getAppData"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://mgt.application.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "listAllApplications"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://mgt.application.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "listAllApplications"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://mgt.application.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "listAllApplications"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://mgt.application.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "deleteApplication"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://mgt.application.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "deleteApplication"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://mgt.application.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "deleteApplication"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub$ExceptionE");
 
 	}
 
@@ -187,20 +187,20 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdmin#getAppData
+	 * @see org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdmin#getAppData
 	 * @param getAppData3
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException
 	 *             :
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ApplicationMetadata getAppData(
+	public org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ApplicationMetadata getAppData(
 
 	java.lang.String appName4)
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -217,7 +217,7 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData dummyWrappedType =
 			                                                                                                                         null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), appName4, dummyWrappedType,
@@ -241,10 +241,10 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetAppDataResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse) object);
+			return getGetAppDataResponse_return((org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -272,8 +272,8 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -316,14 +316,14 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdmin#startgetAppData
+	 * @see org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdmin#startgetAppData
 	 * @param getAppData3
 	 */
 	public void startgetAppData(
 
 	java.lang.String appName4,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -341,7 +341,7 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData dummyWrappedType =
 		                                                                                                                         null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), appName4, dummyWrappedType,
@@ -363,9 +363,9 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetAppData(getGetAppDataResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse) object));
+					callback.receiveResultgetAppData(getGetAppDataResponse_return((org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetAppData(e);
@@ -400,8 +400,8 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException) {
-									callback.receiveErrorgetAppData((org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException) {
+									callback.receiveErrorgetAppData((org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException) ex);
 									return;
 								}
 
@@ -475,8 +475,8 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdmin#listAllApplications
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException
+	 * @see org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdmin#listAllApplications
+	 * @throws org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException
 	 *             :
 	 */
 
@@ -486,7 +486,7 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -527,10 +527,10 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getListAllApplicationsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse) object);
+			return getListAllApplicationsResponse_return((org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -558,8 +558,8 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -602,11 +602,11 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdmin#startlistAllApplications
+	 * @see org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdmin#startlistAllApplications
 	 */
 	public void startlistAllApplications(
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -644,9 +644,9 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultlistAllApplications(getListAllApplicationsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse) object));
+					callback.receiveResultlistAllApplications(getListAllApplicationsResponse_return((org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorlistAllApplications(e);
@@ -681,8 +681,8 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException) {
-									callback.receiveErrorlistAllApplications((org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException) {
+									callback.receiveErrorlistAllApplications((org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException) ex);
 									return;
 								}
 
@@ -757,14 +757,14 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException
 	 *             :
 	 */
 	public void deleteApplication(java.lang.String appName11
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -781,7 +781,7 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication dummyWrappedType =
 			                                                                                                                                null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), appName11,
@@ -825,8 +825,8 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.carbon.application.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -5043,11 +5043,11 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -5055,11 +5055,11 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -5067,11 +5067,11 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -5079,11 +5079,11 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -5091,11 +5091,11 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -5105,19 +5105,19 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData wrappedType =
-			                                                                                                                    new org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData();
+			org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData wrappedType =
+			                                                                                                                    new org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData();
 
 			wrappedType.setAppName(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -5128,13 +5128,13 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ApplicationMetadata getGetAppDataResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse wrappedType) {
+	private org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ApplicationMetadata getGetAppDataResponse_return(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse wrappedType) {
 
 		return wrappedType.get_return();
 
 	}
 
-	private java.lang.String[] getListAllApplicationsResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse wrappedType) {
+	private java.lang.String[] getListAllApplicationsResponse_return(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -5142,19 +5142,19 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication wrappedType =
-			                                                                                                                           new org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication();
+			org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication wrappedType =
+			                                                                                                                           new org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication();
 
 			wrappedType.setAppName(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -5177,45 +5177,45 @@ public class ApplicationAdminStub extends org.apache.axis2.client.Stub {
 
 		try {
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppData.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.GetAppDataResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ListAllApplicationsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.DeleteApplication.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

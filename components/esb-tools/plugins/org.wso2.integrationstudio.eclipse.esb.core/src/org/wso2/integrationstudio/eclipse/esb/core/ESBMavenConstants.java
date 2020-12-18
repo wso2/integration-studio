@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.esb.core;
+package org.wso2.integrationstudio.esb.core;
 
 public class ESBMavenConstants {
 	

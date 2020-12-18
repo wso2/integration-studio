@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.security.project.ui.dialog;
+package org.wso2.integrationstudio.security.project.ui.dialog;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

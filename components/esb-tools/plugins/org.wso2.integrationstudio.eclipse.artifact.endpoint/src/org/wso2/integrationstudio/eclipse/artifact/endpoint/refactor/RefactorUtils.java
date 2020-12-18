@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.refactor;
+package org.wso2.integrationstudio.artifact.endpoint.refactor;
 
 import java.io.File;
 import java.util.List;
@@ -30,13 +30,13 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.Activator;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.endpoint.Activator;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class RefactorUtils {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

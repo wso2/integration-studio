@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.ui.wizard;
+package org.wso2.integrationstudio.distribution.project.ui.wizard;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -135,11 +135,11 @@ import org.rauschig.jarchivelib.ArchiveFormat;
 import org.rauschig.jarchivelib.Archiver;
 import org.rauschig.jarchivelib.ArchiverFactory;
 import org.w3c.dom.Document;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.MavenMultiModuleImportUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.distribution.project.util.MavenMultiModuleImportUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 

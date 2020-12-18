@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.maven.sample;
+package org.wso2.integrationstudio.capp.maven.sample;
 
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.wso2.integrationstudio.eclipse.capp.maven.utils.MavenPomGenPluginUtils;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.samples.contributor.AbstractSampleContributor;
+import org.wso2.integrationstudio.capp.maven.utils.MavenPomGenPluginUtils;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.samples.contributor.AbstractSampleContributor;
 
 public abstract class AbstractMavenSampleContributor extends AbstractSampleContributor{
 	

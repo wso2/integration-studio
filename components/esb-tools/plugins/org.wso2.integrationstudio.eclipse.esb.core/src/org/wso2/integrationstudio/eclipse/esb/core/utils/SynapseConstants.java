@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.core.utils;
+package org.wso2.integrationstudio.esb.core.utils;
 
 public class SynapseConstants {
 	public static final String NS_1_4="http://ws.apache.org/ns/synapse";

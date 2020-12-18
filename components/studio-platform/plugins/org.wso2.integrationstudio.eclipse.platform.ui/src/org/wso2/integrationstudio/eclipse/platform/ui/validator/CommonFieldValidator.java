@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.validator;
+package org.wso2.integrationstudio.platform.ui.validator;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,10 +24,10 @@ import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.ui.Activator;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 

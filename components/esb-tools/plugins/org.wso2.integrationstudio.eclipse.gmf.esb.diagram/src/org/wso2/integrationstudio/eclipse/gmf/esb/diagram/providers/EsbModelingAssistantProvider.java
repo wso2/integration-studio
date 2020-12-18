@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers;
+package org.wso2.integrationstudio.gmf.esb.diagram.providers;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,9 +20,9 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.*;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.Messages;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.*;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.Messages;
 
 /**
  * @generated

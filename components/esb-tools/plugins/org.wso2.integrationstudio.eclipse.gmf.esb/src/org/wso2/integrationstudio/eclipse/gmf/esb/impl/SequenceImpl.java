@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,17 +18,17 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.KeyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Mediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceOutputConnector;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.Mediator;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.SequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.SequenceOutputConnector;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,16 +38,16 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequenceImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequenceImpl#getKey <em>Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequenceImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequenceImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequenceImpl#getIncludedMediators <em>Included Mediators</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequenceImpl#isReceiveSequence <em>Receive Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequenceImpl#isDuplicate <em>Duplicate</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequenceImpl#getReferringSequenceType <em>Referring Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequenceImpl#getDynamicReferenceKey <em>Dynamic Reference Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequenceImpl#getStaticReferenceKey <em>Static Reference Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequenceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequenceImpl#getKey <em>Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequenceImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequenceImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequenceImpl#getIncludedMediators <em>Included Mediators</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequenceImpl#isReceiveSequence <em>Receive Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequenceImpl#isDuplicate <em>Duplicate</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequenceImpl#getReferringSequenceType <em>Referring Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequenceImpl#getDynamicReferenceKey <em>Dynamic Reference Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SequenceImpl#getStaticReferenceKey <em>Static Reference Key</em>}</li>
  * </ul>
  *
  * @generated

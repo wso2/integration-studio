@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,14 +15,14 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer#isBreakAfterRoute <em>Break After Route</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer#getRouteExpression <em>Route Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer#getRoutePattern <em>Route Pattern</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer#isBreakAfterRoute <em>Break After Route</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer#getRouteExpression <em>Route Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer#getRoutePattern <em>Route Pattern</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer#getTarget <em>Target</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterTargetContainer()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterTargetContainer()
  * @model
  * @generated
  */
@@ -37,14 +37,14 @@ public interface RouterTargetContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterTargetContainer_MediatorFlow()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterTargetContainer_MediatorFlow()
      * @model containment="true"
      * @generated
      */
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
@@ -63,14 +63,14 @@ public interface RouterTargetContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Break After Route</em>' attribute.
      * @see #setBreakAfterRoute(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterTargetContainer_BreakAfterRoute()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterTargetContainer_BreakAfterRoute()
      * @model
      * @generated
      */
     boolean isBreakAfterRoute();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer#isBreakAfterRoute <em>Break After Route</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer#isBreakAfterRoute <em>Break After Route</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Break After Route</em>' attribute.
@@ -89,14 +89,14 @@ public interface RouterTargetContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Route Expression</em>' containment reference.
      * @see #setRouteExpression(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterTargetContainer_RouteExpression()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterTargetContainer_RouteExpression()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getRouteExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer#getRouteExpression <em>Route Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer#getRouteExpression <em>Route Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Route Expression</em>' containment reference.
@@ -115,14 +115,14 @@ public interface RouterTargetContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Route Pattern</em>' attribute.
      * @see #setRoutePattern(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterTargetContainer_RoutePattern()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterTargetContainer_RoutePattern()
      * @model
      * @generated
      */
     String getRoutePattern();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer#getRoutePattern <em>Route Pattern</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer#getRoutePattern <em>Route Pattern</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Route Pattern</em>' attribute.
@@ -141,14 +141,14 @@ public interface RouterTargetContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Target</em>' containment reference.
      * @see #setTarget(RouterTarget)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterTargetContainer_Target()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterTargetContainer_Target()
      * @model containment="true"
      * @generated
      */
     RouterTarget getTarget();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer#getTarget <em>Target</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer#getTarget <em>Target</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Target</em>' containment reference.

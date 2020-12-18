@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.connector.model;
+package org.wso2.integrationstudio.artifact.connector.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IProject;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class ConnectorModel extends ProjectDataModel {
 	private List<Object> connectors = new ArrayList<Object>();

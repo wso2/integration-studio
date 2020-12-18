@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.List;
 
@@ -25,18 +25,18 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.carbon.mediators.router.impl.Route;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorTargetOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TargetEndpointType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TargetSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.RouterMediatorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.RouterMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.RouterMediator;
+import org.wso2.integrationstudio.gmf.esb.RouterMediatorTargetOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RouterTarget;
+import org.wso2.integrationstudio.gmf.esb.RouterTargetContainer;
+import org.wso2.integrationstudio.gmf.esb.TargetEndpointType;
+import org.wso2.integrationstudio.gmf.esb.TargetSequenceType;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.RouterMediatorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.RouterMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class RouterMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, RouterMediator> {
 

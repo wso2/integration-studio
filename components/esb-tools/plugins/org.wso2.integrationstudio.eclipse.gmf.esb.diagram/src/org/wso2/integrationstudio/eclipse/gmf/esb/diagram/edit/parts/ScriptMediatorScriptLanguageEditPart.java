@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import java.util.Collections;
 import java.util.List;
@@ -44,10 +44,10 @@ import org.eclipse.swt.accessibility.AccessibleEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.EsbTextSelectionEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbParserProvider;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.EsbTextSelectionEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbParserProvider;
 
 /**
  * @generated
@@ -290,7 +290,7 @@ public class ScriptMediatorScriptLanguageEditPart extends CompartmentEditPart im
         if (parser == null) {
             parser = EsbParserProvider.getParser(EsbElementTypes.ScriptMediator_3508, getParserElement(),
                     EsbVisualIDRegistry.getType(
-                            org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ScriptMediatorScriptLanguageEditPart.VISUAL_ID));
+                            org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ScriptMediatorScriptLanguageEditPart.VISUAL_ID));
         }
         return parser;
     }

@@ -13,53 +13,53 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__AUTO_OFFSET_RESET;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CLIENT_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONSUMER_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONSUMER_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONTENT_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__COORDINATION;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__FETCH_MIN_BYTES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__GROUP_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__OFFSETS_STORAGE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__THREAD_COUNT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TOPICS_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TOPIC_FILTER_FROM;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TOPIC_FILTER_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__AUTO_OFFSET_RESET;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CLIENT_ID;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONSUMER_ID;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONSUMER_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONTENT_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__COORDINATION;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__FETCH_MIN_BYTES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__GROUP_ID;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__OFFSETS_STORAGE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__THREAD_COUNT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TOPICS_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TOPIC_FILTER_FROM;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TOPIC_FILTER_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
+import org.wso2.integrationstudio.gmf.esb.persistence.InboundEndpointConstants;
 
 /**
  * This Enum represent KAFKA inbound endpoint parameters with parameter name , related EAttribute and boolean value

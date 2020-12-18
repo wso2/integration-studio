@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.docker.distribution.model;
+package org.wso2.integrationstudio.docker.distribution.model;
 
 public class DockerHubAuth {
     private boolean isKubernetesProject = false;

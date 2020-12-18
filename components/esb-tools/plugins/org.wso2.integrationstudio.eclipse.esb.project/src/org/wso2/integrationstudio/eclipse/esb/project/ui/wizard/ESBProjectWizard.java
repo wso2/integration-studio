@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.ui.wizard;
+package org.wso2.integrationstudio.esb.project.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,20 +40,20 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseUtils;
-import org.wso2.integrationstudio.eclipse.esb.project.Activator;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.model.ESBProjectModel;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.ESBImageUtils;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.ESBProjectUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
+import org.wso2.integrationstudio.esb.project.Activator;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.esb.project.model.ESBProjectModel;
+import org.wso2.integrationstudio.esb.project.utils.ESBImageUtils;
+import org.wso2.integrationstudio.esb.project.utils.ESBProjectUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

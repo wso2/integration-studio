@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.direction;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.direction;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gef.EditPart;

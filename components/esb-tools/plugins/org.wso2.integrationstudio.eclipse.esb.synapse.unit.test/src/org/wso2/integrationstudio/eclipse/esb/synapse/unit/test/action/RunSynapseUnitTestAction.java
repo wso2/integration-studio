@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.action;
+package org.wso2.integrationstudio.esb.synapse.unit.test.action;
 
 import java.io.File;
 
@@ -32,14 +32,14 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.Activator;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.CustomRunWizardDialog;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.CustomWizardDialog;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.constant.Constants;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.runtest.UnitTestConfigurationWizard;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.unittest.UnitTestSuiteCreationWizard;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.esb.synapse.unit.test.Activator;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.CustomRunWizardDialog;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.CustomWizardDialog;
+import org.wso2.integrationstudio.esb.synapse.unit.test.constant.Constants;
+import org.wso2.integrationstudio.esb.synapse.unit.test.wizard.runtest.UnitTestConfigurationWizard;
+import org.wso2.integrationstudio.esb.synapse.unit.test.wizard.unittest.UnitTestSuiteCreationWizard;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * Class responsible for running the unit test suites with configuration wizard.

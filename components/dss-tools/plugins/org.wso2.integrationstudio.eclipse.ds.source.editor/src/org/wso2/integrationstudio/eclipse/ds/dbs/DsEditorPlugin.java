@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.dbs;
+package org.wso2.integrationstudio.ds.dbs;
 
 import org.osgi.framework.BundleContext;
 

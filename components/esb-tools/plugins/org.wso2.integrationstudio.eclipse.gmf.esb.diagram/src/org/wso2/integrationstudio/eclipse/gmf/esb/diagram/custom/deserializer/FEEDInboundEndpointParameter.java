@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_FEED_URL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_FEED_URL;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
+import org.wso2.integrationstudio.gmf.esb.persistence.InboundEndpointConstants;
 
 public enum FEEDInboundEndpointParameter {
     INTERVAL_TYPE(InboundEndpointConstants.INTERVAL, INBOUND_ENDPOINT__INTERVAL, true), INBOUND_FEED_URL_TYPE(

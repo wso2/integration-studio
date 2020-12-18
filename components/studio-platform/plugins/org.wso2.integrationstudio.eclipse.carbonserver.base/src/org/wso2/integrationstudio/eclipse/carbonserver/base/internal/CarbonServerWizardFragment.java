@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.internal;
+package org.wso2.integrationstudio.carbonserver.base.internal;
 
 import java.util.Map;
 
@@ -44,10 +44,10 @@ import org.eclipse.wst.server.core.IRuntime;
 import org.eclipse.wst.server.core.IServerWorkingCopy;
 import org.eclipse.wst.server.core.TaskModel;
 import org.eclipse.wst.server.ui.wizard.IWizardHandle;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.IProperties;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver.base.Activator;
+import org.wso2.integrationstudio.carbonserver.base.manager.IProperties;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 @SuppressWarnings("restriction")
 public class CarbonServerWizardFragment extends GenericServerWizardFragment {
@@ -64,7 +64,7 @@ public class CarbonServerWizardFragment extends GenericServerWizardFragment {
 		String id = definition.getId();
 		EList property = definition.getProperty();
 		IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-		String PORT_ID = "org.wso2.integrationstudio.eclipse.carbonserver.base.serverProperties";
+		String PORT_ID = "org.wso2.integrationstudio.carbonserver.base.serverProperties";
 		IConfigurationElement[] configurationElementsFor = extensionRegistry.getConfigurationElementsFor(PORT_ID);
 		for (IConfigurationElement e : configurationElementsFor) {
 			String attribute = e.getAttribute("serverId");

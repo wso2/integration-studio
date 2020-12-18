@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,14 +17,14 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence#isAnonymous <em>Anonymous</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence#getSequenceName <em>Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence#getMediators <em>Mediators</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence#getOnError <em>On Error</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.MediatorSequence#isAnonymous <em>Anonymous</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.MediatorSequence#getSequenceName <em>Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.MediatorSequence#getMediators <em>Mediators</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.MediatorSequence#getOnError <em>On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.MediatorSequence#getDescription <em>Description</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMediatorSequence()
  * @model
  * @generated
  */
@@ -40,14 +40,14 @@ public interface MediatorSequence extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Anonymous</em>' attribute.
      * @see #setAnonymous(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence_Anonymous()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMediatorSequence_Anonymous()
      * @model default="false"
      * @generated
      */
     boolean isAnonymous();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence#isAnonymous <em>Anonymous</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.MediatorSequence#isAnonymous <em>Anonymous</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Anonymous</em>' attribute.
@@ -67,14 +67,14 @@ public interface MediatorSequence extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Name</em>' attribute.
      * @see #setSequenceName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence_SequenceName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMediatorSequence_SequenceName()
      * @model default="sequence_name"
      * @generated
      */
     String getSequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence#getSequenceName <em>Sequence Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.MediatorSequence#getSequenceName <em>Sequence Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Name</em>' attribute.
@@ -85,7 +85,7 @@ public interface MediatorSequence extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>Mediators</b></em>' reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.Mediator}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.Mediator}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Mediators</em>' reference list isn't clear,
@@ -93,7 +93,7 @@ public interface MediatorSequence extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Mediators</em>' reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence_Mediators()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMediatorSequence_Mediators()
      * @model
      * @generated
      */
@@ -109,14 +109,14 @@ public interface MediatorSequence extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Error</em>' reference.
      * @see #setOnError(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence_OnError()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMediatorSequence_OnError()
      * @model
      * @generated
      */
     RegistryKeyProperty getOnError();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence#getOnError <em>On Error</em>}' reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.MediatorSequence#getOnError <em>On Error</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Error</em>' reference.
@@ -135,14 +135,14 @@ public interface MediatorSequence extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Description</em>' attribute.
      * @see #setDescription(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence_Description()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMediatorSequence_Description()
      * @model
      * @generated
      */
     String getDescription();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence#getDescription <em>Description</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.MediatorSequence#getDescription <em>Description</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Description</em>' attribute.

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.refactoring.delete;
+package org.wso2.integrationstudio.esb.project.refactoring.delete;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -29,10 +29,10 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.ltk.core.refactoring.TextFileChange;
 import org.eclipse.text.edits.DeleteEdit;
 import org.eclipse.text.edits.MultiTextEdit;
-import org.wso2.integrationstudio.eclipse.esb.project.Activator;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.RefactorUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.esb.project.Activator;
+import org.wso2.integrationstudio.esb.project.utils.RefactorUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class MavenConfigurationFileDeleteChange extends TextFileChange {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

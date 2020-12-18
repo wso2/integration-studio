@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.JsonElement;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
 /**
  * This is the root bean class to represent ESB artifacts debug points. Every

@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import java.io.File;
 import java.util.HashMap;
@@ -58,8 +58,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
 
 public class ConnectionParameterWizard extends Wizard implements IExportWizard {
 

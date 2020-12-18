@@ -5,18 +5,18 @@
 		<content-type 
 			base-type="org.eclipse.core.runtime.xml"
 			describer=" org.eclipse.core.runtime.content.XMLRootElementContentDescriber:data"
-			file-extensions="dbs" id="org.wso2.integrationstudio.eclipse.ds.dataserviceDefinitionContent" name="WSO2 Dataservice Definition Content"
+			file-extensions="dbs" id="org.wso2.integrationstudio.ds.dataserviceDefinitionContent" name="WSO2 Dataservice Definition Content"
 			priority="low">
 		</content-type>
 	</extension>
 	<extension point="org.eclipse.wst.sse.ui.editorConfiguration">
     	<sourceViewerConfiguration
-        	class="org.wso2.integrationstudio.eclipse.ds.editor.configuration.DataServiceStructuredTextViewerConfigurationXML"
-        	target="org.wso2.integrationstudio.eclipse.ds.dataserviceDefinitionContent"/>
+        	class="org.wso2.integrationstudio.ds.editor.configuration.DataServiceStructuredTextViewerConfigurationXML"
+        	target="org.wso2.integrationstudio.ds.dataserviceDefinitionContent"/>
 		<provisionalConfiguration
         	type="org.eclipse.jface.text.quickassist.IQuickAssistProcessor"
-        	class="org.wso2.integrationstudio.eclipse.ds.editor.contentassistant.DataserviceQuickAssistantProcessor"
-        	target="org.wso2.integrationstudio.eclipse.ds.dataserviceDefinitionContent"/>        	
+        	class="org.wso2.integrationstudio.ds.editor.contentassistant.DataserviceQuickAssistantProcessor"
+        	target="org.wso2.integrationstudio.ds.dataserviceDefinitionContent"/>        	
 	</extension>
 	<!--extension point="org.eclipse.wst.xml.core.catalogContributions">
 		<catalogContribution>

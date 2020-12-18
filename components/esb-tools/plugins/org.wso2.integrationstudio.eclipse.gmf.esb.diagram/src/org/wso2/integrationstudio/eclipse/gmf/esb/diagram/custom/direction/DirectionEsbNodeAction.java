@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.direction;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.direction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +29,14 @@ import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.ui.IWorkbenchPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Mediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.AggregateMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.AggregateMediatorOnCompleteOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.Mediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.AggregateMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.AggregateMediatorOnCompleteOutputConnectorEditPart;
 
 public class DirectionEsbNodeAction extends AbstractActionHandler {
 

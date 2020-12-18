@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.components;
+package org.wso2.integrationstudio.gmf.esb.components;
 
 // Start of user code for imports
 import java.util.Iterator;
@@ -50,15 +50,15 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateFeature;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.ValidateFeature;
+import org.wso2.integrationstudio.gmf.esb.ValidateMediator;
+import org.wso2.integrationstudio.gmf.esb.ValidateResource;
+import org.wso2.integrationstudio.gmf.esb.ValidateSchema;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart;
 
 
 // End of user code

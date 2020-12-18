@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.part;
 
 import java.util.Observable;
 import java.util.Observer;

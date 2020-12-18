@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts;
+package org.wso2.integrationstudio.gmf.esb.parts;
 
 /**
  * 

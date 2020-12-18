@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,11 +46,11 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Task;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskPropertyType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.Task;
+import org.wso2.integrationstudio.gmf.esb.TaskProperty;
+import org.wso2.integrationstudio.gmf.esb.TaskPropertyType;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ScheduledTaskFormPage;
 
 //deprecated

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -44,14 +44,14 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediaType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryArgument;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MediaType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgument;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryEvaluatorType;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator;
 
 /**
  * Configuration dialog for PayloadFactory mediator arguments

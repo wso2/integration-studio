@@ -1,13 +1,13 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts;
+package org.wso2.integrationstudio.gmf.esb.parts;
 
 
 
 // Start of user code for imports
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
 
 // End of user code
 

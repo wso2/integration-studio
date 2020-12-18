@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.ds.presentation.md;
+package org.wso2.integrationstudio.ds.presentation.md;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -40,47 +40,47 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.ds.AttributeMapping;
-import org.wso2.integrationstudio.eclipse.ds.CallQuery;
-import org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty;
-import org.wso2.integrationstudio.eclipse.ds.CustomValidator;
-import org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty;
-import org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList;
-import org.wso2.integrationstudio.eclipse.ds.DataService;
-import org.wso2.integrationstudio.eclipse.ds.DataServiceParameter;
-import org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration;
-import org.wso2.integrationstudio.eclipse.ds.Description;
-import org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator;
-import org.wso2.integrationstudio.eclipse.ds.DsFactory;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.ElementMapping;
-import org.wso2.integrationstudio.eclipse.ds.EventTrigger;
-import org.wso2.integrationstudio.eclipse.ds.ExcelQuery;
-import org.wso2.integrationstudio.eclipse.ds.Expression;
-import org.wso2.integrationstudio.eclipse.ds.GSpreadQuery;
-import org.wso2.integrationstudio.eclipse.ds.HasHeader;
-import org.wso2.integrationstudio.eclipse.ds.LengthValidator;
-import org.wso2.integrationstudio.eclipse.ds.LongRangeValidator;
-import org.wso2.integrationstudio.eclipse.ds.MaxRowCount;
-import org.wso2.integrationstudio.eclipse.ds.Operation;
-import org.wso2.integrationstudio.eclipse.ds.ParameterMapping;
-import org.wso2.integrationstudio.eclipse.ds.PatternValidator;
-import org.wso2.integrationstudio.eclipse.ds.Query;
-import org.wso2.integrationstudio.eclipse.ds.QueryExpression;
-import org.wso2.integrationstudio.eclipse.ds.QueryParameter;
-import org.wso2.integrationstudio.eclipse.ds.QueryProperty;
-import org.wso2.integrationstudio.eclipse.ds.QueryPropertyList;
-import org.wso2.integrationstudio.eclipse.ds.Resource;
-import org.wso2.integrationstudio.eclipse.ds.ResultMapping;
-import org.wso2.integrationstudio.eclipse.ds.Sparql;
-import org.wso2.integrationstudio.eclipse.ds.Sql;
-import org.wso2.integrationstudio.eclipse.ds.StartingRow;
-import org.wso2.integrationstudio.eclipse.ds.Subscription;
-import org.wso2.integrationstudio.eclipse.ds.TargetTopic;
-import org.wso2.integrationstudio.eclipse.ds.WorkBookName;
-import org.wso2.integrationstudio.eclipse.ds.WorkSheetNumber;
-import org.wso2.integrationstudio.eclipse.ds.actions.DSActionConstants;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditor;
+import org.wso2.integrationstudio.ds.AttributeMapping;
+import org.wso2.integrationstudio.ds.CallQuery;
+import org.wso2.integrationstudio.ds.ConfigurationProperty;
+import org.wso2.integrationstudio.ds.CustomValidator;
+import org.wso2.integrationstudio.ds.CustomValidatorProperty;
+import org.wso2.integrationstudio.ds.CustomValidatorPropertyList;
+import org.wso2.integrationstudio.ds.DataService;
+import org.wso2.integrationstudio.ds.DataServiceParameter;
+import org.wso2.integrationstudio.ds.DataSourceConfiguration;
+import org.wso2.integrationstudio.ds.Description;
+import org.wso2.integrationstudio.ds.DoubleRangeValidator;
+import org.wso2.integrationstudio.ds.DsFactory;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.ElementMapping;
+import org.wso2.integrationstudio.ds.EventTrigger;
+import org.wso2.integrationstudio.ds.ExcelQuery;
+import org.wso2.integrationstudio.ds.Expression;
+import org.wso2.integrationstudio.ds.GSpreadQuery;
+import org.wso2.integrationstudio.ds.HasHeader;
+import org.wso2.integrationstudio.ds.LengthValidator;
+import org.wso2.integrationstudio.ds.LongRangeValidator;
+import org.wso2.integrationstudio.ds.MaxRowCount;
+import org.wso2.integrationstudio.ds.Operation;
+import org.wso2.integrationstudio.ds.ParameterMapping;
+import org.wso2.integrationstudio.ds.PatternValidator;
+import org.wso2.integrationstudio.ds.Query;
+import org.wso2.integrationstudio.ds.QueryExpression;
+import org.wso2.integrationstudio.ds.QueryParameter;
+import org.wso2.integrationstudio.ds.QueryProperty;
+import org.wso2.integrationstudio.ds.QueryPropertyList;
+import org.wso2.integrationstudio.ds.Resource;
+import org.wso2.integrationstudio.ds.ResultMapping;
+import org.wso2.integrationstudio.ds.Sparql;
+import org.wso2.integrationstudio.ds.Sql;
+import org.wso2.integrationstudio.ds.StartingRow;
+import org.wso2.integrationstudio.ds.Subscription;
+import org.wso2.integrationstudio.ds.TargetTopic;
+import org.wso2.integrationstudio.ds.WorkBookName;
+import org.wso2.integrationstudio.ds.WorkSheetNumber;
+import org.wso2.integrationstudio.ds.actions.DSActionConstants;
+import org.wso2.integrationstudio.ds.presentation.DsEditor;
 
 public class DetailSection {
 
@@ -503,7 +503,7 @@ public class DetailSection {
 					voidMaker();
 					voidMaker();
 					// Fixing
-					// TOOLS-1008.(org.wso2.integrationstudio.eclipse.ds.provider.DataServiceItemProvider
+					// TOOLS-1008.(org.wso2.integrationstudio.ds.provider.DataServiceItemProvider
 					// also has relevant change)
 					Description description = dataService.getDescription();
 					if (description != null) {

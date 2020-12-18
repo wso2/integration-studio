@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.samples.wizards;
+package org.wso2.integrationstudio.samples.wizards;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.resource.ImageDescriptor;

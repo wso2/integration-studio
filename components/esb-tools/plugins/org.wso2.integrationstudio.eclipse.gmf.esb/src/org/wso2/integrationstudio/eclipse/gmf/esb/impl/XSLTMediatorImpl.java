@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,22 +23,22 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.KeyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTFeature;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTResource;
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.SequenceOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.XSLTFeature;
+import org.wso2.integrationstudio.gmf.esb.XSLTMediator;
+import org.wso2.integrationstudio.gmf.esb.XSLTMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.XSLTMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.XSLTProperty;
+import org.wso2.integrationstudio.gmf.esb.XSLTResource;
+import org.wso2.integrationstudio.platform.core.mediatype.PlatformMediaTypeConstants;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,16 +48,16 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getXsltSchemaKeyType <em>Xslt Schema Key Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getXsltStaticSchemaKey <em>Xslt Static Schema Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getXsltDynamicSchemaKey <em>Xslt Dynamic Schema Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getXsltKey <em>Xslt Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getSourceXPath <em>Source XPath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getResources <em>Resources</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XSLTMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XSLTMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XSLTMediatorImpl#getXsltSchemaKeyType <em>Xslt Schema Key Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XSLTMediatorImpl#getXsltStaticSchemaKey <em>Xslt Static Schema Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XSLTMediatorImpl#getXsltDynamicSchemaKey <em>Xslt Dynamic Schema Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XSLTMediatorImpl#getXsltKey <em>Xslt Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XSLTMediatorImpl#getSourceXPath <em>Source XPath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XSLTMediatorImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XSLTMediatorImpl#getFeatures <em>Features</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XSLTMediatorImpl#getResources <em>Resources</em>}</li>
  * </ul>
  *
  * @generated

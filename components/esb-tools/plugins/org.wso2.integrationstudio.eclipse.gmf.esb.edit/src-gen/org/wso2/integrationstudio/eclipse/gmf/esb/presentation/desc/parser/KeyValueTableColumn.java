@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser;
+package org.wso2.integrationstudio.gmf.esb.presentation.desc.parser;
 
 import java.util.ArrayList;
 import java.util.List;

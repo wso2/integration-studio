@@ -19,8 +19,8 @@ package org.wso2.integrationstudio.datamapper.diagram.schemagen.util;
 import java.io.IOException;
 
 import org.wso2.integrationstudio.datamapper.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * TODO

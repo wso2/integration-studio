@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,20 +56,20 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 //import org.wso2.integrationstudio.datamapper.diagram.custom.util.DataMapperConfigurationDialog;
 //import org.wso2.integrationstudio.datamapper.diagram.custom.util.DialogDisplayUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorCanonicalEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
-import org.wso2.integrationstudio.eclipse.greg.core.interfaces.IRegistryFile;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.DataMapperEditor;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.DataMapperMediatorCanonicalEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl;
+import org.wso2.integrationstudio.greg.core.interfaces.IRegistryFile;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.ui.startup.DataMapperEditor;
 
 
 /**

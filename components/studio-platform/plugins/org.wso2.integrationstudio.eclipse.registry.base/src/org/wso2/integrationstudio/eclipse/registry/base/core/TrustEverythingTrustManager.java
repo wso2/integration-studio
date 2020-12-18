@@ -17,7 +17,7 @@
  * This trust manager is written to prevent requiring a trust store on remote registry connections 
  * using abdera client.
  */
-package org.wso2.integrationstudio.eclipse.registry.base.core;
+package org.wso2.integrationstudio.registry.base.core;
 
 import javax.net.ssl.X509TrustManager;
 

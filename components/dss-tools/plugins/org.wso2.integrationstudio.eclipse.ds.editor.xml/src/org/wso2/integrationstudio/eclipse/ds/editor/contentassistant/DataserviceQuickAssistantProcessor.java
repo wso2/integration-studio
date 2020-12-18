@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.editor.contentassistant;
+package org.wso2.integrationstudio.ds.editor.contentassistant;
 
 import java.util.Iterator;
 
@@ -32,9 +32,9 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.wst.sse.core.internal.provisional.text.IStructuredDocumentRegion;
 import org.eclipse.wst.sse.ui.internal.contentassist.ContentAssistUtils;
 import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
-import org.wso2.integrationstudio.eclipse.ds.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.ds.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class DataserviceQuickAssistantProcessor implements IQuickAssistProcessor {
 

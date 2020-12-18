@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence.custom;
 
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.bean.BeanMediator;

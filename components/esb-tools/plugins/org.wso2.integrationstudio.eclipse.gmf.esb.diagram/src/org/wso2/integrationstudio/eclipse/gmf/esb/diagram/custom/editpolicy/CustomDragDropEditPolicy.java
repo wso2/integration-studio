@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.editpolicy;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.editpolicy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +9,16 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerContentsCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment10EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment3EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment4EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment6EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment7EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment8EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment9EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbServerContentsCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment10EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment3EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment4EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment6EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment7EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment8EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment9EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
 
 public class CustomDragDropEditPolicy extends DragDropEditPolicy {
 
@@ -157,44 +157,44 @@ public class CustomDragDropEditPolicy extends DragDropEditPolicy {
     private boolean isAllowable(String compartment, String element) {
 
         List<String> mediators = new ArrayList<String>();
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LogMediator_3495");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DropMediator_3491");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PropertyMediator_3492");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PropertyMediator_3788");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EnrichMediator_3496");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EventMediator_3504");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SendMediator_3515");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FilterMediator_3494");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SwitchMediator_3498");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.XSLTMediator_3497");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.XQueryMediator_3510");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FaultMediator_3509");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.HeaderMediator_3516");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DBLookupMediator_3512");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DBReportMediator_3513");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementMediator_3505");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloneMediator_3517");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.IterateMediator_3519");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CacheMediator_3518");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AggregateMediator_3525");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CalloutMediator_3520");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.TransactionMediator_3521");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ThrottleMediator_3493");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RMSequenceMediator_3522");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.OAuthMediator_3524");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RuleMediator_3523");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ClassMediator_3506");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SpringMediator_3507");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ScriptMediator_3508");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SmooksMediator_3514");
-        mediators.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CommandMediator_3511");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.LogMediator_3495");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.DropMediator_3491");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.PropertyMediator_3492");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.PropertyMediator_3788");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.EnrichMediator_3496");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.EventMediator_3504");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.SendMediator_3515");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.FilterMediator_3494");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.SwitchMediator_3498");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.XSLTMediator_3497");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.XQueryMediator_3510");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.FaultMediator_3509");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.HeaderMediator_3516");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.DBLookupMediator_3512");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.DBReportMediator_3513");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.EntitlementMediator_3505");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.CloneMediator_3517");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.IterateMediator_3519");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.CacheMediator_3518");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.AggregateMediator_3525");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.CalloutMediator_3520");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.TransactionMediator_3521");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.ThrottleMediator_3493");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.RMSequenceMediator_3522");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.OAuthMediator_3524");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.RuleMediator_3523");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.ClassMediator_3506");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.SpringMediator_3507");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.ScriptMediator_3508");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.SmooksMediator_3514");
+        mediators.add("org.wso2.integrationstudio.gmf.esb.diagram.CommandMediator_3511");
 
         List<String> endPoint = new ArrayList<String>();
-        endPoint.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DefaultEndPoint_3563");
-        endPoint.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AddressEndPoint_3564");
-        endPoint.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FailoverEndPoint_3565");
-        endPoint.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.WSDLEndPoint_3566");
-        endPoint.add("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LoadBalanceEndPoint_3567");
+        endPoint.add("org.wso2.integrationstudio.gmf.esb.diagram.DefaultEndPoint_3563");
+        endPoint.add("org.wso2.integrationstudio.gmf.esb.diagram.AddressEndPoint_3564");
+        endPoint.add("org.wso2.integrationstudio.gmf.esb.diagram.FailoverEndPoint_3565");
+        endPoint.add("org.wso2.integrationstudio.gmf.esb.diagram.WSDLEndPoint_3566");
+        endPoint.add("org.wso2.integrationstudio.gmf.esb.diagram.LoadBalanceEndPoint_3567");
 
         if (compartment.equals("MediatorFlow")) {
             return mediators.contains(element);
@@ -227,7 +227,7 @@ public class CustomDragDropEditPolicy extends DragDropEditPolicy {
             return mediators.contains(element);
         }
         if (compartment.equals("ESBServer")) {
-            return element.equals("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ProxyService_3001");
+            return element.equals("org.wso2.integrationstudio.gmf.esb.diagram.ProxyService_3001");
         }
         if (compartment.equals("EndpointFlow")) {
             return endPoint.contains(element);

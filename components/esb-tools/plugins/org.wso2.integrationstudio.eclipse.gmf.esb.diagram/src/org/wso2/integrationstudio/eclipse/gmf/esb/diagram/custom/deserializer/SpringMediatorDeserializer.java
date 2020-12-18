@@ -1,15 +1,15 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.SPRING_MEDIATOR__CONFIGURATION_KEY;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.SPRING_MEDIATOR__BEAN_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.SPRING_MEDIATOR__CONFIGURATION_KEY;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.SPRING_MEDIATOR__BEAN_NAME;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SpringMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class SpringMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, SpringMediator> {
 

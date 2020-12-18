@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers;
+package org.wso2.integrationstudio.gmf.esb.diagram.providers;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.gmf.runtime.common.core.service.AbstractProvider;

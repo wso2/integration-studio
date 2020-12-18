@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -63,12 +63,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -518,7 +518,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -528,7 +528,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -550,7 +550,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -560,7 +560,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -601,7 +601,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -611,7 +611,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -635,7 +635,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#initFeatures(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#initFeatures(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initFeatures(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -656,7 +656,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#updateFeatures()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#updateFeatures()
 	 * 
 	 */
 	public void updateFeatures() {
@@ -666,7 +666,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#addFilterFeatures(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#addFilterFeatures(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToFeatures(ViewerFilter filter) {
@@ -679,7 +679,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#addBusinessFilterFeatures(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#addBusinessFilterFeatures(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToFeatures(ViewerFilter filter) {
@@ -689,7 +689,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#isContainedInFeaturesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#isContainedInFeaturesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInFeaturesTable(EObject element) {
@@ -701,7 +701,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#initSchemas(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#initSchemas(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initSchemas(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -722,7 +722,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#updateSchemas()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#updateSchemas()
 	 * 
 	 */
 	public void updateSchemas() {
@@ -732,7 +732,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#addFilterSchemas(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#addFilterSchemas(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToSchemas(ViewerFilter filter) {
@@ -745,7 +745,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#addBusinessFilterSchemas(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#addBusinessFilterSchemas(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToSchemas(ViewerFilter filter) {
@@ -755,7 +755,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#isContainedInSchemasTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#isContainedInSchemasTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInSchemasTable(EObject element) {
@@ -767,7 +767,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#initResources(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#initResources(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initResources(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -788,7 +788,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#updateResources()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#updateResources()
 	 * 
 	 */
 	public void updateResources() {
@@ -798,7 +798,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#addFilterResources(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#addFilterResources(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToResources(ViewerFilter filter) {
@@ -811,7 +811,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#addBusinessFilterResources(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#addBusinessFilterResources(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToResources(ViewerFilter filter) {
@@ -821,7 +821,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#isContainedInResourcesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#isContainedInResourcesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInResourcesTable(EObject element) {
@@ -831,7 +831,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#getEnableCacheSchema()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#getEnableCacheSchema()
 	 * 
 	 */
 	public Boolean getEnableCacheSchema() {
@@ -841,7 +841,7 @@ public class ValidateMediatorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#setEnableCacheSchema(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateMediatorPropertiesEditionPart#setEnableCacheSchema(Boolean newValue)
 	 * 
 	 */
 	public void setEnableCacheSchema(Boolean newValue) {

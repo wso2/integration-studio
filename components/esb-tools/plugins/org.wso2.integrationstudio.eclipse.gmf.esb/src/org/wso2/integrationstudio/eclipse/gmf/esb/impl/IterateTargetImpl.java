@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -15,13 +15,13 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.IterateTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.IterateTarget;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
 
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,8 +31,8 @@ import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateTargetImpl#getSoapAction <em>Soap Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateTargetImpl#getToAddress <em>To Address</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateTargetImpl#getSoapAction <em>Soap Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateTargetImpl#getToAddress <em>To Address</em>}</li>
  * </ul>
  *
  * @generated

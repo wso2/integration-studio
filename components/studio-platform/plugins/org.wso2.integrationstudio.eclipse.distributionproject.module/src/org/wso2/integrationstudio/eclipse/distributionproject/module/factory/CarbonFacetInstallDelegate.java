@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distributionproject.module.factory;
+package org.wso2.integrationstudio.distributionproject.module.factory;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;

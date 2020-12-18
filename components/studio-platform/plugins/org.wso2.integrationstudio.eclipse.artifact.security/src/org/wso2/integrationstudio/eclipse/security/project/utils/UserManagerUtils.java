@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.security.project.utils;
+package org.wso2.integrationstudio.security.project.utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.wso2.integrationstudio.eclipse.usermgt.remote.UserManager;
+import org.wso2.integrationstudio.usermgt.remote.UserManager;
 
 
 public class UserManagerUtils {

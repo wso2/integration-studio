@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,15 +21,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlDatabaseType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorBooleanValue;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorIsolationLevel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement;
+import org.wso2.integrationstudio.gmf.esb.AbstractSqlExecutorMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SqlDatabaseType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorBooleanValue;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorConnectionType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorDatasourceType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorIsolationLevel;
+import org.wso2.integrationstudio.gmf.esb.SqlStatement;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,36 +39,36 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionType <em>Connection Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDsType <em>Connection Ds Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDbType <em>Connection Db Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDbDriver <em>Connection Db Driver</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDsInitialContext <em>Connection Ds Initial Context</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDsName <em>Connection Ds Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionURL <em>Connection URL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionUsername <em>Connection Username</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionPassword <em>Connection Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyAutocommit <em>Property Autocommit</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyIsolation <em>Property Isolation</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyMaxactive <em>Property Maxactive</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyMaxidle <em>Property Maxidle</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyMaxopenstatements <em>Property Maxopenstatements</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyMaxwait <em>Property Maxwait</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyMinidle <em>Property Minidle</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyPoolstatements <em>Property Poolstatements</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyTestonborrow <em>Property Testonborrow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyTestwhileidle <em>Property Testwhileidle</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyValidationquery <em>Property Validationquery</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyInitialsize <em>Property Initialsize</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getSqlStatements <em>Sql Statements</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#isIsRegistryBasedDriverConfig <em>Is Registry Based Driver Config</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#isIsRegistryBasedUrlConfig <em>Is Registry Based Url Config</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#isIsRegistryBasedUserConfig <em>Is Registry Based User Config</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#isIsRegistryBasedPassConfig <em>Is Registry Based Pass Config</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getRegistryBasedDriverConfigKey <em>Registry Based Driver Config Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getRegistryBasedUrlConfigKey <em>Registry Based Url Config Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getRegistryBasedUserConfigKey <em>Registry Based User Config Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getRegistryBasedPassConfigKey <em>Registry Based Pass Config Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionType <em>Connection Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDsType <em>Connection Ds Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDbType <em>Connection Db Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDbDriver <em>Connection Db Driver</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDsInitialContext <em>Connection Ds Initial Context</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDsName <em>Connection Ds Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionURL <em>Connection URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionUsername <em>Connection Username</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionPassword <em>Connection Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyAutocommit <em>Property Autocommit</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyIsolation <em>Property Isolation</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyMaxactive <em>Property Maxactive</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyMaxidle <em>Property Maxidle</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyMaxopenstatements <em>Property Maxopenstatements</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyMaxwait <em>Property Maxwait</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyMinidle <em>Property Minidle</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyPoolstatements <em>Property Poolstatements</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyTestonborrow <em>Property Testonborrow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyTestwhileidle <em>Property Testwhileidle</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyValidationquery <em>Property Validationquery</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyInitialsize <em>Property Initialsize</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getSqlStatements <em>Sql Statements</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#isIsRegistryBasedDriverConfig <em>Is Registry Based Driver Config</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#isIsRegistryBasedUrlConfig <em>Is Registry Based Url Config</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#isIsRegistryBasedUserConfig <em>Is Registry Based User Config</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#isIsRegistryBasedPassConfig <em>Is Registry Based Pass Config</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getRegistryBasedDriverConfigKey <em>Registry Based Driver Config Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getRegistryBasedUrlConfigKey <em>Registry Based Url Config Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getRegistryBasedUserConfigKey <em>Registry Based User Config Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getRegistryBasedPassConfigKey <em>Registry Based Pass Config Key</em>}</li>
  * </ul>
  *
  * @generated

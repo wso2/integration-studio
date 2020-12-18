@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.artifacts;
+package org.wso2.integrationstudio.capp.core.artifacts;
 
 
 public interface IArtifactSourcePath {

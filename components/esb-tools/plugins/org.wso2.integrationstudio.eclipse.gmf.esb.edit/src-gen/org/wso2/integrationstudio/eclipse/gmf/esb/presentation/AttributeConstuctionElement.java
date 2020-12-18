@@ -15,11 +15,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.AttributeValue;
 
 public class AttributeConstuctionElement {
 	FormToolkit widgetFactory;

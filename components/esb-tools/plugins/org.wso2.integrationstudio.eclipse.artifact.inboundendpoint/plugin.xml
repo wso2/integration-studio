@@ -4,10 +4,10 @@
    <extension
          point="org.eclipse.ui.newWizards">
          <wizard name="Inbound Endpoint"
-         	category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.message.mediation/org.wso2.integrationstudio.eclipse.message.mediation.features"
-			class="org.wso2.integrationstudio.eclipse.artifact.inboundendpoint.ui.wizard.InboundEndpointProjectCreationWizard"
+         	category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.message.mediation/org.wso2.integrationstudio.message.mediation.features"
+			class="org.wso2.integrationstudio.artifact.inboundendpoint.ui.wizard.InboundEndpointProjectCreationWizard"
 			wizardManifest="project_wizard.xml"
-			id="org.wso2.integrationstudio.eclipse.artifact.newinboundendpointartifact"
+			id="org.wso2.integrationstudio.artifact.newinboundendpointartifact"
 			icon="icons/inbound-endpoint.gif">
 			<description>Inbound Endpoint</description>
 		</wizard>
@@ -15,8 +15,8 @@
    
    <extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.newinboundendpointartifact">
+                menuGroupId="2org.wso2.integrationstudio.artifact.esb"
+                wizardId="org.wso2.integrationstudio.artifact.newinboundendpointartifact">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
@@ -39,17 +39,17 @@
             </commonWizard>
     </extension>	
  <extension
-         point="org.wso2.integrationstudio.eclipse.esb.configurationProvider">
+         point="org.wso2.integrationstudio.esb.configurationProvider">
       <inboundendpoint
-            class="org.wso2.integrationstudio.eclipse.artifact.inboundendpoint.provider.InboundEndpointProvider"
-            id="org.wso2.integrationstudio.eclipse.artifact.inboundendpoint"
+            class="org.wso2.integrationstudio.artifact.inboundendpoint.provider.InboundEndpointProvider"
+            id="org.wso2.integrationstudio.artifact.inboundendpoint"
             name="Carbon Application Inbound Endpoint">
       </inboundendpoint>
    </extension>
    
-	<extension point="org.wso2.integrationstudio.eclipse.dashboad.link">
+	<extension point="org.wso2.integrationstudio.dashboad.link">
         <wizardLink category="dashboard.category.esb.artifacts" id="8dashboard.wizardLink.esb.inboundendpoint"
-			wizard="org.wso2.integrationstudio.eclipse.artifact.newinboundendpointartifact" priority="8">
+			wizard="org.wso2.integrationstudio.artifact.newinboundendpointartifact" priority="8">
 		</wizardLink>
 	</extension>
    

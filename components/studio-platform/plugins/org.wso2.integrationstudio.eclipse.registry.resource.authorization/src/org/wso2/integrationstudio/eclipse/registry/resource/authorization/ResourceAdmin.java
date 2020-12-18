@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.resource.authorization;
+package org.wso2.integrationstudio.registry.resource.authorization;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -41,10 +41,10 @@ import org.wso2.carbon.registry.resource.services.ExceptionException;
 import org.wso2.carbon.registry.resource.services.ResourceAdminServiceStub;
 import org.wso2.carbon.registry.resource.services.ResourceAdminServiceStub.PermissionBean;
 import org.wso2.carbon.registry.resource.services.ResourceAdminServiceStub.PermissionEntry;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.ClientTrustStorePreferencePage;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.SSLUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.preferences.ClientTrustStorePreferencePage;
+import org.wso2.integrationstudio.platform.ui.utils.SSLUtils;
 
 public class ResourceAdmin {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

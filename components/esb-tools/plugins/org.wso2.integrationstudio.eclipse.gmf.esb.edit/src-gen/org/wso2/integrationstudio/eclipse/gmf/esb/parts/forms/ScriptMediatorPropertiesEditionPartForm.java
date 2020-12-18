@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -78,17 +78,17 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -751,7 +751,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -761,7 +761,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -783,7 +783,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -793,7 +793,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -834,7 +834,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -844,7 +844,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -866,7 +866,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getScriptType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getScriptType()
 	 * 
 	 */
 	public Enumerator getScriptType() {
@@ -877,7 +877,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#initScriptType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#initScriptType(Object input, Enumerator current)
 	 */
 	public void initScriptType(Object input, Enumerator current) {
 		scriptType.setInput(input);
@@ -895,7 +895,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setScriptType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setScriptType(Enumerator newValue)
 	 * 
 	 */
 	public void setScriptType(Enumerator newValue) {
@@ -913,7 +913,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getScriptLanguage()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getScriptLanguage()
 	 * 
 	 */
 	public Enumerator getScriptLanguage() {
@@ -924,7 +924,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#initScriptLanguage(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#initScriptLanguage(Object input, Enumerator current)
 	 */
 	public void initScriptLanguage(Object input, Enumerator current) {
 		scriptLanguage.setInput(input);
@@ -942,7 +942,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setScriptLanguage(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setScriptLanguage(Enumerator newValue)
 	 * 
 	 */
 	public void setScriptLanguage(Enumerator newValue) {
@@ -960,7 +960,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getMediateFunction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getMediateFunction()
 	 * 
 	 */
 	public String getMediateFunction() {
@@ -970,7 +970,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setMediateFunction(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setMediateFunction(String newValue)
 	 * 
 	 */
 	public void setMediateFunction(String newValue) {
@@ -992,7 +992,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getScriptBody()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getScriptBody()
 	 * 
 	 */
 	public String getScriptBody() {
@@ -1002,7 +1002,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setScriptBody(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setScriptBody(String newValue)
 	 * 
 	 */
 	public void setScriptBody(String newValue) {
@@ -1024,7 +1024,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getKeyType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#getKeyType()
 	 * 
 	 */
 	public Enumerator getKeyType() {
@@ -1035,7 +1035,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#initKeyType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#initKeyType(Object input, Enumerator current)
 	 */
 	public void initKeyType(Object input, Enumerator current) {
 		keyType.setInput(input);
@@ -1053,7 +1053,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setKeyType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#setKeyType(Enumerator newValue)
 	 * 
 	 */
 	public void setKeyType(Enumerator newValue) {
@@ -1073,7 +1073,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#initScriptKeys(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#initScriptKeys(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initScriptKeys(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1094,7 +1094,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#updateScriptKeys()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#updateScriptKeys()
 	 * 
 	 */
 	public void updateScriptKeys() {
@@ -1104,7 +1104,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#addFilterScriptKeys(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#addFilterScriptKeys(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToScriptKeys(ViewerFilter filter) {
@@ -1117,7 +1117,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#addBusinessFilterScriptKeys(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#addBusinessFilterScriptKeys(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToScriptKeys(ViewerFilter filter) {
@@ -1127,7 +1127,7 @@ public class ScriptMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#isContainedInScriptKeysTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ScriptMediatorPropertiesEditionPart#isContainedInScriptKeysTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInScriptKeysTable(EObject element) {

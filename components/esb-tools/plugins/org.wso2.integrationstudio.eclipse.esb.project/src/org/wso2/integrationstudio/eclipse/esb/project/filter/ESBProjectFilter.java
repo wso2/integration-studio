@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.filter;
+package org.wso2.integrationstudio.esb.project.filter;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import static org.wso2.integrationstudio.eclipse.platform.core.utils.Constants.*;
+import static org.wso2.integrationstudio.platform.core.utils.Constants.*;
 
 /**
  * ViewerFilter class for ESB project nature.

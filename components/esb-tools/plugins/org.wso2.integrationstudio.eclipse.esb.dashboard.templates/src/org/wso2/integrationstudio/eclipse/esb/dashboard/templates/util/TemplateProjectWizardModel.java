@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.esb.dashboard.templates.util;
+package org.wso2.integrationstudio.esb.dashboard.templates.util;
 
 public class TemplateProjectWizardModel {
     

@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.messagestore;
+package org.wso2.integrationstudio.artifact.messagestore;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Constants extends NLS {
 
-    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.artifact.messagestore.constants"; //$NON-NLS-1$
+    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.artifact.messagestore.constants"; //$NON-NLS-1$
 
     public static String FIELD_AVAILABLE_STORES;
     public static String FIELD_CREATE_ESB_PRJ;

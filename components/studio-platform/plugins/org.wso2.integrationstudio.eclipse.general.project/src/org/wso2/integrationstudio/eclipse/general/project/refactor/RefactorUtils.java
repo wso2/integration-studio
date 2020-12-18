@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.general.project.refactor;
+package org.wso2.integrationstudio.general.project.refactor;
 
 import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IProject;
-import org.wso2.integrationstudio.eclipse.general.project.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.integrationstudio.general.project.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
 
 public class RefactorUtils {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

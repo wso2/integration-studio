@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.heartbeat;
+package org.wso2.integrationstudio.registry.base.heartbeat;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryURLNode;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryURLInfo;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryUrlStore;
-import org.wso2.integrationstudio.eclipse.registry.base.util.Utils;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryURLNode;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryURLInfo;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryUrlStore;
+import org.wso2.integrationstudio.registry.base.util.Utils;
 
 public class RegistryHeartBeatTester implements Runnable {
 	private RegistryURLNode urlNodeList;

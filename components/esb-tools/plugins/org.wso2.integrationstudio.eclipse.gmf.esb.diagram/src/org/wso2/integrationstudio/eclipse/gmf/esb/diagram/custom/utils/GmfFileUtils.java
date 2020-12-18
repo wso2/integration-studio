@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.utils;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;

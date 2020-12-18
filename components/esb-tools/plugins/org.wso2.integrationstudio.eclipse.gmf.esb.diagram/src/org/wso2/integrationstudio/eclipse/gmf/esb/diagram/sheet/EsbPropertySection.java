@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.sheet;
+package org.wso2.integrationstudio.gmf.esb.diagram.sheet;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,8 +28,8 @@ import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.IPropertySourceProvider;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider.EsbPropertySource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.sheet.CustomAdvancedPropertySection;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.provider.EsbPropertySource;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.sheet.CustomAdvancedPropertySection;
 
 // Added '@generated NOT' because we extend this using
 // CustomAdvancedPropertySection

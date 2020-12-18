@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.webui.core.util;
+package org.wso2.integrationstudio.webui.core.util;
 
 import java.lang.reflect.Type;
 
-import org.wso2.integrationstudio.eclipse.webui.core.model.BrowserScript;
+import org.wso2.integrationstudio.webui.core.model.BrowserScript;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
-import static org.wso2.integrationstudio.eclipse.webui.core.editor.Constants.*;
+import static org.wso2.integrationstudio.webui.core.editor.Constants.*;
 
 public class ScriptFactory {
 

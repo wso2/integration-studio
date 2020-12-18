@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.capp.maven;
+package org.wso2.integrationstudio.capp.maven;
 
 import java.util.Map;
 

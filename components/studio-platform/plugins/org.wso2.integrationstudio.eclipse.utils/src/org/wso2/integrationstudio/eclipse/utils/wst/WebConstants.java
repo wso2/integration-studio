@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.wst;
+package org.wso2.integrationstudio.utils.wst;
 
 public class WebConstants {
 	public static final String DIR_WEB_INF="WEB-INF";							//$NON-NLS-1$

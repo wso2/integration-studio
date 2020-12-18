@@ -27,7 +27,7 @@
         <version>7.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>org.wso2.integrationstudio.eclipse.registry.connector</artifactId>
+    <artifactId>org.wso2.integrationstudio.registry.connector</artifactId>
   <packaging>eclipse-plugin</packaging>
     <name>Integration Studio Carbon Application Registry Connector</name>
 </project>

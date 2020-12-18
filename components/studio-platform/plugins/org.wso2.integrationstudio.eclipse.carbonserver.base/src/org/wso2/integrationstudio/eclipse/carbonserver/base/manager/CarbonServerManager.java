@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.manager;
+package org.wso2.integrationstudio.carbonserver.base.manager;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -43,21 +43,21 @@ import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerCore;
 import org.eclipse.wst.server.core.ServerPort;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.exception.NoSuchCarbonOperationDefinedException;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.impl.Credentials;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICredentials;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.monitor.CarbonServerLifeCycleListener;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.utils.CarbonServerUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.server.base.core.IServerManager;
-import org.wso2.integrationstudio.eclipse.server.base.core.ServerController;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.carbonserver.base.Activator;
+import org.wso2.integrationstudio.carbonserver.base.exception.NoSuchCarbonOperationDefinedException;
+import org.wso2.integrationstudio.carbonserver.base.impl.Credentials;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICredentials;
+import org.wso2.integrationstudio.carbonserver.base.monitor.CarbonServerLifeCycleListener;
+import org.wso2.integrationstudio.carbonserver.base.utils.CarbonServerUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.server.base.core.IServerManager;
+import org.wso2.integrationstudio.server.base.core.ServerController;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 @SuppressWarnings("restriction")
 public final class CarbonServerManager implements IServerManager {
-	private static final String CARBON_SERVER_TYPE_REMOTE = "org.wso2.integrationstudio.eclipse.carbon.server.remote";
+	private static final String CARBON_SERVER_TYPE_REMOTE = "org.wso2.integrationstudio.carbon.server.remote";
 	private static final String RESOURCE = "resource";
 	private static final String RESOURCE_CHANGE_KIND = "resourceChangeKind";
 

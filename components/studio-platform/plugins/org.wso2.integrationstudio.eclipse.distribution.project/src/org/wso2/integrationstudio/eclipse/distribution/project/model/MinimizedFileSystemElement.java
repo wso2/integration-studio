@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.model;
+package org.wso2.integrationstudio.distribution.project.model;
 
 import java.util.Iterator;
 import java.util.List;

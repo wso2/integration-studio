@@ -1,6 +1,6 @@
-package org.wso2.integrationstudio.eclipse.registry.core.internal.impl.mediatypes;
+package org.wso2.integrationstudio.registry.core.internal.impl.mediatypes;
 
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.AbstractFileNameExtensionMediaTypeResolver;
+import org.wso2.integrationstudio.platform.core.mediatype.AbstractFileNameExtensionMediaTypeResolver;
 
 public class GARMediaTypeResolver extends AbstractFileNameExtensionMediaTypeResolver {
 

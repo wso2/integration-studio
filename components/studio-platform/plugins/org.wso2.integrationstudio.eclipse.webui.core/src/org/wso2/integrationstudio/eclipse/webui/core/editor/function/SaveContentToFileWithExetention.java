@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.webui.core.editor.function;
+package org.wso2.integrationstudio.webui.core.editor.function;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -25,8 +25,8 @@ import org.apache.commons.io.IOUtils;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.AbstractWebBasedEditor;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.Constants;
+import org.wso2.integrationstudio.webui.core.editor.AbstractWebBasedEditor;
+import org.wso2.integrationstudio.webui.core.editor.Constants;
 
 public class SaveContentToFileWithExetention extends AbstractWebEditorFunction {
 

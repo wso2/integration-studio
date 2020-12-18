@@ -14,24 +14,24 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.utils;
+package org.wso2.integrationstudio.platform.core.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.Activator;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeResolver;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeResolverProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.internal.impl.MediaTypeResolverProviderImpl;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.Activator;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeResolver;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeResolverProvider;
+import org.wso2.integrationstudio.platform.core.internal.impl.MediaTypeResolverProviderImpl;
 
 public class CSMediaUtils {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	private static String MEDIA_TYPE_EXTENSION = "org.wso2.integrationstudio.eclipse.platform.core.mediatype";
+	private static String MEDIA_TYPE_EXTENSION = "org.wso2.integrationstudio.platform.core.mediatype";
 	private static List<IMediaTypeResolverProvider> mediaTypeResolverList;
 
 	public static IMediaTypeResolverProvider[] getMediaTypeResolver() {

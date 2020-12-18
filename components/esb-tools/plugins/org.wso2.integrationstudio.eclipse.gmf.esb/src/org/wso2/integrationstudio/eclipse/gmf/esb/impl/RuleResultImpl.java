@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -15,13 +15,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultValueType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleResult;
+import org.wso2.integrationstudio.gmf.esb.RuleResultType;
+import org.wso2.integrationstudio.gmf.esb.RuleResultValueType;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,13 +31,13 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultValueType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleResultImpl#getResultType <em>Result Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleResultImpl#getResultCustomType <em>Result Custom Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleResultImpl#getResultName <em>Result Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleResultImpl#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleResultImpl#getValueLiteral <em>Value Literal</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleResultImpl#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleResultImpl#getValueKey <em>Value Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleResultImpl#getResultType <em>Result Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleResultImpl#getResultCustomType <em>Result Custom Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleResultImpl#getResultName <em>Result Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleResultImpl#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleResultImpl#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleResultImpl#getValueExpression <em>Value Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleResultImpl#getValueKey <em>Value Key</em>}</li>
  * </ul>
  *
  * @generated

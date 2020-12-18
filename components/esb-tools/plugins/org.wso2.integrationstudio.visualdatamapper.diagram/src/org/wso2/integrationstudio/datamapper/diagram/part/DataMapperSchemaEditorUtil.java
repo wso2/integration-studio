@@ -26,8 +26,8 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.wso2.integrationstudio.datamapper.diagram.custom.action.Messages;
 import org.wso2.integrationstudio.datamapper.diagram.custom.util.EditorUtils;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryData;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.CAppEnvironment;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryData;
 
 public class DataMapperSchemaEditorUtil {
 

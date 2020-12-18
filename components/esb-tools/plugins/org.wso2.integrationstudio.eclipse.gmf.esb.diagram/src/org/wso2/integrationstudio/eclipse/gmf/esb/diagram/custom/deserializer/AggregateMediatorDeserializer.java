@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Map;
 
@@ -26,16 +26,16 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateElementType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CompletionMessagesType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.AggregateElementType;
+import org.wso2.integrationstudio.gmf.esb.AggregateMediator;
+import org.wso2.integrationstudio.gmf.esb.AggregateSequenceType;
+import org.wso2.integrationstudio.gmf.esb.CompletionMessagesType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class AggregateMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, AggregateMediator> {
 
@@ -48,7 +48,7 @@ public class AggregateMediatorDeserializer extends AbstractEsbNodeDeserializer<A
 
         org.apache.synapse.mediators.eip.aggregator.AggregateMediator aggregateMediator = (org.apache.synapse.mediators.eip.aggregator.AggregateMediator) mediator;
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediator visualAggregateMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.AggregateMediator visualAggregateMediator = (org.wso2.integrationstudio.gmf.esb.AggregateMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.AggregateMediator_3525);
         setElementToEdit(visualAggregateMediator);
         setCommonProperties(aggregateMediator, visualAggregateMediator);

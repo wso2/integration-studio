@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.EditPart;
@@ -15,12 +15,12 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.TemplateTemplateCompartmentCanonicalEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.TemplateTemplateCompartmentItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.Messages;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.TemplateTemplateCompartmentCanonicalEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.TemplateTemplateCompartmentItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.Messages;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated

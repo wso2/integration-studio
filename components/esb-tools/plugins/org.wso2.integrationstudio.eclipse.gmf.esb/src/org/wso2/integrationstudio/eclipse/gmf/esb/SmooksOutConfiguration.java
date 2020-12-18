@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -16,23 +16,23 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksOutConfiguration#getType <em>Type</em>}</li>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksOutConfiguration#getExpression <em>Expression</em>}</li>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksOutConfiguration#getProperty <em>Property</em>}</li>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksOutConfiguration#getAction <em>Action</em>}</li>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksOutConfiguration#getOutputMethod <em>Output
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.SmooksOutConfiguration#getType <em>Type</em>}</li>
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.SmooksOutConfiguration#getExpression <em>Expression</em>}</li>
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.SmooksOutConfiguration#getProperty <em>Property</em>}</li>
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.SmooksOutConfiguration#getAction <em>Action</em>}</li>
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.SmooksOutConfiguration#getOutputMethod <em>Output
  * Method</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSmooksOutConfiguration()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSmooksOutConfiguration()
  * @model
  * @generated
  */
 public interface SmooksOutConfiguration extends EObject {
     /**
      * Returns the value of the '<em><b>Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksIODataType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.SmooksIODataType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Type</em>' attribute isn't clear,
@@ -41,22 +41,22 @@ public interface SmooksOutConfiguration extends EObject {
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SmooksIODataType
+     * @see org.wso2.integrationstudio.gmf.esb.SmooksIODataType
      * @see #setType(SmooksIODataType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSmooksOutConfiguration_Type()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSmooksOutConfiguration_Type()
      * @model
      * @generated
      */
     SmooksIODataType getType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksOutConfiguration#getType
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.SmooksOutConfiguration#getType
      * <em>Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
      * @param value the new value of the '<em>Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SmooksIODataType
+     * @see org.wso2.integrationstudio.gmf.esb.SmooksIODataType
      * @see #getType()
      * @generated
      */
@@ -73,14 +73,14 @@ public interface SmooksOutConfiguration extends EObject {
      * 
      * @return the value of the '<em>Expression</em>' containment reference.
      * @see #setExpression(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSmooksOutConfiguration_Expression()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSmooksOutConfiguration_Expression()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksOutConfiguration#getExpression
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.SmooksOutConfiguration#getExpression
      * <em>Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -102,14 +102,14 @@ public interface SmooksOutConfiguration extends EObject {
      * 
      * @return the value of the '<em>Property</em>' attribute.
      * @see #setProperty(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSmooksOutConfiguration_Property()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSmooksOutConfiguration_Property()
      * @model
      * @generated
      */
     String getProperty();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksOutConfiguration#getProperty
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.SmooksOutConfiguration#getProperty
      * <em>Property</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -122,7 +122,7 @@ public interface SmooksOutConfiguration extends EObject {
 
     /**
      * Returns the value of the '<em><b>Action</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.ExpressionAction}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.ExpressionAction}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Action</em>' attribute isn't clear,
@@ -131,22 +131,22 @@ public interface SmooksOutConfiguration extends EObject {
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Action</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ExpressionAction
+     * @see org.wso2.integrationstudio.gmf.esb.ExpressionAction
      * @see #setAction(ExpressionAction)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSmooksOutConfiguration_Action()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSmooksOutConfiguration_Action()
      * @model
      * @generated
      */
     ExpressionAction getAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksOutConfiguration#getAction
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.SmooksOutConfiguration#getAction
      * <em>Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
      * @param value the new value of the '<em>Action</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ExpressionAction
+     * @see org.wso2.integrationstudio.gmf.esb.ExpressionAction
      * @see #getAction()
      * @generated
      */
@@ -155,7 +155,7 @@ public interface SmooksOutConfiguration extends EObject {
     /**
      * Returns the value of the '<em><b>Output Method</b></em>' attribute.
      * The default value is <code>""</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.OutputMethod}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.OutputMethod}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Output Method</em>' attribute isn't clear,
@@ -164,22 +164,22 @@ public interface SmooksOutConfiguration extends EObject {
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Output Method</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.OutputMethod
+     * @see org.wso2.integrationstudio.gmf.esb.OutputMethod
      * @see #setOutputMethod(OutputMethod)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSmooksOutConfiguration_OutputMethod()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSmooksOutConfiguration_OutputMethod()
      * @model default=""
      * @generated
      */
     OutputMethod getOutputMethod();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksOutConfiguration#getOutputMethod
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.SmooksOutConfiguration#getOutputMethod
      * <em>Output Method</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
      * @param value the new value of the '<em>Output Method</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.OutputMethod
+     * @see org.wso2.integrationstudio.gmf.esb.OutputMethod
      * @see #getOutputMethod()
      * @generated
      */

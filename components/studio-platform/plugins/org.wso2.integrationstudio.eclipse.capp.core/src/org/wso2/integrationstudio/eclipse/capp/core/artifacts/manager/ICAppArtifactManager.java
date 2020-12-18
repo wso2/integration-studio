@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager;
+package org.wso2.integrationstudio.capp.core.artifacts.manager;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,10 +26,10 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.IArtifactSourcePath;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.ICAppArtifactHandler;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.configure.ICAppProjectSettings;
-import org.wso2.integrationstudio.eclipse.capp.core.manifest.Artifact;
+import org.wso2.integrationstudio.capp.core.artifacts.IArtifactSourcePath;
+import org.wso2.integrationstudio.capp.core.artifacts.ICAppArtifactHandler;
+import org.wso2.integrationstudio.capp.core.artifacts.configure.ICAppProjectSettings;
+import org.wso2.integrationstudio.capp.core.manifest.Artifact;
 
 public interface ICAppArtifactManager {
 

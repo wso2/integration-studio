@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.common.util.EMap;
 
@@ -21,19 +21,19 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getCallQuery <em>Call Query</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getData <em>Data</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getHasheader <em>Hasheader</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getMaxrowcount <em>Maxrowcount</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getProperty <em>Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getSql <em>Sql</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getStartingrow <em>Startingrow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DocumentRoot#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DocumentRoot#getCallQuery <em>Call Query</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DocumentRoot#getData <em>Data</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DocumentRoot#getHasheader <em>Hasheader</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DocumentRoot#getMaxrowcount <em>Maxrowcount</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DocumentRoot#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DocumentRoot#getSql <em>Sql</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DocumentRoot#getStartingrow <em>Startingrow</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDocumentRoot()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getDocumentRoot()
  * @model extendedMetaData="name='' kind='mixed'"
  * @generated
  */
@@ -48,7 +48,7 @@ public interface DocumentRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDocumentRoot_Mixed()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDocumentRoot_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -66,7 +66,7 @@ public interface DocumentRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XMLNS Prefix Map</em>' map.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDocumentRoot_XMLNSPrefixMap()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDocumentRoot_XMLNSPrefixMap()
 	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>" transient="true"
 	 *        extendedMetaData="kind='attribute' name='xmlns:prefix'"
 	 * @generated
@@ -84,7 +84,7 @@ public interface DocumentRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XSI Schema Location</em>' map.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDocumentRoot_XSISchemaLocation()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDocumentRoot_XSISchemaLocation()
 	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>" transient="true"
 	 *        extendedMetaData="kind='attribute' name='xsi:schemaLocation'"
 	 * @generated
@@ -101,7 +101,7 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Call Query</em>' containment reference.
 	 * @see #setCallQuery(CallQuery)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDocumentRoot_CallQuery()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDocumentRoot_CallQuery()
 	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='call-query' namespace='##targetNamespace'"
 	 * @generated
@@ -109,7 +109,7 @@ public interface DocumentRoot extends EObject {
 	CallQuery getCallQuery();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getCallQuery <em>Call Query</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DocumentRoot#getCallQuery <em>Call Query</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Call Query</em>' containment reference.
@@ -128,7 +128,7 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data</em>' containment reference.
 	 * @see #setData(DataService)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDocumentRoot_Data()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDocumentRoot_Data()
 	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='data' namespace='##targetNamespace'"
 	 * @generated
@@ -136,7 +136,7 @@ public interface DocumentRoot extends EObject {
 	DataService getData();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getData <em>Data</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DocumentRoot#getData <em>Data</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Data</em>' containment reference.
@@ -155,7 +155,7 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hasheader</em>' containment reference.
 	 * @see #setHasheader(HasHeader)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDocumentRoot_Hasheader()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDocumentRoot_Hasheader()
 	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='hasheader' namespace='##targetNamespace'"
 	 * @generated
@@ -163,7 +163,7 @@ public interface DocumentRoot extends EObject {
 	HasHeader getHasheader();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getHasheader <em>Hasheader</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DocumentRoot#getHasheader <em>Hasheader</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Hasheader</em>' containment reference.
@@ -182,7 +182,7 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Maxrowcount</em>' containment reference.
 	 * @see #setMaxrowcount(MaxRowCount)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDocumentRoot_Maxrowcount()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDocumentRoot_Maxrowcount()
 	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='maxrowcount' namespace='##targetNamespace'"
 	 * @generated
@@ -190,7 +190,7 @@ public interface DocumentRoot extends EObject {
 	MaxRowCount getMaxrowcount();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getMaxrowcount <em>Maxrowcount</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DocumentRoot#getMaxrowcount <em>Maxrowcount</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Maxrowcount</em>' containment reference.
@@ -209,7 +209,7 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Property</em>' containment reference.
 	 * @see #setProperty(ConfigurationProperty)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDocumentRoot_Property()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDocumentRoot_Property()
 	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='property' namespace='##targetNamespace'"
 	 * @generated
@@ -217,7 +217,7 @@ public interface DocumentRoot extends EObject {
 	ConfigurationProperty getProperty();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getProperty <em>Property</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DocumentRoot#getProperty <em>Property</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Property</em>' containment reference.
@@ -236,7 +236,7 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sql</em>' containment reference.
 	 * @see #setSql(Sql)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDocumentRoot_Sql()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDocumentRoot_Sql()
 	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='sql' namespace='##targetNamespace'"
 	 * @generated
@@ -244,7 +244,7 @@ public interface DocumentRoot extends EObject {
 	Sql getSql();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getSql <em>Sql</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DocumentRoot#getSql <em>Sql</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Sql</em>' containment reference.
@@ -263,7 +263,7 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Startingrow</em>' containment reference.
 	 * @see #setStartingrow(StartingRow)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDocumentRoot_Startingrow()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDocumentRoot_Startingrow()
 	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='startingrow' namespace='##targetNamespace'"
 	 * @generated
@@ -271,7 +271,7 @@ public interface DocumentRoot extends EObject {
 	StartingRow getStartingrow();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getStartingrow <em>Startingrow</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DocumentRoot#getStartingrow <em>Startingrow</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Startingrow</em>' containment reference.

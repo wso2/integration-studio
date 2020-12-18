@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
@@ -27,23 +27,23 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorFlowCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.SwitchMediatorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment6CanonicalEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment6ItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory.NodeToolEntry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpointInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpointOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorFlowCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.SwitchMediatorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment6CanonicalEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment6ItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbPaletteFactory.NodeToolEntry;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated NOT
@@ -135,8 +135,8 @@ public class MediatorFlowMediatorFlowCompartment6EditPart extends AbstractMediat
          * .setName(label);
          * }
          * } else if (((ToolEntryEditPart) editpart).getModel() instanceof
-         * org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart.NodeToolEntry) {
-         * String label = ((org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart.NodeToolEntry)
+         * org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceEditPart.NodeToolEntry) {
+         * String label = ((org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceEditPart.NodeToolEntry)
          * ((ToolEntryEditPart) editpart)
          * .getModel()).getLabel();
          * if ((!label.equals("")) && (!label.equals("Sequence"))) {

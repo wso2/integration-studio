@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.project.controller;
+package org.wso2.integrationstudio.esb.project.controller;
 
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.esb.project.model.ESBSolutionProjectModel;
-import static org.wso2.integrationstudio.eclipse.esb.project.utils.SolutionProjectArtifactConstants.*;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.esb.project.model.ESBSolutionProjectModel;
+import static org.wso2.integrationstudio.esb.project.utils.SolutionProjectArtifactConstants.*;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class ESBSolutionProjectFieldController extends ESBProjectFieldController {
 

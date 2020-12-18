@@ -1,5 +1,5 @@
---- esb/org.wso2.integrationstudio.eclipse.gmf.esb.diagram/src/org/wso2/integrationstudio/eclipse/gmf/esb/diagram/edit/parts/DataMapperMediatorEditPart.java	(revision 28036)
-+++ esb/org.wso2.integrationstudio.eclipse.gmf.esb.diagram/src/org/wso2/integrationstudio/eclipse/gmf/esb/diagram/edit/parts/DataMapperMediatorEditPart.java	(revision 28037)
+--- esb/org.wso2.integrationstudio.gmf.esb.diagram/src/org/wso2/integrationstudio/eclipse/gmf/esb/diagram/edit/parts/DataMapperMediatorEditPart.java	(revision 28036)
++++ esb/org.wso2.integrationstudio.gmf.esb.diagram/src/org/wso2/integrationstudio/eclipse/gmf/esb/diagram/edit/parts/DataMapperMediatorEditPart.java	(revision 28037)
 @@ -487,16 +497,18 @@
  		} else {
  			openDataMapperEditor(datamapper);

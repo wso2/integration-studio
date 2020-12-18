@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
@@ -23,15 +23,15 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogCategory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogLevel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.LogCategory;
+import org.wso2.integrationstudio.gmf.esb.LogLevel;
+import org.wso2.integrationstudio.gmf.esb.LogMediator;
+import org.wso2.integrationstudio.gmf.esb.LogProperty;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class LogMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, LogMediator> {
 

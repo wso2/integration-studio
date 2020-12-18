@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.carbonserver40;
+package org.wso2.integrationstudio.carbonserver40;
 
 import java.io.File;
 import java.util.HashMap;
@@ -11,11 +11,11 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.IProperties;
-import org.wso2.integrationstudio.eclipse.carbonserver40.util.CarbonServer40Utils;
-import org.wso2.integrationstudio.eclipse.carbonserver40.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver.base.manager.IProperties;
+import org.wso2.integrationstudio.carbonserver40.util.CarbonServer40Utils;
+import org.wso2.integrationstudio.carbonserver40.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class ServerProperties implements IProperties {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

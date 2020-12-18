@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.ui.wizard;
+package org.wso2.integrationstudio.esb.project.ui.wizard;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -53,11 +53,11 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.esb.project.Activator;
-import org.wso2.integrationstudio.eclipse.esb.project.connector.store.Connector;
-import org.wso2.integrationstudio.eclipse.esb.project.servlets.FunctionServerConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.esb.project.Activator;
+import org.wso2.integrationstudio.esb.project.connector.store.Connector;
+import org.wso2.integrationstudio.esb.project.servlets.FunctionServerConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class ImportCloudConnectorWizardPage extends WizardPage {
     private Text txtConnectorStoreURL;

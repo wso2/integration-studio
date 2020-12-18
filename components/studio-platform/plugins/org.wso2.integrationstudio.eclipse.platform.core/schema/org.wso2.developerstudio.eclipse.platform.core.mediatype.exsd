@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.platform.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.platform.core" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.platform.core" id="org.wso2.integrationstudio.eclipse.platform.core.mediatype" name="Media Types"/>
+         <meta.schema plugin="org.wso2.integrationstudio.platform.core" id="org.wso2.integrationstudio.platform.core.mediatype" name="Media Types"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -66,13 +66,13 @@
          <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
-                  Should be a class which implements either org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeFromFileNameResolver,
-org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeFromStreamResolver or org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeBulkResolver interfaces. 
+                  Should be a class which implements either org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeFromFileNameResolver,
+org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeFromStreamResolver or org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeBulkResolver interfaces. 
 
-Do not implement org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeResolver interface
+Do not implement org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeResolver interface
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeResolver"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeResolver"/>
                </appinfo>
             </annotation>
          </attribute>

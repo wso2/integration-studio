@@ -11,7 +11,7 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.ui.wizard;
+package org.wso2.integrationstudio.esb.project.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,13 +26,13 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.esb.project.Activator;
-import org.wso2.integrationstudio.eclipse.esb.project.control.graphicalproject.GMFPluginDetails;
-import org.wso2.integrationstudio.eclipse.esb.project.control.graphicalproject.IUpdateGMFPlugin;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.WizardDialogUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.esb.project.Activator;
+import org.wso2.integrationstudio.esb.project.control.graphicalproject.GMFPluginDetails;
+import org.wso2.integrationstudio.esb.project.control.graphicalproject.IUpdateGMFPlugin;
+import org.wso2.integrationstudio.esb.project.utils.WizardDialogUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
@@ -120,7 +120,7 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     private boolean performFinishRemove() {
         for (TableItem tableItem : removeWizardPage.getTable().getItems()) {
             if (tableItem.getChecked()) {
-                String filePath = ((org.wso2.integrationstudio.eclipse.esb.project.ui.wizard.Connector) tableItem
+                String filePath = ((org.wso2.integrationstudio.esb.project.ui.wizard.Connector) tableItem
                         .getData()).getConnectorFilePath();
                 try {
                     FileUtils.deleteDirectory(new File(filePath));

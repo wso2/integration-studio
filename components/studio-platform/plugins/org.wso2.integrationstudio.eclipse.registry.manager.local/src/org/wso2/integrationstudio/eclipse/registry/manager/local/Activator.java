@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.local;
+package org.wso2.integrationstudio.registry.manager.local;
 
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.manager.FileModificationManager;
+import org.wso2.integrationstudio.registry.manager.local.manager.FileModificationManager;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -29,7 +29,7 @@ import org.wso2.integrationstudio.eclipse.registry.manager.local.manager.FileMod
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.registry.manager.local";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.registry.manager.local";
 	private FileModificationManager fileModificationManager;
 
 	// The shared instance

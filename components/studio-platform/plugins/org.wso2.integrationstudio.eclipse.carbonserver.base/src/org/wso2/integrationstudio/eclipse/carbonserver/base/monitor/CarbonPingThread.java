@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.monitor;
+package org.wso2.integrationstudio.carbonserver.base.monitor;
 
 import java.io.FileNotFoundException;
 import java.net.HttpURLConnection;
@@ -27,10 +27,10 @@ import org.eclipse.jst.server.generic.core.internal.Trace;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.internal.Server;
 import org.eclipse.wst.server.core.util.SocketUtil;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.impl.CarbonServerBehaviour;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver.base.Activator;
+import org.wso2.integrationstudio.carbonserver.base.impl.CarbonServerBehaviour;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class CarbonPingThread extends PingThread {
 	private static final int PING_DELAY = 1000;

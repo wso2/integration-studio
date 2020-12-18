@@ -16,13 +16,13 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Constants extends NLS {
 
-    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.gmf.esb.constants"; //$NON-NLS-1$
+    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.gmf.esb.constants"; //$NON-NLS-1$
     
     public static String EMPTY_TEXT;
     

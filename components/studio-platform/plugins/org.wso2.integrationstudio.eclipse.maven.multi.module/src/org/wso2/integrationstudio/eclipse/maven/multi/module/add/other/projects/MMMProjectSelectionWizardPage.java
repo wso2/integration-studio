@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.maven.multi.module.add.other.projects;
+package org.wso2.integrationstudio.maven.multi.module.add.other.projects;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -42,11 +42,11 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
-import org.wso2.integrationstudio.eclipse.maven.multi.module.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.maven.multi.module.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 public class MMMProjectSelectionWizardPage extends WizardPage {
 
@@ -92,7 +92,7 @@ public class MMMProjectSelectionWizardPage extends WizardPage {
         linkCompositeLabel.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
                 IWizardDescriptor descriptor = PlatformUI.getWorkbench().getNewWizardRegistry()
-                        .findWizard("org.wso2.integrationstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard");
+                        .findWizard("org.wso2.integrationstudio.platform.ui.mvn.wizard.MvnMultiModuleWizard");
                 try {
                     if (null != descriptor) {
                         IWorkbenchWizard wizard = descriptor.createWizard();

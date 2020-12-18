@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 import java.util.Map.Entry;
@@ -29,13 +29,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
 import org.wso2.carbon.mediators.router.impl.Route;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TargetSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RouterMediator;
+import org.wso2.integrationstudio.gmf.esb.RouterTargetContainer;
+import org.wso2.integrationstudio.gmf.esb.TargetSequenceType;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 /**
  * Router mediator transformer

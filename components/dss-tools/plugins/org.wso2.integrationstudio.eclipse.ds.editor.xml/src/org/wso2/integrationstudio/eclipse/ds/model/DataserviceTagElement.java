@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.model;
+package org.wso2.integrationstudio.ds.model;
 
 import java.util.ArrayList;
 import java.util.List;

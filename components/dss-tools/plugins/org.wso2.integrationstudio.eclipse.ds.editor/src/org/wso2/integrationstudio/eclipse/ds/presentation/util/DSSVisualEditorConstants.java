@@ -16,7 +16,7 @@
  *    under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.presentation.util;
+package org.wso2.integrationstudio.ds.presentation.util;
 
 // Constants related to the DSS visual editor page
 public class DSSVisualEditorConstants {

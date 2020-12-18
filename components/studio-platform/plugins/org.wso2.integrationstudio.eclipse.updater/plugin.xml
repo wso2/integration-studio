@@ -4,16 +4,16 @@
     <!-- <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="org.wso2.integrationstudio.eclipse.updater.handler.UpdateFeaturesCommandHandler"
-            id="org.wso2.integrationstudio.eclipse.updater.CheckUpdatesCmd"
+            defaultHandler="org.wso2.integrationstudio.updater.handler.UpdateFeaturesCommandHandler"
+            id="org.wso2.integrationstudio.updater.CheckUpdatesCmd"
             name="Check for Updates">
       </command>
    </extension> -->
 <!--   <extension
          point="org.eclipse.ui.commands">        
       <command
-            defaultHandler="org.wso2.integrationstudio.eclipse.updater.handler.InstallFeaturesCommandHandler"
-            id="org.wso2.integrationstudio.eclipse.updater.InstallFeaturesCmd"
+            defaultHandler="org.wso2.integrationstudio.updater.handler.InstallFeaturesCommandHandler"
+            id="org.wso2.integrationstudio.updater.InstallFeaturesCmd"
             name="Install WSO2 Tools">
       </command>
    </extension> -->
@@ -26,10 +26,10 @@
                 visible="true">
 		</separator>
             <command
-                  commandId="org.wso2.integrationstudio.eclipse.updater.CheckUpdatesCmd"
+                  commandId="org.wso2.integrationstudio.updater.CheckUpdatesCmd"
                   label="Check for Updates"
                   icon="icons/checkupdate.gif"
-                  id="org.wso2.integrationstudio.eclipse.updater.updateCommand"
+                  id="org.wso2.integrationstudio.updater.updateCommand"
                   style="push"
                   tooltip="Check updates for Integration Studio">
             </command>
@@ -42,13 +42,13 @@
 <!--      <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="menu:org.wso2.integrationstudio.eclipse.platform.ui.main">
+            locationURI="menu:org.wso2.integrationstudio.platform.ui.main">
             <separator
       			 name="separator-id-install-up"
                 visible="true">
 			</separator>
             <command
-                  commandId="org.wso2.integrationstudio.eclipse.updater.InstallFeaturesCmd"
+                  commandId="org.wso2.integrationstudio.updater.InstallFeaturesCmd"
                   label="Install WSO2 Tools"
                   icon="icons/checkupdate.gif"
                   style="push"
@@ -61,6 +61,6 @@
       </menuContribution>
    </extension> -->
    <extension point="org.eclipse.ui.startup">
-     <startup class="org.wso2.integrationstudio.eclipse.updater.handler.StartupUpdateHandler"/>
+     <startup class="org.wso2.integrationstudio.updater.handler.StartupUpdateHandler"/>
    </extension>
 </plugin>

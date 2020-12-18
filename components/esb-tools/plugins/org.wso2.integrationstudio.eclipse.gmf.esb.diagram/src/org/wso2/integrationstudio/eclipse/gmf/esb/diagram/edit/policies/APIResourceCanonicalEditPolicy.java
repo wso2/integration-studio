@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.policies;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,16 +22,16 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceFaultInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInSequenceInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceContainer2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramUpdater;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbNodeDescriptor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceFaultInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceInSequenceInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyServiceContainer2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramUpdater;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbNodeDescriptor;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
 
 /**
  * @generated

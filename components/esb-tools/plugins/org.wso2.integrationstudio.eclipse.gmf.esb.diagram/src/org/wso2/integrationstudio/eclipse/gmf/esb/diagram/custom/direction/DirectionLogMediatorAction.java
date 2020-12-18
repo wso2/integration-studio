@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.direction;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.direction;
 
 import java.util.List;
 
@@ -16,12 +16,12 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureLogMediatorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.LogMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.LogMediatorInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.LogMediatorOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.LogMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui.ConfigureLogMediatorDialog;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.LogMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.LogMediatorInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.LogMediatorOutputConnectorEditPart;
 
 public class DirectionLogMediatorAction extends DirectionEsbNodeAction {
 

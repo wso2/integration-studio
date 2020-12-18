@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.library.project.export;
+package org.wso2.integrationstudio.artifact.library.project.export;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -36,16 +36,16 @@ import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
-import org.wso2.integrationstudio.eclipse.artifact.library.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.bundle.BundlesDataInfo;
-import org.wso2.integrationstudio.eclipse.platform.core.manifest.BundleManifest;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
-import org.wso2.integrationstudio.eclipse.utils.archive.ArchiveManipulator;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.file.TempFileUtils;
+import org.wso2.integrationstudio.artifact.library.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.bundle.BundlesDataInfo;
+import org.wso2.integrationstudio.platform.core.manifest.BundleManifest;
+import org.wso2.integrationstudio.platform.core.project.export.ProjectArtifactHandler;
+import org.wso2.integrationstudio.utils.archive.ArchiveManipulator;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.file.TempFileUtils;
 
 public class LibraryArtifactHandler extends ProjectArtifactHandler {
 	

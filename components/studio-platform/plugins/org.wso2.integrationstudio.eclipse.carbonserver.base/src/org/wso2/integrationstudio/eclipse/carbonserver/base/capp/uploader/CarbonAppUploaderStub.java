@@ -5,7 +5,7 @@
  * by the Apache Axis2 version: 1.6-wso2v4 Built on : Dec 08, 2010 (06:36:57
  * UTC)
  */
-package org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader;
+package org.wso2.integrationstudio.carbonserver.base.capp.uploader;
 
 /*
  * CarbonAppUploaderStub java implementation
@@ -115,13 +115,13 @@ public class CarbonAppUploaderStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploader#uploadApp
+	 * @see org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploader#uploadApp
 	 * @param uploadApp
 	 */
 
 	public void uploadApp(
 
-	org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadedFileItem[] fileItems)
+	org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadedFileItem[] fileItems)
 
 	throws java.rmi.RemoteException
 
@@ -142,7 +142,7 @@ public class CarbonAppUploaderStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp dummyWrappedType =
 			                                                                                                                    null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()), fileItems,
@@ -1368,11 +1368,11 @@ public class CarbonAppUploaderStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -1381,20 +1381,20 @@ public class CarbonAppUploaderStub extends org.apache.axis2.client.Stub {
 	}
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadedFileItem[] param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadedFileItem[] param1,
+	                                                      org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp wrappedType =
-			                                                                                                               new org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp();
+			org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp wrappedType =
+			                                                                                                               new org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp();
 
 			wrappedType.setFileItems(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -1417,9 +1417,9 @@ public class CarbonAppUploaderStub extends org.apache.axis2.client.Stub {
 
 		try {
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.capp.uploader.CarbonAppUploaderStub.UploadApp.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.dataservice.ui.wizard;
+package org.wso2.integrationstudio.artifact.dataservice.ui.wizard;
 
 import java.io.File;
 import java.util.HashMap;
@@ -61,19 +61,19 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.dialog.RegistryTreeBrowserDialog;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.model.DataServiceModel;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.utils.ConnectionObj;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.utils.DependencyProvider;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryURLInfo;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryUrlStore;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.ResourceManager;
+import org.wso2.integrationstudio.registry.base.ui.dialog.RegistryTreeBrowserDialog;
+import org.wso2.integrationstudio.artifact.dataservice.model.DataServiceModel;
+import org.wso2.integrationstudio.artifact.dataservice.utils.ConnectionObj;
+import org.wso2.integrationstudio.artifact.dataservice.utils.DependencyProvider;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryURLInfo;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryUrlStore;
+import org.wso2.integrationstudio.platform.core.utils.ResourceManager;
 
 public class NewDataSourceWizardPage extends WizardPage {
 
     public static final int SELECTED_REGISTRY_RESOURCE = 8;
-    private static final String SYMBOLIC_NAME = "org.wso2.integrationstudio.eclipse.artifact.dataservice";
+    private static final String SYMBOLIC_NAME = "org.wso2.integrationstudio.artifact.dataservice";
 
     /* avalable datasource types */
     private static String[] dataSourceType = new String[] { "RDBMS", "Cassandra", "CSV", "EXCEL", "RDF",

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 
 import java.util.HashMap;
 import java.util.Map;

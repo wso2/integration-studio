@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44ei.monitor;
+package org.wso2.integrationstudio.carbonserver44ei.monitor;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,13 +25,13 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.IServerListener;
 import org.eclipse.wst.server.core.ServerEvent;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.console.CarbonServerConsole;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServerMonitor;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver44ei.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44ei.util.CarbonServer44eiUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver.base.console.CarbonServerConsole;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServerMonitor;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver44ei.Activator;
+import org.wso2.integrationstudio.carbonserver44ei.util.CarbonServer44eiUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class CarbonServerListener implements IServerListener {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

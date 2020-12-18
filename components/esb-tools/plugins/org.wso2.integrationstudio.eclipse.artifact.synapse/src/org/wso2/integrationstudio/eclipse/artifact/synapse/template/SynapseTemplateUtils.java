@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.synapse.template;
+package org.wso2.integrationstudio.artifact.synapse.template;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.artifact.synapse.Activator;
-import org.wso2.integrationstudio.eclipse.utils.template.TemplateUtil;
+import org.wso2.integrationstudio.artifact.synapse.Activator;
+import org.wso2.integrationstudio.utils.template.TemplateUtil;
 
 public class SynapseTemplateUtils extends TemplateUtil {
 private static SynapseTemplateUtils instance;

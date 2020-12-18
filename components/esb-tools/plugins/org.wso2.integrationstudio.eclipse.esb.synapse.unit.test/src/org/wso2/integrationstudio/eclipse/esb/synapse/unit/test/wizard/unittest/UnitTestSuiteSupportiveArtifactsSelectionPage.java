@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.unittest;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.unittest;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -31,8 +31,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.DependencyTree;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.SynapseUnitTest;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.DependencyTree;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.SynapseUnitTest;
 
 /**
  * Class responsible for creation of wizard page for select supportive

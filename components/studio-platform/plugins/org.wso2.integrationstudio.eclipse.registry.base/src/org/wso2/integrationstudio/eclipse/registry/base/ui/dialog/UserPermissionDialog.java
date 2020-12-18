@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.ui.dialog;
+package org.wso2.integrationstudio.registry.base.ui.dialog;
 
 import org.apache.axis2.AxisFault;
 import org.eclipse.jface.dialogs.Dialog;
@@ -34,15 +34,15 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.base.Activator;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.util.BaseConstants;
-import org.wso2.integrationstudio.eclipse.registry.resource.authorization.ResourceAdmin;
-import org.wso2.integrationstudio.eclipse.registry.resource.authorization.ResourceAdmin.Role;
-import org.wso2.integrationstudio.eclipse.usermgt.remote.UserManager;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.base.Activator;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.util.BaseConstants;
+import org.wso2.integrationstudio.registry.resource.authorization.ResourceAdmin;
+import org.wso2.integrationstudio.registry.resource.authorization.ResourceAdmin.Role;
+import org.wso2.integrationstudio.usermgt.remote.UserManager;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.ui;
+package org.wso2.integrationstudio.carbonserver.base.ui;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
@@ -25,8 +25,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerInformation;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.ICarbonOperationManager;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerInformation;
+import org.wso2.integrationstudio.carbonserver.base.manager.ICarbonOperationManager;
 
 public class CarbonServerDialog extends Dialog {
 	CarbonServerInformation wsasServerInformation;

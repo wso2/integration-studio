@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,10 +45,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		implements IFormPropertiesEditionPart, PropertyGroupMediatorOutputConnectorPropertiesEditionPart {
@@ -231,7 +231,7 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartForm exten
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#initCommentMediators(EObject
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#initCommentMediators(EObject
 	 *      current, EReference containingFeature, EReference feature)
 	 */
 	public void initCommentMediators(ReferencesTableSettings settings) {
@@ -253,7 +253,7 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartForm exten
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#updateCommentMediators()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#updateCommentMediators()
 	 */
 	public void updateCommentMediators() {
 		commentMediators.refresh();
@@ -262,7 +262,7 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartForm exten
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter
 	 *      filter)
 	 */
 	public void addFilterToCommentMediators(ViewerFilter filter) {
@@ -275,7 +275,7 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartForm exten
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter
 	 *      filter)
 	 */
 	public void addBusinessFilterToCommentMediators(ViewerFilter filter) {
@@ -285,7 +285,7 @@ public class PropertyGroupMediatorOutputConnectorPropertiesEditionPartForm exten
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject
 	 *      element)
 	 */
 	public boolean isContainedInCommentMediatorsTable(EObject element) {

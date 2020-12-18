@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.servlets;
+package org.wso2.integrationstudio.esb.project.servlets;
 
 /**
  * Constants for functions server(Embedded jetty server)

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,14 +21,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.KeyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariable;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.XQueryMediator;
+import org.wso2.integrationstudio.gmf.esb.XQueryMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.XQueryMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariable;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,14 +38,14 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariable;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryMediatorImpl#getVariables <em>Variables</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryMediatorImpl#getTargetXPath <em>Target XPath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryMediatorImpl#getScriptKeyType <em>Script Key Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryMediatorImpl#getStaticScriptKey <em>Static Script Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryMediatorImpl#getDynamicScriptKey <em>Dynamic Script Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryMediatorImpl#getQueryKey <em>Query Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryMediatorImpl#getVariables <em>Variables</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryMediatorImpl#getTargetXPath <em>Target XPath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryMediatorImpl#getScriptKeyType <em>Script Key Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryMediatorImpl#getStaticScriptKey <em>Static Script Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryMediatorImpl#getDynamicScriptKey <em>Dynamic Script Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryMediatorImpl#getQueryKey <em>Query Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated

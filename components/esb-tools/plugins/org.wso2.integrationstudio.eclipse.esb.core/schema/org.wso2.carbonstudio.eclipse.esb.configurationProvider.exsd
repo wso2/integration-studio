@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.esb.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.esb.core" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.esb.core" id="org.wso2.integrationstudio.eclipse.esb.configurationProvider" name="ESB Configuration Provider Contribution Extension"/>
+         <meta.schema plugin="org.wso2.integrationstudio.esb.core" id="org.wso2.integrationstudio.esb.configurationProvider" name="ESB Configuration Provider Contribution Extension"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -71,7 +71,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEndpointProvider"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.esb.core.interfaces.IEndpointProvider"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -110,7 +110,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.esb.core.interfaces.ISequenceProvider"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.esb.core.interfaces.ISequenceProvider"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -149,7 +149,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.esb.core.interfaces.ISequenceProvider"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.esb.core.interfaces.ISequenceProvider"/>
                </appinfo>
             </annotation>
          </attribute>

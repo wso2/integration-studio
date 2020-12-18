@@ -14,7 +14,7 @@
  * limitations under the License.
  
 
-package org.wso2.integrationstudio.eclipse.distribution.project.publisher;
+package org.wso2.integrationstudio.distribution.project.publisher;
 
 import java.io.File;
 
@@ -26,9 +26,9 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.wst.server.core.IServer;
-import org.wso2.integrationstudio.eclipse.artifact.webapp.project.export.WebAppArtfactExportHandler;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServerModulePublisher;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.artifact.webapp.project.export.WebAppArtfactExportHandler;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServerModulePublisher;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
 
 public class WebAppProjectPublisher implements ICarbonServerModulePublisher {
 

@@ -49,7 +49,7 @@ import org.wso2.integrationstudio.datamapper.diagram.edit.parts.DataMapperRootEd
 import org.wso2.integrationstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.integrationstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.integrationstudio.datamapper.impl.TreeNodeImpl;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryFile;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryFile;
 
 public class AddNewFieldAction extends AbstractActionHandler {
 

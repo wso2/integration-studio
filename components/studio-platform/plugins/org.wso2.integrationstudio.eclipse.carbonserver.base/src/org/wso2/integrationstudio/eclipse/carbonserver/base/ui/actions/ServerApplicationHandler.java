@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.ui.actions;
+package org.wso2.integrationstudio.carbonserver.base.ui.actions;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -24,7 +24,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.ui.IServerModule;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
 
 /**
  * This is the handler class for Redeploy option we added for Carbon Server

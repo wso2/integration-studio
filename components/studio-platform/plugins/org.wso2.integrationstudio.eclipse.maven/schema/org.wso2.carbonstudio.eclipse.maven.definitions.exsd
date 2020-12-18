@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.maven" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.maven" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.maven" id="org.wso2.integrationstudio.eclipse.maven.definitions" name="Maven Definition Data"/>
+         <meta.schema plugin="org.wso2.integrationstudio.maven" id="org.wso2.integrationstudio.maven.definitions" name="Maven Definition Data"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -80,7 +80,7 @@
                   For customized execution of creating maven project from the arche type
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.maven.executor.IMavenCustomExecution"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.maven.executor.IMavenCustomExecution"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -212,7 +212,7 @@
                   For customized execution of creating maven project from the arche type
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.maven.executor.IMavenCustomExecution"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.maven.executor.IMavenCustomExecution"/>
                </appinfo>
             </annotation>
          </attribute>

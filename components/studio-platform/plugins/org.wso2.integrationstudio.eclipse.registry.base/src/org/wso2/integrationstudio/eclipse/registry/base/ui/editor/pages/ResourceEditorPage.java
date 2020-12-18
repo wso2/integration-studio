@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.ui.editor.pages;
+package org.wso2.integrationstudio.registry.base.ui.editor.pages;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -67,21 +67,21 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.wso2.carbon.registry.core.Resource;
 import org.wso2.carbon.registry.core.exceptions.RegistryException;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.MediaManager;
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.registry.base.Activator;
-import org.wso2.integrationstudio.eclipse.registry.base.core.Registry;
-import org.wso2.integrationstudio.eclipse.registry.base.editor.input.ResourceEditorInput;
-import org.wso2.integrationstudio.eclipse.registry.base.interfaces.IRegistryFormEditorPage;
-import org.wso2.integrationstudio.eclipse.registry.base.managers.RemoteContentManager;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.editor.RegistryResourceEditor;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.InvalidRegistryURLException;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.UnknownRegistryException;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IGARImportDependency;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.GARUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.MediaManager;
+import org.wso2.integrationstudio.platform.core.mediatype.PlatformMediaTypeConstants;
+import org.wso2.integrationstudio.registry.base.Activator;
+import org.wso2.integrationstudio.registry.base.core.Registry;
+import org.wso2.integrationstudio.registry.base.editor.input.ResourceEditorInput;
+import org.wso2.integrationstudio.registry.base.interfaces.IRegistryFormEditorPage;
+import org.wso2.integrationstudio.registry.base.managers.RemoteContentManager;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.ui.editor.RegistryResourceEditor;
+import org.wso2.integrationstudio.registry.core.exception.InvalidRegistryURLException;
+import org.wso2.integrationstudio.registry.core.exception.UnknownRegistryException;
+import org.wso2.integrationstudio.registry.core.interfaces.IGARImportDependency;
+import org.wso2.integrationstudio.registry.core.utils.GARUtils;
 
 public class ResourceEditorPage extends FormPage implements
 		IResourceChangeListener, IRegistryFormEditorPage {

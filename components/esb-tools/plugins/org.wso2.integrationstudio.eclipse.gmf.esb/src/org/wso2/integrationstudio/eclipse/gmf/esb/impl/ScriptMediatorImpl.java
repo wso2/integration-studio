@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -18,15 +18,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ScriptLanguage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ScriptMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ScriptMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ScriptMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ScriptType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.scriptKeyTypeEnum;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.ScriptLanguage;
+import org.wso2.integrationstudio.gmf.esb.ScriptMediator;
+import org.wso2.integrationstudio.gmf.esb.ScriptMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.ScriptMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ScriptType;
+import org.wso2.integrationstudio.gmf.esb.scriptKeyTypeEnum;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,16 +36,16 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.scriptKeyTypeEnum;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getScriptType <em>Script Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getScriptLanguage <em>Script Language</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getMediateFunction <em>Mediate Function</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getScriptDynamicKey <em>Script Dynamic Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getScriptBody <em>Script Body</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getKeyType <em>Key Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getScriptStaticKey <em>Script Static Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getScriptKeys <em>Script Keys</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ScriptMediatorImpl#getScriptType <em>Script Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ScriptMediatorImpl#getScriptLanguage <em>Script Language</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ScriptMediatorImpl#getMediateFunction <em>Mediate Function</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ScriptMediatorImpl#getScriptDynamicKey <em>Script Dynamic Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ScriptMediatorImpl#getScriptBody <em>Script Body</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ScriptMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ScriptMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ScriptMediatorImpl#getKeyType <em>Key Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ScriptMediatorImpl#getScriptStaticKey <em>Script Static Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ScriptMediatorImpl#getScriptKeys <em>Script Keys</em>}</li>
  * </ul>
  *
  * @generated

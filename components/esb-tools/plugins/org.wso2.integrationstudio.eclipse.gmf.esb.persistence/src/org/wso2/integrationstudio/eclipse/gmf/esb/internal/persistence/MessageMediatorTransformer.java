@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 
@@ -24,14 +24,14 @@ import org.apache.synapse.mediators.filters.InMediator;
 import org.apache.synapse.mediators.filters.OutMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbNodeTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
- * {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService} model objects into
+ * {@link org.wso2.integrationstudio.gmf.esb.ProxyService} model objects into
  * corresponding synapse artifact(s).
  */
 public class MessageMediatorTransformer extends AbstractEsbNodeTransformer {
@@ -46,8 +46,8 @@ public class MessageMediatorTransformer extends AbstractEsbNodeTransformer {
      */
     public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
         // Check subject.
-        Assert.isTrue(subject instanceof org.wso2.integrationstudio.eclipse.gmf.esb.MessageMediator, "Invalid subject.");
-        org.wso2.integrationstudio.eclipse.gmf.esb.MessageMediator visualMessage = (org.wso2.integrationstudio.eclipse.gmf.esb.MessageMediator) subject;
+        Assert.isTrue(subject instanceof org.wso2.integrationstudio.gmf.esb.MessageMediator, "Invalid subject.");
+        org.wso2.integrationstudio.gmf.esb.MessageMediator visualMessage = (org.wso2.integrationstudio.gmf.esb.MessageMediator) subject;
 
         // Check start.
         if (info.getTraversalDirection() == TransformationInfo.TRAVERSAL_DIRECTION_IN) {

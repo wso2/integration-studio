@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources;
+package org.wso2.integrationstudio.apim.endpoint.central.resources;
 
 import org.eclipse.osgi.util.NLS;
 
@@ -25,7 +25,7 @@ import org.eclipse.osgi.util.NLS;
 public class EndpointCentralConstants extends NLS {
 
     public static final String PROPERTIES_FILE_BASE_NAME =
-            "org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.endpointcentralconstants";
+            "org.wso2.integrationstudio.apim.endpoint.central.resources.endpointcentralconstants";
     public static final String ARTIFACT_XML = "artifact.xml";
     public static final String XML = ".xml";
     public static final String SLASH = "/";

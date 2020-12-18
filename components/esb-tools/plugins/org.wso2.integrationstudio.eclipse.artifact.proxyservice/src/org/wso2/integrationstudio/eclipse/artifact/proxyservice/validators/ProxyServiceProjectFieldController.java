@@ -14,23 +14,23 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.proxyservice.validators;
+package org.wso2.integrationstudio.artifact.proxyservice.validators;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.model.ProxyServiceModel;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.model.ProxyServiceModel.TargetEPType;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.utils.PsArtifactConstants;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplate;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.artifact.proxyservice.model.ProxyServiceModel;
+import org.wso2.integrationstudio.artifact.proxyservice.model.ProxyServiceModel.TargetEPType;
+import org.wso2.integrationstudio.artifact.proxyservice.utils.PsArtifactConstants;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplate;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
 
 import java.util.List;
 

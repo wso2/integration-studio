@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Properties;
 
@@ -27,7 +27,7 @@ import org.apache.synapse.config.xml.SequenceMediatorFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.wso2.carbon.identity.entitlement.mediator.EntitlementConstants;
 import org.wso2.carbon.identity.entitlement.mediator.config.xml.EntitlementMediatorFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.EntitlementMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.EntitlementMediatorExt;
 
 public class EntitlementMediatorExtFactory extends EntitlementMediatorFactory {
 

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.presentation.md;
+package org.wso2.integrationstudio.ds.presentation.md;
 
 import java.util.Collection;
 
@@ -34,9 +34,9 @@ import org.eclipse.ui.forms.SectionPart;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsActionBarContributor;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditor;
+import org.wso2.integrationstudio.ds.impl.DocumentRootImpl;
+import org.wso2.integrationstudio.ds.presentation.DsActionBarContributor;
+import org.wso2.integrationstudio.ds.presentation.DsEditor;
 
 public class OutlineBlock extends MasterDetailsBlock {
 

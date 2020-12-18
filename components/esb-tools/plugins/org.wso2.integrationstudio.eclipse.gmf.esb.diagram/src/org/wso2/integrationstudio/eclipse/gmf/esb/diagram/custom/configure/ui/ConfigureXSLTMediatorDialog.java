@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -44,15 +44,15 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTFeature;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTResource;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.XSLTFeature;
+import org.wso2.integrationstudio.gmf.esb.XSLTMediator;
+import org.wso2.integrationstudio.gmf.esb.XSLTProperty;
+import org.wso2.integrationstudio.gmf.esb.XSLTResource;
 
 public class ConfigureXSLTMediatorDialog extends Dialog {
 

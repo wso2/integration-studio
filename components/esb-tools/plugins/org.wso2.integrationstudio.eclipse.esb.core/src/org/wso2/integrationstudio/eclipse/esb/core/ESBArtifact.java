@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.esb.core;
+package org.wso2.integrationstudio.esb.core;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,9 +17,9 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.manifest.AbstractXMLDoc;
 
 public class ESBArtifact extends AbstractXMLDoc implements Observer{
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

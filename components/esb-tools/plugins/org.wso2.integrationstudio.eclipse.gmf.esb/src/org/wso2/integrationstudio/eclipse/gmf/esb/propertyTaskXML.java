@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.propertyTaskXML#getSomexml <em>Somexml</em>}</li>
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.propertyTaskXML#getSomexml <em>Somexml</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getpropertyTaskXML()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getpropertyTaskXML()
  * @model
  * @generated
  */
@@ -36,14 +36,14 @@ public interface propertyTaskXML extends EObject {
      * 
      * @return the value of the '<em>Somexml</em>' reference.
      * @see #setSomexml(SomeXML)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getpropertyTaskXML_Somexml()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getpropertyTaskXML_Somexml()
      * @model
      * @generated
      */
     SomeXML getSomexml();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.propertyTaskXML#getSomexml
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.propertyTaskXML#getSomexml
      * <em>Somexml</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

@@ -3,25 +3,25 @@
 <plugin>
  <extension point="org.eclipse.ui.newWizards">
 		<wizard name="Synapse Configuration"
-			category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.message.mediation/org.wso2.integrationstudio.eclipse.message.mediation.features"
-			class="org.wso2.integrationstudio.eclipse.artifact.synapse.ui.wizard.SynapseCreationWizard"
+			category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.message.mediation/org.wso2.integrationstudio.message.mediation.features"
+			class="org.wso2.integrationstudio.artifact.synapse.ui.wizard.SynapseCreationWizard"
 			wizardManifest="project_wizard.xml"
-			id="org.wso2.integrationstudio.eclipse.artifact.synapseartifact"
+			id="org.wso2.integrationstudio.artifact.synapseartifact"
 			icon="icons/synapse-16x16png.png">
 			<description>Synapse Configuration</description>
 		</wizard>
 	</extension>
 	<!--extension point="org.eclipse.core.resources.natures"
-		id="org.wso2.integrationstudio.eclipse.artifact.synapse.project.nature" name="Synapse Project Nature">
+		id="org.wso2.integrationstudio.artifact.synapse.project.nature" name="Synapse Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.artifact.synapse.project.nature.SynapseProjectNature">
+				class="org.wso2.integrationstudio.artifact.synapse.project.nature.SynapseProjectNature">
 			</run>
 		</runtime>
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
-		<image id="org.wso2.integrationstudio.eclipse.synapse.project.natureImage"
-			natureId="org.wso2.integrationstudio.eclipse.artifact.synapse.project.nature" icon="icons/synapse-12x12png.png">
+		<image id="org.wso2.integrationstudio.synapse.project.natureImage"
+			natureId="org.wso2.integrationstudio.artifact.synapse.project.nature" icon="icons/synapse-12x12png.png">
 		</image>
 	</extension-->
 	 <!-- <extension point="org.eclipse.ui.navigator.navigatorContent">	
@@ -30,9 +30,9 @@
 			id="org.eclipse.ui.navigator.resourceContent"
 			name="test">
 				<commonWizard 
-					menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
+					menuGroupId="2org.wso2.integrationstudio.artifact.esb"
 			  	 	type="new"
-					wizardId="org.wso2.integrationstudio.eclipse.artifact.synapseartifact">
+					wizardId="org.wso2.integrationstudio.artifact.synapseartifact">
 					<enablement>
 						<or>
 							<adapt type="org.eclipse.core.resources.IProject"/>
@@ -54,8 +54,8 @@
 	</extension>-->
 		<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb.synapse"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.synapseartifact">
+                menuGroupId="2org.wso2.integrationstudio.artifact.esb.synapse"
+                wizardId="org.wso2.integrationstudio.artifact.synapseartifact">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">

@@ -12,15 +12,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.assistants;
+package org.wso2.integrationstudio.gmf.esb.diagram.providers.assistants;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAssistantProvider;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbModelingAssistantProvider;
 
 /**
  * @generated

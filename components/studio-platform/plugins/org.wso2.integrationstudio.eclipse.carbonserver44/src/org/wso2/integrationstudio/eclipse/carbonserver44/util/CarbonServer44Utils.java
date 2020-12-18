@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44.util;
+package org.wso2.integrationstudio.carbonserver44.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -62,15 +62,15 @@ import org.eclipse.wst.server.core.model.ServerDelegate;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerXUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver44.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44.internal.CarbonServer44;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonConstants;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonUtils;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerXUtils;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver44.Activator;
+import org.wso2.integrationstudio.carbonserver44.internal.CarbonServer44;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 

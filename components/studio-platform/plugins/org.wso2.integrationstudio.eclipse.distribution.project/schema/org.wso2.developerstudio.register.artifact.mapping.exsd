@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.distribution.project" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.distribution.project" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.distribution.project" id="org.wso2.integrationstudio.register.artifact.mapping" name="Register Artifact mapping"/>
+         <meta.schema plugin="org.wso2.integrationstudio.distribution.project" id="org.wso2.integrationstudio.register.artifact.mapping" name="Register Artifact mapping"/>
       </appinfo>
       <documentation>
          This Extension point is used to register new artifact mapppings with the file extension.

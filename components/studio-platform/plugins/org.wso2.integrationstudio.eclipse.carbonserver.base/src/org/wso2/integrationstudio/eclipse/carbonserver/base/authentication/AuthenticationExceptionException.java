@@ -6,13 +6,13 @@
  * UTC)
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.authentication;
+package org.wso2.integrationstudio.carbonserver.base.authentication;
 
 public class AuthenticationExceptionException extends java.lang.Exception {
 
 	private static final long serialVersionUID = 1283846904326L;
 
-	private org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE faultMessage;
+	private org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE faultMessage;
 
 	public AuthenticationExceptionException() {
 		super("AuthenticationExceptionException");
@@ -30,11 +30,11 @@ public class AuthenticationExceptionException extends java.lang.Exception {
 		super(cause);
 	}
 
-	public void setFaultMessage(org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE msg) {
+	public void setFaultMessage(org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE msg) {
 		faultMessage = msg;
 	}
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE getFaultMessage() {
+	public org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE getFaultMessage() {
 		return faultMessage;
 	}
 }

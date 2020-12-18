@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
+import org.wso2.integrationstudio.gmf.esb.EvaluatorExpressionProperty;
 
 public class EEFEvaluatorExpressionEditorDialog extends Dialog {
 

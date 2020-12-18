@@ -14,15 +14,15 @@
  * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.esb.docker.action;
+package org.wso2.integrationstudio.esb.docker.action;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.docker.distribution.action.ContainerProceedWizardDialog;
-import org.wso2.integrationstudio.eclipse.esb.docker.wizard.GenerateDockerImageWizard;
+import org.wso2.integrationstudio.docker.distribution.action.ContainerProceedWizardDialog;
+import org.wso2.integrationstudio.esb.docker.wizard.GenerateDockerImageWizard;
 
 /**
  * Action delegate class for docker image generation operation. 

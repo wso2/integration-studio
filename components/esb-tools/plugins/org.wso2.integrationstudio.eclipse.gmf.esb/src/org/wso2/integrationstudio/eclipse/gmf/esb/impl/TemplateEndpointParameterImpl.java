@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpointParameter;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.TemplateEndpointParameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,8 +32,8 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpointParameter;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateEndpointParameterImpl#getParameterName <em>Parameter Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateEndpointParameterImpl#getParameterValue <em>Parameter Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TemplateEndpointParameterImpl#getParameterName <em>Parameter Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TemplateEndpointParameterImpl#getParameterValue <em>Parameter Value</em>}</li>
  * </ul>
  *
  * @generated

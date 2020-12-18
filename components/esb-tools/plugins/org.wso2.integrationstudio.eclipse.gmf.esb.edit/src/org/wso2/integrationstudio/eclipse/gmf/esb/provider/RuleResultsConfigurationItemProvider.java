@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.provider;
+package org.wso2.integrationstudio.gmf.esb.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,13 +25,13 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultsConfiguration;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RuleResult;
+import org.wso2.integrationstudio.gmf.esb.RuleResultsConfiguration;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultsConfiguration} object.
+ * This is the item provider adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleResultsConfiguration} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

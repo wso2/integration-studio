@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -58,10 +58,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -470,7 +470,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart#getResultType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart#getResultType()
 	 * 
 	 */
 	public Enumerator getResultType() {
@@ -481,7 +481,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart#initResultType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart#initResultType(Object input, Enumerator current)
 	 */
 	public void initResultType(Object input, Enumerator current) {
 		resultType.setInput(input);
@@ -499,7 +499,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart#setResultType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart#setResultType(Enumerator newValue)
 	 * 
 	 */
 	public void setResultType(Enumerator newValue) {
@@ -517,7 +517,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart#getResultCustomType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart#getResultCustomType()
 	 * 
 	 */
 	public String getResultCustomType() {
@@ -527,7 +527,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart#setResultCustomType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart#setResultCustomType(String newValue)
 	 * 
 	 */
 	public void setResultCustomType(String newValue) {
@@ -549,7 +549,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart#getResultName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart#getResultName()
 	 * 
 	 */
 	public String getResultName() {
@@ -559,7 +559,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart#setResultName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart#setResultName(String newValue)
 	 * 
 	 */
 	public void setResultName(String newValue) {
@@ -581,7 +581,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart#getValueType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart#getValueType()
 	 * 
 	 */
 	public Enumerator getValueType() {
@@ -592,7 +592,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart#initValueType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart#initValueType(Object input, Enumerator current)
 	 */
 	public void initValueType(Object input, Enumerator current) {
 		valueType.setInput(input);
@@ -610,7 +610,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart#setValueType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart#setValueType(Enumerator newValue)
 	 * 
 	 */
 	public void setValueType(Enumerator newValue) {
@@ -628,7 +628,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart#getValueLiteral()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart#getValueLiteral()
 	 * 
 	 */
 	public String getValueLiteral() {
@@ -638,7 +638,7 @@ public class RuleResultPropertiesEditionPartForm extends SectionPropertiesEditin
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultPropertiesEditionPart#setValueLiteral(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultPropertiesEditionPart#setValueLiteral(String newValue)
 	 * 
 	 */
 	public void setValueLiteral(String newValue) {

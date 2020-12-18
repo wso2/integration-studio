@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.connector.store;
+package org.wso2.integrationstudio.esb.project.connector.store;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

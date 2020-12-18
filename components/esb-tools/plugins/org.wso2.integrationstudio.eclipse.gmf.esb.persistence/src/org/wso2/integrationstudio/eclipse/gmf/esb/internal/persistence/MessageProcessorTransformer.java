@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,13 +32,13 @@ import org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwa
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.forms.editor.FormPage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessorParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessorType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.MessageProcessor;
+import org.wso2.integrationstudio.gmf.esb.MessageProcessorParameter;
+import org.wso2.integrationstudio.gmf.esb.MessageProcessorType;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbNodeTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.MessageProcessorFormPage;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.message.processors.CustomProcessor;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.message.processors.Sampling;
@@ -47,7 +47,7 @@ import org.wso2.integrationstudio.esb.form.editors.article.rcp.message.processor
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
- * {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessor} model
+ * {@link org.wso2.integrationstudio.gmf.esb.MessageProcessor} model
  * objects into corresponding synapse artifact(s).
  */
 public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {

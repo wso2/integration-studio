@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -63,12 +63,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -324,7 +324,7 @@ public class CloudConnectorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -334,7 +334,7 @@ public class CloudConnectorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -356,7 +356,7 @@ public class CloudConnectorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -366,7 +366,7 @@ public class CloudConnectorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -409,7 +409,7 @@ public class CloudConnectorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorPropertiesEditionPart#initConnectorParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorPropertiesEditionPart#initConnectorParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initConnectorParameters(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -430,7 +430,7 @@ public class CloudConnectorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorPropertiesEditionPart#updateConnectorParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorPropertiesEditionPart#updateConnectorParameters()
 	 * 
 	 */
 	public void updateConnectorParameters() {
@@ -440,7 +440,7 @@ public class CloudConnectorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorPropertiesEditionPart#addFilterConnectorParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorPropertiesEditionPart#addFilterConnectorParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToConnectorParameters(ViewerFilter filter) {
@@ -453,7 +453,7 @@ public class CloudConnectorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorPropertiesEditionPart#addBusinessFilterConnectorParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorPropertiesEditionPart#addBusinessFilterConnectorParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToConnectorParameters(ViewerFilter filter) {
@@ -463,7 +463,7 @@ public class CloudConnectorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorPropertiesEditionPart#isContainedInConnectorParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorPropertiesEditionPart#isContainedInConnectorParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInConnectorParametersTable(EObject element) {

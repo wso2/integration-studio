@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -42,10 +42,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -293,7 +293,7 @@ public class RuleSessionPropertyPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#getPropertyName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#getPropertyName()
 	 * 
 	 */
 	public String getPropertyName() {
@@ -303,7 +303,7 @@ public class RuleSessionPropertyPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#setPropertyName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#setPropertyName(String newValue)
 	 * 
 	 */
 	public void setPropertyName(String newValue) {
@@ -325,7 +325,7 @@ public class RuleSessionPropertyPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#getPropertyValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#getPropertyValue()
 	 * 
 	 */
 	public String getPropertyValue() {
@@ -335,7 +335,7 @@ public class RuleSessionPropertyPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#setPropertyValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleSessionPropertyPropertiesEditionPart#setPropertyValue(String newValue)
 	 * 
 	 */
 	public void setPropertyValue(String newValue) {

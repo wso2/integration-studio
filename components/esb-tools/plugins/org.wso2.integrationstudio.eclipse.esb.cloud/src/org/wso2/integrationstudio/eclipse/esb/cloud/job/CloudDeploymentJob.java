@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.cloud.job;
+package org.wso2.integrationstudio.esb.cloud.job;
 
 import java.util.List;
 import java.util.Map;
@@ -36,22 +36,22 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.esb.cloud.Activator;
-import org.wso2.integrationstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.HttpClientException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.Application;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.EndpointData;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.Version;
-import org.wso2.integrationstudio.eclipse.esb.cloud.notification.NotificationPopup;
-import org.wso2.integrationstudio.eclipse.esb.cloud.notification.EndpointNotificationPopup;
-import org.wso2.integrationstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
-import org.wso2.integrationstudio.eclipse.esb.cloud.resources.ResponseMessageConstants;
-import org.wso2.integrationstudio.eclipse.esb.cloud.util.JsonUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.esb.cloud.Activator;
+import org.wso2.integrationstudio.esb.cloud.client.IntegrationCloudServiceClient;
+import org.wso2.integrationstudio.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.HttpClientException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.InvalidTokenException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.NetworkUnavailableException;
+import org.wso2.integrationstudio.esb.cloud.model.Application;
+import org.wso2.integrationstudio.esb.cloud.model.EndpointData;
+import org.wso2.integrationstudio.esb.cloud.model.Version;
+import org.wso2.integrationstudio.esb.cloud.notification.NotificationPopup;
+import org.wso2.integrationstudio.esb.cloud.notification.EndpointNotificationPopup;
+import org.wso2.integrationstudio.esb.cloud.resources.CloudDeploymentWizardConstants;
+import org.wso2.integrationstudio.esb.cloud.resources.ResponseMessageConstants;
+import org.wso2.integrationstudio.esb.cloud.util.JsonUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * Represents a background job to upload application to the cloud.

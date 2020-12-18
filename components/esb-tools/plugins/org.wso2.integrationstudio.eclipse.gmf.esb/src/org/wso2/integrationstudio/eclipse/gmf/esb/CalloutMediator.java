@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,30 +15,30 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getServiceURL <em>Service URL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getSoapAction <em>Soap Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPathToAxis2xml <em>Path To Axis2xml</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPathToAxis2Repository <em>Path To Axis2 Repository</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPayloadType <em>Payload Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPayloadMessageXpath <em>Payload Message Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getResultType <em>Result Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getResultMessageXpath <em>Result Message Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getResultContextProperty <em>Result Context Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#isPassHeaders <em>Pass Headers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getAddressEndpoint <em>Address Endpoint</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getEndpointType <em>Endpoint Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPayloadProperty <em>Payload Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getSecurityType <em>Security Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getOutboundPolicyKey <em>Outbound Policy Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getInboundPolicyKey <em>Inbound Policy Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPolicies <em>Policies</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPolicyKey <em>Policy Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getServiceURL <em>Service URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getSoapAction <em>Soap Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPathToAxis2xml <em>Path To Axis2xml</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPathToAxis2Repository <em>Path To Axis2 Repository</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPayloadType <em>Payload Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPayloadMessageXpath <em>Payload Message Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getResultType <em>Result Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getResultMessageXpath <em>Result Message Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getResultContextProperty <em>Result Context Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#isPassHeaders <em>Pass Headers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getAddressEndpoint <em>Address Endpoint</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getEndpointType <em>Endpoint Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPayloadProperty <em>Payload Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getSecurityType <em>Security Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getOutboundPolicyKey <em>Outbound Policy Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getInboundPolicyKey <em>Inbound Policy Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPolicies <em>Policies</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPolicyKey <em>Policy Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator()
  * @model
  * @generated
  */
@@ -53,14 +53,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Service URL</em>' attribute.
      * @see #setServiceURL(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_ServiceURL()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_ServiceURL()
      * @model
      * @generated
      */
     String getServiceURL();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getServiceURL <em>Service URL</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getServiceURL <em>Service URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Service URL</em>' attribute.
@@ -79,14 +79,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Soap Action</em>' attribute.
      * @see #setSoapAction(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_SoapAction()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_SoapAction()
      * @model
      * @generated
      */
     String getSoapAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getSoapAction <em>Soap Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getSoapAction <em>Soap Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Soap Action</em>' attribute.
@@ -105,14 +105,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Path To Axis2xml</em>' attribute.
      * @see #setPathToAxis2xml(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_PathToAxis2xml()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_PathToAxis2xml()
      * @model
      * @generated
      */
     String getPathToAxis2xml();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPathToAxis2xml <em>Path To Axis2xml</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPathToAxis2xml <em>Path To Axis2xml</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Path To Axis2xml</em>' attribute.
@@ -131,14 +131,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Path To Axis2 Repository</em>' attribute.
      * @see #setPathToAxis2Repository(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_PathToAxis2Repository()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_PathToAxis2Repository()
      * @model
      * @generated
      */
     String getPathToAxis2Repository();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPathToAxis2Repository <em>Path To Axis2 Repository</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPathToAxis2Repository <em>Path To Axis2 Repository</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Path To Axis2 Repository</em>' attribute.
@@ -149,7 +149,7 @@ public interface CalloutMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Payload Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutPayloadType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.CalloutPayloadType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Payload Type</em>' attribute isn't clear,
@@ -157,20 +157,20 @@ public interface CalloutMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Payload Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CalloutPayloadType
+     * @see org.wso2.integrationstudio.gmf.esb.CalloutPayloadType
      * @see #setPayloadType(CalloutPayloadType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_PayloadType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_PayloadType()
      * @model
      * @generated
      */
     CalloutPayloadType getPayloadType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPayloadType <em>Payload Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPayloadType <em>Payload Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Payload Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CalloutPayloadType
+     * @see org.wso2.integrationstudio.gmf.esb.CalloutPayloadType
      * @see #getPayloadType()
      * @generated
      */
@@ -186,14 +186,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Payload Message Xpath</em>' containment reference.
      * @see #setPayloadMessageXpath(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_PayloadMessageXpath()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_PayloadMessageXpath()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getPayloadMessageXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPayloadMessageXpath <em>Payload Message Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPayloadMessageXpath <em>Payload Message Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Payload Message Xpath</em>' containment reference.
@@ -204,7 +204,7 @@ public interface CalloutMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Result Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutResultType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.CalloutResultType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Result Type</em>' attribute isn't clear,
@@ -212,20 +212,20 @@ public interface CalloutMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Result Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CalloutResultType
+     * @see org.wso2.integrationstudio.gmf.esb.CalloutResultType
      * @see #setResultType(CalloutResultType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_ResultType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_ResultType()
      * @model
      * @generated
      */
     CalloutResultType getResultType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getResultType <em>Result Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getResultType <em>Result Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Result Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CalloutResultType
+     * @see org.wso2.integrationstudio.gmf.esb.CalloutResultType
      * @see #getResultType()
      * @generated
      */
@@ -241,14 +241,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Result Message Xpath</em>' containment reference.
      * @see #setResultMessageXpath(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_ResultMessageXpath()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_ResultMessageXpath()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getResultMessageXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getResultMessageXpath <em>Result Message Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getResultMessageXpath <em>Result Message Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Result Message Xpath</em>' containment reference.
@@ -268,14 +268,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Result Context Property</em>' attribute.
      * @see #setResultContextProperty(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_ResultContextProperty()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_ResultContextProperty()
      * @model default="context_property_name"
      * @generated
      */
     String getResultContextProperty();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getResultContextProperty <em>Result Context Property</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getResultContextProperty <em>Result Context Property</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Result Context Property</em>' attribute.
@@ -294,14 +294,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Pass Headers</em>' attribute.
      * @see #setPassHeaders(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_PassHeaders()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_PassHeaders()
      * @model
      * @generated
      */
     boolean isPassHeaders();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#isPassHeaders <em>Pass Headers</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#isPassHeaders <em>Pass Headers</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Pass Headers</em>' attribute.
@@ -320,14 +320,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(CalloutMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     CalloutMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -346,14 +346,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(CalloutMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     CalloutMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -372,14 +372,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Address Endpoint</em>' containment reference.
      * @see #setAddressEndpoint(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_AddressEndpoint()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_AddressEndpoint()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getAddressEndpoint();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getAddressEndpoint <em>Address Endpoint</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getAddressEndpoint <em>Address Endpoint</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Address Endpoint</em>' containment reference.
@@ -390,7 +390,7 @@ public interface CalloutMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Endpoint Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutEndpointType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.CalloutEndpointType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Endpoint Type</em>' attribute isn't clear,
@@ -398,20 +398,20 @@ public interface CalloutMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Endpoint Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CalloutEndpointType
+     * @see org.wso2.integrationstudio.gmf.esb.CalloutEndpointType
      * @see #setEndpointType(CalloutEndpointType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_EndpointType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_EndpointType()
      * @model
      * @generated
      */
     CalloutEndpointType getEndpointType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getEndpointType <em>Endpoint Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getEndpointType <em>Endpoint Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Endpoint Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CalloutEndpointType
+     * @see org.wso2.integrationstudio.gmf.esb.CalloutEndpointType
      * @see #getEndpointType()
      * @generated
      */
@@ -427,14 +427,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Payload Property</em>' attribute.
      * @see #setPayloadProperty(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_PayloadProperty()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_PayloadProperty()
      * @model
      * @generated
      */
     String getPayloadProperty();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPayloadProperty <em>Payload Property</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPayloadProperty <em>Payload Property</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Payload Property</em>' attribute.
@@ -445,7 +445,7 @@ public interface CalloutMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Security Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutSecurityType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.CalloutSecurityType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Security Type</em>' attribute isn't clear,
@@ -453,20 +453,20 @@ public interface CalloutMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Security Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CalloutSecurityType
+     * @see org.wso2.integrationstudio.gmf.esb.CalloutSecurityType
      * @see #setSecurityType(CalloutSecurityType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_SecurityType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_SecurityType()
      * @model
      * @generated
      */
     CalloutSecurityType getSecurityType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getSecurityType <em>Security Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getSecurityType <em>Security Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Security Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CalloutSecurityType
+     * @see org.wso2.integrationstudio.gmf.esb.CalloutSecurityType
      * @see #getSecurityType()
      * @generated
      */
@@ -482,14 +482,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Outbound Policy Key</em>' containment reference.
      * @see #setOutboundPolicyKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_OutboundPolicyKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_OutboundPolicyKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getOutboundPolicyKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getOutboundPolicyKey <em>Outbound Policy Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getOutboundPolicyKey <em>Outbound Policy Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Outbound Policy Key</em>' containment reference.
@@ -508,14 +508,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound Policy Key</em>' containment reference.
      * @see #setInboundPolicyKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_InboundPolicyKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_InboundPolicyKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getInboundPolicyKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getInboundPolicyKey <em>Inbound Policy Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getInboundPolicyKey <em>Inbound Policy Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound Policy Key</em>' containment reference.
@@ -526,7 +526,7 @@ public interface CalloutMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Policies</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutSecurityPolicies}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.CalloutSecurityPolicies}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Policies</em>' attribute isn't clear,
@@ -534,20 +534,20 @@ public interface CalloutMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Policies</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CalloutSecurityPolicies
+     * @see org.wso2.integrationstudio.gmf.esb.CalloutSecurityPolicies
      * @see #setPolicies(CalloutSecurityPolicies)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_Policies()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_Policies()
      * @model
      * @generated
      */
     CalloutSecurityPolicies getPolicies();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPolicies <em>Policies</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPolicies <em>Policies</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Policies</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CalloutSecurityPolicies
+     * @see org.wso2.integrationstudio.gmf.esb.CalloutSecurityPolicies
      * @see #getPolicies()
      * @generated
      */
@@ -563,14 +563,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Policy Key</em>' containment reference.
      * @see #setPolicyKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_PolicyKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_PolicyKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getPolicyKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#getPolicyKey <em>Policy Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#getPolicyKey <em>Policy Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Policy Key</em>' containment reference.
@@ -589,14 +589,14 @@ public interface CalloutMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Init Axis2 Client Options</em>' attribute.
      * @see #setInitAxis2ClientOptions(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_InitAxis2ClientOptions()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCalloutMediator_InitAxis2ClientOptions()
      * @model
      * @generated
      */
     boolean isInitAxis2ClientOptions();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CalloutMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Init Axis2 Client Options</em>' attribute.

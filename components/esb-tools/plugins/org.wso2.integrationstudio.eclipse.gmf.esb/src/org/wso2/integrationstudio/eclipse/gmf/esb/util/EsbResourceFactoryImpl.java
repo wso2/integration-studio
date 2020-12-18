@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.util;
+package org.wso2.integrationstudio.gmf.esb.util;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;

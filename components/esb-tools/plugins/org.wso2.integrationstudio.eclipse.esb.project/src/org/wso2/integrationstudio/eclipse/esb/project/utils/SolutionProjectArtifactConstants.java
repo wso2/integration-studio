@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.utils;
+package org.wso2.integrationstudio.esb.project.utils;
 
 import org.eclipse.osgi.util.NLS;
 
 public final class SolutionProjectArtifactConstants extends NLS {
-	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.esb.project.utils.constants";
+	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.esb.project.utils.constants";
 	
 	public static String MMM_PROJECT_NAME;
 	public static String MMM_PROJECT_CHOICE;

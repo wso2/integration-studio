@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.remote.wizards;
+package org.wso2.integrationstudio.registry.manager.remote.wizards;
 
 import java.rmi.RemoteException;
 
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Display;
 import org.wso2.carbon.core.services.authentication.AuthenticationExceptionException;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.base.logger.ExceptionHandler;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUser;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserContainer;
-import org.wso2.integrationstudio.eclipse.usermgt.remote.Activator;
-import org.wso2.integrationstudio.eclipse.usermgt.remote.UserManager;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.base.logger.ExceptionHandler;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryUser;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserContainer;
+import org.wso2.integrationstudio.usermgt.remote.Activator;
+import org.wso2.integrationstudio.usermgt.remote.UserManager;
 
 public class AddUserWizard extends Wizard {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

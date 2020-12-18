@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.provider;
+package org.wso2.integrationstudio.gmf.esb.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -27,13 +27,13 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectBranch;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectBranch;
+import org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectBranch} object.
+ * This is the item provider adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectBranch} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

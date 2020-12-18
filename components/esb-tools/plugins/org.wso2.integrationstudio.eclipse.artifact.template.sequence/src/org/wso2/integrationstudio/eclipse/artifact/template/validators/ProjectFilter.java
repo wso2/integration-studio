@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.template.validators;
+package org.wso2.integrationstudio.artifact.template.validators;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.Viewer;

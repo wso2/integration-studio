@@ -17,7 +17,7 @@
  *
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.swagger;
+package org.wso2.integrationstudio.gmf.esb.diagram.swagger;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,11 +31,11 @@ import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.ui.IStartup;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.templates.dashboard.handlers.JettyServerHandler;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.FunctionServerConstants;
 
 /**
  * This startup handler will add the Swagger Editor context handler to Jetty.

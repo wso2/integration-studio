@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.registry.connector.model;
+package org.wso2.integrationstudio.capp.registry.connector.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,8 +22,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.utils.RegistryHandlerUtils;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryConnection;
+import org.wso2.integrationstudio.capp.registry.connector.utils.RegistryHandlerUtils;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryConnection;
 
 
 public class RegistryConnectionsNode {

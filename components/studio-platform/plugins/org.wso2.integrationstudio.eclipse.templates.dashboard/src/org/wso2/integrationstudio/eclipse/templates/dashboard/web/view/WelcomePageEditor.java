@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.templates.dashboard.web.view;
+package org.wso2.integrationstudio.templates.dashboard.web.view;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,10 +37,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.part.EditorPart;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.Activator;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.templates.dashboard.Activator;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.FunctionServerConstants;
 
 
 public class WelcomePageEditor extends EditorPart {

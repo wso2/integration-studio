@@ -4,14 +4,14 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Mediator;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.Mediator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,7 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.Mediator;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MediatorImpl#isReverse <em>Reverse</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MediatorImpl#isReverse <em>Reverse</em>}</li>
  * </ul>
  *
  * @generated

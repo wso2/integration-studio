@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.commands;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -7,10 +7,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.EsbBaseItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.EsbBaseItemSemanticEditPolicy;
 
 /**
  * @generated

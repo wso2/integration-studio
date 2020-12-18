@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.general.project.nature;
+package org.wso2.integrationstudio.general.project.nature;
 
 import java.io.File;
 
@@ -9,8 +9,8 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.nature.AbstractWSO2ProjectNature;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.nature.AbstractWSO2ProjectNature;
 
 public class GeneralProjectNature extends AbstractWSO2ProjectNature {
 	private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,event/stream=json,event/publisher=xml,event/receiver=xml,event/execution-plan=siddhiql,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar";

@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.mockheader;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.mockheader;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
@@ -31,10 +31,10 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.MockService;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.MockServiceResource;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.ComboItems;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.ComboTypingSuggestUtil;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.MockService;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.MockServiceResource;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.ComboItems;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.ComboTypingSuggestUtil;
 
 /**
  * Class responsible for creation of wizard page for mock service resource

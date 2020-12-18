@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.dataserviceProject.model;
+package org.wso2.integrationstudio.artifact.dataserviceProject.model;
 
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class DataServiceModel extends ProjectDataModel {	
 

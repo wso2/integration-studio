@@ -15,11 +15,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.project.constant;
+package org.wso2.integrationstudio.apim.project.constant;
 
 public class APIMConstant {
 	public static final String APIM_PROJECT_ICON = "icons/apim_project_64x64.png";
-	public static final String APIM_BUNDLE_PLUGIN = "org.wso2.integrationstudio.eclipse.apim.project";
+	public static final String APIM_BUNDLE_PLUGIN = "org.wso2.integrationstudio.apim.project";
 	
 	public static final String NO_PROJECT_NAME = "Specify a name for the APIM project";
 	public static final String NO_PROJECT_LOCATION = "Specify a location for the APIM project";

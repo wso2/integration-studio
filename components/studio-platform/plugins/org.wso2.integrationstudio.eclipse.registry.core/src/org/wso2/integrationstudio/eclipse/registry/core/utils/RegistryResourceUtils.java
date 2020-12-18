@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.core.utils;
+package org.wso2.integrationstudio.registry.core.utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,15 +35,15 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.wso2.carbon.registry.synchronization.SynchronizationException;
 import org.wso2.carbon.registry.synchronization.Utils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.Activator;
 import org.xml.sax.SAXException;
 
-import static org.wso2.integrationstudio.eclipse.registry.core.utils.Constants.REGISTRY_COLLECTION;
-import static org.wso2.integrationstudio.eclipse.registry.core.utils.Constants.REGISTRY_DUMP;
-import static org.wso2.integrationstudio.eclipse.registry.core.utils.Constants.REGISTRY_RESOURCE;
-import static org.wso2.integrationstudio.eclipse.registry.core.utils.Constants.REGISTRY_UNDEFINED;
+import static org.wso2.integrationstudio.registry.core.utils.Constants.REGISTRY_COLLECTION;
+import static org.wso2.integrationstudio.registry.core.utils.Constants.REGISTRY_DUMP;
+import static org.wso2.integrationstudio.registry.core.utils.Constants.REGISTRY_RESOURCE;
+import static org.wso2.integrationstudio.registry.core.utils.Constants.REGISTRY_UNDEFINED;
 
 public class RegistryResourceUtils {
 

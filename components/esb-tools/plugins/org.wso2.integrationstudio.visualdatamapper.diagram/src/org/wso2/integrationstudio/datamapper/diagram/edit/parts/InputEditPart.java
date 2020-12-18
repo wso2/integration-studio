@@ -94,8 +94,8 @@ import org.wso2.integrationstudio.datamapper.diagram.tree.generator.ISchemaTrans
 import org.wso2.integrationstudio.datamapper.diagram.tree.generator.SchemaTransformer;
 import org.wso2.integrationstudio.datamapper.diagram.tree.generator.SchemaTransformerRegistry;
 import org.wso2.integrationstudio.datamapper.impl.InputImpl;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.datamapper.diagram.tree.model.Tree;
 import org.wso2.integrationstudio.datamapper.Element;
 

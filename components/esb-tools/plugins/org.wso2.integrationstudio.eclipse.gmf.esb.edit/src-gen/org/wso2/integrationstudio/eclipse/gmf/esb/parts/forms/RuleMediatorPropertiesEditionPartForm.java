@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -85,17 +85,17 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleSourceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleSourceType;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -1526,7 +1526,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -1536,7 +1536,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -1558,7 +1558,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -1568,7 +1568,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -1609,7 +1609,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -1619,7 +1619,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -1641,7 +1641,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getStatefulSession()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getStatefulSession()
 	 * 
 	 */
 	public Boolean getStatefulSession() {
@@ -1651,7 +1651,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setStatefulSession(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setStatefulSession(Boolean newValue)
 	 * 
 	 */
 	public void setStatefulSession(Boolean newValue) {
@@ -1675,7 +1675,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#initRuleSessionProperties(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#initRuleSessionProperties(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initRuleSessionProperties(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1696,7 +1696,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#updateRuleSessionProperties()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#updateRuleSessionProperties()
 	 * 
 	 */
 	public void updateRuleSessionProperties() {
@@ -1706,7 +1706,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#addFilterRuleSessionProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#addFilterRuleSessionProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToRuleSessionProperties(ViewerFilter filter) {
@@ -1719,7 +1719,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#addBusinessFilterRuleSessionProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#addBusinessFilterRuleSessionProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToRuleSessionProperties(ViewerFilter filter) {
@@ -1729,7 +1729,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#isContainedInRuleSessionPropertiesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#isContainedInRuleSessionPropertiesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInRuleSessionPropertiesTable(EObject element) {
@@ -1739,7 +1739,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getInputWrapperName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getInputWrapperName()
 	 * 
 	 */
 	public String getInputWrapperName() {
@@ -1749,7 +1749,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setInputWrapperName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setInputWrapperName(String newValue)
 	 * 
 	 */
 	public void setInputWrapperName(String newValue) {
@@ -1771,7 +1771,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getInputNameSpace()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getInputNameSpace()
 	 * 
 	 */
 	public String getInputNameSpace() {
@@ -1781,7 +1781,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setInputNameSpace(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setInputNameSpace(String newValue)
 	 * 
 	 */
 	public void setInputNameSpace(String newValue) {
@@ -1805,7 +1805,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#initRuleFactsConfiguration(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#initRuleFactsConfiguration(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initRuleFactsConfiguration(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1826,7 +1826,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#updateRuleFactsConfiguration()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#updateRuleFactsConfiguration()
 	 * 
 	 */
 	public void updateRuleFactsConfiguration() {
@@ -1836,7 +1836,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#addFilterRuleFactsConfiguration(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#addFilterRuleFactsConfiguration(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToRuleFactsConfiguration(ViewerFilter filter) {
@@ -1849,7 +1849,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#addBusinessFilterRuleFactsConfiguration(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#addBusinessFilterRuleFactsConfiguration(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToRuleFactsConfiguration(ViewerFilter filter) {
@@ -1859,7 +1859,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#isContainedInRuleFactsConfigurationTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#isContainedInRuleFactsConfigurationTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInRuleFactsConfigurationTable(EObject element) {
@@ -1869,7 +1869,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getOutputWrapperName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getOutputWrapperName()
 	 * 
 	 */
 	public String getOutputWrapperName() {
@@ -1879,7 +1879,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setOutputWrapperName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setOutputWrapperName(String newValue)
 	 * 
 	 */
 	public void setOutputWrapperName(String newValue) {
@@ -1901,7 +1901,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getOutputNameSpace()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getOutputNameSpace()
 	 * 
 	 */
 	public String getOutputNameSpace() {
@@ -1911,7 +1911,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setOutputNameSpace(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setOutputNameSpace(String newValue)
 	 * 
 	 */
 	public void setOutputNameSpace(String newValue) {
@@ -1935,7 +1935,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#initRuleResultsConfiguration(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#initRuleResultsConfiguration(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initRuleResultsConfiguration(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1956,7 +1956,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#updateRuleResultsConfiguration()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#updateRuleResultsConfiguration()
 	 * 
 	 */
 	public void updateRuleResultsConfiguration() {
@@ -1966,7 +1966,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#addFilterRuleResultsConfiguration(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#addFilterRuleResultsConfiguration(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToRuleResultsConfiguration(ViewerFilter filter) {
@@ -1979,7 +1979,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#addBusinessFilterRuleResultsConfiguration(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#addBusinessFilterRuleResultsConfiguration(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToRuleResultsConfiguration(ViewerFilter filter) {
@@ -1989,7 +1989,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#isContainedInRuleResultsConfigurationTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#isContainedInRuleResultsConfigurationTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInRuleResultsConfigurationTable(EObject element) {
@@ -1999,7 +1999,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getSourceValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getSourceValue()
 	 * 
 	 */
 	public String getSourceValue() {
@@ -2009,7 +2009,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setSourceValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setSourceValue(String newValue)
 	 * 
 	 */
 	public void setSourceValue(String newValue) {
@@ -2031,7 +2031,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getTargetValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getTargetValue()
 	 * 
 	 */
 	public String getTargetValue() {
@@ -2041,7 +2041,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setTargetValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setTargetValue(String newValue)
 	 * 
 	 */
 	public void setTargetValue(String newValue) {
@@ -2063,7 +2063,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getTargetAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getTargetAction()
 	 * 
 	 */
 	public Enumerator getTargetAction() {
@@ -2074,7 +2074,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#initTargetAction(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#initTargetAction(Object input, Enumerator current)
 	 */
 	public void initTargetAction(Object input, Enumerator current) {
 		targetAction.setInput(input);
@@ -2092,7 +2092,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setTargetAction(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setTargetAction(Enumerator newValue)
 	 * 
 	 */
 	public void setTargetAction(Enumerator newValue) {
@@ -2110,7 +2110,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getRuleSetType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getRuleSetType()
 	 * 
 	 */
 	public Enumerator getRuleSetType() {
@@ -2121,7 +2121,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#initRuleSetType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#initRuleSetType(Object input, Enumerator current)
 	 */
 	public void initRuleSetType(Object input, Enumerator current) {
 		ruleSetType.setInput(input);
@@ -2139,7 +2139,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setRuleSetType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setRuleSetType(Enumerator newValue)
 	 * 
 	 */
 	public void setRuleSetType(Enumerator newValue) {
@@ -2157,7 +2157,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getRuleSetURL()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getRuleSetURL()
 	 * 
 	 */
 	public String getRuleSetURL() {
@@ -2167,7 +2167,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setRuleSetURL(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setRuleSetURL(String newValue)
 	 * 
 	 */
 	public void setRuleSetURL(String newValue) {
@@ -2189,7 +2189,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getRuleSetSourceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getRuleSetSourceType()
 	 * 
 	 */
 	public Enumerator getRuleSetSourceType() {
@@ -2200,7 +2200,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#initRuleSetSourceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#initRuleSetSourceType(Object input, Enumerator current)
 	 */
 	public void initRuleSetSourceType(Object input, Enumerator current) {
 		ruleSetSourceType.setInput(input);
@@ -2218,7 +2218,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setRuleSetSourceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setRuleSetSourceType(Enumerator newValue)
 	 * 
 	 */
 	public void setRuleSetSourceType(Enumerator newValue) {
@@ -2236,7 +2236,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getRuleSetSourceCode()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#getRuleSetSourceCode()
 	 * 
 	 */
 	public String getRuleSetSourceCode() {
@@ -2246,7 +2246,7 @@ public class RuleMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setRuleSetSourceCode(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleMediatorPropertiesEditionPart#setRuleSetSourceCode(String newValue)
 	 * 
 	 */
 	public void setRuleSetSourceCode(String newValue) {

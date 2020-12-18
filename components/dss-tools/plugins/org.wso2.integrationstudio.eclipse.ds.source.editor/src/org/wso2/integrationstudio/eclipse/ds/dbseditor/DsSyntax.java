@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.dbseditor;
+package org.wso2.integrationstudio.ds.dbseditor;
 
 public interface DsSyntax {
 

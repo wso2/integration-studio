@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator;
+package org.wso2.integrationstudio.gmf.esb.diagram.navigator;
 
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.core.runtime.Platform;
@@ -17,13 +17,13 @@ public abstract class EsbAbstractNavigatorItem extends PlatformObject {
         final Class[] supportedTypes = new Class[] { ITabbedPropertySheetPageContributor.class };
         final ITabbedPropertySheetPageContributor propertySheetPageContributor = new ITabbedPropertySheetPageContributor() {
             public String getContributorId() {
-                return "org.wso2.integrationstudio.eclipse.gmf.esb.diagram"; //$NON-NLS-1$
+                return "org.wso2.integrationstudio.gmf.esb.diagram"; //$NON-NLS-1$
             }
         };
         Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
             public Object getAdapter(Object adaptableObject, Class adapterType) {
-                if (adaptableObject instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbAbstractNavigatorItem
+                if (adaptableObject instanceof org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbAbstractNavigatorItem
                         && adapterType == ITabbedPropertySheetPageContributor.class) {
                     return propertySheetPageContributor;
                 }
@@ -33,7 +33,7 @@ public abstract class EsbAbstractNavigatorItem extends PlatformObject {
             public Class[] getAdapterList() {
                 return supportedTypes;
             }
-        }, org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbAbstractNavigatorItem.class);
+        }, org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbAbstractNavigatorItem.class);
     }
 
     /**

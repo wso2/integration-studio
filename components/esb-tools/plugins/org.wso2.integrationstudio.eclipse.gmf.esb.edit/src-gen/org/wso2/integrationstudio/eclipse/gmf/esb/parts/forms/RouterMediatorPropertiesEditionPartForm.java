@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -66,12 +66,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -425,7 +425,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -435,7 +435,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -457,7 +457,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -467,7 +467,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -508,7 +508,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -518,7 +518,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -540,7 +540,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#getContinueAfterRouting()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#getContinueAfterRouting()
 	 * 
 	 */
 	public Boolean getContinueAfterRouting() {
@@ -550,7 +550,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#setContinueAfterRouting(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#setContinueAfterRouting(Boolean newValue)
 	 * 
 	 */
 	public void setContinueAfterRouting(Boolean newValue) {
@@ -574,7 +574,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#initTargetOutputConnector(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#initTargetOutputConnector(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initTargetOutputConnector(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -595,7 +595,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#updateTargetOutputConnector()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#updateTargetOutputConnector()
 	 * 
 	 */
 	public void updateTargetOutputConnector() {
@@ -605,7 +605,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#addFilterTargetOutputConnector(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#addFilterTargetOutputConnector(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToTargetOutputConnector(ViewerFilter filter) {
@@ -618,7 +618,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#addBusinessFilterTargetOutputConnector(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#addBusinessFilterTargetOutputConnector(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToTargetOutputConnector(ViewerFilter filter) {
@@ -628,7 +628,7 @@ public class RouterMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorPropertiesEditionPart#isContainedInTargetOutputConnectorTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorPropertiesEditionPart#isContainedInTargetOutputConnectorTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInTargetOutputConnectorTable(EObject element) {

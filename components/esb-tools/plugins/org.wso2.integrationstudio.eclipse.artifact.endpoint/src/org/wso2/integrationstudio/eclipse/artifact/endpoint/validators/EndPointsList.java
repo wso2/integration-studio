@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.validators;
+package org.wso2.integrationstudio.artifact.endpoint.validators;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +22,9 @@ import java.util.List;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.model.EndpointModel;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.artifact.endpoint.model.EndpointModel;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class EndPointsList extends AbstractListDataProvider{
 

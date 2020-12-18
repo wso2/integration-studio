@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver42.register.product.servers;
+package org.wso2.integrationstudio.carbonserver42.register.product.servers;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 
-import org.wso2.integrationstudio.eclipse.carbonserver.base.util.ServerExtensionsRegistryUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver42.Activator;
+import org.wso2.integrationstudio.carbonserver.base.util.ServerExtensionsRegistryUtils;
+import org.wso2.integrationstudio.carbonserver42.Activator;
 import org.eclipse.core.internal.registry.ExtensionRegistry;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IContributor;
@@ -29,12 +29,12 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.spi.RegistryContributor;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class DynamicServer42ExtensionGenerator {
 	private static final String MASTER_TOKEN = "masterToken";
-	private static final String ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_CARBONSERVER42 = "org.wso2.integrationstudio.eclipse.carbonserver42";
+	private static final String ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_CARBONSERVER42 = "org.wso2.integrationstudio.carbonserver42";
 	private static final String SERVER_42_STREAM_LOC = "resources/streams/server42.xml";
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static final String SERVER_VERSION_CARBON = "carbon.server.42";

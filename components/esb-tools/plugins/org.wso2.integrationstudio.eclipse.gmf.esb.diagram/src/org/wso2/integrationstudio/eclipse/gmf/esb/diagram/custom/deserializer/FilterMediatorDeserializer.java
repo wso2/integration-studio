@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorConditionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.FilterMediator;
+import org.wso2.integrationstudio.gmf.esb.FilterMediatorConditionType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class FilterMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, FilterMediator> {
 

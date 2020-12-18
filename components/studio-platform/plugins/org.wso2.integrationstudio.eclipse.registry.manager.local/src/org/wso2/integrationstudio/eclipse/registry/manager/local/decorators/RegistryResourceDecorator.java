@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.local.decorators;
+package org.wso2.integrationstudio.registry.manager.local.decorators;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -39,12 +39,12 @@ import org.eclipse.jface.viewers.LabelProviderChangedEvent;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IDecoratorManager;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.util.ImageUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.Activator;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.bean.RemoteRegistryInfo;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.utils.RegistryCheckInClientUtils;
+import org.wso2.integrationstudio.registry.base.ui.util.ImageUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.manager.local.Activator;
+import org.wso2.integrationstudio.registry.manager.local.bean.RemoteRegistryInfo;
+import org.wso2.integrationstudio.registry.manager.local.utils.RegistryCheckInClientUtils;
 
 public class RegistryResourceDecorator extends LabelProvider implements ILightweightLabelDecorator {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -171,7 +171,7 @@ public class RegistryResourceDecorator extends LabelProvider implements ILightwe
 	 * @return
 	 */
 	private static RegistryResourceDecorator getRegistryResourceFileDecoratorInstance() {
-		return getRegistryResourceDecoratorInstance("org.wso2.integrationstudio.eclipse.greg.manager.local.decorators.RegistryResourceDecoratorFileLightWeight");
+		return getRegistryResourceDecoratorInstance("org.wso2.integrationstudio.greg.manager.local.decorators.RegistryResourceDecoratorFileLightWeight");
 	}
 
 	/**
@@ -179,7 +179,7 @@ public class RegistryResourceDecorator extends LabelProvider implements ILightwe
 	 * @return
 	 */
 	private static RegistryResourceDecorator getRegistryResourceFolderDecoratorInstance() {
-		return getRegistryResourceDecoratorInstance("org.wso2.integrationstudio.eclipse.greg.manager.local.decorators.RegistryResourceDecoratorFolderLightWeight");
+		return getRegistryResourceDecoratorInstance("org.wso2.integrationstudio.greg.manager.local.decorators.RegistryResourceDecoratorFolderLightWeight");
 	}
 
 	/**

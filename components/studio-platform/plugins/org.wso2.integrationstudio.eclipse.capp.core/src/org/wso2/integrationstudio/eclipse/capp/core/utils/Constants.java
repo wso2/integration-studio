@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.utils;
+package org.wso2.integrationstudio.capp.core.utils;
 
 public class Constants {
 	public static final String FILE_SYSTEM_PATH_LINK_PROTOCOL="eclipse://";

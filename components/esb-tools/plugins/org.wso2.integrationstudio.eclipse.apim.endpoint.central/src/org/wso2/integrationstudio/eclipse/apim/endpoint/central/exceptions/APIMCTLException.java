@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions;
+package org.wso2.integrationstudio.apim.endpoint.central.exceptions;
 
 /**
  * Exception thrown when APIM CTL command execution fails.

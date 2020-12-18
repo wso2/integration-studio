@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,23 +29,23 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpointsOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractComplexEndpointCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.SlidingBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.layout.XYRepossition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment28CanonicalEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment28ItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.Messages;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.ComplexEndpointsOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractComplexEndpointCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.SlidingBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.layout.XYRepossition;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment28CanonicalEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment28ItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.Messages;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated NOT

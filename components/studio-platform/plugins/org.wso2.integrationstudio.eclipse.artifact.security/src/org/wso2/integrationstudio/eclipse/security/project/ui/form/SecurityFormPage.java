@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.security.project.ui.form;
+package org.wso2.integrationstudio.security.project.ui.form;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -92,18 +92,18 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.bootstrap.DOMImplementationRegistry;
 import org.w3c.dom.ls.DOMImplementationLS;
 import org.w3c.dom.ls.LSSerializer;
-import org.wso2.integrationstudio.eclipse.artifact.security.utils.SecurityFormConstants;
-import org.wso2.integrationstudio.eclipse.artifact.security.utils.SecurityFormMessageConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.ResourceManager;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
-import org.wso2.integrationstudio.eclipse.security.Activator;
-import org.wso2.integrationstudio.eclipse.security.project.model.Policy2;
-import org.wso2.integrationstudio.eclipse.security.project.ui.dialog.UserRolesDialog;
-import org.wso2.integrationstudio.eclipse.security.project.utils.SecurityPolicies;
-import org.wso2.integrationstudio.eclipse.security.project.utils.SecurityPolicyUtils;
-import org.wso2.integrationstudio.eclipse.security.project.utils.SecurityTemplateUtil;
+import org.wso2.integrationstudio.artifact.security.utils.SecurityFormConstants;
+import org.wso2.integrationstudio.artifact.security.utils.SecurityFormMessageConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.utils.ResourceManager;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.security.Activator;
+import org.wso2.integrationstudio.security.project.model.Policy2;
+import org.wso2.integrationstudio.security.project.ui.dialog.UserRolesDialog;
+import org.wso2.integrationstudio.security.project.utils.SecurityPolicies;
+import org.wso2.integrationstudio.security.project.utils.SecurityPolicyUtils;
+import org.wso2.integrationstudio.security.project.utils.SecurityTemplateUtil;
 import org.xml.sax.SAXException;
 import org.eclipse.swt.widgets.Control;
 
@@ -113,7 +113,7 @@ public class SecurityFormPage extends FormPage {
     private static final int NUMBER_OF_COLUMNS_IN_SHELL = 1;
     private static final int NUM_OF_COLUMNS_GRID_LAYOUT_MAIN_PAGE = 6;
     private static final String TIP_MESSAGE = "Description not available";
-    private static final String PLUGIN_NAME = "org.wso2.integrationstudio.eclipse.artifact.security";
+    private static final String PLUGIN_NAME = "org.wso2.integrationstudio.artifact.security";
 
     private boolean pageDirty = false;
 
@@ -2487,7 +2487,7 @@ public class SecurityFormPage extends FormPage {
     }
 
     /**
-     * This method returns an image in "org.wso2.integrationstudio.eclipse.artifact.security" plug-in, specified by the
+     * This method returns an image in "org.wso2.integrationstudio.artifact.security" plug-in, specified by the
      * relative path parameter.
      *
      * @param relativeFilePath

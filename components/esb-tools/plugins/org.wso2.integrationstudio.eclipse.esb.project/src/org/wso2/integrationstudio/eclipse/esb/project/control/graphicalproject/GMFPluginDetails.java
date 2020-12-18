@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.control.graphicalproject;
+package org.wso2.integrationstudio.esb.project.control.graphicalproject;
 
 public class GMFPluginDetails {
 

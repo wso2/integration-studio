@@ -15,7 +15,7 @@
  */
 
 
-package org.wso2.integrationstudio.eclipse.artifact.library.ui.wizard;
+package org.wso2.integrationstudio.artifact.library.ui.wizard;
 
 
 import java.io.File;
@@ -38,12 +38,12 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.artifact.library.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.library.model.LibraryArtifactModel;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.artifact.library.Activator;
+import org.wso2.integrationstudio.artifact.library.model.LibraryArtifactModel;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 
 public class AddRemoveJavaLibsWizard extends AbstractWSO2ProjectCreationWizard {
 

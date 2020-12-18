@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -67,12 +67,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -543,7 +543,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -553,7 +553,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -575,7 +575,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -585,7 +585,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -626,7 +626,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -636,7 +636,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -660,7 +660,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#initUrlRewriteRules(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#initUrlRewriteRules(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initUrlRewriteRules(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -681,7 +681,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#updateUrlRewriteRules()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#updateUrlRewriteRules()
 	 * 
 	 */
 	public void updateUrlRewriteRules() {
@@ -691,7 +691,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#addFilterUrlRewriteRules(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#addFilterUrlRewriteRules(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToUrlRewriteRules(ViewerFilter filter) {
@@ -704,7 +704,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#addBusinessFilterUrlRewriteRules(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#addBusinessFilterUrlRewriteRules(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToUrlRewriteRules(ViewerFilter filter) {
@@ -714,7 +714,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#isContainedInUrlRewriteRulesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#isContainedInUrlRewriteRulesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInUrlRewriteRulesTable(EObject element) {
@@ -724,7 +724,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#getInProperty()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#getInProperty()
 	 * 
 	 */
 	public String getInProperty() {
@@ -734,7 +734,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#setInProperty(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#setInProperty(String newValue)
 	 * 
 	 */
 	public void setInProperty(String newValue) {
@@ -756,7 +756,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#getOutProperty()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#getOutProperty()
 	 * 
 	 */
 	public String getOutProperty() {
@@ -766,7 +766,7 @@ public class URLRewriteMediatorPropertiesEditionPartForm extends SectionProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#setOutProperty(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteMediatorPropertiesEditionPart#setOutProperty(String newValue)
 	 * 
 	 */
 	public void setOutProperty(String newValue) {

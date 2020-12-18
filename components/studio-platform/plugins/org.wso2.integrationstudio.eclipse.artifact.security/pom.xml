@@ -8,7 +8,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.wso2.integrationstudio</groupId>
-    <artifactId>org.wso2.integrationstudio.eclipse.artifact.security</artifactId>
+    <artifactId>org.wso2.integrationstudio.artifact.security</artifactId>
   	<packaging>eclipse-plugin</packaging>
     <name>Integration Studio Security Project</name>
 </project>

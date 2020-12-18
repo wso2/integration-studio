@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence.custom;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,15 +34,15 @@ import org.wso2.carbon.rule.common.RuleSet;
 import org.wso2.carbon.rule.mediator.config.RuleMediatorConfig;
 import org.wso2.carbon.rule.mediator.config.Source;
 import org.wso2.carbon.rule.mediator.config.Target;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleFact;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleFactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleFactsConfiguration;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultsConfiguration;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleSessionProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleSourceType;
+import org.wso2.integrationstudio.gmf.esb.RuleFact;
+import org.wso2.integrationstudio.gmf.esb.RuleFactType;
+import org.wso2.integrationstudio.gmf.esb.RuleFactsConfiguration;
+import org.wso2.integrationstudio.gmf.esb.RuleMediator;
+import org.wso2.integrationstudio.gmf.esb.RuleResult;
+import org.wso2.integrationstudio.gmf.esb.RuleResultType;
+import org.wso2.integrationstudio.gmf.esb.RuleResultsConfiguration;
+import org.wso2.integrationstudio.gmf.esb.RuleSessionProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleSourceType;
 
 public class RuleMediatorExtSerialize extends AbstractMediatorSerializer {
 

@@ -14,7 +14,7 @@
  * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.ui.wizard;
+package org.wso2.integrationstudio.docker.distribution.ui.wizard;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -39,12 +39,12 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.wso2.integrationstudio.eclipse.docker.distribution.Activator;
-import org.wso2.integrationstudio.eclipse.docker.distribution.editor.KubernetesArtifactsGenerationWizardPage;
-import org.wso2.integrationstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.integrationstudio.docker.distribution.Activator;
+import org.wso2.integrationstudio.docker.distribution.editor.KubernetesArtifactsGenerationWizardPage;
+import org.wso2.integrationstudio.docker.distribution.utils.DockerProjectConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
 
 public class GenerateKubernetesArtifactsWizard extends Wizard implements IExportWizard {
 

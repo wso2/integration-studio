@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,12 +62,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 public class PropertyGroupMediatorPropertiesEditionPartImpl extends CompositePropertiesEditionPart
 		implements ISWTPropertiesEditionPart, PropertyGroupMediatorPropertiesEditionPart {
@@ -387,7 +387,7 @@ public class PropertyGroupMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#getDescription()
 	 */
 	public String getDescription() {
 		return description.getText();
@@ -396,7 +396,7 @@ public class PropertyGroupMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#setDescription(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#setDescription(String
 	 *      newValue)
 	 */
 	public void setDescription(String newValue) {
@@ -418,7 +418,7 @@ public class PropertyGroupMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#getCommentsList()
 	 */
 	public EList getCommentsList() {
 		return commentsListList;
@@ -427,7 +427,7 @@ public class PropertyGroupMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#setCommentsList(EList
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#setCommentsList(EList
 	 *      newValue)
 	 */
 	public void setCommentsList(EList newValue) {
@@ -468,7 +468,7 @@ public class PropertyGroupMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#getReverse()
 	 */
 	public Boolean getReverse() {
 		return Boolean.valueOf(reverse.getSelection());
@@ -477,7 +477,7 @@ public class PropertyGroupMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#setReverse(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#setReverse(Boolean
 	 *      newValue)
 	 */
 	public void setReverse(Boolean newValue) {
@@ -498,7 +498,7 @@ public class PropertyGroupMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#initProperties(EObject
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#initProperties(EObject
 	 *      current, EReference containingFeature, EReference feature)
 	 */
 	public void initProperties(ReferencesTableSettings settings) {
@@ -520,7 +520,7 @@ public class PropertyGroupMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#updateProperties()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#updateProperties()
 	 */
 	public void updateProperties() {
 		properties.refresh();
@@ -529,7 +529,7 @@ public class PropertyGroupMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#addFilterProperties(ViewerFilter
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#addFilterProperties(ViewerFilter
 	 *      filter)
 	 */
 	public void addFilterToProperties(ViewerFilter filter) {
@@ -542,7 +542,7 @@ public class PropertyGroupMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter
 	 *      filter)
 	 */
 	public void addBusinessFilterToProperties(ViewerFilter filter) {
@@ -552,7 +552,7 @@ public class PropertyGroupMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#isContainedInPropertiesTable(EObject
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorPropertiesEditionPart#isContainedInPropertiesTable(EObject
 	 *      element)
 	 */
 	public boolean isContainedInPropertiesTable(EObject element) {

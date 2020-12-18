@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.ui.wizard;
+package org.wso2.integrationstudio.esb.project.ui.wizard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
-import org.wso2.integrationstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
+import org.wso2.integrationstudio.platform.core.manifest.AbstractXMLDoc;
 
 public class Connector extends AbstractXMLDoc{
 

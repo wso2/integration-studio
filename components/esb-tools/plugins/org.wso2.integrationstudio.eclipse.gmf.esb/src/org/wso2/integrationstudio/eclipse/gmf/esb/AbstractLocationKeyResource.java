@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,11 +15,11 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractLocationKeyResource#getLocation <em>Location</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractLocationKeyResource#getKey <em>Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractLocationKeyResource#getLocation <em>Location</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractLocationKeyResource#getKey <em>Key</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractLocationKeyResource()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractLocationKeyResource()
  * @model abstract="true"
  * @generated
  */
@@ -35,14 +35,14 @@ public interface AbstractLocationKeyResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Location</em>' attribute.
      * @see #setLocation(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractLocationKeyResource_Location()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractLocationKeyResource_Location()
      * @model default="default_location"
      * @generated
      */
     String getLocation();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractLocationKeyResource#getLocation <em>Location</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractLocationKeyResource#getLocation <em>Location</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Location</em>' attribute.
@@ -61,14 +61,14 @@ public interface AbstractLocationKeyResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Key</em>' containment reference.
      * @see #setKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractLocationKeyResource_Key()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractLocationKeyResource_Key()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractLocationKeyResource#getKey <em>Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractLocationKeyResource#getKey <em>Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Key</em>' containment reference.

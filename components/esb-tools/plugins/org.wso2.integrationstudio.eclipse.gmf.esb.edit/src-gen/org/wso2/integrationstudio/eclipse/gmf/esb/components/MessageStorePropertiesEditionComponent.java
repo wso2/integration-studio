@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.components;
+package org.wso2.integrationstudio.gmf.esb.components;
 
 // Start of user code for imports
 import java.util.Iterator;
@@ -55,17 +55,17 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JMSSpecVersion;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageStore;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageStoreParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageStoreType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.JDBCConnectionInformationType;
+import org.wso2.integrationstudio.gmf.esb.JMSSpecVersion;
+import org.wso2.integrationstudio.gmf.esb.MessageStore;
+import org.wso2.integrationstudio.gmf.esb.MessageStoreParameter;
+import org.wso2.integrationstudio.gmf.esb.MessageStoreType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart;
 
 
 // End of user code

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.components;
+package org.wso2.integrationstudio.gmf.esb.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
@@ -29,12 +29,12 @@ import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingCo
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectBranch;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectBranch;
+import org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleOnRejectBranchPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ThrottleOnRejectBranchPropertiesEditionPart;
 
 
 // End of user code

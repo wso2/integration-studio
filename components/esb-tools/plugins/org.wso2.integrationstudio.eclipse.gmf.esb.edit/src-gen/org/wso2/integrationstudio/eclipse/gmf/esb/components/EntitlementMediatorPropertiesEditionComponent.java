@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.components;
+package org.wso2.integrationstudio.gmf.esb.components;
 
 // Start of user code for imports
 import java.util.Iterator;
@@ -37,15 +37,15 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementCallbackHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementClientType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EntitlementCallbackHandler;
+import org.wso2.integrationstudio.gmf.esb.EntitlementClientType;
+import org.wso2.integrationstudio.gmf.esb.EntitlementMediator;
+import org.wso2.integrationstudio.gmf.esb.EntitlementSequenceType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
 
 // End of user code
 

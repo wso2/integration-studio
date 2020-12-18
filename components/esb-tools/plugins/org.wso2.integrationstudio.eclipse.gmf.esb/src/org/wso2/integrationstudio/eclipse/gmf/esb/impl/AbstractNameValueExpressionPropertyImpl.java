@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.AbstractNameValueExpressionProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,10 +27,10 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionPropertyImpl#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionPropertyImpl#getPropertyValueType <em>Property Value Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionPropertyImpl#getPropertyValue <em>Property Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionPropertyImpl#getPropertyExpression <em>Property Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractNameValueExpressionPropertyImpl#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractNameValueExpressionPropertyImpl#getPropertyValueType <em>Property Value Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractNameValueExpressionPropertyImpl#getPropertyValue <em>Property Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractNameValueExpressionPropertyImpl#getPropertyExpression <em>Property Expression</em>}</li>
  * </ul>
  *
  * @generated

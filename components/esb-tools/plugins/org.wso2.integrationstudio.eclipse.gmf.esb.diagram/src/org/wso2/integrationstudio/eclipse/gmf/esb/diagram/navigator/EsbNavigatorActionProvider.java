@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator;
+package org.wso2.integrationstudio.gmf.esb.diagram.navigator;
 
 import java.util.Iterator;
 
@@ -23,11 +23,11 @@ import org.eclipse.ui.navigator.ICommonActionConstants;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbDiagramEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.Messages;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbDiagramEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.Messages;
 
 /**
  * @generated

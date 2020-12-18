@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.components;
+package org.wso2.integrationstudio.gmf.esb.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
@@ -45,15 +45,15 @@ import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSett
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.IterateTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TargetEndpointType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TargetSequenceType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.IterateTarget;
+import org.wso2.integrationstudio.gmf.esb.MediatorSequence;
+import org.wso2.integrationstudio.gmf.esb.TargetEndpointType;
+import org.wso2.integrationstudio.gmf.esb.TargetSequenceType;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateTargetPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.IterateTargetPropertiesEditionPart;
 
 
 // End of user code

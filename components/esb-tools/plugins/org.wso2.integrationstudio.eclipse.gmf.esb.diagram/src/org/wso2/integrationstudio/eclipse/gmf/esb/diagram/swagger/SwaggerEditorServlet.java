@@ -17,7 +17,7 @@
  *
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.swagger;
+package org.wso2.integrationstudio.gmf.esb.diagram.swagger;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbMultiPageEditor;
 
 /**
  * The servlet class used to serve requests from the DSS editor.

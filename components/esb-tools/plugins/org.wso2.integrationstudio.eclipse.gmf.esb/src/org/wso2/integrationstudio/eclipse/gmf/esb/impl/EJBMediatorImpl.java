@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -27,13 +27,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EJBMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EJBMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EJBMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MethodArgument;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.EJBMediator;
+import org.wso2.integrationstudio.gmf.esb.EJBMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.EJBMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MethodArgument;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,18 +43,18 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getBeanstalk <em>Beanstalk</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getMethod <em>Method</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getSessionIdType <em>Session Id Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getSessionIdLiteral <em>Session Id Literal</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getSessionIdExpression <em>Session Id Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#isRemove <em>Remove</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getJNDIName <em>JNDI Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getMethodArguments <em>Method Arguments</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EJBMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EJBMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EJBMediatorImpl#getBeanstalk <em>Beanstalk</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EJBMediatorImpl#getClass_ <em>Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EJBMediatorImpl#getMethod <em>Method</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EJBMediatorImpl#getSessionIdType <em>Session Id Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EJBMediatorImpl#getSessionIdLiteral <em>Session Id Literal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EJBMediatorImpl#getSessionIdExpression <em>Session Id Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EJBMediatorImpl#isRemove <em>Remove</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EJBMediatorImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EJBMediatorImpl#getJNDIName <em>JNDI Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EJBMediatorImpl#getMethodArguments <em>Method Arguments</em>}</li>
  * </ul>
  *
  * @generated

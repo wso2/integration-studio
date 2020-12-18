@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.validators;
+package org.wso2.integrationstudio.artifact.registry.validators;
 
 import java.io.File;
 import java.util.List;
@@ -23,18 +23,18 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Path;
-import org.wso2.integrationstudio.eclipse.artifact.registry.model.RegistryArtifactModel;
-import org.wso2.integrationstudio.eclipse.artifact.registry.utils.RegistryArtifactConstants;
-import org.wso2.integrationstudio.eclipse.artifact.registry.utils.RegistryTemplate;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.RegistryArtifact;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.artifact.registry.model.RegistryArtifactModel;
+import org.wso2.integrationstudio.artifact.registry.utils.RegistryArtifactConstants;
+import org.wso2.integrationstudio.artifact.registry.utils.RegistryTemplate;
+import org.wso2.integrationstudio.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.integrationstudio.general.project.artifact.RegistryArtifact;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 
 

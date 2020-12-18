@@ -14,14 +14,14 @@
  * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.action;
+package org.wso2.integrationstudio.docker.distribution.action;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.docker.distribution.ui.wizard.GenerateKubernetesArtifactsWizard;
+import org.wso2.integrationstudio.docker.distribution.ui.wizard.GenerateKubernetesArtifactsWizard;
 
 public class GenerateKubernetesArtifactsAction implements IActionDelegate {
     IStructuredSelection selection;

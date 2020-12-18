@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.ds.presentation;
+package org.wso2.integrationstudio.ds.presentation;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -57,32 +57,32 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
-import org.wso2.integrationstudio.eclipse.ds.CallQuery;
-import org.wso2.integrationstudio.eclipse.ds.CallQueryList;
-import org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty;
-import org.wso2.integrationstudio.eclipse.ds.CustomValidator;
-import org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList;
-import org.wso2.integrationstudio.eclipse.ds.DataService;
-import org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration;
-import org.wso2.integrationstudio.eclipse.ds.ElementMapping;
-import org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList;
-import org.wso2.integrationstudio.eclipse.ds.EventTrigger;
-import org.wso2.integrationstudio.eclipse.ds.Operation;
-import org.wso2.integrationstudio.eclipse.ds.Query;
-import org.wso2.integrationstudio.eclipse.ds.QueryParameter;
-import org.wso2.integrationstudio.eclipse.ds.QueryPropertyList;
-import org.wso2.integrationstudio.eclipse.ds.Resource;
-import org.wso2.integrationstudio.eclipse.ds.ResultMapping;
-import org.wso2.integrationstudio.eclipse.ds.actions.DSAction;
-import org.wso2.integrationstudio.eclipse.ds.actions.DSActionConstants;
-import org.wso2.integrationstudio.eclipse.ds.actions.DataSourceConfigurationAction;
-import org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorImpl;
-import org.wso2.integrationstudio.eclipse.ds.impl.DataSourceConfigurationImpl;
-import org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl;
-import org.wso2.integrationstudio.eclipse.ds.impl.EventTriggerImpl;
-import org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl;
-import org.wso2.integrationstudio.eclipse.ds.provider.DsEditPlugin;
-import org.wso2.integrationstudio.eclipse.ds.provider.choiceListProvider.DSPropertyDescriptor;
+import org.wso2.integrationstudio.ds.CallQuery;
+import org.wso2.integrationstudio.ds.CallQueryList;
+import org.wso2.integrationstudio.ds.ConfigurationProperty;
+import org.wso2.integrationstudio.ds.CustomValidator;
+import org.wso2.integrationstudio.ds.CustomValidatorPropertyList;
+import org.wso2.integrationstudio.ds.DataService;
+import org.wso2.integrationstudio.ds.DataSourceConfiguration;
+import org.wso2.integrationstudio.ds.ElementMapping;
+import org.wso2.integrationstudio.ds.EventSubscriptionList;
+import org.wso2.integrationstudio.ds.EventTrigger;
+import org.wso2.integrationstudio.ds.Operation;
+import org.wso2.integrationstudio.ds.Query;
+import org.wso2.integrationstudio.ds.QueryParameter;
+import org.wso2.integrationstudio.ds.QueryPropertyList;
+import org.wso2.integrationstudio.ds.Resource;
+import org.wso2.integrationstudio.ds.ResultMapping;
+import org.wso2.integrationstudio.ds.actions.DSAction;
+import org.wso2.integrationstudio.ds.actions.DSActionConstants;
+import org.wso2.integrationstudio.ds.actions.DataSourceConfigurationAction;
+import org.wso2.integrationstudio.ds.impl.CustomValidatorImpl;
+import org.wso2.integrationstudio.ds.impl.DataSourceConfigurationImpl;
+import org.wso2.integrationstudio.ds.impl.DocumentRootImpl;
+import org.wso2.integrationstudio.ds.impl.EventTriggerImpl;
+import org.wso2.integrationstudio.ds.impl.QueryImpl;
+import org.wso2.integrationstudio.ds.provider.DsEditPlugin;
+import org.wso2.integrationstudio.ds.provider.choiceListProvider.DSPropertyDescriptor;
 
 /**
  * This is the action bar contributor for the DS Model Editor. <!--
@@ -413,7 +413,7 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 		IMenuManager submenuManager =
 		                              new MenuManager(
 		                                              DsEditorPlugin.INSTANCE.getString("_UI_DsEditor_menu"),
-		                                              "org.wso2.integrationstudio.eclipse.dsMenuID");
+		                                              "org.wso2.integrationstudio.dsMenuID");
 		menuManager.insertAfter("additions", submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));

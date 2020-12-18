@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.util;
+package org.wso2.integrationstudio.ds.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -13,7 +13,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.wso2.integrationstudio.eclipse.ds.*;
+import org.wso2.integrationstudio.ds.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,7 @@ import org.wso2.integrationstudio.eclipse.ds.*;
  * It provides an adapter <code>createXXX</code> method for each class of the
  * model.
  * <!-- end-user-doc -->
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage
+ * @see org.wso2.integrationstudio.ds.DsPackage
  * @generated
  */
 public class DsAdapterFactory extends AdapterFactoryImpl {
@@ -262,7 +262,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping <em>Attribute Mapping</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.AttributeMapping <em>Attribute Mapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -270,7 +270,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.AttributeMapping
+	 * @see org.wso2.integrationstudio.ds.AttributeMapping
 	 * @generated
 	 */
 	public Adapter createAttributeMappingAdapter() {
@@ -278,7 +278,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.CallQuery <em>Call Query</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.CallQuery <em>Call Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -286,7 +286,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CallQuery
+	 * @see org.wso2.integrationstudio.ds.CallQuery
 	 * @generated
 	 */
 	public Adapter createCallQueryAdapter() {
@@ -294,7 +294,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.CallQueryList <em>Call Query List</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.CallQueryList <em>Call Query List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -302,7 +302,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CallQueryList
+	 * @see org.wso2.integrationstudio.ds.CallQueryList
 	 * @generated
 	 */
 	public Adapter createCallQueryListAdapter() {
@@ -310,7 +310,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty <em>Configuration Property</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.ConfigurationProperty <em>Configuration Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -318,7 +318,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty
+	 * @see org.wso2.integrationstudio.ds.ConfigurationProperty
 	 * @generated
 	 */
 	public Adapter createConfigurationPropertyAdapter() {
@@ -326,7 +326,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidator <em>Custom Validator</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.CustomValidator <em>Custom Validator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -334,7 +334,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidator
+	 * @see org.wso2.integrationstudio.ds.CustomValidator
 	 * @generated
 	 */
 	public Adapter createCustomValidatorAdapter() {
@@ -342,7 +342,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.DataService <em>Data Service</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.DataService <em>Data Service</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -350,7 +350,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService
+	 * @see org.wso2.integrationstudio.ds.DataService
 	 * @generated
 	 */
 	public Adapter createDataServiceAdapter() {
@@ -358,7 +358,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration <em>Data Source Configuration</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.DataSourceConfiguration <em>Data Source Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -366,7 +366,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration
+	 * @see org.wso2.integrationstudio.ds.DataSourceConfiguration
 	 * @generated
 	 */
 	public Adapter createDataSourceConfigurationAdapter() {
@@ -374,7 +374,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.Description <em>Description</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.Description <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -382,7 +382,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Description
+	 * @see org.wso2.integrationstudio.ds.Description
 	 * @generated
 	 */
 	public Adapter createDescriptionAdapter() {
@@ -390,7 +390,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot <em>Document Root</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.DocumentRoot <em>Document Root</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -398,7 +398,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DocumentRoot
+	 * @see org.wso2.integrationstudio.ds.DocumentRoot
 	 * @generated
 	 */
 	public Adapter createDocumentRootAdapter() {
@@ -406,7 +406,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator <em>Double Range Validator</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.DoubleRangeValidator <em>Double Range Validator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -414,7 +414,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator
+	 * @see org.wso2.integrationstudio.ds.DoubleRangeValidator
 	 * @generated
 	 */
 	public Adapter createDoubleRangeValidatorAdapter() {
@@ -422,7 +422,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping <em>Element Mapping</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.ElementMapping <em>Element Mapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -430,7 +430,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping
+	 * @see org.wso2.integrationstudio.ds.ElementMapping
 	 * @generated
 	 */
 	public Adapter createElementMappingAdapter() {
@@ -438,7 +438,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList <em>Event Subscription List</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.EventSubscriptionList <em>Event Subscription List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -446,7 +446,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList
+	 * @see org.wso2.integrationstudio.ds.EventSubscriptionList
 	 * @generated
 	 */
 	public Adapter createEventSubscriptionListAdapter() {
@@ -454,7 +454,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger <em>Event Trigger</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.EventTrigger <em>Event Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -462,7 +462,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.EventTrigger
+	 * @see org.wso2.integrationstudio.ds.EventTrigger
 	 * @generated
 	 */
 	public Adapter createEventTriggerAdapter() {
@@ -470,7 +470,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.ExcelQuery <em>Excel Query</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.ExcelQuery <em>Excel Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -478,7 +478,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ExcelQuery
+	 * @see org.wso2.integrationstudio.ds.ExcelQuery
 	 * @generated
 	 */
 	public Adapter createExcelQueryAdapter() {
@@ -486,7 +486,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.Expression <em>Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.Expression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -494,7 +494,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Expression
+	 * @see org.wso2.integrationstudio.ds.Expression
 	 * @generated
 	 */
 	public Adapter createExpressionAdapter() {
@@ -502,7 +502,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery <em>GSpread Query</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.GSpreadQuery <em>GSpread Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -510,7 +510,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.GSpreadQuery
+	 * @see org.wso2.integrationstudio.ds.GSpreadQuery
 	 * @generated
 	 */
 	public Adapter createGSpreadQueryAdapter() {
@@ -518,7 +518,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.HasHeader <em>Has Header</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.HasHeader <em>Has Header</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -526,7 +526,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.HasHeader
+	 * @see org.wso2.integrationstudio.ds.HasHeader
 	 * @generated
 	 */
 	public Adapter createHasHeaderAdapter() {
@@ -534,7 +534,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.LengthValidator <em>Length Validator</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.LengthValidator <em>Length Validator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -542,7 +542,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.LengthValidator
+	 * @see org.wso2.integrationstudio.ds.LengthValidator
 	 * @generated
 	 */
 	public Adapter createLengthValidatorAdapter() {
@@ -550,7 +550,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.LongRangeValidator <em>Long Range Validator</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.LongRangeValidator <em>Long Range Validator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -558,7 +558,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.LongRangeValidator
+	 * @see org.wso2.integrationstudio.ds.LongRangeValidator
 	 * @generated
 	 */
 	public Adapter createLongRangeValidatorAdapter() {
@@ -566,7 +566,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.MaxRowCount <em>Max Row Count</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.MaxRowCount <em>Max Row Count</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -574,7 +574,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.MaxRowCount
+	 * @see org.wso2.integrationstudio.ds.MaxRowCount
 	 * @generated
 	 */
 	public Adapter createMaxRowCountAdapter() {
@@ -582,7 +582,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.Operation <em>Operation</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.Operation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -590,7 +590,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Operation
+	 * @see org.wso2.integrationstudio.ds.Operation
 	 * @generated
 	 */
 	public Adapter createOperationAdapter() {
@@ -598,7 +598,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping <em>Parameter Mapping</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.ParameterMapping <em>Parameter Mapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -606,7 +606,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ParameterMapping
+	 * @see org.wso2.integrationstudio.ds.ParameterMapping
 	 * @generated
 	 */
 	public Adapter createParameterMappingAdapter() {
@@ -614,7 +614,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.PatternValidator <em>Pattern Validator</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.PatternValidator <em>Pattern Validator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -622,7 +622,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.PatternValidator
+	 * @see org.wso2.integrationstudio.ds.PatternValidator
 	 * @generated
 	 */
 	public Adapter createPatternValidatorAdapter() {
@@ -630,7 +630,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.Query <em>Query</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.Query <em>Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -638,7 +638,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query
+	 * @see org.wso2.integrationstudio.ds.Query
 	 * @generated
 	 */
 	public Adapter createQueryAdapter() {
@@ -646,7 +646,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter <em>Query Parameter</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.QueryParameter <em>Query Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -654,7 +654,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter
+	 * @see org.wso2.integrationstudio.ds.QueryParameter
 	 * @generated
 	 */
 	public Adapter createQueryParameterAdapter() {
@@ -662,7 +662,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.QueryProperty <em>Query Property</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.QueryProperty <em>Query Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -670,7 +670,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryProperty
+	 * @see org.wso2.integrationstudio.ds.QueryProperty
 	 * @generated
 	 */
 	public Adapter createQueryPropertyAdapter() {
@@ -678,7 +678,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.QueryPropertyList <em>Query Property List</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.QueryPropertyList <em>Query Property List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -686,7 +686,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryPropertyList
+	 * @see org.wso2.integrationstudio.ds.QueryPropertyList
 	 * @generated
 	 */
 	public Adapter createQueryPropertyListAdapter() {
@@ -694,7 +694,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.Resource <em>Resource</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.Resource <em>Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -702,7 +702,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Resource
+	 * @see org.wso2.integrationstudio.ds.Resource
 	 * @generated
 	 */
 	public Adapter createResourceAdapter() {
@@ -710,7 +710,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping <em>Result Mapping</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.ResultMapping <em>Result Mapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -718,7 +718,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping
+	 * @see org.wso2.integrationstudio.ds.ResultMapping
 	 * @generated
 	 */
 	public Adapter createResultMappingAdapter() {
@@ -726,7 +726,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.Sparql <em>Sparql</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.Sparql <em>Sparql</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -734,7 +734,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Sparql
+	 * @see org.wso2.integrationstudio.ds.Sparql
 	 * @generated
 	 */
 	public Adapter createSparqlAdapter() {
@@ -742,7 +742,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.Sql <em>Sql</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.Sql <em>Sql</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -750,7 +750,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Sql
+	 * @see org.wso2.integrationstudio.ds.Sql
 	 * @generated
 	 */
 	public Adapter createSqlAdapter() {
@@ -758,13 +758,13 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.QueryExpression <em>Query Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.QueryExpression <em>Query Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryExpression
+	 * @see org.wso2.integrationstudio.ds.QueryExpression
 	 * @generated
 	 */
 	public Adapter createQueryExpressionAdapter() {
@@ -772,7 +772,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.StartingRow <em>Starting Row</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.StartingRow <em>Starting Row</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -780,7 +780,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.StartingRow
+	 * @see org.wso2.integrationstudio.ds.StartingRow
 	 * @generated
 	 */
 	public Adapter createStartingRowAdapter() {
@@ -788,7 +788,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.Subscription <em>Subscription</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.Subscription <em>Subscription</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -796,7 +796,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Subscription
+	 * @see org.wso2.integrationstudio.ds.Subscription
 	 * @generated
 	 */
 	public Adapter createSubscriptionAdapter() {
@@ -804,7 +804,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.TargetTopic <em>Target Topic</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.TargetTopic <em>Target Topic</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -812,7 +812,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.TargetTopic
+	 * @see org.wso2.integrationstudio.ds.TargetTopic
 	 * @generated
 	 */
 	public Adapter createTargetTopicAdapter() {
@@ -820,7 +820,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.WorkBookName <em>Work Book Name</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.WorkBookName <em>Work Book Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -828,7 +828,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.WorkBookName
+	 * @see org.wso2.integrationstudio.ds.WorkBookName
 	 * @generated
 	 */
 	public Adapter createWorkBookNameAdapter() {
@@ -836,7 +836,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.WorkSheetNumber <em>Work Sheet Number</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.WorkSheetNumber <em>Work Sheet Number</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore
 	 * cases;
@@ -844,7 +844,7 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.WorkSheetNumber
+	 * @see org.wso2.integrationstudio.ds.WorkSheetNumber
 	 * @generated
 	 */
 	public Adapter createWorkSheetNumberAdapter() {
@@ -852,13 +852,13 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.Policy <em>Policy</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.Policy <em>Policy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Policy
+	 * @see org.wso2.integrationstudio.ds.Policy
 	 * @generated
 	 */
 	public Adapter createPolicyAdapter() {
@@ -866,13 +866,13 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.DataServiceParameter <em>Data Service Parameter</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.DataServiceParameter <em>Data Service Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataServiceParameter
+	 * @see org.wso2.integrationstudio.ds.DataServiceParameter
 	 * @generated
 	 */
 	public Adapter createDataServiceParameterAdapter() {
@@ -880,13 +880,13 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty <em>Registry Key Property</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.RegistryKeyProperty <em>Registry Key Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty
+	 * @see org.wso2.integrationstudio.ds.RegistryKeyProperty
 	 * @generated
 	 */
 	public Adapter createRegistryKeyPropertyAdapter() {
@@ -894,13 +894,13 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty <em>Custom Validator Property</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.CustomValidatorProperty <em>Custom Validator Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty
+	 * @see org.wso2.integrationstudio.ds.CustomValidatorProperty
 	 * @generated
 	 */
 	public Adapter createCustomValidatorPropertyAdapter() {
@@ -908,13 +908,13 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList <em>Custom Validator Property List</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.ds.CustomValidatorPropertyList <em>Custom Validator Property List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList
+	 * @see org.wso2.integrationstudio.ds.CustomValidatorPropertyList
 	 * @generated
 	 */
 	public Adapter createCustomValidatorPropertyListAdapter() {

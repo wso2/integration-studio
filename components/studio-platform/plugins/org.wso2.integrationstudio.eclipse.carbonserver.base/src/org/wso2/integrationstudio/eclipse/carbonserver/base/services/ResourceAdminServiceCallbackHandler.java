@@ -6,7 +6,7 @@
  * UTC)
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.services;
+package org.wso2.integrationstudio.carbonserver.base.services;
 
 /**
  * ResourceAdminServiceCallbackHandler Callback class, Users can extend this
@@ -53,7 +53,7 @@ public abstract class ResourceAdminServiceCallbackHandler {
 	 * override this method for handling normal response from
 	 * getResourceTreeEntry operation
 	 */
-	public void receiveResultgetResourceTreeEntry(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceTreeEntryBean result) {
+	public void receiveResultgetResourceTreeEntry(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceTreeEntryBean result) {
 	}
 
 	/**
@@ -89,7 +89,7 @@ public abstract class ResourceAdminServiceCallbackHandler {
 	 * override this method for handling normal response from getVersionsBean
 	 * operation
 	 */
-	public void receiveResultgetVersionsBean(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.VersionsBean result) {
+	public void receiveResultgetVersionsBean(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.VersionsBean result) {
 	}
 
 	/**
@@ -140,7 +140,7 @@ public abstract class ResourceAdminServiceCallbackHandler {
 	 * override this method for handling normal response from getMetadata
 	 * operation
 	 */
-	public void receiveResultgetMetadata(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.MetadataBean result) {
+	public void receiveResultgetMetadata(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.MetadataBean result) {
 	}
 
 	/**
@@ -172,7 +172,7 @@ public abstract class ResourceAdminServiceCallbackHandler {
 	 * override this method for handling normal response from getContentBean
 	 * operation
 	 */
-	public void receiveResultgetContentBean(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ContentBean result) {
+	public void receiveResultgetContentBean(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ContentBean result) {
 	}
 
 	/**
@@ -190,7 +190,7 @@ public abstract class ResourceAdminServiceCallbackHandler {
 	 * override this method for handling normal response from getResourceData
 	 * operation
 	 */
-	public void receiveResultgetResourceData(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceData[] result) {
+	public void receiveResultgetResourceData(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceData[] result) {
 	}
 
 	/**
@@ -226,7 +226,7 @@ public abstract class ResourceAdminServiceCallbackHandler {
 	 * override this method for handling normal response from
 	 * getContentDownloadBean operation
 	 */
-	public void receiveResultgetContentDownloadBean(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ContentDownloadBean result) {
+	public void receiveResultgetContentDownloadBean(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ContentDownloadBean result) {
 	}
 
 	/**
@@ -335,7 +335,7 @@ public abstract class ResourceAdminServiceCallbackHandler {
 	 * override this method for handling normal response from
 	 * getCollectionContent operation
 	 */
-	public void receiveResultgetCollectionContent(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CollectionContentBean result) {
+	public void receiveResultgetCollectionContent(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CollectionContentBean result) {
 	}
 
 	/**
@@ -367,7 +367,7 @@ public abstract class ResourceAdminServiceCallbackHandler {
 	 * override this method for handling normal response from getPermissions
 	 * operation
 	 */
-	public void receiveResultgetPermissions(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.PermissionBean result) {
+	public void receiveResultgetPermissions(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.PermissionBean result) {
 	}
 
 	/**

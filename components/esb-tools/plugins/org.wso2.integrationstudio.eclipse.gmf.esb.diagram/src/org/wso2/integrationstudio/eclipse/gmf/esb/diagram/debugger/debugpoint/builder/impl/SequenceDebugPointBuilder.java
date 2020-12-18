@@ -14,27 +14,27 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.impl;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.debugpoint.builder.impl;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MEDIATOR_INSERT_ACTION;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.NAMED_SEQUENCE_LABEL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SEQUENCE_LABEL;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MEDIATOR_INSERT_ACTION;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.NAMED_SEQUENCE_LABEL;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SEQUENCE_LABEL;
 
 import java.util.List;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBMediatorPosition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBSequenceBean;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBSequenceDebugPointMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.ESBMediatorPosition;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.ESBSequenceBean;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.ESBSequenceDebugPointMessage;
+import org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl;
 
 /**
  * This class builds ESB breakpoints related to Sequences.

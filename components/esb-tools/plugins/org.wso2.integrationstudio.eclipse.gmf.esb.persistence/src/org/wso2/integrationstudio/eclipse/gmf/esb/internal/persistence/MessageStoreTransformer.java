@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -34,11 +34,11 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageStore;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageStoreParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageStoreType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
+import org.wso2.integrationstudio.gmf.esb.JDBCConnectionInformationType;
+import org.wso2.integrationstudio.gmf.esb.MessageStore;
+import org.wso2.integrationstudio.gmf.esb.MessageStoreParameter;
+import org.wso2.integrationstudio.gmf.esb.MessageStoreType;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.MessageStoreFormPage;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.message.stores.CustomStore;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.message.stores.JDBC;

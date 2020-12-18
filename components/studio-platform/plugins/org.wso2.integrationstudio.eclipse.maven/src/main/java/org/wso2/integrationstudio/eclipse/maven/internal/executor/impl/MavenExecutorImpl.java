@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.maven.internal.executor.impl;
+package org.wso2.integrationstudio.maven.internal.executor.impl;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,17 +30,17 @@ import org.apache.maven.shared.invoker.InvocationRequest;
 import org.apache.maven.shared.invoker.InvocationResult;
 import org.apache.maven.shared.invoker.Invoker;
 import org.apache.maven.shared.invoker.MavenInvocationException;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.Activator;
-import org.wso2.integrationstudio.eclipse.maven.core.MavenDefinitionHandler;
-import org.wso2.integrationstudio.eclipse.maven.executor.IMavenArchetypeDefinition;
-import org.wso2.integrationstudio.eclipse.maven.executor.IMavenExecutor;
-import org.wso2.integrationstudio.eclipse.maven.executor.MavenEnv;
-import org.wso2.integrationstudio.eclipse.maven.types.MavenArcheType;
-import org.wso2.integrationstudio.eclipse.maven.types.MavenProjectType;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.Activator;
+import org.wso2.integrationstudio.maven.core.MavenDefinitionHandler;
+import org.wso2.integrationstudio.maven.executor.IMavenArchetypeDefinition;
+import org.wso2.integrationstudio.maven.executor.IMavenExecutor;
+import org.wso2.integrationstudio.maven.executor.MavenEnv;
+import org.wso2.integrationstudio.maven.types.MavenArcheType;
+import org.wso2.integrationstudio.maven.types.MavenProjectType;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 /**
  * This class is intended to execute maven tasks programmatically. This class

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
@@ -60,12 +60,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -386,7 +386,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -396,7 +396,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -418,7 +418,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -428,7 +428,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -469,7 +469,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -479,7 +479,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -501,7 +501,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#getRmSpecVersion()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#getRmSpecVersion()
 	 * 
 	 */
 	public Enumerator getRmSpecVersion() {
@@ -512,7 +512,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#initRmSpecVersion(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#initRmSpecVersion(Object input, Enumerator current)
 	 */
 	public void initRmSpecVersion(Object input, Enumerator current) {
 		rmSpecVersion.setInput(input);
@@ -530,7 +530,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#setRmSpecVersion(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#setRmSpecVersion(Enumerator newValue)
 	 * 
 	 */
 	public void setRmSpecVersion(Enumerator newValue) {
@@ -548,7 +548,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#getSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#getSequenceType()
 	 * 
 	 */
 	public Enumerator getSequenceType() {
@@ -559,7 +559,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
 	 */
 	public void initSequenceType(Object input, Enumerator current) {
 		sequenceType.setInput(input);
@@ -577,7 +577,7 @@ public class RMSequenceMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#setSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RMSequenceMediatorPropertiesEditionPart#setSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setSequenceType(Enumerator newValue) {

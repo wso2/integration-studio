@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.maven.multi.module.editor;
+package org.wso2.integrationstudio.maven.multi.module.editor;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -43,10 +43,10 @@ import org.eclipse.ui.forms.editor.IFormPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.multi.module.Activator;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Refreshable;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.multi.module.Activator;
+import org.wso2.integrationstudio.platform.ui.editor.Refreshable;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -73,7 +73,7 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
     @Override
     protected void addPages() {
         distProjectEditorPage = new DistProjectEditorPage(this,
-                "org.wso2.integrationstudio.eclipse.maven.multi.module.editor.design", "Design");
+                "org.wso2.integrationstudio.maven.multi.module.editor.design", "Design");
         sourceEditor = new StructuredTextEditor();
         sourceEditor.setEditorPart(this);
 

@@ -3,32 +3,32 @@
 <plugin>
    <extension
          point="org.eclipse.ui.newWizards">
-         <wizard name="Registry Resource" category="org.wso2.integrationstudio.eclipse.capp.projectBASS/org.wso2.integrationstudio.eclipse.repository123"
-			class="org.wso2.integrationstudio.eclipse.artifact.registry.ui.wizard.RegistryResourceCreationWizard"
+         <wizard name="Registry Resource" category="org.wso2.integrationstudio.capp.projectBASS/org.wso2.integrationstudio.repository123"
+			class="org.wso2.integrationstudio.artifact.registry.ui.wizard.RegistryResourceCreationWizard"
 			wizardManifest="project_wizard.xml"
-			id="org.wso2.integrationstudio.eclipse.artifact.newregistryresource"
+			id="org.wso2.integrationstudio.artifact.newregistryresource"
 			icon="icons/registry-artifact-16x16.png">
 			<description>Registry Resource</description>
 		</wizard>
    </extension>
       
  <extension point="org.eclipse.ui.newWizards">
-    <category name="WSO2BASS" id="org.wso2.integrationstudio.eclipse.capp.projectBASS">
+    <category name="WSO2BASS" id="org.wso2.integrationstudio.capp.projectBASS">
         </category>
-     <category name="RepositoryAppo" id="org.wso2.integrationstudio.eclipse.repository123"
-                  parentCategory="org.wso2.integrationstudio.eclipse.capp.projectBASS">
+     <category name="RepositoryAppo" id="org.wso2.integrationstudio.repository123"
+                  parentCategory="org.wso2.integrationstudio.capp.projectBASS">
         </category>
    </extension>
        
-<extension point="org.wso2.integrationstudio.eclipse.dashboad.link">
-     <wizardCategory category="org.wso2.integrationstudio.eclipse.repository123"/>     
+<extension point="org.wso2.integrationstudio.dashboad.link">
+     <wizardCategory category="org.wso2.integrationstudio.repository123"/>     
      <category id="dashboard.category.greg" showTitle="true"
                title="Governance Registry"
                priority="3">
      </category>
      <wizardLink category="dashboard.category.greg"
                  id="dashboard.wizardLink.registry.resource"
-                 wizard="org.wso2.integrationstudio.eclipse.artifact.newregistryresource"
+                 wizard="org.wso2.integrationstudio.artifact.newregistryresource"
                  priority="3">
      </wizardLink>
  </extension> 
@@ -39,9 +39,9 @@
 			id="org.eclipse.ui.navigator.resourceContent"
 			name="test">
 				<commonWizard 
-					menuGroupId="5org.wso2.integrationstudio.eclipse.artifact.newregistryresource"
+					menuGroupId="5org.wso2.integrationstudio.artifact.newregistryresource"
 			  	 	type="new"
-					wizardId="org.wso2.integrationstudio.eclipse.artifact.newregistryresource">
+					wizardId="org.wso2.integrationstudio.artifact.newregistryresource">
 					<enablement>
 						<or>
 							<adapt type="org.eclipse.core.resources.IProject"/>
@@ -63,8 +63,8 @@
 	  </extension>-->
 	  		<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="5org.wso2.integrationstudio.eclipse.artifact.newregistryresource"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.newregistryresource">
+                menuGroupId="5org.wso2.integrationstudio.artifact.newregistryresource"
+                wizardId="org.wso2.integrationstudio.artifact.newregistryresource">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
@@ -80,31 +80,31 @@
             </commonWizard>
     </extension>
        <extension
-          point="org.wso2.integrationstudio.eclipse.project.export.handler">
+          point="org.wso2.integrationstudio.project.export.handler">
        <handler
-             class="org.wso2.integrationstudio.eclipse.artifact.registry.project.export.RegistryArtifactHandler"
-             id="org.wso2.integrationstudio.eclipse.artifact.registry.project.export.registry.handler"
+             class="org.wso2.integrationstudio.artifact.registry.project.export.RegistryArtifactHandler"
+             id="org.wso2.integrationstudio.artifact.registry.project.export.registry.handler"
              type="registry/resource">
        </handler>
     </extension>
         
     <extension
-         point="org.wso2.integrationstudio.eclipse.greg.resourceProvider">
+         point="org.wso2.integrationstudio.greg.resourceProvider">
       <provider
-            class="org.wso2.integrationstudio.eclipse.artifact.registry.provider.RegistryResourceProvider"
-            id="org.wso2.integrationstudio.eclipse.capp.artifact.registry.provider"
+            class="org.wso2.integrationstudio.artifact.registry.provider.RegistryResourceProvider"
+            id="org.wso2.integrationstudio.capp.artifact.registry.provider"
             name="Carbon Application Registry Resources">
       </provider>
    </extension>
    <extension point="org.eclipse.ui.popupMenus">
                 <objectContribution
                        objectClass="org.eclipse.core.resources.IProject"
-                       id="org.wso2.integrationstudio.eclipse.artifact.registry.editor.object">
+                       id="org.wso2.integrationstudio.artifact.registry.editor.object">
                  <action
                      label="Registry Resources Editor"
                      icon="icons/resource.png"
-                   class="org.wso2.integrationstudio.eclipse.artifact.registry.ui.actions.ResourceEditorAction"
-                        id="org.wso2.integrationstudio.eclipse.artifact.registry.ui.actions">
+                   class="org.wso2.integrationstudio.artifact.registry.ui.actions.ResourceEditorAction"
+                        id="org.wso2.integrationstudio.artifact.registry.ui.actions">
                </action>
                <enablement>
 						<adapt type="org.eclipse.core.resources.IProject">
@@ -117,8 +117,8 @@
    	   <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.wso2.integrationstudio.eclipse.artifact.registry.editor.ResourceFormEditor"
-            id="org.wso2.integrationstudio.eclipse.artifact.registry.editor"
+            class="org.wso2.integrationstudio.artifact.registry.editor.ResourceFormEditor"
+            id="org.wso2.integrationstudio.artifact.registry.editor"
             extensions="xml"
             name="Resources Editor">
       </editor>
@@ -126,10 +126,10 @@
    
    	<extension point="org.eclipse.ui.navigator.navigatorContent">
 		<navigatorContent 
-            id="org.wso2.integrationstudio.eclipse.artifact.registry.navigator" 
+            id="org.wso2.integrationstudio.artifact.registry.navigator" 
             name="Registry resources"
-            contentProvider="org.wso2.integrationstudio.eclipse.artifact.registry.provider.ResourcesContentProvider"
-            labelProvider="org.wso2.integrationstudio.eclipse.artifact.registry.provider.ResourcesLabelProvider" 
+            contentProvider="org.wso2.integrationstudio.artifact.registry.provider.ResourcesContentProvider"
+            labelProvider="org.wso2.integrationstudio.artifact.registry.provider.ResourcesLabelProvider" 
             activeByDefault="true"
             icon="icons/registry_nav.png"
             priority="normal" >
@@ -144,10 +144,10 @@
                   </test>
 			</and>
          </triggerPoints>
-         <actionProvider class="org.wso2.integrationstudio.eclipse.artifact.registry.provider.ResourceActionProvider"/>
+         <actionProvider class="org.wso2.integrationstudio.artifact.registry.provider.ResourceActionProvider"/>
          <possibleChildren>
             <or>
-               <instanceof value="org.wso2.integrationstudio.eclipse.artifact.registry.provider.NavigatorNode"/> 
+               <instanceof value="org.wso2.integrationstudio.artifact.registry.provider.NavigatorNode"/> 
             </or>
          </possibleChildren>
       </navigatorContent>
@@ -155,9 +155,9 @@
 	
      <extension point="org.eclipse.ui.navigator.navigatorContent">
 		<commonFilter
-			class="org.wso2.integrationstudio.eclipse.artifact.registry.filter.ArtifactResourceFilter"
+			class="org.wso2.integrationstudio.artifact.registry.filter.ArtifactResourceFilter"
 			description="Hide Artifact.xml files."
-			id="org.wso2.integrationstudio.eclipse.artifact.registry.navigator.filter"
+			id="org.wso2.integrationstudio.artifact.registry.navigator.filter"
 			name="Hide Artifact.xml files" activeByDefault="true"/>
 	</extension>
 	
@@ -165,12 +165,12 @@
 			point="org.eclipse.ui.navigator.viewer">
 		<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
 			<includes>
-				<contentExtension pattern="org.wso2.integrationstudio.eclipse.artifact.registry.navigator.filter*" />	
+				<contentExtension pattern="org.wso2.integrationstudio.artifact.registry.navigator.filter*" />	
 			</includes>
 		</viewerContentBinding>
 		<viewerContentBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
 			<includes>
-				<contentExtension pattern="org.wso2.integrationstudio.eclipse.artifact.registry.navigator.filter*" />	
+				<contentExtension pattern="org.wso2.integrationstudio.artifact.registry.navigator.filter*" />	
 			</includes>
 		</viewerContentBinding>
 	</extension>
@@ -179,12 +179,12 @@
 			point="org.eclipse.ui.navigator.viewer">
 		<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
 			<includes>
-				<contentExtension pattern="org.wso2.integrationstudio.eclipse.artifact.registry.navigator*"/>
+				<contentExtension pattern="org.wso2.integrationstudio.artifact.registry.navigator*"/>
 			</includes>
 		</viewerContentBinding>
 		<viewerContentBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
 			<includes>
-				<contentExtension pattern="org.wso2.integrationstudio.eclipse.artifact.registry.navigator*"/>
+				<contentExtension pattern="org.wso2.integrationstudio.artifact.registry.navigator*"/>
 			</includes>
 		</viewerContentBinding>
 	</extension>

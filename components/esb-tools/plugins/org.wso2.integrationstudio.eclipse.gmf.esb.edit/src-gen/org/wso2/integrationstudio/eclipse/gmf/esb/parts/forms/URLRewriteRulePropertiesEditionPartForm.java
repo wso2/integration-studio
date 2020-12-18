@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -45,11 +45,11 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteRulePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EvaluatorExpressionProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.URLRewriteRulePropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -219,7 +219,7 @@ public class URLRewriteRulePropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteRulePropertiesEditionPart#initRewriteRuleAction(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteRulePropertiesEditionPart#initRewriteRuleAction(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initRewriteRuleAction(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -240,7 +240,7 @@ public class URLRewriteRulePropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteRulePropertiesEditionPart#updateRewriteRuleAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteRulePropertiesEditionPart#updateRewriteRuleAction()
 	 * 
 	 */
 	public void updateRewriteRuleAction() {
@@ -250,7 +250,7 @@ public class URLRewriteRulePropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteRulePropertiesEditionPart#addFilterRewriteRuleAction(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteRulePropertiesEditionPart#addFilterRewriteRuleAction(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToRewriteRuleAction(ViewerFilter filter) {
@@ -263,7 +263,7 @@ public class URLRewriteRulePropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteRulePropertiesEditionPart#addBusinessFilterRewriteRuleAction(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteRulePropertiesEditionPart#addBusinessFilterRewriteRuleAction(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToRewriteRuleAction(ViewerFilter filter) {
@@ -273,7 +273,7 @@ public class URLRewriteRulePropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.URLRewriteRulePropertiesEditionPart#isContainedInRewriteRuleActionTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.URLRewriteRulePropertiesEditionPart#isContainedInRewriteRuleActionTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInRewriteRuleActionTable(EObject element) {

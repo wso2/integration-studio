@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="org.wso2.integrationstudio.eclipse.carbonserver.publisher" name="Module Publisher for Carbon Server" schema="schema/org.wso2.integrationstudio.eclipse.carbonserver.publisher.exsd"/>
-   <extension-point id="org.wso2.integrationstudio.eclipse.carbonserver.monitor" name="Extention point to trigger when server states change" schema="schema/org.wso2.integrationstudio.eclipse.carbonserver.monitor.exsd"/>
-   <extension-point id="org.wso2.integrationstudio.eclipse.carbonserver.base.register" name="WSAS Server Registration Extension Point" schema="schema/org.wso2.integrationstudio.eclipse.carbonserver.base.register.exsd"/>
-   <extension-point id="org.wso2.integrationstudio.eclipse.carbonserver.base.serverProperties" name="serverProperties" schema="schema/org.wso2.integrationstudio.eclipse.carbonserver.base.serverProperties.exsd"/>
+   <extension-point id="org.wso2.integrationstudio.carbonserver.publisher" name="Module Publisher for Carbon Server" schema="schema/org.wso2.integrationstudio.carbonserver.publisher.exsd"/>
+   <extension-point id="org.wso2.integrationstudio.carbonserver.monitor" name="Extention point to trigger when server states change" schema="schema/org.wso2.integrationstudio.carbonserver.monitor.exsd"/>
+   <extension-point id="org.wso2.integrationstudio.carbonserver.base.register" name="WSAS Server Registration Extension Point" schema="schema/org.wso2.integrationstudio.carbonserver.base.register.exsd"/>
+   <extension-point id="org.wso2.integrationstudio.carbonserver.base.serverProperties" name="serverProperties" schema="schema/org.wso2.integrationstudio.carbonserver.base.serverProperties.exsd"/>
    <extension-point id="org.wso2.integrationstudio.carbon.product.server.registry" name="Register Product Servers" schema="schema/org.wso2.integrationstudio.product.server.registry.exsd"/>
    <extension
-         point="org.wso2.integrationstudio.eclipse.server.base.servermanager">
+         point="org.wso2.integrationstudio.server.base.servermanager">
       <servermanager
-            class="org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager">
+            class="org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager">
       </servermanager>
    </extension>
    	<extension point="org.eclipse.ui.startup">
-		<startup class="org.wso2.integrationstudio.eclipse.carbonserver.base.Initializer" />
+		<startup class="org.wso2.integrationstudio.carbonserver.base.Initializer" />
 	</extension>
 	
 	<!--Adding the pop up menu contributions-->
 	<!--Property Tester-->
 	<extension point="org.eclipse.core.expressions.propertyTesters">
       <propertyTester
-            class="org.wso2.integrationstudio.eclipse.carbonserver.base.ui.actions.ServerModuleVisibilityPropertyTester"
-            id="org.wso2.integrationstudio.eclipse.server.propertytester"
+            class="org.wso2.integrationstudio.carbonserver.base.ui.actions.ServerModuleVisibilityPropertyTester"
+            id="org.wso2.integrationstudio.server.propertytester"
             namespace="org.wso2.integrationstudio.eclipse"
             properties="serverModuleVisibility"
             type="org.eclipse.wst.server.ui.IServerModule">
       </propertyTester>
       <propertyTester
-            class="org.wso2.integrationstudio.eclipse.carbonserver.base.ui.actions.ServerModuleEnablementPropertyTester"
-            id="org.wso2.integrationstudio.eclipse.server.propertytester"
+            class="org.wso2.integrationstudio.carbonserver.base.ui.actions.ServerModuleEnablementPropertyTester"
+            id="org.wso2.integrationstudio.server.propertytester"
             namespace="org.wso2.integrationstudio.eclipse"
             properties="serverModuleEnablement"
             type="org.eclipse.wst.server.ui.IServerModule">
@@ -38,15 +38,15 @@
 	<extension point="org.eclipse.ui.commands">
   		<command
         description="Reploy the module in the server"
-        id="org.wso2.integrationstudio.eclipse.server"
+        id="org.wso2.integrationstudio.server"
         name="Redeploy">
   		</command>
 	</extension>
 	<!--Handler-->
 	<extension point="org.eclipse.ui.handlers">
   		<handler
-        class="org.wso2.integrationstudio.eclipse.carbonserver.base.ui.actions.ServerApplicationHandler"
-        commandId="org.wso2.integrationstudio.eclipse.server">
+        class="org.wso2.integrationstudio.carbonserver.base.ui.actions.ServerApplicationHandler"
+        commandId="org.wso2.integrationstudio.server">
      <enabledWhen>
         <with variable="selection">
            <iterate
@@ -57,7 +57,7 @@
                   </instanceof>
                   <and>
               <test
-                    property="org.wso2.integrationstudio.eclipse.serverModuleEnablement"
+                    property="org.wso2.integrationstudio.serverModuleEnablement"
                     value="org.eclipse.wst.server.ui.IServerModule">
               </test>
             </and>
@@ -70,7 +70,7 @@
 	<extension point="org.eclipse.ui.menus">
     <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
      <command
-           commandId="org.wso2.integrationstudio.eclipse.server"
+           commandId="org.wso2.integrationstudio.server"
            style="push">
         <visibleWhen checkEnabled="false">
             <with variable="activeMenuSelection">
@@ -80,7 +80,7 @@
                   </instanceof>
                   <and>
                   <test
-                    property="org.wso2.integrationstudio.eclipse.serverModuleVisibility"
+                    property="org.wso2.integrationstudio.serverModuleVisibility"
                     value="org.eclipse.wst.server.ui.IServerModule">
               </test>                 
                   </and>
@@ -96,7 +96,7 @@
              id="org.eclipse.wst.server.ui"
              nametag="AddServer"
              name="Add Server"
-             bundleID="org.wso2.integrationstudio.eclipse.carbonserver.base"
+             bundleID="org.wso2.integrationstudio.carbonserver.base"
              icon="icons/server.png">
              </dashboard.section>
     </extension>

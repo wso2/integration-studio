@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,15 +15,15 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget#getSequence <em>Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget#getSequenceKey <em>Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget#getEndpointType <em>Endpoint Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget#getEndpoint <em>Endpoint</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget#getEndpointKey <em>Endpoint Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget#getSequenceType <em>Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget#getSequence <em>Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget#getSequenceKey <em>Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget#getEndpointType <em>Endpoint Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget#getEndpoint <em>Endpoint</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget#getEndpointKey <em>Endpoint Key</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractCommonTarget()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractCommonTarget()
  * @model
  * @generated
  */
@@ -31,7 +31,7 @@ public interface AbstractCommonTarget extends EsbNode {
     /**
      * Returns the value of the '<em><b>Sequence Type</b></em>' attribute.
      * The default value is <code>"NONE"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.TargetSequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.TargetSequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Sequence Type</em>' attribute isn't clear,
@@ -39,20 +39,20 @@ public interface AbstractCommonTarget extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.TargetSequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.TargetSequenceType
      * @see #setSequenceType(TargetSequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractCommonTarget_SequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractCommonTarget_SequenceType()
      * @model default="NONE"
      * @generated
      */
     TargetSequenceType getSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget#getSequenceType <em>Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget#getSequenceType <em>Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.TargetSequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.TargetSequenceType
      * @see #getSequenceType()
      * @generated
      */
@@ -68,14 +68,14 @@ public interface AbstractCommonTarget extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence</em>' reference.
      * @see #setSequence(MediatorSequence)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractCommonTarget_Sequence()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractCommonTarget_Sequence()
      * @model
      * @generated
      */
     MediatorSequence getSequence();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget#getSequence <em>Sequence</em>}' reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget#getSequence <em>Sequence</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence</em>' reference.
@@ -94,14 +94,14 @@ public interface AbstractCommonTarget extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Key</em>' containment reference.
      * @see #setSequenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractCommonTarget_SequenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractCommonTarget_SequenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget#getSequenceKey <em>Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget#getSequenceKey <em>Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Key</em>' containment reference.
@@ -113,7 +113,7 @@ public interface AbstractCommonTarget extends EsbNode {
     /**
      * Returns the value of the '<em><b>Endpoint Type</b></em>' attribute.
      * The default value is <code>"NONE"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.TargetEndpointType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.TargetEndpointType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Endpoint Type</em>' attribute isn't clear,
@@ -121,20 +121,20 @@ public interface AbstractCommonTarget extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Endpoint Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.TargetEndpointType
+     * @see org.wso2.integrationstudio.gmf.esb.TargetEndpointType
      * @see #setEndpointType(TargetEndpointType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractCommonTarget_EndpointType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractCommonTarget_EndpointType()
      * @model default="NONE"
      * @generated
      */
     TargetEndpointType getEndpointType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget#getEndpointType <em>Endpoint Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget#getEndpointType <em>Endpoint Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Endpoint Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.TargetEndpointType
+     * @see org.wso2.integrationstudio.gmf.esb.TargetEndpointType
      * @see #getEndpointType()
      * @generated
      */
@@ -150,14 +150,14 @@ public interface AbstractCommonTarget extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Endpoint</em>' containment reference.
      * @see #setEndpoint(EndPoint)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractCommonTarget_Endpoint()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractCommonTarget_Endpoint()
      * @model containment="true"
      * @generated
      */
     EndPoint getEndpoint();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget#getEndpoint <em>Endpoint</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget#getEndpoint <em>Endpoint</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Endpoint</em>' containment reference.
@@ -176,14 +176,14 @@ public interface AbstractCommonTarget extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Endpoint Key</em>' containment reference.
      * @see #setEndpointKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractCommonTarget_EndpointKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractCommonTarget_EndpointKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getEndpointKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget#getEndpointKey <em>Endpoint Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget#getEndpointKey <em>Endpoint Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Endpoint Key</em>' containment reference.

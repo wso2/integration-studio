@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.usermgt.ui.controls;
+package org.wso2.integrationstudio.registry.base.usermgt.ui.controls;
 
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
@@ -25,15 +25,15 @@ import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.base.Activator;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceType;
-import org.wso2.integrationstudio.eclipse.registry.base.usermgt.model.RegistryUserPermissionContainer;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.InvalidRegistryURLException;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.UnknownRegistryException;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.base.Activator;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceType;
+import org.wso2.integrationstudio.registry.base.usermgt.model.RegistryUserPermissionContainer;
+import org.wso2.integrationstudio.registry.core.exception.InvalidRegistryURLException;
+import org.wso2.integrationstudio.registry.core.exception.UnknownRegistryException;
 
 import java.util.ArrayList;
 import java.util.Arrays;

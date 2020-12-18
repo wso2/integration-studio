@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 
 // Start of user code for imports
@@ -40,15 +40,15 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTResourcePropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.XSLTResourcePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 import java.util.ArrayList;
@@ -214,7 +214,7 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTResourcePropertiesEditionPart#getLocation()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTResourcePropertiesEditionPart#getLocation()
 	 * 
 	 */
 	public String getLocation() {
@@ -224,7 +224,7 @@ public class XSLTResourcePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTResourcePropertiesEditionPart#setLocation(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTResourcePropertiesEditionPart#setLocation(String newValue)
 	 * 
 	 */
 	public void setLocation(String newValue) {

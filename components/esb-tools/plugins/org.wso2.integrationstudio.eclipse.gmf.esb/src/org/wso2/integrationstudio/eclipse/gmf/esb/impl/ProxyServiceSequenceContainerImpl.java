@@ -5,7 +5,7 @@
  * $Id$
  */
 /*
- * package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+ * package org.wso2.integrationstudio.gmf.esb.impl;
  * 
  * import org.eclipse.emf.common.notify.Notification;
  * import org.eclipse.emf.common.notify.NotificationChain;
@@ -15,10 +15,10 @@
  * 
  * import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * 
- * import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceInSequence;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceOutSequence;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceSequenceContainer;
+ * import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+ * import org.wso2.integrationstudio.gmf.esb.ProxyServiceInSequence;
+ * import org.wso2.integrationstudio.gmf.esb.ProxyServiceOutSequence;
+ * import org.wso2.integrationstudio.gmf.esb.ProxyServiceSequenceContainer;
  * 
  *//**
     * <!-- begin-user-doc -->
@@ -27,9 +27,9 @@
     * <p>
     * The following features are implemented:
     * <ul>
-    * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceSequenceContainerImpl#getInSequence <em>In
+    * <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceSequenceContainerImpl#getInSequence <em>In
     * Sequence</em>}</li>
-    * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceSequenceContainerImpl#getOutSequence <em>Out
+    * <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceSequenceContainerImpl#getOutSequence <em>Out
     * Sequence</em>}</li>
     * </ul>
     * </p>

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.core.utils;
+package org.wso2.integrationstudio.registry.core.utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,11 +23,11 @@ import java.util.List;
 import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMElement;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.Activator;
-import org.wso2.integrationstudio.eclipse.platform.core.MediaManager;
-import org.wso2.integrationstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.Activator;
+import org.wso2.integrationstudio.platform.core.MediaManager;
+import org.wso2.integrationstudio.platform.core.manifest.AbstractXMLDoc;
 
 public class RegistryResourceInfoDoc extends AbstractXMLDoc {
 

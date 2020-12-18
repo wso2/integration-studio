@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +22,10 @@ import java.util.Properties;
 import org.apache.synapse.endpoints.Endpoint;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Template;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.Template;
+import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 

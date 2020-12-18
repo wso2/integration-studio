@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard;
+package org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard;
 
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
@@ -35,12 +35,12 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
-import org.wso2.integrationstudio.eclipse.esb.dashboard.templates.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.help.TemplateGuideView;
+import org.wso2.integrationstudio.esb.dashboard.templates.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
+import org.wso2.integrationstudio.templates.dashboard.help.TemplateGuideView;
 
 import java.io.File;
 import java.io.IOException;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.general.project.ui.action;
+package org.wso2.integrationstudio.general.project.ui.action;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.action.IAction;
@@ -28,7 +28,7 @@ import org.eclipse.ui.wizards.IWizardDescriptor;
 
 public class ImportCloudConnectorAction implements IActionDelegate {
 	private IStructuredSelection selection;
-	private static final String ADD_CONNECTOR_WIZARD_ID = "org.wso2.integrationstudio.eclipse.artifact.addconnectortoworkspace";
+	private static final String ADD_CONNECTOR_WIZARD_ID = "org.wso2.integrationstudio.artifact.addconnectortoworkspace";
 
 	public void run(IAction action) {
 		openWizardById(ADD_CONNECTOR_WIZARD_ID);

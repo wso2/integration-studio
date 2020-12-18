@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__COORDINATION;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__COORDINATION;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
+import org.wso2.integrationstudio.gmf.esb.persistence.InboundEndpointConstants;
 
 /**
  * This Enum represent Custom inbound endpoint parameters with parameter name , related EAttribute and boolean value

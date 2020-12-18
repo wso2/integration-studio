@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.validators;
+package org.wso2.integrationstudio.artifact.endpoint.validators;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -7,13 +7,13 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.ui.internal.WorkbenchWindow;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.Activator;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.artifact.endpoint.Activator;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 
 public class AvailableTemplateList extends AbstractListDataProvider{

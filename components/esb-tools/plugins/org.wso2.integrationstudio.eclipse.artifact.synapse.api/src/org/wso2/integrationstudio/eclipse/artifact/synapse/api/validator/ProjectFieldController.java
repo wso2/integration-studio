@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.synapse.api.validator;
+package org.wso2.integrationstudio.artifact.synapse.api.validator;
 
 import java.io.File;
 import java.util.List;
 
 import org.apache.axiom.om.OMElement;
 import org.eclipse.core.resources.IResource;
-import org.wso2.integrationstudio.eclipse.artifact.synapse.api.model.APIArtifactModel;
-import org.wso2.integrationstudio.eclipse.artifact.synapse.api.util.ArtifactConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.artifact.synapse.api.model.APIArtifactModel;
+import org.wso2.integrationstudio.artifact.synapse.api.util.ArtifactConstants;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
 
 /**
  * The controller class for API artifact wizard specific fields.

@@ -1,9 +1,9 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.dialogs;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.dialogs;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.dialogs.messages"; //$NON-NLS-1$
+    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.gmf.esb.diagram.custom.dialogs.messages"; //$NON-NLS-1$
     public static String CreateNewConfigurationDialog_DefaultConfigName;
     public static String CreateNewConfigurationDialog_DialogHeaderLoadingCAppProjects;
     public static String CreateNewConfigurationDialog_DialogHeaderResourceCreation;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.messagestore.validator;
+package org.wso2.integrationstudio.artifact.messagestore.validator;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -22,18 +22,18 @@ import java.util.regex.Pattern;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IResource;
-import org.wso2.integrationstudio.eclipse.artifact.messagestore.model.MessageStoreModel;
-import org.wso2.integrationstudio.eclipse.artifact.messagestore.provider.JDBCConnectionInformationList.JDBCConnectionInformationType;
-import org.wso2.integrationstudio.eclipse.artifact.messagestore.provider.DatabaseTypeList.DatabaseType;
-import org.wso2.integrationstudio.eclipse.artifact.messagestore.provider.JMSProfileTypeList.JMSProfileType;
-import org.wso2.integrationstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.artifact.messagestore.model.MessageStoreModel;
+import org.wso2.integrationstudio.artifact.messagestore.provider.JDBCConnectionInformationList.JDBCConnectionInformationType;
+import org.wso2.integrationstudio.artifact.messagestore.provider.DatabaseTypeList.DatabaseType;
+import org.wso2.integrationstudio.artifact.messagestore.provider.JMSProfileTypeList.JMSProfileType;
+import org.wso2.integrationstudio.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
 
-import static org.wso2.integrationstudio.eclipse.artifact.messagestore.Constants.*;
-import static org.wso2.integrationstudio.eclipse.artifact.messagestore.DefaultValueConstants.*;
+import static org.wso2.integrationstudio.artifact.messagestore.Constants.*;
+import static org.wso2.integrationstudio.artifact.messagestore.DefaultValueConstants.*;
 
 /**
  * The controller class for message-store artifact wizard specific fields.

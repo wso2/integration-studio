@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import java.util.ArrayList;
 import java.util.List;

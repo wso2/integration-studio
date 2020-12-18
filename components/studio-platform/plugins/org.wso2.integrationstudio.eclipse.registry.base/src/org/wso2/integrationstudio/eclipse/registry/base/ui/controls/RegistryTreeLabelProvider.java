@@ -14,26 +14,26 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.ui.controls;
+package org.wso2.integrationstudio.registry.base.ui.controls;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.registry.base.core.MediaTypes;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryContentContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceType;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryURLNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUser;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserManagerContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserRole;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserRoleContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.util.ImageUtils;
-import org.wso2.integrationstudio.eclipse.ui.image.OverlayImageDescriptor;
+import org.wso2.integrationstudio.registry.base.core.MediaTypes;
+import org.wso2.integrationstudio.registry.base.model.RegistryContentContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceType;
+import org.wso2.integrationstudio.registry.base.model.RegistryURLNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryUser;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserManagerContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserRole;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserRoleContainer;
+import org.wso2.integrationstudio.registry.base.ui.util.ImageUtils;
+import org.wso2.integrationstudio.ui.image.OverlayImageDescriptor;
 
 public class RegistryTreeLabelProvider implements ILabelProvider {
 

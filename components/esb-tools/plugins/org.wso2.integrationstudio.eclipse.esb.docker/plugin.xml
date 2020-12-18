@@ -20,12 +20,12 @@
 <plugin>
     <extension point="org.eclipse.ui.popupMenus">
         <objectContribution objectClass="org.eclipse.core.resources.IProject" 
-        id="org.wso2.integrationstudio.eclipse.esb.docker.exportandgeneratedocker">
+        id="org.wso2.integrationstudio.esb.docker.exportandgeneratedocker">
             <action
                 label="Generate Docker Image"
                 icon="icons/docker.png"
-                class="org.wso2.integrationstudio.eclipse.esb.docker.action.ExportAndGenerateDockerAction"
-                id="org.wso2.integrationstudio.eclipse.esb.docker.exportandgeneratedocker">
+                class="org.wso2.integrationstudio.esb.docker.action.ExportAndGenerateDockerAction"
+                id="org.wso2.integrationstudio.esb.docker.exportandgeneratedocker">
             </action>
             <enablement>
                 <adapt type="org.eclipse.core.resources.IProject">

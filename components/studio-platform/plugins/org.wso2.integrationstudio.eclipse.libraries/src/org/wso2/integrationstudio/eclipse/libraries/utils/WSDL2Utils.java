@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.libraries.utils;
+package org.wso2.integrationstudio.libraries.utils;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

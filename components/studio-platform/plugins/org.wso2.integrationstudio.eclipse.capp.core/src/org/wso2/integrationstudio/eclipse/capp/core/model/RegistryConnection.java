@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.model;
+package org.wso2.integrationstudio.capp.core.model;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.wso2.integrationstudio.eclipse.capp.core.Activator;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryConnection;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.capp.core.Activator;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryConnection;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class RegistryConnection implements IRegistryConnection {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

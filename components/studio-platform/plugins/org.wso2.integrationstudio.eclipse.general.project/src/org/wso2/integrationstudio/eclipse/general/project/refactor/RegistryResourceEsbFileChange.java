@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.general.project.refactor;
+package org.wso2.integrationstudio.general.project.refactor;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;

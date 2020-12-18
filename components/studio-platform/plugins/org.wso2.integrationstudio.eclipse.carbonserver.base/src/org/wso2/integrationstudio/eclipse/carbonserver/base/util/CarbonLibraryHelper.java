@@ -29,7 +29,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.util;
+package org.wso2.integrationstudio.carbonserver.base.util;
 
 import java.io.FileFilter;
 import java.io.File;

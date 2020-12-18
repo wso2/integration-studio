@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.artifact.datasource.wizards;
+package org.wso2.integrationstudio.artifact.datasource.wizards;
 
 import java.io.File;
 

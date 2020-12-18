@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.utils;
 
 import java.io.IOException;
 
@@ -24,13 +24,13 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.Deserializer;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbEditorInput;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class OpenEditorUtils {
 

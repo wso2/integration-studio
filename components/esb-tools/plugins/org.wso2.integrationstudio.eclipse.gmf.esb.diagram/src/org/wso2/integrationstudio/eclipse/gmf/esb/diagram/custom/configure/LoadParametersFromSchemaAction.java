@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure;
 
 import java.io.File;
 import java.util.Map;
@@ -24,25 +24,25 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperationParamEditorType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogLevel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleOptionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui.AddCaseBranchDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui.AddTargetBranchDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.CallTemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.CloneMediator;
+import org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation;
+import org.wso2.integrationstudio.gmf.esb.CloudConnectorOperationParamEditorType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.LogLevel;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleOptionType;
+import org.wso2.integrationstudio.gmf.esb.SwitchMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui.AddCaseBranchDialog;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui.AddTargetBranchDialog;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 
 public class LoadParametersFromSchemaAction extends ConfigureEsbNodeAction {
 

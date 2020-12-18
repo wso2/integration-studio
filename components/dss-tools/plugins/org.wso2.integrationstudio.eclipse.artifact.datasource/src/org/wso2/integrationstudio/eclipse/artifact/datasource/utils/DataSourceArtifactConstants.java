@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.artifact.datasource.utils;
+package org.wso2.integrationstudio.artifact.datasource.utils;
 
 import org.eclipse.osgi.util.NLS;
 
 
 public class DataSourceArtifactConstants extends NLS {
 
-	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.artifact.datasource.utils.datasourceartifactconstants";
+	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.artifact.datasource.utils.datasourceartifactconstants";
 	
 	//project wizard page properties
 	public static String WIZARD_OPTION_PROJECT_NAME;

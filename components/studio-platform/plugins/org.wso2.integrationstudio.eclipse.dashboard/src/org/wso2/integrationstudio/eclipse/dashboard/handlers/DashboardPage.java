@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.dashboard.handlers;
+package org.wso2.integrationstudio.dashboard.handlers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,14 +60,14 @@ import org.eclipse.ui.wizards.IWizardCategory;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.eclipse.ui.wizards.IWizardRegistry;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
-import org.wso2.integrationstudio.eclipse.dashboard.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
-import org.wso2.integrationstudio.eclipse.samples.contributor.IIntegrationStudioSampleContributor;
-import org.wso2.integrationstudio.eclipse.samples.utils.ExtensionPointHandler;
-import org.wso2.integrationstudio.eclipse.samples.wizards.ProjectCreationWizard;
+import org.wso2.integrationstudio.dashboard.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.samples.contributor.IIntegrationStudioSampleContributor;
+import org.wso2.integrationstudio.samples.utils.ExtensionPointHandler;
+import org.wso2.integrationstudio.samples.wizards.ProjectCreationWizard;
 
 /**
  * Integration Studio main dash-board page
@@ -105,9 +105,9 @@ public class DashboardPage extends FormPage {
 		 * DashboardContributionsHandler
 		 */
 		wizardCategoryMap.put("Distribution",
-				new String[] { "org.wso2.integrationstudio.eclipse.distribution.project", });
+				new String[] { "org.wso2.integrationstudio.distribution.project", });
 		wizardCategoryMap.put("Maven",
-				new String[] { "org.wso2.integrationstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard", });
+				new String[] { "org.wso2.integrationstudio.platform.ui.mvn.wizard.MvnMultiModuleWizard", });
 		wizardCategoryMap.put("AddServer", new String[] { "org.eclipse.wst.server.ui.new.server", });
 	}
 

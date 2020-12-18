@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distributionproject.module.utils;
+package org.wso2.integrationstudio.distributionproject.module.utils;
 
 import java.util.List;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.wso2.integrationstudio.eclipse.distributionproject.module.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.integrationstudio.distributionproject.module.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
 import org.apache.maven.project.MavenProject;
 
 public class CAppPropertyTester extends PropertyTester  {

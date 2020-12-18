@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.END_POINT__END_POINT_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.FAILOVER_END_POINT__BUILD_MESSAGE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.END_POINT__END_POINT_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.FAILOVER_END_POINT__BUILD_MESSAGE;
 
 import java.util.Iterator;
 import java.util.List;
@@ -34,17 +34,17 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointPropertyScope;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.ComplexEndpointDeserializerUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EndPointPropertyScope;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.ComplexEndpointDeserializerUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.impl.FailoverEndPointImpl;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.FailoverEndpointFormPage;
@@ -81,7 +81,7 @@ public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
             for (Endpoint synpaseChild : synpaseChildren) {
 
                 IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(synpaseChild);
-                org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint child = ((AbstractEndpointDeserializer) deserializer)
+                org.wso2.integrationstudio.gmf.esb.EndPoint child = ((AbstractEndpointDeserializer) deserializer)
                         .createUIEndpoint(synpaseChild);
 
                 TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(endPoint);
@@ -148,11 +148,11 @@ public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
         super.createNode(formEditor, endpointObject);
     }
     
-    public org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint createUIEndpoint(Endpoint synapseEndpoint) {
+    public org.wso2.integrationstudio.gmf.esb.EndPoint createUIEndpoint(Endpoint synapseEndpoint) {
         Assert.isTrue(synapseEndpoint instanceof org.apache.synapse.endpoints.FailoverEndpoint,
                 "Unsupported endpoint has been passed to create the UI object at " + this.getClass());
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint endpoint = new FailoverEndPointImpl();
+        org.wso2.integrationstudio.gmf.esb.EndPoint endpoint = new FailoverEndPointImpl();
 
         FailoverEndpoint failoverEndpoint = (FailoverEndpoint) synapseEndpoint;
 
@@ -162,7 +162,7 @@ public class FailoverEndpointDeserializer extends AbstractEndpointDeserializer {
             for (Endpoint synpaseChild : synpaseChildren) {
 
                 IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(synpaseChild);
-                org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint child = ((AbstractEndpointDeserializer) deserializer)
+                org.wso2.integrationstudio.gmf.esb.EndPoint child = ((AbstractEndpointDeserializer) deserializer)
                         .createUIEndpoint(synpaseChild);
 
                 TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(((FailoverEndPointImpl) endpoint));

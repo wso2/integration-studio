@@ -1,9 +1,9 @@
-package org.wso2.integrationstudio.eclipse.libraries.utils;
+package org.wso2.integrationstudio.libraries.utils;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.libraries.Activator;
-import org.wso2.integrationstudio.eclipse.utils.ui.ImageUtils;
+import org.wso2.integrationstudio.libraries.Activator;
+import org.wso2.integrationstudio.utils.ui.ImageUtils;
 
 public class LibImageUtils extends ImageUtils {
 

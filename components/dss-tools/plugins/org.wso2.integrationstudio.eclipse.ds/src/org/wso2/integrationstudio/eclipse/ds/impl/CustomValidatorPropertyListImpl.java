@@ -1,6 +1,6 @@
 /**
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Collection;
 
@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty;
-import org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
+import org.wso2.integrationstudio.ds.CustomValidatorProperty;
+import org.wso2.integrationstudio.ds.CustomValidatorPropertyList;
+import org.wso2.integrationstudio.ds.DsPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,8 +29,8 @@ import org.wso2.integrationstudio.eclipse.ds.DsPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.CustomValidatorPropertyListImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.CustomValidatorPropertyListImpl#getProperty <em>Property</em>}</li>
  * </ul>
  *
  * @generated

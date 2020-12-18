@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils;
 
 /**
  * This enum type represent the Resume types used by ESB Medition Debugger

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.keyhandlers;
+package org.wso2.integrationstudio.gmf.keyhandlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -26,10 +26,10 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbMultiPageEditor;
+import org.wso2.integrationstudio.gmf.esb.persistence.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -39,28 +39,28 @@ import org.wso2.integrationstudio.eclipse.logging.core.Logger;
  */
 public class ESBKeyHandler extends AbstractHandler {
     private static final String NEW_MSG_STORE_COMMAND = "esbproject.commands.new.msgStore";
-    private static final String ARTIFACT_TASK_WIZARD = "org.wso2.integrationstudio.eclipse.artifact.task.wizard";
+    private static final String ARTIFACT_TASK_WIZARD = "org.wso2.integrationstudio.artifact.task.wizard";
     private static final String SAMPLE_COMMAND = "esbproject.commands.sampleCommand";
     private static final String NEW_SCHED_TASK_COMMAND = "esbproject.commands.new.schedTask";
-    private static final String ARTIFACT_SYNAPSEARTIFACT = "org.wso2.integrationstudio.eclipse.artifact.synapseartifact";
+    private static final String ARTIFACT_SYNAPSEARTIFACT = "org.wso2.integrationstudio.artifact.synapseartifact";
     private static final String NEW_SYNAPSE_COMMAND = "esbproject.commands.new.synapse";
-    private static final String ARTIFACT_NEWTEMPLATE = "org.wso2.integrationstudio.eclipse.artifact.newtemplate";
+    private static final String ARTIFACT_NEWTEMPLATE = "org.wso2.integrationstudio.artifact.newtemplate";
     private static final String NEW_TEMPLATE_COMMAND = "esbproject.commands.new.template";
-    private static final String SYNAPSE_API_WIZARD = "org.wso2.integrationstudio.eclipse.artifact.synapse.api.wizard";
+    private static final String SYNAPSE_API_WIZARD = "org.wso2.integrationstudio.artifact.synapse.api.wizard";
     private static final String NEW_RST_API_COMMAND = "esbproject.commands.new.rstAPI";
-    private static final String NEW_SEQUENCE_ARTIFACT = "org.wso2.integrationstudio.eclipse.artifact.newsequenceartifact";
+    private static final String NEW_SEQUENCE_ARTIFACT = "org.wso2.integrationstudio.artifact.newsequenceartifact";
     private static final String NEW_SE_QUENCE_COMMAND = "esbproject.commands.new.seQuence";
-    private static final String NEW_PROXY_SERVICE = "org.wso2.integrationstudio.eclipse.artifact.newproxyservice";
+    private static final String NEW_PROXY_SERVICE = "org.wso2.integrationstudio.artifact.newproxyservice";
     private static final String NEW_PROX_SERVICE_COMMAND = "esbproject.commands.new.proxService";
-    private static final String MESSAGE_PROCESSOR_WIZARD = "org.wso2.integrationstudio.eclipse.artifact.messageprocessor.wizard";
+    private static final String MESSAGE_PROCESSOR_WIZARD = "org.wso2.integrationstudio.artifact.messageprocessor.wizard";
     private static final String NEW_MSG_PROC_COMMAND = "esbproject.commands.new.msgProc";
-    private static final String NEW_MEDIATOR_ARTIFACT = "org.wso2.integrationstudio.eclipse.artifact.newmediatorartifact";
+    private static final String NEW_MEDIATOR_ARTIFACT = "org.wso2.integrationstudio.artifact.newmediatorartifact";
     private static final String NEW_MEDIATOR_PRO_COMMAND = "esbproject.commands.new.mediatorPro";
-    private static final String NEW_ENDPOINT_ARTIFACT = "org.wso2.integrationstudio.eclipse.artifact.newendpointartifact";
+    private static final String NEW_ENDPOINT_ARTIFACT = "org.wso2.integrationstudio.artifact.newendpointartifact";
     private static final String NEW_END_POINT_COMMAND = "esbproject.commands.new.endPoint";
     private static final String NEW_LCL_ENTRY_COMMAND = "esbproject.commands.new.lclEntry";
-    private static final String NEW_LOCAL_ENTRY = "org.wso2.integrationstudio.eclipse.artifact.newlocalentry";
-    private static final String MESSAGE_STORE_WIZARD = "org.wso2.integrationstudio.eclipse.artifact.messagestore.wizard";
+    private static final String NEW_LOCAL_ENTRY = "org.wso2.integrationstudio.artifact.newlocalentry";
+    private static final String MESSAGE_STORE_WIZARD = "org.wso2.integrationstudio.artifact.messagestore.wizard";
 
     protected final IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 

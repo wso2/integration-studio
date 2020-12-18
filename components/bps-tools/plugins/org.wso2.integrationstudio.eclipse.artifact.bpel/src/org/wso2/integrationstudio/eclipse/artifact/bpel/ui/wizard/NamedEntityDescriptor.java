@@ -13,7 +13,7 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
- package org.wso2.integrationstudio.eclipse.artifact.bpel.ui.wizard;
+ package org.wso2.integrationstudio.artifact.bpel.ui.wizard;
  
  import java.util.regex.Matcher;
  import java.util.regex.Pattern;

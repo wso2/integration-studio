@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.dashboard.handlers;
+package org.wso2.integrationstudio.dashboard.handlers;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
@@ -38,16 +38,16 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.dashboard.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.dashboard.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.eclipse.core.internal.registry.ExtensionRegistry; 
 
 /**
  * Utility class for reading Integration Studio dashboard contributions.
  */
 public class DashboardContributionsHandler {
-	private static final String EXT_POINT_ID = "org.wso2.integrationstudio.eclipse.dashboad.link";
+	private static final String EXT_POINT_ID = "org.wso2.integrationstudio.dashboad.link";
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static List<String> categoryContributions = new ArrayList<String>();
 	private static Map<String, String> wizardLinks = new LinkedHashMap<String, String>();
@@ -63,7 +63,7 @@ public class DashboardContributionsHandler {
 						"point=\"org.eclipse.ui.newWizards\">" +
 					"<category " +
 						"name=\"WSO2BB\" " +
-						"id=\"org.wso2.integrationstudio.eclipse.capp.projectBASS\">" +
+						"id=\"org.wso2.integrationstudio.capp.projectBASS\">" +
 					"</category>" +
 				"</extension>";
 		

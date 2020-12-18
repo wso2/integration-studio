@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import java.util.ArrayList;
 
@@ -27,14 +27,14 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.layout.XYRepossition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.SwitchMediatorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.SwitchCaseBranchOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.SwitchCaseContainer;
+import org.wso2.integrationstudio.gmf.esb.SwitchMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.layout.XYRepossition;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.SwitchMediatorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
 
 public class AddCaseBranchDialog extends Dialog {
 

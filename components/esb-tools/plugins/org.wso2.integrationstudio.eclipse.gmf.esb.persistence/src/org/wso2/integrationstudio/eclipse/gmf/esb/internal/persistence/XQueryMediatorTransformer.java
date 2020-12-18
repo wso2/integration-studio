@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,16 +37,16 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.KeyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariable;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariableType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariableValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.XQueryMediator;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariable;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariableType;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariableValueType;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.persistence.ValidationConstansts;
 
 public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
 

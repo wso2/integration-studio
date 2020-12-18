@@ -1,6 +1,6 @@
 /**
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import java.util.Map;
 
@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty#getKey <em>Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.RegistryKeyProperty#getKey <em>Key</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getRegistryKeyProperty()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getRegistryKeyProperty()
  * @model
  * @generated
  */
@@ -33,14 +33,14 @@ public interface RegistryKeyProperty extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Key</em>' attribute.
 	 * @see #setKey(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getRegistryKeyProperty_Key()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getRegistryKeyProperty_Key()
 	 * @model
 	 * @generated
 	 */
 	String getKey();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty#getKey <em>Key</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.RegistryKeyProperty#getKey <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Key</em>' attribute.

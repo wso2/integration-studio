@@ -1,16 +1,16 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.policies;
 
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.AddressEndPoint2CreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.DefaultEndPoint2CreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.FailoverEndPoint2CreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.HTTPEndpoint2CreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.LoadBalanceEndPoint2CreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.RecipientListEndPoint2CreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.TemplateEndpoint2CreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.WSDLEndPoint2CreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.AddressEndPoint2CreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.DefaultEndPoint2CreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.FailoverEndPoint2CreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.HTTPEndpoint2CreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.LoadBalanceEndPoint2CreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.RecipientListEndPoint2CreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.TemplateEndpoint2CreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.WSDLEndPoint2CreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.updater.handler;
+package org.wso2.integrationstudio.updater.handler;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -22,13 +22,13 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.IProgressConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.updater.UpdaterPlugin;
-import org.wso2.integrationstudio.eclipse.updater.core.UpdateManager;
-import org.wso2.integrationstudio.eclipse.updater.job.UpdateCheckerJob;
-import org.wso2.integrationstudio.eclipse.updater.job.UpdateCheckerJobListener;
-import org.wso2.integrationstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.updater.UpdaterPlugin;
+import org.wso2.integrationstudio.updater.core.UpdateManager;
+import org.wso2.integrationstudio.updater.job.UpdateCheckerJob;
+import org.wso2.integrationstudio.updater.job.UpdateCheckerJobListener;
+import org.wso2.integrationstudio.updater.ui.UpdaterDialog.ActiveTab;
 
 public class UpdateFeaturesCommandHandler extends AbstractHandler {
 

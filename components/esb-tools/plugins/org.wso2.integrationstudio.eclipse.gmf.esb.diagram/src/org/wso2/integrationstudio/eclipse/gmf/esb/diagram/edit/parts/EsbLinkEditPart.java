@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import java.beans.PropertyChangeListener;
 import java.util.Collection;
@@ -57,8 +57,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.graphics.Font;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.EsbLinkItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.EsbLinkItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
 
 /**
  * @generated

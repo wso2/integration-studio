@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Libraries
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.esb.libraries;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.esb.libraries;singleton:=true
 Bundle-Version: 7.2.0.qualifier
 Bundle-Vendor: WSO2
 Bundle-ActivationPolicy: lazy
@@ -132,14 +132,14 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  javax.servlet;bundle-version="3.0.0",
  javax.servlet.jsp;bundle-version="2.2.0",
- org.wso2.integrationstudio.eclipse.libraries,
- org.wso2.integrationstudio.eclipse.kernel.libraries
-Bundle-Activator: org.wso2.integrationstudio.eclipse.esb.libraries.Activator
+ org.wso2.integrationstudio.libraries,
+ org.wso2.integrationstudio.kernel.libraries
+Bundle-Activator: org.wso2.integrationstudio.esb.libraries.Activator
 Import-Package: org.eclipse.jdt.core,
- org.wso2.integrationstudio.eclipse.logging.core,
- org.wso2.integrationstudio.eclipse.utils.ide,
- org.wso2.integrationstudio.eclipse.utils.jdt,
- org.wso2.integrationstudio.eclipse.utils.ui
+ org.wso2.integrationstudio.logging.core,
+ org.wso2.integrationstudio.utils.ide,
+ org.wso2.integrationstudio.utils.jdt,
+ org.wso2.integrationstudio.utils.ui
 Export-Package: com.damnhandy.uri.template;version="2.1.6.wso2v2",
  com.google.gson,
  com.google.gson.reflect,
@@ -348,7 +348,7 @@ Export-Package: com.damnhandy.uri.template;version="2.1.6.wso2v2",
  org.wso2.carbon.rule.mediator.internal.config,
  org.wso2.carbon.tools.converter,
  org.wso2.carbon.utils,
- org.wso2.integrationstudio.eclipse.esb.libraries.utils,
+ org.wso2.integrationstudio.esb.libraries.utils,
  org.wso2.securevault.secret
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

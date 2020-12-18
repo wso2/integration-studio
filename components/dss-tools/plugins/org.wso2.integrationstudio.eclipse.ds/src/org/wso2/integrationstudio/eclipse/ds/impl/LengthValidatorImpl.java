@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.math.BigInteger;
 
@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.LengthValidator;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.LengthValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,8 +26,8 @@ import org.wso2.integrationstudio.eclipse.ds.LengthValidator;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.LengthValidatorImpl#getMaximum <em>Maximum</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.LengthValidatorImpl#getMinimum <em>Minimum</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.LengthValidatorImpl#getMaximum <em>Maximum</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.LengthValidatorImpl#getMinimum <em>Minimum</em>}</li>
  * </ul>
  *
  * @generated

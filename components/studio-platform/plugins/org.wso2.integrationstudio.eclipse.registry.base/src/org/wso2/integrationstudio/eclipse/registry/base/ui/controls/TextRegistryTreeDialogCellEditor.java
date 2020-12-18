@@ -1,13 +1,13 @@
-package org.wso2.integrationstudio.eclipse.registry.base.ui.controls;
+package org.wso2.integrationstudio.registry.base.ui.controls;
 
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.dialog.RegistryTreeBrowserDialog;
-import org.wso2.integrationstudio.eclipse.ui.widgets.TextAndDialogCellEditor;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.ui.dialog.RegistryTreeBrowserDialog;
+import org.wso2.integrationstudio.ui.widgets.TextAndDialogCellEditor;
 
 public class TextRegistryTreeDialogCellEditor extends TextAndDialogCellEditor{
 	private RegistryNode registryNode;

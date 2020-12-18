@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.wso2.integrationstudio.eclipse.ds.*;
+import org.wso2.integrationstudio.ds.*;
 
 /**
  * <!-- begin-user-doc -->

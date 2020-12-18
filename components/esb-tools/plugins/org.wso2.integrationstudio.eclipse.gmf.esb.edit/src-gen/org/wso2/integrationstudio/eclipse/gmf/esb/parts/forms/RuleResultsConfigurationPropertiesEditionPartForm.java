@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -46,10 +46,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -212,7 +212,7 @@ public class RuleResultsConfigurationPropertiesEditionPartForm extends SectionPr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart#initResults(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart#initResults(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initResults(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -233,7 +233,7 @@ public class RuleResultsConfigurationPropertiesEditionPartForm extends SectionPr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart#updateResults()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart#updateResults()
 	 * 
 	 */
 	public void updateResults() {
@@ -243,7 +243,7 @@ public class RuleResultsConfigurationPropertiesEditionPartForm extends SectionPr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart#addFilterResults(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart#addFilterResults(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToResults(ViewerFilter filter) {
@@ -256,7 +256,7 @@ public class RuleResultsConfigurationPropertiesEditionPartForm extends SectionPr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart#addBusinessFilterResults(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart#addBusinessFilterResults(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToResults(ViewerFilter filter) {
@@ -266,7 +266,7 @@ public class RuleResultsConfigurationPropertiesEditionPartForm extends SectionPr
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart#isContainedInResultsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleResultsConfigurationPropertiesEditionPart#isContainedInResultsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInResultsTable(EObject element) {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.publisher;
+package org.wso2.integrationstudio.distribution.project.publisher;
 
 import java.io.File;
 import java.net.URL;
@@ -32,26 +32,26 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.wst.server.core.IServer;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServerModulePublisher;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICredentials;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.utils.CAppDeployer;
-import org.wso2.integrationstudio.eclipse.distribution.project.export.CarExportHandler;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.util.ExportUtil;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServerModulePublisher;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICredentials;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.utils.CAppDeployer;
+import org.wso2.integrationstudio.distribution.project.export.CarExportHandler;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.project.export.util.ExportUtil;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 import net.consensys.cava.toml.Toml;
 import net.consensys.cava.toml.TomlParseResult;
 
 public class CAppProjectPublisher implements ICarbonServerModulePublisher {
 
-    private static final String MI_PLUGIN_ID = "org.wso2.integrationstudio.eclipse.carbon.server44microei";
-    private static final String MI_110_PLUGIN_ID = "org.wso2.integrationstudio.eclipse.carbon.server44microei11";
-    private static final String MI_120_PLUGIN_ID = "org.wso2.integrationstudio.eclipse.carbon.server44microei12";
+    private static final String MI_PLUGIN_ID = "org.wso2.integrationstudio.carbon.server44microei";
+    private static final String MI_110_PLUGIN_ID = "org.wso2.integrationstudio.carbon.server44microei11";
+    private static final String MI_120_PLUGIN_ID = "org.wso2.integrationstudio.carbon.server44microei12";
     private static final String MI_CAPP_PATH = File.separator + "repository" + File.separator + "deployment"
             + File.separator + "server" + File.separator + "carbonapps";
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.maven.multi.module.add.other.projects;
+package org.wso2.integrationstudio.maven.multi.module.add.other.projects;
 
 import java.io.File;
 
@@ -21,7 +21,7 @@ import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 
 public class ImportProjectTester extends PropertyTester {
 

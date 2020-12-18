@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.manager;
+package org.wso2.integrationstudio.platform.ui.manager;
 
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -27,9 +27,9 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.Activator;
 
 public class EclipseSWTTrustManager implements X509TrustManager {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

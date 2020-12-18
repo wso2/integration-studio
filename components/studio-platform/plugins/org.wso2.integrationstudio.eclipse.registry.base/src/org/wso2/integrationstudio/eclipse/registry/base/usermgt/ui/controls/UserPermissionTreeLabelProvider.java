@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.usermgt.ui.controls;
+package org.wso2.integrationstudio.registry.base.usermgt.ui.controls;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.registry.base.core.MediaTypes;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryContentContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceType;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.util.ImageUtils;
+import org.wso2.integrationstudio.registry.base.core.MediaTypes;
+import org.wso2.integrationstudio.registry.base.model.RegistryContentContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceType;
+import org.wso2.integrationstudio.registry.base.ui.util.ImageUtils;
 
 /**
  *

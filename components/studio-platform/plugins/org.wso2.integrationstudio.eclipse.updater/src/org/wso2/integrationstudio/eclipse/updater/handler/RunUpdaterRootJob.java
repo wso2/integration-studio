@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.updater.handler;
+package org.wso2.integrationstudio.updater.handler;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -39,9 +39,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.updater.UpdaterPlugin;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.updater.UpdaterPlugin;
 
 public class RunUpdaterRootJob extends Job {
 
@@ -194,25 +194,25 @@ public class RunUpdaterRootJob extends Job {
     }
 
     private static long getLatestTimestampOfPlstform() {
-        String platformPLugin = "org.wso2.integrationstudio.eclipse.docker.distribution";
+        String platformPLugin = "org.wso2.integrationstudio.docker.distribution";
 
         return Collections.max(checkLocalPluginTimestamp(platformPLugin, pluginDirFile));
     }
 
     private static long getLatestTimestampOfESB() {
-        String esbPLugin = "org.wso2.integrationstudio.eclipse.esb.dashboard.templates";
+        String esbPLugin = "org.wso2.integrationstudio.esb.dashboard.templates";
 
         return Collections.max(checkLocalPluginTimestamp(esbPLugin, pluginDirFile));
     }
 
     private static long getLatestTimestampOfDSS() {
-        String esbPLugin = "org.wso2.integrationstudio.eclipse.ds.editor";
+        String esbPLugin = "org.wso2.integrationstudio.ds.editor";
 
         return Collections.max(checkLocalPluginTimestamp(esbPLugin, pluginDirFile));
     }
 
     private static long getLatestTimestampOfBPS() {
-        String esbPLugin = "org.wso2.integrationstudio.eclipse.bpel.core";
+        String esbPLugin = "org.wso2.integrationstudio.bpel.core";
 
         return Collections.max(checkLocalPluginTimestamp(esbPLugin, pluginDirFile));
     }

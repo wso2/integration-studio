@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ClassProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.ClassMediator;
+import org.wso2.integrationstudio.gmf.esb.ClassMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.ClassMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ClassProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,10 +33,10 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ClassMediatorImpl#getClassName <em>Class Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ClassMediatorImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ClassMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ClassMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ClassMediatorImpl#getClassName <em>Class Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ClassMediatorImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ClassMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ClassMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated

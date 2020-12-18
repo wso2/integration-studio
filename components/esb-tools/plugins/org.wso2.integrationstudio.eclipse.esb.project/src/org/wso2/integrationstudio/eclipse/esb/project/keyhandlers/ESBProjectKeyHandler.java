@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.keyhandlers;
+package org.wso2.integrationstudio.esb.project.keyhandlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -26,9 +26,9 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.eclipse.ui.wizards.IWizardRegistry;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.esb.project.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.esb.project.Activator;
 
 public class ESBProjectKeyHandler extends AbstractHandler {
 	
@@ -37,9 +37,9 @@ public class ESBProjectKeyHandler extends AbstractHandler {
 	private static final String NEW_ESB_CONFIG_PROJECT_COMMAND = "integrationstudio.commands.new.esbConfigProject";
 	private static final String NEW_ESB_SOLUTION_PROJECT_COMMAND ="integrationstudio.commands.new.esbSolutionProject";
 	private static final String NEW_MMM_PROJECT_COMMAND = "integrationstudio.commands.new.mavenMultiModuleProject";
-	private static final String ESB_CONFIG_WIZARD = "org.wso2.integrationstudio.eclipse.artifact.newesbproject";
-	private static final String ESB_SOLUTION_WIZARD="org.wso2.integrationstudio.eclipse.artifact.newesbsolutionproject";
-	private static final String MMM_WIZARD = "org.wso2.integrationstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard";
+	private static final String ESB_CONFIG_WIZARD = "org.wso2.integrationstudio.artifact.newesbproject";
+	private static final String ESB_SOLUTION_WIZARD="org.wso2.integrationstudio.artifact.newesbsolutionproject";
+	private static final String MMM_WIZARD = "org.wso2.integrationstudio.platform.ui.mvn.wizard.MvnMultiModuleWizard";
 	private static final String ERROR_MESSAGE = "Cannot open wizard, core exception";
 	 
 		@Override

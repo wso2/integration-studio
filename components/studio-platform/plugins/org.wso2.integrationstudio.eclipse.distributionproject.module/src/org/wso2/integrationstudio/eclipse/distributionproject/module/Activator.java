@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.distributionproject.module;
+package org.wso2.integrationstudio.distributionproject.module;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -9,7 +9,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.distributionproject.module"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.distributionproject.module"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;

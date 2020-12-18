@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -86,13 +86,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.util.XPathValidator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.util.XPathValidatorImpl;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.persistence.Activator;
+import org.wso2.integrationstudio.gmf.esb.util.XPathValidator;
+import org.wso2.integrationstudio.gmf.esb.util.XPathValidatorImpl;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 
 /**

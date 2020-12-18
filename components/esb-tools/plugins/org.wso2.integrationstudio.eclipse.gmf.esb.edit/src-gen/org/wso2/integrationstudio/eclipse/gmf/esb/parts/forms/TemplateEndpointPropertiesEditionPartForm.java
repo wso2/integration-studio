@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -79,12 +79,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -1896,7 +1896,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -1906,7 +1906,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -1928,7 +1928,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -1938,7 +1938,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -1979,7 +1979,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getEndPointName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getEndPointName()
 	 * 
 	 */
 	public String getEndPointName() {
@@ -1989,7 +1989,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setEndPointName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setEndPointName(String newValue)
 	 * 
 	 */
 	public void setEndPointName(String newValue) {
@@ -2011,7 +2011,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getAnonymous()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getAnonymous()
 	 * 
 	 */
 	public Boolean getAnonymous() {
@@ -2021,7 +2021,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setAnonymous(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setAnonymous(Boolean newValue)
 	 * 
 	 */
 	public void setAnonymous(Boolean newValue) {
@@ -2043,7 +2043,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getInLine()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getInLine()
 	 * 
 	 */
 	public Boolean getInLine() {
@@ -2053,7 +2053,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setInLine(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setInLine(Boolean newValue)
 	 * 
 	 */
 	public void setInLine(Boolean newValue) {
@@ -2075,7 +2075,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getDuplicate()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getDuplicate()
 	 * 
 	 */
 	public Boolean getDuplicate() {
@@ -2085,7 +2085,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setDuplicate(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setDuplicate(Boolean newValue)
 	 * 
 	 */
 	public void setDuplicate(Boolean newValue) {
@@ -2109,7 +2109,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initProperties(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -2130,7 +2130,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#updateProperties()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#updateProperties()
 	 * 
 	 */
 	public void updateProperties() {
@@ -2140,7 +2140,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToProperties(ViewerFilter filter) {
@@ -2153,7 +2153,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToProperties(ViewerFilter filter) {
@@ -2163,7 +2163,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInPropertiesTable(EObject element) {
@@ -2173,7 +2173,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getReversed()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getReversed()
 	 * 
 	 */
 	public Boolean getReversed() {
@@ -2183,7 +2183,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setReversed(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setReversed(Boolean newValue)
 	 * 
 	 */
 	public void setReversed(Boolean newValue) {
@@ -2205,7 +2205,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getReliableMessagingEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getReliableMessagingEnabled()
 	 * 
 	 */
 	public Boolean getReliableMessagingEnabled() {
@@ -2215,7 +2215,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setReliableMessagingEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setReliableMessagingEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setReliableMessagingEnabled(Boolean newValue) {
@@ -2237,7 +2237,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getSecurityEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getSecurityEnabled()
 	 * 
 	 */
 	public Boolean getSecurityEnabled() {
@@ -2247,7 +2247,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setSecurityEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setSecurityEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setSecurityEnabled(Boolean newValue) {
@@ -2269,7 +2269,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getAddressingEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getAddressingEnabled()
 	 * 
 	 */
 	public Boolean getAddressingEnabled() {
@@ -2279,7 +2279,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setAddressingEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setAddressingEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setAddressingEnabled(Boolean newValue) {
@@ -2301,7 +2301,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getAddressingVersion()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getAddressingVersion()
 	 * 
 	 */
 	public Enumerator getAddressingVersion() {
@@ -2312,7 +2312,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initAddressingVersion(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initAddressingVersion(Object input, Enumerator current)
 	 */
 	public void initAddressingVersion(Object input, Enumerator current) {
 		addressingVersion.setInput(input);
@@ -2330,7 +2330,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setAddressingVersion(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setAddressingVersion(Enumerator newValue)
 	 * 
 	 */
 	public void setAddressingVersion(Enumerator newValue) {
@@ -2348,7 +2348,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getAddressingSeparateListener()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getAddressingSeparateListener()
 	 * 
 	 */
 	public Boolean getAddressingSeparateListener() {
@@ -2358,7 +2358,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setAddressingSeparateListener(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setAddressingSeparateListener(Boolean newValue)
 	 * 
 	 */
 	public void setAddressingSeparateListener(Boolean newValue) {
@@ -2380,7 +2380,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getTimeOutDuration()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getTimeOutDuration()
 	 * 
 	 */
 	public String getTimeOutDuration() {
@@ -2390,7 +2390,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setTimeOutDuration(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setTimeOutDuration(String newValue)
 	 * 
 	 */
 	public void setTimeOutDuration(String newValue) {
@@ -2412,7 +2412,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getTimeOutAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getTimeOutAction()
 	 * 
 	 */
 	public Enumerator getTimeOutAction() {
@@ -2423,7 +2423,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initTimeOutAction(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initTimeOutAction(Object input, Enumerator current)
 	 */
 	public void initTimeOutAction(Object input, Enumerator current) {
 		timeOutAction.setInput(input);
@@ -2441,7 +2441,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setTimeOutAction(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setTimeOutAction(Enumerator newValue)
 	 * 
 	 */
 	public void setTimeOutAction(Enumerator newValue) {
@@ -2459,7 +2459,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getRetryErrorCodes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getRetryErrorCodes()
 	 * 
 	 */
 	public String getRetryErrorCodes() {
@@ -2469,7 +2469,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setRetryErrorCodes(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setRetryErrorCodes(String newValue)
 	 * 
 	 */
 	public void setRetryErrorCodes(String newValue) {
@@ -2491,7 +2491,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getRetryCount()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getRetryCount()
 	 * 
 	 */
 	public String getRetryCount() {
@@ -2501,7 +2501,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setRetryCount(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setRetryCount(String newValue)
 	 * 
 	 */
 	public void setRetryCount(String newValue) {
@@ -2523,7 +2523,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getRetryDelay()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getRetryDelay()
 	 * 
 	 */
 	public String getRetryDelay() {
@@ -2533,7 +2533,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setRetryDelay(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setRetryDelay(String newValue)
 	 * 
 	 */
 	public void setRetryDelay(String newValue) {
@@ -2555,7 +2555,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getSuspendErrorCodes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getSuspendErrorCodes()
 	 * 
 	 */
 	public String getSuspendErrorCodes() {
@@ -2565,7 +2565,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setSuspendErrorCodes(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setSuspendErrorCodes(String newValue)
 	 * 
 	 */
 	public void setSuspendErrorCodes(String newValue) {
@@ -2587,7 +2587,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getSuspendInitialDuration()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getSuspendInitialDuration()
 	 * 
 	 */
 	public String getSuspendInitialDuration() {
@@ -2597,7 +2597,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setSuspendInitialDuration(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setSuspendInitialDuration(String newValue)
 	 * 
 	 */
 	public void setSuspendInitialDuration(String newValue) {
@@ -2619,7 +2619,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getSuspendMaximumDuration()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getSuspendMaximumDuration()
 	 * 
 	 */
 	public String getSuspendMaximumDuration() {
@@ -2629,7 +2629,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setSuspendMaximumDuration(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setSuspendMaximumDuration(String newValue)
 	 * 
 	 */
 	public void setSuspendMaximumDuration(String newValue) {
@@ -2651,7 +2651,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getSuspendProgressionFactor()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getSuspendProgressionFactor()
 	 * 
 	 */
 	public String getSuspendProgressionFactor() {
@@ -2661,7 +2661,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setSuspendProgressionFactor(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setSuspendProgressionFactor(String newValue)
 	 * 
 	 */
 	public void setSuspendProgressionFactor(String newValue) {
@@ -2683,7 +2683,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getFormat()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getFormat()
 	 * 
 	 */
 	public Enumerator getFormat() {
@@ -2694,7 +2694,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initFormat(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initFormat(Object input, Enumerator current)
 	 */
 	public void initFormat(Object input, Enumerator current) {
 		format.setInput(input);
@@ -2712,7 +2712,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setFormat(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setFormat(Enumerator newValue)
 	 * 
 	 */
 	public void setFormat(Enumerator newValue) {
@@ -2730,7 +2730,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getOptimize()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getOptimize()
 	 * 
 	 */
 	public Enumerator getOptimize() {
@@ -2741,7 +2741,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initOptimize(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initOptimize(Object input, Enumerator current)
 	 */
 	public void initOptimize(Object input, Enumerator current) {
 		optimize.setInput(input);
@@ -2759,7 +2759,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setOptimize(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setOptimize(Enumerator newValue)
 	 * 
 	 */
 	public void setOptimize(Enumerator newValue) {
@@ -2779,7 +2779,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initTemplateParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initTemplateParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initTemplateParameters(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -2800,7 +2800,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#updateTemplateParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#updateTemplateParameters()
 	 * 
 	 */
 	public void updateTemplateParameters() {
@@ -2810,7 +2810,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#addFilterTemplateParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#addFilterTemplateParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToTemplateParameters(ViewerFilter filter) {
@@ -2823,7 +2823,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#addBusinessFilterTemplateParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#addBusinessFilterTemplateParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToTemplateParameters(ViewerFilter filter) {
@@ -2833,7 +2833,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#isContainedInTemplateParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#isContainedInTemplateParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInTemplateParametersTable(EObject element) {
@@ -2843,7 +2843,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getStatisticsEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getStatisticsEnabled()
 	 * 
 	 */
 	public Boolean getStatisticsEnabled() {
@@ -2853,7 +2853,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setStatisticsEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setStatisticsEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setStatisticsEnabled(Boolean newValue) {
@@ -2875,7 +2875,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getTraceEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getTraceEnabled()
 	 * 
 	 */
 	public Boolean getTraceEnabled() {
@@ -2885,7 +2885,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setTraceEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setTraceEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setTraceEnabled(Boolean newValue) {
@@ -2907,7 +2907,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getAddress()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getAddress()
 	 * 
 	 */
 	public String getAddress() {
@@ -2917,7 +2917,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setAddress(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setAddress(String newValue)
 	 * 
 	 */
 	public void setAddress(String newValue) {
@@ -2939,7 +2939,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getTargetTemplate()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getTargetTemplate()
 	 * 
 	 */
 	public String getTargetTemplate() {
@@ -2949,7 +2949,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setTargetTemplate(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setTargetTemplate(String newValue)
 	 * 
 	 */
 	public void setTargetTemplate(String newValue) {
@@ -2973,7 +2973,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#initParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initParameters(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -2994,7 +2994,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#updateParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#updateParameters()
 	 * 
 	 */
 	public void updateParameters() {
@@ -3004,7 +3004,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#addFilterParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#addFilterParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToParameters(ViewerFilter filter) {
@@ -3017,7 +3017,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#addBusinessFilterParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#addBusinessFilterParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToParameters(ViewerFilter filter) {
@@ -3027,7 +3027,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#isContainedInParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#isContainedInParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInParametersTable(EObject element) {
@@ -3037,7 +3037,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getAvailableTemplates()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#getAvailableTemplates()
 	 * 
 	 */
 	public String getAvailableTemplates() {
@@ -3047,7 +3047,7 @@ public class TemplateEndpointPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setAvailableTemplates(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart#setAvailableTemplates(String newValue)
 	 * 
 	 */
 	public void setAvailableTemplates(String newValue) {

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,10 +24,10 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommentMediator#getCommentText <em>Comment Text</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CommentMediator#getCommentText <em>Comment Text</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommentMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommentMediator()
  * @model
  * @generated
  */
@@ -43,14 +43,14 @@ public interface CommentMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Comment Text</em>' attribute.
      * @see #setCommentText(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommentMediator_CommentText()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommentMediator_CommentText()
      * @model default="class_name"
      * @generated
      */
     String getCommentText();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommentMediator#getCommentText <em>Comment Text</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CommentMediator#getCommentText <em>Comment Text</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Comment Text</em>' attribute.

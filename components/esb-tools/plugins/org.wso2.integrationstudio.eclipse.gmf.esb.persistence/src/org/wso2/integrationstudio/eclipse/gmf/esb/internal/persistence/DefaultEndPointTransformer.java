@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 
@@ -27,21 +27,21 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.DefaultEndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.SequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbNodeTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
- * {@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint} model objects into
+ * {@link org.wso2.integrationstudio.gmf.esb.EndPoint} model objects into
  * corresponding synapse artifact(s).
  */
 public class DefaultEndPointTransformer extends AbstractEndpointTransformer {

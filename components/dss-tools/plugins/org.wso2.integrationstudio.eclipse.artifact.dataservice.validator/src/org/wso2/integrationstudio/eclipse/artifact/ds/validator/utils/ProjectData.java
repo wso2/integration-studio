@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.artifact.ds.validator.utils;
+package org.wso2.integrationstudio.artifact.ds.validator.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,10 +14,10 @@ import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.utils.constants.ProjectConstants;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.utils.constants.ProjectConstants;
 
 public class ProjectData extends AbstractListDataProvider{
 

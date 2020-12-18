@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -46,109 +46,109 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BAMMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DBLookupMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DropMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EJBMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnqueueMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HeaderMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoopBackMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RespondMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ScriptMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SmooksMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.MediatorFactoryUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceFaultInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediatorContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ComplexEndpointsEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ComplexEndpointsOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbDiagramEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.FilterContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment10EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment11EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment4EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment7EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment8EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment9EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyFaultInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutSequenceOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.Sequences2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchCaseParentContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchDefaultParentContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.CustomPaletteViewerKeyHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.APIResource;
+import org.wso2.integrationstudio.gmf.esb.AggregateMediator;
+import org.wso2.integrationstudio.gmf.esb.BAMMediator;
+import org.wso2.integrationstudio.gmf.esb.BeanMediator;
+import org.wso2.integrationstudio.gmf.esb.BuilderMediator;
+import org.wso2.integrationstudio.gmf.esb.CacheMediator;
+import org.wso2.integrationstudio.gmf.esb.CallMediator;
+import org.wso2.integrationstudio.gmf.esb.CallTemplateMediator;
+import org.wso2.integrationstudio.gmf.esb.CalloutMediator;
+import org.wso2.integrationstudio.gmf.esb.ClassMediator;
+import org.wso2.integrationstudio.gmf.esb.CloneMediator;
+import org.wso2.integrationstudio.gmf.esb.CommandMediator;
+import org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediator;
+import org.wso2.integrationstudio.gmf.esb.DBLookupMediator;
+import org.wso2.integrationstudio.gmf.esb.DBReportMediator;
+import org.wso2.integrationstudio.gmf.esb.DataMapperMediator;
+import org.wso2.integrationstudio.gmf.esb.DropMediator;
+import org.wso2.integrationstudio.gmf.esb.EJBMediator;
+import org.wso2.integrationstudio.gmf.esb.EnqueueMediator;
+import org.wso2.integrationstudio.gmf.esb.EnrichMediator;
+import org.wso2.integrationstudio.gmf.esb.EntitlementMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.EventMediator;
+import org.wso2.integrationstudio.gmf.esb.FastXSLTMediator;
+import org.wso2.integrationstudio.gmf.esb.FaultMediator;
+import org.wso2.integrationstudio.gmf.esb.FilterMediator;
+import org.wso2.integrationstudio.gmf.esb.ForEachMediator;
+import org.wso2.integrationstudio.gmf.esb.HeaderMediator;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.IterateMediator;
+import org.wso2.integrationstudio.gmf.esb.JsonTransformMediator;
+import org.wso2.integrationstudio.gmf.esb.LogMediator;
+import org.wso2.integrationstudio.gmf.esb.LoopBackMediator;
+import org.wso2.integrationstudio.gmf.esb.OAuthMediator;
+import org.wso2.integrationstudio.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator;
+import org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator;
+import org.wso2.integrationstudio.gmf.esb.PropertyMediator;
+import org.wso2.integrationstudio.gmf.esb.ProxyService;
+import org.wso2.integrationstudio.gmf.esb.PublishEventMediator;
+import org.wso2.integrationstudio.gmf.esb.RMSequenceMediator;
+import org.wso2.integrationstudio.gmf.esb.RespondMediator;
+import org.wso2.integrationstudio.gmf.esb.RuleMediator;
+import org.wso2.integrationstudio.gmf.esb.ScriptMediator;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.SmooksMediator;
+import org.wso2.integrationstudio.gmf.esb.SpringMediator;
+import org.wso2.integrationstudio.gmf.esb.StoreMediator;
+import org.wso2.integrationstudio.gmf.esb.SwitchMediator;
+import org.wso2.integrationstudio.gmf.esb.ThrottleMediator;
+import org.wso2.integrationstudio.gmf.esb.TransactionMediator;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteMediator;
+import org.wso2.integrationstudio.gmf.esb.ValidateMediator;
+import org.wso2.integrationstudio.gmf.esb.XQueryMediator;
+import org.wso2.integrationstudio.gmf.esb.XSLTMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.MediatorFactoryUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceFaultInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.CloneMediatorContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ComplexEndpointsEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ComplexEndpointsOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EntitlementContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EntitlementMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbDiagramEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.FilterContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.FilterMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.InboundEndpointEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment10EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment11EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment4EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment7EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment8EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment9EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyFaultInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyOutSequenceOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.Sequences2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequencesEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SwitchCaseParentContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SwitchDefaultParentContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SwitchMediatorContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ThrottleContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ThrottleMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.CustomPaletteViewerKeyHandler;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbEditorInput;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbMultiPageEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbPaletteFactory;
+import org.wso2.integrationstudio.gmf.esb.impl.CloudConnectorOperationImpl;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
 
 public class EditorUtils {
 
@@ -227,7 +227,7 @@ public class EditorUtils {
      * @return
      */
     public static InputConnector getInputConnectorFromMediator(
-            org.wso2.integrationstudio.eclipse.gmf.esb.Mediator mediator) {
+            org.wso2.integrationstudio.gmf.esb.Mediator mediator) {
 
         if (mediator instanceof AggregateMediator) {
             return ((AggregateMediator) mediator).getInputConnector();
@@ -281,8 +281,8 @@ public class EditorUtils {
             return ((RuleMediator) mediator).getInputConnector();
         } else if (mediator instanceof ScriptMediator) {
             return ((ScriptMediator) mediator).getInputConnector();
-        } else if (mediator instanceof org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator) {
-            return ((org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator) mediator).getInputConnector();
+        } else if (mediator instanceof org.wso2.integrationstudio.gmf.esb.SendMediator) {
+            return ((org.wso2.integrationstudio.gmf.esb.SendMediator) mediator).getInputConnector();
         } else if (mediator instanceof SmooksMediator) {
             return ((SmooksMediator) mediator).getInputConnector();
         } else if (mediator instanceof SpringMediator) {
@@ -344,7 +344,7 @@ public class EditorUtils {
      * @return
      */
     public static OutputConnector getOutputConnectorFromMediator(
-            org.wso2.integrationstudio.eclipse.gmf.esb.Mediator mediator) {
+            org.wso2.integrationstudio.gmf.esb.Mediator mediator) {
 
         if (mediator instanceof AggregateMediator) {
             return ((AggregateMediator) mediator).getOutputConnector();
@@ -398,8 +398,8 @@ public class EditorUtils {
             return ((RuleMediator) mediator).getOutputConnector();
         } else if (mediator instanceof ScriptMediator) {
             return ((ScriptMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator) {
-            return ((org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator) mediator).getOutputConnector();
+        } else if (mediator instanceof org.wso2.integrationstudio.gmf.esb.SendMediator) {
+            return ((org.wso2.integrationstudio.gmf.esb.SendMediator) mediator).getOutputConnector();
         } else if (mediator instanceof SmooksMediator) {
             return ((SmooksMediator) mediator).getOutputConnector();
         } else if (mediator instanceof SpringMediator) {

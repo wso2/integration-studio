@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -46,10 +46,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorFlowPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.MediatorFlowPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -212,7 +212,7 @@ public class MediatorFlowPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorFlowPropertiesEditionPart#initChildren(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorFlowPropertiesEditionPart#initChildren(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initChildren(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -233,7 +233,7 @@ public class MediatorFlowPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorFlowPropertiesEditionPart#updateChildren()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorFlowPropertiesEditionPart#updateChildren()
 	 * 
 	 */
 	public void updateChildren() {
@@ -243,7 +243,7 @@ public class MediatorFlowPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorFlowPropertiesEditionPart#addFilterChildren(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorFlowPropertiesEditionPart#addFilterChildren(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToChildren(ViewerFilter filter) {
@@ -256,7 +256,7 @@ public class MediatorFlowPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorFlowPropertiesEditionPart#addBusinessFilterChildren(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorFlowPropertiesEditionPart#addBusinessFilterChildren(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToChildren(ViewerFilter filter) {
@@ -266,7 +266,7 @@ public class MediatorFlowPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MediatorFlowPropertiesEditionPart#isContainedInChildrenTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MediatorFlowPropertiesEditionPart#isContainedInChildrenTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInChildrenTable(EObject element) {

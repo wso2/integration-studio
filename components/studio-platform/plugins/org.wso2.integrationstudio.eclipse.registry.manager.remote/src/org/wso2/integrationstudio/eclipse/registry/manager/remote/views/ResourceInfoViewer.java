@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.remote.views;
+package org.wso2.integrationstudio.registry.manager.remote.views;
 
 import java.text.SimpleDateFormat;
 import java.util.Observable;
@@ -39,23 +39,23 @@ import org.wso2.carbon.registry.core.exceptions.RegistryException;
 import org.wso2.carbon.registry.ws.client.registry.WSRegistryClientUtils;
 import org.wso2.carbon.registry.ws.client.registry.WSRegistryServiceClient;
 import org.wso2.carbon.registry.ws.stub.xsd.WSResourceData;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.MessageDialogUtils;
-import org.wso2.integrationstudio.eclipse.registry.base.core.Registry;
-import org.wso2.integrationstudio.eclipse.registry.base.editor.input.ResourceEditorInput;
-import org.wso2.integrationstudio.eclipse.registry.base.interfaces.IRegistryFormEditorPage;
-import org.wso2.integrationstudio.eclipse.registry.base.interfaces.RegistryInformationEditorObservable;
-import org.wso2.integrationstudio.eclipse.registry.base.interfaces.RegistryItemSelectionListener;
-import org.wso2.integrationstudio.eclipse.registry.base.managers.RemoteContentManager;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceType;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.editor.RegistryResourceEditor;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.util.ImageUtils;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.util.SWTControlUtils;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.InvalidRegistryURLException;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.UnknownRegistryException;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.utils.MessageDialogUtils;
+import org.wso2.integrationstudio.registry.base.core.Registry;
+import org.wso2.integrationstudio.registry.base.editor.input.ResourceEditorInput;
+import org.wso2.integrationstudio.registry.base.interfaces.IRegistryFormEditorPage;
+import org.wso2.integrationstudio.registry.base.interfaces.RegistryInformationEditorObservable;
+import org.wso2.integrationstudio.registry.base.interfaces.RegistryItemSelectionListener;
+import org.wso2.integrationstudio.registry.base.managers.RemoteContentManager;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceType;
+import org.wso2.integrationstudio.registry.base.ui.editor.RegistryResourceEditor;
+import org.wso2.integrationstudio.registry.base.ui.util.ImageUtils;
+import org.wso2.integrationstudio.registry.base.ui.util.SWTControlUtils;
+import org.wso2.integrationstudio.registry.core.exception.InvalidRegistryURLException;
+import org.wso2.integrationstudio.registry.core.exception.UnknownRegistryException;
+import org.wso2.integrationstudio.registry.manager.remote.Activator;
 
 public class ResourceInfoViewer extends ViewPart implements
 		RegistryItemSelectionListener, Observer {

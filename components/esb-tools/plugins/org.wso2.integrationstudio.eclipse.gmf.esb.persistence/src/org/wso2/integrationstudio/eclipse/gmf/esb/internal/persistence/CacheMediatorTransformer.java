@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 
@@ -26,15 +26,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.wso2.carbon.mediator.cache.CacheManager;
 import org.wso2.carbon.mediator.cache.CachingConstants;
 import org.wso2.carbon.mediator.cache.digest.DigestGenerator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediatorType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheScopeType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.CacheMediator;
+import org.wso2.integrationstudio.gmf.esb.CacheMediatorType;
+import org.wso2.integrationstudio.gmf.esb.CacheScopeType;
+import org.wso2.integrationstudio.gmf.esb.CacheSequenceType;
+import org.wso2.integrationstudio.gmf.esb.CacheType;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 /**
  * Cache mediator transformer

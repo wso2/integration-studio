@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.remote.configuration;
+package org.wso2.integrationstudio.carbonserver.remote.configuration;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
@@ -33,11 +33,11 @@ import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.wst.server.ui.editor.ServerEditorSection;
-import org.wso2.integrationstudio.eclipse.carbonserver.remote.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver.remote.internal.RemoteCarbonServer;
-import org.wso2.integrationstudio.eclipse.carbonserver.remote.ui.RemoteServerCredentialDialog;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver.remote.Activator;
+import org.wso2.integrationstudio.carbonserver.remote.internal.RemoteCarbonServer;
+import org.wso2.integrationstudio.carbonserver.remote.ui.RemoteServerCredentialDialog;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class ConfigurationCredentialsEditorSection extends ServerEditorSection {
 	Text usernameText;

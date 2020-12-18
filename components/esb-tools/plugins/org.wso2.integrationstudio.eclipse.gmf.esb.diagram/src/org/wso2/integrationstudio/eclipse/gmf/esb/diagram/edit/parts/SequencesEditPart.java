@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
@@ -45,18 +45,18 @@ import org.eclipse.papyrus.infra.gmfdiag.css.CSSNodeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractSequencesEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.CustomNonResizableEditPolicyEx;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.SequencesCanonicalEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.SequencesItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.SendMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.SendMediatorTransformer;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractSequencesEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.CustomNonResizableEditPolicyEx;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.SequencesCanonicalEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.SequencesItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.validator.GraphicalValidatorUtil;
+import org.wso2.integrationstudio.gmf.esb.diagram.validator.MediatorValidationUtil;
+import org.wso2.integrationstudio.gmf.esb.impl.SendMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.SendMediatorTransformer;
 
 /**
  * @generated NOT

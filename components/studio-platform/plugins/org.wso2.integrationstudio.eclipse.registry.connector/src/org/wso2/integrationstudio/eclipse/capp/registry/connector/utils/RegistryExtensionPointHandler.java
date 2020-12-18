@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.registry.connector.utils;
+package org.wso2.integrationstudio.capp.registry.connector.utils;
 
 import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.handler.RegistryHandler;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryHandler;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryRequester;
+import org.wso2.integrationstudio.capp.registry.connector.handler.RegistryHandler;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryHandler;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryRequester;
 
 
 public class RegistryExtensionPointHandler {
-	private static String REGISTRY_HANDLER_REQUESTER_EXTENSION="org.wso2.integrationstudio.eclipse.capp.registry.connector";
+	private static String REGISTRY_HANDLER_REQUESTER_EXTENSION="org.wso2.integrationstudio.capp.registry.connector";
 	
 	public static void setRegistryArtifactHandlers(List<IRegistryHandler> registryHandlers){
 		registryHandlers.clear();

@@ -32,8 +32,8 @@ import org.eclipse.core.resources.IProject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.wsf.ide.bpel.export.WSO2BPELPlugin;
 import org.xml.sax.SAXException;
 

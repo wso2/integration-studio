@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.base.persistent;
+package org.wso2.integrationstudio.registry.base.persistent;
 
 import java.net.URL;
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.project.model;
+package org.wso2.integrationstudio.platform.core.project.model;
 
 import org.apache.axiom.om.OMElement;
 import org.eclipse.core.runtime.CoreException;
@@ -24,11 +24,11 @@ import org.eclipse.core.runtime.spi.RegistryContributor;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionListener;
-import org.wso2.integrationstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.model.ICompositeProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.RegistryOptionsConstants;
+import org.wso2.integrationstudio.platform.core.manifest.AbstractXMLDoc;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
+import org.wso2.integrationstudio.platform.core.model.ICompositeProvider;
+import org.wso2.integrationstudio.platform.core.utils.RegistryOptionsConstants;
 
 // import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 

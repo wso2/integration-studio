@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.maven.util;
+package org.wso2.integrationstudio.maven.util;
 
 import org.apache.maven.model.Activation;
 import org.apache.maven.model.Build;
@@ -18,10 +18,10 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaModelException;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaLibraryBean;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaLibraryUtil;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.jdt.JavaLibraryBean;
+import org.wso2.integrationstudio.utils.jdt.JavaLibraryUtil;
+import org.wso2.integrationstudio.utils.jdt.JavaUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -673,7 +673,7 @@ public class MavenUtils {
 		plugin = MavenUtils.createPluginEntry(mavenProject, GROUP_ID_ORG_WSO2_MAVEN, ARTIFACT_ID_MAVEN_BPEL_PLUGIN,
 				WSO2MavenPluginVersions.getPluginVersion(ARTIFACT_ID_MAVEN_BPEL_PLUGIN), true);
 		// FIXME : remove hard-coded version value (cannot use
-		// org.wso2.integrationstudio.eclipse.capp.maven.utils.MavenConstants
+		// org.wso2.integrationstudio.capp.maven.utils.MavenConstants
 		// due to cyclic reference)
 //		pluginExecution=new PluginExecution();
 //		pluginExecution.addGoal("bpel");

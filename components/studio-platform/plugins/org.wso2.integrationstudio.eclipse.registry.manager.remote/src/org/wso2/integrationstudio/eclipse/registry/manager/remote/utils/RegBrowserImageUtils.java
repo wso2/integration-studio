@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.remote.utils;
+package org.wso2.integrationstudio.registry.manager.remote.utils;
 
-import org.wso2.integrationstudio.eclipse.registry.base.ui.util.ImageUtils;
+import org.wso2.integrationstudio.registry.base.ui.util.ImageUtils;
 
 public class RegBrowserImageUtils extends ImageUtils {
 

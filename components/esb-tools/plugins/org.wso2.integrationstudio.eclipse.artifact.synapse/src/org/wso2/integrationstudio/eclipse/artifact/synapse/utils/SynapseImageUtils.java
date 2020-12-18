@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.synapse.utils;
+package org.wso2.integrationstudio.artifact.synapse.utils;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.artifact.synapse.Activator;
-import org.wso2.integrationstudio.eclipse.utils.ui.ImageUtils;
+import org.wso2.integrationstudio.artifact.synapse.Activator;
+import org.wso2.integrationstudio.utils.ui.ImageUtils;
 
 public class SynapseImageUtils extends ImageUtils{
 	private static ImageUtils instance;

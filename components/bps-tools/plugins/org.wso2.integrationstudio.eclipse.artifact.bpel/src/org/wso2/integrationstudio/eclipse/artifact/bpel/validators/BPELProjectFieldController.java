@@ -1,13 +1,13 @@
-package org.wso2.integrationstudio.eclipse.artifact.bpel.validators;
+package org.wso2.integrationstudio.artifact.bpel.validators;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.model.BpelModel;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.artifact.bpel.model.BpelModel;
 
 import java.io.File;
 import java.util.List;

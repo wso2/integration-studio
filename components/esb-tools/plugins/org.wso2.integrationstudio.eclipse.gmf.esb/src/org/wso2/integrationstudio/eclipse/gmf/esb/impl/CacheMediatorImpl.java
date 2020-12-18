@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -17,26 +17,26 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheImplementationType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediatorOnHitOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediatorType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheOnHitBranch;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheProtocolType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheScope;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheScopeType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HashGenerator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.gmf.esb.CacheAction;
+import org.wso2.integrationstudio.gmf.esb.CacheImplementationType;
+import org.wso2.integrationstudio.gmf.esb.CacheMediator;
+import org.wso2.integrationstudio.gmf.esb.CacheMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.CacheMediatorOnHitOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.CacheMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.CacheMediatorType;
+import org.wso2.integrationstudio.gmf.esb.CacheOnHitBranch;
+import org.wso2.integrationstudio.gmf.esb.CacheProtocolType;
+import org.wso2.integrationstudio.gmf.esb.CacheScope;
+import org.wso2.integrationstudio.gmf.esb.CacheScopeType;
+import org.wso2.integrationstudio.gmf.esb.CacheSequenceType;
+import org.wso2.integrationstudio.gmf.esb.CacheType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.HashGenerator;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.platform.core.mediatype.PlatformMediaTypeConstants;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,28 +46,28 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheProtocolType <em>Cache Protocol Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheType <em>Cache Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getHashGenerator <em>Hash Generator</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheTimeout <em>Cache Timeout</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getMaxMessageSize <em>Max Message Size</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheProtocolMethods <em>Cache Protocol Methods</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getMaxEntryCount <em>Max Entry Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getOnHitOutputConnector <em>On Hit Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getHeadersToExcludeInHash <em>Headers To Exclude In Hash</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getResponseCodes <em>Response Codes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#isEnableCacheControl <em>Enable Cache Control</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#isIncludeAgeHeader <em>Include Age Header</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getHashGeneratorAttribute <em>Hash Generator Attribute</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getScope <em>Scope</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getImplementationType <em>Implementation Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheMediatorImplementation <em>Cache Mediator Implementation</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getCacheProtocolType <em>Cache Protocol Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getCacheType <em>Cache Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getHashGenerator <em>Hash Generator</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getCacheTimeout <em>Cache Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getMaxMessageSize <em>Max Message Size</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getCacheProtocolMethods <em>Cache Protocol Methods</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getMaxEntryCount <em>Max Entry Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getOnHitOutputConnector <em>On Hit Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getHeadersToExcludeInHash <em>Headers To Exclude In Hash</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getResponseCodes <em>Response Codes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#isEnableCacheControl <em>Enable Cache Control</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#isIncludeAgeHeader <em>Include Age Header</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getHashGeneratorAttribute <em>Hash Generator Attribute</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getImplementationType <em>Implementation Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getCacheMediatorImplementation <em>Cache Mediator Implementation</em>}</li>
  * </ul>
  *
  * @generated

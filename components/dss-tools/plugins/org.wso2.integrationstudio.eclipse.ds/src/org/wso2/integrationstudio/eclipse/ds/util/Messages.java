@@ -1,9 +1,9 @@
-package org.wso2.integrationstudio.eclipse.ds.util;
+package org.wso2.integrationstudio.ds.util;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.ds.util.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.ds.util.messages"; //$NON-NLS-1$
 	public static String DataServiceDeleteParticipant_ArtifactXmlDeleteChangeFailed;
 	public static String DataServiceDeleteParticipant_DataServiceDelete;
 	public static String DataServiceDeleteParticipant_DeleteWarning;

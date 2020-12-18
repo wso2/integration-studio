@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.parsers;
+package org.wso2.integrationstudio.gmf.esb.diagram.parsers;
 
 import java.util.Arrays;
 
@@ -22,5 +22,5 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.osgi.util.NLS;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.Messages;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.Messages;

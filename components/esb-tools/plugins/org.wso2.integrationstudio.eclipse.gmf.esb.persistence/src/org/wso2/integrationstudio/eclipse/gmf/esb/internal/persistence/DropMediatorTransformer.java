@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 
@@ -21,14 +21,14 @@ import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.builtin.DropMediator;
 import org.eclipse.emf.ecore.EObject;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbNodeTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
- * {@link org.wso2.integrationstudio.eclipse.gmf.esb.DropMediator} model objects into
+ * {@link org.wso2.integrationstudio.gmf.esb.DropMediator} model objects into
  * corresponding synapse artifact(s).
  */
 public class DropMediatorTransformer extends AbstractEsbNodeTransformer {
@@ -38,7 +38,7 @@ public class DropMediatorTransformer extends AbstractEsbNodeTransformer {
     public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
         // Drop the message.
         info.getParentSequence()
-                .addChild(createDropMediator((org.wso2.integrationstudio.eclipse.gmf.esb.DropMediator) subject));
+                .addChild(createDropMediator((org.wso2.integrationstudio.gmf.esb.DropMediator) subject));
     }
 
     public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
@@ -46,7 +46,7 @@ public class DropMediatorTransformer extends AbstractEsbNodeTransformer {
 
     }
 
-    private DropMediator createDropMediator(org.wso2.integrationstudio.eclipse.gmf.esb.DropMediator visualDrop) {
+    private DropMediator createDropMediator(org.wso2.integrationstudio.gmf.esb.DropMediator visualDrop) {
         DropMediator dropMediator = new DropMediator();
         setCommonProperties(dropMediator, visualDrop);
         return dropMediator;
@@ -54,7 +54,7 @@ public class DropMediatorTransformer extends AbstractEsbNodeTransformer {
 
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
-        sequence.addChild(createDropMediator((org.wso2.integrationstudio.eclipse.gmf.esb.DropMediator) subject));
+        sequence.addChild(createDropMediator((org.wso2.integrationstudio.gmf.esb.DropMediator) subject));
 
     }
 

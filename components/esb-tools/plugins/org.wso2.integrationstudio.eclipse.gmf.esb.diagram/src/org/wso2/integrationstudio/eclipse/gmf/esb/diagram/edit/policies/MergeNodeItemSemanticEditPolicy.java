@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.policies;
 
 import java.util.Iterator;
 
@@ -13,15 +13,15 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.MergeNodeFirstInputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.MergeNodeOutputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.MergeNodeSecondInputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MergeNodeFirstInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MergeNodeOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MergeNodeSecondInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.MergeNodeFirstInputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.MergeNodeOutputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.MergeNodeSecondInputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MergeNodeFirstInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MergeNodeOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MergeNodeSecondInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated

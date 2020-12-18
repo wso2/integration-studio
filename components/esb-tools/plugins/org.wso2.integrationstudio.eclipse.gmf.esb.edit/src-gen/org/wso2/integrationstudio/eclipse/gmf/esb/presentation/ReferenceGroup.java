@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,11 +31,11 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorDescriptorParser;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
+import org.wso2.integrationstudio.gmf.esb.CallTemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.ConnectorDescriptorParser;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.ConnectorRoot;
 
 public class ReferenceGroup extends ReferencesTable {
     

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.wizards;
+package org.wso2.integrationstudio.ds.wizards;
 
 import java.util.ArrayList;
 

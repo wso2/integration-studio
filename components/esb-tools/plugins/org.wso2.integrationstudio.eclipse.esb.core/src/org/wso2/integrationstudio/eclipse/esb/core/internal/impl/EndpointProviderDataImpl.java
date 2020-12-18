@@ -1,7 +1,7 @@
-package org.wso2.integrationstudio.eclipse.esb.core.internal.impl;
+package org.wso2.integrationstudio.esb.core.internal.impl;
 
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEndpointProvider;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEndpointProviderData;
+import org.wso2.integrationstudio.esb.core.interfaces.IEndpointProvider;
+import org.wso2.integrationstudio.esb.core.interfaces.IEndpointProviderData;
 
 public class EndpointProviderDataImpl implements IEndpointProviderData{
 	private String id;

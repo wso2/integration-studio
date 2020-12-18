@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.task.model;
+package org.wso2.integrationstudio.artifact.task.model;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,18 +33,18 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
-import static org.wso2.integrationstudio.eclipse.artifact.task.util.ArtifactConstants.*;
-import static org.wso2.integrationstudio.eclipse.platform.core.utils.Constants.ESB_PROJECT_NATURE;
+import static org.wso2.integrationstudio.artifact.task.util.ArtifactConstants.*;
+import static org.wso2.integrationstudio.platform.core.utils.Constants.ESB_PROJECT_NATURE;
 
-import org.wso2.integrationstudio.eclipse.artifact.task.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.task.validator.TriggerTypeList.TriggerType;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseEntryType;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseFileUtils;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.ESBProjectUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.artifact.task.Activator;
+import org.wso2.integrationstudio.artifact.task.validator.TriggerTypeList.TriggerType;
+import org.wso2.integrationstudio.esb.core.utils.SynapseEntryType;
+import org.wso2.integrationstudio.esb.core.utils.SynapseFileUtils;
+import org.wso2.integrationstudio.esb.project.utils.ESBProjectUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 /**
  * The model class for task artifact wizard specific objects.

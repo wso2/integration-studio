@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -28,18 +28,18 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint2;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.WSDLEndPoint2CanonicalEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.WSDLEndPoint2ItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPoint;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint;
+import org.wso2.integrationstudio.gmf.esb.SendMediator;
+import org.wso2.integrationstudio.gmf.esb.WSDLEndPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint2;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EsbGraphicalShape;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.WSDLEndPoint2CanonicalEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.WSDLEndPoint2ItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
 
 /**
  * @generated NOT

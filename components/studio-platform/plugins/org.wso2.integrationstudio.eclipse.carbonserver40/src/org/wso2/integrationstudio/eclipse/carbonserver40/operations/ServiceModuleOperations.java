@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver40.operations;
+package org.wso2.integrationstudio.carbonserver40.operations;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,17 +42,17 @@ import org.eclipse.jst.ws.internal.common.J2EEUtils;
 import org.eclipse.jst.ws.internal.common.ResourceUtils;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.impl.CarbonServer;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServerModulePublisher;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerInformation;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver40.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver40.util.CarbonServer40Utils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.wst.Axis2ServiceUtils;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonUtils;
+import org.wso2.integrationstudio.carbonserver.base.impl.CarbonServer;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServerModulePublisher;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerInformation;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver40.Activator;
+import org.wso2.integrationstudio.carbonserver40.util.CarbonServer40Utils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.wst.Axis2ServiceUtils;
 
 public class ServiceModuleOperations {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

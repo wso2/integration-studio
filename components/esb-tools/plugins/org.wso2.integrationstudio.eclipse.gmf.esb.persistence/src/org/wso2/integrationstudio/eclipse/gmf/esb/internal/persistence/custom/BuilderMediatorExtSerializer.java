@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence.custom;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNamespace;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.AbstractMediatorSerializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder;
+import org.wso2.integrationstudio.gmf.esb.MessageBuilder;
 
 public class BuilderMediatorExtSerializer extends AbstractMediatorSerializer {
 

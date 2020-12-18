@@ -2,10 +2,10 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point 
-   		id="org.wso2.integrationstudio.eclipse.bpel.connector" 
+   		id="org.wso2.integrationstudio.bpel.connector" 
    		name="BPEL artifact registering Extension Point" 
-   		schema="schema/org.wso2.integrationstudio.eclipse.bpel.connector.exsd"/>
+   		schema="schema/org.wso2.integrationstudio.bpel.connector.exsd"/>
 	<extension point="org.eclipse.ui.startup">
-	   <startup class="org.wso2.integrationstudio.eclipse.bpel.connector.Initializer" />
+	   <startup class="org.wso2.integrationstudio.bpel.connector.Initializer" />
 	</extension>
 </plugin>

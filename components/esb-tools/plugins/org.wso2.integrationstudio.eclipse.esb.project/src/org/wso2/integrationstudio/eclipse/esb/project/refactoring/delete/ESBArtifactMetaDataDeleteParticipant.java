@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.refactoring.delete;
+package org.wso2.integrationstudio.esb.project.refactoring.delete;
 
 import java.util.ArrayList;
 import java.util.HashMap;

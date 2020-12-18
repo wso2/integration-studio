@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.utils;
+package org.wso2.integrationstudio.docker.distribution.utils;
 
 import java.io.File;
 
@@ -22,7 +22,7 @@ import org.eclipse.osgi.util.NLS;
 
 public class DockerProjectConstants extends NLS {
 
-    public static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.docker.distribution.utils.dockerprojectconstants";
+    public static final String BUNDLE_NAME = "org.wso2.integrationstudio.docker.distribution.utils.dockerprojectconstants";
 
     public static String WIZARD_OPTION_PROJECT_NAME;
     public static String WIZARD_OPTION_IMPORT_FILE;
@@ -104,7 +104,7 @@ public class DockerProjectConstants extends NLS {
     public static final String K8S_USER_GUIDE_FILE = "K8sGuideReadMe.html";
     public static final String RESOURCE_PATH = "resources";
     public static final String DEPLOYMENT_TOML_NAME = "deployment.toml";
-    public static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.perspective";
+    public static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.integrationstudio.gmf.esb.diagram.custom.perspective";
     public static final String DOCKER_FILE = "Dockerfile";
     public static final String DOCKER_FILE_AUTO_GENERATION_BEGIN = "#[DO NOT REMOVE] Auto generated Docker commands for config-map parser";
     public static final String DOCKER_FILE_AUTO_GENERATION_END = "#[DO NOT REMOVE] End of auto generated Docker commands for config-map parser";

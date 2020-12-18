@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.sheet;
+package org.wso2.integrationstudio.gmf.esb.diagram.sheet;
 
 /**
  * Class to represent the xml tag, part of a tag, or a source view line with no

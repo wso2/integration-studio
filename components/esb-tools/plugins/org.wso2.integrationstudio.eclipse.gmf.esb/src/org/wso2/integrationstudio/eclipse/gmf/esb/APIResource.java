@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,35 +17,35 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getOutSequenceOutputConnector <em>Out Sequence Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getInSequenceInputConnectors <em>In Sequence Input Connectors</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getFaultInputConnector <em>Fault Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getUrlStyle <em>Url Style</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getUriTemplate <em>Uri Template</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getUrlMapping <em>Url Mapping</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowGet <em>Allow Get</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowPost <em>Allow Post</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowPut <em>Allow Put</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowDelete <em>Allow Delete</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowOptions <em>Allow Options</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowHead <em>Allow Head</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowPatch <em>Allow Patch</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getContainer <em>Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getInSequenceType <em>In Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getInSequenceKey <em>In Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getInSequenceName <em>In Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getOutSequenceType <em>Out Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getOutSequenceKey <em>Out Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getOutSequenceName <em>Out Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getFaultSequenceType <em>Fault Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getFaultSequenceKey <em>Fault Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getProtocol <em>Protocol</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getOutSequenceOutputConnector <em>Out Sequence Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getInSequenceInputConnectors <em>In Sequence Input Connectors</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getFaultInputConnector <em>Fault Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getUrlStyle <em>Url Style</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getUriTemplate <em>Uri Template</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getUrlMapping <em>Url Mapping</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowGet <em>Allow Get</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowPost <em>Allow Post</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowPut <em>Allow Put</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowDelete <em>Allow Delete</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowOptions <em>Allow Options</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowHead <em>Allow Head</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowPatch <em>Allow Patch</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getInSequenceType <em>In Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getInSequenceKey <em>In Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getInSequenceName <em>In Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getOutSequenceType <em>Out Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getOutSequenceKey <em>Out Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getOutSequenceName <em>Out Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getFaultSequenceType <em>Fault Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getFaultSequenceKey <em>Fault Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIResource#getProtocol <em>Protocol</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource()
  * @model
  * @generated
  */
@@ -60,14 +60,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(APIResourceInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_InputConnector()
      * @model containment="true"
      * @generated
      */
     APIResourceInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -86,14 +86,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(APIResourceOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_OutputConnector()
      * @model containment="true"
      * @generated
      */
     APIResourceOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -112,14 +112,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Out Sequence Output Connector</em>' containment reference.
      * @see #setOutSequenceOutputConnector(APIResourceOutSequenceOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_OutSequenceOutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_OutSequenceOutputConnector()
      * @model containment="true"
      * @generated
      */
     APIResourceOutSequenceOutputConnector getOutSequenceOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getOutSequenceOutputConnector <em>Out Sequence Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getOutSequenceOutputConnector <em>Out Sequence Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Out Sequence Output Connector</em>' containment reference.
@@ -130,7 +130,7 @@ public interface APIResource extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>In Sequence Input Connectors</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceInSequenceInputConnector}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.APIResourceInSequenceInputConnector}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>In Sequence Input Connectors</em>' containment reference list isn't clear,
@@ -138,7 +138,7 @@ public interface APIResource extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>In Sequence Input Connectors</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_InSequenceInputConnectors()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_InSequenceInputConnectors()
      * @model containment="true"
      * @generated
      */
@@ -154,14 +154,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fault Input Connector</em>' containment reference.
      * @see #setFaultInputConnector(APIResourceFaultInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_FaultInputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_FaultInputConnector()
      * @model containment="true"
      * @generated
      */
     APIResourceFaultInputConnector getFaultInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getFaultInputConnector <em>Fault Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getFaultInputConnector <em>Fault Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fault Input Connector</em>' containment reference.
@@ -172,7 +172,7 @@ public interface APIResource extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>Url Style</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.ApiResourceUrlStyle}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.ApiResourceUrlStyle}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Url Style</em>' attribute isn't clear,
@@ -180,20 +180,20 @@ public interface APIResource extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Url Style</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ApiResourceUrlStyle
+     * @see org.wso2.integrationstudio.gmf.esb.ApiResourceUrlStyle
      * @see #setUrlStyle(ApiResourceUrlStyle)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_UrlStyle()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_UrlStyle()
      * @model
      * @generated
      */
     ApiResourceUrlStyle getUrlStyle();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getUrlStyle <em>Url Style</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getUrlStyle <em>Url Style</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Url Style</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ApiResourceUrlStyle
+     * @see org.wso2.integrationstudio.gmf.esb.ApiResourceUrlStyle
      * @see #getUrlStyle()
      * @generated
      */
@@ -209,14 +209,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Uri Template</em>' attribute.
      * @see #setUriTemplate(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_UriTemplate()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_UriTemplate()
      * @model
      * @generated
      */
     String getUriTemplate();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getUriTemplate <em>Uri Template</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getUriTemplate <em>Uri Template</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Uri Template</em>' attribute.
@@ -235,14 +235,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Url Mapping</em>' attribute.
      * @see #setUrlMapping(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_UrlMapping()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_UrlMapping()
      * @model
      * @generated
      */
     String getUrlMapping();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getUrlMapping <em>Url Mapping</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getUrlMapping <em>Url Mapping</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Url Mapping</em>' attribute.
@@ -261,14 +261,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Allow Get</em>' attribute.
      * @see #setAllowGet(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_AllowGet()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_AllowGet()
      * @model
      * @generated
      */
     boolean isAllowGet();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowGet <em>Allow Get</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowGet <em>Allow Get</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Allow Get</em>' attribute.
@@ -287,14 +287,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Allow Post</em>' attribute.
      * @see #setAllowPost(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_AllowPost()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_AllowPost()
      * @model
      * @generated
      */
     boolean isAllowPost();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowPost <em>Allow Post</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowPost <em>Allow Post</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Allow Post</em>' attribute.
@@ -313,14 +313,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Allow Put</em>' attribute.
      * @see #setAllowPut(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_AllowPut()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_AllowPut()
      * @model
      * @generated
      */
     boolean isAllowPut();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowPut <em>Allow Put</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowPut <em>Allow Put</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Allow Put</em>' attribute.
@@ -339,14 +339,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Allow Delete</em>' attribute.
      * @see #setAllowDelete(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_AllowDelete()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_AllowDelete()
      * @model
      * @generated
      */
     boolean isAllowDelete();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowDelete <em>Allow Delete</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowDelete <em>Allow Delete</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Allow Delete</em>' attribute.
@@ -365,14 +365,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Allow Options</em>' attribute.
      * @see #setAllowOptions(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_AllowOptions()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_AllowOptions()
      * @model
      * @generated
      */
     boolean isAllowOptions();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowOptions <em>Allow Options</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowOptions <em>Allow Options</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Allow Options</em>' attribute.
@@ -391,14 +391,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Allow Head</em>' attribute.
      * @see #setAllowHead(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_AllowHead()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_AllowHead()
      * @model
      * @generated
      */
     boolean isAllowHead();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowHead <em>Allow Head</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowHead <em>Allow Head</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Allow Head</em>' attribute.
@@ -417,14 +417,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Allow Patch</em>' attribute.
      * @see #setAllowPatch(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_AllowPatch()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_AllowPatch()
      * @model
      * @generated
      */
     boolean isAllowPatch();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#isAllowPatch <em>Allow Patch</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#isAllowPatch <em>Allow Patch</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Allow Patch</em>' attribute.
@@ -443,14 +443,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Container</em>' containment reference.
      * @see #setContainer(ProxyServiceContainer)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_Container()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_Container()
      * @model containment="true"
      * @generated
      */
     ProxyServiceContainer getContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getContainer <em>Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getContainer <em>Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Container</em>' containment reference.
@@ -461,7 +461,7 @@ public interface APIResource extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>In Sequence Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.SequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>In Sequence Type</em>' attribute isn't clear,
@@ -469,20 +469,20 @@ public interface APIResource extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>In Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #setInSequenceType(SequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_InSequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_InSequenceType()
      * @model
      * @generated
      */
     SequenceType getInSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getInSequenceType <em>In Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getInSequenceType <em>In Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>In Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #getInSequenceType()
      * @generated
      */
@@ -498,14 +498,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>In Sequence Key</em>' containment reference.
      * @see #setInSequenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_InSequenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_InSequenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getInSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getInSequenceKey <em>In Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getInSequenceKey <em>In Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>In Sequence Key</em>' containment reference.
@@ -524,14 +524,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>In Sequence Name</em>' attribute.
      * @see #setInSequenceName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_InSequenceName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_InSequenceName()
      * @model
      * @generated
      */
     String getInSequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getInSequenceName <em>In Sequence Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getInSequenceName <em>In Sequence Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>In Sequence Name</em>' attribute.
@@ -542,7 +542,7 @@ public interface APIResource extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>Out Sequence Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.SequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Out Sequence Type</em>' attribute isn't clear,
@@ -550,20 +550,20 @@ public interface APIResource extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Out Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #setOutSequenceType(SequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_OutSequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_OutSequenceType()
      * @model
      * @generated
      */
     SequenceType getOutSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getOutSequenceType <em>Out Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getOutSequenceType <em>Out Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Out Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #getOutSequenceType()
      * @generated
      */
@@ -579,14 +579,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Out Sequence Key</em>' containment reference.
      * @see #setOutSequenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_OutSequenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_OutSequenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getOutSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getOutSequenceKey <em>Out Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getOutSequenceKey <em>Out Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Out Sequence Key</em>' containment reference.
@@ -605,14 +605,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Out Sequence Name</em>' attribute.
      * @see #setOutSequenceName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_OutSequenceName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_OutSequenceName()
      * @model
      * @generated
      */
     String getOutSequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getOutSequenceName <em>Out Sequence Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getOutSequenceName <em>Out Sequence Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Out Sequence Name</em>' attribute.
@@ -623,7 +623,7 @@ public interface APIResource extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>Fault Sequence Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.SequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Fault Sequence Type</em>' attribute isn't clear,
@@ -631,20 +631,20 @@ public interface APIResource extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fault Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #setFaultSequenceType(SequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_FaultSequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_FaultSequenceType()
      * @model
      * @generated
      */
     SequenceType getFaultSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getFaultSequenceType <em>Fault Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getFaultSequenceType <em>Fault Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fault Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #getFaultSequenceType()
      * @generated
      */
@@ -660,14 +660,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fault Sequence Key</em>' containment reference.
      * @see #setFaultSequenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_FaultSequenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_FaultSequenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getFaultSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getFaultSequenceKey <em>Fault Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getFaultSequenceKey <em>Fault Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fault Sequence Key</em>' containment reference.
@@ -686,14 +686,14 @@ public interface APIResource extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fault Sequence Name</em>' attribute.
      * @see #setFaultSequenceName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_FaultSequenceName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_FaultSequenceName()
      * @model
      * @generated
      */
     String getFaultSequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getFaultSequenceName <em>Fault Sequence Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getFaultSequenceName <em>Fault Sequence Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fault Sequence Name</em>' attribute.
@@ -704,7 +704,7 @@ public interface APIResource extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>Protocol</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.Protocol}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.Protocol}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Protocol</em>' attribute isn't clear,
@@ -712,20 +712,20 @@ public interface APIResource extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Protocol</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.Protocol
+     * @see org.wso2.integrationstudio.gmf.esb.Protocol
      * @see #setProtocol(Protocol)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_Protocol()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIResource_Protocol()
      * @model
      * @generated
      */
     Protocol getProtocol();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource#getProtocol <em>Protocol</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIResource#getProtocol <em>Protocol</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Protocol</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.Protocol
+     * @see org.wso2.integrationstudio.gmf.esb.Protocol
      * @see #getProtocol()
      * @generated
      */

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.components;
+package org.wso2.integrationstudio.gmf.esb.components;
 
 // Start of user code for imports
 import java.util.Iterator;
@@ -51,33 +51,33 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.AutoOffsetResetType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ConsumerType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Enable;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FeedType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointBehaviourType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JMSBrokerType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JMSCacheLevel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MQTTSubscriptionQOS;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OffsetsStorageType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFormatType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TopicFilterFromType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TopicsType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.VFSAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.VFSFileSort;
-import org.wso2.integrationstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.InboundEndpointPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.AutoOffsetResetType;
+import org.wso2.integrationstudio.gmf.esb.ConsumerType;
+import org.wso2.integrationstudio.gmf.esb.Enable;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FeedType;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpoint;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointBehaviourType;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointType;
+import org.wso2.integrationstudio.gmf.esb.JMSBrokerType;
+import org.wso2.integrationstudio.gmf.esb.JMSCacheLevel;
+import org.wso2.integrationstudio.gmf.esb.JMSConnectionFactoryType;
+import org.wso2.integrationstudio.gmf.esb.JMSSessionAcknowledgement;
+import org.wso2.integrationstudio.gmf.esb.MQTTSubscriptionQOS;
+import org.wso2.integrationstudio.gmf.esb.OffsetsStorageType;
+import org.wso2.integrationstudio.gmf.esb.PartitionAssignmentStrategyType;
+import org.wso2.integrationstudio.gmf.esb.PayloadFormatType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.TopicFilterFromType;
+import org.wso2.integrationstudio.gmf.esb.TopicsType;
+import org.wso2.integrationstudio.gmf.esb.VFSAction;
+import org.wso2.integrationstudio.gmf.esb.VFSFileSort;
+import org.wso2.integrationstudio.gmf.esb.WSClientSideBroadcastLevel;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
 
 // End of user code
 

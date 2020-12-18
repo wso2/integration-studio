@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.artifacts;
+package org.wso2.integrationstudio.capp.core.artifacts;
 
 import java.io.File;
 import java.util.List;
@@ -25,11 +25,11 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.configure.ICAppProjectSettings;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.ICAppArtifactManager;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.IServerRole;
-import org.wso2.integrationstudio.eclipse.capp.core.manifest.Artifact;
-import org.wso2.integrationstudio.eclipse.capp.core.ui.wizard.AbstractNewArtifactWizard;
+import org.wso2.integrationstudio.capp.core.artifacts.configure.ICAppProjectSettings;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.ICAppArtifactManager;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.IServerRole;
+import org.wso2.integrationstudio.capp.core.manifest.Artifact;
+import org.wso2.integrationstudio.capp.core.ui.wizard.AbstractNewArtifactWizard;
 
 public interface ICAppArtifactHandler {
 	public String getName();

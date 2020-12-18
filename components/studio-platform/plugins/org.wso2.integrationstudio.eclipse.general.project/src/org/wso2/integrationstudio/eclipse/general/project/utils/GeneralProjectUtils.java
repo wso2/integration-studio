@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.general.project.utils;
+package org.wso2.integrationstudio.general.project.utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -15,18 +15,18 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
-import org.wso2.integrationstudio.eclipse.general.project.Activator;
-import org.wso2.integrationstudio.eclipse.general.project.ui.wizard.GeneralProjectWizard;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.general.project.Activator;
+import org.wso2.integrationstudio.general.project.ui.wizard.GeneralProjectWizard;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class GeneralProjectUtils {
 	
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 
 	public static IProject createGeneralProject(Shell shell,File location){
-		IWizardDescriptor wizardDesc = PlatformUI.getWorkbench().getNewWizardRegistry().findWizard("org.wso2.integrationstudio.eclipse.general.project");
+		IWizardDescriptor wizardDesc = PlatformUI.getWorkbench().getNewWizardRegistry().findWizard("org.wso2.integrationstudio.general.project");
 		if (wizardDesc!=null) {
 			try {
 				IProject newProject= null; 

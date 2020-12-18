@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.bpel.ui.wizard;
+package org.wso2.integrationstudio.artifact.bpel.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,12 +63,12 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.model.BpelModel;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.utils.BPELImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.utils.BPELMessageConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.artifact.bpel.Activator;
+import org.wso2.integrationstudio.artifact.bpel.model.BpelModel;
+import org.wso2.integrationstudio.artifact.bpel.utils.BPELImageUtils;
+import org.wso2.integrationstudio.artifact.bpel.utils.BPELMessageConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.xml.sax.SAXException;
 
 public class BPELSecurityWizard extends Wizard implements INewWizard {

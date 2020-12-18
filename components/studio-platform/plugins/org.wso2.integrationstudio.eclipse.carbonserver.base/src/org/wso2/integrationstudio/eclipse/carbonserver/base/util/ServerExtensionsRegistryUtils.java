@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.util;
+package org.wso2.integrationstudio.carbonserver.base.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -24,7 +24,7 @@ import java.io.UnsupportedEncodingException;
 import org.apache.commons.io.IOUtils;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 public class ServerExtensionsRegistryUtils {
 	

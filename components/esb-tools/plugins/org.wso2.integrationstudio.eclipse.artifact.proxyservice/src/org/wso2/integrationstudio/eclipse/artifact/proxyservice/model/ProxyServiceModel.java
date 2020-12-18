@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.proxyservice.model;
+package org.wso2.integrationstudio.artifact.proxyservice.model;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMException;
@@ -28,18 +28,18 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.utils.PsArtifactConstants;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.wsdl.WSDL2Java;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseEntryType;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseFileUtils;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.ESBProjectUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplate;
+import org.wso2.integrationstudio.artifact.proxyservice.Activator;
+import org.wso2.integrationstudio.artifact.proxyservice.utils.PsArtifactConstants;
+import org.wso2.integrationstudio.artifact.proxyservice.wsdl.WSDL2Java;
+import org.wso2.integrationstudio.esb.core.utils.SynapseEntryType;
+import org.wso2.integrationstudio.esb.core.utils.SynapseFileUtils;
+import org.wso2.integrationstudio.esb.project.utils.ESBProjectUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplate;
 import org.xml.sax.SAXException;
 
 import java.io.File;

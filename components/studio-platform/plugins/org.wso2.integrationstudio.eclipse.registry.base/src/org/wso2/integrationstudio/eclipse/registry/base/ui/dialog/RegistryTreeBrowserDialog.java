@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.ui.dialog;
+package org.wso2.integrationstudio.registry.base.ui.dialog;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -41,17 +41,17 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
-import org.wso2.integrationstudio.eclipse.registry.base.heartbeat.RegistryHeartBeatTester;
-import org.wso2.integrationstudio.eclipse.registry.base.logger.ExceptionHandler;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryContentContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserRoleContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryURLInfo;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.controls.RegistryTreeViewer;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.controls.RegistryTreeViewer.IRegistryTreeItemSelectionListener;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.util.ImageUtils;
+import org.wso2.integrationstudio.registry.base.heartbeat.RegistryHeartBeatTester;
+import org.wso2.integrationstudio.registry.base.logger.ExceptionHandler;
+import org.wso2.integrationstudio.registry.base.model.RegistryContentContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserRoleContainer;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryURLInfo;
+import org.wso2.integrationstudio.registry.base.ui.controls.RegistryTreeViewer;
+import org.wso2.integrationstudio.registry.base.ui.controls.RegistryTreeViewer.IRegistryTreeItemSelectionListener;
+import org.wso2.integrationstudio.registry.base.ui.util.ImageUtils;
 
 public class RegistryTreeBrowserDialog extends Dialog {
 	private RegistryTreeViewer treeViewer;

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.presentation.data;
+package org.wso2.integrationstudio.ds.presentation.data;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -23,10 +23,10 @@ import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.ds.DataService;
-import org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditor;
-import org.wso2.integrationstudio.eclipse.ds.presentation.util.DsUtil;
+import org.wso2.integrationstudio.ds.DataService;
+import org.wso2.integrationstudio.ds.DataSourceConfiguration;
+import org.wso2.integrationstudio.ds.presentation.DsEditor;
+import org.wso2.integrationstudio.ds.presentation.util.DsUtil;
 
 public class DataSourcePage extends FormPage {
 

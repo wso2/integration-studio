@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 /*
  * Copyright 2009-2010 WSO2, Inc. (http://wso2.com)

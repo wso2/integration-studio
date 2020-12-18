@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.internal.impl.mediatypes;
+package org.wso2.integrationstudio.platform.core.internal.impl.mediatypes;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class BulkMediaTypes {
 	private static final String BUNDLE_NAME =
-	                                          "org.wso2.integrationstudio.eclipse.platform.core.internal.impl.mediatypes.mediaTypes";
+	                                          "org.wso2.integrationstudio.platform.core.internal.impl.mediatypes.mediaTypes";
 	private static ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
 	private static List<CustomMediaTypeData> bulkMediaTypes;
 

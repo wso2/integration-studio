@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,14 +14,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HeaderAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HeaderMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HeaderMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HeaderMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HeaderValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ScopeType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.HeaderAction;
+import org.wso2.integrationstudio.gmf.esb.HeaderMediator;
+import org.wso2.integrationstudio.gmf.esb.HeaderMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.HeaderMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.HeaderValueType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.ScopeType;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,15 +31,15 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.ScopeType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getHeaderName <em>Header Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getHeaderAction <em>Header Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getScope <em>Scope</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getValueLiteral <em>Value Literal</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getValueInline <em>Value Inline</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HeaderMediatorImpl#getHeaderName <em>Header Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HeaderMediatorImpl#getHeaderAction <em>Header Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HeaderMediatorImpl#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HeaderMediatorImpl#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HeaderMediatorImpl#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HeaderMediatorImpl#getValueExpression <em>Value Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HeaderMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HeaderMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HeaderMediatorImpl#getValueInline <em>Value Inline</em>}</li>
  * </ul>
  *
  * @generated

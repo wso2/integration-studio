@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 
@@ -25,17 +25,17 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointBehaviourType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TopicFilterFromType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TopicsType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointBehaviourType;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter;
+import org.wso2.integrationstudio.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.TopicFilterFromType;
+import org.wso2.integrationstudio.gmf.esb.TopicsType;
+import org.wso2.integrationstudio.gmf.esb.persistence.InboundEndpointConstants;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 
@@ -50,8 +50,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
     private static final String JMS = "jms";
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-        Assert.isTrue(subject instanceof org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint, "Invalid subject.");
-        org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint visualInboundEndpoint = (org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint) subject;
+        Assert.isTrue(subject instanceof org.wso2.integrationstudio.gmf.esb.InboundEndpoint, "Invalid subject.");
+        org.wso2.integrationstudio.gmf.esb.InboundEndpoint visualInboundEndpoint = (org.wso2.integrationstudio.gmf.esb.InboundEndpoint) subject;
         if (visualInboundEndpoint.getName() != null) {
             information.getSynapseConfiguration().addInboundEndpoint(visualInboundEndpoint.getName(),
                     create(visualInboundEndpoint));
@@ -93,14 +93,14 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 
     /**
      * Create an org.apache.synapse.inbound.InboundEndpoint object from an
-     * org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint
+     * org.wso2.integrationstudio.gmf.esb.InboundEndpoint
      * 
      * @param visualInboundEndpoint
      * @return
      * @throws TransformerException
      * @throws Exception
      */
-    private InboundEndpoint create(org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint visualInboundEndpoint)
+    private InboundEndpoint create(org.wso2.integrationstudio.gmf.esb.InboundEndpoint visualInboundEndpoint)
             throws TransformerException {
         InboundEndpoint inboundEndpoint = new InboundEndpoint();
         inboundEndpoint.setName(visualInboundEndpoint.getName());

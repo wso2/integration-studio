@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.persistence;
+package org.wso2.integrationstudio.gmf.esb.persistence;
 
 public class ValidationConstansts {
     // Default XPATH to be used for the design view validation of mediators

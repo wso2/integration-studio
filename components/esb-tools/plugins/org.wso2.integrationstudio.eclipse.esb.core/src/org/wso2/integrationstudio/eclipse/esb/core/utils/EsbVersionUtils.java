@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.esb.core.utils;
+package org.wso2.integrationstudio.esb.core.utils;
 
 public class EsbVersionUtils {
 public static String[] getEsbVersions(){

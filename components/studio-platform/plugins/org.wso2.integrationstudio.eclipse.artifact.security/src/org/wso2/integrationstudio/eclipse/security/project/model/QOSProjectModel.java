@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.security.project.model;
+package org.wso2.integrationstudio.security.project.model;
 
 import java.io.File;
 
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class QOSProjectModel extends ProjectDataModel {	
 	private File serviceMetaLocation;

@@ -1,12 +1,12 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Remote
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.usermgt.remote
+Bundle-SymbolicName: org.wso2.integrationstudio.usermgt.remote
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.usermgt.remote.Activator
+Bundle-Activator: org.wso2.integrationstudio.usermgt.remote.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.wso2.integrationstudio.eclipse.libraries
+ org.wso2.integrationstudio.libraries
 Bundle-ActivationPolicy: lazy
 Import-Package: javax.activation;version="1.1.0",
  javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
@@ -35,11 +35,11 @@ Import-Package: javax.activation;version="1.1.0",
  org.apache.axis2.wsdl,
  org.apache.commons.codec;version="1.3.0",
  org.eclipse.core.resources,
- org.wso2.integrationstudio.eclipse.logging.core,
- org.wso2.integrationstudio.eclipse.platform.ui.utils,
- org.wso2.integrationstudio.eclipse.utils.jdt
+ org.wso2.integrationstudio.logging.core,
+ org.wso2.integrationstudio.platform.ui.utils,
+ org.wso2.integrationstudio.utils.jdt
 Bundle-ClassPath: .,
  lib/org.wso2.carbon.user.mgt.stub_4.2.0.jar
 Export-Package: org.wso2.carbon.core.services.authentication,
- org.wso2.integrationstudio.eclipse.usermgt.remote
+ org.wso2.integrationstudio.usermgt.remote
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

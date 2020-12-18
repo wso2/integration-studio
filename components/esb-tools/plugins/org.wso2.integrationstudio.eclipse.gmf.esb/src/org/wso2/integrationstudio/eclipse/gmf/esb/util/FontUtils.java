@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.integrationstudio.eclipse.gmf.esb.util;
+package org.wso2.integrationstudio.gmf.esb.util;
 
 import java.util.HashMap;
 import java.util.Locale;

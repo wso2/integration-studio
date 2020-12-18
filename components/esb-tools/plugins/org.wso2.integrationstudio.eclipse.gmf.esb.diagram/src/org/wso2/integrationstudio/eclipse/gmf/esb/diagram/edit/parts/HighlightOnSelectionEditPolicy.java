@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.gef.editpolicies.SelectionEditPolicy;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint2;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditPartDrawingHelper;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint2;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditPartDrawingHelper;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
 
 public class HighlightOnSelectionEditPolicy extends SelectionEditPolicy {
 

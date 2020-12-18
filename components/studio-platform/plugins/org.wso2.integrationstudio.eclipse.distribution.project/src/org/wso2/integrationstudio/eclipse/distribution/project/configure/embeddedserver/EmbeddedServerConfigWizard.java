@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.configure.embeddedserver;
+package org.wso2.integrationstudio.distribution.project.configure.embeddedserver;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,9 +46,9 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IExportWizard {
 

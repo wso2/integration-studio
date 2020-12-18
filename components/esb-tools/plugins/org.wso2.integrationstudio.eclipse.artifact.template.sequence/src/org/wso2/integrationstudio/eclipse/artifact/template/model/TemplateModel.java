@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.template.model;
+package org.wso2.integrationstudio.artifact.template.model;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,17 +32,17 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.artifact.template.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.template.validators.HttpMethodList.HttpMethodType;
-import org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateList;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseEntryType;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseFileUtils;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.ESBProjectUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplate;
+import org.wso2.integrationstudio.artifact.template.Activator;
+import org.wso2.integrationstudio.artifact.template.validators.HttpMethodList.HttpMethodType;
+import org.wso2.integrationstudio.artifact.template.validators.TemplateList;
+import org.wso2.integrationstudio.esb.core.utils.SynapseEntryType;
+import org.wso2.integrationstudio.esb.core.utils.SynapseFileUtils;
+import org.wso2.integrationstudio.esb.project.utils.ESBProjectUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplate;
 
 public class TemplateModel extends ProjectDataModel {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

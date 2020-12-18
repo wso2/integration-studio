@@ -14,35 +14,35 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__CRON_EXPRESSION;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__ENDPOINT_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FORWARDING_INTERVAL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_STORE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_STATE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__RETRY_INTERVAL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SAMPLING_INTERVAL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SEQUENCE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__TASK_COUNT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__CRON_EXPRESSION;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__ENDPOINT_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FORWARDING_INTERVAL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_STORE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_STATE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__RETRY_INTERVAL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SAMPLING_INTERVAL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SEQUENCE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__TASK_COUNT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,16 +55,16 @@ import org.apache.synapse.message.processor.MessageProcessor;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnableDisableState;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessorParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessorType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProcessorState;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageProcessor;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EnableDisableState;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.MessageProcessorParameter;
+import org.wso2.integrationstudio.gmf.esb.MessageProcessorType;
+import org.wso2.integrationstudio.gmf.esb.ProcessorState;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.DummyMessageProcessor;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.MessageProcessorFormPage;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.message.processors.CustomProcessor;
@@ -77,7 +77,7 @@ import org.wso2.integrationstudio.esb.form.editors.article.rcp.message.processor
  * processor object
  */
 public class MessageProcessorDeserializer extends
-        AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessor> {
+        AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.integrationstudio.gmf.esb.MessageProcessor> {
 
     // Fixing TOOLS-2026.
     // private static final String scheduledMessageForwardingProcessorOld =
@@ -91,9 +91,9 @@ public class MessageProcessorDeserializer extends
 
     @Deprecated
     @Override
-    public org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessor createNode(IGraphicalEditPart part,
+    public org.wso2.integrationstudio.gmf.esb.MessageProcessor createNode(IGraphicalEditPart part,
             MessageProcessor processor) {
-        org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessor messageProcessor = (org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessor) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.MessageProcessor messageProcessor = (org.wso2.integrationstudio.gmf.esb.MessageProcessor) DeserializerUtils
                 .createNode(part, EsbElementTypes.MessageProcessor_3701);
         setElementToEdit(messageProcessor);
 
@@ -509,7 +509,7 @@ public class MessageProcessorDeserializer extends
         ESBFormEditor messageProcessorFormEditor = (ESBFormEditor) formEditor;
         MessageProcessorFormPage messageProcessorPage = (MessageProcessorFormPage) messageProcessorFormEditor
                 .getFormPageForArtifact(ArtifactType.MESSAGE_PROCESSOR);
-        org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessor messageProcessor = EsbFactoryImpl.eINSTANCE
+        org.wso2.integrationstudio.gmf.esb.MessageProcessor messageProcessor = EsbFactoryImpl.eINSTANCE
                 .createMessageProcessor();
 
         messageProcessor.setProcessorName(processor.getName());

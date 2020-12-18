@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -67,12 +67,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -403,7 +403,7 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -413,7 +413,7 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -435,7 +435,7 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -445,7 +445,7 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -486,7 +486,7 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -496,7 +496,7 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -520,7 +520,7 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#initMessageBuilders(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#initMessageBuilders(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initMessageBuilders(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -541,7 +541,7 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#updateMessageBuilders()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#updateMessageBuilders()
 	 * 
 	 */
 	public void updateMessageBuilders() {
@@ -551,7 +551,7 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#addFilterMessageBuilders(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#addFilterMessageBuilders(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToMessageBuilders(ViewerFilter filter) {
@@ -564,7 +564,7 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#addBusinessFilterMessageBuilders(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#addBusinessFilterMessageBuilders(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToMessageBuilders(ViewerFilter filter) {
@@ -574,7 +574,7 @@ public class BuilderMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#isContainedInMessageBuildersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#isContainedInMessageBuildersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInMessageBuildersTable(EObject element) {

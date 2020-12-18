@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,17 +16,17 @@ import org.apache.synapse.mediators.xquery.MediatorVariable;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.KeyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariable;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariableType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariableValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.XQueryMediator;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariable;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariableType;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariableValueType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class XQueryMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, XQueryMediator> {
 
@@ -38,7 +38,7 @@ public class XQueryMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 
         org.apache.synapse.mediators.xquery.XQueryMediator xqueryMediator = (org.apache.synapse.mediators.xquery.XQueryMediator) mediator;
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator VisualXqueryMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.XQueryMediator VisualXqueryMediator = (org.wso2.integrationstudio.gmf.esb.XQueryMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.XQueryMediator_3510);
         setElementToEdit(VisualXqueryMediator);
         setCommonProperties(xqueryMediator, VisualXqueryMediator);

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.templates.dashboard.handlers;
+package org.wso2.integrationstudio.templates.dashboard.handlers;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -41,11 +41,11 @@ import org.eclipse.ui.internal.dialogs.WorkbenchWizardElement;
 import org.eclipse.ui.internal.wizards.AbstractExtensionWizardRegistry;
 import org.eclipse.ui.wizards.IWizardCategory;
 import org.eclipse.ui.wizards.IWizardDescriptor;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.Activator;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.JSEmbeddedFunctions;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.templates.dashboard.Activator;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.FunctionServerConstants;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.JSEmbeddedFunctions;
 
 /**
  * This is the early startup handler of the Integration Studio platform, all
@@ -65,10 +65,10 @@ public class PlatformEarlyStartUpHandler implements IStartup {
     private static final String IMPORT_WIZARD_CATEGORY = "ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES";
     private static final String EXPORT_WIZARD_SELECT = "ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID";
     private static final String IMPORT_WIZARD_SELECT = "ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID";
-    private static final String EXPORT_WIZARD_SELCTED_CATEGORY = "org.wso2.integrationstudio.eclipse.distribution.export";
-    private static final String IMPORT_WIZARD_SELCTED_CATEGORY = "org.wso2.integrationstudio.eclipse.import";
-    private static final String EXPORT_SELECTED_WIZARD = "org.wso2.integrationstudio.eclipse.distribution.exportAsArchiveFile";
-    private static final String IMPORT_SELECTED_WIZARD = "org.wso2.integrationstudio.eclipse.distribution.importAsArtifact";
+    private static final String EXPORT_WIZARD_SELCTED_CATEGORY = "org.wso2.integrationstudio.distribution.export";
+    private static final String IMPORT_WIZARD_SELCTED_CATEGORY = "org.wso2.integrationstudio.import";
+    private static final String EXPORT_SELECTED_WIZARD = "org.wso2.integrationstudio.distribution.exportAsArchiveFile";
+    private static final String IMPORT_SELECTED_WIZARD = "org.wso2.integrationstudio.distribution.importAsArtifact";
     
     @Override
     public void earlyStartup() {

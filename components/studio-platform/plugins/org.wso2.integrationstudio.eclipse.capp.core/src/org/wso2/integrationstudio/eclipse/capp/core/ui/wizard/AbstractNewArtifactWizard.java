@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.ui.wizard;
+package org.wso2.integrationstudio.capp.core.ui.wizard;
 
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
-import org.wso2.integrationstudio.eclipse.capp.core.manifest.Artifact;
+import org.wso2.integrationstudio.capp.core.manifest.Artifact;
 
 public abstract class AbstractNewArtifactWizard extends Wizard implements INewWizard{
 

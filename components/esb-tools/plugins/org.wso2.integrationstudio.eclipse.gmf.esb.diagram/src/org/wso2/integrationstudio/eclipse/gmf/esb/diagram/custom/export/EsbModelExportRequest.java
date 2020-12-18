@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.export;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.export;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.emf.type.core.requests.AbstractEditCommandRequest;

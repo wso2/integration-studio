@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers;
+package org.wso2.integrationstudio.gmf.esb.diagram.providers;
 
 import java.lang.ref.WeakReference;
 
@@ -11,9 +11,9 @@ import org.eclipse.gmf.runtime.diagram.ui.services.editpart.CreateGraphicEditPar
 import org.eclipse.gmf.runtime.diagram.ui.services.editpart.IEditPartOperation;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.providers.DefaultEditPartProvider;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbDiagramEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbEditPartFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbDiagramEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbEditPartFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
 
 /**
  * @generated

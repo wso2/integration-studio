@@ -15,7 +15,7 @@
  */
 
 
-package org.wso2.integrationstudio.eclipse.security.project.utils;
+package org.wso2.integrationstudio.security.project.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,10 +25,10 @@ import javax.xml.bind.Unmarshaller;
 
 import org.eclipse.core.runtime.content.IContentDescription;
 import org.eclipse.core.runtime.content.XMLContentDescriber;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.security.Activator;
-import org.wso2.integrationstudio.eclipse.security.project.model.ServiceGroup;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.security.Activator;
+import org.wso2.integrationstudio.security.project.model.ServiceGroup;
 
 public class SecurityContentDescriber extends XMLContentDescriber {
 

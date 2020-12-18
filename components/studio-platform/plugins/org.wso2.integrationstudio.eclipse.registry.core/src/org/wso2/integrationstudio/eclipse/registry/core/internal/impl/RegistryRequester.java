@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.core.internal.impl;
+package org.wso2.integrationstudio.registry.core.internal.impl;
 
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryHandler;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryRequester;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryHandler;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryRequester;
 
 public class RegistryRequester implements IRegistryRequester{
 

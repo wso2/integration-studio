@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.messageprocessor.validator;
+package org.wso2.integrationstudio.artifact.messageprocessor.validator;
 
 import java.util.List;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IResource;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
-import org.wso2.integrationstudio.eclipse.artifact.messageprocessor.model.MessageProcessorModel;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.artifact.messageprocessor.model.MessageProcessorModel;
 
 /**
  * The controller class for message-processor artifact wizard specific fields.

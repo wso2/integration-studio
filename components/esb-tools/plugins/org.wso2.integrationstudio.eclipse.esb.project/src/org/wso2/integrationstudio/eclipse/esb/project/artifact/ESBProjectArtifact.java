@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.artifact;
+package org.wso2.integrationstudio.esb.project.artifact;
 
 import org.apache.axiom.om.OMDocument;
 import org.apache.axiom.om.OMElement;
-import org.wso2.integrationstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
+import org.wso2.integrationstudio.platform.core.manifest.AbstractXMLDoc;
 
 import java.io.File;
 import java.util.ArrayList;

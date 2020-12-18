@@ -15,7 +15,7 @@
  *    specific language governing permissions and limitations
  *    under the License.
  */
-package org.wso2.integrationstudio.eclipse.templates.dashboard.help;
+package org.wso2.integrationstudio.templates.dashboard.help;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
@@ -48,7 +48,7 @@ public class TemplateGuideView extends ViewPart {
     }
 
     private String getDefaultPage() throws URISyntaxException, IOException {
-        String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.esb.dashboard.templates";
+        String PLUGIN_ID = "org.wso2.integrationstudio.esb.dashboard.templates";
         String INDEX_HTML = "DefaultReadMe.html";
         Bundle bundle = Platform.getBundle(PLUGIN_ID);
         if (bundle == null) {

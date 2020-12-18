@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.provider;
+package org.wso2.integrationstudio.artifact.registry.provider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +25,11 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryResource;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryResourceProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioElement;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.ResourceManager;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryResource;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryResourceProvider;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.core.utils.ResourceManager;
 
 public class RegistryResourceProvider implements IRegistryResourceProvider {
 	

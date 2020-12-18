@@ -42,10 +42,10 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointPropertyScope;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EndPointPropertyScope;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
 
 /**
  * EndPoint properties configuration *dialog.

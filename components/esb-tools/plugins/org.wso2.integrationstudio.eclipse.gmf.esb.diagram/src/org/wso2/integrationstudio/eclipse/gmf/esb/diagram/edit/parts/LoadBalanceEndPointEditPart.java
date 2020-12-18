@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.draw2d.IFigure;
@@ -41,25 +41,25 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpoints;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequences;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractSequencesEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.ComplexFiguredAbstractEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.LoadBalanceEndPointCanonicalEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.LoadBalanceEndPointItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.AddressEndPoint;
+import org.wso2.integrationstudio.gmf.esb.ComplexEndpoints;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPoint;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint;
+import org.wso2.integrationstudio.gmf.esb.SendMediator;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.Sequences;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractSequencesEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.ComplexFiguredAbstractEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EsbGraphicalShape;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.LoadBalanceEndPointCanonicalEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.LoadBalanceEndPointItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
 
 /**
  * @generated NOT

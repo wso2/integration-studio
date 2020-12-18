@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.esblinkhelper;
+package org.wso2.integrationstudio.esb.project.esblinkhelper;
 
 import java.util.regex.Pattern;
 

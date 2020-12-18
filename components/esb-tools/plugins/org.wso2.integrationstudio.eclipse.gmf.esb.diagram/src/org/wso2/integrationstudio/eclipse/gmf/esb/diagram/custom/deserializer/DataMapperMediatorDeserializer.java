@@ -1,21 +1,21 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.Value;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.DataMapperMediator;
+import org.wso2.integrationstudio.gmf.esb.DataMapperMediatorDataTypes;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class DataMapperMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, DataMapperMediator> {
 

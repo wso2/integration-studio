@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.validators;
+package org.wso2.integrationstudio.artifact.endpoint.validators;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;

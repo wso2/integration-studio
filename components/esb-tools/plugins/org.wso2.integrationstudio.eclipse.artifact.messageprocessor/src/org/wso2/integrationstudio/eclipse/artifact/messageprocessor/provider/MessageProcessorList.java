@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.messageprocessor.provider;
+package org.wso2.integrationstudio.artifact.messageprocessor.provider;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMElement;
-import org.wso2.integrationstudio.eclipse.artifact.messageprocessor.model.MessageProcessorModel;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.artifact.messageprocessor.model.MessageProcessorModel;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 /**
  * Provides an AbstractListDataProvider instance that returns list of

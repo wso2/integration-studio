@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.utils;
 
-import org.wso2.integrationstudio.eclipse.esb.project.control.graphicalproject.IUpdateGMFPlugin;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.esb.project.control.graphicalproject.IUpdateGMFPlugin;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
 
 public class UpdateGMFPlugin implements IUpdateGMFPlugin {
 

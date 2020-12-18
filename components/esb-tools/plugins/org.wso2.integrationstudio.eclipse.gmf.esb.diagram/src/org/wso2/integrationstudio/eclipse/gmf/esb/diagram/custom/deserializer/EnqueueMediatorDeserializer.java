@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnqueueMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.EnqueueMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class EnqueueMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, EnqueueMediator> {
 
@@ -32,7 +32,7 @@ public class EnqueueMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
         Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.EnqueueMediator,
                 "Unsupported mediator passed in for deserialization at " + this.getClass());
         org.apache.synapse.mediators.builtin.EnqueueMediator enqueueMediator = (org.apache.synapse.mediators.builtin.EnqueueMediator) mediator;
-        org.wso2.integrationstudio.eclipse.gmf.esb.EnqueueMediator visualEnqueueMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.EnqueueMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.EnqueueMediator visualEnqueueMediator = (org.wso2.integrationstudio.gmf.esb.EnqueueMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.EnqueueMediator_3600);
         setElementToEdit(visualEnqueueMediator);
         setCommonProperties(enqueueMediator, visualEnqueueMediator);

@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei11;
+package org.wso2.integrationstudio.carbonserver44microei11;
 
 import java.io.File;
 import java.util.HashMap;
@@ -29,11 +29,11 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.IProperties;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.util.CarbonServer44eiUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver.base.manager.IProperties;
+import org.wso2.integrationstudio.carbonserver44microei11.Activator;
+import org.wso2.integrationstudio.carbonserver44microei11.util.CarbonServer44eiUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class ServerProperties implements IProperties {
 

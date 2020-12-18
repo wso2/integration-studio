@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,9 +29,9 @@ import org.eclipse.emf.compare.diff.service.DiffService;
 import org.eclipse.emf.compare.diff.metamodel.DiffElement;
 import org.eclipse.emf.compare.diff.merge.service.MergeService;*/
 import org.eclipse.emf.ecore.EObject;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
 public class ModelCompareUtils {
 

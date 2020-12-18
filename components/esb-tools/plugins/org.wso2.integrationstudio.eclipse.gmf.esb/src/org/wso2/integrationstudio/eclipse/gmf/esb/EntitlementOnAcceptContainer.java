@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,10 +24,10 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementOnAcceptContainer#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EntitlementOnAcceptContainer#getMediatorFlow <em>Mediator Flow</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEntitlementOnAcceptContainer()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEntitlementOnAcceptContainer()
  * @model
  * @generated
  */
@@ -42,14 +42,14 @@ public interface EntitlementOnAcceptContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEntitlementOnAcceptContainer_MediatorFlow()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEntitlementOnAcceptContainer_MediatorFlow()
      * @model containment="true"
      * @generated
      */
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementOnAcceptContainer#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EntitlementOnAcceptContainer#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.

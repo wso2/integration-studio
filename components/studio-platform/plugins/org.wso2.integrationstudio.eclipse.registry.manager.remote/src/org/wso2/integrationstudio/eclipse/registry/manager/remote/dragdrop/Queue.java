@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.remote.dragdrop;
+package org.wso2.integrationstudio.registry.manager.remote.dragdrop;
 
 import java.util.ArrayList;
 

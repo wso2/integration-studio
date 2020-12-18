@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -78,18 +78,18 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediaType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFormatType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
-import org.wso2.integrationstudio.eclipse.gmf.esb.util.FontUtils;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MediaType;
+import org.wso2.integrationstudio.gmf.esb.PayloadFormatType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.util.FontUtils;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -613,7 +613,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getPayloadFormat()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getPayloadFormat()
 	 * 
 	 */
 	public Enumerator getPayloadFormat() {
@@ -624,7 +624,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#initPayloadFormat(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#initPayloadFormat(Object input, Enumerator current)
 	 */
 	public void initPayloadFormat(Object input, Enumerator current) {
 		payloadFormat.setInput(input);
@@ -642,7 +642,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setPayloadFormat(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setPayloadFormat(Enumerator newValue)
 	 * 
 	 */
 	public void setPayloadFormat(Enumerator newValue) {
@@ -660,7 +660,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getPayload()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getPayload()
 	 * 
 	 */
 	public String getPayload() {
@@ -670,7 +670,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setPayload(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setPayload(String newValue)
 	 * 
 	 */
 	public void setPayload(String newValue) {
@@ -694,7 +694,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#initArgs(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#initArgs(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initArgs(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -715,7 +715,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#updateArgs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#updateArgs()
 	 * 
 	 */
 	public void updateArgs() {
@@ -725,7 +725,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#addFilterArgs(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#addFilterArgs(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToArgs(ViewerFilter filter) {
@@ -738,7 +738,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#addBusinessFilterArgs(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#addBusinessFilterArgs(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToArgs(ViewerFilter filter) {
@@ -748,7 +748,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#isContainedInArgsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#isContainedInArgsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInArgsTable(EObject element) {
@@ -758,7 +758,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getMediaType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getMediaType()
 	 * 
 	 */
 	public Enumerator getMediaType() {
@@ -769,7 +769,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#initMediaType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#initMediaType(Object input, Enumerator current)
 	 */
 	public void initMediaType(Object input, Enumerator current) {
 		mediaType.setInput(input);
@@ -787,7 +787,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setMediaType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setMediaType(Enumerator newValue)
 	 * 
 	 */
 	public void setMediaType(Enumerator newValue) {
@@ -805,7 +805,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -815,7 +815,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -842,7 +842,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	/**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getCommentsList()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getCommentsList()
    * 
    */
   public EList getCommentsList() {
@@ -852,7 +852,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setCommentsList(EList newValue)
    * 
    */
   public void setCommentsList(EList newValue) {
@@ -893,7 +893,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getReverse()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getReverse()
    * 
    */
   public Boolean getReverse() {
@@ -903,7 +903,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setReverse(Boolean newValue)
    * 
    */
   public void setReverse(Boolean newValue) {

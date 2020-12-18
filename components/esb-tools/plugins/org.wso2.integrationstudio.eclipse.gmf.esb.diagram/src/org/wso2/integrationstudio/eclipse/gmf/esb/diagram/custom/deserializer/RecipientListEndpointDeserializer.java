@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.END_POINT__END_POINT_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINTS_VALUE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.RECIPIENT_LIST_END_POINT__MAX_CACHE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.END_POINT__END_POINT_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINTS_VALUE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.RECIPIENT_LIST_END_POINT__MAX_CACHE;
 
 import java.util.Iterator;
 import java.util.List;
@@ -34,18 +34,18 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointPropertyScope;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Member;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndpointType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.ComplexEndpointDeserializerUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.AbstractEndPoint;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EndPointPropertyScope;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.Member;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndpointType;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.ComplexEndpointDeserializerUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.RecipientListEndpointFormPage;
@@ -62,7 +62,7 @@ public class RecipientListEndpointDeserializer extends AbstractEndpointDeseriali
                 || part instanceof EndpointDiagramEndpointCompartmentEditPart)
                         ? EsbElementTypes.RecipientListEndPoint_3696
                         : EsbElementTypes.RecipientListEndPoint_3692;
-        org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPoint model = (org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPoint) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.RecipientListEndPoint model = (org.wso2.integrationstudio.gmf.esb.RecipientListEndPoint) DeserializerUtils
                 .createNode(part, endpointType);
         setElementToEdit(model);
 

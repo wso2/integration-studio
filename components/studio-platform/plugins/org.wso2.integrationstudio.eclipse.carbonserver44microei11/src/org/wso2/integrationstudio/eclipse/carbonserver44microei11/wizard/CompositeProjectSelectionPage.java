@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei11.wizard;
+package org.wso2.integrationstudio.carbonserver44microei11.wizard;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -43,12 +43,12 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.Activator;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.DataTransferObject;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.carbonserver44microei11.Activator;
+import org.wso2.integrationstudio.distribution.project.model.DataTransferObject;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 public class CompositeProjectSelectionPage extends WizardPage {
 
@@ -100,7 +100,7 @@ public class CompositeProjectSelectionPage extends WizardPage {
 		linkCompositeLabel.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				IWizardDescriptor descriptor = PlatformUI.getWorkbench().getNewWizardRegistry()
-						.findWizard("org.wso2.integrationstudio.eclipse.distribution.project");
+						.findWizard("org.wso2.integrationstudio.distribution.project");
 				try {
 					if (null != descriptor) {
 						IWorkbenchWizard wizard = descriptor.createWizard();

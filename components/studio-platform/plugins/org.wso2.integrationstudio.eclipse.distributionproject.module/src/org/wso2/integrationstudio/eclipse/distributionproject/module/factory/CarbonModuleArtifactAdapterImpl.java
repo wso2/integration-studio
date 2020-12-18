@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distributionproject.module.factory;
+package org.wso2.integrationstudio.distributionproject.module.factory;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.wst.server.core.IModuleArtifact;
 import org.eclipse.wst.server.core.model.ModuleArtifactAdapterDelegate;
-import org.wso2.integrationstudio.eclipse.distributionproject.module.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.distributionproject.module.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class CarbonModuleArtifactAdapterImpl extends ModuleArtifactAdapterDelegate {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

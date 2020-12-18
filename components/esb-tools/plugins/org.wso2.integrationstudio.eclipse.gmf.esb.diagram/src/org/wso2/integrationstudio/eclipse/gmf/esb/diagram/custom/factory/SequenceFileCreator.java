@@ -1,5 +1,5 @@
 /*
- * package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.factory;
+ * package org.wso2.integrationstudio.gmf.esb.diagram.custom.factory;
  * 
  * import java.io.File;
  * 
@@ -7,10 +7,10 @@
  * import org.eclipse.core.resources.IProject;
  * import org.eclipse.core.resources.IResource;
  * import org.eclipse.core.runtime.NullProgressMonitor;
- * //import org.wso2.integrationstudio.eclipse.artifact.sequence.model.SequenceModel;
- * //import org.wso2.integrationstudio.eclipse.artifact.sequence.ui.wizard.SequenceProjectCreationWizard;
- * import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
- * import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+ * //import org.wso2.integrationstudio.artifact.sequence.model.SequenceModel;
+ * //import org.wso2.integrationstudio.artifact.sequence.ui.wizard.SequenceProjectCreationWizard;
+ * import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+ * import org.wso2.integrationstudio.utils.file.FileUtils;
  * 
  * 
  * public class SequenceFileCreator implements IFileCreator{

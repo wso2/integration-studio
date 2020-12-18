@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages;
+package org.wso2.integrationstudio.platform.ui.wizard.pages;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +36,7 @@ import org.eclipse.ui.IWorkingSetManager;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.IWorkingSetSelectionDialog;
 import org.eclipse.ui.internal.WorkingSet;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 import org.eclipse.swt.widgets.Combo;
 
 public class WorkingSetComposite extends Composite implements Observer {

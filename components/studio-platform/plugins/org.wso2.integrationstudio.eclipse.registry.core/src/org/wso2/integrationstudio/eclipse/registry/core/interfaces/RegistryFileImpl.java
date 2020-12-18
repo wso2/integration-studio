@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.core.interfaces;
+package org.wso2.integrationstudio.registry.core.interfaces;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.registry.core.ui.widgets.GRegImageUtils;
+import org.wso2.integrationstudio.registry.core.ui.widgets.GRegImageUtils;
 
 public class RegistryFileImpl extends RegistryResourceImpl implements
 		IRegistryFile {

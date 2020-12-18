@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,16 +34,16 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleActionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleFragmentType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleOptionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRule;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EvaluatorExpressionProperty;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleActionType;
+import org.wso2.integrationstudio.gmf.esb.RuleFragmentType;
+import org.wso2.integrationstudio.gmf.esb.RuleOptionType;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteMediator;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteRule;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction;
 
 public class ConfigureURLrewriteruleDialog extends Dialog {
     private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());

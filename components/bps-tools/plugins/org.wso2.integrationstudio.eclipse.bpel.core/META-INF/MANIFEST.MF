@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Core
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.bpel.core
+Bundle-SymbolicName: org.wso2.integrationstudio.bpel.core
 Bundle-Version: 7.2.0.qualifier
 Bundle-Activator: org.eclipse.integrationstudio.eclipse.bpel.core.Activator
 Require-Bundle: org.eclipse.ui,

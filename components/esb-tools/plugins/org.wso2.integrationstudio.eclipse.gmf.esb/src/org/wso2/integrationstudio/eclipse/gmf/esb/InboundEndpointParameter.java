@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -26,11 +26,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointParameter#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointParameter#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpointParameter()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpointParameter()
  * @model
  * @generated
  */
@@ -46,14 +46,14 @@ public interface InboundEndpointParameter extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpointParameter_Name()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpointParameter_Name()
      * @model default="parameter_name"
      * @generated
      */
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointParameter#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Name</em>' attribute.
@@ -73,14 +73,14 @@ public interface InboundEndpointParameter extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpointParameter_Value()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpointParameter_Value()
      * @model default="parameter_value"
      * @generated
      */
     String getValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointParameter#getValue <em>Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getValue <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value</em>' attribute.

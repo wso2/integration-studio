@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,12 +14,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediaType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryArgument;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MediaType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgument;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryEvaluatorType;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,11 +29,11 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentType <em>Argument Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentValue <em>Argument Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentExpression <em>Argument Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getEvaluator <em>Evaluator</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#isLiteral <em>Literal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentType <em>Argument Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentValue <em>Argument Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentExpression <em>Argument Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryArgumentImpl#getEvaluator <em>Evaluator</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryArgumentImpl#isLiteral <em>Literal</em>}</li>
  * </ul>
  *
  * @generated

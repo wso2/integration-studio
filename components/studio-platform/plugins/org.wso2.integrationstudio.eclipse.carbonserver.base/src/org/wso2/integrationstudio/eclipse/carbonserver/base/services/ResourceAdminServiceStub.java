@@ -5,7 +5,7 @@
  * by the Apache Axis2 version: 1.6-wso2v1 Built on : Apr 27, 2010 (12:11:11
  * UTC)
  */
-package org.wso2.integrationstudio.eclipse.carbonserver.base.services;
+package org.wso2.integrationstudio.carbonserver.base.services;
 
 /*
  * ResourceAdminServiceStub java implementation
@@ -314,627 +314,627 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "moveResource"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "moveResource"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "moveResource"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getResourceTreeEntry"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getResourceTreeEntry"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getResourceTreeEntry"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "setSessionResourcePath"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "setSessionResourcePath"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "setSessionResourcePath"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getProperty"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getProperty"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getProperty"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "addSymbolicLink"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "addSymbolicLink"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "addSymbolicLink"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getVersionsBean"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getVersionsBean"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getVersionsBean"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getCustomUIMediatypeDefinitions"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getCustomUIMediatypeDefinitions"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getCustomUIMediatypeDefinitions"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "setDescription"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "setDescription"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "setDescription"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getSessionResourcePath"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getSessionResourcePath"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getSessionResourcePath"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getMetadata"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getMetadata"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getMetadata"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "changeRolePermissions"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "changeRolePermissions"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "changeRolePermissions"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getContentBean"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getContentBean"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getContentBean"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "restoreVersion"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "restoreVersion"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "restoreVersion"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getResourceData"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getResourceData"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getResourceData"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getMediatypeDefinitions"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getMediatypeDefinitions"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getMediatypeDefinitions"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "importResource"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "importResource"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "importResource"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "delete"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "delete"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "delete"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getContentDownloadBean"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getContentDownloadBean"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getContentDownloadBean"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "addTextResource"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "addTextResource"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "addTextResource"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "ResourceServiceException"),
 		                                                                  "addRolePermission"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "ResourceServiceException"),
 		                                                                       "addRolePermission"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "ResourceServiceException"),
 		                                                            "addRolePermission"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ResourceServiceExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ResourceServiceExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "createVersion"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "createVersion"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "createVersion"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getTextContent"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getTextContent"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getTextContent"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "addRemoteLink"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "addRemoteLink"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "addRemoteLink"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "renameResource"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "renameResource"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "renameResource"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "changeUserPermissions"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "changeUserPermissions"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "changeUserPermissions"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "ResourceServiceException"),
 		                                                                  "addUserPermission"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "ResourceServiceException"),
 		                                                                       "addUserPermission"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "ResourceServiceException"),
 		                                                            "addUserPermission"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ResourceServiceExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ResourceServiceExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "updateTextContent"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "updateTextContent"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "updateTextContent"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getCollectionMediatypeDefinitions"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getCollectionMediatypeDefinitions"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getCollectionMediatypeDefinitions"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "copyResource"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "copyResource"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "copyResource"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getCollectionContent"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getCollectionContent"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getCollectionContent"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "addCollection"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "addCollection"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "addCollection"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "getPermissions"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "getPermissions"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "getPermissions"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                "Exception"),
 		                                                                  "addResource"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://services.resource.registry.carbon.wso2.org",
 		                                                                                                     "Exception"),
 		                                                                       "addResource"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.services.ExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://services.resource.registry.carbon.wso2.org",
 		                                                                                          "Exception"),
 		                                                            "addResource"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub$ExceptionE");
 
 	}
 
@@ -994,7 +994,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void moveResource(java.lang.String parentPath63, java.lang.String oldResourcePath64,
@@ -1002,7 +1002,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -1019,7 +1019,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.MoveResource dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.MoveResource dummyWrappedType =
 			                                                                                                                     null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -1068,8 +1068,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -1114,20 +1114,20 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getResourceTreeEntry
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getResourceTreeEntry
 	 * @param getResourceTreeEntry67
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceTreeEntryBean getResourceTreeEntry(
+	public org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceTreeEntryBean getResourceTreeEntry(
 
 	java.lang.String resourcePath68)
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -1144,7 +1144,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry dummyWrappedType =
 			                                                                                                                             null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -1171,10 +1171,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetResourceTreeEntryResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse) object);
+			return getGetResourceTreeEntryResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -1202,8 +1202,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -1246,14 +1246,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetResourceTreeEntry
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetResourceTreeEntry
 	 * @param getResourceTreeEntry67
 	 */
 	public void startgetResourceTreeEntry(
 
 	java.lang.String resourcePath68,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -1271,7 +1271,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry dummyWrappedType =
 		                                                                                                                             null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -1296,9 +1296,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetResourceTreeEntry(getGetResourceTreeEntryResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse) object));
+					callback.receiveResultgetResourceTreeEntry(getGetResourceTreeEntryResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetResourceTreeEntry(e);
@@ -1333,8 +1333,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetResourceTreeEntry((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetResourceTreeEntry((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -1409,14 +1409,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void setSessionResourcePath(java.lang.String resourcePath72
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -1433,7 +1433,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath dummyWrappedType =
 			                                                                                                                               null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -1479,8 +1479,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -1525,10 +1525,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getProperty
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getProperty
 	 * @param getProperty73
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
@@ -1538,7 +1538,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -1555,7 +1555,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetProperty dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetProperty dummyWrappedType =
 			                                                                                                                    null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -1583,10 +1583,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetPropertyResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse) object);
+			return getGetPropertyResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -1614,8 +1614,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -1658,14 +1658,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetProperty
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetProperty
 	 * @param getProperty73
 	 */
 	public void startgetProperty(
 
 	java.lang.String resourcePath74, java.lang.String key75,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -1683,7 +1683,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetProperty dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetProperty dummyWrappedType =
 		                                                                                                                    null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -1709,9 +1709,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetProperty(getGetPropertyResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse) object));
+					callback.receiveResultgetProperty(getGetPropertyResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetProperty(e);
@@ -1746,8 +1746,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetProperty((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetProperty((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -1821,14 +1821,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void addSymbolicLink(java.lang.String parentPath79, java.lang.String name80, java.lang.String targetPath81
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -1845,7 +1845,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink dummyWrappedType =
 			                                                                                                                        null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -1893,8 +1893,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -1939,20 +1939,20 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getVersionsBean
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getVersionsBean
 	 * @param getVersionsBean82
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.VersionsBean getVersionsBean(
+	public org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.VersionsBean getVersionsBean(
 
 	java.lang.String path83)
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -1969,7 +1969,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean dummyWrappedType =
 			                                                                                                                        null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -1996,10 +1996,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetVersionsBeanResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse) object);
+			return getGetVersionsBeanResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -2027,8 +2027,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -2071,14 +2071,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetVersionsBean
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetVersionsBean
 	 * @param getVersionsBean82
 	 */
 	public void startgetVersionsBean(
 
 	java.lang.String path83,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -2096,7 +2096,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean dummyWrappedType =
 		                                                                                                                        null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -2121,9 +2121,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetVersionsBean(getGetVersionsBeanResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse) object));
+					callback.receiveResultgetVersionsBean(getGetVersionsBeanResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetVersionsBean(e);
@@ -2158,8 +2158,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetVersionsBean((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetVersionsBean((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -2233,8 +2233,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getCustomUIMediatypeDefinitions
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getCustomUIMediatypeDefinitions
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
@@ -2244,7 +2244,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -2285,10 +2285,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetCustomUIMediatypeDefinitionsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse) object);
+			return getGetCustomUIMediatypeDefinitionsResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -2316,8 +2316,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -2360,11 +2360,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetCustomUIMediatypeDefinitions
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetCustomUIMediatypeDefinitions
 	 */
 	public void startgetCustomUIMediatypeDefinitions(
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -2402,9 +2402,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetCustomUIMediatypeDefinitions(getGetCustomUIMediatypeDefinitionsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse) object));
+					callback.receiveResultgetCustomUIMediatypeDefinitions(getGetCustomUIMediatypeDefinitionsResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetCustomUIMediatypeDefinitions(e);
@@ -2439,8 +2439,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetCustomUIMediatypeDefinitions((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetCustomUIMediatypeDefinitions((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -2516,14 +2516,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void setDescription(java.lang.String path90, java.lang.String description91
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -2540,7 +2540,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetDescription dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetDescription dummyWrappedType =
 			                                                                                                                       null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -2587,8 +2587,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -2633,8 +2633,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getSessionResourcePath
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getSessionResourcePath
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
@@ -2644,7 +2644,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -2685,10 +2685,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetSessionResourcePathResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse) object);
+			return getGetSessionResourcePathResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -2716,8 +2716,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -2760,11 +2760,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetSessionResourcePath
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetSessionResourcePath
 	 */
 	public void startgetSessionResourcePath(
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -2802,9 +2802,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetSessionResourcePath(getGetSessionResourcePathResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse) object));
+					callback.receiveResultgetSessionResourcePath(getGetSessionResourcePathResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetSessionResourcePath(e);
@@ -2839,8 +2839,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetSessionResourcePath((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetSessionResourcePath((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -2916,20 +2916,20 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getMetadata
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getMetadata
 	 * @param getMetadata95
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.MetadataBean getMetadata(
+	public org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.MetadataBean getMetadata(
 
 	java.lang.String path96)
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -2946,7 +2946,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata dummyWrappedType =
 			                                                                                                                    null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -2973,10 +2973,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetMetadataResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse) object);
+			return getGetMetadataResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -3004,8 +3004,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -3048,14 +3048,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetMetadata
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetMetadata
 	 * @param getMetadata95
 	 */
 	public void startgetMetadata(
 
 	java.lang.String path96,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -3073,7 +3073,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata dummyWrappedType =
 		                                                                                                                    null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -3098,9 +3098,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetMetadata(getGetMetadataResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse) object));
+					callback.receiveResultgetMetadata(getGetMetadataResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetMetadata(e);
@@ -3135,8 +3135,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetMetadata((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetMetadata((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -3210,10 +3210,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#changeRolePermissions
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#changeRolePermissions
 	 * @param changeRolePermissions99
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
@@ -3223,7 +3223,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -3240,7 +3240,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions dummyWrappedType =
 			                                                                                                                              null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -3268,10 +3268,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getChangeRolePermissionsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse) object);
+			return getChangeRolePermissionsResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -3299,8 +3299,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -3343,14 +3343,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startchangeRolePermissions
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startchangeRolePermissions
 	 * @param changeRolePermissions99
 	 */
 	public void startchangeRolePermissions(
 
 	java.lang.String resourcePath100, java.lang.String permissionsInput101,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -3368,7 +3368,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions dummyWrappedType =
 		                                                                                                                              null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -3394,9 +3394,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultchangeRolePermissions(getChangeRolePermissionsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse) object));
+					callback.receiveResultchangeRolePermissions(getChangeRolePermissionsResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorchangeRolePermissions(e);
@@ -3431,8 +3431,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorchangeRolePermissions((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorchangeRolePermissions((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -3508,20 +3508,20 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getContentBean
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getContentBean
 	 * @param getContentBean104
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ContentBean getContentBean(
+	public org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ContentBean getContentBean(
 
 	java.lang.String path105)
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -3538,7 +3538,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean dummyWrappedType =
 			                                                                                                                       null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -3565,10 +3565,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetContentBeanResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse) object);
+			return getGetContentBeanResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -3596,8 +3596,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -3640,14 +3640,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetContentBean
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetContentBean
 	 * @param getContentBean104
 	 */
 	public void startgetContentBean(
 
 	java.lang.String path105,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -3665,7 +3665,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean dummyWrappedType =
 		                                                                                                                       null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -3690,9 +3690,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetContentBean(getGetContentBeanResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse) object));
+					callback.receiveResultgetContentBean(getGetContentBeanResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetContentBean(e);
@@ -3727,8 +3727,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetContentBean((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetContentBean((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -3802,14 +3802,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void restoreVersion(java.lang.String versionPath109
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -3826,7 +3826,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion dummyWrappedType =
 			                                                                                                                       null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -3872,8 +3872,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -3918,20 +3918,20 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getResourceData
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getResourceData
 	 * @param getResourceData110
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceData[] getResourceData(
+	public org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceData[] getResourceData(
 
 	java.lang.String[] paths111)
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -3948,7 +3948,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData dummyWrappedType =
 			                                                                                                                        null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -3975,10 +3975,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetResourceDataResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse) object);
+			return getGetResourceDataResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -4006,8 +4006,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -4050,14 +4050,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetResourceData
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetResourceData
 	 * @param getResourceData110
 	 */
 	public void startgetResourceData(
 
 	java.lang.String[] paths111,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -4075,7 +4075,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData dummyWrappedType =
 		                                                                                                                        null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -4100,9 +4100,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetResourceData(getGetResourceDataResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse) object));
+					callback.receiveResultgetResourceData(getGetResourceDataResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetResourceData(e);
@@ -4137,8 +4137,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetResourceData((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetResourceData((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -4212,8 +4212,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getMediatypeDefinitions
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getMediatypeDefinitions
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
@@ -4223,7 +4223,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -4264,10 +4264,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetMediatypeDefinitionsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse) object);
+			return getGetMediatypeDefinitionsResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -4295,8 +4295,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -4339,11 +4339,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetMediatypeDefinitions
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetMediatypeDefinitions
 	 */
 	public void startgetMediatypeDefinitions(
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -4381,9 +4381,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetMediatypeDefinitions(getGetMediatypeDefinitionsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse) object));
+					callback.receiveResultgetMediatypeDefinitions(getGetMediatypeDefinitionsResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetMediatypeDefinitions(e);
@@ -4418,8 +4418,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetMediatypeDefinitions((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetMediatypeDefinitions((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -4495,7 +4495,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void importResource(java.lang.String parentPath118, java.lang.String resourceName119,
@@ -4504,7 +4504,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -4521,7 +4521,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ImportResource dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ImportResource dummyWrappedType =
 			                                                                                                                       null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -4572,8 +4572,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -4618,14 +4618,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void delete(java.lang.String pathToDelete125
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -4642,7 +4642,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.Delete dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.Delete dummyWrappedType =
 			                                                                                                               null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -4688,8 +4688,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -4734,20 +4734,20 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getContentDownloadBean
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getContentDownloadBean
 	 * @param getContentDownloadBean126
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ContentDownloadBean getContentDownloadBean(
+	public org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ContentDownloadBean getContentDownloadBean(
 
 	java.lang.String path127)
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -4764,7 +4764,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean dummyWrappedType =
 			                                                                                                                               null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -4791,10 +4791,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetContentDownloadBeanResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse) object);
+			return getGetContentDownloadBeanResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -4822,8 +4822,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -4866,14 +4866,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetContentDownloadBean
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetContentDownloadBean
 	 * @param getContentDownloadBean126
 	 */
 	public void startgetContentDownloadBean(
 
 	java.lang.String path127,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -4891,7 +4891,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean dummyWrappedType =
 		                                                                                                                               null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -4916,9 +4916,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetContentDownloadBean(getGetContentDownloadBeanResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse) object));
+					callback.receiveResultgetContentDownloadBean(getGetContentDownloadBeanResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetContentDownloadBean(e);
@@ -4953,8 +4953,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetContentDownloadBean((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetContentDownloadBean((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -5030,7 +5030,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void addTextResource(java.lang.String parentPath131, java.lang.String fileName132,
@@ -5039,7 +5039,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -5056,7 +5056,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource dummyWrappedType =
 			                                                                                                                        null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -5106,8 +5106,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -5152,10 +5152,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#addRolePermission
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#addRolePermission
 	 * @param addRolePermission136
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException
 	 *             :
 	 */
 
@@ -5166,7 +5166,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -5183,7 +5183,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission dummyWrappedType =
 			                                                                                                                          null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -5213,10 +5213,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getAddRolePermissionResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse) object);
+			return getAddRolePermissionResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -5244,8 +5244,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -5288,7 +5288,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startaddRolePermission
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startaddRolePermission
 	 * @param addRolePermission136
 	 */
 	public void startaddRolePermission(
@@ -5298,7 +5298,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                   java.lang.String actionToAuthorize139,
 	                                   java.lang.String permissionType140,
 
-	                                   final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	                                   final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -5316,7 +5316,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission dummyWrappedType =
 		                                                                                                                          null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -5344,9 +5344,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultaddRolePermission(getAddRolePermissionResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse) object));
+					callback.receiveResultaddRolePermission(getAddRolePermissionResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErroraddRolePermission(e);
@@ -5381,8 +5381,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException) {
-									callback.receiveErroraddRolePermission((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException) {
+									callback.receiveErroraddRolePermission((org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException) ex);
 									return;
 								}
 
@@ -5456,14 +5456,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void createVersion(java.lang.String resourcePath144
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -5480,7 +5480,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion dummyWrappedType =
 			                                                                                                                      null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -5526,8 +5526,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -5572,10 +5572,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getTextContent
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getTextContent
 	 * @param getTextContent145
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
@@ -5585,7 +5585,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -5602,7 +5602,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent dummyWrappedType =
 			                                                                                                                       null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -5629,10 +5629,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetTextContentResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse) object);
+			return getGetTextContentResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -5660,8 +5660,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -5704,14 +5704,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetTextContent
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetTextContent
 	 * @param getTextContent145
 	 */
 	public void startgetTextContent(
 
 	java.lang.String path146,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -5729,7 +5729,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent dummyWrappedType =
 		                                                                                                                       null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -5754,9 +5754,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetTextContent(getGetTextContentResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse) object));
+					callback.receiveResultgetTextContent(getGetTextContentResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetTextContent(e);
@@ -5791,8 +5791,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetTextContent((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetTextContent((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -5866,7 +5866,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void addRemoteLink(java.lang.String parentPath150, java.lang.String name151, java.lang.String instance152,
@@ -5874,7 +5874,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -5891,7 +5891,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink dummyWrappedType =
 			                                                                                                                      null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -5940,8 +5940,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -5986,7 +5986,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void renameResource(java.lang.String parentPath155, java.lang.String oldResourcePath156,
@@ -5994,7 +5994,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -6011,7 +6011,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RenameResource dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RenameResource dummyWrappedType =
 			                                                                                                                       null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -6059,8 +6059,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -6105,10 +6105,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#changeUserPermissions
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#changeUserPermissions
 	 * @param changeUserPermissions158
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
@@ -6118,7 +6118,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -6135,7 +6135,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions dummyWrappedType =
 			                                                                                                                              null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -6163,10 +6163,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getChangeUserPermissionsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse) object);
+			return getChangeUserPermissionsResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -6194,8 +6194,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -6238,14 +6238,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startchangeUserPermissions
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startchangeUserPermissions
 	 * @param changeUserPermissions158
 	 */
 	public void startchangeUserPermissions(
 
 	java.lang.String resourcePath159, java.lang.String permissionInput160,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -6263,7 +6263,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions dummyWrappedType =
 		                                                                                                                              null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -6289,9 +6289,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultchangeUserPermissions(getChangeUserPermissionsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse) object));
+					callback.receiveResultchangeUserPermissions(getChangeUserPermissionsResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorchangeUserPermissions(e);
@@ -6326,8 +6326,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorchangeUserPermissions((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorchangeUserPermissions((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -6403,10 +6403,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#addUserPermission
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#addUserPermission
 	 * @param addUserPermission163
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException
 	 *             :
 	 */
 
@@ -6417,7 +6417,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -6434,7 +6434,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission dummyWrappedType =
 			                                                                                                                          null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -6464,10 +6464,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getAddUserPermissionResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse) object);
+			return getAddUserPermissionResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -6495,8 +6495,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -6539,7 +6539,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startaddUserPermission
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startaddUserPermission
 	 * @param addUserPermission163
 	 */
 	public void startaddUserPermission(
@@ -6549,7 +6549,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                   java.lang.String actionToAuthorize166,
 	                                   java.lang.String permissionType167,
 
-	                                   final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	                                   final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -6567,7 +6567,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission dummyWrappedType =
 		                                                                                                                          null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -6595,9 +6595,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultaddUserPermission(getAddUserPermissionResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse) object));
+					callback.receiveResultaddUserPermission(getAddUserPermissionResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErroraddUserPermission(e);
@@ -6632,8 +6632,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException) {
-									callback.receiveErroraddUserPermission((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceServiceExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException) {
+									callback.receiveErroraddUserPermission((org.wso2.integrationstudio.carbonserver.base.services.ResourceServiceExceptionException) ex);
 									return;
 								}
 
@@ -6707,14 +6707,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void updateTextContent(java.lang.String resourcePath171, java.lang.String contentText172
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -6731,7 +6731,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent dummyWrappedType =
 			                                                                                                                          null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -6778,8 +6778,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -6824,8 +6824,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getCollectionMediatypeDefinitions
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getCollectionMediatypeDefinitions
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
@@ -6835,7 +6835,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -6876,10 +6876,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetCollectionMediatypeDefinitionsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse) object);
+			return getGetCollectionMediatypeDefinitionsResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -6907,8 +6907,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -6951,11 +6951,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetCollectionMediatypeDefinitions
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetCollectionMediatypeDefinitions
 	 */
 	public void startgetCollectionMediatypeDefinitions(
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -6993,9 +6993,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetCollectionMediatypeDefinitions(getGetCollectionMediatypeDefinitionsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse) object));
+					callback.receiveResultgetCollectionMediatypeDefinitions(getGetCollectionMediatypeDefinitionsResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetCollectionMediatypeDefinitions(e);
@@ -7030,8 +7030,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetCollectionMediatypeDefinitions((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetCollectionMediatypeDefinitions((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -7107,7 +7107,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void copyResource(java.lang.String parentPath177, java.lang.String oldResourcePath178,
@@ -7115,7 +7115,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -7132,7 +7132,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CopyResource dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CopyResource dummyWrappedType =
 			                                                                                                                     null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -7181,8 +7181,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -7227,20 +7227,20 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getCollectionContent
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getCollectionContent
 	 * @param getCollectionContent181
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CollectionContentBean getCollectionContent(
+	public org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CollectionContentBean getCollectionContent(
 
 	java.lang.String path182)
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -7257,7 +7257,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent dummyWrappedType =
 			                                                                                                                             null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -7284,10 +7284,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetCollectionContentResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse) object);
+			return getGetCollectionContentResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -7315,8 +7315,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -7359,14 +7359,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetCollectionContent
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetCollectionContent
 	 * @param getCollectionContent181
 	 */
 	public void startgetCollectionContent(
 
 	java.lang.String path182,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -7384,7 +7384,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent dummyWrappedType =
 		                                                                                                                             null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -7409,9 +7409,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetCollectionContent(getGetCollectionContentResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse) object));
+					callback.receiveResultgetCollectionContent(getGetCollectionContentResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetCollectionContent(e);
@@ -7446,8 +7446,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetCollectionContent((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetCollectionContent((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -7522,10 +7522,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#addCollection
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#addCollection
 	 * @param addCollection185
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
@@ -7536,7 +7536,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -7553,7 +7553,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollection dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollection dummyWrappedType =
 			                                                                                                                      null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -7583,10 +7583,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getAddCollectionResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse) object);
+			return getAddCollectionResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -7614,8 +7614,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -7658,7 +7658,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startaddCollection
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startaddCollection
 	 * @param addCollection185
 	 */
 	public void startaddCollection(
@@ -7668,7 +7668,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                               java.lang.String mediaType188,
 	                               java.lang.String description189,
 
-	                               final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	                               final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -7686,7 +7686,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollection dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollection dummyWrappedType =
 		                                                                                                                      null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -7714,9 +7714,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultaddCollection(getAddCollectionResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse) object));
+					callback.receiveResultaddCollection(getAddCollectionResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErroraddCollection(e);
@@ -7751,8 +7751,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErroraddCollection((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErroraddCollection((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -7826,20 +7826,20 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#getPermissions
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#getPermissions
 	 * @param getPermissions192
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.PermissionBean getPermissions(
+	public org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.PermissionBean getPermissions(
 
 	java.lang.String path193)
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -7856,7 +7856,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions dummyWrappedType =
 			                                                                                                                       null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -7883,10 +7883,10 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getGetPermissionsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse) object);
+			return getGetPermissionsResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -7914,8 +7914,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -7958,14 +7958,14 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminService#startgetPermissions
+	 * @see org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminService#startgetPermissions
 	 * @param getPermissions192
 	 */
 	public void startgetPermissions(
 
 	java.lang.String path193,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -7983,7 +7983,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions dummyWrappedType =
 		                                                                                                                       null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -8008,9 +8008,9 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultgetPermissions(getGetPermissionsResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse) object));
+					callback.receiveResultgetPermissions(getGetPermissionsResponse_return((org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorgetPermissions(e);
@@ -8045,8 +8045,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-									callback.receiveErrorgetPermissions((org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+									callback.receiveErrorgetPermissions((org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex);
 									return;
 								}
 
@@ -8120,7 +8120,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.services.ExceptionException
 	 *             :
 	 */
 	public void addResource(java.lang.String path197, java.lang.String mediaType198, java.lang.String description199,
@@ -8128,7 +8128,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.services.ExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -8145,7 +8145,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			_messageContext = new org.apache.axis2.context.MessageContext();
 
 			// Style is Doc.
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddResource dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddResource dummyWrappedType =
 			                                                                                                                    null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -8195,8 +8195,8 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.services.ExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -47490,11 +47490,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.MoveResource param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.MoveResource param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.MoveResource.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.MoveResource.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47502,11 +47502,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47514,11 +47514,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47526,11 +47526,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47538,11 +47538,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47550,11 +47550,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetProperty param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetProperty param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetProperty.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetProperty.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47562,11 +47562,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47574,11 +47574,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47586,11 +47586,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47598,11 +47598,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47610,11 +47610,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47622,11 +47622,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetDescription param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetDescription param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetDescription.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetDescription.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47634,11 +47634,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47646,11 +47646,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47658,11 +47658,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47670,11 +47670,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47682,11 +47682,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47694,11 +47694,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47706,11 +47706,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47718,11 +47718,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47730,11 +47730,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47742,11 +47742,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47754,11 +47754,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47766,11 +47766,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ImportResource param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ImportResource param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ImportResource.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ImportResource.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47778,11 +47778,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.Delete param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.Delete param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.Delete.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.Delete.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47790,11 +47790,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47802,11 +47802,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47814,11 +47814,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47826,11 +47826,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47838,11 +47838,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47850,11 +47850,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47862,11 +47862,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47874,11 +47874,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47886,11 +47886,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47898,11 +47898,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47910,11 +47910,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RenameResource param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RenameResource param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RenameResource.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RenameResource.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47922,11 +47922,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47934,11 +47934,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47946,11 +47946,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47958,11 +47958,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47970,11 +47970,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47982,11 +47982,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -47994,11 +47994,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CopyResource param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CopyResource param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CopyResource.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CopyResource.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -48006,11 +48006,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -48018,11 +48018,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -48030,11 +48030,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollection param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollection param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollection.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollection.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -48042,11 +48042,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -48054,11 +48054,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -48066,11 +48066,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -48078,11 +48078,11 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddResource param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddResource param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddResource.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddResource.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -48095,12 +48095,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                                      java.lang.String param2,
 	                                                      java.lang.String param3,
 	                                                      java.lang.String param4,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.MoveResource dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.MoveResource dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.MoveResource wrappedType =
-			                                                                                                                new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.MoveResource();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.MoveResource wrappedType =
+			                                                                                                                new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.MoveResource();
 
 			wrappedType.setParentPath(param1);
 
@@ -48113,7 +48113,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.MoveResource.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.MoveResource.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48126,19 +48126,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry wrappedType =
-			                                                                                                                        new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry wrappedType =
+			                                                                                                                        new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry();
 
 			wrappedType.setResourcePath(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48149,7 +48149,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceTreeEntryBean getGetResourceTreeEntryResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse wrappedType) {
+	private org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceTreeEntryBean getGetResourceTreeEntryResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48157,19 +48157,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath wrappedType =
-			                                                                                                                          new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath wrappedType =
+			                                                                                                                          new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath();
 
 			wrappedType.setResourcePath(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48183,12 +48183,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
 	                                                      java.lang.String param2,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetProperty dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetProperty dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetProperty wrappedType =
-			                                                                                                               new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetProperty();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetProperty wrappedType =
+			                                                                                                               new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetProperty();
 
 			wrappedType.setResourcePath(param1);
 
@@ -48197,7 +48197,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetProperty.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetProperty.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48208,7 +48208,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private java.lang.String getGetPropertyResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse wrappedType) {
+	private java.lang.String getGetPropertyResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48218,12 +48218,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                                      java.lang.String param1,
 	                                                      java.lang.String param2,
 	                                                      java.lang.String param3,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink wrappedType =
-			                                                                                                                   new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink wrappedType =
+			                                                                                                                   new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink();
 
 			wrappedType.setParentPath(param1);
 
@@ -48234,7 +48234,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48247,19 +48247,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean wrappedType =
-			                                                                                                                   new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean wrappedType =
+			                                                                                                                   new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean();
 
 			wrappedType.setPath(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48270,13 +48270,13 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.VersionsBean getGetVersionsBeanResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse wrappedType) {
+	private org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.VersionsBean getGetVersionsBeanResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse wrappedType) {
 
 		return wrappedType.get_return();
 
 	}
 
-	private java.lang.String getGetCustomUIMediatypeDefinitionsResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse wrappedType) {
+	private java.lang.String getGetCustomUIMediatypeDefinitionsResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48285,12 +48285,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
 	                                                      java.lang.String param2,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetDescription dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetDescription dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetDescription wrappedType =
-			                                                                                                                  new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetDescription();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetDescription wrappedType =
+			                                                                                                                  new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetDescription();
 
 			wrappedType.setPath(param1);
 
@@ -48299,7 +48299,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetDescription.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetDescription.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48310,7 +48310,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private java.lang.String getGetSessionResourcePathResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse wrappedType) {
+	private java.lang.String getGetSessionResourcePathResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48318,19 +48318,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata wrappedType =
-			                                                                                                               new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata wrappedType =
+			                                                                                                               new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata();
 
 			wrappedType.setPath(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48341,7 +48341,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.MetadataBean getGetMetadataResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse wrappedType) {
+	private org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.MetadataBean getGetMetadataResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48350,12 +48350,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
 	                                                      java.lang.String param2,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions wrappedType =
-			                                                                                                                         new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions wrappedType =
+			                                                                                                                         new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions();
 
 			wrappedType.setResourcePath(param1);
 
@@ -48364,7 +48364,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48375,7 +48375,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private boolean getChangeRolePermissionsResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse wrappedType) {
+	private boolean getChangeRolePermissionsResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48383,19 +48383,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean wrappedType =
-			                                                                                                                  new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean wrappedType =
+			                                                                                                                  new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean();
 
 			wrappedType.setPath(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48406,7 +48406,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ContentBean getGetContentBeanResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse wrappedType) {
+	private org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ContentBean getGetContentBeanResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48414,19 +48414,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion wrappedType =
-			                                                                                                                  new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion wrappedType =
+			                                                                                                                  new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion();
 
 			wrappedType.setVersionPath(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48439,19 +48439,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String[] param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData wrappedType =
-			                                                                                                                   new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData wrappedType =
+			                                                                                                                   new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData();
 
 			wrappedType.setPaths(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48462,13 +48462,13 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceData[] getGetResourceDataResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse wrappedType) {
+	private org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceData[] getGetResourceDataResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse wrappedType) {
 
 		return wrappedType.get_return();
 
 	}
 
-	private java.lang.String getGetMediatypeDefinitionsResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse wrappedType) {
+	private java.lang.String getGetMediatypeDefinitionsResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48481,12 +48481,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                                      java.lang.String param4,
 	                                                      java.lang.String param5,
 	                                                      java.lang.String param6,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ImportResource dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ImportResource dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ImportResource wrappedType =
-			                                                                                                                  new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ImportResource();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ImportResource wrappedType =
+			                                                                                                                  new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ImportResource();
 
 			wrappedType.setParentPath(param1);
 
@@ -48503,7 +48503,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ImportResource.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ImportResource.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48516,19 +48516,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.Delete dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.Delete dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.Delete wrappedType =
-			                                                                                                          new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.Delete();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.Delete wrappedType =
+			                                                                                                          new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.Delete();
 
 			wrappedType.setPathToDelete(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.Delete.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.Delete.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48541,19 +48541,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean wrappedType =
-			                                                                                                                          new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean wrappedType =
+			                                                                                                                          new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean();
 
 			wrappedType.setPath(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48564,7 +48564,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ContentDownloadBean getGetContentDownloadBeanResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse wrappedType) {
+	private org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ContentDownloadBean getGetContentDownloadBeanResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48576,12 +48576,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                                      java.lang.String param3,
 	                                                      java.lang.String param4,
 	                                                      java.lang.String param5,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource wrappedType =
-			                                                                                                                   new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource wrappedType =
+			                                                                                                                   new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource();
 
 			wrappedType.setParentPath(param1);
 
@@ -48596,7 +48596,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48612,12 +48612,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                                      java.lang.String param2,
 	                                                      java.lang.String param3,
 	                                                      java.lang.String param4,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission wrappedType =
-			                                                                                                                     new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission wrappedType =
+			                                                                                                                     new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission();
 
 			wrappedType.setPathToAuthorize(param1);
 
@@ -48630,7 +48630,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48641,7 +48641,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private boolean getAddRolePermissionResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse wrappedType) {
+	private boolean getAddRolePermissionResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48649,19 +48649,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion wrappedType =
-			                                                                                                                 new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion wrappedType =
+			                                                                                                                 new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion();
 
 			wrappedType.setResourcePath(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48674,19 +48674,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent wrappedType =
-			                                                                                                                  new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent wrappedType =
+			                                                                                                                  new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent();
 
 			wrappedType.setPath(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48697,7 +48697,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private java.lang.String getGetTextContentResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse wrappedType) {
+	private java.lang.String getGetTextContentResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48708,12 +48708,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                                      java.lang.String param2,
 	                                                      java.lang.String param3,
 	                                                      java.lang.String param4,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink wrappedType =
-			                                                                                                                 new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink wrappedType =
+			                                                                                                                 new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink();
 
 			wrappedType.setParentPath(param1);
 
@@ -48726,7 +48726,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48741,12 +48741,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                                      java.lang.String param1,
 	                                                      java.lang.String param2,
 	                                                      java.lang.String param3,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RenameResource dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RenameResource dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RenameResource wrappedType =
-			                                                                                                                  new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RenameResource();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RenameResource wrappedType =
+			                                                                                                                  new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RenameResource();
 
 			wrappedType.setParentPath(param1);
 
@@ -48757,7 +48757,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RenameResource.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RenameResource.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48771,12 +48771,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
 	                                                      java.lang.String param2,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions wrappedType =
-			                                                                                                                         new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions wrappedType =
+			                                                                                                                         new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions();
 
 			wrappedType.setResourcePath(param1);
 
@@ -48785,7 +48785,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48796,7 +48796,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private boolean getChangeUserPermissionsResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse wrappedType) {
+	private boolean getChangeUserPermissionsResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48807,12 +48807,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                                      java.lang.String param2,
 	                                                      java.lang.String param3,
 	                                                      java.lang.String param4,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission wrappedType =
-			                                                                                                                     new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission wrappedType =
+			                                                                                                                     new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission();
 
 			wrappedType.setPathToAuthorize(param1);
 
@@ -48825,7 +48825,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48836,7 +48836,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private boolean getAddUserPermissionResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse wrappedType) {
+	private boolean getAddUserPermissionResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48845,12 +48845,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
 	                                                      java.lang.String param2,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent wrappedType =
-			                                                                                                                     new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent wrappedType =
+			                                                                                                                     new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent();
 
 			wrappedType.setResourcePath(param1);
 
@@ -48859,7 +48859,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48870,7 +48870,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private java.lang.String getGetCollectionMediatypeDefinitionsResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse wrappedType) {
+	private java.lang.String getGetCollectionMediatypeDefinitionsResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48881,12 +48881,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                                      java.lang.String param2,
 	                                                      java.lang.String param3,
 	                                                      java.lang.String param4,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CopyResource dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CopyResource dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CopyResource wrappedType =
-			                                                                                                                new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CopyResource();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CopyResource wrappedType =
+			                                                                                                                new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CopyResource();
 
 			wrappedType.setParentPath(param1);
 
@@ -48899,7 +48899,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CopyResource.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CopyResource.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48912,19 +48912,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent wrappedType =
-			                                                                                                                        new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent wrappedType =
+			                                                                                                                        new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent();
 
 			wrappedType.setPath(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48935,7 +48935,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CollectionContentBean getGetCollectionContentResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse wrappedType) {
+	private org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CollectionContentBean getGetCollectionContentResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48946,12 +48946,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                                      java.lang.String param2,
 	                                                      java.lang.String param3,
 	                                                      java.lang.String param4,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollection dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollection dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollection wrappedType =
-			                                                                                                                 new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollection();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollection wrappedType =
+			                                                                                                                 new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollection();
 
 			wrappedType.setParentPath(param1);
 
@@ -48964,7 +48964,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollection.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollection.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -48975,7 +48975,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private java.lang.String getAddCollectionResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse wrappedType) {
+	private java.lang.String getAddCollectionResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -48983,19 +48983,19 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
 	                                                      java.lang.String param1,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions wrappedType =
-			                                                                                                                  new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions wrappedType =
+			                                                                                                                  new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions();
 
 			wrappedType.setPath(param1);
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -49006,7 +49006,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.PermissionBean getGetPermissionsResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse wrappedType) {
+	private org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.PermissionBean getGetPermissionsResponse_return(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -49018,12 +49018,12 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 	                                                      java.lang.String param3,
 	                                                      javax.activation.DataHandler param4,
 	                                                      java.lang.String param5,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddResource dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddResource dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddResource wrappedType =
-			                                                                                                               new org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddResource();
+			org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddResource wrappedType =
+			                                                                                                               new org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddResource();
 
 			wrappedType.setPath(param1);
 
@@ -49038,7 +49038,7 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddResource.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddResource.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -49061,489 +49061,489 @@ public class ResourceAdminServiceStub extends org.apache.axis2.client.Stub {
 
 		try {
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.MoveResource.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.MoveResource.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.MoveResource.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.MoveResource.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntry.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceTreeEntryResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetSessionResourcePath.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetProperty.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetProperty.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetProperty.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetProperty.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPropertyResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddSymbolicLink.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBean.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetVersionsBeanResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCustomUIMediatypeDefinitionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetDescription.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetDescription.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.SetDescription.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.SetDescription.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetSessionResourcePathResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadata.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMetadataResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissions.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeRolePermissionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBean.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentBeanResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RestoreVersion.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceData.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetResourceDataResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetMediatypeDefinitionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ImportResource.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ImportResource.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ImportResource.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ImportResource.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.Delete.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.Delete.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.Delete.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.Delete.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBean.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetContentDownloadBeanResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddTextResource.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermission.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRolePermissionResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CreateVersion.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContent.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetTextContentResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddRemoteLink.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RenameResource.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RenameResource.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.RenameResource.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.RenameResource.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissions.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ChangeUserPermissionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermission.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddUserPermissionResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.UpdateTextContent.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionMediatypeDefinitionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CopyResource.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CopyResource.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.CopyResource.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.CopyResource.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContent.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetCollectionContentResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollection.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollection.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollection.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollection.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddCollectionResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissions.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.GetPermissionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddResource.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddResource.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.AddResource.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.AddResource.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TransactionAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.TransactionAction;
+import org.wso2.integrationstudio.gmf.esb.TransactionMediator;
+import org.wso2.integrationstudio.gmf.esb.TransactionMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.TransactionMediatorOutputConnector;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,9 +28,9 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediatorOutputConne
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TransactionMediatorImpl#getAction <em>Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TransactionMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TransactionMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TransactionMediatorImpl#getAction <em>Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TransactionMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TransactionMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated

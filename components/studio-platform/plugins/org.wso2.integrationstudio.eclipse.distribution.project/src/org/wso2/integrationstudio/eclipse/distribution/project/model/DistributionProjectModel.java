@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.model;
+package org.wso2.integrationstudio.distribution.project.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class DistributionProjectModel extends ProjectDataModel {
 	private List<DependencyData> selectedProjects = new ArrayList<DependencyData>();

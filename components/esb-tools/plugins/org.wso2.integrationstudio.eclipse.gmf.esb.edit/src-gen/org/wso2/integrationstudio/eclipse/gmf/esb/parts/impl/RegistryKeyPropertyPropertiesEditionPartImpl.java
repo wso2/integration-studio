@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -38,10 +38,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -354,7 +354,7 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#getPrettyName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#getPrettyName()
 	 * 
 	 */
 	public String getPrettyName() {
@@ -364,7 +364,7 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#setPrettyName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#setPrettyName(String newValue)
 	 * 
 	 */
 	public void setPrettyName(String newValue) {
@@ -386,7 +386,7 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#getKeyName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#getKeyName()
 	 * 
 	 */
 	public String getKeyName() {
@@ -396,7 +396,7 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#setKeyName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#setKeyName(String newValue)
 	 * 
 	 */
 	public void setKeyName(String newValue) {
@@ -418,7 +418,7 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#getKeyValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#getKeyValue()
 	 * 
 	 */
 	public String getKeyValue() {
@@ -428,7 +428,7 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#setKeyValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#setKeyValue(String newValue)
 	 * 
 	 */
 	public void setKeyValue(String newValue) {
@@ -450,7 +450,7 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#getFilters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#getFilters()
 	 * 
 	 */
 	public String getFilters() {
@@ -460,7 +460,7 @@ public class RegistryKeyPropertyPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#setFilters(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RegistryKeyPropertyPropertiesEditionPart#setFilters(String newValue)
 	 * 
 	 */
 	public void setFilters(String newValue) {

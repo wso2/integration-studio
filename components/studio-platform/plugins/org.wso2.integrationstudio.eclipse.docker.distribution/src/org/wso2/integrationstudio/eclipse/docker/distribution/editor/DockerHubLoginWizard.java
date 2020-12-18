@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.editor;
+package org.wso2.integrationstudio.docker.distribution.editor;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.docker.distribution.model.DockerHubAuth;
+import org.wso2.integrationstudio.docker.distribution.model.DockerHubAuth;
 
 /**
  * Class responsible for creation of wizard for get docker hub credentials.

@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.preferences;
+package org.wso2.integrationstudio.platform.ui.preferences;
 
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -27,7 +27,7 @@ public class CappPreferencesPage extends FieldEditorPreferencePage implements IW
 
 
        public static final String CUSTOM_SERVER_ROLES = "CUSTOM_SERVER_ROLES";
-       public static final String PREFERENCES_PLUGIN_ID = "org.wso2.integrationstudio.eclipse.platform.ui";
+       public static final String PREFERENCES_PLUGIN_ID = "org.wso2.integrationstudio.platform.ui";
        private IPreferenceStore preferenceStore;
 
        public CappPreferencesPage() {

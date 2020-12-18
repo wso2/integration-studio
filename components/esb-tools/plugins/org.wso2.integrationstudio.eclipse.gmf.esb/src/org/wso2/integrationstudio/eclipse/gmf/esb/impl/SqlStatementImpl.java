@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -22,10 +22,10 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlParameterDefinition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.SqlParameterDefinition;
+import org.wso2.integrationstudio.gmf.esb.SqlResultMapping;
+import org.wso2.integrationstudio.gmf.esb.SqlStatement;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,10 +35,10 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SqlStatementImpl#getQueryString <em>Query String</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SqlStatementImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SqlStatementImpl#isResultsEnabled <em>Results Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SqlStatementImpl#getResults <em>Results</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SqlStatementImpl#getQueryString <em>Query String</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SqlStatementImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SqlStatementImpl#isResultsEnabled <em>Results Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SqlStatementImpl#getResults <em>Results</em>}</li>
  * </ul>
  *
  * @generated

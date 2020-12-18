@@ -11,27 +11,27 @@
 <plugin>
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="platform:/resource/org.wso2.integrationstudio.eclipse.ds/model/ds.xsd"
-            class="org.wso2.integrationstudio.eclipse.ds.DsPackage"
+            uri="platform:/resource/org.wso2.integrationstudio.ds/model/ds.xsd"
+            class="org.wso2.integrationstudio.ds.DsPackage"
             genModel="model/ds.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
             type="dbs"
-            class="org.wso2.integrationstudio.eclipse.ds.util.DsResourceFactoryImpl"/>
+            class="org.wso2.integrationstudio.ds.util.DsResourceFactoryImpl"/>
    </extension>
    
    <extension point="org.eclipse.emf.validation.constraintProviders">
 		<category name="WSO2 DS Model Constraints"
-			id="org.wso2.integrationstudio.eclipse.ds.ModelConstraintsCategory" mandatory="true"/>
+			id="org.wso2.integrationstudio.ds.ModelConstraintsCategory" mandatory="true"/>
 		<constraintProvider cache="true">
-			<package namespaceUri="platform:/resource/org.wso2.integrationstudio.eclipse.ds/model/ds.xsd" />
-			<constraints categories="org.wso2.integrationstudio.eclipse.ds.ModelConstraintsCategory">
+			<package namespaceUri="platform:/resource/org.wso2.integrationstudio.ds/model/ds.xsd" />
+			<constraints categories="org.wso2.integrationstudio.ds.ModelConstraintsCategory">
 				<constraint lang="Java"
-					class="org.wso2.integrationstudio.eclipse.ds.constraint.MandatoryChildDeleteBeforeDeleteConstraint"
+					class="org.wso2.integrationstudio.ds.constraint.MandatoryChildDeleteBeforeDeleteConstraint"
 					severity="ERROR" mode="Live" name="Mandatory to delete children before deleting a node"
-					id="org.wso2.integrationstudio.eclipse.ds.constraint.MandatoryChildDeleteBeforeDeleteConstraint"
+					id="org.wso2.integrationstudio.ds.constraint.MandatoryChildDeleteBeforeDeleteConstraint"
 					statusCode="1">
 					<description>
 						Mandatory to delete children before deleting a node
@@ -52,23 +52,23 @@
 	<extension point="org.eclipse.emf.validation.constraintBindings">
       <clientContext
             default="false"
-            id="org.wso2.integrationstudio.eclipse.ds.ModelConstraintsContext">
-         <selector class="org.wso2.integrationstudio.eclipse.ds.ValidationContextSelector"/> 
+            id="org.wso2.integrationstudio.ds.ModelConstraintsContext">
+         <selector class="org.wso2.integrationstudio.ds.ValidationContextSelector"/> 
       </clientContext>
       <binding
-            context="org.wso2.integrationstudio.eclipse.ds.ModelConstraintsContext"
-            category="org.wso2.integrationstudio.eclipse.ds.ModelConstraintsCategory"/>
+            context="org.wso2.integrationstudio.ds.ModelConstraintsContext"
+            category="org.wso2.integrationstudio.ds.ModelConstraintsCategory"/>
    	</extension> 	
    	
    	<extension
          point="org.eclipse.emf.validation.ui.UIRegisteredClientContext">
-      <clientContext id="org.wso2.integrationstudio.eclipse.ds.ModelConstraintsContext"/>
+      <clientContext id="org.wso2.integrationstudio.ds.ModelConstraintsContext"/>
    </extension>
   
    <extension
        point="org.eclipse.ltk.core.refactoring.renameParticipants">
        <renameParticipant
-			class="org.wso2.integrationstudio.eclipse.ds.refactor.DataServiceRenameParticipant"
+			class="org.wso2.integrationstudio.ds.refactor.DataServiceRenameParticipant"
 			id="DataServiceRenameParticipant"
 			name="DataServiceRename">
 				<enablement>
@@ -89,7 +89,7 @@
     <extension
        point="org.eclipse.ltk.core.refactoring.renameParticipants">
        <renameParticipant
-			class=" org.wso2.integrationstudio.eclipse.ds.capp.refactor.DataServiceRenameParticipant"
+			class=" org.wso2.integrationstudio.ds.capp.refactor.DataServiceRenameParticipant"
 			id="DataServiceRenameParticipantForCApp"
 			name="DataServiceRenameUpdateforCApp">
 				<enablement>
@@ -111,7 +111,7 @@
    <extension
          point="org.eclipse.ltk.core.refactoring.deleteParticipants">
        <deleteParticipant
-			class="org.wso2.integrationstudio.eclipse.ds.refactor.DataServiceDeleteParticipant"
+			class="org.wso2.integrationstudio.ds.refactor.DataServiceDeleteParticipant"
 			id="DataServiceDeleteParticipant"
 			name="DataServiceDelete">
 				<enablement>
@@ -132,7 +132,7 @@
    <extension
          point="org.eclipse.ltk.core.refactoring.deleteParticipants">
        <deleteParticipant
-			class="org.wso2.integrationstudio.eclipse.ds.capp.refactor.DataServiceDeleteParticipant"
+			class="org.wso2.integrationstudio.ds.capp.refactor.DataServiceDeleteParticipant"
 			id="DataServiceDeleteParticipantForCapp"
 			name="DataServiceDelete and Update CApp">
 				<enablement>

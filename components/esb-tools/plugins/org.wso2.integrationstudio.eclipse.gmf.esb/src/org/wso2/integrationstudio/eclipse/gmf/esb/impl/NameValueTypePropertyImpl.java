@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -12,9 +12,9 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NameValueTypeProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskPropertyType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NameValueTypeProperty;
+import org.wso2.integrationstudio.gmf.esb.TaskPropertyType;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,9 +24,9 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.TaskPropertyType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.NameValueTypePropertyImpl#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.NameValueTypePropertyImpl#getPropertyValue <em>Property Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.NameValueTypePropertyImpl#getPropertyType <em>Property Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.NameValueTypePropertyImpl#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.NameValueTypePropertyImpl#getPropertyValue <em>Property Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.NameValueTypePropertyImpl#getPropertyType <em>Property Type</em>}</li>
  * </ul>
  *
  * @generated

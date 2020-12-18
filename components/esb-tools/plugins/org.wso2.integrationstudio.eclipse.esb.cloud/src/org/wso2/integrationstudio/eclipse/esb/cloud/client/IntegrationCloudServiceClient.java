@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.cloud.client;
+package org.wso2.integrationstudio.esb.cloud.client;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,18 +25,18 @@ import java.util.stream.Collectors;
 
 import org.apache.http.client.CookieStore;
 import org.apache.http.impl.client.BasicCookieStore;
-import org.wso2.integrationstudio.eclipse.esb.cloud.Activator;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.HttpClientException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.Application;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.Runtime;
-import org.wso2.integrationstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
-import org.wso2.integrationstudio.eclipse.esb.cloud.util.HTTPClientUtil;
-import org.wso2.integrationstudio.eclipse.esb.cloud.util.JsonUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.esb.cloud.Activator;
+import org.wso2.integrationstudio.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.HttpClientException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.InvalidTokenException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.NetworkUnavailableException;
+import org.wso2.integrationstudio.esb.cloud.model.Application;
+import org.wso2.integrationstudio.esb.cloud.model.Runtime;
+import org.wso2.integrationstudio.esb.cloud.resources.CloudServiceConstants;
+import org.wso2.integrationstudio.esb.cloud.util.HTTPClientUtil;
+import org.wso2.integrationstudio.esb.cloud.util.JsonUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

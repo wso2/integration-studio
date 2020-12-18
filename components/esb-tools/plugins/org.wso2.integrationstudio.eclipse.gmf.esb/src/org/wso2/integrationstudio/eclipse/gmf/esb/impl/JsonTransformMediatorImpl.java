@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -31,12 +31,12 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediatorProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.JsonTransformMediator;
+import org.wso2.integrationstudio.gmf.esb.JsonTransformMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.JsonTransformMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.JsonTransformMediatorProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,10 +46,10 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.JsonTransformMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.JsonTransformMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.JsonTransformMediatorImpl#getJsonTransformProperties <em>Json Transform Properties</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.JsonTransformMediatorImpl#getSchema <em>Schema</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.JsonTransformMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.JsonTransformMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.JsonTransformMediatorImpl#getJsonTransformProperties <em>Json Transform Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.JsonTransformMediatorImpl#getSchema <em>Schema</em>}</li>
  * </ul>
  *
  * @generated

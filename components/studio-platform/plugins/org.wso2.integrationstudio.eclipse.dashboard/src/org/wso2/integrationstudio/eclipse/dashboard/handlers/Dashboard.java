@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.dashboard.handlers;
+package org.wso2.integrationstudio.dashboard.handlers;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.dashboard.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.dashboard.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class Dashboard extends FormEditor {
 
@@ -29,7 +29,7 @@ public class Dashboard extends FormEditor {
 	private DashboardPage dashbordPage;
 
 	protected void addPages() {
-		dashbordPage = new DashboardPage(this, "org.wso2.integrationstudio.eclipse.platform.core.intro.ui.Dashboard","Dashboard");
+		dashbordPage = new DashboardPage(this, "org.wso2.integrationstudio.platform.core.intro.ui.Dashboard","Dashboard");
 		try {
 			addPage(dashbordPage);
 		} catch (PartInitException e) {

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.policies;
 
 import java.util.Iterator;
 
@@ -13,19 +13,19 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.InboundEndpointContainerCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.InboundEndpointOnErrorSequenceInputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.InboundEndpointOnErrorSequenceOutputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.InboundEndpointSequenceInputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.InboundEndpointSequenceOutputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointOnErrorSequenceInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointOnErrorSequenceOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointSequenceInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointSequenceOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.InboundEndpointContainerCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.InboundEndpointOnErrorSequenceInputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.InboundEndpointOnErrorSequenceOutputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.InboundEndpointSequenceInputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.InboundEndpointSequenceOutputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.InboundEndpointContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.InboundEndpointOnErrorSequenceInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.InboundEndpointOnErrorSequenceOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.InboundEndpointSequenceInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.InboundEndpointSequenceOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated

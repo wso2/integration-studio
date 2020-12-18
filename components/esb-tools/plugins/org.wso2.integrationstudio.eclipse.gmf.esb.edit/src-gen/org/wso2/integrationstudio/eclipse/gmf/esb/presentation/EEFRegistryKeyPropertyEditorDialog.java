@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -26,9 +26,9 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.RegistryKeyPropertyImpl;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.RegistryKeyPropertyImpl;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.RegistryKeyPropertyEditorDialog;
 

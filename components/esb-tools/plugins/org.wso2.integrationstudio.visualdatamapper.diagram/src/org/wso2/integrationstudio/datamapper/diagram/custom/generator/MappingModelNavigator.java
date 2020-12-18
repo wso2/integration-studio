@@ -31,8 +31,8 @@ import org.wso2.integrationstudio.datamapper.SchemaDataType;
 import org.wso2.integrationstudio.datamapper.TreeNode;
 import org.wso2.integrationstudio.datamapper.diagram.custom.persistence.OperatorConfigurationUtil;
 import org.wso2.integrationstudio.datamapper.impl.OperatorImpl;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * Navigate through mapping model and generate configuration based on the

@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.PropertyValueBean;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.PropertyValueBean;
 
 /**
  * This class represents the message sent to ESB Server Debugger asking values

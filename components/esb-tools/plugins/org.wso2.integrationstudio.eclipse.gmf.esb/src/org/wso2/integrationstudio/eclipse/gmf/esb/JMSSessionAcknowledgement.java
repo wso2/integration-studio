@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>JMS Session Acknowledgement</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getJMSSessionAcknowledgement()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getJMSSessionAcknowledgement()
  * @model
  * @generated
  */

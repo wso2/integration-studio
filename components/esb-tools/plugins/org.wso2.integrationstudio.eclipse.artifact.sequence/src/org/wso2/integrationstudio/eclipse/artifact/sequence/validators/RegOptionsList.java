@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.sequence.validators;
+package org.wso2.integrationstudio.artifact.sequence.validators;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class RegOptionsList extends AbstractListDataProvider{
 

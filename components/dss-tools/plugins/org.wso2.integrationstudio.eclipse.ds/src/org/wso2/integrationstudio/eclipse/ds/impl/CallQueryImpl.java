@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Collection;
 
@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.ds.CallQuery;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.ParameterMapping;
+import org.wso2.integrationstudio.ds.CallQuery;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.ParameterMapping;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,10 +36,10 @@ import org.wso2.integrationstudio.eclipse.ds.ParameterMapping;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.CallQueryImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.CallQueryImpl#getWithParam <em>With Param</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.CallQueryImpl#getHref <em>Href</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.CallQueryImpl#getRequiredRoles <em>Required Roles</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.CallQueryImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.CallQueryImpl#getWithParam <em>With Param</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.CallQueryImpl#getHref <em>Href</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.CallQueryImpl#getRequiredRoles <em>Required Roles</em>}</li>
  * </ul>
  *
  * @generated

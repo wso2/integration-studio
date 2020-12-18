@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,11 +15,11 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractBooleanFeature#getFeatureName <em>Feature Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractBooleanFeature#isFeatureEnabled <em>Feature Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractBooleanFeature#getFeatureName <em>Feature Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractBooleanFeature#isFeatureEnabled <em>Feature Enabled</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractBooleanFeature()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractBooleanFeature()
  * @model abstract="true"
  * @generated
  */
@@ -35,14 +35,14 @@ public interface AbstractBooleanFeature extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractBooleanFeature_FeatureName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractBooleanFeature_FeatureName()
      * @model default="feature_name"
      * @generated
      */
     String getFeatureName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractBooleanFeature#getFeatureName <em>Feature Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractBooleanFeature#getFeatureName <em>Feature Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Feature Name</em>' attribute.
@@ -62,14 +62,14 @@ public interface AbstractBooleanFeature extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Feature Enabled</em>' attribute.
      * @see #setFeatureEnabled(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractBooleanFeature_FeatureEnabled()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractBooleanFeature_FeatureEnabled()
      * @model default="true"
      * @generated
      */
     boolean isFeatureEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractBooleanFeature#isFeatureEnabled <em>Feature Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractBooleanFeature#isFeatureEnabled <em>Feature Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Feature Enabled</em>' attribute.

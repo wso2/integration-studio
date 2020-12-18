@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.impl;
+package org.wso2.integrationstudio.carbonserver.base.impl;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,13 +27,13 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jst.server.generic.core.internal.GenericServer;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
-import org.wso2.integrationstudio.eclipse.carbonfeatures.FeatureDefinition;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServer;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServerModulePublisher;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServerMonitor;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonfeatures.FeatureDefinition;
+import org.wso2.integrationstudio.carbonserver.base.Activator;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServer;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServerModulePublisher;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServerMonitor;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class CarbonServer extends GenericServer implements ICarbonServer {
 
@@ -69,9 +69,9 @@ public class CarbonServer extends GenericServer implements ICarbonServer {
 	}
 
 	private static final String CARBON_SERVER_MODULE_PUBLISHER_EXTENSION =
-	                                                                       "org.wso2.integrationstudio.eclipse.carbonserver.publisher";
+	                                                                       "org.wso2.integrationstudio.carbonserver.publisher";
 	private static final String CARBON_SERVER_MONITOR_EXTENSION =
-	                                                              "org.wso2.integrationstudio.eclipse.carbonserver.monitor";
+	                                                              "org.wso2.integrationstudio.carbonserver.monitor";
 
 	public static List<ICarbonServerModulePublisher> getProjectPublishers(IServer server) {
 		List<ICarbonServerModulePublisher> publishers = new ArrayList<ICarbonServerModulePublisher>();

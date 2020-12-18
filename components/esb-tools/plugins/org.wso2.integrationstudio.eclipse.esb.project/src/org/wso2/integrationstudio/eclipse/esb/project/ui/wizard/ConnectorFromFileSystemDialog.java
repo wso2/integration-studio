@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.integrationstudio.eclipse.esb.project.ui.wizard;
+package org.wso2.integrationstudio.esb.project.ui.wizard;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;

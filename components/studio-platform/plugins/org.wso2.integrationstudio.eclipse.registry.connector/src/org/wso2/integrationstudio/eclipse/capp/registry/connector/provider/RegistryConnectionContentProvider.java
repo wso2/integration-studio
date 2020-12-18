@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.registry.connector.provider;
+package org.wso2.integrationstudio.capp.registry.connector.provider;
 
 import java.net.MalformedURLException;
 import java.util.List;
@@ -30,11 +30,11 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.Activator;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.model.RegistryConnectionNode;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.model.RegistryConnectionsNode;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.capp.registry.connector.Activator;
+import org.wso2.integrationstudio.capp.registry.connector.model.RegistryConnectionNode;
+import org.wso2.integrationstudio.capp.registry.connector.model.RegistryConnectionsNode;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class RegistryConnectionContentProvider implements ICommonContentProvider, IResourceChangeListener{
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

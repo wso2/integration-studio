@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.ui.wizard;
+package org.wso2.integrationstudio.distribution.project.ui.wizard;
 
 
 import java.io.File;
@@ -43,12 +43,12 @@ import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.project.extensions.handlers.ProjectNatureListProvider;
-import org.wso2.integrationstudio.eclipse.project.extensions.handlers.WSO2ProjectNature;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
+import org.wso2.integrationstudio.project.extensions.handlers.ProjectNatureListProvider;
+import org.wso2.integrationstudio.project.extensions.handlers.WSO2ProjectNature;
 
 public class ExportDetailsWizardPage extends WizardPage {
 	

@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.channel.dispatcher.ChannelEventDispatcher;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.channel.dispatcher.ChannelResponseDispatcher;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.CommandMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.channel.dispatcher.ChannelEventDispatcher;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.channel.dispatcher.ChannelResponseDispatcher;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.CommandMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 
 /**
  * ESB Debugger Interface should implement this interface and methods in the

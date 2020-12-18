@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,12 +15,12 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder#getContentType <em>Content Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder#getBuilderClass <em>Builder Class</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder#getFormatterClass <em>Formatter Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.MessageBuilder#getContentType <em>Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.MessageBuilder#getBuilderClass <em>Builder Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.MessageBuilder#getFormatterClass <em>Formatter Class</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMessageBuilder()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMessageBuilder()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface MessageBuilder extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Content Type</em>' attribute.
      * @see #setContentType(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMessageBuilder_ContentType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMessageBuilder_ContentType()
      * @model
      * @generated
      */
     String getContentType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder#getContentType <em>Content Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.MessageBuilder#getContentType <em>Content Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Content Type</em>' attribute.
@@ -61,14 +61,14 @@ public interface MessageBuilder extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Builder Class</em>' attribute.
      * @see #setBuilderClass(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMessageBuilder_BuilderClass()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMessageBuilder_BuilderClass()
      * @model
      * @generated
      */
     String getBuilderClass();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder#getBuilderClass <em>Builder Class</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.MessageBuilder#getBuilderClass <em>Builder Class</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Builder Class</em>' attribute.
@@ -87,14 +87,14 @@ public interface MessageBuilder extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Formatter Class</em>' attribute.
      * @see #setFormatterClass(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMessageBuilder_FormatterClass()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMessageBuilder_FormatterClass()
      * @model
      * @generated
      */
     String getFormatterClass();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder#getFormatterClass <em>Formatter Class</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.MessageBuilder#getFormatterClass <em>Formatter Class</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Formatter Class</em>' attribute.

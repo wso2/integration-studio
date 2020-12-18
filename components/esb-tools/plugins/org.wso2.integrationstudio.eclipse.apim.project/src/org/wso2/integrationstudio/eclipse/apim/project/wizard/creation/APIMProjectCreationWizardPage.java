@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.project.wizard.creation;
+package org.wso2.integrationstudio.apim.project.wizard.creation;
 
 import java.io.File;
 import java.net.URL;
@@ -42,8 +42,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.apim.project.constant.APIMConstant;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Validator;
+import org.wso2.integrationstudio.apim.project.constant.APIMConstant;
+import org.wso2.integrationstudio.platform.core.utils.Validator;
 
 public class APIMProjectCreationWizardPage extends WizardPage {
 

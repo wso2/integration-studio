@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.mockservice;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.mockservice;
 
 import java.io.File;
 import java.util.Map;
@@ -55,13 +55,13 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.CustomUpdateWizardDialog;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.CustomWizardDialog;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.ReferenceTable;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.constant.Constants;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.MockService;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.MockServiceResource;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.mockresource.ResourceCreationWizard;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.CustomUpdateWizardDialog;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.CustomWizardDialog;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.ReferenceTable;
+import org.wso2.integrationstudio.esb.synapse.unit.test.constant.Constants;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.MockService;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.MockServiceResource;
+import org.wso2.integrationstudio.esb.synapse.unit.test.wizard.mockresource.ResourceCreationWizard;
 
 /**
  * Class responsible for creation of wizard page for mock service details.

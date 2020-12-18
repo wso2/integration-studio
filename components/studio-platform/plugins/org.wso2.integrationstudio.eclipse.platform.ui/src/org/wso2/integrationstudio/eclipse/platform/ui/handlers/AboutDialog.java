@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.handlers;
+package org.wso2.integrationstudio.platform.ui.handlers;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
@@ -34,9 +34,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.ResourceManager;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
-import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
+import org.wso2.integrationstudio.platform.core.utils.ResourceManager;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.platform.ui.Activator;
 
 public class AboutDialog extends Dialog {
 
@@ -50,7 +50,7 @@ public class AboutDialog extends Dialog {
 
 	public AboutDialog(Shell parentShell) {
 		super(parentShell);
-		setDefaultImage(ResourceManager.getPluginImage("org.wso2.integrationstudio.eclipse.platform.ui",
+		setDefaultImage(ResourceManager.getPluginImage("org.wso2.integrationstudio.platform.ui",
 		                                               "icons/carbon-studio-small-logo.gif"));
 	}
 
@@ -71,7 +71,7 @@ public class AboutDialog extends Dialog {
 	protected Control createDialogArea(Composite parent) {
 
 		Image logoImage =
-		                  ResourceManager.getPluginImage("org.wso2.integrationstudio.eclipse.platform.ui",
+		                  ResourceManager.getPluginImage("org.wso2.integrationstudio.platform.ui",
 		                                                 "icons/carbon-studio-logo.png");
 		logoWidth = logoImage.getImageData().width;
 		logoHeight = logoImage.getImageData().height;

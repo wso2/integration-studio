@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.dataservice.artifact;
+package org.wso2.integrationstudio.artifact.dataservice.artifact;
 
 public class DSSArtifact {
 

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.core.interfaces;
+package org.wso2.integrationstudio.registry.core.interfaces;
 
 import java.io.File;
 import java.net.URL;

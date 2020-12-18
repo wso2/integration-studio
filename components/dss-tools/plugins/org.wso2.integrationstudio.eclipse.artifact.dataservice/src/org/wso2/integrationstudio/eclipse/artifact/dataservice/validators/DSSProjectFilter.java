@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.artifact.dataservice.validators;
+package org.wso2.integrationstudio.artifact.dataservice.validators;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.utils.DataServiceArtifactConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.artifact.dataservice.Activator;
+import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceArtifactConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class DSSProjectFilter extends ViewerFilter {
 

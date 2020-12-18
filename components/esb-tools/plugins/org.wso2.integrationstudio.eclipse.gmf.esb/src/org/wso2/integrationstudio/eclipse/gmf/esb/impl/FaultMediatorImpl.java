@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultCodeSoap11;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultCodeSoap12;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultCodeType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultDetailType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultReasonType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultSoapVersion;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultStringType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FaultCodeSoap11;
+import org.wso2.integrationstudio.gmf.esb.FaultCodeSoap12;
+import org.wso2.integrationstudio.gmf.esb.FaultCodeType;
+import org.wso2.integrationstudio.gmf.esb.FaultDetailType;
+import org.wso2.integrationstudio.gmf.esb.FaultMediator;
+import org.wso2.integrationstudio.gmf.esb.FaultMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.FaultMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.FaultReasonType;
+import org.wso2.integrationstudio.gmf.esb.FaultSoapVersion;
+import org.wso2.integrationstudio.gmf.esb.FaultStringType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,27 +35,27 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getSoapVersion <em>Soap Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#isSerializeResponse <em>Serialize Response</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#isMarkAsResponse <em>Mark As Response</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultCodeSoap11 <em>Fault Code Soap11</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultCodeType <em>Fault Code Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultCodeExpression <em>Fault Code Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultStringType <em>Fault String Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultStringValue <em>Fault String Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultStringExpression <em>Fault String Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultActor <em>Fault Actor</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultCodeSoap12 <em>Fault Code Soap12</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultReasonType <em>Fault Reason Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultReasonValue <em>Fault Reason Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultReasonExpression <em>Fault Reason Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getRoleName <em>Role Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getNodeName <em>Node Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultDetailType <em>Fault Detail Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultDetailValue <em>Fault Detail Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getFaultDetailExpression <em>Fault Detail Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FaultMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getSoapVersion <em>Soap Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#isSerializeResponse <em>Serialize Response</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#isMarkAsResponse <em>Mark As Response</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultCodeSoap11 <em>Fault Code Soap11</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultCodeType <em>Fault Code Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultCodeExpression <em>Fault Code Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultStringType <em>Fault String Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultStringValue <em>Fault String Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultStringExpression <em>Fault String Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultActor <em>Fault Actor</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultCodeSoap12 <em>Fault Code Soap12</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultReasonType <em>Fault Reason Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultReasonValue <em>Fault Reason Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultReasonExpression <em>Fault Reason Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getRoleName <em>Role Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getNodeName <em>Node Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultDetailType <em>Fault Detail Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultDetailValue <em>Fault Detail Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getFaultDetailExpression <em>Fault Detail Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FaultMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouteBranch;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.ConditionalRouteBranch;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EvaluatorExpressionProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,9 +28,9 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl#isBreakAfterRoute <em>Break After Route</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl#getEvaluatorExpression <em>Evaluator Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl#getTargetSequence <em>Target Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ConditionalRouteBranchImpl#isBreakAfterRoute <em>Break After Route</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ConditionalRouteBranchImpl#getEvaluatorExpression <em>Evaluator Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ConditionalRouteBranchImpl#getTargetSequence <em>Target Sequence</em>}</li>
  * </ul>
  *
  * @generated

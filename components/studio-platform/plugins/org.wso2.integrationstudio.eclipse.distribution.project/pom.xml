@@ -24,7 +24,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>         
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.integrationstudio.eclipse.distribution.project</artifactId>
+    <artifactId>org.wso2.integrationstudio.distribution.project</artifactId>
   	<packaging>eclipse-plugin</packaging>
     <name>Integration Studio Composite Application Project</name>
 </project>

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,13 +17,13 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema#getValidateStaticSchemaKey <em>Validate Static Schema Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema#getValidateDynamicSchemaKey <em>Validate Dynamic Schema Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema#getValidateSchemaKeyType <em>Validate Schema Key Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema#getSchemaKey <em>Schema Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ValidateSchema#getValidateStaticSchemaKey <em>Validate Static Schema Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ValidateSchema#getValidateDynamicSchemaKey <em>Validate Dynamic Schema Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ValidateSchema#getValidateSchemaKeyType <em>Validate Schema Key Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ValidateSchema#getSchemaKey <em>Schema Key</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getValidateSchema()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getValidateSchema()
  * @model
  * @generated
  */
@@ -38,14 +38,14 @@ public interface ValidateSchema extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Validate Static Schema Key</em>' containment reference.
      * @see #setValidateStaticSchemaKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getValidateSchema_ValidateStaticSchemaKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getValidateSchema_ValidateStaticSchemaKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getValidateStaticSchemaKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema#getValidateStaticSchemaKey <em>Validate Static Schema Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ValidateSchema#getValidateStaticSchemaKey <em>Validate Static Schema Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Validate Static Schema Key</em>' containment reference.
@@ -64,14 +64,14 @@ public interface ValidateSchema extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Validate Dynamic Schema Key</em>' containment reference.
      * @see #setValidateDynamicSchemaKey(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getValidateSchema_ValidateDynamicSchemaKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getValidateSchema_ValidateDynamicSchemaKey()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getValidateDynamicSchemaKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema#getValidateDynamicSchemaKey <em>Validate Dynamic Schema Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ValidateSchema#getValidateDynamicSchemaKey <em>Validate Dynamic Schema Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Validate Dynamic Schema Key</em>' containment reference.
@@ -82,7 +82,7 @@ public interface ValidateSchema extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>Validate Schema Key Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.KeyType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.KeyType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Validate Schema Key Type</em>' attribute isn't clear,
@@ -90,20 +90,20 @@ public interface ValidateSchema extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Validate Schema Key Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.KeyType
+     * @see org.wso2.integrationstudio.gmf.esb.KeyType
      * @see #setValidateSchemaKeyType(KeyType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getValidateSchema_ValidateSchemaKeyType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getValidateSchema_ValidateSchemaKeyType()
      * @model
      * @generated
      */
     KeyType getValidateSchemaKeyType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema#getValidateSchemaKeyType <em>Validate Schema Key Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ValidateSchema#getValidateSchemaKeyType <em>Validate Schema Key Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Validate Schema Key Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.KeyType
+     * @see org.wso2.integrationstudio.gmf.esb.KeyType
      * @see #getValidateSchemaKeyType()
      * @generated
      */
@@ -119,14 +119,14 @@ public interface ValidateSchema extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Schema Key</em>' reference.
      * @see #setSchemaKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getValidateSchema_SchemaKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getValidateSchema_SchemaKey()
      * @model
      * @generated
      */
     RegistryKeyProperty getSchemaKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema#getSchemaKey <em>Schema Key</em>}' reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ValidateSchema#getSchemaKey <em>Schema Key</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Schema Key</em>' reference.

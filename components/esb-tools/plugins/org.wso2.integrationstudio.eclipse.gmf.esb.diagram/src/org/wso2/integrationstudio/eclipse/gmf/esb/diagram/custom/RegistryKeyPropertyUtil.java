@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +28,13 @@ import org.eclipse.emf.query.statements.FROM;
 import org.eclipse.emf.query.statements.IQueryResult;
 import org.eclipse.emf.query.statements.SELECT;
 import org.eclipse.emf.query.statements.WHERE;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LocalEntry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor.NamedEntityType;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.LocalEntry;
+import org.wso2.integrationstudio.gmf.esb.MediatorSequence;
+import org.wso2.integrationstudio.gmf.esb.ProxyService;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.provider.NamedEntityDescriptor.NamedEntityType;
 
 /**
  * Utility class for RegistryKeyProperty

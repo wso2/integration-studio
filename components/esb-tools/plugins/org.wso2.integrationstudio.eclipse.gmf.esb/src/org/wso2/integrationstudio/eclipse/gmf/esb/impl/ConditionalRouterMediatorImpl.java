@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,13 +21,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouteBranch;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediatorAdditionalOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.ConditionalRouteBranch;
+import org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediator;
+import org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediatorAdditionalOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,12 +37,12 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#isContinueAfterRoute <em>Continue After Route</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#getConditionalRouteBranches <em>Conditional Route Branches</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#getAdditionalOutputConnector <em>Additional Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ConditionalRouterMediatorImpl#isContinueAfterRoute <em>Continue After Route</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ConditionalRouterMediatorImpl#getConditionalRouteBranches <em>Conditional Route Branches</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ConditionalRouterMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ConditionalRouterMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ConditionalRouterMediatorImpl#getAdditionalOutputConnector <em>Additional Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ConditionalRouterMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  * </ul>
  *
  * @generated

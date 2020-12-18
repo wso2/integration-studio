@@ -25,7 +25,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>   
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.integrationstudio.eclipse.artifact.bpel</artifactId>
+    <artifactId>org.wso2.integrationstudio.artifact.bpel</artifactId>
     <packaging>eclipse-plugin</packaging>
     <name>WSO2 Integration Studio BPEL Artifact</name>
 </project>

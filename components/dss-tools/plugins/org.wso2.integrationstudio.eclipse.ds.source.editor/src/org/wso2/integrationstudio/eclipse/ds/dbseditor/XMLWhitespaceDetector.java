@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.dbseditor;
+package org.wso2.integrationstudio.ds.dbseditor;
 
 import org.eclipse.jface.text.rules.IWhitespaceDetector;
 

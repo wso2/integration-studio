@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,17 +17,17 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorContainer#getRouterTargetContainer <em>Router Target Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RouterMediatorContainer#getRouterTargetContainer <em>Router Target Container</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterMediatorContainer()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterMediatorContainer()
  * @model
  * @generated
  */
 public interface RouterMediatorContainer extends EsbNode {
     /**
      * Returns the value of the '<em><b>Router Target Container</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Router Target Container</em>' containment reference list isn't clear,
@@ -35,7 +35,7 @@ public interface RouterMediatorContainer extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Router Target Container</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterMediatorContainer_RouterTargetContainer()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterMediatorContainer_RouterTargetContainer()
      * @model containment="true"
      * @generated
      */

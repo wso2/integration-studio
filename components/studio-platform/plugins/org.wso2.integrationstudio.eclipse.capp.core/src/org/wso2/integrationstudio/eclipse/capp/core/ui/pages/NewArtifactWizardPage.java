@@ -29,7 +29,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.ui.pages;
+package org.wso2.integrationstudio.capp.core.ui.pages;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -47,12 +47,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.capp.core.Activator;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.ICAppArtifactManager;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.IServerRole;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.capp.core.Activator;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.CAppEnvironment;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.ICAppArtifactManager;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.IServerRole;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class NewArtifactWizardPage extends WizardPage implements Observer{
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

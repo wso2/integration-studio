@@ -24,8 +24,8 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.integrationstudio.datamapper.TreeNode;
 import org.wso2.integrationstudio.datamapper.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class Function {
 

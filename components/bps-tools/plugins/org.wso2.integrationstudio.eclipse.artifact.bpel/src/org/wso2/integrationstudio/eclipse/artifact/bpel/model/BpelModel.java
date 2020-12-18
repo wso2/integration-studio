@@ -1,8 +1,8 @@
-package org.wso2.integrationstudio.eclipse.artifact.bpel.model;
+package org.wso2.integrationstudio.artifact.bpel.model;
 
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class BpelModel extends ProjectDataModel {
 

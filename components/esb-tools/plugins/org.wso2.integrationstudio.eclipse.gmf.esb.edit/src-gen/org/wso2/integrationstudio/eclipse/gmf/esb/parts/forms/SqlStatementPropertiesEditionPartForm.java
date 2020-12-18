@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -58,10 +58,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -386,7 +386,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#getQueryString()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#getQueryString()
 	 * 
 	 */
 	public String getQueryString() {
@@ -396,7 +396,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#setQueryString(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#setQueryString(String newValue)
 	 * 
 	 */
 	public void setQueryString(String newValue) {
@@ -420,7 +420,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#initParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#initParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initParameters(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -441,7 +441,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#updateParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#updateParameters()
 	 * 
 	 */
 	public void updateParameters() {
@@ -451,7 +451,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#addFilterParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#addFilterParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToParameters(ViewerFilter filter) {
@@ -464,7 +464,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#addBusinessFilterParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#addBusinessFilterParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToParameters(ViewerFilter filter) {
@@ -474,7 +474,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#isContainedInParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#isContainedInParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInParametersTable(EObject element) {
@@ -484,7 +484,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#getResultsEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#getResultsEnabled()
 	 * 
 	 */
 	public Boolean getResultsEnabled() {
@@ -494,7 +494,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#setResultsEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#setResultsEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setResultsEnabled(Boolean newValue) {
@@ -518,7 +518,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#initResults(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#initResults(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initResults(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -539,7 +539,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#updateResults()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#updateResults()
 	 * 
 	 */
 	public void updateResults() {
@@ -549,7 +549,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#addFilterResults(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#addFilterResults(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToResults(ViewerFilter filter) {
@@ -562,7 +562,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#addBusinessFilterResults(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#addBusinessFilterResults(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToResults(ViewerFilter filter) {
@@ -572,7 +572,7 @@ public class SqlStatementPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlStatementPropertiesEditionPart#isContainedInResultsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlStatementPropertiesEditionPart#isContainedInResultsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInResultsTable(EObject element) {

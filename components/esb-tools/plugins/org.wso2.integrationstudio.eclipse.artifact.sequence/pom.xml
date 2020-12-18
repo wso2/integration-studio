@@ -22,11 +22,11 @@
 		<version>7.2.0-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>org.wso2.integrationstudio.eclipse.artifact.sequence</artifactId>
+	<artifactId>org.wso2.integrationstudio.artifact.sequence</artifactId>
 	<packaging>eclipse-plugin</packaging>
 	<name>WSO2 Integration Studio Proxy Service artifact</name>
 	<!--dependencies> <dependency> <groupId>org.wso2.integrationstudio</groupId> 
-		<artifactId>org.wso2.integrationstudio.eclipse.esb</artifactId> <version>${esb.tools.version}</version> 
+		<artifactId>org.wso2.integrationstudio.esb</artifactId> <version>${esb.tools.version}</version> 
 		</dependency> <dependency> <groupId>org.eclipse</groupId> <artifactId>org.eclipse.emf.ecore</artifactId> 
 		<version>2.5.0.v200906151043</version> </dependency> <dependency> <groupId>org.eclipse</groupId> 
 		<artifactId>org.eclipse.emf.common</artifactId> <version>2.5.0.v200906151043</version> 

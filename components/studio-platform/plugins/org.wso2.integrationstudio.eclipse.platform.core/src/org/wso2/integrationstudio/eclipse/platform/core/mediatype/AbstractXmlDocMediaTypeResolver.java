@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.mediatype;
+package org.wso2.integrationstudio.platform.core.mediatype;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -26,8 +26,8 @@ import javax.xml.stream.XMLStreamReader;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeFromStreamResolver;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeFromStreamResolver;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public abstract class AbstractXmlDocMediaTypeResolver implements IMediaTypeFromStreamResolver {
 

@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -80,22 +80,22 @@ import org.eclipse.swt.widgets.ToolTip;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleOptionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms.CloudConnectorOperationPropertiesEditionPartForm;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.condition.manager.EnableCondition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.condition.manager.EnableConditionManager;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.DescriptorConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.Element;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.KeyValueTableColumn;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.CallTemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleOptionType;
+import org.wso2.integrationstudio.gmf.esb.impl.CloudConnectorOperationImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.forms.CloudConnectorOperationPropertiesEditionPartForm;
+import org.wso2.integrationstudio.gmf.esb.presentation.condition.manager.EnableCondition;
+import org.wso2.integrationstudio.gmf.esb.presentation.condition.manager.EnableConditionManager;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.AttributeValueType;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.DescriptorConstants;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.Element;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.KeyValueTableColumn;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import java.util.Map;
 import java.util.Map.Entry;

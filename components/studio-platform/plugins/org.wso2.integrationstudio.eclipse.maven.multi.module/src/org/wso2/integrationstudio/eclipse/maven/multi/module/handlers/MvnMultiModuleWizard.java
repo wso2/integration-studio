@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.maven.multi.module.handlers;
+package org.wso2.integrationstudio.maven.multi.module.handlers;
 
 import java.io.File;
 import java.net.URL;
@@ -42,22 +42,22 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.multi.module.Activator;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.integrationstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.multi.module.Activator;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
     private static final String MAVEN_ECLIPSE_PLUGIN = "org.apache.maven.plugins:maven-eclipse-plugin:2.9";
-    private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.perspective";
+    private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.integrationstudio.gmf.esb.diagram.custom.perspective";
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     private MvnMultiModuleModel moduleModel;
@@ -221,7 +221,7 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
 						IFile pom = project.getFile("pom.xml");
 						IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 						page.openEditor(new FileEditorInput(pom),
-								"org.wso2.integrationstudio.eclipse.maven.multi.module.editor.DistProjectEditor");
+								"org.wso2.integrationstudio.maven.multi.module.editor.DistProjectEditor");
 						IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 								.findView(IPageLayout.ID_PROJECT_EXPLORER);
 						((ISetSelectionTarget) view).selectReveal(new StructuredSelection(pom));

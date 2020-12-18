@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -23,15 +23,15 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.gmf.esb.DataMapperMediator;
+import org.wso2.integrationstudio.gmf.esb.DataMapperMediatorDataTypes;
+import org.wso2.integrationstudio.gmf.esb.DataMapperMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.DataMapperMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,18 +41,18 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputType <em>Input Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getConfiguration <em>Configuration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputSchema <em>Input Schema</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getOutputSchema <em>Output Schema</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getXsltStyleSheet <em>Xslt Style Sheet</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getConfigurationLocalPath <em>Configuration Local Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputSchemaLocalPath <em>Input Schema Local Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getOutputSchemaLocalPath <em>Output Schema Local Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getXsltStyleSheetLocalPath <em>Xslt Style Sheet Local Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getOutputType <em>Output Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl#getInputType <em>Input Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl#getConfiguration <em>Configuration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl#getInputSchema <em>Input Schema</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl#getOutputSchema <em>Output Schema</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl#getXsltStyleSheet <em>Xslt Style Sheet</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl#getConfigurationLocalPath <em>Configuration Local Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl#getInputSchemaLocalPath <em>Input Schema Local Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl#getOutputSchemaLocalPath <em>Output Schema Local Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl#getXsltStyleSheetLocalPath <em>Xslt Style Sheet Local Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DataMapperMediatorImpl#getOutputType <em>Output Type</em>}</li>
  * </ul>
  *
  * @generated

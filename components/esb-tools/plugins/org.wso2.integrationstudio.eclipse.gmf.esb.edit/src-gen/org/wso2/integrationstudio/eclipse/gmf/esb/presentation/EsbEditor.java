@@ -3,7 +3,7 @@
  * </copyright>
  *
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import org.eclipse.emf.ecore.EObject;
 

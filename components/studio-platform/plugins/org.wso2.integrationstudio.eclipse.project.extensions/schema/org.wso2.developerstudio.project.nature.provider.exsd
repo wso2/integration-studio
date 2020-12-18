@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.project.extensions" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.project.extensions" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.project.extensions" id="org.wso2.integrationstudio.project.nature.provider" name="org.wso2.integrationstudio.project.nature.provider"/>
+         <meta.schema plugin="org.wso2.integrationstudio.project.extensions" id="org.wso2.integrationstudio.project.nature.provider" name="org.wso2.integrationstudio.project.nature.provider"/>
       </appinfo>
       <documentation>
          This extension point facilitates adding of new project natures in to WSO2 Integration Studio.
@@ -97,8 +97,8 @@
          &lt;extension
           point=&quot;org.wso2.integrationstudio.project.nature.provider&quot;&gt;
            &lt;projectnature
-             id=&quot;org.wso2.integrationstudio.eclipse.maven.features&quot;
-             projectnature=&quot;org.wso2.integrationstudio.eclipse.maven.project.nature&quot;
+             id=&quot;org.wso2.integrationstudio.maven.features&quot;
+             projectnature=&quot;org.wso2.integrationstudio.maven.project.nature&quot;
              ismultipleartifact=&quot;true&quot;            
              &lt;/projectnature&gt;
     &lt;/extension&gt;

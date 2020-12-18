@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.maven.multi.module.handlers;
+package org.wso2.integrationstudio.maven.multi.module.handlers;
 
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.platform.core.nature.AbstractWSO2ProjectNature;
+import org.wso2.integrationstudio.platform.core.nature.AbstractWSO2ProjectNature;
 
 public class MavenMultiModuleProjectNature extends AbstractWSO2ProjectNature {
 

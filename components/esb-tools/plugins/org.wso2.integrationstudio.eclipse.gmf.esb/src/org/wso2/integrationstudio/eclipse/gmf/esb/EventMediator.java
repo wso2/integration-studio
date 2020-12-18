@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,22 +15,22 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator#getTopicType <em>Topic Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator#getStaticTopic <em>Static Topic</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator#getDynamicTopic <em>Dynamic Topic</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator#getEventExpression <em>Event Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EventMediator#getTopicType <em>Topic Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EventMediator#getStaticTopic <em>Static Topic</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EventMediator#getDynamicTopic <em>Dynamic Topic</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EventMediator#getEventExpression <em>Event Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EventMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EventMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEventMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEventMediator()
  * @model
  * @generated
  */
 public interface EventMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Topic Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.EventTopicType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.EventTopicType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Topic Type</em>' attribute isn't clear,
@@ -38,20 +38,20 @@ public interface EventMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Topic Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EventTopicType
+     * @see org.wso2.integrationstudio.gmf.esb.EventTopicType
      * @see #setTopicType(EventTopicType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEventMediator_TopicType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEventMediator_TopicType()
      * @model
      * @generated
      */
     EventTopicType getTopicType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator#getTopicType <em>Topic Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EventMediator#getTopicType <em>Topic Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Topic Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EventTopicType
+     * @see org.wso2.integrationstudio.gmf.esb.EventTopicType
      * @see #getTopicType()
      * @generated
      */
@@ -68,14 +68,14 @@ public interface EventMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Static Topic</em>' attribute.
      * @see #setStaticTopic(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEventMediator_StaticTopic()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEventMediator_StaticTopic()
      * @model default=""
      * @generated
      */
     String getStaticTopic();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator#getStaticTopic <em>Static Topic</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EventMediator#getStaticTopic <em>Static Topic</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Static Topic</em>' attribute.
@@ -94,14 +94,14 @@ public interface EventMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Dynamic Topic</em>' containment reference.
      * @see #setDynamicTopic(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEventMediator_DynamicTopic()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEventMediator_DynamicTopic()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getDynamicTopic();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator#getDynamicTopic <em>Dynamic Topic</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EventMediator#getDynamicTopic <em>Dynamic Topic</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Dynamic Topic</em>' containment reference.
@@ -120,14 +120,14 @@ public interface EventMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Event Expression</em>' containment reference.
      * @see #setEventExpression(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEventMediator_EventExpression()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEventMediator_EventExpression()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getEventExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator#getEventExpression <em>Event Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EventMediator#getEventExpression <em>Event Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Event Expression</em>' containment reference.
@@ -146,14 +146,14 @@ public interface EventMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(EventMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEventMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEventMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     EventMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EventMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -172,14 +172,14 @@ public interface EventMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(EventMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEventMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEventMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     EventMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EventMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.

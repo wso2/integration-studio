@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.provider;
+package org.wso2.integrationstudio.ds.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -27,13 +27,13 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.wso2.integrationstudio.eclipse.ds.DataService;
-import org.wso2.integrationstudio.eclipse.ds.DsFactory;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
+import org.wso2.integrationstudio.ds.DataService;
+import org.wso2.integrationstudio.ds.DsFactory;
+import org.wso2.integrationstudio.ds.DsPackage;
 
 
 /**
- * This is the item provider adapter for a {@link org.wso2.integrationstudio.eclipse.ds.DataService} object.
+ * This is the item provider adapter for a {@link org.wso2.integrationstudio.ds.DataService} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

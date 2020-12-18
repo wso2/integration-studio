@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,19 +31,19 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
 import org.wso2.carbon.mediator.publishevent.Property;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AttributeValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.AttributeValueType;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PublishEventMediator;
+import org.wso2.integrationstudio.gmf.esb.PublishEventMediatorAttribute;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbNodeTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
- * {@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediator} model
+ * {@link org.wso2.integrationstudio.gmf.esb.PublishEventMediator} model
  * objects into corresponding synapse artifact(s).
  */
 public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer {

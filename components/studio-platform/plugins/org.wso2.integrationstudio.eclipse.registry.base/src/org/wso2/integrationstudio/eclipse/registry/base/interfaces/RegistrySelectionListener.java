@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.interfaces;
+package org.wso2.integrationstudio.registry.base.interfaces;
 
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryURLNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryURLNode;
 
 public interface RegistrySelectionListener {
 	public void setSelectionChanged(RegistryURLNode selectedRegistryURLData);

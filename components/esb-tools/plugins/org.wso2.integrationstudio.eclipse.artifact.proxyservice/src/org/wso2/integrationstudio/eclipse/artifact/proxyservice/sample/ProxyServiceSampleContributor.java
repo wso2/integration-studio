@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.proxyservice.sample;
+package org.wso2.integrationstudio.artifact.proxyservice.sample;
 
 import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.utils.ProxyServiceImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.utils.ProxyServiceTemplateUtils;
-import org.wso2.integrationstudio.eclipse.samples.contributor.AbstractSampleContributor;
+import org.wso2.integrationstudio.artifact.proxyservice.utils.ProxyServiceImageUtils;
+import org.wso2.integrationstudio.artifact.proxyservice.utils.ProxyServiceTemplateUtils;
+import org.wso2.integrationstudio.samples.contributor.AbstractSampleContributor;
 
 public class ProxyServiceSampleContributor extends AbstractSampleContributor{
 	static String caption="Stock Quote Proxy Service";

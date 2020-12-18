@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.views;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.views;
 
 /**
  * This enum contains different actions could done on content passed with this type

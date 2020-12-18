@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -58,17 +58,17 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms.SequencePropertiesEditionPartForm;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.forms.SequencePropertiesEditionPartForm;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -459,7 +459,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart#getFactType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart#getFactType()
 	 * 
 	 */
 	public Enumerator getFactType() {
@@ -470,7 +470,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart#initFactType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart#initFactType(Object input, Enumerator current)
 	 */
 	public void initFactType(Object input, Enumerator current) {
 		factType.setInput(input);
@@ -488,7 +488,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart#setFactType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart#setFactType(Enumerator newValue)
 	 * 
 	 */
 	public void setFactType(Enumerator newValue) {
@@ -506,7 +506,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart#getFactCustomType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart#getFactCustomType()
 	 * 
 	 */
 	public String getFactCustomType() {
@@ -516,7 +516,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart#setFactCustomType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart#setFactCustomType(String newValue)
 	 * 
 	 */
 	public void setFactCustomType(String newValue) {
@@ -538,7 +538,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart#getFactName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart#getFactName()
 	 * 
 	 */
 	public String getFactName() {
@@ -548,7 +548,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart#setFactName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart#setFactName(String newValue)
 	 * 
 	 */
 	public void setFactName(String newValue) {
@@ -570,7 +570,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart#getValueType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart#getValueType()
 	 * 
 	 */
 	public Enumerator getValueType() {
@@ -581,7 +581,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart#initValueType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart#initValueType(Object input, Enumerator current)
 	 */
 	public void initValueType(Object input, Enumerator current) {
 		valueType.setInput(input);
@@ -599,7 +599,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart#setValueType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart#setValueType(Enumerator newValue)
 	 * 
 	 */
 	public void setValueType(Enumerator newValue) {
@@ -617,7 +617,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart#getValueLiteral()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart#getValueLiteral()
 	 * 
 	 */
 	public String getValueLiteral() {
@@ -627,7 +627,7 @@ public class RuleFactPropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RuleFactPropertiesEditionPart#setValueLiteral(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RuleFactPropertiesEditionPart#setValueLiteral(String newValue)
 	 * 
 	 */
 	public void setValueLiteral(String newValue) {

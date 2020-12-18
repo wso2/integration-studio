@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.policies;
 
 import java.util.Iterator;
 
@@ -13,17 +13,17 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.MediatorFlow14CreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.ValidateMediatorInputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.ValidateMediatorOnFailOutputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.ValidateMediatorOutputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlow14EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ValidateMediatorInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ValidateMediatorOnFailOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ValidateMediatorOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.MediatorFlow14CreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.ValidateMediatorInputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.ValidateMediatorOnFailOutputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.ValidateMediatorOutputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlow14EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ValidateMediatorInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ValidateMediatorOnFailOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ValidateMediatorOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated

@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.updater.core;
+package org.wso2.integrationstudio.updater.core;
 
 public class Constants {
 	public static final String PREF_LAST_PROMPT_FOR_UPDATES = "lastPromptForUpdates";
-	public static final String NODE_UPDATE_HANDER = "org.wso2.integrationstudio.eclipse.updater.handler";
+	public static final String NODE_UPDATE_HANDER = "org.wso2.integrationstudio.updater.handler";
 }

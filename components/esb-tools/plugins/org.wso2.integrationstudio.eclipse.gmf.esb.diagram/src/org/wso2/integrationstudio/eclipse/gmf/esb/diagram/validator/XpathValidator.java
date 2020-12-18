@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator;
+package org.wso2.integrationstudio.gmf.esb.diagram.validator;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -27,7 +27,7 @@ import javax.xml.xpath.XPathFactory;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
 
 public class XpathValidator {
 

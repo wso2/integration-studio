@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,50 +17,50 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getFaultInputConnector <em>Fault Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOutSequenceOutputConnector <em>Out Sequence Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getInSequenceInputConnectors <em>In Sequence Input Connectors</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getPinnedServers <em>Pinned Servers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getServiceGroup <em>Service Group</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isTraceEnabled <em>Trace Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isStartOnLoad <em>Start On Load</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getTransports <em>Transports</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isReliableMessagingEnabled <em>Reliable Messaging Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isSecurityEnabled <em>Security Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getServiceParameters <em>Service Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getServicePolicies <em>Service Policies</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getContainer <em>Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getInSequenceType <em>In Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getInSequenceKey <em>In Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getInSequenceName <em>In Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getInSequenceOnError <em>In Sequence On Error</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOutSequenceType <em>Out Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOutSequenceKey <em>Out Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOutSequenceName <em>Out Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOutSequenceOnError <em>Out Sequence On Error</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getFaultSequenceType <em>Fault Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getFaultSequenceKey <em>Fault Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getFaultSequenceOnError <em>Fault Sequence On Error</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getEndpointType <em>Endpoint Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getEndpointKey <em>Endpoint Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getEndpointName <em>Endpoint Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isMainSequence <em>Main Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getWsdlType <em>Wsdl Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isPreservePolicy <em>Preserve Policy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getWsdlXML <em>Wsdl XML</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getWsdlURL <em>Wsdl URL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getWsdlKey <em>Wsdl Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getWsdlEndpoint <em>Wsdl Endpoint</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getWsdlResources <em>Wsdl Resources</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOnError <em>On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getFaultInputConnector <em>Fault Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOutSequenceOutputConnector <em>Out Sequence Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getInSequenceInputConnectors <em>In Sequence Input Connectors</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getPinnedServers <em>Pinned Servers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getServiceGroup <em>Service Group</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isStartOnLoad <em>Start On Load</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getTransports <em>Transports</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isReliableMessagingEnabled <em>Reliable Messaging Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isSecurityEnabled <em>Security Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getServiceParameters <em>Service Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getServicePolicies <em>Service Policies</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getInSequenceType <em>In Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getInSequenceKey <em>In Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getInSequenceName <em>In Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getInSequenceOnError <em>In Sequence On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOutSequenceType <em>Out Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOutSequenceKey <em>Out Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOutSequenceName <em>Out Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOutSequenceOnError <em>Out Sequence On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getFaultSequenceType <em>Fault Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getFaultSequenceKey <em>Fault Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getFaultSequenceOnError <em>Fault Sequence On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getEndpointType <em>Endpoint Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getEndpointKey <em>Endpoint Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getEndpointName <em>Endpoint Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isMainSequence <em>Main Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getWsdlType <em>Wsdl Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isPreservePolicy <em>Preserve Policy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getWsdlXML <em>Wsdl XML</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getWsdlURL <em>Wsdl URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getWsdlKey <em>Wsdl Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getWsdlEndpoint <em>Wsdl Endpoint</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getWsdlResources <em>Wsdl Resources</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOnError <em>On Error</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService()
  * @model
  * @generated
  */
@@ -75,14 +75,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(ProxyOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_OutputConnector()
      * @model containment="true"
      * @generated
      */
     ProxyOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -101,14 +101,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(ProxyInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_InputConnector()
      * @model containment="true"
      * @generated
      */
     ProxyInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -127,14 +127,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fault Input Connector</em>' containment reference.
      * @see #setFaultInputConnector(ProxyFaultInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_FaultInputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_FaultInputConnector()
      * @model containment="true"
      * @generated
      */
     ProxyFaultInputConnector getFaultInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getFaultInputConnector <em>Fault Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getFaultInputConnector <em>Fault Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fault Input Connector</em>' containment reference.
@@ -153,14 +153,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Out Sequence Output Connector</em>' containment reference.
      * @see #setOutSequenceOutputConnector(ProxyOutSequenceOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_OutSequenceOutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_OutSequenceOutputConnector()
      * @model containment="true"
      * @generated
      */
     ProxyOutSequenceOutputConnector getOutSequenceOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOutSequenceOutputConnector <em>Out Sequence Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOutSequenceOutputConnector <em>Out Sequence Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Out Sequence Output Connector</em>' containment reference.
@@ -171,7 +171,7 @@ public interface ProxyService extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>In Sequence Input Connectors</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.ProxyInSequenceInputConnector}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>In Sequence Input Connectors</em>' containment reference list isn't clear,
@@ -179,7 +179,7 @@ public interface ProxyService extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>In Sequence Input Connectors</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_InSequenceInputConnectors()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_InSequenceInputConnectors()
      * @model containment="true"
      * @generated
      */
@@ -196,14 +196,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_Name()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_Name()
      * @model default="proxy1"
      * @generated
      */
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Name</em>' attribute.
@@ -222,14 +222,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Pinned Servers</em>' attribute.
      * @see #setPinnedServers(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_PinnedServers()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_PinnedServers()
      * @model
      * @generated
      */
     String getPinnedServers();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getPinnedServers <em>Pinned Servers</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getPinnedServers <em>Pinned Servers</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Pinned Servers</em>' attribute.
@@ -248,14 +248,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Service Group</em>' attribute.
      * @see #setServiceGroup(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_ServiceGroup()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_ServiceGroup()
      * @model
      * @generated
      */
     String getServiceGroup();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getServiceGroup <em>Service Group</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getServiceGroup <em>Service Group</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Service Group</em>' attribute.
@@ -274,14 +274,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Trace Enabled</em>' attribute.
      * @see #setTraceEnabled(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_TraceEnabled()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_TraceEnabled()
      * @model
      * @generated
      */
     boolean isTraceEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isTraceEnabled <em>Trace Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isTraceEnabled <em>Trace Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Trace Enabled</em>' attribute.
@@ -300,14 +300,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Statistics Enabled</em>' attribute.
      * @see #setStatisticsEnabled(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_StatisticsEnabled()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_StatisticsEnabled()
      * @model
      * @generated
      */
     boolean isStatisticsEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isStatisticsEnabled <em>Statistics Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isStatisticsEnabled <em>Statistics Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Statistics Enabled</em>' attribute.
@@ -326,14 +326,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Start On Load</em>' attribute.
      * @see #setStartOnLoad(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_StartOnLoad()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_StartOnLoad()
      * @model
      * @generated
      */
     boolean isStartOnLoad();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isStartOnLoad <em>Start On Load</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isStartOnLoad <em>Start On Load</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Start On Load</em>' attribute.
@@ -353,14 +353,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transports</em>' attribute.
      * @see #setTransports(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_Transports()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_Transports()
      * @model default="https,http"
      * @generated
      */
     String getTransports();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getTransports <em>Transports</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getTransports <em>Transports</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transports</em>' attribute.
@@ -380,14 +380,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Reliable Messaging Enabled</em>' attribute.
      * @see #setReliableMessagingEnabled(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_ReliableMessagingEnabled()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_ReliableMessagingEnabled()
      * @model default="false"
      * @generated
      */
     boolean isReliableMessagingEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isReliableMessagingEnabled <em>Reliable Messaging Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isReliableMessagingEnabled <em>Reliable Messaging Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Reliable Messaging Enabled</em>' attribute.
@@ -407,14 +407,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Security Enabled</em>' attribute.
      * @see #setSecurityEnabled(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_SecurityEnabled()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_SecurityEnabled()
      * @model default="false"
      * @generated
      */
     boolean isSecurityEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isSecurityEnabled <em>Security Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isSecurityEnabled <em>Security Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Security Enabled</em>' attribute.
@@ -425,7 +425,7 @@ public interface ProxyService extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Service Parameters</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceParameter}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.ProxyServiceParameter}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Service Parameters</em>' containment reference list isn't clear,
@@ -433,7 +433,7 @@ public interface ProxyService extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Service Parameters</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_ServiceParameters()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_ServiceParameters()
      * @model containment="true"
      * @generated
      */
@@ -441,7 +441,7 @@ public interface ProxyService extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Service Policies</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServicePolicy}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.ProxyServicePolicy}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Service Policies</em>' containment reference list isn't clear,
@@ -449,7 +449,7 @@ public interface ProxyService extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Service Policies</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_ServicePolicies()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_ServicePolicies()
      * @model containment="true"
      * @generated
      */
@@ -465,14 +465,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Container</em>' containment reference.
      * @see #setContainer(ProxyServiceContainer)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_Container()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_Container()
      * @model containment="true"
      * @generated
      */
     ProxyServiceContainer getContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getContainer <em>Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getContainer <em>Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Container</em>' containment reference.
@@ -483,7 +483,7 @@ public interface ProxyService extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>In Sequence Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.SequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>In Sequence Type</em>' attribute isn't clear,
@@ -491,20 +491,20 @@ public interface ProxyService extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>In Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #setInSequenceType(SequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_InSequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_InSequenceType()
      * @model
      * @generated
      */
     SequenceType getInSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getInSequenceType <em>In Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getInSequenceType <em>In Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>In Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #getInSequenceType()
      * @generated
      */
@@ -520,14 +520,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>In Sequence Key</em>' containment reference.
      * @see #setInSequenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_InSequenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_InSequenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getInSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getInSequenceKey <em>In Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getInSequenceKey <em>In Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>In Sequence Key</em>' containment reference.
@@ -546,14 +546,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>In Sequence Name</em>' attribute.
      * @see #setInSequenceName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_InSequenceName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_InSequenceName()
      * @model
      * @generated
      */
     String getInSequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getInSequenceName <em>In Sequence Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getInSequenceName <em>In Sequence Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>In Sequence Name</em>' attribute.
@@ -572,14 +572,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>In Sequence On Error</em>' containment reference.
      * @see #setInSequenceOnError(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_InSequenceOnError()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_InSequenceOnError()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getInSequenceOnError();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getInSequenceOnError <em>In Sequence On Error</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getInSequenceOnError <em>In Sequence On Error</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>In Sequence On Error</em>' containment reference.
@@ -590,7 +590,7 @@ public interface ProxyService extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Out Sequence Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.SequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Out Sequence Type</em>' attribute isn't clear,
@@ -598,20 +598,20 @@ public interface ProxyService extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Out Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #setOutSequenceType(SequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_OutSequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_OutSequenceType()
      * @model
      * @generated
      */
     SequenceType getOutSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOutSequenceType <em>Out Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOutSequenceType <em>Out Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Out Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #getOutSequenceType()
      * @generated
      */
@@ -627,14 +627,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Out Sequence Key</em>' containment reference.
      * @see #setOutSequenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_OutSequenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_OutSequenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getOutSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOutSequenceKey <em>Out Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOutSequenceKey <em>Out Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Out Sequence Key</em>' containment reference.
@@ -653,14 +653,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Out Sequence Name</em>' attribute.
      * @see #setOutSequenceName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_OutSequenceName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_OutSequenceName()
      * @model
      * @generated
      */
     String getOutSequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOutSequenceName <em>Out Sequence Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOutSequenceName <em>Out Sequence Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Out Sequence Name</em>' attribute.
@@ -679,14 +679,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Out Sequence On Error</em>' containment reference.
      * @see #setOutSequenceOnError(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_OutSequenceOnError()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_OutSequenceOnError()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getOutSequenceOnError();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOutSequenceOnError <em>Out Sequence On Error</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOutSequenceOnError <em>Out Sequence On Error</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Out Sequence On Error</em>' containment reference.
@@ -697,7 +697,7 @@ public interface ProxyService extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Fault Sequence Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.SequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Fault Sequence Type</em>' attribute isn't clear,
@@ -705,20 +705,20 @@ public interface ProxyService extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fault Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #setFaultSequenceType(SequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_FaultSequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_FaultSequenceType()
      * @model
      * @generated
      */
     SequenceType getFaultSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getFaultSequenceType <em>Fault Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getFaultSequenceType <em>Fault Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fault Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #getFaultSequenceType()
      * @generated
      */
@@ -734,14 +734,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fault Sequence Key</em>' containment reference.
      * @see #setFaultSequenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_FaultSequenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_FaultSequenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getFaultSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getFaultSequenceKey <em>Fault Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getFaultSequenceKey <em>Fault Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fault Sequence Key</em>' containment reference.
@@ -760,14 +760,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fault Sequence Name</em>' attribute.
      * @see #setFaultSequenceName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_FaultSequenceName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_FaultSequenceName()
      * @model
      * @generated
      */
     String getFaultSequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getFaultSequenceName <em>Fault Sequence Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getFaultSequenceName <em>Fault Sequence Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fault Sequence Name</em>' attribute.
@@ -786,14 +786,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fault Sequence On Error</em>' containment reference.
      * @see #setFaultSequenceOnError(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_FaultSequenceOnError()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_FaultSequenceOnError()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getFaultSequenceOnError();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getFaultSequenceOnError <em>Fault Sequence On Error</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getFaultSequenceOnError <em>Fault Sequence On Error</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fault Sequence On Error</em>' containment reference.
@@ -804,7 +804,7 @@ public interface ProxyService extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Endpoint Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.SequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Endpoint Type</em>' attribute isn't clear,
@@ -812,20 +812,20 @@ public interface ProxyService extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Endpoint Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #setEndpointType(SequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_EndpointType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_EndpointType()
      * @model
      * @generated
      */
     SequenceType getEndpointType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getEndpointType <em>Endpoint Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getEndpointType <em>Endpoint Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Endpoint Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #getEndpointType()
      * @generated
      */
@@ -841,14 +841,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Endpoint Key</em>' containment reference.
      * @see #setEndpointKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_EndpointKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_EndpointKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getEndpointKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getEndpointKey <em>Endpoint Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getEndpointKey <em>Endpoint Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Endpoint Key</em>' containment reference.
@@ -867,14 +867,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Endpoint Name</em>' attribute.
      * @see #setEndpointName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_EndpointName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_EndpointName()
      * @model
      * @generated
      */
     String getEndpointName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getEndpointName <em>Endpoint Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getEndpointName <em>Endpoint Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Endpoint Name</em>' attribute.
@@ -893,14 +893,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Main Sequence</em>' attribute.
      * @see #setMainSequence(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_MainSequence()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_MainSequence()
      * @model
      * @generated
      */
     boolean isMainSequence();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isMainSequence <em>Main Sequence</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isMainSequence <em>Main Sequence</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Main Sequence</em>' attribute.
@@ -912,7 +912,7 @@ public interface ProxyService extends EsbElement {
     /**
      * Returns the value of the '<em><b>Wsdl Type</b></em>' attribute.
      * The default value is <code>"NONE"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyWsdlType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.ProxyWsdlType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Wsdl Type</em>' attribute isn't clear,
@@ -920,20 +920,20 @@ public interface ProxyService extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wsdl Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ProxyWsdlType
+     * @see org.wso2.integrationstudio.gmf.esb.ProxyWsdlType
      * @see #setWsdlType(ProxyWsdlType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_WsdlType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_WsdlType()
      * @model default="NONE"
      * @generated
      */
     ProxyWsdlType getWsdlType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getWsdlType <em>Wsdl Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getWsdlType <em>Wsdl Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wsdl Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ProxyWsdlType
+     * @see org.wso2.integrationstudio.gmf.esb.ProxyWsdlType
      * @see #getWsdlType()
      * @generated
      */
@@ -950,14 +950,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Preserve Policy</em>' attribute.
      * @see #setPreservePolicy(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_PreservePolicy()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_PreservePolicy()
      * @model default="true"
      * @generated
      */
     boolean isPreservePolicy();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#isPreservePolicy <em>Preserve Policy</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#isPreservePolicy <em>Preserve Policy</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Preserve Policy</em>' attribute.
@@ -977,14 +977,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wsdl XML</em>' attribute.
      * @see #setWsdlXML(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_WsdlXML()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_WsdlXML()
      * @model default="&lt;definitions/&gt;"
      * @generated
      */
     String getWsdlXML();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getWsdlXML <em>Wsdl XML</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getWsdlXML <em>Wsdl XML</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wsdl XML</em>' attribute.
@@ -1004,14 +1004,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wsdl URL</em>' attribute.
      * @see #setWsdlURL(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_WsdlURL()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_WsdlURL()
      * @model default="http://default/wsdl/url"
      * @generated
      */
     String getWsdlURL();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getWsdlURL <em>Wsdl URL</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getWsdlURL <em>Wsdl URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wsdl URL</em>' attribute.
@@ -1030,14 +1030,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wsdl Key</em>' containment reference.
      * @see #setWsdlKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_WsdlKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_WsdlKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getWsdlKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getWsdlKey <em>Wsdl Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getWsdlKey <em>Wsdl Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wsdl Key</em>' containment reference.
@@ -1056,14 +1056,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wsdl Endpoint</em>' containment reference.
      * @see #setWsdlEndpoint(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_WsdlEndpoint()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_WsdlEndpoint()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getWsdlEndpoint();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getWsdlEndpoint <em>Wsdl Endpoint</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getWsdlEndpoint <em>Wsdl Endpoint</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wsdl Endpoint</em>' containment reference.
@@ -1074,7 +1074,7 @@ public interface ProxyService extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Wsdl Resources</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyWSDLResource}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.ProxyWSDLResource}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Wsdl Resources</em>' reference list isn't clear,
@@ -1082,7 +1082,7 @@ public interface ProxyService extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wsdl Resources</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_WsdlResources()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_WsdlResources()
      * @model containment="true"
      * @generated
      */
@@ -1098,14 +1098,14 @@ public interface ProxyService extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Error</em>' containment reference.
      * @see #setOnError(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyService_OnError()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyService_OnError()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getOnError();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService#getOnError <em>On Error</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyService#getOnError <em>On Error</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Error</em>' containment reference.

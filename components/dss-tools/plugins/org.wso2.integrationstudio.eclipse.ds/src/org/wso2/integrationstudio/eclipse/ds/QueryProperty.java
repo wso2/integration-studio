@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryProperty#getValue <em>Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryProperty#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryProperty#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryProperty#getName <em>Name</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryProperty()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getQueryProperty()
  * @model extendedMetaData="name='property_._1_._type' kind='simple'"
  * @generated
  */
@@ -36,7 +36,7 @@ public interface QueryProperty extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryProperty_Value()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryProperty_Value()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="name=':0' kind='simple'"
 	 * @generated
@@ -44,7 +44,7 @@ public interface QueryProperty extends EObject {
 	String getValue();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.QueryProperty#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.QueryProperty#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
@@ -63,7 +63,7 @@ public interface QueryProperty extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryProperty_Name()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryProperty_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='name' namespace='##targetNamespace'"
 	 * @generated
@@ -71,7 +71,7 @@ public interface QueryProperty extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.QueryProperty#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.QueryProperty#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -23,10 +23,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.BAMMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BAMMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BAMMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.BAMMediator;
+import org.wso2.integrationstudio.gmf.esb.BAMMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.BAMMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,11 +36,11 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BAMMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BAMMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BAMMediatorImpl#getServerProfile <em>Server Profile</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BAMMediatorImpl#getStreamName <em>Stream Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BAMMediatorImpl#getStreamVersion <em>Stream Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BAMMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BAMMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BAMMediatorImpl#getServerProfile <em>Server Profile</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BAMMediatorImpl#getStreamName <em>Stream Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BAMMediatorImpl#getStreamVersion <em>Stream Version</em>}</li>
  * </ul>
  *
  * @generated

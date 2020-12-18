@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.proxyservice.validators;
+package org.wso2.integrationstudio.artifact.proxyservice.validators;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplate;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplateHandler;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplate;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplateHandler;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 public class ProxyServiceTemplateList extends AbstractListDataProvider{
 

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.maven.core;
+package org.wso2.integrationstudio.maven.core;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -8,23 +8,23 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.Activator;
-import org.wso2.integrationstudio.eclipse.maven.executor.IMavenArchetypeDefinition;
-import org.wso2.integrationstudio.eclipse.maven.executor.IMavenCustomExecution;
-import org.wso2.integrationstudio.eclipse.maven.executor.IMavenDependencyDefinition;
-import org.wso2.integrationstudio.eclipse.maven.executor.IMavenPluginDefinition;
-import org.wso2.integrationstudio.eclipse.maven.executor.MavenExecuteMode;
-import org.wso2.integrationstudio.eclipse.maven.internal.executor.impl.MavenArchetypeDefinition;
-import org.wso2.integrationstudio.eclipse.maven.internal.executor.impl.MavenDependencyDefinitionImpl;
-import org.wso2.integrationstudio.eclipse.maven.internal.executor.impl.MavenPluginDefinition;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.Activator;
+import org.wso2.integrationstudio.maven.executor.IMavenArchetypeDefinition;
+import org.wso2.integrationstudio.maven.executor.IMavenCustomExecution;
+import org.wso2.integrationstudio.maven.executor.IMavenDependencyDefinition;
+import org.wso2.integrationstudio.maven.executor.IMavenPluginDefinition;
+import org.wso2.integrationstudio.maven.executor.MavenExecuteMode;
+import org.wso2.integrationstudio.maven.internal.executor.impl.MavenArchetypeDefinition;
+import org.wso2.integrationstudio.maven.internal.executor.impl.MavenDependencyDefinitionImpl;
+import org.wso2.integrationstudio.maven.internal.executor.impl.MavenPluginDefinition;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class MavenDefinitionHandler {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 
-	private static final String MAVEN_DEFINITION_HANDLER_EXTENSION = "org.wso2.integrationstudio.eclipse.maven.definitions";
+	private static final String MAVEN_DEFINITION_HANDLER_EXTENSION = "org.wso2.integrationstudio.maven.definitions";
 
 	private static Map<String, IMavenArchetypeDefinition> archeTypeDefinitions;
 	private static Map<String, IMavenPluginDefinition> pluginDefinitions;

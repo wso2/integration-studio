@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,10 +15,10 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceOutput#getConnector <em>Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EsbSequenceOutput#getConnector <em>Connector</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEsbSequenceOutput()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEsbSequenceOutput()
  * @model
  * @generated
  */
@@ -33,14 +33,14 @@ public interface EsbSequenceOutput extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Connector</em>' containment reference.
      * @see #setConnector(EsbSequenceOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEsbSequenceOutput_Connector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEsbSequenceOutput_Connector()
      * @model containment="true"
      * @generated
      */
     EsbSequenceOutputConnector getConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceOutput#getConnector <em>Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EsbSequenceOutput#getConnector <em>Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Connector</em>' containment reference.

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.core;
+package org.wso2.integrationstudio.registry.base.core;
 
 /**
  * Represents a tag and its meta-data. Instances of this class is returned from the Registry

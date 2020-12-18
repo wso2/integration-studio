@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -56,10 +56,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourceEndpointInputConnectorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.APIResourceEndpointInputConnectorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -255,7 +255,7 @@ public class APIResourceEndpointInputConnectorPropertiesEditionPartForm extends 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourceEndpointInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourceEndpointInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
 	public void initIncomingLinks(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -278,7 +278,7 @@ public class APIResourceEndpointInputConnectorPropertiesEditionPartForm extends 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourceEndpointInputConnectorPropertiesEditionPart#updateIncomingLinks()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourceEndpointInputConnectorPropertiesEditionPart#updateIncomingLinks()
 	 * 
 	 */
 	public void updateIncomingLinks() {
@@ -288,7 +288,7 @@ public class APIResourceEndpointInputConnectorPropertiesEditionPartForm extends 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourceEndpointInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourceEndpointInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToIncomingLinks(ViewerFilter filter) {
@@ -298,7 +298,7 @@ public class APIResourceEndpointInputConnectorPropertiesEditionPartForm extends 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourceEndpointInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourceEndpointInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToIncomingLinks(ViewerFilter filter) {
@@ -308,7 +308,7 @@ public class APIResourceEndpointInputConnectorPropertiesEditionPartForm extends 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourceEndpointInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourceEndpointInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInIncomingLinksTable(EObject element) {

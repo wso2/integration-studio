@@ -11,13 +11,13 @@
  			  		error="Please give a name to create the mediator">
  		<data modelProperty="project.name"
  					type="string" 
- 					fieldController="org.wso2.integrationstudio.eclipse.artifact.mediator.validators.MediatorFieldsController">Project Name   </data>
+ 					fieldController="org.wso2.integrationstudio.artifact.mediator.validators.MediatorFieldsController">Project Name   </data>
  		<data modelProperty="mediatorClass.package.name" 
  					type="string" 
- 					fieldController="org.wso2.integrationstudio.eclipse.artifact.mediator.validators.MediatorFieldsController" group="testid">Package Name</data>
+ 					fieldController="org.wso2.integrationstudio.artifact.mediator.validators.MediatorFieldsController" group="testid">Package Name</data>
  		<data modelProperty="mediatorClass.name" 
  					type="string" 
- 					fieldController="org.wso2.integrationstudio.eclipse.artifact.mediator.validators.MediatorFieldsController" group="testid">Class Name</data>	 
+ 					fieldController="org.wso2.integrationstudio.artifact.mediator.validators.MediatorFieldsController" group="testid">Class Name</data>	 
  		<group id="testid"></group>
  		
  		<projectNatures>
@@ -29,8 +29,8 @@
  			  			description="Create a Mediator Project using an existing resource"
  			  			error="Please select the project">	  
  	 		<data modelProperty="import.project.list" type="list" 
- 					fieldController="org.wso2.integrationstudio.eclipse.artifact.mediator.validators.MediatorFieldsController"
- 					controlData="select=single;class=org.wso2.integrationstudio.eclipse.artifact.mediator.utils.ProjectData">Mediator Project</data>
+ 					fieldController="org.wso2.integrationstudio.artifact.mediator.validators.MediatorFieldsController"
+ 					controlData="select=single;class=org.wso2.integrationstudio.artifact.mediator.utils.ProjectData">Mediator Project</data>
  		<projectNatures>
 			<nature>org.eclipse.jdt.core.javanature</nature>
 		</projectNatures>

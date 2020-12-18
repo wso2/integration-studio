@@ -16,7 +16,7 @@
  * under the License.
  *
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.swagger;
+package org.wso2.integrationstudio.gmf.esb.diagram.swagger;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,11 +33,11 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.view.WebEngineUtils;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.AbstractWebBasedEditor;
-import org.wso2.integrationstudio.eclipse.webui.core.exception.WebUIException;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.FunctionServerConstants;
+import org.wso2.integrationstudio.templates.dashboard.web.view.WebEngineUtils;
+import org.wso2.integrationstudio.webui.core.editor.AbstractWebBasedEditor;
+import org.wso2.integrationstudio.webui.core.exception.WebUIException;
 
 // Represents the DSS visual editor page
 public class EsbSwaggerEditor extends AbstractWebBasedEditor {

@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.editor;
+package org.wso2.integrationstudio.platform.ui.editor;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.ui.IEditorPart;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
+import org.wso2.integrationstudio.platform.ui.utils.UnrecogizedArtifactTypeException;
 
 public interface Openable {
 

@@ -17,7 +17,7 @@
  *
  */
 
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,10 +31,10 @@ import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.ui.IStartup;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditorPlugin;
-import org.wso2.integrationstudio.eclipse.ds.servlets.DSSEditorServlet;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
+import org.wso2.integrationstudio.ds.presentation.DsEditorPlugin;
+import org.wso2.integrationstudio.ds.servlets.DSSEditorServlet;
+import org.wso2.integrationstudio.templates.dashboard.handlers.JettyServerHandler;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.FunctionServerConstants;
 
 /**
  * This startup handler will add the DSS context handler to Jetty.
@@ -43,7 +43,7 @@ import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.serve
  */
 public class DSSEarlyStartupHandler implements IStartup {
     
-    private static final String DSS_BUNDLE = "org.wso2.integrationstudio.eclipse.ds.editor";
+    private static final String DSS_BUNDLE = "org.wso2.integrationstudio.ds.editor";
     private static final String WEB_APP_LOCATION = "DSSEditor";
     private static final String DSS_CONTEXT_PATH = "/dsseditor";
     private static final String SERVLET_PATH = "/service";

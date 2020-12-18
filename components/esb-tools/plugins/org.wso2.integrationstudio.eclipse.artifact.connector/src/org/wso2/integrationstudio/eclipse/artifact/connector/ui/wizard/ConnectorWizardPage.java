@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.connector.ui.wizard;
+package org.wso2.integrationstudio.artifact.connector.ui.wizard;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -44,9 +44,9 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.wso2.integrationstudio.eclipse.artifact.connector.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.connector.model.ConnectorModel;
-import org.wso2.integrationstudio.eclipse.artifact.connector.ui.dialog.WorkspaceConnectorImportDialog;
+import org.wso2.integrationstudio.artifact.connector.Activator;
+import org.wso2.integrationstudio.artifact.connector.model.ConnectorModel;
+import org.wso2.integrationstudio.artifact.connector.ui.dialog.WorkspaceConnectorImportDialog;
 
 public class ConnectorWizardPage extends WizardPage {
 	

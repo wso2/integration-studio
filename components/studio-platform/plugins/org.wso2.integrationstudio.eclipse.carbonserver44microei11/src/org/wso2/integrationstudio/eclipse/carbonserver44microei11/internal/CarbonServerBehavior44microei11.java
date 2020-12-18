@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei11.internal;
+package org.wso2.integrationstudio.carbonserver44microei11.internal;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -39,17 +39,17 @@ import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerPort;
 import org.eclipse.wst.server.core.internal.DeletedModule;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.impl.CarbonServerBehaviour;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.service.util.CarbonUploadServiceRequestUtil;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.operations.CommonOperations;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.register.product.servers.MicroIntegratorInstance;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.util.CarbonServer44eiUtils;
-import org.wso2.integrationstudio.eclipse.server.base.core.ServerController;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonConstants;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonUtils;
+import org.wso2.integrationstudio.carbonserver.base.impl.CarbonServerBehaviour;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.service.util.CarbonUploadServiceRequestUtil;
+import org.wso2.integrationstudio.carbonserver44microei11.Activator;
+import org.wso2.integrationstudio.carbonserver44microei11.operations.CommonOperations;
+import org.wso2.integrationstudio.carbonserver44microei11.register.product.servers.MicroIntegratorInstance;
+import org.wso2.integrationstudio.carbonserver44microei11.util.CarbonServer44eiUtils;
+import org.wso2.integrationstudio.server.base.core.ServerController;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class CarbonServerBehavior44microei11 extends CarbonServerBehaviour {
 

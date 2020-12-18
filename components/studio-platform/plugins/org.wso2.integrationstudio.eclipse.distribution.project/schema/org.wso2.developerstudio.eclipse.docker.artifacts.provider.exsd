@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.docker.distribution" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.docker.distribution" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.docker.distribution" id="org.wso2.integrationstudio.eclipse.docker.artifacts.provider" name="org.wso2.integrationstudio.eclipse.docker.artifacts.provider"/>
+         <meta.schema plugin="org.wso2.integrationstudio.docker.distribution" id="org.wso2.integrationstudio.docker.artifacts.provider" name="org.wso2.integrationstudio.docker.artifacts.provider"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -54,7 +54,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="org.wso2.integrationstudio.eclipse.distribution.project.export.CappArtifactsListProvider:"/>
+                  <meta.attribute kind="java" basedOn="org.wso2.integrationstudio.distribution.project.export.CappArtifactsListProvider:"/>
                </appinfo>
             </annotation>
          </attribute>

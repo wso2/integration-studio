@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.policies;
 
 import java.util.Iterator;
 
@@ -13,23 +13,23 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.EntitlementContainerCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.EntitlementMediatorAdviceOutputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.EntitlementMediatorInputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.EntitlementMediatorObligationsOutputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.EntitlementMediatorOnAcceptOutputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.EntitlementMediatorOnRejectOutputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.EntitlementMediatorOutputConnectorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementMediatorAdviceOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementMediatorInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementMediatorObligationsOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementMediatorOnAcceptOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementMediatorOnRejectOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementMediatorOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.EntitlementContainerCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.EntitlementMediatorAdviceOutputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.EntitlementMediatorInputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.EntitlementMediatorObligationsOutputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.EntitlementMediatorOnAcceptOutputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.EntitlementMediatorOnRejectOutputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.EntitlementMediatorOutputConnectorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EntitlementContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EntitlementMediatorAdviceOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EntitlementMediatorInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EntitlementMediatorObligationsOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EntitlementMediatorOnAcceptOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EntitlementMediatorOnRejectOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EntitlementMediatorOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated

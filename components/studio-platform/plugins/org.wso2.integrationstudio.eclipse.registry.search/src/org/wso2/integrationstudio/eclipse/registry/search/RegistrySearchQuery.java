@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.search;
+package org.wso2.integrationstudio.registry.search;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,16 +31,16 @@ import org.eclipse.search.ui.ISearchResult;
 import org.eclipse.search.ui.text.FileTextSearchScope;
 import org.eclipse.swt.widgets.Display;
 import org.wso2.carbon.registry.core.exceptions.RegistryException;
-import org.wso2.integrationstudio.eclipse.registry.base.core.Registry;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryCredentialData;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryURLInfo;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryUrlStore;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryCredentialData.Credentials;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.util.SWTControlUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.registry.base.core.Registry;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryCredentialData;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryURLInfo;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryUrlStore;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryCredentialData.Credentials;
+import org.wso2.integrationstudio.registry.base.ui.util.SWTControlUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class RegistrySearchQuery extends FileSearchQuery {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

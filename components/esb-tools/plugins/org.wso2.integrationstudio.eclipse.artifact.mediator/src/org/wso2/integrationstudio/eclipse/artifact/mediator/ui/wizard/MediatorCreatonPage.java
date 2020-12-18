@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.mediator.ui.wizard;
+package org.wso2.integrationstudio.artifact.mediator.ui.wizard;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;

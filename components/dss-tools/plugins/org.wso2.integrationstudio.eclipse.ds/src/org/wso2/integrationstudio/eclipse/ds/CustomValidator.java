@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -19,12 +19,12 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.CustomValidator#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.CustomValidator#getProperties <em>Properties</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.CustomValidator#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.CustomValidator#getClass_ <em>Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.CustomValidator#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.CustomValidator#getMixed <em>Mixed</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getCustomValidator()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getCustomValidator()
  * @model extendedMetaData="name='validateCustom_._type' kind='mixed'"
  * @generated
  */
@@ -39,7 +39,7 @@ public interface CustomValidator extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Class</em>' attribute.
 	 * @see #setClass(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getCustomValidator_Class()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getCustomValidator_Class()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='class' namespace='##targetNamespace'"
 	 * @generated
@@ -47,7 +47,7 @@ public interface CustomValidator extends EObject {
 	String getClass_();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidator#getClass_ <em>Class</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.CustomValidator#getClass_ <em>Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Class</em>' attribute.
@@ -58,7 +58,7 @@ public interface CustomValidator extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.CustomValidatorPropertyList}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
@@ -66,7 +66,7 @@ public interface CustomValidator extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Properties</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getCustomValidator_Properties()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getCustomValidator_Properties()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='properties' namespace='##targetNamespace'"
 	 * @generated
@@ -83,7 +83,7 @@ public interface CustomValidator extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getCustomValidator_Mixed()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getCustomValidator_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated

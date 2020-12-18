@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.platform.ui.utils;
+package org.wso2.integrationstudio.platform.ui.utils;
 
 public class PlatformUIConstants {
     public static final String NO_TARGET_REPO_MESSAGE = "Specify a target repository for the Docker container project";

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.model;
+package org.wso2.integrationstudio.registry.base.model;
 
 import java.util.Observable;
 

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.carbonserver.base" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.carbonserver.base" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.carbonserver.base" id="org.wso2.integrationstudio.eclipse.carbonserver.base.serverProperties" name="serverProperties"/>
+         <meta.schema plugin="org.wso2.integrationstudio.carbonserver.base" id="org.wso2.integrationstudio.carbonserver.base.serverProperties" name="serverProperties"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -62,7 +62,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.carbonserver.base.manager.IProperties"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.carbonserver.base.manager.IProperties"/>
                </appinfo>
             </annotation>
          </attribute>

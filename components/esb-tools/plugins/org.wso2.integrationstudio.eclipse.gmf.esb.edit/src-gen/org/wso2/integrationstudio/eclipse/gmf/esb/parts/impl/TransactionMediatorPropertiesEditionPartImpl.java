@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
@@ -60,12 +60,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -342,7 +342,7 @@ public class TransactionMediatorPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -352,7 +352,7 @@ public class TransactionMediatorPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -374,7 +374,7 @@ public class TransactionMediatorPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -384,7 +384,7 @@ public class TransactionMediatorPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -425,7 +425,7 @@ public class TransactionMediatorPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -435,7 +435,7 @@ public class TransactionMediatorPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -457,7 +457,7 @@ public class TransactionMediatorPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#getAction()
 	 * 
 	 */
 	public Enumerator getAction() {
@@ -468,7 +468,7 @@ public class TransactionMediatorPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#initAction(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#initAction(Object input, Enumerator current)
 	 */
 	public void initAction(Object input, Enumerator current) {
 		action.setInput(input);
@@ -486,7 +486,7 @@ public class TransactionMediatorPropertiesEditionPartImpl extends CompositePrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setAction(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TransactionMediatorPropertiesEditionPart#setAction(Enumerator newValue)
 	 * 
 	 */
 	public void setAction(Enumerator newValue) {

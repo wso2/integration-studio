@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,9 +7,9 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SendMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyInSequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SendMediatorEditPart;
 
 public class AbstractBaseFigureEditPart extends AbstractBorderedShapeEditPart {
 

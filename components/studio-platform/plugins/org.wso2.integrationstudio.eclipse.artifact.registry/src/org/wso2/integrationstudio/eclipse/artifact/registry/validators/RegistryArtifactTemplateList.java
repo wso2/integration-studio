@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.validators;
+package org.wso2.integrationstudio.artifact.registry.validators;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +22,9 @@ import java.util.List;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.artifact.registry.utils.RegistryTemplate;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.artifact.registry.utils.RegistryTemplate;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class RegistryArtifactTemplateList extends AbstractListDataProvider {
 
@@ -39,7 +39,7 @@ public class RegistryArtifactTemplateList extends AbstractListDataProvider {
 	}
 
 	
-	private static final String REGISTRY_TEMPLATE_EXTENSION="org.wso2.integrationstudio.eclipse.project.extensions.artifacttemplates";
+	private static final String REGISTRY_TEMPLATE_EXTENSION="org.wso2.integrationstudio.project.extensions.artifacttemplates";
 	private static List<RegistryTemplate> regTemplateList;
 	
 	private static void loadProxyTemplateInfo(){

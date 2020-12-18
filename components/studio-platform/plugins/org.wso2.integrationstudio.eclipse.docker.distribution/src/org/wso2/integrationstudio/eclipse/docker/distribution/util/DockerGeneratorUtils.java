@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.util;
+package org.wso2.integrationstudio.docker.distribution.util;
 
 import java.io.File;
 import java.io.IOException;

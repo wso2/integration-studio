@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,14 +15,14 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator#getRemoteServiceUrl <em>Remote Service Url</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator#getUsername <em>Username</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator#getPassword <em>Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.OAuthMediator#getRemoteServiceUrl <em>Remote Service Url</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.OAuthMediator#getUsername <em>Username</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.OAuthMediator#getPassword <em>Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.OAuthMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.OAuthMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getOAuthMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getOAuthMediator()
  * @model
  * @generated
  */
@@ -38,14 +38,14 @@ public interface OAuthMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Remote Service Url</em>' attribute.
      * @see #setRemoteServiceUrl(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getOAuthMediator_RemoteServiceUrl()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getOAuthMediator_RemoteServiceUrl()
      * @model default=""
      * @generated
      */
     String getRemoteServiceUrl();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator#getRemoteServiceUrl <em>Remote Service Url</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.OAuthMediator#getRemoteServiceUrl <em>Remote Service Url</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Remote Service Url</em>' attribute.
@@ -64,14 +64,14 @@ public interface OAuthMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Username</em>' attribute.
      * @see #setUsername(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getOAuthMediator_Username()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getOAuthMediator_Username()
      * @model
      * @generated
      */
     String getUsername();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator#getUsername <em>Username</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.OAuthMediator#getUsername <em>Username</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Username</em>' attribute.
@@ -90,14 +90,14 @@ public interface OAuthMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Password</em>' attribute.
      * @see #setPassword(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getOAuthMediator_Password()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getOAuthMediator_Password()
      * @model
      * @generated
      */
     String getPassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator#getPassword <em>Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.OAuthMediator#getPassword <em>Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Password</em>' attribute.
@@ -116,14 +116,14 @@ public interface OAuthMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(OAuthMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getOAuthMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getOAuthMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     OAuthMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.OAuthMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -142,14 +142,14 @@ public interface OAuthMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(OAuthMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getOAuthMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getOAuthMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     OAuthMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.OAuthMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.

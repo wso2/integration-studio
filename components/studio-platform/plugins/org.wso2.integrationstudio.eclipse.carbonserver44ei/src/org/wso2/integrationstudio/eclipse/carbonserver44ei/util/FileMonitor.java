@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44ei.util;
+package org.wso2.integrationstudio.carbonserver44ei.util;
 
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.FileMonitorCommon;
+import org.wso2.integrationstudio.carbon.server.model.util.FileMonitorCommon;
 
 public class FileMonitor extends FileMonitorCommon {
 

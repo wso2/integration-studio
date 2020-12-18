@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,16 +21,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceAlgorithm;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointWestOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceSessionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Member;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Session;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceAlgorithm;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointInputConnector;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointWestOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceSessionType;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.Member;
+import org.wso2.integrationstudio.gmf.esb.Session;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,17 +40,17 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.Session;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#isFailover <em>Failover</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getPolicy <em>Policy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getWestOutputConnector <em>West Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getMember <em>Member</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getSessionType <em>Session Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getAlgorithm <em>Algorithm</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getSessionTimeout <em>Session Timeout</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#isBuildMessage <em>Build Message</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl#isFailover <em>Failover</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl#getPolicy <em>Policy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl#getWestOutputConnector <em>West Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl#getMember <em>Member</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl#getSessionType <em>Session Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl#getAlgorithm <em>Algorithm</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl#getSessionTimeout <em>Session Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl#isBuildMessage <em>Build Message</em>}</li>
  * </ul>
  *
  * @generated

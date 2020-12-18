@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -54,10 +54,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -319,7 +319,7 @@ public class CloneMediatorTargetOutputConnectorPropertiesEditionPartImpl extends
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#initCommentMediators(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#initCommentMediators(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initCommentMediators(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -340,7 +340,7 @@ public class CloneMediatorTargetOutputConnectorPropertiesEditionPartImpl extends
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#updateCommentMediators()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#updateCommentMediators()
 	 * 
 	 */
 	public void updateCommentMediators() {
@@ -350,7 +350,7 @@ public class CloneMediatorTargetOutputConnectorPropertiesEditionPartImpl extends
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToCommentMediators(ViewerFilter filter) {
@@ -363,7 +363,7 @@ public class CloneMediatorTargetOutputConnectorPropertiesEditionPartImpl extends
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToCommentMediators(ViewerFilter filter) {
@@ -373,7 +373,7 @@ public class CloneMediatorTargetOutputConnectorPropertiesEditionPartImpl extends
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInCommentMediatorsTable(EObject element) {
@@ -383,7 +383,7 @@ public class CloneMediatorTargetOutputConnectorPropertiesEditionPartImpl extends
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#getSoapAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#getSoapAction()
 	 * 
 	 */
 	public String getSoapAction() {
@@ -393,7 +393,7 @@ public class CloneMediatorTargetOutputConnectorPropertiesEditionPartImpl extends
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#setSoapAction(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#setSoapAction(String newValue)
 	 * 
 	 */
 	public void setSoapAction(String newValue) {
@@ -415,7 +415,7 @@ public class CloneMediatorTargetOutputConnectorPropertiesEditionPartImpl extends
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#getToAddress()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#getToAddress()
 	 * 
 	 */
 	public String getToAddress() {
@@ -425,7 +425,7 @@ public class CloneMediatorTargetOutputConnectorPropertiesEditionPartImpl extends
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#setToAddress(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneMediatorTargetOutputConnectorPropertiesEditionPart#setToAddress(String newValue)
 	 * 
 	 */
 	public void setToAddress(String newValue) {

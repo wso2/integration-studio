@@ -16,17 +16,17 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator;
+package org.wso2.integrationstudio.gmf.esb.diagram.validator;
 
 import org.eclipse.draw2d.RoundedRectangle;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.CloneMediatorGraphicalShape;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EntitlementMediatorGraphicalShape;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FilterMediatorGraphicalShape;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.SwitchMediatorGraphicalShape;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.CloneMediatorGraphicalShape;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EntitlementMediatorGraphicalShape;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EsbGroupingShape;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FilterMediatorGraphicalShape;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.SwitchMediatorGraphicalShape;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
 
 public class GraphicalValidatorUtil {
 

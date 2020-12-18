@@ -1,7 +1,7 @@
-package org.wso2.integrationstudio.eclipse.esb.core.internal.impl;
+package org.wso2.integrationstudio.esb.core.internal.impl;
 
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.ILocalEntryProvider;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.ILocalEntryProviderData;
+import org.wso2.integrationstudio.esb.core.interfaces.ILocalEntryProvider;
+import org.wso2.integrationstudio.esb.core.interfaces.ILocalEntryProviderData;
 
 public class LocalEntryProviderDataImpl implements ILocalEntryProviderData{
 	private String id;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager;
+package org.wso2.integrationstudio.capp.core.artifacts.manager;
 
 public interface IServerRole {
 	public String getServerRoleName();

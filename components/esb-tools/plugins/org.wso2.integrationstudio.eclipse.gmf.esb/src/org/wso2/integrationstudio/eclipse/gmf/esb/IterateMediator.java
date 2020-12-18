@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,23 +15,23 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getIterateID <em>Iterate ID</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#isSequentialMediation <em>Sequential Mediation</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#isContinueParent <em>Continue Parent</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#isPreservePayload <em>Preserve Payload</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getIterateExpression <em>Iterate Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getAttachPath <em>Attach Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getTarget <em>Target</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getTargetOutputConnector <em>Target Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getSequenceKey <em>Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getSequenceName <em>Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getIterateID <em>Iterate ID</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#isSequentialMediation <em>Sequential Mediation</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#isContinueParent <em>Continue Parent</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#isPreservePayload <em>Preserve Payload</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getIterateExpression <em>Iterate Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getAttachPath <em>Attach Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getTargetOutputConnector <em>Target Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getSequenceType <em>Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getSequenceKey <em>Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getSequenceName <em>Sequence Name</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator()
  * @model
  * @generated
  */
@@ -46,14 +46,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Iterate ID</em>' attribute.
      * @see #setIterateID(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_IterateID()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_IterateID()
      * @model
      * @generated
      */
     String getIterateID();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getIterateID <em>Iterate ID</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getIterateID <em>Iterate ID</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Iterate ID</em>' attribute.
@@ -72,14 +72,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequential Mediation</em>' attribute.
      * @see #setSequentialMediation(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_SequentialMediation()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_SequentialMediation()
      * @model
      * @generated
      */
     boolean isSequentialMediation();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#isSequentialMediation <em>Sequential Mediation</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#isSequentialMediation <em>Sequential Mediation</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequential Mediation</em>' attribute.
@@ -98,14 +98,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Continue Parent</em>' attribute.
      * @see #setContinueParent(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_ContinueParent()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_ContinueParent()
      * @model
      * @generated
      */
     boolean isContinueParent();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#isContinueParent <em>Continue Parent</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#isContinueParent <em>Continue Parent</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Continue Parent</em>' attribute.
@@ -124,14 +124,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Preserve Payload</em>' attribute.
      * @see #setPreservePayload(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_PreservePayload()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_PreservePayload()
      * @model
      * @generated
      */
     boolean isPreservePayload();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#isPreservePayload <em>Preserve Payload</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#isPreservePayload <em>Preserve Payload</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Preserve Payload</em>' attribute.
@@ -150,14 +150,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Iterate Expression</em>' containment reference.
      * @see #setIterateExpression(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_IterateExpression()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_IterateExpression()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getIterateExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getIterateExpression <em>Iterate Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getIterateExpression <em>Iterate Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Iterate Expression</em>' containment reference.
@@ -176,14 +176,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Attach Path</em>' containment reference.
      * @see #setAttachPath(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_AttachPath()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_AttachPath()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getAttachPath();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getAttachPath <em>Attach Path</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getAttachPath <em>Attach Path</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Attach Path</em>' containment reference.
@@ -202,14 +202,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Target</em>' containment reference.
      * @see #setTarget(IterateTarget)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_Target()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_Target()
      * @model containment="true"
      * @generated
      */
     IterateTarget getTarget();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getTarget <em>Target</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getTarget <em>Target</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Target</em>' containment reference.
@@ -228,14 +228,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(IterateMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     IterateMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -254,14 +254,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(IterateMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     IterateMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -280,14 +280,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Target Output Connector</em>' containment reference.
      * @see #setTargetOutputConnector(IterateMediatorTargetOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_TargetOutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_TargetOutputConnector()
      * @model containment="true"
      * @generated
      */
     IterateMediatorTargetOutputConnector getTargetOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getTargetOutputConnector <em>Target Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getTargetOutputConnector <em>Target Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Target Output Connector</em>' containment reference.
@@ -306,14 +306,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_MediatorFlow()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_MediatorFlow()
      * @model containment="true"
      * @generated
      */
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
@@ -324,7 +324,7 @@ public interface IterateMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Sequence Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.SequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Sequence Type</em>' attribute isn't clear,
@@ -332,20 +332,20 @@ public interface IterateMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #setSequenceType(SequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_SequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_SequenceType()
      * @model
      * @generated
      */
     SequenceType getSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getSequenceType <em>Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getSequenceType <em>Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #getSequenceType()
      * @generated
      */
@@ -361,14 +361,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Key</em>' containment reference.
      * @see #setSequenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_SequenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_SequenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getSequenceKey <em>Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getSequenceKey <em>Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Key</em>' containment reference.
@@ -387,14 +387,14 @@ public interface IterateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Name</em>' attribute.
      * @see #setSequenceName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator_SequenceName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateMediator_SequenceName()
      * @model
      * @generated
      */
     String getSequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator#getSequenceName <em>Sequence Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateMediator#getSequenceName <em>Sequence Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Name</em>' attribute.

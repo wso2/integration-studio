@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,16 +22,16 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointAdditionalOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPoint;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpointAdditionalOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedBorderItemLocator;
 
 public class AddbranchEndpointDialog extends Dialog {
     private EndPoint endpoint;

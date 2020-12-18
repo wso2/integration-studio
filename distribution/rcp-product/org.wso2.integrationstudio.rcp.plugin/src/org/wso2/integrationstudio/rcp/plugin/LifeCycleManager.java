@@ -27,10 +27,10 @@ import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.Activator;
+import org.wso2.integrationstudio.templates.dashboard.handlers.JettyServerHandler;
 import org.wso2.integrationstudio.rcp.plugin.utils.RCPPluginHandlerUtils;
 
 /**

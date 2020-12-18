@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.model;
+package org.wso2.integrationstudio.registry.base.model;
 
 import java.net.URL;
 
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.registry.base.core.Registry;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryCredentialData;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryURLInfo;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryCredentialData.Credentials;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.util.SWTControlUtils;
-import org.wso2.integrationstudio.eclipse.registry.resource.authorization.ResourceAdmin;
+import org.wso2.integrationstudio.registry.base.core.Registry;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryCredentialData;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryURLInfo;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryCredentialData.Credentials;
+import org.wso2.integrationstudio.registry.base.ui.util.SWTControlUtils;
+import org.wso2.integrationstudio.registry.resource.authorization.ResourceAdmin;
 
 public class RegistryNode {
 	private String username;

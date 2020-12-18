@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -16,23 +16,23 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleActions;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleChildMediatorsConfiguration;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleFactsConfiguration;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediatorChildMediatorsOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultsConfiguration;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleSessionProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleSetCreationProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleSourceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleActions;
+import org.wso2.integrationstudio.gmf.esb.RuleChildMediatorsConfiguration;
+import org.wso2.integrationstudio.gmf.esb.RuleFactsConfiguration;
+import org.wso2.integrationstudio.gmf.esb.RuleMediator;
+import org.wso2.integrationstudio.gmf.esb.RuleMediatorChildMediatorsOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RuleMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.RuleMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RuleResultsConfiguration;
+import org.wso2.integrationstudio.gmf.esb.RuleSessionProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleSetCreationProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleSourceType;
+import org.wso2.integrationstudio.gmf.esb.RuleType;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,30 +42,30 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RuleType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getRuleSetURL <em>Rule Set URL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getRuleSetSourceType <em>Rule Set Source Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getRuleSetSourceCode <em>Rule Set Source Code</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getRuleSetSourceKey <em>Rule Set Source Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#isStatefulSession <em>Stateful Session</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getRuleSessionProperties <em>Rule Session Properties</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getFactsConfiguration <em>Facts Configuration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getResultsConfiguration <em>Results Configuration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getChildMediatorsConfiguration <em>Child Mediators Configuration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getChildMediatorsOutputConnector <em>Child Mediators Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getSourceValue <em>Source Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getSourceXpath <em>Source Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getTargetValue <em>Target Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getTargetResultXpath <em>Target Result Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getTargetXpath <em>Target Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getTargetAction <em>Target Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getInputWrapperName <em>Input Wrapper Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getInputNameSpace <em>Input Name Space</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getOutputWrapperName <em>Output Wrapper Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getOutputNameSpace <em>Output Name Space</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getRuleSetType <em>Rule Set Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getRuleSetURL <em>Rule Set URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getRuleSetSourceType <em>Rule Set Source Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getRuleSetSourceCode <em>Rule Set Source Code</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getRuleSetSourceKey <em>Rule Set Source Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#isStatefulSession <em>Stateful Session</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getRuleSessionProperties <em>Rule Session Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getFactsConfiguration <em>Facts Configuration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getResultsConfiguration <em>Results Configuration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getChildMediatorsConfiguration <em>Child Mediators Configuration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getChildMediatorsOutputConnector <em>Child Mediators Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getSourceValue <em>Source Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getSourceXpath <em>Source Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getTargetValue <em>Target Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getTargetResultXpath <em>Target Result Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getTargetXpath <em>Target Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getTargetAction <em>Target Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getInputWrapperName <em>Input Wrapper Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getInputNameSpace <em>Input Name Space</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getOutputWrapperName <em>Output Wrapper Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getOutputNameSpace <em>Output Name Space</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl#getRuleSetType <em>Rule Set Type</em>}</li>
  * </ul>
  *
  * @generated

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
@@ -60,12 +60,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EventMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.EventMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -396,7 +396,7 @@ public class EventMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EventMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EventMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -406,7 +406,7 @@ public class EventMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EventMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EventMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -428,7 +428,7 @@ public class EventMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EventMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EventMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -438,7 +438,7 @@ public class EventMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EventMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EventMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -479,7 +479,7 @@ public class EventMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EventMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EventMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -489,7 +489,7 @@ public class EventMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EventMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EventMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -511,7 +511,7 @@ public class EventMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EventMediatorPropertiesEditionPart#getTopicType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EventMediatorPropertiesEditionPart#getTopicType()
 	 * 
 	 */
 	public Enumerator getTopicType() {
@@ -522,7 +522,7 @@ public class EventMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EventMediatorPropertiesEditionPart#initTopicType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EventMediatorPropertiesEditionPart#initTopicType(Object input, Enumerator current)
 	 */
 	public void initTopicType(Object input, Enumerator current) {
 		topicType.setInput(input);
@@ -540,7 +540,7 @@ public class EventMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EventMediatorPropertiesEditionPart#setTopicType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EventMediatorPropertiesEditionPart#setTopicType(Enumerator newValue)
 	 * 
 	 */
 	public void setTopicType(Enumerator newValue) {
@@ -558,7 +558,7 @@ public class EventMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EventMediatorPropertiesEditionPart#getStaticTopic()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EventMediatorPropertiesEditionPart#getStaticTopic()
 	 * 
 	 */
 	public String getStaticTopic() {
@@ -568,7 +568,7 @@ public class EventMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EventMediatorPropertiesEditionPart#setStaticTopic(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EventMediatorPropertiesEditionPart#setStaticTopic(String newValue)
 	 * 
 	 */
 	public void setStaticTopic(String newValue) {

@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.resources;
+package org.wso2.integrationstudio.docker.distribution.resources;
 
 import java.io.File;
 

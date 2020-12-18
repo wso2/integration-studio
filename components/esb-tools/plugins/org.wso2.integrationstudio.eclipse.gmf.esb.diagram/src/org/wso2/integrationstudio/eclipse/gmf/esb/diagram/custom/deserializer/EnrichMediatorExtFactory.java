@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import javax.xml.namespace.QName;
 
@@ -31,7 +31,7 @@ import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.elementary.EnrichMediator;
 import org.apache.synapse.mediators.elementary.Source;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 public class EnrichMediatorExtFactory extends EnrichMediatorFactory {
 

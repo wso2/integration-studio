@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.carbon.server.model.util;
+package org.wso2.integrationstudio.carbon.server.model.util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,7 +26,7 @@ import java.util.Properties;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.carbonfeatures.Activator;
+import org.wso2.integrationstudio.carbonfeatures.Activator;
 
 public class CarbonServerCommonConstants {
 

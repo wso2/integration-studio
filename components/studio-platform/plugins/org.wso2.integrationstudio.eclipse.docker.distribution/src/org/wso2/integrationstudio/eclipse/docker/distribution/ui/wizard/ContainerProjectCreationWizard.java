@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.ui.wizard;
+package org.wso2.integrationstudio.docker.distribution.ui.wizard;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -62,23 +62,23 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.part.FileEditorInput;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.ArtifactTypeMapping;
-import org.wso2.integrationstudio.eclipse.docker.distribution.Activator;
-import org.wso2.integrationstudio.eclipse.docker.distribution.model.DockerModel;
-import org.wso2.integrationstudio.eclipse.docker.distribution.resources.DockerUserGuideTemplate;
-import org.wso2.integrationstudio.eclipse.docker.distribution.resources.K8sUserGuideTemplate;
-import org.wso2.integrationstudio.eclipse.docker.distribution.utils.DockerImageUtils;
-import org.wso2.integrationstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.PlatformUIConstants;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPage;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.distribution.project.util.ArtifactTypeMapping;
+import org.wso2.integrationstudio.docker.distribution.Activator;
+import org.wso2.integrationstudio.docker.distribution.model.DockerModel;
+import org.wso2.integrationstudio.docker.distribution.resources.DockerUserGuideTemplate;
+import org.wso2.integrationstudio.docker.distribution.resources.K8sUserGuideTemplate;
+import org.wso2.integrationstudio.docker.distribution.utils.DockerImageUtils;
+import org.wso2.integrationstudio.docker.distribution.utils.DockerProjectConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
+import org.wso2.integrationstudio.platform.ui.utils.PlatformUIConstants;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.MavenDetailsPage;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;

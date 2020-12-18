@@ -25,7 +25,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>   
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.integrationstudio.eclipse.ds.editor</artifactId>
+    <artifactId>org.wso2.integrationstudio.ds.editor</artifactId>
     <packaging>eclipse-plugin</packaging>
     <name>WSO2 Integration Studio DS Tree View</name>
 </project>

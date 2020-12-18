@@ -1,5 +1,5 @@
 /*
- * package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+ * package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
  * 
  * import org.eclipse.draw2d.IFigure;
  * import org.eclipse.draw2d.MarginBorder;
@@ -12,8 +12,8 @@
  * import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
  * import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
  * import org.eclipse.gmf.runtime.notation.View;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.editpolicy.CustomDragDropEditPolicy;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.Messages;
+ * import org.wso2.integrationstudio.gmf.esb.diagram.custom.editpolicy.CustomDragDropEditPolicy;
+ * import org.wso2.integrationstudio.gmf.esb.diagram.part.Messages;
  * 
  *//**
     * @generated

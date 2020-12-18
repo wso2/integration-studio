@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.core.interfaces;
+package org.wso2.integrationstudio.registry.core.interfaces;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.registry.core.RegistryManager;
-import org.wso2.integrationstudio.eclipse.registry.core.ui.widgets.GRegImageUtils;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.registry.core.RegistryManager;
+import org.wso2.integrationstudio.registry.core.ui.widgets.GRegImageUtils;
 
 public class RegistryCollectionImpl extends RegistryResourceImpl implements
 		IRegistryCollection {

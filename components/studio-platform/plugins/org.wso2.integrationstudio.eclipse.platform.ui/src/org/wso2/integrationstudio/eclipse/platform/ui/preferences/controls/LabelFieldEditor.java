@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.preferences.controls;
+package org.wso2.integrationstudio.platform.ui.preferences.controls;
 
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.swt.layout.GridData;

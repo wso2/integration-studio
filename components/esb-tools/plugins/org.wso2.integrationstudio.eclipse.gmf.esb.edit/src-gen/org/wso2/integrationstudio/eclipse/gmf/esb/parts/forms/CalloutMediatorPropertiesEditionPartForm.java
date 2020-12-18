@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 import java.util.ArrayList;
 
@@ -73,18 +73,18 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 // End of user code
 
 /**
@@ -1311,7 +1311,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -1321,7 +1321,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -1343,7 +1343,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -1353,7 +1353,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -1394,7 +1394,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -1404,7 +1404,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -1426,7 +1426,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getPassHeaders()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getPassHeaders()
 	 * 
 	 */
 	public Boolean getPassHeaders() {
@@ -1436,7 +1436,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setPassHeaders(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setPassHeaders(Boolean newValue)
 	 * 
 	 */
 	public void setPassHeaders(Boolean newValue) {
@@ -1458,7 +1458,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getEndpointType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getEndpointType()
 	 * 
 	 */
 	public Enumerator getEndpointType() {
@@ -1469,7 +1469,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#initEndpointType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#initEndpointType(Object input, Enumerator current)
 	 */
 	public void initEndpointType(Object input, Enumerator current) {
 		endpointType.setInput(input);
@@ -1487,7 +1487,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setEndpointType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setEndpointType(Enumerator newValue)
 	 * 
 	 */
 	public void setEndpointType(Enumerator newValue) {
@@ -1505,7 +1505,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getSoapAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getSoapAction()
 	 * 
 	 */
 	public String getSoapAction() {
@@ -1515,7 +1515,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setSoapAction(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setSoapAction(String newValue)
 	 * 
 	 */
 	public void setSoapAction(String newValue) {
@@ -1537,7 +1537,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getPathToAxis2Repository()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getPathToAxis2Repository()
 	 * 
 	 */
 	public String getPathToAxis2Repository() {
@@ -1547,7 +1547,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setPathToAxis2Repository(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setPathToAxis2Repository(String newValue)
 	 * 
 	 */
 	public void setPathToAxis2Repository(String newValue) {
@@ -1569,7 +1569,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getPathToAxis2xml()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getPathToAxis2xml()
 	 * 
 	 */
 	public String getPathToAxis2xml() {
@@ -1579,7 +1579,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setPathToAxis2xml(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setPathToAxis2xml(String newValue)
 	 * 
 	 */
 	public void setPathToAxis2xml(String newValue) {
@@ -1601,7 +1601,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getInitAxis2ClientOptions()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getInitAxis2ClientOptions()
 	 * 
 	 */
 	public Boolean getInitAxis2ClientOptions() {
@@ -1611,7 +1611,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setInitAxis2ClientOptions(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setInitAxis2ClientOptions(Boolean newValue)
 	 * 
 	 */
 	public void setInitAxis2ClientOptions(Boolean newValue) {
@@ -1633,7 +1633,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getServiceURL()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getServiceURL()
 	 * 
 	 */
 	public String getServiceURL() {
@@ -1643,7 +1643,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setServiceURL(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setServiceURL(String newValue)
 	 * 
 	 */
 	public void setServiceURL(String newValue) {
@@ -1665,7 +1665,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getPayloadType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getPayloadType()
 	 * 
 	 */
 	public Enumerator getPayloadType() {
@@ -1676,7 +1676,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#initPayloadType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#initPayloadType(Object input, Enumerator current)
 	 */
 	public void initPayloadType(Object input, Enumerator current) {
 		payloadType.setInput(input);
@@ -1694,7 +1694,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setPayloadType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setPayloadType(Enumerator newValue)
 	 * 
 	 */
 	public void setPayloadType(Enumerator newValue) {
@@ -1712,7 +1712,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getPayloadProperty()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getPayloadProperty()
 	 * 
 	 */
 	public String getPayloadProperty() {
@@ -1722,7 +1722,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setPayloadProperty(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setPayloadProperty(String newValue)
 	 * 
 	 */
 	public void setPayloadProperty(String newValue) {
@@ -1744,7 +1744,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getResultType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getResultType()
 	 * 
 	 */
 	public Enumerator getResultType() {
@@ -1755,7 +1755,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#initResultType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#initResultType(Object input, Enumerator current)
 	 */
 	public void initResultType(Object input, Enumerator current) {
 		resultType.setInput(input);
@@ -1773,7 +1773,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setResultType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setResultType(Enumerator newValue)
 	 * 
 	 */
 	public void setResultType(Enumerator newValue) {
@@ -1791,7 +1791,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getResultContextProperty()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getResultContextProperty()
 	 * 
 	 */
 	public String getResultContextProperty() {
@@ -1801,7 +1801,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setResultContextProperty(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setResultContextProperty(String newValue)
 	 * 
 	 */
 	public void setResultContextProperty(String newValue) {
@@ -1823,7 +1823,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getPolicies()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getPolicies()
 	 * 
 	 */
 	public Enumerator getPolicies() {
@@ -1834,7 +1834,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#initPolicies(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#initPolicies(Object input, Enumerator current)
 	 */
 	public void initPolicies(Object input, Enumerator current) {
 		policies.setInput(input);
@@ -1852,7 +1852,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setPolicies(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setPolicies(Enumerator newValue)
 	 * 
 	 */
 	public void setPolicies(Enumerator newValue) {
@@ -1870,7 +1870,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getSecurityType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#getSecurityType()
 	 * 
 	 */
 	public Enumerator getSecurityType() {
@@ -1881,7 +1881,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#initSecurityType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#initSecurityType(Object input, Enumerator current)
 	 */
 	public void initSecurityType(Object input, Enumerator current) {
 		securityType.setInput(input);
@@ -1899,7 +1899,7 @@ public class CalloutMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setSecurityType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CalloutMediatorPropertiesEditionPart#setSecurityType(Enumerator newValue)
 	 * 
 	 */
 	public void setSecurityType(Enumerator newValue) {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.editor;
+package org.wso2.integrationstudio.docker.distribution.editor;
 
 import java.io.File;
 import java.io.IOException;
@@ -84,23 +84,23 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.w3c.dom.Document;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.DependencyData;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.NodeData;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.DistProjectUtils;
-import org.wso2.integrationstudio.eclipse.distribution.project.validator.ProjectList;
-import org.wso2.integrationstudio.eclipse.docker.distribution.Activator;
-import org.wso2.integrationstudio.eclipse.docker.distribution.action.DockerBuildActionUtil;
-import org.wso2.integrationstudio.eclipse.docker.distribution.model.DockerHubAuth;
-import org.wso2.integrationstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.PlatformUIConstants;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.UserInputValidator;
+import org.wso2.integrationstudio.distribution.project.model.DependencyData;
+import org.wso2.integrationstudio.distribution.project.model.NodeData;
+import org.wso2.integrationstudio.distribution.project.util.DistProjectUtils;
+import org.wso2.integrationstudio.distribution.project.validator.ProjectList;
+import org.wso2.integrationstudio.docker.distribution.Activator;
+import org.wso2.integrationstudio.docker.distribution.action.DockerBuildActionUtil;
+import org.wso2.integrationstudio.docker.distribution.model.DockerHubAuth;
+import org.wso2.integrationstudio.docker.distribution.utils.DockerProjectConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.platform.ui.utils.PlatformUIConstants;
+import org.wso2.integrationstudio.platform.ui.utils.UserInputValidator;
 import org.xml.sax.SAXException;
 import org.eclipse.jface.dialogs.ErrorDialog;
 

@@ -6,7 +6,7 @@
  * UTC)
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.authentication;
+package org.wso2.integrationstudio.carbonserver.base.authentication;
 
 /**
  * AuthenticationAdminCallbackHandler Callback class, Users can extend this

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -18,18 +18,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceFaultInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceInSequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceOutSequenceOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ApiResourceUrlStyle;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Protocol;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType;
+import org.wso2.integrationstudio.gmf.esb.APIResource;
+import org.wso2.integrationstudio.gmf.esb.APIResourceFaultInputConnector;
+import org.wso2.integrationstudio.gmf.esb.APIResourceInSequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.APIResourceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.APIResourceOutSequenceOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.APIResourceOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ApiResourceUrlStyle;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.Protocol;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceContainer;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SequenceType;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,32 +39,32 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getOutSequenceOutputConnector <em>Out Sequence Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getInSequenceInputConnectors <em>In Sequence Input Connectors</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getFaultInputConnector <em>Fault Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getUrlStyle <em>Url Style</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getUriTemplate <em>Uri Template</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getUrlMapping <em>Url Mapping</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#isAllowGet <em>Allow Get</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#isAllowPost <em>Allow Post</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#isAllowPut <em>Allow Put</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#isAllowDelete <em>Allow Delete</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#isAllowOptions <em>Allow Options</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#isAllowHead <em>Allow Head</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#isAllowPatch <em>Allow Patch</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getContainer <em>Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getInSequenceType <em>In Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getInSequenceKey <em>In Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getInSequenceName <em>In Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getOutSequenceType <em>Out Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getOutSequenceKey <em>Out Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getOutSequenceName <em>Out Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getFaultSequenceType <em>Fault Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getFaultSequenceKey <em>Fault Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.APIResourceImpl#getProtocol <em>Protocol</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getOutSequenceOutputConnector <em>Out Sequence Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getInSequenceInputConnectors <em>In Sequence Input Connectors</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getFaultInputConnector <em>Fault Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getUrlStyle <em>Url Style</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getUriTemplate <em>Uri Template</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getUrlMapping <em>Url Mapping</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#isAllowGet <em>Allow Get</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#isAllowPost <em>Allow Post</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#isAllowPut <em>Allow Put</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#isAllowDelete <em>Allow Delete</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#isAllowOptions <em>Allow Options</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#isAllowHead <em>Allow Head</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#isAllowPatch <em>Allow Patch</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getInSequenceType <em>In Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getInSequenceKey <em>In Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getInSequenceName <em>In Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getOutSequenceType <em>Out Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getOutSequenceKey <em>Out Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getOutSequenceName <em>Out Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getFaultSequenceType <em>Fault Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getFaultSequenceKey <em>Fault Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIResourceImpl#getProtocol <em>Protocol</em>}</li>
  * </ul>
  *
  * @generated
@@ -512,19 +512,19 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
         RegistryKeyProperty inSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         inSequenceKey.setPrettyName("In Sequence Reference");
         inSequenceKey.setKeyName("key");
-        inSequenceKey.setKeyValue(org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement.DEFAULT_REGISTRY_KEY);
+        inSequenceKey.setKeyValue(org.wso2.integrationstudio.gmf.esb.EsbElement.DEFAULT_REGISTRY_KEY);
         setInSequenceKey(inSequenceKey);
 
         RegistryKeyProperty outSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         outSequenceKey.setPrettyName("Out Sequence Reference");
         outSequenceKey.setKeyName("key");
-        outSequenceKey.setKeyValue(org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement.DEFAULT_REGISTRY_KEY);
+        outSequenceKey.setKeyValue(org.wso2.integrationstudio.gmf.esb.EsbElement.DEFAULT_REGISTRY_KEY);
         setOutSequenceKey(outSequenceKey);
 
         RegistryKeyProperty faultSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         faultSequenceKey.setPrettyName("Fault Sequence Reference");
         faultSequenceKey.setKeyName("key");
-        faultSequenceKey.setKeyValue(org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement.DEFAULT_REGISTRY_KEY);
+        faultSequenceKey.setKeyValue(org.wso2.integrationstudio.gmf.esb.EsbElement.DEFAULT_REGISTRY_KEY);
         setFaultSequenceKey(faultSequenceKey);
     }
 

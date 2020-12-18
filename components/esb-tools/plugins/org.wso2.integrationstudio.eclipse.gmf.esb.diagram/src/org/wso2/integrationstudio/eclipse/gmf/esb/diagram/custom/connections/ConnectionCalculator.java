@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.connections;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.connections;
 
 import java.util.ArrayList;
 
@@ -8,21 +8,21 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPar
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.swt.widgets.Control;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractBaseFigureEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorFlowCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.EastPointerFigure;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.WestPointerFigure;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AdditionalOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.DropMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractBaseFigureEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorFlowCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.EastPointerFigure;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.WestPointerFigure;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AdditionalOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DropMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbMultiPageEditor;
 
 /*
  * This class is used to handle automatic connection creation stuffs. 
@@ -127,9 +127,9 @@ public class ConnectionCalculator {
                 IFigure figure = (IFigure) ((DefaultSizeNodeFigure) connectors.get(i).getFigure()).getChildren().get(0);
 
                 // Skip the Additional output connectors as they are taken into account at the latter part of the code
-                if ((figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom
+                if ((figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.custom
                         .AdditionalOutputConnector.EastPointerFigure)
-                        || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram
+                        || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram
                                 .custom.AdditionalOutputConnector.WestPointerFigure)) {
                     continue;
                 }
@@ -142,22 +142,22 @@ public class ConnectionCalculator {
                     double xLeft = connectorFigureLocation.x;
                     double actualCurrentPosition = currentFigureLocation.x;
                     if ((figure instanceof EastPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.custom
                                     .AbstractMediatorInputConnectorEditPart.EastPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit.parts
                                     .ProxyOutputConnectorEditPart.EastPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit.parts
                                     .APIResourceOutputConnectorEditPart.EastPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit.parts
                                     .SequencesOutputConnectorEditPart.EastPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit.parts
                                     .SequencesInputConnectorEditPart.EastPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.custom
                                     .AdditionalOutputConnector.EastPointerFigure)) {
 
-                        if ((figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts
+                        if ((figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit.parts
                                 .ProxyOutputConnectorEditPart.EastPointerFigure)
-                                || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit
+                                || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit
                                         .parts.APIResourceOutputConnectorEditPart.EastPointerFigure)) {
                             xLeft = xLeft - WIDTH_OF_PROXYCONNECTOR;
                         }
@@ -172,26 +172,26 @@ public class ConnectionCalculator {
                             }
                         }
                     } else if ((figure instanceof WestPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.custom
                                     .AbstractMediatorInputConnectorEditPart.WestPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit
                                     .parts.ProxyInputConnectorEditPart.WestPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit
                                     .parts.APIResourceInputConnectorEditPart.WestPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.custom
                                     .AbstractEndpointOutputConnectorEditPart.WestPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit
                                     .parts.ProxyFaultInputConnectorEditPart.WestPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit
                                     .parts.ProxyOutSequenceOutputConnectorEditPart.WestPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit
                                     .parts.APIResourceOutSequenceOutputConnectorEditPart.WestPointerFigure)
-                            || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram
+                            || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram
                                     .custom.AdditionalOutputConnector.WestPointerFigure)) {
 
-                        if ((figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts
+                        if ((figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit.parts
                                 .ProxyOutSequenceOutputConnectorEditPart.WestPointerFigure)
-                                || (figure instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit
+                                || (figure instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit
                                         .parts.APIResourceOutSequenceOutputConnectorEditPart.WestPointerFigure)) {
                             xLeft = xLeft - WIDTH_OF_PROXYCONNECTOR;
                         }

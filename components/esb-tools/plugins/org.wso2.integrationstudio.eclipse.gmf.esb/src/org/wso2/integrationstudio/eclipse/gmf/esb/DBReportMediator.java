@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,12 +15,12 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediator#isConnectionUseTransaction <em>Connection Use Transaction</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.DBReportMediator#isConnectionUseTransaction <em>Connection Use Transaction</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.DBReportMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.DBReportMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getDBReportMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getDBReportMediator()
  * @model
  * @generated
  */
@@ -36,14 +36,14 @@ public interface DBReportMediator extends AbstractSqlExecutorMediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Connection Use Transaction</em>' attribute.
      * @see #setConnectionUseTransaction(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getDBReportMediator_ConnectionUseTransaction()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getDBReportMediator_ConnectionUseTransaction()
      * @model default="false"
      * @generated
      */
     boolean isConnectionUseTransaction();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediator#isConnectionUseTransaction <em>Connection Use Transaction</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.DBReportMediator#isConnectionUseTransaction <em>Connection Use Transaction</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Connection Use Transaction</em>' attribute.
@@ -62,14 +62,14 @@ public interface DBReportMediator extends AbstractSqlExecutorMediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(DBReportMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getDBReportMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getDBReportMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     DBReportMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.DBReportMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -88,14 +88,14 @@ public interface DBReportMediator extends AbstractSqlExecutorMediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(DBReportMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getDBReportMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getDBReportMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     DBReportMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.DBReportMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.

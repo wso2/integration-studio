@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.core.internal.impl;
+package org.wso2.integrationstudio.esb.core.internal.impl;
 
 import java.io.InputStream;
 import java.util.Iterator;
@@ -22,7 +22,7 @@ import javax.xml.stream.FactoryConfigurationError;
 import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMElement;
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.AbstractXmlDocMediaTypeResolver;
+import org.wso2.integrationstudio.platform.core.mediatype.AbstractXmlDocMediaTypeResolver;
 
 public class TemplateEndpointMediaTypeResolver extends AbstractXmlDocMediaTypeResolver {
 

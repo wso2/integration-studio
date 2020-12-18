@@ -1,13 +1,13 @@
-package org.wso2.integrationstudio.eclipse.artifact.bpel.project.export;
+package org.wso2.integrationstudio.artifact.bpel.project.export;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.artifact.bpel.Activator;
-import org.wso2.integrationstudio.eclipse.distribution.project.export.CappArtifactsListProvider;
+import org.wso2.integrationstudio.artifact.bpel.Activator;
+import org.wso2.integrationstudio.distribution.project.export.CappArtifactsListProvider;
 import org.eclipse.core.resources.IProject;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class BPELArtifactProvider extends CappArtifactsListProvider {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

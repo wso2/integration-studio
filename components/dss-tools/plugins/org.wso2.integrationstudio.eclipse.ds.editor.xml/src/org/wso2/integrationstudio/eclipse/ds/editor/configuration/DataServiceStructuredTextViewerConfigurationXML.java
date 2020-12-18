@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.editor.configuration;
+package org.wso2.integrationstudio.ds.editor.configuration;
 
 import org.eclipse.wst.xml.ui.StructuredTextViewerConfigurationXML;
 import org.eclipse.wst.sse.ui.StructuredTextViewerConfiguration;
@@ -26,8 +26,8 @@ import org.eclipse.jface.text.quickassist.IQuickAssistAssistant;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.wst.sse.core.text.IStructuredPartitions;
 import org.eclipse.wst.xml.core.text.IXMLPartitions;
-import org.wso2.integrationstudio.eclipse.ds.editor.contentassistant.DataServiceContentAssistantProcessor;
-import org.wso2.integrationstudio.eclipse.ds.editor.contentassistant.DataserviceQuickAssistantProcessor;
+import org.wso2.integrationstudio.ds.editor.contentassistant.DataServiceContentAssistantProcessor;
+import org.wso2.integrationstudio.ds.editor.contentassistant.DataserviceQuickAssistantProcessor;
 
 public class DataServiceStructuredTextViewerConfigurationXML extends
                                                             StructuredTextViewerConfigurationXML {

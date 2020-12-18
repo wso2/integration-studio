@@ -10,7 +10,7 @@
 				  title="New Registry Resources" 
 				  description="Create new Registry Resources" 
 				  error="Please give a name for the registry resources">
-			<data modelProperty="project.name" type="string" fieldController="org.wso2.integrationstudio.eclipse.general.project.controller.GeneralProjectFieldController">Module Name</data>
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.integrationstudio.general.project.controller.GeneralProjectFieldController">Module Name</data>
 			<projectNatures>
 				<nature>org.eclipse.jdt.core.javanature</nature>
 			</projectNatures>

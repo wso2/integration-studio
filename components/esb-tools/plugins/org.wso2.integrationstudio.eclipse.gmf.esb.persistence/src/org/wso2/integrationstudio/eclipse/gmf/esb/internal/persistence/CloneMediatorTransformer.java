@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,35 +28,35 @@ import org.apache.synapse.endpoints.LoadbalanceEndpoint;
 import org.apache.synapse.endpoints.RecipientListEndpoint;
 import org.apache.synapse.endpoints.TemplateEndpoint;
 import org.apache.synapse.endpoints.WSDLEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamedEndpoint;
+import org.wso2.integrationstudio.gmf.esb.NamedEndpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.eip.Target;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TargetEndpointType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TargetSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.AddressEndPointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.DefaultEndPointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.HTTPEndpointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.NamedEndpointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.AddressEndPoint;
+import org.wso2.integrationstudio.gmf.esb.CloneMediator;
+import org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.CloneTarget;
+import org.wso2.integrationstudio.gmf.esb.DefaultEndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPoint;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPoint;
+import org.wso2.integrationstudio.gmf.esb.TargetEndpointType;
+import org.wso2.integrationstudio.gmf.esb.TargetSequenceType;
+import org.wso2.integrationstudio.gmf.esb.WSDLEndPoint;
+import org.wso2.integrationstudio.gmf.esb.impl.AddressEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.DefaultEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.FailoverEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.NamedEndpointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.RecipientListEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.TemplateEndpointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.WSDLEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
 
@@ -188,7 +188,7 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
                         } else if (endpoint instanceof HTTPEndpointImpl) {
                             HTTPEndPointTransformer transformer = new HTTPEndPointTransformer();
                             HTTPEndpoint synapseEP = transformer
-                                    .create((org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndpoint) endpoint, null);
+                                    .create((org.wso2.integrationstudio.gmf.esb.HTTPEndpoint) endpoint, null);
                             target.setEndpoint(synapseEP);
                         } else if (endpoint instanceof LoadBalanceEndPointImpl) {
                             LoadBalanceEndPointTransformer transformer = new LoadBalanceEndPointTransformer();
@@ -208,7 +208,7 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
                         } else if (endpoint instanceof TemplateEndpointImpl) {
                             TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
                             TemplateEndpoint synapseEP = transformer
-                                    .create((org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint) endpoint, null);
+                                    .create((org.wso2.integrationstudio.gmf.esb.TemplateEndpoint) endpoint, null);
                             target.setEndpoint(synapseEP);
                         } else if (endpoint instanceof WSDLEndPointImpl) {
                             WSDLEndPointTransformer transformer = new WSDLEndPointTransformer();

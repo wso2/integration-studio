@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.wizards;
+package org.wso2.integrationstudio.ds.wizards;
 
 import java.util.ArrayList;
 
@@ -11,8 +11,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.ExelReader;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.UiUtil;
+import org.wso2.integrationstudio.ds.wizards.util.ExelReader;
+import org.wso2.integrationstudio.ds.wizards.util.UiUtil;
 
 public class ExelWizardPage extends WizardPage {
 

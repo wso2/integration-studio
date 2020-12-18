@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 import java.util.ArrayList;
 
@@ -66,16 +66,16 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
@@ -784,7 +784,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getDescription()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getDescription()
      * 
      */
     public String getDescription() {
@@ -794,7 +794,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setDescription(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setDescription(String
      *      newValue)
      * 
      */
@@ -817,7 +817,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getCommentsList()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getCommentsList()
      * 
      */
     public EList getCommentsList() {
@@ -827,7 +827,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setCommentsList(EList
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setCommentsList(EList
      *      newValue)
      * 
      */
@@ -869,7 +869,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getReverse()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getReverse()
      * 
      */
     public Boolean getReverse() {
@@ -879,7 +879,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setReverse(Boolean
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setReverse(Boolean
      *      newValue)
      * 
      */
@@ -902,7 +902,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getIterateID()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getIterateID()
      * 
      */
     public String getIterateID() {
@@ -912,7 +912,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setIterateID(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setIterateID(String
      *      newValue)
      * 
      */
@@ -935,7 +935,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getSequentialMediation()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getSequentialMediation()
      * 
      */
     public Boolean getSequentialMediation() {
@@ -945,7 +945,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setSequentialMediation(Boolean
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setSequentialMediation(Boolean
      *      newValue)
      * 
      */
@@ -969,7 +969,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getContinueParent()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getContinueParent()
      * 
      */
     public Boolean getContinueParent() {
@@ -979,7 +979,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setContinueParent(Boolean
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setContinueParent(Boolean
      *      newValue)
      * 
      */
@@ -1003,7 +1003,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getPreservePayload()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getPreservePayload()
      * 
      */
     public Boolean getPreservePayload() {
@@ -1013,7 +1013,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setPreservePayload(Boolean
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setPreservePayload(Boolean
      *      newValue)
      * 
      */
@@ -1037,7 +1037,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getSequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getSequenceType()
      * 
      */
     public Enumerator getSequenceType() {
@@ -1048,7 +1048,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#initSequenceType(Object
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#initSequenceType(Object
      *      input, Enumerator current)
      */
     public void initSequenceType(Object input, Enumerator current) {
@@ -1066,7 +1066,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setSequenceType(Enumerator
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setSequenceType(Enumerator
      *      newValue)
      * 
      */
@@ -1085,7 +1085,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getSequenceName()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#getSequenceName()
      * 
      */
     public String getSequenceName() {
@@ -1095,7 +1095,7 @@ public class IterateMediatorPropertiesEditionPartForm extends SectionPropertiesE
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setSequenceName(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.IterateMediatorPropertiesEditionPart#setSequenceName(String
      *      newValue)
      * 
      */

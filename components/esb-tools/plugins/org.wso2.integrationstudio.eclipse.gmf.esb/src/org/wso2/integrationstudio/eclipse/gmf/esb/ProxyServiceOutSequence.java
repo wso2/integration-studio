@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -16,12 +16,12 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceOutSequence#getMediatorFlow <em>Mediator
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyServiceOutSequence#getMediatorFlow <em>Mediator
  * Flow</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyServiceOutSequence()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyServiceOutSequence()
  * @model
  * @generated
  */
@@ -37,14 +37,14 @@ public interface ProxyServiceOutSequence extends EsbNode {
      * 
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyServiceOutSequence_MediatorFlow()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyServiceOutSequence_MediatorFlow()
      * @model containment="true"
      * @generated
      */
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceOutSequence#getMediatorFlow
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ProxyServiceOutSequence#getMediatorFlow
      * <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

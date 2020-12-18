@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.wizard;
+package org.wso2.integrationstudio.apim.endpoint.central.wizard;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -25,8 +25,8 @@ import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.EndpointCentralServletConstants;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.view.WebEngineUtils;
+import org.wso2.integrationstudio.apim.endpoint.central.resources.EndpointCentralServletConstants;
+import org.wso2.integrationstudio.templates.dashboard.web.view.WebEngineUtils;
 
 /**
  * WizardPage of the Endpoint Central Wizard.

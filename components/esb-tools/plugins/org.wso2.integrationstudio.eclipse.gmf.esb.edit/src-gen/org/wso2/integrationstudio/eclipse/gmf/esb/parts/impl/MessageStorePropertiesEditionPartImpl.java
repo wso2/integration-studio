@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -77,12 +77,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -2324,7 +2324,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -2334,7 +2334,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -2356,7 +2356,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -2366,7 +2366,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -2407,7 +2407,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getStoreName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getStoreName()
 	 * 
 	 */
 	public String getStoreName() {
@@ -2417,7 +2417,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setStoreName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setStoreName(String newValue)
 	 * 
 	 */
 	public void setStoreName(String newValue) {
@@ -2439,7 +2439,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getStoreType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getStoreType()
 	 * 
 	 */
 	public Enumerator getStoreType() {
@@ -2450,7 +2450,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#initStoreType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#initStoreType(Object input, Enumerator current)
 	 */
 	public void initStoreType(Object input, Enumerator current) {
 		storeType.setInput(input);
@@ -2468,7 +2468,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setStoreType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setStoreType(Enumerator newValue)
 	 * 
 	 */
 	public void setStoreType(Enumerator newValue) {
@@ -2486,7 +2486,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getInitialContextFactory()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getInitialContextFactory()
 	 * 
 	 */
 	public String getInitialContextFactory() {
@@ -2496,7 +2496,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setInitialContextFactory(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setInitialContextFactory(String newValue)
 	 * 
 	 */
 	public void setInitialContextFactory(String newValue) {
@@ -2518,7 +2518,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getProviderURL()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getProviderURL()
 	 * 
 	 */
 	public String getProviderURL() {
@@ -2528,7 +2528,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setProviderURL(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setProviderURL(String newValue)
 	 * 
 	 */
 	public void setProviderURL(String newValue) {
@@ -2550,7 +2550,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getJndiQueueName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getJndiQueueName()
 	 * 
 	 */
 	public String getJndiQueueName() {
@@ -2560,7 +2560,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setJndiQueueName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setJndiQueueName(String newValue)
 	 * 
 	 */
 	public void setJndiQueueName(String newValue) {
@@ -2582,7 +2582,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getConnectionFactory()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getConnectionFactory()
 	 * 
 	 */
 	public String getConnectionFactory() {
@@ -2592,7 +2592,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setConnectionFactory(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setConnectionFactory(String newValue)
 	 * 
 	 */
 	public void setConnectionFactory(String newValue) {
@@ -2614,7 +2614,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getUserName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getUserName()
 	 * 
 	 */
 	public String getUserName() {
@@ -2624,7 +2624,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setUserName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setUserName(String newValue)
 	 * 
 	 */
 	public void setUserName(String newValue) {
@@ -2646,7 +2646,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getPassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getPassword()
 	 * 
 	 */
 	public String getPassword() {
@@ -2656,7 +2656,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setPassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setPassword(String newValue)
 	 * 
 	 */
 	public void setPassword(String newValue) {
@@ -2678,7 +2678,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getCacheConnection()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getCacheConnection()
 	 * 
 	 */
 	public Boolean getCacheConnection() {
@@ -2688,7 +2688,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setCacheConnection(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setCacheConnection(Boolean newValue)
 	 * 
 	 */
 	public void setCacheConnection(Boolean newValue) {
@@ -2710,7 +2710,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getJmsSpecVersion()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getJmsSpecVersion()
 	 * 
 	 */
 	public Enumerator getJmsSpecVersion() {
@@ -2721,7 +2721,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#initJmsSpecVersion(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#initJmsSpecVersion(Object input, Enumerator current)
 	 */
 	public void initJmsSpecVersion(Object input, Enumerator current) {
 		jmsSpecVersion.setInput(input);
@@ -2739,7 +2739,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setJmsSpecVersion(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setJmsSpecVersion(Enumerator newValue)
 	 * 
 	 */
 	public void setJmsSpecVersion(Enumerator newValue) {
@@ -2757,7 +2757,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getEnableCaching()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getEnableCaching()
 	 * 
 	 */
 	public Boolean getEnableCaching() {
@@ -2767,7 +2767,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setEnableCaching(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setEnableCaching(Boolean newValue)
 	 * 
 	 */
 	public void setEnableCaching(Boolean newValue) {
@@ -2789,7 +2789,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getProviderClass()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getProviderClass()
 	 * 
 	 */
 	public String getProviderClass() {
@@ -2799,7 +2799,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setProviderClass(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setProviderClass(String newValue)
 	 * 
 	 */
 	public void setProviderClass(String newValue) {
@@ -2821,7 +2821,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getRabbitMQServerHostName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getRabbitMQServerHostName()
 	 * 
 	 */
 	public String getRabbitMQServerHostName() {
@@ -2831,7 +2831,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setRabbitMQServerHostName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setRabbitMQServerHostName(String newValue)
 	 * 
 	 */
 	public void setRabbitMQServerHostName(String newValue) {
@@ -2853,7 +2853,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getRabbitMQServerHostPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getRabbitMQServerHostPort()
 	 * 
 	 */
 	public String getRabbitMQServerHostPort() {
@@ -2863,7 +2863,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setRabbitMQServerHostPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setRabbitMQServerHostPort(String newValue)
 	 * 
 	 */
 	public void setRabbitMQServerHostPort(String newValue) {
@@ -2885,7 +2885,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getRabbitMQQueueName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getRabbitMQQueueName()
 	 * 
 	 */
 	public String getRabbitMQQueueName() {
@@ -2895,7 +2895,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setRabbitMQQueueName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setRabbitMQQueueName(String newValue)
 	 * 
 	 */
 	public void setRabbitMQQueueName(String newValue) {
@@ -2917,7 +2917,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getRabbitMQExchangeName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getRabbitMQExchangeName()
 	 * 
 	 */
 	public String getRabbitMQExchangeName() {
@@ -2927,7 +2927,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setRabbitMQExchangeName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setRabbitMQExchangeName(String newValue)
 	 * 
 	 */
 	public void setRabbitMQExchangeName(String newValue) {
@@ -2949,7 +2949,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getRoutingKey()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getRoutingKey()
 	 * 
 	 */
 	public String getRoutingKey() {
@@ -2959,7 +2959,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setRoutingKey(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setRoutingKey(String newValue)
 	 * 
 	 */
 	public void setRoutingKey(String newValue) {
@@ -2981,7 +2981,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getRabbitMQUserName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getRabbitMQUserName()
 	 * 
 	 */
 	public String getRabbitMQUserName() {
@@ -2991,7 +2991,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setRabbitMQUserName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setRabbitMQUserName(String newValue)
 	 * 
 	 */
 	public void setRabbitMQUserName(String newValue) {
@@ -3013,7 +3013,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getRabbitMQPassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getRabbitMQPassword()
 	 * 
 	 */
 	public String getRabbitMQPassword() {
@@ -3023,7 +3023,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setRabbitMQPassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setRabbitMQPassword(String newValue)
 	 * 
 	 */
 	public void setRabbitMQPassword(String newValue) {
@@ -3045,7 +3045,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getVirtualHost()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getVirtualHost()
 	 * 
 	 */
 	public String getVirtualHost() {
@@ -3055,7 +3055,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setVirtualHost(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setVirtualHost(String newValue)
 	 * 
 	 */
 	public void setVirtualHost(String newValue) {
@@ -3077,7 +3077,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcDatabaseTable()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcDatabaseTable()
 	 * 
 	 */
 	public String getJdbcDatabaseTable() {
@@ -3087,7 +3087,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcDatabaseTable(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcDatabaseTable(String newValue)
 	 * 
 	 */
 	public void setJdbcDatabaseTable(String newValue) {
@@ -3109,7 +3109,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcConnectionInformation()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcConnectionInformation()
 	 * 
 	 */
 	public Enumerator getJdbcConnectionInformation() {
@@ -3120,7 +3120,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#initJdbcConnectionInformation(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#initJdbcConnectionInformation(Object input, Enumerator current)
 	 */
 	public void initJdbcConnectionInformation(Object input, Enumerator current) {
 		jdbcConnectionInformation.setInput(input);
@@ -3138,7 +3138,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcConnectionInformation(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcConnectionInformation(Enumerator newValue)
 	 * 
 	 */
 	public void setJdbcConnectionInformation(Enumerator newValue) {
@@ -3156,7 +3156,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcDriver()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcDriver()
 	 * 
 	 */
 	public String getJdbcDriver() {
@@ -3166,7 +3166,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcDriver(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcDriver(String newValue)
 	 * 
 	 */
 	public void setJdbcDriver(String newValue) {
@@ -3188,7 +3188,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcURL()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcURL()
 	 * 
 	 */
 	public String getJdbcURL() {
@@ -3198,7 +3198,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcURL(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcURL(String newValue)
 	 * 
 	 */
 	public void setJdbcURL(String newValue) {
@@ -3220,7 +3220,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcUser()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcUser()
 	 * 
 	 */
 	public String getJdbcUser() {
@@ -3230,7 +3230,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcUser(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcUser(String newValue)
 	 * 
 	 */
 	public void setJdbcUser(String newValue) {
@@ -3252,7 +3252,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcPassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcPassword()
 	 * 
 	 */
 	public String getJdbcPassword() {
@@ -3262,7 +3262,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcPassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcPassword(String newValue)
 	 * 
 	 */
 	public void setJdbcPassword(String newValue) {
@@ -3284,7 +3284,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcDatasourceName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getJdbcDatasourceName()
 	 * 
 	 */
 	public String getJdbcDatasourceName() {
@@ -3294,7 +3294,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcDatasourceName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setJdbcDatasourceName(String newValue)
 	 * 
 	 */
 	public void setJdbcDatasourceName(String newValue) {
@@ -3318,7 +3318,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#initParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#initParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initParameters(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -3339,7 +3339,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#updateParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#updateParameters()
 	 * 
 	 */
 	public void updateParameters() {
@@ -3349,7 +3349,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#addFilterParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#addFilterParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToParameters(ViewerFilter filter) {
@@ -3362,7 +3362,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#addBusinessFilterParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#addBusinessFilterParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToParameters(ViewerFilter filter) {
@@ -3372,7 +3372,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#isContainedInParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#isContainedInParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInParametersTable(EObject element) {
@@ -3382,7 +3382,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getEnableProducerGuaranteedDelivery()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getEnableProducerGuaranteedDelivery()
 	 * 
 	 */
 	public Boolean getEnableProducerGuaranteedDelivery() {
@@ -3392,7 +3392,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setEnableProducerGuaranteedDelivery(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setEnableProducerGuaranteedDelivery(Boolean newValue)
 	 * 
 	 */
 	public void setEnableProducerGuaranteedDelivery(Boolean newValue) {
@@ -3414,7 +3414,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getFailoverMessageStore()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getFailoverMessageStore()
 	 * 
 	 */
 	public String getFailoverMessageStore() {
@@ -3424,7 +3424,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setFailoverMessageStore(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setFailoverMessageStore(String newValue)
 	 * 
 	 */
 	public void setFailoverMessageStore(String newValue) {
@@ -3446,7 +3446,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequencepolling()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequencepolling()
 	 * 
 	 */
 	public String getResequencepolling() {
@@ -3456,7 +3456,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequencepolling(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequencepolling(String newValue)
 	 * 
 	 */
 	public void setResequencepolling(String newValue) {
@@ -3478,7 +3478,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceDatabaseTable()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceDatabaseTable()
 	 * 
 	 */
 	public String getResequenceDatabaseTable() {
@@ -3488,7 +3488,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceDatabaseTable(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceDatabaseTable(String newValue)
 	 * 
 	 */
 	public void setResequenceDatabaseTable(String newValue) {
@@ -3510,7 +3510,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceConnectionInformation()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceConnectionInformation()
 	 * 
 	 */
 	public Enumerator getResequenceConnectionInformation() {
@@ -3521,7 +3521,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#initResequenceConnectionInformation(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#initResequenceConnectionInformation(Object input, Enumerator current)
 	 */
 	public void initResequenceConnectionInformation(Object input, Enumerator current) {
 		resequenceConnectionInformation.setInput(input);
@@ -3539,7 +3539,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceConnectionInformation(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceConnectionInformation(Enumerator newValue)
 	 * 
 	 */
 	public void setResequenceConnectionInformation(Enumerator newValue) {
@@ -3557,7 +3557,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceDriver()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceDriver()
 	 * 
 	 */
 	public String getResequenceDriver() {
@@ -3567,7 +3567,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceDriver(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceDriver(String newValue)
 	 * 
 	 */
 	public void setResequenceDriver(String newValue) {
@@ -3589,7 +3589,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceURL()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceURL()
 	 * 
 	 */
 	public String getResequenceURL() {
@@ -3599,7 +3599,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceURL(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceURL(String newValue)
 	 * 
 	 */
 	public void setResequenceURL(String newValue) {
@@ -3621,7 +3621,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceUser()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceUser()
 	 * 
 	 */
 	public String getResequenceUser() {
@@ -3631,7 +3631,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceUser(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceUser(String newValue)
 	 * 
 	 */
 	public void setResequenceUser(String newValue) {
@@ -3653,7 +3653,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequencePassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequencePassword()
 	 * 
 	 */
 	public String getResequencePassword() {
@@ -3663,7 +3663,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequencePassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequencePassword(String newValue)
 	 * 
 	 */
 	public void setResequencePassword(String newValue) {
@@ -3685,7 +3685,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceDatasourceName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceDatasourceName()
 	 * 
 	 */
 	public String getResequenceDatasourceName() {
@@ -3695,7 +3695,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceDatasourceName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceDatasourceName(String newValue)
 	 * 
 	 */
 	public void setResequenceDatasourceName(String newValue) {
@@ -3717,7 +3717,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceXpath()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceXpath()
 	 * 
 	 */
 	public String getResequenceXpath() {
@@ -3727,7 +3727,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceXpath(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceXpath(String newValue)
 	 * 
 	 */
 	public void setResequenceXpath(String newValue) {
@@ -3749,7 +3749,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceXpathAttr()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#getResequenceXpathAttr()
 	 * 
 	 */
 	public EObject getResequenceXpathAttr() {
@@ -3764,7 +3764,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#initResequenceXpathAttr(EObjectFlatComboSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#initResequenceXpathAttr(EObjectFlatComboSettings)
 	 */
 	public void initResequenceXpathAttr(EObjectFlatComboSettings settings) {
 		resequenceXpathAttr.setInput(settings);
@@ -3784,7 +3784,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceXpathAttr(EObject newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceXpathAttr(EObject newValue)
 	 * 
 	 */
 	public void setResequenceXpathAttr(EObject newValue) {
@@ -3806,7 +3806,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceXpathAttrButtonMode(ButtonsModeEnum newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#setResequenceXpathAttrButtonMode(ButtonsModeEnum newValue)
 	 */
 	public void setResequenceXpathAttrButtonMode(ButtonsModeEnum newValue) {
 		resequenceXpathAttr.setButtonMode(newValue);
@@ -3815,7 +3815,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#addFilterResequenceXpathAttr(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#addFilterResequenceXpathAttr(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToResequenceXpathAttr(ViewerFilter filter) {
@@ -3825,7 +3825,7 @@ public class MessageStorePropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStorePropertiesEditionPart#addBusinessFilterResequenceXpathAttr(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStorePropertiesEditionPart#addBusinessFilterResequenceXpathAttr(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToResequenceXpathAttr(ViewerFilter filter) {

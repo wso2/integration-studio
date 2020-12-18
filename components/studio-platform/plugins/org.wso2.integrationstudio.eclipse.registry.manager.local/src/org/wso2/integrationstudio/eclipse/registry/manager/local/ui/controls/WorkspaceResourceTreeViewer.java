@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.local.ui.controls;
+package org.wso2.integrationstudio.registry.manager.local.ui.controls;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,10 +32,10 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.Activator;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.utils.RegistryCheckInClientUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.manager.local.Activator;
+import org.wso2.integrationstudio.registry.manager.local.utils.RegistryCheckInClientUtils;
 
 public class WorkspaceResourceTreeViewer extends TreeViewer {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

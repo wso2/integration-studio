@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.maven.test;
+package org.wso2.integrationstudio.maven.test;
 
 import java.io.File;
 
 import junit.framework.TestCase;
 
 import org.junit.Test;
-import org.wso2.integrationstudio.eclipse.maven.executor.MavenEnv;
-import org.wso2.integrationstudio.eclipse.maven.internal.executor.impl.MavenExecutorImpl;
-import org.wso2.integrationstudio.eclipse.maven.types.MavenArcheType;
-import org.wso2.integrationstudio.eclipse.maven.types.MavenProjectType;
+import org.wso2.integrationstudio.maven.executor.MavenEnv;
+import org.wso2.integrationstudio.maven.internal.executor.impl.MavenExecutorImpl;
+import org.wso2.integrationstudio.maven.types.MavenArcheType;
+import org.wso2.integrationstudio.maven.types.MavenProjectType;
 
 /**
  * This test class test the project generation via maven archetype.
@@ -39,7 +39,7 @@ public class MavenArcheTypeTest extends TestCase {
 
 	/**
 	 * Test method for
-	 * {@link org.wso2.integrationstudio.eclipse.maven.executor.MavenExecutorImpl#createArcheType(boolean, boolean, org.wso2.integrationstudio.eclipse.build.invoker.maven.util.ArcheTypeParameter, org.wso2.integrationstudio.eclipse.build.invoker.maven.util.GeneratedProjectParameter)}
+	 * {@link org.wso2.integrationstudio.maven.executor.MavenExecutorImpl#createArcheType(boolean, boolean, org.wso2.integrationstudio.build.invoker.maven.util.ArcheTypeParameter, org.wso2.integrationstudio.build.invoker.maven.util.GeneratedProjectParameter)}
 	 * .
 	 * @throws Exception 
 	 */

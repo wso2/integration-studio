@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Properties;
 
@@ -23,7 +23,7 @@ import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.MediatorPropertyFactory;
 import org.apache.synapse.config.xml.ClassMediatorFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.ClassMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.ClassMediatorExt;
 
 public class ClassMediatorExtFactory extends ClassMediatorFactory {
 

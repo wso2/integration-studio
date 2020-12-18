@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.artifact.dataserviceProject.project.nature;
+package org.wso2.integrationstudio.artifact.dataserviceProject.project.nature;
 
 import java.io.File;
 
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.JavaModelException;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.nature.AbstractWSO2ProjectNature;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.nature.AbstractWSO2ProjectNature;
 
 public class DataServiceProjectNature extends AbstractWSO2ProjectNature {
 

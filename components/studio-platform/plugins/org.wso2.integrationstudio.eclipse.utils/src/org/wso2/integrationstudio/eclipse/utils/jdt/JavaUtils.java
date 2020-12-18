@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.jdt;
+package org.wso2.integrationstudio.utils.jdt;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -49,9 +49,9 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.launching.JavaRuntime;
-import org.wso2.integrationstudio.eclipse.utils.Activator;
-import org.wso2.integrationstudio.eclipse.utils.constants.ProjectConstants;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.utils.Activator;
+import org.wso2.integrationstudio.utils.constants.ProjectConstants;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class JavaUtils {
 	private static final String TOP_LEVEL_SUPER_CLASS = Object.class.getName();

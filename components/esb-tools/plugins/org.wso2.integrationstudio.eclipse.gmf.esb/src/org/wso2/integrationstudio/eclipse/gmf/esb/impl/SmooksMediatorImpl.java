@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Map;
 
@@ -16,19 +16,19 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ExpressionAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputMethod;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SmooksIODataType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SmooksMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SmooksMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SmooksMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SmooksOutputDataType;
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.ExpressionAction;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.OutputMethod;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SmooksIODataType;
+import org.wso2.integrationstudio.gmf.esb.SmooksMediator;
+import org.wso2.integrationstudio.gmf.esb.SmooksMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.SmooksMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.SmooksOutputDataType;
+import org.wso2.integrationstudio.platform.core.mediatype.PlatformMediaTypeConstants;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,16 +38,16 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getConfigurationKey <em>Configuration Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getInputType <em>Input Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getInputExpression <em>Input Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputType <em>Output Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputExpression <em>Output Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputProperty <em>Output Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputAction <em>Output Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputMethod <em>Output Method</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SmooksMediatorImpl#getConfigurationKey <em>Configuration Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SmooksMediatorImpl#getInputType <em>Input Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SmooksMediatorImpl#getInputExpression <em>Input Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SmooksMediatorImpl#getOutputType <em>Output Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SmooksMediatorImpl#getOutputExpression <em>Output Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SmooksMediatorImpl#getOutputProperty <em>Output Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SmooksMediatorImpl#getOutputAction <em>Output Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SmooksMediatorImpl#getOutputMethod <em>Output Method</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SmooksMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SmooksMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated

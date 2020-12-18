@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.provider;
+package org.wso2.integrationstudio.gmf.esb.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,7 +23,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory;
+import org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -75,7 +75,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EsbDiagram} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -83,7 +83,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EsbDiagramItemProvider esbDiagramItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EsbDiagram}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -99,7 +99,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EsbServer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -107,7 +107,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EsbServerItemProvider esbServerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EsbServer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -123,7 +123,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EsbLink} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -131,7 +131,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EsbLinkItemProvider esbLinkItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EsbLink}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -147,7 +147,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CallMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -155,7 +155,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CallMediatorItemProvider callMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CallMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -170,7 +170,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CallMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -178,7 +178,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CallMediatorInputConnectorItemProvider callMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CallMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -193,7 +193,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CallMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -201,7 +201,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CallMediatorOutputConnectorItemProvider callMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CallMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -216,7 +216,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallMediatorEndpointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CallMediatorEndpointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -224,7 +224,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CallMediatorEndpointOutputConnectorItemProvider callMediatorEndpointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallMediatorEndpointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CallMediatorEndpointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -239,7 +239,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EndPointProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -247,7 +247,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EndPointPropertyItemProvider endPointPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EndPointProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -262,7 +262,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ProxyService} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -270,7 +270,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ProxyServiceItemProvider proxyServiceItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ProxyService}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -286,7 +286,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ProxyOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -294,7 +294,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ProxyOutputConnectorItemProvider proxyOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ProxyOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -310,7 +310,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ProxyInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -318,7 +318,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ProxyInputConnectorItemProvider proxyInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ProxyInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -334,7 +334,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyOutSequenceOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ProxyOutSequenceOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -342,7 +342,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ProxyOutSequenceOutputConnectorItemProvider proxyOutSequenceOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyOutSequenceOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ProxyOutSequenceOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -357,7 +357,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ProxyInSequenceInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -365,7 +365,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ProxyInSequenceInputConnectorItemProvider proxyInSequenceInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ProxyInSequenceInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -380,7 +380,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyWSDLResource} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ProxyWSDLResource} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -388,7 +388,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ProxyWSDLResourceItemProvider proxyWSDLResourceItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyWSDLResource}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ProxyWSDLResource}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -403,7 +403,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyFaultInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ProxyFaultInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -411,7 +411,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ProxyFaultInputConnectorItemProvider proxyFaultInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyFaultInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ProxyFaultInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -426,7 +426,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceParameter} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ProxyServiceParameter} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -434,7 +434,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ProxyServiceParameterItemProvider proxyServiceParameterItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceParameter}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ProxyServiceParameter}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -449,7 +449,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServicePolicy} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ProxyServicePolicy} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -457,7 +457,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ProxyServicePolicyItemProvider proxyServicePolicyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServicePolicy}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ProxyServicePolicy}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -472,7 +472,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceSequenceAndEndpointContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ProxyServiceSequenceAndEndpointContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -480,7 +480,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ProxyServiceSequenceAndEndpointContainerItemProvider proxyServiceSequenceAndEndpointContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceSequenceAndEndpointContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ProxyServiceSequenceAndEndpointContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -495,7 +495,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceFaultContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ProxyServiceFaultContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -503,7 +503,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ProxyServiceFaultContainerItemProvider proxyServiceFaultContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceFaultContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ProxyServiceFaultContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -518,7 +518,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ProxyServiceContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -526,7 +526,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ProxyServiceContainerItemProvider proxyServiceContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ProxyServiceContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -541,7 +541,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MediatorFlow} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -549,7 +549,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MediatorFlowItemProvider mediatorFlowItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MediatorFlow}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -564,7 +564,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EndpointFlow} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EndpointFlow} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -572,7 +572,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EndpointFlowItemProvider endpointFlowItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EndpointFlow}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EndpointFlow}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -587,7 +587,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MessageMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -595,7 +595,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MessageMediatorItemProvider messageMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MessageMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -611,7 +611,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MessageInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -619,7 +619,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MessageInputConnectorItemProvider messageInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MessageInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -635,7 +635,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MessageOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -643,7 +643,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MessageOutputConnectorItemProvider messageOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MessageOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -659,7 +659,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DefaultEndPoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -667,7 +667,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DefaultEndPointItemProvider defaultEndPointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DefaultEndPoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -683,7 +683,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPointInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DefaultEndPointInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -691,7 +691,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DefaultEndPointInputConnectorItemProvider defaultEndPointInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPointInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DefaultEndPointInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -707,7 +707,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DefaultEndPointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -715,7 +715,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DefaultEndPointOutputConnectorItemProvider defaultEndPointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DefaultEndPointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -731,7 +731,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DropMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DropMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -739,7 +739,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DropMediatorItemProvider dropMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DropMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DropMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -755,7 +755,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DropMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DropMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -763,7 +763,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DropMediatorInputConnectorItemProvider dropMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DropMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DropMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -779,7 +779,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FilterMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -787,7 +787,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FilterMediatorItemProvider filterMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FilterMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -803,7 +803,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FilterContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -811,7 +811,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FilterContainerItemProvider filterContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FilterContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -826,7 +826,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterPassContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FilterPassContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -834,7 +834,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FilterPassContainerItemProvider filterPassContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterPassContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FilterPassContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -849,7 +849,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterFailContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FilterFailContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -857,7 +857,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FilterFailContainerItemProvider filterFailContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterFailContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FilterFailContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -872,7 +872,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FilterMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -880,7 +880,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FilterMediatorInputConnectorItemProvider filterMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FilterMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -896,7 +896,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FilterMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -904,7 +904,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FilterMediatorOutputConnectorItemProvider filterMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FilterMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -919,7 +919,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorPassOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FilterMediatorPassOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -927,7 +927,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FilterMediatorPassOutputConnectorItemProvider filterMediatorPassOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorPassOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FilterMediatorPassOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -943,7 +943,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorFailOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FilterMediatorFailOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -951,7 +951,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FilterMediatorFailOutputConnectorItemProvider filterMediatorFailOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorFailOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FilterMediatorFailOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -967,7 +967,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MergeNode} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MergeNode} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -975,7 +975,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MergeNodeItemProvider mergeNodeItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MergeNode}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MergeNode}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -991,7 +991,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MergeNodeFirstInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MergeNodeFirstInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -999,7 +999,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MergeNodeFirstInputConnectorItemProvider mergeNodeFirstInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MergeNodeFirstInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MergeNodeFirstInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1015,7 +1015,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MergeNodeSecondInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MergeNodeSecondInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1023,7 +1023,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MergeNodeSecondInputConnectorItemProvider mergeNodeSecondInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MergeNodeSecondInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MergeNodeSecondInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1039,7 +1039,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MergeNodeOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MergeNodeOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1047,7 +1047,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MergeNodeOutputConnectorItemProvider mergeNodeOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MergeNodeOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MergeNodeOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1063,7 +1063,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.LogMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.LogMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1071,7 +1071,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected LogMediatorItemProvider logMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.LogMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.LogMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1087,7 +1087,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.LogMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.LogMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1095,7 +1095,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected LogMediatorInputConnectorItemProvider logMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.LogMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.LogMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1111,7 +1111,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.LogMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.LogMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1119,7 +1119,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected LogMediatorOutputConnectorItemProvider logMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.LogMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.LogMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1135,7 +1135,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.LogProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.LogProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1143,7 +1143,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected LogPropertyItemProvider logPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.LogProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.LogProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1159,7 +1159,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PublishEventMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1167,7 +1167,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected PublishEventMediatorItemProvider publishEventMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PublishEventMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1182,7 +1182,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PublishEventMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1190,7 +1190,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected PublishEventMediatorInputConnectorItemProvider publishEventMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PublishEventMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1205,7 +1205,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PublishEventMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1213,7 +1213,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected PublishEventMediatorOutputConnectorItemProvider publishEventMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PublishEventMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1228,7 +1228,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorAttribute} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PublishEventMediatorAttribute} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1236,7 +1236,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected PublishEventMediatorAttributeItemProvider publishEventMediatorAttributeItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorAttribute}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PublishEventMediatorAttribute}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1251,7 +1251,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.BAMMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.BAMMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1259,7 +1259,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected BAMMediatorItemProvider bamMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.BAMMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.BAMMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1274,7 +1274,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.BAMMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.BAMMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1282,7 +1282,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected BAMMediatorInputConnectorItemProvider bamMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.BAMMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.BAMMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1297,7 +1297,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.BAMMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.BAMMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1305,7 +1305,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected BAMMediatorOutputConnectorItemProvider bamMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.BAMMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.BAMMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1320,7 +1320,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.BeanMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1328,7 +1328,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected BeanMediatorItemProvider beanMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.BeanMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1343,7 +1343,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.BeanMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1351,7 +1351,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected BeanMediatorInputConnectorItemProvider beanMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.BeanMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1366,7 +1366,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.BeanMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1374,7 +1374,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected BeanMediatorOutputConnectorItemProvider beanMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.BeanMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1389,7 +1389,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EJBMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EJBMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1397,7 +1397,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EJBMediatorItemProvider ejbMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EJBMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EJBMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1412,7 +1412,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EJBMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EJBMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1420,7 +1420,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EJBMediatorInputConnectorItemProvider ejbMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EJBMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EJBMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1435,7 +1435,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EJBMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EJBMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1443,7 +1443,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EJBMediatorOutputConnectorItemProvider ejbMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EJBMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EJBMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1458,7 +1458,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MethodArgument} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MethodArgument} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1466,7 +1466,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MethodArgumentItemProvider methodArgumentItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MethodArgument}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MethodArgument}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1481,7 +1481,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AddressEndPoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1489,7 +1489,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AddressEndPointItemProvider addressEndPointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AddressEndPoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1505,7 +1505,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPointInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AddressEndPointInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1513,7 +1513,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AddressEndPointInputConnectorItemProvider addressEndPointInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPointInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AddressEndPointInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1529,7 +1529,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AddressEndPointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1537,7 +1537,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AddressEndPointOutputConnectorItemProvider addressEndPointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AddressEndPointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1553,7 +1553,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1561,7 +1561,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected TemplateEndpointItemProvider templateEndpointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.TemplateEndpoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1576,7 +1576,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpointInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.TemplateEndpointInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1584,7 +1584,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected TemplateEndpointInputConnectorItemProvider templateEndpointInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpointInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.TemplateEndpointInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1599,7 +1599,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.TemplateEndpointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1607,7 +1607,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected TemplateEndpointOutputConnectorItemProvider templateEndpointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.TemplateEndpointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1622,7 +1622,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpointParameter} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.TemplateEndpointParameter} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1630,7 +1630,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected TemplateEndpointParameterItemProvider templateEndpointParameterItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpointParameter}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.TemplateEndpointParameter}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1645,7 +1645,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndpoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1653,7 +1653,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected HTTPEndpointItemProvider httpEndpointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndpoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1668,7 +1668,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndPointInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.HTTPEndPointInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1676,7 +1676,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected HTTPEndPointInputConnectorItemProvider httpEndPointInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndPointInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.HTTPEndPointInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1691,7 +1691,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndPointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.HTTPEndPointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1699,7 +1699,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected HTTPEndPointOutputConnectorItemProvider httpEndPointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndPointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.HTTPEndPointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1714,7 +1714,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1722,7 +1722,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RegistryKeyPropertyItemProvider registryKeyPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1738,7 +1738,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PropertyMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1746,7 +1746,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected PropertyMediatorItemProvider propertyMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PropertyMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1762,7 +1762,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PropertyMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1770,7 +1770,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected PropertyMediatorInputConnectorItemProvider propertyMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PropertyMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1786,7 +1786,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PropertyMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1794,7 +1794,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected PropertyMediatorOutputConnectorItemProvider propertyMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PropertyMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1810,7 +1810,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator} instances.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -1818,7 +1818,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
 	protected PropertyGroupMediatorItemProvider propertyGroupMediatorItemProvider;
 
 				/**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator}.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -1833,7 +1833,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
 				/**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PropertyGroupMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -1841,7 +1841,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
 	protected PropertyGroupMediatorInputConnectorItemProvider propertyGroupMediatorInputConnectorItemProvider;
 
 				/**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PropertyGroupMediatorInputConnector}.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -1856,7 +1856,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
 				/**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PropertyGroupMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -1864,7 +1864,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
 	protected PropertyGroupMediatorOutputConnectorItemProvider propertyGroupMediatorOutputConnectorItemProvider;
 
 				/**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PropertyGroupMediatorOutputConnector}.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -1879,7 +1879,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
 				/**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.NamespacedProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1887,7 +1887,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected NamespacedPropertyItemProvider namespacedPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.NamespacedProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1903,7 +1903,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EnrichMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1911,7 +1911,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EnrichMediatorItemProvider enrichMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EnrichMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1927,7 +1927,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EnrichMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1935,7 +1935,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EnrichMediatorInputConnectorItemProvider enrichMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EnrichMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1951,7 +1951,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EnrichMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1959,7 +1959,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EnrichMediatorOutputConnectorItemProvider enrichMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EnrichMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1975,7 +1975,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.XSLTMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1983,7 +1983,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected XSLTMediatorItemProvider xsltMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.XSLTMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1999,7 +1999,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.XSLTProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.XSLTProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2007,7 +2007,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected XSLTPropertyItemProvider xsltPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.XSLTProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.XSLTProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2023,7 +2023,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.XSLTFeature} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.XSLTFeature} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2031,7 +2031,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected XSLTFeatureItemProvider xsltFeatureItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.XSLTFeature}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.XSLTFeature}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2047,7 +2047,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.XSLTResource} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.XSLTResource} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2055,7 +2055,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected XSLTResourceItemProvider xsltResourceItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.XSLTResource}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.XSLTResource}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2071,7 +2071,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.XSLTMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2079,7 +2079,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected XSLTMediatorInputConnectorItemProvider xsltMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.XSLTMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2095,7 +2095,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.XSLTMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2103,7 +2103,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected XSLTMediatorOutputConnectorItemProvider xsltMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.XSLTMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2119,7 +2119,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SwitchMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2127,7 +2127,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SwitchMediatorItemProvider switchMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SwitchMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2143,7 +2143,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SwitchCaseBranchOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2151,7 +2151,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SwitchCaseBranchOutputConnectorItemProvider switchCaseBranchOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SwitchCaseBranchOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2167,7 +2167,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultBranchOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SwitchDefaultBranchOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2175,7 +2175,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SwitchDefaultBranchOutputConnectorItemProvider switchDefaultBranchOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultBranchOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SwitchDefaultBranchOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2191,7 +2191,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SwitchMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2199,7 +2199,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SwitchMediatorInputConnectorItemProvider switchMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SwitchMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2215,7 +2215,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SwitchMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2223,7 +2223,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SwitchMediatorOutputConnectorItemProvider switchMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SwitchMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2238,7 +2238,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SwitchMediatorContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2246,7 +2246,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SwitchMediatorContainerItemProvider switchMediatorContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SwitchMediatorContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2261,7 +2261,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseParentContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SwitchCaseParentContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2269,7 +2269,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SwitchCaseParentContainerItemProvider switchCaseParentContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseParentContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SwitchCaseParentContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2284,7 +2284,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultParentContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SwitchDefaultParentContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2292,7 +2292,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SwitchDefaultParentContainerItemProvider switchDefaultParentContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultParentContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SwitchDefaultParentContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2307,7 +2307,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SwitchCaseContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2315,7 +2315,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SwitchCaseContainerItemProvider switchCaseContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SwitchCaseContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2330,7 +2330,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SwitchDefaultContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2338,7 +2338,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SwitchDefaultContainerItemProvider switchDefaultContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SwitchDefaultContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2353,7 +2353,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceDiagram} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SequenceDiagram} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2361,7 +2361,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SequenceDiagramItemProvider sequenceDiagramItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceDiagram}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SequenceDiagram}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2377,7 +2377,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequence} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EsbSequence} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2385,7 +2385,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EsbSequenceItemProvider esbSequenceItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequence}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EsbSequence}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2401,7 +2401,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceInput} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EsbSequenceInput} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2409,7 +2409,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EsbSequenceInputItemProvider esbSequenceInputItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceInput}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EsbSequenceInput}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2425,7 +2425,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceOutput} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EsbSequenceOutput} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2433,7 +2433,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EsbSequenceOutputItemProvider esbSequenceOutputItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceOutput}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EsbSequenceOutput}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2449,7 +2449,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EsbSequenceInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2457,7 +2457,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EsbSequenceInputConnectorItemProvider esbSequenceInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EsbSequenceInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2473,7 +2473,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EsbSequenceOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2481,7 +2481,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EsbSequenceOutputConnectorItemProvider esbSequenceOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EsbSequenceOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2497,7 +2497,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.Sequence} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2505,7 +2505,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SequenceItemProvider sequenceItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.Sequence}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2521,7 +2521,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SequenceInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2529,7 +2529,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SequenceInputConnectorItemProvider sequenceInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SequenceInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2545,7 +2545,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SequenceOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2553,7 +2553,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SequenceOutputConnectorItemProvider sequenceOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SequenceOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2569,7 +2569,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EventMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2577,7 +2577,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EventMediatorItemProvider eventMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EventMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2593,7 +2593,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EventMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2601,7 +2601,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EventMediatorInputConnectorItemProvider eventMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EventMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2617,7 +2617,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EventMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2625,7 +2625,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EventMediatorOutputConnectorItemProvider eventMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EventMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EventMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2641,7 +2641,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2649,7 +2649,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EntitlementMediatorItemProvider entitlementMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2665,7 +2665,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2673,7 +2673,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EntitlementMediatorInputConnectorItemProvider entitlementMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2689,7 +2689,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2697,7 +2697,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EntitlementMediatorOutputConnectorItemProvider entitlementMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2713,7 +2713,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorOnRejectOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediatorOnRejectOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2721,7 +2721,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EntitlementMediatorOnRejectOutputConnectorItemProvider entitlementMediatorOnRejectOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorOnRejectOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediatorOnRejectOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2736,7 +2736,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorOnAcceptOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediatorOnAcceptOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2744,7 +2744,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EntitlementMediatorOnAcceptOutputConnectorItemProvider entitlementMediatorOnAcceptOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorOnAcceptOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediatorOnAcceptOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2759,7 +2759,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorAdviceOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediatorAdviceOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2767,7 +2767,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EntitlementMediatorAdviceOutputConnectorItemProvider entitlementMediatorAdviceOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorAdviceOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediatorAdviceOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2782,7 +2782,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorObligationsOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediatorObligationsOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2790,7 +2790,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EntitlementMediatorObligationsOutputConnectorItemProvider entitlementMediatorObligationsOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorObligationsOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EntitlementMediatorObligationsOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2805,7 +2805,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EntitlementContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2813,7 +2813,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EntitlementContainerItemProvider entitlementContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EntitlementContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2828,7 +2828,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementOnRejectContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EntitlementOnRejectContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2836,7 +2836,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EntitlementOnRejectContainerItemProvider entitlementOnRejectContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementOnRejectContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EntitlementOnRejectContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2851,7 +2851,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementOnAcceptContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EntitlementOnAcceptContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2859,7 +2859,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EntitlementOnAcceptContainerItemProvider entitlementOnAcceptContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementOnAcceptContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EntitlementOnAcceptContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2874,7 +2874,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementAdviceContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EntitlementAdviceContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2882,7 +2882,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EntitlementAdviceContainerItemProvider entitlementAdviceContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementAdviceContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EntitlementAdviceContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2897,7 +2897,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementObligationsContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EntitlementObligationsContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2905,7 +2905,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EntitlementObligationsContainerItemProvider entitlementObligationsContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementObligationsContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EntitlementObligationsContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2920,7 +2920,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EnqueueMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EnqueueMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2928,7 +2928,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EnqueueMediatorItemProvider enqueueMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EnqueueMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EnqueueMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2944,7 +2944,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EnqueueMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EnqueueMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2952,7 +2952,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EnqueueMediatorInputConnectorItemProvider enqueueMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EnqueueMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EnqueueMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2967,7 +2967,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EnqueueMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EnqueueMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2975,7 +2975,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EnqueueMediatorOutputConnectorItemProvider enqueueMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EnqueueMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EnqueueMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2990,7 +2990,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ClassMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2998,7 +2998,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ClassMediatorItemProvider classMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ClassMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3014,7 +3014,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ClassMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3022,7 +3022,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ClassMediatorInputConnectorItemProvider classMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ClassMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3038,7 +3038,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ClassMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3046,7 +3046,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ClassMediatorOutputConnectorItemProvider classMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ClassMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3062,7 +3062,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ClassProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ClassProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3070,7 +3070,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ClassPropertyItemProvider classPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ClassProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ClassProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3086,7 +3086,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SpringMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3094,7 +3094,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SpringMediatorItemProvider springMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SpringMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3110,7 +3110,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SpringMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3118,7 +3118,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SpringMediatorInputConnectorItemProvider springMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SpringMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3134,7 +3134,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SpringMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3142,7 +3142,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SpringMediatorOutputConnectorItemProvider springMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SpringMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3158,7 +3158,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ValidateMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3166,7 +3166,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ValidateMediatorItemProvider validateMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ValidateMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3182,7 +3182,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateResource} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ValidateResource} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3190,7 +3190,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ValidateResourceItemProvider validateResourceItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateResource}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ValidateResource}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3205,7 +3205,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateFeature} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ValidateFeature} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3213,7 +3213,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ValidateFeatureItemProvider validateFeatureItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateFeature}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ValidateFeature}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3229,7 +3229,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ValidateSchema} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3237,7 +3237,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ValidateSchemaItemProvider validateSchemaItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ValidateSchema}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3253,7 +3253,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ValidateMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3261,7 +3261,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ValidateMediatorInputConnectorItemProvider validateMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ValidateMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3276,7 +3276,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ValidateMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3284,7 +3284,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ValidateMediatorOutputConnectorItemProvider validateMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ValidateMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3299,7 +3299,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediatorOnFailOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ValidateMediatorOnFailOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3307,7 +3307,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ValidateMediatorOnFailOutputConnectorItemProvider validateMediatorOnFailOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediatorOnFailOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ValidateMediatorOnFailOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3322,7 +3322,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EndpointDiagram} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EndpointDiagram} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3330,7 +3330,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EndpointDiagramItemProvider endpointDiagramItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EndpointDiagram}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EndpointDiagram}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3345,7 +3345,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.NamedEndpoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.NamedEndpoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3353,7 +3353,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected NamedEndpointItemProvider namedEndpointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.NamedEndpoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.NamedEndpoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3368,7 +3368,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.NamedEndpointInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.NamedEndpointInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3376,7 +3376,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected NamedEndpointInputConnectorItemProvider namedEndpointInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.NamedEndpointInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.NamedEndpointInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3391,7 +3391,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.NamedEndpointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.NamedEndpointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3399,7 +3399,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected NamedEndpointOutputConnectorItemProvider namedEndpointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.NamedEndpointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.NamedEndpointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3414,7 +3414,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.Template} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.Template} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3422,7 +3422,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected TemplateItemProvider templateItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.Template}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.Template}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3437,7 +3437,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.TemplateParameter} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3445,7 +3445,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected TemplateParameterItemProvider templateParameterItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.TemplateParameter}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3460,7 +3460,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.Task} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.Task} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3468,7 +3468,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected TaskItemProvider taskItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.Task}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.Task}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3483,7 +3483,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.NameValueTypeProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.NameValueTypeProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3491,7 +3491,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected NameValueTypePropertyItemProvider nameValueTypePropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.NameValueTypeProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.NameValueTypeProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3506,7 +3506,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.TaskProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.TaskProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3514,7 +3514,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected TaskPropertyItemProvider taskPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.TaskProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.TaskProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3529,7 +3529,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SynapseAPI} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SynapseAPI} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3537,7 +3537,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SynapseAPIItemProvider synapseAPIItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SynapseAPI}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SynapseAPI}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3552,7 +3552,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.APIResource} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3560,7 +3560,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected APIResourceItemProvider apiResourceItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResource}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.APIResource}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3575,7 +3575,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.APIResourceInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3583,7 +3583,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected APIResourceInputConnectorItemProvider apiResourceInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.APIResourceInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3598,7 +3598,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.APIResourceOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3606,7 +3606,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected APIResourceOutputConnectorItemProvider apiResourceOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.APIResourceOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3621,7 +3621,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceOutSequenceOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.APIResourceOutSequenceOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3629,7 +3629,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected APIResourceOutSequenceOutputConnectorItemProvider apiResourceOutSequenceOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceOutSequenceOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.APIResourceOutSequenceOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3644,7 +3644,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceInSequenceInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.APIResourceInSequenceInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3652,7 +3652,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected APIResourceInSequenceInputConnectorItemProvider apiResourceInSequenceInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceInSequenceInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.APIResourceInSequenceInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3667,7 +3667,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceFaultInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.APIResourceFaultInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3675,7 +3675,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected APIResourceFaultInputConnectorItemProvider apiResourceFaultInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceFaultInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.APIResourceFaultInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3690,7 +3690,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceEndpoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.APIResourceEndpoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3698,7 +3698,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected APIResourceEndpointItemProvider apiResourceEndpointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceEndpoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.APIResourceEndpoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3713,7 +3713,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceEndpointInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.APIResourceEndpointInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3721,7 +3721,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected APIResourceEndpointInputConnectorItemProvider apiResourceEndpointInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceEndpointInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.APIResourceEndpointInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3736,7 +3736,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceEndpointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.APIResourceEndpointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3744,7 +3744,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected APIResourceEndpointOutputConnectorItemProvider apiResourceEndpointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceEndpointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.APIResourceEndpointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3759,7 +3759,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpoints} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ComplexEndpoints} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3767,7 +3767,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ComplexEndpointsItemProvider complexEndpointsItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpoints}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ComplexEndpoints}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3782,7 +3782,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpointsOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ComplexEndpointsOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3790,7 +3790,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ComplexEndpointsOutputConnectorItemProvider complexEndpointsOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpointsOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ComplexEndpointsOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3805,7 +3805,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressingEndpoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AddressingEndpoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3813,7 +3813,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AddressingEndpointItemProvider addressingEndpointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressingEndpoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AddressingEndpoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3828,7 +3828,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressingEndpointInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AddressingEndpointInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3836,7 +3836,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AddressingEndpointInputConnectorItemProvider addressingEndpointInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressingEndpointInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AddressingEndpointInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3851,7 +3851,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressingEndpointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AddressingEndpointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3859,7 +3859,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AddressingEndpointOutputConnectorItemProvider addressingEndpointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressingEndpointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AddressingEndpointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3874,7 +3874,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RecipientListEndPoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3882,7 +3882,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RecipientListEndPointItemProvider recipientListEndPointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RecipientListEndPoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3897,7 +3897,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RecipientListEndPointInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3905,7 +3905,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RecipientListEndPointInputConnectorItemProvider recipientListEndPointInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RecipientListEndPointInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3920,7 +3920,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RecipientListEndPointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3928,7 +3928,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RecipientListEndPointOutputConnectorItemProvider recipientListEndPointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RecipientListEndPointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3943,7 +3943,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointWestOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RecipientListEndPointWestOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3951,7 +3951,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RecipientListEndPointWestOutputConnectorItemProvider recipientListEndPointWestOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointWestOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RecipientListEndPointWestOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3966,7 +3966,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageStoreParameter} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MessageStoreParameter} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3974,7 +3974,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MessageStoreParameterItemProvider messageStoreParameterItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageStoreParameter}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MessageStoreParameter}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3989,7 +3989,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageStore} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MessageStore} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3997,7 +3997,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MessageStoreItemProvider messageStoreItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageStore}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MessageStore}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4012,7 +4012,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessorParameter} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MessageProcessorParameter} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4020,7 +4020,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MessageProcessorParameterItemProvider messageProcessorParameterItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessorParameter}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MessageProcessorParameter}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4035,7 +4035,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessor} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MessageProcessor} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4043,7 +4043,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MessageProcessorItemProvider messageProcessorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessor}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MessageProcessor}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4058,7 +4058,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIHandler} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.APIHandler} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4066,7 +4066,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected APIHandlerItemProvider apiHandlerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIHandler}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.APIHandler}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4081,7 +4081,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIHandlerProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.APIHandlerProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4089,7 +4089,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected APIHandlerPropertyItemProvider apiHandlerPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIHandlerProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.APIHandlerProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4104,7 +4104,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloudConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4112,7 +4112,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloudConnectorItemProvider cloudConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloudConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4127,7 +4127,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloudConnectorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4135,7 +4135,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloudConnectorInputConnectorItemProvider cloudConnectorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloudConnectorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4150,7 +4150,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4158,7 +4158,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloudConnectorOutputConnectorItemProvider cloudConnectorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4173,7 +4173,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4181,7 +4181,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloudConnectorOperationItemProvider cloudConnectorOperationItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4196,7 +4196,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperationInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperationInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4204,7 +4204,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloudConnectorOperationInputConnectorItemProvider cloudConnectorOperationInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperationInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperationInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4219,7 +4219,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperationOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperationOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4227,7 +4227,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloudConnectorOperationOutputConnectorItemProvider cloudConnectorOperationOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperationOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperationOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4242,7 +4242,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DataMapperMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4250,7 +4250,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DataMapperMediatorItemProvider dataMapperMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DataMapperMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4265,7 +4265,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DataMapperMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4273,7 +4273,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DataMapperMediatorInputConnectorItemProvider dataMapperMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DataMapperMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4288,7 +4288,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DataMapperMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4296,7 +4296,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DataMapperMediatorOutputConnectorItemProvider dataMapperMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DataMapperMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DataMapperMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4311,7 +4311,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FastXSLTMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4319,7 +4319,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FastXSLTMediatorItemProvider fastXSLTMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FastXSLTMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4334,7 +4334,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FastXSLTMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4342,7 +4342,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FastXSLTMediatorInputConnectorItemProvider fastXSLTMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FastXSLTMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4357,7 +4357,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FastXSLTMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4365,7 +4365,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FastXSLTMediatorOutputConnectorItemProvider fastXSLTMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FastXSLTMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4380,7 +4380,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4388,7 +4388,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected InboundEndpointItemProvider inboundEndpointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4403,7 +4403,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointParameter} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4411,7 +4411,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected InboundEndpointParameterItemProvider inboundEndpointParameterItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointParameter}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4426,7 +4426,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4434,7 +4434,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected InboundEndpointContainerItemProvider inboundEndpointContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4449,7 +4449,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointSequenceContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointSequenceContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4457,7 +4457,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected InboundEndpointSequenceContainerItemProvider inboundEndpointSequenceContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointSequenceContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointSequenceContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4472,7 +4472,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointOnErrorSequenceContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4480,7 +4480,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected InboundEndpointOnErrorSequenceContainerItemProvider inboundEndpointOnErrorSequenceContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointOnErrorSequenceContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4495,7 +4495,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointSequenceInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4503,7 +4503,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected InboundEndpointSequenceInputConnectorItemProvider inboundEndpointSequenceInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointSequenceInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4518,7 +4518,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointSequenceOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4526,7 +4526,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected InboundEndpointSequenceOutputConnectorItemProvider inboundEndpointSequenceOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointSequenceOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4541,7 +4541,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4549,7 +4549,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected InboundEndpointOnErrorSequenceOutputConnectorItemProvider inboundEndpointOnErrorSequenceOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4564,7 +4564,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointOnErrorSequenceInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4572,7 +4572,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected InboundEndpointOnErrorSequenceInputConnectorItemProvider inboundEndpointOnErrorSequenceInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointOnErrorSequenceInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4587,7 +4587,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommentMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CommentMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4595,7 +4595,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CommentMediatorItemProvider commentMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommentMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CommentMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4610,7 +4610,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.JsonTransformMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4618,7 +4618,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected JsonTransformMediatorItemProvider jsonTransformMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.JsonTransformMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4633,7 +4633,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.JsonTransformMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4641,7 +4641,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected JsonTransformMediatorOutputConnectorItemProvider jsonTransformMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.JsonTransformMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4656,7 +4656,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.JsonTransformMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4664,7 +4664,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected JsonTransformMediatorInputConnectorItemProvider jsonTransformMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.JsonTransformMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4679,7 +4679,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediatorProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.JsonTransformMediatorProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4687,7 +4687,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected JsonTransformMediatorPropertyItemProvider jsonTransformMediatorPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediatorProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.JsonTransformMediatorProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4702,7 +4702,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ScriptMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ScriptMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4710,7 +4710,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ScriptMediatorItemProvider scriptMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ScriptMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ScriptMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4726,7 +4726,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ScriptMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ScriptMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4734,7 +4734,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ScriptMediatorInputConnectorItemProvider scriptMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ScriptMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ScriptMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4750,7 +4750,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ScriptMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ScriptMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4758,7 +4758,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ScriptMediatorOutputConnectorItemProvider scriptMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ScriptMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ScriptMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4774,7 +4774,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FaultMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4782,7 +4782,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FaultMediatorItemProvider faultMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FaultMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4798,7 +4798,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FaultMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4806,7 +4806,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FaultMediatorInputConnectorItemProvider faultMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FaultMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4822,7 +4822,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FaultMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4830,7 +4830,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FaultMediatorOutputConnectorItemProvider faultMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FaultMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4846,7 +4846,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AggregateMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4854,7 +4854,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AggregateMediatorItemProvider aggregateMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AggregateMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4870,7 +4870,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AggregateMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4878,7 +4878,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AggregateMediatorInputConnectorItemProvider aggregateMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AggregateMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4893,7 +4893,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AggregateMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4901,7 +4901,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AggregateMediatorOutputConnectorItemProvider aggregateMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AggregateMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4916,7 +4916,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediatorOnCompleteOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AggregateMediatorOnCompleteOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4924,7 +4924,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AggregateMediatorOnCompleteOutputConnectorItemProvider aggregateMediatorOnCompleteOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediatorOnCompleteOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AggregateMediatorOnCompleteOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4939,7 +4939,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RouterMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4947,7 +4947,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RouterMediatorItemProvider routerMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RouterMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4963,7 +4963,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterRoute} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RouterRoute} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4971,7 +4971,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RouterRouteItemProvider routerRouteItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterRoute}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RouterRoute}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4987,7 +4987,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTarget} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RouterTarget} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4995,7 +4995,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RouterTargetItemProvider routerTargetItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTarget}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RouterTarget}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5010,7 +5010,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RouterMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5018,7 +5018,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RouterMediatorInputConnectorItemProvider routerMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RouterMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5033,7 +5033,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RouterMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5041,7 +5041,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RouterMediatorOutputConnectorItemProvider routerMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RouterMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5056,7 +5056,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorTargetOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RouterMediatorTargetOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5064,7 +5064,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RouterMediatorTargetOutputConnectorItemProvider routerMediatorTargetOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorTargetOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RouterMediatorTargetOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5079,7 +5079,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RouterMediatorContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5087,7 +5087,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RouterMediatorContainerItemProvider routerMediatorContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RouterMediatorContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5102,7 +5102,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5110,7 +5110,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RouterTargetContainerItemProvider routerTargetContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RouterTargetContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5125,7 +5125,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloneMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5133,7 +5133,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloneMediatorItemProvider cloneMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloneMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5149,7 +5149,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneTarget} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloneTarget} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5157,7 +5157,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloneTargetItemProvider cloneTargetItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneTarget}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloneTarget}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5172,7 +5172,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloneMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5180,7 +5180,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloneMediatorInputConnectorItemProvider cloneMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloneMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5195,7 +5195,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloneMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5203,7 +5203,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloneMediatorOutputConnectorItemProvider cloneMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloneMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5218,7 +5218,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5226,7 +5226,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloneMediatorTargetOutputConnectorItemProvider cloneMediatorTargetOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5241,7 +5241,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloneMediatorContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5249,7 +5249,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloneMediatorContainerItemProvider cloneMediatorContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloneMediatorContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5264,7 +5264,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneTargetContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CloneTargetContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5272,7 +5272,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CloneTargetContainerItemProvider cloneTargetContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneTargetContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CloneTargetContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5287,7 +5287,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ForEachMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5295,7 +5295,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ForEachMediatorItemProvider forEachMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ForEachMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5310,7 +5310,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ForEachMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5318,7 +5318,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ForEachMediatorInputConnectorItemProvider forEachMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ForEachMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5333,7 +5333,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ForEachMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5341,7 +5341,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ForEachMediatorOutputConnectorItemProvider forEachMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ForEachMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5356,7 +5356,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediatorTargetOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ForEachMediatorTargetOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5364,7 +5364,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ForEachMediatorTargetOutputConnectorItemProvider forEachMediatorTargetOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediatorTargetOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ForEachMediatorTargetOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5379,7 +5379,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachTarget} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ForEachTarget} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5387,7 +5387,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ForEachTargetItemProvider forEachTargetItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachTarget}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ForEachTarget}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5402,7 +5402,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.IterateMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5410,7 +5410,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected IterateMediatorItemProvider iterateMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.IterateMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5426,7 +5426,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.IterateMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5434,7 +5434,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected IterateMediatorInputConnectorItemProvider iterateMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.IterateMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5449,7 +5449,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.IterateMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5457,7 +5457,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected IterateMediatorOutputConnectorItemProvider iterateMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.IterateMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5472,7 +5472,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediatorTargetOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.IterateMediatorTargetOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5480,7 +5480,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected IterateMediatorTargetOutputConnectorItemProvider iterateMediatorTargetOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediatorTargetOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.IterateMediatorTargetOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5495,7 +5495,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateTarget} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.IterateTarget} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5503,7 +5503,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected IterateTargetItemProvider iterateTargetItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateTarget}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.IterateTarget}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5519,7 +5519,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5527,7 +5527,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AbstractCommonTargetItemProvider abstractCommonTargetItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractCommonTarget}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AbstractCommonTarget}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5542,7 +5542,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MediatorSequence} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5550,7 +5550,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MediatorSequenceItemProvider mediatorSequenceItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorSequence}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MediatorSequence}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5565,7 +5565,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CacheMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5573,7 +5573,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CacheMediatorItemProvider cacheMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CacheMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5589,7 +5589,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CacheMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5597,7 +5597,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CacheMediatorInputConnectorItemProvider cacheMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CacheMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5612,7 +5612,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CacheMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5620,7 +5620,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CacheMediatorOutputConnectorItemProvider cacheMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CacheMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5635,7 +5635,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediatorOnHitOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CacheMediatorOnHitOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5643,7 +5643,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CacheMediatorOnHitOutputConnectorItemProvider cacheMediatorOnHitOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediatorOnHitOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CacheMediatorOnHitOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5658,7 +5658,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CacheOnHitBranch} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CacheOnHitBranch} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5666,7 +5666,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CacheOnHitBranchItemProvider cacheOnHitBranchItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CacheOnHitBranch}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CacheOnHitBranch}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5682,7 +5682,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.XQueryMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5690,7 +5690,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected XQueryMediatorItemProvider xQueryMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.XQueryMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5706,7 +5706,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.XQueryMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5714,7 +5714,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected XQueryMediatorInputConnectorItemProvider xQueryMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.XQueryMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5730,7 +5730,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.XQueryMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5738,7 +5738,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected XQueryMediatorOutputConnectorItemProvider xQueryMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.XQueryMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5754,7 +5754,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariable} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.XQueryVariable} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5762,7 +5762,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected XQueryVariableItemProvider xQueryVariableItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariable}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.XQueryVariable}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5778,7 +5778,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CalloutMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5786,7 +5786,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CalloutMediatorItemProvider calloutMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CalloutMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5802,7 +5802,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CalloutMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5810,7 +5810,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CalloutMediatorInputConnectorItemProvider calloutMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CalloutMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5825,7 +5825,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CalloutMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5833,7 +5833,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CalloutMediatorOutputConnectorItemProvider calloutMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CalloutMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5848,7 +5848,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5856,7 +5856,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RMSequenceMediatorItemProvider rmSequenceMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5872,7 +5872,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5880,7 +5880,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RMSequenceMediatorInputConnectorItemProvider rmSequenceMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5895,7 +5895,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5903,7 +5903,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RMSequenceMediatorOutputConnectorItemProvider rmSequenceMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5918,7 +5918,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.TransactionMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5926,7 +5926,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected TransactionMediatorItemProvider transactionMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.TransactionMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5942,7 +5942,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.TransactionMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5950,7 +5950,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected TransactionMediatorInputConnectorItemProvider transactionMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.TransactionMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5965,7 +5965,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.TransactionMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5973,7 +5973,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected TransactionMediatorOutputConnectorItemProvider transactionMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.TransactionMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5988,7 +5988,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.OAuthMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5996,7 +5996,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected OAuthMediatorItemProvider oAuthMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.OAuthMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6012,7 +6012,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.OAuthMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6020,7 +6020,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected OAuthMediatorInputConnectorItemProvider oAuthMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.OAuthMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6035,7 +6035,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.OAuthMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6043,7 +6043,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected OAuthMediatorOutputConnectorItemProvider oAuthMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.OAuthMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6058,7 +6058,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AutoscaleInMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AutoscaleInMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6066,7 +6066,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AutoscaleInMediatorItemProvider autoscaleInMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AutoscaleInMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AutoscaleInMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6082,7 +6082,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.AutoscaleOutMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AutoscaleOutMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6090,7 +6090,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected AutoscaleOutMediatorItemProvider autoscaleOutMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AutoscaleOutMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AutoscaleOutMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6106,7 +6106,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.HeaderMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.HeaderMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6114,7 +6114,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected HeaderMediatorItemProvider headerMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.HeaderMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.HeaderMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6130,7 +6130,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.HeaderMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.HeaderMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6138,7 +6138,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected HeaderMediatorInputConnectorItemProvider headerMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.HeaderMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.HeaderMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6153,7 +6153,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.HeaderMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.HeaderMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6161,7 +6161,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected HeaderMediatorOutputConnectorItemProvider headerMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.HeaderMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.HeaderMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6176,7 +6176,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6184,7 +6184,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ThrottleMediatorItemProvider throttleMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6200,7 +6200,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ThrottleMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6208,7 +6208,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ThrottleMediatorInputConnectorItemProvider throttleMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottleMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6223,7 +6223,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ThrottleMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6231,7 +6231,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ThrottleMediatorOutputConnectorItemProvider throttleMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottleMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6246,7 +6246,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediatorOnAcceptOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ThrottleMediatorOnAcceptOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6254,7 +6254,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ThrottleMediatorOnAcceptOutputConnectorItemProvider throttleMediatorOnAcceptOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediatorOnAcceptOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottleMediatorOnAcceptOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6269,7 +6269,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediatorOnRejectOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ThrottleMediatorOnRejectOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6277,7 +6277,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ThrottleMediatorOnRejectOutputConnectorItemProvider throttleMediatorOnRejectOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediatorOnRejectOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottleMediatorOnRejectOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6292,7 +6292,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyConfiguration} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6300,7 +6300,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ThrottlePolicyConfigurationItemProvider throttlePolicyConfigurationItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyConfiguration}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6316,7 +6316,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyEntry} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyEntry} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6324,7 +6324,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ThrottlePolicyEntryItemProvider throttlePolicyEntryItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyEntry}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyEntry}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6340,7 +6340,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnAcceptBranch} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ThrottleOnAcceptBranch} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6348,7 +6348,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ThrottleOnAcceptBranchItemProvider throttleOnAcceptBranchItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnAcceptBranch}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottleOnAcceptBranch}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6364,7 +6364,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectBranch} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectBranch} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6372,7 +6372,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ThrottleOnRejectBranchItemProvider throttleOnRejectBranchItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectBranch}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectBranch}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6388,7 +6388,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ThrottleContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6396,7 +6396,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ThrottleContainerItemProvider throttleContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottleContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6411,7 +6411,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnAcceptContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ThrottleOnAcceptContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6419,7 +6419,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ThrottleOnAcceptContainerItemProvider throttleOnAcceptContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnAcceptContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottleOnAcceptContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6434,7 +6434,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6442,7 +6442,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ThrottleOnRejectContainerItemProvider throttleOnRejectContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6457,7 +6457,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CommandMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6465,7 +6465,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CommandMediatorItemProvider commandMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CommandMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6481,7 +6481,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CommandMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6489,7 +6489,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CommandMediatorInputConnectorItemProvider commandMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CommandMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6505,7 +6505,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CommandMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6513,7 +6513,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CommandMediatorOutputConnectorItemProvider commandMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CommandMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6529,7 +6529,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CommandProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6537,7 +6537,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CommandPropertyItemProvider commandPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CommandProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6553,7 +6553,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SqlStatement} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6561,7 +6561,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SqlStatementItemProvider sqlStatementItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SqlStatement}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6577,7 +6577,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlParameterDefinition} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SqlParameterDefinition} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6585,7 +6585,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SqlParameterDefinitionItemProvider sqlParameterDefinitionItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlParameterDefinition}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SqlParameterDefinition}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6601,7 +6601,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SqlResultMapping} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6609,7 +6609,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SqlResultMappingItemProvider sqlResultMappingItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SqlResultMapping}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6625,7 +6625,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DBLookupMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DBLookupMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6633,7 +6633,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DBLookupMediatorItemProvider dbLookupMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DBLookupMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DBLookupMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6649,7 +6649,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DBLookupMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DBLookupMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6657,7 +6657,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DBLookupMediatorInputConnectorItemProvider dbLookupMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DBLookupMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DBLookupMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6673,7 +6673,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DBLookupMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DBLookupMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6681,7 +6681,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DBLookupMediatorOutputConnectorItemProvider dbLookupMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DBLookupMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DBLookupMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6697,7 +6697,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DBReportMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6705,7 +6705,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DBReportMediatorItemProvider dbReportMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DBReportMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6721,7 +6721,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DBReportMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6729,7 +6729,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DBReportMediatorInputConnectorItemProvider dbReportMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DBReportMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6745,7 +6745,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DBReportMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6753,7 +6753,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected DBReportMediatorOutputConnectorItemProvider dbReportMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DBReportMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6769,7 +6769,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RuleMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6777,7 +6777,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RuleMediatorItemProvider ruleMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6793,7 +6793,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RuleMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6801,7 +6801,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RuleMediatorInputConnectorItemProvider ruleMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6816,7 +6816,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RuleMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6824,7 +6824,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RuleMediatorOutputConnectorItemProvider ruleMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6839,7 +6839,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediatorChildMediatorsOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RuleMediatorChildMediatorsOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6847,7 +6847,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RuleMediatorChildMediatorsOutputConnectorItemProvider ruleMediatorChildMediatorsOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediatorChildMediatorsOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleMediatorChildMediatorsOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6862,7 +6862,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleSetCreationProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RuleSetCreationProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6870,7 +6870,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RuleSetCreationPropertyItemProvider ruleSetCreationPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleSetCreationProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleSetCreationProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6886,7 +6886,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleSessionProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RuleSessionProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6894,7 +6894,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RuleSessionPropertyItemProvider ruleSessionPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleSessionProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleSessionProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6910,7 +6910,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleFactsConfiguration} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RuleFactsConfiguration} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6918,7 +6918,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RuleFactsConfigurationItemProvider ruleFactsConfigurationItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleFactsConfiguration}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleFactsConfiguration}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6934,7 +6934,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleFact} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RuleFact} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6942,7 +6942,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RuleFactItemProvider ruleFactItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleFact}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleFact}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6958,7 +6958,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultsConfiguration} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RuleResultsConfiguration} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6966,7 +6966,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RuleResultsConfigurationItemProvider ruleResultsConfigurationItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultsConfiguration}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleResultsConfiguration}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6982,7 +6982,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RuleResult} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -6990,7 +6990,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RuleResultItemProvider ruleResultItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleResult}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7006,7 +7006,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleChildMediatorsConfiguration} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RuleChildMediatorsConfiguration} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7014,7 +7014,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RuleChildMediatorsConfigurationItemProvider ruleChildMediatorsConfigurationItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleChildMediatorsConfiguration}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RuleChildMediatorsConfiguration}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7030,7 +7030,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateParameter} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CallTemplateParameter} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7038,7 +7038,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CallTemplateParameterItemProvider callTemplateParameterItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateParameter}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CallTemplateParameter}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7053,7 +7053,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7061,7 +7061,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CallTemplateMediatorItemProvider callTemplateMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7076,7 +7076,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7084,7 +7084,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CallTemplateMediatorInputConnectorItemProvider callTemplateMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7099,7 +7099,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7107,7 +7107,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected CallTemplateMediatorOutputConnectorItemProvider callTemplateMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7122,7 +7122,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoopBackMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.LoopBackMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7130,7 +7130,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected LoopBackMediatorItemProvider loopBackMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoopBackMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.LoopBackMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7145,7 +7145,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoopBackMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.LoopBackMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7153,7 +7153,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected LoopBackMediatorInputConnectorItemProvider loopBackMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoopBackMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.LoopBackMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7168,7 +7168,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoopBackMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.LoopBackMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7176,7 +7176,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected LoopBackMediatorOutputConnectorItemProvider loopBackMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoopBackMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.LoopBackMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7191,7 +7191,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RespondMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RespondMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7199,7 +7199,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RespondMediatorItemProvider respondMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RespondMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RespondMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7214,7 +7214,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RespondMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RespondMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7222,7 +7222,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RespondMediatorInputConnectorItemProvider respondMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RespondMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RespondMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7237,7 +7237,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.RespondMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RespondMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7245,7 +7245,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected RespondMediatorOutputConnectorItemProvider respondMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.RespondMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.RespondMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7260,7 +7260,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SmooksMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7268,7 +7268,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SmooksMediatorItemProvider smooksMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SmooksMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7284,7 +7284,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SmooksMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7292,7 +7292,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SmooksMediatorInputConnectorItemProvider smooksMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SmooksMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7308,7 +7308,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SmooksMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7316,7 +7316,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SmooksMediatorOutputConnectorItemProvider smooksMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SmooksMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SmooksMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7332,7 +7332,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.StoreMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7340,7 +7340,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected StoreMediatorItemProvider storeMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.StoreMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7356,7 +7356,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.StoreMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7364,7 +7364,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected StoreMediatorInputConnectorItemProvider storeMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.StoreMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7379,7 +7379,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.StoreMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7387,7 +7387,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected StoreMediatorOutputConnectorItemProvider storeMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.StoreMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7402,7 +7402,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.BuilderMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7410,7 +7410,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected BuilderMediatorItemProvider builderMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.BuilderMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7425,7 +7425,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.BuilderMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7433,7 +7433,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected BuilderMediatorInputConnectorItemProvider builderMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.BuilderMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7448,7 +7448,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediatorOutputConector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.BuilderMediatorOutputConector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7456,7 +7456,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected BuilderMediatorOutputConectorItemProvider builderMediatorOutputConectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediatorOutputConector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.BuilderMediatorOutputConector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7471,7 +7471,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.MessageBuilder} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7479,7 +7479,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MessageBuilderItemProvider messageBuilderItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.MessageBuilder}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7494,7 +7494,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7502,7 +7502,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected PayloadFactoryMediatorItemProvider payloadFactoryMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7517,7 +7517,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7525,7 +7525,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected PayloadFactoryMediatorInputConnectorItemProvider payloadFactoryMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7540,7 +7540,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7548,7 +7548,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected PayloadFactoryMediatorOutputConnectorItemProvider payloadFactoryMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7563,7 +7563,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryArgument} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgument} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7571,7 +7571,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected PayloadFactoryArgumentItemProvider payloadFactoryArgumentItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryArgument}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgument}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7586,7 +7586,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouteBranch} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ConditionalRouteBranch} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7594,7 +7594,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ConditionalRouteBranchItemProvider conditionalRouteBranchItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouteBranch}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ConditionalRouteBranch}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7610,7 +7610,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7618,7 +7618,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ConditionalRouterMediatorItemProvider conditionalRouterMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7634,7 +7634,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7642,7 +7642,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ConditionalRouterMediatorInputConnectorItemProvider conditionalRouterMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7657,7 +7657,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7665,7 +7665,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ConditionalRouterMediatorOutputConnectorItemProvider conditionalRouterMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7680,7 +7680,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediatorAdditionalOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediatorAdditionalOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7688,7 +7688,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ConditionalRouterMediatorAdditionalOutputConnectorItemProvider conditionalRouterMediatorAdditionalOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediatorAdditionalOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediatorAdditionalOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7703,7 +7703,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SendMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7711,7 +7711,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SendMediatorItemProvider sendMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SendMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7727,7 +7727,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SendContainer} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SendContainer} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7735,7 +7735,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SendContainerItemProvider sendContainerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SendContainer}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SendContainer}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7750,7 +7750,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SendMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SendMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7758,7 +7758,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SendMediatorInputConnectorItemProvider sendMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SendMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SendMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7774,7 +7774,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SendMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SendMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7782,7 +7782,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SendMediatorOutputConnectorItemProvider sendMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SendMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SendMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7798,7 +7798,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SendMediatorEndpointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SendMediatorEndpointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7806,7 +7806,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SendMediatorEndpointOutputConnectorItemProvider sendMediatorEndpointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SendMediatorEndpointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SendMediatorEndpointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7821,7 +7821,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FailoverEndPoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7829,7 +7829,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FailoverEndPointItemProvider failoverEndPointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FailoverEndPoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7844,7 +7844,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPointInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FailoverEndPointInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7852,7 +7852,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FailoverEndPointInputConnectorItemProvider failoverEndPointInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPointInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FailoverEndPointInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7867,7 +7867,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FailoverEndPointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7875,7 +7875,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FailoverEndPointOutputConnectorItemProvider failoverEndPointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FailoverEndPointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7890,7 +7890,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPointWestOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.FailoverEndPointWestOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7898,7 +7898,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected FailoverEndPointWestOutputConnectorItemProvider failoverEndPointWestOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPointWestOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.FailoverEndPointWestOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7913,7 +7913,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.ParentEndPoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ParentEndPoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7921,7 +7921,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected ParentEndPointItemProvider parentEndPointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ParentEndPoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.ParentEndPoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7936,7 +7936,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.WSDLEndPoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7944,7 +7944,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected WSDLEndPointItemProvider wsdlEndPointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.WSDLEndPoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7959,7 +7959,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPointInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.WSDLEndPointInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7967,7 +7967,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected WSDLEndPointInputConnectorItemProvider wsdlEndPointInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPointInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.WSDLEndPointInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7982,7 +7982,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.WSDLEndPointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7990,7 +7990,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected WSDLEndPointOutputConnectorItemProvider wsdlEndPointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.WSDLEndPointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8005,7 +8005,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8013,7 +8013,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected LoadBalanceEndPointItemProvider loadBalanceEndPointItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8028,7 +8028,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.Member} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.Member} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8036,7 +8036,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected MemberItemProvider memberItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.Member}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.Member}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8051,7 +8051,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8059,7 +8059,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected LoadBalanceEndPointInputConnectorItemProvider loadBalanceEndPointInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8074,7 +8074,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8082,7 +8082,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected LoadBalanceEndPointOutputConnectorItemProvider loadBalanceEndPointOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8097,7 +8097,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointWestOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointWestOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8105,7 +8105,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected LoadBalanceEndPointWestOutputConnectorItemProvider loadBalanceEndPointWestOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointWestOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointWestOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8120,7 +8120,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.LocalEntry} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.LocalEntry} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8128,7 +8128,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected LocalEntryItemProvider localEntryItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.LocalEntry}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.LocalEntry}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8143,7 +8143,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.Session} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.Session} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8151,7 +8151,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SessionItemProvider sessionItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.Session}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.Session}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8166,7 +8166,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequences} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.Sequences} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8174,7 +8174,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SequencesItemProvider sequencesItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequences}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.Sequences}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8189,7 +8189,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequencesOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SequencesOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8197,7 +8197,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SequencesOutputConnectorItemProvider sequencesOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequencesOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SequencesOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8212,7 +8212,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequencesInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.SequencesInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8220,7 +8220,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected SequencesInputConnectorItemProvider sequencesInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequencesInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.SequencesInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8235,7 +8235,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8243,7 +8243,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected URLRewriteRuleActionItemProvider urlRewriteRuleActionItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8258,7 +8258,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRule} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.URLRewriteRule} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8266,7 +8266,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected URLRewriteRuleItemProvider urlRewriteRuleItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRule}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.URLRewriteRule}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8281,7 +8281,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediator} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.URLRewriteMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8289,7 +8289,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected URLRewriteMediatorItemProvider urlRewriteMediatorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediator}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.URLRewriteMediator}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8304,7 +8304,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediatorInputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.URLRewriteMediatorInputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8312,7 +8312,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected URLRewriteMediatorInputConnectorItemProvider urlRewriteMediatorInputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediatorInputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.URLRewriteMediatorInputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8327,7 +8327,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediatorOutputConnector} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.URLRewriteMediatorOutputConnector} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8335,7 +8335,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected URLRewriteMediatorOutputConnectorItemProvider urlRewriteMediatorOutputConnectorItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediatorOutputConnector}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.URLRewriteMediatorOutputConnector}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8350,7 +8350,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.gmf.esb.EvaluatorExpressionProperty} instances.
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.EvaluatorExpressionProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8358,7 +8358,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     protected EvaluatorExpressionPropertyItemProvider evaluatorExpressionPropertyItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.EvaluatorExpressionProperty}.
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.EvaluatorExpressionProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

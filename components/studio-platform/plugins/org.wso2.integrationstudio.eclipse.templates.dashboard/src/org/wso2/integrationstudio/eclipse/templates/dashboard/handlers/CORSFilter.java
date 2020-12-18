@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.templates.dashboard.handlers;
+package org.wso2.integrationstudio.templates.dashboard.handlers;
 
 import java.io.IOException;
 import javax.servlet.Filter;

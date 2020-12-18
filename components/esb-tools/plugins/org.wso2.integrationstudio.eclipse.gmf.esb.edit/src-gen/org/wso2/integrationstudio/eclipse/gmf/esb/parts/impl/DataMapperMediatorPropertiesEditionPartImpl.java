@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
@@ -60,12 +60,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -548,7 +548,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -558,7 +558,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -580,7 +580,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -590,7 +590,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -631,7 +631,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -641,7 +641,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -663,7 +663,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getInputType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getInputType()
 	 * 
 	 */
 	public Enumerator getInputType() {
@@ -674,7 +674,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#initInputType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#initInputType(Object input, Enumerator current)
 	 */
 	public void initInputType(Object input, Enumerator current) {
 		inputType.setInput(input);
@@ -692,7 +692,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setInputType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setInputType(Enumerator newValue)
 	 * 
 	 */
 	public void setInputType(Enumerator newValue) {
@@ -710,7 +710,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getConfigurationLocalPath()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getConfigurationLocalPath()
 	 * 
 	 */
 	public String getConfigurationLocalPath() {
@@ -720,7 +720,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setConfigurationLocalPath(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setConfigurationLocalPath(String newValue)
 	 * 
 	 */
 	public void setConfigurationLocalPath(String newValue) {
@@ -742,7 +742,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getInputSchemaLocalPath()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getInputSchemaLocalPath()
 	 * 
 	 */
 	public String getInputSchemaLocalPath() {
@@ -752,7 +752,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setInputSchemaLocalPath(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setInputSchemaLocalPath(String newValue)
 	 * 
 	 */
 	public void setInputSchemaLocalPath(String newValue) {
@@ -774,7 +774,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getOutputSchemaLocalPath()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getOutputSchemaLocalPath()
 	 * 
 	 */
 	public String getOutputSchemaLocalPath() {
@@ -784,7 +784,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setOutputSchemaLocalPath(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setOutputSchemaLocalPath(String newValue)
 	 * 
 	 */
 	public void setOutputSchemaLocalPath(String newValue) {
@@ -806,7 +806,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getOutputType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#getOutputType()
 	 * 
 	 */
 	public Enumerator getOutputType() {
@@ -817,7 +817,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#initOutputType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#initOutputType(Object input, Enumerator current)
 	 */
 	public void initOutputType(Object input, Enumerator current) {
 		outputType.setInput(input);
@@ -835,7 +835,7 @@ public class DataMapperMediatorPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setOutputType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DataMapperMediatorPropertiesEditionPart#setOutputType(Enumerator newValue)
 	 * 
 	 */
 	public void setOutputType(Enumerator newValue) {

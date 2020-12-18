@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver42.configuration;
+package org.wso2.integrationstudio.carbonserver42.configuration;
 
-import org.wso2.integrationstudio.eclipse.carbon.server.model.configuration.ConfigurationCredentialsCommonEditorSection;
+import org.wso2.integrationstudio.carbon.server.model.configuration.ConfigurationCredentialsCommonEditorSection;
 
 
 public class ConfigurationCredentialsEditorSection extends ConfigurationCredentialsCommonEditorSection {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.core.utils;
+package org.wso2.integrationstudio.registry.core.utils;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -26,8 +26,8 @@ import javax.xml.stream.XMLStreamReader;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
-import org.wso2.integrationstudio.eclipse.platform.core.MediaManager;
-import org.wso2.integrationstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
+import org.wso2.integrationstudio.platform.core.MediaManager;
+import org.wso2.integrationstudio.platform.core.manifest.AbstractXMLDoc;
 
 public class ResourceMetaData extends AbstractXMLDoc {
 

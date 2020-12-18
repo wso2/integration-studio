@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -55,13 +55,13 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -349,7 +349,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#getParameterName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#getParameterName()
 	 * 
 	 */
 	public String getParameterName() {
@@ -359,7 +359,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#setParameterName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#setParameterName(String newValue)
 	 * 
 	 */
 	public void setParameterName(String newValue) {
@@ -381,7 +381,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#getTemplateParameterType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#getTemplateParameterType()
 	 * 
 	 */
 	public Enumerator getTemplateParameterType() {
@@ -392,7 +392,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#initTemplateParameterType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#initTemplateParameterType(Object input, Enumerator current)
 	 */
 	public void initTemplateParameterType(Object input, Enumerator current) {
 		templateParameterType.setInput(input);
@@ -410,7 +410,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#setTemplateParameterType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#setTemplateParameterType(Enumerator newValue)
 	 * 
 	 */
 	public void setTemplateParameterType(Enumerator newValue) {
@@ -428,7 +428,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#getParameterValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#getParameterValue()
 	 * 
 	 */
 	public String getParameterValue() {
@@ -438,7 +438,7 @@ public class CallTemplateParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#setParameterValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#setParameterValue(String newValue)
 	 * 
 	 */
 	public void setParameterValue(String newValue) {

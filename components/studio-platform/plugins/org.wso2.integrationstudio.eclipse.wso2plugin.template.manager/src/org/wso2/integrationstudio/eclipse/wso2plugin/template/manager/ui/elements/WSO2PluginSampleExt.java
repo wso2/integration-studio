@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.elements;
+package org.wso2.integrationstudio.wso2plugin.template.manager.ui.elements;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -24,10 +24,10 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
-import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.wizard.WSO2PluginListSelectionPage;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.util.AbstractDefaultProjectTemplateManager;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.util.WSO2PluginConstants;
+import org.wso2.integrationstudio.platform.ui.Activator;
+import org.wso2.integrationstudio.wso2plugin.template.manager.ui.wizard.WSO2PluginListSelectionPage;
+import org.wso2.integrationstudio.wso2plugin.template.manager.util.AbstractDefaultProjectTemplateManager;
+import org.wso2.integrationstudio.wso2plugin.template.manager.util.WSO2PluginConstants;
 
 import com.google.gson.annotations.SerializedName;
 

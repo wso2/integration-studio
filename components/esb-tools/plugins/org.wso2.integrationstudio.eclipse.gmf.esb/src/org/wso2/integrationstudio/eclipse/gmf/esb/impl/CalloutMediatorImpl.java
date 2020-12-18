@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,17 +14,17 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutEndpointType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutPayloadType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutResultType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutSecurityPolicies;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutSecurityType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.CalloutEndpointType;
+import org.wso2.integrationstudio.gmf.esb.CalloutMediator;
+import org.wso2.integrationstudio.gmf.esb.CalloutMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.CalloutMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.CalloutPayloadType;
+import org.wso2.integrationstudio.gmf.esb.CalloutResultType;
+import org.wso2.integrationstudio.gmf.esb.CalloutSecurityPolicies;
+import org.wso2.integrationstudio.gmf.esb.CalloutSecurityType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,27 +34,27 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getServiceURL <em>Service URL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getSoapAction <em>Soap Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getPathToAxis2xml <em>Path To Axis2xml</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getPathToAxis2Repository <em>Path To Axis2 Repository</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getPayloadType <em>Payload Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getPayloadMessageXpath <em>Payload Message Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getResultType <em>Result Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getResultMessageXpath <em>Result Message Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getResultContextProperty <em>Result Context Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#isPassHeaders <em>Pass Headers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getAddressEndpoint <em>Address Endpoint</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getEndpointType <em>Endpoint Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getPayloadProperty <em>Payload Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getSecurityType <em>Security Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getOutboundPolicyKey <em>Outbound Policy Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getInboundPolicyKey <em>Inbound Policy Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getPolicies <em>Policies</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getPolicyKey <em>Policy Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getServiceURL <em>Service URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getSoapAction <em>Soap Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getPathToAxis2xml <em>Path To Axis2xml</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getPathToAxis2Repository <em>Path To Axis2 Repository</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getPayloadType <em>Payload Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getPayloadMessageXpath <em>Payload Message Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getResultType <em>Result Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getResultMessageXpath <em>Result Message Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getResultContextProperty <em>Result Context Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#isPassHeaders <em>Pass Headers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getAddressEndpoint <em>Address Endpoint</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getEndpointType <em>Endpoint Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getPayloadProperty <em>Payload Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getSecurityType <em>Security Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getOutboundPolicyKey <em>Outbound Policy Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getInboundPolicyKey <em>Inbound Policy Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getPolicies <em>Policies</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#getPolicyKey <em>Policy Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CalloutMediatorImpl#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
  * </ul>
  *
  * @generated

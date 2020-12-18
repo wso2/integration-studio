@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -79,14 +79,14 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -2113,7 +2113,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -2123,7 +2123,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -2164,7 +2164,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getEndPointName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getEndPointName()
 	 * 
 	 */
 	public String getEndPointName() {
@@ -2174,7 +2174,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setEndPointName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setEndPointName(String newValue)
 	 * 
 	 */
 	public void setEndPointName(String newValue) {
@@ -2196,7 +2196,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getAnonymous()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getAnonymous()
 	 * 
 	 */
 	public Boolean getAnonymous() {
@@ -2206,7 +2206,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setAnonymous(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setAnonymous(Boolean newValue)
 	 * 
 	 */
 	public void setAnonymous(Boolean newValue) {
@@ -2228,7 +2228,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getDuplicate()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getDuplicate()
 	 * 
 	 */
 	public Boolean getDuplicate() {
@@ -2238,7 +2238,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setDuplicate(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setDuplicate(Boolean newValue)
 	 * 
 	 */
 	public void setDuplicate(Boolean newValue) {
@@ -2260,7 +2260,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getReversed()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getReversed()
 	 * 
 	 */
 	public Boolean getReversed() {
@@ -2270,7 +2270,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setReversed(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setReversed(Boolean newValue)
 	 * 
 	 */
 	public void setReversed(Boolean newValue) {
@@ -2294,7 +2294,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#initTemplateParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#initTemplateParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initTemplateParameters(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -2315,7 +2315,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#updateTemplateParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#updateTemplateParameters()
 	 * 
 	 */
 	public void updateTemplateParameters() {
@@ -2325,7 +2325,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#addFilterTemplateParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#addFilterTemplateParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToTemplateParameters(ViewerFilter filter) {
@@ -2338,7 +2338,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#addBusinessFilterTemplateParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#addBusinessFilterTemplateParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToTemplateParameters(ViewerFilter filter) {
@@ -2348,7 +2348,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#isContainedInTemplateParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#isContainedInTemplateParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInTemplateParametersTable(EObject element) {
@@ -2358,7 +2358,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getInLine()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getInLine()
 	 * 
 	 */
 	public Boolean getInLine() {
@@ -2368,7 +2368,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setInLine(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setInLine(Boolean newValue)
 	 * 
 	 */
 	public void setInLine(Boolean newValue) {
@@ -2390,7 +2390,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getFormat()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getFormat()
 	 * 
 	 */
 	public Enumerator getFormat() {
@@ -2401,7 +2401,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#initFormat(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#initFormat(Object input, Enumerator current)
 	 */
 	public void initFormat(Object input, Enumerator current) {
 		format.setInput(input);
@@ -2419,7 +2419,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setFormat(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setFormat(Enumerator newValue)
 	 * 
 	 */
 	public void setFormat(Enumerator newValue) {
@@ -2437,7 +2437,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getTraceEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getTraceEnabled()
 	 * 
 	 */
 	public Boolean getTraceEnabled() {
@@ -2447,7 +2447,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setTraceEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setTraceEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setTraceEnabled(Boolean newValue) {
@@ -2469,7 +2469,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getStatisticsEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getStatisticsEnabled()
 	 * 
 	 */
 	public Boolean getStatisticsEnabled() {
@@ -2479,7 +2479,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setStatisticsEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setStatisticsEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setStatisticsEnabled(Boolean newValue) {
@@ -2501,7 +2501,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getSuspendErrorCodes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getSuspendErrorCodes()
 	 * 
 	 */
 	public String getSuspendErrorCodes() {
@@ -2511,7 +2511,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setSuspendErrorCodes(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setSuspendErrorCodes(String newValue)
 	 * 
 	 */
 	public void setSuspendErrorCodes(String newValue) {
@@ -2533,7 +2533,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getSuspendInitialDuration()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getSuspendInitialDuration()
 	 * 
 	 */
 	public String getSuspendInitialDuration() {
@@ -2543,7 +2543,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setSuspendInitialDuration(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setSuspendInitialDuration(String newValue)
 	 * 
 	 */
 	public void setSuspendInitialDuration(String newValue) {
@@ -2565,7 +2565,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getSuspendMaximumDuration()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getSuspendMaximumDuration()
 	 * 
 	 */
 	public String getSuspendMaximumDuration() {
@@ -2575,7 +2575,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setSuspendMaximumDuration(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setSuspendMaximumDuration(String newValue)
 	 * 
 	 */
 	public void setSuspendMaximumDuration(String newValue) {
@@ -2597,7 +2597,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getSuspendProgressionFactor()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getSuspendProgressionFactor()
 	 * 
 	 */
 	public String getSuspendProgressionFactor() {
@@ -2607,7 +2607,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setSuspendProgressionFactor(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setSuspendProgressionFactor(String newValue)
 	 * 
 	 */
 	public void setSuspendProgressionFactor(String newValue) {
@@ -2629,7 +2629,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getRetryErrorCodes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getRetryErrorCodes()
 	 * 
 	 */
 	public String getRetryErrorCodes() {
@@ -2639,7 +2639,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setRetryErrorCodes(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setRetryErrorCodes(String newValue)
 	 * 
 	 */
 	public void setRetryErrorCodes(String newValue) {
@@ -2661,7 +2661,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getRetryCount()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getRetryCount()
 	 * 
 	 */
 	public String getRetryCount() {
@@ -2671,7 +2671,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setRetryCount(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setRetryCount(String newValue)
 	 * 
 	 */
 	public void setRetryCount(String newValue) {
@@ -2693,7 +2693,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getRetryDelay()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getRetryDelay()
 	 * 
 	 */
 	public String getRetryDelay() {
@@ -2703,7 +2703,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setRetryDelay(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setRetryDelay(String newValue)
 	 * 
 	 */
 	public void setRetryDelay(String newValue) {
@@ -2727,7 +2727,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initProperties(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -2748,7 +2748,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#updateProperties()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#updateProperties()
 	 * 
 	 */
 	public void updateProperties() {
@@ -2758,7 +2758,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToProperties(ViewerFilter filter) {
@@ -2771,7 +2771,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToProperties(ViewerFilter filter) {
@@ -2781,7 +2781,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInPropertiesTable(EObject element) {
@@ -2791,7 +2791,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getOptimize()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getOptimize()
 	 * 
 	 */
 	public Enumerator getOptimize() {
@@ -2802,7 +2802,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#initOptimize(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#initOptimize(Object input, Enumerator current)
 	 */
 	public void initOptimize(Object input, Enumerator current) {
 		optimize.setInput(input);
@@ -2820,7 +2820,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setOptimize(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setOptimize(Enumerator newValue)
 	 * 
 	 */
 	public void setOptimize(Enumerator newValue) {
@@ -2838,7 +2838,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -2848,7 +2848,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -2870,7 +2870,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getWsdlUri()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getWsdlUri()
 	 * 
 	 */
 	public String getWsdlUri() {
@@ -2880,7 +2880,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setWsdlUri(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setWsdlUri(String newValue)
 	 * 
 	 */
 	public void setWsdlUri(String newValue) {
@@ -2902,7 +2902,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getService()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getService()
 	 * 
 	 */
 	public String getService() {
@@ -2912,7 +2912,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setService(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setService(String newValue)
 	 * 
 	 */
 	public void setService(String newValue) {
@@ -2934,7 +2934,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getPort()
 	 * 
 	 */
 	public String getPort() {
@@ -2944,7 +2944,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setPort(String newValue)
 	 * 
 	 */
 	public void setPort(String newValue) {
@@ -2966,7 +2966,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getReliableMessagingEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getReliableMessagingEnabled()
 	 * 
 	 */
 	public Boolean getReliableMessagingEnabled() {
@@ -2976,7 +2976,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setReliableMessagingEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setReliableMessagingEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setReliableMessagingEnabled(Boolean newValue) {
@@ -2998,7 +2998,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getSecurityEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getSecurityEnabled()
 	 * 
 	 */
 	public Boolean getSecurityEnabled() {
@@ -3008,7 +3008,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setSecurityEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setSecurityEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setSecurityEnabled(Boolean newValue) {
@@ -3030,7 +3030,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getAddressingEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getAddressingEnabled()
 	 * 
 	 */
 	public Boolean getAddressingEnabled() {
@@ -3040,7 +3040,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setAddressingEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setAddressingEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setAddressingEnabled(Boolean newValue) {
@@ -3062,7 +3062,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getAddressingVersion()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getAddressingVersion()
 	 * 
 	 */
 	public Enumerator getAddressingVersion() {
@@ -3073,7 +3073,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#initAddressingVersion(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#initAddressingVersion(Object input, Enumerator current)
 	 */
 	public void initAddressingVersion(Object input, Enumerator current) {
 		addressingVersion.setInput(input);
@@ -3091,7 +3091,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setAddressingVersion(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setAddressingVersion(Enumerator newValue)
 	 * 
 	 */
 	public void setAddressingVersion(Enumerator newValue) {
@@ -3109,7 +3109,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getAddressingSeparateListener()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getAddressingSeparateListener()
 	 * 
 	 */
 	public Boolean getAddressingSeparateListener() {
@@ -3119,7 +3119,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setAddressingSeparateListener(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setAddressingSeparateListener(Boolean newValue)
 	 * 
 	 */
 	public void setAddressingSeparateListener(Boolean newValue) {
@@ -3141,7 +3141,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getTimeOutDuration()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getTimeOutDuration()
 	 * 
 	 */
 	public String getTimeOutDuration() {
@@ -3151,7 +3151,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setTimeOutDuration(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setTimeOutDuration(String newValue)
 	 * 
 	 */
 	public void setTimeOutDuration(String newValue) {
@@ -3173,7 +3173,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getTimeOutAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getTimeOutAction()
 	 * 
 	 */
 	public Enumerator getTimeOutAction() {
@@ -3184,7 +3184,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#initTimeOutAction(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#initTimeOutAction(Object input, Enumerator current)
 	 */
 	public void initTimeOutAction(Object input, Enumerator current) {
 		timeOutAction.setInput(input);
@@ -3202,7 +3202,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setTimeOutAction(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setTimeOutAction(Enumerator newValue)
 	 * 
 	 */
 	public void setTimeOutAction(Enumerator newValue) {
@@ -3225,7 +3225,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getFailoverNonRetryErrorCodes()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#getFailoverNonRetryErrorCodes()
    * 
    */
   public String getFailoverNonRetryErrorCodes() {
@@ -3235,7 +3235,7 @@ public class WSDLEndPointPropertiesEditionPartForm extends SectionPropertiesEdit
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setFailoverNonRetryErrorCodes(String newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.WSDLEndPointPropertiesEditionPart#setFailoverNonRetryErrorCodes(String newValue)
    * 
    */
   public void setFailoverNonRetryErrorCodes(String newValue) {

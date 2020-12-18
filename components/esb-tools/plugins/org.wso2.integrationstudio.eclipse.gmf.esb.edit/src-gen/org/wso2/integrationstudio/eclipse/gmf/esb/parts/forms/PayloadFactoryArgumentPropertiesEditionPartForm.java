@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -61,14 +61,14 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -376,7 +376,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#getArgumentType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#getArgumentType()
 	 * 
 	 */
 	public Enumerator getArgumentType() {
@@ -387,7 +387,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#initArgumentType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#initArgumentType(Object input, Enumerator current)
 	 */
 	public void initArgumentType(Object input, Enumerator current) {
 		argumentType.setInput(input);
@@ -405,7 +405,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#setArgumentType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#setArgumentType(Enumerator newValue)
 	 * 
 	 */
 	public void setArgumentType(Enumerator newValue) {
@@ -423,7 +423,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#getArgumentValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#getArgumentValue()
 	 * 
 	 */
 	public String getArgumentValue() {
@@ -433,7 +433,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#setArgumentValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#setArgumentValue(String newValue)
 	 * 
 	 */
 	public void setArgumentValue(String newValue) {
@@ -455,7 +455,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#getEvaluator()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#getEvaluator()
 	 * 
 	 */
 	public Enumerator getEvaluator() {
@@ -466,7 +466,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#initEvaluator(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#initEvaluator(Object input, Enumerator current)
 	 */
 	public void initEvaluator(Object input, Enumerator current) {
 		evaluator.setInput(input);
@@ -484,7 +484,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#setEvaluator(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#setEvaluator(Enumerator newValue)
 	 * 
 	 */
 	public void setEvaluator(Enumerator newValue) {
@@ -502,7 +502,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#getLiteral()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#getLiteral()
 	 * 
 	 */
 	public Boolean getLiteral() {
@@ -512,7 +512,7 @@ public class PayloadFactoryArgumentPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#setLiteral(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryArgumentPropertiesEditionPart#setLiteral(Boolean newValue)
 	 * 
 	 */
 	public void setLiteral(Boolean newValue) {

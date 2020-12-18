@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.mediator.template;
+package org.wso2.integrationstudio.artifact.mediator.template;
 
-import org.wso2.integrationstudio.eclipse.artifact.mediator.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.artifact.mediator.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class CustomMediatorClassTemplate {
 

@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.local.checkout.actions;
+package org.wso2.integrationstudio.registry.manager.local.checkout.actions;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.IWorkbenchPart;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.utils.RegistryCheckInClientUtils;
+import org.wso2.integrationstudio.registry.manager.local.utils.RegistryCheckInClientUtils;
 
 public abstract class ConflictAction extends BaseRegistryAction {
 

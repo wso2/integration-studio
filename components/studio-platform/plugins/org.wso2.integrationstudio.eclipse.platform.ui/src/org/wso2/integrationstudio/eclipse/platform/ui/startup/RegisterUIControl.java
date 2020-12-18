@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.startup;
+package org.wso2.integrationstudio.platform.ui.startup;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.platform.ui.interfaces.UIControl;
+import org.wso2.integrationstudio.platform.ui.interfaces.UIControl;
 
 public class RegisterUIControl {
 

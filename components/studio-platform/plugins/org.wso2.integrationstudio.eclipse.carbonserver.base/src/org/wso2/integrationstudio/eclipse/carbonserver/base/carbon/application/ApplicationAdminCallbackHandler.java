@@ -6,7 +6,7 @@
  * UTC)
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application;
+package org.wso2.integrationstudio.carbonserver.base.carbon.application;
 
 /**
  * ApplicationAdminCallbackHandler Callback class, Users can extend this class
@@ -51,7 +51,7 @@ public abstract class ApplicationAdminCallbackHandler {
 	 * override this method for handling normal response from getAppData
 	 * operation
 	 */
-	public void receiveResultgetAppData(org.wso2.integrationstudio.eclipse.carbonserver.base.carbon.application.ApplicationAdminStub.ApplicationMetadata result) {
+	public void receiveResultgetAppData(org.wso2.integrationstudio.carbonserver.base.carbon.application.ApplicationAdminStub.ApplicationMetadata result) {
 	}
 
 	/**

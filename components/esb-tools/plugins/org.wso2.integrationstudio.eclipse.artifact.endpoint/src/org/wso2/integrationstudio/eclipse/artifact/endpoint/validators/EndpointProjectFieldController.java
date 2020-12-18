@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.validators;
+package org.wso2.integrationstudio.artifact.endpoint.validators;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNode;
@@ -22,18 +22,18 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.model.EndpointModel;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.utils.EpArtifactConstants;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.artifact.endpoint.Activator;
+import org.wso2.integrationstudio.artifact.endpoint.model.EndpointModel;
+import org.wso2.integrationstudio.artifact.endpoint.utils.EpArtifactConstants;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -221,15 +221,15 @@ public class EndpointProjectFieldController extends AbstractFieldController {
 
 	private Map<String, List<String>> getTemplateFieldProperties() {
 		Map<String, List<String>> map = new HashMap<String, List<String>>();
-		map.put("org.wso2.integrationstudio.eclipse.esb.template.ep2", Arrays.asList(new String[] {}));
-		map.put("org.wso2.integrationstudio.eclipse.esb.template.ep1", Arrays.asList(new String[] { "templ.address.ep.uri" }));
-		map.put("org.wso2.integrationstudio.eclipse.esb.template.ep5", Arrays.
+		map.put("org.wso2.integrationstudio.esb.template.ep2", Arrays.asList(new String[] {}));
+		map.put("org.wso2.integrationstudio.esb.template.ep1", Arrays.asList(new String[] { "templ.address.ep.uri" }));
+		map.put("org.wso2.integrationstudio.esb.template.ep5", Arrays.
 				asList(new String[] { "templ.wsdl.ep.uri", "templ.wsdl.ep.service", "templ.wsdl.ep.port" }));
-		map.put("org.wso2.integrationstudio.eclipse.esb.template.ep3", Arrays.asList(new String[] {}));
-		map.put("org.wso2.integrationstudio.eclipse.esb.template.ep4", Arrays.asList(new String[] {}));
-		map.put("org.wso2.integrationstudio.eclipse.esb.template.ep7", Arrays
+		map.put("org.wso2.integrationstudio.esb.template.ep3", Arrays.asList(new String[] {}));
+		map.put("org.wso2.integrationstudio.esb.template.ep4", Arrays.asList(new String[] {}));
+		map.put("org.wso2.integrationstudio.esb.template.ep7", Arrays
 		        .asList(new String[] { "templ.template.ep.uri", "templ.target.template","templ.target.availabletemplates"}));
-		map.put("org.wso2.integrationstudio.eclipse.esb.template.ep8", Arrays
+		map.put("org.wso2.integrationstudio.esb.template.ep8", Arrays
 		        .asList(new String[] { "templ.http.ep.uritemplate", "templ.http.ep.method"}));
 		return map;
 

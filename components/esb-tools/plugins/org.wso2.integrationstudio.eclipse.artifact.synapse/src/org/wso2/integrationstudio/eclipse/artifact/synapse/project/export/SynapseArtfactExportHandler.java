@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.synapse.project.export;
+package org.wso2.integrationstudio.artifact.synapse.project.export;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.platform.core.project.export.ProjectArtifactHandler;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 import java.io.File;
 import java.io.FileInputStream;

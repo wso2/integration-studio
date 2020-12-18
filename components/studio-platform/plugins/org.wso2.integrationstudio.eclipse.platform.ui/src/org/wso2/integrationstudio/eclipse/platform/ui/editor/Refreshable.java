@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.editor;
+package org.wso2.integrationstudio.platform.ui.editor;
 
 /**
  * Editors may optionally implement this interface to provide the capability to

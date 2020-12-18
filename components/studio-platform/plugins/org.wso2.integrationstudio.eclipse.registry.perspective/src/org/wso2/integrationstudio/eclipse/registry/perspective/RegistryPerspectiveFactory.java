@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.perspective;
+package org.wso2.integrationstudio.registry.perspective;
 
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
@@ -23,8 +23,8 @@ import org.eclipse.ui.IPerspectiveFactory;
 public class RegistryPerspectiveFactory implements IPerspectiveFactory {
 
 	String browserViewID = "org.wso2.integrationstudio.registry.remote.registry.view";
-	String metadataViewID = "org.wso2.integrationstudio.eclipse.registry.properties";
-	String resourceInfoViewID = "org.wso2.integrationstudio.eclipse.registry.resource.info";
+	String metadataViewID = "org.wso2.integrationstudio.registry.properties";
+	String resourceInfoViewID = "org.wso2.integrationstudio.registry.resource.info";
 
 	public void createInitialLayout(IPageLayout layout) {
 		defineAction(layout);

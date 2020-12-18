@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.esb.cloud.model;
+package org.wso2.integrationstudio.esb.cloud.model;
 
 /**
  * Represents a runtime environment object

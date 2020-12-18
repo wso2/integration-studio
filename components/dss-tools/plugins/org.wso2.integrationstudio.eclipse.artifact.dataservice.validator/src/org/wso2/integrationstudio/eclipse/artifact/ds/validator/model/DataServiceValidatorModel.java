@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.ds.validator.model;
+package org.wso2.integrationstudio.artifact.ds.validator.model;
 
 import org.eclipse.core.resources.IProject;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class DataServiceValidatorModel extends ProjectDataModel {
 	private String validatorClass;

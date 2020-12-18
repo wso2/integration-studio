@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.actions.global;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.actions.global;
 
 import java.util.Iterator;
 import java.util.LinkedList;

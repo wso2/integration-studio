@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultsConfiguration;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RuleResult;
+import org.wso2.integrationstudio.gmf.esb.RuleResultsConfiguration;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +32,7 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultsConfiguration;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleResultsConfigurationImpl#getResults <em>Results</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RuleResultsConfigurationImpl#getResults <em>Results</em>}</li>
  * </ul>
  *
  * @generated

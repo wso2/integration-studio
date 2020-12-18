@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -17,10 +17,10 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.OutputConnector;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,8 +30,8 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbLinkImpl#getSource <em>Source</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbLinkImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbLinkImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbLinkImpl#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @generated

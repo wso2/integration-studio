@@ -14,7 +14,7 @@
  * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.ui.wizard;
+package org.wso2.integrationstudio.docker.distribution.ui.wizard;
 
 import java.io.File;
 
@@ -26,13 +26,13 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.docker.distribution.model.DockerModel;
-import org.wso2.integrationstudio.eclipse.docker.distribution.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.KubernetesDetailsPage;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPage;
+import org.wso2.integrationstudio.docker.distribution.model.DockerModel;
+import org.wso2.integrationstudio.docker.distribution.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.KubernetesDetailsPage;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.MavenDetailsPage;
 
 /**
  * Class responsible for create a new kubernetes project alone.

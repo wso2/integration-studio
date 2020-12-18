@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -54,13 +54,13 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -475,7 +475,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#getPropertyName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#getPropertyName()
 	 * 
 	 */
 	public String getPropertyName() {
@@ -485,7 +485,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#setPropertyName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#setPropertyName(String newValue)
 	 * 
 	 */
 	public void setPropertyName(String newValue) {
@@ -507,7 +507,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#getValueType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#getValueType()
 	 * 
 	 */
 	public Enumerator getValueType() {
@@ -518,7 +518,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#initValueType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#initValueType(Object input, Enumerator current)
 	 */
 	public void initValueType(Object input, Enumerator current) {
 		valueType.setInput(input);
@@ -536,7 +536,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#setValueType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#setValueType(Enumerator newValue)
 	 * 
 	 */
 	public void setValueType(Enumerator newValue) {
@@ -554,7 +554,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#getValueLiteral()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#getValueLiteral()
 	 * 
 	 */
 	public String getValueLiteral() {
@@ -564,7 +564,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#setValueLiteral(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#setValueLiteral(String newValue)
 	 * 
 	 */
 	public void setValueLiteral(String newValue) {
@@ -586,7 +586,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#getValueContextPropertyName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#getValueContextPropertyName()
 	 * 
 	 */
 	public String getValueContextPropertyName() {
@@ -596,7 +596,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#setValueContextPropertyName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#setValueContextPropertyName(String newValue)
 	 * 
 	 */
 	public void setValueContextPropertyName(String newValue) {
@@ -618,7 +618,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#getContextAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#getContextAction()
 	 * 
 	 */
 	public Enumerator getContextAction() {
@@ -629,7 +629,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#initContextAction(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#initContextAction(Object input, Enumerator current)
 	 */
 	public void initContextAction(Object input, Enumerator current) {
 		contextAction.setInput(input);
@@ -647,7 +647,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#setContextAction(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#setContextAction(Enumerator newValue)
 	 * 
 	 */
 	public void setContextAction(Enumerator newValue) {
@@ -665,7 +665,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#getMessageAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#getMessageAction()
 	 * 
 	 */
 	public Enumerator getMessageAction() {
@@ -676,7 +676,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#initMessageAction(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#initMessageAction(Object input, Enumerator current)
 	 */
 	public void initMessageAction(Object input, Enumerator current) {
 		messageAction.setInput(input);
@@ -694,7 +694,7 @@ public class CommandPropertyPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart#setMessageAction(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart#setMessageAction(Enumerator newValue)
 	 * 
 	 */
 	public void setMessageAction(Enumerator newValue) {

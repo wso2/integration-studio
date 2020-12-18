@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MouseEvent;
@@ -10,10 +10,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.EastPointerFigure;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.WestPointerFigure;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EastPointerShape;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.WestPointerShape;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.EastPointerFigure;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.WestPointerFigure;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EastPointerShape;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.WestPointerShape;
 
 public abstract class AbstractEndpointAdditionalOutputConnectorEditPart extends AbstractOutputConnectorEditPart {
 

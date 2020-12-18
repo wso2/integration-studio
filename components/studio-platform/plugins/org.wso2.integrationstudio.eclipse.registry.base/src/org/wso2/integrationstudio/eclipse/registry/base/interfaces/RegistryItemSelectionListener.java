@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.interfaces;
+package org.wso2.integrationstudio.registry.base.interfaces;
 
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
 
 public interface RegistryItemSelectionListener {
 	public void setSelectionChanged(

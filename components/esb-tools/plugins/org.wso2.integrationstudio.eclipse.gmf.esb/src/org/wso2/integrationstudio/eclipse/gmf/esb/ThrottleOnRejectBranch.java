@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectBranch#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectBranch#getSequenceKey <em>Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectBranch#getSequenceType <em>Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectBranch#getSequenceKey <em>Sequence Key</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleOnRejectBranch()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleOnRejectBranch()
  * @model
  * @generated
  */
@@ -29,7 +29,7 @@ public interface ThrottleOnRejectBranch extends EObject {
     /**
      * Returns the value of the '<em><b>Sequence Type</b></em>' attribute.
      * The default value is <code>"ANONYMOUS"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Sequence Type</em>' attribute isn't clear,
@@ -37,20 +37,20 @@ public interface ThrottleOnRejectBranch extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType
      * @see #setSequenceType(ThrottleSequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleOnRejectBranch_SequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleOnRejectBranch_SequenceType()
      * @model default="ANONYMOUS"
      * @generated
      */
     ThrottleSequenceType getSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectBranch#getSequenceType <em>Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectBranch#getSequenceType <em>Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType
      * @see #getSequenceType()
      * @generated
      */
@@ -66,14 +66,14 @@ public interface ThrottleOnRejectBranch extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Key</em>' containment reference.
      * @see #setSequenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleOnRejectBranch_SequenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleOnRejectBranch_SequenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectBranch#getSequenceKey <em>Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectBranch#getSequenceKey <em>Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Key</em>' containment reference.

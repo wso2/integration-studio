@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,13 +21,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.CloneMediator;
+import org.wso2.integrationstudio.gmf.esb.CloneMediatorContainer;
+import org.wso2.integrationstudio.gmf.esb.CloneMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.CloneMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.CloneTarget;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,14 +37,14 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloneMediatorImpl#getCloneID <em>Clone ID</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloneMediatorImpl#isSequentialMediation <em>Sequential Mediation</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloneMediatorImpl#isContinueParent <em>Continue Parent</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloneMediatorImpl#getTargets <em>Targets</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloneMediatorImpl#getTargetsOutputConnector <em>Targets Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloneMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloneMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloneMediatorImpl#getCloneContainer <em>Clone Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CloneMediatorImpl#getCloneID <em>Clone ID</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CloneMediatorImpl#isSequentialMediation <em>Sequential Mediation</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CloneMediatorImpl#isContinueParent <em>Continue Parent</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CloneMediatorImpl#getTargets <em>Targets</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CloneMediatorImpl#getTargetsOutputConnector <em>Targets Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CloneMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CloneMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CloneMediatorImpl#getCloneContainer <em>Clone Container</em>}</li>
  * </ul>
  *
  * @generated

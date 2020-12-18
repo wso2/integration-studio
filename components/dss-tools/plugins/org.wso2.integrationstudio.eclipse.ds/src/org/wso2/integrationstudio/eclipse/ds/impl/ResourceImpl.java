@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -18,9 +18,9 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.ds.CallQuery;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.Resource;
+import org.wso2.integrationstudio.ds.CallQuery;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.Resource;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,11 +30,11 @@ import org.wso2.integrationstudio.eclipse.ds.Resource;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResourceImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResourceImpl#getCallQuery <em>Call Query</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResourceImpl#getMethod <em>Method</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResourceImpl#getPath <em>Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResourceImpl#isReturnRequestStatus <em>Return Request Status</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResourceImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResourceImpl#getCallQuery <em>Call Query</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResourceImpl#getMethod <em>Method</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResourceImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResourceImpl#isReturnRequestStatus <em>Return Request Status</em>}</li>
  * </ul>
  *
  * @generated

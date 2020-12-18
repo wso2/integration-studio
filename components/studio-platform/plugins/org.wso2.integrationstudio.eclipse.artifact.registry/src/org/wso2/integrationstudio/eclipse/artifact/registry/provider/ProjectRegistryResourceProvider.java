@@ -15,7 +15,7 @@
  */
 
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.provider;
+package org.wso2.integrationstudio.artifact.registry.provider;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,10 +31,10 @@ import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryResource;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryResourceProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioElement;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.ResourceManager;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryResource;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryResourceProvider;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
+import org.wso2.integrationstudio.platform.core.utils.ResourceManager;
 
 public class ProjectRegistryResourceProvider implements IRegistryResourceProvider{
 	private IProject project;

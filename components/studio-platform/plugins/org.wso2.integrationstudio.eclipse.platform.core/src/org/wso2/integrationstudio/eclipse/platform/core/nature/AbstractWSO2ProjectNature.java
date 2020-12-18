@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.nature;
+package org.wso2.integrationstudio.platform.core.nature;
 
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaUtils;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.utils.jdt.JavaUtils;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public abstract class AbstractWSO2ProjectNature implements IProjectNature {
 

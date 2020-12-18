@@ -16,18 +16,18 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei12.operations;
+package org.wso2.integrationstudio.carbonserver44microei12.operations;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerPort;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.operations.CommonCarbonServerOperations;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.util.ServerConstants;
-import org.wso2.integrationstudio.eclipse.server.base.core.ServerController;
+import org.wso2.integrationstudio.carbon.server.model.operations.CommonCarbonServerOperations;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonConstants;
+import org.wso2.integrationstudio.carbonserver44microei12.Activator;
+import org.wso2.integrationstudio.carbonserver44microei12.util.CarbonServer44eiUtils;
+import org.wso2.integrationstudio.carbonserver44microei12.util.ServerConstants;
+import org.wso2.integrationstudio.server.base.core.ServerController;
 
 public class CommonOperations extends CommonCarbonServerOperations {
 

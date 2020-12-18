@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.mediatorlocator;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gef.EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.MissingAttributeException;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.MissingAttributeException;
 
 /**
  * This interface should be implemented by classes which have the

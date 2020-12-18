@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.synapse.api.util;
+package org.wso2.integrationstudio.artifact.synapse.api.util;
 
 import org.eclipse.osgi.util.NLS;
 
 public class ArtifactConstants extends NLS {
-	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.artifact.synapse.api.util.constants"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.artifact.synapse.api.util.constants"; //$NON-NLS-1$
 	
 	//control IDs
 	public static String ID_API_CONTEXT;

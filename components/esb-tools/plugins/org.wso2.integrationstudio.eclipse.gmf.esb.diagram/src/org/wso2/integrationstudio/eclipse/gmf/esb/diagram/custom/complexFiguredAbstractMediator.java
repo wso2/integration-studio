@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LayoutListener;
@@ -9,8 +9,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.layout.XYRepossition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.HighlightOnSelectionEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.layout.XYRepossition;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.HighlightOnSelectionEditPolicy;
 
 public class complexFiguredAbstractMediator extends AbstractMediator {
 

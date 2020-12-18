@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.CLEAR_COMMAND;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SET_COMMAND;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.CLEAR_COMMAND;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SET_COMMAND;
 
 /**
  * This Enum represents the actions which can be made with ESB Mediation

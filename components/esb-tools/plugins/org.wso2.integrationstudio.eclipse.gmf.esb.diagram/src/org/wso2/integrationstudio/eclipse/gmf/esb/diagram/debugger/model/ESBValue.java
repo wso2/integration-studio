@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.model;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_PRIMARY_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_SECONDARY_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.VARIABLE_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_PRIMARY_ID;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_SECONDARY_ID;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.VARIABLE_TYPE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +33,12 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.views.AcceptedContentAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.views.ContentAcceptHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.views.AcceptedContentAction;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.views.ContentAcceptHandler;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

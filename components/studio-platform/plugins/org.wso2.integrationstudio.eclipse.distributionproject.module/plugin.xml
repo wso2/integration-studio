@@ -3,61 +3,61 @@
 <plugin>
 	<extension point="org.eclipse.core.expressions.propertyTesters">
    		<propertyTester
-      		id="org.wso2.integrationstudio.eclipse.distribution.exportable"
-      		namespace="org.wso2.integrationstudio.eclipse.distribution"
+      		id="org.wso2.integrationstudio.distribution.exportable"
+      		namespace="org.wso2.integrationstudio.distribution"
       		properties="exportable"
       		type="org.eclipse.core.resources.IProject"
-      		class="org.wso2.integrationstudio.eclipse.distributionproject.module.utils.CAppPropertyTester">
+      		class="org.wso2.integrationstudio.distributionproject.module.utils.CAppPropertyTester">
    		</propertyTester>
 	</extension>
 
    <extension point="org.eclipse.wst.server.core.moduleTypes">
-   		<moduleType id="org.wso2.integrationstudio.eclipse.carbon.module" name="WSO2 Carbon Module" />
+   		<moduleType id="org.wso2.integrationstudio.carbon.module" name="WSO2 Carbon Module" />
    </extension>
    
    <extension point="org.eclipse.wst.server.core.moduleFactories">
       <moduleFactory
-          class="org.wso2.integrationstudio.eclipse.distributionproject.module.factory.CarbonModuleFactory"
-          id="org.wso2.integrationstudio.eclipse.carbon.moduleFactory"
+          class="org.wso2.integrationstudio.distributionproject.module.factory.CarbonModuleFactory"
+          id="org.wso2.integrationstudio.carbon.moduleFactory"
           projects="true">
           <moduleType
-               types="org.wso2.integrationstudio.eclipse.carbon.module"
+               types="org.wso2.integrationstudio.carbon.module"
                versions="1.0">
           </moduleType>
       </moduleFactory>
    </extension>
 	<extension point="org.eclipse.wst.common.project.facet.ui.images">
-		<image facet="org.wso2.integrationstudio.eclipse.carbon.facetId" path="icons/car.png"/>
+		<image facet="org.wso2.integrationstudio.carbon.facetId" path="icons/car.png"/>
 	</extension>
    <extension point="org.eclipse.wst.common.project.facet.core.facets">
-		<project-facet id="org.wso2.integrationstudio.eclipse.carbon.facetId">
+		<project-facet id="org.wso2.integrationstudio.carbon.facetId">
 			<label>WSO2 Carbon Application Facet</label>
 			<description>
 				This facet will create and install all WSO2 Carbon Application related file/folder structure for the project. 
 			</description>
 		</project-facet>
-		<project-facet-version facet="org.wso2.integrationstudio.eclipse.carbon.facetId" version="1.0">
+		<project-facet-version facet="org.wso2.integrationstudio.carbon.facetId" version="1.0">
 			<group-member id="modules" />
 		</project-facet-version>
-		<action facet="org.wso2.integrationstudio.eclipse.carbon.facetId" version="1.0" type="install">
+		<action facet="org.wso2.integrationstudio.carbon.facetId" version="1.0" type="install">
 			<delegate
-				class="org.wso2.integrationstudio.eclipse.distributionproject.module.factory.CarbonFacetInstallDelegate" />
+				class="org.wso2.integrationstudio.distributionproject.module.factory.CarbonFacetInstallDelegate" />
 			<config-factory
-				class="org.wso2.integrationstudio.eclipse.distributionproject.module.factory.CarbonFacetInstallDataModelProvider" />
+				class="org.wso2.integrationstudio.distributionproject.module.factory.CarbonFacetInstallDataModelProvider" />
 		</action>
-		<template id="org.wso2.integrationstudio.eclipse.carbon.facetId.template">
+		<template id="org.wso2.integrationstudio.carbon.facetId.template">
 			<label>WSO2 Composite Application Project Template</label>
-			<fixed facet="org.wso2.integrationstudio.eclipse.carbon.facetId" />
+			<fixed facet="org.wso2.integrationstudio.carbon.facetId" />
 	    </template>
  </extension>
      <extension point="org.eclipse.wst.server.core.moduleArtifactAdapters">
    		<moduleArtifactAdapter
-            id="org.wso2.integrationstudio.eclipse.distribution.project"
-            class="org.wso2.integrationstudio.eclipse.distributionproject.module.factory.CarbonModuleArtifactAdapterImpl">
+            id="org.wso2.integrationstudio.distribution.project"
+            class="org.wso2.integrationstudio.distributionproject.module.factory.CarbonModuleArtifactAdapterImpl">
          <enablement>
            <with variable="selection">
              <adapt type="org.eclipse.core.resources.IProject">
-             	<test property="org.wso2.integrationstudio.eclipse.distribution.exportable" value="true"/>
+             	<test property="org.wso2.integrationstudio.distribution.exportable" value="true"/>
              </adapt>
            </with>
          </enablement>

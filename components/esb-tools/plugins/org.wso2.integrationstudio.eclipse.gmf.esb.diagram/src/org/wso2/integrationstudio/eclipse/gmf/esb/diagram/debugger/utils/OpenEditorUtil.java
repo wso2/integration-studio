@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -37,31 +37,31 @@ import org.eclipse.ui.PlatformUI;
 import org.w3c.dom.Node;
 import org.w3c.dom.ls.DOMImplementationLS;
 import org.w3c.dom.ls.LSSerializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.SingleCompartmentComplexFiguredAbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.MissingAttributeException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator.IMediatorLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator.impl.MediatorLocatorFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EsbDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.SingleCompartmentComplexFiguredAbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.Deserializer;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.MissingAttributeException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.mediatorlocator.IMediatorLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.mediatorlocator.impl.MediatorLocatorFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EntitlementMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.FilterMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ThrottleMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbEditorInput;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbMultiPageEditor;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 

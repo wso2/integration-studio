@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,11 +15,11 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterContainer#getPassContainer <em>Pass Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterContainer#getFailContainer <em>Fail Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.FilterContainer#getPassContainer <em>Pass Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.FilterContainer#getFailContainer <em>Fail Container</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getFilterContainer()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getFilterContainer()
  * @model
  * @generated
  */
@@ -34,14 +34,14 @@ public interface FilterContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Pass Container</em>' containment reference.
      * @see #setPassContainer(FilterPassContainer)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getFilterContainer_PassContainer()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getFilterContainer_PassContainer()
      * @model containment="true"
      * @generated
      */
     FilterPassContainer getPassContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterContainer#getPassContainer <em>Pass Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.FilterContainer#getPassContainer <em>Pass Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Pass Container</em>' containment reference.
@@ -60,14 +60,14 @@ public interface FilterContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fail Container</em>' containment reference.
      * @see #setFailContainer(FilterFailContainer)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getFilterContainer_FailContainer()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getFilterContainer_FailContainer()
      * @model containment="true"
      * @generated
      */
     FilterFailContainer getFailContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.FilterContainer#getFailContainer <em>Fail Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.FilterContainer#getFailContainer <em>Fail Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fail Container</em>' containment reference.

@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.core;
+package org.wso2.integrationstudio.registry.base.core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.platform.core.MediaManager;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeResolverProvider;
+import org.wso2.integrationstudio.platform.core.MediaManager;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeResolverProvider;
 
 public class MediaTypes {
 

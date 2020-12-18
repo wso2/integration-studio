@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommentMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.CommentMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
 
 public class CommentMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CommentMediator> {
 

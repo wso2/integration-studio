@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence.custom;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -23,7 +23,7 @@ import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediaType;
+import org.wso2.integrationstudio.gmf.esb.MediaType;
 
 /**
  * This class will create SynapsePath instance based on the

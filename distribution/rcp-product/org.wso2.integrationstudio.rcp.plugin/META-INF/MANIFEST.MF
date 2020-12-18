@@ -14,8 +14,8 @@ Require-Bundle: org.eclipse.e4.core.services,
  org.eclipse.ui.intro,
  org.eclipse.ui,
  org.eclipse.ui.workbench,
- org.wso2.integrationstudio.eclipse.platform.ui,
+ org.wso2.integrationstudio.platform.ui,
  org.eclipse.core.runtime,
- org.wso2.integrationstudio.eclipse.templates.dashboard
+ org.wso2.integrationstudio.templates.dashboard
 Import-Package: org.eclipse.ui.part,
- org.wso2.integrationstudio.eclipse.logging.core
+ org.wso2.integrationstudio.logging.core

@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils;
+package org.wso2.integrationstudio.apim.endpoint.central.utils;
 
 import java.util.Base64;
 

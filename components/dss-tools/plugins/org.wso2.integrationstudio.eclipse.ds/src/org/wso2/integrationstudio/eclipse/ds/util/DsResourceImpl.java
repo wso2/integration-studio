@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.util;
+package org.wso2.integrationstudio.ds.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * <!-- begin-user-doc --> The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
  * 
- * @see org.wso2.integrationstudio.eclipse.ds.util.DsResourceFactoryImpl
+ * @see org.wso2.integrationstudio.ds.util.DsResourceFactoryImpl
  * @generated NOT
  */
 public class DsResourceImpl extends XMLResourceImpl {

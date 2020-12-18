@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.proxyservice.ui.wizard;
+package org.wso2.integrationstudio.artifact.proxyservice.ui.wizard;
 
 import java.net.URL;
 import java.net.URLConnection;
@@ -44,34 +44,34 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
 
-import static org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants.*;
+import static org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants.*;
 
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.model.ProxyServiceModel;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.model.ProxyServiceModel.TargetEPType;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.utils.PsArtifactConstants;
-import org.wso2.integrationstudio.eclipse.artifact.proxyservice.validators.EndPointsList;
+import org.wso2.integrationstudio.artifact.proxyservice.model.ProxyServiceModel;
+import org.wso2.integrationstudio.artifact.proxyservice.model.ProxyServiceModel.TargetEPType;
+import org.wso2.integrationstudio.artifact.proxyservice.utils.PsArtifactConstants;
+import org.wso2.integrationstudio.artifact.proxyservice.validators.EndPointsList;
 
-import static org.wso2.integrationstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants.*;
+import static org.wso2.integrationstudio.platform.core.mediatype.PlatformMediaTypeConstants.*;
 
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractComposite;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectOptionData;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplate;
+import org.wso2.integrationstudio.platform.core.model.AbstractComposite;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectOptionData;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplate;
 
-import static org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants.*;
+import static org.wso2.integrationstudio.platform.core.utils.CSProviderConstants.*;
 
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.ResourceManager;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.core.utils.ResourceManager;
 
 public class AdvancedConfigComposite extends AbstractComposite {
 
-	private static final String SYMBOLIC_NAME = "org.wso2.integrationstudio.eclipse.artifact.proxyservice";
+	private static final String SYMBOLIC_NAME = "org.wso2.integrationstudio.artifact.proxyservice";
 	private static final String REG_BROWSE_TOOL_TIP = "browse key from registry, workspace or local entries";
 	private ProxyServiceModel model;
 

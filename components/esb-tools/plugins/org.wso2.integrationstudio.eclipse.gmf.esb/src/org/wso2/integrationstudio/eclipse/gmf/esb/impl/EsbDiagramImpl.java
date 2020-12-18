@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.EsbDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,8 +27,8 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbDiagramImpl#getServer <em>Server</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbDiagramImpl#getTest <em>Test</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbDiagramImpl#getServer <em>Server</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbDiagramImpl#getTest <em>Test</em>}</li>
  * </ul>
  *
  * @generated

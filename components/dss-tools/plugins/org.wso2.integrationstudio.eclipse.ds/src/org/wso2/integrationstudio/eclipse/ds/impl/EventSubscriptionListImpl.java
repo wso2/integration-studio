@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import java.util.Collection;
@@ -26,9 +26,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList;
-import org.wso2.integrationstudio.eclipse.ds.Subscription;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.EventSubscriptionList;
+import org.wso2.integrationstudio.ds.Subscription;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,8 +39,8 @@ import org.wso2.integrationstudio.eclipse.ds.Subscription;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.EventSubscriptionListImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.EventSubscriptionListImpl#getSubscription <em>Subscription</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.EventSubscriptionListImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.EventSubscriptionListImpl#getSubscription <em>Subscription</em>}</li>
  * </ul>
  *
  * @generated

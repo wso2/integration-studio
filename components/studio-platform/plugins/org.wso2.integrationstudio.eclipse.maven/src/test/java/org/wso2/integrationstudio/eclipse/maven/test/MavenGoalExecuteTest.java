@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.maven.test;
+package org.wso2.integrationstudio.maven.test;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -7,9 +7,9 @@ import java.util.List;
 import junit.framework.TestCase;
 
 import org.junit.Test;
-import org.wso2.integrationstudio.eclipse.maven.executor.MavenEnv;
-import org.wso2.integrationstudio.eclipse.maven.types.MavenArcheType;
-import org.wso2.integrationstudio.eclipse.maven.types.MavenProjectType;
+import org.wso2.integrationstudio.maven.executor.MavenEnv;
+import org.wso2.integrationstudio.maven.types.MavenArcheType;
+import org.wso2.integrationstudio.maven.types.MavenProjectType;
 
 public class MavenGoalExecuteTest  extends TestCase {
 
@@ -17,7 +17,7 @@ public class MavenGoalExecuteTest  extends TestCase {
 
 	/**
 	 * Test method for
-	 * {@link org.wso2.integrationstudio.eclipse.maven.executor.MavenExecutorImpl#executeMavenGoal(java.io.File, java.util.List, boolean)}
+	 * {@link org.wso2.integrationstudio.maven.executor.MavenExecutorImpl#executeMavenGoal(java.io.File, java.util.List, boolean)}
 	 * .
 	 * @throws Exception 
 	 */

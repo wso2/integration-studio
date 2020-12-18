@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.math.BigInteger;
 
@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.ExcelQuery;
-import org.wso2.integrationstudio.eclipse.ds.HasHeader;
-import org.wso2.integrationstudio.eclipse.ds.MaxRowCount;
-import org.wso2.integrationstudio.eclipse.ds.StartingRow;
-import org.wso2.integrationstudio.eclipse.ds.WorkBookName;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.ExcelQuery;
+import org.wso2.integrationstudio.ds.HasHeader;
+import org.wso2.integrationstudio.ds.MaxRowCount;
+import org.wso2.integrationstudio.ds.StartingRow;
+import org.wso2.integrationstudio.ds.WorkBookName;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,11 +35,11 @@ import org.wso2.integrationstudio.eclipse.ds.WorkBookName;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ExcelQueryImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ExcelQueryImpl#getWorkbookname <em>Workbookname</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ExcelQueryImpl#getHasheader <em>Hasheader</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ExcelQueryImpl#getStartingrow <em>Startingrow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ExcelQueryImpl#getMaxrowcount <em>Maxrowcount</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ExcelQueryImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ExcelQueryImpl#getWorkbookname <em>Workbookname</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ExcelQueryImpl#getHasheader <em>Hasheader</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ExcelQueryImpl#getStartingrow <em>Startingrow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ExcelQueryImpl#getMaxrowcount <em>Maxrowcount</em>}</li>
  * </ul>
  *
  * @generated

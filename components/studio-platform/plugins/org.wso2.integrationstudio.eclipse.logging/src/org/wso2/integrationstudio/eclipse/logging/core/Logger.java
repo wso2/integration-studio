@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.logging.core;
+package org.wso2.integrationstudio.logging.core;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.logging.internal.impl.IntegrationStudioLog;
+import org.wso2.integrationstudio.logging.internal.impl.IntegrationStudioLog;
 
 public class Logger {
 	private static Map<String,IIntegrationStudioLog> pluginLogs;

@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.messages"; //$NON-NLS-1$
+    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.messages"; //$NON-NLS-1$
     public static String DebuggerConfigTab_DebuggerMode;
     public static String AddPropertyToTableDialog_DialogDescription;
     public static String AddPropertyToTableDialog_DialogTitle;

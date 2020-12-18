@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonfeatures;
+package org.wso2.integrationstudio.carbonfeatures;
 
 public class FeatureDefinition {
 	private String featureId;

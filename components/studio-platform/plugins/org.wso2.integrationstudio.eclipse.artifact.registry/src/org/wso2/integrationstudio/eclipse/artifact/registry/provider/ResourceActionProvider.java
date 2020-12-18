@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.provider;
+package org.wso2.integrationstudio.artifact.registry.provider;
 
 import java.io.IOException;
 
@@ -36,12 +36,12 @@ import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import static org.eclipse.ui.navigator.ICommonActionConstants.*;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
-import org.wso2.integrationstudio.eclipse.artifact.registry.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.registry.provider.NavigatorNode;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryElement;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryItem;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.artifact.registry.Activator;
+import org.wso2.integrationstudio.artifact.registry.provider.NavigatorNode;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryElement;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryItem;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class ResourceActionProvider extends CommonActionProvider implements IAction, ISelectionChangedListener{
 	

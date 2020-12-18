@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -20,20 +20,20 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getElement <em>Element</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getAttribute <em>Attribute</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getCallQuery <em>Call Query</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getDefaultNamespace <em>Default Namespace</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getElementName <em>Element Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getRowName <em>Row Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#isUseColumnNumbers <em>Use Column Numbers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#isEscapeNonPrintableChar <em>Escape Non Printable Char</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getXsltPath <em>Xslt Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getOutputType <em>Output Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ResultMapping#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ResultMapping#getElement <em>Element</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ResultMapping#getAttribute <em>Attribute</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ResultMapping#getCallQuery <em>Call Query</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ResultMapping#getDefaultNamespace <em>Default Namespace</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ResultMapping#getElementName <em>Element Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ResultMapping#getRowName <em>Row Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ResultMapping#isUseColumnNumbers <em>Use Column Numbers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ResultMapping#isEscapeNonPrintableChar <em>Escape Non Printable Char</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ResultMapping#getXsltPath <em>Xslt Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ResultMapping#getOutputType <em>Output Type</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResultMapping()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getResultMapping()
  * @model extendedMetaData="name='result_._type' kind='mixed'"
  * @generated
  */
@@ -48,7 +48,7 @@ public interface ResultMapping extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResultMapping_Mixed()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResultMapping_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -57,7 +57,7 @@ public interface ResultMapping extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Element</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.ElementMapping}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.ElementMapping}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Element</em>' containment reference list isn't
@@ -65,7 +65,7 @@ public interface ResultMapping extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Element</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResultMapping_Element()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResultMapping_Element()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='element' namespace='##targetNamespace'"
 	 * @generated
@@ -74,7 +74,7 @@ public interface ResultMapping extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Attribute</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.AttributeMapping}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Attribute</em>' containment reference list
@@ -82,7 +82,7 @@ public interface ResultMapping extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Attribute</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResultMapping_Attribute()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResultMapping_Attribute()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='attribute' namespace='##targetNamespace'"
 	 * @generated
@@ -91,7 +91,7 @@ public interface ResultMapping extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Call Query</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.CallQuery}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.CallQuery}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Call Query</em>' containment reference list
@@ -99,7 +99,7 @@ public interface ResultMapping extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Call Query</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResultMapping_CallQuery()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResultMapping_CallQuery()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='call-query' namespace='##targetNamespace'"
 	 * @generated
@@ -116,7 +116,7 @@ public interface ResultMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Default Namespace</em>' attribute.
 	 * @see #setDefaultNamespace(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResultMapping_DefaultNamespace()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResultMapping_DefaultNamespace()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='defaultNamespace' namespace='##targetNamespace'"
 	 * @generated
@@ -124,7 +124,7 @@ public interface ResultMapping extends EObject {
 	String getDefaultNamespace();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getDefaultNamespace <em>Default Namespace</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.ResultMapping#getDefaultNamespace <em>Default Namespace</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Default Namespace</em>' attribute.
@@ -143,7 +143,7 @@ public interface ResultMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Element Name</em>' attribute.
 	 * @see #setElementName(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResultMapping_ElementName()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResultMapping_ElementName()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='element' namespace='##targetNamespace'"
 	 * @generated
@@ -151,7 +151,7 @@ public interface ResultMapping extends EObject {
 	String getElementName();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getElementName <em>Element Name</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.ResultMapping#getElementName <em>Element Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Element Name</em>' attribute.
@@ -170,7 +170,7 @@ public interface ResultMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Row Name</em>' attribute.
 	 * @see #setRowName(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResultMapping_RowName()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResultMapping_RowName()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='rowName' namespace='##targetNamespace'"
 	 * @generated
@@ -178,7 +178,7 @@ public interface ResultMapping extends EObject {
 	String getRowName();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getRowName <em>Row Name</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.ResultMapping#getRowName <em>Row Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Row Name</em>' attribute.
@@ -197,7 +197,7 @@ public interface ResultMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Use Column Numbers</em>' attribute.
 	 * @see #setUseColumnNumbers(boolean)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResultMapping_UseColumnNumbers()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResultMapping_UseColumnNumbers()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 *        extendedMetaData="kind='attribute' name='useColumnNumbers' namespace='##targetNamespace'"
 	 * @generated
@@ -205,7 +205,7 @@ public interface ResultMapping extends EObject {
 	boolean isUseColumnNumbers();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#isUseColumnNumbers <em>Use Column Numbers</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.ResultMapping#isUseColumnNumbers <em>Use Column Numbers</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Use Column Numbers</em>' attribute.
@@ -224,14 +224,14 @@ public interface ResultMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Escape Non Printable Char</em>' attribute.
 	 * @see #setEscapeNonPrintableChar(boolean)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResultMapping_EscapeNonPrintableChar()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResultMapping_EscapeNonPrintableChar()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 * @generated
 	 */
 	boolean isEscapeNonPrintableChar();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#isEscapeNonPrintableChar <em>Escape Non Printable Char</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.ResultMapping#isEscapeNonPrintableChar <em>Escape Non Printable Char</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Escape Non Printable Char</em>' attribute.
@@ -250,7 +250,7 @@ public interface ResultMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Xslt Path</em>' attribute.
 	 * @see #setXsltPath(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResultMapping_XsltPath()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResultMapping_XsltPath()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='xsltPath' namespace='##targetNamespace'"
 	 * @generated
@@ -258,7 +258,7 @@ public interface ResultMapping extends EObject {
 	String getXsltPath();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getXsltPath <em>Xslt Path</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.ResultMapping#getXsltPath <em>Xslt Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Xslt Path</em>' attribute.
@@ -278,14 +278,14 @@ public interface ResultMapping extends EObject {
      * <!-- end-user-doc -->
 	 * @return the value of the '<em>Output Type</em>' attribute.
 	 * @see #setOutputType(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResultMapping_OutputType()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResultMapping_OutputType()
 	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String"
 	 * @generated
 	 */
     String getOutputType();
 
     /**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getOutputType <em>Output Type</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.ResultMapping#getOutputType <em>Output Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Output Type</em>' attribute.

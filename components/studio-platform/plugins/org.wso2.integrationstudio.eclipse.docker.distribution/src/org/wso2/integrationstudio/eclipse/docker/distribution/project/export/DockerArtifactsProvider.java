@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.docker.distribution.project.export;
+package org.wso2.integrationstudio.docker.distribution.project.export;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.distribution.project.export.CappArtifactsListProvider;
-import org.wso2.integrationstudio.eclipse.docker.distribution.Activator;
+import org.wso2.integrationstudio.distribution.project.export.CappArtifactsListProvider;
+import org.wso2.integrationstudio.docker.distribution.Activator;
 import org.eclipse.core.resources.IProject;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class DockerArtifactsProvider extends CappArtifactsListProvider {
 

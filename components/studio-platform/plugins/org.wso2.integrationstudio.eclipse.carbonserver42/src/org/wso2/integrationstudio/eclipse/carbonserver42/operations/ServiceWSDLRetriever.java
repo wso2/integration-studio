@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver42.operations;
+package org.wso2.integrationstudio.carbonserver42.operations;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,9 +39,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.w3c.dom.Document;
-import org.wso2.integrationstudio.eclipse.carbonserver42.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver42.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.xml.sax.SAXException;
 
 public class ServiceWSDLRetriever implements Runnable {

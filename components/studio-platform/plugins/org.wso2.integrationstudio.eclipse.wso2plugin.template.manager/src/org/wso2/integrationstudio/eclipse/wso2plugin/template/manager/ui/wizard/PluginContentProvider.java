@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.wizard;
+package org.wso2.integrationstudio.wso2plugin.template.manager.ui.wizard;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExtList;
+import org.wso2.integrationstudio.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExtList;
 
 public class PluginContentProvider extends ArrayContentProvider {
 

@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.carbon.server.model.util;
+package org.wso2.integrationstudio.carbon.server.model.util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -48,11 +48,11 @@ import org.eclipse.jst.server.generic.core.internal.GenericServer;
 import org.eclipse.wst.server.core.IServer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.carbon.server.model.Activator;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 import org.xml.sax.SAXException;
 
 @SuppressWarnings("restriction")

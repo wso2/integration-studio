@@ -16,7 +16,7 @@
  * under the License.
  *
  */
-package org.wso2.integrationstudio.eclipse.maven.multi.module.linkwitheditor;
+package org.wso2.integrationstudio.maven.multi.module.linkwitheditor;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -28,7 +28,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.ide.ResourceUtil;
 import org.eclipse.ui.navigator.ILinkHelper;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 
 public class WSO2MavenMultimoduleLinkWithEditor implements ILinkHelper {
     @Override

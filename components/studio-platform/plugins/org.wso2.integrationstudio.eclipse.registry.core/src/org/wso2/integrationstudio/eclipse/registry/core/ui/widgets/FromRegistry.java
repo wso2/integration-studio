@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.core.ui.widgets;
+package org.wso2.integrationstudio.registry.core.ui.widgets;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryConnection;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryConnection;
 
 public class FromRegistry extends Composite{
 

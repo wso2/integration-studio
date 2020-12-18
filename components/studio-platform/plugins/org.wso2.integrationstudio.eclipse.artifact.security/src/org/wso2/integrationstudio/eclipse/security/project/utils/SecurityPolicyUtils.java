@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.security.project.utils;
+package org.wso2.integrationstudio.security.project.utils;
 
 import java.util.ArrayList;
 import java.util.List;

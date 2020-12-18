@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.synapse.model;
+package org.wso2.integrationstudio.artifact.synapse.model;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,14 +32,14 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.artifact.synapse.Activator;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseEntryType;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseFileUtils;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.ESBProjectUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.artifact.synapse.Activator;
+import org.wso2.integrationstudio.esb.core.utils.SynapseEntryType;
+import org.wso2.integrationstudio.esb.core.utils.SynapseFileUtils;
+import org.wso2.integrationstudio.esb.project.utils.ESBProjectUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class SynapseModel extends ProjectDataModel {
 	

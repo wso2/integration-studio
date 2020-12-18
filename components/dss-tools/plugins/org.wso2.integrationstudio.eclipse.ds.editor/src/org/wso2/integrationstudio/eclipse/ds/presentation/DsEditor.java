@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.ds.presentation;
+package org.wso2.integrationstudio.ds.presentation;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -128,17 +128,17 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetSorter;
-import org.wso2.integrationstudio.eclipse.ds.DataService;
-import org.wso2.integrationstudio.eclipse.ds.DocumentRoot;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.command.DesignViewActionHandler;
-import org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl;
-import org.wso2.integrationstudio.eclipse.ds.presentation.custom.CustomAdapterFactoryContentProvider;
-import org.wso2.integrationstudio.eclipse.ds.presentation.data.DataSourcePage;
-import org.wso2.integrationstudio.eclipse.ds.presentation.md.DetailSectionUiUtil;
-import org.wso2.integrationstudio.eclipse.ds.presentation.md.MasterDetailsPage;
-import org.wso2.integrationstudio.eclipse.ds.presentation.source.DsObjectSourceEditor;
-import org.wso2.integrationstudio.eclipse.ds.provider.DsItemProviderAdapterFactory;
+import org.wso2.integrationstudio.ds.DataService;
+import org.wso2.integrationstudio.ds.DocumentRoot;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.command.DesignViewActionHandler;
+import org.wso2.integrationstudio.ds.impl.DocumentRootImpl;
+import org.wso2.integrationstudio.ds.presentation.custom.CustomAdapterFactoryContentProvider;
+import org.wso2.integrationstudio.ds.presentation.data.DataSourcePage;
+import org.wso2.integrationstudio.ds.presentation.md.DetailSectionUiUtil;
+import org.wso2.integrationstudio.ds.presentation.md.MasterDetailsPage;
+import org.wso2.integrationstudio.ds.presentation.source.DsObjectSourceEditor;
+import org.wso2.integrationstudio.ds.provider.DsItemProviderAdapterFactory;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -655,7 +655,7 @@ public class DsEditor extends FormEditor implements IEditingDomainProvider, ISel
 			BasicDiagnostic diagnostic =
 			                             new BasicDiagnostic(
 			                                                 Diagnostic.OK,
-			                                                 "org.wso2.integrationstudio.eclipse.ds.editor",
+			                                                 "org.wso2.integrationstudio.ds.editor",
 			                                                 0,
 			                                                 null,
 			                                                 new Object[] { editingDomain.getResourceSet() });
@@ -1120,7 +1120,7 @@ public class DsEditor extends FormEditor implements IEditingDomainProvider, ISel
 			BasicDiagnostic basicDiagnostic =
 			                                  new BasicDiagnostic(
 			                                                      Diagnostic.ERROR,
-			                                                      "org.wso2.integrationstudio.eclipse.ds.editor",
+			                                                      "org.wso2.integrationstudio.ds.editor",
 			                                                      0,
 			                                                      getString("_UI_CreateModelError_message",
 			                                                                resource.getURI()),
@@ -1132,7 +1132,7 @@ public class DsEditor extends FormEditor implements IEditingDomainProvider, ISel
 		} else if (exception != null) {
 			return new BasicDiagnostic(
 			                           Diagnostic.ERROR,
-			                           "org.wso2.integrationstudio.eclipse.ds.editor",
+			                           "org.wso2.integrationstudio.ds.editor",
 			                           0,
 			                           getString("_UI_CreateModelError_message", resource.getURI()),
 			                           new Object[] { exception });

@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.ds.CustomValidator;
-import org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
+import org.wso2.integrationstudio.ds.CustomValidator;
+import org.wso2.integrationstudio.ds.CustomValidatorPropertyList;
+import org.wso2.integrationstudio.ds.DsPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,9 +32,9 @@ import org.wso2.integrationstudio.eclipse.ds.DsPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorImpl#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.CustomValidatorImpl#getClass_ <em>Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.CustomValidatorImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.CustomValidatorImpl#getMixed <em>Mixed</em>}</li>
  * </ul>
  *
  * @generated

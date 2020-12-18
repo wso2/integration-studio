@@ -30,7 +30,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.file;
+package org.wso2.integrationstudio.utils.file;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -55,8 +55,8 @@ import java.util.zip.ZipInputStream;
 
 import org.apache.commons.io.FilenameUtils;
 import org.eclipse.core.runtime.Path;
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.internal.model.TempFileTag;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.internal.model.TempFileTag;
 
 public class FileUtils{
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,14 +24,14 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeName <em>Attribute Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeValueType <em>Attribute Value Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeValue <em>Attribute Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeType <em>Attribute Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeExpression <em>Attribute Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeName <em>Attribute Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeValueType <em>Attribute Value Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeValue <em>Attribute Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeType <em>Attribute Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeExpression <em>Attribute Expression</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute()
  * @model abstract="true"
  * @generated
  */
@@ -48,14 +48,14 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Attribute Name</em>' attribute.
      * @see #setAttributeName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeName()
      * @model default="attribute_name"
      * @generated
      */
     String getAttributeName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeName <em>Attribute Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeName <em>Attribute Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Attribute Name</em>' attribute.
@@ -66,7 +66,7 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>Attribute Value Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.AttributeValueType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.AttributeValueType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Attribute Value Type</em>' attribute isn't clear,
@@ -74,20 +74,20 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Attribute Value Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.AttributeValueType
+     * @see org.wso2.integrationstudio.gmf.esb.AttributeValueType
      * @see #setAttributeValueType(AttributeValueType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeValueType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeValueType()
      * @model
      * @generated
      */
     AttributeValueType getAttributeValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeValueType <em>Attribute Value Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeValueType <em>Attribute Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Attribute Value Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.AttributeValueType
+     * @see org.wso2.integrationstudio.gmf.esb.AttributeValueType
      * @see #getAttributeValueType()
      * @generated
      */
@@ -104,14 +104,14 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Attribute Value</em>' attribute.
      * @see #setAttributeValue(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeValue()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeValue()
      * @model default="attribute_value"
      * @generated
      */
     String getAttributeValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeValue <em>Attribute Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeValue <em>Attribute Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Attribute Value</em>' attribute.
@@ -122,7 +122,7 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>Attribute Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.AttributeType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.AttributeType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Attribute Type</em>' attribute isn't clear,
@@ -130,20 +130,20 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Attribute Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.AttributeType
+     * @see org.wso2.integrationstudio.gmf.esb.AttributeType
      * @see #setAttributeType(AttributeType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeType()
      * @model
      * @generated
      */
     AttributeType getAttributeType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeType <em>Attribute Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeType <em>Attribute Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Attribute Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.AttributeType
+     * @see org.wso2.integrationstudio.gmf.esb.AttributeType
      * @see #getAttributeType()
      * @generated
      */
@@ -159,14 +159,14 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Attribute Expression</em>' containment reference.
      * @see #setAttributeExpression(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeExpression()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeExpression()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getAttributeExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeExpression <em>Attribute Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeExpression <em>Attribute Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Attribute Expression</em>' containment reference.

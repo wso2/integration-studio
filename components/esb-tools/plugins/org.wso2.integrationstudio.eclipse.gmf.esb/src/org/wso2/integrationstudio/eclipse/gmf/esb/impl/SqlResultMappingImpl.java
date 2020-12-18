@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.SqlResultMapping;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,8 +24,8 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SqlResultMappingImpl#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SqlResultMappingImpl#getColumnId <em>Column Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SqlResultMappingImpl#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SqlResultMappingImpl#getColumnId <em>Column Id</em>}</li>
  * </ul>
  *
  * @generated

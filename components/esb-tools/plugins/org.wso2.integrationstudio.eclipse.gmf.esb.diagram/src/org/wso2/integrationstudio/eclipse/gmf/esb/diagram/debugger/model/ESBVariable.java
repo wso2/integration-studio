@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.model;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
 import java.util.Set;
 
@@ -24,14 +24,14 @@ import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.core.model.IVariable;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.PropertyChangeRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.PropertyValueBean;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.PropertyChangeRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.PropertyValueBean;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import com.google.gson.JsonElement;
 

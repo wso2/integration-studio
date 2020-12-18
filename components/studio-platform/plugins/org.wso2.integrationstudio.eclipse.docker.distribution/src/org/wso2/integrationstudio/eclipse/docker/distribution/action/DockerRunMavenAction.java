@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.action;
+package org.wso2.integrationstudio.docker.distribution.action;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,14 +47,14 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.w3c.dom.Document;
-import org.wso2.integrationstudio.eclipse.docker.distribution.Activator;
-import org.wso2.integrationstudio.eclipse.docker.distribution.editor.CustomWizardDialog;
-import org.wso2.integrationstudio.eclipse.docker.distribution.editor.DockerHubLoginWizard;
-import org.wso2.integrationstudio.eclipse.docker.distribution.model.DockerHubAuth;
-import org.wso2.integrationstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.docker.distribution.Activator;
+import org.wso2.integrationstudio.docker.distribution.editor.CustomWizardDialog;
+import org.wso2.integrationstudio.docker.distribution.editor.DockerHubLoginWizard;
+import org.wso2.integrationstudio.docker.distribution.model.DockerHubAuth;
+import org.wso2.integrationstudio.docker.distribution.utils.DockerProjectConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 import org.xml.sax.SAXException;
 
 /**

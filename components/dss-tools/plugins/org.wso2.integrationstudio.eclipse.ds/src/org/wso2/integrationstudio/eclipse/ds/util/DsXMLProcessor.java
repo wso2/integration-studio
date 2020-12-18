@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.util;
+package org.wso2.integrationstudio.ds.util;
 
 import java.util.Map;
 
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
+import org.wso2.integrationstudio.ds.DsPackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

@@ -1,10 +1,10 @@
-package org.wso2.integrationstudio.eclipse.maven.executor;
+package org.wso2.integrationstudio.maven.executor;
 
 import java.io.File;
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.maven.types.MavenArcheType;
-import org.wso2.integrationstudio.eclipse.maven.types.MavenProjectType;
+import org.wso2.integrationstudio.maven.types.MavenArcheType;
+import org.wso2.integrationstudio.maven.types.MavenProjectType;
 
 public interface IMavenExecutor {
 

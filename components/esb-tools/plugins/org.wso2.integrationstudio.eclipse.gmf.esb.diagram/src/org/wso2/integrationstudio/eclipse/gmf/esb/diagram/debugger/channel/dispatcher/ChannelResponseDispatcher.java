@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.channel.dispatcher;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.channel.dispatcher;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.impl.ESBDebuggerInterface;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.impl.ESBDebuggerInterface;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * This class manages the responses communication between {@link ESBDebugger} and {@link ESBDebuggerInterface}

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -43,15 +43,15 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogCategory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogLevel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.LogCategory;
+import org.wso2.integrationstudio.gmf.esb.LogLevel;
+import org.wso2.integrationstudio.gmf.esb.LogMediator;
+import org.wso2.integrationstudio.gmf.esb.LogProperty;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
 
 /**
  * Dialog used to configure {@link LogMediator} nodes.

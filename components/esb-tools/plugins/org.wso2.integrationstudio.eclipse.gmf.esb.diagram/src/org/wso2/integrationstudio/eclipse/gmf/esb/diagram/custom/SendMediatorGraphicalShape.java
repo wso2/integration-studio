@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
@@ -12,7 +12,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.ImageHolder;
 
 public class SendMediatorGraphicalShape extends RoundedRectangle {
 

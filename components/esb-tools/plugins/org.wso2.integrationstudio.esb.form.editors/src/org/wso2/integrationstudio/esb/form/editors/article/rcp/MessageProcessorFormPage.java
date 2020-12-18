@@ -73,7 +73,7 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 	Map<String, IMessageProcessor> processorMap;
 	
 	
-	private org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessor messageProcessor;
+	private org.wso2.integrationstudio.gmf.esb.MessageProcessor messageProcessor;
 	
 
 	public MessageProcessorFormPage(FormEditor editor) {

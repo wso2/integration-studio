@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.mediatype;
+package org.wso2.integrationstudio.platform.core.mediatype;
 
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeFromFileNameResolver;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeFromFileNameResolver;
 
 public abstract class AbstractFileNameExtensionMediaTypeResolver implements IMediaTypeFromFileNameResolver {
 	protected boolean hasExtension(String fileName, String extension) {

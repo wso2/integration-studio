@@ -15,11 +15,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.model;
+package org.wso2.integrationstudio.apim.endpoint.central.model;
 
 import java.util.Objects;
 
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.EndpointCentralConstants;
+import org.wso2.integrationstudio.apim.endpoint.central.resources.EndpointCentralConstants;
 
 /**
  * Represent the payload sent to servlet for login.

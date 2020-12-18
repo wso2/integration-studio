@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -67,12 +67,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -433,7 +433,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -443,7 +443,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -465,7 +465,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -475,7 +475,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -516,7 +516,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -526,7 +526,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -548,7 +548,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#getContinueAfterRoute()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#getContinueAfterRoute()
 	 * 
 	 */
 	public Boolean getContinueAfterRoute() {
@@ -558,7 +558,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#setContinueAfterRoute(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#setContinueAfterRoute(Boolean newValue)
 	 * 
 	 */
 	public void setContinueAfterRoute(Boolean newValue) {
@@ -582,7 +582,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#initConditionalRouteBranches(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#initConditionalRouteBranches(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initConditionalRouteBranches(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -603,7 +603,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#updateConditionalRouteBranches()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#updateConditionalRouteBranches()
 	 * 
 	 */
 	public void updateConditionalRouteBranches() {
@@ -613,7 +613,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#addFilterConditionalRouteBranches(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#addFilterConditionalRouteBranches(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToConditionalRouteBranches(ViewerFilter filter) {
@@ -626,7 +626,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#addBusinessFilterConditionalRouteBranches(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#addBusinessFilterConditionalRouteBranches(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToConditionalRouteBranches(ViewerFilter filter) {
@@ -636,7 +636,7 @@ public class ConditionalRouterMediatorPropertiesEditionPartForm extends SectionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#isContainedInConditionalRouteBranchesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ConditionalRouterMediatorPropertiesEditionPart#isContainedInConditionalRouteBranchesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInConditionalRouteBranchesTable(EObject element) {

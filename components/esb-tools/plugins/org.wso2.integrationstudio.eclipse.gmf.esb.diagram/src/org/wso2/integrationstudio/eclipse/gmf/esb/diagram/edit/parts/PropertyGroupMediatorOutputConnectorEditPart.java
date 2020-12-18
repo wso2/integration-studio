@@ -12,7 +12,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -37,10 +37,10 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EastPointerShape;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.PropertyGroupMediatorOutputConnectorItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EastPointerShape;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.PropertyGroupMediatorOutputConnectorItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated NOT

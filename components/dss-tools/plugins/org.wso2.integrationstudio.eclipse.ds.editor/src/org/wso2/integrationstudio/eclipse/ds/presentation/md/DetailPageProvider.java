@@ -1,8 +1,8 @@
-package org.wso2.integrationstudio.eclipse.ds.presentation.md;
+package org.wso2.integrationstudio.ds.presentation.md;
 
 import org.eclipse.ui.forms.IDetailsPage;
 import org.eclipse.ui.forms.IDetailsPageProvider;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditor;
+import org.wso2.integrationstudio.ds.presentation.DsEditor;
 
 public class DetailPageProvider implements IDetailsPageProvider {
 

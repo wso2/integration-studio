@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -20,11 +20,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageMediator;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EsbElement;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.MessageMediator;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,9 +34,9 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.MessageMediator;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbServerImpl#getChildren <em>Children</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbServerImpl#getMessageMediator <em>Message Mediator</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbServerImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbServerImpl#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbServerImpl#getMessageMediator <em>Message Mediator</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbServerImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated

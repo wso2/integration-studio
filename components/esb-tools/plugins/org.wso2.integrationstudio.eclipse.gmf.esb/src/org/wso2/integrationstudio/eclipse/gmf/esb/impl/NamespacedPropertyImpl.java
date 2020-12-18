@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,13 +26,13 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#getPrettyName <em>Pretty Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#getPropertyValue <em>Property Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#getNamespaces <em>Namespaces</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#isSupportsDynamicXPaths <em>Supports Dynamic XPaths</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#isDynamic <em>Dynamic</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#isSupportJsonPaths <em>Support Json Paths</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.NamespacedPropertyImpl#getPrettyName <em>Pretty Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.NamespacedPropertyImpl#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.NamespacedPropertyImpl#getPropertyValue <em>Property Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.NamespacedPropertyImpl#getNamespaces <em>Namespaces</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.NamespacedPropertyImpl#isSupportsDynamicXPaths <em>Supports Dynamic XPaths</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.NamespacedPropertyImpl#isDynamic <em>Dynamic</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.NamespacedPropertyImpl#isSupportJsonPaths <em>Support Json Paths</em>}</li>
  * </ul>
  *
  * @generated

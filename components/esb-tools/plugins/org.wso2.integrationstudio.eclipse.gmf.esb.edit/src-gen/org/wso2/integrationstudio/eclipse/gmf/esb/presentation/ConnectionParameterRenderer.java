@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -36,12 +36,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.condition.manager.EnableConditionManager;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeGroupValue;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.Element;
+import org.wso2.integrationstudio.gmf.esb.presentation.condition.manager.EnableConditionManager;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.AttributeGroupValue;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.AttributeValueType;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.ConnectorRoot;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.Element;
 
 import java.util.ArrayList;
 import java.util.HashMap;

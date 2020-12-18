@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.manifest;
+package org.wso2.integrationstudio.capp.core.manifest;
 
 import java.util.Observable;
 import java.util.Observer;

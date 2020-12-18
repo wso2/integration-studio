@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.distribution.project.util;
+package org.wso2.integrationstudio.distribution.project.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -68,12 +68,12 @@ import org.rauschig.jarchivelib.ArchiveFormat;
 import org.rauschig.jarchivelib.Archiver;
 import org.rauschig.jarchivelib.ArchiverFactory;
 import org.w3c.dom.Document;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 import org.xml.sax.SAXException;
 
 public class MavenMultiModuleImportUtils {
@@ -83,7 +83,7 @@ public class MavenMultiModuleImportUtils {
     private static final String DIR_DOT_METADATA = ".metadata";
     private static final String DIR_CONNECTORS = ".Connectors";
     private static final String ZIP_FILE_EXTENSION = ".zip";
-    private static final String MMM_EDITOR_ID = "org.wso2.integrationstudio.eclipse.maven.multi.module.editor.DistProjectEditor";
+    private static final String MMM_EDITOR_ID = "org.wso2.integrationstudio.maven.multi.module.editor.DistProjectEditor";
     public static IProject IMPORTED_ESB_PROJECT;
     public static IProject IMPORTED_DSS_PROJECT;
     public static IProject IMPORTED_DOCKER_PROJECT;
@@ -482,19 +482,19 @@ public class MavenMultiModuleImportUtils {
             @Override
             public void run() {
                 IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                if ((!"org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.perspective"
+                if ((!"org.wso2.integrationstudio.gmf.esb.diagram.custom.perspective"
                         .equals(window.getActivePage().getPerspective().getId())) && IMPORTED_DSS_PROJECT == null) {
                     try {
                         PlatformUI.getWorkbench().showPerspective(
-                                "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.perspective", window);
+                                "org.wso2.integrationstudio.gmf.esb.diagram.custom.perspective", window);
                     } catch (Exception e) {
                         log.error("Cannot switch to ESB Graphical Perspective", e);
                     }
-                } else if ((!"org.wso2.integrationstudio.eclipse.ds.presentation.custom.perspective"
+                } else if ((!"org.wso2.integrationstudio.ds.presentation.custom.perspective"
                         .equals(window.getActivePage().getPerspective().getId())) && IMPORTED_DSS_PROJECT != null) {
                     try {
                         PlatformUI.getWorkbench().showPerspective(
-                                "org.wso2.integrationstudio.eclipse.ds.presentation.custom.perspective", window);
+                                "org.wso2.integrationstudio.ds.presentation.custom.perspective", window);
                     } catch (Exception e) {
                         log.error("Cannot switch to DSS Graphical Perspective", e);
                     }

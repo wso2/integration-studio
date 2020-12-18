@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.impl;
+package org.wso2.integrationstudio.carbonserver.base.impl;
 
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServerMonitor;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServerMonitor;
 
 public class CarbonServerMonitorAdapter implements ICarbonServerMonitor {
 

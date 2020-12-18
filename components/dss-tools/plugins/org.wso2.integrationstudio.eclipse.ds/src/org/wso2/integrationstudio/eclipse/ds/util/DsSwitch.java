@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.util;
+package org.wso2.integrationstudio.ds.util;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.wso2.integrationstudio.eclipse.ds.*;
+import org.wso2.integrationstudio.ds.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +25,7 @@ import org.wso2.integrationstudio.eclipse.ds.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage
+ * @see org.wso2.integrationstudio.ds.DsPackage
  * @generated
  */
 public class DsSwitch<T> extends Switch<T> {

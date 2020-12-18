@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.maven.multi.module.handlers;
+package org.wso2.integrationstudio.maven.multi.module.handlers;
 
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.commands.AbstractHandler;
@@ -33,11 +33,11 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.wizards.IWizardDescriptor;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.multi.module.Activator;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.multi.module.Activator;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 /**
  * This is the handler class for generating maven pom for any given project
@@ -46,7 +46,7 @@ import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
  * 
  */
 public class MavenPomGeneratorHandler extends AbstractHandler {
-	private static final String MAVEN_MUL_MODULE_WIZARD_ID = "org.wso2.integrationstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard";
+	private static final String MAVEN_MUL_MODULE_WIZARD_ID = "org.wso2.integrationstudio.platform.ui.mvn.wizard.MvnMultiModuleWizard";
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	public Object execute(ExecutionEvent arg0) throws ExecutionException {

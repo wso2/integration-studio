@@ -12,26 +12,26 @@
 				  description="Create a new Template Artifact"
 				  error="Create a template">
 			<data modelProperty="temp.name" type="string" 
-			fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController">Template Name</data>	
+			fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController">Template Name</data>	
 		
-			<data modelProperty="temp.type" type="list" fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController"  
-			controlData="select=single;modify=non-editable;class=org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateList">Template Type</data>
+			<data modelProperty="temp.type" type="list" fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController"  
+			controlData="select=single;modify=non-editable;class=org.wso2.integrationstudio.artifact.template.validators.TemplateList">Template Type</data>
 			
-			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController" 
-			controlData="filterClass=org.wso2.integrationstudio.eclipse.artifact.template.validators.ProjectFilter">Save template in:</data>	
-			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController" 
+			controlData="filterClass=org.wso2.integrationstudio.artifact.template.validators.ProjectFilter">Save template in:</data>	
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 			
 			<!-- Address EP -->
-			<data group="group1" modelProperty="templ.address.ep.uri" type="string" fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController">Address</data>
+			<data group="group1" modelProperty="templ.address.ep.uri" type="string" fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController">Address</data>
 			
 			<!-- WSDL EP -->
-			<data group="group1" modelProperty="templ.wsdl.ep.uri" type="string" fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController">WSDL URI</data>
-			<data group="group1" modelProperty="templ.wsdl.ep.service" type="string" fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController">Service</data>
-			<data group="group1" modelProperty="templ.wsdl.ep.port" type="string" fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController">Port</data>
+			<data group="group1" modelProperty="templ.wsdl.ep.uri" type="string" fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController">WSDL URI</data>
+			<data group="group1" modelProperty="templ.wsdl.ep.service" type="string" fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController">Service</data>
+			<data group="group1" modelProperty="templ.wsdl.ep.port" type="string" fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController">Port</data>
 			
 			<!-- HTTP EP -->
-			<data group="group1" modelProperty="templ.http.ep.uritemplate" type="string" fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController">URI Template</data>
-			<data group="group1" modelProperty="templ.http.ep.method" type="list" fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController" controlData="select=single;modify=non-editable;class=org.wso2.integrationstudio.eclipse.artifact.template.validators.HttpMethodList">Method</data>
+			<data group="group1" modelProperty="templ.http.ep.uritemplate" type="string" fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController">URI Template</data>
+			<data group="group1" modelProperty="templ.http.ep.method" type="list" fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController" controlData="select=single;modify=non-editable;class=org.wso2.integrationstudio.artifact.template.validators.HttpMethodList">Method</data>
 			
 			
 		   <group id="group1" title="Advance Configuration" controlData="type=collapsible;state=expanded"></group>
@@ -42,10 +42,10 @@
 				  error="Browse a template">
 			
 			<data modelProperty="import.file" type="file" filter="*.xml" 
-			fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController">Template</data>		
-			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController" 
-			controlData="filterClass=org.wso2.integrationstudio.eclipse.artifact.template.validators.ProjectFilter">Save Template in:</data>		
-			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.integrationstudio.eclipse.artifact.template.validators.TemplateProjectFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController">Template</data>		
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController" 
+			controlData="filterClass=org.wso2.integrationstudio.artifact.template.validators.ProjectFilter">Save Template in:</data>		
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.integrationstudio.artifact.template.validators.TemplateProjectFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 		</settings>
 	</projectOptionSettings>
 </wizard>

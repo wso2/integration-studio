@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -30,14 +30,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointWestOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndpointType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPoint;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPointInputConnector;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPointWestOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndpointType;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,14 +47,14 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndpointType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getWestOutputConnector <em>West Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getEndpointType <em>Endpoint Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getEndpointsValue <em>Endpoints Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getEndpointsExpression <em>Endpoints Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getMaxCache <em>Max Cache</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RecipientListEndPointImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RecipientListEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RecipientListEndPointImpl#getWestOutputConnector <em>West Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RecipientListEndPointImpl#getEndpointType <em>Endpoint Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RecipientListEndPointImpl#getEndpointsValue <em>Endpoints Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RecipientListEndPointImpl#getEndpointsExpression <em>Endpoints Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RecipientListEndPointImpl#getMaxCache <em>Max Cache</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RecipientListEndPointImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  * </ul>
  *
  * @generated

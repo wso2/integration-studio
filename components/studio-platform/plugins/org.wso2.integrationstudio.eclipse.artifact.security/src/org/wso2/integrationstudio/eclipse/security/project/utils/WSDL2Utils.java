@@ -15,7 +15,7 @@
  */
 
 
-package org.wso2.integrationstudio.eclipse.security.project.utils;
+package org.wso2.integrationstudio.security.project.utils;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

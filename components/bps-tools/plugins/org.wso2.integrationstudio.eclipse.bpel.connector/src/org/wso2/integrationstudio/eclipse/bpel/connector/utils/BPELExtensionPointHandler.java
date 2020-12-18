@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.bpel.connector.utils;
+package org.wso2.integrationstudio.bpel.connector.utils;
 
 import java.util.List;
 
@@ -22,10 +22,10 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.integrationstudio.eclipse.bpel.core.handler.IBPELHandler;
 import org.eclipse.integrationstudio.eclipse.bpel.core.handler.IBPELHandlerRequester;
-import org.wso2.integrationstudio.eclipse.bpel.connector.handler.BPELHandler;
+import org.wso2.integrationstudio.bpel.connector.handler.BPELHandler;
 
 public class BPELExtensionPointHandler {
-	private static final String BPEL_HANDLER_REQUESTER_EXTENSION="org.wso2.integrationstudio.eclipse.bpel.connector";
+	private static final String BPEL_HANDLER_REQUESTER_EXTENSION="org.wso2.integrationstudio.bpel.connector";
 	
 	public static void setBPELArtifactHandlers(List<IBPELHandler> bpelHandlers){
 		bpelHandlers.clear();

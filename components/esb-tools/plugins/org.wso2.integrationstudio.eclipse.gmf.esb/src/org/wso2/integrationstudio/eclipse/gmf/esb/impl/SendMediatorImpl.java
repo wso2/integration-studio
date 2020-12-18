@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,19 +16,19 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ReceivingSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediatorEndpointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.ReceivingSequenceType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SendMediator;
+import org.wso2.integrationstudio.gmf.esb.SendMediatorEndpointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.SendMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.SendMediatorOutputConnector;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,16 +38,16 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SendMediatorImpl#getEndPoint <em>End Point</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SendMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SendMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SendMediatorImpl#getReceivingSequenceType <em>Receiving Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SendMediatorImpl#getStaticReceivingSequence <em>Static Receiving Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SendMediatorImpl#getDynamicReceivingSequence <em>Dynamic Receiving Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SendMediatorImpl#getEndpointOutputConnector <em>Endpoint Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SendMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SendMediatorImpl#isSkipSerialization <em>Skip Serialization</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SendMediatorImpl#isBuildMessageBeforeSending <em>Build Message Before Sending</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SendMediatorImpl#getEndPoint <em>End Point</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SendMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SendMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SendMediatorImpl#getReceivingSequenceType <em>Receiving Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SendMediatorImpl#getStaticReceivingSequence <em>Static Receiving Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SendMediatorImpl#getDynamicReceivingSequence <em>Dynamic Receiving Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SendMediatorImpl#getEndpointOutputConnector <em>Endpoint Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SendMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SendMediatorImpl#isSkipSerialization <em>Skip Serialization</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SendMediatorImpl#isBuildMessageBeforeSending <em>Build Message Before Sending</em>}</li>
  * </ul>
  *
  * @generated

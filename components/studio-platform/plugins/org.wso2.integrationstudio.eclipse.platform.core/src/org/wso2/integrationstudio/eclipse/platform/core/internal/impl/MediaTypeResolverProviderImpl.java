@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.internal.impl;
+package org.wso2.integrationstudio.platform.core.internal.impl;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,16 +26,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.Activator;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeBulkResolver;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeFromFileNameResolver;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeFromStreamResolver;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeResolver;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeResolverProvider;
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.Activator;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeBulkResolver;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeFromFileNameResolver;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeFromStreamResolver;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeResolver;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeResolverProvider;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class MediaTypeResolverProviderImpl implements IMediaTypeResolverProvider {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

@@ -20,10 +20,10 @@
 <plugin>
 <extension point="org.eclipse.ui.newWizards">
 		<wizard name="Message Store" 
-			category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.message.mediation/org.wso2.integrationstudio.eclipse.message.mediation.features"
-			class="org.wso2.integrationstudio.eclipse.artifact.messagestore.ui.wizard.MessageStoreCreationWizard"
+			category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.message.mediation/org.wso2.integrationstudio.message.mediation.features"
+			class="org.wso2.integrationstudio.artifact.messagestore.ui.wizard.MessageStoreCreationWizard"
 			wizardManifest="project_wizard.xml"
-			id="org.wso2.integrationstudio.eclipse.artifact.messagestore.wizard"
+			id="org.wso2.integrationstudio.artifact.messagestore.wizard"
 			icon="icons/message-store-small.png">
 			<description>Message Store</description>
 		</wizard>
@@ -34,9 +34,9 @@
 			id="org.eclipse.ui.navigator.resourceContent"
 			name="test">
 				<commonWizard 
-					menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
+					menuGroupId="2org.wso2.integrationstudio.artifact.esb"
 			  	 	type="new"
-					wizardId="org.wso2.integrationstudio.eclipse.artifact.messagestore.wizard">
+					wizardId="org.wso2.integrationstudio.artifact.messagestore.wizard">
 					<enablement>
 						<or>
 							<adapt type="org.eclipse.core.resources.IProject"/>
@@ -58,8 +58,8 @@
 	</extension>-->
 			<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.messagestore.wizard">
+                menuGroupId="2org.wso2.integrationstudio.artifact.esb"
+                wizardId="org.wso2.integrationstudio.artifact.messagestore.wizard">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
@@ -82,9 +82,9 @@
             </commonWizard>
     </extension>
    
-	<extension point="org.wso2.integrationstudio.eclipse.dashboad.link">
+	<extension point="org.wso2.integrationstudio.dashboad.link">
         <wizardLink category="dashboard.category.esb.artifacts" id="10dashboard.wizardLink.esb.messagestore"
-			wizard="org.wso2.integrationstudio.eclipse.artifact.messagestore.wizard" priority="10">
+			wizard="org.wso2.integrationstudio.artifact.messagestore.wizard" priority="10">
 		</wizardLink>
 	</extension>
 

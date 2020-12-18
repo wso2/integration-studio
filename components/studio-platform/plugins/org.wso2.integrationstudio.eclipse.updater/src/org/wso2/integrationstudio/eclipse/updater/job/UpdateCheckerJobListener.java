@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.updater.job;
+package org.wso2.integrationstudio.updater.job;
 
 import java.util.Date;
 
@@ -24,14 +24,14 @@ import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.swt.widgets.Display;
 import org.osgi.service.prefs.Preferences;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.updater.Messages;
-import org.wso2.integrationstudio.eclipse.updater.UpdaterPlugin;
-import org.wso2.integrationstudio.eclipse.updater.core.Constants;
-import org.wso2.integrationstudio.eclipse.updater.core.UpdateManager;
-import org.wso2.integrationstudio.eclipse.updater.ui.UpdaterDialog;
-import org.wso2.integrationstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.updater.Messages;
+import org.wso2.integrationstudio.updater.UpdaterPlugin;
+import org.wso2.integrationstudio.updater.core.Constants;
+import org.wso2.integrationstudio.updater.core.UpdateManager;
+import org.wso2.integrationstudio.updater.ui.UpdaterDialog;
+import org.wso2.integrationstudio.updater.ui.UpdaterDialog.ActiveTab;
 
 public class UpdateCheckerJobListener extends JobChangeAdapter {
 

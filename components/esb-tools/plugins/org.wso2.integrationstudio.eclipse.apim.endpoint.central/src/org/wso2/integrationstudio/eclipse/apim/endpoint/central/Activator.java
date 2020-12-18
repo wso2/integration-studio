@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central;
+package org.wso2.integrationstudio.apim.endpoint.central;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -27,7 +27,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
     // The plug-in ID
-    public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.apim.endpoint.central"; //$NON-NLS-1$
+    public static final String PLUGIN_ID = "org.wso2.integrationstudio.apim.endpoint.central"; //$NON-NLS-1$
 
     // The shared instance
     private static Activator plugin;

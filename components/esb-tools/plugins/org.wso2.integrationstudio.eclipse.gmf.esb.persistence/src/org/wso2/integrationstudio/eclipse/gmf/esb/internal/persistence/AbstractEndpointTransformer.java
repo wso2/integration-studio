@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -34,22 +34,22 @@ import org.apache.synapse.mediators.builtin.CallMediator;
 import org.apache.synapse.mediators.builtin.SendMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointAddressingVersion;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPointWestOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointWestOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointWestOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.AbstractEndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndPointAddressingVersion;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPoint;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPointWestOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointWestOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPoint;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPointWestOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.EndpointCommons;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 
@@ -530,7 +530,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 
     protected SendMediator getSendMediator(TransformationInfo info) {
         SendMediator sendMediator = null;
-        if (info.getPreviouNode() instanceof org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator) {
+        if (info.getPreviouNode() instanceof org.wso2.integrationstudio.gmf.esb.SendMediator) {
             int size = info.getParentSequence().getList().size();
             if (size > 0) {
                 Mediator lastObj = info.getParentSequence().getList().get(size - 1);
@@ -538,7 +538,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
                     sendMediator = (SendMediator) lastObj;
                 }
             }
-        } else if (info.getPreviouNode() instanceof org.wso2.integrationstudio.eclipse.gmf.esb.Sequence) {
+        } else if (info.getPreviouNode() instanceof org.wso2.integrationstudio.gmf.esb.Sequence) {
             sendMediator = null;
         } else {
         }
@@ -559,7 +559,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 
     protected CallMediator getCallMediator(TransformationInfo info) {
         CallMediator callMediator = null;
-        if (info.getPreviouNode() instanceof org.wso2.integrationstudio.eclipse.gmf.esb.CallMediator) {
+        if (info.getPreviouNode() instanceof org.wso2.integrationstudio.gmf.esb.CallMediator) {
             int size = info.getParentSequence().getList().size();
             if (size > 0) {
                 Mediator lastObj = info.getParentSequence().getList().get(size - 1);
@@ -567,7 +567,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
                     callMediator = (CallMediator) lastObj;
                 }
             }
-        } else if (info.getPreviouNode() instanceof org.wso2.integrationstudio.eclipse.gmf.esb.Sequence) {
+        } else if (info.getPreviouNode() instanceof org.wso2.integrationstudio.gmf.esb.Sequence) {
             callMediator = null;
         } else {
         }

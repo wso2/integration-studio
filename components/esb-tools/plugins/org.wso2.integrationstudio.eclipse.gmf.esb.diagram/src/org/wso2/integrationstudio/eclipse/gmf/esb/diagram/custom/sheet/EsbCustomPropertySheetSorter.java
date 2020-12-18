@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.sheet;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.sheet;
 
 import org.eclipse.ui.views.properties.IPropertySheetEntry;
 import org.eclipse.ui.views.properties.PropertySheetSorter;

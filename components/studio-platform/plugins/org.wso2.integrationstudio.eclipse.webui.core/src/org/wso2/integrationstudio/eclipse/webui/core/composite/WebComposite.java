@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.webui.core.composite;
+package org.wso2.integrationstudio.webui.core.composite;
 
 import java.net.URL;
 
@@ -25,13 +25,13 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.webui.core.WebUICorePlugin;
-import org.wso2.integrationstudio.eclipse.webui.core.composite.function.DisposeCompositeCallback;
-import org.wso2.integrationstudio.eclipse.webui.core.composite.function.ResizeCompositeCallback;
-import org.wso2.integrationstudio.eclipse.webui.core.exception.WebUIException;
-import org.wso2.integrationstudio.eclipse.webui.core.model.BrowserScript;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.webui.core.WebUICorePlugin;
+import org.wso2.integrationstudio.webui.core.composite.function.DisposeCompositeCallback;
+import org.wso2.integrationstudio.webui.core.composite.function.ResizeCompositeCallback;
+import org.wso2.integrationstudio.webui.core.exception.WebUIException;
+import org.wso2.integrationstudio.webui.core.model.BrowserScript;
 
 public abstract class WebComposite extends Composite {
 

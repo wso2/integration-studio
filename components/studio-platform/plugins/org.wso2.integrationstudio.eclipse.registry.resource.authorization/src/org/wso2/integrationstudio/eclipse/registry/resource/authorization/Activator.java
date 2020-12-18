@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package org.wso2.integrationstudio.eclipse.registry.resource.authorization;
+ package org.wso2.integrationstudio.registry.resource.authorization;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -24,7 +24,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.registry.resource.authorization";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.registry.resource.authorization";
 
 	// The shared instance
 	private static Activator plugin;

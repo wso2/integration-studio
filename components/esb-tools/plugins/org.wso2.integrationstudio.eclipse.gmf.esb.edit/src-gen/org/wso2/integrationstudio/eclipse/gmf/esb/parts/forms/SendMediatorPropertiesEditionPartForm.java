@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -89,17 +89,17 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ReceivingSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.ReceivingSequenceType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -665,7 +665,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getSkipSerialization()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#getSkipSerialization()
 	 * 
 	 */
 	public Boolean getSkipSerialization() {
@@ -675,7 +675,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setSkipSerialization(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#setSkipSerialization(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -699,7 +699,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#initEndPoint(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#initEndPoint(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
 	public void initEndPoint(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -722,7 +722,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#updateEndPoint()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#updateEndPoint()
 	 * 
 	 */
 	public void updateEndPoint() {
@@ -732,7 +732,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#addFilterEndPoint(ViewerFilter
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#addFilterEndPoint(ViewerFilter
 	 *      filter)
 	 * 
 	 */
@@ -743,7 +743,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#addBusinessFilterEndPoint(ViewerFilter
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#addBusinessFilterEndPoint(ViewerFilter
 	 *      filter)
 	 * 
 	 */
@@ -754,7 +754,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#isContainedInEndPointTable(EObject
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#isContainedInEndPointTable(EObject
 	 *      element)
 	 * 
 	 */
@@ -765,7 +765,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getReceivingSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#getReceivingSequenceType()
 	 * 
 	 */
 	public Enumerator getReceivingSequenceType() {
@@ -777,7 +777,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#initReceivingSequenceType(Object
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#initReceivingSequenceType(Object
 	 *      input, Enumerator current)
 	 */
 	public void initReceivingSequenceType(Object input, Enumerator current) {
@@ -797,7 +797,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setReceivingSequenceType(Enumerator
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#setReceivingSequenceType(Enumerator
 	 *      newValue)
 	 * 
 	 */
@@ -817,7 +817,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getBuildMessageBeforeSending()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#getBuildMessageBeforeSending()
 	 * 
 	 */
 	public Boolean getBuildMessageBeforeSending() {
@@ -827,7 +827,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setBuildMessageBeforeSending(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#setBuildMessageBeforeSending(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -851,7 +851,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -861,7 +861,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setDescription(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#setDescription(String
 	 *      newValue)
 	 * 
 	 */
@@ -884,7 +884,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getCommentsList()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#getCommentsList()
    * 
    */
   public EList getCommentsList() {
@@ -894,7 +894,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#setCommentsList(EList newValue)
    * 
    */
   public void setCommentsList(EList newValue) {
@@ -935,7 +935,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#getReverse()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#getReverse()
    * 
    */
   public Boolean getReverse() {
@@ -945,7 +945,7 @@ public class SendMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SendMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.SendMediatorPropertiesEditionPart#setReverse(Boolean newValue)
    * 
    */
   public void setReverse(Boolean newValue) {

@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.internal.impl.mediatypes;
+package org.wso2.integrationstudio.platform.core.internal.impl.mediatypes;
 
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeResolver;
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.AbstractFileNameExtensionMediaTypeResolver;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeResolver;
+import org.wso2.integrationstudio.platform.core.mediatype.AbstractFileNameExtensionMediaTypeResolver;
 
 public class XSLMediaTypeResolver extends AbstractFileNameExtensionMediaTypeResolver implements IMediaTypeResolver {
 

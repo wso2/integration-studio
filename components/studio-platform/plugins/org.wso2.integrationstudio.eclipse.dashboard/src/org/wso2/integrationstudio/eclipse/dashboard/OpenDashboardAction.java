@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.dashboard;
+package org.wso2.integrationstudio.dashboard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,14 +31,14 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.intro.IIntroPart;
 import org.eclipse.ui.intro.IIntroSite;
 import org.eclipse.ui.intro.config.IIntroAction;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
 
 public class OpenDashboardAction extends Action implements IIntroAction {
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	static final String DASHBOARD_VIEW_ID = "org.wso2.integrationstudio.eclipse.dashboard";
+	static final String DASHBOARD_VIEW_ID = "org.wso2.integrationstudio.dashboard";
 
 	public void run(IIntroSite introSite, Properties properties) {
 		final IIntroPart introPart = PlatformUI.getWorkbench().getIntroManager().getIntro();
@@ -49,7 +49,7 @@ public class OpenDashboardAction extends Action implements IIntroAction {
 			hideDashboards();
 			PlatformUI.getWorkbench().showPerspective("org.eclipse.jst.j2ee.J2EEPerspective", window);
 			ProjectPresentation.setHierarchicalProjectPresentation();
-			page.openEditor(new NullEditorInput(), "org.wso2.integrationstudio.eclipse.dashboard");
+			page.openEditor(new NullEditorInput(), "org.wso2.integrationstudio.dashboard");
 		} catch (Exception e) {
 			log.error("Cannot open dashboard", e);
 		}

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -66,12 +66,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -430,7 +430,7 @@ public class ComplexEndpointsPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -440,7 +440,7 @@ public class ComplexEndpointsPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -462,7 +462,7 @@ public class ComplexEndpointsPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -472,7 +472,7 @@ public class ComplexEndpointsPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -515,7 +515,7 @@ public class ComplexEndpointsPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#initOutputConnector(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#initOutputConnector(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initOutputConnector(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -536,7 +536,7 @@ public class ComplexEndpointsPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#updateOutputConnector()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#updateOutputConnector()
 	 * 
 	 */
 	public void updateOutputConnector() {
@@ -546,7 +546,7 @@ public class ComplexEndpointsPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#addFilterOutputConnector(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#addFilterOutputConnector(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToOutputConnector(ViewerFilter filter) {
@@ -559,7 +559,7 @@ public class ComplexEndpointsPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#addBusinessFilterOutputConnector(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#addBusinessFilterOutputConnector(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToOutputConnector(ViewerFilter filter) {
@@ -569,7 +569,7 @@ public class ComplexEndpointsPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#isContainedInOutputConnectorTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#isContainedInOutputConnectorTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInOutputConnectorTable(EObject element) {
@@ -579,7 +579,7 @@ public class ComplexEndpointsPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -589,7 +589,7 @@ public class ComplexEndpointsPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ComplexEndpointsPropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {

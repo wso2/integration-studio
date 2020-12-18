@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.handlers;
+package org.wso2.integrationstudio.platform.ui.handlers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,16 +30,16 @@ import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.Activator;
-import org.wso2.integrationstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.Activator;
+import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
 
 public class OpenTemplateDashboardHandler extends AbstractHandler {
 
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     static final String INTRO_VIEW_ID = "org.eclipse.ui.internal.introview";
-    static final String DASHBOARD_VIEW_ID = "org.wso2.integrationstudio.eclipse.templates.dashboard";
+    static final String DASHBOARD_VIEW_ID = "org.wso2.integrationstudio.templates.dashboard";
     static final String J2EE_PERSPECTIVE_ID = "WELCOME_PERSPECTIVE";
 
     public Object execute(ExecutionEvent event) throws ExecutionException {

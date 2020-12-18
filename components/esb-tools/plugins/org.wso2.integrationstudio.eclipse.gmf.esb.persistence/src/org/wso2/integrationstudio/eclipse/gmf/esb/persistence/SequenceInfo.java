@@ -1,8 +1,8 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.persistence;
+package org.wso2.integrationstudio.gmf.esb.persistence;
 
 import java.util.HashMap;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
 
 public interface SequenceInfo {
 

@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.platform.ui" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.platform.ui" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.platform.ui" id="org.wso2.integrationstudio.platfom.ui.resourceManger" name="ResourceManager"/>
+         <meta.schema plugin="org.wso2.integrationstudio.platform.ui" id="org.wso2.integrationstudio.platfom.ui.resourceManger" name="ResourceManager"/>
       </appinfo>
       <documentation>
          Providing Resources Managers
 &lt;extension
        point=&quot;org.wso2.integrationstudio.platfom.ui.resourceManger&quot;&gt;
-       &lt;ResourceManger class=&quot;org.wso2.integrationstudio.eclipse.registry.core.RegistryManager&quot;&gt;
+       &lt;ResourceManger class=&quot;org.wso2.integrationstudio.registry.core.RegistryManager&quot;&gt;
        &lt;/ResourceManger&gt;
  &lt;/extension&gt;
       </documentation>
@@ -60,7 +60,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.platform.ui.utils.IResourceManager"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.platform.ui.utils.IResourceManager"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -83,7 +83,7 @@
       <documentation>
          &lt;extension
        point=&quot;org.wso2.integrationstudio.platfom.ui.resourceManger&quot;&gt;
-       &lt;ResourceManger class=&quot;org.wso2.integrationstudio.eclipse.registry.core.RegistryManager&quot;&gt;
+       &lt;ResourceManger class=&quot;org.wso2.integrationstudio.registry.core.RegistryManager&quot;&gt;
        &lt;/ResourceManger&gt;
  &lt;/extension&gt;
       </documentation>
@@ -96,7 +96,7 @@
       <documentation>
          &lt;extension
        point=&quot;org.wso2.integrationstudio.platfom.ui.resourceManger&quot;&gt;
-       &lt;ResourceManger class=&quot;org.wso2.integrationstudio.eclipse.registry.core.RegistryManager&quot;&gt;
+       &lt;ResourceManger class=&quot;org.wso2.integrationstudio.registry.core.RegistryManager&quot;&gt;
        &lt;/ResourceManger&gt;
  &lt;/extension&gt;
       </documentation>
@@ -109,7 +109,7 @@
       <documentation>
          &lt;extension
        point=&quot;org.wso2.integrationstudio.platfom.ui.resourceManger&quot;&gt;
-       &lt;ResourceManger class=&quot;org.wso2.integrationstudio.eclipse.registry.core.RegistryManager&quot;&gt;
+       &lt;ResourceManger class=&quot;org.wso2.integrationstudio.registry.core.RegistryManager&quot;&gt;
        &lt;/ResourceManger&gt;
  &lt;/extension&gt;
       </documentation>

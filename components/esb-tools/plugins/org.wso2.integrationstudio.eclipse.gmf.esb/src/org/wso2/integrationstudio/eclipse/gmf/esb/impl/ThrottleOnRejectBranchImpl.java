@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectBranch;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectBranch;
+import org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,8 +28,8 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleOnRejectBranchImpl#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleOnRejectBranchImpl#getSequenceKey <em>Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleOnRejectBranchImpl#getSequenceType <em>Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleOnRejectBranchImpl#getSequenceKey <em>Sequence Key</em>}</li>
  * </ul>
  *
  * @generated

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -53,12 +53,12 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -258,7 +258,7 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#getValidateSchemaKeyType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#getValidateSchemaKeyType()
 	 * 
 	 */
 	public Enumerator getValidateSchemaKeyType() {
@@ -269,7 +269,7 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#initValidateSchemaKeyType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#initValidateSchemaKeyType(Object input, Enumerator current)
 	 */
 	public void initValidateSchemaKeyType(Object input, Enumerator current) {
 		validateSchemaKeyType.setInput(input);
@@ -287,7 +287,7 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#setValidateSchemaKeyType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#setValidateSchemaKeyType(Enumerator newValue)
 	 * 
 	 */
 	public void setValidateSchemaKeyType(Enumerator newValue) {
@@ -305,7 +305,7 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#getSchemaKey()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#getSchemaKey()
 	 * 
 	 */
 	public EObject getSchemaKey() {
@@ -320,7 +320,7 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#initSchemaKey(EObjectFlatComboSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#initSchemaKey(EObjectFlatComboSettings)
 	 */
 	public void initSchemaKey(EObjectFlatComboSettings settings) {
 		schemaKey.setInput(settings);
@@ -340,7 +340,7 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#setSchemaKey(EObject newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#setSchemaKey(EObject newValue)
 	 * 
 	 */
 	public void setSchemaKey(EObject newValue) {
@@ -362,7 +362,7 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#setSchemaKeyButtonMode(ButtonsModeEnum newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#setSchemaKeyButtonMode(ButtonsModeEnum newValue)
 	 */
 	public void setSchemaKeyButtonMode(ButtonsModeEnum newValue) {
 		schemaKey.setButtonMode(newValue);
@@ -371,7 +371,7 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#addFilterSchemaKey(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#addFilterSchemaKey(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToSchemaKey(ViewerFilter filter) {
@@ -381,7 +381,7 @@ public class ValidateSchemaPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#addBusinessFilterSchemaKey(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#addBusinessFilterSchemaKey(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToSchemaKey(ViewerFilter filter) {

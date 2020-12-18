@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -34,7 +34,7 @@ import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.message.store.MessageStore;
 import org.apache.synapse.message.store.impl.memory.InMemoryStore;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageStore;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.DummyMessageStore;
 
 public class MessageStoreExtFactory {
 

@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.core.preferences.ui;
+package org.wso2.integrationstudio.esb.core.preferences.ui;
 
 import org.eclipse.jface.preference.*;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.esb.core.preferences.*;
-import org.wso2.integrationstudio.eclipse.esb.core.Activator;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.EsbVersionUtils;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseUtils;
+import org.wso2.integrationstudio.esb.core.preferences.*;
+import org.wso2.integrationstudio.esb.core.Activator;
+import org.wso2.integrationstudio.esb.core.utils.EsbVersionUtils;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 
 public class ESBPreferencePage extends FieldEditorPreferencePage implements
 		IWorkbenchPreferencePage {

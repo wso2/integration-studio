@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 
@@ -30,15 +30,15 @@ import org.apache.synapse.rest.API;
 import org.apache.synapse.rest.version.VersionStrategy;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIHandlerProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIVersionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SynapseAPI;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.DummyHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.APIHandler;
+import org.wso2.integrationstudio.gmf.esb.APIHandlerProperty;
+import org.wso2.integrationstudio.gmf.esb.APIResource;
+import org.wso2.integrationstudio.gmf.esb.APIVersionType;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.SynapseAPI;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.DummyHandler;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 /**
  * Synapse API transformer class
@@ -47,8 +47,8 @@ public class APITransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         // Check subject.
-        Assert.isTrue(subject instanceof org.wso2.integrationstudio.eclipse.gmf.esb.SynapseAPI, "Invalid subject.");
-        org.wso2.integrationstudio.eclipse.gmf.esb.SynapseAPI visualAPI = (org.wso2.integrationstudio.eclipse.gmf.esb.SynapseAPI) subject;
+        Assert.isTrue(subject instanceof org.wso2.integrationstudio.gmf.esb.SynapseAPI, "Invalid subject.");
+        org.wso2.integrationstudio.gmf.esb.SynapseAPI visualAPI = (org.wso2.integrationstudio.gmf.esb.SynapseAPI) subject;
         API api = create(visualAPI);
         if (visualAPI.isStatisticsEnabled()) {
             api.getAspectConfiguration().setStatisticsEnable(true);

@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.messages"; //$NON-NLS-1$
+    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.gmf.esb.internal.persistence.messages"; //$NON-NLS-1$
     public static String BAMMediatorTransformer_InvalidSubjectErrorMessage;
     public static String BAMMediatorTransformer_Server_Profile_Name_Required_Error_Message;
     public static String BAMMediatorTransformer_Stream_Name_Required_Error_Message;

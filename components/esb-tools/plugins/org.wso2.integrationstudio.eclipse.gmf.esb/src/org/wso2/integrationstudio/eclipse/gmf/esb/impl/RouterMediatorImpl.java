@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,14 +21,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorTargetOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterRoute;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterTarget;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RouterMediator;
+import org.wso2.integrationstudio.gmf.esb.RouterMediatorContainer;
+import org.wso2.integrationstudio.gmf.esb.RouterMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.RouterMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RouterMediatorTargetOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RouterRoute;
+import org.wso2.integrationstudio.gmf.esb.RouterTarget;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,11 +38,11 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RouterTarget;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RouterMediatorImpl#isContinueAfterRouting <em>Continue After Routing</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RouterMediatorImpl#getTargetOutputConnector <em>Target Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RouterMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RouterMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RouterMediatorImpl#getRouterContainer <em>Router Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RouterMediatorImpl#isContinueAfterRouting <em>Continue After Routing</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RouterMediatorImpl#getTargetOutputConnector <em>Target Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RouterMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RouterMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RouterMediatorImpl#getRouterContainer <em>Router Container</em>}</li>
  * </ul>
  *
  * @generated

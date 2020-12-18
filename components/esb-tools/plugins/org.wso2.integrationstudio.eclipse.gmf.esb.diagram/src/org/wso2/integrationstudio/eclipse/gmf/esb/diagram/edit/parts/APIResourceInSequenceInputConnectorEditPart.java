@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -27,15 +27,15 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractBaseFigureInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.ConnectionUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EastPointerShape;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.APIResourceInSequenceInputConnectorItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractBaseFigureInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.ConnectionUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EastPointerShape;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.APIResourceInSequenceInputConnectorItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated NOT
@@ -74,7 +74,7 @@ public class APIResourceInSequenceInputConnectorEditPart extends AbstractBaseFig
              * deleted.
              */
             if ((((ENotificationImpl) notification)
-                    .getOldValue() instanceof org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbLinkImpl)
+                    .getOldValue() instanceof org.wso2.integrationstudio.gmf.esb.impl.EsbLinkImpl)
                     && (((ENotificationImpl) notification).getNewValue() == null)) {
                 RemoveCommand removeCmd = new RemoveCommand(getEditingDomain(),
                         ((Node) EditorUtils.getAbstractBaseFigureEditPart(this).getModel()).getElement(),

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.capp.maven;
+package org.wso2.integrationstudio.capp.maven;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +8,7 @@ import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.resources.IProject;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
 
 public abstract class AbstractoMavenPluginContributorProvider implements
 		IMavenPluginContributorProvider {

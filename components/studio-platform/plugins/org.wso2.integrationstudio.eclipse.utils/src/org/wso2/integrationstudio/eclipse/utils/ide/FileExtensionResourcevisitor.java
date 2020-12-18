@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.utils.ide;
+package org.wso2.integrationstudio.utils.ide;
 
 import org.eclipse.core.resources.IResource;
 

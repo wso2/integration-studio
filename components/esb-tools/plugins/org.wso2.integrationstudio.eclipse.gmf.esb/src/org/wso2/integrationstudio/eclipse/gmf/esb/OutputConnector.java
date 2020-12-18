@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,18 +17,18 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector#getOutgoingLink <em>Outgoing Link</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector#getCommentMediators <em>Comment Mediators</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.OutputConnector#getOutgoingLink <em>Outgoing Link</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.OutputConnector#getCommentMediators <em>Comment Mediators</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getOutputConnector()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getOutputConnector()
  * @model abstract="true"
  * @generated
  */
 public interface OutputConnector extends EsbConnector {
     /**
      * Returns the value of the '<em><b>Outgoing Link</b></em>' containment reference.
-     * It is bidirectional and its opposite is '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink#getSource <em>Source</em>}'.
+     * It is bidirectional and its opposite is '{@link org.wso2.integrationstudio.gmf.esb.EsbLink#getSource <em>Source</em>}'.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Outgoing Link</em>' containment reference isn't clear,
@@ -37,15 +37,15 @@ public interface OutputConnector extends EsbConnector {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Outgoing Link</em>' containment reference.
      * @see #setOutgoingLink(EsbLink)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getOutputConnector_OutgoingLink()
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink#getSource
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getOutputConnector_OutgoingLink()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbLink#getSource
      * @model opposite="source" containment="true"
      * @generated
      */
     EsbLink getOutgoingLink();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector#getOutgoingLink <em>Outgoing Link</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.OutputConnector#getOutgoingLink <em>Outgoing Link</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Outgoing Link</em>' containment reference.
@@ -56,7 +56,7 @@ public interface OutputConnector extends EsbConnector {
 
     /**
      * Returns the value of the '<em><b>Comment Mediators</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommentMediator}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.CommentMediator}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Comment Mediators</em>' containment reference list isn't clear,
@@ -64,7 +64,7 @@ public interface OutputConnector extends EsbConnector {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Comment Mediators</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getOutputConnector_CommentMediators()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getOutputConnector_CommentMediators()
      * @model containment="true"
      * @generated
      */

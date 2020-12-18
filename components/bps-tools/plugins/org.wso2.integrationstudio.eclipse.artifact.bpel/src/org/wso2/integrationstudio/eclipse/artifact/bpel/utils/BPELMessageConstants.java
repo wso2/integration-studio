@@ -1,11 +1,11 @@
-package org.wso2.integrationstudio.eclipse.artifact.bpel.utils;
+package org.wso2.integrationstudio.artifact.bpel.utils;
 
 import org.eclipse.osgi.util.NLS;
 
 
 public class BPELMessageConstants extends NLS {
 	
-	public static final String BUNDLE_NAME="org.wso2.integrationstudio.eclipse.artifact.bpel.utils.bpelmessageconstants";
+	public static final String BUNDLE_NAME="org.wso2.integrationstudio.artifact.bpel.utils.bpelmessageconstants";
 	
 	public static String ERROR_UPDATING_SERVICE_XML;
 	public static String ERROR_PARSING_SERVICE_XML;

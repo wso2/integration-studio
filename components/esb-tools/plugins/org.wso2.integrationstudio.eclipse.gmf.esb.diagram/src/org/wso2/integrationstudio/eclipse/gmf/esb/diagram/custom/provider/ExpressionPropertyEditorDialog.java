@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.provider;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,13 +40,13 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui.XPathSelectorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator.XpathValidator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui.XPathSelectorDialog;
+import org.wso2.integrationstudio.gmf.esb.diagram.validator.XpathValidator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
 
 /**
  * A SWT based editor dialog to be used for editing namespaced properties.

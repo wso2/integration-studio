@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.sheet;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.sheet;
 
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -37,8 +37,8 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.IPropertySourceProvider;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.sheet.EsbCustomPropertySheetEntry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.sheet.EsbCustomPropertySheetPage;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.sheet.EsbCustomPropertySheetEntry;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.sheet.EsbCustomPropertySheetPage;
 
 public class CustomAdvancedPropertySection extends AbstractModelerPropertySection {
 

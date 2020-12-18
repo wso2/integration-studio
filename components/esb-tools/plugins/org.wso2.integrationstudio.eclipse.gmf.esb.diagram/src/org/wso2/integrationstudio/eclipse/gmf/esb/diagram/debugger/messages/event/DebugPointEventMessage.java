@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.event;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.event;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.EventMessageType;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.EventMessageType;
 
 /**
  * This class represent the Debug Point Event message sent by ESB Server

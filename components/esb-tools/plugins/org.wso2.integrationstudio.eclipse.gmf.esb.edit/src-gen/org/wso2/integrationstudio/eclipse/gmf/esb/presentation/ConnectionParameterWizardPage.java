@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,8 +30,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.AttributeValue;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.AttributeValue;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
 
 public class ConnectionParameterWizardPage extends WizardPage {
     private static final String DIALOG_TITLE = " Connector Connection Configurations";

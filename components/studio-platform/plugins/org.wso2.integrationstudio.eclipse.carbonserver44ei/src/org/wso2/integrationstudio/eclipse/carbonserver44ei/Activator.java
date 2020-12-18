@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44ei;
+package org.wso2.integrationstudio.carbonserver44ei;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 public class Activator extends AbstractUIPlugin {
 
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.carbonserver44ei";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.carbonserver44ei";
 
 	private static Activator plugin;
 

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.providers;
+package org.wso2.integrationstudio.gmf.esb.providers;
 
 import org.eclipse.osgi.util.NLS;
 
@@ -11,7 +11,7 @@ import org.eclipse.osgi.util.NLS;
  */
 public class EsbMessages extends NLS {
 	
-	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.gmf.esb.providers.esbMessages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.gmf.esb.providers.esbMessages"; //$NON-NLS-1$
 
 	
 	public static String EsbDiagramPropertiesEditionPart_PropertiesGroupLabel;

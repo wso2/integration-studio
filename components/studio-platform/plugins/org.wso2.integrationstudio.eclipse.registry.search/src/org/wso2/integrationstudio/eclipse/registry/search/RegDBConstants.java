@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.search;
+package org.wso2.integrationstudio.registry.search;
 
 public class RegDBConstants {
 	public static final String TABLE_REG_RESOURCE = "REG_RESOURCE";

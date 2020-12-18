@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -16,12 +16,12 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceEndpointContainer#getEndpointFlow <em>Endpoint
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.ProxyServiceEndpointContainer#getEndpointFlow <em>Endpoint
  * Flow</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyServiceEndpointContainer()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyServiceEndpointContainer()
  * @model
  * @generated
  */
@@ -37,7 +37,7 @@ public interface ProxyServiceEndpointContainer extends EsbNode {
      * 
      * @return the value of the '<em>Endpoint Flow</em>' containment reference.
      * @see #setEndpointFlow(EndpointFlow)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getProxyServiceEndpointContainer_EndpointFlow()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getProxyServiceEndpointContainer_EndpointFlow()
      * @model containment="true"
      * @generated
      */
@@ -45,7 +45,7 @@ public interface ProxyServiceEndpointContainer extends EsbNode {
 
     /**
      * Sets the value of the
-     * '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceEndpointContainer#getEndpointFlow <em>Endpoint
+     * '{@link org.wso2.integrationstudio.gmf.esb.ProxyServiceEndpointContainer#getEndpointFlow <em>Endpoint
      * Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

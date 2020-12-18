@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,18 +27,18 @@ import org.apache.synapse.mediators.template.TemplateMediator;
 import org.apache.synapse.mediators.template.TemplateParam;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndpointDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequences;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Template;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.AddressEndPoint;
+import org.wso2.integrationstudio.gmf.esb.DefaultEndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndpointDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.HTTPEndpoint;
+import org.wso2.integrationstudio.gmf.esb.Sequences;
+import org.wso2.integrationstudio.gmf.esb.Template;
+import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.WSDLEndPoint;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 /**
  * Transformer class to be used for serialize sequence templates and end-point

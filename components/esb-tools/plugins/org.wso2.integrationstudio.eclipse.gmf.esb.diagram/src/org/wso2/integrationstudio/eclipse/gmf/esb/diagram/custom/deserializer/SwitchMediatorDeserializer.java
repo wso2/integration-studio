@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Map;
 
@@ -25,15 +25,15 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.SwitchMediatorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.SwitchCaseBranchOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.SwitchCaseContainer;
+import org.wso2.integrationstudio.gmf.esb.SwitchMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.SwitchMediatorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class SwitchMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, SwitchMediator> {
 
@@ -45,7 +45,7 @@ public class SwitchMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 
         org.apache.synapse.mediators.filters.SwitchMediator switchMediator = (org.apache.synapse.mediators.filters.SwitchMediator) mediator;
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediator visualSwitchMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.SwitchMediator visualSwitchMediator = (org.wso2.integrationstudio.gmf.esb.SwitchMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.SwitchMediator_3498);
         setElementToEdit(visualSwitchMediator);
         setCommonProperties(switchMediator, visualSwitchMediator);

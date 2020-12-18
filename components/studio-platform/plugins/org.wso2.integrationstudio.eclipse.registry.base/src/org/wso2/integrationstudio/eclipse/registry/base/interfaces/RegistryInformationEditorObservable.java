@@ -1,8 +1,8 @@
-package org.wso2.integrationstudio.eclipse.registry.base.interfaces;
+package org.wso2.integrationstudio.registry.base.interfaces;
 
 import java.util.Observable;
 
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
 
 public class RegistryInformationEditorObservable extends Observable{
 	RegistryResourceNode regResourceNode;

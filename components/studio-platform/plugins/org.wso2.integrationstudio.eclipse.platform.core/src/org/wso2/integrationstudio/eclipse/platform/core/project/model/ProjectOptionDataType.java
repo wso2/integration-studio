@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.project.model;
+package org.wso2.integrationstudio.platform.core.project.model;
 
 public enum ProjectOptionDataType {
 	STRING, LABEL, TITLED_LABEL, FILE, DIR, FILE_DIR, INTEGER, REGISTRY, OPTION, CHOICE, LIST, LINK, WORKSPACE_FILE,

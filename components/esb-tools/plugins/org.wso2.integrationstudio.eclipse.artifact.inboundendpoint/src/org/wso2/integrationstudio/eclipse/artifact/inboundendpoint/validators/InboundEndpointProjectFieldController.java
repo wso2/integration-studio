@@ -14,24 +14,24 @@ s * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.inboundendpoint.validators;
+package org.wso2.integrationstudio.artifact.inboundendpoint.validators;
 
 import java.util.List;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.wso2.integrationstudio.eclipse.artifact.inboundendpoint.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.inboundendpoint.model.InboundEndpointModel;
-import org.wso2.integrationstudio.eclipse.artifact.inboundendpoint.utils.InboundEndpointArtifactProperties;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.artifact.inboundendpoint.Activator;
+import org.wso2.integrationstudio.artifact.inboundendpoint.model.InboundEndpointModel;
+import org.wso2.integrationstudio.artifact.inboundendpoint.utils.InboundEndpointArtifactProperties;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
 
 public class InboundEndpointProjectFieldController extends AbstractFieldController {
 

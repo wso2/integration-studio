@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -89,19 +89,19 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.ConnectorParameterRenderer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.ConnectorSchemaHolder;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.ReferenceGroup;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.CallTemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.impl.CloudConnectorOperationImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.ConnectorParameterRenderer;
+import org.wso2.integrationstudio.gmf.esb.presentation.ConnectorSchemaHolder;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.ReferenceGroup;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 // End of user code
 
@@ -911,7 +911,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -921,7 +921,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -943,7 +943,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -953,7 +953,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -994,7 +994,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -1004,7 +1004,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -1028,7 +1028,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#initConnectorParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#initConnectorParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
     public void initConnectorParameters(ReferencesTableSettings settings) {
         if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1071,7 +1071,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#updateConnectorParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#updateConnectorParameters()
 	 * 
 	 */
 	public void updateConnectorParameters() {
@@ -1083,7 +1083,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#addFilterConnectorParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#addFilterConnectorParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToConnectorParameters(ViewerFilter filter) {
@@ -1096,7 +1096,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#addBusinessFilterConnectorParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#addBusinessFilterConnectorParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToConnectorParameters(ViewerFilter filter) {
@@ -1106,7 +1106,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#isContainedInConnectorParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#isContainedInConnectorParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInConnectorParametersTable(EObject element) {
@@ -1116,7 +1116,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getConfigRef()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getConfigRef()
 	 * 
 	 */
 	public String getConfigRef() {
@@ -1126,7 +1126,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setConfigRef(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setConfigRef(String newValue)
 	 * 
 	 */
 	public void setConfigRef(String newValue) {
@@ -1148,7 +1148,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getConnectorName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getConnectorName()
 	 * 
 	 */
 	public String getConnectorName() {
@@ -1158,7 +1158,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setConnectorName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setConnectorName(String newValue)
 	 * 
 	 */
 	public void setConnectorName(String newValue) {
@@ -1180,7 +1180,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getOperationName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getOperationName()
 	 * 
 	 */
 	public String getOperationName() {
@@ -1190,7 +1190,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setOperationName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setOperationName(String newValue)
 	 * 
 	 */
 	public void setOperationName(String newValue) {
@@ -1212,7 +1212,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getCloudConnectorName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getCloudConnectorName()
 	 * 
 	 */
 	public String getCloudConnectorName() {
@@ -1222,7 +1222,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setCloudConnectorName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setCloudConnectorName(String newValue)
 	 * 
 	 */
 	public void setCloudConnectorName(String newValue) {
@@ -1244,7 +1244,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getAvailableConfigs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getAvailableConfigs()
 	 * 
 	 */
 	public String getAvailableConfigs() {
@@ -1254,7 +1254,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setAvailableConfigs(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setAvailableConfigs(String newValue)
 	 * 
 	 */
 	public void setAvailableConfigs(String newValue) {
@@ -1276,7 +1276,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getParameterEditorType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#getParameterEditorType()
 	 * 
 	 */
 	public Enumerator getParameterEditorType() {
@@ -1287,7 +1287,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#initParameterEditorType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#initParameterEditorType(Object input, Enumerator current)
 	 */
 	public void initParameterEditorType(Object input, Enumerator current) {
 		parameterEditorType.setInput(input);
@@ -1305,7 +1305,7 @@ public class CloudConnectorOperationPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setParameterEditorType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorOperationPropertiesEditionPart#setParameterEditorType(Enumerator newValue)
 	 * 
 	 */
 	public void setParameterEditorType(Enumerator newValue) {

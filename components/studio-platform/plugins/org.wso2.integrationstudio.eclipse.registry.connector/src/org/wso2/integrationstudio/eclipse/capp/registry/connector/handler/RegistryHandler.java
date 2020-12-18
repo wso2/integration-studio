@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.registry.connector.handler;
+package org.wso2.integrationstudio.capp.registry.connector.handler;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -25,33 +25,33 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-//import org.wso2.integrationstudio.eclipse.capp.artifact.registry.utils.RegistryResourceUtils;
+//import org.wso2.integrationstudio.capp.artifact.registry.utils.RegistryResourceUtils;
 import org.wso2.carbon.registry.synchronization.SynchronizationException;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.dialog.RegistryTreeBrowserDialog;
-import org.wso2.integrationstudio.eclipse.capp.core.model.RegistryConnection;
-import org.wso2.integrationstudio.eclipse.capp.core.model.RegistryData;
-import org.wso2.integrationstudio.eclipse.capp.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.Activator;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.utils.RegistryHandlerUtils;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.utils.ResourceMetaData;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.wizards.NewRegistryConnectionWizard;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceType;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryURLInfo;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryUrlStore;
-import org.wso2.integrationstudio.eclipse.registry.base.util.FilterMethods;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.InvalidRegistryURLException;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.RegistryContentRetrieveException;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.UnknownRegistryException;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryConnection;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryData;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryHandler;
-import org.wso2.integrationstudio.eclipse.registry.libraries.utils.LibraryUtils;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.utils.RegistryCheckInClientUtils;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.views.RegistryBrowserView;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.registry.base.ui.dialog.RegistryTreeBrowserDialog;
+import org.wso2.integrationstudio.capp.core.model.RegistryConnection;
+import org.wso2.integrationstudio.capp.core.model.RegistryData;
+import org.wso2.integrationstudio.capp.core.utils.Constants;
+import org.wso2.integrationstudio.capp.registry.connector.Activator;
+import org.wso2.integrationstudio.capp.registry.connector.utils.RegistryHandlerUtils;
+import org.wso2.integrationstudio.capp.registry.connector.utils.ResourceMetaData;
+import org.wso2.integrationstudio.capp.registry.connector.wizards.NewRegistryConnectionWizard;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceType;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryURLInfo;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryUrlStore;
+import org.wso2.integrationstudio.registry.base.util.FilterMethods;
+import org.wso2.integrationstudio.registry.core.exception.InvalidRegistryURLException;
+import org.wso2.integrationstudio.registry.core.exception.RegistryContentRetrieveException;
+import org.wso2.integrationstudio.registry.core.exception.UnknownRegistryException;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryConnection;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryData;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryHandler;
+import org.wso2.integrationstudio.registry.libraries.utils.LibraryUtils;
+import org.wso2.integrationstudio.registry.manager.local.utils.RegistryCheckInClientUtils;
+import org.wso2.integrationstudio.registry.manager.remote.views.RegistryBrowserView;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import java.io.File;
 import java.io.IOException;

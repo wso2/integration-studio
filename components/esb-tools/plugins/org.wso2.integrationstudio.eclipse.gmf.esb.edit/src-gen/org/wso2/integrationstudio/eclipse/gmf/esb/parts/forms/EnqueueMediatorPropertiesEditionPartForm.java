@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 import java.util.ArrayList;
 
@@ -58,14 +58,14 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -503,7 +503,7 @@ public class EnqueueMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -513,7 +513,7 @@ public class EnqueueMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -535,7 +535,7 @@ public class EnqueueMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -545,7 +545,7 @@ public class EnqueueMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -586,7 +586,7 @@ public class EnqueueMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -596,7 +596,7 @@ public class EnqueueMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -618,7 +618,7 @@ public class EnqueueMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#getExecutor()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#getExecutor()
 	 * 
 	 */
 	public String getExecutor() {
@@ -628,7 +628,7 @@ public class EnqueueMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#setExecutor(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#setExecutor(String newValue)
 	 * 
 	 */
 	public void setExecutor(String newValue) {
@@ -650,7 +650,7 @@ public class EnqueueMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#getPriority()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#getPriority()
 	 * 
 	 */
 	public String getPriority() {
@@ -660,7 +660,7 @@ public class EnqueueMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#setPriority(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EnqueueMediatorPropertiesEditionPart#setPriority(String newValue)
 	 * 
 	 */
 	public void setPriority(String newValue) {

@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distributionproject.module.utils;
+package org.wso2.integrationstudio.distributionproject.module.utils;
 
 public class Constants {
-	public static final String CAPP_MODULE_ID="org.wso2.integrationstudio.eclipse.carbon.module";
+	public static final String CAPP_MODULE_ID="org.wso2.integrationstudio.carbon.module";
 	public static final String CAPP_MODULE_VERSION="1.0";
-	public static final String CAPP_FACET_ID="org.wso2.integrationstudio.eclipse.carbon.facetId";
+	public static final String CAPP_FACET_ID="org.wso2.integrationstudio.carbon.facetId";
 	public static final String CAPP_NATURE_ID="org.wso2.developerstudio.eclipse.distribution.project.nature";
 	
 }

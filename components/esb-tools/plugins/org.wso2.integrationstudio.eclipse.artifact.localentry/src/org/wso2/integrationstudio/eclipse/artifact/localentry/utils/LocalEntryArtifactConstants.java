@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.localentry.utils;
+package org.wso2.integrationstudio.artifact.localentry.utils;
 
 import org.eclipse.osgi.util.NLS;
 
 public final class LocalEntryArtifactConstants extends NLS{
-	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.artifact.localentry.utils.localentryartifactconstants";
+	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.artifact.localentry.utils.localentryartifactconstants";
 	public static  String LE_WIZARD_WINDOW_TITLE;
 	public static  String ESB_PROJECT_NATURE;
 	

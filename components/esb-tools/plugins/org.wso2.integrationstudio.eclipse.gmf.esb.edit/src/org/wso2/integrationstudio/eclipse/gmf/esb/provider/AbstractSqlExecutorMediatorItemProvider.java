@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.provider;
+package org.wso2.integrationstudio.gmf.esb.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -21,27 +21,27 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JMSBrokerType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlDatabaseType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.AbstractSqlExecutorMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.JMSBrokerType;
+import org.wso2.integrationstudio.gmf.esb.SqlDatabaseType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorConnectionType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorDatasourceType;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.Constants;
+import org.wso2.integrationstudio.gmf.esb.Constants;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator} object.
+ * This is the item provider adapter for a {@link org.wso2.integrationstudio.gmf.esb.AbstractSqlExecutorMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
 public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvider {
 
-    private static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.provider";
+    private static final String PLUGIN_ID = "org.wso2.integrationstudio.gmf.esb.provider";
     private static IIntegrationStudioLog log = Logger.getLog(PLUGIN_ID);
     
     private static SqlDatabaseType currentDbType = null;

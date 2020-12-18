@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.core.interfaces;
+package org.wso2.integrationstudio.registry.core.interfaces;
 
 import java.net.URL;
 

@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.cloud.action;
+package org.wso2.integrationstudio.esb.cloud.action;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -24,7 +24,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.esb.cloud.wizard.DeployToCloudWizard;
+import org.wso2.integrationstudio.esb.cloud.wizard.DeployToCloudWizard;
 
 /**
  * Action delegate class for cloud deployment operation.

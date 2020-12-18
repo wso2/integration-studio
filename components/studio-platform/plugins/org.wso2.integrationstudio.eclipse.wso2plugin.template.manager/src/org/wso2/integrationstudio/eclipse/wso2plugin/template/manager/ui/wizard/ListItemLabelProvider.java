@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.wizard;
+package org.wso2.integrationstudio.wso2plugin.template.manager.ui.wizard;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExt;
+import org.wso2.integrationstudio.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExt;
 
 public class ListItemLabelProvider extends LabelProvider implements ITableLabelProvider {
 

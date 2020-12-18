@@ -11,7 +11,7 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.refactor;
+package org.wso2.integrationstudio.ds.refactor;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -26,9 +26,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ltk.core.refactoring.TextFileChange;
 import org.eclipse.text.edits.MultiTextEdit;
 import org.eclipse.text.edits.ReplaceEdit;
-import org.wso2.integrationstudio.eclipse.ds.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.ds.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class MavenConfigurationFileRenameChange extends TextFileChange {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

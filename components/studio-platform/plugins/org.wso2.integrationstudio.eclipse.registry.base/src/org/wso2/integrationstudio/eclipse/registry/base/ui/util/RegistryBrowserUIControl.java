@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.ui.util;
+package org.wso2.integrationstudio.registry.base.ui.util;
 
 import java.util.List;
 
@@ -33,15 +33,15 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.ui.interfaces.IFieldControlData;
-import org.wso2.integrationstudio.eclipse.platform.ui.interfaces.IOnAction;
-import org.wso2.integrationstudio.eclipse.platform.ui.interfaces.UIControl;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.WSO2UIToolkit;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryURLInfo;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryUrlStore;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.dialog.RegistryTreeBrowserDialog;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.ui.interfaces.IFieldControlData;
+import org.wso2.integrationstudio.platform.ui.interfaces.IOnAction;
+import org.wso2.integrationstudio.platform.ui.interfaces.UIControl;
+import org.wso2.integrationstudio.platform.ui.utils.WSO2UIToolkit;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryURLInfo;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryUrlStore;
+import org.wso2.integrationstudio.registry.base.ui.dialog.RegistryTreeBrowserDialog;
 
 
 public class RegistryBrowserUIControl implements UIControl {

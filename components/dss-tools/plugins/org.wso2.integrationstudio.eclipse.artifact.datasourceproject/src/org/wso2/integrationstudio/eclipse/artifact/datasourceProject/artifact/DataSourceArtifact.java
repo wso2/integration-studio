@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.datasourceProject.artifact;
+package org.wso2.integrationstudio.artifact.datasourceProject.artifact;
 
 public class DataSourceArtifact {
 

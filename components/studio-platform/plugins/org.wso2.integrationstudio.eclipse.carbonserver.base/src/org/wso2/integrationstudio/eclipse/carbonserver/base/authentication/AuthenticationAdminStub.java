@@ -5,7 +5,7 @@
  * by the Apache Axis2 version: 1.6-wso2v1 Built on : Apr 27, 2010 (12:11:11
  * UTC)
  */
-package org.wso2.integrationstudio.eclipse.carbonserver.base.authentication;
+package org.wso2.integrationstudio.carbonserver.base.authentication;
 
 /*
  * AuthenticationAdminStub java implementation
@@ -67,38 +67,38 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 		                                                                                                "http://authentication.services.core.carbon.wso2.org",
 		                                                                                                "AuthenticationException"),
 		                                                                  "logout"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://authentication.services.core.carbon.wso2.org",
 		                                                                                                     "AuthenticationException"),
 		                                                                       "logout"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://authentication.services.core.carbon.wso2.org",
 		                                                                                          "AuthenticationException"),
 		                                                            "logout"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub$AuthenticationExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub$AuthenticationExceptionE");
 
 		faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                  new javax.xml.namespace.QName(
 		                                                                                                "http://authentication.services.core.carbon.wso2.org",
 		                                                                                                "AuthenticationException"),
 		                                                                  "login"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException");
+		                          "org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://authentication.services.core.carbon.wso2.org",
 		                                                                                                     "AuthenticationException"),
 		                                                                       "login"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException");
+		                               "org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://authentication.services.core.carbon.wso2.org",
 		                                                                                          "AuthenticationException"),
 		                                                            "login"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub$AuthenticationExceptionE");
+		                    "org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub$AuthenticationExceptionE");
 
 	}
 
@@ -162,14 +162,14 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException
 	 *             :
 	 */
 	public void logout(
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -227,8 +227,8 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -273,10 +273,10 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdmin#login
+	 * @see org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdmin#login
 	 * @param login2
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException
 	 *             :
 	 */
 
@@ -286,7 +286,7 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 
 	throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException {
+	, org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 		try {
 			org.apache.axis2.client.OperationClient _operationClient =
@@ -303,7 +303,7 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 
 			// create SOAP envelope with that payload
 			org.apache.axiom.soap.SOAPEnvelope env = null;
-			org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.Login dummyWrappedType =
+			org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.Login dummyWrappedType =
 			                                                                                                                   null;
 			env =
 			      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -332,10 +332,10 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return getLoginResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse) object);
+			return getLoginResponse_return((org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse) object);
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -363,8 +363,8 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -407,14 +407,14 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature for Asynchronous Invocations
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdmin#startlogin
+	 * @see org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdmin#startlogin
 	 * @param login2
 	 */
 	public void startlogin(
 
 	java.lang.String username3, java.lang.String password4, java.lang.String remoteAddress5,
 
-	final org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminCallbackHandler callback)
+	final org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminCallbackHandler callback)
 
 	throws java.rmi.RemoteException {
 
@@ -432,7 +432,7 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 		final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
 
 		// Style is Doc.
-		org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.Login dummyWrappedType =
+		org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.Login dummyWrappedType =
 		                                                                                                                   null;
 		env =
 		      toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
@@ -459,9 +459,9 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 
 					java.lang.Object object =
 					                          fromOM(resultEnv.getBody().getFirstElement(),
-					                                 org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse.class,
+					                                 org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse.class,
 					                                 getEnvelopeNamespaces(resultEnv));
-					callback.receiveResultlogin(getLoginResponse_return((org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse) object));
+					callback.receiveResultlogin(getLoginResponse_return((org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse) object));
 
 				} catch (org.apache.axis2.AxisFault e) {
 					callback.receiveErrorlogin(e);
@@ -496,8 +496,8 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 								                                                      new java.lang.Class[] { messageClass });
 								m.invoke(ex, new java.lang.Object[] { messageObject });
 
-								if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException) {
-									callback.receiveErrorlogin((org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationExceptionException) ex);
+								if (ex instanceof org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException) {
+									callback.receiveErrorlogin((org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationExceptionException) ex);
 									return;
 								}
 
@@ -2853,11 +2853,11 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -2865,11 +2865,11 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.Login param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.Login param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.Login.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.Login.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -2877,11 +2877,11 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -2893,12 +2893,12 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 	                                                      java.lang.String param1,
 	                                                      java.lang.String param2,
 	                                                      java.lang.String param3,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.Login dummyWrappedType,
+	                                                      org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.Login dummyWrappedType,
 	                                                      boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.Login wrappedType =
-			                                                                                                              new org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.Login();
+			org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.Login wrappedType =
+			                                                                                                              new org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.Login();
 
 			wrappedType.setUsername(param1);
 
@@ -2909,7 +2909,7 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 
 			emptyEnvelope.getBody()
-			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.Login.MY_QNAME,
+			             .addChild(wrappedType.getOMElement(org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.Login.MY_QNAME,
 			                                                factory));
 
 			return emptyEnvelope;
@@ -2920,7 +2920,7 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 
 	/* methods to provide back word compatibility */
 
-	private boolean getLoginResponse_return(org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse wrappedType) {
+	private boolean getLoginResponse_return(org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse wrappedType) {
 
 		return wrappedType.get_return();
 
@@ -2938,27 +2938,27 @@ public class AuthenticationAdminStub extends org.apache.axis2.client.Stub {
 
 		try {
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.Login.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.Login.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.Login.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.Login.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.LoginResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.authentication.AuthenticationAdminStub.AuthenticationExceptionE.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

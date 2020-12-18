@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.inputproperty;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.inputproperty;
 
 import org.apache.commons.lang3.text.WordUtils;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -36,10 +36,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.InputProperty;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.SynapseUnitTest;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.TestCase;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.ComboItems;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.InputProperty;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.SynapseUnitTest;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.TestCase;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.ComboItems;
 
 public class InputPropertyDetailPage extends WizardPage {
 

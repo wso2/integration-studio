@@ -16,6 +16,6 @@
 -->
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="org.wso2.integrationstudio.eclipse.maven.definitions" name="Maven ArcheType Definition Data" schema="schema/org.wso2.integrationstudio.eclipse.maven.definitions.exsd"/>
+   <extension-point id="org.wso2.integrationstudio.maven.definitions" name="Maven ArcheType Definition Data" schema="schema/org.wso2.integrationstudio.maven.definitions.exsd"/>
   
 </plugin>

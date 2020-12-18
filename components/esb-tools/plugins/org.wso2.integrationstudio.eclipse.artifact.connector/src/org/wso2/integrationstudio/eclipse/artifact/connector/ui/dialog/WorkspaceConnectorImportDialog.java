@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.connector.ui.dialog;
+package org.wso2.integrationstudio.artifact.connector.ui.dialog;
 
 import java.io.File;
 
@@ -35,11 +35,11 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.wso2.integrationstudio.eclipse.artifact.connector.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.connector.model.ConnectorModel;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.connector.Activator;
+import org.wso2.integrationstudio.artifact.connector.model.ConnectorModel;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class WorkspaceConnectorImportDialog extends Dialog {
 	
@@ -102,7 +102,7 @@ public class WorkspaceConnectorImportDialog extends Dialog {
 	protected void okPressed() {
 		for (TableItem tableItem :table.getItems()) {
 			if (tableItem.getChecked()) {
-				String filePath = ((org.wso2.integrationstudio.eclipse.artifact.connector.ui.dialog.Connector) tableItem.getData()).getConnectorFilePath();
+				String filePath = ((org.wso2.integrationstudio.artifact.connector.ui.dialog.Connector) tableItem.getData()).getConnectorFilePath();
 				model.getConnectors().add(new File(filePath+".zip"));
 			}
 		}

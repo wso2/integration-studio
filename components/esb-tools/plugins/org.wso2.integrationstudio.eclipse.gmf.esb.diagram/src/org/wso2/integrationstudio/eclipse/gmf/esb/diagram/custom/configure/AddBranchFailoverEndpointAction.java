@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -12,14 +12,14 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui.AddbranchEndpointDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureLogMediatorDialog;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPoint;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.LogMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui.AddbranchEndpointDialog;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui.ConfigureLogMediatorDialog;
 
 public class AddBranchFailoverEndpointAction extends ConfigureEsbNodeAction {
 

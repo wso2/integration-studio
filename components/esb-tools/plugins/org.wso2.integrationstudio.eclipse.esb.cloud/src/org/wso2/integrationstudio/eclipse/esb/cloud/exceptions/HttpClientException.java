@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.cloud.exceptions;
+package org.wso2.integrationstudio.esb.cloud.exceptions;
 
 /**
  * Exception thrown when an error occurs during a HTTP call

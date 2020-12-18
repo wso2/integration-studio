@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ui.utils;
+package org.wso2.integrationstudio.ui.utils;
 
 import java.io.File;
 

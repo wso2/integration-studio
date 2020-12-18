@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -38,10 +38,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -243,7 +243,7 @@ public class MessageStoreParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#getParameterName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#getParameterName()
 	 * 
 	 */
 	public String getParameterName() {
@@ -253,7 +253,7 @@ public class MessageStoreParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#setParameterName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#setParameterName(String newValue)
 	 * 
 	 */
 	public void setParameterName(String newValue) {
@@ -275,7 +275,7 @@ public class MessageStoreParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#getParameterValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#getParameterValue()
 	 * 
 	 */
 	public String getParameterValue() {
@@ -285,7 +285,7 @@ public class MessageStoreParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#setParameterValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#setParameterValue(String newValue)
 	 * 
 	 */
 	public void setParameterValue(String newValue) {

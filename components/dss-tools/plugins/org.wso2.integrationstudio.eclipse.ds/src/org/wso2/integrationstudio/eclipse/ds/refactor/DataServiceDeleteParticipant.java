@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.refactor;
+package org.wso2.integrationstudio.ds.refactor;
 
 import java.io.IOException;
 
@@ -28,10 +28,10 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
-import org.wso2.integrationstudio.eclipse.ds.Activator;
-import org.wso2.integrationstudio.eclipse.ds.util.Messages;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.ds.Activator;
+import org.wso2.integrationstudio.ds.util.Messages;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 
 public class DataServiceDeleteParticipant extends DeleteParticipant {

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.capp.maven.utils;
+package org.wso2.integrationstudio.capp.maven.utils;
 
 import java.io.File;
 import java.util.HashMap;
@@ -13,14 +13,14 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.integrationstudio.eclipse.capp.maven.Activator;
-import org.wso2.integrationstudio.eclipse.capp.maven.IMavenPluginContributorProvider;
-import org.wso2.integrationstudio.eclipse.capp.maven.MavenPluginContributor;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.CAppEnvironment;
+import org.wso2.integrationstudio.capp.maven.Activator;
+import org.wso2.integrationstudio.capp.maven.IMavenPluginContributorProvider;
+import org.wso2.integrationstudio.capp.maven.MavenPluginContributor;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class MavenPomGenPluginUtils {
 	
@@ -35,7 +35,7 @@ public class MavenPomGenPluginUtils {
 	private static final String ID = "id";
 	private static final String PLUGIN = "plugin";
 	private static final String TARGET = "target";
-	private static final String MAVEN_DEFINITION_HANDLER_EXTENSION = "org.wso2.integrationstudio.eclipse.capp.maven.artifact.mavenplugin.generator";
+	private static final String MAVEN_DEFINITION_HANDLER_EXTENSION = "org.wso2.integrationstudio.capp.maven.artifact.mavenplugin.generator";
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	

@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -114,9 +114,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.wso2.carbon.tools.converter.BundleGeneratorTool;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.persistence.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.xml.sax.SAXException;
 
 public class DependencyProvider extends Dialog {
@@ -1266,7 +1266,7 @@ public class DependencyProvider extends Dialog {
             String path = filePath + jdbcBundledConnectivityJar;
             Connection conn = null;
             try {
-                Bundle bundle = Platform.getBundle("org.wso2.integrationstudio.eclipse.gmf.esb.edit");
+                Bundle bundle = Platform.getBundle("org.wso2.integrationstudio.gmf.esb.edit");
                 Bundle newBundle;
                 databaseURL = generateDbUrl(connectiontypeComboBox.getText());
                 switch (connectiontypeComboBox.getText()) {
@@ -1653,12 +1653,12 @@ public class DependencyProvider extends Dialog {
         StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
 
         for (StackTraceElement stackTrace : stackTraces) {
-            Status status = new Status(IStatus.ERROR, "org.wso2.integrationstudio.eclipse.gmf.esb.edit",
+            Status status = new Status(IStatus.ERROR, "org.wso2.integrationstudio.gmf.esb.edit",
                     stackTrace.toString());
             childStatuses.add(status);
         }
 
-        MultiStatus ms = new MultiStatus("org.wso2.integrationstudio.eclipse.gmf.esb.edit", IStatus.ERROR,
+        MultiStatus ms = new MultiStatus("org.wso2.integrationstudio.gmf.esb.edit", IStatus.ERROR,
                 childStatuses.toArray(new Status[] {}), t.toString(), t);
         return ms;
     }

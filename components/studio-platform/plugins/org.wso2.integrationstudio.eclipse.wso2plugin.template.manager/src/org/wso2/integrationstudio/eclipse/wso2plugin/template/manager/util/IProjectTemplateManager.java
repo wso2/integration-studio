@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.util;
+package org.wso2.integrationstudio.wso2plugin.template.manager.util;
 
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExt;
+import org.wso2.integrationstudio.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExt;
 
 public interface IProjectTemplateManager {
 

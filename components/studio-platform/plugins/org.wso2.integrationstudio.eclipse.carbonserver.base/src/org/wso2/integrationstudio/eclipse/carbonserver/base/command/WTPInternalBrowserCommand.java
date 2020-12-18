@@ -29,7 +29,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.command;
+package org.wso2.integrationstudio.carbonserver.base.command;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -38,9 +38,9 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.browser.IWebBrowser;
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport;
 import org.eclipse.ui.internal.browser.DefaultWebBrowser;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver.base.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class WTPInternalBrowserCommand {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

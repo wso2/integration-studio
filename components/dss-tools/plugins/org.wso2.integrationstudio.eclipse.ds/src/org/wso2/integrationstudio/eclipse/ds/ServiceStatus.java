@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <em><b>Service Status</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getServiceStatus()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getServiceStatus()
  * @model extendedMetaData="name='serviceStatus_._type'"
  * @generated
  */

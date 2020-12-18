@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -23,9 +23,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultParentContainer;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.SwitchDefaultContainer;
+import org.wso2.integrationstudio.gmf.esb.SwitchDefaultParentContainer;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +35,7 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultParentContainer;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchDefaultParentContainerImpl#getSwitchDefaultContainer <em>Switch Default Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SwitchDefaultParentContainerImpl#getSwitchDefaultContainer <em>Switch Default Container</em>}</li>
  * </ul>
  *
  * @generated

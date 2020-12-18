@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.dataservice.ui.wizard;
+package org.wso2.integrationstudio.artifact.dataservice.ui.wizard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,20 +36,20 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 
-import static org.wso2.integrationstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants.*;
+import static org.wso2.integrationstudio.platform.core.mediatype.PlatformMediaTypeConstants.*;
 
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.model.DataServiceModel;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.utils.DataServiceArtifactConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractComposite;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectOptionData;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.ResourceManager;
-import org.wso2.integrationstudio.eclipse.ds.presentation.ui.NamedEntityDescriptor;
+import org.wso2.integrationstudio.artifact.dataservice.model.DataServiceModel;
+import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceArtifactConstants;
+import org.wso2.integrationstudio.platform.core.model.AbstractComposite;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectOptionData;
+import org.wso2.integrationstudio.platform.core.utils.ResourceManager;
+import org.wso2.integrationstudio.ds.presentation.ui.NamedEntityDescriptor;
 
 
 public class AdvancedConfigComposite extends AbstractComposite {
 
-	private static final String SYMBOLIC_NAME = "org.wso2.integrationstudio.eclipse.artifact.dataservice";
+	private static final String SYMBOLIC_NAME = "org.wso2.integrationstudio.artifact.dataservice";
 	private static final String REG_BROWSE_TOOL_TIP = "browse key from registry or workspace";
 	private DataServiceModel model;
 

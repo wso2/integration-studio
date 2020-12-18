@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.server.base.core;
+package org.wso2.integrationstudio.server.base.core;
 
 import java.util.Map;
 

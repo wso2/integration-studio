@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei12.operations;
+package org.wso2.integrationstudio.carbonserver44microei12.operations;
 
 import org.eclipse.ant.core.AntRunner;
 import org.eclipse.core.resources.IProject;
@@ -28,26 +28,26 @@ import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.IServerListener;
 import org.eclipse.wst.server.core.ServerPort;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.exception.NoSuchCarbonOperationDefinedException;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.impl.CarbonServer;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServerMonitor;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.ICarbonOperationManager;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.monitor.CarbonServerListener;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.operations.ServiceModuleOperations;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.util.ServerConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.server.base.core.ServerController;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonConstants;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonUtils;
+import org.wso2.integrationstudio.carbonserver.base.exception.NoSuchCarbonOperationDefinedException;
+import org.wso2.integrationstudio.carbonserver.base.impl.CarbonServer;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServerMonitor;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.manager.ICarbonOperationManager;
+import org.wso2.integrationstudio.carbonserver44microei12.Activator;
+import org.wso2.integrationstudio.carbonserver44microei12.monitor.CarbonServerListener;
+import org.wso2.integrationstudio.carbonserver44microei12.operations.ServiceModuleOperations;
+import org.wso2.integrationstudio.carbonserver44microei12.util.CarbonServer44eiUtils;
+import org.wso2.integrationstudio.carbonserver44microei12.util.ServerConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.server.base.core.ServerController;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 import net.consensys.cava.toml.TomlParseResult;
 
-import org.wso2.integrationstudio.eclipse.carbonserver.base.utils.CarbonServerUtils;
+import org.wso2.integrationstudio.carbonserver.base.utils.CarbonServerUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -59,7 +59,7 @@ import java.util.Map;
 
 public class CarbonOperationsManager44ei implements ICarbonOperationManager {
 
-    private static final String runtimeId = "org.wso2.integrationstudio.eclipse.carbon.runtime44ei";
+    private static final String runtimeId = "org.wso2.integrationstudio.carbon.runtime44ei";
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static CarbonServer44eiUtils carbonServer44eiUtils = new CarbonServer44eiUtils();
     private CommonOperations commonOperations = new CommonOperations();

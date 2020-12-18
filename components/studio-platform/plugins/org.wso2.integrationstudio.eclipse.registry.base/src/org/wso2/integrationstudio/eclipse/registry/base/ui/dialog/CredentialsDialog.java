@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.ui.dialog;
+package org.wso2.integrationstudio.registry.base.ui.dialog;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -38,13 +38,13 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.base.Activator;
-import org.wso2.integrationstudio.eclipse.registry.base.logger.ExceptionHandler;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryCredentialData;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryUrlStore;
-import org.wso2.integrationstudio.eclipse.registry.resource.authorization.ResourceAdmin;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.base.Activator;
+import org.wso2.integrationstudio.registry.base.logger.ExceptionHandler;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryCredentialData;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryUrlStore;
+import org.wso2.integrationstudio.registry.resource.authorization.ResourceAdmin;
 
 public class CredentialsDialog extends Dialog {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

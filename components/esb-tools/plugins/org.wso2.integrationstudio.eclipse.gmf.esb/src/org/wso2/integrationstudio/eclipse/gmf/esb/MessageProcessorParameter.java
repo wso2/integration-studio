@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,11 +24,11 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessorParameter#getParameterName <em>Parameter Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessorParameter#getParameterValue <em>Parameter Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.MessageProcessorParameter#getParameterName <em>Parameter Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.MessageProcessorParameter#getParameterValue <em>Parameter Value</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessorParameter()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMessageProcessorParameter()
  * @model
  * @generated
  */
@@ -43,14 +43,14 @@ public interface MessageProcessorParameter extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Parameter Name</em>' attribute.
      * @see #setParameterName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessorParameter_ParameterName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMessageProcessorParameter_ParameterName()
      * @model
      * @generated
      */
     String getParameterName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessorParameter#getParameterName <em>Parameter Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.MessageProcessorParameter#getParameterName <em>Parameter Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Parameter Name</em>' attribute.
@@ -69,14 +69,14 @@ public interface MessageProcessorParameter extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Parameter Value</em>' attribute.
      * @see #setParameterValue(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessorParameter_ParameterValue()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMessageProcessorParameter_ParameterValue()
      * @model
      * @generated
      */
     String getParameterValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessorParameter#getParameterValue <em>Parameter Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.MessageProcessorParameter#getParameterValue <em>Parameter Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Parameter Value</em>' attribute.

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 
@@ -25,16 +25,16 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyContextAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyMessageAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.DummyPOJOClass;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.POJOCommandMediatorExt;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.CommandMediator;
+import org.wso2.integrationstudio.gmf.esb.CommandProperty;
+import org.wso2.integrationstudio.gmf.esb.CommandPropertyContextAction;
+import org.wso2.integrationstudio.gmf.esb.CommandPropertyMessageAction;
+import org.wso2.integrationstudio.gmf.esb.CommandPropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.DummyPOJOClass;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.POJOCommandMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 public class CommandMediatorTransformer extends AbstractEsbNodeTransformer {
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.ds.actions;
+package org.wso2.integrationstudio.ds.actions;
 
 import java.math.BigInteger;
 import java.net.URL;
@@ -32,22 +32,22 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.StaticSelectionCommandAction;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
-import org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty;
-import org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration;
-import org.wso2.integrationstudio.eclipse.ds.DsFactory;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.ExcelQuery;
-import org.wso2.integrationstudio.eclipse.ds.GSpreadQuery;
-import org.wso2.integrationstudio.eclipse.ds.HasHeader;
-import org.wso2.integrationstudio.eclipse.ds.MaxRowCount;
-import org.wso2.integrationstudio.eclipse.ds.Query;
-import org.wso2.integrationstudio.eclipse.ds.QueryProperty;
-import org.wso2.integrationstudio.eclipse.ds.QueryPropertyList;
-import org.wso2.integrationstudio.eclipse.ds.StartingRow;
-import org.wso2.integrationstudio.eclipse.ds.WorkSheetNumber;
-import org.wso2.integrationstudio.eclipse.ds.impl.ConfigurationPropertyImpl;
-import org.wso2.integrationstudio.eclipse.ds.impl.DataSourceConfigurationImpl;
-import org.wso2.integrationstudio.eclipse.ds.provider.DsEditPlugin;
+import org.wso2.integrationstudio.ds.ConfigurationProperty;
+import org.wso2.integrationstudio.ds.DataSourceConfiguration;
+import org.wso2.integrationstudio.ds.DsFactory;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.ExcelQuery;
+import org.wso2.integrationstudio.ds.GSpreadQuery;
+import org.wso2.integrationstudio.ds.HasHeader;
+import org.wso2.integrationstudio.ds.MaxRowCount;
+import org.wso2.integrationstudio.ds.Query;
+import org.wso2.integrationstudio.ds.QueryProperty;
+import org.wso2.integrationstudio.ds.QueryPropertyList;
+import org.wso2.integrationstudio.ds.StartingRow;
+import org.wso2.integrationstudio.ds.WorkSheetNumber;
+import org.wso2.integrationstudio.ds.impl.ConfigurationPropertyImpl;
+import org.wso2.integrationstudio.ds.impl.DataSourceConfigurationImpl;
+import org.wso2.integrationstudio.ds.provider.DsEditPlugin;
 
 /**
  * Defines the actions under a query element.

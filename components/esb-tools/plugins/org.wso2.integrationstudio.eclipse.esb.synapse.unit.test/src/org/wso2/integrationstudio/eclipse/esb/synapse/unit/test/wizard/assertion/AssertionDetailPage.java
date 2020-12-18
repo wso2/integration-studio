@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.assertion;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.assertion;
 
 import java.util.Map;
 
@@ -35,14 +35,14 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.constant.Constants;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.Assertion;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.InputProperty;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.SynapseUnitTest;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.TestCase;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.ComboTypingSuggestUtil;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.CommonUtil;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
+import org.wso2.integrationstudio.esb.synapse.unit.test.constant.Constants;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.Assertion;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.InputProperty;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.SynapseUnitTest;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.TestCase;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.ComboTypingSuggestUtil;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.CommonUtil;
 
 /**
  * Class responsible for creation of wizard page of assertion details.

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.export;
+package org.wso2.integrationstudio.distribution.project.export;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,18 +29,18 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.DependencyData;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.GeneralArtifact;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.GeneralProjectArtifact;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.ArtifactTypeMapping;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.DistProjectUtils;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.ServerRoleMapping;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.project.extensions.handlers.ProjectNatureListProvider;
-import org.wso2.integrationstudio.eclipse.project.extensions.handlers.WSO2ProjectNature;
+import org.wso2.integrationstudio.distribution.project.model.DependencyData;
+import org.wso2.integrationstudio.distribution.project.model.GeneralArtifact;
+import org.wso2.integrationstudio.distribution.project.model.GeneralProjectArtifact;
+import org.wso2.integrationstudio.distribution.project.util.ArtifactTypeMapping;
+import org.wso2.integrationstudio.distribution.project.util.DistProjectUtils;
+import org.wso2.integrationstudio.distribution.project.util.ServerRoleMapping;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
+import org.wso2.integrationstudio.project.extensions.handlers.ProjectNatureListProvider;
+import org.wso2.integrationstudio.project.extensions.handlers.WSO2ProjectNature;
 
 public class CappArtifactsListProvider extends AbstractListDataProvider {
 	ProjectNatureListProvider projectNatureListProvider = new ProjectNatureListProvider();

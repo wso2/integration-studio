@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.mockresource;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.mockresource;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -51,15 +51,15 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.CustomUpdateWizardDialog;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.CustomWizardDialog;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.ReferenceTable;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.MockService;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.MockServiceResource;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.ComboItems;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.CommonUtil;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.mockheader.HeaderCreationWizard;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.CustomUpdateWizardDialog;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.CustomWizardDialog;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.ReferenceTable;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.MockService;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.MockServiceResource;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.ComboItems;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.CommonUtil;
+import org.wso2.integrationstudio.esb.synapse.unit.test.wizard.mockheader.HeaderCreationWizard;
 
 /**
  * Class responsible for creation of wizard page for mock service resource

@@ -25,7 +25,7 @@
          </property>
          <property
 		   name="cssTheme"
-	         value="org.wso2.integrationstudio.eclipse.esb.light.theme">
+	         value="org.wso2.integrationstudio.esb.light.theme">
          </property>      
          <property
            name="lifeCycleURI"
@@ -61,7 +61,7 @@
             name="WSO2"
             icon="icons/perspective.png"
             class="org.wso2.integrationstudio.rcp.plugin.perspective.IntegrationStudioPerspective"
-            id="org.wso2.integrationstudio.eclipse.WSO2IntegrationStudioPerspective">
+            id="org.wso2.integrationstudio.WSO2IntegrationStudioPerspective">
       </perspective>
    </extension-->
    <extension point="org.eclipse.ui.intro">

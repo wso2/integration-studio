@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.maven.multi.module.handlers;
+package org.wso2.integrationstudio.maven.multi.module.handlers;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -31,10 +31,10 @@ import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionConstants;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.multi.module.Activator;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.multi.module.Activator;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 
 /**
  * Navigation action for maven multi module projects in the workspace.
@@ -42,7 +42,7 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
 public class MavenMultiModuleNavigatorActionProvider extends CommonActionProvider {
 
     private static final String MMM_EDITOR_ID =
-            "org.wso2.integrationstudio.eclipse.maven.multi.module.editor.DistProjectEditor";
+            "org.wso2.integrationstudio.maven.multi.module.editor.DistProjectEditor";
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private OpenEditorAction openEditorAction;
 

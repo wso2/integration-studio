@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -26,19 +26,19 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getConnectorParameters <em>Connector Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getConfigRef <em>Config Ref</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getConnectorName <em>Connector Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getOperationName <em>Operation Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getCloudConnectorName <em>Cloud Connector Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getNewConfig <em>New Config</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getAvailableConfigs <em>Available Configs</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getParameterEditorType <em>Parameter Editor Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getConnectorParameters <em>Connector Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getConfigRef <em>Config Ref</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getConnectorName <em>Connector Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getOperationName <em>Operation Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getCloudConnectorName <em>Cloud Connector Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getNewConfig <em>New Config</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getAvailableConfigs <em>Available Configs</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getParameterEditorType <em>Parameter Editor Type</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloudConnectorOperation()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloudConnectorOperation()
  * @model
  * @generated
  */
@@ -53,14 +53,14 @@ public interface CloudConnectorOperation extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(CloudConnectorOperationInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloudConnectorOperation_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloudConnectorOperation_InputConnector()
      * @model containment="true"
      * @generated
      */
     CloudConnectorOperationInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -79,14 +79,14 @@ public interface CloudConnectorOperation extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(CloudConnectorOperationOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloudConnectorOperation_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloudConnectorOperation_OutputConnector()
      * @model containment="true"
      * @generated
      */
     CloudConnectorOperationOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -97,7 +97,7 @@ public interface CloudConnectorOperation extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Connector Parameters</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateParameter}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.CallTemplateParameter}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Connector Parameters</em>' containment reference list isn't clear,
@@ -105,7 +105,7 @@ public interface CloudConnectorOperation extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Connector Parameters</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloudConnectorOperation_ConnectorParameters()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloudConnectorOperation_ConnectorParameters()
      * @model containment="true"
      * @generated
      */
@@ -121,14 +121,14 @@ public interface CloudConnectorOperation extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Config Ref</em>' attribute.
      * @see #setConfigRef(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloudConnectorOperation_ConfigRef()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloudConnectorOperation_ConfigRef()
      * @model
      * @generated
      */
     String getConfigRef();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getConfigRef <em>Config Ref</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getConfigRef <em>Config Ref</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Config Ref</em>' attribute.
@@ -147,14 +147,14 @@ public interface CloudConnectorOperation extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Connector Name</em>' attribute.
      * @see #setConnectorName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloudConnectorOperation_ConnectorName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloudConnectorOperation_ConnectorName()
      * @model
      * @generated
      */
     String getConnectorName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getConnectorName <em>Connector Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getConnectorName <em>Connector Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Connector Name</em>' attribute.
@@ -173,14 +173,14 @@ public interface CloudConnectorOperation extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Operation Name</em>' attribute.
      * @see #setOperationName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloudConnectorOperation_OperationName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloudConnectorOperation_OperationName()
      * @model
      * @generated
      */
     String getOperationName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getOperationName <em>Operation Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getOperationName <em>Operation Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Operation Name</em>' attribute.
@@ -199,14 +199,14 @@ public interface CloudConnectorOperation extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Cloud Connector Name</em>' attribute.
      * @see #setCloudConnectorName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloudConnectorOperation_CloudConnectorName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloudConnectorOperation_CloudConnectorName()
      * @model
      * @generated
      */
     String getCloudConnectorName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getCloudConnectorName <em>Cloud Connector Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getCloudConnectorName <em>Cloud Connector Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Cloud Connector Name</em>' attribute.
@@ -225,14 +225,14 @@ public interface CloudConnectorOperation extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>New Config</em>' containment reference.
      * @see #setNewConfig(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloudConnectorOperation_NewConfig()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloudConnectorOperation_NewConfig()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getNewConfig();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getNewConfig <em>New Config</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getNewConfig <em>New Config</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>New Config</em>' containment reference.
@@ -251,14 +251,14 @@ public interface CloudConnectorOperation extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Available Configs</em>' attribute.
      * @see #setAvailableConfigs(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloudConnectorOperation_AvailableConfigs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloudConnectorOperation_AvailableConfigs()
      * @model
      * @generated
      */
     String getAvailableConfigs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getAvailableConfigs <em>Available Configs</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getAvailableConfigs <em>Available Configs</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Available Configs</em>' attribute.
@@ -269,7 +269,7 @@ public interface CloudConnectorOperation extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Parameter Editor Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperationParamEditorType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperationParamEditorType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Parameter Editor Type</em>' attribute isn't clear,
@@ -277,20 +277,20 @@ public interface CloudConnectorOperation extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Parameter Editor Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperationParamEditorType
+     * @see org.wso2.integrationstudio.gmf.esb.CloudConnectorOperationParamEditorType
      * @see #setParameterEditorType(CloudConnectorOperationParamEditorType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloudConnectorOperation_ParameterEditorType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloudConnectorOperation_ParameterEditorType()
      * @model
      * @generated
      */
     CloudConnectorOperationParamEditorType getParameterEditorType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation#getParameterEditorType <em>Parameter Editor Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation#getParameterEditorType <em>Parameter Editor Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Parameter Editor Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperationParamEditorType
+     * @see org.wso2.integrationstudio.gmf.esb.CloudConnectorOperationParamEditorType
      * @see #getParameterEditorType()
      * @generated
      */

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.core;
+package org.wso2.integrationstudio.registry.core;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -9,7 +9,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.registry.core";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.registry.core";
 
 	// The shared instance
 	private static Activator plugin;

@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.wso2.integrationstudio.eclipse.ds.DsFactory
+ * @see org.wso2.integrationstudio.ds.DsFactory
  * @model kind="package"
  *        extendedMetaData="qualified='false'"
  * @generated
@@ -60,14 +60,14 @@ public interface DsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	DsPackage eINSTANCE = org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl.init();
+	DsPackage eINSTANCE = org.wso2.integrationstudio.ds.impl.DsPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.AttributeMappingImpl <em>Attribute Mapping</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.AttributeMappingImpl <em>Attribute Mapping</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.AttributeMappingImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getAttributeMapping()
+	 * @see org.wso2.integrationstudio.ds.impl.AttributeMappingImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getAttributeMapping()
 	 * @generated
 	 */
 	int ATTRIBUTE_MAPPING = 0;
@@ -127,11 +127,11 @@ public interface DsPackage extends EPackage {
 	int ATTRIBUTE_MAPPING_FEATURE_COUNT = 5;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.CallQueryImpl <em>Call Query</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.CallQueryImpl <em>Call Query</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.CallQueryImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getCallQuery()
+	 * @see org.wso2.integrationstudio.ds.impl.CallQueryImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getCallQuery()
 	 * @generated
 	 */
 	int CALL_QUERY = 1;
@@ -182,11 +182,11 @@ public interface DsPackage extends EPackage {
 	int CALL_QUERY_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.CallQueryListImpl <em>Call Query List</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.CallQueryListImpl <em>Call Query List</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.CallQueryListImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getCallQueryList()
+	 * @see org.wso2.integrationstudio.ds.impl.CallQueryListImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getCallQueryList()
 	 * @generated
 	 */
 	int CALL_QUERY_LIST = 2;
@@ -219,11 +219,11 @@ public interface DsPackage extends EPackage {
 	int CALL_QUERY_LIST_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ConfigurationPropertyImpl <em>Configuration Property</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.ConfigurationPropertyImpl <em>Configuration Property</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.ConfigurationPropertyImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getConfigurationProperty()
+	 * @see org.wso2.integrationstudio.ds.impl.ConfigurationPropertyImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getConfigurationProperty()
 	 * @generated
 	 */
 	int CONFIGURATION_PROPERTY = 3;
@@ -265,11 +265,11 @@ public interface DsPackage extends EPackage {
 	int CONFIGURATION_PROPERTY_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorImpl <em>Custom Validator</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.CustomValidatorImpl <em>Custom Validator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getCustomValidator()
+	 * @see org.wso2.integrationstudio.ds.impl.CustomValidatorImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getCustomValidator()
 	 * @generated
 	 */
 	int CUSTOM_VALIDATOR = 4;
@@ -311,11 +311,11 @@ public interface DsPackage extends EPackage {
 	int CUSTOM_VALIDATOR_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl <em>Data Service</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl <em>Data Service</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getDataService()
+	 * @see org.wso2.integrationstudio.ds.impl.DataServiceImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getDataService()
 	 * @generated
 	 */
 	int DATA_SERVICE = 5;
@@ -519,11 +519,11 @@ public interface DsPackage extends EPackage {
 	int DATA_SERVICE_FEATURE_COUNT = 21;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.DataSourceConfigurationImpl <em>Data Source Configuration</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.DataSourceConfigurationImpl <em>Data Source Configuration</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DataSourceConfigurationImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getDataSourceConfiguration()
+	 * @see org.wso2.integrationstudio.ds.impl.DataSourceConfigurationImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getDataSourceConfiguration()
 	 * @generated
 	 */
 	int DATA_SOURCE_CONFIGURATION = 6;
@@ -574,11 +574,11 @@ public interface DsPackage extends EPackage {
 	int DATA_SOURCE_CONFIGURATION_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.DescriptionImpl <em>Description</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.DescriptionImpl <em>Description</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DescriptionImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getDescription()
+	 * @see org.wso2.integrationstudio.ds.impl.DescriptionImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getDescription()
 	 * @generated
 	 */
 	int DESCRIPTION = 7;
@@ -602,11 +602,11 @@ public interface DsPackage extends EPackage {
 	int DESCRIPTION_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl <em>Document Root</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.DocumentRootImpl <em>Document Root</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getDocumentRoot()
+	 * @see org.wso2.integrationstudio.ds.impl.DocumentRootImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getDocumentRoot()
 	 * @generated
 	 */
 	int DOCUMENT_ROOT = 8;
@@ -711,11 +711,11 @@ public interface DsPackage extends EPackage {
 	int DOCUMENT_ROOT_FEATURE_COUNT = 10;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.DoubleRangeValidatorImpl <em>Double Range Validator</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.DoubleRangeValidatorImpl <em>Double Range Validator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DoubleRangeValidatorImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getDoubleRangeValidator()
+	 * @see org.wso2.integrationstudio.ds.impl.DoubleRangeValidatorImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getDoubleRangeValidator()
 	 * @generated
 	 */
 	int DOUBLE_RANGE_VALIDATOR = 9;
@@ -748,11 +748,11 @@ public interface DsPackage extends EPackage {
 	int DOUBLE_RANGE_VALIDATOR_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl <em>Element Mapping</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl <em>Element Mapping</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getElementMapping()
+	 * @see org.wso2.integrationstudio.ds.impl.ElementMappingImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getElementMapping()
 	 * @generated
 	 */
 	int ELEMENT_MAPPING = 10;
@@ -911,11 +911,11 @@ public interface DsPackage extends EPackage {
 	int ELEMENT_MAPPING_FEATURE_COUNT = 16;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.EventSubscriptionListImpl <em>Event Subscription List</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.EventSubscriptionListImpl <em>Event Subscription List</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.EventSubscriptionListImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getEventSubscriptionList()
+	 * @see org.wso2.integrationstudio.ds.impl.EventSubscriptionListImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getEventSubscriptionList()
 	 * @generated
 	 */
 	int EVENT_SUBSCRIPTION_LIST = 11;
@@ -948,11 +948,11 @@ public interface DsPackage extends EPackage {
 	int EVENT_SUBSCRIPTION_LIST_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.EventTriggerImpl <em>Event Trigger</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.EventTriggerImpl <em>Event Trigger</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.EventTriggerImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getEventTrigger()
+	 * @see org.wso2.integrationstudio.ds.impl.EventTriggerImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getEventTrigger()
 	 * @generated
 	 */
 	int EVENT_TRIGGER = 12;
@@ -1021,11 +1021,11 @@ public interface DsPackage extends EPackage {
 	int EVENT_TRIGGER_FEATURE_COUNT = 6;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ExcelQueryImpl <em>Excel Query</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.ExcelQueryImpl <em>Excel Query</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.ExcelQueryImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getExcelQuery()
+	 * @see org.wso2.integrationstudio.ds.impl.ExcelQueryImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getExcelQuery()
 	 * @generated
 	 */
 	int EXCEL_QUERY = 13;
@@ -1085,11 +1085,11 @@ public interface DsPackage extends EPackage {
 	int EXCEL_QUERY_FEATURE_COUNT = 5;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ExpressionImpl <em>Expression</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.ExpressionImpl <em>Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.ExpressionImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getExpression()
+	 * @see org.wso2.integrationstudio.ds.impl.ExpressionImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getExpression()
 	 * @generated
 	 */
 	int EXPRESSION = 14;
@@ -1113,11 +1113,11 @@ public interface DsPackage extends EPackage {
 	int EXPRESSION_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.GSpreadQueryImpl <em>GSpread Query</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.GSpreadQueryImpl <em>GSpread Query</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.GSpreadQueryImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getGSpreadQuery()
+	 * @see org.wso2.integrationstudio.ds.impl.GSpreadQueryImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getGSpreadQuery()
 	 * @generated
 	 */
 	int GSPREAD_QUERY = 15;
@@ -1177,11 +1177,11 @@ public interface DsPackage extends EPackage {
 	int GSPREAD_QUERY_FEATURE_COUNT = 5;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.HasHeaderImpl <em>Has Header</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.HasHeaderImpl <em>Has Header</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.HasHeaderImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getHasHeader()
+	 * @see org.wso2.integrationstudio.ds.impl.HasHeaderImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getHasHeader()
 	 * @generated
 	 */
 	int HAS_HEADER = 16;
@@ -1205,11 +1205,11 @@ public interface DsPackage extends EPackage {
 	int HAS_HEADER_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.LengthValidatorImpl <em>Length Validator</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.LengthValidatorImpl <em>Length Validator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.LengthValidatorImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getLengthValidator()
+	 * @see org.wso2.integrationstudio.ds.impl.LengthValidatorImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getLengthValidator()
 	 * @generated
 	 */
 	int LENGTH_VALIDATOR = 17;
@@ -1242,11 +1242,11 @@ public interface DsPackage extends EPackage {
 	int LENGTH_VALIDATOR_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.LongRangeValidatorImpl <em>Long Range Validator</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.LongRangeValidatorImpl <em>Long Range Validator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.LongRangeValidatorImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getLongRangeValidator()
+	 * @see org.wso2.integrationstudio.ds.impl.LongRangeValidatorImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getLongRangeValidator()
 	 * @generated
 	 */
 	int LONG_RANGE_VALIDATOR = 18;
@@ -1279,11 +1279,11 @@ public interface DsPackage extends EPackage {
 	int LONG_RANGE_VALIDATOR_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.MaxRowCountImpl <em>Max Row Count</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.MaxRowCountImpl <em>Max Row Count</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.MaxRowCountImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getMaxRowCount()
+	 * @see org.wso2.integrationstudio.ds.impl.MaxRowCountImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getMaxRowCount()
 	 * @generated
 	 */
 	int MAX_ROW_COUNT = 19;
@@ -1307,11 +1307,11 @@ public interface DsPackage extends EPackage {
 	int MAX_ROW_COUNT_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.OperationImpl <em>Operation</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.OperationImpl <em>Operation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.OperationImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getOperation()
+	 * @see org.wso2.integrationstudio.ds.impl.OperationImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getOperation()
 	 * @generated
 	 */
 	int OPERATION = 20;
@@ -1380,11 +1380,11 @@ public interface DsPackage extends EPackage {
 	int OPERATION_FEATURE_COUNT = 6;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ParameterMappingImpl <em>Parameter Mapping</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.ParameterMappingImpl <em>Parameter Mapping</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.ParameterMappingImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getParameterMapping()
+	 * @see org.wso2.integrationstudio.ds.impl.ParameterMappingImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getParameterMapping()
 	 * @generated
 	 */
 	int PARAMETER_MAPPING = 21;
@@ -1426,11 +1426,11 @@ public interface DsPackage extends EPackage {
 	int PARAMETER_MAPPING_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.PatternValidatorImpl <em>Pattern Validator</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.PatternValidatorImpl <em>Pattern Validator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.PatternValidatorImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getPatternValidator()
+	 * @see org.wso2.integrationstudio.ds.impl.PatternValidatorImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getPatternValidator()
 	 * @generated
 	 */
 	int PATTERN_VALIDATOR = 22;
@@ -1454,11 +1454,11 @@ public interface DsPackage extends EPackage {
 	int PATTERN_VALIDATOR_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl <em>Query</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.QueryImpl <em>Query</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getQuery()
+	 * @see org.wso2.integrationstudio.ds.impl.QueryImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getQuery()
 	 * @generated
 	 */
 	int QUERY = 23;
@@ -1617,11 +1617,11 @@ public interface DsPackage extends EPackage {
 	int QUERY_FEATURE_COUNT = 16;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl <em>Query Parameter</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl <em>Query Parameter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getQueryParameter()
+	 * @see org.wso2.integrationstudio.ds.impl.QueryParameterImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getQueryParameter()
 	 * @generated
 	 */
 	int QUERY_PARAMETER = 24;
@@ -1753,11 +1753,11 @@ public interface DsPackage extends EPackage {
 	int QUERY_PARAMETER_FEATURE_COUNT = 13;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryPropertyImpl <em>Query Property</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.QueryPropertyImpl <em>Query Property</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.QueryPropertyImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getQueryProperty()
+	 * @see org.wso2.integrationstudio.ds.impl.QueryPropertyImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getQueryProperty()
 	 * @generated
 	 */
 	int QUERY_PROPERTY = 25;
@@ -1790,11 +1790,11 @@ public interface DsPackage extends EPackage {
 	int QUERY_PROPERTY_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryPropertyListImpl <em>Query Property List</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.QueryPropertyListImpl <em>Query Property List</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.QueryPropertyListImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getQueryPropertyList()
+	 * @see org.wso2.integrationstudio.ds.impl.QueryPropertyListImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getQueryPropertyList()
 	 * @generated
 	 */
 	int QUERY_PROPERTY_LIST = 26;
@@ -1827,11 +1827,11 @@ public interface DsPackage extends EPackage {
 	int QUERY_PROPERTY_LIST_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ResourceImpl <em>Resource</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.ResourceImpl <em>Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.ResourceImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getResource()
+	 * @see org.wso2.integrationstudio.ds.impl.ResourceImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getResource()
 	 * @generated
 	 */
 	int RESOURCE = 27;
@@ -1891,11 +1891,11 @@ public interface DsPackage extends EPackage {
 	int RESOURCE_FEATURE_COUNT = 5;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl <em>Result Mapping</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl <em>Result Mapping</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getResultMapping()
+	 * @see org.wso2.integrationstudio.ds.impl.ResultMappingImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getResultMapping()
 	 * @generated
 	 */
 	int RESULT_MAPPING = 28;
@@ -2009,11 +2009,11 @@ public interface DsPackage extends EPackage {
 	int RESULT_MAPPING_FEATURE_COUNT = 11;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.SparqlImpl <em>Sparql</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.SparqlImpl <em>Sparql</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.SparqlImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getSparql()
+	 * @see org.wso2.integrationstudio.ds.impl.SparqlImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getSparql()
 	 * @generated
 	 */
 	int SPARQL = 29;
@@ -2037,11 +2037,11 @@ public interface DsPackage extends EPackage {
 	int SPARQL_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.SqlImpl <em>Sql</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.SqlImpl <em>Sql</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.SqlImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getSql()
+	 * @see org.wso2.integrationstudio.ds.impl.SqlImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getSql()
 	 * @generated
 	 */
 	int SQL = 30;
@@ -2074,11 +2074,11 @@ public interface DsPackage extends EPackage {
 	int SQL_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryExpressionImpl <em>Query Expression</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.QueryExpressionImpl <em>Query Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.QueryExpressionImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getQueryExpression()
+	 * @see org.wso2.integrationstudio.ds.impl.QueryExpressionImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getQueryExpression()
 	 * @generated
 	 */
 	int QUERY_EXPRESSION = 31;
@@ -2102,11 +2102,11 @@ public interface DsPackage extends EPackage {
 	int QUERY_EXPRESSION_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.StartingRowImpl <em>Starting Row</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.StartingRowImpl <em>Starting Row</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.StartingRowImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getStartingRow()
+	 * @see org.wso2.integrationstudio.ds.impl.StartingRowImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getStartingRow()
 	 * @generated
 	 */
 	int STARTING_ROW = 32;
@@ -2130,11 +2130,11 @@ public interface DsPackage extends EPackage {
 	int STARTING_ROW_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.SubscriptionImpl <em>Subscription</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.SubscriptionImpl <em>Subscription</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.SubscriptionImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getSubscription()
+	 * @see org.wso2.integrationstudio.ds.impl.SubscriptionImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getSubscription()
 	 * @generated
 	 */
 	int SUBSCRIPTION = 33;
@@ -2158,11 +2158,11 @@ public interface DsPackage extends EPackage {
 	int SUBSCRIPTION_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.TargetTopicImpl <em>Target Topic</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.TargetTopicImpl <em>Target Topic</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.TargetTopicImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getTargetTopic()
+	 * @see org.wso2.integrationstudio.ds.impl.TargetTopicImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getTargetTopic()
 	 * @generated
 	 */
 	int TARGET_TOPIC = 34;
@@ -2186,11 +2186,11 @@ public interface DsPackage extends EPackage {
 	int TARGET_TOPIC_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.WorkBookNameImpl <em>Work Book Name</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.WorkBookNameImpl <em>Work Book Name</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.WorkBookNameImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getWorkBookName()
+	 * @see org.wso2.integrationstudio.ds.impl.WorkBookNameImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getWorkBookName()
 	 * @generated
 	 */
 	int WORK_BOOK_NAME = 35;
@@ -2214,11 +2214,11 @@ public interface DsPackage extends EPackage {
 	int WORK_BOOK_NAME_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.WorkSheetNumberImpl <em>Work Sheet Number</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.WorkSheetNumberImpl <em>Work Sheet Number</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.WorkSheetNumberImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getWorkSheetNumber()
+	 * @see org.wso2.integrationstudio.ds.impl.WorkSheetNumberImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getWorkSheetNumber()
 	 * @generated
 	 */
 	int WORK_SHEET_NUMBER = 36;
@@ -2242,11 +2242,11 @@ public interface DsPackage extends EPackage {
 	int WORK_SHEET_NUMBER_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.PolicyImpl <em>Policy</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.PolicyImpl <em>Policy</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.PolicyImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getPolicy()
+	 * @see org.wso2.integrationstudio.ds.impl.PolicyImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getPolicy()
 	 * @generated
 	 */
 	int POLICY = 37;
@@ -2270,11 +2270,11 @@ public interface DsPackage extends EPackage {
 	int POLICY_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceParameterImpl <em>Data Service Parameter</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.DataServiceParameterImpl <em>Data Service Parameter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DataServiceParameterImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getDataServiceParameter()
+	 * @see org.wso2.integrationstudio.ds.impl.DataServiceParameterImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getDataServiceParameter()
 	 * @generated
 	 */
 	int DATA_SERVICE_PARAMETER = 38;
@@ -2307,11 +2307,11 @@ public interface DsPackage extends EPackage {
 	int DATA_SERVICE_PARAMETER_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.RegistryKeyPropertyImpl <em>Registry Key Property</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.RegistryKeyPropertyImpl <em>Registry Key Property</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.RegistryKeyPropertyImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getRegistryKeyProperty()
+	 * @see org.wso2.integrationstudio.ds.impl.RegistryKeyPropertyImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getRegistryKeyProperty()
 	 * @generated
 	 */
 	int REGISTRY_KEY_PROPERTY = 39;
@@ -2335,11 +2335,11 @@ public interface DsPackage extends EPackage {
 	int REGISTRY_KEY_PROPERTY_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorPropertyImpl <em>Custom Validator Property</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.CustomValidatorPropertyImpl <em>Custom Validator Property</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorPropertyImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getCustomValidatorProperty()
+	 * @see org.wso2.integrationstudio.ds.impl.CustomValidatorPropertyImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getCustomValidatorProperty()
 	 * @generated
 	 */
 	int CUSTOM_VALIDATOR_PROPERTY = 40;
@@ -2372,11 +2372,11 @@ public interface DsPackage extends EPackage {
 	int CUSTOM_VALIDATOR_PROPERTY_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl <em>Custom Validator Property List</em>}' class.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.impl.CustomValidatorPropertyListImpl <em>Custom Validator Property List</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getCustomValidatorPropertyList()
+	 * @see org.wso2.integrationstudio.ds.impl.CustomValidatorPropertyListImpl
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getCustomValidatorPropertyList()
 	 * @generated
 	 */
 	int CUSTOM_VALIDATOR_PROPERTY_LIST = 41;
@@ -2409,11 +2409,11 @@ public interface DsPackage extends EPackage {
 	int CUSTOM_VALIDATOR_PROPERTY_LIST_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.integrationstudio.eclipse.ds.ServiceStatus <em>Service Status</em>}' enum.
+	 * The meta object id for the '{@link org.wso2.integrationstudio.ds.ServiceStatus <em>Service Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.ServiceStatus
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getServiceStatus()
+	 * @see org.wso2.integrationstudio.ds.ServiceStatus
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getServiceStatus()
 	 * @generated
 	 */
 	int SERVICE_STATUS = 42;
@@ -2422,8 +2422,8 @@ public interface DsPackage extends EPackage {
 	 * The meta object id for the '<em>Service Status Object</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.integrationstudio.eclipse.ds.ServiceStatus
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getServiceStatusObject()
+	 * @see org.wso2.integrationstudio.ds.ServiceStatus
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getServiceStatusObject()
 	 * @generated
 	 */
 	int SERVICE_STATUS_OBJECT = 43;
@@ -2433,2340 +2433,2340 @@ public interface DsPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.util.Map
-	 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getMap()
+	 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getMap()
 	 * @generated
 	 */
 	int MAP = 44;
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping <em>Attribute Mapping</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.AttributeMapping <em>Attribute Mapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Attribute Mapping</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.AttributeMapping
+	 * @see org.wso2.integrationstudio.ds.AttributeMapping
 	 * @generated
 	 */
 	EClass getAttributeMapping();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getColumn <em>Column</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.AttributeMapping#getColumn <em>Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Column</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getColumn()
+	 * @see org.wso2.integrationstudio.ds.AttributeMapping#getColumn()
 	 * @see #getAttributeMapping()
 	 * @generated
 	 */
 	EAttribute getAttributeMapping_Column();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.AttributeMapping#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getName()
+	 * @see org.wso2.integrationstudio.ds.AttributeMapping#getName()
 	 * @see #getAttributeMapping()
 	 * @generated
 	 */
 	EAttribute getAttributeMapping_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getRequiredRoles <em>Required Roles</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.AttributeMapping#getRequiredRoles <em>Required Roles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Required Roles</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getRequiredRoles()
+	 * @see org.wso2.integrationstudio.ds.AttributeMapping#getRequiredRoles()
 	 * @see #getAttributeMapping()
 	 * @generated
 	 */
 	EAttribute getAttributeMapping_RequiredRoles();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getXsdType <em>Xsd Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.AttributeMapping#getXsdType <em>Xsd Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Xsd Type</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getXsdType()
+	 * @see org.wso2.integrationstudio.ds.AttributeMapping#getXsdType()
 	 * @see #getAttributeMapping()
 	 * @generated
 	 */
 	EAttribute getAttributeMapping_XsdType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#isOptional <em>Optional</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.AttributeMapping#isOptional <em>Optional</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Optional</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.AttributeMapping#isOptional()
+	 * @see org.wso2.integrationstudio.ds.AttributeMapping#isOptional()
 	 * @see #getAttributeMapping()
 	 * @generated
 	 */
 	EAttribute getAttributeMapping_Optional();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.CallQuery <em>Call Query</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.CallQuery <em>Call Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Call Query</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CallQuery
+	 * @see org.wso2.integrationstudio.ds.CallQuery
 	 * @generated
 	 */
 	EClass getCallQuery();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.CallQuery#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.CallQuery#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CallQuery#getMixed()
+	 * @see org.wso2.integrationstudio.ds.CallQuery#getMixed()
 	 * @see #getCallQuery()
 	 * @generated
 	 */
 	EAttribute getCallQuery_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.CallQuery#getWithParam <em>With Param</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.CallQuery#getWithParam <em>With Param</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>With Param</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CallQuery#getWithParam()
+	 * @see org.wso2.integrationstudio.ds.CallQuery#getWithParam()
 	 * @see #getCallQuery()
 	 * @generated
 	 */
 	EReference getCallQuery_WithParam();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.CallQuery#getHref <em>Href</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.CallQuery#getHref <em>Href</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Href</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CallQuery#getHref()
+	 * @see org.wso2.integrationstudio.ds.CallQuery#getHref()
 	 * @see #getCallQuery()
 	 * @generated
 	 */
 	EAttribute getCallQuery_Href();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.CallQuery#getRequiredRoles <em>Required Roles</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.CallQuery#getRequiredRoles <em>Required Roles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Required Roles</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CallQuery#getRequiredRoles()
+	 * @see org.wso2.integrationstudio.ds.CallQuery#getRequiredRoles()
 	 * @see #getCallQuery()
 	 * @generated
 	 */
 	EAttribute getCallQuery_RequiredRoles();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.CallQueryList <em>Call Query List</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.CallQueryList <em>Call Query List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Call Query List</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CallQueryList
+	 * @see org.wso2.integrationstudio.ds.CallQueryList
 	 * @generated
 	 */
 	EClass getCallQueryList();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.CallQueryList#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.CallQueryList#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CallQueryList#getMixed()
+	 * @see org.wso2.integrationstudio.ds.CallQueryList#getMixed()
 	 * @see #getCallQueryList()
 	 * @generated
 	 */
 	EAttribute getCallQueryList_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.CallQueryList#getCallQuery <em>Call Query</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.CallQueryList#getCallQuery <em>Call Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Call Query</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CallQueryList#getCallQuery()
+	 * @see org.wso2.integrationstudio.ds.CallQueryList#getCallQuery()
 	 * @see #getCallQueryList()
 	 * @generated
 	 */
 	EReference getCallQueryList_CallQuery();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty <em>Configuration Property</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.ConfigurationProperty <em>Configuration Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Configuration Property</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty
+	 * @see org.wso2.integrationstudio.ds.ConfigurationProperty
 	 * @generated
 	 */
 	EClass getConfigurationProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ConfigurationProperty#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty#getValue()
+	 * @see org.wso2.integrationstudio.ds.ConfigurationProperty#getValue()
 	 * @see #getConfigurationProperty()
 	 * @generated
 	 */
 	EAttribute getConfigurationProperty_Value();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ConfigurationProperty#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty#getName()
+	 * @see org.wso2.integrationstudio.ds.ConfigurationProperty#getName()
 	 * @see #getConfigurationProperty()
 	 * @generated
 	 */
 	EAttribute getConfigurationProperty_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty#getSecretAlias <em>Secret Alias</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ConfigurationProperty#getSecretAlias <em>Secret Alias</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Secret Alias</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty#getSecretAlias()
+	 * @see org.wso2.integrationstudio.ds.ConfigurationProperty#getSecretAlias()
 	 * @see #getConfigurationProperty()
 	 * @generated
 	 */
 	EAttribute getConfigurationProperty_SecretAlias();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidator <em>Custom Validator</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.CustomValidator <em>Custom Validator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Custom Validator</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidator
+	 * @see org.wso2.integrationstudio.ds.CustomValidator
 	 * @generated
 	 */
 	EClass getCustomValidator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidator#getClass_ <em>Class</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.CustomValidator#getClass_ <em>Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Class</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidator#getClass_()
+	 * @see org.wso2.integrationstudio.ds.CustomValidator#getClass_()
 	 * @see #getCustomValidator()
 	 * @generated
 	 */
 	EAttribute getCustomValidator_Class();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidator#getProperties <em>Properties</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.CustomValidator#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Properties</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidator#getProperties()
+	 * @see org.wso2.integrationstudio.ds.CustomValidator#getProperties()
 	 * @see #getCustomValidator()
 	 * @generated
 	 */
 	EReference getCustomValidator_Properties();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidator#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.CustomValidator#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidator#getMixed()
+	 * @see org.wso2.integrationstudio.ds.CustomValidator#getMixed()
 	 * @see #getCustomValidator()
 	 * @generated
 	 */
 	EAttribute getCustomValidator_Mixed();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.DataService <em>Data Service</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.DataService <em>Data Service</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Data Service</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService
+	 * @see org.wso2.integrationstudio.ds.DataService
 	 * @generated
 	 */
 	EClass getDataService();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.DataService#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getMixed()
+	 * @see org.wso2.integrationstudio.ds.DataService#getMixed()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.DataService#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Description</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getDescription()
+	 * @see org.wso2.integrationstudio.ds.DataService#getDescription()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EReference getDataService_Description();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getConfig <em>Config</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.DataService#getConfig <em>Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Config</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getConfig()
+	 * @see org.wso2.integrationstudio.ds.DataService#getConfig()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EReference getDataService_Config();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getQuery <em>Query</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.DataService#getQuery <em>Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Query</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getQuery()
+	 * @see org.wso2.integrationstudio.ds.DataService#getQuery()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EReference getDataService_Query();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getEventTrigger <em>Event Trigger</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.DataService#getEventTrigger <em>Event Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Event Trigger</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getEventTrigger()
+	 * @see org.wso2.integrationstudio.ds.DataService#getEventTrigger()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EReference getDataService_EventTrigger();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getOperation <em>Operation</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.DataService#getOperation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Operation</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getOperation()
+	 * @see org.wso2.integrationstudio.ds.DataService#getOperation()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EReference getDataService_Operation();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getResource <em>Resource</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.DataService#getResource <em>Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Resource</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getResource()
+	 * @see org.wso2.integrationstudio.ds.DataService#getResource()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EReference getDataService_Resource();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getBaseURI <em>Base URI</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataService#getBaseURI <em>Base URI</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Base URI</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getBaseURI()
+	 * @see org.wso2.integrationstudio.ds.DataService#getBaseURI()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_BaseURI();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataService#isEnableBatchRequests <em>Enable Batch Requests</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataService#isEnableBatchRequests <em>Enable Batch Requests</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Enable Batch Requests</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#isEnableBatchRequests()
+	 * @see org.wso2.integrationstudio.ds.DataService#isEnableBatchRequests()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_EnableBatchRequests();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataService#isEnableBoxcarring <em>Enable Boxcarring</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataService#isEnableBoxcarring <em>Enable Boxcarring</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Enable Boxcarring</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#isEnableBoxcarring()
+	 * @see org.wso2.integrationstudio.ds.DataService#isEnableBoxcarring()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_EnableBoxcarring();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataService#isEnableDTP <em>Enable DTP</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataService#isEnableDTP <em>Enable DTP</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Enable DTP</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#isEnableDTP()
+	 * @see org.wso2.integrationstudio.ds.DataService#isEnableDTP()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_EnableDTP();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataService#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getName()
+	 * @see org.wso2.integrationstudio.ds.DataService#getName()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getServiceGroup <em>Service Group</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataService#getServiceGroup <em>Service Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Service Group</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getServiceGroup()
+	 * @see org.wso2.integrationstudio.ds.DataService#getServiceGroup()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_ServiceGroup();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getServiceNamespace <em>Service Namespace</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataService#getServiceNamespace <em>Service Namespace</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Service Namespace</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getServiceNamespace()
+	 * @see org.wso2.integrationstudio.ds.DataService#getServiceNamespace()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_ServiceNamespace();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getServiceStatus <em>Service Status</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataService#getServiceStatus <em>Service Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Service Status</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getServiceStatus()
+	 * @see org.wso2.integrationstudio.ds.DataService#getServiceStatus()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_ServiceStatus();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataService#isDisableStreaming <em>Disable Streaming</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataService#isDisableStreaming <em>Disable Streaming</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Disable Streaming</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#isDisableStreaming()
+	 * @see org.wso2.integrationstudio.ds.DataService#isDisableStreaming()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_DisableStreaming();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataService#isEnableSec <em>Enable Sec</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataService#isEnableSec <em>Enable Sec</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Enable Sec</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#isEnableSec()
+	 * @see org.wso2.integrationstudio.ds.DataService#isEnableSec()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_EnableSec();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getPolicy <em>Policy</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.DataService#getPolicy <em>Policy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Policy</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getPolicy()
+	 * @see org.wso2.integrationstudio.ds.DataService#getPolicy()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EReference getDataService_Policy();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getTransports <em>Transports</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataService#getTransports <em>Transports</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Transports</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getTransports()
+	 * @see org.wso2.integrationstudio.ds.DataService#getTransports()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_Transports();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getFeatureAllowRoles <em>Feature Allow Roles</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.DataService#getFeatureAllowRoles <em>Feature Allow Roles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Feature Allow Roles</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#getFeatureAllowRoles()
+	 * @see org.wso2.integrationstudio.ds.DataService#getFeatureAllowRoles()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EReference getDataService_FeatureAllowRoles();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataService#isDisableLegacyBoxcarringMode <em>Disable Legacy Boxcarring Mode</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataService#isDisableLegacyBoxcarringMode <em>Disable Legacy Boxcarring Mode</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Disable Legacy Boxcarring Mode</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataService#isDisableLegacyBoxcarringMode()
+	 * @see org.wso2.integrationstudio.ds.DataService#isDisableLegacyBoxcarringMode()
 	 * @see #getDataService()
 	 * @generated
 	 */
 	EAttribute getDataService_DisableLegacyBoxcarringMode();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration <em>Data Source Configuration</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.DataSourceConfiguration <em>Data Source Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Data Source Configuration</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration
+	 * @see org.wso2.integrationstudio.ds.DataSourceConfiguration
 	 * @generated
 	 */
 	EClass getDataSourceConfiguration();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.DataSourceConfiguration#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration#getMixed()
+	 * @see org.wso2.integrationstudio.ds.DataSourceConfiguration#getMixed()
 	 * @see #getDataSourceConfiguration()
 	 * @generated
 	 */
 	EAttribute getDataSourceConfiguration_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration#getProperty <em>Property</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.DataSourceConfiguration#getProperty <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Property</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration#getProperty()
+	 * @see org.wso2.integrationstudio.ds.DataSourceConfiguration#getProperty()
 	 * @see #getDataSourceConfiguration()
 	 * @generated
 	 */
 	EReference getDataSourceConfiguration_Property();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataSourceConfiguration#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration#getId()
+	 * @see org.wso2.integrationstudio.ds.DataSourceConfiguration#getId()
 	 * @see #getDataSourceConfiguration()
 	 * @generated
 	 */
 	EAttribute getDataSourceConfiguration_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration#isEnableOData <em>Enable OData</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataSourceConfiguration#isEnableOData <em>Enable OData</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Enable OData</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration#isEnableOData()
+	 * @see org.wso2.integrationstudio.ds.DataSourceConfiguration#isEnableOData()
 	 * @see #getDataSourceConfiguration()
 	 * @generated
 	 */
 	EAttribute getDataSourceConfiguration_EnableOData();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.Description <em>Description</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.Description <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Description</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Description
+	 * @see org.wso2.integrationstudio.ds.Description
 	 * @generated
 	 */
 	EClass getDescription();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Description#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Description#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Description#getValue()
+	 * @see org.wso2.integrationstudio.ds.Description#getValue()
 	 * @see #getDescription()
 	 * @generated
 	 */
 	EAttribute getDescription_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot <em>Document Root</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.DocumentRoot <em>Document Root</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Document Root</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DocumentRoot
+	 * @see org.wso2.integrationstudio.ds.DocumentRoot
 	 * @generated
 	 */
 	EClass getDocumentRoot();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.DocumentRoot#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getMixed()
+	 * @see org.wso2.integrationstudio.ds.DocumentRoot#getMixed()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EAttribute getDocumentRoot_Mixed();
 
 	/**
-	 * Returns the meta object for the map '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}'.
+	 * Returns the meta object for the map '{@link org.wso2.integrationstudio.ds.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the map '<em>XMLNS Prefix Map</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getXMLNSPrefixMap()
+	 * @see org.wso2.integrationstudio.ds.DocumentRoot#getXMLNSPrefixMap()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_XMLNSPrefixMap();
 
 	/**
-	 * Returns the meta object for the map '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}'.
+	 * Returns the meta object for the map '{@link org.wso2.integrationstudio.ds.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the map '<em>XSI Schema Location</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getXSISchemaLocation()
+	 * @see org.wso2.integrationstudio.ds.DocumentRoot#getXSISchemaLocation()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_XSISchemaLocation();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getCallQuery <em>Call Query</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.DocumentRoot#getCallQuery <em>Call Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Call Query</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getCallQuery()
+	 * @see org.wso2.integrationstudio.ds.DocumentRoot#getCallQuery()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_CallQuery();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getData <em>Data</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.DocumentRoot#getData <em>Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Data</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getData()
+	 * @see org.wso2.integrationstudio.ds.DocumentRoot#getData()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_Data();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getHasheader <em>Hasheader</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.DocumentRoot#getHasheader <em>Hasheader</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Hasheader</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getHasheader()
+	 * @see org.wso2.integrationstudio.ds.DocumentRoot#getHasheader()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_Hasheader();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getMaxrowcount <em>Maxrowcount</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.DocumentRoot#getMaxrowcount <em>Maxrowcount</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Maxrowcount</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getMaxrowcount()
+	 * @see org.wso2.integrationstudio.ds.DocumentRoot#getMaxrowcount()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_Maxrowcount();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getProperty <em>Property</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.DocumentRoot#getProperty <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Property</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getProperty()
+	 * @see org.wso2.integrationstudio.ds.DocumentRoot#getProperty()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_Property();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getSql <em>Sql</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.DocumentRoot#getSql <em>Sql</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Sql</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getSql()
+	 * @see org.wso2.integrationstudio.ds.DocumentRoot#getSql()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_Sql();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getStartingrow <em>Startingrow</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.DocumentRoot#getStartingrow <em>Startingrow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Startingrow</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DocumentRoot#getStartingrow()
+	 * @see org.wso2.integrationstudio.ds.DocumentRoot#getStartingrow()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_Startingrow();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator <em>Double Range Validator</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.DoubleRangeValidator <em>Double Range Validator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Double Range Validator</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator
+	 * @see org.wso2.integrationstudio.ds.DoubleRangeValidator
 	 * @generated
 	 */
 	EClass getDoubleRangeValidator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator#getMaximum <em>Maximum</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DoubleRangeValidator#getMaximum <em>Maximum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Maximum</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator#getMaximum()
+	 * @see org.wso2.integrationstudio.ds.DoubleRangeValidator#getMaximum()
 	 * @see #getDoubleRangeValidator()
 	 * @generated
 	 */
 	EAttribute getDoubleRangeValidator_Maximum();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator#getMinimum <em>Minimum</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DoubleRangeValidator#getMinimum <em>Minimum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Minimum</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator#getMinimum()
+	 * @see org.wso2.integrationstudio.ds.DoubleRangeValidator#getMinimum()
 	 * @see #getDoubleRangeValidator()
 	 * @generated
 	 */
 	EAttribute getDoubleRangeValidator_Minimum();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping <em>Element Mapping</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.ElementMapping <em>Element Mapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Element Mapping</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping
+	 * @see org.wso2.integrationstudio.ds.ElementMapping
 	 * @generated
 	 */
 	EClass getElementMapping();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.ElementMapping#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getMixed()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getMixed()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_Mixed();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getColumn <em>Column</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ElementMapping#getColumn <em>Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Column</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getColumn()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getColumn()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_Column();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getExport <em>Export</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ElementMapping#getExport <em>Export</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Export</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getExport()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getExport()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_Export();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ElementMapping#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getName()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getName()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getRequiredRoles <em>Required Roles</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ElementMapping#getRequiredRoles <em>Required Roles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Required Roles</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getRequiredRoles()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getRequiredRoles()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_RequiredRoles();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getExportType <em>Export Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ElementMapping#getExportType <em>Export Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Export Type</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getExportType()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getExportType()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_ExportType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getNamespace <em>Namespace</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ElementMapping#getNamespace <em>Namespace</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Namespace</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getNamespace()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getNamespace()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_Namespace();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getXsdType <em>Xsd Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ElementMapping#getXsdType <em>Xsd Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Xsd Type</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getXsdType()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getXsdType()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_XsdType();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getElement <em>Element</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.ElementMapping#getElement <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Element</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getElement()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getElement()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EReference getElementMapping_Element();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getAttribute <em>Attribute</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.ElementMapping#getAttribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Attribute</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getAttribute()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getAttribute()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EReference getElementMapping_Attribute();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getCallQuery <em>Call Query</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.ElementMapping#getCallQuery <em>Call Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Call Query</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getCallQuery()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getCallQuery()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EReference getElementMapping_CallQuery();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#isIsComplexType <em>Is Complex Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ElementMapping#isIsComplexType <em>Is Complex Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Complex Type</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#isIsComplexType()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#isIsComplexType()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_IsComplexType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getQueryParam <em>Query Param</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ElementMapping#getQueryParam <em>Query Param</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Query Param</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getQueryParam()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getQueryParam()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_QueryParam();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ElementMapping#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getValue()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getValue()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_Value();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#isOptional <em>Optional</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ElementMapping#isOptional <em>Optional</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Optional</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#isOptional()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#isOptional()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_Optional();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ElementMapping#getArrayName <em>Array Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ElementMapping#getArrayName <em>Array Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Array Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ElementMapping#getArrayName()
+	 * @see org.wso2.integrationstudio.ds.ElementMapping#getArrayName()
 	 * @see #getElementMapping()
 	 * @generated
 	 */
 	EAttribute getElementMapping_ArrayName();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList <em>Event Subscription List</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.EventSubscriptionList <em>Event Subscription List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Event Subscription List</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList
+	 * @see org.wso2.integrationstudio.ds.EventSubscriptionList
 	 * @generated
 	 */
 	EClass getEventSubscriptionList();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.EventSubscriptionList#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList#getMixed()
+	 * @see org.wso2.integrationstudio.ds.EventSubscriptionList#getMixed()
 	 * @see #getEventSubscriptionList()
 	 * @generated
 	 */
 	EAttribute getEventSubscriptionList_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList#getSubscription <em>Subscription</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.EventSubscriptionList#getSubscription <em>Subscription</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Subscription</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList#getSubscription()
+	 * @see org.wso2.integrationstudio.ds.EventSubscriptionList#getSubscription()
 	 * @see #getEventSubscriptionList()
 	 * @generated
 	 */
 	EReference getEventSubscriptionList_Subscription();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger <em>Event Trigger</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.EventTrigger <em>Event Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Event Trigger</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.EventTrigger
+	 * @see org.wso2.integrationstudio.ds.EventTrigger
 	 * @generated
 	 */
 	EClass getEventTrigger();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.EventTrigger#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.EventTrigger#getMixed()
+	 * @see org.wso2.integrationstudio.ds.EventTrigger#getMixed()
 	 * @see #getEventTrigger()
 	 * @generated
 	 */
 	EAttribute getEventTrigger_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getExpression <em>Expression</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.EventTrigger#getExpression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Expression</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.EventTrigger#getExpression()
+	 * @see org.wso2.integrationstudio.ds.EventTrigger#getExpression()
 	 * @see #getEventTrigger()
 	 * @generated
 	 */
 	EReference getEventTrigger_Expression();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getTargetTopic <em>Target Topic</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.EventTrigger#getTargetTopic <em>Target Topic</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Target Topic</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.EventTrigger#getTargetTopic()
+	 * @see org.wso2.integrationstudio.ds.EventTrigger#getTargetTopic()
 	 * @see #getEventTrigger()
 	 * @generated
 	 */
 	EReference getEventTrigger_TargetTopic();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getSubscriptions <em>Subscriptions</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.EventTrigger#getSubscriptions <em>Subscriptions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Subscriptions</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.EventTrigger#getSubscriptions()
+	 * @see org.wso2.integrationstudio.ds.EventTrigger#getSubscriptions()
 	 * @see #getEventTrigger()
 	 * @generated
 	 */
 	EReference getEventTrigger_Subscriptions();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.EventTrigger#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.EventTrigger#getId()
+	 * @see org.wso2.integrationstudio.ds.EventTrigger#getId()
 	 * @see #getEventTrigger()
 	 * @generated
 	 */
 	EAttribute getEventTrigger_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getLanguage <em>Language</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.EventTrigger#getLanguage <em>Language</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Language</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.EventTrigger#getLanguage()
+	 * @see org.wso2.integrationstudio.ds.EventTrigger#getLanguage()
 	 * @see #getEventTrigger()
 	 * @generated
 	 */
 	EAttribute getEventTrigger_Language();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.ExcelQuery <em>Excel Query</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.ExcelQuery <em>Excel Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Excel Query</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ExcelQuery
+	 * @see org.wso2.integrationstudio.ds.ExcelQuery
 	 * @generated
 	 */
 	EClass getExcelQuery();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.ExcelQuery#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.ExcelQuery#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ExcelQuery#getMixed()
+	 * @see org.wso2.integrationstudio.ds.ExcelQuery#getMixed()
 	 * @see #getExcelQuery()
 	 * @generated
 	 */
 	EAttribute getExcelQuery_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.ExcelQuery#getWorkbookname <em>Workbookname</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.ExcelQuery#getWorkbookname <em>Workbookname</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Workbookname</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ExcelQuery#getWorkbookname()
+	 * @see org.wso2.integrationstudio.ds.ExcelQuery#getWorkbookname()
 	 * @see #getExcelQuery()
 	 * @generated
 	 */
 	EReference getExcelQuery_Workbookname();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.ExcelQuery#getHasheader <em>Hasheader</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.ExcelQuery#getHasheader <em>Hasheader</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Hasheader</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ExcelQuery#getHasheader()
+	 * @see org.wso2.integrationstudio.ds.ExcelQuery#getHasheader()
 	 * @see #getExcelQuery()
 	 * @generated
 	 */
 	EReference getExcelQuery_Hasheader();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.ExcelQuery#getStartingrow <em>Startingrow</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.ExcelQuery#getStartingrow <em>Startingrow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Startingrow</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ExcelQuery#getStartingrow()
+	 * @see org.wso2.integrationstudio.ds.ExcelQuery#getStartingrow()
 	 * @see #getExcelQuery()
 	 * @generated
 	 */
 	EReference getExcelQuery_Startingrow();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.ExcelQuery#getMaxrowcount <em>Maxrowcount</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.ExcelQuery#getMaxrowcount <em>Maxrowcount</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Maxrowcount</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ExcelQuery#getMaxrowcount()
+	 * @see org.wso2.integrationstudio.ds.ExcelQuery#getMaxrowcount()
 	 * @see #getExcelQuery()
 	 * @generated
 	 */
 	EReference getExcelQuery_Maxrowcount();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.Expression <em>Expression</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.Expression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Expression</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Expression
+	 * @see org.wso2.integrationstudio.ds.Expression
 	 * @generated
 	 */
 	EClass getExpression();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Expression#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Expression#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Expression#getValue()
+	 * @see org.wso2.integrationstudio.ds.Expression#getValue()
 	 * @see #getExpression()
 	 * @generated
 	 */
 	EAttribute getExpression_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery <em>GSpread Query</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.GSpreadQuery <em>GSpread Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GSpread Query</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.GSpreadQuery
+	 * @see org.wso2.integrationstudio.ds.GSpreadQuery
 	 * @generated
 	 */
 	EClass getGSpreadQuery();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.GSpreadQuery#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getMixed()
+	 * @see org.wso2.integrationstudio.ds.GSpreadQuery#getMixed()
 	 * @see #getGSpreadQuery()
 	 * @generated
 	 */
 	EAttribute getGSpreadQuery_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getWorksheetnumber <em>Worksheetnumber</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.GSpreadQuery#getWorksheetnumber <em>Worksheetnumber</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Worksheetnumber</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getWorksheetnumber()
+	 * @see org.wso2.integrationstudio.ds.GSpreadQuery#getWorksheetnumber()
 	 * @see #getGSpreadQuery()
 	 * @generated
 	 */
 	EReference getGSpreadQuery_Worksheetnumber();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getStartingrow <em>Startingrow</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.GSpreadQuery#getStartingrow <em>Startingrow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Startingrow</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getStartingrow()
+	 * @see org.wso2.integrationstudio.ds.GSpreadQuery#getStartingrow()
 	 * @see #getGSpreadQuery()
 	 * @generated
 	 */
 	EReference getGSpreadQuery_Startingrow();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getMaxrowcount <em>Maxrowcount</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.GSpreadQuery#getMaxrowcount <em>Maxrowcount</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Maxrowcount</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getMaxrowcount()
+	 * @see org.wso2.integrationstudio.ds.GSpreadQuery#getMaxrowcount()
 	 * @see #getGSpreadQuery()
 	 * @generated
 	 */
 	EReference getGSpreadQuery_Maxrowcount();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getHasheader <em>Hasheader</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.GSpreadQuery#getHasheader <em>Hasheader</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Hasheader</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getHasheader()
+	 * @see org.wso2.integrationstudio.ds.GSpreadQuery#getHasheader()
 	 * @see #getGSpreadQuery()
 	 * @generated
 	 */
 	EReference getGSpreadQuery_Hasheader();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.HasHeader <em>Has Header</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.HasHeader <em>Has Header</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Has Header</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.HasHeader
+	 * @see org.wso2.integrationstudio.ds.HasHeader
 	 * @generated
 	 */
 	EClass getHasHeader();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.HasHeader#isValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.HasHeader#isValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.HasHeader#isValue()
+	 * @see org.wso2.integrationstudio.ds.HasHeader#isValue()
 	 * @see #getHasHeader()
 	 * @generated
 	 */
 	EAttribute getHasHeader_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.LengthValidator <em>Length Validator</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.LengthValidator <em>Length Validator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Length Validator</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.LengthValidator
+	 * @see org.wso2.integrationstudio.ds.LengthValidator
 	 * @generated
 	 */
 	EClass getLengthValidator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.LengthValidator#getMaximum <em>Maximum</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.LengthValidator#getMaximum <em>Maximum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Maximum</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.LengthValidator#getMaximum()
+	 * @see org.wso2.integrationstudio.ds.LengthValidator#getMaximum()
 	 * @see #getLengthValidator()
 	 * @generated
 	 */
 	EAttribute getLengthValidator_Maximum();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.LengthValidator#getMinimum <em>Minimum</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.LengthValidator#getMinimum <em>Minimum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Minimum</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.LengthValidator#getMinimum()
+	 * @see org.wso2.integrationstudio.ds.LengthValidator#getMinimum()
 	 * @see #getLengthValidator()
 	 * @generated
 	 */
 	EAttribute getLengthValidator_Minimum();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.LongRangeValidator <em>Long Range Validator</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.LongRangeValidator <em>Long Range Validator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Long Range Validator</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.LongRangeValidator
+	 * @see org.wso2.integrationstudio.ds.LongRangeValidator
 	 * @generated
 	 */
 	EClass getLongRangeValidator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.LongRangeValidator#getMaximum <em>Maximum</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.LongRangeValidator#getMaximum <em>Maximum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Maximum</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.LongRangeValidator#getMaximum()
+	 * @see org.wso2.integrationstudio.ds.LongRangeValidator#getMaximum()
 	 * @see #getLongRangeValidator()
 	 * @generated
 	 */
 	EAttribute getLongRangeValidator_Maximum();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.LongRangeValidator#getMinimum <em>Minimum</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.LongRangeValidator#getMinimum <em>Minimum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Minimum</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.LongRangeValidator#getMinimum()
+	 * @see org.wso2.integrationstudio.ds.LongRangeValidator#getMinimum()
 	 * @see #getLongRangeValidator()
 	 * @generated
 	 */
 	EAttribute getLongRangeValidator_Minimum();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.MaxRowCount <em>Max Row Count</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.MaxRowCount <em>Max Row Count</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Max Row Count</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.MaxRowCount
+	 * @see org.wso2.integrationstudio.ds.MaxRowCount
 	 * @generated
 	 */
 	EClass getMaxRowCount();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.MaxRowCount#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.MaxRowCount#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.MaxRowCount#getValue()
+	 * @see org.wso2.integrationstudio.ds.MaxRowCount#getValue()
 	 * @see #getMaxRowCount()
 	 * @generated
 	 */
 	EAttribute getMaxRowCount_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.Operation <em>Operation</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.Operation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Operation</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Operation
+	 * @see org.wso2.integrationstudio.ds.Operation
 	 * @generated
 	 */
 	EClass getOperation();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.Operation#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.Operation#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Operation#getMixed()
+	 * @see org.wso2.integrationstudio.ds.Operation#getMixed()
 	 * @see #getOperation()
 	 * @generated
 	 */
 	EAttribute getOperation_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.Operation#getCallQuery <em>Call Query</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.Operation#getCallQuery <em>Call Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Call Query</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Operation#getCallQuery()
+	 * @see org.wso2.integrationstudio.ds.Operation#getCallQuery()
 	 * @see #getOperation()
 	 * @generated
 	 */
 	EReference getOperation_CallQuery();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.Operation#getCallQueryGroup <em>Call Query Group</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.Operation#getCallQueryGroup <em>Call Query Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Call Query Group</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Operation#getCallQueryGroup()
+	 * @see org.wso2.integrationstudio.ds.Operation#getCallQueryGroup()
 	 * @see #getOperation()
 	 * @generated
 	 */
 	EReference getOperation_CallQueryGroup();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Operation#isDisableStreaming <em>Disable Streaming</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Operation#isDisableStreaming <em>Disable Streaming</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Disable Streaming</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Operation#isDisableStreaming()
+	 * @see org.wso2.integrationstudio.ds.Operation#isDisableStreaming()
 	 * @see #getOperation()
 	 * @generated
 	 */
 	EAttribute getOperation_DisableStreaming();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Operation#isReturnRequestStatus <em>Return Request Status</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Operation#isReturnRequestStatus <em>Return Request Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Return Request Status</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Operation#isReturnRequestStatus()
+	 * @see org.wso2.integrationstudio.ds.Operation#isReturnRequestStatus()
 	 * @see #getOperation()
 	 * @generated
 	 */
 	EAttribute getOperation_ReturnRequestStatus();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Operation#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Operation#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Operation#getName()
+	 * @see org.wso2.integrationstudio.ds.Operation#getName()
 	 * @see #getOperation()
 	 * @generated
 	 */
 	EAttribute getOperation_Name();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping <em>Parameter Mapping</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.ParameterMapping <em>Parameter Mapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Parameter Mapping</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ParameterMapping
+	 * @see org.wso2.integrationstudio.ds.ParameterMapping
 	 * @generated
 	 */
 	EClass getParameterMapping();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping#getColumn <em>Column</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ParameterMapping#getColumn <em>Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Column</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ParameterMapping#getColumn()
+	 * @see org.wso2.integrationstudio.ds.ParameterMapping#getColumn()
 	 * @see #getParameterMapping()
 	 * @generated
 	 */
 	EAttribute getParameterMapping_Column();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ParameterMapping#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ParameterMapping#getName()
+	 * @see org.wso2.integrationstudio.ds.ParameterMapping#getName()
 	 * @see #getParameterMapping()
 	 * @generated
 	 */
 	EAttribute getParameterMapping_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping#getQueryParam <em>Query Param</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ParameterMapping#getQueryParam <em>Query Param</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Query Param</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ParameterMapping#getQueryParam()
+	 * @see org.wso2.integrationstudio.ds.ParameterMapping#getQueryParam()
 	 * @see #getParameterMapping()
 	 * @generated
 	 */
 	EAttribute getParameterMapping_QueryParam();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.PatternValidator <em>Pattern Validator</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.PatternValidator <em>Pattern Validator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Pattern Validator</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.PatternValidator
+	 * @see org.wso2.integrationstudio.ds.PatternValidator
 	 * @generated
 	 */
 	EClass getPatternValidator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.PatternValidator#getPattern <em>Pattern</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.PatternValidator#getPattern <em>Pattern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Pattern</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.PatternValidator#getPattern()
+	 * @see org.wso2.integrationstudio.ds.PatternValidator#getPattern()
 	 * @see #getPatternValidator()
 	 * @generated
 	 */
 	EAttribute getPatternValidator_Pattern();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.Query <em>Query</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.Query <em>Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Query</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query
+	 * @see org.wso2.integrationstudio.ds.Query
 	 * @generated
 	 */
 	EClass getQuery();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.Query#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.Query#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getMixed()
+	 * @see org.wso2.integrationstudio.ds.Query#getMixed()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EAttribute getQuery_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.Query#getExpression <em>Expression</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.Query#getExpression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Expression</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getExpression()
+	 * @see org.wso2.integrationstudio.ds.Query#getExpression()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EReference getQuery_Expression();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.Query#getSql <em>Sql</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.Query#getSql <em>Sql</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Sql</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getSql()
+	 * @see org.wso2.integrationstudio.ds.Query#getSql()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EReference getQuery_Sql();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.Query#getSparql <em>Sparql</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.Query#getSparql <em>Sparql</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Sparql</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getSparql()
+	 * @see org.wso2.integrationstudio.ds.Query#getSparql()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EReference getQuery_Sparql();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.Query#getProperties <em>Properties</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.Query#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Properties</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getProperties()
+	 * @see org.wso2.integrationstudio.ds.Query#getProperties()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EReference getQuery_Properties();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.Query#getResult <em>Result</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.Query#getResult <em>Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Result</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getResult()
+	 * @see org.wso2.integrationstudio.ds.Query#getResult()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EReference getQuery_Result();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.Query#getExcel <em>Excel</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.Query#getExcel <em>Excel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Excel</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getExcel()
+	 * @see org.wso2.integrationstudio.ds.Query#getExcel()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EReference getQuery_Excel();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.Query#getGspread <em>Gspread</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.Query#getGspread <em>Gspread</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Gspread</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getGspread()
+	 * @see org.wso2.integrationstudio.ds.Query#getGspread()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EReference getQuery_Gspread();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.Query#getParam <em>Param</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.Query#getParam <em>Param</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Param</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getParam()
+	 * @see org.wso2.integrationstudio.ds.Query#getParam()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EReference getQuery_Param();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Query#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Query#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getId()
+	 * @see org.wso2.integrationstudio.ds.Query#getId()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EAttribute getQuery_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Query#getInputEventTrigger <em>Input Event Trigger</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Query#getInputEventTrigger <em>Input Event Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Input Event Trigger</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getInputEventTrigger()
+	 * @see org.wso2.integrationstudio.ds.Query#getInputEventTrigger()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EAttribute getQuery_InputEventTrigger();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Query#getOutputEventTrigger <em>Output Event Trigger</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Query#getOutputEventTrigger <em>Output Event Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Output Event Trigger</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getOutputEventTrigger()
+	 * @see org.wso2.integrationstudio.ds.Query#getOutputEventTrigger()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EAttribute getQuery_OutputEventTrigger();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Query#isReturnGeneratedKeys <em>Return Generated Keys</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Query#isReturnGeneratedKeys <em>Return Generated Keys</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Return Generated Keys</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#isReturnGeneratedKeys()
+	 * @see org.wso2.integrationstudio.ds.Query#isReturnGeneratedKeys()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EAttribute getQuery_ReturnGeneratedKeys();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Query#getUseConfig <em>Use Config</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Query#getUseConfig <em>Use Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Use Config</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getUseConfig()
+	 * @see org.wso2.integrationstudio.ds.Query#getUseConfig()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EAttribute getQuery_UseConfig();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Query#getKeyColumns <em>Key Columns</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Query#getKeyColumns <em>Key Columns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Key Columns</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#getKeyColumns()
+	 * @see org.wso2.integrationstudio.ds.Query#getKeyColumns()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EAttribute getQuery_KeyColumns();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Query#isReturnUpdatedRowCount <em>Return Updated Row Count</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Query#isReturnUpdatedRowCount <em>Return Updated Row Count</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Return Updated Row Count</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Query#isReturnUpdatedRowCount()
+	 * @see org.wso2.integrationstudio.ds.Query#isReturnUpdatedRowCount()
 	 * @see #getQuery()
 	 * @generated
 	 */
 	EAttribute getQuery_ReturnUpdatedRowCount();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter <em>Query Parameter</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.QueryParameter <em>Query Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Query Parameter</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter
+	 * @see org.wso2.integrationstudio.ds.QueryParameter
 	 * @generated
 	 */
 	EClass getQueryParameter();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.QueryParameter#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getMixed()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getMixed()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EAttribute getQueryParameter_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateLongRange <em>Validate Long Range</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.QueryParameter#getValidateLongRange <em>Validate Long Range</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Validate Long Range</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateLongRange()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getValidateLongRange()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EReference getQueryParameter_ValidateLongRange();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateDoubleRange <em>Validate Double Range</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.QueryParameter#getValidateDoubleRange <em>Validate Double Range</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Validate Double Range</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateDoubleRange()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getValidateDoubleRange()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EReference getQueryParameter_ValidateDoubleRange();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateLength <em>Validate Length</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.QueryParameter#getValidateLength <em>Validate Length</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Validate Length</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateLength()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getValidateLength()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EReference getQueryParameter_ValidateLength();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidatePattern <em>Validate Pattern</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.QueryParameter#getValidatePattern <em>Validate Pattern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Validate Pattern</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidatePattern()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getValidatePattern()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EReference getQueryParameter_ValidatePattern();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateCustom <em>Validate Custom</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.QueryParameter#getValidateCustom <em>Validate Custom</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Validate Custom</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateCustom()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getValidateCustom()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EReference getQueryParameter_ValidateCustom();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getDefaultValue <em>Default Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.QueryParameter#getDefaultValue <em>Default Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Default Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getDefaultValue()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getDefaultValue()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EAttribute getQueryParameter_DefaultValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.QueryParameter#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getName()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getName()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EAttribute getQueryParameter_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getOrdinal <em>Ordinal</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.QueryParameter#getOrdinal <em>Ordinal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Ordinal</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getOrdinal()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getOrdinal()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EAttribute getQueryParameter_Ordinal();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getParamType <em>Param Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.QueryParameter#getParamType <em>Param Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Param Type</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getParamType()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getParamType()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EAttribute getQueryParameter_ParamType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getSqlType <em>Sql Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.QueryParameter#getSqlType <em>Sql Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Sql Type</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getSqlType()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getSqlType()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EAttribute getQueryParameter_SqlType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getStructType <em>Struct Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.QueryParameter#getStructType <em>Struct Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Struct Type</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getStructType()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getStructType()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EAttribute getQueryParameter_StructType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.QueryParameter#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryParameter#getType()
+	 * @see org.wso2.integrationstudio.ds.QueryParameter#getType()
 	 * @see #getQueryParameter()
 	 * @generated
 	 */
 	EAttribute getQueryParameter_Type();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.QueryProperty <em>Query Property</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.QueryProperty <em>Query Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Query Property</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryProperty
+	 * @see org.wso2.integrationstudio.ds.QueryProperty
 	 * @generated
 	 */
 	EClass getQueryProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.QueryProperty#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.QueryProperty#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryProperty#getValue()
+	 * @see org.wso2.integrationstudio.ds.QueryProperty#getValue()
 	 * @see #getQueryProperty()
 	 * @generated
 	 */
 	EAttribute getQueryProperty_Value();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.QueryProperty#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.QueryProperty#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryProperty#getName()
+	 * @see org.wso2.integrationstudio.ds.QueryProperty#getName()
 	 * @see #getQueryProperty()
 	 * @generated
 	 */
 	EAttribute getQueryProperty_Name();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.QueryPropertyList <em>Query Property List</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.QueryPropertyList <em>Query Property List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Query Property List</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryPropertyList
+	 * @see org.wso2.integrationstudio.ds.QueryPropertyList
 	 * @generated
 	 */
 	EClass getQueryPropertyList();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.QueryPropertyList#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.QueryPropertyList#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryPropertyList#getMixed()
+	 * @see org.wso2.integrationstudio.ds.QueryPropertyList#getMixed()
 	 * @see #getQueryPropertyList()
 	 * @generated
 	 */
 	EAttribute getQueryPropertyList_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.QueryPropertyList#getProperty <em>Property</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.QueryPropertyList#getProperty <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Property</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryPropertyList#getProperty()
+	 * @see org.wso2.integrationstudio.ds.QueryPropertyList#getProperty()
 	 * @see #getQueryPropertyList()
 	 * @generated
 	 */
 	EReference getQueryPropertyList_Property();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.Resource <em>Resource</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.Resource <em>Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Resource</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Resource
+	 * @see org.wso2.integrationstudio.ds.Resource
 	 * @generated
 	 */
 	EClass getResource();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.Resource#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.Resource#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Resource#getMixed()
+	 * @see org.wso2.integrationstudio.ds.Resource#getMixed()
 	 * @see #getResource()
 	 * @generated
 	 */
 	EAttribute getResource_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.eclipse.ds.Resource#getCallQuery <em>Call Query</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.ds.Resource#getCallQuery <em>Call Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Call Query</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Resource#getCallQuery()
+	 * @see org.wso2.integrationstudio.ds.Resource#getCallQuery()
 	 * @see #getResource()
 	 * @generated
 	 */
 	EReference getResource_CallQuery();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Resource#getMethod <em>Method</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Resource#getMethod <em>Method</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Method</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Resource#getMethod()
+	 * @see org.wso2.integrationstudio.ds.Resource#getMethod()
 	 * @see #getResource()
 	 * @generated
 	 */
 	EAttribute getResource_Method();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Resource#getPath <em>Path</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Resource#getPath <em>Path</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Path</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Resource#getPath()
+	 * @see org.wso2.integrationstudio.ds.Resource#getPath()
 	 * @see #getResource()
 	 * @generated
 	 */
 	EAttribute getResource_Path();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Resource#isReturnRequestStatus <em>Return Request Status</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Resource#isReturnRequestStatus <em>Return Request Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Return Request Status</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Resource#isReturnRequestStatus()
+	 * @see org.wso2.integrationstudio.ds.Resource#isReturnRequestStatus()
 	 * @see #getResource()
 	 * @generated
 	 */
 	EAttribute getResource_ReturnRequestStatus();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping <em>Result Mapping</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.ResultMapping <em>Result Mapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Result Mapping</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping
+	 * @see org.wso2.integrationstudio.ds.ResultMapping
 	 * @generated
 	 */
 	EClass getResultMapping();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.ResultMapping#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping#getMixed()
+	 * @see org.wso2.integrationstudio.ds.ResultMapping#getMixed()
 	 * @see #getResultMapping()
 	 * @generated
 	 */
 	EAttribute getResultMapping_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getElement <em>Element</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.ResultMapping#getElement <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Element</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping#getElement()
+	 * @see org.wso2.integrationstudio.ds.ResultMapping#getElement()
 	 * @see #getResultMapping()
 	 * @generated
 	 */
 	EReference getResultMapping_Element();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getAttribute <em>Attribute</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.ResultMapping#getAttribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Attribute</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping#getAttribute()
+	 * @see org.wso2.integrationstudio.ds.ResultMapping#getAttribute()
 	 * @see #getResultMapping()
 	 * @generated
 	 */
 	EReference getResultMapping_Attribute();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getCallQuery <em>Call Query</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.ResultMapping#getCallQuery <em>Call Query</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Call Query</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping#getCallQuery()
+	 * @see org.wso2.integrationstudio.ds.ResultMapping#getCallQuery()
 	 * @see #getResultMapping()
 	 * @generated
 	 */
 	EReference getResultMapping_CallQuery();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getDefaultNamespace <em>Default Namespace</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ResultMapping#getDefaultNamespace <em>Default Namespace</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Default Namespace</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping#getDefaultNamespace()
+	 * @see org.wso2.integrationstudio.ds.ResultMapping#getDefaultNamespace()
 	 * @see #getResultMapping()
 	 * @generated
 	 */
 	EAttribute getResultMapping_DefaultNamespace();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getElementName <em>Element Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ResultMapping#getElementName <em>Element Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Element Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping#getElementName()
+	 * @see org.wso2.integrationstudio.ds.ResultMapping#getElementName()
 	 * @see #getResultMapping()
 	 * @generated
 	 */
 	EAttribute getResultMapping_ElementName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getRowName <em>Row Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ResultMapping#getRowName <em>Row Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Row Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping#getRowName()
+	 * @see org.wso2.integrationstudio.ds.ResultMapping#getRowName()
 	 * @see #getResultMapping()
 	 * @generated
 	 */
 	EAttribute getResultMapping_RowName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#isUseColumnNumbers <em>Use Column Numbers</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ResultMapping#isUseColumnNumbers <em>Use Column Numbers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Use Column Numbers</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping#isUseColumnNumbers()
+	 * @see org.wso2.integrationstudio.ds.ResultMapping#isUseColumnNumbers()
 	 * @see #getResultMapping()
 	 * @generated
 	 */
 	EAttribute getResultMapping_UseColumnNumbers();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#isEscapeNonPrintableChar <em>Escape Non Printable Char</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ResultMapping#isEscapeNonPrintableChar <em>Escape Non Printable Char</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Escape Non Printable Char</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping#isEscapeNonPrintableChar()
+	 * @see org.wso2.integrationstudio.ds.ResultMapping#isEscapeNonPrintableChar()
 	 * @see #getResultMapping()
 	 * @generated
 	 */
 	EAttribute getResultMapping_EscapeNonPrintableChar();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getXsltPath <em>Xslt Path</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ResultMapping#getXsltPath <em>Xslt Path</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Xslt Path</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping#getXsltPath()
+	 * @see org.wso2.integrationstudio.ds.ResultMapping#getXsltPath()
 	 * @see #getResultMapping()
 	 * @generated
 	 */
 	EAttribute getResultMapping_XsltPath();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.ResultMapping#getOutputType <em>Output Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.ResultMapping#getOutputType <em>Output Type</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Output Type</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ResultMapping#getOutputType()
+	 * @see org.wso2.integrationstudio.ds.ResultMapping#getOutputType()
 	 * @see #getResultMapping()
 	 * @generated
 	 */
     EAttribute getResultMapping_OutputType();
 
     /**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.Sparql <em>Sparql</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.Sparql <em>Sparql</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Sparql</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Sparql
+	 * @see org.wso2.integrationstudio.ds.Sparql
 	 * @generated
 	 */
 	EClass getSparql();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Sparql#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Sparql#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Sparql#getValue()
+	 * @see org.wso2.integrationstudio.ds.Sparql#getValue()
 	 * @see #getSparql()
 	 * @generated
 	 */
 	EAttribute getSparql_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.Sql <em>Sql</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.Sql <em>Sql</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Sql</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Sql
+	 * @see org.wso2.integrationstudio.ds.Sql
 	 * @generated
 	 */
 	EClass getSql();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Sql#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Sql#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Sql#getValue()
+	 * @see org.wso2.integrationstudio.ds.Sql#getValue()
 	 * @see #getSql()
 	 * @generated
 	 */
 	EAttribute getSql_Value();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Sql#getDialect <em>Dialect</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Sql#getDialect <em>Dialect</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Dialect</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Sql#getDialect()
+	 * @see org.wso2.integrationstudio.ds.Sql#getDialect()
 	 * @see #getSql()
 	 * @generated
 	 */
 	EAttribute getSql_Dialect();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.QueryExpression <em>Query Expression</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.QueryExpression <em>Query Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Query Expression</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryExpression
+	 * @see org.wso2.integrationstudio.ds.QueryExpression
 	 * @generated
 	 */
 	EClass getQueryExpression();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.QueryExpression#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.QueryExpression#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.QueryExpression#getValue()
+	 * @see org.wso2.integrationstudio.ds.QueryExpression#getValue()
 	 * @see #getQueryExpression()
 	 * @generated
 	 */
 	EAttribute getQueryExpression_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.StartingRow <em>Starting Row</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.StartingRow <em>Starting Row</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Starting Row</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.StartingRow
+	 * @see org.wso2.integrationstudio.ds.StartingRow
 	 * @generated
 	 */
 	EClass getStartingRow();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.StartingRow#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.StartingRow#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.StartingRow#getValue()
+	 * @see org.wso2.integrationstudio.ds.StartingRow#getValue()
 	 * @see #getStartingRow()
 	 * @generated
 	 */
 	EAttribute getStartingRow_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.Subscription <em>Subscription</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.Subscription <em>Subscription</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Subscription</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Subscription
+	 * @see org.wso2.integrationstudio.ds.Subscription
 	 * @generated
 	 */
 	EClass getSubscription();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Subscription#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Subscription#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Subscription#getValue()
+	 * @see org.wso2.integrationstudio.ds.Subscription#getValue()
 	 * @see #getSubscription()
 	 * @generated
 	 */
 	EAttribute getSubscription_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.TargetTopic <em>Target Topic</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.TargetTopic <em>Target Topic</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Target Topic</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.TargetTopic
+	 * @see org.wso2.integrationstudio.ds.TargetTopic
 	 * @generated
 	 */
 	EClass getTargetTopic();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.TargetTopic#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.TargetTopic#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.TargetTopic#getValue()
+	 * @see org.wso2.integrationstudio.ds.TargetTopic#getValue()
 	 * @see #getTargetTopic()
 	 * @generated
 	 */
 	EAttribute getTargetTopic_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.WorkBookName <em>Work Book Name</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.WorkBookName <em>Work Book Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Work Book Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.WorkBookName
+	 * @see org.wso2.integrationstudio.ds.WorkBookName
 	 * @generated
 	 */
 	EClass getWorkBookName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.WorkBookName#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.WorkBookName#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.WorkBookName#getValue()
+	 * @see org.wso2.integrationstudio.ds.WorkBookName#getValue()
 	 * @see #getWorkBookName()
 	 * @generated
 	 */
 	EAttribute getWorkBookName_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.WorkSheetNumber <em>Work Sheet Number</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.WorkSheetNumber <em>Work Sheet Number</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Work Sheet Number</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.WorkSheetNumber
+	 * @see org.wso2.integrationstudio.ds.WorkSheetNumber
 	 * @generated
 	 */
 	EClass getWorkSheetNumber();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.WorkSheetNumber#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.WorkSheetNumber#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.WorkSheetNumber#getValue()
+	 * @see org.wso2.integrationstudio.ds.WorkSheetNumber#getValue()
 	 * @see #getWorkSheetNumber()
 	 * @generated
 	 */
 	EAttribute getWorkSheetNumber_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.Policy <em>Policy</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.Policy <em>Policy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Policy</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Policy
+	 * @see org.wso2.integrationstudio.ds.Policy
 	 * @generated
 	 */
 	EClass getPolicy();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.Policy#getKey <em>Key</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.Policy#getKey <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Key</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.Policy#getKey()
+	 * @see org.wso2.integrationstudio.ds.Policy#getKey()
 	 * @see #getPolicy()
 	 * @generated
 	 */
 	EAttribute getPolicy_Key();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.DataServiceParameter <em>Data Service Parameter</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.DataServiceParameter <em>Data Service Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Data Service Parameter</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataServiceParameter
+	 * @see org.wso2.integrationstudio.ds.DataServiceParameter
 	 * @generated
 	 */
 	EClass getDataServiceParameter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataServiceParameter#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataServiceParameter#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataServiceParameter#getName()
+	 * @see org.wso2.integrationstudio.ds.DataServiceParameter#getName()
 	 * @see #getDataServiceParameter()
 	 * @generated
 	 */
 	EAttribute getDataServiceParameter_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.DataServiceParameter#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.DataServiceParameter#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DataServiceParameter#getValue()
+	 * @see org.wso2.integrationstudio.ds.DataServiceParameter#getValue()
 	 * @see #getDataServiceParameter()
 	 * @generated
 	 */
 	EAttribute getDataServiceParameter_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty <em>Registry Key Property</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.RegistryKeyProperty <em>Registry Key Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Registry Key Property</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty
+	 * @see org.wso2.integrationstudio.ds.RegistryKeyProperty
 	 * @generated
 	 */
 	EClass getRegistryKeyProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty#getKey <em>Key</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.RegistryKeyProperty#getKey <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Key</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty#getKey()
+	 * @see org.wso2.integrationstudio.ds.RegistryKeyProperty#getKey()
 	 * @see #getRegistryKeyProperty()
 	 * @generated
 	 */
 	EAttribute getRegistryKeyProperty_Key();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty <em>Custom Validator Property</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.CustomValidatorProperty <em>Custom Validator Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Custom Validator Property</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty
+	 * @see org.wso2.integrationstudio.ds.CustomValidatorProperty
 	 * @generated
 	 */
 	EClass getCustomValidatorProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.CustomValidatorProperty#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty#getValue()
+	 * @see org.wso2.integrationstudio.ds.CustomValidatorProperty#getValue()
 	 * @see #getCustomValidatorProperty()
 	 * @generated
 	 */
 	EAttribute getCustomValidatorProperty_Value();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.ds.CustomValidatorProperty#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty#getName()
+	 * @see org.wso2.integrationstudio.ds.CustomValidatorProperty#getName()
 	 * @see #getCustomValidatorProperty()
 	 * @generated
 	 */
 	EAttribute getCustomValidatorProperty_Name();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList <em>Custom Validator Property List</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.integrationstudio.ds.CustomValidatorPropertyList <em>Custom Validator Property List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Custom Validator Property List</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList
+	 * @see org.wso2.integrationstudio.ds.CustomValidatorPropertyList
 	 * @generated
 	 */
 	EClass getCustomValidatorPropertyList();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.wso2.integrationstudio.ds.CustomValidatorPropertyList#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList#getMixed()
+	 * @see org.wso2.integrationstudio.ds.CustomValidatorPropertyList#getMixed()
 	 * @see #getCustomValidatorPropertyList()
 	 * @generated
 	 */
 	EAttribute getCustomValidatorPropertyList_Mixed();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList#getProperty <em>Property</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.integrationstudio.ds.CustomValidatorPropertyList#getProperty <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Property</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList#getProperty()
+	 * @see org.wso2.integrationstudio.ds.CustomValidatorPropertyList#getProperty()
 	 * @see #getCustomValidatorPropertyList()
 	 * @generated
 	 */
 	EReference getCustomValidatorPropertyList_Property();
 
 	/**
-	 * Returns the meta object for enum '{@link org.wso2.integrationstudio.eclipse.ds.ServiceStatus <em>Service Status</em>}'.
+	 * Returns the meta object for enum '{@link org.wso2.integrationstudio.ds.ServiceStatus <em>Service Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Service Status</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ServiceStatus
+	 * @see org.wso2.integrationstudio.ds.ServiceStatus
 	 * @generated
 	 */
 	EEnum getServiceStatus();
 
 	/**
-	 * Returns the meta object for data type '{@link org.wso2.integrationstudio.eclipse.ds.ServiceStatus <em>Service Status Object</em>}'.
+	 * Returns the meta object for data type '{@link org.wso2.integrationstudio.ds.ServiceStatus <em>Service Status Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Service Status Object</em>'.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ServiceStatus
-	 * @model instanceClass="org.wso2.integrationstudio.eclipse.ds.ServiceStatus"
+	 * @see org.wso2.integrationstudio.ds.ServiceStatus
+	 * @model instanceClass="org.wso2.integrationstudio.ds.ServiceStatus"
 	 *        extendedMetaData="name='serviceStatus_._type:Object' baseType='serviceStatus_._type'"
 	 * @generated
 	 */
@@ -4806,11 +4806,11 @@ public interface DsPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.AttributeMappingImpl <em>Attribute Mapping</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.AttributeMappingImpl <em>Attribute Mapping</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.AttributeMappingImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getAttributeMapping()
+		 * @see org.wso2.integrationstudio.ds.impl.AttributeMappingImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getAttributeMapping()
 		 * @generated
 		 */
 		EClass ATTRIBUTE_MAPPING = eINSTANCE.getAttributeMapping();
@@ -4857,11 +4857,11 @@ public interface DsPackage extends EPackage {
 		EAttribute ATTRIBUTE_MAPPING__OPTIONAL = eINSTANCE.getAttributeMapping_Optional();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.CallQueryImpl <em>Call Query</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.CallQueryImpl <em>Call Query</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.CallQueryImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getCallQuery()
+		 * @see org.wso2.integrationstudio.ds.impl.CallQueryImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getCallQuery()
 		 * @generated
 		 */
 		EClass CALL_QUERY = eINSTANCE.getCallQuery();
@@ -4899,11 +4899,11 @@ public interface DsPackage extends EPackage {
 		EAttribute CALL_QUERY__REQUIRED_ROLES = eINSTANCE.getCallQuery_RequiredRoles();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.CallQueryListImpl <em>Call Query List</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.CallQueryListImpl <em>Call Query List</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.CallQueryListImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getCallQueryList()
+		 * @see org.wso2.integrationstudio.ds.impl.CallQueryListImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getCallQueryList()
 		 * @generated
 		 */
 		EClass CALL_QUERY_LIST = eINSTANCE.getCallQueryList();
@@ -4925,11 +4925,11 @@ public interface DsPackage extends EPackage {
 		EReference CALL_QUERY_LIST__CALL_QUERY = eINSTANCE.getCallQueryList_CallQuery();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ConfigurationPropertyImpl <em>Configuration Property</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.ConfigurationPropertyImpl <em>Configuration Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.ConfigurationPropertyImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getConfigurationProperty()
+		 * @see org.wso2.integrationstudio.ds.impl.ConfigurationPropertyImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getConfigurationProperty()
 		 * @generated
 		 */
 		EClass CONFIGURATION_PROPERTY = eINSTANCE.getConfigurationProperty();
@@ -4959,11 +4959,11 @@ public interface DsPackage extends EPackage {
 		EAttribute CONFIGURATION_PROPERTY__SECRET_ALIAS = eINSTANCE.getConfigurationProperty_SecretAlias();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorImpl <em>Custom Validator</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.CustomValidatorImpl <em>Custom Validator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getCustomValidator()
+		 * @see org.wso2.integrationstudio.ds.impl.CustomValidatorImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getCustomValidator()
 		 * @generated
 		 */
 		EClass CUSTOM_VALIDATOR = eINSTANCE.getCustomValidator();
@@ -4993,11 +4993,11 @@ public interface DsPackage extends EPackage {
 		EAttribute CUSTOM_VALIDATOR__MIXED = eINSTANCE.getCustomValidator_Mixed();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl <em>Data Service</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl <em>Data Service</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getDataService()
+		 * @see org.wso2.integrationstudio.ds.impl.DataServiceImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getDataService()
 		 * @generated
 		 */
 		EClass DATA_SERVICE = eINSTANCE.getDataService();
@@ -5172,11 +5172,11 @@ public interface DsPackage extends EPackage {
 		EAttribute DATA_SERVICE__DISABLE_LEGACY_BOXCARRING_MODE = eINSTANCE.getDataService_DisableLegacyBoxcarringMode();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.DataSourceConfigurationImpl <em>Data Source Configuration</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.DataSourceConfigurationImpl <em>Data Source Configuration</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DataSourceConfigurationImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getDataSourceConfiguration()
+		 * @see org.wso2.integrationstudio.ds.impl.DataSourceConfigurationImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getDataSourceConfiguration()
 		 * @generated
 		 */
 		EClass DATA_SOURCE_CONFIGURATION = eINSTANCE.getDataSourceConfiguration();
@@ -5215,11 +5215,11 @@ public interface DsPackage extends EPackage {
 		EAttribute DATA_SOURCE_CONFIGURATION__ENABLE_ODATA = eINSTANCE.getDataSourceConfiguration_EnableOData();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.DescriptionImpl <em>Description</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.DescriptionImpl <em>Description</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DescriptionImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getDescription()
+		 * @see org.wso2.integrationstudio.ds.impl.DescriptionImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getDescription()
 		 * @generated
 		 */
 		EClass DESCRIPTION = eINSTANCE.getDescription();
@@ -5233,11 +5233,11 @@ public interface DsPackage extends EPackage {
 		EAttribute DESCRIPTION__VALUE = eINSTANCE.getDescription_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl <em>Document Root</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.DocumentRootImpl <em>Document Root</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getDocumentRoot()
+		 * @see org.wso2.integrationstudio.ds.impl.DocumentRootImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getDocumentRoot()
 		 * @generated
 		 */
 		EClass DOCUMENT_ROOT = eINSTANCE.getDocumentRoot();
@@ -5324,11 +5324,11 @@ public interface DsPackage extends EPackage {
 		EReference DOCUMENT_ROOT__STARTINGROW = eINSTANCE.getDocumentRoot_Startingrow();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.DoubleRangeValidatorImpl <em>Double Range Validator</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.DoubleRangeValidatorImpl <em>Double Range Validator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DoubleRangeValidatorImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getDoubleRangeValidator()
+		 * @see org.wso2.integrationstudio.ds.impl.DoubleRangeValidatorImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getDoubleRangeValidator()
 		 * @generated
 		 */
 		EClass DOUBLE_RANGE_VALIDATOR = eINSTANCE.getDoubleRangeValidator();
@@ -5350,11 +5350,11 @@ public interface DsPackage extends EPackage {
 		EAttribute DOUBLE_RANGE_VALIDATOR__MINIMUM = eINSTANCE.getDoubleRangeValidator_Minimum();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl <em>Element Mapping</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl <em>Element Mapping</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getElementMapping()
+		 * @see org.wso2.integrationstudio.ds.impl.ElementMappingImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getElementMapping()
 		 * @generated
 		 */
 		EClass ELEMENT_MAPPING = eINSTANCE.getElementMapping();
@@ -5488,11 +5488,11 @@ public interface DsPackage extends EPackage {
 		EAttribute ELEMENT_MAPPING__ARRAY_NAME = eINSTANCE.getElementMapping_ArrayName();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.EventSubscriptionListImpl <em>Event Subscription List</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.EventSubscriptionListImpl <em>Event Subscription List</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.EventSubscriptionListImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getEventSubscriptionList()
+		 * @see org.wso2.integrationstudio.ds.impl.EventSubscriptionListImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getEventSubscriptionList()
 		 * @generated
 		 */
 		EClass EVENT_SUBSCRIPTION_LIST = eINSTANCE.getEventSubscriptionList();
@@ -5515,11 +5515,11 @@ public interface DsPackage extends EPackage {
 		                                                   eINSTANCE.getEventSubscriptionList_Subscription();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.EventTriggerImpl <em>Event Trigger</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.EventTriggerImpl <em>Event Trigger</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.EventTriggerImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getEventTrigger()
+		 * @see org.wso2.integrationstudio.ds.impl.EventTriggerImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getEventTrigger()
 		 * @generated
 		 */
 		EClass EVENT_TRIGGER = eINSTANCE.getEventTrigger();
@@ -5573,11 +5573,11 @@ public interface DsPackage extends EPackage {
 		EAttribute EVENT_TRIGGER__LANGUAGE = eINSTANCE.getEventTrigger_Language();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ExcelQueryImpl <em>Excel Query</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.ExcelQueryImpl <em>Excel Query</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.ExcelQueryImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getExcelQuery()
+		 * @see org.wso2.integrationstudio.ds.impl.ExcelQueryImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getExcelQuery()
 		 * @generated
 		 */
 		EClass EXCEL_QUERY = eINSTANCE.getExcelQuery();
@@ -5623,11 +5623,11 @@ public interface DsPackage extends EPackage {
 		EReference EXCEL_QUERY__MAXROWCOUNT = eINSTANCE.getExcelQuery_Maxrowcount();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ExpressionImpl <em>Expression</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.ExpressionImpl <em>Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.ExpressionImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getExpression()
+		 * @see org.wso2.integrationstudio.ds.impl.ExpressionImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getExpression()
 		 * @generated
 		 */
 		EClass EXPRESSION = eINSTANCE.getExpression();
@@ -5641,11 +5641,11 @@ public interface DsPackage extends EPackage {
 		EAttribute EXPRESSION__VALUE = eINSTANCE.getExpression_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.GSpreadQueryImpl <em>GSpread Query</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.GSpreadQueryImpl <em>GSpread Query</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.GSpreadQueryImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getGSpreadQuery()
+		 * @see org.wso2.integrationstudio.ds.impl.GSpreadQueryImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getGSpreadQuery()
 		 * @generated
 		 */
 		EClass GSPREAD_QUERY = eINSTANCE.getGSpreadQuery();
@@ -5691,11 +5691,11 @@ public interface DsPackage extends EPackage {
 		EReference GSPREAD_QUERY__HASHEADER = eINSTANCE.getGSpreadQuery_Hasheader();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.HasHeaderImpl <em>Has Header</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.HasHeaderImpl <em>Has Header</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.HasHeaderImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getHasHeader()
+		 * @see org.wso2.integrationstudio.ds.impl.HasHeaderImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getHasHeader()
 		 * @generated
 		 */
 		EClass HAS_HEADER = eINSTANCE.getHasHeader();
@@ -5709,11 +5709,11 @@ public interface DsPackage extends EPackage {
 		EAttribute HAS_HEADER__VALUE = eINSTANCE.getHasHeader_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.LengthValidatorImpl <em>Length Validator</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.LengthValidatorImpl <em>Length Validator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.LengthValidatorImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getLengthValidator()
+		 * @see org.wso2.integrationstudio.ds.impl.LengthValidatorImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getLengthValidator()
 		 * @generated
 		 */
 		EClass LENGTH_VALIDATOR = eINSTANCE.getLengthValidator();
@@ -5735,11 +5735,11 @@ public interface DsPackage extends EPackage {
 		EAttribute LENGTH_VALIDATOR__MINIMUM = eINSTANCE.getLengthValidator_Minimum();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.LongRangeValidatorImpl <em>Long Range Validator</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.LongRangeValidatorImpl <em>Long Range Validator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.LongRangeValidatorImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getLongRangeValidator()
+		 * @see org.wso2.integrationstudio.ds.impl.LongRangeValidatorImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getLongRangeValidator()
 		 * @generated
 		 */
 		EClass LONG_RANGE_VALIDATOR = eINSTANCE.getLongRangeValidator();
@@ -5761,11 +5761,11 @@ public interface DsPackage extends EPackage {
 		EAttribute LONG_RANGE_VALIDATOR__MINIMUM = eINSTANCE.getLongRangeValidator_Minimum();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.MaxRowCountImpl <em>Max Row Count</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.MaxRowCountImpl <em>Max Row Count</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.MaxRowCountImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getMaxRowCount()
+		 * @see org.wso2.integrationstudio.ds.impl.MaxRowCountImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getMaxRowCount()
 		 * @generated
 		 */
 		EClass MAX_ROW_COUNT = eINSTANCE.getMaxRowCount();
@@ -5779,11 +5779,11 @@ public interface DsPackage extends EPackage {
 		EAttribute MAX_ROW_COUNT__VALUE = eINSTANCE.getMaxRowCount_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.OperationImpl <em>Operation</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.OperationImpl <em>Operation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.OperationImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getOperation()
+		 * @see org.wso2.integrationstudio.ds.impl.OperationImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getOperation()
 		 * @generated
 		 */
 		EClass OPERATION = eINSTANCE.getOperation();
@@ -5837,11 +5837,11 @@ public interface DsPackage extends EPackage {
 		EAttribute OPERATION__NAME = eINSTANCE.getOperation_Name();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ParameterMappingImpl <em>Parameter Mapping</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.ParameterMappingImpl <em>Parameter Mapping</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.ParameterMappingImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getParameterMapping()
+		 * @see org.wso2.integrationstudio.ds.impl.ParameterMappingImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getParameterMapping()
 		 * @generated
 		 */
 		EClass PARAMETER_MAPPING = eINSTANCE.getParameterMapping();
@@ -5871,11 +5871,11 @@ public interface DsPackage extends EPackage {
 		EAttribute PARAMETER_MAPPING__QUERY_PARAM = eINSTANCE.getParameterMapping_QueryParam();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.PatternValidatorImpl <em>Pattern Validator</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.PatternValidatorImpl <em>Pattern Validator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.PatternValidatorImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getPatternValidator()
+		 * @see org.wso2.integrationstudio.ds.impl.PatternValidatorImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getPatternValidator()
 		 * @generated
 		 */
 		EClass PATTERN_VALIDATOR = eINSTANCE.getPatternValidator();
@@ -5889,11 +5889,11 @@ public interface DsPackage extends EPackage {
 		EAttribute PATTERN_VALIDATOR__PATTERN = eINSTANCE.getPatternValidator_Pattern();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl <em>Query</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.QueryImpl <em>Query</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getQuery()
+		 * @see org.wso2.integrationstudio.ds.impl.QueryImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getQuery()
 		 * @generated
 		 */
 		EClass QUERY = eINSTANCE.getQuery();
@@ -6027,11 +6027,11 @@ public interface DsPackage extends EPackage {
 		EAttribute QUERY__RETURN_UPDATED_ROW_COUNT = eINSTANCE.getQuery_ReturnUpdatedRowCount();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl <em>Query Parameter</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl <em>Query Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getQueryParameter()
+		 * @see org.wso2.integrationstudio.ds.impl.QueryParameterImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getQueryParameter()
 		 * @generated
 		 */
 		EClass QUERY_PARAMETER = eINSTANCE.getQueryParameter();
@@ -6144,11 +6144,11 @@ public interface DsPackage extends EPackage {
 		EAttribute QUERY_PARAMETER__TYPE = eINSTANCE.getQueryParameter_Type();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryPropertyImpl <em>Query Property</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.QueryPropertyImpl <em>Query Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.QueryPropertyImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getQueryProperty()
+		 * @see org.wso2.integrationstudio.ds.impl.QueryPropertyImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getQueryProperty()
 		 * @generated
 		 */
 		EClass QUERY_PROPERTY = eINSTANCE.getQueryProperty();
@@ -6170,11 +6170,11 @@ public interface DsPackage extends EPackage {
 		EAttribute QUERY_PROPERTY__NAME = eINSTANCE.getQueryProperty_Name();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryPropertyListImpl <em>Query Property List</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.QueryPropertyListImpl <em>Query Property List</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.QueryPropertyListImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getQueryPropertyList()
+		 * @see org.wso2.integrationstudio.ds.impl.QueryPropertyListImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getQueryPropertyList()
 		 * @generated
 		 */
 		EClass QUERY_PROPERTY_LIST = eINSTANCE.getQueryPropertyList();
@@ -6196,11 +6196,11 @@ public interface DsPackage extends EPackage {
 		EReference QUERY_PROPERTY_LIST__PROPERTY = eINSTANCE.getQueryPropertyList_Property();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ResourceImpl <em>Resource</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.ResourceImpl <em>Resource</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.ResourceImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getResource()
+		 * @see org.wso2.integrationstudio.ds.impl.ResourceImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getResource()
 		 * @generated
 		 */
 		EClass RESOURCE = eINSTANCE.getResource();
@@ -6246,11 +6246,11 @@ public interface DsPackage extends EPackage {
 		EAttribute RESOURCE__RETURN_REQUEST_STATUS = eINSTANCE.getResource_ReturnRequestStatus();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl <em>Result Mapping</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl <em>Result Mapping</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getResultMapping()
+		 * @see org.wso2.integrationstudio.ds.impl.ResultMappingImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getResultMapping()
 		 * @generated
 		 */
 		EClass RESULT_MAPPING = eINSTANCE.getResultMapping();
@@ -6347,11 +6347,11 @@ public interface DsPackage extends EPackage {
         EAttribute RESULT_MAPPING__OUTPUT_TYPE = eINSTANCE.getResultMapping_OutputType();
 
         /**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.SparqlImpl <em>Sparql</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.SparqlImpl <em>Sparql</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.SparqlImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getSparql()
+		 * @see org.wso2.integrationstudio.ds.impl.SparqlImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getSparql()
 		 * @generated
 		 */
 		EClass SPARQL = eINSTANCE.getSparql();
@@ -6365,11 +6365,11 @@ public interface DsPackage extends EPackage {
 		EAttribute SPARQL__VALUE = eINSTANCE.getSparql_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.SqlImpl <em>Sql</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.SqlImpl <em>Sql</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.SqlImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getSql()
+		 * @see org.wso2.integrationstudio.ds.impl.SqlImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getSql()
 		 * @generated
 		 */
 		EClass SQL = eINSTANCE.getSql();
@@ -6391,11 +6391,11 @@ public interface DsPackage extends EPackage {
 		EAttribute SQL__DIALECT = eINSTANCE.getSql_Dialect();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryExpressionImpl <em>Query Expression</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.QueryExpressionImpl <em>Query Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.QueryExpressionImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getQueryExpression()
+		 * @see org.wso2.integrationstudio.ds.impl.QueryExpressionImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getQueryExpression()
 		 * @generated
 		 */
 		EClass QUERY_EXPRESSION = eINSTANCE.getQueryExpression();
@@ -6409,11 +6409,11 @@ public interface DsPackage extends EPackage {
 		EAttribute QUERY_EXPRESSION__VALUE = eINSTANCE.getQueryExpression_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.StartingRowImpl <em>Starting Row</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.StartingRowImpl <em>Starting Row</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.StartingRowImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getStartingRow()
+		 * @see org.wso2.integrationstudio.ds.impl.StartingRowImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getStartingRow()
 		 * @generated
 		 */
 		EClass STARTING_ROW = eINSTANCE.getStartingRow();
@@ -6427,11 +6427,11 @@ public interface DsPackage extends EPackage {
 		EAttribute STARTING_ROW__VALUE = eINSTANCE.getStartingRow_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.SubscriptionImpl <em>Subscription</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.SubscriptionImpl <em>Subscription</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.SubscriptionImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getSubscription()
+		 * @see org.wso2.integrationstudio.ds.impl.SubscriptionImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getSubscription()
 		 * @generated
 		 */
 		EClass SUBSCRIPTION = eINSTANCE.getSubscription();
@@ -6445,11 +6445,11 @@ public interface DsPackage extends EPackage {
 		EAttribute SUBSCRIPTION__VALUE = eINSTANCE.getSubscription_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.TargetTopicImpl <em>Target Topic</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.TargetTopicImpl <em>Target Topic</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.TargetTopicImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getTargetTopic()
+		 * @see org.wso2.integrationstudio.ds.impl.TargetTopicImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getTargetTopic()
 		 * @generated
 		 */
 		EClass TARGET_TOPIC = eINSTANCE.getTargetTopic();
@@ -6463,11 +6463,11 @@ public interface DsPackage extends EPackage {
 		EAttribute TARGET_TOPIC__VALUE = eINSTANCE.getTargetTopic_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.WorkBookNameImpl <em>Work Book Name</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.WorkBookNameImpl <em>Work Book Name</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.WorkBookNameImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getWorkBookName()
+		 * @see org.wso2.integrationstudio.ds.impl.WorkBookNameImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getWorkBookName()
 		 * @generated
 		 */
 		EClass WORK_BOOK_NAME = eINSTANCE.getWorkBookName();
@@ -6481,11 +6481,11 @@ public interface DsPackage extends EPackage {
 		EAttribute WORK_BOOK_NAME__VALUE = eINSTANCE.getWorkBookName_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.WorkSheetNumberImpl <em>Work Sheet Number</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.WorkSheetNumberImpl <em>Work Sheet Number</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.WorkSheetNumberImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getWorkSheetNumber()
+		 * @see org.wso2.integrationstudio.ds.impl.WorkSheetNumberImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getWorkSheetNumber()
 		 * @generated
 		 */
 		EClass WORK_SHEET_NUMBER = eINSTANCE.getWorkSheetNumber();
@@ -6499,11 +6499,11 @@ public interface DsPackage extends EPackage {
 		EAttribute WORK_SHEET_NUMBER__VALUE = eINSTANCE.getWorkSheetNumber_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.PolicyImpl <em>Policy</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.PolicyImpl <em>Policy</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.PolicyImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getPolicy()
+		 * @see org.wso2.integrationstudio.ds.impl.PolicyImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getPolicy()
 		 * @generated
 		 */
 		EClass POLICY = eINSTANCE.getPolicy();
@@ -6517,11 +6517,11 @@ public interface DsPackage extends EPackage {
 		EAttribute POLICY__KEY = eINSTANCE.getPolicy_Key();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceParameterImpl <em>Data Service Parameter</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.DataServiceParameterImpl <em>Data Service Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DataServiceParameterImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getDataServiceParameter()
+		 * @see org.wso2.integrationstudio.ds.impl.DataServiceParameterImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getDataServiceParameter()
 		 * @generated
 		 */
 		EClass DATA_SERVICE_PARAMETER = eINSTANCE.getDataServiceParameter();
@@ -6543,11 +6543,11 @@ public interface DsPackage extends EPackage {
 		EAttribute DATA_SERVICE_PARAMETER__VALUE = eINSTANCE.getDataServiceParameter_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.RegistryKeyPropertyImpl <em>Registry Key Property</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.RegistryKeyPropertyImpl <em>Registry Key Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.RegistryKeyPropertyImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getRegistryKeyProperty()
+		 * @see org.wso2.integrationstudio.ds.impl.RegistryKeyPropertyImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getRegistryKeyProperty()
 		 * @generated
 		 */
 		EClass REGISTRY_KEY_PROPERTY = eINSTANCE.getRegistryKeyProperty();
@@ -6561,11 +6561,11 @@ public interface DsPackage extends EPackage {
 		EAttribute REGISTRY_KEY_PROPERTY__KEY = eINSTANCE.getRegistryKeyProperty_Key();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorPropertyImpl <em>Custom Validator Property</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.CustomValidatorPropertyImpl <em>Custom Validator Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorPropertyImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getCustomValidatorProperty()
+		 * @see org.wso2.integrationstudio.ds.impl.CustomValidatorPropertyImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getCustomValidatorProperty()
 		 * @generated
 		 */
 		EClass CUSTOM_VALIDATOR_PROPERTY = eINSTANCE.getCustomValidatorProperty();
@@ -6587,11 +6587,11 @@ public interface DsPackage extends EPackage {
 		EAttribute CUSTOM_VALIDATOR_PROPERTY__NAME = eINSTANCE.getCustomValidatorProperty_Name();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl <em>Custom Validator Property List</em>}' class.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.impl.CustomValidatorPropertyListImpl <em>Custom Validator Property List</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getCustomValidatorPropertyList()
+		 * @see org.wso2.integrationstudio.ds.impl.CustomValidatorPropertyListImpl
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getCustomValidatorPropertyList()
 		 * @generated
 		 */
 		EClass CUSTOM_VALIDATOR_PROPERTY_LIST = eINSTANCE.getCustomValidatorPropertyList();
@@ -6613,11 +6613,11 @@ public interface DsPackage extends EPackage {
 		EReference CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY = eINSTANCE.getCustomValidatorPropertyList_Property();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.integrationstudio.eclipse.ds.ServiceStatus <em>Service Status</em>}' enum.
+		 * The meta object literal for the '{@link org.wso2.integrationstudio.ds.ServiceStatus <em>Service Status</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.ServiceStatus
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getServiceStatus()
+		 * @see org.wso2.integrationstudio.ds.ServiceStatus
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getServiceStatus()
 		 * @generated
 		 */
 		EEnum SERVICE_STATUS = eINSTANCE.getServiceStatus();
@@ -6626,8 +6626,8 @@ public interface DsPackage extends EPackage {
 		 * The meta object literal for the '<em>Service Status Object</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.integrationstudio.eclipse.ds.ServiceStatus
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getServiceStatusObject()
+		 * @see org.wso2.integrationstudio.ds.ServiceStatus
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getServiceStatusObject()
 		 * @generated
 		 */
 		EDataType SERVICE_STATUS_OBJECT = eINSTANCE.getServiceStatusObject();
@@ -6637,7 +6637,7 @@ public interface DsPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.util.Map
-		 * @see org.wso2.integrationstudio.eclipse.ds.impl.DsPackageImpl#getMap()
+		 * @see org.wso2.integrationstudio.ds.impl.DsPackageImpl#getMap()
 		 * @generated
 		 */
 		EDataType MAP = eINSTANCE.getMap();

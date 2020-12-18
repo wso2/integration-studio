@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.model;
+package org.wso2.integrationstudio.platform.core.model;
 
 import org.apache.maven.model.Parent;
 

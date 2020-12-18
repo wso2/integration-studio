@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,10 +15,10 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Mediator#isReverse <em>Reverse</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Mediator#isReverse <em>Reverse</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMediator()
  * @model abstract="true"
  * @generated
  */
@@ -35,14 +35,14 @@ public interface Mediator extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Reverse</em>' attribute.
      * @see #setReverse(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMediator_Reverse()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMediator_Reverse()
      * @model default="false"
      * @generated
      */
     boolean isReverse();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Mediator#isReverse <em>Reverse</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Mediator#isReverse <em>Reverse</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Reverse</em>' attribute.

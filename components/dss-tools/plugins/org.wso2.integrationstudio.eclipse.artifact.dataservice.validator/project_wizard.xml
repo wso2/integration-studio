@@ -13,13 +13,13 @@
  			  		error="Please give a name to create the Data Services Validator">
  		<data modelProperty="project.name"
  					type="string" 
- 					fieldController="org.wso2.integrationstudio.eclipse.artifact.ds.validator.validators.ValidatorFieldsController">Project Name   </data>
+ 					fieldController="org.wso2.integrationstudio.artifact.ds.validator.validators.ValidatorFieldsController">Project Name   </data>
  		<data modelProperty="vaildatorClass.package.name" 
  					type="string" 
- 					fieldController="org.wso2.integrationstudio.eclipse.artifact.ds.validator.validators.ValidatorFieldsController" group="testid">Package Name</data>
+ 					fieldController="org.wso2.integrationstudio.artifact.ds.validator.validators.ValidatorFieldsController" group="testid">Package Name</data>
  		<data modelProperty="vaildatorClass.name" 
  					type="string" 
- 					fieldController="org.wso2.integrationstudio.eclipse.artifact.ds.validator.validators.ValidatorFieldsController" group="testid">Class Name</data>	 
+ 					fieldController="org.wso2.integrationstudio.artifact.ds.validator.validators.ValidatorFieldsController" group="testid">Class Name</data>	 
  		<group id="testid"></group>
  		
  		<projectNatures>
@@ -32,8 +32,8 @@
  			  			description="Create Data Services Validator using a project with Data Services Validator Class"
  			  			error="Please select the project">	  
  	 		<data modelProperty="import.project.list" type="list" 
- 					fieldController="org.wso2.integrationstudio.eclipse.artifact.ds.validator.validators.ValidatorFieldsController"
- 					controlData="select=single;class=org.wso2.integrationstudio.eclipse.artifact.ds.validator.utils.ProjectData">Validator Project</data>		
+ 					fieldController="org.wso2.integrationstudio.artifact.ds.validator.validators.ValidatorFieldsController"
+ 					controlData="select=single;class=org.wso2.integrationstudio.artifact.ds.validator.utils.ProjectData">Validator Project</data>		
  		<projectNatures>
 			<nature>org.eclipse.jdt.core.javanature</nature>
 		</projectNatures>

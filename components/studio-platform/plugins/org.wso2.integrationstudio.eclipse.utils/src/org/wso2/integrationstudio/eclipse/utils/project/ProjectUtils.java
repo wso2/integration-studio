@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.project;
+package org.wso2.integrationstudio.utils.project;
 
 import java.io.File;
 import java.net.URL;

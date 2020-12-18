@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.provider;
+package org.wso2.integrationstudio.gmf.esb.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,21 +18,21 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyName;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyScope;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyGroupMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyAction;
+import org.wso2.integrationstudio.gmf.esb.PropertyMediator;
+import org.wso2.integrationstudio.gmf.esb.PropertyName;
+import org.wso2.integrationstudio.gmf.esb.PropertyScope;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.impl.PropertyGroupMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
 
 import java.lang.Object;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator} object.
+ * This is the item provider adapter for a {@link org.wso2.integrationstudio.gmf.esb.PropertyMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

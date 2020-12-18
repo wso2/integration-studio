@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.types;
+package org.wso2.integrationstudio.platform.core.types;
 
 import java.util.Observable;
 

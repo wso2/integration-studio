@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -54,10 +54,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.MergeNodeSecondInputConnectorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.MergeNodeSecondInputConnectorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -243,7 +243,7 @@ public class MergeNodeSecondInputConnectorPropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MergeNodeSecondInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MergeNodeSecondInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
 	public void initIncomingLinks(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -266,7 +266,7 @@ public class MergeNodeSecondInputConnectorPropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MergeNodeSecondInputConnectorPropertiesEditionPart#updateIncomingLinks()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MergeNodeSecondInputConnectorPropertiesEditionPart#updateIncomingLinks()
 	 * 
 	 */
 	public void updateIncomingLinks() {
@@ -276,7 +276,7 @@ public class MergeNodeSecondInputConnectorPropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MergeNodeSecondInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MergeNodeSecondInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToIncomingLinks(ViewerFilter filter) {
@@ -286,7 +286,7 @@ public class MergeNodeSecondInputConnectorPropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MergeNodeSecondInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MergeNodeSecondInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToIncomingLinks(ViewerFilter filter) {
@@ -296,7 +296,7 @@ public class MergeNodeSecondInputConnectorPropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MergeNodeSecondInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MergeNodeSecondInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInIncomingLinksTable(EObject element) {

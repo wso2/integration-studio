@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.messageprocessor.util;
+package org.wso2.integrationstudio.artifact.messageprocessor.util;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.artifact.messageprocessor.Activator;
+import org.wso2.integrationstudio.artifact.messageprocessor.Activator;
 
-import org.wso2.integrationstudio.eclipse.utils.ui.ImageUtils;
+import org.wso2.integrationstudio.utils.ui.ImageUtils;
 
 public class MessageProcessorImageUtils extends ImageUtils{
 	

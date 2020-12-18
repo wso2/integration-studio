@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,14 +21,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediaType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryArgument;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFormatType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MediaType;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgument;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.PayloadFormatType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,13 +38,13 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getPayload <em>Payload</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getPayloadKey <em>Payload Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getArgs <em>Args</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getMediaType <em>Media Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getPayloadFormat <em>Payload Format</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryMediatorImpl#getPayload <em>Payload</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryMediatorImpl#getPayloadKey <em>Payload Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryMediatorImpl#getArgs <em>Args</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryMediatorImpl#getMediaType <em>Media Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryMediatorImpl#getPayloadFormat <em>Payload Format</em>}</li>
  * </ul>
  *
  * @generated

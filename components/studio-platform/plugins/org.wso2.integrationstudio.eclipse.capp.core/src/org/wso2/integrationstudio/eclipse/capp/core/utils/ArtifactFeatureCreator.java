@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.utils;
+package org.wso2.integrationstudio.capp.core.utils;
 
 import java.io.File;
 
-import org.wso2.integrationstudio.eclipse.capp.core.Activator;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.ICAppArtifactHandler;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.integrationstudio.eclipse.capp.core.data.Bundle;
-import org.wso2.integrationstudio.eclipse.capp.core.manifest.Artifact;
-import org.wso2.integrationstudio.eclipse.capp.core.manifest.CARArtifactFeatureManifest;
-import org.wso2.integrationstudio.eclipse.capp.core.manifest.SimpleJarManifest;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.capp.core.Activator;
+import org.wso2.integrationstudio.capp.core.artifacts.ICAppArtifactHandler;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.CAppEnvironment;
+import org.wso2.integrationstudio.capp.core.data.Bundle;
+import org.wso2.integrationstudio.capp.core.manifest.Artifact;
+import org.wso2.integrationstudio.capp.core.manifest.CARArtifactFeatureManifest;
+import org.wso2.integrationstudio.capp.core.manifest.SimpleJarManifest;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class ArtifactFeatureCreator {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

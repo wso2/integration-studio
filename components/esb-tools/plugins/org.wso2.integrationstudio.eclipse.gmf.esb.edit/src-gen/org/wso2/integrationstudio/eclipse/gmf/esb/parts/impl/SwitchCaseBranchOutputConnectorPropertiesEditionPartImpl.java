@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -36,10 +36,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -252,7 +252,7 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#initCommentMediators(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#initCommentMediators(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initCommentMediators(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -273,7 +273,7 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#updateCommentMediators()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#updateCommentMediators()
 	 * 
 	 */
 	public void updateCommentMediators() {
@@ -283,7 +283,7 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToCommentMediators(ViewerFilter filter) {
@@ -296,7 +296,7 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToCommentMediators(ViewerFilter filter) {
@@ -306,7 +306,7 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInCommentMediatorsTable(EObject element) {
@@ -316,7 +316,7 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#getCaseRegex()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#getCaseRegex()
 	 * 
 	 */
 	public String getCaseRegex() {
@@ -326,7 +326,7 @@ public class SwitchCaseBranchOutputConnectorPropertiesEditionPartImpl extends Co
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#setCaseRegex(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchCaseBranchOutputConnectorPropertiesEditionPart#setCaseRegex(String newValue)
 	 * 
 	 */
 	public void setCaseRegex(String newValue) {

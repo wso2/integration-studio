@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator;
+package org.wso2.integrationstudio.gmf.esb.diagram.validator;
 
 import java.util.Iterator;
 import java.util.Properties;
@@ -52,13 +52,13 @@ import org.wso2.carbon.mediator.publishevent.PublishEventMediatorFactory;
 import org.wso2.carbon.mediator.service.MediatorException;
 import org.wso2.carbon.mediator.transform.xml.SmooksMediatorFactory;
 import org.wso2.carbon.rule.mediator.RuleMediatorFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.BamMediatorExtFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.BeanMediatorExtFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.BuilderMediatorExtFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyPOJOCommandMediatorFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyScriptMediatorFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.BamMediatorExtFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.BeanMediatorExtFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.BuilderMediatorExtFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DummyPOJOCommandMediatorFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DummyScriptMediatorFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
 
 public class MediatorValidationUtil {
     

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 import java.util.Map.Entry;
@@ -27,20 +27,20 @@ import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.endpoints.Endpoint;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorBooleanValue;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorIsolationLevel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlParameterDefinition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlParameterValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.AbstractSqlExecutorMediator;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorBooleanValue;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorConnectionType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorDatasourceType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorIsolationLevel;
+import org.wso2.integrationstudio.gmf.esb.SqlParameterDefinition;
+import org.wso2.integrationstudio.gmf.esb.SqlParameterValueType;
+import org.wso2.integrationstudio.gmf.esb.SqlResultMapping;
+import org.wso2.integrationstudio.gmf.esb.SqlStatement;
+import org.wso2.integrationstudio.gmf.esb.persistence.Activator;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.securevault.secret.SecretInformation;
 import org.apache.synapse.mediators.db.AbstractDBMediator;
 import org.apache.synapse.mediators.db.Statement;

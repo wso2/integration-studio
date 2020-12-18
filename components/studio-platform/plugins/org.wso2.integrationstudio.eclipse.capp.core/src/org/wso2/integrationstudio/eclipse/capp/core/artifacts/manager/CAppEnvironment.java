@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager;
+package org.wso2.integrationstudio.capp.core.artifacts.manager;
 
-import org.wso2.integrationstudio.eclipse.capp.core.model.ServerRole;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryHandler;
+import org.wso2.integrationstudio.capp.core.model.ServerRole;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryHandler;
 
 public class CAppEnvironment {
 	private static ICAppArtifactManager cAppManager;

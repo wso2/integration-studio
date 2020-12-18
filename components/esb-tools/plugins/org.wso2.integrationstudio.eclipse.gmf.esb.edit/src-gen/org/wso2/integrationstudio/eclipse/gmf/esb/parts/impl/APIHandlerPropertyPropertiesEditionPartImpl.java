@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -38,10 +38,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIHandlerPropertyPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.parts.APIHandlerPropertyPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -247,7 +247,7 @@ public class APIHandlerPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIHandlerPropertyPropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIHandlerPropertyPropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -257,7 +257,7 @@ public class APIHandlerPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIHandlerPropertyPropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIHandlerPropertyPropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -279,7 +279,7 @@ public class APIHandlerPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIHandlerPropertyPropertiesEditionPart#getValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIHandlerPropertyPropertiesEditionPart#getValue()
 	 * 
 	 */
 	public String getValue() {
@@ -289,7 +289,7 @@ public class APIHandlerPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIHandlerPropertyPropertiesEditionPart#setValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIHandlerPropertyPropertiesEditionPart#setValue(String newValue)
 	 * 
 	 */
 	public void setValue(String newValue) {

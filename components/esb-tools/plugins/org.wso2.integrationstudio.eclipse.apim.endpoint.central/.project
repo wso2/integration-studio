@@ -17,7 +17,7 @@
   ~ under the License.
   -->
 <projectDescription>
-	<name>org.wso2.integrationstudio.eclipse.apim.endpoint.central</name>
+	<name>org.wso2.integrationstudio.apim.endpoint.central</name>
 	<comment></comment>
 	<projects>
 	</projects>

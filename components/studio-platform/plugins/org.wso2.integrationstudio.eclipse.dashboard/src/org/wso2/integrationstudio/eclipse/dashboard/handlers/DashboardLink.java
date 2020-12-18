@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.dashboard.handlers;
+package org.wso2.integrationstudio.dashboard.handlers;
 
 public class DashboardLink {
 

@@ -16,12 +16,12 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei.internal;
+package org.wso2.integrationstudio.carbonserver44microei.internal;
 
 
 import java.net.URL;
 
-import org.wso2.integrationstudio.eclipse.carbonserver.base.impl.CarbonServer;
+import org.wso2.integrationstudio.carbonserver.base.impl.CarbonServer;
 
 public class CarbonServer44microei extends CarbonServer {
 

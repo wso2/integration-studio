@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.util;
+package org.wso2.integrationstudio.docker.distribution.util;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -30,13 +30,13 @@ import java.util.concurrent.atomic.AtomicReference;
 import javax.ws.rs.ext.RuntimeDelegate;
 
 import org.glassfish.jersey.internal.RuntimeDelegateImpl;
-import org.wso2.integrationstudio.eclipse.docker.distribution.Activator;
-import org.wso2.integrationstudio.eclipse.docker.distribution.exceptions.DockerConnectionException;
-import org.wso2.integrationstudio.eclipse.docker.distribution.exceptions.DockerImageGenerationException;
-import org.wso2.integrationstudio.eclipse.docker.distribution.model.MicroIntegratorDockerModel;
-import org.wso2.integrationstudio.eclipse.docker.distribution.resources.DockerGenConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.docker.distribution.Activator;
+import org.wso2.integrationstudio.docker.distribution.exceptions.DockerConnectionException;
+import org.wso2.integrationstudio.docker.distribution.exceptions.DockerImageGenerationException;
+import org.wso2.integrationstudio.docker.distribution.model.MicroIntegratorDockerModel;
+import org.wso2.integrationstudio.docker.distribution.resources.DockerGenConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;

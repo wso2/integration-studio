@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
@@ -32,11 +32,11 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.DiagramCustomConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.DiagramCustomConstants;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.ImageHolder;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.DiagramCustomConstants.VALIDATION_MARK_IMAGE_LOCATION;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.FILTER_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.DiagramCustomConstants.VALIDATION_MARK_IMAGE_LOCATION;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.FILTER_MEDIATOR_ICON_PATH;
 
 public class FilterMediatorGraphicalShape extends RoundedRectangle {
     RectangleFigure propertyValueRectangle1;

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -74,13 +74,13 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -669,7 +669,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -679,7 +679,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -701,7 +701,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -711,7 +711,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -752,7 +752,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -762,7 +762,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -784,7 +784,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -794,7 +794,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -816,7 +816,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#getKey()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#getKey()
 	 * 
 	 */
 	public String getKey() {
@@ -826,7 +826,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#setKey(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#setKey(String newValue)
 	 * 
 	 */
 	public void setKey(String newValue) {
@@ -850,7 +850,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#initOutputConnector(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#initOutputConnector(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initOutputConnector(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -871,7 +871,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#updateOutputConnector()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#updateOutputConnector()
 	 * 
 	 */
 	public void updateOutputConnector() {
@@ -881,7 +881,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#addFilterOutputConnector(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#addFilterOutputConnector(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToOutputConnector(ViewerFilter filter) {
@@ -894,7 +894,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#addBusinessFilterOutputConnector(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#addBusinessFilterOutputConnector(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToOutputConnector(ViewerFilter filter) {
@@ -904,7 +904,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#isContainedInOutputConnectorTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#isContainedInOutputConnectorTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInOutputConnectorTable(EObject element) {
@@ -916,7 +916,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#initIncludedMediators(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#initIncludedMediators(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initIncludedMediators(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -937,7 +937,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#updateIncludedMediators()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#updateIncludedMediators()
 	 * 
 	 */
 	public void updateIncludedMediators() {
@@ -947,7 +947,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#addFilterIncludedMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#addFilterIncludedMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToIncludedMediators(ViewerFilter filter) {
@@ -960,7 +960,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#addBusinessFilterIncludedMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#addBusinessFilterIncludedMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToIncludedMediators(ViewerFilter filter) {
@@ -970,7 +970,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#isContainedInIncludedMediatorsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#isContainedInIncludedMediatorsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInIncludedMediatorsTable(EObject element) {
@@ -980,7 +980,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#getReceiveSequence()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#getReceiveSequence()
 	 * 
 	 */
 	public Boolean getReceiveSequence() {
@@ -990,7 +990,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#setReceiveSequence(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#setReceiveSequence(Boolean newValue)
 	 * 
 	 */
 	public void setReceiveSequence(Boolean newValue) {
@@ -1012,7 +1012,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#getDuplicate()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#getDuplicate()
 	 * 
 	 */
 	public Boolean getDuplicate() {
@@ -1022,7 +1022,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#setDuplicate(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#setDuplicate(Boolean newValue)
 	 * 
 	 */
 	public void setDuplicate(Boolean newValue) {
@@ -1044,7 +1044,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#getReferringSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#getReferringSequenceType()
 	 * 
 	 */
 	public Enumerator getReferringSequenceType() {
@@ -1055,7 +1055,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#initReferringSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#initReferringSequenceType(Object input, Enumerator current)
 	 */
 	public void initReferringSequenceType(Object input, Enumerator current) {
 		referringSequenceType.setInput(input);
@@ -1073,7 +1073,7 @@ public class SequencePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencePropertiesEditionPart#setReferringSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencePropertiesEditionPart#setReferringSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setReferringSequenceType(Enumerator newValue) {

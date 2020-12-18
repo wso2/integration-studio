@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.utils;
+package org.wso2.integrationstudio.platform.core.utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
-import org.wso2.integrationstudio.eclipse.platform.core.MediaManager;
+import org.wso2.integrationstudio.platform.core.MediaManager;
 
 public class IntegrationStudioProviderUtils {
 	public static void addFilter(Map<String, List<String>> filters, String filterId, String filterValue) {

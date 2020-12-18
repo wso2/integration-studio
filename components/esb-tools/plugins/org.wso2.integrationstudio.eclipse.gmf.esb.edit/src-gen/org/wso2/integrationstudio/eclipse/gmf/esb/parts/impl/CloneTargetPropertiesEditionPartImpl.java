@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 import java.util.ArrayList;
 
@@ -64,13 +64,13 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -461,7 +461,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#getSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#getSequenceType()
 	 * 
 	 */
 	public Enumerator getSequenceType() {
@@ -472,7 +472,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
 	 */
 	public void initSequenceType(Object input, Enumerator current) {
 		sequenceType.setInput(input);
@@ -490,7 +490,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#setSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#setSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setSequenceType(Enumerator newValue) {
@@ -508,7 +508,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#getSequence()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#getSequence()
 	 * 
 	 */
 	public EObject getSequence() {
@@ -523,7 +523,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#initSequence(EObjectFlatComboSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#initSequence(EObjectFlatComboSettings)
 	 */
 	public void initSequence(EObjectFlatComboSettings settings) {
 		sequence.setInput(settings);
@@ -543,7 +543,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#setSequence(EObject newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#setSequence(EObject newValue)
 	 * 
 	 */
 	public void setSequence(EObject newValue) {
@@ -565,7 +565,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#setSequenceButtonMode(ButtonsModeEnum newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#setSequenceButtonMode(ButtonsModeEnum newValue)
 	 */
 	public void setSequenceButtonMode(ButtonsModeEnum newValue) {
 		sequence.setButtonMode(newValue);
@@ -574,7 +574,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#addFilterSequence(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#addFilterSequence(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToSequence(ViewerFilter filter) {
@@ -584,7 +584,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#addBusinessFilterSequence(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#addBusinessFilterSequence(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToSequence(ViewerFilter filter) {
@@ -594,7 +594,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#getEndpointType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#getEndpointType()
 	 * 
 	 */
 	public Enumerator getEndpointType() {
@@ -605,7 +605,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#initEndpointType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#initEndpointType(Object input, Enumerator current)
 	 */
 	public void initEndpointType(Object input, Enumerator current) {
 		endpointType.setInput(input);
@@ -623,7 +623,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#setEndpointType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#setEndpointType(Enumerator newValue)
 	 * 
 	 */
 	public void setEndpointType(Enumerator newValue) {
@@ -641,7 +641,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#getSoapAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#getSoapAction()
 	 * 
 	 */
 	public String getSoapAction() {
@@ -651,7 +651,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#setSoapAction(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#setSoapAction(String newValue)
 	 * 
 	 */
 	public void setSoapAction(String newValue) {
@@ -673,7 +673,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#getToAddress()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#getToAddress()
 	 * 
 	 */
 	public String getToAddress() {
@@ -683,7 +683,7 @@ public class CloneTargetPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloneTargetPropertiesEditionPart#setToAddress(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloneTargetPropertiesEditionPart#setToAddress(String newValue)
 	 * 
 	 */
 	public void setToAddress(String newValue) {

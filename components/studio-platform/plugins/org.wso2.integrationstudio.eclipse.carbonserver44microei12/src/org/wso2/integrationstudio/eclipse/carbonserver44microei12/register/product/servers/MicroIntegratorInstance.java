@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei12.register.product.servers;
+package org.wso2.integrationstudio.carbonserver44microei12.register.product.servers;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,12 +45,12 @@ import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.IServerType;
 import org.eclipse.wst.server.core.IServerWorkingCopy;
 import org.eclipse.wst.server.core.ServerCore;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.ServerProperties;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.util.ServerConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver44microei12.Activator;
+import org.wso2.integrationstudio.carbonserver44microei12.ServerProperties;
+import org.wso2.integrationstudio.carbonserver44microei12.util.CarbonServer44eiUtils;
+import org.wso2.integrationstudio.carbonserver44microei12.util.ServerConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * This class contains and manages the micro-integrator

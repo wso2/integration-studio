@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.core.interfaces;
+package org.wso2.integrationstudio.esb.core.interfaces;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.ui.IEditorInput;

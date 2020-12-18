@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.wso2plugin.template.manager;
+package org.wso2.integrationstudio.wso2plugin.template.manager;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 public class Activator extends AbstractUIPlugin {
 
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.wso2plugin.template.manager"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.wso2plugin.template.manager"; //$NON-NLS-1$
 
 	private static Activator plugin;
 

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 import java.util.regex.Pattern;
 
@@ -27,14 +27,14 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyDataType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyName;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyScope;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyAction;
+import org.wso2.integrationstudio.gmf.esb.PropertyDataType;
+import org.wso2.integrationstudio.gmf.esb.PropertyMediator;
+import org.wso2.integrationstudio.gmf.esb.PropertyName;
+import org.wso2.integrationstudio.gmf.esb.PropertyScope;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class PropertyMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, PropertyMediator> {
 
@@ -45,7 +45,7 @@ public class PropertyMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
 
         org.apache.synapse.mediators.builtin.PropertyMediator propertyMediator = (org.apache.synapse.mediators.builtin.PropertyMediator) mediator;
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator VisualPropertyMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.PropertyMediator VisualPropertyMediator = (org.wso2.integrationstudio.gmf.esb.PropertyMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.PropertyMediator_3492);
         setElementToEdit(VisualPropertyMediator);
         setCommonProperties(propertyMediator, VisualPropertyMediator);

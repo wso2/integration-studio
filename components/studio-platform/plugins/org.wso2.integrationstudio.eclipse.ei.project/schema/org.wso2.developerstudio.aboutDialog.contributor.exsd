@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.platform.ui" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.platform.ui" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.platform.ui" id="org.wso2.integrationstudio.aboutDialog.contributor" name="AboutDialogContributor"/>
+         <meta.schema plugin="org.wso2.integrationstudio.platform.ui" id="org.wso2.integrationstudio.aboutDialog.contributor" name="AboutDialogContributor"/>
       </appinfo>
       <documentation>
           &lt;extension
            point=&quot;org.wso2.integrationstudio.aboutDialog.contributor&quot;&gt;
         &lt;product
-              bundle_id=&quot;org.wso2.integrationstudio.eclipse.dashboard&quot;
+              bundle_id=&quot;org.wso2.integrationstudio.dashboard&quot;
               name=&quot;Carbon&quot;
               icon=&quot;icons/carbon64.png&quot;
               version=&quot;4.4.x&quot;&gt;
@@ -107,7 +107,7 @@
           &lt;extension
            point=&quot;org.wso2.integrationstudio.aboutDialog.contributor&quot;&gt;
         &lt;product
-              bundle_id=&quot;org.wso2.integrationstudio.eclipse.dashboard&quot;
+              bundle_id=&quot;org.wso2.integrationstudio.dashboard&quot;
               name=&quot;Carbon&quot;
               icon=&quot;icons/carbon64.png&quot;
               version=&quot;4.4.x&quot;&gt;
@@ -126,7 +126,7 @@
           &lt;extension
            point=&quot;org.wso2.integrationstudio.aboutDialog.contributor&quot;&gt;
         &lt;product
-              bundle_id=&quot;org.wso2.integrationstudio.eclipse.dashboard&quot;
+              bundle_id=&quot;org.wso2.integrationstudio.dashboard&quot;
               name=&quot;Carbon&quot;
               icon=&quot;icons/carbon64.png&quot;
               version=&quot;4.4.x&quot;&gt;
@@ -143,7 +143,7 @@
           &lt;extension
            point=&quot;org.wso2.integrationstudio.aboutDialog.contributor&quot;&gt;
         &lt;product
-              bundle_id=&quot;org.wso2.integrationstudio.eclipse.dashboard&quot;
+              bundle_id=&quot;org.wso2.integrationstudio.dashboard&quot;
               name=&quot;Carbon&quot;
               icon=&quot;icons/carbon64.png&quot;
               version=&quot;4.4.x&quot;&gt;

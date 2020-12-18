@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Collection;
 
@@ -26,16 +26,16 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.ExcelQuery;
-import org.wso2.integrationstudio.eclipse.ds.GSpreadQuery;
-import org.wso2.integrationstudio.eclipse.ds.Query;
-import org.wso2.integrationstudio.eclipse.ds.QueryExpression;
-import org.wso2.integrationstudio.eclipse.ds.QueryParameter;
-import org.wso2.integrationstudio.eclipse.ds.QueryPropertyList;
-import org.wso2.integrationstudio.eclipse.ds.ResultMapping;
-import org.wso2.integrationstudio.eclipse.ds.Sparql;
-import org.wso2.integrationstudio.eclipse.ds.Sql;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.ExcelQuery;
+import org.wso2.integrationstudio.ds.GSpreadQuery;
+import org.wso2.integrationstudio.ds.Query;
+import org.wso2.integrationstudio.ds.QueryExpression;
+import org.wso2.integrationstudio.ds.QueryParameter;
+import org.wso2.integrationstudio.ds.QueryPropertyList;
+import org.wso2.integrationstudio.ds.ResultMapping;
+import org.wso2.integrationstudio.ds.Sparql;
+import org.wso2.integrationstudio.ds.Sql;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,22 +45,22 @@ import org.wso2.integrationstudio.eclipse.ds.Sql;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getSql <em>Sql</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getSparql <em>Sparql</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getResult <em>Result</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getExcel <em>Excel</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getGspread <em>Gspread</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getParam <em>Param</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getInputEventTrigger <em>Input Event Trigger</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getOutputEventTrigger <em>Output Event Trigger</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#isReturnGeneratedKeys <em>Return Generated Keys</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getUseConfig <em>Use Config</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#getKeyColumns <em>Key Columns</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryImpl#isReturnUpdatedRowCount <em>Return Updated Row Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getSql <em>Sql</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getSparql <em>Sparql</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getResult <em>Result</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getExcel <em>Excel</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getGspread <em>Gspread</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getParam <em>Param</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getInputEventTrigger <em>Input Event Trigger</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getOutputEventTrigger <em>Output Event Trigger</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#isReturnGeneratedKeys <em>Return Generated Keys</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getUseConfig <em>Use Config</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#getKeyColumns <em>Key Columns</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryImpl#isReturnUpdatedRowCount <em>Return Updated Row Count</em>}</li>
  * </ul>
  *
  * @generated

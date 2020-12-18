@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Iterator;
 import javax.xml.namespace.QName;
@@ -27,17 +27,17 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleAccessType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleConditionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyEntry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.ThrottleAccessType;
+import org.wso2.integrationstudio.gmf.esb.ThrottleConditionType;
+import org.wso2.integrationstudio.gmf.esb.ThrottleMediator;
+import org.wso2.integrationstudio.gmf.esb.ThrottlePolicyEntry;
+import org.wso2.integrationstudio.gmf.esb.ThrottlePolicyType;
+import org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class ThrottleMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, ThrottleMediator> {
 

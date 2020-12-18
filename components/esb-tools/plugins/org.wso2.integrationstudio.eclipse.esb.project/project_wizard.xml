@@ -11,7 +11,7 @@
 				  title="New ESB Configs" 
 				  description="Create new ESB Configs" 
 				  error="Please give a name for the ESB Configs">
-			<data modelProperty="project.name" type="string" fieldController="org.wso2.integrationstudio.eclipse.esb.project.controller.ESBProjectFieldController">Module Name</data>
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.integrationstudio.esb.project.controller.ESBProjectFieldController">Module Name</data>
 			<projectNatures>
 				<nature>org.eclipse.jdt.core.javanature</nature>
 			</projectNatures>
@@ -20,8 +20,8 @@
 				  title="Import ESB Configs" 
 				  description="Create new ESB configs module using an existing module" 
 				  error="Please locate an ESB configs folder">
-			<data modelProperty="project.name" type="string" fieldController="org.wso2.integrationstudio.eclipse.esb.project.controller.ESBProjectFieldController">Module Name</data>
-			<data modelProperty="synapseConfig.location" type="dir" filter="synapse-configs" fieldController="org.wso2.integrationstudio.eclipse.esb.project.controller.ESBProjectFieldController">ESB Configs Location</data>
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.integrationstudio.esb.project.controller.ESBProjectFieldController">Module Name</data>
+			<data modelProperty="synapseConfig.location" type="dir" filter="synapse-configs" fieldController="org.wso2.integrationstudio.esb.project.controller.ESBProjectFieldController">ESB Configs Location</data>
 			<projectNatures>
 				<nature>org.eclipse.jdt.core.javanature</nature>
 			</projectNatures>

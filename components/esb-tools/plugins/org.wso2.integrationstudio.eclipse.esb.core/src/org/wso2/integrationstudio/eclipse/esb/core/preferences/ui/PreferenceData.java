@@ -1,7 +1,7 @@
-package org.wso2.integrationstudio.eclipse.esb.core.preferences.ui;
+package org.wso2.integrationstudio.esb.core.preferences.ui;
 
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.wso2.integrationstudio.eclipse.esb.core.Activator;
+import org.wso2.integrationstudio.esb.core.Activator;
 
 public class PreferenceData {
 	private static IPreferenceStore store = Activator.getDefault()

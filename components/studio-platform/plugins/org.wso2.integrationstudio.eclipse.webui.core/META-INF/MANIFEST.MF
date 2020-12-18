@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: WebBased UI Tools
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.webui.core;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.webui.core;singleton:=true
 Bundle-Version: 7.2.0.qualifier
 Bundle-Vendor: WSO2
-Bundle-Activator: org.wso2.integrationstudio.eclipse.webui.core.WebUICorePlugin
+Bundle-Activator: org.wso2.integrationstudio.webui.core.WebUICorePlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jface.text,
@@ -13,13 +13,13 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide,
  org.apache.commons.io,
  org.junit,
- org.wso2.integrationstudio.eclipse.logging
+ org.wso2.integrationstudio.logging
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/gson-2.2.4.jar
-Export-Package: org.wso2.integrationstudio.eclipse.webui.core.composite,
- org.wso2.integrationstudio.eclipse.webui.core.editor,
- org.wso2.integrationstudio.eclipse.webui.core.exception,
- org.wso2.integrationstudio.eclipse.webui.core.util
-Import-Package: org.wso2.integrationstudio.eclipse.platform.ui.utils
+Export-Package: org.wso2.integrationstudio.webui.core.composite,
+ org.wso2.integrationstudio.webui.core.editor,
+ org.wso2.integrationstudio.webui.core.exception,
+ org.wso2.integrationstudio.webui.core.util
+Import-Package: org.wso2.integrationstudio.platform.ui.utils

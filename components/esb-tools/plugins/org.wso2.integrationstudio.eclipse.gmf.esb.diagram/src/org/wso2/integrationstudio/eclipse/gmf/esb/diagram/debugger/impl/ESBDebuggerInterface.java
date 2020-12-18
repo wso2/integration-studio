@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.impl;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.impl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,19 +22,19 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.IESBDebugger;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.IESBDebuggerInterface;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.channel.dispatcher.ChannelEventDispatcher;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.channel.dispatcher.ChannelResponseDispatcher;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.channel.messagefactory.ICommunicationMessageFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.channel.messagefactory.impl.JsonGsonMessageFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.CommandMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.IESBDebugger;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.IESBDebuggerInterface;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.channel.dispatcher.ChannelEventDispatcher;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.channel.dispatcher.ChannelResponseDispatcher;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.channel.messagefactory.ICommunicationMessageFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.channel.messagefactory.impl.JsonGsonMessageFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.CommandMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * This class handles the communication between ESB Server and {@link ESBDebugger}

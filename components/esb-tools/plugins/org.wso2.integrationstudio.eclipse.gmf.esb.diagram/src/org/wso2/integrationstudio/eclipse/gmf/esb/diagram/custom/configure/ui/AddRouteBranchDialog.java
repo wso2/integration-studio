@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,20 +17,20 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneTargetContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorTargetOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.CloneMediatorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.RouterMediatorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.RouterMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.CloneMediator;
+import org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.CloneTarget;
+import org.wso2.integrationstudio.gmf.esb.CloneTargetContainer;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RouterMediator;
+import org.wso2.integrationstudio.gmf.esb.RouterMediatorTargetOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RouterTarget;
+import org.wso2.integrationstudio.gmf.esb.RouterTargetContainer;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.CloneMediatorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.RouterMediatorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.RouterMediatorEditPart;
 
 public class AddRouteBranchDialog extends Dialog {
 

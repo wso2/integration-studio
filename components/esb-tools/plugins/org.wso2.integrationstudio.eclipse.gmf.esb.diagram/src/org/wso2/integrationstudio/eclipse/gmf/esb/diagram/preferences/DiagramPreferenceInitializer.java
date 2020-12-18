@@ -1,8 +1,8 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.preferences;
+package org.wso2.integrationstudio.gmf.esb.diagram.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
 
 /**
  * @generated

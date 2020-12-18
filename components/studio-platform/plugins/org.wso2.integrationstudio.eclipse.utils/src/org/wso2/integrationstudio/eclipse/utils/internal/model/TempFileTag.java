@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.internal.model;
+package org.wso2.integrationstudio.utils.internal.model;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class TempFileTag implements ITemporaryFileTag {
 	private String id;
@@ -41,7 +41,7 @@ public class TempFileTag implements ITemporaryFileTag {
 	    this.id = id;
     }
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.utils.internal.model.ITemporaryFileTag#getId()
+     * @see org.wso2.integrationstudio.utils.internal.model.ITemporaryFileTag#getId()
      */
 	public String getId() {
 	    return id;
@@ -50,14 +50,14 @@ public class TempFileTag implements ITemporaryFileTag {
 	    this.tagEnded = tagEnded;
     }
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.utils.internal.model.ITemporaryFileTag#isTagEnded()
+     * @see org.wso2.integrationstudio.utils.internal.model.ITemporaryFileTag#isTagEnded()
      */
 	public boolean isTagEnded() {
 	    return tagEnded;
     }
 
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.utils.internal.model.ITemporaryFileTag#getLocations()
+     * @see org.wso2.integrationstudio.utils.internal.model.ITemporaryFileTag#getLocations()
      */
 	public List<File> getLocations() {
 		if (locations==null){
@@ -67,14 +67,14 @@ public class TempFileTag implements ITemporaryFileTag {
     }
 	
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.utils.internal.model.ITemporaryFileTag#removeMe()
+     * @see org.wso2.integrationstudio.utils.internal.model.ITemporaryFileTag#removeMe()
      */
 	public void removeMe() {
 
     }
 	
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.utils.internal.model.ITemporaryFileTag#clear()
+     * @see org.wso2.integrationstudio.utils.internal.model.ITemporaryFileTag#clear()
      */
 	public void clear(){
 		for(File file:getLocations()){
@@ -92,21 +92,21 @@ public class TempFileTag implements ITemporaryFileTag {
 	}
 	
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.utils.internal.model.ITemporaryFileTag#endTag()
+     * @see org.wso2.integrationstudio.utils.internal.model.ITemporaryFileTag#endTag()
      */
 	public void endTag() {
 	    setTagEnded(true);
     }
 	
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.utils.internal.model.ITemporaryFileTag#pauseTag()
+     * @see org.wso2.integrationstudio.utils.internal.model.ITemporaryFileTag#pauseTag()
      */
 	public void pauseTag() {
 		endTag();
     }
 	
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.utils.internal.model.ITemporaryFileTag#clearAndEnd()
+     * @see org.wso2.integrationstudio.utils.internal.model.ITemporaryFileTag#clearAndEnd()
      */
 	public void clearAndEnd(){
 		clear();
@@ -114,14 +114,14 @@ public class TempFileTag implements ITemporaryFileTag {
 	}
 	
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.utils.internal.model.ITemporaryFileTag#restartTag()
+     * @see org.wso2.integrationstudio.utils.internal.model.ITemporaryFileTag#restartTag()
      */
 	public void restartTag(){
 		setTagEnded(false);
 	}
 	
 	/* (non-Javadoc)
-     * @see org.wso2.integrationstudio.eclipse.utils.internal.model.ITemporaryFileTag#resumeTag()
+     * @see org.wso2.integrationstudio.utils.internal.model.ITemporaryFileTag#resumeTag()
      */
 	public void resumeTag() {
 		restartTag();

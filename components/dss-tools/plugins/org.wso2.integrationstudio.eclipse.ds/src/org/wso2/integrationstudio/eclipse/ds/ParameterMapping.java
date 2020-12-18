@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,12 +17,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping#getColumn <em>Column</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping#getQueryParam <em>Query Param</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ParameterMapping#getColumn <em>Column</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ParameterMapping#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.ParameterMapping#getQueryParam <em>Query Param</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getParameterMapping()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getParameterMapping()
  * @model extendedMetaData="name='with-param_._type' kind='empty'"
  * @generated
  */
@@ -37,7 +37,7 @@ public interface ParameterMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Column</em>' attribute.
 	 * @see #setColumn(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getParameterMapping_Column()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getParameterMapping_Column()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='column' namespace='##targetNamespace'"
 	 * @generated
@@ -45,7 +45,7 @@ public interface ParameterMapping extends EObject {
 	String getColumn();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping#getColumn <em>Column</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.ParameterMapping#getColumn <em>Column</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Column</em>' attribute.
@@ -64,7 +64,7 @@ public interface ParameterMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getParameterMapping_Name()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getParameterMapping_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='name' namespace='##targetNamespace'"
 	 * @generated
@@ -72,7 +72,7 @@ public interface ParameterMapping extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.ParameterMapping#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -91,7 +91,7 @@ public interface ParameterMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Query Param</em>' attribute.
 	 * @see #setQueryParam(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getParameterMapping_QueryParam()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getParameterMapping_QueryParam()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='query-param' namespace='##targetNamespace'"
 	 * @generated
@@ -99,7 +99,7 @@ public interface ParameterMapping extends EObject {
 	String getQueryParam();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping#getQueryParam <em>Query Param</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.ParameterMapping#getQueryParam <em>Query Param</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Query Param</em>' attribute.

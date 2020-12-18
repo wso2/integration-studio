@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei11.register.product.servers;
+package org.wso2.integrationstudio.carbonserver44microei11.register.product.servers;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -39,10 +39,10 @@ import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.IServerType;
 import org.eclipse.wst.server.core.IServerWorkingCopy;
 import org.eclipse.wst.server.core.ServerCore;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.ServerProperties;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver44microei11.Activator;
+import org.wso2.integrationstudio.carbonserver44microei11.ServerProperties;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * This class contains and manages the micro-integrator 
@@ -85,8 +85,8 @@ public class MicroIntegratorInstance {
 	private void setupServer() {
 
         IRuntimeType runtimeType = ServerCore
-                .findRuntimeType("org.wso2.integrationstudio.eclipse.carbon.runtime44microei11");
-        IServerType serverType = ServerCore.findServerType("org.wso2.integrationstudio.eclipse.carbon.server44microei11");    
+                .findRuntimeType("org.wso2.integrationstudio.carbon.runtime44microei11");
+        IServerType serverType = ServerCore.findServerType("org.wso2.integrationstudio.carbon.server44microei11");    
 
 		try {
 

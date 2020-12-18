@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers;
+package org.wso2.integrationstudio.gmf.esb.diagram.providers;
 
 import java.util.HashSet;
 import java.util.IdentityHashMap;
@@ -17,9 +17,9 @@ import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypes;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.*;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.*;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
 
 /**
  * @generated
@@ -52,2057 +52,2057 @@ public class EsbElementTypes {
      * @generated
      */
     public static final IElementType EsbDiagram_1000 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EsbDiagram_1000"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EsbDiagram_1000"); //$NON-NLS-1$
     /**
      * @generated
      */
     public static final IElementType EsbServer_2001 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EsbServer_2001"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EsbServer_2001"); //$NON-NLS-1$
     /**
      * @generated
      */
     public static final IElementType ProxyService_3001 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ProxyService_3001"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ProxyService_3001"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ProxyOutputConnector_3002 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ProxyOutputConnector_3002"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ProxyOutputConnector_3002"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ProxyInputConnector_3003 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ProxyInputConnector_3003"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ProxyInputConnector_3003"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ProxyFaultInputConnector_3489 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ProxyFaultInputConnector_3489"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ProxyFaultInputConnector_3489"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ProxyInSequenceInputConnector_3731 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ProxyInSequenceInputConnector_3731"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ProxyInSequenceInputConnector_3731"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ProxyServiceContainer_3486 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ProxyServiceContainer_3486"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ProxyServiceContainer_3486"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ProxyServiceSequenceAndEndpointContainer_3487 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ProxyServiceSequenceAndEndpointContainer_3487"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ProxyServiceSequenceAndEndpointContainer_3487"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3608 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3608"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3608"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DropMediator_3491 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DropMediator_3491"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DropMediator_3491"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MessageMediator_3045 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MessageMediator_3045"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MessageMediator_3045"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MessageInputConnector_3046 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MessageInputConnector_3046"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MessageInputConnector_3046"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MessageOutputConnector_3047 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MessageOutputConnector_3047"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MessageOutputConnector_3047"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DropMediatorInputConnector_3008 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DropMediatorInputConnector_3008"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DropMediatorInputConnector_3008"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType PropertyMediator_3492 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PropertyMediator_3492"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.PropertyMediator_3492"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FilterMediatorInputConnector_3010 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FilterMediatorInputConnector_3010"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FilterMediatorInputConnector_3010"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FilterMediatorOutputConnector_3534 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FilterMediatorOutputConnector_3534"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FilterMediatorOutputConnector_3534"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FilterMediatorPassOutputConnector_3011 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FilterMediatorPassOutputConnector_3011"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FilterMediatorPassOutputConnector_3011"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FilterMediatorFailOutputConnector_3012 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FilterMediatorFailOutputConnector_3012"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FilterMediatorFailOutputConnector_3012"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FilterContainer_3531 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FilterContainer_3531"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FilterContainer_3531"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FilterPassContainer_3535 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FilterPassContainer_3535"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FilterPassContainer_3535"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3536 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3536"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3536"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LogMediator_3495 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LogMediator_3495"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LogMediator_3495"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MergeNode_3013 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MergeNode_3013"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MergeNode_3013"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MergeNodeFirstInputConnector_3014 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MergeNodeFirstInputConnector_3014"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MergeNodeFirstInputConnector_3014"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MergeNodeSecondInputConnector_3015 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MergeNodeSecondInputConnector_3015"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MergeNodeSecondInputConnector_3015"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MergeNodeOutputConnector_3016 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MergeNodeOutputConnector_3016"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MergeNodeOutputConnector_3016"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType Sequences_3614 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Sequences_3614"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.Sequences_3614"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3615 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3615"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3615"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SequencesInputConnector_3616 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SequencesInputConnector_3616"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SequencesInputConnector_3616"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SequencesOutputConnector_3617 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SequencesOutputConnector_3617"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SequencesOutputConnector_3617"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EndpointDiagram_3642 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EndpointDiagram_3642"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EndpointDiagram_3642"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DefaultEndPoint_3643 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DefaultEndPoint_3643"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DefaultEndPoint_3643"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DefaultEndPointInputConnector_3644 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DefaultEndPointInputConnector_3644"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DefaultEndPointInputConnector_3644"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DefaultEndPointOutputConnector_3645 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DefaultEndPointOutputConnector_3645"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DefaultEndPointOutputConnector_3645"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AddressEndPoint_3646 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AddressEndPoint_3646"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AddressEndPoint_3646"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AddressEndPointInputConnector_3647 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AddressEndPointInputConnector_3647"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AddressEndPointInputConnector_3647"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AddressEndPointOutputConnector_3648 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AddressEndPointOutputConnector_3648"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AddressEndPointOutputConnector_3648"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FailoverEndPoint_3649 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FailoverEndPoint_3649"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FailoverEndPoint_3649"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FailoverEndPointInputConnector_3650 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FailoverEndPointInputConnector_3650"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FailoverEndPointInputConnector_3650"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FailoverEndPointOutputConnector_3651 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FailoverEndPointOutputConnector_3651"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FailoverEndPointOutputConnector_3651"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FailoverEndPointWestOutputConnector_3652 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FailoverEndPointWestOutputConnector_3652"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FailoverEndPointWestOutputConnector_3652"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3777 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3777"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3777"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RecipientListEndPoint_3696 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RecipientListEndPoint_3696"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RecipientListEndPoint_3696"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RecipientListEndPointInputConnector_3697 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RecipientListEndPointInputConnector_3697"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RecipientListEndPointInputConnector_3697"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RecipientListEndPointOutputConnector_3698 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RecipientListEndPointOutputConnector_3698"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RecipientListEndPointOutputConnector_3698"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RecipientListEndPointWestOutputConnector_3699 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RecipientListEndPointWestOutputConnector_3699"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RecipientListEndPointWestOutputConnector_3699"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3778 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3778"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3778"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType WSDLEndPoint_3653 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.WSDLEndPoint_3653"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.WSDLEndPoint_3653"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType WSDLEndPointInputConnector_3654 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.WSDLEndPointInputConnector_3654"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.WSDLEndPointInputConnector_3654"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType WSDLEndPointOutputConnector_3655 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.WSDLEndPointOutputConnector_3655"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.WSDLEndPointOutputConnector_3655"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LoadBalanceEndPoint_3656 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LoadBalanceEndPoint_3656"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LoadBalanceEndPoint_3656"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LoadBalanceEndPointInputConnector_3657 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LoadBalanceEndPointInputConnector_3657"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LoadBalanceEndPointInputConnector_3657"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LoadBalanceEndPointOutputConnector_3658 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LoadBalanceEndPointOutputConnector_3658"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LoadBalanceEndPointOutputConnector_3658"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LoadBalanceEndPointWestOutputConnector_3659 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LoadBalanceEndPointWestOutputConnector_3659"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LoadBalanceEndPointWestOutputConnector_3659"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3779 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3779"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3779"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType HTTPEndpoint_3712 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.HTTPEndpoint_3712"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.HTTPEndpoint_3712"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType HTTPEndPointInputConnector_3713 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.HTTPEndPointInputConnector_3713"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.HTTPEndPointInputConnector_3713"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType HTTPEndPointOutputConnector_3714 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.HTTPEndPointOutputConnector_3714"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.HTTPEndPointOutputConnector_3714"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType TemplateEndpoint_3725 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.TemplateEndpoint_3725"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.TemplateEndpoint_3725"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType TemplateEndpointInputConnector_3726 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.TemplateEndpointInputConnector_3726"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.TemplateEndpointInputConnector_3726"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType TemplateEndpointOutputConnector_3727 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.TemplateEndpointOutputConnector_3727"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.TemplateEndpointOutputConnector_3727"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LocalEntry_3663 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LocalEntry_3663"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LocalEntry_3663"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType Template_3664 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Template_3664"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.Template_3664"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType Sequences_3665 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Sequences_3665"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.Sequences_3665"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EndpointDiagram_3666 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EndpointDiagram_3666"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EndpointDiagram_3666"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType Task_3667 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Task_3667"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.Task_3667"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SynapseAPI_3668 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SynapseAPI_3668"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SynapseAPI_3668"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType APIResource_3669 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.APIResource_3669"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.APIResource_3669"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType APIResourceInputConnector_3670 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.APIResourceInputConnector_3670"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.APIResourceInputConnector_3670"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType APIResourceOutputConnector_3671 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.APIResourceOutputConnector_3671"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.APIResourceOutputConnector_3671"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType APIResourceOutSequenceOutputConnector_3730 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.APIResourceOutSequenceOutputConnector_3730"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.APIResourceOutSequenceOutputConnector_3730"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType APIResourceFaultInputConnector_3672 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.APIResourceFaultInputConnector_3672"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.APIResourceFaultInputConnector_3672"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ProxyServiceContainer_3673 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ProxyServiceContainer_3673"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ProxyServiceContainer_3673"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType APIResourceInSequenceInputConnector_3747 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.APIResourceInSequenceInputConnector_3747"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.APIResourceInSequenceInputConnector_3747"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ComplexEndpoints_3677 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ComplexEndpoints_3677"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ComplexEndpoints_3677"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3678 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3678"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3678"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ComplexEndpointsOutputConnector_3679 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ComplexEndpointsOutputConnector_3679"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ComplexEndpointsOutputConnector_3679"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MessageStore_3715 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MessageStore_3715"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MessageStore_3715"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MessageProcessor_3701 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MessageProcessor_3701"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MessageProcessor_3701"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType InboundEndpoint_3767 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.InboundEndpoint_3767"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.InboundEndpoint_3767"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType InboundEndpointSequenceInputConnector_3768 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.InboundEndpointSequenceInputConnector_3768"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.InboundEndpointSequenceInputConnector_3768"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType InboundEndpointSequenceOutputConnector_3769 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.InboundEndpointSequenceOutputConnector_3769"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.InboundEndpointSequenceOutputConnector_3769"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType InboundEndpointOnErrorSequenceInputConnector_3770 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.InboundEndpointOnErrorSequenceInputConnector_3770"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.InboundEndpointOnErrorSequenceInputConnector_3770"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType InboundEndpointOnErrorSequenceOutputConnector_3771 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.InboundEndpointOnErrorSequenceOutputConnector_3771"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.InboundEndpointOnErrorSequenceOutputConnector_3771"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType InboundEndpointContainer_3772 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.InboundEndpointContainer_3772"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.InboundEndpointContainer_3772"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType InboundEndpointSequenceContainer_3773 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.InboundEndpointSequenceContainer_3773"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.InboundEndpointSequenceContainer_3773"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3774 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3774"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3774"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType InboundEndpointOnErrorSequenceContainer_3775 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.InboundEndpointOnErrorSequenceContainer_3775"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.InboundEndpointOnErrorSequenceContainer_3775"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3776 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3776"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3776"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LogMediatorInputConnector_3018 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LogMediatorInputConnector_3018"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LogMediatorInputConnector_3018"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LogMediatorOutputConnector_3019 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LogMediatorOutputConnector_3019"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LogMediatorOutputConnector_3019"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EnrichMediator_3496 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EnrichMediator_3496"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EnrichMediator_3496"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType PropertyMediatorInputConnector_3033 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PropertyMediatorInputConnector_3033"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.PropertyMediatorInputConnector_3033"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType PropertyMediatorOutputConnector_3034 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PropertyMediatorOutputConnector_3034"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.PropertyMediatorOutputConnector_3034"); //$NON-NLS-1$
 
     /**
     * @generated
     */
     public static final IElementType PropertyGroupMediator_3788 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PropertyGroupMediator_3788"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.PropertyGroupMediator_3788"); //$NON-NLS-1$
 
     /**
     * @generated
     */
     public static final IElementType PropertyGroupMediatorInputConnector_3789 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PropertyGroupMediatorInputConnector_3789"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.PropertyGroupMediatorInputConnector_3789"); //$NON-NLS-1$
 
     /**
     * @generated
     */
     public static final IElementType PropertyGroupMediatorOutputConnector_3790 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PropertyGroupMediatorOutputConnector_3790"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.PropertyGroupMediatorOutputConnector_3790"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ThrottleMediator_3493 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ThrottleMediator_3493"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ThrottleMediator_3493"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EnrichMediatorInputConnector_3036 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EnrichMediatorInputConnector_3036"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EnrichMediatorInputConnector_3036"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EnrichMediatorOutputConnector_3037 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EnrichMediatorOutputConnector_3037"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EnrichMediatorOutputConnector_3037"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType XSLTMediator_3497 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.XSLTMediator_3497"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.XSLTMediator_3497"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType XSLTMediatorInputConnector_3039 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.XSLTMediatorInputConnector_3039"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.XSLTMediatorInputConnector_3039"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType XSLTMediatorOutputConnector_3040 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.XSLTMediatorOutputConnector_3040"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.XSLTMediatorOutputConnector_3040"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SwitchMediator_3498 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SwitchMediator_3498"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SwitchMediator_3498"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SwitchMediatorInputConnector_3042 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SwitchMediatorInputConnector_3042"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SwitchMediatorInputConnector_3042"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SwitchCaseBranchOutputConnector_3043 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SwitchCaseBranchOutputConnector_3043"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SwitchCaseBranchOutputConnector_3043"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SwitchDefaultBranchOutputConnector_3044 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SwitchDefaultBranchOutputConnector_3044"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SwitchDefaultBranchOutputConnector_3044"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SwitchMediatorOutputConnector_3499 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SwitchMediatorOutputConnector_3499"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SwitchMediatorOutputConnector_3499"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SwitchMediatorContainer_3500 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SwitchMediatorContainer_3500"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SwitchMediatorContainer_3500"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SwitchCaseParentContainer_3732 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SwitchCaseParentContainer_3732"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SwitchCaseParentContainer_3732"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SwitchCaseContainer_3733 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SwitchCaseContainer_3733"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SwitchCaseContainer_3733"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3502 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3502"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3502"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType Sequence_3503 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Sequence_3503"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.Sequence_3503"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SequenceInputConnector_3049 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SequenceInputConnector_3049"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SequenceInputConnector_3049"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SequenceOutputConnector_3050 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SequenceOutputConnector_3050"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SequenceOutputConnector_3050"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EventMediator_3504 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EventMediator_3504"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EventMediator_3504"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EventMediatorInputConnector_3052 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EventMediatorInputConnector_3052"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EventMediatorInputConnector_3052"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EventMediatorOutputConnector_3053 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EventMediatorOutputConnector_3053"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EventMediatorOutputConnector_3053"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EntitlementMediator_3505 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementMediator_3505"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EntitlementMediator_3505"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EntitlementMediatorInputConnector_3055 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementMediatorInputConnector_3055"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EntitlementMediatorInputConnector_3055"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EntitlementMediatorOutputConnector_3056 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementMediatorOutputConnector_3056"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EntitlementMediatorOutputConnector_3056"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EntitlementMediatorOnRejectOutputConnector_3748 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementMediatorOnRejectOutputConnector_3748"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EntitlementMediatorOnRejectOutputConnector_3748"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EntitlementMediatorOnAcceptOutputConnector_3749 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementMediatorOnAcceptOutputConnector_3749"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EntitlementMediatorOnAcceptOutputConnector_3749"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EntitlementMediatorAdviceOutputConnector_3750 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementMediatorAdviceOutputConnector_3750"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EntitlementMediatorAdviceOutputConnector_3750"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EntitlementMediatorObligationsOutputConnector_3751 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementMediatorObligationsOutputConnector_3751"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EntitlementMediatorObligationsOutputConnector_3751"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EntitlementContainer_3752 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementContainer_3752"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EntitlementContainer_3752"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EntitlementOnRejectContainer_3753 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementOnRejectContainer_3753"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EntitlementOnRejectContainer_3753"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3754 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3754"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3754"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ClassMediator_3506 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ClassMediator_3506"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ClassMediator_3506"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ClassMediatorInputConnector_3058 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ClassMediatorInputConnector_3058"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ClassMediatorInputConnector_3058"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ClassMediatorOutputConnector_3059 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ClassMediatorOutputConnector_3059"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ClassMediatorOutputConnector_3059"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SpringMediator_3507 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SpringMediator_3507"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SpringMediator_3507"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SpringMediatorInputConnector_3061 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SpringMediatorInputConnector_3061"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SpringMediatorInputConnector_3061"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SpringMediatorOutputConnector_3062 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SpringMediatorOutputConnector_3062"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SpringMediatorOutputConnector_3062"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ScriptMediator_3508 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ScriptMediator_3508"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ScriptMediator_3508"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ScriptMediatorInputConnector_3064 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ScriptMediatorInputConnector_3064"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ScriptMediatorInputConnector_3064"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ScriptMediatorOutputConnector_3065 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ScriptMediatorOutputConnector_3065"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ScriptMediatorOutputConnector_3065"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FaultMediator_3509 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FaultMediator_3509"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FaultMediator_3509"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FaultMediatorInputConnector_3067 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FaultMediatorInputConnector_3067"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FaultMediatorInputConnector_3067"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FaultMediatorOutputConnector_3068 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FaultMediatorOutputConnector_3068"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FaultMediatorOutputConnector_3068"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType XQueryMediator_3510 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.XQueryMediator_3510"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.XQueryMediator_3510"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType XQueryMediatorInputConnector_3070 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.XQueryMediatorInputConnector_3070"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.XQueryMediatorInputConnector_3070"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType XQueryMediatorOutputConnector_3071 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.XQueryMediatorOutputConnector_3071"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.XQueryMediatorOutputConnector_3071"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CommandMediator_3511 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CommandMediator_3511"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CommandMediator_3511"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CommandMediatorInputConnector_3073 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CommandMediatorInputConnector_3073"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CommandMediatorInputConnector_3073"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CommandMediatorOutputConnector_3074 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CommandMediatorOutputConnector_3074"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CommandMediatorOutputConnector_3074"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DBLookupMediator_3512 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DBLookupMediator_3512"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DBLookupMediator_3512"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DBLookupMediatorInputConnector_3076 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DBLookupMediatorInputConnector_3076"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DBLookupMediatorInputConnector_3076"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DBLookupMediatorOutputConnector_3077 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DBLookupMediatorOutputConnector_3077"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DBLookupMediatorOutputConnector_3077"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DBReportMediator_3513 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DBReportMediator_3513"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DBReportMediator_3513"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DBReportMediatorInputConnector_3079 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DBReportMediatorInputConnector_3079"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DBReportMediatorInputConnector_3079"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DBReportMediatorOutputConnector_3080 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DBReportMediatorOutputConnector_3080"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DBReportMediatorOutputConnector_3080"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SmooksMediator_3514 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SmooksMediator_3514"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SmooksMediator_3514"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SmooksMediatorInputConnector_3082 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SmooksMediatorInputConnector_3082"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SmooksMediatorInputConnector_3082"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SmooksMediatorOutputConnector_3083 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SmooksMediatorOutputConnector_3083"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SmooksMediatorOutputConnector_3083"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SendMediator_3515 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SendMediator_3515"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SendMediator_3515"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SendMediatorInputConnector_3085 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SendMediatorInputConnector_3085"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SendMediatorInputConnector_3085"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SendMediatorOutputConnector_3086 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SendMediatorOutputConnector_3086"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SendMediatorOutputConnector_3086"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SendMediatorEndpointOutputConnector_3539 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SendMediatorEndpointOutputConnector_3539"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SendMediatorEndpointOutputConnector_3539"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3728 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3728"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3728"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType HeaderMediator_3516 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.HeaderMediator_3516"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.HeaderMediator_3516"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FailoverEndPointInputConnector_3088 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FailoverEndPointInputConnector_3088"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FailoverEndPointInputConnector_3088"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FailoverEndPointOutputConnector_3090 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FailoverEndPointOutputConnector_3090"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FailoverEndPointOutputConnector_3090"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FailoverEndPointWestOutputConnector_3097 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FailoverEndPointWestOutputConnector_3097"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FailoverEndPointWestOutputConnector_3097"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RecipientListEndPoint_3692 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RecipientListEndPoint_3692"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RecipientListEndPoint_3692"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RecipientListEndPointInputConnector_3693 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RecipientListEndPointInputConnector_3693"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RecipientListEndPointInputConnector_3693"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RecipientListEndPointOutputConnector_3694 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RecipientListEndPointOutputConnector_3694"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RecipientListEndPointOutputConnector_3694"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RecipientListEndPointWestOutputConnector_3695 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RecipientListEndPointWestOutputConnector_3695"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RecipientListEndPointWestOutputConnector_3695"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType WSDLEndPoint_3612 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.WSDLEndPoint_3612"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.WSDLEndPoint_3612"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType WSDLEndPointInputConnector_3092 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.WSDLEndPointInputConnector_3092"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.WSDLEndPointInputConnector_3092"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType WSDLEndPointOutputConnector_3093 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.WSDLEndPointOutputConnector_3093"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.WSDLEndPointOutputConnector_3093"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType NamedEndpoint_3660 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.NamedEndpoint_3660"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.NamedEndpoint_3660"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType NamedEndpointInputConnector_3661 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.NamedEndpointInputConnector_3661"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.NamedEndpointInputConnector_3661"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType NamedEndpointOutputConnector_3662 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.NamedEndpointOutputConnector_3662"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.NamedEndpointOutputConnector_3662"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LoadBalanceEndPoint_3613 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LoadBalanceEndPoint_3613"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LoadBalanceEndPoint_3613"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LoadBalanceEndPointInputConnector_3095 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LoadBalanceEndPointInputConnector_3095"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LoadBalanceEndPointInputConnector_3095"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LoadBalanceEndPointOutputConnector_3096 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LoadBalanceEndPointOutputConnector_3096"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LoadBalanceEndPointOutputConnector_3096"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LoadBalanceEndPointWestOutputConnector_3098 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LoadBalanceEndPointWestOutputConnector_3098"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LoadBalanceEndPointWestOutputConnector_3098"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType APIResourceEndpoint_3674 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.APIResourceEndpoint_3674"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.APIResourceEndpoint_3674"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType APIResourceEndpointInputConnector_3675 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.APIResourceEndpointInputConnector_3675"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.APIResourceEndpointInputConnector_3675"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType APIResourceEndpointOutputConnector_3676 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.APIResourceEndpointOutputConnector_3676"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.APIResourceEndpointOutputConnector_3676"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AddressingEndpoint_3689 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AddressingEndpoint_3689"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AddressingEndpoint_3689"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AddressingEndpointInputConnector_3690 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AddressingEndpointInputConnector_3690"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AddressingEndpointInputConnector_3690"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AddressingEndpointOutputConnector_3691 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AddressingEndpointOutputConnector_3691"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AddressingEndpointOutputConnector_3691"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType HTTPEndpoint_3709 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.HTTPEndpoint_3709"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.HTTPEndpoint_3709"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType HTTPEndPointInputConnector_3710 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.HTTPEndPointInputConnector_3710"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.HTTPEndPointInputConnector_3710"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType HTTPEndPointOutputConnector_3711 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.HTTPEndPointOutputConnector_3711"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.HTTPEndPointOutputConnector_3711"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType TemplateEndpoint_3716 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.TemplateEndpoint_3716"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.TemplateEndpoint_3716"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType TemplateEndpointInputConnector_3717 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.TemplateEndpointInputConnector_3717"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.TemplateEndpointInputConnector_3717"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType TemplateEndpointOutputConnector_3718 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.TemplateEndpointOutputConnector_3718"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.TemplateEndpointOutputConnector_3718"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CloudConnector_3719 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloudConnector_3719"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CloudConnector_3719"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CloudConnectorInputConnector_3720 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloudConnectorInputConnector_3720"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CloudConnectorInputConnector_3720"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CloudConnectorOutputConnector_3721 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloudConnectorOutputConnector_3721"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CloudConnectorOutputConnector_3721"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CloudConnectorOperation_3722 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloudConnectorOperation_3722"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CloudConnectorOperation_3722"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CloudConnectorOperationInputConnector_3723 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloudConnectorOperationInputConnector_3723"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CloudConnectorOperationInputConnector_3723"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CloudConnectorOperationOutputConnector_3724 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloudConnectorOperationOutputConnector_3724"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CloudConnectorOperationOutputConnector_3724"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LoopBackMediator_3736 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LoopBackMediator_3736"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LoopBackMediator_3736"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LoopBackMediatorInputConnector_3737 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LoopBackMediatorInputConnector_3737"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LoopBackMediatorInputConnector_3737"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType LoopBackMediatorOutputConnector_3738 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.LoopBackMediatorOutputConnector_3738"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.LoopBackMediatorOutputConnector_3738"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RespondMediator_3739 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RespondMediator_3739"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RespondMediator_3739"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RespondMediatorInputConnector_3740 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RespondMediatorInputConnector_3740"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RespondMediatorInputConnector_3740"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RespondMediatorOutputConnector_3741 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RespondMediatorOutputConnector_3741"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RespondMediatorOutputConnector_3741"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CallMediator_3742 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CallMediator_3742"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CallMediator_3742"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CallMediatorInputConnector_3743 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CallMediatorInputConnector_3743"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CallMediatorInputConnector_3743"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CallMediatorOutputConnector_3744 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CallMediatorOutputConnector_3744"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CallMediatorOutputConnector_3744"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CallMediatorEndpointOutputConnector_3745 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CallMediatorEndpointOutputConnector_3745"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CallMediatorEndpointOutputConnector_3745"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3746 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3746"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3746"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DataMapperMediator_3761 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DataMapperMediator_3761"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DataMapperMediator_3761"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DataMapperMediatorInputConnector_3762 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DataMapperMediatorInputConnector_3762"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DataMapperMediatorInputConnector_3762"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DataMapperMediatorOutputConnector_3763 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DataMapperMediatorOutputConnector_3763"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DataMapperMediatorOutputConnector_3763"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FastXSLTMediator_3764 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FastXSLTMediator_3764"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FastXSLTMediator_3764"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FastXSLTMediatorInputConnector_3765 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FastXSLTMediatorInputConnector_3765"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FastXSLTMediatorInputConnector_3765"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FastXSLTMediatorOutputConnector_3766 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FastXSLTMediatorOutputConnector_3766"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FastXSLTMediatorOutputConnector_3766"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ForEachMediator_3780 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ForEachMediator_3780"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ForEachMediator_3780"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ForEachMediatorInputConnector_3781 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ForEachMediatorInputConnector_3781"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ForEachMediatorInputConnector_3781"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ForEachMediatorOutputConnector_3782 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ForEachMediatorOutputConnector_3782"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ForEachMediatorOutputConnector_3782"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ForEachMediatorTargetOutputConnector_3783 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ForEachMediatorTargetOutputConnector_3783"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ForEachMediatorTargetOutputConnector_3783"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3784 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3784"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3784"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType PublishEventMediator_3785 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PublishEventMediator_3785"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.PublishEventMediator_3785"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType PublishEventMediatorInputConnector_3786 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PublishEventMediatorInputConnector_3786"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.PublishEventMediatorInputConnector_3786"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType PublishEventMediatorOutputConnector_3787 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PublishEventMediatorOutputConnector_3787"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.PublishEventMediatorOutputConnector_3787"); //$NON-NLS-1$
 
     /**
     * @generated
     */
     public static final IElementType JsonTransformMediator_3791 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.JsonTransformMediator_3791"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.JsonTransformMediator_3791"); //$NON-NLS-1$
 
     /**
     * @generated
     */
     public static final IElementType JsonTransformMediatorInputConnector_3792 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.JsonTransformMediatorInputConnector_3792"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.JsonTransformMediatorInputConnector_3792"); //$NON-NLS-1$
 
     /**
     * @generated
     */
     public static final IElementType JsonTransformMediatorOutputConnector_3793 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.JsonTransformMediatorOutputConnector_3793"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.JsonTransformMediatorOutputConnector_3793"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EntitlementOnAcceptContainer_3755 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementOnAcceptContainer_3755"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EntitlementOnAcceptContainer_3755"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3756 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3756"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3756"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EntitlementAdviceContainer_3757 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementAdviceContainer_3757"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EntitlementAdviceContainer_3757"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3758 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3758"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3758"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EntitlementObligationsContainer_3759 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EntitlementObligationsContainer_3759"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EntitlementObligationsContainer_3759"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3760 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3760"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3760"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SwitchDefaultParentContainer_3734 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SwitchDefaultParentContainer_3734"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SwitchDefaultParentContainer_3734"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType SwitchDefaultContainer_3735 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.SwitchDefaultContainer_3735"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.SwitchDefaultContainer_3735"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ProxyServiceFaultContainer_3488 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ProxyServiceFaultContainer_3488"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ProxyServiceFaultContainer_3488"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3530 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3530"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3530"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ProxyOutSequenceOutputConnector_3729 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ProxyOutSequenceOutputConnector_3729"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ProxyOutSequenceOutputConnector_3729"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType HeaderMediatorInputConnector_3100 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.HeaderMediatorInputConnector_3100"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.HeaderMediatorInputConnector_3100"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType HeaderMediatorOutputConnector_3101 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.HeaderMediatorOutputConnector_3101"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.HeaderMediatorOutputConnector_3101"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CloneMediator_3517 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloneMediator_3517"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CloneMediator_3517"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CloneMediatorInputConnector_3103 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloneMediatorInputConnector_3103"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CloneMediatorInputConnector_3103"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CloneMediatorOutputConnector_3104 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloneMediatorOutputConnector_3104"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CloneMediatorOutputConnector_3104"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CloneMediatorTargetOutputConnector_3133 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloneMediatorTargetOutputConnector_3133"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CloneMediatorTargetOutputConnector_3133"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CloneMediatorContainer_3603 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloneMediatorContainer_3603"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CloneMediatorContainer_3603"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CloneTargetContainer_3604 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CloneTargetContainer_3604"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CloneTargetContainer_3604"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3605 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3605"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3605"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CacheMediator_3518 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CacheMediator_3518"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CacheMediator_3518"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CacheMediatorInputConnector_3106 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CacheMediatorInputConnector_3106"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CacheMediatorInputConnector_3106"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CacheMediatorOutputConnector_3107 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CacheMediatorOutputConnector_3107"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CacheMediatorOutputConnector_3107"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CacheMediatorOnHitOutputConnector_3618 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CacheMediatorOnHitOutputConnector_3618"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CacheMediatorOnHitOutputConnector_3618"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3619 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3619"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3619"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType IterateMediator_3519 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.IterateMediator_3519"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.IterateMediator_3519"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType IterateMediatorInputConnector_3109 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.IterateMediatorInputConnector_3109"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.IterateMediatorInputConnector_3109"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType IterateMediatorOutputConnector_3110 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.IterateMediatorOutputConnector_3110"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.IterateMediatorOutputConnector_3110"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType IterateMediatorTargetOutputConnector_3606 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.IterateMediatorTargetOutputConnector_3606"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.IterateMediatorTargetOutputConnector_3606"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3607 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3607"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3607"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CalloutMediator_3520 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CalloutMediator_3520"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CalloutMediator_3520"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AggregateMediatorInputConnector_3112 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AggregateMediatorInputConnector_3112"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AggregateMediatorInputConnector_3112"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AggregateMediatorOutputConnector_3113 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AggregateMediatorOutputConnector_3113"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AggregateMediatorOutputConnector_3113"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AggregateMediatorOnCompleteOutputConnector_3132 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AggregateMediatorOnCompleteOutputConnector_3132"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AggregateMediatorOnCompleteOutputConnector_3132"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3526 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3526"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3526"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType StoreMediator_3588 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.StoreMediator_3588"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.StoreMediator_3588"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType StoreMediatorInputConnector_3589 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.StoreMediatorInputConnector_3589"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.StoreMediatorInputConnector_3589"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType StoreMediatorOutputConnector_3590 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.StoreMediatorOutputConnector_3590"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.StoreMediatorOutputConnector_3590"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType BuilderMediator_3591 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.BuilderMediator_3591"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.BuilderMediator_3591"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType BuilderMediatorInputConnector_3592 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.BuilderMediatorInputConnector_3592"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.BuilderMediatorInputConnector_3592"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType BuilderMediatorOutputConector_3593 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.BuilderMediatorOutputConector_3593"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.BuilderMediatorOutputConector_3593"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CallTemplateMediator_3594 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CallTemplateMediator_3594"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CallTemplateMediator_3594"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CallTemplateMediatorInputConnector_3595 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CallTemplateMediatorInputConnector_3595"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CallTemplateMediatorInputConnector_3595"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CallTemplateMediatorOutputConnector_3596 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CallTemplateMediatorOutputConnector_3596"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CallTemplateMediatorOutputConnector_3596"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType PayloadFactoryMediator_3597 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PayloadFactoryMediator_3597"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.PayloadFactoryMediator_3597"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType PayloadFactoryMediatorInputConnector_3598 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PayloadFactoryMediatorInputConnector_3598"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.PayloadFactoryMediatorInputConnector_3598"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType PayloadFactoryMediatorOutputConnector_3599 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.PayloadFactoryMediatorOutputConnector_3599"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.PayloadFactoryMediatorOutputConnector_3599"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EnqueueMediator_3600 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EnqueueMediator_3600"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EnqueueMediator_3600"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EnqueueMediatorInputConnector_3601 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EnqueueMediatorInputConnector_3601"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EnqueueMediatorInputConnector_3601"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EnqueueMediatorOutputConnector_3602 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EnqueueMediatorOutputConnector_3602"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EnqueueMediatorOutputConnector_3602"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType URLRewriteMediator_3620 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.URLRewriteMediator_3620"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.URLRewriteMediator_3620"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType URLRewriteMediatorInputConnector_3621 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.URLRewriteMediatorInputConnector_3621"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.URLRewriteMediatorInputConnector_3621"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType URLRewriteMediatorOutputConnector_3622 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.URLRewriteMediatorOutputConnector_3622"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.URLRewriteMediatorOutputConnector_3622"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ValidateMediator_3623 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ValidateMediator_3623"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ValidateMediator_3623"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ValidateMediatorInputConnector_3624 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ValidateMediatorInputConnector_3624"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ValidateMediatorInputConnector_3624"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ValidateMediatorOutputConnector_3625 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ValidateMediatorOutputConnector_3625"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ValidateMediatorOutputConnector_3625"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ValidateMediatorOnFailOutputConnector_3626 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ValidateMediatorOnFailOutputConnector_3626"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ValidateMediatorOnFailOutputConnector_3626"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3627 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3627"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3627"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RouterMediator_3628 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RouterMediator_3628"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RouterMediator_3628"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RouterMediatorInputConnector_3629 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RouterMediatorInputConnector_3629"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RouterMediatorInputConnector_3629"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RouterMediatorOutputConnector_3630 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RouterMediatorOutputConnector_3630"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RouterMediatorOutputConnector_3630"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RouterMediatorTargetOutputConnector_3631 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RouterMediatorTargetOutputConnector_3631"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RouterMediatorTargetOutputConnector_3631"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RouterMediatorContainer_3632 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RouterMediatorContainer_3632"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RouterMediatorContainer_3632"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RouterTargetContainer_3633 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RouterTargetContainer_3633"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RouterTargetContainer_3633"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3634 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3634"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3634"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ConditionalRouterMediator_3635 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ConditionalRouterMediator_3635"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ConditionalRouterMediator_3635"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ConditionalRouterMediatorInputConnector_3636 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ConditionalRouterMediatorInputConnector_3636"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ConditionalRouterMediatorInputConnector_3636"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ConditionalRouterMediatorOutputConnector_3637 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ConditionalRouterMediatorOutputConnector_3637"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ConditionalRouterMediatorOutputConnector_3637"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ConditionalRouterMediatorAdditionalOutputConnector_3638 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ConditionalRouterMediatorAdditionalOutputConnector_3638"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ConditionalRouterMediatorAdditionalOutputConnector_3638"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3639 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3639"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3639"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType BAMMediator_3680 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.BAMMediator_3680"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.BAMMediator_3680"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType BAMMediatorInputConnector_3681 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.BAMMediatorInputConnector_3681"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.BAMMediatorInputConnector_3681"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType BAMMediatorOutputConnector_3682 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.BAMMediatorOutputConnector_3682"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.BAMMediatorOutputConnector_3682"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType BeanMediator_3683 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.BeanMediator_3683"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.BeanMediator_3683"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType BeanMediatorInputConnector_3684 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.BeanMediatorInputConnector_3684"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.BeanMediatorInputConnector_3684"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType BeanMediatorOutputConnector_3685 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.BeanMediatorOutputConnector_3685"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.BeanMediatorOutputConnector_3685"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EJBMediator_3686 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EJBMediator_3686"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EJBMediator_3686"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EJBMediatorInputConnector_3687 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EJBMediatorInputConnector_3687"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EJBMediatorInputConnector_3687"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EJBMediatorOutputConnector_3688 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EJBMediatorOutputConnector_3688"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EJBMediatorOutputConnector_3688"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DefaultEndPoint_3609 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DefaultEndPoint_3609"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DefaultEndPoint_3609"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3528 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3528"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3528"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FilterFailContainer_3537 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FilterFailContainer_3537"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FilterFailContainer_3537"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3538 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3538"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3538"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ThrottleOnRejectContainer_3586 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ThrottleOnRejectContainer_3586"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ThrottleOnRejectContainer_3586"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3587 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3587"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3587"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CalloutMediatorInputConnector_3115 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CalloutMediatorInputConnector_3115"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CalloutMediatorInputConnector_3115"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType CalloutMediatorOutputConnector_3116 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.CalloutMediatorOutputConnector_3116"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.CalloutMediatorOutputConnector_3116"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType TransactionMediator_3521 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.TransactionMediator_3521"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.TransactionMediator_3521"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType TransactionMediatorInputConnector_3118 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.TransactionMediatorInputConnector_3118"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.TransactionMediatorInputConnector_3118"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType TransactionMediatorOutputConnector_3119 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.TransactionMediatorOutputConnector_3119"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.TransactionMediatorOutputConnector_3119"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RMSequenceMediator_3522 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RMSequenceMediator_3522"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RMSequenceMediator_3522"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ThrottleMediatorInputConnector_3121 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ThrottleMediatorInputConnector_3121"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ThrottleMediatorInputConnector_3121"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ThrottleMediatorOutputConnector_3122 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ThrottleMediatorOutputConnector_3122"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ThrottleMediatorOutputConnector_3122"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ThrottleMediatorOnAcceptOutputConnector_3581 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ThrottleMediatorOnAcceptOutputConnector_3581"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ThrottleMediatorOnAcceptOutputConnector_3581"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ThrottleMediatorOnRejectOutputConnector_3582 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ThrottleMediatorOnRejectOutputConnector_3582"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ThrottleMediatorOnRejectOutputConnector_3582"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ThrottleContainer_3583 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ThrottleContainer_3583"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ThrottleContainer_3583"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType ThrottleOnAcceptContainer_3584 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ThrottleOnAcceptContainer_3584"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.ThrottleOnAcceptContainer_3584"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3585 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3585"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3585"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FilterMediator_3494 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FilterMediator_3494"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FilterMediator_3494"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RMSequenceMediatorInputConnector_3124 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RMSequenceMediatorInputConnector_3124"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RMSequenceMediatorInputConnector_3124"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RMSequenceMediatorOutputConnector_3125 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RMSequenceMediatorOutputConnector_3125"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RMSequenceMediatorOutputConnector_3125"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RuleMediator_3523 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RuleMediator_3523"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RuleMediator_3523"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RuleMediatorInputConnector_3127 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RuleMediatorInputConnector_3127"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RuleMediatorInputConnector_3127"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RuleMediatorOutputConnector_3128 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RuleMediatorOutputConnector_3128"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RuleMediatorOutputConnector_3128"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType RuleMediatorChildMediatorsOutputConnector_3640 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.RuleMediatorChildMediatorsOutputConnector_3640"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.RuleMediatorChildMediatorsOutputConnector_3640"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType MediatorFlow_3641 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.MediatorFlow_3641"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.MediatorFlow_3641"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType OAuthMediator_3524 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.OAuthMediator_3524"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.OAuthMediator_3524"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType OAuthMediatorInputConnector_3130 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.OAuthMediatorInputConnector_3130"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.OAuthMediatorInputConnector_3130"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType OAuthMediatorOutputConnector_3131 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.OAuthMediatorOutputConnector_3131"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.OAuthMediatorOutputConnector_3131"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AggregateMediator_3525 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AggregateMediator_3525"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AggregateMediator_3525"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DefaultEndPointInputConnector_3021 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DefaultEndPointInputConnector_3021"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DefaultEndPointInputConnector_3021"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType DefaultEndPointOutputConnector_3022 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.DefaultEndPointOutputConnector_3022"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.DefaultEndPointOutputConnector_3022"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AddressEndPoint_3610 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AddressEndPoint_3610"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AddressEndPoint_3610"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AddressEndPointInputConnector_3030 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AddressEndPointInputConnector_3030"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AddressEndPointInputConnector_3030"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType AddressEndPointOutputConnector_3031 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.AddressEndPointOutputConnector_3031"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.AddressEndPointOutputConnector_3031"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType FailoverEndPoint_3611 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.FailoverEndPoint_3611"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.FailoverEndPoint_3611"); //$NON-NLS-1$
 
     /**
      * @generated
      */
     public static final IElementType EsbLink_4001 = getElementType(
-            "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.EsbLink_4001"); //$NON-NLS-1$
+            "org.wso2.integrationstudio.gmf.esb.diagram.EsbLink_4001"); //$NON-NLS-1$
 
     /**
      * @generated
@@ -3985,7 +3985,7 @@ public class EsbElementTypes {
         @Override
 
         public boolean isKnownElementType(IElementType elementType) {
-            return org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes
+            return org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes
                     .isKnownElementType(elementType);
         }
 
@@ -3995,7 +3995,7 @@ public class EsbElementTypes {
         @Override
 
         public IElementType getElementTypeForVisualId(int visualID) {
-            return org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes.getElementType(visualID);
+            return org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes.getElementType(visualID);
         }
 
         /**
@@ -4004,7 +4004,7 @@ public class EsbElementTypes {
         @Override
 
         public ENamedElement getDefiningNamedElement(IAdaptable elementTypeAdapter) {
-            return org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes
+            return org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes
                     .getElement(elementTypeAdapter);
         }
     };

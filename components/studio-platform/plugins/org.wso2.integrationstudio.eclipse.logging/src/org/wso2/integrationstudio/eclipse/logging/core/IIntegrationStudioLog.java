@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.logging.core;
+package org.wso2.integrationstudio.logging.core;
 
 public interface IIntegrationStudioLog {
 

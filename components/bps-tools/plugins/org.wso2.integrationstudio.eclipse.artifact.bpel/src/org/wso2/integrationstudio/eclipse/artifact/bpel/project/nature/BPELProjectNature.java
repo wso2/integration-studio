@@ -1,12 +1,12 @@
-package org.wso2.integrationstudio.eclipse.artifact.bpel.project.nature;
+package org.wso2.integrationstudio.artifact.bpel.project.nature;
 
 import java.io.File;
 
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.JavaModelException;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.nature.AbstractWSO2ProjectNature;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.nature.AbstractWSO2ProjectNature;
 
 public class BPELProjectNature extends AbstractWSO2ProjectNature{
 	

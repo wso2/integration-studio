@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.project.extensions.handlers;
+package org.wso2.integrationstudio.project.extensions.handlers;
 
 public class WSO2ProjectNature {
 	

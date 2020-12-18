@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -80,34 +80,34 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.ConnectionObj;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.DependencyProvider;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorConnectionType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorDatasourceType;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.ConnectionObj;
+import org.wso2.integrationstudio.gmf.esb.presentation.DependencyProvider;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_MSSQL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_MYSQL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_ORACLE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_POSTGRESQL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_DRIVER_MYSQL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_DRIVER_MSSQL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_DRIVER_ORACLE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_DRIVER_POSTGRESQL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_MYSQL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_MSSQL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_ORACLE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.Constants.TXT_DATABASE_USER_POSTGRESQL;
+import static org.wso2.integrationstudio.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_MSSQL;
+import static org.wso2.integrationstudio.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_MYSQL;
+import static org.wso2.integrationstudio.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_ORACLE;
+import static org.wso2.integrationstudio.gmf.esb.Constants.TXT_DATABASE_CONNECTION_URL_POSTGRESQL;
+import static org.wso2.integrationstudio.gmf.esb.Constants.TXT_DATABASE_DRIVER_MYSQL;
+import static org.wso2.integrationstudio.gmf.esb.Constants.TXT_DATABASE_DRIVER_MSSQL;
+import static org.wso2.integrationstudio.gmf.esb.Constants.TXT_DATABASE_DRIVER_ORACLE;
+import static org.wso2.integrationstudio.gmf.esb.Constants.TXT_DATABASE_DRIVER_POSTGRESQL;
+import static org.wso2.integrationstudio.gmf.esb.Constants.TXT_DATABASE_USER_MYSQL;
+import static org.wso2.integrationstudio.gmf.esb.Constants.TXT_DATABASE_USER_MSSQL;
+import static org.wso2.integrationstudio.gmf.esb.Constants.TXT_DATABASE_USER_ORACLE;
+import static org.wso2.integrationstudio.gmf.esb.Constants.TXT_DATABASE_USER_POSTGRESQL;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlDatabaseType;
+import org.wso2.integrationstudio.gmf.esb.SqlDatabaseType;
 // End of user code
 
 /**
@@ -2186,7 +2186,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -2196,7 +2196,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -2237,7 +2237,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -2247,7 +2247,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -2269,7 +2269,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyAutocommit()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyAutocommit()
 	 * 
 	 */
 	public Enumerator getPropertyAutocommit() {
@@ -2280,7 +2280,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyAutocommit(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyAutocommit(Object input, Enumerator current)
 	 */
 	public void initPropertyAutocommit(Object input, Enumerator current) {
 		propertyAutocommit.setInput(input);
@@ -2298,7 +2298,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyAutocommit(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyAutocommit(Enumerator newValue)
 	 * 
 	 */
 	public void setPropertyAutocommit(Enumerator newValue) {
@@ -2316,7 +2316,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyIsolation()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyIsolation()
 	 * 
 	 */
 	public Enumerator getPropertyIsolation() {
@@ -2327,7 +2327,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyIsolation(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyIsolation(Object input, Enumerator current)
 	 */
 	public void initPropertyIsolation(Object input, Enumerator current) {
 		propertyIsolation.setInput(input);
@@ -2345,7 +2345,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyIsolation(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyIsolation(Enumerator newValue)
 	 * 
 	 */
 	public void setPropertyIsolation(Enumerator newValue) {
@@ -2363,7 +2363,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyMaxactive()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyMaxactive()
 	 * 
 	 */
 	public String getPropertyMaxactive() {
@@ -2373,7 +2373,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxactive(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxactive(String newValue)
 	 * 
 	 */
 	public void setPropertyMaxactive(String newValue) {
@@ -2395,7 +2395,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyMaxidle()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyMaxidle()
 	 * 
 	 */
 	public String getPropertyMaxidle() {
@@ -2405,7 +2405,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxidle(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxidle(String newValue)
 	 * 
 	 */
 	public void setPropertyMaxidle(String newValue) {
@@ -2427,7 +2427,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyMaxopenstatements()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyMaxopenstatements()
 	 * 
 	 */
 	public String getPropertyMaxopenstatements() {
@@ -2437,7 +2437,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxopenstatements(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxopenstatements(String newValue)
 	 * 
 	 */
 	public void setPropertyMaxopenstatements(String newValue) {
@@ -2459,7 +2459,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyMaxwait()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyMaxwait()
 	 * 
 	 */
 	public String getPropertyMaxwait() {
@@ -2469,7 +2469,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxwait(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMaxwait(String newValue)
 	 * 
 	 */
 	public void setPropertyMaxwait(String newValue) {
@@ -2491,7 +2491,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyMinidle()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyMinidle()
 	 * 
 	 */
 	public String getPropertyMinidle() {
@@ -2501,7 +2501,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMinidle(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyMinidle(String newValue)
 	 * 
 	 */
 	public void setPropertyMinidle(String newValue) {
@@ -2523,7 +2523,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyPoolstatements()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyPoolstatements()
 	 * 
 	 */
 	public Enumerator getPropertyPoolstatements() {
@@ -2534,7 +2534,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyPoolstatements(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyPoolstatements(Object input, Enumerator current)
 	 */
 	public void initPropertyPoolstatements(Object input, Enumerator current) {
 		propertyPoolstatements.setInput(input);
@@ -2552,7 +2552,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyPoolstatements(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyPoolstatements(Enumerator newValue)
 	 * 
 	 */
 	public void setPropertyPoolstatements(Enumerator newValue) {
@@ -2570,7 +2570,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyTestonborrow()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyTestonborrow()
 	 * 
 	 */
 	public Enumerator getPropertyTestonborrow() {
@@ -2581,7 +2581,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyTestonborrow(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyTestonborrow(Object input, Enumerator current)
 	 */
 	public void initPropertyTestonborrow(Object input, Enumerator current) {
 		propertyTestonborrow.setInput(input);
@@ -2599,7 +2599,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyTestonborrow(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyTestonborrow(Enumerator newValue)
 	 * 
 	 */
 	public void setPropertyTestonborrow(Enumerator newValue) {
@@ -2617,7 +2617,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyTestwhileidle()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyTestwhileidle()
 	 * 
 	 */
 	public Enumerator getPropertyTestwhileidle() {
@@ -2628,7 +2628,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyTestwhileidle(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initPropertyTestwhileidle(Object input, Enumerator current)
 	 */
 	public void initPropertyTestwhileidle(Object input, Enumerator current) {
 		propertyTestwhileidle.setInput(input);
@@ -2646,7 +2646,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyTestwhileidle(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyTestwhileidle(Enumerator newValue)
 	 * 
 	 */
 	public void setPropertyTestwhileidle(Enumerator newValue) {
@@ -2664,7 +2664,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyValidationquery()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyValidationquery()
 	 * 
 	 */
 	public String getPropertyValidationquery() {
@@ -2674,7 +2674,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyValidationquery(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyValidationquery(String newValue)
 	 * 
 	 */
 	public void setPropertyValidationquery(String newValue) {
@@ -2696,7 +2696,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyInitialsize()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getPropertyInitialsize()
 	 * 
 	 */
 	public String getPropertyInitialsize() {
@@ -2706,7 +2706,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyInitialsize(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setPropertyInitialsize(String newValue)
 	 * 
 	 */
 	public void setPropertyInitialsize(String newValue) {
@@ -2728,7 +2728,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -2738,7 +2738,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -2760,7 +2760,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionType()
 	 * 
 	 */
 	public Enumerator getConnectionType() {
@@ -2771,7 +2771,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initConnectionType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initConnectionType(Object input, Enumerator current)
 	 */
 	public void initConnectionType(Object input, Enumerator current) {
 		connectionType.setInput(input);
@@ -2789,7 +2789,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionType(Enumerator newValue)
 	 * 
 	 */
 	public void setConnectionType(Enumerator newValue) {
@@ -2807,7 +2807,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionDsType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionDsType()
 	 * 
 	 */
 	public Enumerator getConnectionDsType() {
@@ -2818,7 +2818,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initConnectionDsType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initConnectionDsType(Object input, Enumerator current)
 	 */
 	public void initConnectionDsType(Object input, Enumerator current) {
 		connectionDsType.setInput(input);
@@ -2836,7 +2836,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDsType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDsType(Enumerator newValue)
 	 * 
 	 */
 	public void setConnectionDsType(Enumerator newValue) {
@@ -2854,7 +2854,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionDsInitialContext()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionDsInitialContext()
 	 * 
 	 */
 	public String getConnectionDsInitialContext() {
@@ -2864,7 +2864,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDsInitialContext(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDsInitialContext(String newValue)
 	 * 
 	 */
 	public void setConnectionDsInitialContext(String newValue) {
@@ -2886,7 +2886,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionDbType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionDbType()
 	 * 
 	 */
 	public Enumerator getConnectionDbType() {
@@ -2897,7 +2897,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initConnectionDbType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initConnectionDbType(Object input, Enumerator current)
 	 */
 	public void initConnectionDbType(Object input, Enumerator current) {
 		connectionDbType.setInput(input);
@@ -2915,7 +2915,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDbType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDbType(Enumerator newValue)
 	 * 
 	 */
 	public void setConnectionDbType(Enumerator newValue) {
@@ -2933,7 +2933,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionDbDriver()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionDbDriver()
 	 * 
 	 */
 	public String getConnectionDbDriver() {
@@ -2943,7 +2943,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDbDriver(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDbDriver(String newValue)
 	 * 
 	 */
 	public void setConnectionDbDriver(String newValue) {
@@ -2965,7 +2965,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionDsName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionDsName()
 	 * 
 	 */
 	public String getConnectionDsName() {
@@ -2975,7 +2975,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDsName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionDsName(String newValue)
 	 * 
 	 */
 	public void setConnectionDsName(String newValue) {
@@ -2997,7 +2997,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionURL()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionURL()
 	 * 
 	 */
 	public String getConnectionURL() {
@@ -3007,7 +3007,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionURL(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionURL(String newValue)
 	 * 
 	 */
 	public void setConnectionURL(String newValue) {
@@ -3029,7 +3029,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionUsername()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionUsername()
 	 * 
 	 */
 	public String getConnectionUsername() {
@@ -3039,7 +3039,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionUsername(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionUsername(String newValue)
 	 * 
 	 */
 	public void setConnectionUsername(String newValue) {
@@ -3061,7 +3061,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionPassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getConnectionPassword()
 	 * 
 	 */
 	public String getConnectionPassword() {
@@ -3071,7 +3071,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionPassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setConnectionPassword(String newValue)
 	 * 
 	 */
 	public void setConnectionPassword(String newValue) {
@@ -3093,7 +3093,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getIsRegistryBasedDriverConfig()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getIsRegistryBasedDriverConfig()
 	 * 
 	 */
 	public Boolean getIsRegistryBasedDriverConfig() {
@@ -3103,7 +3103,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setIsRegistryBasedDriverConfig(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setIsRegistryBasedDriverConfig(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -3127,7 +3127,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getIsRegistryBasedUrlConfig()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getIsRegistryBasedUrlConfig()
 	 * 
 	 */
 	public Boolean getIsRegistryBasedUrlConfig() {
@@ -3137,7 +3137,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setIsRegistryBasedUrlConfig(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setIsRegistryBasedUrlConfig(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -3161,7 +3161,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getIsRegistryBasedUserConfig()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getIsRegistryBasedUserConfig()
 	 * 
 	 */
 	public Boolean getIsRegistryBasedUserConfig() {
@@ -3171,7 +3171,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setIsRegistryBasedUserConfig(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setIsRegistryBasedUserConfig(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -3195,7 +3195,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getIsRegistryBasedPassConfig()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#getIsRegistryBasedPassConfig()
 	 * 
 	 */
 	public Boolean getIsRegistryBasedPassConfig() {
@@ -3205,7 +3205,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setIsRegistryBasedPassConfig(Boolean
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#setIsRegistryBasedPassConfig(Boolean
 	 *      newValue)
 	 * 
 	 */
@@ -3229,7 +3229,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
   /**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initSqlStatements(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#initSqlStatements(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initSqlStatements(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -3250,7 +3250,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#updateSqlStatements()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#updateSqlStatements()
 	 * 
 	 */
 	public void updateSqlStatements() {
@@ -3260,7 +3260,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#addFilterSqlStatements(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#addFilterSqlStatements(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToSqlStatements(ViewerFilter filter) {
@@ -3273,7 +3273,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#addBusinessFilterSqlStatements(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#addBusinessFilterSqlStatements(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToSqlStatements(ViewerFilter filter) {
@@ -3283,7 +3283,7 @@ public class DBLookupMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#isContainedInSqlStatementsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DBLookupMediatorPropertiesEditionPart#isContainedInSqlStatementsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInSqlStatementsTable(EObject element) {

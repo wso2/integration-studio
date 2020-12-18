@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.ui.wizard;
+package org.wso2.integrationstudio.distribution.project.ui.wizard;
 
 import java.io.File;
 import java.util.List;
@@ -32,18 +32,18 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.GeneralArtifact;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.GeneralProjectArtifact;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.ArtifactTypeMapping;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.DistProjectUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.util.ExportUtil;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.project.extensions.handlers.ProjectNatureListProvider;
-import org.wso2.integrationstudio.eclipse.project.extensions.handlers.WSO2ProjectNature;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.distribution.project.model.GeneralArtifact;
+import org.wso2.integrationstudio.distribution.project.model.GeneralProjectArtifact;
+import org.wso2.integrationstudio.distribution.project.util.ArtifactTypeMapping;
+import org.wso2.integrationstudio.distribution.project.util.DistProjectUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.project.export.util.ExportUtil;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
+import org.wso2.integrationstudio.project.extensions.handlers.ProjectNatureListProvider;
+import org.wso2.integrationstudio.project.extensions.handlers.WSO2ProjectNature;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class ProjectExportWizard extends Wizard implements IExportWizard {
 	private ExportDetailsWizardPage detailsPage;

@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.updater.job;
+package org.wso2.integrationstudio.updater.job;
 
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.updater.UpdaterPlugin;
-import org.wso2.integrationstudio.eclipse.updater.core.UpdateManager;
-import org.wso2.integrationstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.updater.UpdaterPlugin;
+import org.wso2.integrationstudio.updater.core.UpdateManager;
+import org.wso2.integrationstudio.updater.ui.UpdaterDialog.ActiveTab;
 
 public class BackgroundUpdaterTaskListener extends JobChangeAdapter {
 

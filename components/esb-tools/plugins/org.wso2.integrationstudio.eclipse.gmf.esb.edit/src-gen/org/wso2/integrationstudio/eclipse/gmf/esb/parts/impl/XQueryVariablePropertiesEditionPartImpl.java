@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 import java.util.ArrayList;
 
@@ -57,19 +57,19 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariableValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms.CacheMediatorPropertiesEditionPartForm;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms.HeaderMediatorPropertiesEditionPartForm;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.CacheType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariableValueType;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.XQueryVariablePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.forms.CacheMediatorPropertiesEditionPartForm;
+import org.wso2.integrationstudio.gmf.esb.parts.forms.HeaderMediatorPropertiesEditionPartForm;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -398,7 +398,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart#getVariableName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryVariablePropertiesEditionPart#getVariableName()
 	 * 
 	 */
 	public String getVariableName() {
@@ -408,7 +408,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart#setVariableName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryVariablePropertiesEditionPart#setVariableName(String newValue)
 	 * 
 	 */
 	public void setVariableName(String newValue) {
@@ -430,7 +430,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart#getVariableType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryVariablePropertiesEditionPart#getVariableType()
 	 * 
 	 */
 	public Enumerator getVariableType() {
@@ -441,7 +441,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart#initVariableType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryVariablePropertiesEditionPart#initVariableType(Object input, Enumerator current)
 	 */
 	public void initVariableType(Object input, Enumerator current) {
 		variableType.setInput(input);
@@ -459,7 +459,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart#setVariableType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryVariablePropertiesEditionPart#setVariableType(Enumerator newValue)
 	 * 
 	 */
 	public void setVariableType(Enumerator newValue) {
@@ -477,7 +477,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart#getValueType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryVariablePropertiesEditionPart#getValueType()
 	 * 
 	 */
 	public Enumerator getValueType() {
@@ -488,7 +488,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart#initValueType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryVariablePropertiesEditionPart#initValueType(Object input, Enumerator current)
 	 */
 	public void initValueType(Object input, Enumerator current) {
 		valueType.setInput(input);
@@ -506,7 +506,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart#setValueType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryVariablePropertiesEditionPart#setValueType(Enumerator newValue)
 	 * 
 	 */
 	public void setValueType(Enumerator newValue) {
@@ -524,7 +524,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart#getValueLiteral()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryVariablePropertiesEditionPart#getValueLiteral()
 	 * 
 	 */
 	public String getValueLiteral() {
@@ -534,7 +534,7 @@ public class XQueryVariablePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryVariablePropertiesEditionPart#setValueLiteral(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryVariablePropertiesEditionPart#setValueLiteral(String newValue)
 	 * 
 	 */
 	public void setValueLiteral(String newValue) {

@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.internal.impl.mediatypes;
+package org.wso2.integrationstudio.platform.core.internal.impl.mediatypes;
 
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeBulkResolver;
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.AbstractFileNameExtensionMediaTypeResolver;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeBulkResolver;
+import org.wso2.integrationstudio.platform.core.mediatype.AbstractFileNameExtensionMediaTypeResolver;
 
 public class BulkMediaTypeFileNameResolver extends AbstractFileNameExtensionMediaTypeResolver implements
                                                                                              IMediaTypeBulkResolver {

@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.webui.core.editor.function;
+package org.wso2.integrationstudio.webui.core.editor.function;
 
-import org.wso2.integrationstudio.eclipse.webui.core.editor.AbstractWebBasedEditor;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.Constants;
+import org.wso2.integrationstudio.webui.core.editor.AbstractWebBasedEditor;
+import org.wso2.integrationstudio.webui.core.editor.Constants;
 
 public class SetDirtyFunction extends AbstractWebEditorFunction {
 

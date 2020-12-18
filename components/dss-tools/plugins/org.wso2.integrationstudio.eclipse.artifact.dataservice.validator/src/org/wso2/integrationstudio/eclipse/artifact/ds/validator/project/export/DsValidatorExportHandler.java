@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.artifact.ds.validator.project.export;
+package org.wso2.integrationstudio.artifact.ds.validator.project.export;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -22,10 +22,10 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.osgi.storagemanager.StorageManager;
-import org.wso2.integrationstudio.eclipse.platform.core.manifest.BundleManifest;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
-import org.wso2.integrationstudio.eclipse.utils.archive.ArchiveManipulator;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.platform.core.manifest.BundleManifest;
+import org.wso2.integrationstudio.platform.core.project.export.ProjectArtifactHandler;
+import org.wso2.integrationstudio.utils.archive.ArchiveManipulator;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class DsValidatorExportHandler extends ProjectArtifactHandler {
 

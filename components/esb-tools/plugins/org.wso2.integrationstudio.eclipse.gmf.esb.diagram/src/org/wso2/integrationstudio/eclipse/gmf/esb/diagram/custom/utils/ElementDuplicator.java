@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.utils;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -77,42 +77,42 @@ import org.eclipse.ui.IFileEditorInput;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.KeyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.ConnectionUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.SlidingBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DeserializerException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DeserializerUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.EsbDeserializerRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.IEsbNodeDeserializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SendMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.AbstractEndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyService;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.SequenceOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpointOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.ConnectionUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.SlidingBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DeserializerException;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DeserializerUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.EsbDeserializerRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.IEsbNodeDeserializer;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SendMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbMultiPageEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 /**
  * 
@@ -188,7 +188,7 @@ public class ElementDuplicator {
         OUTER: for (int j = 0; j < values.size(); ++j) {
             EditPart element = (EditPart) values.toArray()[j];
             if (element instanceof SendMediatorEditPart) {
-                org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator sendMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator) ((org.eclipse.gmf.runtime.notation.Node) ((SendMediatorEditPart) element)
+                org.wso2.integrationstudio.gmf.esb.SendMediator sendMediator = (org.wso2.integrationstudio.gmf.esb.SendMediator) ((org.eclipse.gmf.runtime.notation.Node) ((SendMediatorEditPart) element)
                         .getModel()).getElement();
                 // if(sendMediator.getReceivingSequenceType().getValue()==1){
                 OutputConnector outputConnector = sendMediator.getOutputConnector();
@@ -369,8 +369,8 @@ public class ElementDuplicator {
         EList<EObject> child = null;
         if (outputConnector.getOutgoingLink() != null) {
             EObject targetElement = outputConnector.getOutgoingLink().getTarget().eContainer();
-            if (outputConnector.eContainer() instanceof org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator) {
-                org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator send = (org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator) outputConnector
+            if (outputConnector.eContainer() instanceof org.wso2.integrationstudio.gmf.esb.SendMediator) {
+                org.wso2.integrationstudio.gmf.esb.SendMediator send = (org.wso2.integrationstudio.gmf.esb.SendMediator) outputConnector
                         .eContainer();
                 if (send.getReceivingSequenceType().getValue() == 0) {
                     if (targetElement instanceof Sequence) {
@@ -456,12 +456,12 @@ public class ElementDuplicator {
                     createLinks(esbNodes, editor);
                 }
             } else if (element instanceof SendMediatorEditPart) {
-                if (((org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator) ((org.eclipse.gmf.runtime.notation.Node) ((SendMediatorEditPart) element)
+                if (((org.wso2.integrationstudio.gmf.esb.SendMediator) ((org.eclipse.gmf.runtime.notation.Node) ((SendMediatorEditPart) element)
                         .getModel()).getElement()).getReceivingSequenceType().getValue() == 1) {
                     AbstractMediatorOutputConnectorEditPart sendMediatorOutputConnector = EditorUtils
                             .getMediatorOutputConnector((SendMediatorEditPart) element);
                     if (sendMediatorOutputConnector.getSourceConnections().size() != 0) {
-                        String name = ((org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator) ((org.eclipse.gmf.runtime.notation.Node) ((SendMediatorEditPart) element)
+                        String name = ((org.wso2.integrationstudio.gmf.esb.SendMediator) ((org.eclipse.gmf.runtime.notation.Node) ((SendMediatorEditPart) element)
                                 .getModel()).getElement()).getStaticReceivingSequence().getKeyValue();
                         GraphicalEditPart rootCompartment = EditorUtils
                                 .getSequenceAndEndpointCompartmentEditPart(element);

@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.client;
+package org.wso2.integrationstudio.apim.endpoint.central.client;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,11 +26,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.APIMCTLException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.CTLAPI;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.CTLEnvironment;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.APIMCTLConstants;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils.JsonUtils;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.APIMCTLException;
+import org.wso2.integrationstudio.apim.endpoint.central.model.CTLAPI;
+import org.wso2.integrationstudio.apim.endpoint.central.model.CTLEnvironment;
+import org.wso2.integrationstudio.apim.endpoint.central.resources.APIMCTLConstants;
+import org.wso2.integrationstudio.apim.endpoint.central.utils.JsonUtils;
 
 public class APIMCTLClient {
 

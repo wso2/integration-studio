@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.ds.presentation.ui;
+package org.wso2.integrationstudio.ds.presentation.ui;
 
 import java.util.ArrayList;
 
@@ -25,10 +25,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.ds.DataService;
-import org.wso2.integrationstudio.eclipse.ds.DsFactory;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty;
+import org.wso2.integrationstudio.ds.DataService;
+import org.wso2.integrationstudio.ds.DsFactory;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.RegistryKeyProperty;
 
 public class AddPolicyPathDialog {
 

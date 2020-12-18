@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util;
 
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.EventMessageType;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.EventMessageType;
 
 import com.google.gson.JsonElement;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
 /**
  * This class is the bean class to represent ESB Sequence artifacts debug point

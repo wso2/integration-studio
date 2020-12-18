@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.welcome.perspective;
+package org.wso2.integrationstudio.welcome.perspective;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

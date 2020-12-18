@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.LongRangeValidator;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.LongRangeValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,8 +24,8 @@ import org.wso2.integrationstudio.eclipse.ds.LongRangeValidator;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.LongRangeValidatorImpl#getMaximum <em>Maximum</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.LongRangeValidatorImpl#getMinimum <em>Minimum</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.LongRangeValidatorImpl#getMaximum <em>Maximum</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.LongRangeValidatorImpl#getMinimum <em>Minimum</em>}</li>
  * </ul>
  *
  * @generated

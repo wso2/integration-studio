@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,13 +35,13 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.layout.XYRepossition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.HighlightOnSelectionEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment11EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment19EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment20EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment5EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.layout.XYRepossition;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.HighlightOnSelectionEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment11EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment19EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment20EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment5EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
 
 public abstract class AbstractEndpoint extends BorderedBorderItemEditPart implements DroppableElement {
 

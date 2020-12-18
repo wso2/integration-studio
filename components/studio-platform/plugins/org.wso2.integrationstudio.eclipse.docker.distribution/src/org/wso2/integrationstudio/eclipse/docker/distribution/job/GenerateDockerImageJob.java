@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.job;
+package org.wso2.integrationstudio.docker.distribution.job;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,16 +37,16 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.docker.distribution.Activator;
-import org.wso2.integrationstudio.eclipse.docker.distribution.exceptions.DockerConnectionException;
-import org.wso2.integrationstudio.eclipse.docker.distribution.exceptions.DockerImageGenerationException;
-import org.wso2.integrationstudio.eclipse.docker.distribution.model.MicroIntegratorDockerModel;
-import org.wso2.integrationstudio.eclipse.docker.distribution.notification.ImageCreationSuccessNotificationPopUp;
-import org.wso2.integrationstudio.eclipse.docker.distribution.resources.DockerGenConstants;
-import org.wso2.integrationstudio.eclipse.docker.distribution.util.DockerImageGenerator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.docker.distribution.Activator;
+import org.wso2.integrationstudio.docker.distribution.exceptions.DockerConnectionException;
+import org.wso2.integrationstudio.docker.distribution.exceptions.DockerImageGenerationException;
+import org.wso2.integrationstudio.docker.distribution.model.MicroIntegratorDockerModel;
+import org.wso2.integrationstudio.docker.distribution.notification.ImageCreationSuccessNotificationPopUp;
+import org.wso2.integrationstudio.docker.distribution.resources.DockerGenConstants;
+import org.wso2.integrationstudio.docker.distribution.util.DockerImageGenerator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 import com.spotify.docker.client.exceptions.DockerException;
 

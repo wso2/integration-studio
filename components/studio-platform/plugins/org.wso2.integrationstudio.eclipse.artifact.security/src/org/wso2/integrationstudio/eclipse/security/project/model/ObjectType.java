@@ -6,7 +6,7 @@
 //
 
 
-package org.wso2.integrationstudio.eclipse.security.project.model;
+package org.wso2.integrationstudio.security.project.model;
 
 import java.util.ArrayList;
 import java.util.List;

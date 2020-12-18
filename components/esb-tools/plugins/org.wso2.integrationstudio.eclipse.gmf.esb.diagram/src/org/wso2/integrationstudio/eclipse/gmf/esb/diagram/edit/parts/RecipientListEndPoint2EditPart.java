@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
@@ -36,18 +36,18 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.impl.BoundsImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpoints;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequences;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint2;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractSequencesEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.ComplexFiguredAbstractEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.RecipientListEndPoint2CanonicalEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.RecipientListEndPoint2ItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.ComplexEndpoints;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPoint;
+import org.wso2.integrationstudio.gmf.esb.Sequences;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint2;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractSequencesEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.ComplexFiguredAbstractEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EsbGraphicalShape;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.RecipientListEndPoint2CanonicalEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.RecipientListEndPoint2ItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
 
 /**
  * @generated NOT

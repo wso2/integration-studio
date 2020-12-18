@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -46,10 +46,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorOutputConnectorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorOutputConnectorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -212,7 +212,7 @@ public class RouterMediatorOutputConnectorPropertiesEditionPartForm extends Sect
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorOutputConnectorPropertiesEditionPart#initCommentMediators(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorOutputConnectorPropertiesEditionPart#initCommentMediators(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initCommentMediators(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -233,7 +233,7 @@ public class RouterMediatorOutputConnectorPropertiesEditionPartForm extends Sect
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorOutputConnectorPropertiesEditionPart#updateCommentMediators()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorOutputConnectorPropertiesEditionPart#updateCommentMediators()
 	 * 
 	 */
 	public void updateCommentMediators() {
@@ -243,7 +243,7 @@ public class RouterMediatorOutputConnectorPropertiesEditionPartForm extends Sect
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToCommentMediators(ViewerFilter filter) {
@@ -256,7 +256,7 @@ public class RouterMediatorOutputConnectorPropertiesEditionPartForm extends Sect
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToCommentMediators(ViewerFilter filter) {
@@ -266,7 +266,7 @@ public class RouterMediatorOutputConnectorPropertiesEditionPartForm extends Sect
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInCommentMediatorsTable(EObject element) {

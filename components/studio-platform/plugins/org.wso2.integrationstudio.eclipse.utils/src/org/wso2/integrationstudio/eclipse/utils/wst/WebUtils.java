@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.wst;
+package org.wso2.integrationstudio.utils.wst;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,9 +29,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jst.ws.internal.common.J2EEUtils;
-import org.wso2.integrationstudio.eclipse.utils.archive.ArchiveManipulator;
-import org.wso2.integrationstudio.eclipse.utils.ide.FileNameResourceVisitor;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.utils.archive.ArchiveManipulator;
+import org.wso2.integrationstudio.utils.ide.FileNameResourceVisitor;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class WebUtils {
 	public static boolean isDynamicWebProject(IProject containerProject) {

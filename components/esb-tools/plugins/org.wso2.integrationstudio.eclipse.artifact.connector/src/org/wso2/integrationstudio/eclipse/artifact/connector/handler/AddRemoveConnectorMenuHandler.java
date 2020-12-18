@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.connector.handler;
+package org.wso2.integrationstudio.artifact.connector.handler;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -25,10 +25,10 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.artifact.connector.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.connector.ui.wizard.AddRemoveConnectorWizard;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.artifact.connector.Activator;
+import org.wso2.integrationstudio.artifact.connector.ui.wizard.AddRemoveConnectorWizard;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class AddRemoveConnectorMenuHandler extends AbstractHandler {
 

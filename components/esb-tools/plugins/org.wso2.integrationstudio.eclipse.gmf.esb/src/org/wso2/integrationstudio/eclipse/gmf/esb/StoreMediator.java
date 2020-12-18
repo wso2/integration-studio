@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,16 +15,16 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getMessageStore <em>Message Store</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getOnStoreSequence <em>On Store Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getAvailableMessageStores <em>Available Message Stores</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getSpecifyAs <em>Specify As</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getMessageStore <em>Message Store</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getOnStoreSequence <em>On Store Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getAvailableMessageStores <em>Available Message Stores</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getSpecifyAs <em>Specify As</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getExpression <em>Expression</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getStoreMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getStoreMediator()
  * @model
  * @generated
  */
@@ -39,14 +39,14 @@ public interface StoreMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Message Store</em>' attribute.
      * @see #setMessageStore(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getStoreMediator_MessageStore()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getStoreMediator_MessageStore()
      * @model
      * @generated
      */
     String getMessageStore();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getMessageStore <em>Message Store</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getMessageStore <em>Message Store</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Message Store</em>' attribute.
@@ -65,14 +65,14 @@ public interface StoreMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Store Sequence</em>' containment reference.
      * @see #setOnStoreSequence(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getStoreMediator_OnStoreSequence()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getStoreMediator_OnStoreSequence()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getOnStoreSequence();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getOnStoreSequence <em>On Store Sequence</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getOnStoreSequence <em>On Store Sequence</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Store Sequence</em>' containment reference.
@@ -91,14 +91,14 @@ public interface StoreMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(StoreMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getStoreMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getStoreMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     StoreMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -117,14 +117,14 @@ public interface StoreMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(StoreMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getStoreMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getStoreMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     StoreMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -143,14 +143,14 @@ public interface StoreMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Available Message Stores</em>' attribute.
      * @see #setAvailableMessageStores(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getStoreMediator_AvailableMessageStores()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getStoreMediator_AvailableMessageStores()
      * @model
      * @generated
      */
     String getAvailableMessageStores();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getAvailableMessageStores <em>Available Message Stores</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getAvailableMessageStores <em>Available Message Stores</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Available Message Stores</em>' attribute.
@@ -161,7 +161,7 @@ public interface StoreMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Specify As</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediatorSpecifyType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.StoreMediatorSpecifyType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Specify As</em>' attribute isn't clear,
@@ -169,20 +169,20 @@ public interface StoreMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Specify As</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediatorSpecifyType
+     * @see org.wso2.integrationstudio.gmf.esb.StoreMediatorSpecifyType
      * @see #setSpecifyAs(StoreMediatorSpecifyType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getStoreMediator_SpecifyAs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getStoreMediator_SpecifyAs()
      * @model
      * @generated
      */
     StoreMediatorSpecifyType getSpecifyAs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getSpecifyAs <em>Specify As</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getSpecifyAs <em>Specify As</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Specify As</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediatorSpecifyType
+     * @see org.wso2.integrationstudio.gmf.esb.StoreMediatorSpecifyType
      * @see #getSpecifyAs()
      * @generated
      */
@@ -198,14 +198,14 @@ public interface StoreMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Expression</em>' containment reference.
      * @see #setExpression(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getStoreMediator_Expression()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getStoreMediator_Expression()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator#getExpression <em>Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.StoreMediator#getExpression <em>Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Expression</em>' containment reference.

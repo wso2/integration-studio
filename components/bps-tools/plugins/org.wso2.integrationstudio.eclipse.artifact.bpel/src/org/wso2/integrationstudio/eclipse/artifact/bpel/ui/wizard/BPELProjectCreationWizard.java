@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.bpel.ui.wizard;
+package org.wso2.integrationstudio.artifact.bpel.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,20 +32,20 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.model.BpelModel;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.utils.BPELArtifactConstants;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.utils.BPELImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.utils.BPELTemplateUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.XMLUtil;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.utils.archive.ArchiveManipulator;
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.artifact.bpel.Activator;
+import org.wso2.integrationstudio.artifact.bpel.model.BpelModel;
+import org.wso2.integrationstudio.artifact.bpel.utils.BPELArtifactConstants;
+import org.wso2.integrationstudio.artifact.bpel.utils.BPELImageUtils;
+import org.wso2.integrationstudio.artifact.bpel.utils.BPELTemplateUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.utils.XMLUtil;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.utils.archive.ArchiveManipulator;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

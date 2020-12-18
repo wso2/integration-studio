@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator;
+package org.wso2.integrationstudio.gmf.esb.diagram.validator;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -48,15 +48,15 @@ import org.apache.synapse.config.xml.TemplateMediatorFactory;
 import org.apache.synapse.config.xml.endpoints.EndpointFactory;
 import org.apache.synapse.task.SynapseTaskException;
 import org.wso2.carbon.mediator.service.MediatorException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyAPIFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyInboundEndpointFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMediatorFactoryFinder;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageProcessorFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageStoreFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyTaskDescriptionFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.EntryExtFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.sheet.XMLTag;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DummyAPIFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DummyInboundEndpointFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DummyMediatorFactoryFinder;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DummyMessageProcessorFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DummyMessageStoreFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DummyTaskDescriptionFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.EntryExtFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.sheet.XMLTag;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;

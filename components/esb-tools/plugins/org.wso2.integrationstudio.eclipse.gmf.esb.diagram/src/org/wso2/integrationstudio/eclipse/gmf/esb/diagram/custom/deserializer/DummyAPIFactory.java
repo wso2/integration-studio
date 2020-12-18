@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Iterator;
 
@@ -34,7 +34,7 @@ import org.apache.synapse.config.xml.rest.VersionStrategyFactory;
 import org.apache.synapse.rest.API;
 import org.apache.synapse.rest.version.VersionStrategy;
 import org.apache.synapse.util.CommentListUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.DummyHandler;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.DummyHandler;
 
 /**
  * Create an instance of the given Dummy API, and sets properties on it.

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.usermgt.remote;
+package org.wso2.integrationstudio.usermgt.remote;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -46,10 +46,10 @@ import org.wso2.carbon.core.services.authentication.AuthenticationExceptionExcep
 import org.wso2.carbon.user.mgt.stub.UserAdminStub;
 import org.wso2.carbon.user.mgt.stub.UserAdminUserAdminException;
 import org.wso2.carbon.user.mgt.stub.types.carbon.FlaggedName;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-//import org.wso2.integrationstudio.eclipse.platform.ui.preferences.ClientTrustStorePreferencePage;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.SSLUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+//import org.wso2.integrationstudio.platform.ui.preferences.ClientTrustStorePreferencePage;
+import org.wso2.integrationstudio.platform.ui.utils.SSLUtils;
 
 public class UserManager {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -79,11 +79,11 @@ public class UserManager {
 	}
 
 	private static void init() {
-		String clientTrustStoreLocation = preferenceStore.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		String clientTrustStoreLocation = preferenceStore.getString("org.wso2.integrationstudio.platform.ui",
 				TRUST_STORE_LOCATION, null, null);
-		String clientTrustStoreType = preferenceStore.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		String clientTrustStoreType = preferenceStore.getString("org.wso2.integrationstudio.platform.ui",
 				TRUST_STORE_TYPE, null, null);
-		String clientTrustStorePassword = preferenceStore.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		String clientTrustStorePassword = preferenceStore.getString("org.wso2.integrationstudio.platform.ui",
 				TRUST_STORE_PASSWORD, null, null);
 
 		if (clientTrustStoreLocation != null && clientTrustStorePassword != null

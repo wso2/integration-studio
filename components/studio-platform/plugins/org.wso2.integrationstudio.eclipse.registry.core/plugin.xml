@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="org.wso2.integrationstudio.eclipse.greg.resourceProvider" name="This Extension point is responsible to registering Registry Reousrce Providers" schema="schema/org.wso2.integrationstudio.eclipse.greg.resourceProvider.exsd"/>
-	<!-- <extension point="org.wso2.integrationstudio.eclipse.greg.connector">
+   <extension-point id="org.wso2.integrationstudio.greg.resourceProvider" name="This Extension point is responsible to registering Registry Reousrce Providers" schema="schema/org.wso2.integrationstudio.greg.resourceProvider.exsd"/>
+	<!-- <extension point="org.wso2.integrationstudio.greg.connector">
 	 	<registryartifact
-			class="org.wso2.integrationstudio.eclipse.registry.core.internal.impl.RegistryRequester"
-			id="org.wso2.integrationstudio.eclipse.greg.registry.requester">
+			class="org.wso2.integrationstudio.registry.core.internal.impl.RegistryRequester"
+			id="org.wso2.integrationstudio.greg.registry.requester">
 		</registryartifact>
 	</extension> -->
  <extension
-       point="org.wso2.integrationstudio.eclipse.platform.core.mediatype">
+       point="org.wso2.integrationstudio.platform.core.mediatype">
    		<resolver
-			class="org.wso2.integrationstudio.eclipse.registry.core.internal.impl.mediatypes.GARMediaTypeResolver"
+			class="org.wso2.integrationstudio.registry.core.internal.impl.mediatypes.GARMediaTypeResolver"
 			extensions="gar"
-			id="org.wso2.integrationstudio.eclipse.platform.core.mediatype.gar"
+			id="org.wso2.integrationstudio.platform.core.mediatype.gar"
 			mediaType="application/vnd.wso2.governance-archive" name="GAR Media type"
 			priority="2" />
        
  </extension>
   <extension
        point="org.wso2.integrationstudio.platfom.ui.resourceManger">
-       <ResourceManger class="org.wso2.integrationstudio.eclipse.registry.core.RegistryManager">
+       <ResourceManger class="org.wso2.integrationstudio.registry.core.RegistryManager">
        </ResourceManger>
  </extension>
  

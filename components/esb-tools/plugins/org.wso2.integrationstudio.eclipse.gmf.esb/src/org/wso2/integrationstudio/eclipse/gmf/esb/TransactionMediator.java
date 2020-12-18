@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,19 +15,19 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediator#getAction <em>Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.TransactionMediator#getAction <em>Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.TransactionMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.TransactionMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTransactionMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTransactionMediator()
  * @model
  * @generated
  */
 public interface TransactionMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Action</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionAction}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.TransactionAction}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Action</em>' attribute isn't clear,
@@ -35,20 +35,20 @@ public interface TransactionMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Action</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.TransactionAction
+     * @see org.wso2.integrationstudio.gmf.esb.TransactionAction
      * @see #setAction(TransactionAction)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTransactionMediator_Action()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTransactionMediator_Action()
      * @model
      * @generated
      */
     TransactionAction getAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediator#getAction <em>Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.TransactionMediator#getAction <em>Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Action</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.TransactionAction
+     * @see org.wso2.integrationstudio.gmf.esb.TransactionAction
      * @see #getAction()
      * @generated
      */
@@ -64,14 +64,14 @@ public interface TransactionMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(TransactionMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTransactionMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTransactionMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     TransactionMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.TransactionMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -90,14 +90,14 @@ public interface TransactionMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(TransactionMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getTransactionMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getTransactionMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     TransactionMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.TransactionMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.

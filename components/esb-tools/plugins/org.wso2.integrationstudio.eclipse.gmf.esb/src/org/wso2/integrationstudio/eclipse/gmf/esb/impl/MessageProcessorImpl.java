@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import java.util.List;
@@ -33,16 +33,16 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnableDisableState;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessorParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessorType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProcessorState;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.gmf.esb.EnableDisableState;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MessageProcessor;
+import org.wso2.integrationstudio.gmf.esb.MessageProcessorParameter;
+import org.wso2.integrationstudio.gmf.esb.MessageProcessorType;
+import org.wso2.integrationstudio.gmf.esb.ProcessorState;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,34 +52,34 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorName <em>Processor Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorType <em>Processor Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMessageProcessorProvider <em>Message Processor Provider</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMessageStore <em>Message Store</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSourceMessageStore <em>Source Message Store</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getTargetMessageStore <em>Target Message Store</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorState <em>Processor State</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getEndpointName <em>Endpoint Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSequence <em>Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getRetryInterval <em>Retry Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getForwardingInterval <em>Forwarding Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSamplingInterval <em>Sampling Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSamplingConcurrency <em>Sampling Concurrency</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMaxDeliveryAttempts <em>Max Delivery Attempts</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getDropMessageAfterMaximumDeliveryAttempts <em>Drop Message After Maximum Delivery Attempts</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getAxis2ClientRepository <em>Axis2 Client Repository</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getAxis2Configuration <em>Axis2 Configuration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getReplySequenceName <em>Reply Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getDeactivateSequenceName <em>Deactivate Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getQuartzConfigFilePath <em>Quartz Config File Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getCronExpression <em>Cron Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getTaskCount <em>Task Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMaxStoreConnectionAttempts <em>Max Store Connection Attempts</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getStoreConnectionInterval <em>Store Connection Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getFailMessagesStore <em>Fail Messages Store</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getProcessorName <em>Processor Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getProcessorType <em>Processor Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getMessageProcessorProvider <em>Message Processor Provider</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getMessageStore <em>Message Store</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getSourceMessageStore <em>Source Message Store</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getTargetMessageStore <em>Target Message Store</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getProcessorState <em>Processor State</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getEndpointName <em>Endpoint Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getSequence <em>Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getRetryInterval <em>Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getForwardingInterval <em>Forwarding Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getSamplingInterval <em>Sampling Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getSamplingConcurrency <em>Sampling Concurrency</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getMaxDeliveryAttempts <em>Max Delivery Attempts</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getDropMessageAfterMaximumDeliveryAttempts <em>Drop Message After Maximum Delivery Attempts</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getAxis2ClientRepository <em>Axis2 Client Repository</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getAxis2Configuration <em>Axis2 Configuration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getReplySequenceName <em>Reply Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getDeactivateSequenceName <em>Deactivate Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getQuartzConfigFilePath <em>Quartz Config File Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getCronExpression <em>Cron Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getTaskCount <em>Task Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getMaxStoreConnectionAttempts <em>Max Store Connection Attempts</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getStoreConnectionInterval <em>Store Connection Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageProcessorImpl#getFailMessagesStore <em>Fail Messages Store</em>}</li>
  * </ul>
  *
  * @generated

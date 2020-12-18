@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.esb.cloud.notification;
+package org.wso2.integrationstudio.esb.cloud.notification;
 
 import org.eclipse.mylyn.commons.ui.dialogs.AbstractNotificationPopup;
 import org.eclipse.swt.SWT;
@@ -13,9 +13,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.Endpoint;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.EndpointData;
-import org.wso2.integrationstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
+import org.wso2.integrationstudio.esb.cloud.model.Endpoint;
+import org.wso2.integrationstudio.esb.cloud.model.EndpointData;
+import org.wso2.integrationstudio.esb.cloud.resources.CloudDeploymentWizardConstants;
 
 /**
  * Notification shown when application is successfully deployed

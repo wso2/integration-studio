@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.synapse.api.model;
+package org.wso2.integrationstudio.artifact.synapse.api.model;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,19 +32,19 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.artifact.synapse.api.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.synapse.api.util.ArtifactConstants;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseEntryType;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseFileUtils;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.ESBProjectUtils;
-import org.wso2.integrationstudio.eclipse.general.project.utils.GeneralProjectUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIVersionType;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.artifact.synapse.api.Activator;
+import org.wso2.integrationstudio.artifact.synapse.api.util.ArtifactConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseEntryType;
+import org.wso2.integrationstudio.esb.core.utils.SynapseFileUtils;
+import org.wso2.integrationstudio.esb.project.utils.ESBProjectUtils;
+import org.wso2.integrationstudio.general.project.utils.GeneralProjectUtils;
+import org.wso2.integrationstudio.gmf.esb.APIVersionType;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
-import static org.wso2.integrationstudio.eclipse.platform.core.utils.Constants.*;
+import static org.wso2.integrationstudio.platform.core.utils.Constants.*;
 
 /**
  * The model class for API artifact wizard specific objects.

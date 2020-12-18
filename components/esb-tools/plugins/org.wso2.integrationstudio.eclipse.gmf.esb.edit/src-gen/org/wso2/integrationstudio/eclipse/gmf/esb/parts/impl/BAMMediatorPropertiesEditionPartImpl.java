@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
@@ -49,12 +49,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -449,7 +449,7 @@ public class BAMMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -459,7 +459,7 @@ public class BAMMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -481,7 +481,7 @@ public class BAMMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -491,7 +491,7 @@ public class BAMMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -532,7 +532,7 @@ public class BAMMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -542,7 +542,7 @@ public class BAMMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -564,7 +564,7 @@ public class BAMMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart#getServerProfile()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart#getServerProfile()
 	 * 
 	 */
 	public String getServerProfile() {
@@ -574,7 +574,7 @@ public class BAMMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart#setServerProfile(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart#setServerProfile(String newValue)
 	 * 
 	 */
 	public void setServerProfile(String newValue) {
@@ -596,7 +596,7 @@ public class BAMMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart#getStreamName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart#getStreamName()
 	 * 
 	 */
 	public String getStreamName() {
@@ -606,7 +606,7 @@ public class BAMMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart#setStreamName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart#setStreamName(String newValue)
 	 * 
 	 */
 	public void setStreamName(String newValue) {
@@ -628,7 +628,7 @@ public class BAMMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart#getStreamVersion()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart#getStreamVersion()
 	 * 
 	 */
 	public String getStreamVersion() {
@@ -638,7 +638,7 @@ public class BAMMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BAMMediatorPropertiesEditionPart#setStreamVersion(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BAMMediatorPropertiesEditionPart#setStreamVersion(String newValue)
 	 * 
 	 */
 	public void setStreamVersion(String newValue) {

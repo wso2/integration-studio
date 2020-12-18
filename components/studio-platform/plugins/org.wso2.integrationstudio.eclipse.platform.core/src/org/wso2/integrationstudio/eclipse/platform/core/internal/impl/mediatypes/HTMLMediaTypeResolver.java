@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.internal.impl.mediatypes;
+package org.wso2.integrationstudio.platform.core.internal.impl.mediatypes;
 
 import java.io.InputStream;
 
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.AbstractXmlDocMediaTypeResolver;
+import org.wso2.integrationstudio.platform.core.mediatype.AbstractXmlDocMediaTypeResolver;
 
 public class HTMLMediaTypeResolver extends AbstractXmlDocMediaTypeResolver {
 

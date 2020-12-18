@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.provider;
+package org.wso2.integrationstudio.ds.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
 

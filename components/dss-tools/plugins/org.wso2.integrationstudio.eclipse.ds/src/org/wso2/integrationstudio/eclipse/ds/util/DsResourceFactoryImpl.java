@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.util;
+package org.wso2.integrationstudio.ds.util;
 
 import org.eclipse.emf.common.util.URI;
 
@@ -21,13 +21,13 @@ import org.eclipse.emf.ecore.util.ExtendedMetaData;
 
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
+import org.wso2.integrationstudio.ds.DsPackage;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.wso2.integrationstudio.eclipse.ds.util.DsResourceImpl
+ * @see org.wso2.integrationstudio.ds.util.DsResourceImpl
  * @generated
  */
 public class DsResourceFactoryImpl extends ResourceFactoryImpl {

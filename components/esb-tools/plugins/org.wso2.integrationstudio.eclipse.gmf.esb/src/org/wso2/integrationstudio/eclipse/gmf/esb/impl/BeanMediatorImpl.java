@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -23,13 +23,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediatorAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.BeanMediator;
+import org.wso2.integrationstudio.gmf.esb.BeanMediatorAction;
+import org.wso2.integrationstudio.gmf.esb.BeanMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.BeanMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,18 +39,18 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getAction <em>Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getVar <em>Var</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getProperty <em>Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getValueLiteral <em>Value Literal</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getTargetType <em>Target Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getTargetLiteral <em>Target Literal</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getTargetExpression <em>Target Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BeanMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BeanMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BeanMediatorImpl#getClass_ <em>Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BeanMediatorImpl#getAction <em>Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BeanMediatorImpl#getVar <em>Var</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BeanMediatorImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BeanMediatorImpl#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BeanMediatorImpl#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BeanMediatorImpl#getValueExpression <em>Value Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BeanMediatorImpl#getTargetType <em>Target Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BeanMediatorImpl#getTargetLiteral <em>Target Literal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.BeanMediatorImpl#getTargetExpression <em>Target Expression</em>}</li>
  * </ul>
  *
  * @generated

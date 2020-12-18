@@ -14,7 +14,7 @@
  * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages;
+package org.wso2.integrationstudio.platform.ui.wizard.pages;
 
 import org.eclipse.jface.dialogs.TrayDialog;
 import org.eclipse.jface.wizard.WizardPage;
@@ -41,16 +41,16 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Validator;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.PlatformUIConstants;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.PluginImageUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.UserInputValidator;
+import org.wso2.integrationstudio.platform.ui.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.platform.core.utils.Validator;
+import org.wso2.integrationstudio.platform.ui.utils.PlatformUIConstants;
+import org.wso2.integrationstudio.platform.ui.utils.PluginImageUtils;
+import org.wso2.integrationstudio.platform.ui.utils.UserInputValidator;
 
 public class DockerDetailsPage extends WizardPage {
 

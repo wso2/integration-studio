@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages;
+package org.wso2.integrationstudio.platform.ui.wizard.pages;
 
 import org.eclipse.jface.dialogs.TrayDialog;
 import org.eclipse.jface.wizard.WizardPage;
@@ -28,13 +28,13 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.Activator;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectOption;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectWizardSettings;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.Activator;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectOption;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectWizardSettings;
 
 public class ProjectOptionsPage extends WizardPage {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

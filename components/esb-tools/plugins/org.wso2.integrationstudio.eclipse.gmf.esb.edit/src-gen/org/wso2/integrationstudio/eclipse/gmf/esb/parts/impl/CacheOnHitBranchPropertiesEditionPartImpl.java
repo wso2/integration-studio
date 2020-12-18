@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -23,9 +23,9 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheOnHitBranchPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.CacheOnHitBranchPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 

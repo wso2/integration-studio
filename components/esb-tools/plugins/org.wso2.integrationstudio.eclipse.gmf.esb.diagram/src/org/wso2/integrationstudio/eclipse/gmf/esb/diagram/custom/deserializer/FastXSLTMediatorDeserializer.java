@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY;
 
 import java.util.Map;
 
@@ -29,15 +29,15 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.KeyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.FastXSLTMediator;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  *
@@ -56,7 +56,7 @@ public class FastXSLTMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
                 UNSUPPORTED_MEDIATOR_PASSED + this.getClass());
         org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator fastXSLTMediator = (org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator) mediator;
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediator visualFastXSLTMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.FastXSLTMediator visualFastXSLTMediator = (org.wso2.integrationstudio.gmf.esb.FastXSLTMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.FastXSLTMediator_3764);
 
         setElementToEdit(visualFastXSLTMediator);

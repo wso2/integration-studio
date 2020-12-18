@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.utils.mediatypes;
+package org.wso2.integrationstudio.utils.mediatypes;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -22,9 +22,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.Activator;
 
 public class CustomMediaTypeReader {	
 	

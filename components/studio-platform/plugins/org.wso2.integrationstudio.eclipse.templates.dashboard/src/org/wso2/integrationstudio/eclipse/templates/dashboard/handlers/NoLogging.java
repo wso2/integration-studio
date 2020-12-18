@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.templates.dashboard.handlers;
+package org.wso2.integrationstudio.templates.dashboard.handlers;
 
 import org.eclipse.jetty.util.log.Logger;
 

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -17,20 +17,20 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichSourceInlineType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichSourceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichTargetAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichTargetType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.gmf.esb.EnrichMediator;
+import org.wso2.integrationstudio.gmf.esb.EnrichMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.EnrichMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EnrichSourceInlineType;
+import org.wso2.integrationstudio.gmf.esb.EnrichSourceType;
+import org.wso2.integrationstudio.gmf.esb.EnrichTargetAction;
+import org.wso2.integrationstudio.gmf.esb.EnrichTargetType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,19 +40,19 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#isCloneSource <em>Clone Source</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#getSourceType <em>Source Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#getSourceXpath <em>Source Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#getSourceProperty <em>Source Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#getSourceXML <em>Source XML</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#getTargetAction <em>Target Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#getTargetType <em>Target Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#getTargetXpath <em>Target Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#getTargetProperty <em>Target Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#getInlineType <em>Inline Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#getInlineRegistryKey <em>Inline Registry Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EnrichMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#isCloneSource <em>Clone Source</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#getSourceType <em>Source Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#getSourceXpath <em>Source Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#getSourceProperty <em>Source Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#getSourceXML <em>Source XML</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#getTargetAction <em>Target Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#getTargetType <em>Target Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#getTargetXpath <em>Target Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#getTargetProperty <em>Target Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#getInlineType <em>Inline Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#getInlineRegistryKey <em>Inline Registry Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EnrichMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -22,7 +22,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
 
 /**
  * A custom {@link AbstractActionHandler} used to hookup actions for configuring

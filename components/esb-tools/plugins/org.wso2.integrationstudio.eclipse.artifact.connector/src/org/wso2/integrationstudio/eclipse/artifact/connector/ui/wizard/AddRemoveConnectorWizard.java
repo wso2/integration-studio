@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.connector.ui.wizard;
+package org.wso2.integrationstudio.artifact.connector.ui.wizard;
 
 import java.io.File;
 import java.util.regex.Pattern;
@@ -37,15 +37,15 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.artifact.connector.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.connector.artifact.ConnectorArtifact;
-import org.wso2.integrationstudio.eclipse.artifact.connector.artifact.ConnectorProjectArtifact;
-import org.wso2.integrationstudio.eclipse.artifact.connector.model.ConnectorModel;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.connector.Activator;
+import org.wso2.integrationstudio.artifact.connector.artifact.ConnectorArtifact;
+import org.wso2.integrationstudio.artifact.connector.artifact.ConnectorProjectArtifact;
+import org.wso2.integrationstudio.artifact.connector.model.ConnectorModel;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard {
 

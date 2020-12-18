@@ -22,7 +22,7 @@
 		<version>7.2.0-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>org.wso2.integrationstudio.eclipse.artifact.template.sequence</artifactId>
+	<artifactId>org.wso2.integrationstudio.artifact.template.sequence</artifactId>
 	<packaging>eclipse-plugin</packaging>
 	<name>WSO2 Integration Studio Template artifact</name>
 </project>

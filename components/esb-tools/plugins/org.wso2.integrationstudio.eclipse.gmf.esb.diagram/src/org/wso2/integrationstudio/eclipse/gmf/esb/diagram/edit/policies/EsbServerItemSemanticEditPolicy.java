@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.policies;
 
 import java.util.Iterator;
 
@@ -12,25 +12,25 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.EndpointDiagramCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.MessageMediatorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.MessageStoreCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ComplexEndpointsEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerContentsCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.LocalEntryEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MergeNodeEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MessageMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MessageProcessorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MessageStoreEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SynapseAPIEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.TaskEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.TemplateEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.EndpointDiagramCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.MessageMediatorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.MessageStoreCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ComplexEndpointsEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EndpointDiagramEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbServerContentsCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.InboundEndpointEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.LocalEntryEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MergeNodeEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MessageMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MessageProcessorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MessageStoreEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequencesEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SynapseAPIEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.TaskEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.TemplateEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated

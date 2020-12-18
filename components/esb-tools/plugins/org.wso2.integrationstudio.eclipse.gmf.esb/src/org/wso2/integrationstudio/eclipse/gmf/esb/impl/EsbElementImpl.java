@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbElement;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,8 +25,8 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbElementImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbElementImpl#getCommentsList <em>Comments List</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbElementImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbElementImpl#getCommentsList <em>Comments List</em>}</li>
  * </ul>
  *
  * @generated

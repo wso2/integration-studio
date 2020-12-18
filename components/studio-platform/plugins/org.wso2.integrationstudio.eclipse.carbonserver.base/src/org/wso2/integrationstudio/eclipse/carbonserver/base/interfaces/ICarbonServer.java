@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces;
+package org.wso2.integrationstudio.carbonserver.base.interfaces;
 
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.carbonfeatures.FeatureDefinition;
-import org.wso2.integrationstudio.eclipse.server.base.interfaces.IWSO2Server;
+import org.wso2.integrationstudio.carbonfeatures.FeatureDefinition;
+import org.wso2.integrationstudio.server.base.interfaces.IWSO2Server;
 
 public interface ICarbonServer extends IWSO2Server {
 	public List<FeatureDefinition> getAvailableFeatures();

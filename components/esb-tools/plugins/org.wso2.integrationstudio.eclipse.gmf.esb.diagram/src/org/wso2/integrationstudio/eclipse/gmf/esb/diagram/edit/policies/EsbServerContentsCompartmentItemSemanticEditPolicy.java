@@ -1,19 +1,19 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.policies;
 
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.ComplexEndpointsCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.InboundEndpointCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.LocalEntryCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.MergeNodeCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.MessageProcessorCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.MessageStoreCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.ProxyServiceCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.SequencesCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.SynapseAPICreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.TaskCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.TemplateCreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.ComplexEndpointsCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.InboundEndpointCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.LocalEntryCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.MergeNodeCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.MessageProcessorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.MessageStoreCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.ProxyServiceCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.SequencesCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.SynapseAPICreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.TaskCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.TemplateCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated

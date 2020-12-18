@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.maven.util;
+package org.wso2.integrationstudio.maven.util;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Platform UI
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.platform.ui;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.platform.ui;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.platform.ui.Activator
-Require-Bundle: org.wso2.integrationstudio.eclipse.platform.core,
- org.wso2.integrationstudio.eclipse.kernel.libraries
+Bundle-Activator: org.wso2.integrationstudio.platform.ui.Activator
+Require-Bundle: org.wso2.integrationstudio.platform.core,
+ org.wso2.integrationstudio.kernel.libraries
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.eclipse.core.expressions,
  org.eclipse.core.filesystem,
@@ -22,22 +22,22 @@ Import-Package: org.eclipse.core.expressions,
  org.eclipse.ui.navigator,
  org.eclipse.ui.part,
  org.eclipse.ui.views.navigator,
- org.wso2.integrationstudio.eclipse.logging.core,
- org.wso2.integrationstudio.eclipse.maven.types,
- org.wso2.integrationstudio.eclipse.maven.util,
- org.wso2.integrationstudio.eclipse.utils.file,
- org.wso2.integrationstudio.eclipse.utils.project,
- org.wso2.integrationstudio.eclipse.utils.ui
-Export-Package: org.wso2.integrationstudio.eclipse.platform.ui,
- org.wso2.integrationstudio.eclipse.platform.ui.dialogs,
- org.wso2.integrationstudio.eclipse.platform.ui.editor,
- org.wso2.integrationstudio.eclipse.platform.ui.interfaces,
- org.wso2.integrationstudio.eclipse.platform.ui.manager,
- org.wso2.integrationstudio.eclipse.platform.ui.preferences,
- org.wso2.integrationstudio.eclipse.platform.ui.startup,
- org.wso2.integrationstudio.eclipse.platform.ui.utils,
- org.wso2.integrationstudio.eclipse.platform.ui.validator,
- org.wso2.integrationstudio.eclipse.platform.ui.wizard,
- org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages
+ org.wso2.integrationstudio.logging.core,
+ org.wso2.integrationstudio.maven.types,
+ org.wso2.integrationstudio.maven.util,
+ org.wso2.integrationstudio.utils.file,
+ org.wso2.integrationstudio.utils.project,
+ org.wso2.integrationstudio.utils.ui
+Export-Package: org.wso2.integrationstudio.platform.ui,
+ org.wso2.integrationstudio.platform.ui.dialogs,
+ org.wso2.integrationstudio.platform.ui.editor,
+ org.wso2.integrationstudio.platform.ui.interfaces,
+ org.wso2.integrationstudio.platform.ui.manager,
+ org.wso2.integrationstudio.platform.ui.preferences,
+ org.wso2.integrationstudio.platform.ui.startup,
+ org.wso2.integrationstudio.platform.ui.utils,
+ org.wso2.integrationstudio.platform.ui.validator,
+ org.wso2.integrationstudio.platform.ui.wizard,
+ org.wso2.integrationstudio.platform.ui.wizard.pages
 Bundle-Vendor: WSO2
 Bundle-ClassPath: .

@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.FeatureMap;
@@ -18,15 +18,15 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.Operation#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.Operation#getCallQuery <em>Call Query</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.Operation#getCallQueryGroup <em>Call Query Group</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.Operation#isDisableStreaming <em>Disable Streaming</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.Operation#isReturnRequestStatus <em>Return Request Status</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.Operation#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.Operation#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.Operation#getCallQuery <em>Call Query</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.Operation#getCallQueryGroup <em>Call Query Group</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.Operation#isDisableStreaming <em>Disable Streaming</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.Operation#isReturnRequestStatus <em>Return Request Status</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.Operation#getName <em>Name</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getOperation()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getOperation()
  * @model extendedMetaData="name='operation_._type' kind='mixed'"
  * @generated
  */
@@ -41,7 +41,7 @@ public interface Operation extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getOperation_Mixed()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getOperation_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -58,7 +58,7 @@ public interface Operation extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Call Query</em>' containment reference.
 	 * @see #setCallQuery(CallQuery)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getOperation_CallQuery()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getOperation_CallQuery()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='call-query' namespace='##targetNamespace'"
 	 * @generated
@@ -66,7 +66,7 @@ public interface Operation extends EObject {
 	CallQuery getCallQuery();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.Operation#getCallQuery <em>Call Query</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.Operation#getCallQuery <em>Call Query</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Call Query</em>' containment reference.
@@ -85,7 +85,7 @@ public interface Operation extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Call Query Group</em>' containment reference.
 	 * @see #setCallQueryGroup(CallQueryList)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getOperation_CallQueryGroup()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getOperation_CallQueryGroup()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='call-query-group' namespace='##targetNamespace'"
 	 * @generated
@@ -93,7 +93,7 @@ public interface Operation extends EObject {
 	CallQueryList getCallQueryGroup();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.Operation#getCallQueryGroup <em>Call Query Group</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.Operation#getCallQueryGroup <em>Call Query Group</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Call Query Group</em>' containment reference.
@@ -112,7 +112,7 @@ public interface Operation extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Disable Streaming</em>' attribute.
 	 * @see #setDisableStreaming(boolean)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getOperation_DisableStreaming()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getOperation_DisableStreaming()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 *        extendedMetaData="kind='attribute' name='disableStreaming' namespace='##targetNamespace'"
 	 * @generated
@@ -120,7 +120,7 @@ public interface Operation extends EObject {
 	boolean isDisableStreaming();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.Operation#isDisableStreaming <em>Disable Streaming</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.Operation#isDisableStreaming <em>Disable Streaming</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Disable Streaming</em>' attribute.
@@ -139,7 +139,7 @@ public interface Operation extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Return Request Status</em>' attribute.
 	 * @see #setReturnRequestStatus(boolean)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getOperation_ReturnRequestStatus()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getOperation_ReturnRequestStatus()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean" required="true"
 	 *        extendedMetaData="kind='attribute' name='returnRequestStatus' namespace='##targetNamespace'"
 	 * @generated
@@ -147,7 +147,7 @@ public interface Operation extends EObject {
 	boolean isReturnRequestStatus();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.Operation#isReturnRequestStatus <em>Return Request Status</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.Operation#isReturnRequestStatus <em>Return Request Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Return Request Status</em>' attribute.
@@ -166,7 +166,7 @@ public interface Operation extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getOperation_Name()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getOperation_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='name' namespace='##targetNamespace'"
 	 * @generated
@@ -174,7 +174,7 @@ public interface Operation extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.Operation#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.Operation#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.

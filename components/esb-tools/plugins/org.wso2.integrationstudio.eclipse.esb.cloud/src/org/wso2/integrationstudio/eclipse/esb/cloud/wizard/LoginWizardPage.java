@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.cloud.wizard;
+package org.wso2.integrationstudio.esb.cloud.wizard;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -40,18 +40,18 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.esb.cloud.Activator;
-import org.wso2.integrationstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.HttpClientException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
-import org.wso2.integrationstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
-import org.wso2.integrationstudio.eclipse.esb.cloud.util.CloudDeploymentWizardUtils;
-import org.wso2.integrationstudio.eclipse.esb.cloud.util.UserSessionManager;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.esb.cloud.Activator;
+import org.wso2.integrationstudio.esb.cloud.client.IntegrationCloudServiceClient;
+import org.wso2.integrationstudio.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.HttpClientException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.InvalidTokenException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.NetworkUnavailableException;
+import org.wso2.integrationstudio.esb.cloud.resources.CloudDeploymentWizardConstants;
+import org.wso2.integrationstudio.esb.cloud.resources.CloudServiceConstants;
+import org.wso2.integrationstudio.esb.cloud.util.CloudDeploymentWizardUtils;
+import org.wso2.integrationstudio.esb.cloud.util.UserSessionManager;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * Wizard page for Login.

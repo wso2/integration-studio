@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariable;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariableType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariableValueType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariable;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariableType;
+import org.wso2.integrationstudio.gmf.esb.XQueryVariableValueType;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,12 +30,12 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryVariableValueType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryVariableImpl#getVariableName <em>Variable Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryVariableImpl#getVariableType <em>Variable Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryVariableImpl#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryVariableImpl#getValueLiteral <em>Value Literal</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryVariableImpl#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.XQueryVariableImpl#getValueKey <em>Value Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryVariableImpl#getVariableName <em>Variable Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryVariableImpl#getVariableType <em>Variable Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryVariableImpl#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryVariableImpl#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryVariableImpl#getValueExpression <em>Value Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.XQueryVariableImpl#getValueKey <em>Value Key</em>}</li>
  * </ul>
  *
  * @generated

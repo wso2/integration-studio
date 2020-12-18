@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.datasourceProject.ui.wizard;
+package org.wso2.integrationstudio.artifact.datasourceProject.ui.wizard;
 
 import java.io.File;
 
@@ -31,19 +31,19 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.artifact.datasourceProject.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.datasourceProject.artifact.DataSourceProjectArtifact;
-import org.wso2.integrationstudio.eclipse.artifact.datasourceProject.model.DataSourceModel;
-import org.wso2.integrationstudio.eclipse.artifact.datasourceProject.utils.DataSourceImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.datasourceProject.utils.DataSourceProjectConstants;
-import org.wso2.integrationstudio.eclipse.capp.maven.utils.MavenConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPage;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.artifact.datasourceProject.Activator;
+import org.wso2.integrationstudio.artifact.datasourceProject.artifact.DataSourceProjectArtifact;
+import org.wso2.integrationstudio.artifact.datasourceProject.model.DataSourceModel;
+import org.wso2.integrationstudio.artifact.datasourceProject.utils.DataSourceImageUtils;
+import org.wso2.integrationstudio.artifact.datasourceProject.utils.DataSourceProjectConstants;
+import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.MavenDetailsPage;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class DataSourceProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 
@@ -53,7 +53,7 @@ public class DataSourceProjectCreationWizard extends AbstractWSO2ProjectCreation
 	private static final String ARTIFACT_FILE = "artifact.xml";
 	private static final String PACKAGE_NAME = "pom";
 	private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,datasource/datasource=xml,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml,synapse/inbound-endpoint=xml";
-	private static final String DSS_PERSPECTIVE = "org.wso2.integrationstudio.eclipse.ds.presentation.custom.perspective";
+	private static final String DSS_PERSPECTIVE = "org.wso2.integrationstudio.ds.presentation.custom.perspective";
 	private IProject project;
 	private final DataSourceModel dsModel;
 

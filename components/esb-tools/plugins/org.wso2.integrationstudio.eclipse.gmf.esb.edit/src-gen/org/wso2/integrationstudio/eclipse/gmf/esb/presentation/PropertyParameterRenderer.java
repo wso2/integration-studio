@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import java.util.HashMap;
 
@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorRoot;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.ConnectorRoot;
 
 public abstract class PropertyParameterRenderer {
     abstract Composite generate(FormToolkit widgetFactory, Composite parent, ConnectorRoot connectorRoot);

@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,7 +39,7 @@ import org.apache.synapse.mediators.transform.Argument;
 import org.apache.synapse.mediators.transform.PayloadFactoryMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFactory {
     

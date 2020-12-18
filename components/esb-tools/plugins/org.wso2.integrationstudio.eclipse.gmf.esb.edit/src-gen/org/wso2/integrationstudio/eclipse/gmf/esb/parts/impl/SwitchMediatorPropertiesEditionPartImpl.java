@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -63,12 +63,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -529,7 +529,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -539,7 +539,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -561,7 +561,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -571,7 +571,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -612,7 +612,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -622,7 +622,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -644,7 +644,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#getSource()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#getSource()
 	 * 
 	 */
 	public String getSource() {
@@ -654,7 +654,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#setSource(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#setSource(String newValue)
 	 * 
 	 */
 	public void setSource(String newValue) {
@@ -676,7 +676,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#getNamespace()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#getNamespace()
 	 * 
 	 */
 	public String getNamespace() {
@@ -686,7 +686,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#setNamespace(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#setNamespace(String newValue)
 	 * 
 	 */
 	public void setNamespace(String newValue) {
@@ -708,7 +708,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#getNamespacePrefix()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#getNamespacePrefix()
 	 * 
 	 */
 	public String getNamespacePrefix() {
@@ -718,7 +718,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#setNamespacePrefix(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#setNamespacePrefix(String newValue)
 	 * 
 	 */
 	public void setNamespacePrefix(String newValue) {
@@ -742,7 +742,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#initCaseBranches(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#initCaseBranches(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initCaseBranches(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -763,7 +763,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#updateCaseBranches()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#updateCaseBranches()
 	 * 
 	 */
 	public void updateCaseBranches() {
@@ -773,7 +773,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#addFilterCaseBranches(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#addFilterCaseBranches(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToCaseBranches(ViewerFilter filter) {
@@ -786,7 +786,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#addBusinessFilterCaseBranches(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#addBusinessFilterCaseBranches(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToCaseBranches(ViewerFilter filter) {
@@ -796,7 +796,7 @@ public class SwitchMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#isContainedInCaseBranchesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SwitchMediatorPropertiesEditionPart#isContainedInCaseBranchesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInCaseBranchesTable(EObject element) {

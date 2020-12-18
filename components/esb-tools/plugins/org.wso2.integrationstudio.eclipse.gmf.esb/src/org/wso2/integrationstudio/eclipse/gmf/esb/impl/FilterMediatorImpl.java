@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterConditionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorConditionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorFailOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorPassOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FilterConditionType;
+import org.wso2.integrationstudio.gmf.esb.FilterContainer;
+import org.wso2.integrationstudio.gmf.esb.FilterMediator;
+import org.wso2.integrationstudio.gmf.esb.FilterMediatorConditionType;
+import org.wso2.integrationstudio.gmf.esb.FilterMediatorFailOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.FilterMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.FilterMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.FilterMediatorPassOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,15 +35,15 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getConditionType <em>Condition Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getRegex <em>Regex</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getPassOutputConnector <em>Pass Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getFailOutputConnector <em>Fail Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getXpath <em>Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getSource <em>Source</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getFilterContainer <em>Filter Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FilterMediatorImpl#getConditionType <em>Condition Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FilterMediatorImpl#getRegex <em>Regex</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FilterMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FilterMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FilterMediatorImpl#getPassOutputConnector <em>Pass Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FilterMediatorImpl#getFailOutputConnector <em>Fail Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FilterMediatorImpl#getXpath <em>Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FilterMediatorImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FilterMediatorImpl#getFilterContainer <em>Filter Container</em>}</li>
  * </ul>
  *
  * @generated

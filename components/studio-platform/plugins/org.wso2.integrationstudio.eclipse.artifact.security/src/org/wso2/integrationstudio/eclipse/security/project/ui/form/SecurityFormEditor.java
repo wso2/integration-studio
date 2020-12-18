@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.security.project.ui.form;
+package org.wso2.integrationstudio.security.project.ui.form;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -41,10 +41,10 @@ import org.eclipse.ui.forms.editor.IFormPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
-import org.wso2.integrationstudio.eclipse.artifact.security.utils.SecurityFormMessageConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.security.Activator;
+import org.wso2.integrationstudio.artifact.security.utils.SecurityFormMessageConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.security.Activator;
 
 import javax.xml.transform.TransformerException;
 

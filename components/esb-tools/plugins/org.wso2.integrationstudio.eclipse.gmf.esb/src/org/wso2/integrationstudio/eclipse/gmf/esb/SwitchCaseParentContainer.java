@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -26,17 +26,17 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseParentContainer#getSwitchCaseContainer <em>Switch Case Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.SwitchCaseParentContainer#getSwitchCaseContainer <em>Switch Case Container</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSwitchCaseParentContainer()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSwitchCaseParentContainer()
  * @model
  * @generated
  */
 public interface SwitchCaseParentContainer extends EsbNode {
     /**
      * Returns the value of the '<em><b>Switch Case Container</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseContainer}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.SwitchCaseContainer}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Switch Case Container</em>' containment reference list isn't clear,
@@ -44,7 +44,7 @@ public interface SwitchCaseParentContainer extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Switch Case Container</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSwitchCaseParentContainer_SwitchCaseContainer()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSwitchCaseParentContainer_SwitchCaseContainer()
      * @model containment="true" required="true"
      * @generated
      */

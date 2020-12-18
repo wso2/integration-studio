@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.propertytester;
+package org.wso2.integrationstudio.platform.core.propertytester;
 
 import org.eclipse.core.internal.propertytester.ResourcePropertyTester;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jdt.core.IPackageFragment;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.Activator;
 
 /**
  * A property tester for project-nature property of resources/package-fragments

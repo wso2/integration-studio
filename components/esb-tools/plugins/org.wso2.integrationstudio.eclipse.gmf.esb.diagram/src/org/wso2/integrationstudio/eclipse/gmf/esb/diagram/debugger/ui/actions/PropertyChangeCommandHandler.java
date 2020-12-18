@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.actions;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.actions;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_DEBUGGER_EVENT_BROKER_DATA_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_MESSAGE_MEDIATION_PROPERTY_CLEAR_COMMAND_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_MESSAGE_MEDIATION_PROPERTY_INJECT_COMMAND_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_PRIMARY_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_SECONDARY_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_DEBUGGER_EVENT_BROKER_DATA_NAME;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_MESSAGE_MEDIATION_PROPERTY_CLEAR_COMMAND_ID;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_MESSAGE_MEDIATION_PROPERTY_INJECT_COMMAND_ID;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_PRIMARY_ID;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_SECONDARY_ID;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC;
 
 import java.util.List;
 
@@ -40,15 +40,15 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.FetchVariablesRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model.ESBStackFrame;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.views.AcceptedContentAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.views.ContentAcceptHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.views.DefaultPropertyValues;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.FetchVariablesRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.model.ESBStackFrame;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.views.AcceptedContentAction;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.views.ContentAcceptHandler;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.views.DefaultPropertyValues;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * This class handles the commands executed by the user from UI regarding ESB Message Mediation Property injecting and
@@ -57,13 +57,13 @@ import org.wso2.integrationstudio.eclipse.logging.core.Logger;
  * <pre>
  * {@code   <extension point="org.eclipse.ui.handlers">
  *     <handler
- *             commandId="org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.InjectNewProperty"
+ *             commandId="org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.commands.InjectNewProperty"
  *             class=
-"org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.actions.PropertyChangeCommandHandler"/>
+"org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.actions.PropertyChangeCommandHandler"/>
  *     <handler
- *             commandId="org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.ClearProperty"
+ *             commandId="org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.commands.ClearProperty"
  *             class=
-"org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.actions.PropertyChangeCommandHandler"/>
+"org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.actions.PropertyChangeCommandHandler"/>
  *  </extension>}
  * </pre>
  *

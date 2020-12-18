@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.model;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_DEBUGGER_EVENT_BROKER_DATA_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_PRIMARY_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_SECONDARY_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_WIRE_LOGS_RECEIVED_EVENT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.WIRE_LOG_VIEW_PRIMARY_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.WIRE_LOG_VIEW_SECONDARY_ID;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_DEBUGGER_EVENT_BROKER_DATA_NAME;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_PRIMARY_ID;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_SECONDARY_ID;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_WIRE_LOGS_RECEIVED_EVENT;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.WIRE_LOG_VIEW_PRIMARY_ID;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.WIRE_LOG_VIEW_SECONDARY_ID;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,25 +48,25 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.AddPropertyToTableDialogRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.ClearPropertyFromTableDialogRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.FetchVariablesRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.PropertyChangeRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.TerminateRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.response.PropertyRespondMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.actions.AddPropertyToTableDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.actions.RemovePropertyFromTableDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.views.AcceptedContentAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.views.ContentAcceptHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.views.DefaultPropertyValues;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.AddPropertyToTableDialogRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.ClearPropertyFromTableDialogRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.FetchVariablesRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.PropertyChangeRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.TerminateRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.response.PropertyRespondMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.actions.AddPropertyToTableDialog;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.actions.RemovePropertyFromTableDialog;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.views.AcceptedContentAction;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.views.ContentAcceptHandler;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.views.DefaultPropertyValues;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.Messages;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

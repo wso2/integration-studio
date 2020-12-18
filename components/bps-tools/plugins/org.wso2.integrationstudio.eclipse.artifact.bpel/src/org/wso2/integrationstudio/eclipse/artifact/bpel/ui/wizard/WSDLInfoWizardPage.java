@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.artifact.bpel.ui.wizard;
+package org.wso2.integrationstudio.artifact.bpel.ui.wizard;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -10,7 +10,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.utils.BPELArtifactConstants;
+import org.wso2.integrationstudio.artifact.bpel.utils.BPELArtifactConstants;
 
 public class WSDLInfoWizardPage extends WizardPage{
 	private Text serviceNameText;

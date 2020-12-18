@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.core.utils;
+package org.wso2.integrationstudio.esb.core.utils;
 
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.wso2.integrationstudio.eclipse.esb.core.Activator;
-import org.wso2.integrationstudio.eclipse.esb.core.preferences.ui.PreferenceConstants;
+import org.wso2.integrationstudio.esb.core.Activator;
+import org.wso2.integrationstudio.esb.core.preferences.ui.PreferenceConstants;
 
 public class ESBPreferenceData {
 	private static IPreferenceStore store = Activator.getDefault().getPreferenceStore();

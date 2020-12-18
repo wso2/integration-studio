@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.artifact.template.validators;
+package org.wso2.integrationstudio.artifact.template.validators;
 
 import java.io.File;
 import java.util.Arrays;
@@ -27,15 +27,15 @@ import org.apache.axiom.om.OMElement;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.wso2.integrationstudio.eclipse.artifact.template.model.TemplateModel;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.artifact.template.model.TemplateModel;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
 
-import static org.wso2.integrationstudio.eclipse.artifact.template.utils.TemplateConstants.*;
+import static org.wso2.integrationstudio.artifact.template.utils.TemplateConstants.*;
 
 /**
  * TemplateProjectFieldController is the class that validates project fields required for an ESB Template project creation
@@ -204,15 +204,15 @@ public class TemplateProjectFieldController extends AbstractFieldController {
     private Map<String, List<String>> getTemplateFieldProperties() {
         Map<String, List<String>> map = new HashMap<String, List<String>>();
 
-        map.put("org.wso2.integrationstudio.eclipse.esb.template.sq_template",
+        map.put("org.wso2.integrationstudio.esb.template.sq_template",
                 Arrays.asList(new String[]{}));
-        map.put("org.wso2.integrationstudio.eclipse.esb.template.endpoint_templates.default",
+        map.put("org.wso2.integrationstudio.esb.template.endpoint_templates.default",
                 Arrays.asList(new String[]{}));
-        map.put("org.wso2.integrationstudio.eclipse.esb.template.endpoint_templates.Address",
+        map.put("org.wso2.integrationstudio.esb.template.endpoint_templates.Address",
                 Arrays.asList("templ.address.ep.uri"));
-        map.put("org.wso2.integrationstudio.eclipse.esb.template.endpoint_templates.wsdl",
+        map.put("org.wso2.integrationstudio.esb.template.endpoint_templates.wsdl",
                 Arrays.asList("templ.wsdl.ep.uri", "templ.wsdl.ep.service", "templ.wsdl.ep.port"));
-        map.put("org.wso2.integrationstudio.eclipse.esb.template.endpoint_templates.http",
+        map.put("org.wso2.integrationstudio.esb.template.endpoint_templates.http",
                 Arrays.asList("templ.http.ep.uritemplate", "templ.http.ep.method"));
 
         return map;

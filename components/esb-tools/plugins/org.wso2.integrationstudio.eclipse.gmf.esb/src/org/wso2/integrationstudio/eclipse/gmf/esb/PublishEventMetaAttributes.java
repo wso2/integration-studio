@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -27,19 +27,19 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMetaAttributes#getAttributes
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.PublishEventMetaAttributes#getAttributes
  * <em>Attributes</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMetaAttributes()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPublishEventMetaAttributes()
  * @model
  * @generated
  */
 public interface PublishEventMetaAttributes extends EObject {
     /**
      * Returns the value of the '<em><b>Attributes</b></em>' reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventAttribute}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.PublishEventAttribute}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Attributes</em>' reference list isn't clear,
@@ -48,7 +48,7 @@ public interface PublishEventMetaAttributes extends EObject {
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Attributes</em>' reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMetaAttributes_Attributes()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPublishEventMetaAttributes_Attributes()
      * @model
      * @generated
      */

@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.integrationstudio.eclipse.esb.project.utils;
+package org.wso2.integrationstudio.esb.project.utils;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;

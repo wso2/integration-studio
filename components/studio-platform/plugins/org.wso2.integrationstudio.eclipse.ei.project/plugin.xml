@@ -48,11 +48,11 @@
         <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
             <menu label="Integration Studio"
                   mnemonic="C"
-                  id="org.wso2.integrationstudio.eclipse.platform.ui.main">
+                  id="org.wso2.integrationstudio.platform.ui.main">
                 <command
-                        commandId="org.wso2.integrationstudio.eclipse.ei.commands.sampleCommand"
+                        commandId="org.wso2.integrationstudio.ei.commands.sampleCommand"
                         icon="icons/carbon-studio-small-logo.gif"
-                        id="org.wso2.integrationstudio.eclipse.ei.toolbars.sampleCommand"
+                        id="org.wso2.integrationstudio.ei.toolbars.sampleCommand"
                         label="About"
                         tooltip="About Integration Studio">
                 </command>
@@ -67,8 +67,8 @@
      <extension
             point="org.eclipse.ui.handlers">
         <handler
-                class="org.wso2.integrationstudio.eclipse.ei.handler.IntegrationStudioAboutPageHandler"
-                commandId="org.wso2.integrationstudio.eclipse.ei.commands.sampleCommand">
+                class="org.wso2.integrationstudio.ei.handler.IntegrationStudioAboutPageHandler"
+                commandId="org.wso2.integrationstudio.ei.commands.sampleCommand">
         </handler>
     </extension>
 </plugin>

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.provider;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Mediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.Mediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
 
 public class PropertyMediatorOMPropertyDialog extends AbstractMediatorMultiLinePropertyDialog {
 

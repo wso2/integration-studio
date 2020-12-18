@@ -1,5 +1,5 @@
 /*
- * package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+ * package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
  * 
  * import org.eclipse.draw2d.ColorConstants;
  * import org.eclipse.draw2d.Graphics;
@@ -27,9 +27,9 @@
  * import org.eclipse.gmf.runtime.notation.View;
  * import org.eclipse.swt.graphics.Color;
  * import
- * org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.ProxyServiceSequenceContainerCanonicalEditPolicy;
+ * org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.ProxyServiceSequenceContainerCanonicalEditPolicy;
  * import
- * org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.ProxyServiceSequenceContainerItemSemanticEditPolicy;
+ * org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.ProxyServiceSequenceContainerItemSemanticEditPolicy;
  * 
  *//**
     * @generated

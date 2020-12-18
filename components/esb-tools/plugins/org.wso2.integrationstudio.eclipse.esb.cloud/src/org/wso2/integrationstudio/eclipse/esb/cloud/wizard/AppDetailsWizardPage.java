@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.cloud.wizard;
+package org.wso2.integrationstudio.esb.cloud.wizard;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,18 +57,18 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.esb.cloud.Activator;
-import org.wso2.integrationstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.HttpClientException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.Application;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.Runtime;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.Version;
-import org.wso2.integrationstudio.eclipse.esb.cloud.resources.CloudDeploymentWizardConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.esb.cloud.Activator;
+import org.wso2.integrationstudio.esb.cloud.client.IntegrationCloudServiceClient;
+import org.wso2.integrationstudio.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.HttpClientException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.InvalidTokenException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.NetworkUnavailableException;
+import org.wso2.integrationstudio.esb.cloud.model.Application;
+import org.wso2.integrationstudio.esb.cloud.model.Runtime;
+import org.wso2.integrationstudio.esb.cloud.model.Version;
+import org.wso2.integrationstudio.esb.cloud.resources.CloudDeploymentWizardConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * Wizard Page to enter application details

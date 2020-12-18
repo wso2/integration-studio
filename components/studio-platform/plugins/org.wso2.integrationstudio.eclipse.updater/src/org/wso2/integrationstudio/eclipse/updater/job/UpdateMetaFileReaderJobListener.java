@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.updater.job;
+package org.wso2.integrationstudio.updater.job;
 
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
@@ -23,14 +23,14 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.PreferenceConstants;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
-import org.wso2.integrationstudio.eclipse.updater.Messages;
-import org.wso2.integrationstudio.eclipse.updater.UpdaterPlugin;
-import org.wso2.integrationstudio.eclipse.updater.core.UpdateManager;
-import org.wso2.integrationstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.preferences.PreferenceConstants;
+import org.wso2.integrationstudio.platform.ui.preferences.UpdateCheckerPreferencePage;
+import org.wso2.integrationstudio.updater.Messages;
+import org.wso2.integrationstudio.updater.UpdaterPlugin;
+import org.wso2.integrationstudio.updater.core.UpdateManager;
+import org.wso2.integrationstudio.updater.ui.UpdaterDialog.ActiveTab;
 
 public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 
@@ -38,7 +38,7 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 	private static final String SET_LATER = "Not Now";
 	private static final String UPDATER_DIALOG_TITLE = Messages.UpdatemetaFileReaderJobListener_1;
 	protected static final String YES = "Yes";
-	private static org.wso2.integrationstudio.eclipse.updater.job.UpdateMetaFileReaderJob UpdateMetaFileReaderJob;
+	private static org.wso2.integrationstudio.updater.job.UpdateMetaFileReaderJob UpdateMetaFileReaderJob;
 
 	protected static IIntegrationStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 

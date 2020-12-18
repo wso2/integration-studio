@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,12 +14,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EventMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EventMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EventTopicType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EventMediator;
+import org.wso2.integrationstudio.gmf.esb.EventMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.EventMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EventTopicType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,12 +29,12 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getTopicType <em>Topic Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getStaticTopic <em>Static Topic</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getDynamicTopic <em>Dynamic Topic</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getEventExpression <em>Event Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EventMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EventMediatorImpl#getTopicType <em>Topic Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EventMediatorImpl#getStaticTopic <em>Static Topic</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EventMediatorImpl#getDynamicTopic <em>Dynamic Topic</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EventMediatorImpl#getEventExpression <em>Event Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EventMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EventMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated

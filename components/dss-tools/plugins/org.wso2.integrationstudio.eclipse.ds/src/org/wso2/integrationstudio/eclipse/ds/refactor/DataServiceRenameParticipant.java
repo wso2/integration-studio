@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.refactor;
+package org.wso2.integrationstudio.ds.refactor;
 
 
 import java.io.IOException;
@@ -33,11 +33,11 @@ import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.RenameArguments;
 import org.eclipse.ltk.core.refactoring.participants.RenameParticipant;
-import org.wso2.integrationstudio.eclipse.ds.Activator;
-import org.wso2.integrationstudio.eclipse.ds.util.Messages;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.ds.Activator;
+import org.wso2.integrationstudio.ds.util.Messages;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class DataServiceRenameParticipant extends RenameParticipant {
 	

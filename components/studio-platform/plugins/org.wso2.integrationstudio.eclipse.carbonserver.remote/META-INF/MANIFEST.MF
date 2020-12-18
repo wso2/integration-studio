@@ -1,15 +1,15 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Carbonserver32
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.carbonserver.remote;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.carbonserver.remote;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.carbonserver.remote.Activator
+Bundle-Activator: org.wso2.integrationstudio.carbonserver.remote.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.wso2.integrationstudio.eclipse.libraries,
+ org.wso2.integrationstudio.libraries,
  org.eclipse.wst.server.ui,
  org.eclipse.debug.core,
- org.wso2.integrationstudio.eclipse.kernel.libraries
+ org.wso2.integrationstudio.kernel.libraries
 Bundle-ActivationPolicy: lazy
 Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.eclipse.ant.core,
@@ -29,19 +29,19 @@ Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.eclipse.wst.server.core.util,
  org.eclipse.wst.server.ui,
  org.eclipse.wst.server.ui.editor,
- org.wso2.integrationstudio.eclipse.carbon.server.model.util,
- org.wso2.integrationstudio.eclipse.carbonfeatures,
- org.wso2.integrationstudio.eclipse.carbonserver.base.exception,
- org.wso2.integrationstudio.eclipse.carbonserver.base.impl,
- org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces,
- org.wso2.integrationstudio.eclipse.carbonserver.base.manager,
- org.wso2.integrationstudio.eclipse.carbonserver.base.monitor,
- org.wso2.integrationstudio.eclipse.carbonserver.base.service.util,
- org.wso2.integrationstudio.eclipse.carbonserver.base.util,
- org.wso2.integrationstudio.eclipse.carbonserver.base.utils,
- org.wso2.integrationstudio.eclipse.logging.core,
- org.wso2.integrationstudio.eclipse.server.base.core,
- org.wso2.integrationstudio.eclipse.server.base.interfaces,
- org.wso2.integrationstudio.eclipse.utils.file,
- org.wso2.integrationstudio.eclipse.utils.wst
+ org.wso2.integrationstudio.carbon.server.model.util,
+ org.wso2.integrationstudio.carbonfeatures,
+ org.wso2.integrationstudio.carbonserver.base.exception,
+ org.wso2.integrationstudio.carbonserver.base.impl,
+ org.wso2.integrationstudio.carbonserver.base.interfaces,
+ org.wso2.integrationstudio.carbonserver.base.manager,
+ org.wso2.integrationstudio.carbonserver.base.monitor,
+ org.wso2.integrationstudio.carbonserver.base.service.util,
+ org.wso2.integrationstudio.carbonserver.base.util,
+ org.wso2.integrationstudio.carbonserver.base.utils,
+ org.wso2.integrationstudio.logging.core,
+ org.wso2.integrationstudio.server.base.core,
+ org.wso2.integrationstudio.server.base.interfaces,
+ org.wso2.integrationstudio.utils.file,
+ org.wso2.integrationstudio.utils.wst
 Bundle-Vendor: WSO2

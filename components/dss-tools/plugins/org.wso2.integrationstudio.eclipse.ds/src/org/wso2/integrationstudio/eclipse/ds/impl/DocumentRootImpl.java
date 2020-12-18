@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -23,17 +23,17 @@ import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.ds.CallQuery;
-import org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty;
-import org.wso2.integrationstudio.eclipse.ds.DataService;
-import org.wso2.integrationstudio.eclipse.ds.Description;
-import org.wso2.integrationstudio.eclipse.ds.DocumentRoot;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.HasHeader;
-import org.wso2.integrationstudio.eclipse.ds.MaxRowCount;
-import org.wso2.integrationstudio.eclipse.ds.Sql;
-import org.wso2.integrationstudio.eclipse.ds.StartingRow;
-import org.wso2.integrationstudio.eclipse.ds.Subscription;
+import org.wso2.integrationstudio.ds.CallQuery;
+import org.wso2.integrationstudio.ds.ConfigurationProperty;
+import org.wso2.integrationstudio.ds.DataService;
+import org.wso2.integrationstudio.ds.Description;
+import org.wso2.integrationstudio.ds.DocumentRoot;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.HasHeader;
+import org.wso2.integrationstudio.ds.MaxRowCount;
+import org.wso2.integrationstudio.ds.Sql;
+import org.wso2.integrationstudio.ds.StartingRow;
+import org.wso2.integrationstudio.ds.Subscription;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,16 +43,16 @@ import org.wso2.integrationstudio.eclipse.ds.Subscription;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl#getCallQuery <em>Call Query</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl#getData <em>Data</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl#getHasheader <em>Hasheader</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl#getMaxrowcount <em>Maxrowcount</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl#getProperty <em>Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl#getSql <em>Sql</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DocumentRootImpl#getStartingrow <em>Startingrow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DocumentRootImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DocumentRootImpl#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DocumentRootImpl#getCallQuery <em>Call Query</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DocumentRootImpl#getData <em>Data</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DocumentRootImpl#getHasheader <em>Hasheader</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DocumentRootImpl#getMaxrowcount <em>Maxrowcount</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DocumentRootImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DocumentRootImpl#getSql <em>Sql</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DocumentRootImpl#getStartingrow <em>Startingrow</em>}</li>
  * </ul>
  *
  * @generated

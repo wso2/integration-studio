@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Search
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.registry.search;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.registry.search;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.registry.search.Activator
+Bundle-Activator: org.wso2.integrationstudio.registry.search.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
@@ -15,13 +15,13 @@ Import-Package: org.eclipse.core.resources,
  org.wso2.carbon.registry.app,
  org.wso2.carbon.registry.core,
  org.wso2.carbon.registry.core.exceptions,
- org.wso2.integrationstudio.eclipse.logging.core,
- org.wso2.integrationstudio.eclipse.registry.base.core,
- org.wso2.integrationstudio.eclipse.registry.base.editor.input,
- org.wso2.integrationstudio.eclipse.registry.base.logger,
- org.wso2.integrationstudio.eclipse.registry.base.managers,
- org.wso2.integrationstudio.eclipse.registry.base.model,
- org.wso2.integrationstudio.eclipse.registry.base.persistent,
- org.wso2.integrationstudio.eclipse.registry.base.ui.controls,
- org.wso2.integrationstudio.eclipse.registry.base.ui.editor,
- org.wso2.integrationstudio.eclipse.registry.base.ui.util
+ org.wso2.integrationstudio.logging.core,
+ org.wso2.integrationstudio.registry.base.core,
+ org.wso2.integrationstudio.registry.base.editor.input,
+ org.wso2.integrationstudio.registry.base.logger,
+ org.wso2.integrationstudio.registry.base.managers,
+ org.wso2.integrationstudio.registry.base.model,
+ org.wso2.integrationstudio.registry.base.persistent,
+ org.wso2.integrationstudio.registry.base.ui.controls,
+ org.wso2.integrationstudio.registry.base.ui.editor,
+ org.wso2.integrationstudio.registry.base.ui.util

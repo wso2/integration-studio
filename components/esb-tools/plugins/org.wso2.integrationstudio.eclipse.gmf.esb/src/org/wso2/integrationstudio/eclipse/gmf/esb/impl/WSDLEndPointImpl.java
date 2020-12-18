@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -18,12 +18,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.WSDLDefinition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.WSDLDescription;
-import org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPointInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.WSDLDefinition;
+import org.wso2.integrationstudio.gmf.esb.WSDLDescription;
+import org.wso2.integrationstudio.gmf.esb.WSDLEndPoint;
+import org.wso2.integrationstudio.gmf.esb.WSDLEndPointInputConnector;
+import org.wso2.integrationstudio.gmf.esb.WSDLEndPointOutputConnector;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,11 +33,11 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPointOutputConnector;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getWsdlUri <em>Wsdl Uri</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getService <em>Service</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getPort <em>Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.WSDLEndPointImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.WSDLEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.WSDLEndPointImpl#getWsdlUri <em>Wsdl Uri</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.WSDLEndPointImpl#getService <em>Service</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.WSDLEndPointImpl#getPort <em>Port</em>}</li>
  * </ul>
  *
  * @generated

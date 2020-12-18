@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.project.extensions.templates;
+package org.wso2.integrationstudio.project.extensions.templates;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +23,14 @@ import java.util.Map;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.project.extensions.Activator;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.project.extensions.Activator;
 
 public class ArtifactTemplateHandler {
-	private static final String ESB_ARTIFACT_TEMPLATE_EXTENSION = "org.wso2.integrationstudio.eclipse.project.extensions.artifacttemplates";
+	private static final String ESB_ARTIFACT_TEMPLATE_EXTENSION = "org.wso2.integrationstudio.project.extensions.artifacttemplates";
 	private static List<ArtifactTemplate> templateList;
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 

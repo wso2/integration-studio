@@ -1,27 +1,27 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.utils;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.AddressEndPointEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.DefaultEndPointEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.FailoverEndPointEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.TemplateEndpointEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.WSDLEndPointEditPart;
+import org.wso2.integrationstudio.gmf.esb.AddressEndPoint;
+import org.wso2.integrationstudio.gmf.esb.DefaultEndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPoint;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.TemplateEndpoint;
+import org.wso2.integrationstudio.gmf.esb.WSDLEndPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.AddressEndPointEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DefaultEndPointEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.FailoverEndPointEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.LoadBalanceEndPointEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.TemplateEndpointEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.WSDLEndPointEditPart;
 
 public class EndpointUtils {
 

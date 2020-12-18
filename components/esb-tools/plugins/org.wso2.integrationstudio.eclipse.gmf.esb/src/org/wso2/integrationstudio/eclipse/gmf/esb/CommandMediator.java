@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,13 +17,13 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator#getClassName <em>Class Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator#getProperties <em>Properties</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CommandMediator#getClassName <em>Class Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CommandMediator#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CommandMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CommandMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandMediator()
  * @model
  * @generated
  */
@@ -39,14 +39,14 @@ public interface CommandMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Class Name</em>' attribute.
      * @see #setClassName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandMediator_ClassName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandMediator_ClassName()
      * @model default=""
      * @generated
      */
     String getClassName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator#getClassName <em>Class Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CommandMediator#getClassName <em>Class Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Class Name</em>' attribute.
@@ -57,7 +57,7 @@ public interface CommandMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.CommandProperty}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
@@ -65,7 +65,7 @@ public interface CommandMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Properties</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandMediator_Properties()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandMediator_Properties()
      * @model containment="true"
      * @generated
      */
@@ -81,14 +81,14 @@ public interface CommandMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(CommandMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     CommandMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CommandMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -107,14 +107,14 @@ public interface CommandMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(CommandMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     CommandMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CommandMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.

@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.launch;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.launch;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_COMMAND_PORT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_EVENT_PORT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_HOST_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEBUG_PROFILE_INTERNAL_RUNNING_MODE;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_COMMAND_PORT;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_EVENT_PORT;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_HOST_NAME;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEBUG_PROFILE_INTERNAL_RUNNING_MODE;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
@@ -40,17 +40,17 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.wst.server.core.IServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.wizard.CompositeApplicationArtifactUpdateWizard;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.impl.ESBDebugger;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.DebuggerStartedEvent;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model.ESBDebugTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
+import org.wso2.integrationstudio.carbonserver44microei12.wizard.CompositeApplicationArtifactUpdateWizard;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.impl.ESBDebugger;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.events.DebuggerStartedEvent;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.model.ESBDebugTarget;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.Messages;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 
 /**
  * This class performs launching of the ESB Mediation Debugger launch
@@ -64,9 +64,9 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
  *          point="org.eclipse.debug.core.launchConfigurationTypes">
  *       <launchConfigurationType
  *             delegate=
-"org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.launch.ESBDebugLaunchDelegate"
+"org.wso2.integrationstudio.gmf.esb.diagram.debugger.launch.ESBDebugLaunchDelegate"
  *             id=
-"org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.launch"
+"org.wso2.integrationstudio.gmf.esb.diagram.debugger.launch"
  *             modes="debug"
  *             name="ESB Mediation Debugger">
  *       </launchConfigurationType>

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.part;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.emf.common.ui.URIEditorInput;

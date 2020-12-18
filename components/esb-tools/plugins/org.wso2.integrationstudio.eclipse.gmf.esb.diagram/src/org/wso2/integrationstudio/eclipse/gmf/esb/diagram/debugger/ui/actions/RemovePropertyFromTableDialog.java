@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.actions;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.actions;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.CLEAR_COMMAND;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.CLEAR_COMMAND;
 
 import java.util.Set;
 
@@ -33,11 +33,11 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.PropertyValueBean;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model.ESBStackFrame;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.views.EnvelopeView;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.PropertyValueBean;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.model.ESBStackFrame;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.views.EnvelopeView;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.Messages;
 
 /**
  * This class represent the request event from {@link EnvelopeView} to {@link ESBStackFrame} when property value is

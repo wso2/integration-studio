@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.export;
+package org.wso2.integrationstudio.distribution.project.export;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -36,22 +36,22 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.ArtifactData;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.DependencyData;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.DistProjectUtils;
-import org.wso2.integrationstudio.eclipse.distribution.project.validator.ProjectList;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.util.ExportUtil;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.XMLUtil;
-import org.wso2.integrationstudio.eclipse.utils.archive.ArchiveManipulator;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.file.TempFileUtils;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.distribution.project.model.ArtifactData;
+import org.wso2.integrationstudio.distribution.project.model.DependencyData;
+import org.wso2.integrationstudio.distribution.project.util.DistProjectUtils;
+import org.wso2.integrationstudio.distribution.project.validator.ProjectList;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.integrationstudio.platform.core.project.export.ProjectArtifactHandler;
+import org.wso2.integrationstudio.platform.core.project.export.util.ExportUtil;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.core.utils.XMLUtil;
+import org.wso2.integrationstudio.utils.archive.ArchiveManipulator;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.file.TempFileUtils;
 
 public class CarExportHandler extends ProjectArtifactHandler {
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

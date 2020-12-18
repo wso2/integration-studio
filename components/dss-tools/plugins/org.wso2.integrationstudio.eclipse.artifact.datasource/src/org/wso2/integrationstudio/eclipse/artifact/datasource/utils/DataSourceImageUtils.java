@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.artifact.datasource.utils;
+package org.wso2.integrationstudio.artifact.datasource.utils;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.artifact.datasource.Activator;
-import org.wso2.integrationstudio.eclipse.utils.ui.ImageUtils;
+import org.wso2.integrationstudio.artifact.datasource.Activator;
+import org.wso2.integrationstudio.utils.ui.ImageUtils;
 
 public class DataSourceImageUtils extends ImageUtils{
 

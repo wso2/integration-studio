@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.task.validator;
+package org.wso2.integrationstudio.artifact.task.validator;
 
 import java.util.List;
 
 import org.apache.axiom.om.OMElement;
 import org.eclipse.core.resources.IResource;
-import org.wso2.integrationstudio.eclipse.artifact.task.model.TaskModel;
-import org.wso2.integrationstudio.eclipse.artifact.task.validator.TriggerTypeList.TriggerType;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
-import static org.wso2.integrationstudio.eclipse.artifact.task.util.ArtifactConstants.*;
+import org.wso2.integrationstudio.artifact.task.model.TaskModel;
+import org.wso2.integrationstudio.artifact.task.validator.TriggerTypeList.TriggerType;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
+import static org.wso2.integrationstudio.artifact.task.util.ArtifactConstants.*;
 
 /**
  * The controller class for task artifact wizard specific fields.

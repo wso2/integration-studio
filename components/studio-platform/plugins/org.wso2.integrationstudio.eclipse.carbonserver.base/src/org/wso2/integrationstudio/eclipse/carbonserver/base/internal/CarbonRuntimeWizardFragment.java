@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.internal;
+package org.wso2.integrationstudio.carbonserver.base.internal;
 
 import java.util.Map;
 

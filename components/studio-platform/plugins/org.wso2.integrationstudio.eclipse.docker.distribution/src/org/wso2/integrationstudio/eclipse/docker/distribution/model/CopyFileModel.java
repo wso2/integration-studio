@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.model;
+package org.wso2.integrationstudio.docker.distribution.model;
 
 /**
  * This class represents a file copied into a docker image.

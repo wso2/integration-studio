@@ -3,10 +3,10 @@
 <plugin>
  <extension point="org.eclipse.ui.newWizards">
 		<wizard name="Mediator Project" 
-			category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.extensions/org.wso2.integrationstudio.eclipse.extensions.project.types"
-			class="org.wso2.integrationstudio.eclipse.artifact.mediator.ui.wizard.CustomMediatorCreationWizard"
+			category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.extensions/org.wso2.integrationstudio.extensions.project.types"
+			class="org.wso2.integrationstudio.artifact.mediator.ui.wizard.CustomMediatorCreationWizard"
 			wizardManifest="project_wizard.xml"
-			id="org.wso2.integrationstudio.eclipse.artifact.newmediatorartifact"
+			id="org.wso2.integrationstudio.artifact.newmediatorartifact"
 			project="true" icon="icons/new-mediator-16x16.png">
 			<description>Mediator Project</description>
 		</wizard>
@@ -24,20 +24,20 @@
                />
       </objectContribution>
    </extension>
-   <extension point="org.wso2.integrationstudio.eclipse.capp.artifacts.provider">
-    	<provider class="org.wso2.integrationstudio.eclipse.artifact.mediator.project.export.MediatorProvider"
+   <extension point="org.wso2.integrationstudio.capp.artifacts.provider">
+    	<provider class="org.wso2.integrationstudio.artifact.mediator.project.export.MediatorProvider"
           nature="org.wso2.developerstudio.eclipse.artifact.mediator.project.nature"></provider>
    </extension>
 	<extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.artifact.mediator.project.nature" name="Mediator Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.artifact.mediator.project.nature.CustomMediatorProjectNature">
+				class="org.wso2.integrationstudio.artifact.mediator.project.nature.CustomMediatorProjectNature">
 			</run>
 		</runtime>
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
-		<image id="org.wso2.integrationstudio.eclipse.custom.mediator.project.natureImage"
+		<image id="org.wso2.integrationstudio.custom.mediator.project.natureImage"
 			natureId="org.wso2.developerstudio.eclipse.artifact.mediator.project.nature" icon="icons/new-mediator-12x12.png">
 		</image>
 	</extension>
@@ -47,9 +47,9 @@
 			id="org.eclipse.ui.navigator.resourceContent"
 			name="test">
 				<commonWizard 
-					menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
+					menuGroupId="2org.wso2.integrationstudio.artifact.esb"
 			  	 	type="new"
-					wizardId="org.wso2.integrationstudio.eclipse.artifact.newmediatorartifact">
+					wizardId="org.wso2.integrationstudio.artifact.newmediatorartifact">
 					<enablement>
 						<or>
 							<adapt type="org.eclipse.core.resources.IProject"/>
@@ -71,8 +71,8 @@
 	</extension>-->
 			<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.newmediatorartifact">
+                menuGroupId="2org.wso2.integrationstudio.artifact.esb"
+                wizardId="org.wso2.integrationstudio.artifact.newmediatorartifact">
                 <enablement>
                      <or>
                         <adapt type="org.eclipse.core.resources.IProject">
@@ -88,17 +88,17 @@
             </commonWizard>
     </extension>
    	   <extension
-         point="org.wso2.integrationstudio.eclipse.project.export.handler">
+         point="org.wso2.integrationstudio.project.export.handler">
       <handler
-            class="org.wso2.integrationstudio.eclipse.artifact.mediator.project.export.MediatorExportHandler"
-            id="org.wso2.integrationstudio.eclipse.artifact.mediator.project.export.handler"
+            class="org.wso2.integrationstudio.artifact.mediator.project.export.MediatorExportHandler"
+            id="org.wso2.integrationstudio.artifact.mediator.project.export.handler"
             type="lib/synapse/mediator">
       </handler>
    </extension>
 
-	<extension point="org.wso2.integrationstudio.eclipse.dashboad.link">	
+	<extension point="org.wso2.integrationstudio.dashboad.link">	
       <wizardLink category="dashboard.category.esb.project" id="2dashboard.wizardLink.esb.mediator"
-	    wizard="org.wso2.integrationstudio.eclipse.artifact.newmediatorartifact" 
+	    wizard="org.wso2.integrationstudio.artifact.newmediatorartifact" 
 	   priority="2">
      </wizardLink>
    </extension>

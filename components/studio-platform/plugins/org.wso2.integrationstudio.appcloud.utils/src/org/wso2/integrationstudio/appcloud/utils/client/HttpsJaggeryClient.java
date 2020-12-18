@@ -47,8 +47,8 @@ import org.apache.http.util.EntityUtils;
 import org.wso2.integrationstudio.appcloud.utils.Activator;
 import org.wso2.integrationstudio.appcloud.utils.authentication.Authenticator;
 import org.wso2.integrationstudio.appcloud.utils.authentication.ErrorType;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class HttpsJaggeryClient {
 

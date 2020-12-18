@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.presentation.util;
+package org.wso2.integrationstudio.ds.presentation.util;
 
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;

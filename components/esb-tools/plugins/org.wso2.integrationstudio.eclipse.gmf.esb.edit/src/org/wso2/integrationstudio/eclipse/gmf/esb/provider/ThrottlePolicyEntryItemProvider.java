@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.provider;
+package org.wso2.integrationstudio.gmf.esb.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,12 +25,12 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleConditionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyEntry;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.ThrottleConditionType;
+import org.wso2.integrationstudio.gmf.esb.ThrottlePolicyEntry;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyEntry} object.
+ * This is the item provider adapter for a {@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyEntry} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

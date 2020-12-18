@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.preferences;
+package org.wso2.integrationstudio.platform.ui.preferences;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.BooleanFieldEditor;
@@ -28,7 +28,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.platform.ui.WorkbenchToolkit;
+import org.wso2.integrationstudio.platform.ui.WorkbenchToolkit;
 
 public class ClientTrustStorePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 	public static final String TRUST_STORE_PASSWORD = "TRUST_STORE_PASSWORD";

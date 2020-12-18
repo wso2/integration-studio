@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.utils.j2ee;
+package org.wso2.integrationstudio.utils.j2ee;
 
 import java.io.File;
 
@@ -9,7 +9,7 @@ import org.eclipse.jst.ws.internal.common.J2EEUtils;
 import org.eclipse.jst.ws.internal.common.ServerUtils;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerCore;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class WebContainerUtils {
 	public static IPath getWorkspace(){

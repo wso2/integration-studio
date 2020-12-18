@@ -36,8 +36,8 @@ import org.eclipse.ui.dialogs.ListDialog;
 import org.wso2.integrationstudio.appcloud.utils.Activator;
 import org.wso2.integrationstudio.appcloud.utils.Messages;
 import org.wso2.integrationstudio.appcloud.utils.client.CloudAdminServiceClient;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class CloudLogin {
 

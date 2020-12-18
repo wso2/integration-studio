@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -16,23 +16,23 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallMediatorEndpointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpointsOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceFaultContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediatorEndpointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.APIResourceOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.CallMediatorEndpointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ComplexEndpointsOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyInSequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceFaultContainer;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.SendMediatorEndpointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.SendMediatorOutputConnector;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,7 +42,7 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediatorOutputConnector;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InputConnectorImpl#getIncomingLinks <em>Incoming Links</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InputConnectorImpl#getIncomingLinks <em>Incoming Links</em>}</li>
  * </ul>
  *
  * @generated

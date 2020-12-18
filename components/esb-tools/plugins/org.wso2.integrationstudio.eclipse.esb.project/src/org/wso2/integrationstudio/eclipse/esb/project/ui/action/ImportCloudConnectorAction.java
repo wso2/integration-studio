@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.ui.action;
+package org.wso2.integrationstudio.esb.project.ui.action;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -22,7 +22,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.esb.project.ui.wizard.CloudConnectorImportWizard;
+import org.wso2.integrationstudio.esb.project.ui.wizard.CloudConnectorImportWizard;
 
 public class ImportCloudConnectorAction implements IActionDelegate{
 	IStructuredSelection selection;

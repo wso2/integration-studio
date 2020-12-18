@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,11 +17,11 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement#getDescription <em>Description</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement#getCommentsList <em>Comments List</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EsbElement#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EsbElement#getCommentsList <em>Comments List</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEsbElement()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEsbElement()
  * @model abstract="true"
  * @generated
  */
@@ -36,14 +36,14 @@ public interface EsbElement extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Description</em>' attribute.
      * @see #setDescription(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEsbElement_Description()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEsbElement_Description()
      * @model
      * @generated
      */
     String getDescription();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement#getDescription <em>Description</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EsbElement#getDescription <em>Description</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Description</em>' attribute.
@@ -62,7 +62,7 @@ public interface EsbElement extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Comments List</em>' attribute list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEsbElement_CommentsList()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEsbElement_CommentsList()
      * @model unique="false"
      * @generated
      */

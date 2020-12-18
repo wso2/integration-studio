@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.webui.core.editor.function;
+package org.wso2.integrationstudio.webui.core.editor.function;
 
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.browser.BrowserFunction;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.webui.core.WebUICorePlugin;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.AbstractWebBasedEditor;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.webui.core.WebUICorePlugin;
+import org.wso2.integrationstudio.webui.core.editor.AbstractWebBasedEditor;
 
 public abstract class AbstractWebEditorFunction extends BrowserFunction {
 

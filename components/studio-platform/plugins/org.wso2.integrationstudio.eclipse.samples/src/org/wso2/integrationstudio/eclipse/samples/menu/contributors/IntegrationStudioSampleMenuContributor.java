@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.samples.menu.contributors;
+package org.wso2.integrationstudio.samples.menu.contributors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +29,12 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.samples.Activator;
-import org.wso2.integrationstudio.eclipse.samples.contributor.IIntegrationStudioSampleContributor;
-import org.wso2.integrationstudio.eclipse.samples.utils.ExtensionPointHandler;
-import org.wso2.integrationstudio.eclipse.samples.wizards.ProjectCreationWizard;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.samples.Activator;
+import org.wso2.integrationstudio.samples.contributor.IIntegrationStudioSampleContributor;
+import org.wso2.integrationstudio.samples.utils.ExtensionPointHandler;
+import org.wso2.integrationstudio.samples.wizards.ProjectCreationWizard;
 
 public class IntegrationStudioSampleMenuContributor extends CompoundContributionItem {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

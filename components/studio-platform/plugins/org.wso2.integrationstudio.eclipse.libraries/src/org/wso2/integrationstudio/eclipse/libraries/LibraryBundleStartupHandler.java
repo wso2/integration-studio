@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.libraries;
+package org.wso2.integrationstudio.libraries;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -14,15 +14,15 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.ui.IStartup;
-import org.wso2.integrationstudio.eclipse.libraries.utils.Constants;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibraryArtifact;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibraryArtifactHandler;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibraryCategory;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibraryUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.ide.EclipseUtils;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaUtils;
+import org.wso2.integrationstudio.libraries.utils.Constants;
+import org.wso2.integrationstudio.libraries.utils.LibraryArtifact;
+import org.wso2.integrationstudio.libraries.utils.LibraryArtifactHandler;
+import org.wso2.integrationstudio.libraries.utils.LibraryCategory;
+import org.wso2.integrationstudio.libraries.utils.LibraryUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.ide.EclipseUtils;
+import org.wso2.integrationstudio.utils.jdt.JavaUtils;
 
 public class LibraryBundleStartupHandler implements IStartup {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

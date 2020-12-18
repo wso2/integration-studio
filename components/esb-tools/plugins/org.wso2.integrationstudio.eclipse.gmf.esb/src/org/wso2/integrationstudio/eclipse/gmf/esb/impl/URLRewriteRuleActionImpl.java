@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,12 +14,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleActionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleFragmentType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleOptionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleActionType;
+import org.wso2.integrationstudio.gmf.esb.RuleFragmentType;
+import org.wso2.integrationstudio.gmf.esb.RuleOptionType;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,12 +29,12 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.URLRewriteRuleActionImpl#getRuleAction <em>Rule Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.URLRewriteRuleActionImpl#getRuleFragment <em>Rule Fragment</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.URLRewriteRuleActionImpl#getRuleOption <em>Rule Option</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.URLRewriteRuleActionImpl#getActionExpression <em>Action Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.URLRewriteRuleActionImpl#getActionValue <em>Action Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.URLRewriteRuleActionImpl#getActionRegex <em>Action Regex</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.URLRewriteRuleActionImpl#getRuleAction <em>Rule Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.URLRewriteRuleActionImpl#getRuleFragment <em>Rule Fragment</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.URLRewriteRuleActionImpl#getRuleOption <em>Rule Option</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.URLRewriteRuleActionImpl#getActionExpression <em>Action Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.URLRewriteRuleActionImpl#getActionValue <em>Action Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.URLRewriteRuleActionImpl#getActionRegex <em>Action Regex</em>}</li>
  * </ul>
  *
  * @generated

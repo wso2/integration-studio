@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.presentation.source;
+package org.wso2.integrationstudio.ds.presentation.source;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,11 +16,11 @@ import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.editors.text.TextEditor;
 import org.eclipse.ui.texteditor.IDocumentProvider;
-import org.wso2.integrationstudio.eclipse.ds.dbseditor.DsSourceEditor;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditor;
-import org.wso2.integrationstudio.eclipse.ds.util.DsResourceFactoryImpl;
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.ds.dbseditor.DsSourceEditor;
+import org.wso2.integrationstudio.ds.presentation.DsEditor;
+import org.wso2.integrationstudio.ds.util.DsResourceFactoryImpl;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 /**
  * This provides the wrapper for org.eclipse.wst.sse.ui.StructuredTextEditor

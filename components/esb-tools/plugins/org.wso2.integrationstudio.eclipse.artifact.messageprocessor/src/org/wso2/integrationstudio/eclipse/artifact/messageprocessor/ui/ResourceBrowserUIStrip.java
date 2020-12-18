@@ -1,6 +1,6 @@
-package org.wso2.integrationstudio.eclipse.artifact.messageprocessor.ui;
+package org.wso2.integrationstudio.artifact.messageprocessor.ui;
 
-import static org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants.FILTER_MEDIA_TYPE;
+import static org.wso2.integrationstudio.platform.core.utils.CSProviderConstants.FILTER_MEDIA_TYPE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,19 +21,19 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
 // TODO fix this
 // import
-// org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.interfaces.IFieldControlData;
-import org.wso2.integrationstudio.eclipse.platform.ui.interfaces.IOnAction;
-import org.wso2.integrationstudio.eclipse.platform.ui.interfaces.UIControl;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.WSO2UIToolkit;
+// org.wso2.integrationstudio.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.ui.interfaces.IFieldControlData;
+import org.wso2.integrationstudio.platform.ui.interfaces.IOnAction;
+import org.wso2.integrationstudio.platform.ui.interfaces.UIControl;
+import org.wso2.integrationstudio.platform.ui.utils.WSO2UIToolkit;
 
 public class ResourceBrowserUIStrip implements UIControl {
 

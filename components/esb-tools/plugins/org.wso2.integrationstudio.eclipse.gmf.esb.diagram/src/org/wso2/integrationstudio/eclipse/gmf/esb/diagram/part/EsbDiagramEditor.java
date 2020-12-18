@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.part;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -66,9 +66,9 @@ import org.eclipse.ui.navigator.resources.ProjectExplorer;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.extensions.CustomPaletteToolTransferDropTargetListener;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.extensions.CustomZoomListener;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.extensions.CustomPaletteToolTransferDropTargetListener;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.extensions.CustomZoomListener;
+import org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbNavigatorItem;
 
 /**
  * @generated
@@ -79,12 +79,12 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements IGotoMark
     /**
      * @generated
      */
-    public static final String ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorID"; //$NON-NLS-1$
+    public static final String ID = "org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorID"; //$NON-NLS-1$
 
     /**
      * @generated
      */
-    public static final String CONTEXT_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.ui.diagramContext"; //$NON-NLS-1$
+    public static final String CONTEXT_ID = "org.wso2.integrationstudio.gmf.esb.diagram.ui.diagramContext"; //$NON-NLS-1$
 
     /**
      * @generated

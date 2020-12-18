@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.provider;
+package org.wso2.integrationstudio.artifact.endpoint.provider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +23,10 @@ import java.util.Map;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEndpointProvider;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbEndpoint;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioElement;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.ResourceManager;
+import org.wso2.integrationstudio.esb.core.interfaces.IEndpointProvider;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbEndpoint;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
+import org.wso2.integrationstudio.platform.core.utils.ResourceManager;
 
 public class EndpointProvider implements IEndpointProvider {
 	private List<IEndpointProvider> subProviders;

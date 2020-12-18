@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.esb.cloud.notification;
+package org.wso2.integrationstudio.esb.cloud.notification;
 
 import org.eclipse.mylyn.commons.ui.dialogs.AbstractNotificationPopup;
 import org.eclipse.swt.SWT;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Map;
 
@@ -33,19 +33,19 @@ import org.wso2.carbon.rule.common.RuleSet;
 import org.wso2.carbon.rule.mediator.config.RuleMediatorConfig;
 import org.wso2.carbon.rule.mediator.config.Source;
 import org.wso2.carbon.rule.mediator.config.Target;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleActions;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleFact;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleFactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleSessionProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleSourceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleActions;
+import org.wso2.integrationstudio.gmf.esb.RuleFact;
+import org.wso2.integrationstudio.gmf.esb.RuleFactType;
+import org.wso2.integrationstudio.gmf.esb.RuleMediator;
+import org.wso2.integrationstudio.gmf.esb.RuleResult;
+import org.wso2.integrationstudio.gmf.esb.RuleResultType;
+import org.wso2.integrationstudio.gmf.esb.RuleSessionProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleSourceType;
+import org.wso2.integrationstudio.gmf.esb.RuleType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class RuleMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, RuleMediator> {
 

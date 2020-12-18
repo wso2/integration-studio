@@ -16,15 +16,15 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.cloud.util;
+package org.wso2.integrationstudio.esb.cloud.util;
 
 import org.apache.http.cookie.Cookie;
-import org.wso2.integrationstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.HttpClientException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.UserSession;
+import org.wso2.integrationstudio.esb.cloud.client.IntegrationCloudServiceClient;
+import org.wso2.integrationstudio.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.HttpClientException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.InvalidTokenException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.NetworkUnavailableException;
+import org.wso2.integrationstudio.esb.cloud.model.UserSession;
 
 /**
  * Manages the sessions. In this scenario, we will always maintain only one session

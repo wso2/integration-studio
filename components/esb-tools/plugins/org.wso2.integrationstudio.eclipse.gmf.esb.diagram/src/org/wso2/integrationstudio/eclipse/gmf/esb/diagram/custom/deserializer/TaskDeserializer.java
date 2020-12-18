@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import javax.xml.namespace.QName;
 
@@ -23,20 +23,20 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Task;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskPropertyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskTriggerType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.Task;
+import org.wso2.integrationstudio.gmf.esb.TaskProperty;
+import org.wso2.integrationstudio.gmf.esb.TaskPropertyType;
+import org.wso2.integrationstudio.gmf.esb.TaskTriggerType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ScheduledTaskFormPage;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.task.TaskDescription;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 import java.util.ArrayList;
 import java.util.List;

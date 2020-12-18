@@ -12,7 +12,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -29,11 +29,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator;
+import org.wso2.integrationstudio.gmf.esb.PropertyGroupMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.PropertyGroupMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.PropertyMediator;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,9 +43,9 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyGroupMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyGroupMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyGroupMediatorImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyGroupMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyGroupMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyGroupMediatorImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  *
  * @generated

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.remote;
+package org.wso2.integrationstudio.registry.base.remote;
 
 import org.apache.abdera.Abdera;
 import org.apache.abdera.factory.Factory;
@@ -43,7 +43,7 @@ import org.wso2.carbon.registry.core.Collection;
 import org.wso2.carbon.registry.core.config.RegistryContext;
 import org.wso2.carbon.registry.core.exceptions.RegistryException;
 import org.wso2.carbon.registry.core.exceptions.ResourceNotFoundException;
-import org.wso2.integrationstudio.eclipse.registry.base.core.TrustEverythingTrustManager;
+import org.wso2.integrationstudio.registry.base.core.TrustEverythingTrustManager;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamException;

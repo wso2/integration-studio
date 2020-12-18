@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,10 +24,10 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorAttribute#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.PublishEventMediatorAttribute#getDefaultValue <em>Default Value</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediatorAttribute()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPublishEventMediatorAttribute()
  * @model
  * @generated
  */
@@ -44,14 +44,14 @@ public interface PublishEventMediatorAttribute extends AbstractNameValueExpressi
      * <!-- end-user-doc -->
      * @return the value of the '<em>Default Value</em>' attribute.
      * @see #setDefaultValue(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediatorAttribute_DefaultValue()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPublishEventMediatorAttribute_DefaultValue()
      * @model default=""
      * @generated
      */
     String getDefaultValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorAttribute#getDefaultValue <em>Default Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.PublishEventMediatorAttribute#getDefaultValue <em>Default Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Default Value</em>' attribute.

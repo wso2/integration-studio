@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -82,18 +82,18 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.KeyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.CacheType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -508,7 +508,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -518,7 +518,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -559,7 +559,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -569,7 +569,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -593,7 +593,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#initVariables(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#initVariables(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initVariables(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -614,7 +614,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#updateVariables()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#updateVariables()
 	 * 
 	 */
 	public void updateVariables() {
@@ -624,7 +624,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#addFilterVariables(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#addFilterVariables(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToVariables(ViewerFilter filter) {
@@ -637,7 +637,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#addBusinessFilterVariables(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#addBusinessFilterVariables(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToVariables(ViewerFilter filter) {
@@ -647,7 +647,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#isContainedInVariablesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#isContainedInVariablesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInVariablesTable(EObject element) {
@@ -657,7 +657,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#getScriptKeyType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#getScriptKeyType()
 	 * 
 	 */
 	public Enumerator getScriptKeyType() {
@@ -668,7 +668,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#initScriptKeyType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#initScriptKeyType(Object input, Enumerator current)
 	 */
 	public void initScriptKeyType(Object input, Enumerator current) {
 		scriptKeyType.setInput(input);
@@ -686,7 +686,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#setScriptKeyType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#setScriptKeyType(Enumerator newValue)
 	 * 
 	 */
 	public void setScriptKeyType(Enumerator newValue) {
@@ -704,7 +704,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -714,7 +714,7 @@ public class XQueryMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XQueryMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {

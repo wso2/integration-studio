@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -63,12 +63,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -723,7 +723,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -733,7 +733,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -755,7 +755,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -765,7 +765,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -806,7 +806,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getEndPointName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getEndPointName()
 	 * 
 	 */
 	public String getEndPointName() {
@@ -816,7 +816,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setEndPointName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setEndPointName(String newValue)
 	 * 
 	 */
 	public void setEndPointName(String newValue) {
@@ -838,7 +838,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getAnonymous()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getAnonymous()
 	 * 
 	 */
 	public Boolean getAnonymous() {
@@ -848,7 +848,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setAnonymous(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setAnonymous(Boolean newValue)
 	 * 
 	 */
 	public void setAnonymous(Boolean newValue) {
@@ -870,7 +870,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getInLine()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getInLine()
 	 * 
 	 */
 	public Boolean getInLine() {
@@ -880,7 +880,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setInLine(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setInLine(Boolean newValue)
 	 * 
 	 */
 	public void setInLine(Boolean newValue) {
@@ -902,7 +902,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getDuplicate()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getDuplicate()
 	 * 
 	 */
 	public Boolean getDuplicate() {
@@ -912,7 +912,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setDuplicate(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setDuplicate(Boolean newValue)
 	 * 
 	 */
 	public void setDuplicate(Boolean newValue) {
@@ -936,7 +936,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initProperties(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -957,7 +957,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#updateProperties()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#updateProperties()
 	 * 
 	 */
 	public void updateProperties() {
@@ -967,7 +967,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToProperties(ViewerFilter filter) {
@@ -980,7 +980,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToProperties(ViewerFilter filter) {
@@ -990,7 +990,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInPropertiesTable(EObject element) {
@@ -1000,7 +1000,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getReversed()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getReversed()
 	 * 
 	 */
 	public Boolean getReversed() {
@@ -1010,7 +1010,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setReversed(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setReversed(Boolean newValue)
 	 * 
 	 */
 	public void setReversed(Boolean newValue) {
@@ -1034,7 +1034,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#initChildren(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#initChildren(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initChildren(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1055,7 +1055,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#updateChildren()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#updateChildren()
 	 * 
 	 */
 	public void updateChildren() {
@@ -1065,7 +1065,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#addFilterChildren(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#addFilterChildren(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToChildren(ViewerFilter filter) {
@@ -1078,7 +1078,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#addBusinessFilterChildren(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#addBusinessFilterChildren(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToChildren(ViewerFilter filter) {
@@ -1088,7 +1088,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#isContainedInChildrenTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#isContainedInChildrenTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInChildrenTable(EObject element) {
@@ -1098,7 +1098,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -1108,7 +1108,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -1132,7 +1132,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#initOutputConnector(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#initOutputConnector(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initOutputConnector(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1153,7 +1153,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#updateOutputConnector()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#updateOutputConnector()
 	 * 
 	 */
 	public void updateOutputConnector() {
@@ -1163,7 +1163,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#addFilterOutputConnector(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#addFilterOutputConnector(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToOutputConnector(ViewerFilter filter) {
@@ -1176,7 +1176,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#addBusinessFilterOutputConnector(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#addBusinessFilterOutputConnector(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToOutputConnector(ViewerFilter filter) {
@@ -1186,7 +1186,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#isContainedInOutputConnectorTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#isContainedInOutputConnectorTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInOutputConnectorTable(EObject element) {
@@ -1196,7 +1196,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getBuildMessage()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#getBuildMessage()
 	 * 
 	 */
 	public Boolean getBuildMessage() {
@@ -1206,7 +1206,7 @@ public class FailoverEndPointPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setBuildMessage(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.FailoverEndPointPropertiesEditionPart#setBuildMessage(Boolean newValue)
 	 * 
 	 */
 	public void setBuildMessage(Boolean newValue) {

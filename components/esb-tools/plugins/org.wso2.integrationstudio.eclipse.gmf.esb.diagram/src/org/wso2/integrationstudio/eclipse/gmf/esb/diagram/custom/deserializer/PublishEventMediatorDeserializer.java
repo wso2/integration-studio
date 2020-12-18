@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__EVENT_SINK;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__STREAM_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ASYNC;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__EVENT_SINK;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__STREAM_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ASYNC;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.xml.SynapsePath;
@@ -35,13 +35,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.carbon.mediator.publishevent.Property;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AttributeType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AttributeValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.AttributeType;
+import org.wso2.integrationstudio.gmf.esb.AttributeValueType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PublishEventMediator;
+import org.wso2.integrationstudio.gmf.esb.PublishEventMediatorAttribute;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class PublishEventMediatorDeserializer
         extends AbstractEsbNodeDeserializer<AbstractMediator, PublishEventMediator> {

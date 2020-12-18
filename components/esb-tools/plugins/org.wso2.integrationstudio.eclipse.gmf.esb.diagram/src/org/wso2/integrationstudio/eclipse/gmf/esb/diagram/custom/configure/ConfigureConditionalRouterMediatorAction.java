@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -26,8 +26,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureConditionalRouterMediatorDialog;
+import org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui.ConfigureConditionalRouterMediatorDialog;
 
 public class ConfigureConditionalRouterMediatorAction extends ConfigureEsbNodeAction {
 

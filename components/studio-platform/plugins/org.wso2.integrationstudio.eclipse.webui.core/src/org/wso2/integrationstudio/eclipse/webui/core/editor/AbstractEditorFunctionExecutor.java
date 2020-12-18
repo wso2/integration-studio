@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.webui.core.editor;
+package org.wso2.integrationstudio.webui.core.editor;
 
 public interface AbstractEditorFunctionExecutor {
      public Object executeFunction(String functionName, Object[] args);

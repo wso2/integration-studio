@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.utils;
+package org.wso2.integrationstudio.artifact.registry.utils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 import org.eclipse.osgi.util.NLS;
 
 public class RegistryArtifactConstants extends NLS {
-	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.artifact.registry.utils.registryartifactconstants";
+	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.artifact.registry.utils.registryartifactconstants";
 	
 	public static final int REGISTRY_RESOURCE = 0; 
 	public static final int REGISTRY_COLLECTION = 1; 

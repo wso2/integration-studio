@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.extensions;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.extensions;
 
 import org.eclipse.gef.editparts.ZoomListener;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbMultiPageEditor;
 
 public class CustomZoomListener implements ZoomListener {
 

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.perspective;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.perspective;
 
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
@@ -10,7 +10,7 @@ import org.eclipse.ui.console.IConsoleConstants;
  */
 public class EsbGraphicalEditorPerspective implements IPerspectiveFactory {
 
-	private static final String TEMPLATE_GUIDE_VIEW = "org.wso2.integrationstudio.eclipse.esb.templates.view";
+	private static final String TEMPLATE_GUIDE_VIEW = "org.wso2.integrationstudio.esb.templates.view";
 	private static final String HTTP4_VIEW = "org.roussev.http4e.ui.HdViewPart";
     
     // private static final String PROPERTIES_VIEW_ID =

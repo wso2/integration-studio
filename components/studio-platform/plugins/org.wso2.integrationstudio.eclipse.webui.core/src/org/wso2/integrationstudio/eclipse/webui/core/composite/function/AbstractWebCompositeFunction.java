@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.webui.core.composite.function;
+package org.wso2.integrationstudio.webui.core.composite.function;
 
 import org.eclipse.swt.browser.BrowserFunction;
-import org.wso2.integrationstudio.eclipse.webui.core.composite.WebComposite;
+import org.wso2.integrationstudio.webui.core.composite.WebComposite;
 
 public abstract class AbstractWebCompositeFunction extends BrowserFunction {
 

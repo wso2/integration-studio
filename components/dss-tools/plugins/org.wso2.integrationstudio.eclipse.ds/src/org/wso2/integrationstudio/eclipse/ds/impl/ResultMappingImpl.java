@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Collection;
 
@@ -24,11 +24,11 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.ds.AttributeMapping;
-import org.wso2.integrationstudio.eclipse.ds.CallQuery;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.ElementMapping;
-import org.wso2.integrationstudio.eclipse.ds.ResultMapping;
+import org.wso2.integrationstudio.ds.AttributeMapping;
+import org.wso2.integrationstudio.ds.CallQuery;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.ElementMapping;
+import org.wso2.integrationstudio.ds.ResultMapping;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,17 +38,17 @@ import org.wso2.integrationstudio.eclipse.ds.ResultMapping;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl#getElement <em>Element</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl#getAttribute <em>Attribute</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl#getCallQuery <em>Call Query</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl#getDefaultNamespace <em>Default Namespace</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl#getElementName <em>Element Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl#getRowName <em>Row Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl#isUseColumnNumbers <em>Use Column Numbers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl#isEscapeNonPrintableChar <em>Escape Non Printable Char</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl#getXsltPath <em>Xslt Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ResultMappingImpl#getOutputType <em>Output Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl#getElement <em>Element</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl#getAttribute <em>Attribute</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl#getCallQuery <em>Call Query</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl#getDefaultNamespace <em>Default Namespace</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl#getElementName <em>Element Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl#getRowName <em>Row Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl#isUseColumnNumbers <em>Use Column Numbers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl#isEscapeNonPrintableChar <em>Escape Non Printable Char</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl#getXsltPath <em>Xslt Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ResultMappingImpl#getOutputType <em>Output Type</em>}</li>
  * </ul>
  *
  * @generated

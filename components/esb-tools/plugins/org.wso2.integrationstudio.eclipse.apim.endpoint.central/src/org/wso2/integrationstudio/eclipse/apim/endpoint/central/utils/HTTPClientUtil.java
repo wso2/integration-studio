@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils;
+package org.wso2.integrationstudio.apim.endpoint.central.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,13 +36,13 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.commons.httpclient.methods.multipart.StringPart;
 import org.apache.commons.httpclient.protocol.Protocol;
 import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.Activator;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.EndpointRegistryConnectException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.HttpClientException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.InvalidTokenException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.EndpointRegistryServiceConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.apim.endpoint.central.Activator;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.EndpointRegistryConnectException;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.HttpClientException;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.InvalidTokenException;
+import org.wso2.integrationstudio.apim.endpoint.central.resources.EndpointRegistryServiceConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;

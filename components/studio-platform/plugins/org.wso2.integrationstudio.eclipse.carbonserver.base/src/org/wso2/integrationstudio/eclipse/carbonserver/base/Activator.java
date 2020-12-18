@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base;
+package org.wso2.integrationstudio.carbonserver.base;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.ICarbonOperationManager;
-import org.wso2.integrationstudio.eclipse.server.base.core.ServerController;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.manager.ICarbonOperationManager;
+import org.wso2.integrationstudio.server.base.core.ServerController;
 
 public class Activator extends AbstractUIPlugin {
 
 	public static final String PLUGIN_ID = "org.wso2.tools.eclipse.carbonserver.base";
 	private static final String WSAS_REGISTER_EXTENION_POINT_ID =
-	                                                              "org.wso2.integrationstudio.eclipse.carbonserver.base.register";
+	                                                              "org.wso2.integrationstudio.carbonserver.base.register";
 
 	private static Activator plugin;
 

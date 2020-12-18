@@ -6,13 +6,13 @@
  * UTC)
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.services;
+package org.wso2.integrationstudio.carbonserver.base.services;
 
 public class ResourceServiceExceptionException extends java.lang.Exception {
 
 	private static final long serialVersionUID = 1283846076552L;
 
-	private org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE faultMessage;
+	private org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE faultMessage;
 
 	public ResourceServiceExceptionException() {
 		super("ResourceServiceExceptionException");
@@ -30,11 +30,11 @@ public class ResourceServiceExceptionException extends java.lang.Exception {
 		super(cause);
 	}
 
-	public void setFaultMessage(org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE msg) {
+	public void setFaultMessage(org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE msg) {
 		faultMessage = msg;
 	}
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE getFaultMessage() {
+	public org.wso2.integrationstudio.carbonserver.base.services.ResourceAdminServiceStub.ResourceServiceExceptionE getFaultMessage() {
 		return faultMessage;
 	}
 }

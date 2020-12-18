@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DropMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.DropMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class DropMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, DropMediator> {
 
@@ -30,7 +30,7 @@ public class DropMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
         Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.DropMediator,
                 "Unsupported mediator passed in for deserialization at " + this.getClass());
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.DropMediator visualDropMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.DropMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.DropMediator visualDropMediator = (org.wso2.integrationstudio.gmf.esb.DropMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.DropMediator_3491);
         setElementToEdit(visualDropMediator);
         setCommonProperties(mediator, visualDropMediator);

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -54,10 +54,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -285,7 +285,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#getSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#getSequenceType()
 	 * 
 	 */
 	public Enumerator getSequenceType() {
@@ -296,7 +296,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
 	 */
 	public void initSequenceType(Object input, Enumerator current) {
 		sequenceType.setInput(input);
@@ -314,7 +314,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#setSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#setSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setSequenceType(Enumerator newValue) {
@@ -332,7 +332,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#getSequence()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#getSequence()
 	 * 
 	 */
 	public EObject getSequence() {
@@ -347,7 +347,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#initSequence(EObjectFlatComboSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#initSequence(EObjectFlatComboSettings)
 	 */
 	public void initSequence(EObjectFlatComboSettings settings) {
 		sequence.setInput(settings);
@@ -367,7 +367,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#setSequence(EObject newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#setSequence(EObject newValue)
 	 * 
 	 */
 	public void setSequence(EObject newValue) {
@@ -389,7 +389,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#setSequenceButtonMode(ButtonsModeEnum newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#setSequenceButtonMode(ButtonsModeEnum newValue)
 	 */
 	public void setSequenceButtonMode(ButtonsModeEnum newValue) {
 		sequence.setButtonMode(newValue);
@@ -398,7 +398,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#addFilterSequence(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#addFilterSequence(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToSequence(ViewerFilter filter) {
@@ -408,7 +408,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#addBusinessFilterSequence(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#addBusinessFilterSequence(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToSequence(ViewerFilter filter) {
@@ -418,7 +418,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#getEndpointType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#getEndpointType()
 	 * 
 	 */
 	public Enumerator getEndpointType() {
@@ -429,7 +429,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#initEndpointType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#initEndpointType(Object input, Enumerator current)
 	 */
 	public void initEndpointType(Object input, Enumerator current) {
 		endpointType.setInput(input);
@@ -447,7 +447,7 @@ public class AbstractCommonTargetPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#setEndpointType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AbstractCommonTargetPropertiesEditionPart#setEndpointType(Enumerator newValue)
 	 * 
 	 */
 	public void setEndpointType(Enumerator newValue) {

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -41,10 +41,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTFeaturePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.XSLTFeaturePropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -227,7 +227,7 @@ public class XSLTFeaturePropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTFeaturePropertiesEditionPart#getFeatureName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTFeaturePropertiesEditionPart#getFeatureName()
 	 * 
 	 */
 	public String getFeatureName() {
@@ -237,7 +237,7 @@ public class XSLTFeaturePropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTFeaturePropertiesEditionPart#setFeatureName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTFeaturePropertiesEditionPart#setFeatureName(String newValue)
 	 * 
 	 */
 	public void setFeatureName(String newValue) {
@@ -259,7 +259,7 @@ public class XSLTFeaturePropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTFeaturePropertiesEditionPart#getFeatureEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTFeaturePropertiesEditionPart#getFeatureEnabled()
 	 * 
 	 */
 	public Boolean getFeatureEnabled() {
@@ -269,7 +269,7 @@ public class XSLTFeaturePropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTFeaturePropertiesEditionPart#setFeatureEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTFeaturePropertiesEditionPart#setFeatureEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setFeatureEnabled(Boolean newValue) {

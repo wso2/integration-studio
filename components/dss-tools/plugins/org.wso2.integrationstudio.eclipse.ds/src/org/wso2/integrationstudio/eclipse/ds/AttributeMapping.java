@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,14 +17,14 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getColumn <em>Column</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getRequiredRoles <em>Required Roles</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getXsdType <em>Xsd Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#isOptional <em>Optional</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.AttributeMapping#getColumn <em>Column</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.AttributeMapping#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.AttributeMapping#getRequiredRoles <em>Required Roles</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.AttributeMapping#getXsdType <em>Xsd Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.AttributeMapping#isOptional <em>Optional</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getAttributeMapping()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getAttributeMapping()
  * @model extendedMetaData="name='attribute_._type' kind='empty'"
  * @generated
  */
@@ -39,7 +39,7 @@ public interface AttributeMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Column</em>' attribute.
 	 * @see #setColumn(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getAttributeMapping_Column()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getAttributeMapping_Column()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='column' namespace='##targetNamespace'"
 	 * @generated
@@ -47,7 +47,7 @@ public interface AttributeMapping extends EObject {
 	String getColumn();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getColumn <em>Column</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.AttributeMapping#getColumn <em>Column</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Column</em>' attribute.
@@ -66,7 +66,7 @@ public interface AttributeMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getAttributeMapping_Name()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getAttributeMapping_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='name' namespace='##targetNamespace'"
 	 * @generated
@@ -74,7 +74,7 @@ public interface AttributeMapping extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.AttributeMapping#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -93,7 +93,7 @@ public interface AttributeMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Required Roles</em>' attribute.
 	 * @see #setRequiredRoles(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getAttributeMapping_RequiredRoles()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getAttributeMapping_RequiredRoles()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='requiredRoles' namespace='##targetNamespace'"
 	 * @generated
@@ -101,7 +101,7 @@ public interface AttributeMapping extends EObject {
 	String getRequiredRoles();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getRequiredRoles <em>Required Roles</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.AttributeMapping#getRequiredRoles <em>Required Roles</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Required Roles</em>' attribute.
@@ -120,7 +120,7 @@ public interface AttributeMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Xsd Type</em>' attribute.
 	 * @see #setXsdType(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getAttributeMapping_XsdType()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getAttributeMapping_XsdType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='xsdType' namespace='##targetNamespace'"
 	 * @generated
@@ -128,7 +128,7 @@ public interface AttributeMapping extends EObject {
 	String getXsdType();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#getXsdType <em>Xsd Type</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.AttributeMapping#getXsdType <em>Xsd Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Xsd Type</em>' attribute.
@@ -148,7 +148,7 @@ public interface AttributeMapping extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Optional</em>' attribute.
 	 * @see #setOptional(boolean)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getAttributeMapping_Optional()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getAttributeMapping_Optional()
 	 * @model default="false"
 	 *        extendedMetaData="kind='attribute' name='optional' namespace='##targetNamespace'"
 	 * @generated
@@ -156,7 +156,7 @@ public interface AttributeMapping extends EObject {
 	boolean isOptional();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping#isOptional <em>Optional</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.AttributeMapping#isOptional <em>Optional</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Optional</em>' attribute.

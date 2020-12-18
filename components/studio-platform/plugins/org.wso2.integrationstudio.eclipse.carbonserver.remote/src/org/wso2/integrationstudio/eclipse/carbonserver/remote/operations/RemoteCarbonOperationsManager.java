@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.remote.operations;
+package org.wso2.integrationstudio.carbonserver.remote.operations;
 
 import java.util.List;
 import java.util.Map;
@@ -24,16 +24,16 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.IServerListener;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.exception.NoSuchCarbonOperationDefinedException;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.impl.CarbonServer;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServerMonitor;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.ICarbonOperationManager;
-import org.wso2.integrationstudio.eclipse.carbonserver.remote.monitor.CarbonServerListener;
-import org.wso2.integrationstudio.eclipse.carbonserver.remote.util.RemoteCarbonServerUtils;
+import org.wso2.integrationstudio.carbonserver.base.exception.NoSuchCarbonOperationDefinedException;
+import org.wso2.integrationstudio.carbonserver.base.impl.CarbonServer;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServerMonitor;
+import org.wso2.integrationstudio.carbonserver.base.manager.ICarbonOperationManager;
+import org.wso2.integrationstudio.carbonserver.remote.monitor.CarbonServerListener;
+import org.wso2.integrationstudio.carbonserver.remote.util.RemoteCarbonServerUtils;
 
 public class RemoteCarbonOperationsManager implements ICarbonOperationManager {
 
-	private static final String RUNTIME_ID = "org.wso2.integrationstudio.eclipse.carbon.runtime31";
+	private static final String RUNTIME_ID = "org.wso2.integrationstudio.carbon.runtime31";
 
 	public String getRuntimeId() {
 		return RUNTIME_ID;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.provider;
+package org.wso2.integrationstudio.artifact.registry.provider;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,17 +30,17 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.resource.ImageDescriptor;
 
-import org.wso2.integrationstudio.eclipse.registry.core.RegistryManager;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryCollection;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryFile;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryResource;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryResourceProvider;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.RegistryCollectionImpl;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.RegistryFileImpl;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.RegistryResourceImpl;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioElement;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.ResourceManager;
+import org.wso2.integrationstudio.registry.core.RegistryManager;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryCollection;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryFile;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryResource;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryResourceProvider;
+import org.wso2.integrationstudio.registry.core.interfaces.RegistryCollectionImpl;
+import org.wso2.integrationstudio.registry.core.interfaces.RegistryFileImpl;
+import org.wso2.integrationstudio.registry.core.interfaces.RegistryResourceImpl;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.core.utils.ResourceManager;
 
 public class ArtifactRegistryResourceProvider implements IRegistryResourceProvider{
 	private OMElement artifact;

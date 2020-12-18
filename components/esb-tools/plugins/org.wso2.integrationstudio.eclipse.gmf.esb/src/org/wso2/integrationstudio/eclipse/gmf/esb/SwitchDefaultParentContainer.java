@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,10 +24,10 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultParentContainer#getSwitchDefaultContainer <em>Switch Default Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.SwitchDefaultParentContainer#getSwitchDefaultContainer <em>Switch Default Container</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSwitchDefaultParentContainer()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSwitchDefaultParentContainer()
  * @model
  * @generated
  */
@@ -42,14 +42,14 @@ public interface SwitchDefaultParentContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Switch Default Container</em>' containment reference.
      * @see #setSwitchDefaultContainer(SwitchDefaultContainer)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSwitchDefaultParentContainer_SwitchDefaultContainer()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSwitchDefaultParentContainer_SwitchDefaultContainer()
      * @model containment="true"
      * @generated
      */
     SwitchDefaultContainer getSwitchDefaultContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultParentContainer#getSwitchDefaultContainer <em>Switch Default Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.SwitchDefaultParentContainer#getSwitchDefaultContainer <em>Switch Default Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Switch Default Container</em>' containment reference.

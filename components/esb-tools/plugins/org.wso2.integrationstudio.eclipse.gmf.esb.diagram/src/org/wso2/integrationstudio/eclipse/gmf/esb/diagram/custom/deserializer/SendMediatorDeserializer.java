@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.Endpoint;
@@ -25,15 +25,15 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-//import org.wso2.integrationstudio.eclipse.gmf.esb.AddressingEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ReceivingSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+//import org.wso2.integrationstudio.gmf.esb.AddressingEndpoint;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.ReceivingSequenceType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SendMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class SendMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, SendMediator> {
 
@@ -44,7 +44,7 @@ public class SendMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
 
         org.apache.synapse.mediators.builtin.SendMediator sendMediator = (org.apache.synapse.mediators.builtin.SendMediator) mediator;
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator visualSendMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.SendMediator visualSendMediator = (org.wso2.integrationstudio.gmf.esb.SendMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.SendMediator_3515);
         setElementToEdit(visualSendMediator);
         setCommonProperties(sendMediator, visualSendMediator);

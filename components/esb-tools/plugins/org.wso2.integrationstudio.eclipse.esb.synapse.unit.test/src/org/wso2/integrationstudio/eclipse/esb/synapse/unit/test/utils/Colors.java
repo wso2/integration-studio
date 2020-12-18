@@ -15,12 +15,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils;
+package org.wso2.integrationstudio.esb.synapse.unit.test.utils;
 
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 /**
  * Class responsible for maintaining the colors for syntaxes.

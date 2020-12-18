@@ -14,25 +14,25 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.utils;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.CALL_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.SEND_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.CACHE_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.VALIDATE_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.ITERATE_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.FOREACH_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.RULE_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.THROTTLE_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.CLONE_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.ENTITLEMENT_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.FILTER_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.SWITCH_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.LOG_MEDIATOR_ICON_PATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.AGGREGATE_MEDIATOR_ICON_PATH;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.CALL_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.SEND_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.CACHE_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.VALIDATE_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.ITERATE_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.FOREACH_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.RULE_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.THROTTLE_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.CLONE_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.ENTITLEMENT_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.FILTER_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.SWITCH_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.LOG_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.AGGREGATE_MEDIATOR_ICON_PATH;
 
 public class ImageHolder {
 

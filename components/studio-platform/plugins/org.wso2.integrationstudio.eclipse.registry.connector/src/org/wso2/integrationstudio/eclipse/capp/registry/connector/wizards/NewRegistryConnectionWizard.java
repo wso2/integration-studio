@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.registry.connector.wizards;
+package org.wso2.integrationstudio.capp.registry.connector.wizards;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -25,15 +25,15 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.integrationstudio.eclipse.capp.core.model.RegistryConnection;
-import org.wso2.integrationstudio.eclipse.capp.core.model.RegistryData;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.Activator;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.utils.RegistryConnectorImageUtils;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.utils.RegistryHandlerUtils;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryConnection;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.CAppEnvironment;
+import org.wso2.integrationstudio.capp.core.model.RegistryConnection;
+import org.wso2.integrationstudio.capp.core.model.RegistryData;
+import org.wso2.integrationstudio.capp.registry.connector.Activator;
+import org.wso2.integrationstudio.capp.registry.connector.utils.RegistryConnectorImageUtils;
+import org.wso2.integrationstudio.capp.registry.connector.utils.RegistryHandlerUtils;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryConnection;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class NewRegistryConnectionWizard extends Wizard implements INewWizard {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

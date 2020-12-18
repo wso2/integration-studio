@@ -16,7 +16,7 @@
  *    under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.editors;
+package org.wso2.integrationstudio.ds.editors;
 
 import java.io.File;
 import java.io.IOException;
@@ -60,10 +60,10 @@ import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.ui.texteditor.MarkerUtilities;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.ds.presentation.md.DSSVisualEditorPage;
-import org.wso2.integrationstudio.eclipse.ds.presentation.util.DSSVisualEditorConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.ds.presentation.md.DSSVisualEditorPage;
+import org.wso2.integrationstudio.ds.presentation.util.DSSVisualEditorConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.xml.sax.SAXException;
 
 /**
@@ -86,9 +86,9 @@ public class DSSMultiPageEditor extends MultiPageEditorPart implements IResource
      */
     private String dsXmlContent;
     
-    public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.ds.editor";
+    public static final String PLUGIN_ID = "org.wso2.integrationstudio.ds.editor";
     private static final String DSS_XSD_PATH = "resources/schema/dss_schema.xsd";
-    private static final String DSS_ERROR = "org.wso2.integrationstudio.eclipse.ds.editor.dsserror";
+    private static final String DSS_ERROR = "org.wso2.integrationstudio.ds.editor.dsserror";
     private static final String SECRET_ALIAS = "secretAlias";
     private static final String SECRET_ALIAS_ERROR = "is not allowed to appear in element 'property'";
     

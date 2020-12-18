@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.utils;
+package org.wso2.integrationstudio.platform.core.utils;
 
 public class CSProviderConstants {
 	public final static String FILTER_PROJECT = "org.eclipse.core.resources.IProject";

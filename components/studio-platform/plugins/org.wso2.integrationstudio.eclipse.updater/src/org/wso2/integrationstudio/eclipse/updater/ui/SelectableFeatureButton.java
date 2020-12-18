@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.updater.ui;
+package org.wso2.integrationstudio.updater.ui;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.wso2.integrationstudio.eclipse.updater.model.EnhancedFeature;
+import org.wso2.integrationstudio.updater.model.EnhancedFeature;
 
 public class SelectableFeatureButton{
 	

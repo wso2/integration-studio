@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core;
+package org.wso2.integrationstudio.capp.core;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -24,7 +24,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
 
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.capp.core";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.capp.core";
 
 	private static Activator plugin;
 	

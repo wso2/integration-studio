@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.security.project.ui.dialog;
+package org.wso2.integrationstudio.security.project.ui.dialog;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -33,12 +33,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.integrationstudio.eclipse.capp.core.model.RegistryConnection;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryConnection;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryData;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryHandler;
-import org.wso2.integrationstudio.eclipse.security.project.utils.RegistryUtils;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.CAppEnvironment;
+import org.wso2.integrationstudio.capp.core.model.RegistryConnection;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryConnection;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryData;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryHandler;
+import org.wso2.integrationstudio.security.project.utils.RegistryUtils;
 
 /**
  * A SWT based editor dialog to be used for editing registry key properties.

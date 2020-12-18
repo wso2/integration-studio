@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.propertytester;
+package org.wso2.integrationstudio.esb.synapse.unit.test.propertytester;
 
 import java.io.File;
 import java.util.regex.Pattern;
@@ -24,7 +24,7 @@ import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.constant.Constants;
+import org.wso2.integrationstudio.esb.synapse.unit.test.constant.Constants;
 
 /**
  * Class responsible checking the selected resource is eligible for run test

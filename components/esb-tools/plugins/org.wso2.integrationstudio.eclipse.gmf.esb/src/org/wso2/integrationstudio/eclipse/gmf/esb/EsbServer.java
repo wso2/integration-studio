@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,19 +17,19 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer#getChildren <em>Children</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer#getMessageMediator <em>Message Mediator</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer#getType <em>Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EsbServer#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EsbServer#getMessageMediator <em>Message Mediator</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EsbServer#getType <em>Type</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEsbServer()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEsbServer()
  * @model
  * @generated
  */
 public interface EsbServer extends EsbNode {
     /**
      * Returns the value of the '<em><b>Children</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.EsbElement}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
@@ -37,7 +37,7 @@ public interface EsbServer extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Children</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEsbServer_Children()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEsbServer_Children()
      * @model containment="true"
      * @generated
      */
@@ -53,14 +53,14 @@ public interface EsbServer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Message Mediator</em>' containment reference.
      * @see #setMessageMediator(MessageMediator)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEsbServer_MessageMediator()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEsbServer_MessageMediator()
      * @model containment="true"
      * @generated
      */
     MessageMediator getMessageMediator();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer#getMessageMediator <em>Message Mediator</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EsbServer#getMessageMediator <em>Message Mediator</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Message Mediator</em>' containment reference.
@@ -71,7 +71,7 @@ public interface EsbServer extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.ArtifactType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Type</em>' attribute isn't clear,
@@ -79,20 +79,20 @@ public interface EsbServer extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType
+     * @see org.wso2.integrationstudio.gmf.esb.ArtifactType
      * @see #setType(ArtifactType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEsbServer_Type()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEsbServer_Type()
      * @model
      * @generated
      */
     ArtifactType getType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer#getType <em>Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EsbServer#getType <em>Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType
+     * @see org.wso2.integrationstudio.gmf.esb.ArtifactType
      * @see #getType()
      * @generated
      */

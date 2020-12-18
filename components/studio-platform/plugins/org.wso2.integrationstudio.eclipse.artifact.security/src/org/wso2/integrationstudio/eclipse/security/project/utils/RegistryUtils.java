@@ -15,7 +15,7 @@
  */
 
 
-package org.wso2.integrationstudio.eclipse.security.project.utils;
+package org.wso2.integrationstudio.security.project.utils;
 
 import java.io.File;
 
@@ -25,9 +25,9 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.wso2.carbon.registry.synchronization.SynchronizationException;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.utils.RegistryCheckInClientUtils;
-import org.wso2.integrationstudio.eclipse.security.project.ui.dialog.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.registry.manager.local.utils.RegistryCheckInClientUtils;
+import org.wso2.integrationstudio.security.project.ui.dialog.RegistryKeyProperty;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class RegistryUtils {
 

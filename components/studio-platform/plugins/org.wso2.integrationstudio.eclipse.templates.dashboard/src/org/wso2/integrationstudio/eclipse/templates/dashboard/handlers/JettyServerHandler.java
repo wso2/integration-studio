@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.integrationstudio.eclipse.templates.dashboard.handlers;
+package org.wso2.integrationstudio.templates.dashboard.handlers;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -25,16 +25,16 @@ import org.eclipse.jetty.server.handler.HandlerCollection;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.Activator;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.GetWelcomeDisplayConfigServlet;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.GetWizardsFunctionServlet;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.JSEmbeddedFunctions;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.OpenBrowserServlet;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.OpenIDEFunctionServlet;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.UpdateWelcomeDisplayConfigServlet;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.templates.dashboard.Activator;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.FunctionServerConstants;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.GetWelcomeDisplayConfigServlet;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.GetWizardsFunctionServlet;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.JSEmbeddedFunctions;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.OpenBrowserServlet;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.OpenIDEFunctionServlet;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.UpdateWelcomeDisplayConfigServlet;
 
 public class JettyServerHandler {
 

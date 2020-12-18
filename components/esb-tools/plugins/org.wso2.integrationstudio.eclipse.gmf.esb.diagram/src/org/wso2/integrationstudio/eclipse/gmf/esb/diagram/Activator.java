@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram;
+package org.wso2.integrationstudio.gmf.esb.diagram;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -6,7 +6,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
     // The plug-in ID
-    public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram";
+    public static final String PLUGIN_ID = "org.wso2.integrationstudio.gmf.esb.diagram";
 
     // The shared instance
     private static Activator plugin;

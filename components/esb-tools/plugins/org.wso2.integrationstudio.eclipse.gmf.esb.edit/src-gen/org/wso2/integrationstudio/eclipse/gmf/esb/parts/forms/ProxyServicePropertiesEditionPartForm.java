@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -81,16 +81,16 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyWsdlType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.ProxyWsdlType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SequenceType;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -2097,7 +2097,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -2107,7 +2107,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -2129,7 +2129,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getPinnedServers()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getPinnedServers()
 	 * 
 	 */
 	public String getPinnedServers() {
@@ -2139,7 +2139,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setPinnedServers(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setPinnedServers(String newValue)
 	 * 
 	 */
 	public void setPinnedServers(String newValue) {
@@ -2161,7 +2161,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getServiceGroup()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getServiceGroup()
 	 * 
 	 */
 	public String getServiceGroup() {
@@ -2171,7 +2171,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setServiceGroup(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setServiceGroup(String newValue)
 	 * 
 	 */
 	public void setServiceGroup(String newValue) {
@@ -2193,7 +2193,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getTraceEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getTraceEnabled()
 	 * 
 	 */
 	public Boolean getTraceEnabled() {
@@ -2203,7 +2203,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setTraceEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setTraceEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setTraceEnabled(Boolean newValue) {
@@ -2225,7 +2225,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getStatisticsEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getStatisticsEnabled()
 	 * 
 	 */
 	public Boolean getStatisticsEnabled() {
@@ -2235,7 +2235,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setStatisticsEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setStatisticsEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setStatisticsEnabled(Boolean newValue) {
@@ -2257,7 +2257,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getStartOnLoad()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getStartOnLoad()
 	 * 
 	 */
 	public Boolean getStartOnLoad() {
@@ -2267,7 +2267,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setStartOnLoad(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setStartOnLoad(Boolean newValue)
 	 * 
 	 */
 	public void setStartOnLoad(Boolean newValue) {
@@ -2289,7 +2289,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getTransports()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getTransports()
 	 * 
 	 */
 	public String getTransports() {
@@ -2299,7 +2299,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setTransports(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setTransports(String newValue)
 	 * 
 	 */
 	public void setTransports(String newValue) {
@@ -2321,7 +2321,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getEndpointType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getEndpointType()
 	 * 
 	 */
 	public Enumerator getEndpointType() {
@@ -2332,7 +2332,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#initEndpointType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#initEndpointType(Object input, Enumerator current)
 	 */
 	public void initEndpointType(Object input, Enumerator current) {
 		endpointType.setInput(input);
@@ -2350,7 +2350,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setEndpointType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setEndpointType(Enumerator newValue)
 	 * 
 	 */
 	public void setEndpointType(Enumerator newValue) {
@@ -2368,7 +2368,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getEndpointName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getEndpointName()
 	 * 
 	 */
 	public String getEndpointName() {
@@ -2378,7 +2378,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setEndpointName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setEndpointName(String newValue)
 	 * 
 	 */
 	public void setEndpointName(String newValue) {
@@ -2400,7 +2400,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getFaultSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getFaultSequenceType()
 	 * 
 	 */
 	public Enumerator getFaultSequenceType() {
@@ -2411,7 +2411,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#initFaultSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#initFaultSequenceType(Object input, Enumerator current)
 	 */
 	public void initFaultSequenceType(Object input, Enumerator current) {
 		faultSequenceType.setInput(input);
@@ -2429,7 +2429,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setFaultSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setFaultSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setFaultSequenceType(Enumerator newValue) {
@@ -2447,7 +2447,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getFaultSequenceName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getFaultSequenceName()
 	 * 
 	 */
 	public String getFaultSequenceName() {
@@ -2457,7 +2457,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setFaultSequenceName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setFaultSequenceName(String newValue)
 	 * 
 	 */
 	public void setFaultSequenceName(String newValue) {
@@ -2479,7 +2479,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getInSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getInSequenceType()
 	 * 
 	 */
 	public Enumerator getInSequenceType() {
@@ -2490,7 +2490,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#initInSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#initInSequenceType(Object input, Enumerator current)
 	 */
 	public void initInSequenceType(Object input, Enumerator current) {
 		inSequenceType.setInput(input);
@@ -2508,7 +2508,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setInSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setInSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setInSequenceType(Enumerator newValue) {
@@ -2526,7 +2526,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getInSequenceName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getInSequenceName()
 	 * 
 	 */
 	public String getInSequenceName() {
@@ -2536,7 +2536,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setInSequenceName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setInSequenceName(String newValue)
 	 * 
 	 */
 	public void setInSequenceName(String newValue) {
@@ -2558,7 +2558,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getOutSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getOutSequenceType()
 	 * 
 	 */
 	public Enumerator getOutSequenceType() {
@@ -2569,7 +2569,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#initOutSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#initOutSequenceType(Object input, Enumerator current)
 	 */
 	public void initOutSequenceType(Object input, Enumerator current) {
 		outSequenceType.setInput(input);
@@ -2587,7 +2587,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setOutSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setOutSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setOutSequenceType(Enumerator newValue) {
@@ -2605,7 +2605,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getOutSequenceName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getOutSequenceName()
 	 * 
 	 */
 	public String getOutSequenceName() {
@@ -2615,7 +2615,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setOutSequenceName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setOutSequenceName(String newValue)
 	 * 
 	 */
 	public void setOutSequenceName(String newValue) {
@@ -2639,7 +2639,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#initServiceParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#initServiceParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initServiceParameters(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -2660,7 +2660,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#updateServiceParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#updateServiceParameters()
 	 * 
 	 */
 	public void updateServiceParameters() {
@@ -2670,7 +2670,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#addFilterServiceParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#addFilterServiceParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToServiceParameters(ViewerFilter filter) {
@@ -2683,7 +2683,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#addBusinessFilterServiceParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#addBusinessFilterServiceParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToServiceParameters(ViewerFilter filter) {
@@ -2693,7 +2693,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#isContainedInServiceParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#isContainedInServiceParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInServiceParametersTable(EObject element) {
@@ -2703,7 +2703,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getReliableMessagingEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getReliableMessagingEnabled()
 	 * 
 	 */
 	public Boolean getReliableMessagingEnabled() {
@@ -2713,7 +2713,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setReliableMessagingEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setReliableMessagingEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setReliableMessagingEnabled(Boolean newValue) {
@@ -2735,7 +2735,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getSecurityEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getSecurityEnabled()
 	 * 
 	 */
 	public Boolean getSecurityEnabled() {
@@ -2745,7 +2745,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setSecurityEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setSecurityEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setSecurityEnabled(Boolean newValue) {
@@ -2769,7 +2769,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#initServicePolicies(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#initServicePolicies(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initServicePolicies(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -2790,7 +2790,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#updateServicePolicies()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#updateServicePolicies()
 	 * 
 	 */
 	public void updateServicePolicies() {
@@ -2800,7 +2800,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#addFilterServicePolicies(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#addFilterServicePolicies(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToServicePolicies(ViewerFilter filter) {
@@ -2813,7 +2813,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#addBusinessFilterServicePolicies(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#addBusinessFilterServicePolicies(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToServicePolicies(ViewerFilter filter) {
@@ -2823,7 +2823,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#isContainedInServicePoliciesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#isContainedInServicePoliciesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInServicePoliciesTable(EObject element) {
@@ -2833,7 +2833,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getWsdlType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getWsdlType()
 	 * 
 	 */
 	public Enumerator getWsdlType() {
@@ -2844,7 +2844,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#initWsdlType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#initWsdlType(Object input, Enumerator current)
 	 */
 	public void initWsdlType(Object input, Enumerator current) {
 		wsdlType.setInput(input);
@@ -2862,7 +2862,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setWsdlType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setWsdlType(Enumerator newValue)
 	 * 
 	 */
 	public void setWsdlType(Enumerator newValue) {
@@ -2880,7 +2880,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getWsdlXML()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getWsdlXML()
 	 * 
 	 */
 	public String getWsdlXML() {
@@ -2890,7 +2890,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setWsdlXML(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setWsdlXML(String newValue)
 	 * 
 	 */
 	public void setWsdlXML(String newValue) {
@@ -2912,7 +2912,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getWsdlURL()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getWsdlURL()
 	 * 
 	 */
 	public String getWsdlURL() {
@@ -2922,7 +2922,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setWsdlURL(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setWsdlURL(String newValue)
 	 * 
 	 */
 	public void setWsdlURL(String newValue) {
@@ -2946,7 +2946,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#initWsdlResources(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#initWsdlResources(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initWsdlResources(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -2967,7 +2967,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#updateWsdlResources()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#updateWsdlResources()
 	 * 
 	 */
 	public void updateWsdlResources() {
@@ -2977,7 +2977,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#addFilterWsdlResources(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#addFilterWsdlResources(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToWsdlResources(ViewerFilter filter) {
@@ -2990,7 +2990,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#addBusinessFilterWsdlResources(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#addBusinessFilterWsdlResources(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToWsdlResources(ViewerFilter filter) {
@@ -3000,7 +3000,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#isContainedInWsdlResourcesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#isContainedInWsdlResourcesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInWsdlResourcesTable(EObject element) {
@@ -3010,7 +3010,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getPreservePolicy()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getPreservePolicy()
 	 * 
 	 */
 	public Boolean getPreservePolicy() {
@@ -3020,7 +3020,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setPreservePolicy(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setPreservePolicy(Boolean newValue)
 	 * 
 	 */
 	public void setPreservePolicy(Boolean newValue) {
@@ -3042,7 +3042,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -3052,7 +3052,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -3074,7 +3074,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -3084,7 +3084,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -3127,7 +3127,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#initInSequenceInputConnectors(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#initInSequenceInputConnectors(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initInSequenceInputConnectors(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -3148,7 +3148,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#updateInSequenceInputConnectors()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#updateInSequenceInputConnectors()
 	 * 
 	 */
 	public void updateInSequenceInputConnectors() {
@@ -3158,7 +3158,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#addFilterInSequenceInputConnectors(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#addFilterInSequenceInputConnectors(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToInSequenceInputConnectors(ViewerFilter filter) {
@@ -3171,7 +3171,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#addBusinessFilterInSequenceInputConnectors(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#addBusinessFilterInSequenceInputConnectors(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToInSequenceInputConnectors(ViewerFilter filter) {
@@ -3181,7 +3181,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#isContainedInInSequenceInputConnectorsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#isContainedInInSequenceInputConnectorsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInInSequenceInputConnectorsTable(EObject element) {
@@ -3191,7 +3191,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#getMainSequence()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#getMainSequence()
 	 * 
 	 */
 	public Boolean getMainSequence() {
@@ -3201,7 +3201,7 @@ public class ProxyServicePropertiesEditionPartForm extends SectionPropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServicePropertiesEditionPart#setMainSequence(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServicePropertiesEditionPart#setMainSequence(Boolean newValue)
 	 * 
 	 */
 	public void setMainSequence(Boolean newValue) {

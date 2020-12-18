@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -56,12 +56,12 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -1224,7 +1224,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCacheMediatorImplementation()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCacheMediatorImplementation()
 	 * 
 	 */
 	public Enumerator getCacheMediatorImplementation() {
@@ -1235,7 +1235,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initCacheMediatorImplementation(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initCacheMediatorImplementation(Object input, Enumerator current)
 	 */
 	public void initCacheMediatorImplementation(Object input, Enumerator current) {
 		cacheMediatorImplementation.setInput(input);
@@ -1253,7 +1253,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCacheMediatorImplementation(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCacheMediatorImplementation(Enumerator newValue)
 	 * 
 	 */
 	public void setCacheMediatorImplementation(Enumerator newValue) {
@@ -1271,7 +1271,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getId()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getId()
 	 * 
 	 */
 	public String getId() {
@@ -1281,7 +1281,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setId(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setId(String newValue)
 	 * 
 	 */
 	public void setId(String newValue) {
@@ -1303,7 +1303,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCacheType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCacheType()
 	 * 
 	 */
 	public Enumerator getCacheType() {
@@ -1314,7 +1314,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initCacheType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initCacheType(Object input, Enumerator current)
 	 */
 	public void initCacheType(Object input, Enumerator current) {
 		cacheType.setInput(input);
@@ -1332,7 +1332,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCacheType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCacheType(Enumerator newValue)
 	 * 
 	 */
 	public void setCacheType(Enumerator newValue) {
@@ -1350,7 +1350,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getScope()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getScope()
 	 * 
 	 */
 	public Enumerator getScope() {
@@ -1361,7 +1361,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initScope(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initScope(Object input, Enumerator current)
 	 */
 	public void initScope(Object input, Enumerator current) {
 		scope.setInput(input);
@@ -1379,7 +1379,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setScope(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setScope(Enumerator newValue)
 	 * 
 	 */
 	public void setScope(Enumerator newValue) {
@@ -1397,7 +1397,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getHashGeneratorAttribute()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getHashGeneratorAttribute()
 	 * 
 	 */
 	public String getHashGeneratorAttribute() {
@@ -1407,7 +1407,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setHashGeneratorAttribute(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setHashGeneratorAttribute(String newValue)
 	 * 
 	 */
 	public void setHashGeneratorAttribute(String newValue) {
@@ -1429,7 +1429,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCacheTimeout()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCacheTimeout()
 	 * 
 	 */
 	public String getCacheTimeout() {
@@ -1439,7 +1439,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCacheTimeout(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCacheTimeout(String newValue)
 	 * 
 	 */
 	public void setCacheTimeout(String newValue) {
@@ -1461,7 +1461,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getMaxMessageSize()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getMaxMessageSize()
 	 * 
 	 */
 	public String getMaxMessageSize() {
@@ -1471,7 +1471,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setMaxMessageSize(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setMaxMessageSize(String newValue)
 	 * 
 	 */
 	public void setMaxMessageSize(String newValue) {
@@ -1493,7 +1493,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -1503,7 +1503,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -1544,7 +1544,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -1554,7 +1554,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -1576,7 +1576,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getMaxEntryCount()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getMaxEntryCount()
 	 * 
 	 */
 	public String getMaxEntryCount() {
@@ -1586,7 +1586,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setMaxEntryCount(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setMaxEntryCount(String newValue)
 	 * 
 	 */
 	public void setMaxEntryCount(String newValue) {
@@ -1608,7 +1608,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getImplementationType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getImplementationType()
 	 * 
 	 */
 	public Enumerator getImplementationType() {
@@ -1619,7 +1619,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initImplementationType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initImplementationType(Object input, Enumerator current)
 	 */
 	public void initImplementationType(Object input, Enumerator current) {
 		implementationType.setInput(input);
@@ -1637,7 +1637,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setImplementationType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setImplementationType(Enumerator newValue)
 	 * 
 	 */
 	public void setImplementationType(Enumerator newValue) {
@@ -1655,7 +1655,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getSequenceType()
 	 * 
 	 */
 	public Enumerator getSequenceType() {
@@ -1666,7 +1666,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
 	 */
 	public void initSequenceType(Object input, Enumerator current) {
 		sequenceType.setInput(input);
@@ -1684,7 +1684,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setSequenceType(Enumerator newValue) {
@@ -1702,7 +1702,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCacheProtocolType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCacheProtocolType()
 	 * 
 	 */
 	public Enumerator getCacheProtocolType() {
@@ -1713,7 +1713,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initCacheProtocolType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#initCacheProtocolType(Object input, Enumerator current)
 	 */
 	public void initCacheProtocolType(Object input, Enumerator current) {
 		cacheProtocolType.setInput(input);
@@ -1731,7 +1731,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCacheProtocolType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCacheProtocolType(Enumerator newValue)
 	 * 
 	 */
 	public void setCacheProtocolType(Enumerator newValue) {
@@ -1749,7 +1749,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCacheProtocolMethods()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getCacheProtocolMethods()
 	 * 
 	 */
 	public String getCacheProtocolMethods() {
@@ -1759,7 +1759,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCacheProtocolMethods(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setCacheProtocolMethods(String newValue)
 	 * 
 	 */
 	public void setCacheProtocolMethods(String newValue) {
@@ -1781,7 +1781,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getHeadersToExcludeInHash()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getHeadersToExcludeInHash()
 	 * 
 	 */
 	public String getHeadersToExcludeInHash() {
@@ -1791,7 +1791,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setHeadersToExcludeInHash(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setHeadersToExcludeInHash(String newValue)
 	 * 
 	 */
 	public void setHeadersToExcludeInHash(String newValue) {
@@ -1813,7 +1813,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getResponseCodes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getResponseCodes()
 	 * 
 	 */
 	public String getResponseCodes() {
@@ -1823,7 +1823,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setResponseCodes(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setResponseCodes(String newValue)
 	 * 
 	 */
 	public void setResponseCodes(String newValue) {
@@ -1845,7 +1845,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getEnableCacheControl()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getEnableCacheControl()
 	 * 
 	 */
 	public Boolean getEnableCacheControl() {
@@ -1855,7 +1855,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setEnableCacheControl(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setEnableCacheControl(Boolean newValue)
 	 * 
 	 */
 	public void setEnableCacheControl(Boolean newValue) {
@@ -1877,7 +1877,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getIncludeAgeHeader()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getIncludeAgeHeader()
 	 * 
 	 */
 	public Boolean getIncludeAgeHeader() {
@@ -1887,7 +1887,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setIncludeAgeHeader(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setIncludeAgeHeader(Boolean newValue)
 	 * 
 	 */
 	public void setIncludeAgeHeader(Boolean newValue) {
@@ -1909,7 +1909,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getHashGenerator()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getHashGenerator()
 	 * 
 	 */
 	public String getHashGenerator() {
@@ -1919,7 +1919,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setHashGenerator(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setHashGenerator(String newValue)
 	 * 
 	 */
 	public void setHashGenerator(String newValue) {
@@ -1941,7 +1941,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -1951,7 +1951,7 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {

@@ -11,7 +11,7 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.general.project.capp.refactor;
+package org.wso2.integrationstudio.general.project.capp.refactor;
 
 import java.util.Iterator;
 import java.util.List;
@@ -31,11 +31,11 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
-import org.wso2.integrationstudio.eclipse.general.project.Activator;
-import org.wso2.integrationstudio.eclipse.general.project.refactor.MavenConfigurationFileDeleteChange;
-import org.wso2.integrationstudio.eclipse.general.project.refactor.RefactorUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.general.project.Activator;
+import org.wso2.integrationstudio.general.project.refactor.MavenConfigurationFileDeleteChange;
+import org.wso2.integrationstudio.general.project.refactor.RefactorUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class RegistryResourceArtifactDeleteParticipant extends DeleteParticipant {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

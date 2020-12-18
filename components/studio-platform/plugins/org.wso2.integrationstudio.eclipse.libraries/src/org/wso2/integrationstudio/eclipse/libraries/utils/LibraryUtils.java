@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.libraries.utils;
+package org.wso2.integrationstudio.libraries.utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -12,10 +12,10 @@ import java.util.Map;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.wso2.integrationstudio.eclipse.libraries.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.ide.EclipseUtils;
+import org.wso2.integrationstudio.libraries.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.ide.EclipseUtils;
 
 
 public class LibraryUtils {

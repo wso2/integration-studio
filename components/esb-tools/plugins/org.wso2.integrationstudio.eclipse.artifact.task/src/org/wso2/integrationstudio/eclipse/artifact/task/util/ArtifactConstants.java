@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.task.util;
+package org.wso2.integrationstudio.artifact.task.util;
 
 import org.eclipse.osgi.util.NLS;
 
 public class ArtifactConstants extends NLS {
-	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.artifact.task.util.constants"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.artifact.task.util.constants"; //$NON-NLS-1$
 
 	public static String Task_Create_Project;
 	public static String Task_Cron;

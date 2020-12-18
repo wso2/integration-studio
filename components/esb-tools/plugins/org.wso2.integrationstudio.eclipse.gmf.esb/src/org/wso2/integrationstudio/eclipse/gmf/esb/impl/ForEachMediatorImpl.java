@@ -13,23 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediatorTargetOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ForEachTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.ForEachMediator;
+import org.wso2.integrationstudio.gmf.esb.ForEachMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.ForEachMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ForEachMediatorTargetOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ForEachTarget;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SequenceType;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,17 +39,17 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getForEachID <em>For Each ID</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getForEachExpression <em>For Each Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getAttachPath <em>Attach Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getTargetOutputConnector <em>Target Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getSequenceName <em>Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getForEachID <em>For Each ID</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getForEachExpression <em>For Each Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getAttachPath <em>Attach Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getTargetOutputConnector <em>Target Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getSequenceName <em>Sequence Name</em>}</li>
  * </ul>
  *
  * @generated

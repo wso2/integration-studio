@@ -81,14 +81,14 @@ The Eclipse Graphical Editing Framework (GEF) provides Eclipse-integrated end-us
 EEF is a presentation framework for the Eclipse Modeling Framework (EMF). It allows users to create rich user interfaces (Properties view of ESB components like mediators, proxies, API resources, Inbound Endpoints, etc.) to edit EMF models.
 
 ### How is the Integration Studio designed with Eclipse Frameworks?
-The Integration Studio IDE is an Eclipse Oxygen based Rich Client Platform(RCP). All the synapse level constructs (including mediators, proxies, inbound endpoints, etc), are first described as an XMI model using the Eclipse Modeling Framework(EMF). The EMF XMI model is in the devstudio-tooling-esb repository: https://github.com/wso2/devstudio-tooling-esb/blob/master/plugins/org.wso2.integrationstudio.eclipse.gmf.esb/model/esb.ecore
+The Integration Studio IDE is an Eclipse Oxygen based Rich Client Platform(RCP). All the synapse level constructs (including mediators, proxies, inbound endpoints, etc), are first described as an XMI model using the Eclipse Modeling Framework(EMF). The EMF XMI model is in the devstudio-tooling-esb repository: https://github.com/wso2/devstudio-tooling-esb/blob/master/plugins/org.wso2.integrationstudio.gmf.esb/model/esb.ecore
 Then, the EMF framework generates the model classes for the MVC architecture. 
 The EMF generated classes include Mediators(Interface of the model), and MediatorImpl(model).
 
 GMF “provides a generative component and runtime infrastructure for developing graphical editors based on EMF and GEF”, that is, it acts as a bridge between EMF (that allows the model definition) and GEF (a lightweight graphical framework, based on MVC architecture), generating the complete infrastructure needed to coordinate the model objects’ lifecycle (EMF EObject) and their corresponding graphical representation (GEF EditPart).
-All the GMF related model files can be found at https://github.com/wso2/devstudio-tooling-esb/tree/master/plugins/org.wso2.integrationstudio.eclipse.gmf.esb/model
+All the GMF related model files can be found at https://github.com/wso2/devstudio-tooling-esb/tree/master/plugins/org.wso2.integrationstudio.gmf.esb/model
 
-Finally, using the EEF framework, the Classes related to the Properties view are generated. The EEF model is deduced from the EMF model(.ecore file). The EEF model is hosted at https://github.com/rosensilva/devstudio-tooling-esb/blob/ec4f86d2a46bb23a6a1933b65bcf3e4603375253/plugins/org.wso2.integrationstudio.eclipse.gmf.esb.edit/model/esb.components
+Finally, using the EEF framework, the Classes related to the Properties view are generated. The EEF model is deduced from the EMF model(.ecore file). The EEF model is hosted at https://github.com/rosensilva/devstudio-tooling-esb/blob/ec4f86d2a46bb23a6a1933b65bcf3e4603375253/plugins/org.wso2.integrationstudio.gmf.esb.edit/model/esb.components
 
 # Introduction to the repos
 
@@ -238,95 +238,95 @@ Go to **Run -> Run configuration -> Select eclipse run configuration -> Select A
 
 ## Kernal Plugins
 
-1. **org.wso2.integrationstudio.eclipse.kernel.libraries**
+1. **org.wso2.integrationstudio.kernel.libraries**
     * This plugin is used to add the third-party library jars that is required by the Integration Studio Kernal repository. This plugin contains the jar files and expose their required classes to be used by other kernal level packages
 
-2. **org.wso2.integrationstudio.eclipse.logging**
+2. **org.wso2.integrationstudio.logging**
     * The logging plugin have the logger classes that is used for the Integration Studio logging
 
-3. **org.wso2.integrationstudio.eclipse.maven**
+3. **org.wso2.integrationstudio.maven**
     * Maven related plugin for the maven support of the integration studio
 
-4. **org.wso2.integrationstudio.eclipse.platform.core**
+4. **org.wso2.integrationstudio.platform.core**
     * Contains relovers for media types such as application/xml, application/yaml and other common media type extentions for files
     * This plugin will have delete and rename listners for file delete and rename operations(to modify artifact.xml files)
     * CApp export utils and other project export methods 
 
-5. **org.wso2.integrationstudio.eclipse.platform.ui**
+5. **org.wso2.integrationstudio.platform.ui**
     * Contains the Getting Started page handler
     * Startup code for Integration Studio ediotors
     * WSO2UIToolKit which is used across all the other plugins
     * Contains Project Creation wizard that is used for all the project creation wizards in the Integration Studio
 
-6. **org.wso2.integrationstudio.eclipse.updater**
+6. **org.wso2.integrationstudio.updater**
     * Contains WSO2 Integration Studio Updater code-base
 
-7. **org.wso2.integrationstudio.eclipse.utils**
+7. **org.wso2.integrationstudio.utils**
     * Contains helper methods and constants for Integration Studio
 
-8. **org.wso2.integrationstudio.eclipse.welcome.perspective**
+8. **org.wso2.integrationstudio.welcome.perspective**
     * Contains Integration Studio Welcome Perspective 
 
-9. **org.wso2.integrationstudio.eclipse.wso2plugin.template.manager**
+9. **org.wso2.integrationstudio.wso2plugin.template.manager**
     * This plugin contains the WSO2 Plugin Project related code
 
 ## Platform Plugins
 
-1. **org.wso2.integrationstudio.eclipse.capp.core**
+1. **org.wso2.integrationstudio.capp.core**
     * Carbon Application related code 
 
-2. **org.wso2.integrationstudio.eclipse.carbonserver.base**
+2. **org.wso2.integrationstudio.carbonserver.base**
     * Base eclipse server abstraction for all the carbon servers including Enterprise Integrator and Micro Integrator
 
-3. **org.wso2.integrationstudio.eclipse.carbonserver.remote**
+3. **org.wso2.integrationstudio.carbonserver.remote**
     * Contains the Carbon Remote Server code. The remote servers are used to connect to remote WSO2 server using port and URL
 
-4. **org.wso2.integrationstudio.eclipse.carbonserver40 - org.wso2.integrationstudio.eclipse.carbonserver44**
+4. **org.wso2.integrationstudio.carbonserver40 - org.wso2.integrationstudio.carbonserver44**
     * These plugins have eclipse server abstraction for Older ESB servers before EI 6.0.0
-5. **org.wso2.integrationstudio.eclipse.carbonserver44ei**
+5. **org.wso2.integrationstudio.carbonserver44ei**
     * Contains the Server plugin for Enterprise Integrator from version 6.0.0 to 6.6.0
     * Server definition is in the following path from the plugin serverdefinition/carbon.definition.xml
 
-6. **org.wso2.integrationstudio.eclipse.carbonserver44microei**
+6. **org.wso2.integrationstudio.carbonserver44microei**
     * Server for Micro Integrator 1.0.0
 
-7. **org.wso2.integrationstudio.eclipse.carbonserver44microei11**
+7. **org.wso2.integrationstudio.carbonserver44microei11**
     * Server for Micro Integrator 1.1.0
 
-8. **org.wso2.integrationstudio.eclipse.carbonserver44microei12**
+8. **org.wso2.integrationstudio.carbonserver44microei12**
     * Server for Micro Integrator 1.2.0
 
-9. **org.wso2.integrationstudio.eclipse.dashboard**
+9. **org.wso2.integrationstudio.dashboard**
     * Older version for Getting started page. Contains Open dashboard
 
-10. **org.wso2.integrationstudio.eclipse.distribution.project**
+10. **org.wso2.integrationstudio.distribution.project**
     * Contains the Composite Application Project(Composite Exporter Project) related code
 
-11. **org.wso2.integrationstudio.eclipse.docker.distribution**
+11. **org.wso2.integrationstudio.docker.distribution**
     * This plugin contains the docker and kubernetes project related code. Including Docker/Kubernetes editors.
 
-12. **org.wso2.integrationstudio.eclipse.general.project**
+12. **org.wso2.integrationstudio.general.project**
     * The Registry Resource Project related code is under this plugin
 
-13. **org.wso2.integrationstudio.eclipse.libraries**
+13. **org.wso2.integrationstudio.libraries**
     * This plugin is used to add the third-party library jars that is required by the Integration Studio Platform repository. This plugin contains the jar files and expose their required classes to be used by other platform level packages
 
-14. **org.wso2.integrationstudio.eclipse.maven.multi.module**
+14. **org.wso2.integrationstudio.maven.multi.module**
     * This contain the Integration Project(Maven Multi Module Project in version prior to 7.1.0) related code.
 
-15. **org.wso2.integrationstudio.eclipse.project.extension**
+15. **org.wso2.integrationstudio.project.extension**
     * Contains extension point to add project natures to developer studio
     * Templates for WSO2 Integration artifacts including proxy, syapse API, address endpoints, message store, etc.
 
-16. **org.wso2.integrationstudio.eclipse.registry.***
+16. **org.wso2.integrationstudio.registry.***
     * These plugins were use to connected remote wso2 registry to the Integration Studio(WSO2 Registry Perspective) 
     * base, connector, core, libraries, manager.local, manager.remote, perspective, resource.authorization, search are the plugins for the registry connection
 
-17. **org.wso2.integrationstudio.eclipse.templates.dashboard**
+17. **org.wso2.integrationstudio.templates.dashboard**
     * This plugin contain the Web Page for the Getting Stared Dashboard
     * All the HTML, CSS, JS scripts for Getting Started Pages can be located at /WelcomeDashboard
 
-18. **org.wso2.integrationstudio.eclipse.webui.core**
+18. **org.wso2.integrationstudio.webui.core**
     * This plugin contains the Web Based Editor Abstract class(AbstractWebBasedEditor), which is used for all the Web Editors including Getting Started Page, Data Services Editor, Swagger Editor, etc.
 
 ## ESB Plugins
@@ -334,10 +334,10 @@ Go to **Run -> Run configuration -> Select eclipse run configuration -> Select A
 1. **integrationstudio.eclipse.apim.endpoint.central**
     * Used to connect with WSO2 APIM Endpoint Registry. This feature is not active in the Integration Studio released pack as the strategy changed
 
-2. **org.wso2.integrationstudio.eclipse.apim.project**
+2. **org.wso2.integrationstudio.apim.project**
     * This plugin was written to Import WSO2 APIM project into the Integration Studio. This feature also is not active in the released version as APIM strategy changed
 
-3. **org.wso2.integrationstudio.eclipse.artifact.***
+3. **org.wso2.integrationstudio.artifact.***
     * **connector**- Code related to Connector Exporter Project
 
     * **endpoint**- This plugin contains the wizards for Endpoint artifacts creation and other Synapse endpoint related code.
@@ -357,49 +357,49 @@ Go to **Run -> Run configuration -> Select eclipse run configuration -> Select A
     * **task**- This contains the Synapse task related artifact creation wizards and related code.
     * **template.squence**- This contains the Synapse sequence-template related artifact creation wizards and related code.
      
-4. **org.wso2.integrationstudio.eclipse.esb.cloud**
+4. **org.wso2.integrationstudio.esb.cloud**
     * This pluigin is use to deploy Integration Projects in the WSO2 Integration Cloud(Integration Cloud is now discontinued)
 
-5. **org.wso2.integrationstudio.eclipse.esb.core**
+5. **org.wso2.integrationstudio.esb.core**
     * Contains synapse esb artifact resolvers(detect esb .xml files)
     * Other ESB Artifact Dependency related code
 
-6. **org.wso2.integrationstudio.eclipse.esb.dashboard.templates**
+6. **org.wso2.integrationstudio.esb.dashboard.templates**
     * This plugin contains the samples(templates) for the scenarios in Getting Started Guide. 
     * Also, this contains the the classes that are required to extract the zipped samples create a new Integration Project using the sample
 
-7. **org.wso2.integrationstudio.eclipse.esb.docker**
+7. **org.wso2.integrationstudio.esb.docker**
     * Classes reuired to **'Generate Docker Image'** option in the context menu of Composite Exporter Project
 
-8. **org.wso2.integrationstudio.eclipse.esb.project**
+8. **org.wso2.integrationstudio.esb.project**
     * This plugin is used to add the third-party library jars that is required by the Tooling ESB repository. This plugin contains the jar files and expose their required classes to be used by other ESB level packages
 
-9. **org.wso2.integrationstudio.eclipse.esb.synapse.unit.test**
+9. **org.wso2.integrationstudio.esb.synapse.unit.test**
     * Contains menu entries, wizards and other Synapse Unit test related code
 
-10. **org.wso2.integrationstudio.eclipse.esb.theme**
+10. **org.wso2.integrationstudio.esb.theme**
     * Contains Integration Studio Themes(Eclipse IDE Themes for WSO2 Integration Studio)
     * Theme files are eclipse css files located under themes/css directory inside the plugin
 
-11. **org.wso2.integrationstudio.eclipse.gmf.esb**
+11. **org.wso2.integrationstudio.gmf.esb**
     * This is an important plugin in the Integration Studio devstudio-tooling-esb repository. 
     * This contains the Eclipse EMF, GMF models for WSO2 EI Synapse artifacts.
     * The ecore, genmodel, gmfgen, gmfmap, gmftool
     * The generated model classes for meditors and other synapse level objects are available in the plugin
 
-12. **org.wso2.integrationstudio.eclipse.gmf.esb.diagram**
+12. **org.wso2.integrationstudio.gmf.esb.diagram**
     * This plugin contains the EditParts for the graphical elements. These editparts contains the Controller classes and View Classes with respcect to MVC architecture of the Tool.
     * This contains the cloud connector related code including adding the connector to the palatte from the zip file stored in the workspace
     * The Deseializer classews found on this plugin are responsible for read the xml synapse artifact and create a corresponding graphical synapse object in the tool.
     * All the logic related to drag and drop of the mediators are in this plugin 
-    * Mediation debugging related code also reside in this plugin under org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.* packages
+    * Mediation debugging related code also reside in this plugin under org.wso2.integrationstudio.gmf.esb.diagram.debugger.* packages
     * Swagger editor and respective web application is in this pluging. The webapp is under /swagger-editor in the plugin directory
 
 13. **integrationstudio.eclipse.gmf.esb.edit**
      * This plugin contains the classes for editing the EMF objects(eg- mediator configurations)
      * The UI and funtionalities of the Properties view are in this plugin
 
-14. **org.wso2.integrationstudio.eclipse.gmf.esb.persistence**
+14. **org.wso2.integrationstudio.gmf.esb.persistence**
     * The persistance of the UI objects as synapse xml configurations will be done by Transformer Classes. The transformer classes for all the mediators and other synapse artifacts are in this plugin
     * Also, the Ext classes, that are used to mimic synapse classes can be  found inside this plugin. These dummy classes are used to replicate synapse behaviour without runtime dependencies
 
@@ -408,7 +408,7 @@ Go to **Run -> Run configuration -> Select eclipse run configuration -> Select A
 
 15. **org.wso2.integrationstudio.visualdatamapper**
     * This plugin contain the Eclipse model for Datamapper related artifacts
-    * This is the similar to **org.wso2.integrationstudio.eclipse.gmf.esb** and it contains ecore, genmodel, gmfgen, gmfmap, gmftool models under the **/models/** directory
+    * This is the similar to **org.wso2.integrationstudio.gmf.esb** and it contains ecore, genmodel, gmfgen, gmfmap, gmftool models under the **/models/** directory
     * Also the Impl Classes(model objects in the MVC architecture) can be found in this plugin
 
 16. **org.wso2.integrationstudio.visualdatamapper.diagram**
@@ -427,7 +427,7 @@ Go to **Run -> Run configuration -> Select eclipse run configuration -> Select A
 # Introduction to major classes in Integration Studio
 
 ## AbstractMediator
-Qualified Name: org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator
+Qualified Name: org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator
 
 ## ESBMultipageEditor
 
@@ -466,8 +466,8 @@ Follow the below steps to create a new Eclipse plugin.
 
 If you are adding the new plugin as a feature, then add the new feature inside the **features** directory located in the tooling repository. For more information refer the existing plugins and features. 
 
-Recently added feature - **org.wso2.integrationstudio.eclipse.apim.feature** 
-Recently added plugin - **org.wso2.integrationstudio.eclipse.apim.project**
+Recently added feature - **org.wso2.integrationstudio.apim.feature** 
+Recently added plugin - **org.wso2.integrationstudio.apim.project**
 
 ## Add a new mediator
 A mediator can be added to WSO2 Integration Studio by configuring the following GMF models.
@@ -491,7 +491,7 @@ We can see the properties view consists of the attributes configured in the ecor
 Now let's see how to add a simple Calculator mediator to WSO2 Integration Studio. We have to start developing the GMF model. Note that we have to model all six sub-models of the GMF model(ecore, genmodel, gmfgraph, gmftool, gmfmap and gmfgen). Let’s start developing the sub-models one by one.
 
 ### ecore model
-1. Go to the plugin “org.wso2.integrationstudio.eclipse.gmf.esb” in the project explorer. Double click on it. Select model → esb.ecore
+1. Go to the plugin “org.wso2.integrationstudio.gmf.esb” in the project explorer. Double click on it. Select model → esb.ecore
 
 ![](https://i.imgur.com/8MGRkTg.png)
 
@@ -582,7 +582,7 @@ The above reference/sample will give a complete idea about how GMF works and its
 ### esb.genmodel
 Let’s move to “Model code generation” and “Edit code generation”. For Model and Edit code generation we need to use esb.genmodel.
 
-1. Go to the plugin “org.wso2.integrationstudio.eclipse.gmf.esb” in the project explorer. Double click on it. Select model → esb.genmodel
+1. Go to the plugin “org.wso2.integrationstudio.gmf.esb” in the project explorer. Double click on it. Select model → esb.genmodel
 
 ![](https://i.imgur.com/WVHqKBC.png)
 
@@ -596,7 +596,7 @@ Let’s move to “Model code generation” and “Edit code generation”. For 
 
 4. We need to load the correct .ecore file. In our case it is esb.ecore. As shown in the below screenshot, set Model URIs: and click the “Load” button.
 
-Model URIs: platform:/resource/org.wso2.integrationstudio.eclipse.gmf.esb/model/esb.ecore
+Model URIs: platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore
 After loading the approprite Model URIs click “Next”
 
 ![](https://i.imgur.com/pGyrNgL.png)
@@ -641,7 +641,7 @@ Let’s move on to esb.gmfgraph modeling. In esb.gmfgraph we have to consider th
 * Node
 * Label
 
-1. Go to the plugin “org.wso2.integrationstudio.eclipse.gmf.esb” in the project explorer. Double click on it. Select model → esb.gmfgraph.
+1. Go to the plugin “org.wso2.integrationstudio.gmf.esb” in the project explorer. Double click on it. Select model → esb.gmfgraph.
 
 ![](https://i.imgur.com/xGbyceO.png)
 
@@ -669,7 +669,7 @@ Let’s move on to esb.gmfgraph modeling. In esb.gmfgraph we have to consider th
 
 ![](https://i.imgur.com/J8lCi38.png)
 
-8. Set CalculatorMediatorGraphicalFigure as the Name property and org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape as Qualified Class Name.
+8. Set CalculatorMediatorGraphicalFigure as the Name property and org.wso2.integrationstudio.gmf.esb.diagram.custom.EsbGraphicalShape as Qualified Class Name.
 
 ![](https://i.imgur.com/coh7n87.png)
 
@@ -786,7 +786,7 @@ This ends the modeling of esb.gmfgraph.
 ### esb.gmftool
 Let’s move on to esb.gmftool modeling.
 
-1. Go to the plugin “org.wso2.integrationstudio.eclipse.gmf.esb” in the project explorer. Double click on it. Select model → esb.gmftool.
+1. Go to the plugin “org.wso2.integrationstudio.gmf.esb” in the project explorer. Double click on it. Select model → esb.gmftool.
 
 ![](https://i.imgur.com/eL28LzH.png)
 
@@ -816,7 +816,7 @@ This ends the modeling of esb.gmftool.
 ### esb.gmfmap
 Let’s move on to esb.gmfmap modeling.
 
-1. Go to the plugin “org.wso2.integrationstudio.eclipse.gmf.esb” in the project explorer. Double click on it. Select model → esb.gmfmap.
+1. Go to the plugin “org.wso2.integrationstudio.gmf.esb” in the project explorer. Double click on it. Select model → esb.gmfmap.
 
 ![](https://i.imgur.com/cgjmdgq.png)
 
@@ -905,13 +905,13 @@ Diagram Node — Node CalculatorMediatorOutputConnector (EastPointerFigure)
 
 ![](https://i.imgur.com/vIcPxiG.png)
 
-18. Save all changes. Go to the plugin “org.wso2.integrationstudio.eclipse.gmf.esb” in the project explorer. Double click on it. Select model → esb.gmfmap. Right click on it and select “Create generator model…”
+18. Save all changes. Go to the plugin “org.wso2.integrationstudio.gmf.esb” in the project explorer. Double click on it. Select model → esb.gmfmap. Right click on it and select “Create generator model…”
 
 ![](https://i.imgur.com/MLtp4Em.png)
 
 19. You will get the below window. Make sure the fields are as follows
 
-Enter or select parent folder — org.wso2.integrationstudio.eclipse.gmf.esb/model
+Enter or select parent folder — org.wso2.integrationstudio.gmf.esb/model
 File name — esb.gmfgen
 
 ![](https://i.imgur.com/hu6PahC.png)
@@ -921,7 +921,7 @@ Click on “Next >”
 20. You will get the following window. Select the fields as follows
 
 Model URI: 
-platform:/resource/org.wso2.integrationstudio.eclipse.gmf.esb/model/esb.gmfmap
+platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.gmfmap
 
 After selecting the proper Model URI click on the “Load” button which is beside the Model URI field
 
@@ -931,7 +931,7 @@ After clicking the “Load” button click “Next >”.
 
 21. You will get the following window. Make the Model URI as follows
 
-Model URI — platform:/resource/org.wso2.integrationstudio.eclipse.gmf.esb/model/esb.genmodel
+Model URI — platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.genmodel
 
 ![](https://i.imgur.com/5L9ogrJ.png)
 
@@ -953,7 +953,7 @@ After downloading Go to **Help > Install New Software > Add** and select the dow
 ### esb.gmfgen
 Let’s move on to esb.gmfgen modeling
 
-1. Go to the plugin “org.wso2.integrationstudio.eclipse.gmf.esb” in the project explorer. Double click on it. Select model → esb.gen
+1. Go to the plugin “org.wso2.integrationstudio.gmf.esb” in the project explorer. Double click on it. Select model → esb.gen
 
 ![](https://i.imgur.com/wbFHnU9.png)
 
@@ -981,8 +981,8 @@ To add a new extension point to the Integration Studio pop-up context menus, too
 <extension
             point="org.eclipse.ui.newWizards">
         <wizard name="Unit Test Suite"
-                class="org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.unittest.UnitTestSuiteCreationWizard"
-                id="org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.testsuite"
+                class="org.wso2.integrationstudio.esb.synapse.unit.test.wizard.unittest.UnitTestSuiteCreationWizard"
+                id="org.wso2.integrationstudio.esb.synapse.unit.test.testsuite"
                 icon="icons/UnitTestSuite16x16.png">
         </wizard>
     </extension>
@@ -990,12 +990,12 @@ To add a new extension point to the Integration Studio pop-up context menus, too
     <extension point="org.eclipse.ui.navigator.navigatorContent">
         <commonWizard type="new"
                       menuGroupId="a-group-integrationTest"
-                      wizardId="org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.testsuite">
+                      wizardId="org.wso2.integrationstudio.esb.synapse.unit.test.testsuite">
             <enablement>
                 <adapt
                         type="org.eclipse.core.resources.IResource">
                     <test
-                            property="org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.propertytester.checkResourceType"
+                            property="org.wso2.integrationstudio.esb.synapse.unit.test.propertytester.checkResourceType"
                             value="true"
                             forcePluginActivation="true">
                     </test>
@@ -1070,18 +1070,18 @@ To add a new extension point to the Integration Studio pop-up context menus, too
 ```xml
  <extension point="org.eclipse.ui.popupMenus">
             <objectContribution objectClass="org.eclipse.core.resources.IResource"
-                                id="org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.runtest">
+                                id="org.wso2.integrationstudio.esb.synapse.unit.test.runtest">
                 <action
                         label="Run Unit Test"
                         icon="icons/TestSuite16x16.png"
-                        class="org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.action.RunSynapseUnitTestAction"
-                        id="org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.runtest">
+                        class="org.wso2.integrationstudio.esb.synapse.unit.test.action.RunSynapseUnitTestAction"
+                        id="org.wso2.integrationstudio.esb.synapse.unit.test.runtest">
                 </action>
                 <enablement>
                     <adapt
                             type="org.eclipse.core.resources.IResource">
                         <test
-                                property="org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.propertytester.checkUnitTestRunType"
+                                property="org.wso2.integrationstudio.esb.synapse.unit.test.propertytester.checkUnitTestRunType"
                                 value="true"
                                 forcePluginActivation="true">
                         </test>
@@ -1527,7 +1527,7 @@ You can refer the following existing web UIs for more information.
 Integration Studio maintains a set of pre-built templates in the Getting Started page for ease of getting started with it. All of these samples have been implemented as the Maven Multi-Module project (Integration project) and classified into several categories. To add a new sample to this page, you can follow the below steps. 
 
 1. Implement the sample template as a Maven Multi Module project and convert it to a ZIP file.
-2. Copy the new sample ZIP file into the **NewSamples** directory by creating a new directory inside the ESB **org.wso2.integrationstudio.eclipse.esb.dashboard.templates** plugin.
+2. Copy the new sample ZIP file into the **NewSamples** directory by creating a new directory inside the ESB **org.wso2.integrationstudio.esb.dashboard.templates** plugin.
 3. Add a **Readme.html** file to the created directory as the user reference guide. 
 4. Open the plugin.xml file of this plugin and add the following wizard tag according to the new sample. 
 ```xml
@@ -1535,14 +1535,14 @@ Integration Studio maintains a set of pre-built templates in the Getting Starte
                 name="Name for the Template"
                 icon="icons/template-default.pngg"
                 project="true"
-                category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.templates"
+                category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.templates"
                 id="org.wso2.integrationstudio.wizards.esb.newTemplateName">
-                <class class="org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
+                <class class="org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.CommonTemplateProjectCreationWizard">
 	                <parameter name="wizardId" value="org.wso2.integrationstudio.wizards.esb.newTemplateName"/>
                 </class>
 </wizard>
 ```
-5. Edit the **app_new.js** file located inside the **org.wso2.integrationstudio.eclipse.templates.dashboard/WelcomeDashboard/libs** plugin. You can define a category, used mediators in the sample, etc. from this file. 
+5. Edit the **app_new.js** file located inside the **org.wso2.integrationstudio.templates.dashboard/WelcomeDashboard/libs** plugin. You can define a category, used mediators in the sample, etc. from this file. 
 
 ## Introduction to the DataMapper
 
@@ -1622,7 +1622,7 @@ new Thread() {
 
 
 ## UI element drag and drop mathematical calculations
-When a mediator is dragged and dropped into the canvas, the **activate()** method of respective mediator class will get hit. **AbstractMediator**(org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator) is responsible for creating and possitioning UI element to the esb editor canvas. Then the **ConnectionCalculater**(org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.connections.ConnectionCalculator) will have the methods to find the nearest mediator to connect. After finding the suitable mediator to connect abstract mediator will create the connection using ESBLink.
+When a mediator is dragged and dropped into the canvas, the **activate()** method of respective mediator class will get hit. **AbstractMediator**(org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator) is responsible for creating and possitioning UI element to the esb editor canvas. Then the **ConnectionCalculater**(org.wso2.integrationstudio.gmf.esb.diagram.custom.connections.ConnectionCalculator) will have the methods to find the nearest mediator to connect. After finding the suitable mediator to connect abstract mediator will create the connection using ESBLink.
 
 ## EI connector codebase 
 

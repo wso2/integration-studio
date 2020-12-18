@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.LinkedList;
 import java.util.Map;
@@ -32,28 +32,28 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServicePolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyWSDLResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyWsdlType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceParameter;
+import org.wso2.integrationstudio.gmf.esb.ProxyServicePolicy;
+import org.wso2.integrationstudio.gmf.esb.ProxyWSDLResource;
+import org.wso2.integrationstudio.gmf.esb.ProxyWsdlType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SendMediator;
+import org.wso2.integrationstudio.gmf.esb.SequenceType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class ProxyServiceDeserializer
-        extends AbstractEsbNodeDeserializer<ProxyService, org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService> {
+        extends AbstractEsbNodeDeserializer<ProxyService, org.wso2.integrationstudio.gmf.esb.ProxyService> {
 
     @Override
-    public org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService createNode(IGraphicalEditPart editPart,
+    public org.wso2.integrationstudio.gmf.esb.ProxyService createNode(IGraphicalEditPart editPart,
             ProxyService object) throws DeserializerException {
-        org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService proxy = (org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.ProxyService proxy = (org.wso2.integrationstudio.gmf.esb.ProxyService) DeserializerUtils
                 .createNode(editPart, EsbElementTypes.ProxyService_3001);
 
         setElementToEdit(proxy);

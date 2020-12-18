@@ -107,11 +107,11 @@ var sampleMediatorList = {
 	    "email service": "email,connector,api,respond,foreach,payload-factory,property,log"
 };
 
-var esbNewProjectWizard = "org.wso2.integrationstudio.eclipse.artifact.newesbsolutionproject";
-var projectExportWizard = "org.wso2.integrationstudio.eclipse.distribution.importAsArtifact";
+var esbNewProjectWizard = "org.wso2.integrationstudio.artifact.newesbsolutionproject";
+var projectExportWizard = "org.wso2.integrationstudio.distribution.importAsArtifact";
 
-var dataSourceProject = "org.wso2.integrationstudio.eclipse.artifact.newdatasourceproject";
-var dataServiceProject = "org.wso2.integrationstudio.eclipse.artifact.newdsproject";
+var dataSourceProject = "org.wso2.integrationstudio.artifact.newdatasourceproject";
+var dataServiceProject = "org.wso2.integrationstudio.artifact.newdsproject";
 
 $("#DataServiceProject").click(function(){
 	openWizard(dataServiceProject);
@@ -132,9 +132,9 @@ $("#HumanTaskProject").click(function(){
 	openWizard(HumanTaskProject);
 });
 
-var mavenWizard = "org.wso2.integrationstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard";
+var mavenWizard = "org.wso2.integrationstudio.platform.ui.mvn.wizard.MvnMultiModuleWizard";
 var serverWizard = 'org.eclipse.wst.server.ui.new.server';
-var mediatorWizard = 'org.wso2.integrationstudio.eclipse.artifact.newmediatorartifact';
+var mediatorWizard = 'org.wso2.integrationstudio.artifact.newmediatorartifact';
 
 $("#MavenMultiModuleProject").click(function(){
 	openWizard(mavenWizard);

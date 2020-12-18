@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger;
 
 import java.io.IOException;
 
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.IEventMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.IResponseMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.event.DebugPointEventMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.IEventMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.IResponseMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.event.DebugPointEventMessage;
 
 /**
  * ESB Debugger should implement this interface methods in the implementation

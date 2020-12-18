@@ -46,9 +46,9 @@
         <module>org.wso2.integrationstudio.bpel.humantask.model</module>
         <module>org.wso2.integrationstudio.bpel.humantask.ui</module>
         <module>org.wso2.bpel.ide.export</module>
-        <module>org.wso2.integrationstudio.eclipse.artifact.bpel</module>
-        <module>org.wso2.integrationstudio.eclipse.bpel.connector</module>
-        <module>org.wso2.integrationstudio.eclipse.bpel.core</module>
+        <module>org.wso2.integrationstudio.artifact.bpel</module>
+        <module>org.wso2.integrationstudio.bpel.connector</module>
+        <module>org.wso2.integrationstudio.bpel.core</module>
         <module>org.wso2.integrationstudio.humantaskeditor</module>
         <module>org.wso2.integrationstudio.bpmn.extensions</module>
         <module>org.wso2.integrationstudio.bpmn.extensions.activator</module>

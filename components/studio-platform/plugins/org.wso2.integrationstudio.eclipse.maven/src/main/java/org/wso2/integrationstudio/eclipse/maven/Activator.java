@@ -1,11 +1,11 @@
-package org.wso2.integrationstudio.eclipse.maven;
+package org.wso2.integrationstudio.maven;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
 public class Activator extends Plugin {
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.maven";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.maven";
 
 	private static BundleContext context;
 

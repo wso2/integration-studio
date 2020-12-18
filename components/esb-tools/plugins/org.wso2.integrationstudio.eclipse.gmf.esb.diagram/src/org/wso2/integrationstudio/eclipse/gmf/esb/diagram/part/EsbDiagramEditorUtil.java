@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.part;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -52,25 +52,25 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.ESBProjectUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ComplexEndpoints;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndpointDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LocalEntry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageProcessor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageStore;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequences;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SynapseAPI;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Task;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Template;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbDiagramEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart.SequencesInfo;
+import org.wso2.integrationstudio.esb.project.utils.ESBProjectUtils;
+import org.wso2.integrationstudio.gmf.esb.APIResource;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.ComplexEndpoints;
+import org.wso2.integrationstudio.gmf.esb.EndpointDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpoint;
+import org.wso2.integrationstudio.gmf.esb.LocalEntry;
+import org.wso2.integrationstudio.gmf.esb.MessageProcessor;
+import org.wso2.integrationstudio.gmf.esb.MessageStore;
+import org.wso2.integrationstudio.gmf.esb.ProxyService;
+import org.wso2.integrationstudio.gmf.esb.Sequences;
+import org.wso2.integrationstudio.gmf.esb.SynapseAPI;
+import org.wso2.integrationstudio.gmf.esb.Task;
+import org.wso2.integrationstudio.gmf.esb.Template;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbDiagramEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceEditPart.SequencesInfo;
 
 /**
  * @generated
@@ -190,9 +190,9 @@ public class EsbDiagramEditorUtil {
                 }
 
                 try {
-                    modelResource.save(org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorUtil
+                    modelResource.save(org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorUtil
                             .getSaveOptions());
-                    diagramResource.save(org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorUtil
+                    diagramResource.save(org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorUtil
                             .getSaveOptions());
                 } catch (IOException e) {
 
@@ -395,9 +395,9 @@ public class EsbDiagramEditorUtil {
                 }
 
                 try {
-                    modelResource.save(org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorUtil
+                    modelResource.save(org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorUtil
                             .getSaveOptions());
-                    diagramResource.save(org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorUtil
+                    diagramResource.save(org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorUtil
                             .getSaveOptions());
                 } catch (IOException e) {
 

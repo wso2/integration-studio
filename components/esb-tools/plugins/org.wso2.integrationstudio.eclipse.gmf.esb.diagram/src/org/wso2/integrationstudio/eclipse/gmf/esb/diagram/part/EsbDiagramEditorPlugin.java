@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.part;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +20,10 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-import org.wso2.integrationstudio.eclipse.gmf.esb.provider.EsbItemProviderAdapterFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.EsbBaseItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.expressions.EsbOCLFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.ElementInitializers;
+import org.wso2.integrationstudio.gmf.esb.provider.EsbItemProviderAdapterFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.EsbBaseItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.expressions.EsbOCLFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.ElementInitializers;
 
 /**
  * @generated
@@ -33,7 +33,7 @@ public class EsbDiagramEditorPlugin extends AbstractUIPlugin {
     /**
      * @generated
      */
-    public static final String ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram"; //$NON-NLS-1$
+    public static final String ID = "org.wso2.integrationstudio.gmf.esb.diagram"; //$NON-NLS-1$
 
     /**
      * @generated

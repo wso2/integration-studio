@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 
@@ -26,60 +26,60 @@ import org.apache.synapse.rest.dispatch.URLMappingHelper;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ApiResourceUrlStyle;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BAMMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ConditionalRouterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DBLookupMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DBReportMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DropMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EJBMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnqueueMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HeaderMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoopBackMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OAuthMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RespondMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ScriptMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SmooksMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TransactionMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XQueryMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.AggregateMediator;
+import org.wso2.integrationstudio.gmf.esb.ApiResourceUrlStyle;
+import org.wso2.integrationstudio.gmf.esb.BAMMediator;
+import org.wso2.integrationstudio.gmf.esb.BeanMediator;
+import org.wso2.integrationstudio.gmf.esb.BuilderMediator;
+import org.wso2.integrationstudio.gmf.esb.CacheMediator;
+import org.wso2.integrationstudio.gmf.esb.CallMediator;
+import org.wso2.integrationstudio.gmf.esb.CallTemplateMediator;
+import org.wso2.integrationstudio.gmf.esb.CalloutMediator;
+import org.wso2.integrationstudio.gmf.esb.ClassMediator;
+import org.wso2.integrationstudio.gmf.esb.CloneMediator;
+import org.wso2.integrationstudio.gmf.esb.CommandMediator;
+import org.wso2.integrationstudio.gmf.esb.ConditionalRouterMediator;
+import org.wso2.integrationstudio.gmf.esb.DBLookupMediator;
+import org.wso2.integrationstudio.gmf.esb.DBReportMediator;
+import org.wso2.integrationstudio.gmf.esb.DropMediator;
+import org.wso2.integrationstudio.gmf.esb.EJBMediator;
+import org.wso2.integrationstudio.gmf.esb.EnqueueMediator;
+import org.wso2.integrationstudio.gmf.esb.EnrichMediator;
+import org.wso2.integrationstudio.gmf.esb.EntitlementMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbElement;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.EventMediator;
+import org.wso2.integrationstudio.gmf.esb.FastXSLTMediator;
+import org.wso2.integrationstudio.gmf.esb.FaultMediator;
+import org.wso2.integrationstudio.gmf.esb.FilterMediator;
+import org.wso2.integrationstudio.gmf.esb.ForEachMediator;
+import org.wso2.integrationstudio.gmf.esb.HeaderMediator;
+import org.wso2.integrationstudio.gmf.esb.IterateMediator;
+import org.wso2.integrationstudio.gmf.esb.LogMediator;
+import org.wso2.integrationstudio.gmf.esb.LoopBackMediator;
+import org.wso2.integrationstudio.gmf.esb.OAuthMediator;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator;
+import org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator;
+import org.wso2.integrationstudio.gmf.esb.PropertyMediator;
+import org.wso2.integrationstudio.gmf.esb.PublishEventMediator;
+import org.wso2.integrationstudio.gmf.esb.RMSequenceMediator;
+import org.wso2.integrationstudio.gmf.esb.RespondMediator;
+import org.wso2.integrationstudio.gmf.esb.RuleMediator;
+import org.wso2.integrationstudio.gmf.esb.ScriptMediator;
+import org.wso2.integrationstudio.gmf.esb.SendMediator;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.SmooksMediator;
+import org.wso2.integrationstudio.gmf.esb.SpringMediator;
+import org.wso2.integrationstudio.gmf.esb.StoreMediator;
+import org.wso2.integrationstudio.gmf.esb.SwitchMediator;
+import org.wso2.integrationstudio.gmf.esb.ThrottleMediator;
+import org.wso2.integrationstudio.gmf.esb.TransactionMediator;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteMediator;
+import org.wso2.integrationstudio.gmf.esb.ValidateMediator;
+import org.wso2.integrationstudio.gmf.esb.XQueryMediator;
+import org.wso2.integrationstudio.gmf.esb.XSLTMediator;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 /**
  * Synapse API resource transformer class
@@ -88,8 +88,8 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         // Check subject.
-        Assert.isTrue(subject instanceof org.wso2.integrationstudio.eclipse.gmf.esb.APIResource, "Invalid subject.");
-        org.wso2.integrationstudio.eclipse.gmf.esb.APIResource visualResource = (org.wso2.integrationstudio.eclipse.gmf.esb.APIResource) subject;
+        Assert.isTrue(subject instanceof org.wso2.integrationstudio.gmf.esb.APIResource, "Invalid subject.");
+        org.wso2.integrationstudio.gmf.esb.APIResource visualResource = (org.wso2.integrationstudio.gmf.esb.APIResource) subject;
 
         if (information.getTraversalDirection() == TransformationInfo.TRAVERSAL_DIRECTION_IN) {
             Resource resource = new Resource();
@@ -220,7 +220,7 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
     /*
      * Should be Reviewed and should be altered.
      */
-    private EsbNode getOriginNode(org.wso2.integrationstudio.eclipse.gmf.esb.APIResource visualResource) {
+    private EsbNode getOriginNode(org.wso2.integrationstudio.gmf.esb.APIResource visualResource) {
         EList<EsbElement> children = visualResource.getContainer().getFaultContainer().getMediatorFlow().getChildren();
         for (int i = 0; i < children.size(); ++i) {
             if (children.get(i) instanceof AggregateMediator) {

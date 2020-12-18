@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 import java.util.ArrayList;
 
@@ -69,14 +69,14 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -1340,7 +1340,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getCommentsList()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getCommentsList()
      * 
      */
     public EList getCommentsList() {
@@ -1350,7 +1350,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setCommentsList(EList
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setCommentsList(EList
      *      newValue)
      * 
      */
@@ -1393,7 +1393,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getReverse()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getReverse()
      * 
      */
     public Boolean getReverse() {
@@ -1403,7 +1403,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setReverse(Boolean
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setReverse(Boolean
      *      newValue)
      * 
      */
@@ -1426,7 +1426,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getEntitlementServerURL()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getEntitlementServerURL()
      * 
      */
     public String getEntitlementServerURL() {
@@ -1436,7 +1436,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setEntitlementServerURL(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setEntitlementServerURL(String
      *      newValue)
      * 
      */
@@ -1460,7 +1460,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getUsername()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getUsername()
      * 
      */
     public String getUsername() {
@@ -1470,7 +1470,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setUsername(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setUsername(String
      *      newValue)
      * 
      */
@@ -1493,7 +1493,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getPassword()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getPassword()
      * 
      */
     public String getPassword() {
@@ -1503,7 +1503,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setPassword(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setPassword(String
      *      newValue)
      * 
      */
@@ -1526,7 +1526,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getCallbackHandler()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getCallbackHandler()
      * 
      */
     public Enumerator getCallbackHandler() {
@@ -1537,7 +1537,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#initCallbackHandler(Object
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#initCallbackHandler(Object
      *      input, Enumerator current)
      */
     public void initCallbackHandler(Object input, Enumerator current) {
@@ -1557,7 +1557,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setCallbackHandler(Enumerator
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setCallbackHandler(Enumerator
      *      newValue)
      * 
      */
@@ -1577,7 +1577,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getCallbackClassName()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getCallbackClassName()
      * 
      */
     public String getCallbackClassName() {
@@ -1587,7 +1587,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setCallbackClassName(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setCallbackClassName(String
      *      newValue)
      * 
      */
@@ -1611,7 +1611,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getThriftHost()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getThriftHost()
      * 
      */
     public String getThriftHost() {
@@ -1621,7 +1621,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setThriftHost(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setThriftHost(String
      *      newValue)
      * 
      */
@@ -1645,7 +1645,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getThriftPort()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getThriftPort()
      * 
      */
     public String getThriftPort() {
@@ -1655,7 +1655,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setThriftPort(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setThriftPort(String
      *      newValue)
      * 
      */
@@ -1679,7 +1679,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getEntitlementClientType()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getEntitlementClientType()
      * 
      */
     public Enumerator getEntitlementClientType() {
@@ -1691,7 +1691,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#initEntitlementClientType(Object
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#initEntitlementClientType(Object
      *      input, Enumerator current)
      */
     public void initEntitlementClientType(Object input, Enumerator current) {
@@ -1711,7 +1711,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setEntitlementClientType(Enumerator
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setEntitlementClientType(Enumerator
      *      newValue)
      * 
      */
@@ -1731,7 +1731,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getOnRejectSequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getOnRejectSequenceType()
      * 
      */
     public Enumerator getOnRejectSequenceType() {
@@ -1743,7 +1743,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#initOnRejectSequenceType(Object
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#initOnRejectSequenceType(Object
      *      input, Enumerator current)
      */
     public void initOnRejectSequenceType(Object input, Enumerator current) {
@@ -1763,7 +1763,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setOnRejectSequenceType(Enumerator
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setOnRejectSequenceType(Enumerator
      *      newValue)
      * 
      */
@@ -1783,7 +1783,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getOnAcceptSequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getOnAcceptSequenceType()
      * 
      */
     public Enumerator getOnAcceptSequenceType() {
@@ -1795,7 +1795,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#initOnAcceptSequenceType(Object
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#initOnAcceptSequenceType(Object
      *      input, Enumerator current)
      */
     public void initOnAcceptSequenceType(Object input, Enumerator current) {
@@ -1815,7 +1815,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setOnAcceptSequenceType(Enumerator
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setOnAcceptSequenceType(Enumerator
      *      newValue)
      * 
      */
@@ -1835,7 +1835,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getAdviceSequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getAdviceSequenceType()
      * 
      */
     public Enumerator getAdviceSequenceType() {
@@ -1846,7 +1846,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#initAdviceSequenceType(Object
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#initAdviceSequenceType(Object
      *      input, Enumerator current)
      */
     public void initAdviceSequenceType(Object input, Enumerator current) {
@@ -1866,7 +1866,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setAdviceSequenceType(Enumerator
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setAdviceSequenceType(Enumerator
      *      newValue)
      * 
      */
@@ -1886,7 +1886,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getObligationsSequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getObligationsSequenceType()
      * 
      */
     public Enumerator getObligationsSequenceType() {
@@ -1898,7 +1898,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#initObligationsSequenceType(Object
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#initObligationsSequenceType(Object
      *      input, Enumerator current)
      */
     public void initObligationsSequenceType(Object input, Enumerator current) {
@@ -1918,7 +1918,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setObligationsSequenceType(Enumerator
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setObligationsSequenceType(Enumerator
      *      newValue)
      * 
      */
@@ -1938,7 +1938,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getDescription()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#getDescription()
      * 
      */
     public String getDescription() {
@@ -1948,7 +1948,7 @@ public class EntitlementMediatorPropertiesEditionPartForm extends SectionPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setDescription(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.EntitlementMediatorPropertiesEditionPart#setDescription(String
      *      newValue)
      * 
      */

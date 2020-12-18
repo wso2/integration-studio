@@ -1,13 +1,13 @@
-package org.wso2.integrationstudio.eclipse.maven.internal.executor.impl;
+package org.wso2.integrationstudio.maven.internal.executor.impl;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.maven.executor.IMavenCustomExecution;
-import org.wso2.integrationstudio.eclipse.maven.executor.IMavenDependencyDefinition;
-import org.wso2.integrationstudio.eclipse.maven.executor.IMavenPluginDefinition;
+import org.wso2.integrationstudio.maven.executor.IMavenCustomExecution;
+import org.wso2.integrationstudio.maven.executor.IMavenDependencyDefinition;
+import org.wso2.integrationstudio.maven.executor.IMavenPluginDefinition;
 
 public class MavenPluginDefinition extends MavenDefinitionImpl implements
 		IMavenPluginDefinition {

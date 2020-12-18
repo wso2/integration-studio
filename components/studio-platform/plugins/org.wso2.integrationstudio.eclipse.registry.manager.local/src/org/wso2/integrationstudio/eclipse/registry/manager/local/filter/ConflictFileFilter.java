@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.local.filter;
+package org.wso2.integrationstudio.registry.manager.local.filter;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.utils.RegistryCheckInClientUtils;
+import org.wso2.integrationstudio.registry.manager.local.utils.RegistryCheckInClientUtils;
 
 public class ConflictFileFilter extends ViewerFilter {
 

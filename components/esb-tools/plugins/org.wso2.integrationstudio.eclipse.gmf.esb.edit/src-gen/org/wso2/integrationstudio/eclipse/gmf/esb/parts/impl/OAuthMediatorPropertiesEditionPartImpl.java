@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
@@ -49,12 +49,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -449,7 +449,7 @@ public class OAuthMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -459,7 +459,7 @@ public class OAuthMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -481,7 +481,7 @@ public class OAuthMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -491,7 +491,7 @@ public class OAuthMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -532,7 +532,7 @@ public class OAuthMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -542,7 +542,7 @@ public class OAuthMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -564,7 +564,7 @@ public class OAuthMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#getRemoteServiceUrl()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#getRemoteServiceUrl()
 	 * 
 	 */
 	public String getRemoteServiceUrl() {
@@ -574,7 +574,7 @@ public class OAuthMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#setRemoteServiceUrl(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#setRemoteServiceUrl(String newValue)
 	 * 
 	 */
 	public void setRemoteServiceUrl(String newValue) {
@@ -596,7 +596,7 @@ public class OAuthMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#getUsername()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#getUsername()
 	 * 
 	 */
 	public String getUsername() {
@@ -606,7 +606,7 @@ public class OAuthMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#setUsername(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#setUsername(String newValue)
 	 * 
 	 */
 	public void setUsername(String newValue) {
@@ -628,7 +628,7 @@ public class OAuthMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#getPassword()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#getPassword()
 	 * 
 	 */
 	public String getPassword() {
@@ -638,7 +638,7 @@ public class OAuthMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#setPassword(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.OAuthMediatorPropertiesEditionPart#setPassword(String newValue)
 	 * 
 	 */
 	public void setPassword(String newValue) {

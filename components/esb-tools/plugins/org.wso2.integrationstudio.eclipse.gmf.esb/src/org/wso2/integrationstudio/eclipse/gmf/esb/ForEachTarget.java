@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,11 +24,11 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachTarget#getSoapAction <em>Soap Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachTarget#getToAddress <em>To Address</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachTarget#getSoapAction <em>Soap Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachTarget#getToAddress <em>To Address</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachTarget()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachTarget()
  * @model
  * @generated
  */
@@ -44,14 +44,14 @@ public interface ForEachTarget extends AbstractCommonTarget {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Soap Action</em>' attribute.
      * @see #setSoapAction(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachTarget_SoapAction()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachTarget_SoapAction()
      * @model
      * @generated
      */
     String getSoapAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachTarget#getSoapAction <em>Soap Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachTarget#getSoapAction <em>Soap Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Soap Action</em>' attribute.
@@ -70,14 +70,14 @@ public interface ForEachTarget extends AbstractCommonTarget {
      * <!-- end-user-doc -->
      * @return the value of the '<em>To Address</em>' attribute.
      * @see #setToAddress(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachTarget_ToAddress()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachTarget_ToAddress()
      * @model
      * @generated
      */
     String getToAddress();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachTarget#getToAddress <em>To Address</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachTarget#getToAddress <em>To Address</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>To Address</em>' attribute.

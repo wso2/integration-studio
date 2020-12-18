@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -28,35 +28,35 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AutoOffsetResetType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ConsumerType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ContentType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Enable;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FeedType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointBehaviourType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JMSBrokerType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JMSCacheLevel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MQTTSubscriptionQOS;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OffsetsStorageType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFormatType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TopicFilterFromType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TopicsType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.VFSAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.VFSFileSort;
-import org.wso2.integrationstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
+import org.wso2.integrationstudio.gmf.esb.AutoOffsetResetType;
+import org.wso2.integrationstudio.gmf.esb.ConsumerType;
+import org.wso2.integrationstudio.gmf.esb.ContentType;
+import org.wso2.integrationstudio.gmf.esb.Enable;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FeedType;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpoint;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointBehaviourType;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointContainer;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointOnErrorSequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointSequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointSequenceOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.InboundEndpointType;
+import org.wso2.integrationstudio.gmf.esb.JMSBrokerType;
+import org.wso2.integrationstudio.gmf.esb.JMSCacheLevel;
+import org.wso2.integrationstudio.gmf.esb.JMSConnectionFactoryType;
+import org.wso2.integrationstudio.gmf.esb.JMSSessionAcknowledgement;
+import org.wso2.integrationstudio.gmf.esb.MQTTSubscriptionQOS;
+import org.wso2.integrationstudio.gmf.esb.OffsetsStorageType;
+import org.wso2.integrationstudio.gmf.esb.PartitionAssignmentStrategyType;
+import org.wso2.integrationstudio.gmf.esb.PayloadFormatType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.TopicFilterFromType;
+import org.wso2.integrationstudio.gmf.esb.TopicsType;
+import org.wso2.integrationstudio.gmf.esb.VFSAction;
+import org.wso2.integrationstudio.gmf.esb.VFSFileSort;
+import org.wso2.integrationstudio.gmf.esb.WSClientSideBroadcastLevel;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -65,237 +65,237 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequenceInputConnector <em>Sequence Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequenceOutputConnector <em>Sequence Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequenceInputConnector <em>On Error Sequence Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequenceOutputConnector <em>On Error Sequence Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getContainer <em>Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getProtocol <em>Protocol</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundEndpointBehaviour <em>Inbound Endpoint Behaviour</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHttpPort <em>Inbound Http Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolSizeCore <em>Inbound Worker Pool Size Core</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolSizeMax <em>Inbound Worker Pool Size Max</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerThreadKeepAliveSec <em>Inbound Worker Thread Keep Alive Sec</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolQueueLength <em>Inbound Worker Pool Queue Length</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundThreadGroupId <em>Inbound Thread Group Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundThreadId <em>Inbound Thread Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getDispatchFilterPattern <em>Dispatch Filter Pattern</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInterval <em>Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isSequential <em>Sequential</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isCoordination <em>Coordination</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileURI <em>Transport VFS File URI</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWso2mbConnectionUrl <em>Wso2mb Connection Url</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSContentType <em>Transport VFS Content Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileNamePattern <em>Transport VFS File Name Pattern</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileProcessInterval <em>Transport VFS File Process Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileProcessCount <em>Transport VFS File Process Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSLocking <em>Transport VFS Locking</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMaxRetryCount <em>Transport VFS Max Retry Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterFailedMove <em>Transport VFS Move After Failed Move</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSReconnectTimeout <em>Transport VFS Reconnect Timeout</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSSharedSubscription <em>Transport JMS Shared Subscription</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSubscriptionName <em>Transport JMS Subscription Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPinnedServers <em>Transport JMS Pinned Servers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterProcess <em>Transport VFS Action After Process</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterProcess <em>Transport VFS Move After Process</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterErrors <em>Transport VFS Action After Errors</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterErrors <em>Transport VFS Move After Errors</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFailedRecordsFileName <em>Transport VFS Failed Records File Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFailedRecordsFileDestination <em>Transport VFS Failed Records File Destination</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveFailedRecordTimestampFormat <em>Transport VFS Move Failed Record Timestamp Format</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFailedRecordNextRetryDuration <em>Transport VFS Failed Record Next Retry Duration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterFailure <em>Transport VFS Action After Failure</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterFailure <em>Transport VFS Move After Failure</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSReplyFileURI <em>Transport VFS Reply File URI</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSReplyFileName <em>Transport VFS Reply File Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSAutoLockRelease <em>Transport VFS Auto Lock Release</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSAutoLockReleaseInterval <em>Transport VFS Auto Lock Release Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSLockReleaseSameNode <em>Transport VFS Lock Release Same Node</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSDistributedLock <em>Transport VFS Distributed Lock</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSStreaming <em>Transport VFS Streaming</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSBuild <em>Transport VFS Build</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSDistributedTimeout <em>Transport VFS Distributed Timeout</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSSFTPIdentities <em>Transport VFSSFTP Identities</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSSFTPIdentityPassPhrase <em>Transport VFSSFTP Identity Pass Phrase</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSSFTPUserDirIsRoot <em>Transport VFSSFTP User Dir Is Root</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryType <em>Transport JMS Connection Factory Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConcurrentConsumers <em>Transport JMS Concurrent Consumers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDestination <em>Transport JMS Destination</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSSessionTransacted <em>Transport JMS Session Transacted</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSessionAcknowledgement <em>Transport JMS Session Acknowledgement</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSCacheLevel <em>Transport JMS Cache Level</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSUserName <em>Transport JMS User Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPassword <em>Transport JMS Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSJMSSpecVersion <em>Transport JMSJMS Spec Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSubscriptionDurable <em>Transport JMS Subscription Durable</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDurableSubscriberClientID <em>Transport JMS Durable Subscriber Client ID</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSMessageSelector <em>Transport JMS Message Selector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSRetryDuration <em>Transport JMS Retry Duration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSSubFolderTimestampFormat <em>Transport VFS Sub Folder Timestamp Format</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSContentType <em>Transport JMS Content Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSContentTypeProperty <em>Transport JMS Content Type Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDurableSubscriberName <em>Transport JMS Durable Subscriber Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSBrokerType <em>Transport JMS Broker Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTTopicName <em>Transport MQTT Topic Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionQOS <em>Transport MQTT Subscription QOS</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportMQTTSessionClean <em>Transport MQTT Session Clean</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslEnable <em>Transport MQTT Ssl Enable</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionUsername <em>Transport MQTT Subscription Username</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionPassword <em>Transport MQTT Subscription Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTClientId <em>Transport MQTT Client Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTruststore <em>Truststore</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getKeystore <em>Keystore</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSslVerifyClient <em>Ssl Verify Client</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSslProtocol <em>Ssl Protocol</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getHttpsProtocols <em>Https Protocols</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7Port <em>Inbound HL7 Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7AutoAck <em>Inbound HL7 Auto Ack</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7MessagePreProcessor <em>Inbound HL7 Message Pre Processor</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7CharSet <em>Inbound HL7 Char Set</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7TimeOut <em>Inbound HL7 Time Out</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7ValidateMessage <em>Inbound HL7 Validate Message</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperConnect <em>Zookeeper Connect</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getGroupId <em>Group Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getContentType <em>Content Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerType <em>Consumer Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicsOrTopicFilter <em>Topics Or Topic Filter</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicsName <em>Topics Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicFilterFrom <em>Topic Filter From</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicFilterName <em>Topic Filter Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerTopic <em>Simple Consumer Topic</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerBrokers <em>Simple Consumer Brokers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerPort <em>Simple Consumer Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerPartition <em>Simple Consumer Partition</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerMaxMessagesToRead <em>Simple Consumer Max Messages To Read</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getThreadCount <em>Thread Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerId <em>Consumer Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSocketTimeoutMs <em>Socket Timeout Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSocketReceiveBufferBytes <em>Socket Receive Buffer Bytes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getFetchMessageMaxBytes <em>Fetch Message Max Bytes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getNumConsumerFetches <em>Num Consumer Fetches</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isAutoCommitEnable <em>Auto Commit Enable</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getQueuedMaxMessageChunks <em>Queued Max Message Chunks</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getRebalanceMaxRetries <em>Rebalance Max Retries</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getFetchMinBytes <em>Fetch Min Bytes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getFetchWaitMaxMs <em>Fetch Wait Max Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getRebalanceBackoffMs <em>Rebalance Backoff Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getRefreshLeaderBackoffMs <em>Refresh Leader Backoff Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getAutoOffsetReset <em>Auto Offset Reset</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerTimeoutMs <em>Consumer Timeout Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isExcludeInternalTopics <em>Exclude Internal Topics</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getPartitionAssignmentStrategy <em>Partition Assignment Strategy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getClientId <em>Client Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperConnectionTimeoutMs <em>Zookeeper Connection Timeout Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsStorage <em>Offsets Storage</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsChannelBackoffMs <em>Offsets Channel Backoff Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsChannelSocketTimeoutMs <em>Offsets Channel Socket Timeout Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsCommitMaxRetries <em>Offsets Commit Max Retries</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isDualCommitEnabled <em>Dual Commit Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isEnableSSL <em>Enable SSL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getServiceParameters <em>Service Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isSuspend <em>Suspend</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionFactory <em>Transport Rabbit Mq Connection Factory</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerHostName <em>Transport Rabbit Mq Server Host Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerPort <em>Transport Rabbit Mq Server Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerUserName <em>Transport Rabbit Mq Server User Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerPassword <em>Transport Rabbit Mq Server Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueName <em>Transport Rabbit Mq Queue Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeName <em>Transport Rabbit Mq Exchange Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueDurable <em>Transport Rabbit Mq Queue Durable</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueExclusive <em>Transport Rabbit Mq Queue Exclusive</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueAutoDelete <em>Transport Rabbit Mq Queue Auto Delete</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueAutoAck <em>Transport Rabbit Mq Queue Auto Ack</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueRoutingKey <em>Transport Rabbit Mq Queue Routing Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueDeliveryMode <em>Transport Rabbit Mq Queue Delivery Mode</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeType <em>Transport Rabbit Mq Exchange Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeDurable <em>Transport Rabbit Mq Exchange Durable</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeAutoDelete <em>Transport Rabbit Mq Exchange Auto Delete</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerVirtualHost <em>Transport Rabbit Mq Server Virtual Host</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryHeartbeat <em>Transport Rabbit Mq Factory Heartbeat</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslEnabled <em>Transport Rabbit Mq Connection Ssl Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystoreLocation <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystoreType <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystorePassword <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststoreLocation <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQosKey <em>Transport Rabbit Mq Consumer Qos Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsInboundPort <em>Ws Inbound Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsOutflowDispatchFaultSequence <em>Ws Outflow Dispatch Fault Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsBossThreadPoolSize <em>Ws Boss Thread Pool Size</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsWorkerThreadPoolSize <em>Ws Worker Thread Pool Size</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsSubprotocolHandlerClass <em>Ws Subprotocol Handler Class</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsPipelineHandlerClass <em>Ws Pipeline Handler Class</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedURL <em>Transport Feed URL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedType <em>Transport Feed Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSRetriesBeforeSuspension <em>Transport JMS Retries Before Suspension</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSResetConnectionOnPollingSuspension <em>Transport JMS Reset Connection On Polling Suspension</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPollingSuspensionPeriod <em>Transport JMS Polling Suspension Period</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystoreLocation <em>Transport MQTT Ssl Keystore Location</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystoreType <em>Transport MQTT Ssl Keystore Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystorePassword <em>Transport MQTT Ssl Keystore Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststoreLocation <em>Transport MQTT Ssl Truststore Location</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststoreType <em>Transport MQTT Ssl Truststore Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststorePassword <em>Transport MQTT Ssl Truststore Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslVersion <em>Transport MQTT Ssl Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslKeyStoreFile <em>Wss Ssl Key Store File</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslKeyStorePass <em>Wss Ssl Key Store Pass</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslTrustStoreFile <em>Wss Ssl Trust Store File</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslTrustStorePass <em>Wss Ssl Trust Store Pass</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslCertPass <em>Wss Ssl Cert Pass</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsDefaultContentType <em>Ws Default Content Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsShutdownStatusCode <em>Ws Shutdown Status Code</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsShutdownStatusMessage <em>Ws Shutdown Status Message</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isWsUsePortOffset <em>Ws Use Port Offset</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslProtocols <em>Wss Ssl Protocols</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDBUrl <em>Transport JMSDB Url</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqMaxDeadLetteredCount <em>Transport Rabbit Mq Max Dead Lettered Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqRequeueDelay <em>Transport Rabbit Mq Requeue Delay</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportRabbitMqExchangeAutoDeclare <em>Transport Rabbit Mq Exchange Auto Declare</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerTag <em>Transport Rabbit Mq Consumer Tag</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqErrorQueueRoutingKey <em>Transport Rabbit Mq Error Queue Routing Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqErrorExchangeName <em>Transport Rabbit Mq Error Exchange Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryConnectionTimeout <em>Transport Rabbit Mq Factory Connection Timeout</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryNetworkRecoveryInterval <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getSequenceInputConnector <em>Sequence Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getSequenceOutputConnector <em>Sequence Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequenceInputConnector <em>On Error Sequence Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequenceOutputConnector <em>On Error Sequence Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getClass_ <em>Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getProtocol <em>Protocol</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundEndpointBehaviour <em>Inbound Endpoint Behaviour</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundHttpPort <em>Inbound Http Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolSizeCore <em>Inbound Worker Pool Size Core</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolSizeMax <em>Inbound Worker Pool Size Max</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerThreadKeepAliveSec <em>Inbound Worker Thread Keep Alive Sec</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolQueueLength <em>Inbound Worker Pool Queue Length</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundThreadGroupId <em>Inbound Thread Group Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundThreadId <em>Inbound Thread Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getDispatchFilterPattern <em>Dispatch Filter Pattern</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInterval <em>Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isSequential <em>Sequential</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isCoordination <em>Coordination</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileURI <em>Transport VFS File URI</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWso2mbConnectionUrl <em>Wso2mb Connection Url</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSContentType <em>Transport VFS Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileNamePattern <em>Transport VFS File Name Pattern</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileProcessInterval <em>Transport VFS File Process Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileProcessCount <em>Transport VFS File Process Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSLocking <em>Transport VFS Locking</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMaxRetryCount <em>Transport VFS Max Retry Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterFailedMove <em>Transport VFS Move After Failed Move</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSReconnectTimeout <em>Transport VFS Reconnect Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportJMSSharedSubscription <em>Transport JMS Shared Subscription</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSubscriptionName <em>Transport JMS Subscription Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPinnedServers <em>Transport JMS Pinned Servers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterProcess <em>Transport VFS Action After Process</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterProcess <em>Transport VFS Move After Process</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterErrors <em>Transport VFS Action After Errors</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterErrors <em>Transport VFS Move After Errors</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFailedRecordsFileName <em>Transport VFS Failed Records File Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFailedRecordsFileDestination <em>Transport VFS Failed Records File Destination</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveFailedRecordTimestampFormat <em>Transport VFS Move Failed Record Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFailedRecordNextRetryDuration <em>Transport VFS Failed Record Next Retry Duration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterFailure <em>Transport VFS Action After Failure</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterFailure <em>Transport VFS Move After Failure</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSReplyFileURI <em>Transport VFS Reply File URI</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSReplyFileName <em>Transport VFS Reply File Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportVFSAutoLockRelease <em>Transport VFS Auto Lock Release</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSAutoLockReleaseInterval <em>Transport VFS Auto Lock Release Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportVFSLockReleaseSameNode <em>Transport VFS Lock Release Same Node</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportVFSDistributedLock <em>Transport VFS Distributed Lock</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportVFSStreaming <em>Transport VFS Streaming</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportVFSBuild <em>Transport VFS Build</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSDistributedTimeout <em>Transport VFS Distributed Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSSFTPIdentities <em>Transport VFSSFTP Identities</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSSFTPIdentityPassPhrase <em>Transport VFSSFTP Identity Pass Phrase</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportVFSSFTPUserDirIsRoot <em>Transport VFSSFTP User Dir Is Root</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryType <em>Transport JMS Connection Factory Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConcurrentConsumers <em>Transport JMS Concurrent Consumers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDestination <em>Transport JMS Destination</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportJMSSessionTransacted <em>Transport JMS Session Transacted</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSessionAcknowledgement <em>Transport JMS Session Acknowledgement</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSCacheLevel <em>Transport JMS Cache Level</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSUserName <em>Transport JMS User Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPassword <em>Transport JMS Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSJMSSpecVersion <em>Transport JMSJMS Spec Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSubscriptionDurable <em>Transport JMS Subscription Durable</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDurableSubscriberClientID <em>Transport JMS Durable Subscriber Client ID</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSMessageSelector <em>Transport JMS Message Selector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSRetryDuration <em>Transport JMS Retry Duration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSSubFolderTimestampFormat <em>Transport VFS Sub Folder Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSContentType <em>Transport JMS Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSContentTypeProperty <em>Transport JMS Content Type Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDurableSubscriberName <em>Transport JMS Durable Subscriber Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSBrokerType <em>Transport JMS Broker Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTTopicName <em>Transport MQTT Topic Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionQOS <em>Transport MQTT Subscription QOS</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportMQTTSessionClean <em>Transport MQTT Session Clean</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslEnable <em>Transport MQTT Ssl Enable</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionUsername <em>Transport MQTT Subscription Username</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionPassword <em>Transport MQTT Subscription Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTClientId <em>Transport MQTT Client Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTruststore <em>Truststore</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getKeystore <em>Keystore</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getSslVerifyClient <em>Ssl Verify Client</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getSslProtocol <em>Ssl Protocol</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getHttpsProtocols <em>Https Protocols</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundHL7Port <em>Inbound HL7 Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isInboundHL7AutoAck <em>Inbound HL7 Auto Ack</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundHL7MessagePreProcessor <em>Inbound HL7 Message Pre Processor</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundHL7CharSet <em>Inbound HL7 Char Set</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundHL7TimeOut <em>Inbound HL7 Time Out</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isInboundHL7ValidateMessage <em>Inbound HL7 Validate Message</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getZookeeperConnect <em>Zookeeper Connect</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getGroupId <em>Group Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getContentType <em>Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getConsumerType <em>Consumer Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTopicsOrTopicFilter <em>Topics Or Topic Filter</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTopicsName <em>Topics Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTopicFilterFrom <em>Topic Filter From</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTopicFilterName <em>Topic Filter Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerTopic <em>Simple Consumer Topic</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerBrokers <em>Simple Consumer Brokers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerPort <em>Simple Consumer Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerPartition <em>Simple Consumer Partition</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerMaxMessagesToRead <em>Simple Consumer Max Messages To Read</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getThreadCount <em>Thread Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getConsumerId <em>Consumer Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getSocketTimeoutMs <em>Socket Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getSocketReceiveBufferBytes <em>Socket Receive Buffer Bytes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getFetchMessageMaxBytes <em>Fetch Message Max Bytes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getNumConsumerFetches <em>Num Consumer Fetches</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isAutoCommitEnable <em>Auto Commit Enable</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getQueuedMaxMessageChunks <em>Queued Max Message Chunks</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getRebalanceMaxRetries <em>Rebalance Max Retries</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getFetchMinBytes <em>Fetch Min Bytes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getFetchWaitMaxMs <em>Fetch Wait Max Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getRebalanceBackoffMs <em>Rebalance Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getRefreshLeaderBackoffMs <em>Refresh Leader Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getAutoOffsetReset <em>Auto Offset Reset</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getConsumerTimeoutMs <em>Consumer Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isExcludeInternalTopics <em>Exclude Internal Topics</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getPartitionAssignmentStrategy <em>Partition Assignment Strategy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getClientId <em>Client Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getZookeeperConnectionTimeoutMs <em>Zookeeper Connection Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getOffsetsStorage <em>Offsets Storage</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getOffsetsChannelBackoffMs <em>Offsets Channel Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getOffsetsChannelSocketTimeoutMs <em>Offsets Channel Socket Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getOffsetsCommitMaxRetries <em>Offsets Commit Max Retries</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isDualCommitEnabled <em>Dual Commit Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isEnableSSL <em>Enable SSL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getServiceParameters <em>Service Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isSuspend <em>Suspend</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionFactory <em>Transport Rabbit Mq Connection Factory</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerHostName <em>Transport Rabbit Mq Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerPort <em>Transport Rabbit Mq Server Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerUserName <em>Transport Rabbit Mq Server User Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerPassword <em>Transport Rabbit Mq Server Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueName <em>Transport Rabbit Mq Queue Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeName <em>Transport Rabbit Mq Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueDurable <em>Transport Rabbit Mq Queue Durable</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueExclusive <em>Transport Rabbit Mq Queue Exclusive</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueAutoDelete <em>Transport Rabbit Mq Queue Auto Delete</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueAutoAck <em>Transport Rabbit Mq Queue Auto Ack</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueRoutingKey <em>Transport Rabbit Mq Queue Routing Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueDeliveryMode <em>Transport Rabbit Mq Queue Delivery Mode</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeType <em>Transport Rabbit Mq Exchange Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeDurable <em>Transport Rabbit Mq Exchange Durable</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeAutoDelete <em>Transport Rabbit Mq Exchange Auto Delete</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerVirtualHost <em>Transport Rabbit Mq Server Virtual Host</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryHeartbeat <em>Transport Rabbit Mq Factory Heartbeat</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslEnabled <em>Transport Rabbit Mq Connection Ssl Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystoreLocation <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystoreType <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystorePassword <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststoreLocation <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQosKey <em>Transport Rabbit Mq Consumer Qos Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWsInboundPort <em>Ws Inbound Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWsOutflowDispatchFaultSequence <em>Ws Outflow Dispatch Fault Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWsBossThreadPoolSize <em>Ws Boss Thread Pool Size</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWsWorkerThreadPoolSize <em>Ws Worker Thread Pool Size</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWsSubprotocolHandlerClass <em>Ws Subprotocol Handler Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWsPipelineHandlerClass <em>Ws Pipeline Handler Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportFeedURL <em>Transport Feed URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportFeedType <em>Transport Feed Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSRetriesBeforeSuspension <em>Transport JMS Retries Before Suspension</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportJMSResetConnectionOnPollingSuspension <em>Transport JMS Reset Connection On Polling Suspension</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPollingSuspensionPeriod <em>Transport JMS Polling Suspension Period</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystoreLocation <em>Transport MQTT Ssl Keystore Location</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystoreType <em>Transport MQTT Ssl Keystore Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystorePassword <em>Transport MQTT Ssl Keystore Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststoreLocation <em>Transport MQTT Ssl Truststore Location</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststoreType <em>Transport MQTT Ssl Truststore Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststorePassword <em>Transport MQTT Ssl Truststore Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslVersion <em>Transport MQTT Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWssSslKeyStoreFile <em>Wss Ssl Key Store File</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWssSslKeyStorePass <em>Wss Ssl Key Store Pass</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWssSslTrustStoreFile <em>Wss Ssl Trust Store File</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWssSslTrustStorePass <em>Wss Ssl Trust Store Pass</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWssSslCertPass <em>Wss Ssl Cert Pass</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWsDefaultContentType <em>Ws Default Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWsShutdownStatusCode <em>Ws Shutdown Status Code</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWsShutdownStatusMessage <em>Ws Shutdown Status Message</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isWsUsePortOffset <em>Ws Use Port Offset</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWssSslProtocols <em>Wss Ssl Protocols</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDBUrl <em>Transport JMSDB Url</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqMaxDeadLetteredCount <em>Transport Rabbit Mq Max Dead Lettered Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqRequeueDelay <em>Transport Rabbit Mq Requeue Delay</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportRabbitMqExchangeAutoDeclare <em>Transport Rabbit Mq Exchange Auto Declare</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerTag <em>Transport Rabbit Mq Consumer Tag</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqErrorQueueRoutingKey <em>Transport Rabbit Mq Error Queue Routing Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqErrorExchangeName <em>Transport Rabbit Mq Error Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryConnectionTimeout <em>Transport Rabbit Mq Factory Connection Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryNetworkRecoveryInterval <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}</li>
  * </ul>
  *
  * @generated

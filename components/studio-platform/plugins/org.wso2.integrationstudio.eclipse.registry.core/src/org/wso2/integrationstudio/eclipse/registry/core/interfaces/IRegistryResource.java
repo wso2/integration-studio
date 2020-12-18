@@ -1,6 +1,6 @@
-package org.wso2.integrationstudio.eclipse.registry.core.interfaces;
+package org.wso2.integrationstudio.registry.core.interfaces;
 
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioElement;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
 
 public interface IRegistryResource extends IIntegrationStudioElement{
 

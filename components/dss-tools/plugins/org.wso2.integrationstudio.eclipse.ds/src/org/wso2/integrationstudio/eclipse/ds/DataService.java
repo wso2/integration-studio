@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -20,30 +20,30 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getDescription <em>Description</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getConfig <em>Config</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getQuery <em>Query</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getEventTrigger <em>Event Trigger</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getOperation <em>Operation</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getResource <em>Resource</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getBaseURI <em>Base URI</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#isEnableBatchRequests <em>Enable Batch Requests</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#isEnableBoxcarring <em>Enable Boxcarring</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#isEnableDTP <em>Enable DTP</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getServiceGroup <em>Service Group</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getServiceNamespace <em>Service Namespace</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getServiceStatus <em>Service Status</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#isDisableStreaming <em>Disable Streaming</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#isEnableSec <em>Enable Sec</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getPolicy <em>Policy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getTransports <em>Transports</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#getFeatureAllowRoles <em>Feature Allow Roles</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.DataService#isDisableLegacyBoxcarringMode <em>Disable Legacy Boxcarring Mode</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getConfig <em>Config</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getQuery <em>Query</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getEventTrigger <em>Event Trigger</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getOperation <em>Operation</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getResource <em>Resource</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getBaseURI <em>Base URI</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#isEnableBatchRequests <em>Enable Batch Requests</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#isEnableBoxcarring <em>Enable Boxcarring</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#isEnableDTP <em>Enable DTP</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getServiceGroup <em>Service Group</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getServiceNamespace <em>Service Namespace</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getServiceStatus <em>Service Status</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#isDisableStreaming <em>Disable Streaming</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#isEnableSec <em>Enable Sec</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getPolicy <em>Policy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getTransports <em>Transports</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#getFeatureAllowRoles <em>Feature Allow Roles</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.DataService#isDisableLegacyBoxcarringMode <em>Disable Legacy Boxcarring Mode</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getDataService()
  * @model extendedMetaData="name='data_._type' kind='mixed'"
  * @generated
  */
@@ -58,7 +58,7 @@ public interface DataService extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_Mixed()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -75,7 +75,7 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Description</em>' containment reference.
 	 * @see #setDescription(Description)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_Description()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_Description()
 	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='description' namespace='##targetNamespace'"
 	 * @generated
@@ -83,7 +83,7 @@ public interface DataService extends EObject {
 	Description getDescription();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getDescription <em>Description</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#getDescription <em>Description</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Description</em>' containment reference.
@@ -94,7 +94,7 @@ public interface DataService extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Config</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.DataSourceConfiguration}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Config</em>' containment reference list isn't
@@ -102,7 +102,7 @@ public interface DataService extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Config</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_Config()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_Config()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='config' namespace='##targetNamespace'"
 	 * @generated
@@ -111,7 +111,7 @@ public interface DataService extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Query</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.Query}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.Query}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Query</em>' containment reference list isn't
@@ -119,7 +119,7 @@ public interface DataService extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Query</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_Query()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_Query()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='query' namespace='##targetNamespace'"
 	 * @generated
@@ -128,7 +128,7 @@ public interface DataService extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Event Trigger</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.EventTrigger}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.EventTrigger}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Event Trigger</em>' containment reference list
@@ -136,7 +136,7 @@ public interface DataService extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Event Trigger</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_EventTrigger()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_EventTrigger()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='event-trigger' namespace='##targetNamespace'"
 	 * @generated
@@ -145,7 +145,7 @@ public interface DataService extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Operation</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.Operation}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.Operation}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Operation</em>' containment reference list
@@ -153,7 +153,7 @@ public interface DataService extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Operation</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_Operation()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_Operation()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='operation' namespace='##targetNamespace'"
 	 * @generated
@@ -162,7 +162,7 @@ public interface DataService extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Resource</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.Resource}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.Resource}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Resource</em>' containment reference list
@@ -170,7 +170,7 @@ public interface DataService extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resource</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_Resource()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_Resource()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='resource' namespace='##targetNamespace'"
 	 * @generated
@@ -187,7 +187,7 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Base URI</em>' attribute.
 	 * @see #setBaseURI(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_BaseURI()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_BaseURI()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='baseURI' namespace='##targetNamespace'"
 	 * @generated
@@ -195,7 +195,7 @@ public interface DataService extends EObject {
 	String getBaseURI();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getBaseURI <em>Base URI</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#getBaseURI <em>Base URI</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Base URI</em>' attribute.
@@ -214,7 +214,7 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Enable Batch Requests</em>' attribute.
 	 * @see #setEnableBatchRequests(boolean)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_EnableBatchRequests()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_EnableBatchRequests()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 *        extendedMetaData="kind='attribute' name='enableBatchRequests' namespace='##targetNamespace'"
 	 * @generated
@@ -222,7 +222,7 @@ public interface DataService extends EObject {
 	boolean isEnableBatchRequests();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#isEnableBatchRequests <em>Enable Batch Requests</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#isEnableBatchRequests <em>Enable Batch Requests</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Enable Batch Requests</em>' attribute.
@@ -241,7 +241,7 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Enable Boxcarring</em>' attribute.
 	 * @see #setEnableBoxcarring(boolean)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_EnableBoxcarring()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_EnableBoxcarring()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 *        extendedMetaData="kind='attribute' name='enableBoxcarring' namespace='##targetNamespace'"
 	 * @generated
@@ -249,7 +249,7 @@ public interface DataService extends EObject {
 	boolean isEnableBoxcarring();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#isEnableBoxcarring <em>Enable Boxcarring</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#isEnableBoxcarring <em>Enable Boxcarring</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Enable Boxcarring</em>' attribute.
@@ -268,7 +268,7 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Enable DTP</em>' attribute.
 	 * @see #setEnableDTP(boolean)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_EnableDTP()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_EnableDTP()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 *        extendedMetaData="kind='attribute' name='enableDTP' namespace='##targetNamespace'"
 	 * @generated
@@ -276,7 +276,7 @@ public interface DataService extends EObject {
 	boolean isEnableDTP();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#isEnableDTP <em>Enable DTP</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#isEnableDTP <em>Enable DTP</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Enable DTP</em>' attribute.
@@ -295,7 +295,7 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_Name()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='name' namespace='##targetNamespace'"
 	 * @generated
@@ -303,7 +303,7 @@ public interface DataService extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -322,7 +322,7 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Service Group</em>' attribute.
 	 * @see #setServiceGroup(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_ServiceGroup()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_ServiceGroup()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='serviceGroup' namespace='##targetNamespace'"
 	 * @generated
@@ -330,7 +330,7 @@ public interface DataService extends EObject {
 	String getServiceGroup();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getServiceGroup <em>Service Group</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#getServiceGroup <em>Service Group</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Service Group</em>' attribute.
@@ -349,7 +349,7 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Service Namespace</em>' attribute.
 	 * @see #setServiceNamespace(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_ServiceNamespace()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_ServiceNamespace()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='serviceNamespace' namespace='##targetNamespace'"
 	 * @generated
@@ -357,7 +357,7 @@ public interface DataService extends EObject {
 	String getServiceNamespace();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getServiceNamespace <em>Service Namespace</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#getServiceNamespace <em>Service Namespace</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Service Namespace</em>' attribute.
@@ -368,7 +368,7 @@ public interface DataService extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Service Status</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.ds.ServiceStatus}.
+	 * The literals are from the enumeration {@link org.wso2.integrationstudio.ds.ServiceStatus}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Service Status</em>' attribute isn't clear,
@@ -376,11 +376,11 @@ public interface DataService extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Service Status</em>' attribute.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ServiceStatus
+	 * @see org.wso2.integrationstudio.ds.ServiceStatus
 	 * @see #isSetServiceStatus()
 	 * @see #unsetServiceStatus()
 	 * @see #setServiceStatus(ServiceStatus)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_ServiceStatus()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_ServiceStatus()
 	 * @model unsettable="true"
 	 *        extendedMetaData="kind='attribute' name='serviceStatus' namespace='##targetNamespace'"
 	 * @generated
@@ -388,11 +388,11 @@ public interface DataService extends EObject {
 	ServiceStatus getServiceStatus();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getServiceStatus <em>Service Status</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#getServiceStatus <em>Service Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Service Status</em>' attribute.
-	 * @see org.wso2.integrationstudio.eclipse.ds.ServiceStatus
+	 * @see org.wso2.integrationstudio.ds.ServiceStatus
 	 * @see #isSetServiceStatus()
 	 * @see #unsetServiceStatus()
 	 * @see #getServiceStatus()
@@ -401,7 +401,7 @@ public interface DataService extends EObject {
 	void setServiceStatus(ServiceStatus value);
 
 	/**
-	 * Unsets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getServiceStatus <em>Service Status</em>}' attribute.
+	 * Unsets the value of the '{@link org.wso2.integrationstudio.ds.DataService#getServiceStatus <em>Service Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isSetServiceStatus()
@@ -412,7 +412,7 @@ public interface DataService extends EObject {
 	void unsetServiceStatus();
 
 	/**
-	 * Returns whether the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getServiceStatus <em>Service Status</em>}' attribute is set.
+	 * Returns whether the value of the '{@link org.wso2.integrationstudio.ds.DataService#getServiceStatus <em>Service Status</em>}' attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Service Status</em>' attribute is set.
@@ -433,14 +433,14 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Disable Streaming</em>' attribute.
 	 * @see #setDisableStreaming(boolean)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_DisableStreaming()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_DisableStreaming()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 * @generated
 	 */
 	boolean isDisableStreaming();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#isDisableStreaming <em>Disable Streaming</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#isDisableStreaming <em>Disable Streaming</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Disable Streaming</em>' attribute.
@@ -459,7 +459,7 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Enable Sec</em>' attribute.
 	 * @see #setEnableSec(boolean)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_EnableSec()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_EnableSec()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 *        extendedMetaData="kind='element' name='enableSec'"
 	 * @generated
@@ -467,7 +467,7 @@ public interface DataService extends EObject {
 	boolean isEnableSec();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#isEnableSec <em>Enable Sec</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#isEnableSec <em>Enable Sec</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Enable Sec</em>' attribute.
@@ -486,7 +486,7 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Policy</em>' containment reference.
 	 * @see #setPolicy(RegistryKeyProperty)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_Policy()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_Policy()
 	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='policy' namespace='##targetNamespace'"
 	 * @generated
@@ -494,7 +494,7 @@ public interface DataService extends EObject {
 	RegistryKeyProperty getPolicy();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getPolicy <em>Policy</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#getPolicy <em>Policy</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Policy</em>' containment reference.
@@ -513,7 +513,7 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Transports</em>' attribute.
 	 * @see #setTransports(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_Transports()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_Transports()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='transports'"
 	 * @generated
@@ -521,7 +521,7 @@ public interface DataService extends EObject {
 	String getTransports();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getTransports <em>Transports</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#getTransports <em>Transports</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Transports</em>' attribute.
@@ -540,7 +540,7 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Feature Allow Roles</em>' containment reference.
 	 * @see #setFeatureAllowRoles(DataServiceParameter)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_FeatureAllowRoles()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_FeatureAllowRoles()
 	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='parameter' namespace='##targetNamespace'"
 	 * @generated
@@ -548,7 +548,7 @@ public interface DataService extends EObject {
 	DataServiceParameter getFeatureAllowRoles();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#getFeatureAllowRoles <em>Feature Allow Roles</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#getFeatureAllowRoles <em>Feature Allow Roles</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Feature Allow Roles</em>' containment reference.
@@ -567,14 +567,14 @@ public interface DataService extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Disable Legacy Boxcarring Mode</em>' attribute.
 	 * @see #setDisableLegacyBoxcarringMode(boolean)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getDataService_DisableLegacyBoxcarringMode()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getDataService_DisableLegacyBoxcarringMode()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 * @generated
 	 */
 	boolean isDisableLegacyBoxcarringMode();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.DataService#isDisableLegacyBoxcarringMode <em>Disable Legacy Boxcarring Mode</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.DataService#isDisableLegacyBoxcarringMode <em>Disable Legacy Boxcarring Mode</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Disable Legacy Boxcarring Mode</em>' attribute.

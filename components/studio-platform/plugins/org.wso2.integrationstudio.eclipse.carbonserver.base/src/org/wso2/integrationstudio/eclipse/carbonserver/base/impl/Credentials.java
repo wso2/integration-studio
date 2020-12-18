@@ -1,6 +1,6 @@
-package org.wso2.integrationstudio.eclipse.carbonserver.base.impl;
+package org.wso2.integrationstudio.carbonserver.base.impl;
 
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICredentials;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICredentials;
 
 public class Credentials implements ICredentials {
 	private String username;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.synapse.api.ui.wizard;
+package org.wso2.integrationstudio.artifact.synapse.api.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,33 +52,33 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.json.simple.JSONValue;
 import org.wso2.carbon.rest.api.APIException;
 import org.wso2.carbon.rest.api.service.RestApiAdmin;
-import org.wso2.integrationstudio.eclipse.artifact.synapse.api.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.synapse.api.exceptions.SwaggerDefinitionProcessingException;
-import org.wso2.integrationstudio.eclipse.artifact.synapse.api.model.APIArtifactModel;
-import org.wso2.integrationstudio.eclipse.artifact.synapse.api.util.APIImageUtils;
-import org.wso2.integrationstudio.eclipse.capp.maven.utils.MavenConstants;
-import org.wso2.integrationstudio.eclipse.esb.core.ESBMavenConstants;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.RegistryArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryCollection;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryDump;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryElement;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryItem;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIVersionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceInfo;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceInfoDoc;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceUtils;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.artifact.synapse.api.Activator;
+import org.wso2.integrationstudio.artifact.synapse.api.exceptions.SwaggerDefinitionProcessingException;
+import org.wso2.integrationstudio.artifact.synapse.api.model.APIArtifactModel;
+import org.wso2.integrationstudio.artifact.synapse.api.util.APIImageUtils;
+import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.integrationstudio.general.project.artifact.RegistryArtifact;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryCollection;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryDump;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryElement;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryItem;
+import org.wso2.integrationstudio.gmf.esb.APIVersionType;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfo;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfoDoc;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 import org.yaml.snakeyaml.Yaml;
 
 /**

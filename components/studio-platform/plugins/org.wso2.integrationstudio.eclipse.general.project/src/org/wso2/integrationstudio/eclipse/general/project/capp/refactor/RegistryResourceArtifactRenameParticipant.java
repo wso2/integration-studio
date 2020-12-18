@@ -11,7 +11,7 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.general.project.capp.refactor;
+package org.wso2.integrationstudio.general.project.capp.refactor;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -33,13 +33,13 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.RenameParticipant;
-import org.wso2.integrationstudio.eclipse.general.project.Activator;
-import org.wso2.integrationstudio.eclipse.general.project.refactor.MavenConfigurationFileRenameChange;
-import org.wso2.integrationstudio.eclipse.general.project.refactor.RefactorUtils;
-import org.wso2.integrationstudio.eclipse.general.project.utils.GeneralProjectUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.general.project.Activator;
+import org.wso2.integrationstudio.general.project.refactor.MavenConfigurationFileRenameChange;
+import org.wso2.integrationstudio.general.project.refactor.RefactorUtils;
+import org.wso2.integrationstudio.general.project.utils.GeneralProjectUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class RegistryResourceArtifactRenameParticipant extends RenameParticipant {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

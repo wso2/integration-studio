@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -54,14 +54,14 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EndPointPropertyPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -375,7 +375,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -385,7 +385,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -407,7 +407,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#getValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#getValue()
 	 * 
 	 */
 	public String getValue() {
@@ -417,7 +417,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#setValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#setValue(String newValue)
 	 * 
 	 */
 	public void setValue(String newValue) {
@@ -439,7 +439,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#getScope()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#getScope()
 	 * 
 	 */
 	public Enumerator getScope() {
@@ -450,7 +450,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#initScope(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#initScope(Object input, Enumerator current)
 	 */
 	public void initScope(Object input, Enumerator current) {
 		scope.setInput(input);
@@ -468,7 +468,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#setScope(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#setScope(Enumerator newValue)
 	 * 
 	 */
 	public void setScope(Enumerator newValue) {
@@ -486,7 +486,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#getValueType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#getValueType()
 	 * 
 	 */
 	public Enumerator getValueType() {
@@ -497,7 +497,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#initValueType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#initValueType(Object input, Enumerator current)
 	 */
 	public void initValueType(Object input, Enumerator current) {
 		valueType.setInput(input);
@@ -515,7 +515,7 @@ public class EndPointPropertyPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#setValueType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EndPointPropertyPropertiesEditionPart#setValueType(Enumerator newValue)
 	 * 
 	 */
 	public void setValueType(Enumerator newValue) {

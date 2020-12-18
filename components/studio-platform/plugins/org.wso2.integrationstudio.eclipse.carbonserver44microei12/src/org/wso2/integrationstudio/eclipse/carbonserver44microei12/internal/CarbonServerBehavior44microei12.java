@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei12.internal;
+package org.wso2.integrationstudio.carbonserver44microei12.internal;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,16 +39,16 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.internal.DeletedModule;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.impl.CarbonServerBehaviour;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.util.ServerConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.server.base.core.ServerController;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonUtils;
+import org.wso2.integrationstudio.carbonserver.base.impl.CarbonServerBehaviour;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver44microei12.Activator;
+import org.wso2.integrationstudio.carbonserver44microei12.util.CarbonServer44eiUtils;
+import org.wso2.integrationstudio.carbonserver44microei12.util.ServerConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.server.base.core.ServerController;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 import net.consensys.cava.toml.TomlParseResult;
 

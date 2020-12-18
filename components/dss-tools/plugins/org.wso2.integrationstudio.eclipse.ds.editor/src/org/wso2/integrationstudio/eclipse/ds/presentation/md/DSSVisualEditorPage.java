@@ -16,7 +16,7 @@
  *    under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.presentation.md;
+package org.wso2.integrationstudio.ds.presentation.md;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,10 +28,10 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.ui.part.MultiPageEditorPart;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditorPlugin;
-import org.wso2.integrationstudio.eclipse.ds.presentation.util.DSSVisualEditorConstants;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.AbstractWebBasedEditor;
-import org.wso2.integrationstudio.eclipse.webui.core.exception.WebUIException;
+import org.wso2.integrationstudio.ds.presentation.DsEditorPlugin;
+import org.wso2.integrationstudio.ds.presentation.util.DSSVisualEditorConstants;
+import org.wso2.integrationstudio.webui.core.editor.AbstractWebBasedEditor;
+import org.wso2.integrationstudio.webui.core.exception.WebUIException;
 
 // Represents the DSS visual editor page
 public class DSSVisualEditorPage extends AbstractWebBasedEditor {

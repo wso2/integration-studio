@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -73,12 +73,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -798,7 +798,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#initHandlers(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#initHandlers(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initHandlers(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -819,7 +819,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#updateHandlers()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#updateHandlers()
 	 * 
 	 */
 	public void updateHandlers() {
@@ -829,7 +829,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#addFilterHandlers(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#addFilterHandlers(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToHandlers(ViewerFilter filter) {
@@ -842,7 +842,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#addBusinessFilterHandlers(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#addBusinessFilterHandlers(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToHandlers(ViewerFilter filter) {
@@ -852,7 +852,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#isContainedInHandlersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#isContainedInHandlersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInHandlersTable(EObject element) {
@@ -862,7 +862,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -872,7 +872,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -913,7 +913,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getApiName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getApiName()
 	 * 
 	 */
 	public String getApiName() {
@@ -923,7 +923,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setApiName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setApiName(String newValue)
 	 * 
 	 */
 	public void setApiName(String newValue) {
@@ -945,7 +945,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getContext()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getContext()
 	 * 
 	 */
 	public String getContext() {
@@ -955,7 +955,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setContext(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setContext(String newValue)
 	 * 
 	 */
 	public void setContext(String newValue) {
@@ -977,7 +977,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getHostName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getHostName()
 	 * 
 	 */
 	public String getHostName() {
@@ -987,7 +987,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setHostName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setHostName(String newValue)
 	 * 
 	 */
 	public void setHostName(String newValue) {
@@ -1009,7 +1009,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getPort()
 	 * 
 	 */
 	public String getPort() {
@@ -1019,7 +1019,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setPort(String newValue)
 	 * 
 	 */
 	public void setPort(String newValue) {
@@ -1043,7 +1043,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#initResources(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#initResources(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initResources(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1064,7 +1064,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#updateResources()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#updateResources()
 	 * 
 	 */
 	public void updateResources() {
@@ -1074,7 +1074,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#addFilterResources(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#addFilterResources(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToResources(ViewerFilter filter) {
@@ -1087,7 +1087,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#addBusinessFilterResources(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#addBusinessFilterResources(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToResources(ViewerFilter filter) {
@@ -1097,7 +1097,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#isContainedInResourcesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#isContainedInResourcesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInResourcesTable(EObject element) {
@@ -1107,7 +1107,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getVersionType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getVersionType()
 	 * 
 	 */
 	public Enumerator getVersionType() {
@@ -1118,7 +1118,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#initVersionType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#initVersionType(Object input, Enumerator current)
 	 */
 	public void initVersionType(Object input, Enumerator current) {
 		versionType.setInput(input);
@@ -1136,7 +1136,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setVersionType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setVersionType(Enumerator newValue)
 	 * 
 	 */
 	public void setVersionType(Enumerator newValue) {
@@ -1154,7 +1154,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getVersion()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getVersion()
 	 * 
 	 */
 	public String getVersion() {
@@ -1164,7 +1164,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setVersion(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setVersion(String newValue)
 	 * 
 	 */
 	public void setVersion(String newValue) {
@@ -1186,7 +1186,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getTraceEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getTraceEnabled()
 	 * 
 	 */
 	public Boolean getTraceEnabled() {
@@ -1196,7 +1196,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setTraceEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setTraceEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setTraceEnabled(Boolean newValue) {
@@ -1218,7 +1218,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getStatisticsEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getStatisticsEnabled()
 	 * 
 	 */
 	public Boolean getStatisticsEnabled() {
@@ -1228,7 +1228,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setStatisticsEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setStatisticsEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setStatisticsEnabled(Boolean newValue) {
@@ -1250,7 +1250,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -1260,7 +1260,7 @@ public class SynapseAPIPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SynapseAPIPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {

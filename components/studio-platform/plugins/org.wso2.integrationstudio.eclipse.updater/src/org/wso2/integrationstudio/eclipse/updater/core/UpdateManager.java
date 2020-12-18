@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.updater.core;
+package org.wso2.integrationstudio.updater.core;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -76,14 +76,14 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.IProgressConstants;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.PreferenceConstants;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
-import org.wso2.integrationstudio.eclipse.updater.Messages;
-import org.wso2.integrationstudio.eclipse.updater.UpdaterPlugin;
-import org.wso2.integrationstudio.eclipse.updater.job.UpdateMetaFileReaderJob;
-import org.wso2.integrationstudio.eclipse.updater.model.EnhancedFeature;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.preferences.PreferenceConstants;
+import org.wso2.integrationstudio.platform.ui.preferences.PreferenceInitializer;
+import org.wso2.integrationstudio.updater.Messages;
+import org.wso2.integrationstudio.updater.UpdaterPlugin;
+import org.wso2.integrationstudio.updater.job.UpdateMetaFileReaderJob;
+import org.wso2.integrationstudio.updater.model.EnhancedFeature;
 
 public class UpdateManager {
 

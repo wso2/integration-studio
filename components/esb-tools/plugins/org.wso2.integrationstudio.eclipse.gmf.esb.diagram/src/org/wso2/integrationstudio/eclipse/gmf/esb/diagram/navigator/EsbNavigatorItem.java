@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator;
+package org.wso2.integrationstudio.gmf.esb.diagram.navigator;
 
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.core.runtime.Platform;
@@ -19,9 +19,9 @@ public class EsbNavigatorItem extends EsbAbstractNavigatorItem {
         Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
             public Object getAdapter(Object adaptableObject, Class adapterType) {
-                if (adaptableObject instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem
+                if (adaptableObject instanceof org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbNavigatorItem
                         && (adapterType == View.class || adapterType == EObject.class)) {
-                    return ((org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem) adaptableObject)
+                    return ((org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbNavigatorItem) adaptableObject)
                             .getView();
                 }
                 return null;
@@ -30,7 +30,7 @@ public class EsbNavigatorItem extends EsbAbstractNavigatorItem {
             public Class[] getAdapterList() {
                 return supportedTypes;
             }
-        }, org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem.class);
+        }, org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbNavigatorItem.class);
     }
 
     /**
@@ -70,9 +70,9 @@ public class EsbNavigatorItem extends EsbAbstractNavigatorItem {
      * @generated
      */
     public boolean equals(Object obj) {
-        if (obj instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem) {
+        if (obj instanceof org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbNavigatorItem) {
             return EcoreUtil.getURI(getView()).equals(EcoreUtil.getURI(
-                    ((org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem) obj).getView()));
+                    ((org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbNavigatorItem) obj).getView()));
         }
         return super.equals(obj);
     }

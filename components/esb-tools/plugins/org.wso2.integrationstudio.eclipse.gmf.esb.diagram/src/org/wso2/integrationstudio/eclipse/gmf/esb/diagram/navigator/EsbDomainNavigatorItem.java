@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator;
+package org.wso2.integrationstudio.gmf.esb.diagram.navigator;
 
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.core.runtime.Platform;
@@ -21,8 +21,8 @@ public class EsbDomainNavigatorItem extends PlatformObject {
         Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
             public Object getAdapter(Object adaptableObject, Class adapterType) {
-                if (adaptableObject instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) {
-                    org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem domainNavigatorItem = (org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) adaptableObject;
+                if (adaptableObject instanceof org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) {
+                    org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbDomainNavigatorItem domainNavigatorItem = (org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) adaptableObject;
                     EObject eObject = domainNavigatorItem.getEObject();
                     if (adapterType == EObject.class) {
                         return eObject;
@@ -38,7 +38,7 @@ public class EsbDomainNavigatorItem extends PlatformObject {
             public Class[] getAdapterList() {
                 return supportedTypes;
             }
-        }, org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem.class);
+        }, org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbDomainNavigatorItem.class);
     }
 
     /**
@@ -90,10 +90,10 @@ public class EsbDomainNavigatorItem extends PlatformObject {
      * @generated
      */
     public boolean equals(Object obj) {
-        if (obj instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) {
+        if (obj instanceof org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) {
             return EcoreUtil.getURI(getEObject())
                     .equals(EcoreUtil.getURI(
-                            ((org.wso2.integrationstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) obj)
+                            ((org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) obj)
                                     .getEObject()));
         }
         return super.equals(obj);

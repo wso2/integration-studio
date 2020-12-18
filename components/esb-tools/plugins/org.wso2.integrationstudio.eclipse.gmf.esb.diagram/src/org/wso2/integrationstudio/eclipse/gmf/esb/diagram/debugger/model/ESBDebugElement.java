@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.model;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -24,12 +24,12 @@ import org.eclipse.debug.core.model.IDisconnect;
 import org.eclipse.debug.core.model.IStep;
 import org.eclipse.debug.core.model.ISuspendResume;
 import org.eclipse.debug.core.model.ITerminate;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.DisconnectRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.ResumeRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.TerminateRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerResumeType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.DisconnectRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.ResumeRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.TerminateRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerResumeType;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
 
 /**
  * This class is implementation of common function for debug elements

@@ -29,7 +29,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>    
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.integrationstudio.eclipse.carbonserver42</artifactId>
+    <artifactId>org.wso2.integrationstudio.carbonserver42</artifactId>
   <packaging>eclipse-plugin</packaging>
     <name>Integration Studio Carbon Server 4.2</name>
 </project>

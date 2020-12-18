@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.publisher;
+package org.wso2.integrationstudio.distribution.project.publisher;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.wst.server.core.IServer;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServerModulePublisher;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICredentials;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.utils.CAppDeployer;
-import org.wso2.integrationstudio.eclipse.distribution.project.export.CarExportHandler;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServerModulePublisher;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICredentials;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.utils.CAppDeployer;
+import org.wso2.integrationstudio.distribution.project.export.CarExportHandler;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 import java.io.File;
 import java.net.URL;

@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import java.math.BigInteger;
 
@@ -20,14 +20,14 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getWorksheetnumber <em>Worksheetnumber</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getStartingrow <em>Startingrow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getMaxrowcount <em>Maxrowcount</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getHasheader <em>Hasheader</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.GSpreadQuery#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.GSpreadQuery#getWorksheetnumber <em>Worksheetnumber</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.GSpreadQuery#getStartingrow <em>Startingrow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.GSpreadQuery#getMaxrowcount <em>Maxrowcount</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.GSpreadQuery#getHasheader <em>Hasheader</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getGSpreadQuery()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getGSpreadQuery()
  * @model extendedMetaData="name='gspread_._type' kind='mixed'"
  * @generated
  */
@@ -42,7 +42,7 @@ public interface GSpreadQuery extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getGSpreadQuery_Mixed()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getGSpreadQuery_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -59,7 +59,7 @@ public interface GSpreadQuery extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Worksheetnumber</em>' containment reference.
 	 * @see #setWorksheetnumber(WorkSheetNumber)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getGSpreadQuery_Worksheetnumber()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getGSpreadQuery_Worksheetnumber()
 	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='worksheetnumber' namespace='##targetNamespace'"
 	 * @generated
@@ -67,7 +67,7 @@ public interface GSpreadQuery extends EObject {
 	WorkSheetNumber getWorksheetnumber();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getWorksheetnumber <em>Worksheetnumber</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.GSpreadQuery#getWorksheetnumber <em>Worksheetnumber</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Worksheetnumber</em>' containment reference.
@@ -86,7 +86,7 @@ public interface GSpreadQuery extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Startingrow</em>' containment reference.
 	 * @see #setStartingrow(StartingRow)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getGSpreadQuery_Startingrow()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getGSpreadQuery_Startingrow()
 	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='startingrow' namespace='##targetNamespace'"
 	 * @generated
@@ -94,7 +94,7 @@ public interface GSpreadQuery extends EObject {
 	StartingRow getStartingrow();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getStartingrow <em>Startingrow</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.GSpreadQuery#getStartingrow <em>Startingrow</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Startingrow</em>' containment reference.
@@ -113,7 +113,7 @@ public interface GSpreadQuery extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Maxrowcount</em>' containment reference.
 	 * @see #setMaxrowcount(MaxRowCount)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getGSpreadQuery_Maxrowcount()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getGSpreadQuery_Maxrowcount()
 	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='maxrowcount' namespace='##targetNamespace'"
 	 * @generated
@@ -121,7 +121,7 @@ public interface GSpreadQuery extends EObject {
 	MaxRowCount getMaxrowcount();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getMaxrowcount <em>Maxrowcount</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.GSpreadQuery#getMaxrowcount <em>Maxrowcount</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Maxrowcount</em>' containment reference.
@@ -140,7 +140,7 @@ public interface GSpreadQuery extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hasheader</em>' containment reference.
 	 * @see #setHasheader(HasHeader)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getGSpreadQuery_Hasheader()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getGSpreadQuery_Hasheader()
 	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='hasheader' namespace='##targetNamespace'"
 	 * @generated
@@ -148,7 +148,7 @@ public interface GSpreadQuery extends EObject {
 	HasHeader getHasheader();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery#getHasheader <em>Hasheader</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.GSpreadQuery#getHasheader <em>Hasheader</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Hasheader</em>' containment reference.

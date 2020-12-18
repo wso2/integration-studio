@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,15 +23,15 @@ import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyContextAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyMessageAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.POJOCommandMediatorExt;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.CommandMediator;
+import org.wso2.integrationstudio.gmf.esb.CommandProperty;
+import org.wso2.integrationstudio.gmf.esb.CommandPropertyContextAction;
+import org.wso2.integrationstudio.gmf.esb.CommandPropertyMessageAction;
+import org.wso2.integrationstudio.gmf.esb.CommandPropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.POJOCommandMediatorExt;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class POJOCommandMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CommandMediator> {
 

@@ -11,7 +11,7 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.capp.refactor;
+package org.wso2.integrationstudio.ds.capp.refactor;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -31,12 +31,12 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
-import org.wso2.integrationstudio.eclipse.ds.Activator;
-import org.wso2.integrationstudio.eclipse.ds.refactor.MavenConfigurationFileDeleteChange;
-import org.wso2.integrationstudio.eclipse.ds.util.Messages;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.integrationstudio.ds.Activator;
+import org.wso2.integrationstudio.ds.refactor.MavenConfigurationFileDeleteChange;
+import org.wso2.integrationstudio.ds.util.Messages;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
 
 public class DataServiceDeleteParticipant extends DeleteParticipant {
 

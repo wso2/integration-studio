@@ -22,7 +22,7 @@
 		<version>7.2.0-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>org.wso2.integrationstudio.eclipse.esb.project</artifactId>
+	<artifactId>org.wso2.integrationstudio.esb.project</artifactId>
 	<packaging>eclipse-plugin</packaging>
 	<name>WSO2 Integration Studio ESB Project</name>
 

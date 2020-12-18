@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.carbonserver.remote.ui;
+package org.wso2.integrationstudio.carbonserver.remote.ui;
 
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -29,8 +29,8 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.IServerWorkingCopy;
 import org.eclipse.wst.server.ui.wizard.IWizardHandle;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.utils.CarbonServerUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver.remote.internal.RemoteCarbonServer;
+import org.wso2.integrationstudio.carbonserver.base.utils.CarbonServerUtils;
+import org.wso2.integrationstudio.carbonserver.remote.internal.RemoteCarbonServer;
 
 public class RemoteWizardFragmentCompositie extends Composite {
 	private Text txtUrl;

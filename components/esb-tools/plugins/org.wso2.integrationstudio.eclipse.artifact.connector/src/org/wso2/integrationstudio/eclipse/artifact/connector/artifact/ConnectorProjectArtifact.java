@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.connector.artifact;
+package org.wso2.integrationstudio.artifact.connector.artifact;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +28,7 @@ import javax.xml.stream.FactoryConfigurationError;
 
 import org.apache.axiom.om.OMDocument;
 import org.apache.axiom.om.OMElement;
-import org.wso2.integrationstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
+import org.wso2.integrationstudio.platform.core.manifest.AbstractXMLDoc;
 /**
  * This class represents the .artifact.xml file which keeps the metadata of the artifacts included in an ESB project.
  * Structure of the file is as follows.

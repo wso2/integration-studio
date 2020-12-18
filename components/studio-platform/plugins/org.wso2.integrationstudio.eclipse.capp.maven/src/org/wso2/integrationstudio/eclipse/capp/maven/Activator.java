@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.capp.maven;
+package org.wso2.integrationstudio.capp.maven;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -8,7 +8,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
 
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.capp.maven";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.capp.maven";
 
 	private static Activator plugin;
 	

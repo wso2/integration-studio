@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +11,18 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultBranchOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchCaseBranchOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchCaseContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchDefaultBranchOutputConnectorImpl;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.SwitchCaseBranchOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.SwitchCaseContainer;
+import org.wso2.integrationstudio.gmf.esb.SwitchDefaultBranchOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.SwitchDefaultContainer;
+import org.wso2.integrationstudio.gmf.esb.SwitchMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SwitchCaseBranchOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SwitchCaseContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.impl.SwitchDefaultBranchOutputConnectorImpl;
 
 public class SwitchMediatorUtils {
 

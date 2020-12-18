@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.remote.views;
+package org.wso2.integrationstudio.registry.manager.remote.views;
 
 import java.io.File;
 import java.io.IOException;
@@ -113,49 +113,49 @@ import org.wso2.carbon.registry.core.Collection;
 import org.wso2.carbon.registry.core.Resource;
 import org.wso2.carbon.registry.core.exceptions.RegistryException;
 import org.wso2.carbon.registry.ws.stub.xsd.WSResourceData;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.MessageDialogUtils;
-import org.wso2.integrationstudio.eclipse.registry.base.core.Registry;
-import org.wso2.integrationstudio.eclipse.registry.base.core.Registry.IResourceUploadListener;
-import org.wso2.integrationstudio.eclipse.registry.base.editor.input.ResourceEditorInput;
-import org.wso2.integrationstudio.eclipse.registry.base.heartbeat.RegistryHeartBeatTester;
-import org.wso2.integrationstudio.eclipse.registry.base.interfaces.IRegistryAction;
-import org.wso2.integrationstudio.eclipse.registry.base.interfaces.IRegistryFormEditorPage;
-import org.wso2.integrationstudio.eclipse.registry.base.interfaces.RegistryBrowserTraverseListener;
-import org.wso2.integrationstudio.eclipse.registry.base.logger.ExceptionHandler;
-import org.wso2.integrationstudio.eclipse.registry.base.managers.RemoteContentManager;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryContentContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceType;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryURLNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUser;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserManagerContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserRole;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserRoleContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryCredentialData;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryURLInfo;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryUrlStore;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.controls.RegistryTreeViewer;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.dialog.RegistryTreeBrowserDialog;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.dialog.UserPermissionDialog;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.editor.RegistryResourceEditor;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.util.ImageUtils;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.util.SWTControlUtils;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.InvalidRegistryURLException;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.UnknownRegistryException;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.Activator;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.dialog.RegistryPerspectiveInfoDialog;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.dragdrop.DragDropUtils;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.dragdrop.Queue;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.utils.Utils;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.utils.Utils.ResourceCounter;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.wizards.AddRoleWizard;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.wizards.AddUserWizard;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.wizards.ChangePermissionWizard;
-import org.wso2.integrationstudio.eclipse.usermgt.remote.UserManager;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.utils.MessageDialogUtils;
+import org.wso2.integrationstudio.registry.base.core.Registry;
+import org.wso2.integrationstudio.registry.base.core.Registry.IResourceUploadListener;
+import org.wso2.integrationstudio.registry.base.editor.input.ResourceEditorInput;
+import org.wso2.integrationstudio.registry.base.heartbeat.RegistryHeartBeatTester;
+import org.wso2.integrationstudio.registry.base.interfaces.IRegistryAction;
+import org.wso2.integrationstudio.registry.base.interfaces.IRegistryFormEditorPage;
+import org.wso2.integrationstudio.registry.base.interfaces.RegistryBrowserTraverseListener;
+import org.wso2.integrationstudio.registry.base.logger.ExceptionHandler;
+import org.wso2.integrationstudio.registry.base.managers.RemoteContentManager;
+import org.wso2.integrationstudio.registry.base.model.RegistryContentContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceType;
+import org.wso2.integrationstudio.registry.base.model.RegistryURLNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryUser;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserManagerContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserRole;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserRoleContainer;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryCredentialData;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryURLInfo;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryUrlStore;
+import org.wso2.integrationstudio.registry.base.ui.controls.RegistryTreeViewer;
+import org.wso2.integrationstudio.registry.base.ui.dialog.RegistryTreeBrowserDialog;
+import org.wso2.integrationstudio.registry.base.ui.dialog.UserPermissionDialog;
+import org.wso2.integrationstudio.registry.base.ui.editor.RegistryResourceEditor;
+import org.wso2.integrationstudio.registry.base.ui.util.ImageUtils;
+import org.wso2.integrationstudio.registry.base.ui.util.SWTControlUtils;
+import org.wso2.integrationstudio.registry.core.exception.InvalidRegistryURLException;
+import org.wso2.integrationstudio.registry.core.exception.UnknownRegistryException;
+import org.wso2.integrationstudio.registry.manager.remote.Activator;
+import org.wso2.integrationstudio.registry.manager.remote.dialog.RegistryPerspectiveInfoDialog;
+import org.wso2.integrationstudio.registry.manager.remote.dragdrop.DragDropUtils;
+import org.wso2.integrationstudio.registry.manager.remote.dragdrop.Queue;
+import org.wso2.integrationstudio.registry.manager.remote.utils.Utils;
+import org.wso2.integrationstudio.registry.manager.remote.utils.Utils.ResourceCounter;
+import org.wso2.integrationstudio.registry.manager.remote.wizards.AddRoleWizard;
+import org.wso2.integrationstudio.registry.manager.remote.wizards.AddUserWizard;
+import org.wso2.integrationstudio.registry.manager.remote.wizards.ChangePermissionWizard;
+import org.wso2.integrationstudio.usermgt.remote.UserManager;
 
 public class RegistryBrowserView extends ViewPart implements Observer {
 
@@ -2985,7 +2985,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 			thirdPartyActions = new ArrayList<IRegistryAction>();
 			IExtensionRegistry reg = Platform.getExtensionRegistry();
 			IConfigurationElement[] extensions = reg
-					.getConfigurationElementsFor("org.wso2.integrationstudio.eclipse.greg.viewer.action");
+					.getConfigurationElementsFor("org.wso2.integrationstudio.greg.viewer.action");
 			for (int i = 0; i < extensions.length; i++) {
 				IConfigurationElement element = extensions[i];
 				IRegistryAction r;

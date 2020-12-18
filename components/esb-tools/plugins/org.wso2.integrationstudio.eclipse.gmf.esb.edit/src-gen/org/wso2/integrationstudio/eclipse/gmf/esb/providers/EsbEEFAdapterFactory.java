@@ -1,11 +1,11 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.providers;
+package org.wso2.integrationstudio.gmf.esb.providers;
 
 import org.eclipse.emf.common.notify.Adapter;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory;
+import org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory;
 
 /**
  * 
@@ -15,7 +15,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEsbDiagramAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEsbDiagramAdapter()
 	 * 
 	 */
 	public Adapter createEsbDiagramAdapter() {
@@ -23,7 +23,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEsbServerAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEsbServerAdapter()
 	 * 
 	 */
 	public Adapter createEsbServerAdapter() {
@@ -31,7 +31,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEsbLinkAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEsbLinkAdapter()
 	 * 
 	 */
 	public Adapter createEsbLinkAdapter() {
@@ -39,7 +39,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCallMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCallMediatorAdapter()
 	 * 
 	 */
 	public Adapter createCallMediatorAdapter() {
@@ -47,7 +47,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCallMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCallMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCallMediatorInputConnectorAdapter() {
@@ -55,7 +55,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCallMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCallMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCallMediatorOutputConnectorAdapter() {
@@ -63,7 +63,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCallMediatorEndpointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCallMediatorEndpointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCallMediatorEndpointOutputConnectorAdapter() {
@@ -71,7 +71,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEndPointPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEndPointPropertyAdapter()
 	 * 
 	 */
 	public Adapter createEndPointPropertyAdapter() {
@@ -79,7 +79,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createProxyServiceAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createProxyServiceAdapter()
 	 * 
 	 */
 	public Adapter createProxyServiceAdapter() {
@@ -87,7 +87,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createProxyOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createProxyOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createProxyOutputConnectorAdapter() {
@@ -95,7 +95,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createProxyInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createProxyInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createProxyInputConnectorAdapter() {
@@ -103,7 +103,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createProxyOutSequenceOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createProxyOutSequenceOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createProxyOutSequenceOutputConnectorAdapter() {
@@ -111,7 +111,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createProxyInSequenceInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createProxyInSequenceInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createProxyInSequenceInputConnectorAdapter() {
@@ -119,7 +119,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createProxyWSDLResourceAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createProxyWSDLResourceAdapter()
 	 * 
 	 */
 	public Adapter createProxyWSDLResourceAdapter() {
@@ -127,7 +127,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createProxyFaultInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createProxyFaultInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createProxyFaultInputConnectorAdapter() {
@@ -135,7 +135,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createProxyServiceParameterAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createProxyServiceParameterAdapter()
 	 * 
 	 */
 	public Adapter createProxyServiceParameterAdapter() {
@@ -143,7 +143,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createProxyServicePolicyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createProxyServicePolicyAdapter()
 	 * 
 	 */
 	public Adapter createProxyServicePolicyAdapter() {
@@ -151,7 +151,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMediatorFlowAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMediatorFlowAdapter()
 	 * 
 	 */
 	public Adapter createMediatorFlowAdapter() {
@@ -159,7 +159,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEndpointFlowAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEndpointFlowAdapter()
 	 * 
 	 */
 	public Adapter createEndpointFlowAdapter() {
@@ -167,7 +167,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMessageMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMessageMediatorAdapter()
 	 * 
 	 */
 	public Adapter createMessageMediatorAdapter() {
@@ -175,7 +175,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMessageInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMessageInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createMessageInputConnectorAdapter() {
@@ -183,7 +183,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMessageOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMessageOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createMessageOutputConnectorAdapter() {
@@ -191,7 +191,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDefaultEndPointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDefaultEndPointAdapter()
 	 * 
 	 */
 	public Adapter createDefaultEndPointAdapter() {
@@ -199,7 +199,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDefaultEndPointInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDefaultEndPointInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createDefaultEndPointInputConnectorAdapter() {
@@ -207,7 +207,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDefaultEndPointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDefaultEndPointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createDefaultEndPointOutputConnectorAdapter() {
@@ -215,7 +215,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAddressEndPointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAddressEndPointAdapter()
 	 * 
 	 */
 	public Adapter createAddressEndPointAdapter() {
@@ -223,7 +223,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAddressEndPointInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAddressEndPointInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAddressEndPointInputConnectorAdapter() {
@@ -231,7 +231,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAddressEndPointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAddressEndPointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAddressEndPointOutputConnectorAdapter() {
@@ -239,7 +239,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createTemplateEndpointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createTemplateEndpointAdapter()
 	 * 
 	 */
 	public Adapter createTemplateEndpointAdapter() {
@@ -247,7 +247,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createTemplateEndpointInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createTemplateEndpointInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createTemplateEndpointInputConnectorAdapter() {
@@ -255,7 +255,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createTemplateEndpointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createTemplateEndpointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createTemplateEndpointOutputConnectorAdapter() {
@@ -263,7 +263,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createTemplateEndpointParameterAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createTemplateEndpointParameterAdapter()
 	 * 
 	 */
 	public Adapter createTemplateEndpointParameterAdapter() {
@@ -271,7 +271,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createHTTPEndpointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createHTTPEndpointAdapter()
 	 * 
 	 */
 	public Adapter createHTTPEndpointAdapter() {
@@ -279,7 +279,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createHTTPEndPointInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createHTTPEndPointInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createHTTPEndPointInputConnectorAdapter() {
@@ -287,7 +287,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createHTTPEndPointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createHTTPEndPointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createHTTPEndPointOutputConnectorAdapter() {
@@ -295,7 +295,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDropMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDropMediatorAdapter()
 	 * 
 	 */
 	public Adapter createDropMediatorAdapter() {
@@ -303,7 +303,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDropMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDropMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createDropMediatorInputConnectorAdapter() {
@@ -311,7 +311,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFilterMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFilterMediatorAdapter()
 	 * 
 	 */
 	public Adapter createFilterMediatorAdapter() {
@@ -319,7 +319,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFilterMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFilterMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createFilterMediatorInputConnectorAdapter() {
@@ -327,7 +327,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFilterMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFilterMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createFilterMediatorOutputConnectorAdapter() {
@@ -335,7 +335,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFilterMediatorPassOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFilterMediatorPassOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createFilterMediatorPassOutputConnectorAdapter() {
@@ -343,7 +343,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFilterMediatorFailOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFilterMediatorFailOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createFilterMediatorFailOutputConnectorAdapter() {
@@ -351,7 +351,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMergeNodeAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMergeNodeAdapter()
 	 * 
 	 */
 	public Adapter createMergeNodeAdapter() {
@@ -359,7 +359,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMergeNodeFirstInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMergeNodeFirstInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createMergeNodeFirstInputConnectorAdapter() {
@@ -367,7 +367,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMergeNodeSecondInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMergeNodeSecondInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createMergeNodeSecondInputConnectorAdapter() {
@@ -375,7 +375,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMergeNodeOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMergeNodeOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createMergeNodeOutputConnectorAdapter() {
@@ -383,7 +383,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createLogMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createLogMediatorAdapter()
 	 * 
 	 */
 	public Adapter createLogMediatorAdapter() {
@@ -391,7 +391,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createLogMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createLogMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createLogMediatorInputConnectorAdapter() {
@@ -399,7 +399,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createLogMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createLogMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createLogMediatorOutputConnectorAdapter() {
@@ -407,7 +407,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createLogPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createLogPropertyAdapter()
 	 * 
 	 */
 	public Adapter createLogPropertyAdapter() {
@@ -415,7 +415,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPublishEventMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPublishEventMediatorAdapter()
 	 * 
 	 */
 	public Adapter createPublishEventMediatorAdapter() {
@@ -423,7 +423,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPublishEventMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPublishEventMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createPublishEventMediatorInputConnectorAdapter() {
@@ -431,7 +431,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPublishEventMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPublishEventMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createPublishEventMediatorOutputConnectorAdapter() {
@@ -439,7 +439,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPublishEventMediatorAttributeAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPublishEventMediatorAttributeAdapter()
 	 * 
 	 */
 	public Adapter createPublishEventMediatorAttributeAdapter() {
@@ -447,7 +447,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createBAMMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createBAMMediatorAdapter()
 	 * 
 	 */
 	public Adapter createBAMMediatorAdapter() {
@@ -455,7 +455,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createBAMMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createBAMMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createBAMMediatorInputConnectorAdapter() {
@@ -463,7 +463,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createBAMMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createBAMMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createBAMMediatorOutputConnectorAdapter() {
@@ -471,7 +471,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createBeanMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createBeanMediatorAdapter()
 	 * 
 	 */
 	public Adapter createBeanMediatorAdapter() {
@@ -479,7 +479,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createBeanMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createBeanMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createBeanMediatorInputConnectorAdapter() {
@@ -487,7 +487,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createBeanMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createBeanMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createBeanMediatorOutputConnectorAdapter() {
@@ -495,7 +495,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEJBMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEJBMediatorAdapter()
 	 * 
 	 */
 	public Adapter createEJBMediatorAdapter() {
@@ -503,7 +503,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEJBMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEJBMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEJBMediatorInputConnectorAdapter() {
@@ -511,7 +511,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEJBMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEJBMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEJBMediatorOutputConnectorAdapter() {
@@ -519,7 +519,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMethodArgumentAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMethodArgumentAdapter()
 	 * 
 	 */
 	public Adapter createMethodArgumentAdapter() {
@@ -527,7 +527,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRegistryKeyPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRegistryKeyPropertyAdapter()
 	 * 
 	 */
 	public Adapter createRegistryKeyPropertyAdapter() {
@@ -535,7 +535,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPropertyMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPropertyMediatorAdapter()
 	 * 
 	 */
 	public Adapter createPropertyMediatorAdapter() {
@@ -543,7 +543,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPropertyMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPropertyMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createPropertyMediatorInputConnectorAdapter() {
@@ -551,7 +551,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPropertyMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPropertyMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createPropertyMediatorOutputConnectorAdapter() {
@@ -559,7 +559,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPropertyGroupMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPropertyGroupMediatorAdapter()
 	 * 
 	 */
 	public Adapter createPropertyGroupMediatorAdapter() {
@@ -567,7 +567,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPropertyGroupMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPropertyGroupMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createPropertyGroupMediatorInputConnectorAdapter() {
@@ -575,7 +575,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createNamespacedPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createNamespacedPropertyAdapter()
 	 * 
 	 */
 	public Adapter createNamespacedPropertyAdapter() {
@@ -583,7 +583,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEnrichMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEnrichMediatorAdapter()
 	 * 
 	 */
 	public Adapter createEnrichMediatorAdapter() {
@@ -591,7 +591,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEnrichMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEnrichMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEnrichMediatorInputConnectorAdapter() {
@@ -599,7 +599,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEnrichMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEnrichMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEnrichMediatorOutputConnectorAdapter() {
@@ -607,7 +607,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createXSLTMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createXSLTMediatorAdapter()
 	 * 
 	 */
 	public Adapter createXSLTMediatorAdapter() {
@@ -615,7 +615,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createXSLTPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createXSLTPropertyAdapter()
 	 * 
 	 */
 	public Adapter createXSLTPropertyAdapter() {
@@ -623,7 +623,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createXSLTFeatureAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createXSLTFeatureAdapter()
 	 * 
 	 */
 	public Adapter createXSLTFeatureAdapter() {
@@ -631,7 +631,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createXSLTResourceAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createXSLTResourceAdapter()
 	 * 
 	 */
 	public Adapter createXSLTResourceAdapter() {
@@ -639,7 +639,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createXSLTMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createXSLTMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createXSLTMediatorInputConnectorAdapter() {
@@ -647,7 +647,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createXSLTMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createXSLTMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createXSLTMediatorOutputConnectorAdapter() {
@@ -655,7 +655,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSwitchMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSwitchMediatorAdapter()
 	 * 
 	 */
 	public Adapter createSwitchMediatorAdapter() {
@@ -663,7 +663,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSwitchCaseBranchOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSwitchCaseBranchOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSwitchCaseBranchOutputConnectorAdapter() {
@@ -671,7 +671,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSwitchDefaultBranchOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSwitchDefaultBranchOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSwitchDefaultBranchOutputConnectorAdapter() {
@@ -679,7 +679,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSwitchMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSwitchMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSwitchMediatorInputConnectorAdapter() {
@@ -687,7 +687,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSwitchMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSwitchMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSwitchMediatorOutputConnectorAdapter() {
@@ -695,7 +695,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSwitchCaseParentContainerAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSwitchCaseParentContainerAdapter()
 	 * 
 	 */
 	public Adapter createSwitchCaseParentContainerAdapter() {
@@ -703,7 +703,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEsbSequenceAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEsbSequenceAdapter()
 	 * 
 	 */
 	public Adapter createEsbSequenceAdapter() {
@@ -711,7 +711,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEsbSequenceInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEsbSequenceInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEsbSequenceInputConnectorAdapter() {
@@ -719,7 +719,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEsbSequenceOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEsbSequenceOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEsbSequenceOutputConnectorAdapter() {
@@ -727,7 +727,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSequenceAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSequenceAdapter()
 	 * 
 	 */
 	public Adapter createSequenceAdapter() {
@@ -735,7 +735,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSequenceInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSequenceInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSequenceInputConnectorAdapter() {
@@ -743,7 +743,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSequenceOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSequenceOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSequenceOutputConnectorAdapter() {
@@ -751,7 +751,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEventMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEventMediatorAdapter()
 	 * 
 	 */
 	public Adapter createEventMediatorAdapter() {
@@ -759,7 +759,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEventMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEventMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEventMediatorInputConnectorAdapter() {
@@ -767,7 +767,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEventMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEventMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEventMediatorOutputConnectorAdapter() {
@@ -775,7 +775,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorAdapter()
 	 * 
 	 */
 	public Adapter createEntitlementMediatorAdapter() {
@@ -783,7 +783,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEntitlementMediatorInputConnectorAdapter() {
@@ -791,7 +791,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEntitlementMediatorOutputConnectorAdapter() {
@@ -799,7 +799,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorOnRejectOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorOnRejectOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEntitlementMediatorOnRejectOutputConnectorAdapter() {
@@ -807,7 +807,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorOnAcceptOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorOnAcceptOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEntitlementMediatorOnAcceptOutputConnectorAdapter() {
@@ -815,7 +815,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorAdviceOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorAdviceOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEntitlementMediatorAdviceOutputConnectorAdapter() {
@@ -823,7 +823,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorObligationsOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEntitlementMediatorObligationsOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEntitlementMediatorObligationsOutputConnectorAdapter() {
@@ -831,7 +831,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEnqueueMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEnqueueMediatorAdapter()
 	 * 
 	 */
 	public Adapter createEnqueueMediatorAdapter() {
@@ -839,7 +839,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEnqueueMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEnqueueMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEnqueueMediatorInputConnectorAdapter() {
@@ -847,7 +847,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEnqueueMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEnqueueMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createEnqueueMediatorOutputConnectorAdapter() {
@@ -855,7 +855,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createClassMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createClassMediatorAdapter()
 	 * 
 	 */
 	public Adapter createClassMediatorAdapter() {
@@ -863,7 +863,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createClassMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createClassMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createClassMediatorInputConnectorAdapter() {
@@ -871,7 +871,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createClassMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createClassMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createClassMediatorOutputConnectorAdapter() {
@@ -879,7 +879,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createClassPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createClassPropertyAdapter()
 	 * 
 	 */
 	public Adapter createClassPropertyAdapter() {
@@ -887,7 +887,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSpringMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSpringMediatorAdapter()
 	 * 
 	 */
 	public Adapter createSpringMediatorAdapter() {
@@ -895,7 +895,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSpringMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSpringMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSpringMediatorInputConnectorAdapter() {
@@ -903,7 +903,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSpringMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSpringMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSpringMediatorOutputConnectorAdapter() {
@@ -911,7 +911,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createScriptMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createScriptMediatorAdapter()
 	 * 
 	 */
 	public Adapter createScriptMediatorAdapter() {
@@ -919,7 +919,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createScriptMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createScriptMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createScriptMediatorInputConnectorAdapter() {
@@ -927,7 +927,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createScriptMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createScriptMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createScriptMediatorOutputConnectorAdapter() {
@@ -935,7 +935,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFaultMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFaultMediatorAdapter()
 	 * 
 	 */
 	public Adapter createFaultMediatorAdapter() {
@@ -943,7 +943,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFaultMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFaultMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createFaultMediatorInputConnectorAdapter() {
@@ -951,7 +951,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFaultMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFaultMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createFaultMediatorOutputConnectorAdapter() {
@@ -959,7 +959,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAggregateMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAggregateMediatorAdapter()
 	 * 
 	 */
 	public Adapter createAggregateMediatorAdapter() {
@@ -967,7 +967,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAggregateMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAggregateMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAggregateMediatorInputConnectorAdapter() {
@@ -975,7 +975,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAggregateMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAggregateMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAggregateMediatorOutputConnectorAdapter() {
@@ -983,7 +983,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAggregateMediatorOnCompleteOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAggregateMediatorOnCompleteOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAggregateMediatorOnCompleteOutputConnectorAdapter() {
@@ -991,7 +991,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRouterMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRouterMediatorAdapter()
 	 * 
 	 */
 	public Adapter createRouterMediatorAdapter() {
@@ -999,7 +999,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRouterRouteAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRouterRouteAdapter()
 	 * 
 	 */
 	public Adapter createRouterRouteAdapter() {
@@ -1007,7 +1007,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAbstractCommonTargetAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAbstractCommonTargetAdapter()
 	 * 
 	 */
 	public Adapter createAbstractCommonTargetAdapter() {
@@ -1015,7 +1015,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRouterTargetAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRouterTargetAdapter()
 	 * 
 	 */
 	public Adapter createRouterTargetAdapter() {
@@ -1023,7 +1023,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRouterMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRouterMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRouterMediatorInputConnectorAdapter() {
@@ -1031,7 +1031,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRouterMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRouterMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRouterMediatorOutputConnectorAdapter() {
@@ -1039,7 +1039,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRouterMediatorTargetOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRouterMediatorTargetOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRouterMediatorTargetOutputConnectorAdapter() {
@@ -1047,7 +1047,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRouterMediatorContainerAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRouterMediatorContainerAdapter()
 	 * 
 	 */
 	public Adapter createRouterMediatorContainerAdapter() {
@@ -1055,7 +1055,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRouterTargetContainerAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRouterTargetContainerAdapter()
 	 * 
 	 */
 	public Adapter createRouterTargetContainerAdapter() {
@@ -1063,7 +1063,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCloneMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCloneMediatorAdapter()
 	 * 
 	 */
 	public Adapter createCloneMediatorAdapter() {
@@ -1071,7 +1071,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCloneTargetAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCloneTargetAdapter()
 	 * 
 	 */
 	public Adapter createCloneTargetAdapter() {
@@ -1079,7 +1079,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCloneMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCloneMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCloneMediatorInputConnectorAdapter() {
@@ -1087,7 +1087,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCloneMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCloneMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCloneMediatorOutputConnectorAdapter() {
@@ -1095,7 +1095,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCloneMediatorTargetOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCloneMediatorTargetOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCloneMediatorTargetOutputConnectorAdapter() {
@@ -1103,7 +1103,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCloneMediatorContainerAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCloneMediatorContainerAdapter()
 	 * 
 	 */
 	public Adapter createCloneMediatorContainerAdapter() {
@@ -1111,7 +1111,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createForEachMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createForEachMediatorAdapter()
 	 * 
 	 */
 	public Adapter createForEachMediatorAdapter() {
@@ -1119,7 +1119,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createForEachMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createForEachMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createForEachMediatorInputConnectorAdapter() {
@@ -1127,7 +1127,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createForEachMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createForEachMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createForEachMediatorOutputConnectorAdapter() {
@@ -1135,7 +1135,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createForEachMediatorTargetOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createForEachMediatorTargetOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createForEachMediatorTargetOutputConnectorAdapter() {
@@ -1143,7 +1143,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createForEachTargetAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createForEachTargetAdapter()
 	 * 
 	 */
 	public Adapter createForEachTargetAdapter() {
@@ -1151,7 +1151,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createIterateMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createIterateMediatorAdapter()
 	 * 
 	 */
 	public Adapter createIterateMediatorAdapter() {
@@ -1159,7 +1159,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createIterateMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createIterateMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createIterateMediatorInputConnectorAdapter() {
@@ -1167,7 +1167,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createIterateMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createIterateMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createIterateMediatorOutputConnectorAdapter() {
@@ -1175,7 +1175,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createIterateMediatorTargetOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createIterateMediatorTargetOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createIterateMediatorTargetOutputConnectorAdapter() {
@@ -1183,7 +1183,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createIterateTargetAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createIterateTargetAdapter()
 	 * 
 	 */
 	public Adapter createIterateTargetAdapter() {
@@ -1191,7 +1191,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMediatorSequenceAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMediatorSequenceAdapter()
 	 * 
 	 */
 	public Adapter createMediatorSequenceAdapter() {
@@ -1199,7 +1199,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCacheMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCacheMediatorAdapter()
 	 * 
 	 */
 	public Adapter createCacheMediatorAdapter() {
@@ -1207,7 +1207,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCacheMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCacheMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCacheMediatorInputConnectorAdapter() {
@@ -1215,7 +1215,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCacheMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCacheMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCacheMediatorOutputConnectorAdapter() {
@@ -1223,7 +1223,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCacheMediatorOnHitOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCacheMediatorOnHitOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCacheMediatorOnHitOutputConnectorAdapter() {
@@ -1231,7 +1231,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createXQueryMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createXQueryMediatorAdapter()
 	 * 
 	 */
 	public Adapter createXQueryMediatorAdapter() {
@@ -1239,7 +1239,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createXQueryMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createXQueryMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createXQueryMediatorInputConnectorAdapter() {
@@ -1247,7 +1247,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createXQueryMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createXQueryMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createXQueryMediatorOutputConnectorAdapter() {
@@ -1255,7 +1255,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createXQueryVariableAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createXQueryVariableAdapter()
 	 * 
 	 */
 	public Adapter createXQueryVariableAdapter() {
@@ -1263,7 +1263,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCalloutMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCalloutMediatorAdapter()
 	 * 
 	 */
 	public Adapter createCalloutMediatorAdapter() {
@@ -1271,7 +1271,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCalloutMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCalloutMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCalloutMediatorInputConnectorAdapter() {
@@ -1279,7 +1279,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCalloutMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCalloutMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCalloutMediatorOutputConnectorAdapter() {
@@ -1287,7 +1287,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRMSequenceMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRMSequenceMediatorAdapter()
 	 * 
 	 */
 	public Adapter createRMSequenceMediatorAdapter() {
@@ -1295,7 +1295,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRMSequenceMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRMSequenceMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRMSequenceMediatorInputConnectorAdapter() {
@@ -1303,7 +1303,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRMSequenceMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRMSequenceMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRMSequenceMediatorOutputConnectorAdapter() {
@@ -1311,7 +1311,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createTransactionMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createTransactionMediatorAdapter()
 	 * 
 	 */
 	public Adapter createTransactionMediatorAdapter() {
@@ -1319,7 +1319,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createTransactionMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createTransactionMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createTransactionMediatorInputConnectorAdapter() {
@@ -1327,7 +1327,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createTransactionMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createTransactionMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createTransactionMediatorOutputConnectorAdapter() {
@@ -1335,7 +1335,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createOAuthMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createOAuthMediatorAdapter()
 	 * 
 	 */
 	public Adapter createOAuthMediatorAdapter() {
@@ -1343,7 +1343,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createOAuthMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createOAuthMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createOAuthMediatorInputConnectorAdapter() {
@@ -1351,7 +1351,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createOAuthMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createOAuthMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createOAuthMediatorOutputConnectorAdapter() {
@@ -1359,7 +1359,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAutoscaleInMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAutoscaleInMediatorAdapter()
 	 * 
 	 */
 	public Adapter createAutoscaleInMediatorAdapter() {
@@ -1367,7 +1367,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAutoscaleOutMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAutoscaleOutMediatorAdapter()
 	 * 
 	 */
 	public Adapter createAutoscaleOutMediatorAdapter() {
@@ -1375,7 +1375,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createHeaderMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createHeaderMediatorAdapter()
 	 * 
 	 */
 	public Adapter createHeaderMediatorAdapter() {
@@ -1383,7 +1383,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createHeaderMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createHeaderMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createHeaderMediatorInputConnectorAdapter() {
@@ -1391,7 +1391,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createHeaderMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createHeaderMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createHeaderMediatorOutputConnectorAdapter() {
@@ -1399,7 +1399,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createThrottleMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createThrottleMediatorAdapter()
 	 * 
 	 */
 	public Adapter createThrottleMediatorAdapter() {
@@ -1407,7 +1407,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createThrottleMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createThrottleMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createThrottleMediatorInputConnectorAdapter() {
@@ -1415,7 +1415,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createThrottleMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createThrottleMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createThrottleMediatorOutputConnectorAdapter() {
@@ -1423,7 +1423,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createThrottleMediatorOnAcceptOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createThrottleMediatorOnAcceptOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createThrottleMediatorOnAcceptOutputConnectorAdapter() {
@@ -1431,7 +1431,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createThrottleMediatorOnRejectOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createThrottleMediatorOnRejectOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createThrottleMediatorOnRejectOutputConnectorAdapter() {
@@ -1439,7 +1439,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createThrottlePolicyConfigurationAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createThrottlePolicyConfigurationAdapter()
 	 * 
 	 */
 	public Adapter createThrottlePolicyConfigurationAdapter() {
@@ -1447,7 +1447,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createThrottlePolicyEntryAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createThrottlePolicyEntryAdapter()
 	 * 
 	 */
 	public Adapter createThrottlePolicyEntryAdapter() {
@@ -1455,7 +1455,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createThrottleOnAcceptBranchAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createThrottleOnAcceptBranchAdapter()
 	 * 
 	 */
 	public Adapter createThrottleOnAcceptBranchAdapter() {
@@ -1463,7 +1463,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createThrottleOnRejectBranchAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createThrottleOnRejectBranchAdapter()
 	 * 
 	 */
 	public Adapter createThrottleOnRejectBranchAdapter() {
@@ -1471,7 +1471,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCommandMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCommandMediatorAdapter()
 	 * 
 	 */
 	public Adapter createCommandMediatorAdapter() {
@@ -1479,7 +1479,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCommandMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCommandMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCommandMediatorInputConnectorAdapter() {
@@ -1487,7 +1487,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCommandMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCommandMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCommandMediatorOutputConnectorAdapter() {
@@ -1495,7 +1495,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCommandPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCommandPropertyAdapter()
 	 * 
 	 */
 	public Adapter createCommandPropertyAdapter() {
@@ -1503,7 +1503,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSqlStatementAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSqlStatementAdapter()
 	 * 
 	 */
 	public Adapter createSqlStatementAdapter() {
@@ -1511,7 +1511,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSqlParameterDefinitionAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSqlParameterDefinitionAdapter()
 	 * 
 	 */
 	public Adapter createSqlParameterDefinitionAdapter() {
@@ -1519,7 +1519,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSqlResultMappingAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSqlResultMappingAdapter()
 	 * 
 	 */
 	public Adapter createSqlResultMappingAdapter() {
@@ -1527,7 +1527,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDBLookupMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDBLookupMediatorAdapter()
 	 * 
 	 */
 	public Adapter createDBLookupMediatorAdapter() {
@@ -1535,7 +1535,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDBLookupMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDBLookupMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createDBLookupMediatorInputConnectorAdapter() {
@@ -1543,7 +1543,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDBLookupMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDBLookupMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createDBLookupMediatorOutputConnectorAdapter() {
@@ -1551,7 +1551,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDBReportMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDBReportMediatorAdapter()
 	 * 
 	 */
 	public Adapter createDBReportMediatorAdapter() {
@@ -1559,7 +1559,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDBReportMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDBReportMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createDBReportMediatorInputConnectorAdapter() {
@@ -1567,7 +1567,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDBReportMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDBReportMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createDBReportMediatorOutputConnectorAdapter() {
@@ -1575,7 +1575,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRuleMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRuleMediatorAdapter()
 	 * 
 	 */
 	public Adapter createRuleMediatorAdapter() {
@@ -1583,7 +1583,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRuleMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRuleMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRuleMediatorInputConnectorAdapter() {
@@ -1591,7 +1591,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRuleMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRuleMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRuleMediatorOutputConnectorAdapter() {
@@ -1599,7 +1599,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRuleMediatorChildMediatorsOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRuleMediatorChildMediatorsOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRuleMediatorChildMediatorsOutputConnectorAdapter() {
@@ -1607,7 +1607,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRuleSetCreationPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRuleSetCreationPropertyAdapter()
 	 * 
 	 */
 	public Adapter createRuleSetCreationPropertyAdapter() {
@@ -1615,7 +1615,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRuleSessionPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRuleSessionPropertyAdapter()
 	 * 
 	 */
 	public Adapter createRuleSessionPropertyAdapter() {
@@ -1623,7 +1623,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRuleFactsConfigurationAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRuleFactsConfigurationAdapter()
 	 * 
 	 */
 	public Adapter createRuleFactsConfigurationAdapter() {
@@ -1631,7 +1631,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRuleFactAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRuleFactAdapter()
 	 * 
 	 */
 	public Adapter createRuleFactAdapter() {
@@ -1639,7 +1639,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRuleResultsConfigurationAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRuleResultsConfigurationAdapter()
 	 * 
 	 */
 	public Adapter createRuleResultsConfigurationAdapter() {
@@ -1647,7 +1647,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRuleResultAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRuleResultAdapter()
 	 * 
 	 */
 	public Adapter createRuleResultAdapter() {
@@ -1655,7 +1655,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCallTemplateParameterAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCallTemplateParameterAdapter()
 	 * 
 	 */
 	public Adapter createCallTemplateParameterAdapter() {
@@ -1663,7 +1663,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCallTemplateMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCallTemplateMediatorAdapter()
 	 * 
 	 */
 	public Adapter createCallTemplateMediatorAdapter() {
@@ -1671,7 +1671,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCallTemplateMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCallTemplateMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCallTemplateMediatorInputConnectorAdapter() {
@@ -1679,7 +1679,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCallTemplateMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCallTemplateMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCallTemplateMediatorOutputConnectorAdapter() {
@@ -1687,7 +1687,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createLoopBackMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createLoopBackMediatorAdapter()
 	 * 
 	 */
 	public Adapter createLoopBackMediatorAdapter() {
@@ -1695,7 +1695,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createLoopBackMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createLoopBackMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createLoopBackMediatorInputConnectorAdapter() {
@@ -1703,7 +1703,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createLoopBackMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createLoopBackMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createLoopBackMediatorOutputConnectorAdapter() {
@@ -1711,7 +1711,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRespondMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRespondMediatorAdapter()
 	 * 
 	 */
 	public Adapter createRespondMediatorAdapter() {
@@ -1719,7 +1719,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRespondMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRespondMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRespondMediatorInputConnectorAdapter() {
@@ -1727,7 +1727,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRespondMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRespondMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRespondMediatorOutputConnectorAdapter() {
@@ -1735,7 +1735,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSmooksMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSmooksMediatorAdapter()
 	 * 
 	 */
 	public Adapter createSmooksMediatorAdapter() {
@@ -1743,7 +1743,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSmooksMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSmooksMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSmooksMediatorInputConnectorAdapter() {
@@ -1751,7 +1751,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSmooksMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSmooksMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSmooksMediatorOutputConnectorAdapter() {
@@ -1759,7 +1759,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createStoreMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createStoreMediatorAdapter()
 	 * 
 	 */
 	public Adapter createStoreMediatorAdapter() {
@@ -1767,7 +1767,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createStoreMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createStoreMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createStoreMediatorInputConnectorAdapter() {
@@ -1775,7 +1775,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createStoreMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createStoreMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createStoreMediatorOutputConnectorAdapter() {
@@ -1783,7 +1783,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createBuilderMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createBuilderMediatorAdapter()
 	 * 
 	 */
 	public Adapter createBuilderMediatorAdapter() {
@@ -1791,7 +1791,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createBuilderMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createBuilderMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createBuilderMediatorInputConnectorAdapter() {
@@ -1799,7 +1799,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createBuilderMediatorOutputConectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createBuilderMediatorOutputConectorAdapter()
 	 * 
 	 */
 	public Adapter createBuilderMediatorOutputConectorAdapter() {
@@ -1807,7 +1807,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMessageBuilderAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMessageBuilderAdapter()
 	 * 
 	 */
 	public Adapter createMessageBuilderAdapter() {
@@ -1815,7 +1815,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPayloadFactoryMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPayloadFactoryMediatorAdapter()
 	 * 
 	 */
 	public Adapter createPayloadFactoryMediatorAdapter() {
@@ -1823,7 +1823,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPayloadFactoryMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPayloadFactoryMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createPayloadFactoryMediatorInputConnectorAdapter() {
@@ -1831,7 +1831,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPayloadFactoryMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPayloadFactoryMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createPayloadFactoryMediatorOutputConnectorAdapter() {
@@ -1839,7 +1839,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createPayloadFactoryArgumentAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPayloadFactoryArgumentAdapter()
 	 * 
 	 */
 	public Adapter createPayloadFactoryArgumentAdapter() {
@@ -1847,7 +1847,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createConditionalRouteBranchAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createConditionalRouteBranchAdapter()
 	 * 
 	 */
 	public Adapter createConditionalRouteBranchAdapter() {
@@ -1855,7 +1855,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createConditionalRouterMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createConditionalRouterMediatorAdapter()
 	 * 
 	 */
 	public Adapter createConditionalRouterMediatorAdapter() {
@@ -1863,7 +1863,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createConditionalRouterMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createConditionalRouterMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createConditionalRouterMediatorInputConnectorAdapter() {
@@ -1871,7 +1871,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createConditionalRouterMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createConditionalRouterMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createConditionalRouterMediatorOutputConnectorAdapter() {
@@ -1879,7 +1879,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createConditionalRouterMediatorAdditionalOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createConditionalRouterMediatorAdditionalOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createConditionalRouterMediatorAdditionalOutputConnectorAdapter() {
@@ -1887,7 +1887,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSendMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSendMediatorAdapter()
 	 * 
 	 */
 	public Adapter createSendMediatorAdapter() {
@@ -1895,7 +1895,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSendMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSendMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSendMediatorInputConnectorAdapter() {
@@ -1903,7 +1903,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSendMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSendMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSendMediatorOutputConnectorAdapter() {
@@ -1911,7 +1911,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSendMediatorEndpointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSendMediatorEndpointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSendMediatorEndpointOutputConnectorAdapter() {
@@ -1919,7 +1919,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createParentEndPointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createParentEndPointAdapter()
 	 * 
 	 */
 	public Adapter createParentEndPointAdapter() {
@@ -1927,7 +1927,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFailoverEndPointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFailoverEndPointAdapter()
 	 * 
 	 */
 	public Adapter createFailoverEndPointAdapter() {
@@ -1935,7 +1935,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFailoverEndPointInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFailoverEndPointInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createFailoverEndPointInputConnectorAdapter() {
@@ -1943,7 +1943,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFailoverEndPointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFailoverEndPointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createFailoverEndPointOutputConnectorAdapter() {
@@ -1951,7 +1951,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFailoverEndPointWestOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFailoverEndPointWestOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createFailoverEndPointWestOutputConnectorAdapter() {
@@ -1959,7 +1959,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createWSDLEndPointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createWSDLEndPointAdapter()
 	 * 
 	 */
 	public Adapter createWSDLEndPointAdapter() {
@@ -1967,7 +1967,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createWSDLEndPointInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createWSDLEndPointInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createWSDLEndPointInputConnectorAdapter() {
@@ -1975,7 +1975,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createWSDLEndPointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createWSDLEndPointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createWSDLEndPointOutputConnectorAdapter() {
@@ -1983,7 +1983,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createLoadBalanceEndPointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createLoadBalanceEndPointAdapter()
 	 * 
 	 */
 	public Adapter createLoadBalanceEndPointAdapter() {
@@ -1991,7 +1991,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMemberAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMemberAdapter()
 	 * 
 	 */
 	public Adapter createMemberAdapter() {
@@ -1999,7 +1999,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createLoadBalanceEndPointInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createLoadBalanceEndPointInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createLoadBalanceEndPointInputConnectorAdapter() {
@@ -2007,7 +2007,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createLoadBalanceEndPointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createLoadBalanceEndPointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createLoadBalanceEndPointOutputConnectorAdapter() {
@@ -2015,7 +2015,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createLoadBalanceEndPointWestOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createLoadBalanceEndPointWestOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createLoadBalanceEndPointWestOutputConnectorAdapter() {
@@ -2023,7 +2023,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createLocalEntryAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createLocalEntryAdapter()
 	 * 
 	 */
 	public Adapter createLocalEntryAdapter() {
@@ -2031,7 +2031,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSessionAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSessionAdapter()
 	 * 
 	 */
 	public Adapter createSessionAdapter() {
@@ -2039,7 +2039,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSequencesAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSequencesAdapter()
 	 * 
 	 */
 	public Adapter createSequencesAdapter() {
@@ -2047,7 +2047,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSequencesOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSequencesOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSequencesOutputConnectorAdapter() {
@@ -2055,7 +2055,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSequencesInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSequencesInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createSequencesInputConnectorAdapter() {
@@ -2063,7 +2063,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createURLRewriteRuleActionAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createURLRewriteRuleActionAdapter()
 	 * 
 	 */
 	public Adapter createURLRewriteRuleActionAdapter() {
@@ -2071,7 +2071,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createURLRewriteRuleAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createURLRewriteRuleAdapter()
 	 * 
 	 */
 	public Adapter createURLRewriteRuleAdapter() {
@@ -2079,7 +2079,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createURLRewriteMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createURLRewriteMediatorAdapter()
 	 * 
 	 */
 	public Adapter createURLRewriteMediatorAdapter() {
@@ -2087,7 +2087,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createURLRewriteMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createURLRewriteMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createURLRewriteMediatorInputConnectorAdapter() {
@@ -2095,7 +2095,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createURLRewriteMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createURLRewriteMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createURLRewriteMediatorOutputConnectorAdapter() {
@@ -2103,7 +2103,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEvaluatorExpressionPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEvaluatorExpressionPropertyAdapter()
 	 * 
 	 */
 	public Adapter createEvaluatorExpressionPropertyAdapter() {
@@ -2111,7 +2111,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createValidateMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createValidateMediatorAdapter()
 	 * 
 	 */
 	public Adapter createValidateMediatorAdapter() {
@@ -2119,7 +2119,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createValidateResourceAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createValidateResourceAdapter()
 	 * 
 	 */
 	public Adapter createValidateResourceAdapter() {
@@ -2127,7 +2127,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createValidateFeatureAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createValidateFeatureAdapter()
 	 * 
 	 */
 	public Adapter createValidateFeatureAdapter() {
@@ -2135,7 +2135,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createValidateSchemaAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createValidateSchemaAdapter()
 	 * 
 	 */
 	public Adapter createValidateSchemaAdapter() {
@@ -2143,7 +2143,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createValidateMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createValidateMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createValidateMediatorInputConnectorAdapter() {
@@ -2151,7 +2151,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createValidateMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createValidateMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createValidateMediatorOutputConnectorAdapter() {
@@ -2159,7 +2159,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createValidateMediatorOnFailOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createValidateMediatorOnFailOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createValidateMediatorOnFailOutputConnectorAdapter() {
@@ -2167,7 +2167,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createEndpointDiagramAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createEndpointDiagramAdapter()
 	 * 
 	 */
 	public Adapter createEndpointDiagramAdapter() {
@@ -2175,7 +2175,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createNamedEndpointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createNamedEndpointAdapter()
 	 * 
 	 */
 	public Adapter createNamedEndpointAdapter() {
@@ -2183,7 +2183,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createNamedEndpointInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createNamedEndpointInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createNamedEndpointInputConnectorAdapter() {
@@ -2191,7 +2191,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createNamedEndpointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createNamedEndpointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createNamedEndpointOutputConnectorAdapter() {
@@ -2199,7 +2199,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createTemplateAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createTemplateAdapter()
 	 * 
 	 */
 	public Adapter createTemplateAdapter() {
@@ -2207,7 +2207,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createTemplateParameterAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createTemplateParameterAdapter()
 	 * 
 	 */
 	public Adapter createTemplateParameterAdapter() {
@@ -2215,7 +2215,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createTaskAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createTaskAdapter()
 	 * 
 	 */
 	public Adapter createTaskAdapter() {
@@ -2223,7 +2223,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createNameValueTypePropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createNameValueTypePropertyAdapter()
 	 * 
 	 */
 	public Adapter createNameValueTypePropertyAdapter() {
@@ -2231,7 +2231,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createTaskPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createTaskPropertyAdapter()
 	 * 
 	 */
 	public Adapter createTaskPropertyAdapter() {
@@ -2239,7 +2239,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createSynapseAPIAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createSynapseAPIAdapter()
 	 * 
 	 */
 	public Adapter createSynapseAPIAdapter() {
@@ -2247,7 +2247,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAPIResourceAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAPIResourceAdapter()
 	 * 
 	 */
 	public Adapter createAPIResourceAdapter() {
@@ -2255,7 +2255,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAPIResourceInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAPIResourceInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAPIResourceInputConnectorAdapter() {
@@ -2263,7 +2263,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAPIResourceOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAPIResourceOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAPIResourceOutputConnectorAdapter() {
@@ -2271,7 +2271,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAPIResourceOutSequenceOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAPIResourceOutSequenceOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAPIResourceOutSequenceOutputConnectorAdapter() {
@@ -2279,7 +2279,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAPIResourceInSequenceInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAPIResourceInSequenceInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAPIResourceInSequenceInputConnectorAdapter() {
@@ -2287,7 +2287,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAPIResourceFaultInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAPIResourceFaultInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAPIResourceFaultInputConnectorAdapter() {
@@ -2295,7 +2295,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAPIResourceEndpointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAPIResourceEndpointAdapter()
 	 * 
 	 */
 	public Adapter createAPIResourceEndpointAdapter() {
@@ -2303,7 +2303,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAPIResourceEndpointInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAPIResourceEndpointInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAPIResourceEndpointInputConnectorAdapter() {
@@ -2311,7 +2311,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAPIResourceEndpointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAPIResourceEndpointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAPIResourceEndpointOutputConnectorAdapter() {
@@ -2319,7 +2319,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createComplexEndpointsAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createComplexEndpointsAdapter()
 	 * 
 	 */
 	public Adapter createComplexEndpointsAdapter() {
@@ -2327,7 +2327,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createComplexEndpointsOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createComplexEndpointsOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createComplexEndpointsOutputConnectorAdapter() {
@@ -2335,7 +2335,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAddressingEndpointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAddressingEndpointAdapter()
 	 * 
 	 */
 	public Adapter createAddressingEndpointAdapter() {
@@ -2343,7 +2343,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAddressingEndpointInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAddressingEndpointInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAddressingEndpointInputConnectorAdapter() {
@@ -2351,7 +2351,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAddressingEndpointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAddressingEndpointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createAddressingEndpointOutputConnectorAdapter() {
@@ -2359,7 +2359,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRecipientListEndPointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRecipientListEndPointAdapter()
 	 * 
 	 */
 	public Adapter createRecipientListEndPointAdapter() {
@@ -2367,7 +2367,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRecipientListEndPointInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRecipientListEndPointInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRecipientListEndPointInputConnectorAdapter() {
@@ -2375,7 +2375,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRecipientListEndPointOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRecipientListEndPointOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRecipientListEndPointOutputConnectorAdapter() {
@@ -2383,7 +2383,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createRecipientListEndPointWestOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createRecipientListEndPointWestOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createRecipientListEndPointWestOutputConnectorAdapter() {
@@ -2391,7 +2391,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMessageStoreParameterAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMessageStoreParameterAdapter()
 	 * 
 	 */
 	public Adapter createMessageStoreParameterAdapter() {
@@ -2399,7 +2399,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMessageStoreAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMessageStoreAdapter()
 	 * 
 	 */
 	public Adapter createMessageStoreAdapter() {
@@ -2407,7 +2407,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMessageProcessorParameterAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMessageProcessorParameterAdapter()
 	 * 
 	 */
 	public Adapter createMessageProcessorParameterAdapter() {
@@ -2415,7 +2415,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createMessageProcessorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createMessageProcessorAdapter()
 	 * 
 	 */
 	public Adapter createMessageProcessorAdapter() {
@@ -2423,7 +2423,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAPIHandlerAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAPIHandlerAdapter()
 	 * 
 	 */
 	public Adapter createAPIHandlerAdapter() {
@@ -2431,7 +2431,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createAPIHandlerPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAPIHandlerPropertyAdapter()
 	 * 
 	 */
 	public Adapter createAPIHandlerPropertyAdapter() {
@@ -2439,7 +2439,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCloudConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCloudConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCloudConnectorAdapter() {
@@ -2447,7 +2447,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCloudConnectorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCloudConnectorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCloudConnectorInputConnectorAdapter() {
@@ -2455,7 +2455,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCloudConnectorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCloudConnectorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCloudConnectorOutputConnectorAdapter() {
@@ -2463,7 +2463,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCloudConnectorOperationAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCloudConnectorOperationAdapter()
 	 * 
 	 */
 	public Adapter createCloudConnectorOperationAdapter() {
@@ -2471,7 +2471,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCloudConnectorOperationInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCloudConnectorOperationInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCloudConnectorOperationInputConnectorAdapter() {
@@ -2479,7 +2479,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCloudConnectorOperationOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCloudConnectorOperationOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createCloudConnectorOperationOutputConnectorAdapter() {
@@ -2487,7 +2487,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDataMapperMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDataMapperMediatorAdapter()
 	 * 
 	 */
 	public Adapter createDataMapperMediatorAdapter() {
@@ -2495,7 +2495,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDataMapperMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDataMapperMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createDataMapperMediatorInputConnectorAdapter() {
@@ -2503,7 +2503,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createDataMapperMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDataMapperMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createDataMapperMediatorOutputConnectorAdapter() {
@@ -2511,7 +2511,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFastXSLTMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFastXSLTMediatorAdapter()
 	 * 
 	 */
 	public Adapter createFastXSLTMediatorAdapter() {
@@ -2519,7 +2519,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFastXSLTMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFastXSLTMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createFastXSLTMediatorInputConnectorAdapter() {
@@ -2527,7 +2527,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createFastXSLTMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createFastXSLTMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createFastXSLTMediatorOutputConnectorAdapter() {
@@ -2535,7 +2535,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createInboundEndpointAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createInboundEndpointAdapter()
 	 * 
 	 */
 	public Adapter createInboundEndpointAdapter() {
@@ -2543,7 +2543,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createInboundEndpointParameterAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createInboundEndpointParameterAdapter()
 	 * 
 	 */
 	public Adapter createInboundEndpointParameterAdapter() {
@@ -2551,7 +2551,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createInboundEndpointContainerAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createInboundEndpointContainerAdapter()
 	 * 
 	 */
 	public Adapter createInboundEndpointContainerAdapter() {
@@ -2559,7 +2559,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createInboundEndpointSequenceInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createInboundEndpointSequenceInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createInboundEndpointSequenceInputConnectorAdapter() {
@@ -2567,7 +2567,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createInboundEndpointSequenceOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createInboundEndpointSequenceOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createInboundEndpointSequenceOutputConnectorAdapter() {
@@ -2575,7 +2575,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createInboundEndpointOnErrorSequenceOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createInboundEndpointOnErrorSequenceOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createInboundEndpointOnErrorSequenceOutputConnectorAdapter() {
@@ -2583,7 +2583,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createInboundEndpointOnErrorSequenceInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createInboundEndpointOnErrorSequenceInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createInboundEndpointOnErrorSequenceInputConnectorAdapter() {
@@ -2591,7 +2591,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createCommentMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createCommentMediatorAdapter()
 	 * 
 	 */
 	public Adapter createCommentMediatorAdapter() {
@@ -2599,7 +2599,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createJsonTransformMediatorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createJsonTransformMediatorAdapter()
 	 * 
 	 */
 	public Adapter createJsonTransformMediatorAdapter() {
@@ -2607,7 +2607,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createJsonTransformMediatorOutputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createJsonTransformMediatorOutputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createJsonTransformMediatorOutputConnectorAdapter() {
@@ -2615,7 +2615,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createJsonTransformMediatorInputConnectorAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createJsonTransformMediatorInputConnectorAdapter()
 	 * 
 	 */
 	public Adapter createJsonTransformMediatorInputConnectorAdapter() {
@@ -2623,7 +2623,7 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.util.EsbAdapterFactory#createJsonTransformMediatorPropertyAdapter()
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createJsonTransformMediatorPropertyAdapter()
 	 * 
 	 */
 	public Adapter createJsonTransformMediatorPropertyAdapter() {

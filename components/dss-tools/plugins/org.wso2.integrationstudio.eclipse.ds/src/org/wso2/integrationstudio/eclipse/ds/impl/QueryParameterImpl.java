@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Collection;
 
@@ -24,13 +24,13 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.ds.CustomValidator;
-import org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.LengthValidator;
-import org.wso2.integrationstudio.eclipse.ds.LongRangeValidator;
-import org.wso2.integrationstudio.eclipse.ds.PatternValidator;
-import org.wso2.integrationstudio.eclipse.ds.QueryParameter;
+import org.wso2.integrationstudio.ds.CustomValidator;
+import org.wso2.integrationstudio.ds.DoubleRangeValidator;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.LengthValidator;
+import org.wso2.integrationstudio.ds.LongRangeValidator;
+import org.wso2.integrationstudio.ds.PatternValidator;
+import org.wso2.integrationstudio.ds.QueryParameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,19 +40,19 @@ import org.wso2.integrationstudio.eclipse.ds.QueryParameter;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getValidateLongRange <em>Validate Long Range</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getValidateDoubleRange <em>Validate Double Range</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getValidateLength <em>Validate Length</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getValidatePattern <em>Validate Pattern</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getValidateCustom <em>Validate Custom</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getDefaultValue <em>Default Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getOrdinal <em>Ordinal</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getParamType <em>Param Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getSqlType <em>Sql Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getStructType <em>Struct Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryParameterImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getValidateLongRange <em>Validate Long Range</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getValidateDoubleRange <em>Validate Double Range</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getValidateLength <em>Validate Length</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getValidatePattern <em>Validate Pattern</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getValidateCustom <em>Validate Custom</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getOrdinal <em>Ordinal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getParamType <em>Param Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getSqlType <em>Sql Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getStructType <em>Struct Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryParameterImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated

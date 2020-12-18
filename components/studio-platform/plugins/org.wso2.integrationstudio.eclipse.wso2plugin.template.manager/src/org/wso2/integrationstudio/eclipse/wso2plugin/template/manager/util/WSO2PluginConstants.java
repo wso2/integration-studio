@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.util;
+package org.wso2.integrationstudio.wso2plugin.template.manager.util;
 
 public class WSO2PluginConstants {
 
@@ -27,7 +27,7 @@ public class WSO2PluginConstants {
 	public static final String PROJECT_WIZARD_WINDOW_TITLE = "New WSO2 Plugin Project";
 	public static final String PLUGIN_SELECT_WIZARD_PAGE_NAME = "Select WSO2 Plugin template";
 	public static final String GET_PLUGIN_DESCRIPTION = "description";
-	public static final String PACKAGE_ID = "org.wso2.integrationstudio.eclipse.wso2plugin.sample.ui";
+	public static final String PACKAGE_ID = "org.wso2.integrationstudio.wso2plugin.sample.ui";
 	public static final String ERROR_DIALOG_TITLE = "Integration Studio";
 	public static final String CREATE_PLUGIN_PROJECT_JOB = "Create Plugin project";
 	public static final String JAVA_PERSPECTIVE_ID = "org.eclipse.jdt.ui.JavaBrowsingPerspective";

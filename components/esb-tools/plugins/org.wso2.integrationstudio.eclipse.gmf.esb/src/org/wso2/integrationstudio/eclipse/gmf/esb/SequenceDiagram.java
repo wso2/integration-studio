@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,10 +17,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceDiagram#getSequence <em>Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.SequenceDiagram#getSequence <em>Sequence</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequenceDiagram()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequenceDiagram()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface SequenceDiagram extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence</em>' containment reference.
      * @see #setSequence(EsbSequence)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequenceDiagram_Sequence()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequenceDiagram_Sequence()
      * @model containment="true"
      * @generated
      */
     EsbSequence getSequence();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceDiagram#getSequence <em>Sequence</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.SequenceDiagram#getSequence <em>Sequence</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence</em>' containment reference.

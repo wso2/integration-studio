@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
@@ -33,16 +33,16 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleActionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleFragmentType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RuleOptionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRule;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EvaluatorExpressionProperty;
+import org.wso2.integrationstudio.gmf.esb.RuleActionType;
+import org.wso2.integrationstudio.gmf.esb.RuleFragmentType;
+import org.wso2.integrationstudio.gmf.esb.RuleOptionType;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteMediator;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteRule;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 import org.apache.synapse.commons.evaluators.config.EvaluatorSerializer;
 
 public class URLRewriteMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, URLRewriteMediator> {

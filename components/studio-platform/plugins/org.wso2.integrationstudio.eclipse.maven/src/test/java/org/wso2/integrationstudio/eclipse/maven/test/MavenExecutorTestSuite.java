@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.maven.test;
+package org.wso2.integrationstudio.maven.test;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;

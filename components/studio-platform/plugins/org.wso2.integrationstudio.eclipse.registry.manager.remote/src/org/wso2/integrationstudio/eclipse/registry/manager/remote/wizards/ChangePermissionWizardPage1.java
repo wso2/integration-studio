@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.remote.wizards;
+package org.wso2.integrationstudio.registry.manager.remote.wizards;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,11 +25,11 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.wso2.integrationstudio.eclipse.registry.base.logger.ExceptionHandler;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserRole;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.controls.RegistryTreeViewer;
+import org.wso2.integrationstudio.registry.base.logger.ExceptionHandler;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserRole;
+import org.wso2.integrationstudio.registry.base.ui.controls.RegistryTreeViewer;
 
 public class ChangePermissionWizardPage1 extends WizardPage {
 

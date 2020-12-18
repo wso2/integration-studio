@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceOutput;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbSequenceOutput;
+import org.wso2.integrationstudio.gmf.esb.EsbSequenceOutputConnector;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +26,7 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceOutputConnector;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbSequenceOutputImpl#getConnector <em>Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EsbSequenceOutputImpl#getConnector <em>Connector</em>}</li>
  * </ul>
  *
  * @generated

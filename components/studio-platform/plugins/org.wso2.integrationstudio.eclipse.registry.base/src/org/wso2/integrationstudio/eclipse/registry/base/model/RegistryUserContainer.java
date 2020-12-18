@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.model;
+package org.wso2.integrationstudio.registry.base.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-import org.wso2.integrationstudio.eclipse.usermgt.remote.UserManager;
+import org.wso2.integrationstudio.usermgt.remote.UserManager;
 
 public class RegistryUserContainer implements Observer {
 	private List<RegistryUser> users;

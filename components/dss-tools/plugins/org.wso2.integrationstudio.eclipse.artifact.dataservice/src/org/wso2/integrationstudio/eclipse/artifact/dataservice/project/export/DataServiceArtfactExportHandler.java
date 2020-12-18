@@ -15,7 +15,7 @@
  */
 
 
-package org.wso2.integrationstudio.eclipse.artifact.dataservice.project.export;
+package org.wso2.integrationstudio.artifact.dataservice.project.export;
 
 import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
@@ -25,10 +25,10 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.utils.DataServiceArtifactConstants;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceArtifactConstants;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.project.export.ProjectArtifactHandler;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 import java.io.File;
 import java.util.ArrayList;

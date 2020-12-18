@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.mediator.ui.wizard;
+package org.wso2.integrationstudio.artifact.mediator.ui.wizard;
 
 import java.io.File;
 import org.apache.maven.model.Plugin;
@@ -37,26 +37,26 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.artifact.mediator.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.mediator.model.CustomMediatorModel;
-import org.wso2.integrationstudio.eclipse.artifact.mediator.template.CustomMediatorClassTemplate;
-import org.wso2.integrationstudio.eclipse.artifact.mediator.utils.MediatorImageUtils;
-import org.wso2.integrationstudio.eclipse.esb.libraries.utils.LibraryUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.model.MavenInfo;
-import org.wso2.integrationstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaUtils;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.artifact.mediator.Activator;
+import org.wso2.integrationstudio.artifact.mediator.model.CustomMediatorModel;
+import org.wso2.integrationstudio.artifact.mediator.template.CustomMediatorClassTemplate;
+import org.wso2.integrationstudio.artifact.mediator.utils.MediatorImageUtils;
+import org.wso2.integrationstudio.esb.libraries.utils.LibraryUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.model.MavenInfo;
+import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsDataPage;
+import org.wso2.integrationstudio.utils.jdt.JavaUtils;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	
 	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Mediator Artifact";
     private static final String MEDIATOR_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.mediator.project.nature";
-	private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.perspective";
+	private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.integrationstudio.gmf.esb.diagram.custom.perspective";
     
 	private  CustomMediatorModel customMediatorModel;
     private  IProject project;

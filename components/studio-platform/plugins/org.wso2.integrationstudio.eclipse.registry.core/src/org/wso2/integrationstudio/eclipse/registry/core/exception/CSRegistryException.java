@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.core.exception;
+package org.wso2.integrationstudio.registry.core.exception;
 
 public class CSRegistryException extends Exception {
 

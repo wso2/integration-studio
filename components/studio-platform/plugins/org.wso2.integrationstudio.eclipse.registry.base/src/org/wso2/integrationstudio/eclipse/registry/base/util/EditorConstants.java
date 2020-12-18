@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.registry.base.util;
+package org.wso2.integrationstudio.registry.base.util;
 
 public class EditorConstants {
 
@@ -40,6 +40,6 @@ public class EditorConstants {
 
 	public static final String DEPENDENCY_ASSOCIATION_TYPE = "depends";
 
-	public static final String FORM_EDITOR_ID = "org.wso2.integrationstudio.eclipse.editors.registry.formEditor";
+	public static final String FORM_EDITOR_ID = "org.wso2.integrationstudio.editors.registry.formEditor";
 
 }

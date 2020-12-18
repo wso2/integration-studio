@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.ui.controls;
+package org.wso2.integrationstudio.registry.base.ui.controls;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +23,16 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.registry.base.logger.ExceptionHandler;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryContentContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceType;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryURLNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserManagerContainer;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserRole;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserRoleContainer;
+import org.wso2.integrationstudio.registry.base.logger.ExceptionHandler;
+import org.wso2.integrationstudio.registry.base.model.RegistryContentContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceType;
+import org.wso2.integrationstudio.registry.base.model.RegistryURLNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserManagerContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserRole;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserRoleContainer;
 
 public class RegistryTreeContentProvider implements ITreeContentProvider {
 

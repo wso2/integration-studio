@@ -40,17 +40,17 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.integrationstudio.eclipse.capp.core.model.RegistryConnection;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbEndpoint;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbSequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.RegistryKeyPropertyImpl;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryConnection;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryData;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryHandler;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryFile;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.CAppEnvironment;
+import org.wso2.integrationstudio.capp.core.model.RegistryConnection;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbEndpoint;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbLocalEntry;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbSequence;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.RegistryKeyPropertyImpl;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryConnection;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryData;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryHandler;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryFile;
 
 /**
  * A SWT based editor dialog to be used for editing registry key properties.

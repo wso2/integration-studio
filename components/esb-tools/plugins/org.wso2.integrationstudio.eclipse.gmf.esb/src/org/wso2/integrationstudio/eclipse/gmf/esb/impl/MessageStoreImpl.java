@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -30,13 +30,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JMSSpecVersion;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageStore;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageStoreParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageStoreType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.JDBCConnectionInformationType;
+import org.wso2.integrationstudio.gmf.esb.JMSSpecVersion;
+import org.wso2.integrationstudio.gmf.esb.MessageStore;
+import org.wso2.integrationstudio.gmf.esb.MessageStoreParameter;
+import org.wso2.integrationstudio.gmf.esb.MessageStoreType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,46 +46,46 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getStoreName <em>Store Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getStoreType <em>Store Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getInitialContextFactory <em>Initial Context Factory</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getProviderURL <em>Provider URL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJndiQueueName <em>Jndi Queue Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getConnectionFactory <em>Connection Factory</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getUserName <em>User Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getPassword <em>Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isCacheConnection <em>Cache Connection</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJmsSpecVersion <em>Jms Spec Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isEnableCaching <em>Enable Caching</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getProviderClass <em>Provider Class</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQServerHostName <em>Rabbit MQ Server Host Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQServerHostPort <em>Rabbit MQ Server Host Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQQueueName <em>Rabbit MQ Queue Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQExchangeName <em>Rabbit MQ Exchange Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRoutingKey <em>Routing Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQUserName <em>Rabbit MQ User Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQPassword <em>Rabbit MQ Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getVirtualHost <em>Virtual Host</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDatabaseTable <em>Jdbc Database Table</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcConnectionInformation <em>Jdbc Connection Information</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDriver <em>Jdbc Driver</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcURL <em>Jdbc URL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcUser <em>Jdbc User</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcPassword <em>Jdbc Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDatasourceName <em>Jdbc Datasource Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isEnableProducerGuaranteedDelivery <em>Enable Producer Guaranteed Delivery</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getFailoverMessageStore <em>Failover Message Store</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequencepolling <em>Resequencepolling</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceDatabaseTable <em>Resequence Database Table</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceConnectionInformation <em>Resequence Connection Information</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceDriver <em>Resequence Driver</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceURL <em>Resequence URL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceUser <em>Resequence User</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequencePassword <em>Resequence Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceDatasourceName <em>Resequence Datasource Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceXpath <em>Resequence Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceXpathAttr <em>Resequence Xpath Attr</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getStoreName <em>Store Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getStoreType <em>Store Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getInitialContextFactory <em>Initial Context Factory</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getProviderURL <em>Provider URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getJndiQueueName <em>Jndi Queue Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getConnectionFactory <em>Connection Factory</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getUserName <em>User Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getPassword <em>Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#isCacheConnection <em>Cache Connection</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getJmsSpecVersion <em>Jms Spec Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#isEnableCaching <em>Enable Caching</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getProviderClass <em>Provider Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getRabbitMQServerHostName <em>Rabbit MQ Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getRabbitMQServerHostPort <em>Rabbit MQ Server Host Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getRabbitMQQueueName <em>Rabbit MQ Queue Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getRabbitMQExchangeName <em>Rabbit MQ Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getRoutingKey <em>Routing Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getRabbitMQUserName <em>Rabbit MQ User Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getRabbitMQPassword <em>Rabbit MQ Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getVirtualHost <em>Virtual Host</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getJdbcDatabaseTable <em>Jdbc Database Table</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getJdbcConnectionInformation <em>Jdbc Connection Information</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getJdbcDriver <em>Jdbc Driver</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getJdbcURL <em>Jdbc URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getJdbcUser <em>Jdbc User</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getJdbcPassword <em>Jdbc Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getJdbcDatasourceName <em>Jdbc Datasource Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#isEnableProducerGuaranteedDelivery <em>Enable Producer Guaranteed Delivery</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getFailoverMessageStore <em>Failover Message Store</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getResequencepolling <em>Resequencepolling</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getResequenceDatabaseTable <em>Resequence Database Table</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getResequenceConnectionInformation <em>Resequence Connection Information</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getResequenceDriver <em>Resequence Driver</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getResequenceURL <em>Resequence URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getResequenceUser <em>Resequence User</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getResequencePassword <em>Resequence Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getResequenceDatasourceName <em>Resequence Datasource Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getResequenceXpath <em>Resequence Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.MessageStoreImpl#getResequenceXpathAttr <em>Resequence Xpath Attr</em>}</li>
  * </ul>
  *
  * @generated

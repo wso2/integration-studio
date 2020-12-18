@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces;
+package org.wso2.integrationstudio.carbonserver.base.interfaces;
 
 import java.io.File;
 import java.util.ArrayList;

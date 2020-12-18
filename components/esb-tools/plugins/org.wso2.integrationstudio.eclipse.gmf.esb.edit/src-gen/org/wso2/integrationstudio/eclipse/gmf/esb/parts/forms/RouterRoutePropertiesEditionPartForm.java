@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
@@ -58,10 +58,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterRoutePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RouterRoutePropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -308,7 +308,7 @@ public class RouterRoutePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterRoutePropertiesEditionPart#getBreakAfterRoute()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterRoutePropertiesEditionPart#getBreakAfterRoute()
 	 * 
 	 */
 	public Boolean getBreakAfterRoute() {
@@ -318,7 +318,7 @@ public class RouterRoutePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterRoutePropertiesEditionPart#setBreakAfterRoute(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterRoutePropertiesEditionPart#setBreakAfterRoute(Boolean newValue)
 	 * 
 	 */
 	public void setBreakAfterRoute(Boolean newValue) {
@@ -340,7 +340,7 @@ public class RouterRoutePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterRoutePropertiesEditionPart#getRouteExpression()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterRoutePropertiesEditionPart#getRouteExpression()
 	 * 
 	 */
 	public EObject getRouteExpression() {
@@ -355,7 +355,7 @@ public class RouterRoutePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterRoutePropertiesEditionPart#initRouteExpression(EObjectFlatComboSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterRoutePropertiesEditionPart#initRouteExpression(EObjectFlatComboSettings)
 	 */
 	public void initRouteExpression(EObjectFlatComboSettings settings) {
 		routeExpression.setInput(settings);
@@ -375,7 +375,7 @@ public class RouterRoutePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterRoutePropertiesEditionPart#setRouteExpression(EObject newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterRoutePropertiesEditionPart#setRouteExpression(EObject newValue)
 	 * 
 	 */
 	public void setRouteExpression(EObject newValue) {
@@ -397,7 +397,7 @@ public class RouterRoutePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterRoutePropertiesEditionPart#setRouteExpressionButtonMode(ButtonsModeEnum newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterRoutePropertiesEditionPart#setRouteExpressionButtonMode(ButtonsModeEnum newValue)
 	 */
 	public void setRouteExpressionButtonMode(ButtonsModeEnum newValue) {
 		routeExpression.setButtonMode(newValue);
@@ -406,7 +406,7 @@ public class RouterRoutePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterRoutePropertiesEditionPart#addFilterRouteExpression(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterRoutePropertiesEditionPart#addFilterRouteExpression(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToRouteExpression(ViewerFilter filter) {
@@ -416,7 +416,7 @@ public class RouterRoutePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterRoutePropertiesEditionPart#addBusinessFilterRouteExpression(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterRoutePropertiesEditionPart#addBusinessFilterRouteExpression(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToRouteExpression(ViewerFilter filter) {
@@ -426,7 +426,7 @@ public class RouterRoutePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterRoutePropertiesEditionPart#getRoutePattern()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterRoutePropertiesEditionPart#getRoutePattern()
 	 * 
 	 */
 	public String getRoutePattern() {
@@ -436,7 +436,7 @@ public class RouterRoutePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterRoutePropertiesEditionPart#setRoutePattern(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterRoutePropertiesEditionPart#setRoutePattern(String newValue)
 	 * 
 	 */
 	public void setRoutePattern(String newValue) {

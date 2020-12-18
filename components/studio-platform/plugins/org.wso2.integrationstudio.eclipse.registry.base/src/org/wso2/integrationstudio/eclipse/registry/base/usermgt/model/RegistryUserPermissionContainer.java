@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.usermgt.model;
+package org.wso2.integrationstudio.registry.base.usermgt.model;
 
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
 
 import java.util.ArrayList;
 import java.util.List;

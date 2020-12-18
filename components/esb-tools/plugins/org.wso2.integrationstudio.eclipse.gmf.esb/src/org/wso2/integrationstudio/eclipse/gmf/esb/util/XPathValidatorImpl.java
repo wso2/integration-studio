@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.util;
+package org.wso2.integrationstudio.gmf.esb.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,8 +34,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.ls.DOMImplementationLS;
 import org.w3c.dom.ls.LSOutput;
 import org.w3c.dom.ls.LSSerializer;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -58,7 +58,7 @@ public class XPathValidatorImpl implements XPathValidator {
     
     private static final String FORMAT_PRETTY_PRINT = "format-pretty-print";
     
-    private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.eclipse.gmf.esb.util");
+    private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.gmf.esb.util");
 
     private XPathValidatorImpl() {
     }

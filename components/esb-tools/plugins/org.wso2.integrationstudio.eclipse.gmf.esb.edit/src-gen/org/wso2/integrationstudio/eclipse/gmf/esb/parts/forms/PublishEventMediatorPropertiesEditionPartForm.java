@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -66,12 +66,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -900,7 +900,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -910,7 +910,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -932,7 +932,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -942,7 +942,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -983,7 +983,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -993,7 +993,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -1015,7 +1015,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getStreamName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getStreamName()
 	 * 
 	 */
 	public String getStreamName() {
@@ -1025,7 +1025,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setStreamName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setStreamName(String newValue)
 	 * 
 	 */
 	public void setStreamName(String newValue) {
@@ -1047,7 +1047,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getStreamVersion()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getStreamVersion()
 	 * 
 	 */
 	public String getStreamVersion() {
@@ -1057,7 +1057,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setStreamVersion(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setStreamVersion(String newValue)
 	 * 
 	 */
 	public void setStreamVersion(String newValue) {
@@ -1079,7 +1079,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getEventSink()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getEventSink()
 	 * 
 	 */
 	public String getEventSink() {
@@ -1089,7 +1089,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setEventSink(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setEventSink(String newValue)
 	 * 
 	 */
 	public void setEventSink(String newValue) {
@@ -1113,7 +1113,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#initMetaAttributes(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#initMetaAttributes(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initMetaAttributes(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1134,7 +1134,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#updateMetaAttributes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#updateMetaAttributes()
 	 * 
 	 */
 	public void updateMetaAttributes() {
@@ -1144,7 +1144,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addFilterMetaAttributes(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addFilterMetaAttributes(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToMetaAttributes(ViewerFilter filter) {
@@ -1157,7 +1157,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addBusinessFilterMetaAttributes(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addBusinessFilterMetaAttributes(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToMetaAttributes(ViewerFilter filter) {
@@ -1167,7 +1167,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#isContainedInMetaAttributesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#isContainedInMetaAttributesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInMetaAttributesTable(EObject element) {
@@ -1179,7 +1179,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#initCorrelationAttributes(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#initCorrelationAttributes(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initCorrelationAttributes(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1200,7 +1200,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#updateCorrelationAttributes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#updateCorrelationAttributes()
 	 * 
 	 */
 	public void updateCorrelationAttributes() {
@@ -1210,7 +1210,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addFilterCorrelationAttributes(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addFilterCorrelationAttributes(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToCorrelationAttributes(ViewerFilter filter) {
@@ -1223,7 +1223,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addBusinessFilterCorrelationAttributes(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addBusinessFilterCorrelationAttributes(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToCorrelationAttributes(ViewerFilter filter) {
@@ -1233,7 +1233,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#isContainedInCorrelationAttributesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#isContainedInCorrelationAttributesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInCorrelationAttributesTable(EObject element) {
@@ -1245,7 +1245,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#initPayloadAttributes(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#initPayloadAttributes(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initPayloadAttributes(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1266,7 +1266,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#updatePayloadAttributes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#updatePayloadAttributes()
 	 * 
 	 */
 	public void updatePayloadAttributes() {
@@ -1276,7 +1276,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addFilterPayloadAttributes(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addFilterPayloadAttributes(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToPayloadAttributes(ViewerFilter filter) {
@@ -1289,7 +1289,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addBusinessFilterPayloadAttributes(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addBusinessFilterPayloadAttributes(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToPayloadAttributes(ViewerFilter filter) {
@@ -1299,7 +1299,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#isContainedInPayloadAttributesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#isContainedInPayloadAttributesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInPayloadAttributesTable(EObject element) {
@@ -1311,7 +1311,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#initArbitraryAttributes(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#initArbitraryAttributes(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initArbitraryAttributes(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1332,7 +1332,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#updateArbitraryAttributes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#updateArbitraryAttributes()
 	 * 
 	 */
 	public void updateArbitraryAttributes() {
@@ -1342,7 +1342,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addFilterArbitraryAttributes(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addFilterArbitraryAttributes(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToArbitraryAttributes(ViewerFilter filter) {
@@ -1355,7 +1355,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addBusinessFilterArbitraryAttributes(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#addBusinessFilterArbitraryAttributes(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToArbitraryAttributes(ViewerFilter filter) {
@@ -1365,7 +1365,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#isContainedInArbitraryAttributesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#isContainedInArbitraryAttributesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInArbitraryAttributesTable(EObject element) {
@@ -1375,7 +1375,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getAsync()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getAsync()
 	 * 
 	 */
 	public Boolean getAsync() {
@@ -1385,7 +1385,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setAsync(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setAsync(Boolean newValue)
 	 * 
 	 */
 	public void setAsync(Boolean newValue) {
@@ -1407,7 +1407,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getAsyncTimeout()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#getAsyncTimeout()
 	 * 
 	 */
 	public String getAsyncTimeout() {
@@ -1417,7 +1417,7 @@ public class PublishEventMediatorPropertiesEditionPartForm extends SectionProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setAsyncTimeout(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorPropertiesEditionPart#setAsyncTimeout(String newValue)
 	 * 
 	 */
 	public void setAsyncTimeout(String newValue) {

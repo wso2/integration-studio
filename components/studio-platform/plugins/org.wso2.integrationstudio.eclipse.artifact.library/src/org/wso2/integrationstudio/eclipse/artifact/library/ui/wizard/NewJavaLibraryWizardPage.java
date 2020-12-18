@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.library.ui.wizard;
+package org.wso2.integrationstudio.artifact.library.ui.wizard;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -52,8 +52,8 @@ import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.wso2.integrationstudio.eclipse.artifact.library.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.library.model.LibraryArtifactModel;
+import org.wso2.integrationstudio.artifact.library.Activator;
+import org.wso2.integrationstudio.artifact.library.model.LibraryArtifactModel;
 
 
 public class NewJavaLibraryWizardPage extends WizardPage {

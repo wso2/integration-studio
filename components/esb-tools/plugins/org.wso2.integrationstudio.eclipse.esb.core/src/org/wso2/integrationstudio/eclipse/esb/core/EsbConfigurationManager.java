@@ -1,9 +1,9 @@
-package org.wso2.integrationstudio.eclipse.esb.core;
+package org.wso2.integrationstudio.esb.core;
 
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEndpointProviderData;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.ILocalEntryProviderData;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.ISequenceProviderData;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.EsbConfigurationExtensionPointHandler;
+import org.wso2.integrationstudio.esb.core.interfaces.IEndpointProviderData;
+import org.wso2.integrationstudio.esb.core.interfaces.ILocalEntryProviderData;
+import org.wso2.integrationstudio.esb.core.interfaces.ISequenceProviderData;
+import org.wso2.integrationstudio.esb.core.utils.EsbConfigurationExtensionPointHandler;
 
 public class EsbConfigurationManager {
 	

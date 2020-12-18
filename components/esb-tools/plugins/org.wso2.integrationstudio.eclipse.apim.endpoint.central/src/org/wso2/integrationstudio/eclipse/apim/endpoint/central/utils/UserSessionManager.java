@@ -15,17 +15,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils;
+package org.wso2.integrationstudio.apim.endpoint.central.utils;
 
 import java.net.URISyntaxException;
 
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.client.APIMServiceClient;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.EndpointRegistryConnectException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.HttpClientException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.InvalidTokenException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.handler.APIMEarlyStartupHandler;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.UserSession;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.EndpointCentralServletConstants;
+import org.wso2.integrationstudio.apim.endpoint.central.client.APIMServiceClient;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.EndpointRegistryConnectException;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.HttpClientException;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.InvalidTokenException;
+import org.wso2.integrationstudio.apim.endpoint.central.handler.APIMEarlyStartupHandler;
+import org.wso2.integrationstudio.apim.endpoint.central.model.UserSession;
+import org.wso2.integrationstudio.apim.endpoint.central.resources.EndpointCentralServletConstants;
 
 /**
  * This class manages the user session.

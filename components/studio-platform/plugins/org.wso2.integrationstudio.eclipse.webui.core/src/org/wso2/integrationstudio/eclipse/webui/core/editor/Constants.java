@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.webui.core.editor;
+package org.wso2.integrationstudio.webui.core.editor;
 
 public class Constants {
 	

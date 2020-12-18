@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.model;
+package org.wso2.integrationstudio.docker.distribution.model;
 
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 /**
  * Model class for the docker project type. Additional properties ( docker tag,

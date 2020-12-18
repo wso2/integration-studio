@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateTarget#getSoapAction <em>Soap Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateTarget#getToAddress <em>To Address</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateTarget#getSoapAction <em>Soap Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.IterateTarget#getToAddress <em>To Address</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateTarget()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateTarget()
  * @model
  * @generated
  */
@@ -36,14 +36,14 @@ public interface IterateTarget extends AbstractCommonTarget {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Soap Action</em>' attribute.
      * @see #setSoapAction(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateTarget_SoapAction()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateTarget_SoapAction()
      * @model
      * @generated
      */
     String getSoapAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateTarget#getSoapAction <em>Soap Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateTarget#getSoapAction <em>Soap Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Soap Action</em>' attribute.
@@ -62,14 +62,14 @@ public interface IterateTarget extends AbstractCommonTarget {
      * <!-- end-user-doc -->
      * @return the value of the '<em>To Address</em>' attribute.
      * @see #setToAddress(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getIterateTarget_ToAddress()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getIterateTarget_ToAddress()
      * @model
      * @generated
      */
     String getToAddress();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.IterateTarget#getToAddress <em>To Address</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.IterateTarget#getToAddress <em>To Address</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>To Address</em>' attribute.

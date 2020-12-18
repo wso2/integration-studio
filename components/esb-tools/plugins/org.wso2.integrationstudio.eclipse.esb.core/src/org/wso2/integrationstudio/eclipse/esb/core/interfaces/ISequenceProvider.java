@@ -1,9 +1,9 @@
-package org.wso2.integrationstudio.eclipse.esb.core.interfaces;
+package org.wso2.integrationstudio.esb.core.interfaces;
 
 import java.util.List;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProvider;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProvider;
 
 public interface ISequenceProvider extends IIntegrationStudioProvider{
 	/**

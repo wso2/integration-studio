@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -27,13 +27,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventAttributes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.AbstractNameValueExpressionAttribute;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.PublishEventAttributes;
+import org.wso2.integrationstudio.gmf.esb.PublishEventMediator;
+import org.wso2.integrationstudio.gmf.esb.PublishEventMediatorAttribute;
+import org.wso2.integrationstudio.gmf.esb.PublishEventMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.PublishEventMediatorOutputConnector;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,17 +43,17 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventMediatorOutputConn
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getOutputconnector <em>Outputconnector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getStreamName <em>Stream Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getStreamVersion <em>Stream Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getEventSink <em>Event Sink</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getMetaAttributes <em>Meta Attributes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getCorrelationAttributes <em>Correlation Attributes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getPayloadAttributes <em>Payload Attributes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getArbitraryAttributes <em>Arbitrary Attributes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#isAsync <em>Async</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getAsyncTimeout <em>Async Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PublishEventMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PublishEventMediatorImpl#getOutputconnector <em>Outputconnector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PublishEventMediatorImpl#getStreamName <em>Stream Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PublishEventMediatorImpl#getStreamVersion <em>Stream Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PublishEventMediatorImpl#getEventSink <em>Event Sink</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PublishEventMediatorImpl#getMetaAttributes <em>Meta Attributes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PublishEventMediatorImpl#getCorrelationAttributes <em>Correlation Attributes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PublishEventMediatorImpl#getPayloadAttributes <em>Payload Attributes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PublishEventMediatorImpl#getArbitraryAttributes <em>Arbitrary Attributes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PublishEventMediatorImpl#isAsync <em>Async</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PublishEventMediatorImpl#getAsyncTimeout <em>Async Timeout</em>}</li>
  * </ul>
  *
  * @generated

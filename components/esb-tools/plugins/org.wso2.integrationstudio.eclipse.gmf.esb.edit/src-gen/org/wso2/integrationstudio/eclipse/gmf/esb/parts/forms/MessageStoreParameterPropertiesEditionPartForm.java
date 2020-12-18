@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -42,10 +42,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -293,7 +293,7 @@ public class MessageStoreParameterPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#getParameterName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#getParameterName()
 	 * 
 	 */
 	public String getParameterName() {
@@ -303,7 +303,7 @@ public class MessageStoreParameterPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#setParameterName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#setParameterName(String newValue)
 	 * 
 	 */
 	public void setParameterName(String newValue) {
@@ -325,7 +325,7 @@ public class MessageStoreParameterPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#getParameterValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#getParameterValue()
 	 * 
 	 */
 	public String getParameterValue() {
@@ -335,7 +335,7 @@ public class MessageStoreParameterPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#setParameterValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageStoreParameterPropertiesEditionPart#setParameterValue(String newValue)
 	 * 
 	 */
 	public void setParameterValue(String newValue) {

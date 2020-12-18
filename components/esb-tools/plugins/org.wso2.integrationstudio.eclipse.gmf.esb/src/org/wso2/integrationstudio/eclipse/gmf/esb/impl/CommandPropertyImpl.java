@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyContextAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyMessageAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.CommandProperty;
+import org.wso2.integrationstudio.gmf.esb.CommandPropertyContextAction;
+import org.wso2.integrationstudio.gmf.esb.CommandPropertyMessageAction;
+import org.wso2.integrationstudio.gmf.esb.CommandPropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,13 +30,13 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CommandPropertyImpl#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CommandPropertyImpl#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CommandPropertyImpl#getValueLiteral <em>Value Literal</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CommandPropertyImpl#getValueContextPropertyName <em>Value Context Property Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CommandPropertyImpl#getValueMessageElementXpath <em>Value Message Element Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CommandPropertyImpl#getContextAction <em>Context Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.CommandPropertyImpl#getMessageAction <em>Message Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CommandPropertyImpl#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CommandPropertyImpl#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CommandPropertyImpl#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CommandPropertyImpl#getValueContextPropertyName <em>Value Context Property Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CommandPropertyImpl#getValueMessageElementXpath <em>Value Message Element Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CommandPropertyImpl#getContextAction <em>Context Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CommandPropertyImpl#getMessageAction <em>Message Action</em>}</li>
  * </ul>
  *
  * @generated

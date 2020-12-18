@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.manager.remote.dialog;
+package org.wso2.integrationstudio.registry.manager.remote.dialog;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -13,8 +13,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryURLNode;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.dialog.RegistryInfoDialog;
+import org.wso2.integrationstudio.registry.base.model.RegistryURLNode;
+import org.wso2.integrationstudio.registry.manager.remote.dialog.RegistryInfoDialog;
 
 public class RegistryPerspectiveInfoDialog extends RegistryInfoDialog {
 

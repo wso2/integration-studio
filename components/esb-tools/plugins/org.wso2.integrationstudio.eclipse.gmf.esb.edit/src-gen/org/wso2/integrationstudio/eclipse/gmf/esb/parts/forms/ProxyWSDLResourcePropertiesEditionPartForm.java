@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -40,11 +40,11 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyWSDLResourcePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ProxyWSDLResourcePropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -227,7 +227,7 @@ public class ProxyWSDLResourcePropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyWSDLResourcePropertiesEditionPart#getLocation()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyWSDLResourcePropertiesEditionPart#getLocation()
 	 * 
 	 */
 	public String getLocation() {
@@ -237,7 +237,7 @@ public class ProxyWSDLResourcePropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyWSDLResourcePropertiesEditionPart#setLocation(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyWSDLResourcePropertiesEditionPart#setLocation(String newValue)
 	 * 
 	 */
 	public void setLocation(String newValue) {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.utils;
+package org.wso2.integrationstudio.esb.project.utils;
 
 import java.io.File;
 import java.util.List;
@@ -38,22 +38,22 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
-import org.wso2.integrationstudio.eclipse.esb.core.ESBMavenConstants;
-import org.wso2.integrationstudio.eclipse.esb.project.Activator;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.ui.wizard.ESBProjectWizard;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.project.Activator;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.esb.project.ui.wizard.ESBProjectWizard;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class ESBProjectUtils {
 	
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
 	public static IProject createESBProject(Shell shell,File location){
-		IWizardDescriptor wizardDesc = PlatformUI.getWorkbench().getNewWizardRegistry().findWizard("org.wso2.integrationstudio.eclipse.artifact.newesbproject");
+		IWizardDescriptor wizardDesc = PlatformUI.getWorkbench().getNewWizardRegistry().findWizard("org.wso2.integrationstudio.artifact.newesbproject");
 		if (wizardDesc!=null) {
 			try {
 				IProject esbProject = null;

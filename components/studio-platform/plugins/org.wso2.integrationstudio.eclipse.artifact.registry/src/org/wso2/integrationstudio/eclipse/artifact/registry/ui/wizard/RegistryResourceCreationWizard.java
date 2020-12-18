@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.ui.wizard;
+package org.wso2.integrationstudio.artifact.registry.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,35 +41,35 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.artifact.registry.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.registry.model.RegistryArtifactModel;
-import org.wso2.integrationstudio.eclipse.artifact.registry.utils.RegistryArtifactConstants;
-import org.wso2.integrationstudio.eclipse.artifact.registry.utils.RegistryResourceImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.registry.utils.RegistryTemplate;
-import org.wso2.integrationstudio.eclipse.capp.maven.utils.MavenConstants;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.RegistryArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryCollection;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryDump;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryElement;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryItem;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceType;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceInfo;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceInfoDoc;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceUtils;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.utils.RegistryCheckInClientUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsPage;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.registry.Activator;
+import org.wso2.integrationstudio.artifact.registry.model.RegistryArtifactModel;
+import org.wso2.integrationstudio.artifact.registry.utils.RegistryArtifactConstants;
+import org.wso2.integrationstudio.artifact.registry.utils.RegistryResourceImageUtils;
+import org.wso2.integrationstudio.artifact.registry.utils.RegistryTemplate;
+import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
+import org.wso2.integrationstudio.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.integrationstudio.general.project.artifact.RegistryArtifact;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryCollection;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryDump;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryElement;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryItem;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceType;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfo;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfoDoc;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceUtils;
+import org.wso2.integrationstudio.registry.manager.local.utils.RegistryCheckInClientUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsPage;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationWizard {
 
-	private static final String REGISTRY_EDITOR_ID = "org.wso2.integrationstudio.eclipse.artifact.registry.editor";
+	private static final String REGISTRY_EDITOR_ID = "org.wso2.integrationstudio.artifact.registry.editor";
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
 	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Registry Resource";

@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.factory;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.factory;
 
 import java.io.File;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.wso2.integrationstudio.eclipse.artifact.localentry.model.LocalEntryModel;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.artifact.localentry.ui.wizard.LocalEntryProjectCreationWizard;
+import org.wso2.integrationstudio.artifact.localentry.model.LocalEntryModel;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.localentry.ui.wizard.LocalEntryProjectCreationWizard;
 
 public class LocalEntryFileCreator implements IFileCreator {
 

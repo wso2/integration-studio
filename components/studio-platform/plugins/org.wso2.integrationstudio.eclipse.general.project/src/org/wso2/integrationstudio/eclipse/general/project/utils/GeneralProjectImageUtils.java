@@ -1,9 +1,9 @@
-package org.wso2.integrationstudio.eclipse.general.project.utils;
+package org.wso2.integrationstudio.general.project.utils;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.general.project.Activator;
-import org.wso2.integrationstudio.eclipse.utils.ui.ImageUtils;
+import org.wso2.integrationstudio.general.project.Activator;
+import org.wso2.integrationstudio.utils.ui.ImageUtils;
 
 public class GeneralProjectImageUtils extends ImageUtils{
 	private static ImageUtils instance;

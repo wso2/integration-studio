@@ -13,21 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator.impl;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.mediatorlocator.impl;
 
 import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gef.EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.MissingAttributeException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBTemplateDebugPointMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateImpl;
+import org.wso2.integrationstudio.gmf.esb.EsbElement;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.MissingAttributeException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.ESBTemplateDebugPointMessage;
+import org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.TemplateImpl;
 
 /**
  * This class contains methods related locate and get mediators in a Template

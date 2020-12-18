@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.ui.editor;
+package org.wso2.integrationstudio.registry.base.ui.editor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,20 +26,20 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.editor.IFormPage;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.base.Activator;
-import org.wso2.integrationstudio.eclipse.registry.base.editor.input.ResourceEditorInput;
-import org.wso2.integrationstudio.eclipse.registry.base.interfaces.IRegistryFormEditorPage;
-import org.wso2.integrationstudio.eclipse.registry.base.interfaces.RegistryInformationEditorObservable;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.editor.pages.AssociationEditorPage;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.editor.pages.CollectionEditorPage;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.editor.pages.CommentsEditorPage;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.editor.pages.DependencyEditorPage;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.editor.pages.PropertiesEditorPage;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.editor.pages.ResourceEditorPage;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.editor.pages.TagsEditorPage;
-import org.wso2.integrationstudio.eclipse.registry.base.util.EditorConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.base.Activator;
+import org.wso2.integrationstudio.registry.base.editor.input.ResourceEditorInput;
+import org.wso2.integrationstudio.registry.base.interfaces.IRegistryFormEditorPage;
+import org.wso2.integrationstudio.registry.base.interfaces.RegistryInformationEditorObservable;
+import org.wso2.integrationstudio.registry.base.ui.editor.pages.AssociationEditorPage;
+import org.wso2.integrationstudio.registry.base.ui.editor.pages.CollectionEditorPage;
+import org.wso2.integrationstudio.registry.base.ui.editor.pages.CommentsEditorPage;
+import org.wso2.integrationstudio.registry.base.ui.editor.pages.DependencyEditorPage;
+import org.wso2.integrationstudio.registry.base.ui.editor.pages.PropertiesEditorPage;
+import org.wso2.integrationstudio.registry.base.ui.editor.pages.ResourceEditorPage;
+import org.wso2.integrationstudio.registry.base.ui.editor.pages.TagsEditorPage;
+import org.wso2.integrationstudio.registry.base.util.EditorConstants;
 
 
 public class RegistryResourceEditor extends FormEditor {

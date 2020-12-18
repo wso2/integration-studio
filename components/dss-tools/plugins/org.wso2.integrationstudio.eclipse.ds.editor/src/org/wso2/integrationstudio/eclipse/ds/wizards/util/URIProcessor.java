@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.wizards.util;
+package org.wso2.integrationstudio.ds.wizards.util;
 
 import java.util.HashMap;
 import java.util.regex.Matcher;

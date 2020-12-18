@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.security.utils;
+package org.wso2.integrationstudio.artifact.security.utils;
 
 public class SecurityFormConstants {
 
@@ -119,7 +119,7 @@ public class SecurityFormConstants {
 	public static final String POLICY_KERBEROS = "Kerberos Authentication - Sign - Sign based on a Kerberos Token";
 
 	//Security Scenario Description Constants
-	public static final String PLUGIN_NAME = "org.wso2.integrationstudio.eclipse.artifact.security";
+	public static final String PLUGIN_NAME = "org.wso2.integrationstudio.artifact.security";
 	public static final String RELATIVE_FOLDER_PATH = "policies/images/";
 	public static final String BACKGROUD_IMAGE_RELAVIVE_PATH = "policies/images/background.png";
 	public static final String SHELL_WINDOW_TITLE_PREFIX = "Security Scenario ";

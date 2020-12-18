@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.dbseditor;
+package org.wso2.integrationstudio.ds.dbseditor;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.text.IDocument;
@@ -15,7 +15,7 @@ import org.eclipse.ui.editors.text.FileDocumentProvider;
 public class DsDocumentProvider extends FileDocumentProvider {
 
 	public static final String DS_PARTITIONING =
-	                                             "org.wso2.integrationstudio.eclipse.ds.dbseditor.dspartitioning"; //$NON-NLS-1$
+	                                             "org.wso2.integrationstudio.ds.dbseditor.dspartitioning"; //$NON-NLS-1$
 
 	/**
 	 * The identifier of the comment body type.

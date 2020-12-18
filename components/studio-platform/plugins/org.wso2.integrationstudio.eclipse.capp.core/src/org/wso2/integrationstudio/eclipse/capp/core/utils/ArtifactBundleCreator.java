@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.utils;
+package org.wso2.integrationstudio.capp.core.utils;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.capp.core.manifest.Artifact;
-import org.wso2.integrationstudio.eclipse.capp.core.manifest.CAppArtifactBundleManifest;
-import org.wso2.integrationstudio.eclipse.utils.archive.ArchiveManipulator;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.capp.core.manifest.Artifact;
+import org.wso2.integrationstudio.capp.core.manifest.CAppArtifactBundleManifest;
+import org.wso2.integrationstudio.utils.archive.ArchiveManipulator;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class ArtifactBundleCreator {
 	private Artifact artifact;

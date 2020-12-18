@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.logger;
+package org.wso2.integrationstudio.registry.base.logger;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.MessageBox;

@@ -1,9 +1,9 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import java.util.HashMap;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorOperationRoot;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.ConnectorOperationRoot;
 
 public class ConnectorSchemaHolder {
 

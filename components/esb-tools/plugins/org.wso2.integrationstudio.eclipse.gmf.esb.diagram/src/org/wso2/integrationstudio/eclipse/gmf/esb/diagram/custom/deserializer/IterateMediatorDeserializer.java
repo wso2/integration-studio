@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
@@ -22,16 +22,16 @@ import org.apache.synapse.mediators.eip.Target;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.IterateTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TargetEndpointType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TargetSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.IterateMediator;
+import org.wso2.integrationstudio.gmf.esb.IterateTarget;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SequenceType;
+import org.wso2.integrationstudio.gmf.esb.TargetEndpointType;
+import org.wso2.integrationstudio.gmf.esb.TargetSequenceType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 import java.util.Map;
 

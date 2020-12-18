@@ -16,13 +16,13 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.model;
+package org.wso2.integrationstudio.docker.distribution.model;
 
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
-import org.wso2.integrationstudio.eclipse.docker.distribution.resources.DockerGenConstants;
+import org.wso2.integrationstudio.docker.distribution.resources.DockerGenConstants;
 
 /**
  * Represents a Docker model for image generation.

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -27,24 +27,24 @@ import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointAddressingVersion;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointAttachmentOptimization;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointMessageFormat;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointPropertyScope;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointTimeOutAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.AbstractEndPoint;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndPointAddressingVersion;
+import org.wso2.integrationstudio.gmf.esb.EndPointAttachmentOptimization;
+import org.wso2.integrationstudio.gmf.esb.EndPointMessageFormat;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EndPointPropertyScope;
+import org.wso2.integrationstudio.gmf.esb.EndPointTimeOutAction;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.EndpointCommons;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public abstract class AbstractEndpointDeserializer
         extends AbstractEsbNodeDeserializer<AbstractEndpoint, EndPoint> {
@@ -396,7 +396,7 @@ public abstract class AbstractEndpointDeserializer
         }
     }
 
-    public org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint createUIEndpoint(Endpoint synapseEndpoint) {
+    public org.wso2.integrationstudio.gmf.esb.EndPoint createUIEndpoint(Endpoint synapseEndpoint) {
         return null;
         
     }

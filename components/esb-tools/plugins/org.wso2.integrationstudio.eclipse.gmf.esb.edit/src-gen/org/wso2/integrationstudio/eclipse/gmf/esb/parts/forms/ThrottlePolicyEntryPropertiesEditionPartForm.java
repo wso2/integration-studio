@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -58,10 +58,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -543,7 +543,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#getThrottleType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#getThrottleType()
 	 * 
 	 */
 	public Enumerator getThrottleType() {
@@ -554,7 +554,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#initThrottleType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#initThrottleType(Object input, Enumerator current)
 	 */
 	public void initThrottleType(Object input, Enumerator current) {
 		throttleType.setInput(input);
@@ -572,7 +572,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#setThrottleType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#setThrottleType(Enumerator newValue)
 	 * 
 	 */
 	public void setThrottleType(Enumerator newValue) {
@@ -590,7 +590,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#getThrottleRange()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#getThrottleRange()
 	 * 
 	 */
 	public String getThrottleRange() {
@@ -600,7 +600,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#setThrottleRange(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#setThrottleRange(String newValue)
 	 * 
 	 */
 	public void setThrottleRange(String newValue) {
@@ -622,7 +622,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#getAccessType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#getAccessType()
 	 * 
 	 */
 	public Enumerator getAccessType() {
@@ -633,7 +633,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#initAccessType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#initAccessType(Object input, Enumerator current)
 	 */
 	public void initAccessType(Object input, Enumerator current) {
 		accessType.setInput(input);
@@ -651,7 +651,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#setAccessType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#setAccessType(Enumerator newValue)
 	 * 
 	 */
 	public void setAccessType(Enumerator newValue) {
@@ -669,7 +669,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#getMaxRequestCount()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#getMaxRequestCount()
 	 * 
 	 */
 	public String getMaxRequestCount() {
@@ -679,7 +679,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#setMaxRequestCount(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#setMaxRequestCount(String newValue)
 	 * 
 	 */
 	public void setMaxRequestCount(String newValue) {
@@ -701,7 +701,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#getUnitTime()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#getUnitTime()
 	 * 
 	 */
 	public String getUnitTime() {
@@ -711,7 +711,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#setUnitTime(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#setUnitTime(String newValue)
 	 * 
 	 */
 	public void setUnitTime(String newValue) {
@@ -733,7 +733,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#getProhibitPeriod()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#getProhibitPeriod()
 	 * 
 	 */
 	public String getProhibitPeriod() {
@@ -743,7 +743,7 @@ public class ThrottlePolicyEntryPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#setProhibitPeriod(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottlePolicyEntryPropertiesEditionPart#setProhibitPeriod(String newValue)
 	 * 
 	 */
 	public void setProhibitPeriod(String newValue) {

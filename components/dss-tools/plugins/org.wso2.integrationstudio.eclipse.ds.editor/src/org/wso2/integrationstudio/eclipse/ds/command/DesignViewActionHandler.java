@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.command;
+package org.wso2.integrationstudio.ds.command;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,8 +17,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.wso2.integrationstudio.eclipse.ds.DataService;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditor;
+import org.wso2.integrationstudio.ds.DataService;
+import org.wso2.integrationstudio.ds.presentation.DsEditor;
 
 public class DesignViewActionHandler extends AbstractHandler {
 

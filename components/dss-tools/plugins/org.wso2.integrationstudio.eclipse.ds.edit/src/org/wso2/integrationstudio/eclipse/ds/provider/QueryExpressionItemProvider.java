@@ -1,6 +1,6 @@
 /**
  */
-package org.wso2.integrationstudio.eclipse.ds.provider;
+package org.wso2.integrationstudio.ds.provider;
 
 
 import java.util.Collection;
@@ -19,11 +19,11 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.QueryExpression;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.QueryExpression;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.integrationstudio.eclipse.ds.QueryExpression} object.
+ * This is the item provider adapter for a {@link org.wso2.integrationstudio.ds.QueryExpression} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

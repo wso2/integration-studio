@@ -1,6 +1,6 @@
 /**
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.QueryExpression;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.QueryExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +20,7 @@ import org.wso2.integrationstudio.eclipse.ds.QueryExpression;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryExpressionImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryExpressionImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated

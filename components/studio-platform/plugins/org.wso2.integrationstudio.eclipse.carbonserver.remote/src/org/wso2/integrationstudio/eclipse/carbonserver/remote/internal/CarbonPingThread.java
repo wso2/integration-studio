@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.remote.internal;
+package org.wso2.integrationstudio.carbonserver.remote.internal;
 
 import java.io.FileNotFoundException;
 import java.net.HttpURLConnection;

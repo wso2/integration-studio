@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.samples" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.samples" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.samples" id="org.wso2.integrationstudio.eclipse.samples" name="Integration Studio Samples"/>
+         <meta.schema plugin="org.wso2.integrationstudio.samples" id="org.wso2.integrationstudio.samples" name="Integration Studio Samples"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -63,7 +63,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.samples.contributor.IIntegrationStudioSampleContributor"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.samples.contributor.IIntegrationStudioSampleContributor"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -99,7 +99,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.samples.contributor.IIntegrationStudioSampleCategoryContributor"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.samples.contributor.IIntegrationStudioSampleCategoryContributor"/>
                </appinfo>
             </annotation>
          </attribute>

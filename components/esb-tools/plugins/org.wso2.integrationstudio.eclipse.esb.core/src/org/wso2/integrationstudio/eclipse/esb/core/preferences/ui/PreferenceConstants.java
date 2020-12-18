@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.core.preferences.ui;
+package org.wso2.integrationstudio.esb.core.preferences.ui;
 
 public class PreferenceConstants {
 

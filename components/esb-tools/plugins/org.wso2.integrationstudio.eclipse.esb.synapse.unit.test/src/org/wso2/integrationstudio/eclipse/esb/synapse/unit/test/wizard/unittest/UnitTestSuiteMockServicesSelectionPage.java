@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.unittest;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.unittest;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -35,9 +35,9 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.DependencyTree;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.SynapseUnitTest;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.mockservice.MockServiceSuiteCreationWizard;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.DependencyTree;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.SynapseUnitTest;
+import org.wso2.integrationstudio.esb.synapse.unit.test.wizard.mockservice.MockServiceSuiteCreationWizard;
 
 /**
  * Class responsible for creation of wizard page for select mock services.

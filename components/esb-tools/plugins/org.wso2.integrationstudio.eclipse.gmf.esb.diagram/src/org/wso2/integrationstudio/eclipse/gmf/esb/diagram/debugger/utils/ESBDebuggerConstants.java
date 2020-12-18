@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils;
 
 /**
  * This class consists exclusively of static constant values which were used by
@@ -44,8 +44,8 @@ public class ESBDebuggerConstants {
     public static final Integer SWITCH_DEFAULT_CONTAINER_POSITION_VALUE = 0;
 
     // Model ID's
-    public static final String SUSPEND_POINT_MODEL_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.suspend.point";
-    public static final String ESB_DEBUG_MODEL_PRESENTATION_ID = "org.wso2.integrationstudio.eclipse.esb.debugger.model.esbDebugModelPresentation";
+    public static final String SUSPEND_POINT_MODEL_ID = "org.wso2.integrationstudio.gmf.esb.diagram.debugger.suspend.point";
+    public static final String ESB_DEBUG_MODEL_PRESENTATION_ID = "org.wso2.integrationstudio.esb.debugger.model.esbDebugModelPresentation";
 
     // ESB Debugger Communication Channel constants
     public static final String DEFAULT_COMMAND_PORT = "9005";
@@ -54,7 +54,7 @@ public class ESBDebuggerConstants {
     public static final String ESB_SERVER_LOCATION = "server location path";
 
     // ESB Debug Point related constants
-    public static final String ESB_BREAKPOINT_MARKER_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ESBDebugPointMarker";
+    public static final String ESB_BREAKPOINT_MARKER_ID = "org.wso2.integrationstudio.gmf.esb.diagram.debugger.ESBDebugPointMarker";
     public static final String MEDIATOR_POSITION_LABEL = "mediator-position";
     public static final String MAPPING_URL_TYPE_LABEL = "mapping";
     public static final String URL_TEMPLATE_LABEL = "url-template";
@@ -196,15 +196,15 @@ public class ESBDebuggerConstants {
     public static final String ESB_SHOW_WIRE_LOGS_COMMAND_TOOL_TIP = "Show wire logs for this mediator";
 
     // Property Value Change command ID's
-    public static final String ESB_MESSAGE_MEDIATION_PROPERTY_INJECT_COMMAND_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.InjectNewProperty";
-    public static final String ESB_MESSAGE_MEDIATION_PROPERTY_CLEAR_COMMAND_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.ClearProperty";
+    public static final String ESB_MESSAGE_MEDIATION_PROPERTY_INJECT_COMMAND_ID = "org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.commands.InjectNewProperty";
+    public static final String ESB_MESSAGE_MEDIATION_PROPERTY_CLEAR_COMMAND_ID = "org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.commands.ClearProperty";
 
     public static final String MEDIATOR_IN_A_UNKNOWN_POSITION_LOG_MESSAGE = "Selected Metdiator Edit Part is in a unknown position : ";
 
-    public static final String MESSAGE_ENVELOPE_VIEW_PRIMARY_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.envelope.view";
-    public static final String MESSAGE_ENVELOPE_VIEW_SECONDARY_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.envelope.view.secondary";
-    public static final String WIRE_LOG_VIEW_PRIMARY_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.wirelog.view";
-    public static final String WIRE_LOG_VIEW_SECONDARY_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.wirelog.secondary";
+    public static final String MESSAGE_ENVELOPE_VIEW_PRIMARY_ID = "org.wso2.integrationstudio.gmf.esb.diagram.debugger.envelope.view";
+    public static final String MESSAGE_ENVELOPE_VIEW_SECONDARY_ID = "org.wso2.integrationstudio.gmf.esb.diagram.debugger.envelope.view.secondary";
+    public static final String WIRE_LOG_VIEW_PRIMARY_ID = "org.wso2.integrationstudio.gmf.esb.diagram.debugger.wirelog.view";
+    public static final String WIRE_LOG_VIEW_SECONDARY_ID = "org.wso2.integrationstudio.gmf.esb.diagram.debugger.wirelog.secondary";
 
 	public static final String DEBUG_PROFILE_INTERNAL_RUNNING_MODE = "Internal";
 	public static final String DEBUG_PROFILE_REMOTE_RUNNING_MODE = "Remote";

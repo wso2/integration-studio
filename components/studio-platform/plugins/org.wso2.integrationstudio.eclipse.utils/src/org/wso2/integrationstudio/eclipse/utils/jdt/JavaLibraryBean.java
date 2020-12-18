@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.jdt;
+package org.wso2.integrationstudio.utils.jdt;
 
 /**
  * This bean class represent a Java Library which is used in a Java program or a

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,19 +17,19 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediator#getMessageBuilders <em>Message Builders</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.BuilderMediator#getMessageBuilders <em>Message Builders</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.BuilderMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.BuilderMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getBuilderMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getBuilderMediator()
  * @model
  * @generated
  */
 public interface BuilderMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Message Builders</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.MessageBuilder}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Message Builders</em>' containment reference list isn't clear,
@@ -37,7 +37,7 @@ public interface BuilderMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Message Builders</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getBuilderMediator_MessageBuilders()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getBuilderMediator_MessageBuilders()
      * @model containment="true"
      * @generated
      */
@@ -53,14 +53,14 @@ public interface BuilderMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(BuilderMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getBuilderMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getBuilderMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     BuilderMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.BuilderMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -79,14 +79,14 @@ public interface BuilderMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(BuilderMediatorOutputConector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getBuilderMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getBuilderMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     BuilderMediatorOutputConector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.BuilderMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.BuilderMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.

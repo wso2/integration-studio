@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -19,13 +19,13 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyType <em>Policy Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyKey <em>Policy Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyEntries <em>Policy Entries</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyConfiguration#getPolicyType <em>Policy Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyConfiguration#getPolicyKey <em>Policy Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyConfiguration#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyConfiguration#getPolicyEntries <em>Policy Entries</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyConfiguration()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottlePolicyConfiguration()
  * @model
  * @generated
  */
@@ -33,7 +33,7 @@ public interface ThrottlePolicyConfiguration extends EObject {
     /**
      * Returns the value of the '<em><b>Policy Type</b></em>' attribute.
      * The default value is <code>"INLINE"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Policy Type</em>' attribute isn't clear,
@@ -41,20 +41,20 @@ public interface ThrottlePolicyConfiguration extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Policy Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyType
+     * @see org.wso2.integrationstudio.gmf.esb.ThrottlePolicyType
      * @see #setPolicyType(ThrottlePolicyType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyConfiguration_PolicyType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottlePolicyConfiguration_PolicyType()
      * @model default="INLINE"
      * @generated
      */
     ThrottlePolicyType getPolicyType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyType <em>Policy Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyConfiguration#getPolicyType <em>Policy Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Policy Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyType
+     * @see org.wso2.integrationstudio.gmf.esb.ThrottlePolicyType
      * @see #getPolicyType()
      * @generated
      */
@@ -70,14 +70,14 @@ public interface ThrottlePolicyConfiguration extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Policy Key</em>' containment reference.
      * @see #setPolicyKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyConfiguration_PolicyKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottlePolicyConfiguration_PolicyKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getPolicyKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyKey <em>Policy Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyConfiguration#getPolicyKey <em>Policy Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Policy Key</em>' containment reference.
@@ -96,14 +96,14 @@ public interface ThrottlePolicyConfiguration extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Max Concurrent Access Count</em>' attribute.
      * @see #setMaxConcurrentAccessCount(int)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyConfiguration_MaxConcurrentAccessCount()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottlePolicyConfiguration_MaxConcurrentAccessCount()
      * @model
      * @generated
      */
     int getMaxConcurrentAccessCount();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyConfiguration#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Max Concurrent Access Count</em>' attribute.
@@ -114,7 +114,7 @@ public interface ThrottlePolicyConfiguration extends EObject {
 
     /**
      * Returns the value of the '<em><b>Policy Entries</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyEntry}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyEntry}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Policy Entries</em>' containment reference list isn't clear,
@@ -122,7 +122,7 @@ public interface ThrottlePolicyConfiguration extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Policy Entries</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyConfiguration_PolicyEntries()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottlePolicyConfiguration_PolicyEntries()
      * @model containment="true"
      * @generated
      */

@@ -4,10 +4,10 @@
 
   <extension point="org.eclipse.ui.newWizards">
 		<wizard name="REST API" 
-			category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.message.mediation/org.wso2.integrationstudio.eclipse.message.mediation.features"
-			class="org.wso2.integrationstudio.eclipse.artifact.synapse.api.ui.wizard.SynapseAPICreationWizard"
+			category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.message.mediation/org.wso2.integrationstudio.message.mediation.features"
+			class="org.wso2.integrationstudio.artifact.synapse.api.ui.wizard.SynapseAPICreationWizard"
 			wizardManifest="project_wizard.xml"
-			id="org.wso2.integrationstudio.eclipse.artifact.synapse.api.wizard"
+			id="org.wso2.integrationstudio.artifact.synapse.api.wizard"
 			icon="icons/synapseAPI.gif">
 			<description>Synapse API</description>
 		</wizard>
@@ -20,9 +20,9 @@
 			id="org.eclipse.ui.navigator.resourceContent"
 			name="test">
 				<commonWizard 
-					menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
+					menuGroupId="2org.wso2.integrationstudio.artifact.esb"
 			  	 	type="new"
-					wizardId="org.wso2.integrationstudio.eclipse.artifact.synapse.api.wizard">
+					wizardId="org.wso2.integrationstudio.artifact.synapse.api.wizard">
 					<enablement>
 						<or>
 							<adapt type="org.eclipse.core.resources.IProject"/>
@@ -44,8 +44,8 @@
 	</extension>-->
 		<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.synapse.api.wizard">
+                menuGroupId="2org.wso2.integrationstudio.artifact.esb"
+                wizardId="org.wso2.integrationstudio.artifact.synapse.api.wizard">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
@@ -68,9 +68,9 @@
             </commonWizard>
     </extension>
   
-	<extension point="org.wso2.integrationstudio.eclipse.dashboad.link">
+	<extension point="org.wso2.integrationstudio.dashboad.link">
         <wizardLink category="dashboard.category.esb.artifacts" id="5dashboard.wizardLink.esb.synapse.api"
-			wizard="org.wso2.integrationstudio.eclipse.artifact.synapse.api.wizard" priority="5">
+			wizard="org.wso2.integrationstudio.artifact.synapse.api.wizard" priority="5">
 		</wizardLink>
     </extension>
 </plugin>

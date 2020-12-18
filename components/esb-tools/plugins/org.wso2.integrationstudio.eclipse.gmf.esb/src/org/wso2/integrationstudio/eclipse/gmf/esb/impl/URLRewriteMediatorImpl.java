@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRule;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteMediator;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteRule;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,11 +35,11 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRule;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.URLRewriteMediatorImpl#getUrlRewriteRules <em>Url Rewrite Rules</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.URLRewriteMediatorImpl#getInProperty <em>In Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.URLRewriteMediatorImpl#getOutProperty <em>Out Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.URLRewriteMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.URLRewriteMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.URLRewriteMediatorImpl#getUrlRewriteRules <em>Url Rewrite Rules</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.URLRewriteMediatorImpl#getInProperty <em>In Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.URLRewriteMediatorImpl#getOutProperty <em>Out Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.URLRewriteMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.URLRewriteMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated

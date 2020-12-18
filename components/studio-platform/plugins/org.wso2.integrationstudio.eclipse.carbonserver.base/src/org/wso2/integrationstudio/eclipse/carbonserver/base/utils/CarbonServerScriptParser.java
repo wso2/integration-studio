@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.utils;
+package org.wso2.integrationstudio.carbonserver.base.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,9 +24,9 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.carbonserver.base.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver.base.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class CarbonServerScriptParser {
 	private static final String OS_NAME_PROPERTY = "os.name";

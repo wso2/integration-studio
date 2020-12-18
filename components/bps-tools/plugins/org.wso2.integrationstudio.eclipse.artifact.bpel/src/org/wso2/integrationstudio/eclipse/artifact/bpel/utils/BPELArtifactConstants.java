@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.artifact.bpel.utils;
+package org.wso2.integrationstudio.artifact.bpel.utils;
 
 public class BPELArtifactConstants {
 	public static final String ASYNCHRONOUS_BPEL_PROCESS="Asynchronous BPEL Process";

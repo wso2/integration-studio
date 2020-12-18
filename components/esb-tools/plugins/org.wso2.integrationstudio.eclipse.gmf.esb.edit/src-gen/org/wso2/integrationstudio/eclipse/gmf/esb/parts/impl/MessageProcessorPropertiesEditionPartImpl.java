@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -73,12 +73,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -1492,7 +1492,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -1502,7 +1502,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -1524,7 +1524,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -1534,7 +1534,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -1575,7 +1575,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getProcessorName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getProcessorName()
 	 * 
 	 */
 	public String getProcessorName() {
@@ -1585,7 +1585,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setProcessorName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setProcessorName(String newValue)
 	 * 
 	 */
 	public void setProcessorName(String newValue) {
@@ -1607,7 +1607,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getProcessorType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getProcessorType()
 	 * 
 	 */
 	public Enumerator getProcessorType() {
@@ -1618,7 +1618,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#initProcessorType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#initProcessorType(Object input, Enumerator current)
 	 */
 	public void initProcessorType(Object input, Enumerator current) {
 		processorType.setInput(input);
@@ -1636,7 +1636,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setProcessorType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setProcessorType(Enumerator newValue)
 	 * 
 	 */
 	public void setProcessorType(Enumerator newValue) {
@@ -1654,7 +1654,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getMessageProcessorProvider()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getMessageProcessorProvider()
 	 * 
 	 */
 	public String getMessageProcessorProvider() {
@@ -1664,7 +1664,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setMessageProcessorProvider(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setMessageProcessorProvider(String newValue)
 	 * 
 	 */
 	public void setMessageProcessorProvider(String newValue) {
@@ -1686,7 +1686,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getMessageStore()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getMessageStore()
 	 * 
 	 */
 	public String getMessageStore() {
@@ -1696,7 +1696,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setMessageStore(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setMessageStore(String newValue)
 	 * 
 	 */
 	public void setMessageStore(String newValue) {
@@ -1718,7 +1718,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getSourceMessageStore()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getSourceMessageStore()
 	 * 
 	 */
 	public String getSourceMessageStore() {
@@ -1728,7 +1728,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setSourceMessageStore(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setSourceMessageStore(String newValue)
 	 * 
 	 */
 	public void setSourceMessageStore(String newValue) {
@@ -1750,7 +1750,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getTargetMessageStore()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getTargetMessageStore()
 	 * 
 	 */
 	public String getTargetMessageStore() {
@@ -1760,7 +1760,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setTargetMessageStore(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setTargetMessageStore(String newValue)
 	 * 
 	 */
 	public void setTargetMessageStore(String newValue) {
@@ -1782,7 +1782,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getProcessorState()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getProcessorState()
 	 * 
 	 */
 	public Enumerator getProcessorState() {
@@ -1793,7 +1793,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#initProcessorState(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#initProcessorState(Object input, Enumerator current)
 	 */
 	public void initProcessorState(Object input, Enumerator current) {
 		processorState.setInput(input);
@@ -1811,7 +1811,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setProcessorState(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setProcessorState(Enumerator newValue)
 	 * 
 	 */
 	public void setProcessorState(Enumerator newValue) {
@@ -1829,7 +1829,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getRetryInterval()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getRetryInterval()
 	 * 
 	 */
 	public String getRetryInterval() {
@@ -1839,7 +1839,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setRetryInterval(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setRetryInterval(String newValue)
 	 * 
 	 */
 	public void setRetryInterval(String newValue) {
@@ -1861,7 +1861,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getForwardingInterval()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getForwardingInterval()
 	 * 
 	 */
 	public String getForwardingInterval() {
@@ -1871,7 +1871,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setForwardingInterval(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setForwardingInterval(String newValue)
 	 * 
 	 */
 	public void setForwardingInterval(String newValue) {
@@ -1893,7 +1893,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getSamplingInterval()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getSamplingInterval()
 	 * 
 	 */
 	public String getSamplingInterval() {
@@ -1903,7 +1903,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setSamplingInterval(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setSamplingInterval(String newValue)
 	 * 
 	 */
 	public void setSamplingInterval(String newValue) {
@@ -1925,7 +1925,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getSamplingConcurrency()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getSamplingConcurrency()
 	 * 
 	 */
 	public String getSamplingConcurrency() {
@@ -1935,7 +1935,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setSamplingConcurrency(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setSamplingConcurrency(String newValue)
 	 * 
 	 */
 	public void setSamplingConcurrency(String newValue) {
@@ -1957,7 +1957,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getMaxDeliveryAttempts()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getMaxDeliveryAttempts()
 	 * 
 	 */
 	public String getMaxDeliveryAttempts() {
@@ -1967,7 +1967,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setMaxDeliveryAttempts(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setMaxDeliveryAttempts(String newValue)
 	 * 
 	 */
 	public void setMaxDeliveryAttempts(String newValue) {
@@ -1989,7 +1989,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getDropMessageAfterMaximumDeliveryAttempts()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getDropMessageAfterMaximumDeliveryAttempts()
 	 * 
 	 */
 	public Enumerator getDropMessageAfterMaximumDeliveryAttempts() {
@@ -2000,7 +2000,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#initDropMessageAfterMaximumDeliveryAttempts(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#initDropMessageAfterMaximumDeliveryAttempts(Object input, Enumerator current)
 	 */
 	public void initDropMessageAfterMaximumDeliveryAttempts(Object input, Enumerator current) {
 		dropMessageAfterMaximumDeliveryAttempts.setInput(input);
@@ -2018,7 +2018,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setDropMessageAfterMaximumDeliveryAttempts(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setDropMessageAfterMaximumDeliveryAttempts(Enumerator newValue)
 	 * 
 	 */
 	public void setDropMessageAfterMaximumDeliveryAttempts(Enumerator newValue) {
@@ -2036,7 +2036,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getAxis2ClientRepository()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getAxis2ClientRepository()
 	 * 
 	 */
 	public String getAxis2ClientRepository() {
@@ -2046,7 +2046,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setAxis2ClientRepository(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setAxis2ClientRepository(String newValue)
 	 * 
 	 */
 	public void setAxis2ClientRepository(String newValue) {
@@ -2068,7 +2068,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getAxis2Configuration()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getAxis2Configuration()
 	 * 
 	 */
 	public String getAxis2Configuration() {
@@ -2078,7 +2078,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setAxis2Configuration(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setAxis2Configuration(String newValue)
 	 * 
 	 */
 	public void setAxis2Configuration(String newValue) {
@@ -2100,7 +2100,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getQuartzConfigFilePath()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getQuartzConfigFilePath()
 	 * 
 	 */
 	public String getQuartzConfigFilePath() {
@@ -2110,7 +2110,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setQuartzConfigFilePath(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setQuartzConfigFilePath(String newValue)
 	 * 
 	 */
 	public void setQuartzConfigFilePath(String newValue) {
@@ -2132,7 +2132,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getCronExpression()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getCronExpression()
 	 * 
 	 */
 	public String getCronExpression() {
@@ -2142,7 +2142,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setCronExpression(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setCronExpression(String newValue)
 	 * 
 	 */
 	public void setCronExpression(String newValue) {
@@ -2164,7 +2164,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getNonRetryHttpStatusCodes()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getNonRetryHttpStatusCodes()
 	 * 
 	 */
 	public String getNonRetryHttpStatusCodes() {
@@ -2174,7 +2174,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setNonRetryHttpStatusCodes(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setNonRetryHttpStatusCodes(String newValue)
 	 * 
 	 */
 	public void setNonRetryHttpStatusCodes(String newValue) {
@@ -2198,7 +2198,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#initParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#initParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initParameters(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -2219,7 +2219,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#updateParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#updateParameters()
 	 * 
 	 */
 	public void updateParameters() {
@@ -2229,7 +2229,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#addFilterParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#addFilterParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToParameters(ViewerFilter filter) {
@@ -2242,7 +2242,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#addBusinessFilterParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#addBusinessFilterParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToParameters(ViewerFilter filter) {
@@ -2252,7 +2252,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#isContainedInParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#isContainedInParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInParametersTable(EObject element) {
@@ -2262,7 +2262,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getTaskCount()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getTaskCount()
 	 * 
 	 */
 	public String getTaskCount() {
@@ -2272,7 +2272,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setTaskCount(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setTaskCount(String newValue)
 	 * 
 	 */
 	public void setTaskCount(String newValue) {
@@ -2294,7 +2294,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getMaxStoreConnectionAttempts()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getMaxStoreConnectionAttempts()
 	 * 
 	 */
 	public String getMaxStoreConnectionAttempts() {
@@ -2304,7 +2304,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setMaxStoreConnectionAttempts(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setMaxStoreConnectionAttempts(String newValue)
 	 * 
 	 */
 	public void setMaxStoreConnectionAttempts(String newValue) {
@@ -2326,7 +2326,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getStoreConnectionInterval()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getStoreConnectionInterval()
 	 * 
 	 */
 	public String getStoreConnectionInterval() {
@@ -2336,7 +2336,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setStoreConnectionInterval(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setStoreConnectionInterval(String newValue)
 	 * 
 	 */
 	public void setStoreConnectionInterval(String newValue) {
@@ -2358,7 +2358,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getFailMessagesStore()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#getFailMessagesStore()
 	 * 
 	 */
 	public String getFailMessagesStore() {
@@ -2368,7 +2368,7 @@ public class MessageProcessorPropertiesEditionPartImpl extends CompositeProperti
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setFailMessagesStore(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageProcessorPropertiesEditionPart#setFailMessagesStore(String newValue)
 	 * 
 	 */
 	public void setFailMessagesStore(String newValue) {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.customvalidator.utils;
+package org.wso2.integrationstudio.ds.customvalidator.utils;
 
 public class DataserviceConstants {
 	public static final String DATASERVICE_VALIDATOR_INTERFACE_NAME =

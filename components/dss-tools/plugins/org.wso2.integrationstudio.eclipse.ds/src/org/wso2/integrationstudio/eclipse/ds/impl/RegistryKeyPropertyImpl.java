@@ -1,6 +1,6 @@
 /**
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Map;
 
@@ -11,8 +11,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.RegistryKeyProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +22,7 @@ import org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.RegistryKeyPropertyImpl#getKey <em>Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.RegistryKeyPropertyImpl#getKey <em>Key</em>}</li>
  * </ul>
  *
  * @generated

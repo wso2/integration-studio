@@ -19,10 +19,10 @@
 <extension
           point="org.wso2.integrationstudio.create.dashbaord.new.section">
            <dashboard.section
-             id="org.wso2.integrationstudio.eclipse.capp.distribution"
+             id="org.wso2.integrationstudio.capp.distribution"
              nametag="Distribution"
              name="Distribution"
-             bundleID="org.wso2.integrationstudio.eclipse.capp.core"
+             bundleID="org.wso2.integrationstudio.capp.core"
              icon="icons/distribution-project-wizard.png">
              </dashboard.section>
     </extension>

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -63,12 +63,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -359,7 +359,7 @@ public class BuilderMediatorPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -369,7 +369,7 @@ public class BuilderMediatorPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -391,7 +391,7 @@ public class BuilderMediatorPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -401,7 +401,7 @@ public class BuilderMediatorPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -442,7 +442,7 @@ public class BuilderMediatorPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -452,7 +452,7 @@ public class BuilderMediatorPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -476,7 +476,7 @@ public class BuilderMediatorPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#initMessageBuilders(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#initMessageBuilders(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initMessageBuilders(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -497,7 +497,7 @@ public class BuilderMediatorPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#updateMessageBuilders()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#updateMessageBuilders()
 	 * 
 	 */
 	public void updateMessageBuilders() {
@@ -507,7 +507,7 @@ public class BuilderMediatorPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#addFilterMessageBuilders(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#addFilterMessageBuilders(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToMessageBuilders(ViewerFilter filter) {
@@ -520,7 +520,7 @@ public class BuilderMediatorPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#addBusinessFilterMessageBuilders(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#addBusinessFilterMessageBuilders(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToMessageBuilders(ViewerFilter filter) {
@@ -530,7 +530,7 @@ public class BuilderMediatorPropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#isContainedInMessageBuildersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BuilderMediatorPropertiesEditionPart#isContainedInMessageBuildersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInMessageBuildersTable(EObject element) {

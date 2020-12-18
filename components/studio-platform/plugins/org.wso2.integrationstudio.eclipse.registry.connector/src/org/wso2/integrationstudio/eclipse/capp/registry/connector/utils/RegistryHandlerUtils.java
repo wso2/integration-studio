@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.registry.connector.utils;
+package org.wso2.integrationstudio.capp.registry.connector.utils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -22,20 +22,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IProject;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.configure.ICAppProjectSettings;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.configure.ISettingsAttribute;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.configure.ISettingsData;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.integrationstudio.eclipse.capp.core.data.SettingsAttribute;
-import org.wso2.integrationstudio.eclipse.capp.core.data.SettingsData;
-import org.wso2.integrationstudio.eclipse.capp.core.model.RegistryConnection;
-import org.wso2.integrationstudio.eclipse.capp.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.Activator;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryURLInfo;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryUrlStore;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryConnection;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.capp.core.artifacts.configure.ICAppProjectSettings;
+import org.wso2.integrationstudio.capp.core.artifacts.configure.ISettingsAttribute;
+import org.wso2.integrationstudio.capp.core.artifacts.configure.ISettingsData;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.CAppEnvironment;
+import org.wso2.integrationstudio.capp.core.data.SettingsAttribute;
+import org.wso2.integrationstudio.capp.core.data.SettingsData;
+import org.wso2.integrationstudio.capp.core.model.RegistryConnection;
+import org.wso2.integrationstudio.capp.core.utils.Constants;
+import org.wso2.integrationstudio.capp.registry.connector.Activator;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryURLInfo;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryUrlStore;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryConnection;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class RegistryHandlerUtils {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.distribution.project.export;
+package org.wso2.integrationstudio.distribution.project.export;
 
 import java.util.List;
 import java.util.Map;
@@ -21,10 +21,10 @@ import java.util.Map;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.ArtifactData;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.DependencyData;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.DistProjectUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.util.ExportUtil;
+import org.wso2.integrationstudio.distribution.project.model.ArtifactData;
+import org.wso2.integrationstudio.distribution.project.model.DependencyData;
+import org.wso2.integrationstudio.distribution.project.util.DistProjectUtils;
+import org.wso2.integrationstudio.platform.core.project.export.util.ExportUtil;
 
 public class DefaultArtifactExportHandler {
 	DistProjectUtils distProjectUtils = new DistProjectUtils();

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -20,11 +20,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RouterMediatorContainer;
+import org.wso2.integrationstudio.gmf.esb.RouterTarget;
+import org.wso2.integrationstudio.gmf.esb.RouterTargetContainer;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RouterTargetContainer;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RouterMediatorContainerImpl#getRouterTargetContainer <em>Router Target Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RouterMediatorContainerImpl#getRouterTargetContainer <em>Router Target Container</em>}</li>
  * </ul>
  *
  * @generated

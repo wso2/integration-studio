@@ -16,15 +16,15 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.cloud.util;
+package org.wso2.integrationstudio.esb.cloud.util;
 
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.Application;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.EndpointData;
-import org.wso2.integrationstudio.eclipse.esb.cloud.model.Runtime;
+import org.wso2.integrationstudio.esb.cloud.model.Application;
+import org.wso2.integrationstudio.esb.cloud.model.EndpointData;
+import org.wso2.integrationstudio.esb.cloud.model.Runtime;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
@@ -94,7 +94,7 @@ public class JsonUtils {
      */
     public static List<Runtime> getRuntimesFromJson(String json) {
         Gson gson = new Gson();
-        Type type = new TypeToken<List<org.wso2.integrationstudio.eclipse.esb.cloud.model.Runtime>>() {
+        Type type = new TypeToken<List<org.wso2.integrationstudio.esb.cloud.model.Runtime>>() {
         }.getType();
         return gson.fromJson(json, type);
     }

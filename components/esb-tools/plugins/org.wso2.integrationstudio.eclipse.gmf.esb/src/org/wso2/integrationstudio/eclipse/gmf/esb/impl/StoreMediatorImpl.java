@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -14,16 +14,16 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.StoreMediatorSpecifyType;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.StoreMediator;
+import org.wso2.integrationstudio.gmf.esb.StoreMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.StoreMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.StoreMediatorSpecifyType;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,13 +33,13 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.StoreMediatorImpl#getMessageStore <em>Message Store</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.StoreMediatorImpl#getOnStoreSequence <em>On Store Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.StoreMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.StoreMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.StoreMediatorImpl#getAvailableMessageStores <em>Available Message Stores</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.StoreMediatorImpl#getSpecifyAs <em>Specify As</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.StoreMediatorImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.StoreMediatorImpl#getMessageStore <em>Message Store</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.StoreMediatorImpl#getOnStoreSequence <em>On Store Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.StoreMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.StoreMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.StoreMediatorImpl#getAvailableMessageStores <em>Available Message Stores</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.StoreMediatorImpl#getSpecifyAs <em>Specify As</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.StoreMediatorImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @generated

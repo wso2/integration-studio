@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.maven.executor;
+package org.wso2.integrationstudio.maven.executor;
 
 public interface IMavenDefiniton {
 

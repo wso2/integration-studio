@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 import java.util.ArrayList;
 
@@ -58,16 +58,16 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms.EnrichMediatorPropertiesEditionPartForm;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.forms.EnrichMediatorPropertiesEditionPartForm;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -278,7 +278,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#getValidateSchemaKeyType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#getValidateSchemaKeyType()
 	 * 
 	 */
 	public Enumerator getValidateSchemaKeyType() {
@@ -289,7 +289,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#initValidateSchemaKeyType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#initValidateSchemaKeyType(Object input, Enumerator current)
 	 */
 	public void initValidateSchemaKeyType(Object input, Enumerator current) {
 		validateSchemaKeyType.setInput(input);
@@ -307,7 +307,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#setValidateSchemaKeyType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#setValidateSchemaKeyType(Enumerator newValue)
 	 * 
 	 */
 	public void setValidateSchemaKeyType(Enumerator newValue) {
@@ -325,7 +325,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#getSchemaKey()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#getSchemaKey()
 	 * 
 	 */
 	public EObject getSchemaKey() {
@@ -340,7 +340,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#initSchemaKey(EObjectFlatComboSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#initSchemaKey(EObjectFlatComboSettings)
 	 */
 	public void initSchemaKey(EObjectFlatComboSettings settings) {
 		schemaKey.setInput(settings);
@@ -360,7 +360,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#setSchemaKey(EObject newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#setSchemaKey(EObject newValue)
 	 * 
 	 */
 	public void setSchemaKey(EObject newValue) {
@@ -382,7 +382,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#setSchemaKeyButtonMode(ButtonsModeEnum newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#setSchemaKeyButtonMode(ButtonsModeEnum newValue)
 	 */
 	public void setSchemaKeyButtonMode(ButtonsModeEnum newValue) {
 		schemaKey.setButtonMode(newValue);
@@ -391,7 +391,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#addFilterSchemaKey(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#addFilterSchemaKey(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToSchemaKey(ViewerFilter filter) {
@@ -401,7 +401,7 @@ public class ValidateSchemaPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#addBusinessFilterSchemaKey(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateSchemaPropertiesEditionPart#addBusinessFilterSchemaKey(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToSchemaKey(ViewerFilter filter) {

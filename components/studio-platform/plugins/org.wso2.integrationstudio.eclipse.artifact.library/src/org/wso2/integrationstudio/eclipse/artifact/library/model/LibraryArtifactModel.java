@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.library.model;
+package org.wso2.integrationstudio.artifact.library.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class LibraryArtifactModel extends ProjectDataModel {
 private List<Object> libraries = new ArrayList<Object>();

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 import java.util.ArrayList;
 
@@ -73,16 +73,16 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -512,7 +512,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#getCommentsList()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#getCommentsList()
      * 
      */
     public EList getCommentsList() {
@@ -522,7 +522,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#setCommentsList(EList
+     * @see org.wso2.integrationstudio.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#setCommentsList(EList
      *      newValue)
      * 
      */
@@ -564,7 +564,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#getReverse()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#getReverse()
      * 
      */
     public Boolean getReverse() {
@@ -574,7 +574,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#setReverse(Boolean
+     * @see org.wso2.integrationstudio.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#setReverse(Boolean
      *      newValue)
      * 
      */
@@ -597,7 +597,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#getFastXsltSchemaKeyType()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#getFastXsltSchemaKeyType()
      * 
      */
     public Enumerator getFastXsltSchemaKeyType() {
@@ -609,7 +609,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#initFastXsltSchemaKeyType(Object
+     * @see org.wso2.integrationstudio.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#initFastXsltSchemaKeyType(Object
      *      input, Enumerator current)
      */
     public void initFastXsltSchemaKeyType(Object input, Enumerator current) {
@@ -629,7 +629,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#setFastXsltSchemaKeyType(Enumerator
+     * @see org.wso2.integrationstudio.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#setFastXsltSchemaKeyType(Enumerator
      *      newValue)
      * 
      */
@@ -649,7 +649,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#getDescription()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#getDescription()
      * 
      */
     public String getDescription() {
@@ -659,7 +659,7 @@ public class FastXSLTMediatorPropertiesEditionPartForm extends SectionProperties
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#setDescription(String
+     * @see org.wso2.integrationstudio.gmf.esb.parts.FastXSLTMediatorPropertiesEditionPart#setDescription(String
      *      newValue)
      * 
      */

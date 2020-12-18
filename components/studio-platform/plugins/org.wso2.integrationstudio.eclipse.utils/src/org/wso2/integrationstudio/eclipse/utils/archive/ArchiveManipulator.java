@@ -29,7 +29,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.archive;
+package org.wso2.integrationstudio.utils.archive;
 
 import java.io.File;
 import java.io.FileInputStream;

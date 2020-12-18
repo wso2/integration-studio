@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -41,10 +41,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -227,7 +227,7 @@ public class RouterTargetContainerPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#getBreakAfterRoute()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#getBreakAfterRoute()
 	 * 
 	 */
 	public Boolean getBreakAfterRoute() {
@@ -237,7 +237,7 @@ public class RouterTargetContainerPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#setBreakAfterRoute(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#setBreakAfterRoute(Boolean newValue)
 	 * 
 	 */
 	public void setBreakAfterRoute(Boolean newValue) {
@@ -259,7 +259,7 @@ public class RouterTargetContainerPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#getRoutePattern()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#getRoutePattern()
 	 * 
 	 */
 	public String getRoutePattern() {
@@ -269,7 +269,7 @@ public class RouterTargetContainerPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#setRoutePattern(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#setRoutePattern(String newValue)
 	 * 
 	 */
 	public void setRoutePattern(String newValue) {

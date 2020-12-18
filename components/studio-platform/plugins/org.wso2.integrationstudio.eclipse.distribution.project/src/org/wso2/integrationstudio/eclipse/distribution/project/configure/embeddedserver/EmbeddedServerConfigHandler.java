@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.configure.embeddedserver;
+package org.wso2.integrationstudio.distribution.project.configure.embeddedserver;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;

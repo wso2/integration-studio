@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.utils;
+package org.wso2.integrationstudio.platform.ui.utils;
 
 
 import java.util.ArrayList;
@@ -41,9 +41,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioElement;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProviderData;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProvider;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProviderData;
 
  
 

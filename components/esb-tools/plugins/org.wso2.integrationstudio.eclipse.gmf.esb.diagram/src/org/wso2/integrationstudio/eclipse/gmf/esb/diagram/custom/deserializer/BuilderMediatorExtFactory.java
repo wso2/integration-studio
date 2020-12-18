@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,9 +12,9 @@ import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
 import org.wso2.carbon.relay.mediators.builder.xml.BuilderMediatorFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.BuilderMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.MessageBuilder;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.BuilderMediatorExt;
 
 public class BuilderMediatorExtFactory extends BuilderMediatorFactory {
 

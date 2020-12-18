@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.util;
+package org.wso2.integrationstudio.registry.base.util;
 
 import java.io.File;
 import java.net.HttpURLConnection;

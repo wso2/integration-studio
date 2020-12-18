@@ -1,9 +1,9 @@
-package org.wso2.integrationstudio.eclipse.updater;
+package org.wso2.integrationstudio.updater;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.updater.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.updater.messages"; //$NON-NLS-1$
 	public static String UpdateMetaFileReaderJob_3;
 	public static String UpdateMetaFileReaderJob_1;
 	public static String UpdateMetaFileReaderJob_0;

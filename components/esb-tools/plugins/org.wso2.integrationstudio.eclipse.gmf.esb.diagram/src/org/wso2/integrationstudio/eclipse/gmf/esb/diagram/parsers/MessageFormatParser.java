@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.parsers;
+package org.wso2.integrationstudio.gmf.esb.diagram.parsers;
 
 import java.text.FieldPosition;
 import java.text.MessageFormat;
@@ -12,8 +12,8 @@ import org.eclipse.gmf.runtime.common.ui.services.parser.IParserEditStatus;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserEditStatus;
 import org.eclipse.gmf.tooling.runtime.parsers.AbstractAttributeParser;
 import org.eclipse.osgi.util.NLS;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.Messages;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.Messages;
 
 /**
  * @generated

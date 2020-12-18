@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.remote.views;
+package org.wso2.integrationstudio.registry.manager.remote.views;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;

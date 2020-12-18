@@ -37,7 +37,7 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.service.prefs.Preferences;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.AbstractEditorFunctionExecutor;
+import org.wso2.integrationstudio.webui.core.editor.AbstractEditorFunctionExecutor;
 import org.wso2.integrationstudio.humantaskeditor.Activator;
 import org.wso2.integrationstudio.humantaskeditor.HumantaskEditorConstants;
 

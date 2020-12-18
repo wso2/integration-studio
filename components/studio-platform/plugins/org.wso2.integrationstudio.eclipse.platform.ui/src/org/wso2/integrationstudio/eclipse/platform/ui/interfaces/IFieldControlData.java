@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.interfaces;
+package org.wso2.integrationstudio.platform.ui.interfaces;
 
 import org.eclipse.swt.widgets.Control;
 

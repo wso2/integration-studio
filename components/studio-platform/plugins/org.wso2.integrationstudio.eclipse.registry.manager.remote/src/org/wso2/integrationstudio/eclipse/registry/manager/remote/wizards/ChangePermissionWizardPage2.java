@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.remote.wizards;
+package org.wso2.integrationstudio.registry.manager.remote.wizards;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -29,15 +29,15 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserRole;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.dialog.UserPermissionDialog.RoleData;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.util.ImageUtils;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.Activator;
-import org.wso2.integrationstudio.eclipse.registry.resource.authorization.ResourceAdmin;
-import org.wso2.integrationstudio.eclipse.registry.resource.authorization.ResourceAdmin.Role;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserRole;
+import org.wso2.integrationstudio.registry.base.ui.dialog.UserPermissionDialog.RoleData;
+import org.wso2.integrationstudio.registry.base.ui.util.ImageUtils;
+import org.wso2.integrationstudio.registry.manager.remote.Activator;
+import org.wso2.integrationstudio.registry.resource.authorization.ResourceAdmin;
+import org.wso2.integrationstudio.registry.resource.authorization.ResourceAdmin.Role;
 import org.eclipse.swt.widgets.List;
 
 public class ChangePermissionWizardPage2 extends WizardPage {

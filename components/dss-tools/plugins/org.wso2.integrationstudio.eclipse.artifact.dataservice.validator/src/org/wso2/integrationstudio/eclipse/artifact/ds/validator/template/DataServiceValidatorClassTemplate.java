@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.artifact.ds.validator.template;
+package org.wso2.integrationstudio.artifact.ds.validator.template;
 
 
 public class DataServiceValidatorClassTemplate {

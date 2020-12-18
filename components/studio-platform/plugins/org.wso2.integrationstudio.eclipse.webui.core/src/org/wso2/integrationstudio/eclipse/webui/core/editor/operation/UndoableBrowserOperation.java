@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.webui.core.editor.operation;
+package org.wso2.integrationstudio.webui.core.editor.operation;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.AbstractOperation;
@@ -21,11 +21,11 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.AbstractWebBasedEditor;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.Constants;
-import org.wso2.integrationstudio.eclipse.webui.core.exception.WebUIException;
-import org.wso2.integrationstudio.eclipse.webui.core.model.BrowserScript;
-import org.wso2.integrationstudio.eclipse.webui.core.util.ScriptFactory;
+import org.wso2.integrationstudio.webui.core.editor.AbstractWebBasedEditor;
+import org.wso2.integrationstudio.webui.core.editor.Constants;
+import org.wso2.integrationstudio.webui.core.exception.WebUIException;
+import org.wso2.integrationstudio.webui.core.model.BrowserScript;
+import org.wso2.integrationstudio.webui.core.util.ScriptFactory;
 
 public class UndoableBrowserOperation extends AbstractOperation {
 

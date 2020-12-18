@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.editor.contentassistant;
+package org.wso2.integrationstudio.ds.editor.contentassistant;
 
 import org.eclipse.wst.xml.ui.internal.contentassist.ProposalComparator;
 import org.eclipse.wst.xml.ui.internal.contentassist.XMLContentAssistProcessor;
@@ -28,11 +28,11 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
-import org.wso2.integrationstudio.eclipse.ds.data.DataserviceTemplate;
-import org.wso2.integrationstudio.eclipse.ds.editor.contentassistant.proposals.DataserviceAttributeNameCompletionProposal;
-import org.wso2.integrationstudio.eclipse.ds.editor.contentassistant.proposals.DataserviceTagCompletionProposal;
-import org.wso2.integrationstudio.eclipse.ds.model.DataserviceAttributeElement;
-import org.wso2.integrationstudio.eclipse.ds.model.DataserviceTagElement;
+import org.wso2.integrationstudio.ds.data.DataserviceTemplate;
+import org.wso2.integrationstudio.ds.editor.contentassistant.proposals.DataserviceAttributeNameCompletionProposal;
+import org.wso2.integrationstudio.ds.editor.contentassistant.proposals.DataserviceTagCompletionProposal;
+import org.wso2.integrationstudio.ds.model.DataserviceAttributeElement;
+import org.wso2.integrationstudio.ds.model.DataserviceTagElement;
 
 import org.eclipse.core.filebuffers.FileBuffers;
 import org.eclipse.core.filebuffers.ITextFileBuffer;

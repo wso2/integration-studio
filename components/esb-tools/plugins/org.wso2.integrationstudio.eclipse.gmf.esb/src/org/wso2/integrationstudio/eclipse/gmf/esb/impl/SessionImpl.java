@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,9 +13,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Session;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Type;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.Session;
+import org.wso2.integrationstudio.gmf.esb.Type;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +25,7 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.Type;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SessionImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SessionImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated

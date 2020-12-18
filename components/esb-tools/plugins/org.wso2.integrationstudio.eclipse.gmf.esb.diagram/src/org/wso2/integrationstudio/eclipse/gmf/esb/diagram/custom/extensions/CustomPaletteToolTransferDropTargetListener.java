@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.extensions;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.extensions;
 
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.diagram.ui.internal.parts.PaletteToolTransferDropTargetListener;

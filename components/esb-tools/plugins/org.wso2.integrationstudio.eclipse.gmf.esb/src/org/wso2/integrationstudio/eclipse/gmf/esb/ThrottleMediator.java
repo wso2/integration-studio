@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,26 +17,26 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getGroupId <em>Group Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getPolicyType <em>Policy Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getPolicyKey <em>Policy Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getPolicyEntries <em>Policy Entries</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getPolicyConfiguration <em>Policy Configuration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnAcceptBranch <em>On Accept Branch</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnRejectBranch <em>On Reject Branch</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnAcceptOutputConnector <em>On Accept Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnRejectOutputConnector <em>On Reject Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getThrottleContainer <em>Throttle Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnAcceptBranchsequenceType <em>On Accept Branchsequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnAcceptBranchsequenceKey <em>On Accept Branchsequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnRejectBranchsequenceType <em>On Reject Branchsequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnRejectBranchsequenceKey <em>On Reject Branchsequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getGroupId <em>Group Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getPolicyType <em>Policy Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getPolicyKey <em>Policy Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getPolicyEntries <em>Policy Entries</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getPolicyConfiguration <em>Policy Configuration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnAcceptBranch <em>On Accept Branch</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnRejectBranch <em>On Reject Branch</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnAcceptOutputConnector <em>On Accept Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnRejectOutputConnector <em>On Reject Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getThrottleContainer <em>Throttle Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnAcceptBranchsequenceType <em>On Accept Branchsequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnAcceptBranchsequenceKey <em>On Accept Branchsequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnRejectBranchsequenceType <em>On Reject Branchsequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnRejectBranchsequenceKey <em>On Reject Branchsequence Key</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator()
  * @model
  * @generated
  */
@@ -52,14 +52,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Group Id</em>' attribute.
      * @see #setGroupId(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_GroupId()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_GroupId()
      * @model default=""
      * @generated
      */
     String getGroupId();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getGroupId <em>Group Id</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getGroupId <em>Group Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Group Id</em>' attribute.
@@ -71,7 +71,7 @@ public interface ThrottleMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Policy Type</b></em>' attribute.
      * The default value is <code>"INLINE"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Policy Type</em>' attribute isn't clear,
@@ -79,20 +79,20 @@ public interface ThrottleMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Policy Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyType
+     * @see org.wso2.integrationstudio.gmf.esb.ThrottlePolicyType
      * @see #setPolicyType(ThrottlePolicyType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_PolicyType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_PolicyType()
      * @model default="INLINE"
      * @generated
      */
     ThrottlePolicyType getPolicyType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getPolicyType <em>Policy Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getPolicyType <em>Policy Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Policy Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyType
+     * @see org.wso2.integrationstudio.gmf.esb.ThrottlePolicyType
      * @see #getPolicyType()
      * @generated
      */
@@ -108,14 +108,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Policy Key</em>' containment reference.
      * @see #setPolicyKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_PolicyKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_PolicyKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getPolicyKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getPolicyKey <em>Policy Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getPolicyKey <em>Policy Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Policy Key</em>' containment reference.
@@ -134,14 +134,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Max Concurrent Access Count</em>' attribute.
      * @see #setMaxConcurrentAccessCount(int)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_MaxConcurrentAccessCount()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_MaxConcurrentAccessCount()
      * @model
      * @generated
      */
     int getMaxConcurrentAccessCount();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Max Concurrent Access Count</em>' attribute.
@@ -152,7 +152,7 @@ public interface ThrottleMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Policy Entries</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyEntry}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.ThrottlePolicyEntry}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Policy Entries</em>' containment reference list isn't clear,
@@ -160,7 +160,7 @@ public interface ThrottleMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Policy Entries</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_PolicyEntries()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_PolicyEntries()
      * @model containment="true"
      * @generated
      */
@@ -176,14 +176,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Policy Configuration</em>' containment reference.
      * @see #setPolicyConfiguration(ThrottlePolicyConfiguration)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_PolicyConfiguration()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_PolicyConfiguration()
      * @model containment="true"
      * @generated
      */
     ThrottlePolicyConfiguration getPolicyConfiguration();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getPolicyConfiguration <em>Policy Configuration</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getPolicyConfiguration <em>Policy Configuration</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Policy Configuration</em>' containment reference.
@@ -202,14 +202,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Accept Branch</em>' containment reference.
      * @see #setOnAcceptBranch(ThrottleOnAcceptBranch)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_OnAcceptBranch()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_OnAcceptBranch()
      * @model containment="true"
      * @generated
      */
     ThrottleOnAcceptBranch getOnAcceptBranch();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnAcceptBranch <em>On Accept Branch</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnAcceptBranch <em>On Accept Branch</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Accept Branch</em>' containment reference.
@@ -228,14 +228,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Reject Branch</em>' containment reference.
      * @see #setOnRejectBranch(ThrottleOnRejectBranch)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_OnRejectBranch()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_OnRejectBranch()
      * @model containment="true"
      * @generated
      */
     ThrottleOnRejectBranch getOnRejectBranch();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnRejectBranch <em>On Reject Branch</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnRejectBranch <em>On Reject Branch</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Reject Branch</em>' containment reference.
@@ -254,14 +254,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(ThrottleMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     ThrottleMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -280,14 +280,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(ThrottleMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     ThrottleMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -306,14 +306,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Accept Output Connector</em>' containment reference.
      * @see #setOnAcceptOutputConnector(ThrottleMediatorOnAcceptOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_OnAcceptOutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_OnAcceptOutputConnector()
      * @model containment="true"
      * @generated
      */
     ThrottleMediatorOnAcceptOutputConnector getOnAcceptOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnAcceptOutputConnector <em>On Accept Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnAcceptOutputConnector <em>On Accept Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Accept Output Connector</em>' containment reference.
@@ -332,14 +332,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Reject Output Connector</em>' containment reference.
      * @see #setOnRejectOutputConnector(ThrottleMediatorOnRejectOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_OnRejectOutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_OnRejectOutputConnector()
      * @model containment="true"
      * @generated
      */
     ThrottleMediatorOnRejectOutputConnector getOnRejectOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnRejectOutputConnector <em>On Reject Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnRejectOutputConnector <em>On Reject Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Reject Output Connector</em>' containment reference.
@@ -358,14 +358,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Throttle Container</em>' containment reference.
      * @see #setThrottleContainer(ThrottleContainer)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_ThrottleContainer()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_ThrottleContainer()
      * @model containment="true"
      * @generated
      */
     ThrottleContainer getThrottleContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getThrottleContainer <em>Throttle Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getThrottleContainer <em>Throttle Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Throttle Container</em>' containment reference.
@@ -377,7 +377,7 @@ public interface ThrottleMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>On Accept Branchsequence Type</b></em>' attribute.
      * The default value is <code>"ANONYMOUS"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>On Accept Branchsequence Type</em>' attribute isn't clear,
@@ -385,20 +385,20 @@ public interface ThrottleMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Accept Branchsequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType
      * @see #setOnAcceptBranchsequenceType(ThrottleSequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_OnAcceptBranchsequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_OnAcceptBranchsequenceType()
      * @model default="ANONYMOUS"
      * @generated
      */
     ThrottleSequenceType getOnAcceptBranchsequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnAcceptBranchsequenceType <em>On Accept Branchsequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnAcceptBranchsequenceType <em>On Accept Branchsequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Accept Branchsequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType
      * @see #getOnAcceptBranchsequenceType()
      * @generated
      */
@@ -414,14 +414,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Accept Branchsequence Key</em>' containment reference.
      * @see #setOnAcceptBranchsequenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_OnAcceptBranchsequenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_OnAcceptBranchsequenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getOnAcceptBranchsequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnAcceptBranchsequenceKey <em>On Accept Branchsequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnAcceptBranchsequenceKey <em>On Accept Branchsequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Accept Branchsequence Key</em>' containment reference.
@@ -433,7 +433,7 @@ public interface ThrottleMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>On Reject Branchsequence Type</b></em>' attribute.
      * The default value is <code>"ANONYMOUS"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>On Reject Branchsequence Type</em>' attribute isn't clear,
@@ -441,20 +441,20 @@ public interface ThrottleMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Reject Branchsequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType
      * @see #setOnRejectBranchsequenceType(ThrottleSequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_OnRejectBranchsequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_OnRejectBranchsequenceType()
      * @model default="ANONYMOUS"
      * @generated
      */
     ThrottleSequenceType getOnRejectBranchsequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnRejectBranchsequenceType <em>On Reject Branchsequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnRejectBranchsequenceType <em>On Reject Branchsequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Reject Branchsequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType
      * @see #getOnRejectBranchsequenceType()
      * @generated
      */
@@ -470,14 +470,14 @@ public interface ThrottleMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Reject Branchsequence Key</em>' containment reference.
      * @see #setOnRejectBranchsequenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_OnRejectBranchsequenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getThrottleMediator_OnRejectBranchsequenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getOnRejectBranchsequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator#getOnRejectBranchsequenceKey <em>On Reject Branchsequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ThrottleMediator#getOnRejectBranchsequenceKey <em>On Reject Branchsequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Reject Branchsequence Key</em>' containment reference.

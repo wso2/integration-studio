@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.library.ui.wizard;
+package org.wso2.integrationstudio.artifact.library.ui.wizard;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -41,21 +41,21 @@ import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jface.wizard.IWizardPage;
-import org.wso2.integrationstudio.eclipse.artifact.library.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.library.model.LibraryArtifactModel;
-import org.wso2.integrationstudio.eclipse.artifact.library.util.Constants;
-import org.wso2.integrationstudio.eclipse.artifact.library.util.LibraryImageUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.bundle.BundlesDataInfo;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPage;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaLibraryBean;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaLibraryUtil;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.artifact.library.Activator;
+import org.wso2.integrationstudio.artifact.library.model.LibraryArtifactModel;
+import org.wso2.integrationstudio.artifact.library.util.Constants;
+import org.wso2.integrationstudio.artifact.library.util.LibraryImageUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.bundle.BundlesDataInfo;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.MavenDetailsPage;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsDataPage;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.jdt.JavaLibraryBean;
+import org.wso2.integrationstudio.utils.jdt.JavaLibraryUtil;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class LibraryArtifactCreationWizard extends
 		AbstractWSO2ProjectCreationWizard {

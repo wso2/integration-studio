@@ -16,11 +16,11 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation.condition.manager;
+package org.wso2.integrationstudio.gmf.esb.presentation.condition.manager;
 
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.CallTemplateParameter;
 
 import java.util.ArrayList;
 import java.util.Collections;

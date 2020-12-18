@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import javax.xml.namespace.QName;
 
@@ -33,7 +33,7 @@ import org.apache.synapse.mediators.builtin.DropMediator;
 import org.apache.synapse.mediators.eip.aggregator.AggregateMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 /**
  * This class is use to create a Aggregate mediator synapse object by 

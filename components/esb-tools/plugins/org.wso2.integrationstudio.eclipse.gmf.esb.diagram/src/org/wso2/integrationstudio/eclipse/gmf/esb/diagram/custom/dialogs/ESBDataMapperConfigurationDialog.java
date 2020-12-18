@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.dialogs;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.dialogs;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,29 +39,29 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.capp.maven.utils.MavenConstants;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBUtils;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.EsbTemplateFormatter;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.RegistryArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryElement;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryItem;
-import org.wso2.integrationstudio.eclipse.general.project.utils.GeneralProjectUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioElement;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProviderData;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplate;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplateHandler;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.RegistryFileImpl;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceInfo;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceInfoDoc;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceUtils;
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
+import org.wso2.integrationstudio.esb.core.utils.ESBUtils;
+import org.wso2.integrationstudio.esb.core.utils.EsbTemplateFormatter;
+import org.wso2.integrationstudio.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.integrationstudio.general.project.artifact.RegistryArtifact;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryElement;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryItem;
+import org.wso2.integrationstudio.general.project.utils.GeneralProjectUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProvider;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProviderData;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplate;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplateHandler;
+import org.wso2.integrationstudio.registry.core.interfaces.RegistryFileImpl;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfo;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfoDoc;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceUtils;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class ESBDataMapperConfigurationDialog extends Dialog {
 

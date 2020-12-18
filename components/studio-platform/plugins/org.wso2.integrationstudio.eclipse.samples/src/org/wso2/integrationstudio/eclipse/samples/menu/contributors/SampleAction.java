@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.samples.menu.contributors;
+package org.wso2.integrationstudio.samples.menu.contributors;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.samples.Activator;
-import org.wso2.integrationstudio.eclipse.samples.contributor.IIntegrationStudioSampleContributor;
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.samples.Activator;
+import org.wso2.integrationstudio.samples.contributor.IIntegrationStudioSampleContributor;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public abstract class SampleAction extends Action {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

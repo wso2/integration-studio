@@ -17,13 +17,13 @@
 /**
  * This class contains default values for message store property parameters 
  */
-package org.wso2.integrationstudio.eclipse.artifact.messagestore;
+package org.wso2.integrationstudio.artifact.messagestore;
 
 import org.eclipse.osgi.util.NLS;
 
 public class DefaultValueConstants {
     
-    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.artifact.messagestore.defaultvalues"; //$NON-NLS-1$
+    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.artifact.messagestore.defaultvalues"; //$NON-NLS-1$
 
     public static String EMPTY_STRING;
 

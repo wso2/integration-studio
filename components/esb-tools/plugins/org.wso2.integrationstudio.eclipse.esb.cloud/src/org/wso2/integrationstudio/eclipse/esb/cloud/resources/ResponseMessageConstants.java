@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.esb.cloud.resources;
+package org.wso2.integrationstudio.esb.cloud.resources;
 
 /**
  * Messages shown to the user

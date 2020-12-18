@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei.launch.tabs;
+package org.wso2.integrationstudio.carbonserver44microei.launch.tabs;
 
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTabGroup;
 import org.eclipse.debug.ui.CommonTab;
@@ -38,9 +38,9 @@ import org.eclipse.debug.ui.ILaunchConfigurationTabGroup;
  *     <extension
  *        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
  *     <launchConfigurationTabGroup
- *           class="org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.launch.tabs.LaunchConfigurationTabGroup"
- *           id="org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.launch.tabgroup"
- *           type="org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.launch">
+ *           class="org.wso2.integrationstudio.gmf.esb.diagram.debugger.launch.tabs.LaunchConfigurationTabGroup"
+ *           id="org.wso2.integrationstudio.gmf.esb.diagram.debugger.launch.tabgroup"
+ *           type="org.wso2.integrationstudio.gmf.esb.diagram.debugger.launch">
  *        <launchMode
  *              mode="debug">
  *        </launchMode>

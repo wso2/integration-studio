@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.libraries" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.libraries" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.libraries" id="org.wso2.integrationstudio.libraries.libraryprovider" name="Library Provider"/>
+         <meta.schema plugin="org.wso2.integrationstudio.libraries" id="org.wso2.integrationstudio.libraries.libraryprovider" name="Library Provider"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]

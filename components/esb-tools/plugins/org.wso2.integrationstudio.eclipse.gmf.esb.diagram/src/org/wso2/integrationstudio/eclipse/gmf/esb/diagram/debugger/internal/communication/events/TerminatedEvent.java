@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.events;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.IDebuggerEvent;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.IDebuggerEvent;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
 
 /**
  * This class represent the request event from {@link ESBDebugger} to {@link ESBDebugTarget} when {@link ESBDebugger}

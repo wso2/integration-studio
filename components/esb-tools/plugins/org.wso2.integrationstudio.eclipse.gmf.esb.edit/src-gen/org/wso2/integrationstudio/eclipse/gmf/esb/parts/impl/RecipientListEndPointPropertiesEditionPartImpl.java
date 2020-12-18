@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -73,12 +73,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -850,7 +850,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -860,7 +860,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -882,7 +882,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -892,7 +892,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -933,7 +933,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getEndPointName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getEndPointName()
 	 * 
 	 */
 	public String getEndPointName() {
@@ -943,7 +943,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setEndPointName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setEndPointName(String newValue)
 	 * 
 	 */
 	public void setEndPointName(String newValue) {
@@ -965,7 +965,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getAnonymous()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getAnonymous()
 	 * 
 	 */
 	public Boolean getAnonymous() {
@@ -975,7 +975,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setAnonymous(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setAnonymous(Boolean newValue)
 	 * 
 	 */
 	public void setAnonymous(Boolean newValue) {
@@ -997,7 +997,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getInLine()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getInLine()
 	 * 
 	 */
 	public Boolean getInLine() {
@@ -1007,7 +1007,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setInLine(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setInLine(Boolean newValue)
 	 * 
 	 */
 	public void setInLine(Boolean newValue) {
@@ -1029,7 +1029,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getDuplicate()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getDuplicate()
 	 * 
 	 */
 	public Boolean getDuplicate() {
@@ -1039,7 +1039,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setDuplicate(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setDuplicate(Boolean newValue)
 	 * 
 	 */
 	public void setDuplicate(Boolean newValue) {
@@ -1063,7 +1063,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initProperties(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1084,7 +1084,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#updateProperties()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#updateProperties()
 	 * 
 	 */
 	public void updateProperties() {
@@ -1094,7 +1094,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToProperties(ViewerFilter filter) {
@@ -1107,7 +1107,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToProperties(ViewerFilter filter) {
@@ -1117,7 +1117,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInPropertiesTable(EObject element) {
@@ -1127,7 +1127,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getReversed()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getReversed()
 	 * 
 	 */
 	public Boolean getReversed() {
@@ -1137,7 +1137,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setReversed(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setReversed(Boolean newValue)
 	 * 
 	 */
 	public void setReversed(Boolean newValue) {
@@ -1161,7 +1161,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#initChildren(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#initChildren(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initChildren(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1182,7 +1182,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#updateChildren()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#updateChildren()
 	 * 
 	 */
 	public void updateChildren() {
@@ -1192,7 +1192,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#addFilterChildren(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#addFilterChildren(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToChildren(ViewerFilter filter) {
@@ -1205,7 +1205,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#addBusinessFilterChildren(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#addBusinessFilterChildren(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToChildren(ViewerFilter filter) {
@@ -1215,7 +1215,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#isContainedInChildrenTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#isContainedInChildrenTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInChildrenTable(EObject element) {
@@ -1225,7 +1225,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -1235,7 +1235,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -1259,7 +1259,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#initOutputConnector(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#initOutputConnector(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initOutputConnector(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1280,7 +1280,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#updateOutputConnector()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#updateOutputConnector()
 	 * 
 	 */
 	public void updateOutputConnector() {
@@ -1290,7 +1290,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#addFilterOutputConnector(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#addFilterOutputConnector(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToOutputConnector(ViewerFilter filter) {
@@ -1303,7 +1303,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#addBusinessFilterOutputConnector(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#addBusinessFilterOutputConnector(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToOutputConnector(ViewerFilter filter) {
@@ -1313,7 +1313,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#isContainedInOutputConnectorTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#isContainedInOutputConnectorTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInOutputConnectorTable(EObject element) {
@@ -1323,7 +1323,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getEndpointType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getEndpointType()
 	 * 
 	 */
 	public Enumerator getEndpointType() {
@@ -1334,7 +1334,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#initEndpointType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#initEndpointType(Object input, Enumerator current)
 	 */
 	public void initEndpointType(Object input, Enumerator current) {
 		endpointType.setInput(input);
@@ -1352,7 +1352,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setEndpointType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setEndpointType(Enumerator newValue)
 	 * 
 	 */
 	public void setEndpointType(Enumerator newValue) {
@@ -1370,7 +1370,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getEndpointsValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getEndpointsValue()
 	 * 
 	 */
 	public String getEndpointsValue() {
@@ -1380,7 +1380,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setEndpointsValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setEndpointsValue(String newValue)
 	 * 
 	 */
 	public void setEndpointsValue(String newValue) {
@@ -1402,7 +1402,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getMaxCache()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#getMaxCache()
 	 * 
 	 */
 	public String getMaxCache() {
@@ -1412,7 +1412,7 @@ public class RecipientListEndPointPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setMaxCache(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RecipientListEndPointPropertiesEditionPart#setMaxCache(String newValue)
 	 * 
 	 */
 	public void setMaxCache(String newValue) {

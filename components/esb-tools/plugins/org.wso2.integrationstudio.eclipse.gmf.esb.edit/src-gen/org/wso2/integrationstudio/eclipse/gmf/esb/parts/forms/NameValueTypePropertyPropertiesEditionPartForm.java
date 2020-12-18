@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -58,10 +58,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -353,7 +353,7 @@ public class NameValueTypePropertyPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#getPropertyName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#getPropertyName()
 	 * 
 	 */
 	public String getPropertyName() {
@@ -363,7 +363,7 @@ public class NameValueTypePropertyPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#setPropertyName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#setPropertyName(String newValue)
 	 * 
 	 */
 	public void setPropertyName(String newValue) {
@@ -385,7 +385,7 @@ public class NameValueTypePropertyPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#getPropertyValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#getPropertyValue()
 	 * 
 	 */
 	public String getPropertyValue() {
@@ -395,7 +395,7 @@ public class NameValueTypePropertyPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#setPropertyValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#setPropertyValue(String newValue)
 	 * 
 	 */
 	public void setPropertyValue(String newValue) {
@@ -417,7 +417,7 @@ public class NameValueTypePropertyPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#getPropertyType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#getPropertyType()
 	 * 
 	 */
 	public Enumerator getPropertyType() {
@@ -428,7 +428,7 @@ public class NameValueTypePropertyPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#initPropertyType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#initPropertyType(Object input, Enumerator current)
 	 */
 	public void initPropertyType(Object input, Enumerator current) {
 		propertyType.setInput(input);
@@ -446,7 +446,7 @@ public class NameValueTypePropertyPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#setPropertyType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NameValueTypePropertyPropertiesEditionPart#setPropertyType(Enumerator newValue)
 	 * 
 	 */
 	public void setPropertyType(Enumerator newValue) {

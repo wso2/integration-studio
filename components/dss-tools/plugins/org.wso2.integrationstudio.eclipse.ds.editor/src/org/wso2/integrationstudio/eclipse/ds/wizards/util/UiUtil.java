@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.wizards.util;
+package org.wso2.integrationstudio.ds.wizards.util;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;

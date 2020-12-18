@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server;
+package org.wso2.integrationstudio.templates.dashboard.web.function.server;
 
 /**
  * Constants for functions server(Embedded jetty server)
@@ -25,6 +25,6 @@ public class FunctionServerConstants {
 
     public static final String WELCOME_PERSPECTIVE_ID = "WELCOME_PERSPECTIVE";
 
-    public static final String TEMPLATE_DASHBOARD_EDITOR_ID = "org.wso2.integrationstudio.eclipse.templates.dashboard";
+    public static final String TEMPLATE_DASHBOARD_EDITOR_ID = "org.wso2.integrationstudio.templates.dashboard";
 
 }

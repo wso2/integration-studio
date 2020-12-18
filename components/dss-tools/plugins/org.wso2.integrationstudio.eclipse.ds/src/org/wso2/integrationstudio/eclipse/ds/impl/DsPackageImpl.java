@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
@@ -19,51 +19,51 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
-import org.wso2.integrationstudio.eclipse.ds.AttributeMapping;
-import org.wso2.integrationstudio.eclipse.ds.CallQuery;
-import org.wso2.integrationstudio.eclipse.ds.CallQueryList;
-import org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty;
-import org.wso2.integrationstudio.eclipse.ds.CustomValidator;
-import org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty;
-import org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList;
-import org.wso2.integrationstudio.eclipse.ds.DataService;
-import org.wso2.integrationstudio.eclipse.ds.DataServiceParameter;
-import org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration;
-import org.wso2.integrationstudio.eclipse.ds.Description;
-import org.wso2.integrationstudio.eclipse.ds.DocumentRoot;
-import org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator;
-import org.wso2.integrationstudio.eclipse.ds.DsFactory;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.ElementMapping;
-import org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList;
-import org.wso2.integrationstudio.eclipse.ds.EventTrigger;
-import org.wso2.integrationstudio.eclipse.ds.ExcelQuery;
-import org.wso2.integrationstudio.eclipse.ds.Expression;
-import org.wso2.integrationstudio.eclipse.ds.GSpreadQuery;
-import org.wso2.integrationstudio.eclipse.ds.HasHeader;
-import org.wso2.integrationstudio.eclipse.ds.LengthValidator;
-import org.wso2.integrationstudio.eclipse.ds.LongRangeValidator;
-import org.wso2.integrationstudio.eclipse.ds.MaxRowCount;
-import org.wso2.integrationstudio.eclipse.ds.Operation;
-import org.wso2.integrationstudio.eclipse.ds.ParameterMapping;
-import org.wso2.integrationstudio.eclipse.ds.PatternValidator;
-import org.wso2.integrationstudio.eclipse.ds.Policy;
-import org.wso2.integrationstudio.eclipse.ds.Query;
-import org.wso2.integrationstudio.eclipse.ds.QueryExpression;
-import org.wso2.integrationstudio.eclipse.ds.QueryParameter;
-import org.wso2.integrationstudio.eclipse.ds.QueryProperty;
-import org.wso2.integrationstudio.eclipse.ds.QueryPropertyList;
-import org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.ds.Resource;
-import org.wso2.integrationstudio.eclipse.ds.ResultMapping;
-import org.wso2.integrationstudio.eclipse.ds.ServiceStatus;
-import org.wso2.integrationstudio.eclipse.ds.Sparql;
-import org.wso2.integrationstudio.eclipse.ds.Sql;
-import org.wso2.integrationstudio.eclipse.ds.StartingRow;
-import org.wso2.integrationstudio.eclipse.ds.Subscription;
-import org.wso2.integrationstudio.eclipse.ds.TargetTopic;
-import org.wso2.integrationstudio.eclipse.ds.WorkBookName;
-import org.wso2.integrationstudio.eclipse.ds.WorkSheetNumber;
+import org.wso2.integrationstudio.ds.AttributeMapping;
+import org.wso2.integrationstudio.ds.CallQuery;
+import org.wso2.integrationstudio.ds.CallQueryList;
+import org.wso2.integrationstudio.ds.ConfigurationProperty;
+import org.wso2.integrationstudio.ds.CustomValidator;
+import org.wso2.integrationstudio.ds.CustomValidatorProperty;
+import org.wso2.integrationstudio.ds.CustomValidatorPropertyList;
+import org.wso2.integrationstudio.ds.DataService;
+import org.wso2.integrationstudio.ds.DataServiceParameter;
+import org.wso2.integrationstudio.ds.DataSourceConfiguration;
+import org.wso2.integrationstudio.ds.Description;
+import org.wso2.integrationstudio.ds.DocumentRoot;
+import org.wso2.integrationstudio.ds.DoubleRangeValidator;
+import org.wso2.integrationstudio.ds.DsFactory;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.ElementMapping;
+import org.wso2.integrationstudio.ds.EventSubscriptionList;
+import org.wso2.integrationstudio.ds.EventTrigger;
+import org.wso2.integrationstudio.ds.ExcelQuery;
+import org.wso2.integrationstudio.ds.Expression;
+import org.wso2.integrationstudio.ds.GSpreadQuery;
+import org.wso2.integrationstudio.ds.HasHeader;
+import org.wso2.integrationstudio.ds.LengthValidator;
+import org.wso2.integrationstudio.ds.LongRangeValidator;
+import org.wso2.integrationstudio.ds.MaxRowCount;
+import org.wso2.integrationstudio.ds.Operation;
+import org.wso2.integrationstudio.ds.ParameterMapping;
+import org.wso2.integrationstudio.ds.PatternValidator;
+import org.wso2.integrationstudio.ds.Policy;
+import org.wso2.integrationstudio.ds.Query;
+import org.wso2.integrationstudio.ds.QueryExpression;
+import org.wso2.integrationstudio.ds.QueryParameter;
+import org.wso2.integrationstudio.ds.QueryProperty;
+import org.wso2.integrationstudio.ds.QueryPropertyList;
+import org.wso2.integrationstudio.ds.RegistryKeyProperty;
+import org.wso2.integrationstudio.ds.Resource;
+import org.wso2.integrationstudio.ds.ResultMapping;
+import org.wso2.integrationstudio.ds.ServiceStatus;
+import org.wso2.integrationstudio.ds.Sparql;
+import org.wso2.integrationstudio.ds.Sql;
+import org.wso2.integrationstudio.ds.StartingRow;
+import org.wso2.integrationstudio.ds.Subscription;
+import org.wso2.integrationstudio.ds.TargetTopic;
+import org.wso2.integrationstudio.ds.WorkBookName;
+import org.wso2.integrationstudio.ds.WorkSheetNumber;
 
 /**
  * <!-- begin-user-doc -->
@@ -399,7 +399,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#eNS_URI
+	 * @see org.wso2.integrationstudio.ds.DsPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.webui.core.editor;
+package org.wso2.integrationstudio.webui.core.editor;
 
 import org.eclipse.core.commands.operations.ObjectUndoContext;
 import org.eclipse.core.commands.operations.UndoContext;
@@ -38,22 +38,22 @@ import org.eclipse.ui.operations.UndoActionHandler;
 import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.webui.core.WebUICorePlugin;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.function.CustomEditorFunction;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.function.ExecuteUndoableTaskFunction;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.function.GetDirtyContentFunction;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.function.GetFileContentFunction;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.function.GetIDEInformationFunction;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.function.SaveContentFunction;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.function.SaveContentToFileWithExetention;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.function.SetDirtyContentFunction;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.function.SetDirtyFunction;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.function.SetFocusToEditorPartFunction;
-import org.wso2.integrationstudio.eclipse.webui.core.exception.WebUIException;
-import org.wso2.integrationstudio.eclipse.webui.core.model.BrowserScript;
-import org.wso2.integrationstudio.eclipse.webui.core.util.ScriptFactory;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.webui.core.WebUICorePlugin;
+import org.wso2.integrationstudio.webui.core.editor.function.CustomEditorFunction;
+import org.wso2.integrationstudio.webui.core.editor.function.ExecuteUndoableTaskFunction;
+import org.wso2.integrationstudio.webui.core.editor.function.GetDirtyContentFunction;
+import org.wso2.integrationstudio.webui.core.editor.function.GetFileContentFunction;
+import org.wso2.integrationstudio.webui.core.editor.function.GetIDEInformationFunction;
+import org.wso2.integrationstudio.webui.core.editor.function.SaveContentFunction;
+import org.wso2.integrationstudio.webui.core.editor.function.SaveContentToFileWithExetention;
+import org.wso2.integrationstudio.webui.core.editor.function.SetDirtyContentFunction;
+import org.wso2.integrationstudio.webui.core.editor.function.SetDirtyFunction;
+import org.wso2.integrationstudio.webui.core.editor.function.SetFocusToEditorPartFunction;
+import org.wso2.integrationstudio.webui.core.exception.WebUIException;
+import org.wso2.integrationstudio.webui.core.model.BrowserScript;
+import org.wso2.integrationstudio.webui.core.util.ScriptFactory;
 
 public abstract class AbstractWebBasedEditor extends EditorPart {
 

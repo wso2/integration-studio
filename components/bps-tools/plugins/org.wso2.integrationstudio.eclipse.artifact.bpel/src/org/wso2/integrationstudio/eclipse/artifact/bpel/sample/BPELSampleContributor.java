@@ -1,13 +1,13 @@
-package org.wso2.integrationstudio.eclipse.artifact.bpel.sample;
+package org.wso2.integrationstudio.artifact.bpel.sample;
 
 import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.samples.contributor.AbstractSampleContributor;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.utils.BPELImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.utils.BPELTemplateUtils;
+import org.wso2.integrationstudio.samples.contributor.AbstractSampleContributor;
+import org.wso2.integrationstudio.artifact.bpel.utils.BPELImageUtils;
+import org.wso2.integrationstudio.artifact.bpel.utils.BPELTemplateUtils;
 
 
 

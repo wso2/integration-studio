@@ -1,10 +1,10 @@
-package org.wso2.integrationstudio.eclipse.webui.core.composite;
+package org.wso2.integrationstudio.webui.core.composite;
 
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.widgets.Composite;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.webui.core.WebUICorePlugin;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.webui.core.WebUICorePlugin;
 
 public abstract class AbstractWebComposite extends Composite {
 

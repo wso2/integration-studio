@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui;
+package org.wso2.integrationstudio.platform.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-import org.wso2.integrationstudio.eclipse.platform.ui.manager.EclipseSWTTrustManager;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.Initializer;
+import org.wso2.integrationstudio.platform.ui.manager.EclipseSWTTrustManager;
+import org.wso2.integrationstudio.platform.ui.startup.Initializer;
 
 import java.util.Hashtable;
 
@@ -27,7 +27,7 @@ import javax.net.ssl.TrustManager;
 
 public class Activator extends AbstractUIPlugin {
 
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.platform.ui";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.platform.ui";
 
 	private static Activator plugin;
 

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.carbonserver.remote.configuration;
+package org.wso2.integrationstudio.carbonserver.remote.configuration;
 
 import java.net.MalformedURLException;
 
@@ -19,7 +19,7 @@ import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.wst.server.ui.editor.ServerEditorSection;
-import org.wso2.integrationstudio.eclipse.carbonserver.remote.internal.RemoteCarbonServer;
+import org.wso2.integrationstudio.carbonserver.remote.internal.RemoteCarbonServer;
 
 public class ConfigurationServerInfoSection extends ServerEditorSection {
 

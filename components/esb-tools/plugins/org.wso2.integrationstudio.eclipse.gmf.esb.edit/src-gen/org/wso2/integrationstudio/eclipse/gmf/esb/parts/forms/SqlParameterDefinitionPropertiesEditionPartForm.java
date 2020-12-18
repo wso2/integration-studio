@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -57,11 +57,11 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -332,7 +332,7 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#getDataType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#getDataType()
 	 * 
 	 */
 	public Enumerator getDataType() {
@@ -343,7 +343,7 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#initDataType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#initDataType(Object input, Enumerator current)
 	 */
 	public void initDataType(Object input, Enumerator current) {
 		dataType.setInput(input);
@@ -361,7 +361,7 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#setDataType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#setDataType(Enumerator newValue)
 	 * 
 	 */
 	public void setDataType(Enumerator newValue) {
@@ -379,7 +379,7 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#getValueType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#getValueType()
 	 * 
 	 */
 	public Enumerator getValueType() {
@@ -390,7 +390,7 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#initValueType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#initValueType(Object input, Enumerator current)
 	 */
 	public void initValueType(Object input, Enumerator current) {
 		valueType.setInput(input);
@@ -408,7 +408,7 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#setValueType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#setValueType(Enumerator newValue)
 	 * 
 	 */
 	public void setValueType(Enumerator newValue) {
@@ -426,7 +426,7 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#getValueLiteral()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#getValueLiteral()
 	 * 
 	 */
 	public String getValueLiteral() {
@@ -436,7 +436,7 @@ public class SqlParameterDefinitionPropertiesEditionPartForm extends SectionProp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#setValueLiteral(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SqlParameterDefinitionPropertiesEditionPart#setValueLiteral(String newValue)
 	 * 
 	 */
 	public void setValueLiteral(String newValue) {

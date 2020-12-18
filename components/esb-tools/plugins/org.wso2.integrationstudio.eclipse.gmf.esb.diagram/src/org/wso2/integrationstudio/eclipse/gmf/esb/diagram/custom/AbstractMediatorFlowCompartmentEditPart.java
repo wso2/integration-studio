@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import java.io.File;
 import java.util.Iterator;
@@ -21,29 +21,29 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloudConnectorOperation;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.extensions.CustomPaletteToolTransferDropTargetListener;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.layout.XYRepossition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.CloudConnectorOperationEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.CloudConnectorOperationEditPart.CloudConnectorOperationFigure;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SendMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory.NodeToolEntry;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.CloudConnectorOperation;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyInSequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.SendMediator;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.extensions.CustomPaletteToolTransferDropTargetListener;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.layout.XYRepossition;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.CloudConnectorOperationEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.CloudConnectorOperationEditPart.CloudConnectorOperationFigure;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SendMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbEditorInput;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbMultiPageEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbPaletteFactory.NodeToolEntry;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class AbstractMediatorFlowCompartmentEditPart extends ShapeCompartmentEditPart {
 
@@ -161,8 +161,8 @@ public class AbstractMediatorFlowCompartmentEditPart extends ShapeCompartmentEdi
                         log.error("This is occured while undo operation..", e);
                     }
                 } else if (((ToolEntryEditPart) editpart)
-                        .getModel() instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart.NodeToolEntry) {
-                    String label = ((org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart.NodeToolEntry) ((ToolEntryEditPart) editpart)
+                        .getModel() instanceof org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceEditPart.NodeToolEntry) {
+                    String label = ((org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceEditPart.NodeToolEntry) ((ToolEntryEditPart) editpart)
                             .getModel()).getLabel();
                     if ((!label.equals("")) && (!label.equals("Sequence Mediator"))) {
                         sequenceName = label;

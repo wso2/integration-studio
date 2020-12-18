@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation;
+package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import java.io.File;
 import java.io.IOException;
@@ -84,19 +84,19 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.FileEditorInput;
 import org.osgi.framework.Bundle;
 import org.w3c.dom.Document;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorDescriptorParser;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser.ConnectorOperationRoot;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.gmf.esb.CallTemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.CloudConnectorOperationImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.persistence.Activator;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.ConnectorDescriptorParser;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.ConnectorOperationRoot;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
 import org.xml.sax.SAXException;
 import org.eclipse.swt.layout.GridLayout;
 
@@ -109,7 +109,7 @@ public class EEFPropertyViewUtil {
     private static final String LOCAL_ENTRIES_DIR_NAME = "local-entries";
     private static final String AVAILABLE_TEMPLATE_LIST_DEFAULT_VALUE = "Select From Templates";
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.edit";
+    public static final String PLUGIN_ID = "org.wso2.integrationstudio.gmf.esb.edit";
     public static final String WSO2_ESB_LOCAL_ENTRY_VERSION="2.1.0";
     private static final String LOCAL_ENTRY_LOCATION = File.separator + "src" + File.separator + "main" + File.separator
             + "synapse-config" + File.separator + "local-entries";
@@ -121,7 +121,7 @@ public class EEFPropertyViewUtil {
     static {
         URL url;
         try {
-            url = new URL("platform:/plugin/org.wso2.integrationstudio.eclipse.gmf.esb.edit/src-gen/org/wso2/integrationstudio/eclipse/gmf/esb/presentation/helpcontent.properties");
+            url = new URL("platform:/plugin/org.wso2.integrationstudio.gmf.esb.edit/src-gen/org/wso2/integrationstudio/eclipse/gmf/esb/presentation/helpcontent.properties");
             InputStream inputStream = url.openConnection().getInputStream();
             properties = new Properties();
             properties.load(inputStream);

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core;
+package org.wso2.integrationstudio.platform.core;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,13 +25,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IMediaTypeResolverProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSMediaUtils;
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.mediatypes.CustomMediaTypeReader;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.interfaces.IMediaTypeResolverProvider;
+import org.wso2.integrationstudio.platform.core.utils.CSMediaUtils;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.mediatypes.CustomMediaTypeReader;
 
 public class MediaManager {
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.ds.actions;
+package org.wso2.integrationstudio.ds.actions;
 
 /**
  * Defines the Action Constants for DS Editor

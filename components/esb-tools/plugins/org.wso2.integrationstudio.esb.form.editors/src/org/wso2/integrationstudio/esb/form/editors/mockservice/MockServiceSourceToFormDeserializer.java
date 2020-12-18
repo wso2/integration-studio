@@ -36,10 +36,10 @@ import org.eclipse.ui.forms.editor.FormPage;
 import org.wso2.integrationstudio.esb.form.editors.Activator;
 import org.wso2.integrationstudio.esb.form.editors.unittest.commons.Constants;
 import org.wso2.integrationstudio.esb.form.editors.unittest.commons.SchemaValidator;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.MockServiceResource;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.CommonUtil;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.MockServiceResource;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.CommonUtil;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * Class responsible to deserialize the source to form view.

@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: DataService_Template_Dashboard
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.artifact.dataserviceTemplate;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.artifact.dataserviceTemplate;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.artifact.dataserviceTemplate.Activator
+Bundle-Activator: org.wso2.integrationstudio.artifact.dataserviceTemplate.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.core.runtime,

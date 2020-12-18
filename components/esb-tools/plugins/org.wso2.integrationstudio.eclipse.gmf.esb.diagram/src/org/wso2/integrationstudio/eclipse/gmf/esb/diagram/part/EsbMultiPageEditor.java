@@ -8,9 +8,9 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.part;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SEQUENCE_RESOURCE_DIR;
+import static org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils.SEQUENCE_RESOURCE_DIR;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -101,45 +101,45 @@ import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.texteditor.MarkerUtilities;
 import org.wso2.carbon.mediator.service.MediatorException;
 import org.wso2.carbon.rest.api.service.RestApiAdmin;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
-import org.wso2.integrationstudio.eclipse.esb.project.control.graphicalproject.GMFPluginDetails;
-import org.wso2.integrationstudio.eclipse.esb.project.control.graphicalproject.IUpdateGMFPlugin;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequences;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.ExceptionMessageMapper;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer.DeserializeStatus;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.dialogs.RegistryResourcesUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DeserializerException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyAPIFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.MediatorFactoryUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.UpdateGMFPlugin;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.swagger.EsbSwaggerEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator.ProcessSourceView;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator.SourceError;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator.ValidationException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.SequenceInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.event.EsbEditorEvent;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProviderData;
-import org.wso2.integrationstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryFile;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbEditorInput;
+import org.wso2.integrationstudio.esb.project.control.graphicalproject.GMFPluginDetails;
+import org.wso2.integrationstudio.esb.project.control.graphicalproject.IUpdateGMFPlugin;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EsbDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbElement;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.Sequences;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.ExceptionMessageMapper;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.Deserializer;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.Deserializer.DeserializeStatus;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.dialogs.RegistryResourcesUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DeserializerException;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DummyAPIFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.MediatorFactoryUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.UpdateGMFPlugin;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.swagger.EsbSwaggerEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.validator.ProcessSourceView;
+import org.wso2.integrationstudio.gmf.esb.diagram.validator.SourceError;
+import org.wso2.integrationstudio.gmf.esb.diagram.validator.ValidationException;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbModelTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.SequenceInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.event.EsbEditorEvent;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProviderData;
+import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryFile;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.integrationstudio.esb.form.editors.mockservice.MockServiceFormToSourceTransformer;
 import org.wso2.integrationstudio.esb.form.editors.mockservice.MockServiceSourceToFormDeserializer;
@@ -147,8 +147,8 @@ import org.wso2.integrationstudio.esb.form.editors.unittest.SynapseUnitTestFormT
 import org.wso2.integrationstudio.esb.form.editors.unittest.SynapseUnitTestSourceToFormDeserializer;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.DefaultEsbModelExporter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.DataMapperMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.DefaultEsbModelExporter;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DataMapperMediatorEditPart;
 
 /**
  * The main editor class which contains design view and source view
@@ -178,7 +178,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
     /**
      * Name of the directory which holds temporary files.
      */
-    public static final String TEMPORARY_RESOURCES_DIRECTORY = ".org.wso2.integrationstudio.eclipse.esb";
+    public static final String TEMPORARY_RESOURCES_DIRECTORY = ".org.wso2.integrationstudio.esb";
 
     /**
      * Design view page index.
@@ -201,9 +201,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
     
     private static final String SYNAPSE_UNIT_TEST = "SYNAPSE_UNIT_TEST";
 
-    private static final String CONFIG_ERROR = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.synapseerror";
+    private static final String CONFIG_ERROR = "org.wso2.integrationstudio.gmf.esb.diagram.synapseerror";
 
-    private static final String ESB_GRAPHICAL_PERSPECTIVE_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.perspective";
+    private static final String ESB_GRAPHICAL_PERSPECTIVE_ID = "org.wso2.integrationstudio.gmf.esb.diagram.custom.perspective";
     
     private static final String CONNECTOR_ADDED_KEY = "ConnectorAdded";
 
@@ -608,7 +608,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             createPage0();
         }
         createPage1();
-		if (currArtifactType.equals(org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType.API)) {
+		if (currArtifactType.equals(org.wso2.integrationstudio.gmf.esb.ArtifactType.API)) {
 			createSwaggerEditorPage();
 		}
         if (graphicalEditor != null) {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.constants;
+package org.wso2.integrationstudio.utils.constants;
 
 public class ProjectConstants {
 	public static final String JAVA_NATURE_ID="org.eclipse.jdt.core.javanature";

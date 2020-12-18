@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,13 +21,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogCategory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogLevel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.LogCategory;
+import org.wso2.integrationstudio.gmf.esb.LogLevel;
+import org.wso2.integrationstudio.gmf.esb.LogMediator;
+import org.wso2.integrationstudio.gmf.esb.LogMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.LogMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.LogProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,12 +37,12 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.LogProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LogMediatorImpl#getLogCategory <em>Log Category</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LogMediatorImpl#getLogLevel <em>Log Level</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LogMediatorImpl#getLogSeparator <em>Log Separator</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LogMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LogMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LogMediatorImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LogMediatorImpl#getLogCategory <em>Log Category</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LogMediatorImpl#getLogLevel <em>Log Level</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LogMediatorImpl#getLogSeparator <em>Log Separator</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LogMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LogMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LogMediatorImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  *
  * @generated

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.components;
+package org.wso2.integrationstudio.gmf.esb.components;
 
 // Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
@@ -30,16 +30,16 @@ import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingCo
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyContextAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyMessageAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CommandPropertyPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl.CommandPropertyPropertiesEditionPartImpl;
+import org.wso2.integrationstudio.gmf.esb.CommandProperty;
+import org.wso2.integrationstudio.gmf.esb.CommandPropertyContextAction;
+import org.wso2.integrationstudio.gmf.esb.CommandPropertyMessageAction;
+import org.wso2.integrationstudio.gmf.esb.CommandPropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.CommandPropertyPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.impl.CommandPropertyPropertiesEditionPartImpl;
 
 
 // End of user code

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.persistence;
+package org.wso2.integrationstudio.gmf.esb.persistence;
 
 public class TransformerException extends Exception {
 

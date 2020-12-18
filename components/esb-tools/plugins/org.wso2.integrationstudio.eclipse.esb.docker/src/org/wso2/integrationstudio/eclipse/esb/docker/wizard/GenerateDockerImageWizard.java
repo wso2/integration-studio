@@ -14,7 +14,7 @@
  * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.esb.docker.wizard;
+package org.wso2.integrationstudio.esb.docker.wizard;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -39,12 +39,12 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.wso2.integrationstudio.eclipse.esb.docker.Activator;
-import org.wso2.integrationstudio.eclipse.docker.distribution.editor.DockerGenerationWizardPage;
-import org.wso2.integrationstudio.eclipse.docker.distribution.ui.wizard.DockerProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.integrationstudio.esb.docker.Activator;
+import org.wso2.integrationstudio.docker.distribution.editor.DockerGenerationWizardPage;
+import org.wso2.integrationstudio.docker.distribution.ui.wizard.DockerProjectCreationWizard;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
 
 public class GenerateDockerImageWizard extends Wizard implements IExportWizard {
 
@@ -118,7 +118,7 @@ public class GenerateDockerImageWizard extends Wizard implements IExportWizard {
                 pomIfile.getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
                 
                 IDE.openEditor(page, pomIfile,
-                        "org.wso2.integrationstudio.eclipse.docker.distribution.editor.DistProjectEditor", true);
+                        "org.wso2.integrationstudio.docker.distribution.editor.DistProjectEditor", true);
             } catch (Exception e) {
                 log.error("Error while opening the Docker project with the editor", e);
             }

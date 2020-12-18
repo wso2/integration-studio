@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,20 +24,20 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getForEachID <em>For Each ID</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getForEachExpression <em>For Each Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getAttachPath <em>Attach Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getTarget <em>Target</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getTargetOutputConnector <em>Target Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getSequenceKey <em>Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getSequenceName <em>Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getForEachID <em>For Each ID</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getForEachExpression <em>For Each Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getAttachPath <em>Attach Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getTargetOutputConnector <em>Target Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getSequenceType <em>Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getSequenceKey <em>Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getSequenceName <em>Sequence Name</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator()
  * @model
  * @generated
  */
@@ -52,14 +52,14 @@ public interface ForEachMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>For Each ID</em>' attribute.
      * @see #setForEachID(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator_ForEachID()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator_ForEachID()
      * @model
      * @generated
      */
     String getForEachID();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getForEachID <em>For Each ID</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getForEachID <em>For Each ID</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>For Each ID</em>' attribute.
@@ -78,14 +78,14 @@ public interface ForEachMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>For Each Expression</em>' containment reference.
      * @see #setForEachExpression(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator_ForEachExpression()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator_ForEachExpression()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getForEachExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getForEachExpression <em>For Each Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getForEachExpression <em>For Each Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>For Each Expression</em>' containment reference.
@@ -104,14 +104,14 @@ public interface ForEachMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Attach Path</em>' containment reference.
      * @see #setAttachPath(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator_AttachPath()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator_AttachPath()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getAttachPath();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getAttachPath <em>Attach Path</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getAttachPath <em>Attach Path</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Attach Path</em>' containment reference.
@@ -130,14 +130,14 @@ public interface ForEachMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Target</em>' containment reference.
      * @see #setTarget(ForEachTarget)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator_Target()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator_Target()
      * @model containment="true"
      * @generated
      */
     ForEachTarget getTarget();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getTarget <em>Target</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getTarget <em>Target</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Target</em>' containment reference.
@@ -156,14 +156,14 @@ public interface ForEachMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(ForEachMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     ForEachMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -182,14 +182,14 @@ public interface ForEachMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(ForEachMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     ForEachMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -208,14 +208,14 @@ public interface ForEachMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Target Output Connector</em>' containment reference.
      * @see #setTargetOutputConnector(ForEachMediatorTargetOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator_TargetOutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator_TargetOutputConnector()
      * @model containment="true"
      * @generated
      */
     ForEachMediatorTargetOutputConnector getTargetOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getTargetOutputConnector <em>Target Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getTargetOutputConnector <em>Target Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Target Output Connector</em>' containment reference.
@@ -234,14 +234,14 @@ public interface ForEachMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator_MediatorFlow()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator_MediatorFlow()
      * @model containment="true"
      * @generated
      */
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
@@ -252,7 +252,7 @@ public interface ForEachMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Sequence Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.SequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Sequence Type</em>' attribute isn't clear,
@@ -260,20 +260,20 @@ public interface ForEachMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #setSequenceType(SequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator_SequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator_SequenceType()
      * @model
      * @generated
      */
     SequenceType getSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getSequenceType <em>Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getSequenceType <em>Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.SequenceType
      * @see #getSequenceType()
      * @generated
      */
@@ -289,14 +289,14 @@ public interface ForEachMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Key</em>' containment reference.
      * @see #setSequenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator_SequenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator_SequenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getSequenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getSequenceKey <em>Sequence Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getSequenceKey <em>Sequence Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Key</em>' containment reference.
@@ -315,14 +315,14 @@ public interface ForEachMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Name</em>' attribute.
      * @see #setSequenceName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator_SequenceName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator_SequenceName()
      * @model
      * @generated
      */
     String getSequenceName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.ForEachMediator#getSequenceName <em>Sequence Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getSequenceName <em>Sequence Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Name</em>' attribute.

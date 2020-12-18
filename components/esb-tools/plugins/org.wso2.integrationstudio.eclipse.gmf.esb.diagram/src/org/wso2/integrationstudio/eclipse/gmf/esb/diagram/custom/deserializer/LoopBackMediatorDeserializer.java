@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoopBackMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.LoopBackMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class LoopBackMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, LoopBackMediator> {
 
@@ -30,7 +30,7 @@ public class LoopBackMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
         Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.LoopBackMediator,
                 "Unsupported mediator passed in for deserialization at " + this.getClass());
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.LoopBackMediator visualLoopBackMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.LoopBackMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.LoopBackMediator visualLoopBackMediator = (org.wso2.integrationstudio.gmf.esb.LoopBackMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.LoopBackMediator_3736);
         setElementToEdit(visualLoopBackMediator);
         setCommonProperties(mediator, visualLoopBackMediator);

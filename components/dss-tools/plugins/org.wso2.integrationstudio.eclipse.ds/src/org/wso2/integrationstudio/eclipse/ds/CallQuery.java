@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -20,13 +20,13 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.CallQuery#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.CallQuery#getWithParam <em>With Param</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.CallQuery#getHref <em>Href</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.CallQuery#getRequiredRoles <em>Required Roles</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.CallQuery#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.CallQuery#getWithParam <em>With Param</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.CallQuery#getHref <em>Href</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.CallQuery#getRequiredRoles <em>Required Roles</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getCallQuery()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getCallQuery()
  * @model extendedMetaData="name='call-query_._type' kind='mixed'"
  * @generated
  */
@@ -41,7 +41,7 @@ public interface CallQuery extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getCallQuery_Mixed()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getCallQuery_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -50,7 +50,7 @@ public interface CallQuery extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>With Param</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.ParameterMapping}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>With Param</em>' containment reference list
@@ -58,7 +58,7 @@ public interface CallQuery extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>With Param</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getCallQuery_WithParam()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getCallQuery_WithParam()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='with-param' namespace='##targetNamespace'"
 	 * @generated
@@ -75,7 +75,7 @@ public interface CallQuery extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Href</em>' attribute.
 	 * @see #setHref(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getCallQuery_Href()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getCallQuery_Href()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='href' namespace='##targetNamespace'"
 	 * @generated
@@ -83,7 +83,7 @@ public interface CallQuery extends EObject {
 	String getHref();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.CallQuery#getHref <em>Href</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.CallQuery#getHref <em>Href</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Href</em>' attribute.
@@ -102,14 +102,14 @@ public interface CallQuery extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Required Roles</em>' attribute.
 	 * @see #setRequiredRoles(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getCallQuery_RequiredRoles()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getCallQuery_RequiredRoles()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 * @generated
 	 */
 	String getRequiredRoles();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.CallQuery#getRequiredRoles <em>Required Roles</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.CallQuery#getRequiredRoles <em>Required Roles</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Required Roles</em>' attribute.

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.utils.j2ee;
+package org.wso2.integrationstudio.utils.j2ee;
 
 public class Constants {
 	//Axis2 Core Plugin Constants  	

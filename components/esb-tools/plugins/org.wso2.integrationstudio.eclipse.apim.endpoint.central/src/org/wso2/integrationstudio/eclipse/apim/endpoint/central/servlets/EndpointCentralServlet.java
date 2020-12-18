@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.servlets;
+package org.wso2.integrationstudio.apim.endpoint.central.servlets;
 
 import java.io.IOException;
 
@@ -24,8 +24,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.handler.EndpointCentralServletRequestHandler;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.EndpointCentralServletConstants;
+import org.wso2.integrationstudio.apim.endpoint.central.handler.EndpointCentralServletRequestHandler;
+import org.wso2.integrationstudio.apim.endpoint.central.resources.EndpointCentralServletConstants;
 
 /**
  * The servlet class used to serve requests from the endpoint central service catalog.

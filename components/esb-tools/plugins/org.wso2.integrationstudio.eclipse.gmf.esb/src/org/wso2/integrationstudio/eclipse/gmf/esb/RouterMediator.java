@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,14 +17,14 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator#isContinueAfterRouting <em>Continue After Routing</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator#getTargetOutputConnector <em>Target Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator#getRouterContainer <em>Router Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RouterMediator#isContinueAfterRouting <em>Continue After Routing</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RouterMediator#getTargetOutputConnector <em>Target Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RouterMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RouterMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RouterMediator#getRouterContainer <em>Router Container</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterMediator()
  * @model
  * @generated
  */
@@ -39,14 +39,14 @@ public interface RouterMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Continue After Routing</em>' attribute.
      * @see #setContinueAfterRouting(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterMediator_ContinueAfterRouting()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterMediator_ContinueAfterRouting()
      * @model
      * @generated
      */
     boolean isContinueAfterRouting();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator#isContinueAfterRouting <em>Continue After Routing</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RouterMediator#isContinueAfterRouting <em>Continue After Routing</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Continue After Routing</em>' attribute.
@@ -57,7 +57,7 @@ public interface RouterMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Target Output Connector</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediatorTargetOutputConnector}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.RouterMediatorTargetOutputConnector}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Target Output Connector</em>' containment reference list isn't clear,
@@ -65,7 +65,7 @@ public interface RouterMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Target Output Connector</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterMediator_TargetOutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterMediator_TargetOutputConnector()
      * @model containment="true"
      * @generated
      */
@@ -81,14 +81,14 @@ public interface RouterMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(RouterMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     RouterMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RouterMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -107,14 +107,14 @@ public interface RouterMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(RouterMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     RouterMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RouterMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -133,14 +133,14 @@ public interface RouterMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Router Container</em>' containment reference.
      * @see #setRouterContainer(RouterMediatorContainer)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRouterMediator_RouterContainer()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRouterMediator_RouterContainer()
      * @model containment="true"
      * @generated
      */
     RouterMediatorContainer getRouterContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RouterMediator#getRouterContainer <em>Router Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RouterMediator#getRouterContainer <em>Router Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Router Container</em>' containment reference.

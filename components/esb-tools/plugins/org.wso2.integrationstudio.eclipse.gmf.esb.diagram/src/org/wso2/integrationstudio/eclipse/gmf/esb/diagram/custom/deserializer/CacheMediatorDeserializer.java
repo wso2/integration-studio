@@ -14,41 +14,41 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__CACHE_TIMEOUT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__CACHE_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__HASH_GENERATOR;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__INCLUDE_AGE_HEADER;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__MAX_ENTRY_COUNT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__MAX_MESSAGE_SIZE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__RESPONSE_CODES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__SEQUENCE_KEY;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__SEQUENCE_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__SCOPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__IMPLEMENTATION_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__CACHE_TIMEOUT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__CACHE_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__HASH_GENERATOR;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__INCLUDE_AGE_HEADER;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__MAX_ENTRY_COUNT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__MAX_MESSAGE_SIZE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__RESPONSE_CODES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__SEQUENCE_KEY;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__SEQUENCE_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__ID;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__HASH_GENERATOR_ATTRIBUTE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__SCOPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__IMPLEMENTATION_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.wso2.carbon.mediator.cache.CachingConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheImplementationType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheMediatorType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheScopeType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CacheType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.CacheImplementationType;
+import org.wso2.integrationstudio.gmf.esb.CacheMediator;
+import org.wso2.integrationstudio.gmf.esb.CacheMediatorType;
+import org.wso2.integrationstudio.gmf.esb.CacheScopeType;
+import org.wso2.integrationstudio.gmf.esb.CacheSequenceType;
+import org.wso2.integrationstudio.gmf.esb.CacheType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CacheMediator> {
 

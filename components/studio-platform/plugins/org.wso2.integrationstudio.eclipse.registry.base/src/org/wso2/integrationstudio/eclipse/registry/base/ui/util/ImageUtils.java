@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.ui.util;
+package org.wso2.integrationstudio.registry.base.ui.util;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.registry.base.Activator;
+import org.wso2.integrationstudio.registry.base.Activator;
 
 public class ImageUtils {
 

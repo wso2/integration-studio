@@ -14,7 +14,7 @@
  * the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -57,7 +57,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.ImageHolder;
 import org.apache.commons.lang.StringUtils;
 
 /**

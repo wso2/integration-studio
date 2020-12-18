@@ -28,8 +28,8 @@ import org.wso2.integrationstudio.datamapper.diagram.custom.generator.SameLevelR
 import org.wso2.integrationstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.integrationstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.integrationstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * This class extended from the {@link AbstractDMOperatorTransformer} abstract

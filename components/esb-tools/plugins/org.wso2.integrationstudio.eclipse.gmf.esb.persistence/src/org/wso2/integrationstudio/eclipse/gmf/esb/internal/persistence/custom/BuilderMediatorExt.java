@@ -1,9 +1,9 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence.custom;
 
 import java.util.List;
 
 import org.wso2.carbon.relay.mediators.builder.BuilderMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MessageBuilder;
+import org.wso2.integrationstudio.gmf.esb.MessageBuilder;
 
 public class BuilderMediatorExt extends BuilderMediator {
 

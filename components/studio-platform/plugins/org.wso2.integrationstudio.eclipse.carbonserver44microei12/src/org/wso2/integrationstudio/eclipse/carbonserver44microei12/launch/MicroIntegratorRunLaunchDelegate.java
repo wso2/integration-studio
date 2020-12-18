@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei12.launch;
+package org.wso2.integrationstudio.carbonserver44microei12.launch;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -34,12 +34,12 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.util.CarbonServer44eiUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.wizard.CompositeApplicationArtifactUpdateWizard;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
+import org.wso2.integrationstudio.carbonserver44microei12.Activator;
+import org.wso2.integrationstudio.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
+import org.wso2.integrationstudio.carbonserver44microei12.util.CarbonServer44eiUtils;
+import org.wso2.integrationstudio.carbonserver44microei12.wizard.CompositeApplicationArtifactUpdateWizard;
 
 /**
  * This class performs launching of the Micro Integrator launch
@@ -52,8 +52,8 @@ import org.wso2.integrationstudio.eclipse.carbonserver44microei12.wizard.Composi
  * {@code <extension
  *        point="org.eclipse.debug.core.launchConfigurationTypes">
  *     <launchConfigurationType
- *           delegate="org.wso2.integrationstudio.eclipse.carbonserver44microei12.launch.MicroIntegratorRunLaunchDelegate"
- *           id="org.wso2.integrationstudio.eclipse.carbonserver44microei12.launch"
+ *           delegate="org.wso2.integrationstudio.carbonserver44microei12.launch.MicroIntegratorRunLaunchDelegate"
+ *           id="org.wso2.integrationstudio.carbonserver44microei12.launch"
  *           modes="run"
  *           name="Micro Integrator Runtime">
  *     </launchConfigurationType>

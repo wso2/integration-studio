@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -20,22 +20,22 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateLongRange <em>Validate Long Range</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateDoubleRange <em>Validate Double Range</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateLength <em>Validate Length</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidatePattern <em>Validate Pattern</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateCustom <em>Validate Custom</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getDefaultValue <em>Default Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getOrdinal <em>Ordinal</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getParamType <em>Param Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getSqlType <em>Sql Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getStructType <em>Struct Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getType <em>Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getValidateLongRange <em>Validate Long Range</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getValidateDoubleRange <em>Validate Double Range</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getValidateLength <em>Validate Length</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getValidatePattern <em>Validate Pattern</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getValidateCustom <em>Validate Custom</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getOrdinal <em>Ordinal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getParamType <em>Param Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getSqlType <em>Sql Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getStructType <em>Struct Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.QueryParameter#getType <em>Type</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter()
  * @model extendedMetaData="name='param_._type' kind='mixed'"
  * @generated
  */
@@ -50,7 +50,7 @@ public interface QueryParameter extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_Mixed()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -68,7 +68,7 @@ public interface QueryParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Validate Long Range</em>' containment reference.
 	 * @see #setValidateLongRange(LongRangeValidator)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_ValidateLongRange()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_ValidateLongRange()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='validateLongRange' namespace='##targetNamespace'"
 	 * @generated
@@ -76,7 +76,7 @@ public interface QueryParameter extends EObject {
 	LongRangeValidator getValidateLongRange();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateLongRange <em>Validate Long Range</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.QueryParameter#getValidateLongRange <em>Validate Long Range</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Validate Long Range</em>' containment reference.
@@ -96,7 +96,7 @@ public interface QueryParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Validate Double Range</em>' containment reference.
 	 * @see #setValidateDoubleRange(DoubleRangeValidator)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_ValidateDoubleRange()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_ValidateDoubleRange()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='validateDoubleRange' namespace='##targetNamespace'"
 	 * @generated
@@ -104,7 +104,7 @@ public interface QueryParameter extends EObject {
 	DoubleRangeValidator getValidateDoubleRange();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateDoubleRange <em>Validate Double Range</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.QueryParameter#getValidateDoubleRange <em>Validate Double Range</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Validate Double Range</em>' containment reference.
@@ -123,7 +123,7 @@ public interface QueryParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Validate Length</em>' containment reference.
 	 * @see #setValidateLength(LengthValidator)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_ValidateLength()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_ValidateLength()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='validateLength' namespace='##targetNamespace'"
 	 * @generated
@@ -131,7 +131,7 @@ public interface QueryParameter extends EObject {
 	LengthValidator getValidateLength();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getValidateLength <em>Validate Length</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.QueryParameter#getValidateLength <em>Validate Length</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Validate Length</em>' containment reference.
@@ -142,7 +142,7 @@ public interface QueryParameter extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Validate Pattern</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.PatternValidator}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.PatternValidator}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Validate Pattern</em>' containment reference
@@ -150,7 +150,7 @@ public interface QueryParameter extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Validate Pattern</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_ValidatePattern()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_ValidatePattern()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='validatePattern' namespace='##targetNamespace'"
 	 * @generated
@@ -159,7 +159,7 @@ public interface QueryParameter extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Validate Custom</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.CustomValidator}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.CustomValidator}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Validate Custom</em>' containment reference
@@ -167,7 +167,7 @@ public interface QueryParameter extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Validate Custom</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_ValidateCustom()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_ValidateCustom()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='validateCustom' namespace='##targetNamespace'"
 	 * @generated
@@ -184,7 +184,7 @@ public interface QueryParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Default Value</em>' attribute.
 	 * @see #setDefaultValue(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_DefaultValue()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_DefaultValue()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='defaultValue' namespace='##targetNamespace'"
 	 * @generated
@@ -192,7 +192,7 @@ public interface QueryParameter extends EObject {
 	String getDefaultValue();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getDefaultValue <em>Default Value</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.QueryParameter#getDefaultValue <em>Default Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Default Value</em>' attribute.
@@ -211,7 +211,7 @@ public interface QueryParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_Name()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='name' namespace='##targetNamespace'"
 	 * @generated
@@ -219,7 +219,7 @@ public interface QueryParameter extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.QueryParameter#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -238,7 +238,7 @@ public interface QueryParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ordinal</em>' attribute.
 	 * @see #setOrdinal(int)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_Ordinal()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_Ordinal()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Int"
 	 *        extendedMetaData="kind='attribute' name='ordinal' namespace='##targetNamespace'"
 	 * @generated
@@ -246,7 +246,7 @@ public interface QueryParameter extends EObject {
 	int getOrdinal();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getOrdinal <em>Ordinal</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.QueryParameter#getOrdinal <em>Ordinal</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Ordinal</em>' attribute.
@@ -265,7 +265,7 @@ public interface QueryParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Param Type</em>' attribute.
 	 * @see #setParamType(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_ParamType()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_ParamType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='paramType' namespace='##targetNamespace'"
 	 * @generated
@@ -273,7 +273,7 @@ public interface QueryParameter extends EObject {
 	String getParamType();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getParamType <em>Param Type</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.QueryParameter#getParamType <em>Param Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Param Type</em>' attribute.
@@ -292,7 +292,7 @@ public interface QueryParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sql Type</em>' attribute.
 	 * @see #setSqlType(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_SqlType()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_SqlType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='sqlType' namespace='##targetNamespace'"
 	 * @generated
@@ -300,7 +300,7 @@ public interface QueryParameter extends EObject {
 	String getSqlType();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getSqlType <em>Sql Type</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.QueryParameter#getSqlType <em>Sql Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Sql Type</em>' attribute.
@@ -319,7 +319,7 @@ public interface QueryParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Struct Type</em>' attribute.
 	 * @see #setStructType(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_StructType()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_StructType()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='structType' namespace='##targetNamespace'"
 	 * @generated
@@ -327,7 +327,7 @@ public interface QueryParameter extends EObject {
 	String getStructType();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getStructType <em>Struct Type</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.QueryParameter#getStructType <em>Struct Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Struct Type</em>' attribute.
@@ -346,7 +346,7 @@ public interface QueryParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getQueryParameter_Type()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getQueryParameter_Type()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='type' namespace='##targetNamespace'"
 	 * @generated
@@ -354,7 +354,7 @@ public interface QueryParameter extends EObject {
 	String getType();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.QueryParameter#getType <em>Type</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.QueryParameter#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.

@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.integrationstudio.eclipse.esb.project.store.handlers;
+package org.wso2.integrationstudio.esb.project.store.handlers;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,14 +29,14 @@ import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.ui.IStartup;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.esb.project.Activator;
-import org.wso2.integrationstudio.eclipse.esb.project.servlets.ConnectorDownloadServlet;
-import org.wso2.integrationstudio.eclipse.esb.project.servlets.ConnectorRetrievalServlet;
-import org.wso2.integrationstudio.eclipse.esb.project.servlets.ConnectorSearchServlet;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
+import org.wso2.integrationstudio.esb.project.Activator;
+import org.wso2.integrationstudio.esb.project.servlets.ConnectorDownloadServlet;
+import org.wso2.integrationstudio.esb.project.servlets.ConnectorRetrievalServlet;
+import org.wso2.integrationstudio.esb.project.servlets.ConnectorSearchServlet;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.templates.dashboard.handlers.JettyServerHandler;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.FunctionServerConstants;
 
 /**
  * Binds new servlets to paths of the jetty server

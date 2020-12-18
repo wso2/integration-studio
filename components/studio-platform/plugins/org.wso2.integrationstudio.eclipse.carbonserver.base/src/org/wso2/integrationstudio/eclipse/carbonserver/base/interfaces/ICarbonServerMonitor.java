@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces;
+package org.wso2.integrationstudio.carbonserver.base.interfaces;
 
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;

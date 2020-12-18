@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,11 +15,11 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndpointDiagram#getChild <em>Child</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndpointDiagram#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EndpointDiagram#getChild <em>Child</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EndpointDiagram#getName <em>Name</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEndpointDiagram()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEndpointDiagram()
  * @model
  * @generated
  */
@@ -34,14 +34,14 @@ public interface EndpointDiagram extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Child</em>' containment reference.
      * @see #setChild(EndPoint)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEndpointDiagram_Child()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEndpointDiagram_Child()
      * @model containment="true"
      * @generated
      */
     EndPoint getChild();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndpointDiagram#getChild <em>Child</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EndpointDiagram#getChild <em>Child</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Child</em>' containment reference.
@@ -60,14 +60,14 @@ public interface EndpointDiagram extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEndpointDiagram_Name()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEndpointDiagram_Name()
      * @model
      * @generated
      */
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EndpointDiagram#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EndpointDiagram#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Name</em>' attribute.

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -18,9 +18,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,12 +30,12 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EndPointImpl#getEndPointName <em>End Point Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EndPointImpl#isAnonymous <em>Anonymous</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EndPointImpl#isInLine <em>In Line</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EndPointImpl#isDuplicate <em>Duplicate</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EndPointImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EndPointImpl#isReversed <em>Reversed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EndPointImpl#getEndPointName <em>End Point Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EndPointImpl#isAnonymous <em>Anonymous</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EndPointImpl#isInLine <em>In Line</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EndPointImpl#isDuplicate <em>Duplicate</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EndPointImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EndPointImpl#isReversed <em>Reversed</em>}</li>
  * </ul>
  *
  * @generated

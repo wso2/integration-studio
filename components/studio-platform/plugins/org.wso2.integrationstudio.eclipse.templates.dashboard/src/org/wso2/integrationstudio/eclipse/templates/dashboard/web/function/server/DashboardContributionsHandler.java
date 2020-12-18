@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server;
+package org.wso2.integrationstudio.templates.dashboard.web.function.server;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -38,11 +38,11 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.model.DashboardCategory;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.model.DashboardLink;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.Activator;
+import org.wso2.integrationstudio.templates.dashboard.web.model.DashboardCategory;
+import org.wso2.integrationstudio.templates.dashboard.web.model.DashboardLink;
 
 /**
  * Utility class for reading Integration Studio dashboard contributions. 
@@ -50,7 +50,7 @@ import org.wso2.integrationstudio.eclipse.templates.dashboard.web.model.Dashboar
  * Wizard link should be added as below to plugin.xml in each of the plugins which contribute templates
  * ex :-     
  *  <extension
- *         point="org.wso2.integrationstudio.eclipse.template.dashboad.link">
+ *         point="org.wso2.integrationstudio.template.dashboad.link">
  *     <wizardCategory category="org.wso2.integrationstudio.templates"/>
  *     <category id="dashboard.category.esb.template" showTitle="false" (Category should only be defined once for each category)
  *               title="ESB Templates"
@@ -65,7 +65,7 @@ import org.wso2.integrationstudio.eclipse.templates.dashboard.web.model.Dashboar
 public class DashboardContributionsHandler {
 
     //Dashboard links are defined under this extension point id (Refer plugin.xml)
-    private static final String EXT_POINT_ID = "org.wso2.integrationstudio.eclipse.template.dashboad.link";
+    private static final String EXT_POINT_ID = "org.wso2.integrationstudio.template.dashboad.link";
 
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 

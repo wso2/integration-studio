@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Collection;
 
@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.QueryProperty;
-import org.wso2.integrationstudio.eclipse.ds.QueryPropertyList;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.QueryProperty;
+import org.wso2.integrationstudio.ds.QueryPropertyList;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,8 +34,8 @@ import org.wso2.integrationstudio.eclipse.ds.QueryPropertyList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryPropertyListImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.QueryPropertyListImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryPropertyListImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.QueryPropertyListImpl#getProperty <em>Property</em>}</li>
  * </ul>
  *
  * @generated

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.search;
+package org.wso2.integrationstudio.registry.search;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -25,7 +25,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.registry.search";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.registry.search";
 
 	// The shared instance
 	private static Activator plugin;

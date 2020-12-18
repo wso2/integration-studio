@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base;
+package org.wso2.integrationstudio.registry.base;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,9 +31,9 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -47,7 +47,7 @@ public class Activator extends AbstractUIPlugin {
 	private static final String ECLIPSE_INSTALLTION_DIRECTORY = "eclipse.home.location";
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.registry.base";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.registry.base";
 
 	// The shared instance
 	private static Activator plugin;

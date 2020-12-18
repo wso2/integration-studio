@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,16 +17,16 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getResultType <em>Result Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getResultCustomType <em>Result Custom Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getResultName <em>Result Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getValueLiteral <em>Value Literal</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getValueKey <em>Value Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getResultType <em>Result Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getResultCustomType <em>Result Custom Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getResultName <em>Result Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getValueExpression <em>Value Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getValueKey <em>Value Key</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRuleResult()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRuleResult()
  * @model
  * @generated
  */
@@ -34,7 +34,7 @@ public interface RuleResult extends EObject {
     /**
      * Returns the value of the '<em><b>Result Type</b></em>' attribute.
      * The default value is <code>"CUSTOM"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.RuleResultType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Result Type</em>' attribute isn't clear,
@@ -42,20 +42,20 @@ public interface RuleResult extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Result Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultType
+     * @see org.wso2.integrationstudio.gmf.esb.RuleResultType
      * @see #setResultType(RuleResultType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRuleResult_ResultType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRuleResult_ResultType()
      * @model default="CUSTOM"
      * @generated
      */
     RuleResultType getResultType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getResultType <em>Result Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getResultType <em>Result Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Result Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultType
+     * @see org.wso2.integrationstudio.gmf.esb.RuleResultType
      * @see #getResultType()
      * @generated
      */
@@ -72,14 +72,14 @@ public interface RuleResult extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Result Custom Type</em>' attribute.
      * @see #setResultCustomType(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRuleResult_ResultCustomType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRuleResult_ResultCustomType()
      * @model default="custom_type"
      * @generated
      */
     String getResultCustomType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getResultCustomType <em>Result Custom Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getResultCustomType <em>Result Custom Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Result Custom Type</em>' attribute.
@@ -99,14 +99,14 @@ public interface RuleResult extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Result Name</em>' attribute.
      * @see #setResultName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRuleResult_ResultName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRuleResult_ResultName()
      * @model default="result_name"
      * @generated
      */
     String getResultName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getResultName <em>Result Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getResultName <em>Result Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Result Name</em>' attribute.
@@ -118,7 +118,7 @@ public interface RuleResult extends EObject {
     /**
      * Returns the value of the '<em><b>Value Type</b></em>' attribute.
      * The default value is <code>"LITERAL"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultValueType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.RuleResultValueType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Value Type</em>' attribute isn't clear,
@@ -126,20 +126,20 @@ public interface RuleResult extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultValueType
+     * @see org.wso2.integrationstudio.gmf.esb.RuleResultValueType
      * @see #setValueType(RuleResultValueType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRuleResult_ValueType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRuleResult_ValueType()
      * @model default="LITERAL"
      * @generated
      */
     RuleResultValueType getValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getValueType <em>Value Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getValueType <em>Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RuleResultValueType
+     * @see org.wso2.integrationstudio.gmf.esb.RuleResultValueType
      * @see #getValueType()
      * @generated
      */
@@ -156,14 +156,14 @@ public interface RuleResult extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value Literal</em>' attribute.
      * @see #setValueLiteral(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRuleResult_ValueLiteral()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRuleResult_ValueLiteral()
      * @model default="value"
      * @generated
      */
     String getValueLiteral();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getValueLiteral <em>Value Literal</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getValueLiteral <em>Value Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value Literal</em>' attribute.
@@ -182,14 +182,14 @@ public interface RuleResult extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value Expression</em>' containment reference.
      * @see #setValueExpression(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRuleResult_ValueExpression()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRuleResult_ValueExpression()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getValueExpression <em>Value Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getValueExpression <em>Value Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value Expression</em>' containment reference.
@@ -208,14 +208,14 @@ public interface RuleResult extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value Key</em>' containment reference.
      * @see #setValueKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRuleResult_ValueKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRuleResult_ValueKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getValueKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleResult#getValueKey <em>Value Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RuleResult#getValueKey <em>Value Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value Key</em>' containment reference.

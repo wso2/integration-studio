@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.exception;
+package org.wso2.integrationstudio.platform.core.exception;
 
 public class ObserverFailedException extends Exception {
 

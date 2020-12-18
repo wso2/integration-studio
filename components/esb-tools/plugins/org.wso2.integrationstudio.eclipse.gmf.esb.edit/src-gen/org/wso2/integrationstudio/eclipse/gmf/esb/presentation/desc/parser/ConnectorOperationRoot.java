@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser;
+package org.wso2.integrationstudio.gmf.esb.presentation.desc.parser;
 
 public class ConnectorOperationRoot extends ConnectorRoot {
     private String operationName;

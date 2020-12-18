@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.wizards;
+package org.wso2.integrationstudio.ds.wizards;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,9 +37,9 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
-import org.wso2.integrationstudio.eclipse.ds.DsFactory;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditorPlugin;
+import org.wso2.integrationstudio.ds.DsFactory;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.presentation.DsEditorPlugin;
 
 public class DataServiceCreationWizard extends Wizard implements INewWizard {
 

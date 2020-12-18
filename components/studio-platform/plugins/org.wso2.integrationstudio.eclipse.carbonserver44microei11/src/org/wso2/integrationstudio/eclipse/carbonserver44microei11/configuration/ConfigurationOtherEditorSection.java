@@ -16,9 +16,9 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei11.configuration;
+package org.wso2.integrationstudio.carbonserver44microei11.configuration;
 
-import org.wso2.integrationstudio.eclipse.carbon.server.model.configuration.ConfigurationOtherCommonEditorSection;
+import org.wso2.integrationstudio.carbon.server.model.configuration.ConfigurationOtherCommonEditorSection;
 
 
 public class ConfigurationOtherEditorSection extends ConfigurationOtherCommonEditorSection {

@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44ei.operations;
+package org.wso2.integrationstudio.carbonserver44ei.operations;
 
 import java.net.URL;
 
 
 import org.eclipse.core.runtime.IPath;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.operations.CommonServiceWSDLRetriever;
+import org.wso2.integrationstudio.carbon.server.model.operations.CommonServiceWSDLRetriever;
 
 public class ServiceWSDLRetriever extends CommonServiceWSDLRetriever {
 

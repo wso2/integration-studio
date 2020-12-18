@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,10 +17,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.PatternValidator#getPattern <em>Pattern</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.PatternValidator#getPattern <em>Pattern</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getPatternValidator()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getPatternValidator()
  * @model extendedMetaData="name='validatePattern_._type' kind='empty'"
  * @generated
  */
@@ -35,7 +35,7 @@ public interface PatternValidator extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Pattern</em>' attribute.
 	 * @see #setPattern(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getPatternValidator_Pattern()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getPatternValidator_Pattern()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='pattern' namespace='##targetNamespace'"
 	 * @generated
@@ -43,7 +43,7 @@ public interface PatternValidator extends EObject {
 	String getPattern();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.PatternValidator#getPattern <em>Pattern</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.PatternValidator#getPattern <em>Pattern</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Pattern</em>' attribute.

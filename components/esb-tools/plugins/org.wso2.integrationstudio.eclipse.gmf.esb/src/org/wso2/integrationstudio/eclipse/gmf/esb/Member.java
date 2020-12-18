@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -26,12 +26,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Member#getHostName <em>Host Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Member#getHttpPort <em>Http Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Member#getHttpsPort <em>Https Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Member#getHostName <em>Host Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Member#getHttpPort <em>Http Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Member#getHttpsPort <em>Https Port</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMember()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMember()
  * @model
  * @generated
  */
@@ -46,14 +46,14 @@ public interface Member extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Host Name</em>' attribute.
      * @see #setHostName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMember_HostName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMember_HostName()
      * @model
      * @generated
      */
     String getHostName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Member#getHostName <em>Host Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Member#getHostName <em>Host Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Host Name</em>' attribute.
@@ -72,14 +72,14 @@ public interface Member extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Http Port</em>' attribute.
      * @see #setHttpPort(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMember_HttpPort()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMember_HttpPort()
      * @model
      * @generated
      */
     String getHttpPort();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Member#getHttpPort <em>Http Port</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Member#getHttpPort <em>Http Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Http Port</em>' attribute.
@@ -98,14 +98,14 @@ public interface Member extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Https Port</em>' attribute.
      * @see #setHttpsPort(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMember_HttpsPort()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMember_HttpsPort()
      * @model
      * @generated
      */
     String getHttpsPort();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Member#getHttpsPort <em>Https Port</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Member#getHttpsPort <em>Https Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Https Port</em>' attribute.

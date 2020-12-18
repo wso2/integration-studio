@@ -1,9 +1,9 @@
-package org.wso2.integrationstudio.eclipse.artifact.bpel.utils;
+package org.wso2.integrationstudio.artifact.bpel.utils;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.utils.ui.ImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.bpel.Activator;
+import org.wso2.integrationstudio.utils.ui.ImageUtils;
+import org.wso2.integrationstudio.artifact.bpel.Activator;
 
 public class BPELImageUtils extends ImageUtils{
 

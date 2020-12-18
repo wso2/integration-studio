@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -25,14 +25,14 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventAttributes#getMeta <em>Meta</em>}</li>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventAttributes#getCorrelation <em>Correlation</em>}</li>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventAttributes#getPayload <em>Payload</em>}</li>
- * <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventAttributes#getArbitrary <em>Arbitrary</em>}</li>
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.PublishEventAttributes#getMeta <em>Meta</em>}</li>
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.PublishEventAttributes#getCorrelation <em>Correlation</em>}</li>
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.PublishEventAttributes#getPayload <em>Payload</em>}</li>
+ * <li>{@link org.wso2.integrationstudio.gmf.esb.PublishEventAttributes#getArbitrary <em>Arbitrary</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPublishEventAttributes()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPublishEventAttributes()
  * @model
  * @generated
  */
@@ -48,14 +48,14 @@ public interface PublishEventAttributes extends EObject {
      * 
      * @return the value of the '<em>Meta</em>' reference.
      * @see #setMeta(PublishEventMetaAttributes)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPublishEventAttributes_Meta()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPublishEventAttributes_Meta()
      * @model
      * @generated
      */
     PublishEventMetaAttributes getMeta();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventAttributes#getMeta
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.PublishEventAttributes#getMeta
      * <em>Meta</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -77,14 +77,14 @@ public interface PublishEventAttributes extends EObject {
      * 
      * @return the value of the '<em>Correlation</em>' reference.
      * @see #setCorrelation(PublishEventCorrelationAttributes)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPublishEventAttributes_Correlation()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPublishEventAttributes_Correlation()
      * @model
      * @generated
      */
     PublishEventCorrelationAttributes getCorrelation();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventAttributes#getCorrelation
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.PublishEventAttributes#getCorrelation
      * <em>Correlation</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -106,14 +106,14 @@ public interface PublishEventAttributes extends EObject {
      * 
      * @return the value of the '<em>Payload</em>' reference.
      * @see #setPayload(PublishEventPayloadAttributes)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPublishEventAttributes_Payload()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPublishEventAttributes_Payload()
      * @model
      * @generated
      */
     PublishEventPayloadAttributes getPayload();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventAttributes#getPayload
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.PublishEventAttributes#getPayload
      * <em>Payload</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -135,14 +135,14 @@ public interface PublishEventAttributes extends EObject {
      * 
      * @return the value of the '<em>Arbitrary</em>' reference.
      * @see #setArbitrary(PublishEventArbitraryAttributes)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPublishEventAttributes_Arbitrary()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPublishEventAttributes_Arbitrary()
      * @model
      * @generated
      */
     PublishEventArbitraryAttributes getArbitrary();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.PublishEventAttributes#getArbitrary
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.PublishEventAttributes#getArbitrary
      * <em>Arbitrary</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -18,18 +18,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateElementType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediatorOnCompleteOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CompletionMessagesType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.AggregateElementType;
+import org.wso2.integrationstudio.gmf.esb.AggregateMediator;
+import org.wso2.integrationstudio.gmf.esb.AggregateMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.AggregateMediatorOnCompleteOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.AggregateMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.AggregateSequenceType;
+import org.wso2.integrationstudio.gmf.esb.CompletionMessagesType;
+import org.wso2.integrationstudio.gmf.esb.EsbElement;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,24 +39,24 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getAggregateID <em>Aggregate ID</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getCorrelationExpression <em>Correlation Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getCompletionTimeout <em>Completion Timeout</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getCompletionMinMessagesType <em>Completion Min Messages Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getCompletionMaxMessagesType <em>Completion Max Messages Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getCompletionMinMessagesValue <em>Completion Min Messages Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getCompletionMinMessagesExpression <em>Completion Min Messages Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getCompletionMaxMessagesValue <em>Completion Max Messages Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getCompletionMaxMessagesExpression <em>Completion Max Messages Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getOnCompleteOutputConnector <em>On Complete Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getAggregationExpression <em>Aggregation Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getEnclosingElementProperty <em>Enclosing Element Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getAggregateElementType <em>Aggregate Element Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getAggregateID <em>Aggregate ID</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getCorrelationExpression <em>Correlation Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getCompletionTimeout <em>Completion Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getCompletionMinMessagesType <em>Completion Min Messages Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getCompletionMaxMessagesType <em>Completion Max Messages Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getCompletionMinMessagesValue <em>Completion Min Messages Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getCompletionMinMessagesExpression <em>Completion Min Messages Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getCompletionMaxMessagesValue <em>Completion Max Messages Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getCompletionMaxMessagesExpression <em>Completion Max Messages Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getOnCompleteOutputConnector <em>On Complete Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getAggregationExpression <em>Aggregation Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getEnclosingElementProperty <em>Enclosing Element Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl#getAggregateElementType <em>Aggregate Element Type</em>}</li>
  * </ul>
  *
  * @generated

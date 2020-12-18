@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.samples.contributor;
+package org.wso2.integrationstudio.samples.contributor;
 
 import java.io.File;
 

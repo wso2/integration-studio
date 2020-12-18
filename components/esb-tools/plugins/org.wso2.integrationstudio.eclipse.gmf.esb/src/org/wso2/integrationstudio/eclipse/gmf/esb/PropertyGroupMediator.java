@@ -12,7 +12,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -25,12 +25,12 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator#getProperties <em>Properties</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPropertyGroupMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPropertyGroupMediator()
  * @model
  * @generated
  */
@@ -45,14 +45,14 @@ public interface PropertyGroupMediator extends Mediator {
 	 * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(PropertyGroupMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPropertyGroupMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPropertyGroupMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
 	PropertyGroupMediatorInputConnector getInputConnector();
 
 	/**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -71,14 +71,14 @@ public interface PropertyGroupMediator extends Mediator {
 	 * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(PropertyGroupMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPropertyGroupMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPropertyGroupMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
 	PropertyGroupMediatorOutputConnector getOutputConnector();
 
 	/**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyGroupMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -89,7 +89,7 @@ public interface PropertyGroupMediator extends Mediator {
 
 	/**
      * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.PropertyMediator}.
      * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
@@ -97,7 +97,7 @@ public interface PropertyGroupMediator extends Mediator {
 	 * </p>
 	 * <!-- end-user-doc -->
      * @return the value of the '<em>Properties</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getPropertyGroupMediator_Properties()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPropertyGroupMediator_Properties()
      * @model containment="true"
      * @generated
      */

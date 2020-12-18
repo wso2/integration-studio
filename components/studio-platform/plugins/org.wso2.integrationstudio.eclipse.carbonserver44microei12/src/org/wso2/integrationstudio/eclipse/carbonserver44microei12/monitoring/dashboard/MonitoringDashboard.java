@@ -16,18 +16,18 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei12.monitoring.dashboard;
+package org.wso2.integrationstudio.carbonserver44microei12.monitoring.dashboard;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.monitoring.dashboard.util.MonitoringDashboardConstants;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.monitoring.dashboard.util.MonitoringDashboardUtil;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.carbonserver44microei12.Activator;
+import org.wso2.integrationstudio.carbonserver44microei12.monitoring.dashboard.util.MonitoringDashboardConstants;
+import org.wso2.integrationstudio.carbonserver44microei12.monitoring.dashboard.util.MonitoringDashboardUtil;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class MonitoringDashboard {
 

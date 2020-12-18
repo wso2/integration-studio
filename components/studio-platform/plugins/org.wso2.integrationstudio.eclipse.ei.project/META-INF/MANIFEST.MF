@@ -1,13 +1,13 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: WS02EIServer
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.ei.project;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.ei.project;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.ei.project.Activator
+Bundle-Activator: org.wso2.integrationstudio.ei.project.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.wso2.integrationstudio.eclipse.kernel.libraries,
- org.wso2.integrationstudio.eclipse.libraries
+ org.wso2.integrationstudio.kernel.libraries,
+ org.wso2.integrationstudio.libraries
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.e4.core.contexts,
  org.eclipse.e4.core.services.events,
@@ -15,27 +15,27 @@ Import-Package: org.eclipse.e4.core.contexts,
  org.eclipse.e4.ui.di,
  org.osgi.service.event,
  org.wso2.integrationstudio.appcloud.utils.authentication,
- org.wso2.integrationstudio.eclipse.logging.core,
- org.wso2.integrationstudio.eclipse.platform.core,
- org.wso2.integrationstudio.eclipse.platform.core.event,
- org.wso2.integrationstudio.eclipse.platform.core.templates,
- org.wso2.integrationstudio.eclipse.platform.core.utils,
- org.wso2.integrationstudio.eclipse.platform.ui,
- org.wso2.integrationstudio.eclipse.platform.ui.utils,
- org.wso2.integrationstudio.eclipse.registry.base.core,
- org.wso2.integrationstudio.eclipse.registry.base.interfaces,
- org.wso2.integrationstudio.eclipse.registry.base.logger,
- org.wso2.integrationstudio.eclipse.registry.base.managers,
- org.wso2.integrationstudio.eclipse.registry.base.model,
- org.wso2.integrationstudio.eclipse.registry.base.persistent,
- org.wso2.integrationstudio.eclipse.registry.base.ui.controls,
- org.wso2.integrationstudio.eclipse.registry.base.ui.util,
- org.wso2.integrationstudio.eclipse.registry.core,
- org.wso2.integrationstudio.eclipse.registry.core.exception,
- org.wso2.integrationstudio.eclipse.registry.manager.local.utils,
- org.wso2.integrationstudio.eclipse.registry.manager.remote,
- org.wso2.integrationstudio.eclipse.registry.manager.remote.dialog,
- org.wso2.integrationstudio.eclipse.registry.manager.remote.views,
- org.wso2.integrationstudio.eclipse.utils,
- org.wso2.integrationstudio.eclipse.utils.file
+ org.wso2.integrationstudio.logging.core,
+ org.wso2.integrationstudio.platform.core,
+ org.wso2.integrationstudio.platform.core.event,
+ org.wso2.integrationstudio.platform.core.templates,
+ org.wso2.integrationstudio.platform.core.utils,
+ org.wso2.integrationstudio.platform.ui,
+ org.wso2.integrationstudio.platform.ui.utils,
+ org.wso2.integrationstudio.registry.base.core,
+ org.wso2.integrationstudio.registry.base.interfaces,
+ org.wso2.integrationstudio.registry.base.logger,
+ org.wso2.integrationstudio.registry.base.managers,
+ org.wso2.integrationstudio.registry.base.model,
+ org.wso2.integrationstudio.registry.base.persistent,
+ org.wso2.integrationstudio.registry.base.ui.controls,
+ org.wso2.integrationstudio.registry.base.ui.util,
+ org.wso2.integrationstudio.registry.core,
+ org.wso2.integrationstudio.registry.core.exception,
+ org.wso2.integrationstudio.registry.manager.local.utils,
+ org.wso2.integrationstudio.registry.manager.remote,
+ org.wso2.integrationstudio.registry.manager.remote.dialog,
+ org.wso2.integrationstudio.registry.manager.remote.views,
+ org.wso2.integrationstudio.utils,
+ org.wso2.integrationstudio.utils.file
 

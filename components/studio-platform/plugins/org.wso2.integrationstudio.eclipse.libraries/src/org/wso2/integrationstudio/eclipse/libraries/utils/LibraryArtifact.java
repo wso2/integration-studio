@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.libraries.utils;
+package org.wso2.integrationstudio.libraries.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

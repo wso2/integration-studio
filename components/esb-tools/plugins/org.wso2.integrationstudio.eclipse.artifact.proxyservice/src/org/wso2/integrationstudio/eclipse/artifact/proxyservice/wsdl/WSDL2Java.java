@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.proxyservice.wsdl;
+package org.wso2.integrationstudio.artifact.proxyservice.wsdl;
 
 
 import org.apache.axis2.util.XMLUtils;

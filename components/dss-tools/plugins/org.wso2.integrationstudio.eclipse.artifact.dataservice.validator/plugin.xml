@@ -3,10 +3,10 @@
 <plugin>
  <extension point="org.eclipse.ui.newWizards">
 		<wizard name="Data Services Validator Project" 
-			category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.extensions/org.wso2.integrationstudio.eclipse.extensions.project.types"
-			class="org.wso2.integrationstudio.eclipse.artifact.ds.validator.ui.wizard.DataServiceValidatorCreationWizard"
+			category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.extensions/org.wso2.integrationstudio.extensions.project.types"
+			class="org.wso2.integrationstudio.artifact.ds.validator.ui.wizard.DataServiceValidatorCreationWizard"
 			wizardManifest="project_wizard.xml"
-			id="org.wso2.integrationstudio.eclipse.artifact.newvalidiatorartifact"
+			id="org.wso2.integrationstudio.artifact.newvalidiatorartifact"
 			project="true" icon="icons/ds-validate-16x16.png">
 			<description>Data Services Validator Project</description>
 		</wizard>
@@ -15,12 +15,12 @@
 		id="org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature" name="validator Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.artifact.ds.validator.project.nature.DataServiceValidatorProjectNature">
+				class="org.wso2.integrationstudio.artifact.ds.validator.project.nature.DataServiceValidatorProjectNature">
 			</run>
 		</runtime>
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
-		<image id="org.wso2.integrationstudio.eclipse.ds.validator.project.natureImage"
+		<image id="org.wso2.integrationstudio.ds.validator.project.natureImage"
 			natureId="org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature" icon="icons/ds-validate-12x12.png">
 		</image>
 	</extension>
@@ -30,9 +30,9 @@
 			id="org.eclipse.ui.navigator.resourceContent"
 			name="test">
 				<commonWizard 
-					menuGroupId="3org.wso2.integrationstudio.eclipse.artifact.newdsartifact"
+					menuGroupId="3org.wso2.integrationstudio.artifact.newdsartifact"
 			  	 	type="new"
-					wizardId="org.wso2.integrationstudio.eclipse.artifact.newvalidiatorartifact">
+					wizardId="org.wso2.integrationstudio.artifact.newvalidiatorartifact">
 					<enablement>
 						<or>
 							<adapt type="org.eclipse.core.resources.IProject"/>
@@ -54,8 +54,8 @@
 	</extension>-->
 			<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <!--commonWizard type="new"
-                menuGroupId="1org.wso2.integrationstudio.eclipse.artifact.webservice"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.newvalidiatorartifact">
+                menuGroupId="1org.wso2.integrationstudio.artifact.webservice"
+                wizardId="org.wso2.integrationstudio.artifact.newvalidiatorartifact">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
@@ -71,17 +71,17 @@
             </commonWizard-->
     </extension>
    	 <extension
-         point="org.wso2.integrationstudio.eclipse.project.export.handler">
+         point="org.wso2.integrationstudio.project.export.handler">
       <handler
-            class="org.wso2.integrationstudio.eclipse.artifact.ds.validator.project.export.DsValidatorExportHandler"
-            id="org.wso2.integrationstudio.eclipse.artifact.ds.validator.project.export.handler"
+            class="org.wso2.integrationstudio.artifact.ds.validator.project.export.DsValidatorExportHandler"
+            id="org.wso2.integrationstudio.artifact.ds.validator.project.export.handler"
             type="lib/dataservice/validator">
       </handler>
    </extension>
-   <extension point="org.wso2.integrationstudio.eclipse.samples">
+   <extension point="org.wso2.integrationstudio.samples">
       <sample
-            class="org.wso2.integrationstudio.eclipse.artifact.ds.validator.sample.DSValidatorSampleContributor"
-            id="org.wso2.integrationstudio.eclipse.capp.artifact.dataservice.sample"
+            class="org.wso2.integrationstudio.artifact.ds.validator.sample.DSValidatorSampleContributor"
+            id="org.wso2.integrationstudio.capp.artifact.dataservice.sample"
             isCustomCreateSample="false"
             sampleProjectName="CustomDataserviceValidatorSample">
       </sample>

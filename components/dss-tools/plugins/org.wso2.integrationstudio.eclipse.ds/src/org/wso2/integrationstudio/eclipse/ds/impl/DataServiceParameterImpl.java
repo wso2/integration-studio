@@ -1,6 +1,6 @@
 /**
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.ds.DataServiceParameter;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
+import org.wso2.integrationstudio.ds.DataServiceParameter;
+import org.wso2.integrationstudio.ds.DsPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,8 +20,8 @@ import org.wso2.integrationstudio.eclipse.ds.DsPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceParameterImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceParameterImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceParameterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceParameterImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated

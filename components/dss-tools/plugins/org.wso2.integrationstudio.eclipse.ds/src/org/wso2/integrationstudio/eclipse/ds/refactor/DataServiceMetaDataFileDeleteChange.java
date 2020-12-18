@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.refactor;
+package org.wso2.integrationstudio.ds.refactor;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

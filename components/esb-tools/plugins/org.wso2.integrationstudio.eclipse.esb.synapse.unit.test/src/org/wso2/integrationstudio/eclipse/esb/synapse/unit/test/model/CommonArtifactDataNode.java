@@ -16,13 +16,13 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model;
+package org.wso2.integrationstudio.esb.synapse.unit.test.model;
 
 import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.constant.Constants;
+import org.wso2.integrationstudio.esb.synapse.unit.test.constant.Constants;
 
 /**
  * Class responsible handle CommonArtifactDataNode data for Dependency tree

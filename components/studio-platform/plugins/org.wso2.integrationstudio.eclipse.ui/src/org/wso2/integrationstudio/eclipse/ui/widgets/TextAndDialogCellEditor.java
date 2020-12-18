@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ui.widgets;
+package org.wso2.integrationstudio.ui.widgets;
 
 import java.text.MessageFormat;
 

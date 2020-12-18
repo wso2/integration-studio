@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.utils;
+package org.wso2.integrationstudio.platform.core.utils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -34,7 +34,7 @@ import javax.xml.transform.stream.StreamSource;
 import org.apache.axiom.om.OMElement;
 import org.apache.axis2.util.XMLUtils;
 import org.w3c.dom.Element;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 import org.apache.axiom.om.util.AXIOMUtil;
 
 public class XMLUtil {

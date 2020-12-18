@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.provider;
 
 import java.util.ArrayList;
 import org.eclipse.emf.common.ui.celleditor.ExtendedComboBoxCellEditor;

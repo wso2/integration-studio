@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -55,10 +55,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 public class PropertyGroupMediatorInputConnectorPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		implements IFormPropertiesEditionPart, PropertyGroupMediatorInputConnectorPropertiesEditionPart {
@@ -282,7 +282,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartForm extend
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
 	public void initIncomingLinks(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -306,7 +306,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartForm extend
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#updateIncomingLinks()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#updateIncomingLinks()
 	 */
 	public void updateIncomingLinks() {
 		incomingLinks.refresh();
@@ -315,7 +315,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartForm extend
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter
 	 *      filter)
 	 */
 	public void addFilterToIncomingLinks(ViewerFilter filter) {
@@ -325,7 +325,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartForm extend
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter
 	 *      filter)
 	 */
 	public void addBusinessFilterToIncomingLinks(ViewerFilter filter) {
@@ -335,7 +335,7 @@ public class PropertyGroupMediatorInputConnectorPropertiesEditionPartForm extend
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PropertyGroupMediatorInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject
 	 *      element)
 	 */
 	public boolean isContainedInIncomingLinksTable(EObject element) {

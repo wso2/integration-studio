@@ -14,7 +14,7 @@
  * limitations under the License.
  
 
-package org.wso2.integrationstudio.eclipse.distribution.project.publisher;
+package org.wso2.integrationstudio.distribution.project.publisher;
 
 import java.io.File;
 import java.net.URL;
@@ -24,11 +24,11 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.core.resources.IFile;
-import org.wso2.integrationstudio.eclipse.artifact.webapp.project.export.WebAppArtfactExportHandler;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServerModulePublisher;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICredentials;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.utils.WebAppDeployer;
+import org.wso2.integrationstudio.artifact.webapp.project.export.WebAppArtfactExportHandler;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServerModulePublisher;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICredentials;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.utils.WebAppDeployer;
 
 public class WebAppProjectRemotePublisher implements
 		ICarbonServerModulePublisher {

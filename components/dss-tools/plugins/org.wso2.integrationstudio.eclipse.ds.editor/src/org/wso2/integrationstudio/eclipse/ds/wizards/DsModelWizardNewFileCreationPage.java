@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.wizards;
+package org.wso2.integrationstudio.ds.wizards;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -7,7 +7,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditorPlugin;
+import org.wso2.integrationstudio.ds.presentation.DsEditorPlugin;
 
 public class DsModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
 

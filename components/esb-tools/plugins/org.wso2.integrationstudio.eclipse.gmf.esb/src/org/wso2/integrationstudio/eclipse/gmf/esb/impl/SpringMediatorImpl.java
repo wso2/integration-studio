@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SpringMediator;
+import org.wso2.integrationstudio.gmf.esb.SpringMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.SpringMediatorOutputConnector;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,10 +28,10 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.SpringMediatorOutputConnector;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SpringMediatorImpl#getBeanName <em>Bean Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SpringMediatorImpl#getConfigurationKey <em>Configuration Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SpringMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SpringMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SpringMediatorImpl#getBeanName <em>Bean Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SpringMediatorImpl#getConfigurationKey <em>Configuration Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SpringMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SpringMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated

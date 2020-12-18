@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.carbon.server.model.util;
+package org.wso2.integrationstudio.carbon.server.model.util;
 
 import java.io.File;
 import java.net.URL;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.templates.dashboard;
+package org.wso2.integrationstudio.templates.dashboard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,13 +31,13 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.intro.IIntroPart;
 import org.eclipse.ui.intro.IIntroSite;
 import org.eclipse.ui.intro.config.IIntroAction;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class OpenDashboardAction extends Action implements IIntroAction {
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	static final String DASHBOARD_VIEW_ID = "org.wso2.integrationstudio.eclipse.templates.dashboard";
+	static final String DASHBOARD_VIEW_ID = "org.wso2.integrationstudio.templates.dashboard";
 
 	public void run(IIntroSite introSite, Properties properties) {
 		final IIntroPart introPart = PlatformUI.getWorkbench().getIntroManager().getIntro();
@@ -47,7 +47,7 @@ public class OpenDashboardAction extends Action implements IIntroAction {
 		try {
 			hideDashboards();
 			PlatformUI.getWorkbench().showPerspective("WELCOME_PERSPECTIVE", window);
-			page.openEditor(new NullEditorInput(), "org.wso2.integrationstudio.eclipse.templates.dashboard");
+			page.openEditor(new NullEditorInput(), "org.wso2.integrationstudio.templates.dashboard");
 		} catch (Exception e) {
 			log.error("Cannot open dashboard", e);
 		}

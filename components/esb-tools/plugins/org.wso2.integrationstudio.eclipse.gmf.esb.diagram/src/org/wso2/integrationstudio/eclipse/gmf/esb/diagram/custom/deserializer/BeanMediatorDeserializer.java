@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.Value;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BeanMediatorAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.BeanMediatorExt;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.BeanMediator;
+import org.wso2.integrationstudio.gmf.esb.BeanMediatorAction;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.BeanMediatorExt;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class BeanMediatorDeserializer extends AbstractEsbNodeDeserializer<BeanMediatorExt, BeanMediator> {
 

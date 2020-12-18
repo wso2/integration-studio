@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -19,13 +19,13 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement#getQueryString <em>Query String</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement#isResultsEnabled <em>Results Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement#getResults <em>Results</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.SqlStatement#getQueryString <em>Query String</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.SqlStatement#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.SqlStatement#isResultsEnabled <em>Results Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.SqlStatement#getResults <em>Results</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSqlStatement()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSqlStatement()
  * @model
  * @generated
  */
@@ -41,14 +41,14 @@ public interface SqlStatement extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Query String</em>' attribute.
      * @see #setQueryString(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSqlStatement_QueryString()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSqlStatement_QueryString()
      * @model default="sql_query"
      * @generated
      */
     String getQueryString();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement#getQueryString <em>Query String</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.SqlStatement#getQueryString <em>Query String</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Query String</em>' attribute.
@@ -59,7 +59,7 @@ public interface SqlStatement extends EObject {
 
     /**
      * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlParameterDefinition}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.SqlParameterDefinition}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
@@ -67,7 +67,7 @@ public interface SqlStatement extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Parameters</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSqlStatement_Parameters()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSqlStatement_Parameters()
      * @model containment="true"
      * @generated
      */
@@ -84,14 +84,14 @@ public interface SqlStatement extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Results Enabled</em>' attribute.
      * @see #setResultsEnabled(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSqlStatement_ResultsEnabled()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSqlStatement_ResultsEnabled()
      * @model default="false"
      * @generated
      */
     boolean isResultsEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement#isResultsEnabled <em>Results Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.SqlStatement#isResultsEnabled <em>Results Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Results Enabled</em>' attribute.
@@ -102,7 +102,7 @@ public interface SqlStatement extends EObject {
 
     /**
      * Returns the value of the '<em><b>Results</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.SqlResultMapping}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Results</em>' containment reference list isn't clear,
@@ -110,7 +110,7 @@ public interface SqlStatement extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Results</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSqlStatement_Results()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSqlStatement_Results()
      * @model containment="true"
      * @generated
      */

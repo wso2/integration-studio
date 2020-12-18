@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.project.keyhandlers;
+package org.wso2.integrationstudio.apim.project.keyhandlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -25,15 +25,15 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.eclipse.ui.wizards.IWizardRegistry;
-import org.wso2.integrationstudio.eclipse.apim.project.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.apim.project.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class APIMProjectKeyHandler extends AbstractHandler {
 
 	protected final IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static final String ERROR_MESSAGE = "Cannot open wizard, core exception";
-	private static final String APIM_PROJECT_WIZARD = "org.wso2.integrationstudio.eclipse.apim.neweapimproject";
+	private static final String APIM_PROJECT_WIZARD = "org.wso2.integrationstudio.apim.neweapimproject";
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {

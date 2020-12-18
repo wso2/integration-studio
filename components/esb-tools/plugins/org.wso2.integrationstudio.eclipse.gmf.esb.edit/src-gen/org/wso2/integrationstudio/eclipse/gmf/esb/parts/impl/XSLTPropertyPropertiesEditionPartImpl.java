@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -54,13 +54,13 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTPropertyPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.XSLTPropertyPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -339,7 +339,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#getPropertyName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#getPropertyName()
 	 * 
 	 */
 	public String getPropertyName() {
@@ -349,7 +349,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#setPropertyName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#setPropertyName(String newValue)
 	 * 
 	 */
 	public void setPropertyName(String newValue) {
@@ -371,7 +371,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#getPropertyValueType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#getPropertyValueType()
 	 * 
 	 */
 	public Enumerator getPropertyValueType() {
@@ -382,7 +382,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#initPropertyValueType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#initPropertyValueType(Object input, Enumerator current)
 	 */
 	public void initPropertyValueType(Object input, Enumerator current) {
 		propertyValueType.setInput(input);
@@ -400,7 +400,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#setPropertyValueType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#setPropertyValueType(Enumerator newValue)
 	 * 
 	 */
 	public void setPropertyValueType(Enumerator newValue) {
@@ -418,7 +418,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#getPropertyValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#getPropertyValue()
 	 * 
 	 */
 	public String getPropertyValue() {
@@ -428,7 +428,7 @@ public class XSLTPropertyPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#setPropertyValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.XSLTPropertyPropertiesEditionPart#setPropertyValue(String newValue)
 	 * 
 	 */
 	public void setPropertyValue(String newValue) {

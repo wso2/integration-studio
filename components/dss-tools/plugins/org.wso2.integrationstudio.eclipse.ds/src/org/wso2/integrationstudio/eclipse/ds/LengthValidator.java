@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import java.math.BigInteger;
 
@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.LengthValidator#getMaximum <em>Maximum</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.LengthValidator#getMinimum <em>Minimum</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.LengthValidator#getMaximum <em>Maximum</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.LengthValidator#getMinimum <em>Minimum</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getLengthValidator()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getLengthValidator()
  * @model extendedMetaData="name='validateLength_._type' kind='empty'"
  * @generated
  */
@@ -38,7 +38,7 @@ public interface LengthValidator extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Maximum</em>' attribute.
 	 * @see #setMaximum(long)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getLengthValidator_Maximum()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getLengthValidator_Maximum()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Long"
 	 *        extendedMetaData="kind='attribute' name='maximum' namespace='##targetNamespace'"
 	 * @generated
@@ -46,7 +46,7 @@ public interface LengthValidator extends EObject {
 	long getMaximum();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.LengthValidator#getMaximum <em>Maximum</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.LengthValidator#getMaximum <em>Maximum</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Maximum</em>' attribute.
@@ -65,7 +65,7 @@ public interface LengthValidator extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Minimum</em>' attribute.
 	 * @see #setMinimum(long)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getLengthValidator_Minimum()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getLengthValidator_Minimum()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Long"
 	 *        extendedMetaData="kind='attribute' name='minimum' namespace='##targetNamespace'"
 	 * @generated
@@ -73,7 +73,7 @@ public interface LengthValidator extends EObject {
 	long getMinimum();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.LengthValidator#getMinimum <em>Minimum</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.LengthValidator#getMinimum <em>Minimum</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Minimum</em>' attribute.

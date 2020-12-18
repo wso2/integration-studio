@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.provider;
+package org.wso2.integrationstudio.distribution.project.provider;
 
 
 import org.eclipse.core.resources.IFile;
@@ -31,9 +31,9 @@ import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionConstants;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 
 public class NavigatorActionProvider extends CommonActionProvider {
@@ -72,7 +72,7 @@ public class NavigatorActionProvider extends CommonActionProvider {
 
 	private static class OpenEditorAction extends Action {
 
-		private static final String DEVS_DISTRIBUTION_PROJECT_EDITOR = "org.wso2.integrationstudio.eclipse.distribution.project.editor.DistProjectEditor";
+		private static final String DEVS_DISTRIBUTION_PROJECT_EDITOR = "org.wso2.integrationstudio.distribution.project.editor.DistProjectEditor";
 		private IFile selection;
 
 		@Override

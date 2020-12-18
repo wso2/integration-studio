@@ -29,7 +29,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.service.util;
+package org.wso2.integrationstudio.carbonserver.base.service.util;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -41,12 +41,12 @@ import javax.activation.DataHandler;
 import org.apache.commons.httpclient.HttpException;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.wst.server.core.IServer;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.command.WTPInternalBrowserCommand;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.exception.UserOperationCancelledException;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.ICarbonOperationManager;
-import org.wso2.integrationstudio.eclipse.server.base.core.IServerManager;
-import org.wso2.integrationstudio.eclipse.server.base.core.ServerController;
+import org.wso2.integrationstudio.carbonserver.base.command.WTPInternalBrowserCommand;
+import org.wso2.integrationstudio.carbonserver.base.exception.UserOperationCancelledException;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.manager.ICarbonOperationManager;
+import org.wso2.integrationstudio.server.base.core.IServerManager;
+import org.wso2.integrationstudio.server.base.core.ServerController;
 
 public final class CarbonUploadServiceRequestUtil {
 

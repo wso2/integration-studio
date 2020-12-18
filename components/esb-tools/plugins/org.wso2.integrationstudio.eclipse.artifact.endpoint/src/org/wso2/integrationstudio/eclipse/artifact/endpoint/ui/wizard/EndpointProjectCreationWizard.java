@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.ui.wizard;
+package org.wso2.integrationstudio.artifact.endpoint.ui.wizard;
 
-import static org.wso2.integrationstudio.eclipse.artifact.endpoint.model.EndpointModel.CONF_REG_ID;
-import static org.wso2.integrationstudio.eclipse.artifact.endpoint.model.EndpointModel.GOV_REG_ID;
-import static org.wso2.integrationstudio.eclipse.registry.core.utils.Constants.REGISTRY_RESOURCE;
+import static org.wso2.integrationstudio.artifact.endpoint.model.EndpointModel.CONF_REG_ID;
+import static org.wso2.integrationstudio.artifact.endpoint.model.EndpointModel.GOV_REG_ID;
+import static org.wso2.integrationstudio.registry.core.utils.Constants.REGISTRY_RESOURCE;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -50,31 +50,31 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.IWizardPage;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.model.EndpointModel;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.utils.EndPointImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.utils.EpArtifactConstants;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.validators.HttpMethodList.HttpMethodType;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.validators.ProjectFilter;
-import org.wso2.integrationstudio.eclipse.esb.core.ESBMavenConstants;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.RegistryArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryElement;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryItem;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplate;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceInfo;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceInfoDoc;
-import org.wso2.integrationstudio.eclipse.registry.core.utils.RegistryResourceUtils;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.endpoint.Activator;
+import org.wso2.integrationstudio.artifact.endpoint.model.EndpointModel;
+import org.wso2.integrationstudio.artifact.endpoint.utils.EndPointImageUtils;
+import org.wso2.integrationstudio.artifact.endpoint.utils.EpArtifactConstants;
+import org.wso2.integrationstudio.artifact.endpoint.validators.HttpMethodList.HttpMethodType;
+import org.wso2.integrationstudio.artifact.endpoint.validators.ProjectFilter;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.integrationstudio.general.project.artifact.RegistryArtifact;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryElement;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryItem;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplate;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfo;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfoDoc;
+import org.wso2.integrationstudio.registry.core.utils.RegistryResourceUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
        private static final String AMP = "&amp;";

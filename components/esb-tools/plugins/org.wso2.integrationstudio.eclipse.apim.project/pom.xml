@@ -23,7 +23,7 @@
         <version>7.2.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.integrationstudio.eclipse.apim.project</artifactId>
+    <artifactId>org.wso2.integrationstudio.apim.project</artifactId>
     <packaging>eclipse-plugin</packaging>
     <name>WSO2 Integration Studio APIM Project</name>
     <build>

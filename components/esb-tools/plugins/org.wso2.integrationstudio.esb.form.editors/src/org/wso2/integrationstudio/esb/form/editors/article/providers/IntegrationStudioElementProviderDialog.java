@@ -50,18 +50,18 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.wso2.integrationstudio.eclipse.esb.core.EsbConfigurationManager;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbEndpoint;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbSequence;
-import org.wso2.integrationstudio.eclipse.general.project.dialogs.NewResourceTemplateDialog;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioElement;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProviderData;
-import org.wso2.integrationstudio.eclipse.registry.core.RegistryManager;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryFile;
+import org.wso2.integrationstudio.esb.core.EsbConfigurationManager;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbEndpoint;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbLocalEntry;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbSequence;
+import org.wso2.integrationstudio.general.project.dialogs.NewResourceTemplateDialog;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProvider;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProviderData;
+import org.wso2.integrationstudio.registry.core.RegistryManager;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryFile;
 
 
 
@@ -71,7 +71,7 @@ public class IntegrationStudioElementProviderDialog extends Dialog {
 	private String selectedPath = null;
 	private String ipathOfselection = null;
 	private Button chkOpenResource;
-	private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.eclipse.esb.editor");
+	private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.esb.editor");
 	private Map<String, List<String>> filters;
 	private String title;
 	private boolean showOpenResourceCheckBox = true;

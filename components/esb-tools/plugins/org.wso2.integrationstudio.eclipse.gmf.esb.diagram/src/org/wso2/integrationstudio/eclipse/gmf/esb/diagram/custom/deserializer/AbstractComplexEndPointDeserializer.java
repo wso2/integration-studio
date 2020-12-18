@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.COMPLEX_ENDPOINT_RESOURCE_DIR;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
+import static org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils.COMPLEX_ENDPOINT_RESOURCE_DIR;
+import static org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -51,22 +51,22 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ParentEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractComplexEndpointCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.ParentEndPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractComplexEndpointCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbEditorInput;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
 
 public abstract class AbstractComplexEndPointDeserializer
         extends AbstractEsbNodeDeserializer<AbstractEndpoint, ParentEndPoint> {
 
-    private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.eclipse.gmf.esb.diagram");
+    private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.gmf.esb.diagram");
 
     private EsbDiagramEditor mainDiagramEditorRef;
 

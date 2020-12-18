@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.utils;
+package org.wso2.integrationstudio.docker.distribution.utils;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.docker.distribution.Activator;
-import org.wso2.integrationstudio.eclipse.utils.template.TemplateUtil;
+import org.wso2.integrationstudio.docker.distribution.Activator;
+import org.wso2.integrationstudio.utils.template.TemplateUtil;
 
 public class DockerTemplateUtils extends TemplateUtil {
 

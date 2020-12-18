@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.ds.AttributeMapping;
-import org.wso2.integrationstudio.eclipse.ds.CallQuery;
-import org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.ElementMapping;
+import org.wso2.integrationstudio.ds.AttributeMapping;
+import org.wso2.integrationstudio.ds.CallQuery;
+import org.wso2.integrationstudio.ds.ConfigurationProperty;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.ElementMapping;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,22 +35,22 @@ import org.wso2.integrationstudio.eclipse.ds.ElementMapping;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getColumn <em>Column</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getExport <em>Export</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getRequiredRoles <em>Required Roles</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getExportType <em>Export Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getXsdType <em>Xsd Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getElement <em>Element</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getAttribute <em>Attribute</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getCallQuery <em>Call Query</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#isIsComplexType <em>Is Complex Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getQueryParam <em>Query Param</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#isOptional <em>Optional</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.ElementMappingImpl#getArrayName <em>Array Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getColumn <em>Column</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getExport <em>Export</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getRequiredRoles <em>Required Roles</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getExportType <em>Export Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getXsdType <em>Xsd Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getElement <em>Element</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getAttribute <em>Attribute</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getCallQuery <em>Call Query</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#isIsComplexType <em>Is Complex Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getQueryParam <em>Query Param</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#isOptional <em>Optional</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.ElementMappingImpl#getArrayName <em>Array Name</em>}</li>
  * </ul>
  *
  * @generated

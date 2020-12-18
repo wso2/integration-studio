@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -19,17 +19,17 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleFactsConfiguration#getFacts <em>Facts</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RuleFactsConfiguration#getFacts <em>Facts</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRuleFactsConfiguration()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRuleFactsConfiguration()
  * @model
  * @generated
  */
 public interface RuleFactsConfiguration extends EObject {
     /**
      * Returns the value of the '<em><b>Facts</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleFact}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.RuleFact}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Facts</em>' containment reference list isn't clear,
@@ -37,7 +37,7 @@ public interface RuleFactsConfiguration extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Facts</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRuleFactsConfiguration_Facts()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRuleFactsConfiguration_Facts()
      * @model containment="true"
      * @generated
      */

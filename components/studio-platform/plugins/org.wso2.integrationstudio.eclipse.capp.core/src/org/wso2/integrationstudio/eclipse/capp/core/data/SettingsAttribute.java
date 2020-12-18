@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.data;
+package org.wso2.integrationstudio.capp.core.data;
 
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.configure.ISettingsAttribute;
+import org.wso2.integrationstudio.capp.core.artifacts.configure.ISettingsAttribute;
 
 public class SettingsAttribute implements ISettingsAttribute {
 	private String attributeName;

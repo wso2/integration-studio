@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.utils;
+package org.wso2.integrationstudio.artifact.endpoint.utils;
 
 import org.eclipse.osgi.util.NLS;
 
 public final class EpArtifactConstants extends NLS{
-	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.artifact.endpoint.utils.epartifactconstants";
+	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.artifact.endpoint.utils.epartifactconstants";
 	public static  String EP_WIZARD_WINDOW_TITLE;
 	public static  String ADDRESS_EP;
 	public static  String WSDL_EP;

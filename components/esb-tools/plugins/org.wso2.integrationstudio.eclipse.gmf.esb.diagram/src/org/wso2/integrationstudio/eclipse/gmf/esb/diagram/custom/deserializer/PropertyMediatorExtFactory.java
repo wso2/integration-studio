@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.regex.Pattern;
 
@@ -29,7 +29,7 @@ import org.apache.synapse.config.xml.PropertyMediatorFactory;
 import org.apache.synapse.config.xml.SynapsePathFactory;
 import org.apache.synapse.mediators.builtin.PropertyMediator;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.SynapseXPathExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 
 public class PropertyMediatorExtFactory extends PropertyMediatorFactory {
     

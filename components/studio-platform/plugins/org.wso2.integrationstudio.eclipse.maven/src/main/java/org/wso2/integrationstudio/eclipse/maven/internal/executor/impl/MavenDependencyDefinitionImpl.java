@@ -1,8 +1,8 @@
-package org.wso2.integrationstudio.eclipse.maven.internal.executor.impl;
+package org.wso2.integrationstudio.maven.internal.executor.impl;
 
 import java.net.URL;
 
-import org.wso2.integrationstudio.eclipse.maven.executor.IMavenDependencyDefinition;
+import org.wso2.integrationstudio.maven.executor.IMavenDependencyDefinition;
 
 public class MavenDependencyDefinitionImpl extends MavenDefinitionImpl implements IMavenDependencyDefinition {
 

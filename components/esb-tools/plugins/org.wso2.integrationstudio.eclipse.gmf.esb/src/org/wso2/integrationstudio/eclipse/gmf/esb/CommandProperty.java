@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,16 +17,16 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getValueLiteral <em>Value Literal</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getValueContextPropertyName <em>Value Context Property Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getValueMessageElementXpath <em>Value Message Element Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getContextAction <em>Context Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getMessageAction <em>Message Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getValueContextPropertyName <em>Value Context Property Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getValueMessageElementXpath <em>Value Message Element Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getContextAction <em>Context Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getMessageAction <em>Message Action</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandProperty()
  * @model
  * @generated
  */
@@ -42,14 +42,14 @@ public interface CommandProperty extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Property Name</em>' attribute.
      * @see #setPropertyName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_PropertyName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandProperty_PropertyName()
      * @model default="property_name"
      * @generated
      */
     String getPropertyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getPropertyName <em>Property Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getPropertyName <em>Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Property Name</em>' attribute.
@@ -61,7 +61,7 @@ public interface CommandProperty extends EObject {
     /**
      * Returns the value of the '<em><b>Value Type</b></em>' attribute.
      * The default value is <code>"LITERAL"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyValueType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.CommandPropertyValueType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Value Type</em>' attribute isn't clear,
@@ -69,20 +69,20 @@ public interface CommandProperty extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyValueType
+     * @see org.wso2.integrationstudio.gmf.esb.CommandPropertyValueType
      * @see #setValueType(CommandPropertyValueType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_ValueType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandProperty_ValueType()
      * @model default="LITERAL"
      * @generated
      */
     CommandPropertyValueType getValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getValueType <em>Value Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getValueType <em>Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyValueType
+     * @see org.wso2.integrationstudio.gmf.esb.CommandPropertyValueType
      * @see #getValueType()
      * @generated
      */
@@ -99,14 +99,14 @@ public interface CommandProperty extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value Literal</em>' attribute.
      * @see #setValueLiteral(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_ValueLiteral()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandProperty_ValueLiteral()
      * @model default="literal_value"
      * @generated
      */
     String getValueLiteral();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getValueLiteral <em>Value Literal</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getValueLiteral <em>Value Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value Literal</em>' attribute.
@@ -126,14 +126,14 @@ public interface CommandProperty extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value Context Property Name</em>' attribute.
      * @see #setValueContextPropertyName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_ValueContextPropertyName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandProperty_ValueContextPropertyName()
      * @model default="context_property_name"
      * @generated
      */
     String getValueContextPropertyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getValueContextPropertyName <em>Value Context Property Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getValueContextPropertyName <em>Value Context Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value Context Property Name</em>' attribute.
@@ -152,14 +152,14 @@ public interface CommandProperty extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value Message Element Xpath</em>' containment reference.
      * @see #setValueMessageElementXpath(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_ValueMessageElementXpath()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandProperty_ValueMessageElementXpath()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getValueMessageElementXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getValueMessageElementXpath <em>Value Message Element Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getValueMessageElementXpath <em>Value Message Element Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value Message Element Xpath</em>' containment reference.
@@ -170,7 +170,7 @@ public interface CommandProperty extends EObject {
 
     /**
      * Returns the value of the '<em><b>Context Action</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyContextAction}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.CommandPropertyContextAction}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Context Action</em>' attribute isn't clear,
@@ -178,20 +178,20 @@ public interface CommandProperty extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Context Action</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyContextAction
+     * @see org.wso2.integrationstudio.gmf.esb.CommandPropertyContextAction
      * @see #setContextAction(CommandPropertyContextAction)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_ContextAction()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandProperty_ContextAction()
      * @model
      * @generated
      */
     CommandPropertyContextAction getContextAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getContextAction <em>Context Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getContextAction <em>Context Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Context Action</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyContextAction
+     * @see org.wso2.integrationstudio.gmf.esb.CommandPropertyContextAction
      * @see #getContextAction()
      * @generated
      */
@@ -199,7 +199,7 @@ public interface CommandProperty extends EObject {
 
     /**
      * Returns the value of the '<em><b>Message Action</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyMessageAction}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.CommandPropertyMessageAction}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Message Action</em>' attribute isn't clear,
@@ -207,20 +207,20 @@ public interface CommandProperty extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Message Action</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyMessageAction
+     * @see org.wso2.integrationstudio.gmf.esb.CommandPropertyMessageAction
      * @see #setMessageAction(CommandPropertyMessageAction)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_MessageAction()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCommandProperty_MessageAction()
      * @model
      * @generated
      */
     CommandPropertyMessageAction getMessageAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CommandProperty#getMessageAction <em>Message Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CommandProperty#getMessageAction <em>Message Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Message Action</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.CommandPropertyMessageAction
+     * @see org.wso2.integrationstudio.gmf.esb.CommandPropertyMessageAction
      * @see #getMessageAction()
      * @generated
      */

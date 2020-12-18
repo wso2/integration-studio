@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 import java.util.ArrayList;
 
@@ -71,19 +71,19 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CompletionMessagesType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.AggregateSequenceType;
+import org.wso2.integrationstudio.gmf.esb.CompletionMessagesType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -1050,7 +1050,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -1060,7 +1060,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -1082,7 +1082,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -1092,7 +1092,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -1133,7 +1133,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -1143,7 +1143,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -1165,7 +1165,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getAggregateID()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getAggregateID()
 	 * 
 	 */
 	public String getAggregateID() {
@@ -1175,7 +1175,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setAggregateID(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setAggregateID(String newValue)
 	 * 
 	 */
 	public void setAggregateID(String newValue) {
@@ -1197,7 +1197,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getCompletionTimeout()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getCompletionTimeout()
 	 * 
 	 */
 	public String getCompletionTimeout() {
@@ -1207,7 +1207,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setCompletionTimeout(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setCompletionTimeout(String newValue)
 	 * 
 	 */
 	public void setCompletionTimeout(String newValue) {
@@ -1229,7 +1229,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getCompletionMinMessagesType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getCompletionMinMessagesType()
 	 * 
 	 */
 	public Enumerator getCompletionMinMessagesType() {
@@ -1240,7 +1240,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#initCompletionMinMessagesType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#initCompletionMinMessagesType(Object input, Enumerator current)
 	 */
 	public void initCompletionMinMessagesType(Object input, Enumerator current) {
 		completionMinMessagesType.setInput(input);
@@ -1258,7 +1258,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setCompletionMinMessagesType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setCompletionMinMessagesType(Enumerator newValue)
 	 * 
 	 */
 	public void setCompletionMinMessagesType(Enumerator newValue) {
@@ -1276,7 +1276,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getCompletionMaxMessagesType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getCompletionMaxMessagesType()
 	 * 
 	 */
 	public Enumerator getCompletionMaxMessagesType() {
@@ -1287,7 +1287,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#initCompletionMaxMessagesType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#initCompletionMaxMessagesType(Object input, Enumerator current)
 	 */
 	public void initCompletionMaxMessagesType(Object input, Enumerator current) {
 		completionMaxMessagesType.setInput(input);
@@ -1305,7 +1305,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setCompletionMaxMessagesType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setCompletionMaxMessagesType(Enumerator newValue)
 	 * 
 	 */
 	public void setCompletionMaxMessagesType(Enumerator newValue) {
@@ -1323,7 +1323,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getCompletionMinMessagesValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getCompletionMinMessagesValue()
 	 * 
 	 */
 	public String getCompletionMinMessagesValue() {
@@ -1333,7 +1333,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setCompletionMinMessagesValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setCompletionMinMessagesValue(String newValue)
 	 * 
 	 */
 	public void setCompletionMinMessagesValue(String newValue) {
@@ -1355,7 +1355,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getCompletionMaxMessagesValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getCompletionMaxMessagesValue()
 	 * 
 	 */
 	public String getCompletionMaxMessagesValue() {
@@ -1365,7 +1365,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setCompletionMaxMessagesValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setCompletionMaxMessagesValue(String newValue)
 	 * 
 	 */
 	public void setCompletionMaxMessagesValue(String newValue) {
@@ -1387,7 +1387,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getSequenceType()
 	 * 
 	 */
 	public Enumerator getSequenceType() {
@@ -1398,7 +1398,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
 	 */
 	public void initSequenceType(Object input, Enumerator current) {
 		sequenceType.setInput(input);
@@ -1416,7 +1416,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setSequenceType(Enumerator newValue) {
@@ -1434,7 +1434,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getEnclosingElementProperty()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getEnclosingElementProperty()
 	 * 
 	 */
 	public String getEnclosingElementProperty() {
@@ -1444,7 +1444,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setEnclosingElementProperty(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setEnclosingElementProperty(String newValue)
 	 * 
 	 */
 	public void setEnclosingElementProperty(String newValue) {
@@ -1471,7 +1471,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
 	/**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getAggregateElementType()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#getAggregateElementType()
    * 
    */
   public Enumerator getAggregateElementType() {
@@ -1482,7 +1482,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#initAggregateElementType(Object input, Enumerator current)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#initAggregateElementType(Object input, Enumerator current)
    */
   public void initAggregateElementType(Object input, Enumerator current) {
     aggregateElementType.setInput(input);
@@ -1500,7 +1500,7 @@ public class AggregateMediatorPropertiesEditionPartForm extends SectionPropertie
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setAggregateElementType(Enumerator newValue)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.AggregateMediatorPropertiesEditionPart#setAggregateElementType(Enumerator newValue)
    * 
    */
   public void setAggregateElementType(Enumerator newValue) {

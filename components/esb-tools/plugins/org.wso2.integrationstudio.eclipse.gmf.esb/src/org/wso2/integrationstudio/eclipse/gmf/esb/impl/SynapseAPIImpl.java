@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,12 +21,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIVersionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SynapseAPI;
+import org.wso2.integrationstudio.gmf.esb.APIHandler;
+import org.wso2.integrationstudio.gmf.esb.APIResource;
+import org.wso2.integrationstudio.gmf.esb.APIVersionType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SynapseAPI;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,17 +36,17 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.SynapseAPI;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getApiName <em>Api Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getContext <em>Context</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getHostName <em>Host Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getPort <em>Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getResources <em>Resources</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getHandlers <em>Handlers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getVersionType <em>Version Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getPublishSwagger <em>Publish Swagger</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SynapseAPIImpl#getApiName <em>Api Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SynapseAPIImpl#getContext <em>Context</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SynapseAPIImpl#getHostName <em>Host Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SynapseAPIImpl#getPort <em>Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SynapseAPIImpl#getResources <em>Resources</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SynapseAPIImpl#getHandlers <em>Handlers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SynapseAPIImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SynapseAPIImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SynapseAPIImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SynapseAPIImpl#getVersionType <em>Version Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SynapseAPIImpl#getPublishSwagger <em>Publish Swagger</em>}</li>
  * </ul>
  *
  * @generated

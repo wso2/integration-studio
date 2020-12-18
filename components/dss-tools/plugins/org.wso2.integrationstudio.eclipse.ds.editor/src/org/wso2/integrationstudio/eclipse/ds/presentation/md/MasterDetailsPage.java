@@ -1,11 +1,11 @@
-package org.wso2.integrationstudio.eclipse.ds.presentation.md;
+package org.wso2.integrationstudio.ds.presentation.md;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditor;
+import org.wso2.integrationstudio.ds.presentation.DsEditor;
 
 /**
  * Master Detail page for the DsEditor form editor

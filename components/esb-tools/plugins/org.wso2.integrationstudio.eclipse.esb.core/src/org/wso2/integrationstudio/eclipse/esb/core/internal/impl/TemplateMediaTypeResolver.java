@@ -1,8 +1,8 @@
-package org.wso2.integrationstudio.eclipse.esb.core.internal.impl;
+package org.wso2.integrationstudio.esb.core.internal.impl;
 
 import java.io.InputStream;
 
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.AbstractXmlDocMediaTypeResolver;
+import org.wso2.integrationstudio.platform.core.mediatype.AbstractXmlDocMediaTypeResolver;
 
 public class TemplateMediaTypeResolver extends AbstractXmlDocMediaTypeResolver {
 

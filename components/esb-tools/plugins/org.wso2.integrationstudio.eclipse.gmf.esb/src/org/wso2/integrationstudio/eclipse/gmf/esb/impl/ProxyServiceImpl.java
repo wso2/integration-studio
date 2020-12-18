@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -23,30 +23,30 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyFaultInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyOutSequenceOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceFaultContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceEndpointContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceInSequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceOutSequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServicePolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyWSDLResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceSequenceAndEndpointContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceSequenceContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyWsdlType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType;
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.ProxyFaultInputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyInSequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyInputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyOutSequenceOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyService;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceContainer;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceFaultContainer;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceEndpointContainer;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceInSequence;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceOutSequence;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceParameter;
+import org.wso2.integrationstudio.gmf.esb.ProxyServicePolicy;
+import org.wso2.integrationstudio.gmf.esb.ProxyWSDLResource;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceSequenceAndEndpointContainer;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceSequenceContainer;
+import org.wso2.integrationstudio.gmf.esb.ProxyWsdlType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SequenceType;
+import org.wso2.integrationstudio.platform.core.mediatype.PlatformMediaTypeConstants;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,47 +56,47 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getFaultInputConnector <em>Fault Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getOutSequenceOutputConnector <em>Out Sequence Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getInSequenceInputConnectors <em>In Sequence Input Connectors</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getPinnedServers <em>Pinned Servers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getServiceGroup <em>Service Group</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#isStartOnLoad <em>Start On Load</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getTransports <em>Transports</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#isReliableMessagingEnabled <em>Reliable Messaging Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#isSecurityEnabled <em>Security Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getServiceParameters <em>Service Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getServicePolicies <em>Service Policies</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getContainer <em>Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getInSequenceType <em>In Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getInSequenceKey <em>In Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getInSequenceName <em>In Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getInSequenceOnError <em>In Sequence On Error</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getOutSequenceType <em>Out Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getOutSequenceKey <em>Out Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getOutSequenceName <em>Out Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getOutSequenceOnError <em>Out Sequence On Error</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getFaultSequenceType <em>Fault Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getFaultSequenceKey <em>Fault Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getFaultSequenceOnError <em>Fault Sequence On Error</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getEndpointType <em>Endpoint Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getEndpointKey <em>Endpoint Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getEndpointName <em>Endpoint Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#isMainSequence <em>Main Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlType <em>Wsdl Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#isPreservePolicy <em>Preserve Policy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlXML <em>Wsdl XML</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlURL <em>Wsdl URL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlKey <em>Wsdl Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlEndpoint <em>Wsdl Endpoint</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlResources <em>Wsdl Resources</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getOnError <em>On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getFaultInputConnector <em>Fault Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getOutSequenceOutputConnector <em>Out Sequence Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getInSequenceInputConnectors <em>In Sequence Input Connectors</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getPinnedServers <em>Pinned Servers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getServiceGroup <em>Service Group</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#isStartOnLoad <em>Start On Load</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getTransports <em>Transports</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#isReliableMessagingEnabled <em>Reliable Messaging Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#isSecurityEnabled <em>Security Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getServiceParameters <em>Service Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getServicePolicies <em>Service Policies</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getInSequenceType <em>In Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getInSequenceKey <em>In Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getInSequenceName <em>In Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getInSequenceOnError <em>In Sequence On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getOutSequenceType <em>Out Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getOutSequenceKey <em>Out Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getOutSequenceName <em>Out Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getOutSequenceOnError <em>Out Sequence On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getFaultSequenceType <em>Fault Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getFaultSequenceKey <em>Fault Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getFaultSequenceOnError <em>Fault Sequence On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getEndpointType <em>Endpoint Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getEndpointKey <em>Endpoint Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getEndpointName <em>Endpoint Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#isMainSequence <em>Main Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getWsdlType <em>Wsdl Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#isPreservePolicy <em>Preserve Policy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getWsdlXML <em>Wsdl XML</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getWsdlURL <em>Wsdl URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getWsdlKey <em>Wsdl Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getWsdlEndpoint <em>Wsdl Endpoint</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getWsdlResources <em>Wsdl Resources</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl#getOnError <em>On Error</em>}</li>
  * </ul>
  *
  * @generated

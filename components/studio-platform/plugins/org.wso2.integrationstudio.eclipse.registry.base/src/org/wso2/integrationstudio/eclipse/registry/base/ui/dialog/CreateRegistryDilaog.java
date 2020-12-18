@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.base.ui.dialog;
+package org.wso2.integrationstudio.registry.base.ui.dialog;
 
 import java.util.Arrays;
 import java.util.List;

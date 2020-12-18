@@ -3,10 +3,10 @@
 <plugin>
     <extension point="org.eclipse.ui.newWizards">
         <wizard
-               category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.container.exporters"
-               class="org.wso2.integrationstudio.eclipse.docker.distribution.ui.wizard.DockerProjectCreationWizard"
+               category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.container.exporters"
+               class="org.wso2.integrationstudio.docker.distribution.ui.wizard.DockerProjectCreationWizard"
                icon="icons/docker-16.png"
-               id="org.wso2.integrationstudio.eclipse.artifact.newdockerproject"
+               id="org.wso2.integrationstudio.artifact.newdockerproject"
                name="Docker Exporter"
                project="true">
             <description>Docker Exporter</description>
@@ -14,10 +14,10 @@
     </extension>
     <extension point="org.eclipse.ui.newWizards">
         <wizard
-               category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.container.exporters"
-               class="org.wso2.integrationstudio.eclipse.docker.distribution.ui.wizard.KubernetesProjectCreationWizard"
+               category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.container.exporters"
+               class="org.wso2.integrationstudio.docker.distribution.ui.wizard.KubernetesProjectCreationWizard"
                icon="icons/k8s-16.png"
-               id="org.wso2.integrationstudio.eclipse.artifact.newkubernetesproject"
+               id="org.wso2.integrationstudio.artifact.newkubernetesproject"
                name="Kubernetes Exporter"
                project="true">
             <description>Kubernetes Exporter</description>
@@ -28,12 +28,12 @@
     <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" name="Docker Project Nature">
         <runtime>
-            <run class="org.wso2.integrationstudio.eclipse.docker.distribution.project.export.DockerProjectNature"/>
+            <run class="org.wso2.integrationstudio.docker.distribution.project.export.DockerProjectNature"/>
         </runtime>
     </extension>
 	
     <extension point="org.eclipse.ui.ide.projectNatureImages">
-        <image id="org.wso2.integrationstudio.eclipse.docker.project.natureImage" 
+        <image id="org.wso2.integrationstudio.docker.project.natureImage" 
 		natureId="org.wso2.developerstudio.eclipse.docker.distribution.project.nature" icon="icons/docker-16.png" />
     </extension>
 	
@@ -41,87 +41,87 @@
     <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.kubernetes.distribution.project.nature" name="Kubernetes Project Nature">
         <runtime>
-            <run class="org.wso2.integrationstudio.eclipse.docker.distribution.project.export.KubernetesProjectNature" />
+            <run class="org.wso2.integrationstudio.docker.distribution.project.export.KubernetesProjectNature" />
         </runtime>
     </extension>
 	
     <extension point="org.eclipse.ui.ide.projectNatureImages">
-		<image id="org.wso2.integrationstudio.eclipse.kubernetes.project.natureImage" 
+		<image id="org.wso2.integrationstudio.kubernetes.project.natureImage" 
 		natureId="org.wso2.developerstudio.eclipse.kubernetes.distribution.project.nature" icon="icons/k8s-16.png" />
     </extension>
 	
 	<!-- Projects file opening editors -->
     <extension point="org.eclipse.ui.editors">
         <editor
-            class="org.wso2.integrationstudio.eclipse.docker.distribution.editor.DistProjectEditor"
-            id="org.wso2.integrationstudio.eclipse.docker.distribution.editor.DistProjectEditor"
+            class="org.wso2.integrationstudio.docker.distribution.editor.DistProjectEditor"
+            id="org.wso2.integrationstudio.docker.distribution.editor.DistProjectEditor"
             extensions="xml"
             default="false"
             icon="icons/docker-pom-16x16.png"
             name="Docker/K8S Project POM Editor">
             <contentTypeBinding
-				contentTypeId="org.wso2.integrationstudio.eclipse.docker.distribution.project.contenttype.pom">
+				contentTypeId="org.wso2.integrationstudio.docker.distribution.project.contenttype.pom">
             </contentTypeBinding>
         </editor>
         <editor
             class="org.eclipse.ui.editors.text.TextEditor"
-            id="org.wso2.integrationstudio.eclipse.docker.distribution.editor.DockerFileEditor"
+            id="org.wso2.integrationstudio.docker.distribution.editor.DockerFileEditor"
             default="false"
             icon="icons/dockerfile-icon.png"
             name="Docker File Editor">
             <contentTypeBinding
-				contentTypeId="org.wso2.integrationstudio.eclipse.docker.distribution.project.contenttype.dockerfile">
+				contentTypeId="org.wso2.integrationstudio.docker.distribution.project.contenttype.dockerfile">
             </contentTypeBinding>
         </editor>
         <editor
             class="org.eclipse.ui.editors.text.TextEditor"
-            id="org.wso2.integrationstudio.eclipse.docker.distribution.editor.TomlFileEditor"
+            id="org.wso2.integrationstudio.docker.distribution.editor.TomlFileEditor"
             default="false"
             icon="icons/deployment-toml-icon.png"
             name="Toml File Editor">
             <contentTypeBinding
-				contentTypeId="org.wso2.integrationstudio.eclipse.docker.distribution.project.contenttype.tomlfile">
+				contentTypeId="org.wso2.integrationstudio.docker.distribution.project.contenttype.tomlfile">
             </contentTypeBinding>
         </editor>
         <editor
             class="org.eclipse.ui.editors.text.TextEditor"
-            id="org.wso2.integrationstudio.eclipse.docker.distribution.editor.YamlFileEditor"
+            id="org.wso2.integrationstudio.docker.distribution.editor.YamlFileEditor"
             default="false"
             extensions="yaml"
             name="YAML File Editor">
             <contentTypeBinding
-				contentTypeId="org.wso2.integrationstudio.eclipse.docker.distribution.project.contenttype.yamlfile">
+				contentTypeId="org.wso2.integrationstudio.docker.distribution.project.contenttype.yamlfile">
 			</contentTypeBinding>
         </editor>
     </extension>
    
     <extension point="org.eclipse.core.contenttype.contentTypes">
 		<content-type base-type="org.eclipse.core.runtime.xml"
-			id="org.wso2.integrationstudio.eclipse.docker.distribution.project.contenttype.pom"
+			id="org.wso2.integrationstudio.docker.distribution.project.contenttype.pom"
 			name="Docker POM File" priority="high" file-extensions="pom.xml">
 			<describer
-				class="org.wso2.integrationstudio.eclipse.docker.distribution.utils.DockerPOMDiscriber">
+				class="org.wso2.integrationstudio.docker.distribution.utils.DockerPOMDiscriber">
 			</describer>
 		</content-type>
 		<content-type base-type="org.eclipse.core.runtime.text"
-			id="org.wso2.integrationstudio.eclipse.docker.distribution.project.contenttype.dockerfile"
+			id="org.wso2.integrationstudio.docker.distribution.project.contenttype.dockerfile"
 			name="Docker File" priority="normal" file-extensions="Dockerfile">
 			<describer
-				class="org.wso2.integrationstudio.eclipse.docker.distribution.utils.DockerPOMDiscriber">
+				class="org.wso2.integrationstudio.docker.distribution.utils.DockerPOMDiscriber">
 			</describer>
 		</content-type>
 		<content-type base-type="org.eclipse.core.runtime.text"
-			id="org.wso2.integrationstudio.eclipse.docker.distribution.project.contenttype.yamlfile"
+			id="org.wso2.integrationstudio.docker.distribution.project.contenttype.yamlfile"
 			name="Yaml File" priority="normal" file-extensions="integration_cr.yaml">
 			<describer
-				class="org.wso2.integrationstudio.eclipse.docker.distribution.utils.DockerPOMDiscriber">
+				class="org.wso2.integrationstudio.docker.distribution.utils.DockerPOMDiscriber">
 			</describer>
 		</content-type>
 		<content-type base-type="org.eclipse.core.runtime.text"
-			id="org.wso2.integrationstudio.eclipse.docker.distribution.project.contenttype.tomlfile"
+			id="org.wso2.integrationstudio.docker.distribution.project.contenttype.tomlfile"
 			name="Toml File" priority="normal" file-extensions="deployment.toml">
 			<describer
-				class="org.wso2.integrationstudio.eclipse.docker.distribution.utils.DockerPOMDiscriber">
+				class="org.wso2.integrationstudio.docker.distribution.utils.DockerPOMDiscriber">
 			</describer>
 		</content-type>
     </extension>
@@ -129,20 +129,20 @@
     <extension point="org.eclipse.ui.navigator.viewer" id="docker-navigator-viewbinding">
         <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
          	<includes>
-            	<actionExtension pattern="org.wso2.integrationstudio.eclipse.docker.distribution.project.navigatorActionProvider"/>
+            	<actionExtension pattern="org.wso2.integrationstudio.docker.distribution.project.navigatorActionProvider"/>
          	</includes>
       	</viewerActionBinding>
       	<viewerActionBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
          	<includes>
-            	<actionExtension pattern="org.wso2.integrationstudio.eclipse.docker.distribution.project.navigatorActionProvider"/>
+            	<actionExtension pattern="org.wso2.integrationstudio.docker.distribution.project.navigatorActionProvider"/>
          	</includes>
       	</viewerActionBinding>
     </extension>
 
     <extension point="org.eclipse.ui.navigator.navigatorContent">  
         <actionProvider
-             class="org.wso2.integrationstudio.eclipse.docker.distribution.ui.wizard.DockerNavigatorActionProvider"
-             id="org.wso2.integrationstudio.eclipse.docker.distribution.project.navigatorActionProvider"> 
+             class="org.wso2.integrationstudio.docker.distribution.ui.wizard.DockerNavigatorActionProvider"
+             id="org.wso2.integrationstudio.docker.distribution.project.navigatorActionProvider"> 
             <enablement>
                 <adapt type="org.eclipse.core.resources.IFile" /> 
             </enablement>
@@ -151,12 +151,12 @@
 	
     <extension point="org.eclipse.ui.popupMenus">
         <objectContribution objectClass="org.eclipse.core.resources.IProject" 
-        	id="org.wso2.integrationstudio.eclipse.docker.distribution.exportandgeneratedocker">
+        	id="org.wso2.integrationstudio.docker.distribution.exportandgeneratedocker">
             <action
                 label="Build Docker Image"
                 icon="icons/docker.png"
-                class="org.wso2.integrationstudio.eclipse.docker.distribution.action.DockerRunMavenAction"
-                id="org.wso2.integrationstudio.eclipse.docker.distribution.exportandgeneratedocker">
+                class="org.wso2.integrationstudio.docker.distribution.action.DockerRunMavenAction"
+                id="org.wso2.integrationstudio.docker.distribution.exportandgeneratedocker">
             </action>
             <enablement>
                 <adapt type="org.eclipse.core.resources.IProject">
@@ -169,12 +169,12 @@
     
      <extension point="org.eclipse.ui.popupMenus">
         <objectContribution objectClass="org.eclipse.core.resources.IProject" 
-        	id="org.wso2.integrationstudio.eclipse.docker.distribution.exportandpushdocker">
+        	id="org.wso2.integrationstudio.docker.distribution.exportandpushdocker">
             <action
                 label="Push Docker Image"
                 icon="icons/docker.png"
-                id="org.wso2.integrationstudio.eclipse.docker.distribution.exportandpushdocker">
-                <class class="org.wso2.integrationstudio.eclipse.docker.distribution.action.DockerRunMavenAction">
+                id="org.wso2.integrationstudio.docker.distribution.exportandpushdocker">
+                <class class="org.wso2.integrationstudio.docker.distribution.action.DockerRunMavenAction">
 	                <parameter name="isDockerPushOnly" value="true"/>
                 </class>
             </action>
@@ -189,12 +189,12 @@
     
     <extension point="org.eclipse.ui.popupMenus">
         <objectContribution objectClass="org.eclipse.core.resources.IProject" 
-        	id="org.wso2.integrationstudio.eclipse.docker.distribution.exportbuildandgeneratedocker">
+        	id="org.wso2.integrationstudio.docker.distribution.exportbuildandgeneratedocker">
             <action
                 label="Build and Push Docker Image"
                 icon="icons/docker.png"
-                class="org.wso2.integrationstudio.eclipse.docker.distribution.action.DockerRunMavenAction"
-                id="org.wso2.integrationstudio.eclipse.docker.distribution.exportbuildandgeneratedocker">
+                class="org.wso2.integrationstudio.docker.distribution.action.DockerRunMavenAction"
+                id="org.wso2.integrationstudio.docker.distribution.exportbuildandgeneratedocker">
             </action>
             <enablement>
                 <adapt type="org.eclipse.core.resources.IProject">
@@ -206,27 +206,27 @@
     </extension>
     
     <extension point="org.eclipse.ui.views">
-        <view id="org.wso2.integrationstudio.eclipse.esb.templates.docker.view"
+        <view id="org.wso2.integrationstudio.esb.templates.docker.view"
               name="Docker Project User Guide"
-              class="org.wso2.integrationstudio.eclipse.docker.distribution.resources.DockerUserGuideTemplate"
+              class="org.wso2.integrationstudio.docker.distribution.resources.DockerUserGuideTemplate"
               icon="icons/help.png"/>
     </extension>
     <extension point="org.eclipse.ui.views">
-        <view id="org.wso2.integrationstudio.eclipse.esb.templates.kubernetes.view"
+        <view id="org.wso2.integrationstudio.esb.templates.kubernetes.view"
               name="Kubernetes Project User Guide"
-              class="org.wso2.integrationstudio.eclipse.docker.distribution.resources.K8sUserGuideTemplate"
+              class="org.wso2.integrationstudio.docker.distribution.resources.K8sUserGuideTemplate"
               icon="icons/help.png"/>
     </extension>
     
     <!-- Composite project run extensions-->
     <extension point="org.eclipse.ui.popupMenus">
         <objectContribution objectClass="org.eclipse.core.resources.IProject" 
-        id="org.wso2.integrationstudio.eclipse.docker.distribution.exportkubernetesartifacts">
+        id="org.wso2.integrationstudio.docker.distribution.exportkubernetesartifacts">
             <action
                 label="Generate Kubernetes Artifacts"
                 icon="icons/kubernetes-deployment-icon-16x16.png"
-                class="org.wso2.integrationstudio.eclipse.docker.distribution.action.GenerateKubernetesArtifactsAction"
-                id="org.wso2.integrationstudio.eclipse.docker.distribution.exportkubernetesartifacts">
+                class="org.wso2.integrationstudio.docker.distribution.action.GenerateKubernetesArtifactsAction"
+                id="org.wso2.integrationstudio.docker.distribution.exportkubernetesartifacts">
             </action>
             <enablement>
                 <adapt type="org.eclipse.core.resources.IProject">
@@ -239,7 +239,7 @@
     
         <!-- Adding extension to Maven Multi Module project's new list -->
     <extension point="org.eclipse.ui.navigator.navigatorContent">
-        <commonWizard type="new" menuGroupId="3org.wso2.integrationstudio.eclipse.artifact.webservice" wizardId="org.wso2.integrationstudio.eclipse.artifact.newdockerproject">
+        <commonWizard type="new" menuGroupId="3org.wso2.integrationstudio.artifact.webservice" wizardId="org.wso2.integrationstudio.artifact.newdockerproject">
             <enablement>
                 <or>
                     <adapt type="org.eclipse.core.resources.IProject">
@@ -254,7 +254,7 @@
     </extension>
     
     <extension point="org.eclipse.ui.navigator.navigatorContent">
-        <commonWizard type="new" menuGroupId="3org.wso2.integrationstudio.eclipse.artifact.webservice" wizardId="org.wso2.integrationstudio.eclipse.artifact.newkubernetesproject">
+        <commonWizard type="new" menuGroupId="3org.wso2.integrationstudio.artifact.webservice" wizardId="org.wso2.integrationstudio.artifact.newkubernetesproject">
             <enablement>
                 <or>
                     <adapt type="org.eclipse.core.resources.IProject">

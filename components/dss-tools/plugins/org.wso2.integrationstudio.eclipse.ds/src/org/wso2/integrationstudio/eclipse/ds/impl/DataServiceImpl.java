@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import java.util.Collection;
 
@@ -21,19 +21,19 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.ds.DataService;
-import org.wso2.integrationstudio.eclipse.ds.DataServiceParameter;
-import org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration;
-import org.wso2.integrationstudio.eclipse.ds.Description;
-import org.wso2.integrationstudio.eclipse.ds.DsFactory;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.EventTrigger;
-import org.wso2.integrationstudio.eclipse.ds.Operation;
-import org.wso2.integrationstudio.eclipse.ds.Policy;
-import org.wso2.integrationstudio.eclipse.ds.Query;
-import org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.ds.Resource;
-import org.wso2.integrationstudio.eclipse.ds.ServiceStatus;
+import org.wso2.integrationstudio.ds.DataService;
+import org.wso2.integrationstudio.ds.DataServiceParameter;
+import org.wso2.integrationstudio.ds.DataSourceConfiguration;
+import org.wso2.integrationstudio.ds.Description;
+import org.wso2.integrationstudio.ds.DsFactory;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.EventTrigger;
+import org.wso2.integrationstudio.ds.Operation;
+import org.wso2.integrationstudio.ds.Policy;
+import org.wso2.integrationstudio.ds.Query;
+import org.wso2.integrationstudio.ds.RegistryKeyProperty;
+import org.wso2.integrationstudio.ds.Resource;
+import org.wso2.integrationstudio.ds.ServiceStatus;
 
 
 /**
@@ -44,27 +44,27 @@ import org.wso2.integrationstudio.eclipse.ds.ServiceStatus;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getConfig <em>Config</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getQuery <em>Query</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getEventTrigger <em>Event Trigger</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getOperation <em>Operation</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getResource <em>Resource</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getBaseURI <em>Base URI</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#isEnableBatchRequests <em>Enable Batch Requests</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#isEnableBoxcarring <em>Enable Boxcarring</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#isEnableDTP <em>Enable DTP</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getServiceGroup <em>Service Group</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getServiceNamespace <em>Service Namespace</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getServiceStatus <em>Service Status</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#isDisableStreaming <em>Disable Streaming</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#isEnableSec <em>Enable Sec</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getPolicy <em>Policy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getTransports <em>Transports</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#getFeatureAllowRoles <em>Feature Allow Roles</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.DataServiceImpl#isDisableLegacyBoxcarringMode <em>Disable Legacy Boxcarring Mode</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getConfig <em>Config</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getQuery <em>Query</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getEventTrigger <em>Event Trigger</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getOperation <em>Operation</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getResource <em>Resource</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getBaseURI <em>Base URI</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#isEnableBatchRequests <em>Enable Batch Requests</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#isEnableBoxcarring <em>Enable Boxcarring</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#isEnableDTP <em>Enable DTP</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getServiceGroup <em>Service Group</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getServiceNamespace <em>Service Namespace</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getServiceStatus <em>Service Status</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#isDisableStreaming <em>Disable Streaming</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#isEnableSec <em>Enable Sec</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getPolicy <em>Policy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getTransports <em>Transports</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#getFeatureAllowRoles <em>Feature Allow Roles</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.DataServiceImpl#isDisableLegacyBoxcarringMode <em>Disable Legacy Boxcarring Mode</em>}</li>
  * </ul>
  *
  * @generated

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.internal.impl.mediatypes;
+package org.wso2.integrationstudio.platform.core.internal.impl.mediatypes;
 
 public class CustomMediaTypeData {
 	private String mediaType;

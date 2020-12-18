@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.commands;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -11,10 +11,10 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultParentContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorContainer;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.SwitchDefaultContainer;
+import org.wso2.integrationstudio.gmf.esb.SwitchDefaultParentContainer;
+import org.wso2.integrationstudio.gmf.esb.SwitchMediatorContainer;
 
 /**
  * @generated

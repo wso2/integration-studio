@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.wso2.integrationstudio.eclipse.registry.manager.remote</name>
+	<name>org.wso2.integrationstudio.registry.manager.remote</name>
 	<comment></comment>
 	<projects>
 	</projects>

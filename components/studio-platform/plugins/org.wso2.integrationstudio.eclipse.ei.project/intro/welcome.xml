@@ -5,7 +5,7 @@
 		<group style-id="content-group" id="comdeveloperwelcome-introLink-group"
 			icon="icons/getting-started.png">
 			<link label="Getting Started"
-				url="http://org.eclipse.ui.intro/runAction?pluginId=org.wso2.integrationstudio.eclipse.platform.core&#38;class=org.wso2.integrationstudio.eclipse.platform.core.intro.action.OpenTemplateDashboardAction"
+				url="http://org.eclipse.ui.intro/runAction?pluginId=org.wso2.integrationstudio.platform.core&#38;class=org.wso2.integrationstudio.platform.core.intro.action.OpenTemplateDashboardAction"
 				id="getting-started-link" style-id="content-link">
 				<text>Getting started with WSO2 Enterprise Integrator Tooling</text>
 			</link>
@@ -13,7 +13,7 @@
 		<group style-id="content-group" id="comdeveloperwelcome-introLink-group"
 			icon="icons/carbon-normal.png">
 			<link label="Open Dashboard"
-				url="http://org.eclipse.ui.intro/runAction?pluginId=org.wso2.integrationstudio.eclipse.platform.core&#38;class=org.wso2.integrationstudio.eclipse.platform.core.intro.action.OpenDashboardAction"
+				url="http://org.eclipse.ui.intro/runAction?pluginId=org.wso2.integrationstudio.platform.core&#38;class=org.wso2.integrationstudio.platform.core.intro.action.OpenDashboardAction"
 				id="carbonStudio-dashboardlink" style-id="content-link">
 				<text>Design your integration flow with WSO2 Enterprise Integrator Tooling</text>
 			</link>

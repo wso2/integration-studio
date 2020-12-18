@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.registry.connector;
+package org.wso2.integrationstudio.capp.registry.connector;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.handler.RegistryHandler;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.CAppEnvironment;
+import org.wso2.integrationstudio.capp.registry.connector.handler.RegistryHandler;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -27,7 +27,7 @@ import org.wso2.integrationstudio.eclipse.capp.registry.connector.handler.Regist
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.registry.connector";
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.registry.connector";
 
 	// The shared instance
 	private static Activator plugin;

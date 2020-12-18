@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.server.base;
+package org.wso2.integrationstudio.server.base;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-import org.wso2.integrationstudio.eclipse.server.base.core.IServerManager;
-import org.wso2.integrationstudio.eclipse.server.base.core.ServerController;
+import org.wso2.integrationstudio.server.base.core.IServerManager;
+import org.wso2.integrationstudio.server.base.core.ServerController;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -30,7 +30,7 @@ public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.wso2.tools.eclipse.server.base";
-	private static final String SERVER_MANAGER_EXTENION_POINT_ID = "org.wso2.integrationstudio.eclipse.server.base.servermanager";
+	private static final String SERVER_MANAGER_EXTENION_POINT_ID = "org.wso2.integrationstudio.server.base.servermanager";
 
 	// The shared instance
 	private static Activator plugin;

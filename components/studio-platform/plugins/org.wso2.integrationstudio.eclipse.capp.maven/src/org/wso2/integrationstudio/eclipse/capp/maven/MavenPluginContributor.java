@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.capp.maven;
+package org.wso2.integrationstudio.capp.maven;
 
 public class MavenPluginContributor {
 	private String id;

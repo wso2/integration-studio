@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.elements;
+package org.wso2.integrationstudio.wso2plugin.template.manager.ui.elements;
 
 import java.util.Vector;
 

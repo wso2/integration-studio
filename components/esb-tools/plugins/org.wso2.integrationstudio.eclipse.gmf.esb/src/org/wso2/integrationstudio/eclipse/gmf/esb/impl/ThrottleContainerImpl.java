@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnAcceptContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectContainer;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.ThrottleContainer;
+import org.wso2.integrationstudio.gmf.esb.ThrottleOnAcceptContainer;
+import org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectContainer;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,8 +27,8 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectContainer;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleContainerImpl#getOnAcceptContainer <em>On Accept Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleContainerImpl#getOnRejectContainer <em>On Reject Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleContainerImpl#getOnAcceptContainer <em>On Accept Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleContainerImpl#getOnRejectContainer <em>On Reject Container</em>}</li>
  * </ul>
  *
  * @generated

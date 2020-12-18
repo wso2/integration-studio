@@ -40,9 +40,9 @@ import org.wso2.integrationstudio.datamapper.diagram.expressions.DataMapperOCLFa
 import org.wso2.integrationstudio.datamapper.diagram.providers.ElementInitializers;
 import org.wso2.integrationstudio.datamapper.provider.DataMapperItemProviderAdapterFactory;
 import org.wso2.integrationstudio.datamapper.servlets.RegistryReaderServlet;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.DataMapperEditor;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.JSEmbeddedFunctions;
+import org.wso2.integrationstudio.platform.ui.startup.DataMapperEditor;
+import org.wso2.integrationstudio.templates.dashboard.handlers.JettyServerHandler;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.JSEmbeddedFunctions;
 
 /**
  * @generated

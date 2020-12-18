@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.libraries.ui.wizard;
+package org.wso2.integrationstudio.libraries.ui.wizard;
 
 import java.io.File;
 import java.net.URL;
@@ -30,12 +30,12 @@ import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibImageUtils;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibraryArtifact;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibraryArtifactHandler;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibraryCategory;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibraryUtils;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaUtils;
+import org.wso2.integrationstudio.libraries.utils.LibImageUtils;
+import org.wso2.integrationstudio.libraries.utils.LibraryArtifact;
+import org.wso2.integrationstudio.libraries.utils.LibraryArtifactHandler;
+import org.wso2.integrationstudio.libraries.utils.LibraryCategory;
+import org.wso2.integrationstudio.libraries.utils.LibraryUtils;
+import org.wso2.integrationstudio.utils.jdt.JavaUtils;
 
 public class WSO2LibraryWizardPage extends WizardPage implements
 		IClasspathContainerPage, IClasspathContainerPageExtension,

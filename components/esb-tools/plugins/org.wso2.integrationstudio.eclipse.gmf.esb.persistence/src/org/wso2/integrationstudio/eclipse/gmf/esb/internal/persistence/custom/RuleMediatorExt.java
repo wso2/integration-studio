@@ -1,8 +1,8 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence.custom;
 
 import org.apache.synapse.MessageContext;
 import org.apache.synapse.mediators.AbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
 
 public class RuleMediatorExt extends AbstractMediator {
 

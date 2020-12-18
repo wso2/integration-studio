@@ -5,7 +5,7 @@
  * by the Apache Axis2 version: 1.6.1-wso2v10 Built on : Sep 04, 2013 (02:02:54
  * UTC)
  */
-package org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader;
+package org.wso2.integrationstudio.carbonserver.base.webapp.uploader;
 
 /*
  * WebappAdminStub java implementation
@@ -275,19 +275,19 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 		                                                                                                "http://org.apache.axis2/xsd",
 		                                                                                                "WebappAdminArtifactMetadataException"),
 		                                                                  "changeDefaultAppVersion"),
-		                          "org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminArtifactMetadataException");
+		                          "org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminArtifactMetadataException");
 		faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                                       new javax.xml.namespace.QName(
 		                                                                                                     "http://org.apache.axis2/xsd",
 		                                                                                                     "WebappAdminArtifactMetadataException"),
 		                                                                       "changeDefaultAppVersion"),
-		                               "org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminArtifactMetadataException");
+		                               "org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminArtifactMetadataException");
 		faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
 		                                                            new javax.xml.namespace.QName(
 		                                                                                          "http://org.apache.axis2/xsd",
 		                                                                                          "WebappAdminArtifactMetadataException"),
 		                                                            "changeDefaultAppVersion"),
-		                    "org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub$WebappAdminArtifactMetadataException");
+		                    "org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub$WebappAdminArtifactMetadataException");
 
 	}
 
@@ -351,7 +351,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void stopAllWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps stopAllWebapps
+	public void stopAllWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps stopAllWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -399,13 +399,13 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdmin#getPagedFaultyWebappsSummary
+	 * @see org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdmin#getPagedFaultyWebappsSummary
 	 * @param getPagedFaultyWebappsSummary
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse getPagedFaultyWebappsSummary(
+	public org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse getPagedFaultyWebappsSummary(
 
-	                                                                                                                                                            org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary getPagedFaultyWebappsSummary)
+	                                                                                                                                                            org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary getPagedFaultyWebappsSummary)
 
 	throws java.rmi.RemoteException
 
@@ -452,10 +452,10 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse) object;
+			return (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse) object;
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -526,7 +526,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void deleteStoppedWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps deleteStoppedWebapps
+	public void deleteStoppedWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps deleteStoppedWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -575,7 +575,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void deleteAllStoppedWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps deleteAllStoppedWebapps
+	public void deleteAllStoppedWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps deleteAllStoppedWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -623,13 +623,13 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdmin#getActiveSessions
+	 * @see org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdmin#getActiveSessions
 	 * @param getActiveSessions
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse getActiveSessions(
+	public org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse getActiveSessions(
 
-	                                                                                                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions getActiveSessions)
+	                                                                                                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions getActiveSessions)
 
 	throws java.rmi.RemoteException
 
@@ -674,10 +674,10 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse) object;
+			return (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse) object;
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -748,7 +748,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void expireSessions(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions expireSessions
+	public void expireSessions(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions expireSessions
 
 	) throws java.rmi.RemoteException
 
@@ -796,13 +796,13 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdmin#isUnpackWARs
+	 * @see org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdmin#isUnpackWARs
 	 * @param isUnpackWARs
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse isUnpackWARs(
+	public org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse isUnpackWARs(
 
-	org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs isUnpackWARs)
+	org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs isUnpackWARs)
 
 	throws java.rmi.RemoteException
 
@@ -847,10 +847,10 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse) object;
+			return (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse) object;
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -920,13 +920,13 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdmin#isDefaultVersionManagementEnabled
+	 * @see org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdmin#isDefaultVersionManagementEnabled
 	 * @param isDefaultVersionManagementEnabled
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse isDefaultVersionManagementEnabled(
+	public org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse isDefaultVersionManagementEnabled(
 
-	                                                                                                                                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled isDefaultVersionManagementEnabled)
+	                                                                                                                                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled isDefaultVersionManagementEnabled)
 
 	throws java.rmi.RemoteException
 
@@ -973,10 +973,10 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse) object;
+			return (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse) object;
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -1047,7 +1047,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void deleteAllStartedWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps deleteAllStartedWebapps
+	public void deleteAllStartedWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps deleteAllStartedWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -1095,14 +1095,14 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @throws org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminArtifactMetadataException
+	 * @throws org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminArtifactMetadataException
 	 *             :
 	 */
-	public void changeDefaultAppVersion(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion changeDefaultAppVersion
+	public void changeDefaultAppVersion(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion changeDefaultAppVersion
 
 	) throws java.rmi.RemoteException
 
-	, org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminArtifactMetadataException {
+	, org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminArtifactMetadataException {
 		org.apache.axis2.context.MessageContext _messageContext = null;
 
 		try {
@@ -1163,8 +1163,8 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 						                                                      new java.lang.Class[] { messageClass });
 						m.invoke(ex, new java.lang.Object[] { messageObject });
 
-						if (ex instanceof org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminArtifactMetadataException) {
-							throw (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminArtifactMetadataException) ex;
+						if (ex instanceof org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminArtifactMetadataException) {
+							throw (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminArtifactMetadataException) ex;
 						}
 
 						throw new java.rmi.RemoteException(ex.getMessage(), ex);
@@ -1212,7 +1212,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void reloadWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps reloadWebapps
+	public void reloadWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps reloadWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -1260,13 +1260,13 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdmin#uploadWebapp
+	 * @see org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdmin#uploadWebapp
 	 * @param uploadWebapp
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse uploadWebapp(
+	public org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse uploadWebapp(
 
-	org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp uploadWebapp)
+	org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp uploadWebapp)
 
 	throws java.rmi.RemoteException
 
@@ -1311,10 +1311,10 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse) object;
+			return (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse) object;
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -1385,7 +1385,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void expireAllSessions(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions expireAllSessions
+	public void expireAllSessions(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions expireAllSessions
 
 	) throws java.rmi.RemoteException
 
@@ -1433,13 +1433,13 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdmin#getStartedWebapp
+	 * @see org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdmin#getStartedWebapp
 	 * @param getStartedWebapp
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse getStartedWebapp(
+	public org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse getStartedWebapp(
 
-	org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp getStartedWebapp)
+	org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp getStartedWebapp)
 
 	throws java.rmi.RemoteException
 
@@ -1484,10 +1484,10 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse) object;
+			return (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse) object;
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -1557,13 +1557,13 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdmin#downloadWarFileHandler
+	 * @see org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdmin#downloadWarFileHandler
 	 * @param downloadWarFileHandler
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse downloadWarFileHandler(
+	public org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse downloadWarFileHandler(
 
-	                                                                                                                                                org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler downloadWarFileHandler)
+	                                                                                                                                                org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler downloadWarFileHandler)
 
 	throws java.rmi.RemoteException
 
@@ -1609,10 +1609,10 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse) object;
+			return (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse) object;
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -1683,7 +1683,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void startAllWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps startAllWebapps
+	public void startAllWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps startAllWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -1732,7 +1732,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void deleteFaultyWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps deleteFaultyWebapps
+	public void deleteFaultyWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps deleteFaultyWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -1780,13 +1780,13 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdmin#getBamConfiguration
+	 * @see org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdmin#getBamConfiguration
 	 * @param getBamConfiguration
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse getBamConfiguration(
+	public org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse getBamConfiguration(
 
-	                                                                                                                                          org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration getBamConfiguration)
+	                                                                                                                                          org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration getBamConfiguration)
 
 	throws java.rmi.RemoteException
 
@@ -1831,10 +1831,10 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse) object;
+			return (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse) object;
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -1905,7 +1905,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void setBamConfiguration(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration setBamConfiguration
+	public void setBamConfiguration(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration setBamConfiguration
 
 	) throws java.rmi.RemoteException
 
@@ -1954,7 +1954,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void expireSessionsInWebapp(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp expireSessionsInWebapp
+	public void expireSessionsInWebapp(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp expireSessionsInWebapp
 
 	) throws java.rmi.RemoteException
 
@@ -2003,7 +2003,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void deleteAllWebApps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps deleteAllWebApps
+	public void deleteAllWebApps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps deleteAllWebApps
 
 	) throws java.rmi.RemoteException
 
@@ -2052,7 +2052,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void deleteStartedWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps deleteStartedWebapps
+	public void deleteStartedWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps deleteStartedWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -2100,13 +2100,13 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdmin#getPagedWebappsSummary
+	 * @see org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdmin#getPagedWebappsSummary
 	 * @param getPagedWebappsSummary
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse getPagedWebappsSummary(
+	public org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse getPagedWebappsSummary(
 
-	                                                                                                                                                org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary getPagedWebappsSummary)
+	                                                                                                                                                org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary getPagedWebappsSummary)
 
 	throws java.rmi.RemoteException
 
@@ -2152,10 +2152,10 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse) object;
+			return (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse) object;
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -2226,7 +2226,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void expireSessionsInWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps expireSessionsInWebapps
+	public void expireSessionsInWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps expireSessionsInWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -2275,7 +2275,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void startWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps startWebapps
+	public void startWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps startWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -2324,7 +2324,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void expireSessionsInAllWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps expireSessionsInAllWebapps
+	public void expireSessionsInAllWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps expireSessionsInAllWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -2374,7 +2374,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void reloadAllWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps reloadAllWebapps
+	public void reloadAllWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps reloadAllWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -2423,7 +2423,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void deleteAllFaultyWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps deleteAllFaultyWebapps
+	public void deleteAllFaultyWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps deleteAllFaultyWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -2472,7 +2472,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void stopWebapps(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps stopWebapps
+	public void stopWebapps(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps stopWebapps
 
 	) throws java.rmi.RemoteException
 
@@ -2520,13 +2520,13 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/**
 	 * Auto generated method signature
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdmin#getStoppedWebapp
+	 * @see org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdmin#getStoppedWebapp
 	 * @param getStoppedWebapp
 	 */
 
-	public org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse getStoppedWebapp(
+	public org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse getStoppedWebapp(
 
-	org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp getStoppedWebapp)
+	org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp getStoppedWebapp)
 
 	throws java.rmi.RemoteException
 
@@ -2571,10 +2571,10 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			java.lang.Object object =
 			                          fromOM(_returnEnv.getBody().getFirstElement(),
-			                                 org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse.class,
+			                                 org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse.class,
 			                                 getEnvelopeNamespaces(_returnEnv));
 
-			return (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse) object;
+			return (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse) object;
 
 		} catch (org.apache.axis2.AxisFault f) {
 
@@ -2645,7 +2645,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	 * Auto generated method signature
 	 * 
 	 */
-	public void deleteWebapp(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp deleteWebapp
+	public void deleteWebapp(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp deleteWebapp
 
 	) throws java.rmi.RemoteException
 
@@ -28060,11 +28060,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28072,11 +28072,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28084,11 +28084,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28096,11 +28096,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28108,11 +28108,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28120,11 +28120,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28132,11 +28132,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28144,11 +28144,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28156,11 +28156,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28168,11 +28168,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28180,11 +28180,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28192,11 +28192,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28204,11 +28204,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28216,11 +28216,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28228,11 +28228,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28240,11 +28240,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28252,11 +28252,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28264,11 +28264,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28276,11 +28276,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28288,11 +28288,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28300,11 +28300,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28312,11 +28312,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28324,11 +28324,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28336,11 +28336,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28348,11 +28348,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28360,11 +28360,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28372,11 +28372,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28384,11 +28384,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28396,11 +28396,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28408,11 +28408,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28420,11 +28420,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28432,11 +28432,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28444,11 +28444,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28456,11 +28456,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28468,11 +28468,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28480,11 +28480,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28492,11 +28492,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28504,11 +28504,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28516,11 +28516,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28528,11 +28528,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28540,11 +28540,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28552,11 +28552,11 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 	}
 
-	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp param,
+	private org.apache.axiom.om.OMElement toOM(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp param,
 	                                           boolean optimizeContent) throws org.apache.axis2.AxisFault {
 
 		try {
-			return param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp.MY_QNAME,
+			return param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp.MY_QNAME,
 			                          org.apache.axiom.om.OMAbstractFactory.getOMFactory());
 		} catch (org.apache.axis2.databinding.ADBException e) {
 			throw org.apache.axis2.AxisFault.makeFault(e);
@@ -28565,7 +28565,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	}
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28573,7 +28573,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28585,7 +28585,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28593,7 +28593,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28605,7 +28605,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28613,7 +28613,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28625,7 +28625,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28633,7 +28633,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28645,7 +28645,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28653,7 +28653,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28665,7 +28665,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28673,7 +28673,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28685,7 +28685,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28693,7 +28693,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28705,7 +28705,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28713,7 +28713,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28725,7 +28725,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28733,7 +28733,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28745,7 +28745,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28753,7 +28753,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28765,7 +28765,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28773,7 +28773,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28785,7 +28785,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28793,7 +28793,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28805,7 +28805,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28813,7 +28813,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28825,7 +28825,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28833,7 +28833,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28845,7 +28845,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28853,7 +28853,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28865,7 +28865,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28873,7 +28873,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28885,7 +28885,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28893,7 +28893,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28905,7 +28905,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28913,7 +28913,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28925,7 +28925,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28933,7 +28933,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28945,7 +28945,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28953,7 +28953,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28965,7 +28965,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28973,7 +28973,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -28985,7 +28985,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -28993,7 +28993,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -29005,7 +29005,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -29013,7 +29013,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -29025,7 +29025,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -29033,7 +29033,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -29045,7 +29045,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -29053,7 +29053,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -29065,7 +29065,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -29073,7 +29073,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -29085,7 +29085,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -29093,7 +29093,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -29105,7 +29105,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -29113,7 +29113,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -29125,7 +29125,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -29133,7 +29133,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -29145,7 +29145,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -29153,7 +29153,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -29165,7 +29165,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 	/* methods to provide back word compatibility */
 
 	private org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory,
-	                                                      org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp param,
+	                                                      org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp param,
 	                                                      boolean optimizeContent, javax.xml.namespace.QName methodQName)
 	                                                                                                                     throws org.apache.axis2.AxisFault {
 
@@ -29173,7 +29173,7 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 			org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
 			emptyEnvelope.getBody()
-			             .addChild(param.getOMElement(org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp.MY_QNAME,
+			             .addChild(param.getOMElement(org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp.MY_QNAME,
 			                                          factory));
 			return emptyEnvelope;
 		} catch (org.apache.axis2.databinding.ADBException e) {
@@ -29196,255 +29196,255 @@ public class WebappAdminStub extends org.apache.axis2.client.Stub {
 
 		try {
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopAllWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummary.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedFaultyWebappsSummaryResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStoppedWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStoppedWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessions.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetActiveSessionsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessions.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARs.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsUnpackWARsResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabled.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.IsDefaultVersionManagementEnabledResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllStartedWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ChangeDefaultAppVersion.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.WebappAdminArtifactMetadataException.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebappResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireAllSessions.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
-
-			}
-
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp.class.equals(type)) {
-
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebapp.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStartedWebappResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 
-			if (org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp.class.equals(type)) {
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler.class.equals(type)) {
 
-				return org.wso2.integrationstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandler.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DownloadWarFileHandlerResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartAllWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteFaultyWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfiguration.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetBamConfigurationResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.SetBamConfiguration.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapp.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllWebApps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteStartedWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummary.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetPagedWebappsSummaryResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StartWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ExpireSessionsInAllWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.ReloadAllWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteAllFaultyWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.StopWebapps.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebapp.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.GetStoppedWebappResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+
+			}
+
+			if (org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp.class.equals(type)) {
+
+				return org.wso2.integrationstudio.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp.Factory.parse(param.getXMLStreamReaderWithoutCaching());
 
 			}
 

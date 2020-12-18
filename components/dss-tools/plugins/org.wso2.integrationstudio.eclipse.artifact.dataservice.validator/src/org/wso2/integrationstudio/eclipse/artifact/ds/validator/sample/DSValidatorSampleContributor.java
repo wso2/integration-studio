@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.artifact.ds.validator.sample;
+package org.wso2.integrationstudio.artifact.ds.validator.sample;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,11 +7,11 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.artifact.ds.validator.utils.DSValidatorImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.ds.validator.utils.DSValidatorTemplateUtils;
-import org.wso2.integrationstudio.eclipse.libraries.utils.LibraryUtils;
-import org.wso2.integrationstudio.eclipse.samples.contributor.AbstractSampleContributor;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.ds.validator.utils.DSValidatorImageUtils;
+import org.wso2.integrationstudio.artifact.ds.validator.utils.DSValidatorTemplateUtils;
+import org.wso2.integrationstudio.libraries.utils.LibraryUtils;
+import org.wso2.integrationstudio.samples.contributor.AbstractSampleContributor;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class DSValidatorSampleContributor extends AbstractSampleContributor{
 	static String caption="Dataservice Number Validator";

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,10 +15,10 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.SendContainer#getEndpointFlow <em>Endpoint Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.SendContainer#getEndpointFlow <em>Endpoint Flow</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSendContainer()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSendContainer()
  * @model
  * @generated
  */
@@ -33,14 +33,14 @@ public interface SendContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Endpoint Flow</em>' containment reference.
      * @see #setEndpointFlow(EndpointFlow)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSendContainer_EndpointFlow()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSendContainer_EndpointFlow()
      * @model containment="true"
      * @generated
      */
     EndpointFlow getEndpointFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.SendContainer#getEndpointFlow <em>Endpoint Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.SendContainer#getEndpointFlow <em>Endpoint Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Endpoint Flow</em>' containment reference.

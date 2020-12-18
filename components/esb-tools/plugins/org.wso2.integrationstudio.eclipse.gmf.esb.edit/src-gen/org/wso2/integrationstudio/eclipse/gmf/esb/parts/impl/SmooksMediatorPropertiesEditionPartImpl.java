@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
@@ -60,13 +60,13 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -635,7 +635,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getInputType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getInputType()
 	 * 
 	 */
 	public Enumerator getInputType() {
@@ -646,7 +646,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initInputType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initInputType(Object input, Enumerator current)
 	 */
 	public void initInputType(Object input, Enumerator current) {
 		inputType.setInput(input);
@@ -664,7 +664,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setInputType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setInputType(Enumerator newValue)
 	 * 
 	 */
 	public void setInputType(Enumerator newValue) {
@@ -682,7 +682,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputType()
 	 * 
 	 */
 	public Enumerator getOutputType() {
@@ -693,7 +693,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initOutputType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initOutputType(Object input, Enumerator current)
 	 */
 	public void initOutputType(Object input, Enumerator current) {
 		outputType.setInput(input);
@@ -711,7 +711,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputType(Enumerator newValue)
 	 * 
 	 */
 	public void setOutputType(Enumerator newValue) {
@@ -729,7 +729,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputProperty()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputProperty()
 	 * 
 	 */
 	public String getOutputProperty() {
@@ -739,7 +739,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputProperty(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputProperty(String newValue)
 	 * 
 	 */
 	public void setOutputProperty(String newValue) {
@@ -761,7 +761,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputAction()
 	 * 
 	 */
 	public Enumerator getOutputAction() {
@@ -772,7 +772,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initOutputAction(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initOutputAction(Object input, Enumerator current)
 	 */
 	public void initOutputAction(Object input, Enumerator current) {
 		outputAction.setInput(input);
@@ -790,7 +790,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputAction(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputAction(Enumerator newValue)
 	 * 
 	 */
 	public void setOutputAction(Enumerator newValue) {
@@ -808,7 +808,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputMethod()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getOutputMethod()
 	 * 
 	 */
 	public Enumerator getOutputMethod() {
@@ -819,7 +819,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initOutputMethod(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#initOutputMethod(Object input, Enumerator current)
 	 */
 	public void initOutputMethod(Object input, Enumerator current) {
 		outputMethod.setInput(input);
@@ -837,7 +837,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputMethod(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setOutputMethod(Enumerator newValue)
 	 * 
 	 */
 	public void setOutputMethod(Enumerator newValue) {
@@ -855,7 +855,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -865,7 +865,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -906,7 +906,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -916,7 +916,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -938,7 +938,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -948,7 +948,7 @@ public class SmooksMediatorPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SmooksMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {

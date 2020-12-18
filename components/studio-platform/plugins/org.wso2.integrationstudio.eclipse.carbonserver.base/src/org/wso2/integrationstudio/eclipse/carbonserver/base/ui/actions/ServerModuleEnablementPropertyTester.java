@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.ui.actions;
+package org.wso2.integrationstudio.carbonserver.base.ui.actions;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.wst.server.core.IModule;
@@ -29,7 +29,7 @@ import org.eclipse.wst.server.ui.IServerModule;
  */
 public class ServerModuleEnablementPropertyTester extends PropertyTester {
 
-	private static final String WSO2_CARBON_MODULE = "org.wso2.integrationstudio.eclipse.carbon.module";
+	private static final String WSO2_CARBON_MODULE = "org.wso2.integrationstudio.carbon.module";
 
 	public boolean test(Object arg0, String arg1, Object[] arg2, Object arg3) {
 

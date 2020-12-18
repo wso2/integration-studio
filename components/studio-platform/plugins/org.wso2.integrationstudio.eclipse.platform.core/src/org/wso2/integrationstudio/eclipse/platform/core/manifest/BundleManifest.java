@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.manifest;
+package org.wso2.integrationstudio.platform.core.manifest;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.ui.util;
+package org.wso2.integrationstudio.registry.base.ui.util;
 
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.swt.graphics.Color;
@@ -27,9 +27,9 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.ObjectPluginAction;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryCredentialData;
-import org.wso2.integrationstudio.eclipse.registry.base.persistent.RegistryCredentialData.Credentials;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.dialog.CredentialsDialog;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryCredentialData;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryCredentialData.Credentials;
+import org.wso2.integrationstudio.registry.base.ui.dialog.CredentialsDialog;
 
 public class SWTControlUtils {
 

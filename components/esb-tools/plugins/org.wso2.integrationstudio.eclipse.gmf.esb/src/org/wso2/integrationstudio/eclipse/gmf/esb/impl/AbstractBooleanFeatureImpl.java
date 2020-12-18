@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractBooleanFeature;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.AbstractBooleanFeature;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,8 +23,8 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractBooleanFeatureImpl#getFeatureName <em>Feature Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractBooleanFeatureImpl#isFeatureEnabled <em>Feature Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractBooleanFeatureImpl#getFeatureName <em>Feature Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractBooleanFeatureImpl#isFeatureEnabled <em>Feature Enabled</em>}</li>
  * </ul>
  *
  * @generated

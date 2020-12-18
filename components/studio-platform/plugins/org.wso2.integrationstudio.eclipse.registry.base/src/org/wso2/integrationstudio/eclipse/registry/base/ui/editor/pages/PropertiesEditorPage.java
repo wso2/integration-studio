@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.ui.editor.pages;
+package org.wso2.integrationstudio.registry.base.ui.editor.pages;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -58,14 +58,14 @@ import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.wso2.carbon.registry.core.Resource;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.MessageDialogUtils;
-import org.wso2.integrationstudio.eclipse.registry.base.core.Registry;
-import org.wso2.integrationstudio.eclipse.registry.base.editor.input.ResourceEditorInput;
-import org.wso2.integrationstudio.eclipse.registry.base.interfaces.IRegistryFormEditorPage;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.registry.base.ui.editor.RegistryResourceEditor;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.InvalidRegistryURLException;
-import org.wso2.integrationstudio.eclipse.registry.core.exception.UnknownRegistryException;
+import org.wso2.integrationstudio.platform.ui.utils.MessageDialogUtils;
+import org.wso2.integrationstudio.registry.base.core.Registry;
+import org.wso2.integrationstudio.registry.base.editor.input.ResourceEditorInput;
+import org.wso2.integrationstudio.registry.base.interfaces.IRegistryFormEditorPage;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.ui.editor.RegistryResourceEditor;
+import org.wso2.integrationstudio.registry.core.exception.InvalidRegistryURLException;
+import org.wso2.integrationstudio.registry.core.exception.UnknownRegistryException;
 
 public class PropertiesEditorPage extends FormPage implements
 		IResourceChangeListener, IRegistryFormEditorPage {

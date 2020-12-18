@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.monitor;
+package org.wso2.integrationstudio.carbonserver.base.monitor;
 
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.IServerLifecycleListener;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
 
 public class CarbonServerLifeCycleListener implements IServerLifecycleListener {
 

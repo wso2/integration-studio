@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.cloud.resources;
+package org.wso2.integrationstudio.esb.cloud.resources;
 
 /**
  * Contains string values used for Cloud API related tasks

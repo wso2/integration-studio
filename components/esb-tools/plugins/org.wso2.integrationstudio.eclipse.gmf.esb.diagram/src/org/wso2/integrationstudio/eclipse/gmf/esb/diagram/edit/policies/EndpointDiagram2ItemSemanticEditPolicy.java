@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.policies;
 
 import java.util.Iterator;
 
@@ -11,17 +11,17 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.AddressEndPoint2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.DefaultEndPoint2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.FailoverEndPoint2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.HTTPEndpoint2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPoint2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.RecipientListEndPoint2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.TemplateEndpoint2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.WSDLEndPoint2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.AddressEndPoint2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DefaultEndPoint2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.FailoverEndPoint2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.HTTPEndpoint2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.LoadBalanceEndPoint2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.RecipientListEndPoint2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.TemplateEndpoint2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.WSDLEndPoint2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated

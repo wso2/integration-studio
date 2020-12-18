@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.utils;
+package org.wso2.integrationstudio.platform.ui.utils;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -49,17 +49,17 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
 import org.eclipse.ui.forms.events.ExpansionEvent;
 import org.eclipse.ui.forms.widgets.ExpandableComposite;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioElement;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractComposite;
-import org.wso2.integrationstudio.eclipse.platform.core.model.ICompositeProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectOptionData;
-import org.wso2.integrationstudio.eclipse.platform.ui.interfaces.IFieldControlData;
-import org.wso2.integrationstudio.eclipse.platform.ui.interfaces.IOnAction;
-import org.wso2.integrationstudio.eclipse.platform.ui.interfaces.UIControl;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.RegisterUIControl;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
+import org.wso2.integrationstudio.platform.core.model.AbstractComposite;
+import org.wso2.integrationstudio.platform.core.model.ICompositeProvider;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectOptionData;
+import org.wso2.integrationstudio.platform.ui.interfaces.IFieldControlData;
+import org.wso2.integrationstudio.platform.ui.interfaces.IOnAction;
+import org.wso2.integrationstudio.platform.ui.interfaces.UIControl;
+import org.wso2.integrationstudio.platform.ui.startup.RegisterUIControl;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsDataPage;
 
 import java.io.File;
 import java.util.ArrayList;

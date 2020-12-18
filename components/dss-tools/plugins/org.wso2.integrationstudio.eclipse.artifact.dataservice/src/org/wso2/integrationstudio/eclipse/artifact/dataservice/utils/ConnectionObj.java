@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.integrationstudio.eclipse.artifact.dataservice.utils;
+package org.wso2.integrationstudio.artifact.dataservice.utils;
 
 public class ConnectionObj {
 

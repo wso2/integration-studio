@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.messageprocessor.filter;
+package org.wso2.integrationstudio.artifact.messageprocessor.filter;
 
-import static org.wso2.integrationstudio.eclipse.platform.core.utils.Constants.ESB_PROJECT_NATURE;
+import static org.wso2.integrationstudio.platform.core.utils.Constants.ESB_PROJECT_NATURE;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.Viewer;

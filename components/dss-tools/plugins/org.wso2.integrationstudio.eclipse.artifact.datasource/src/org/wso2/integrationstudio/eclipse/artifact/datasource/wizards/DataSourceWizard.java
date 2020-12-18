@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.artifact.datasource.wizards;
+package org.wso2.integrationstudio.artifact.datasource.wizards;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
@@ -28,15 +28,15 @@ import org.eclipse.core.resources.*;
 import java.io.*;
 import org.eclipse.ui.*;
 import org.eclipse.ui.ide.IDE;
-import org.wso2.integrationstudio.eclipse.artifact.datasource.artifact.DataSourceArtifact;
-import org.wso2.integrationstudio.eclipse.artifact.datasource.artifact.DataSourceProjectArtifact;
-import org.wso2.integrationstudio.eclipse.artifact.datasource.utils.DataSourceArtifactConstants;
-import org.wso2.integrationstudio.eclipse.artifact.datasource.utils.DataSourceTemplateUtils;
-import org.wso2.integrationstudio.eclipse.capp.maven.utils.MavenConstants;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.XMLUtil;
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.datasource.artifact.DataSourceArtifact;
+import org.wso2.integrationstudio.artifact.datasource.artifact.DataSourceProjectArtifact;
+import org.wso2.integrationstudio.artifact.datasource.utils.DataSourceArtifactConstants;
+import org.wso2.integrationstudio.artifact.datasource.utils.DataSourceTemplateUtils;
+import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.utils.XMLUtil;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 
 /**
@@ -51,7 +51,7 @@ import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
  */
 
 public class DataSourceWizard extends Wizard implements INewWizard {
-	private static final String DATASOURCE_PLUGIN_ID = "org.wso2.integrationstudio.eclipse.artifact.datasource";
+	private static final String DATASOURCE_PLUGIN_ID = "org.wso2.integrationstudio.artifact.datasource";
 	private DataSourceWizardPage page;
 	private ISelection selection;
 

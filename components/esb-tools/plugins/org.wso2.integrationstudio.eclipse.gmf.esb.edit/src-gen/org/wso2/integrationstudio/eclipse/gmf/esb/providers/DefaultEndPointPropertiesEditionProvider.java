@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.providers;
+package org.wso2.integrationstudio.gmf.esb.providers;
 
 import java.util.List;
 
@@ -19,10 +19,10 @@ import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 
 import org.eclipse.jface.viewers.IFilter;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.DefaultEndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.components.DefaultEndPointPropertiesEditionComponent;
+import org.wso2.integrationstudio.gmf.esb.components.DefaultEndPointPropertiesEditionComponent;
 
 /**
  * 

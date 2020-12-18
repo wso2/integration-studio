@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.inboundendpoint.utils;
+package org.wso2.integrationstudio.artifact.inboundendpoint.utils;
 
 import org.eclipse.osgi.util.NLS;
 
 public final class InboundEndpointArtifactProperties extends NLS {
-	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.artifact.inboundendpoint.utils.inboundendpointartifactconstants";
+	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.artifact.inboundendpoint.utils.inboundendpointartifactconstants";
 	public static String ieWizardWindowTitle;
 	public static String esbProjectNature;
 	public static String typeHTTP;

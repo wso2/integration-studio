@@ -15,12 +15,12 @@
  */
 
 
-package org.wso2.integrationstudio.eclipse.security.project.ui.dialog;
+package org.wso2.integrationstudio.security.project.ui.dialog;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryData;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryData;
 
 public class RegistryKeyProperty {
 	

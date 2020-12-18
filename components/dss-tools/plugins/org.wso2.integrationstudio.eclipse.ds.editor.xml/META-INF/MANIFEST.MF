@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Data Service Editor XML
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.ds.editor.xml;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.ds.editor.xml;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.ds.Activator
+Bundle-Activator: org.wso2.integrationstudio.ds.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.wst.xml.ui,
@@ -16,4 +16,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jetty.server;bundle-version="9.4.8",
  org.eclipse.jetty.servlet;bundle-version="9.4.8"
 Bundle-ActivationPolicy: lazy
-Import-Package: org.wso2.integrationstudio.eclipse.logging.core
+Import-Package: org.wso2.integrationstudio.logging.core

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -42,10 +42,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -366,7 +366,7 @@ public class MemberPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart#getHostName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart#getHostName()
 	 * 
 	 */
 	public String getHostName() {
@@ -376,7 +376,7 @@ public class MemberPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart#setHostName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart#setHostName(String newValue)
 	 * 
 	 */
 	public void setHostName(String newValue) {
@@ -398,7 +398,7 @@ public class MemberPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart#getHttpPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart#getHttpPort()
 	 * 
 	 */
 	public String getHttpPort() {
@@ -408,7 +408,7 @@ public class MemberPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart#setHttpPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart#setHttpPort(String newValue)
 	 * 
 	 */
 	public void setHttpPort(String newValue) {
@@ -430,7 +430,7 @@ public class MemberPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart#getHttpsPort()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart#getHttpsPort()
 	 * 
 	 */
 	public String getHttpsPort() {
@@ -440,7 +440,7 @@ public class MemberPropertiesEditionPartForm extends SectionPropertiesEditingPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MemberPropertiesEditionPart#setHttpsPort(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MemberPropertiesEditionPart#setHttpsPort(String newValue)
 	 * 
 	 */
 	public void setHttpsPort(String newValue) {

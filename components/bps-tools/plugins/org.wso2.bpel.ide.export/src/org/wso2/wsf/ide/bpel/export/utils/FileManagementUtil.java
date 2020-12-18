@@ -30,8 +30,8 @@ import java.util.zip.ZipOutputStream;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.wso2.wsf.ide.bpel.export.WSO2BPELPlugin;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class FileManagementUtil {
 	private static final int BUFFER = 100;

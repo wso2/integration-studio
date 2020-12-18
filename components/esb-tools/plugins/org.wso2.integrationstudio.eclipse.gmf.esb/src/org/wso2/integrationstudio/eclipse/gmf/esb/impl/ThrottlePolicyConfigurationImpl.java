@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -22,11 +22,11 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyEntry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.ThrottlePolicyConfiguration;
+import org.wso2.integrationstudio.gmf.esb.ThrottlePolicyEntry;
+import org.wso2.integrationstudio.gmf.esb.ThrottlePolicyType;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,10 +36,10 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottlePolicyConfigurationImpl#getPolicyType <em>Policy Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottlePolicyConfigurationImpl#getPolicyKey <em>Policy Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottlePolicyConfigurationImpl#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottlePolicyConfigurationImpl#getPolicyEntries <em>Policy Entries</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottlePolicyConfigurationImpl#getPolicyType <em>Policy Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottlePolicyConfigurationImpl#getPolicyKey <em>Policy Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottlePolicyConfigurationImpl#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottlePolicyConfigurationImpl#getPolicyEntries <em>Policy Entries</em>}</li>
  * </ul>
  *
  * @generated

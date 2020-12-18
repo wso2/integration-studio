@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Update-Tool
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.updater;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.updater;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.updater.UpdaterPlugin
+Bundle-Activator: org.wso2.integrationstudio.updater.UpdaterPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.equinox.p2.ui,
@@ -26,10 +26,10 @@ Import-Package: org.apache.commons.io;version="2.0.0.wso2v1",
  org.eclipse.equinox.p2.repository.metadata,
  org.eclipse.mylyn.commons.ui.dialogs,
  org.osgi.framework,
- org.wso2.integrationstudio.eclipse.logging.core,
- org.wso2.integrationstudio.eclipse.platform.core.utils,
- org.wso2.integrationstudio.eclipse.platform.ui,
- org.wso2.integrationstudio.eclipse.platform.ui.preferences,
- org.wso2.integrationstudio.eclipse.platform.ui.wizard
+ org.wso2.integrationstudio.logging.core,
+ org.wso2.integrationstudio.platform.core.utils,
+ org.wso2.integrationstudio.platform.ui,
+ org.wso2.integrationstudio.platform.ui.preferences,
+ org.wso2.integrationstudio.platform.ui.wizard
 Bundle-ClassPath: .,
  lib/jsoup-1.13.1.jar

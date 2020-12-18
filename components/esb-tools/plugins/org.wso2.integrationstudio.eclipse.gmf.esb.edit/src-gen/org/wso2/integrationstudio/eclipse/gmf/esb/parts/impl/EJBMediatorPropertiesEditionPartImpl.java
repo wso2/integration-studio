@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -73,12 +73,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -780,7 +780,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -790,7 +790,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -812,7 +812,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -822,7 +822,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -863,7 +863,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -873,7 +873,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -895,7 +895,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getBeanstalk()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getBeanstalk()
 	 * 
 	 */
 	public String getBeanstalk() {
@@ -905,7 +905,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setBeanstalk(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setBeanstalk(String newValue)
 	 * 
 	 */
 	public void setBeanstalk(String newValue) {
@@ -927,7 +927,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getClass_()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getClass_()
 	 * 
 	 */
 	public String getClass_() {
@@ -937,7 +937,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setClass_(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setClass_(String newValue)
 	 * 
 	 */
 	public void setClass_(String newValue) {
@@ -959,7 +959,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getMethod()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getMethod()
 	 * 
 	 */
 	public String getMethod() {
@@ -969,7 +969,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setMethod(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setMethod(String newValue)
 	 * 
 	 */
 	public void setMethod(String newValue) {
@@ -991,7 +991,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getSessionIdType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getSessionIdType()
 	 * 
 	 */
 	public Enumerator getSessionIdType() {
@@ -1002,7 +1002,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#initSessionIdType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#initSessionIdType(Object input, Enumerator current)
 	 */
 	public void initSessionIdType(Object input, Enumerator current) {
 		sessionIdType.setInput(input);
@@ -1020,7 +1020,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setSessionIdType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setSessionIdType(Enumerator newValue)
 	 * 
 	 */
 	public void setSessionIdType(Enumerator newValue) {
@@ -1038,7 +1038,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getSessionIdLiteral()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getSessionIdLiteral()
 	 * 
 	 */
 	public String getSessionIdLiteral() {
@@ -1048,7 +1048,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setSessionIdLiteral(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setSessionIdLiteral(String newValue)
 	 * 
 	 */
 	public void setSessionIdLiteral(String newValue) {
@@ -1070,7 +1070,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getRemove()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getRemove()
 	 * 
 	 */
 	public Boolean getRemove() {
@@ -1080,7 +1080,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setRemove(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setRemove(Boolean newValue)
 	 * 
 	 */
 	public void setRemove(Boolean newValue) {
@@ -1102,7 +1102,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getTarget()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getTarget()
 	 * 
 	 */
 	public String getTarget() {
@@ -1112,7 +1112,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setTarget(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setTarget(String newValue)
 	 * 
 	 */
 	public void setTarget(String newValue) {
@@ -1134,7 +1134,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getJNDIName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#getJNDIName()
 	 * 
 	 */
 	public String getJNDIName() {
@@ -1144,7 +1144,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setJNDIName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#setJNDIName(String newValue)
 	 * 
 	 */
 	public void setJNDIName(String newValue) {
@@ -1168,7 +1168,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#initMethodArguments(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#initMethodArguments(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initMethodArguments(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1189,7 +1189,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#updateMethodArguments()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#updateMethodArguments()
 	 * 
 	 */
 	public void updateMethodArguments() {
@@ -1199,7 +1199,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#addFilterMethodArguments(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#addFilterMethodArguments(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToMethodArguments(ViewerFilter filter) {
@@ -1212,7 +1212,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#addBusinessFilterMethodArguments(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#addBusinessFilterMethodArguments(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToMethodArguments(ViewerFilter filter) {
@@ -1222,7 +1222,7 @@ public class EJBMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EJBMediatorPropertiesEditionPart#isContainedInMethodArgumentsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EJBMediatorPropertiesEditionPart#isContainedInMethodArgumentsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInMethodArgumentsTable(EObject element) {

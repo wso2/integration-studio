@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,11 +24,11 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIHandlerProperty#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIHandlerProperty#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIHandlerProperty#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIHandlerProperty#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIHandlerProperty()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIHandlerProperty()
  * @model
  * @generated
  */
@@ -43,14 +43,14 @@ public interface APIHandlerProperty extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIHandlerProperty_Name()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIHandlerProperty_Name()
      * @model
      * @generated
      */
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIHandlerProperty#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIHandlerProperty#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Name</em>' attribute.
@@ -69,14 +69,14 @@ public interface APIHandlerProperty extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIHandlerProperty_Value()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIHandlerProperty_Value()
      * @model
      * @generated
      */
     String getValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIHandlerProperty#getValue <em>Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIHandlerProperty#getValue <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value</em>' attribute.

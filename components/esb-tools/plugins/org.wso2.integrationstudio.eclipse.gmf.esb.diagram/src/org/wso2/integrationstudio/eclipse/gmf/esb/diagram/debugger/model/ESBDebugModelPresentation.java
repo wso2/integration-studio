@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.model;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.debug.core.model.IValue;
@@ -9,7 +9,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
 
 /**
  * This class extends from {@link IDebugModelPresentation} is responsible for

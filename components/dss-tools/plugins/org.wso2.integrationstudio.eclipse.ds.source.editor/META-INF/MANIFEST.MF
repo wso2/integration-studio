@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Recipeeeditor
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.ds.source.editor;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.ds.source.editor;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.ds.dbs.DsEditorPlugin
+Bundle-Activator: org.wso2.integrationstudio.ds.dbs.DsEditorPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jface.text,
@@ -11,4 +11,4 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .
-Export-Package: org.wso2.integrationstudio.eclipse.ds.dbseditor
+Export-Package: org.wso2.integrationstudio.ds.dbseditor

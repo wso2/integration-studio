@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,17 +17,17 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorContainer#getCloneTargetContainer <em>Clone Target Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloneMediatorContainer#getCloneTargetContainer <em>Clone Target Container</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloneMediatorContainer()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloneMediatorContainer()
  * @model
  * @generated
  */
 public interface CloneMediatorContainer extends EsbNode {
     /**
      * Returns the value of the '<em><b>Clone Target Container</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneTargetContainer}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.CloneTargetContainer}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Clone Target Container</em>' containment reference list isn't clear,
@@ -35,7 +35,7 @@ public interface CloneMediatorContainer extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Clone Target Container</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloneMediatorContainer_CloneTargetContainer()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloneMediatorContainer_CloneTargetContainer()
      * @model containment="true"
      * @generated
      */

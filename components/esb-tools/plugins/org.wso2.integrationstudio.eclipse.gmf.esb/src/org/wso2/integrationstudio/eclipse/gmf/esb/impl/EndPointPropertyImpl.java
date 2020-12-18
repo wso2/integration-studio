@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -24,11 +24,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointPropertyScope;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EndPointPropertyScope;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,11 +38,11 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getScope <em>Scope</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getValueExpression <em>Value Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EndPointPropertyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EndPointPropertyImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EndPointPropertyImpl#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EndPointPropertyImpl#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EndPointPropertyImpl#getValueExpression <em>Value Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -150,7 +150,7 @@ public class EndPointPropertyImpl extends EObjectImpl implements EndPointPropert
         valueExpression.setPrettyName("Value Expression");
         valueExpression.setPropertyName("expression");
         valueExpression.setPropertyValue(
-                org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement.DEFAULT_EXPRESSION_PROPERTY_VALUE);
+                org.wso2.integrationstudio.gmf.esb.EsbElement.DEFAULT_EXPRESSION_PROPERTY_VALUE);
         setValueExpression(valueExpression);
     }
 

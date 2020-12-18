@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -38,10 +38,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServiceParameterPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ProxyServiceParameterPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -249,7 +249,7 @@ public class ProxyServiceParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServiceParameterPropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServiceParameterPropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -259,7 +259,7 @@ public class ProxyServiceParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServiceParameterPropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServiceParameterPropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -281,7 +281,7 @@ public class ProxyServiceParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServiceParameterPropertiesEditionPart#getValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServiceParameterPropertiesEditionPart#getValue()
 	 * 
 	 */
 	public String getValue() {
@@ -291,7 +291,7 @@ public class ProxyServiceParameterPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ProxyServiceParameterPropertiesEditionPart#setValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ProxyServiceParameterPropertiesEditionPart#setValue(String newValue)
 	 * 
 	 */
 	public void setValue(String newValue) {

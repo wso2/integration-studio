@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.unittest;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.unittest;
 
 import java.io.File;
 
@@ -42,7 +42,7 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.constant.Constants;
+import org.wso2.integrationstudio.esb.synapse.unit.test.constant.Constants;
 
 /**
  * Class responsible for creation of wizard page for unit test import.

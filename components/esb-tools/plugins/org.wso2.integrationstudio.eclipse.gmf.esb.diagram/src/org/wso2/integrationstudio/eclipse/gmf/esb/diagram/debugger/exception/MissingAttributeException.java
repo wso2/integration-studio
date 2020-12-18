@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception;
 
 /**
  * This exception is extended from {@link ESBDebuggerException} and it is thrown

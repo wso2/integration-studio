@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -52,52 +52,52 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.impl.ConnectorImpl;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResourceInSequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommentMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SendMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequences;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractSequencesEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.ConnectionUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointOnErrorSequenceInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointOnErrorSequenceOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointSequenceInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointSequenceOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceFaultContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.APIResource;
+import org.wso2.integrationstudio.gmf.esb.APIResourceInSequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.CommentMediator;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyInSequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyService;
+import org.wso2.integrationstudio.gmf.esb.SendMediator;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.Sequences;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpointInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractSequencesEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.ConnectionUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.InboundEndpointOnErrorSequenceInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.InboundEndpointOnErrorSequenceOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.InboundEndpointSequenceInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.InboundEndpointSequenceOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyServiceFaultContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequencesInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequencesOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 /**
  * This class provides a skeletal implementation of the IEsbNodeDeserializer
@@ -352,7 +352,7 @@ public abstract class AbstractEsbNodeDeserializer<T, R extends EsbNode> implemen
             }
             return null;
         } else {
-            org.wso2.integrationstudio.eclipse.gmf.esb.Mediator mediator = (org.wso2.integrationstudio.eclipse.gmf.esb.Mediator) nodeList
+            org.wso2.integrationstudio.gmf.esb.Mediator mediator = (org.wso2.integrationstudio.gmf.esb.Mediator) nodeList
                     .getLast();
             refreshEditPartMap();
             return EditorUtils.getMediatorOutputConnector((ShapeNodeEditPart) getEditpart(mediator));
@@ -600,8 +600,8 @@ public abstract class AbstractEsbNodeDeserializer<T, R extends EsbNode> implemen
         refreshEditPartMap();
         for (EObject node : reversedNodes) {
             EditPart editpart = getEditpart(node);
-            if (editpart instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator) {
-                ((org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator) editpart)
+            if (editpart instanceof org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator) {
+                ((org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator) editpart)
                         .reverseConnectors();
             }
         }
@@ -752,7 +752,7 @@ public abstract class AbstractEsbNodeDeserializer<T, R extends EsbNode> implemen
 
         GraphicalEditPart gEditpart = (GraphicalEditPart) editpart;
 
-        if (editpart instanceof org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator) {
+        if (editpart instanceof org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator) {
             Rectangle rect = new Rectangle(new Point(), gEditpart.getFigure().getPreferredSize()).getCopy();
             Rectangle rectCopy = rect.getCopy();
             if (editpart instanceof complexFiguredAbstractMediator) {
@@ -1121,7 +1121,7 @@ public abstract class AbstractEsbNodeDeserializer<T, R extends EsbNode> implemen
     }
 
     protected void setCommonProperties(Mediator mediator,
-            org.wso2.integrationstudio.eclipse.gmf.esb.Mediator visualElement) {
+            org.wso2.integrationstudio.gmf.esb.Mediator visualElement) {
         executeSetValueCommand(visualElement, ESB_ELEMENT__DESCRIPTION, mediator.getShortDescription());
         executeAddAllCommand(visualElement.getCommentsList(), ((AbstractMediator) mediator).getCommentsList());
     }

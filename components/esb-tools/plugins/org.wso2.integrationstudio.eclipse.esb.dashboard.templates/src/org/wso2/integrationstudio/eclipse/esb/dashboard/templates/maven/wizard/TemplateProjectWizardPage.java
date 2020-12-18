@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard;
+package org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;

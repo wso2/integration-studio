@@ -1,18 +1,18 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultCodeSoap11;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultCodeSoap12;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultCodeType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultDetailType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultReasonType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultSoapVersion;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultStringType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.FaultCodeSoap11;
+import org.wso2.integrationstudio.gmf.esb.FaultCodeSoap12;
+import org.wso2.integrationstudio.gmf.esb.FaultCodeType;
+import org.wso2.integrationstudio.gmf.esb.FaultDetailType;
+import org.wso2.integrationstudio.gmf.esb.FaultMediator;
+import org.wso2.integrationstudio.gmf.esb.FaultReasonType;
+import org.wso2.integrationstudio.gmf.esb.FaultSoapVersion;
+import org.wso2.integrationstudio.gmf.esb.FaultStringType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class FaultMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, FaultMediator> {
 

@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.security.utils;
+package org.wso2.integrationstudio.artifact.security.utils;
 
 import org.eclipse.osgi.util.NLS;
 
 
 public class SecurityFormMessageConstants extends NLS {
 	
-	public static final String BUNDLE_NAME="org.wso2.integrationstudio.eclipse.artifact.security.utils.securityformmessageconstants";
+	public static final String BUNDLE_NAME="org.wso2.integrationstudio.artifact.security.utils.securityformmessageconstants";
 	
 	public static String MESSAGE_FORM_LOAD_ERROR;
 	public static String MESSAGE_POLICYFILE_READ_ERROR;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.validator;
+package org.wso2.integrationstudio.distribution.project.validator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +24,12 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.distribution.project.export.CappArtifactsListProvider;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.distribution.project.export.CappArtifactsListProvider;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class ProjectList extends AbstractListDataProvider {
 
@@ -38,7 +38,7 @@ public class ProjectList extends AbstractListDataProvider {
 	public List<ListData> getListData(String modelProperty, ProjectDataModel model, String extensionpointId) {
 		if (extensionpointId == null || "".equals(extensionpointId)) {
 			// setting to default
-			extensionpointId = "org.wso2.integrationstudio.eclipse.capp.artifacts.provider";
+			extensionpointId = "org.wso2.integrationstudio.capp.artifacts.provider";
 		}
 		List<ListData> list = new ArrayList<ListData>();
 

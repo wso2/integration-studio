@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,16 +17,16 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyDataType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyName;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyScope;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyAction;
+import org.wso2.integrationstudio.gmf.esb.PropertyDataType;
+import org.wso2.integrationstudio.gmf.esb.PropertyMediator;
+import org.wso2.integrationstudio.gmf.esb.PropertyMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.PropertyMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.PropertyName;
+import org.wso2.integrationstudio.gmf.esb.PropertyScope;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,23 +36,23 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getPropertyDataType <em>Property Data Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getPropertyAction <em>Property Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getPropertyScope <em>Property Scope</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getNamespacePrefix <em>Namespace Prefix</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#isBoolean <em>Boolean</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getOM <em>OM</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueStringPattern <em>Value String Pattern</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueStringCapturingGroup <em>Value String Capturing Group</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getNewPropertyName <em>New Property Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getPropertyDataType <em>Property Data Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getPropertyAction <em>Property Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getPropertyScope <em>Property Scope</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getNamespacePrefix <em>Namespace Prefix</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getValueExpression <em>Value Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#isBoolean <em>Boolean</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getOM <em>OM</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getValueStringPattern <em>Value String Pattern</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getValueStringCapturingGroup <em>Value String Capturing Group</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PropertyMediatorImpl#getNewPropertyName <em>New Property Name</em>}</li>
  * </ul>
  *
  * @generated

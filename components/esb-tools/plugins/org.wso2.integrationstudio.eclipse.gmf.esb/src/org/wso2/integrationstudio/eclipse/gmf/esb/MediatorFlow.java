@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,17 +17,17 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.MediatorFlow#getChildren <em>Children</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMediatorFlow()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMediatorFlow()
  * @model
  * @generated
  */
 public interface MediatorFlow extends EsbNode {
     /**
      * Returns the value of the '<em><b>Children</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.EsbElement}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
@@ -35,7 +35,7 @@ public interface MediatorFlow extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Children</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getMediatorFlow_Children()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getMediatorFlow_Children()
      * @model containment="true"
      * @generated
      */

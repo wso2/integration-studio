@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.ui.wizard;
+package org.wso2.integrationstudio.distribution.project.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,19 +50,19 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.distribution.project.configure.embeddedserver.CustomConfigureWizardDialog;
-import org.wso2.integrationstudio.eclipse.distribution.project.configure.embeddedserver.EmbeddedServerConfigWizard;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.DataTransferObject;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.DependencyData;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.NodeData;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.DistProjectUtils;
-import org.wso2.integrationstudio.eclipse.distribution.project.validator.ProjectList;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.distribution.project.configure.embeddedserver.CustomConfigureWizardDialog;
+import org.wso2.integrationstudio.distribution.project.configure.embeddedserver.EmbeddedServerConfigWizard;
+import org.wso2.integrationstudio.distribution.project.model.DataTransferObject;
+import org.wso2.integrationstudio.distribution.project.model.DependencyData;
+import org.wso2.integrationstudio.distribution.project.model.NodeData;
+import org.wso2.integrationstudio.distribution.project.util.DistProjectUtils;
+import org.wso2.integrationstudio.distribution.project.validator.ProjectList;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 public class DistributionProjectExportWizardPage extends WizardPage {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

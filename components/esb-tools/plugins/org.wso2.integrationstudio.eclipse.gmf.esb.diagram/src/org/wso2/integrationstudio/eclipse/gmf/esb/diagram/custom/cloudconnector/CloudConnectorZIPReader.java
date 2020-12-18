@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.cloudconnector;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.cloudconnector;
 
 import java.io.File;
 import java.io.IOException;

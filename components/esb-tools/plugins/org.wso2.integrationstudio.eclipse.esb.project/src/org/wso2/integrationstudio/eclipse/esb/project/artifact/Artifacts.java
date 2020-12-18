@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.esb.project.artifact;
+package org.wso2.integrationstudio.esb.project.artifact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
-import org.wso2.integrationstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
-import org.wso2.integrationstudio.eclipse.esb.core.ESBArtifactDependency;
+import org.wso2.integrationstudio.platform.core.manifest.AbstractXMLDoc;
+import org.wso2.integrationstudio.esb.core.ESBArtifactDependency;
 
 public class Artifacts extends AbstractXMLDoc{
 	private List<ESBArtifactDependency> artifactDependencies=new ArrayList<ESBArtifactDependency>();

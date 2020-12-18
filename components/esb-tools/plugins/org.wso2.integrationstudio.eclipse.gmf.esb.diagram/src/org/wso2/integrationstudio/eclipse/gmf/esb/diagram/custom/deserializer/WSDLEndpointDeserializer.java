@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.WSDL_END_POINT__PORT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.WSDL_END_POINT__SERVICE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.WSDL_END_POINT__WSDL_URI;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.WSDL_END_POINT__PORT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.WSDL_END_POINT__SERVICE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.WSDL_END_POINT__WSDL_URI;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -33,16 +33,16 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointPropertyScope;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.AbstractEndPoint;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EndPointPropertyScope;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;

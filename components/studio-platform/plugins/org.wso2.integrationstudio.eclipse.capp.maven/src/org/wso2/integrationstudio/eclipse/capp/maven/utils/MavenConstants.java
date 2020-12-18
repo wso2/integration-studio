@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.capp.maven.utils;
+package org.wso2.integrationstudio.capp.maven.utils;
 
 public class MavenConstants {
 	public static final String MAVEN_CAR_VERSION=Messages.MAVEN_CAR_VERSION;

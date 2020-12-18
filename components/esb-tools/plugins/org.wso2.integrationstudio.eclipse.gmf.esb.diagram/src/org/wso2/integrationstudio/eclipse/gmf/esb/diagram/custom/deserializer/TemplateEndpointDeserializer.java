@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.END_POINT__END_POINT_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.TEMPLATE_ENDPOINT__TARGET_TEMPLATE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.END_POINT__END_POINT_NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.TEMPLATE_ENDPOINT__TARGET_TEMPLATE;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,16 +33,16 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpointParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl;
+import org.wso2.integrationstudio.gmf.esb.AbstractEndPoint;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.TemplateEndpoint;
+import org.wso2.integrationstudio.gmf.esb.TemplateEndpointParameter;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.impl.TemplateEndpointImpl;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.TemplateEndPointFormPage;
@@ -192,11 +192,11 @@ public class TemplateEndpointDeserializer extends AbstractEndpointDeserializer {
 
     }
     
-    public org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint createUIEndpoint(Endpoint synapseEndpoint) {
+    public org.wso2.integrationstudio.gmf.esb.EndPoint createUIEndpoint(Endpoint synapseEndpoint) {
         Assert.isTrue(synapseEndpoint instanceof org.apache.synapse.endpoints.TemplateEndpoint,
                 "Unsupported endpoint has been passed to create the UI object at " + this.getClass());
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint endpoint = new TemplateEndpointImpl();
+        org.wso2.integrationstudio.gmf.esb.EndPoint endpoint = new TemplateEndpointImpl();
 
         org.apache.synapse.endpoints.TemplateEndpoint templateEndpoint = (org.apache.synapse.endpoints.TemplateEndpoint) synapseEndpoint;
         

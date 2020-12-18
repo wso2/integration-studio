@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.search;
+package org.wso2.integrationstudio.registry.search;
 
 import java.util.List;
 

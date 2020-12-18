@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.connector.artifact;
+package org.wso2.integrationstudio.artifact.connector.artifact;
 
 public class ConnectorArtifact {
 	

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,17 +21,17 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateFeature;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediatorOnFailOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateOnFailBranch;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.ValidateFeature;
+import org.wso2.integrationstudio.gmf.esb.ValidateMediator;
+import org.wso2.integrationstudio.gmf.esb.ValidateMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.ValidateMediatorOnFailOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ValidateMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ValidateResource;
+import org.wso2.integrationstudio.gmf.esb.ValidateOnFailBranch;
+import org.wso2.integrationstudio.gmf.esb.ValidateSchema;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,15 +41,15 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#getSourceXpath <em>Source Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#getFeatures <em>Features</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#getSchemas <em>Schemas</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#getOnFailOutputConnector <em>On Fail Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#getResources <em>Resources</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#isEnableCacheSchema <em>Enable Cache Schema</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ValidateMediatorImpl#getSourceXpath <em>Source Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ValidateMediatorImpl#getFeatures <em>Features</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ValidateMediatorImpl#getSchemas <em>Schemas</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ValidateMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ValidateMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ValidateMediatorImpl#getOnFailOutputConnector <em>On Fail Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ValidateMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ValidateMediatorImpl#getResources <em>Resources</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ValidateMediatorImpl#isEnableCacheSchema <em>Enable Cache Schema</em>}</li>
  * </ul>
  *
  * @generated

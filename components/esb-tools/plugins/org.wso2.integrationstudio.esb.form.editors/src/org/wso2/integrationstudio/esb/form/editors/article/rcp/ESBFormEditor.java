@@ -24,7 +24,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
 import org.wso2.integrationstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;

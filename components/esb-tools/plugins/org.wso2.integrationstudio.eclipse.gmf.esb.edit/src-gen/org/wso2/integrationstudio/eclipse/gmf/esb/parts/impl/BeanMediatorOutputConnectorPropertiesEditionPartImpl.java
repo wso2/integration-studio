@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -44,10 +44,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorOutputConnectorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorOutputConnectorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -202,7 +202,7 @@ public class BeanMediatorOutputConnectorPropertiesEditionPartImpl extends Compos
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorOutputConnectorPropertiesEditionPart#initCommentMediators(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorOutputConnectorPropertiesEditionPart#initCommentMediators(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initCommentMediators(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -223,7 +223,7 @@ public class BeanMediatorOutputConnectorPropertiesEditionPartImpl extends Compos
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorOutputConnectorPropertiesEditionPart#updateCommentMediators()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorOutputConnectorPropertiesEditionPart#updateCommentMediators()
 	 * 
 	 */
 	public void updateCommentMediators() {
@@ -233,7 +233,7 @@ public class BeanMediatorOutputConnectorPropertiesEditionPartImpl extends Compos
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorOutputConnectorPropertiesEditionPart#addFilterCommentMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToCommentMediators(ViewerFilter filter) {
@@ -246,7 +246,7 @@ public class BeanMediatorOutputConnectorPropertiesEditionPartImpl extends Compos
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorOutputConnectorPropertiesEditionPart#addBusinessFilterCommentMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToCommentMediators(ViewerFilter filter) {
@@ -256,7 +256,7 @@ public class BeanMediatorOutputConnectorPropertiesEditionPartImpl extends Compos
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.BeanMediatorOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.BeanMediatorOutputConnectorPropertiesEditionPart#isContainedInCommentMediatorsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInCommentMediatorsTable(EObject element) {

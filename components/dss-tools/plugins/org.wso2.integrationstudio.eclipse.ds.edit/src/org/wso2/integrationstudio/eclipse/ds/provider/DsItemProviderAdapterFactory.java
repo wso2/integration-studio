@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.provider;
+package org.wso2.integrationstudio.ds.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,7 +25,7 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.wso2.integrationstudio.eclipse.ds.util.DsAdapterFactory;
+import org.wso2.integrationstudio.ds.util.DsAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -78,7 +78,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.AttributeMapping} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -86,7 +86,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected AttributeMappingItemProvider attributeMappingItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.AttributeMapping}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.AttributeMapping}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -102,7 +102,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.CallQuery} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.CallQuery} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -110,7 +110,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected CallQueryItemProvider callQueryItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.CallQuery}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.CallQuery}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -126,7 +126,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.CallQueryList} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.CallQueryList} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -134,7 +134,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected CallQueryListItemProvider callQueryListItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.CallQueryList}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.CallQueryList}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -150,7 +150,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.ConfigurationProperty} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -158,7 +158,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected ConfigurationPropertyItemProvider configurationPropertyItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.ConfigurationProperty}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -174,7 +174,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.CustomValidator} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.CustomValidator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -182,7 +182,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected CustomValidatorItemProvider customValidatorItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.CustomValidator}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.CustomValidator}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -198,7 +198,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.DataService} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.DataService} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -206,7 +206,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected DataServiceItemProvider dataServiceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.DataService}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.DataService}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -222,7 +222,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.DataSourceConfiguration} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -230,7 +230,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected DataSourceConfigurationItemProvider dataSourceConfigurationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.DataSourceConfiguration}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -246,7 +246,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.Description} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.Description} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -254,7 +254,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected DescriptionItemProvider descriptionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.Description}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.Description}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -270,7 +270,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.DocumentRoot} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -278,7 +278,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected DocumentRootItemProvider documentRootItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.DocumentRoot}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.DocumentRoot}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -294,7 +294,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.DoubleRangeValidator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -302,7 +302,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected DoubleRangeValidatorItemProvider doubleRangeValidatorItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.DoubleRangeValidator}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.DoubleRangeValidator}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -318,7 +318,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.ElementMapping} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.ElementMapping} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -326,7 +326,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected ElementMappingItemProvider elementMappingItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.ElementMapping}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.ElementMapping}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -342,7 +342,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.EventSubscriptionList} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -350,7 +350,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected EventSubscriptionListItemProvider eventSubscriptionListItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.EventSubscriptionList}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -366,7 +366,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.EventTrigger} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.EventTrigger} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -374,7 +374,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected EventTriggerItemProvider eventTriggerItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.EventTrigger}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.EventTrigger}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -390,7 +390,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.ExcelQuery} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.ExcelQuery} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -398,7 +398,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected ExcelQueryItemProvider excelQueryItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.ExcelQuery}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.ExcelQuery}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -414,7 +414,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.Expression} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.Expression} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -422,7 +422,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected ExpressionItemProvider expressionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.Expression}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.Expression}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -438,7 +438,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.GSpreadQuery} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -446,7 +446,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected GSpreadQueryItemProvider gSpreadQueryItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.GSpreadQuery}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.GSpreadQuery}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -462,7 +462,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.HasHeader} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.HasHeader} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -470,7 +470,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected HasHeaderItemProvider hasHeaderItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.HasHeader}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.HasHeader}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -486,7 +486,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.LengthValidator} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.LengthValidator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -494,7 +494,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected LengthValidatorItemProvider lengthValidatorItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.LengthValidator}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.LengthValidator}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -510,7 +510,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.LongRangeValidator} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.LongRangeValidator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -518,7 +518,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected LongRangeValidatorItemProvider longRangeValidatorItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.LongRangeValidator}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.LongRangeValidator}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -534,7 +534,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.MaxRowCount} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.MaxRowCount} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -542,7 +542,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected MaxRowCountItemProvider maxRowCountItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.MaxRowCount}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.MaxRowCount}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -558,7 +558,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.Operation} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.Operation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -566,7 +566,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected OperationItemProvider operationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.Operation}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.Operation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -582,7 +582,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.ParameterMapping} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -590,7 +590,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected ParameterMappingItemProvider parameterMappingItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.ParameterMapping}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.ParameterMapping}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -606,7 +606,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.PatternValidator} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.PatternValidator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -614,7 +614,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected PatternValidatorItemProvider patternValidatorItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.PatternValidator}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.PatternValidator}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -630,7 +630,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.Query} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.Query} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -638,7 +638,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected QueryItemProvider queryItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.Query}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.Query}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -654,7 +654,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.QueryParameter} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.QueryParameter} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -662,7 +662,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected QueryParameterItemProvider queryParameterItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.QueryParameter}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.QueryParameter}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -678,7 +678,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.QueryProperty} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.QueryProperty} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -686,7 +686,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected QueryPropertyItemProvider queryPropertyItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.QueryProperty}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.QueryProperty}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -702,7 +702,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.QueryPropertyList} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.QueryPropertyList} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -710,7 +710,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected QueryPropertyListItemProvider queryPropertyListItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.QueryPropertyList}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.QueryPropertyList}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -726,7 +726,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.Resource} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.Resource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -734,7 +734,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected ResourceItemProvider resourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.Resource}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.Resource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -750,7 +750,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.ResultMapping} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.ResultMapping} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -758,7 +758,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected ResultMappingItemProvider resultMappingItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.ResultMapping}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.ResultMapping}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -774,7 +774,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.Sparql} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.Sparql} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -782,7 +782,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected SparqlItemProvider sparqlItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.Sparql}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.Sparql}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -798,7 +798,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.Sql} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.Sql} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -806,7 +806,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected SqlItemProvider sqlItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.Sql}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.Sql}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -822,7 +822,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.QueryExpression} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.QueryExpression} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -830,7 +830,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected QueryExpressionItemProvider queryExpressionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.QueryExpression}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.QueryExpression}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -845,7 +845,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.StartingRow} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.StartingRow} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -853,7 +853,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected StartingRowItemProvider startingRowItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.StartingRow}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.StartingRow}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -869,7 +869,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.Subscription} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.Subscription} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -877,7 +877,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected SubscriptionItemProvider subscriptionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.Subscription}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.Subscription}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -893,7 +893,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.TargetTopic} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.TargetTopic} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -901,7 +901,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected TargetTopicItemProvider targetTopicItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.TargetTopic}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.TargetTopic}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -917,7 +917,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.WorkBookName} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.WorkBookName} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -925,7 +925,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected WorkBookNameItemProvider workBookNameItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.WorkBookName}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.WorkBookName}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -941,7 +941,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.WorkSheetNumber} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.WorkSheetNumber} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -949,7 +949,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected WorkSheetNumberItemProvider workSheetNumberItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.WorkSheetNumber}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.WorkSheetNumber}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -965,7 +965,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.Policy} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.Policy} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -973,7 +973,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected PolicyItemProvider policyItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.Policy}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.Policy}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -988,7 +988,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.DataServiceParameter} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.DataServiceParameter} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -996,7 +996,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected DataServiceParameterItemProvider dataServiceParameterItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.DataServiceParameter}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.DataServiceParameter}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1011,7 +1011,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.RegistryKeyProperty} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1019,7 +1019,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected RegistryKeyPropertyItemProvider registryKeyPropertyItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.RegistryKeyProperty}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.RegistryKeyProperty}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1034,7 +1034,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.CustomValidatorProperty} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1042,7 +1042,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected CustomValidatorPropertyItemProvider customValidatorPropertyItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.CustomValidatorProperty}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1057,7 +1057,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.ds.CustomValidatorPropertyList} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1065,7 +1065,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	protected CustomValidatorPropertyListItemProvider customValidatorPropertyListItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList}.
+	 * This creates an adapter for a {@link org.wso2.integrationstudio.ds.CustomValidatorPropertyList}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

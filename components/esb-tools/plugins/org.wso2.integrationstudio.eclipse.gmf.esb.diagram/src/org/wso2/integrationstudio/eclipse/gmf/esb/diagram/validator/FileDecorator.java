@@ -16,13 +16,13 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator;
+package org.wso2.integrationstudio.gmf.esb.diagram.validator;
 
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ILightweightLabelDecorator;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer.DeserializeStatus;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.Deserializer;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.Deserializer.DeserializeStatus;
 
 import java.io.File;
 import java.io.FileNotFoundException;

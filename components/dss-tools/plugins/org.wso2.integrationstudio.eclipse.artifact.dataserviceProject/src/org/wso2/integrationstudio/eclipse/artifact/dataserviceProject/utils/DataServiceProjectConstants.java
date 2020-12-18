@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.dataserviceProject.utils;
+package org.wso2.integrationstudio.artifact.dataserviceProject.utils;
 
 import org.eclipse.osgi.util.NLS;
 
 public class DataServiceProjectConstants extends NLS {
 
-	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.artifact.dataserviceProject.utils.dataserviceprojectconstants";
+	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.artifact.dataserviceProject.utils.dataserviceprojectconstants";
 	
 	public static String WIZARD_OPTION_PROJECT_NAME;
 	public static String WIZARD_OPTION_IMPORT_FILE;

@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Collection;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CLONE_MEDIATOR__CLONE_ID;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CLONE_MEDIATOR__CONTINUE_PARENT;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CLONE_MEDIATOR__SEQUENTIAL_MEDIATION;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CLONE_MEDIATOR__TARGETS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CLONE_TARGET__SOAP_ACTION;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.CLONE_TARGET__TO_ADDRESS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CLONE_MEDIATOR__CLONE_ID;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CLONE_MEDIATOR__CONTINUE_PARENT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CLONE_MEDIATOR__SEQUENTIAL_MEDIATION;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CLONE_MEDIATOR__TARGETS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CLONE_TARGET__SOAP_ACTION;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CLONE_TARGET__TO_ADDRESS;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.AddressEndpoint;
 import org.apache.synapse.endpoints.DefaultEndpoint;
@@ -45,19 +45,19 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneTargetContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TargetEndpointType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TargetSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.CloneMediatorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.AbstractEndPoint;
+import org.wso2.integrationstudio.gmf.esb.CloneMediator;
+import org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.CloneTarget;
+import org.wso2.integrationstudio.gmf.esb.CloneTargetContainer;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.TargetEndpointType;
+import org.wso2.integrationstudio.gmf.esb.TargetSequenceType;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.CloneMediatorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class CloneMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CloneMediator> {
 

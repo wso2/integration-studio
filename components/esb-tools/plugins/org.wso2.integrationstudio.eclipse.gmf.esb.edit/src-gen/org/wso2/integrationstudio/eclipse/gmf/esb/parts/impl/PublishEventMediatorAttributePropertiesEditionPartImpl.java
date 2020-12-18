@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -54,13 +54,13 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -442,7 +442,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#getAttributeName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#getAttributeName()
 	 * 
 	 */
 	public String getAttributeName() {
@@ -452,7 +452,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#setAttributeName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#setAttributeName(String newValue)
 	 * 
 	 */
 	public void setAttributeName(String newValue) {
@@ -474,7 +474,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#getAttributeValueType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#getAttributeValueType()
 	 * 
 	 */
 	public Enumerator getAttributeValueType() {
@@ -485,7 +485,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#initAttributeValueType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#initAttributeValueType(Object input, Enumerator current)
 	 */
 	public void initAttributeValueType(Object input, Enumerator current) {
 		attributeValueType.setInput(input);
@@ -503,7 +503,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#setAttributeValueType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#setAttributeValueType(Enumerator newValue)
 	 * 
 	 */
 	public void setAttributeValueType(Enumerator newValue) {
@@ -521,7 +521,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#getAttributeValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#getAttributeValue()
 	 * 
 	 */
 	public String getAttributeValue() {
@@ -531,7 +531,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#setAttributeValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#setAttributeValue(String newValue)
 	 * 
 	 */
 	public void setAttributeValue(String newValue) {
@@ -553,7 +553,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#getAttributeType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#getAttributeType()
 	 * 
 	 */
 	public Enumerator getAttributeType() {
@@ -564,7 +564,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#initAttributeType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#initAttributeType(Object input, Enumerator current)
 	 */
 	public void initAttributeType(Object input, Enumerator current) {
 		attributeType.setInput(input);
@@ -582,7 +582,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#setAttributeType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#setAttributeType(Enumerator newValue)
 	 * 
 	 */
 	public void setAttributeType(Enumerator newValue) {
@@ -600,7 +600,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#getDefaultValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#getDefaultValue()
 	 * 
 	 */
 	public String getDefaultValue() {
@@ -610,7 +610,7 @@ public class PublishEventMediatorAttributePropertiesEditionPartImpl extends Comp
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#setDefaultValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.PublishEventMediatorAttributePropertiesEditionPart#setDefaultValue(String newValue)
 	 * 
 	 */
 	public void setDefaultValue(String newValue) {

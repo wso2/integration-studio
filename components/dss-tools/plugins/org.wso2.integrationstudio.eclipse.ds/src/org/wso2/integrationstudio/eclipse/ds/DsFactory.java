@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage
+ * @see org.wso2.integrationstudio.ds.DsPackage
  * @generated
  */
 public interface DsFactory extends EFactory {
@@ -24,7 +24,7 @@ public interface DsFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	DsFactory eINSTANCE = org.wso2.integrationstudio.eclipse.ds.impl.DsFactoryImpl.init();
+	DsFactory eINSTANCE = org.wso2.integrationstudio.ds.impl.DsFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Attribute Mapping</em>'.

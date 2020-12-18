@@ -1,18 +1,18 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Project
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.esb.project;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.esb.project;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.esb.project.Activator
+Bundle-Activator: org.wso2.integrationstudio.esb.project.Activator
 Require-Bundle: org.eclipse.ltk.core.refactoring,
- org.wso2.integrationstudio.eclipse.kernel.libraries,
- org.wso2.integrationstudio.eclipse.platform.core,
- org.wso2.integrationstudio.eclipse.platform.ui,
- org.wso2.integrationstudio.eclipse.esb.libraries,
+ org.wso2.integrationstudio.kernel.libraries,
+ org.wso2.integrationstudio.platform.core,
+ org.wso2.integrationstudio.platform.ui,
+ org.wso2.integrationstudio.esb.libraries,
  org.eclipse.jetty.server;bundle-version="9.4.8",
  org.eclipse.jetty.servlet;bundle-version="9.4.8",
  org.eclipse.jetty.util;bundle-version="9.4.8",
- org.wso2.integrationstudio.eclipse.docker.distribution
+ org.wso2.integrationstudio.docker.distribution
 Bundle-ActivationPolicy: lazy
 Import-Package: javax.servlet;version="3.1.0",
  javax.servlet.annotation;version="3.1.0",
@@ -32,31 +32,31 @@ Import-Package: javax.servlet;version="3.1.0",
  org.eclipse.ui.navigator,
  org.eclipse.ui.part,
  org.eclipse.ui.wizards.newresource,
- org.wso2.integrationstudio.eclipse.artifact.connector.model,
- org.wso2.integrationstudio.eclipse.artifact.connector.ui.wizard,
- org.wso2.integrationstudio.eclipse.capp.core.manifest,
- org.wso2.integrationstudio.eclipse.capp.maven.utils,
- org.wso2.integrationstudio.eclipse.carbonserver.base.util,
- org.wso2.integrationstudio.eclipse.carbonserver44microei12.monitoring.dashboard,
- org.wso2.integrationstudio.eclipse.distribution.project.export,
- org.wso2.integrationstudio.eclipse.distribution.project.model,
- org.wso2.integrationstudio.eclipse.distribution.project.ui.wizard,
- org.wso2.integrationstudio.eclipse.distribution.project.util,
- org.wso2.integrationstudio.eclipse.esb.core,
- org.wso2.integrationstudio.eclipse.esb.core.utils,
- org.wso2.integrationstudio.eclipse.general.project.artifact,
- org.wso2.integrationstudio.eclipse.general.project.artifact.bean,
- org.wso2.integrationstudio.eclipse.general.project.model,
- org.wso2.integrationstudio.eclipse.general.project.ui.wizard,
- org.wso2.integrationstudio.eclipse.gmf.esb,
- org.wso2.integrationstudio.eclipse.maven.multi.module.handlers,
- org.wso2.integrationstudio.eclipse.templates.dashboard.handlers,
- org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server
-Export-Package: org.wso2.integrationstudio.eclipse.esb.project.artifact,
- org.wso2.integrationstudio.eclipse.esb.project.connector.store,
- org.wso2.integrationstudio.eclipse.esb.project.control.graphicalproject,
- org.wso2.integrationstudio.eclipse.esb.project.filter,
- org.wso2.integrationstudio.eclipse.esb.project.model,
- org.wso2.integrationstudio.eclipse.esb.project.servlets,
- org.wso2.integrationstudio.eclipse.esb.project.utils
+ org.wso2.integrationstudio.artifact.connector.model,
+ org.wso2.integrationstudio.artifact.connector.ui.wizard,
+ org.wso2.integrationstudio.capp.core.manifest,
+ org.wso2.integrationstudio.capp.maven.utils,
+ org.wso2.integrationstudio.carbonserver.base.util,
+ org.wso2.integrationstudio.carbonserver44microei12.monitoring.dashboard,
+ org.wso2.integrationstudio.distribution.project.export,
+ org.wso2.integrationstudio.distribution.project.model,
+ org.wso2.integrationstudio.distribution.project.ui.wizard,
+ org.wso2.integrationstudio.distribution.project.util,
+ org.wso2.integrationstudio.esb.core,
+ org.wso2.integrationstudio.esb.core.utils,
+ org.wso2.integrationstudio.general.project.artifact,
+ org.wso2.integrationstudio.general.project.artifact.bean,
+ org.wso2.integrationstudio.general.project.model,
+ org.wso2.integrationstudio.general.project.ui.wizard,
+ org.wso2.integrationstudio.gmf.esb,
+ org.wso2.integrationstudio.maven.multi.module.handlers,
+ org.wso2.integrationstudio.templates.dashboard.handlers,
+ org.wso2.integrationstudio.templates.dashboard.web.function.server
+Export-Package: org.wso2.integrationstudio.esb.project.artifact,
+ org.wso2.integrationstudio.esb.project.connector.store,
+ org.wso2.integrationstudio.esb.project.control.graphicalproject,
+ org.wso2.integrationstudio.esb.project.filter,
+ org.wso2.integrationstudio.esb.project.model,
+ org.wso2.integrationstudio.esb.project.servlets,
+ org.wso2.integrationstudio.esb.project.utils
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.carbon.server.model.exception;
+package org.wso2.integrationstudio.carbon.server.model.exception;
 
 public abstract class InvalidCredentialsCommonException extends Exception {
 	private static final long serialVersionUID = 1L;

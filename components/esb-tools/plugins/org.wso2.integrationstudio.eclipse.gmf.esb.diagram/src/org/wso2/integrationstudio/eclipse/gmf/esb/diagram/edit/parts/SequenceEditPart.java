@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.REGISTRY_KEY_PROPERTY__KEY_VALUE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.SEQUENCE__NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.SEQUENCE__REFERRING_SEQUENCE_TYPE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SEQUENCE_RESOURCE_DIR;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.SEQUENCE_MEDIATOR_ICON_PATH;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.REGISTRY_KEY_PROPERTY__KEY_VALUE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.SEQUENCE__NAME;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.SEQUENCE__REFERRING_SEQUENCE_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils.SEQUENCE_RESOURCE_DIR;
+import static org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
+import static org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.EditPartConstants.SEQUENCE_MEDIATOR_ICON_PATH;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -103,55 +103,55 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.esb.core.ESBMavenConstants;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.ESBProjectUtils;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.RegistryArtifact;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryElement;
-import org.wso2.integrationstudio.eclipse.general.project.artifact.bean.RegistryItem;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.KeyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.SequenceStorage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolTip;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.OpenEditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.SequenceCanonicalEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.SequenceItemSemanticEditPolicy;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator.GraphicalValidatorUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.validator.MediatorValidationUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequenceImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.SequenceMediatorTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplate;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplateHandler;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.esb.project.utils.ESBProjectUtils;
+import org.wso2.integrationstudio.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.integrationstudio.general.project.artifact.RegistryArtifact;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryElement;
+import org.wso2.integrationstudio.general.project.artifact.bean.RegistryItem;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.ProxyService;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedBorderItemLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.SequenceStorage;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.CustomToolTip;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.OpenEditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.SequenceCanonicalEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.SequenceItemSemanticEditPolicy;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbEditorInput;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.validator.GraphicalValidatorUtil;
+import org.wso2.integrationstudio.gmf.esb.diagram.validator.MediatorValidationUtil;
+import org.wso2.integrationstudio.gmf.esb.impl.SequenceImpl;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.SequenceMediatorTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplate;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplateHandler;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 
 /**
@@ -159,7 +159,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolE
  */
 public class SequenceEditPart extends FixedSizedAbstractMediator {
 
-    private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.eclipse.gmf.esb.diagram"); //$NON-NLS-1$
+    private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.gmf.esb.diagram"); //$NON-NLS-1$
 
     private EsbDiagramEditor mainDiagramEditorRef;
 
@@ -946,7 +946,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
              * )+"     "+page.getActiveEditor().getEditorInput ().getName());
              * HashMap map = new HashMap(); map.put(IMarker.LINE_NUMBER, new
              * Integer(5)); map.put(IWorkbenchPage.EDITOR_ID_ATTR,
-             * "org.wso2.integrationstudio.eclipse.gmf.esb.sequence.diagram.part.EsbDiagramEditorID"
+             * "org.wso2.integrationstudio.gmf.esb.sequence.diagram.part.EsbDiagramEditorID"
              * ); IMarker marker; try { marker =
              * file.createMarker(IMarker.TEXT);
              * 

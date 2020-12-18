@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.util;
+package org.wso2.integrationstudio.distribution.project.util;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.util.CarbonUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.carbonserver.base.util.CarbonUtils;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 public class ArtifactPriorityMapping {
 

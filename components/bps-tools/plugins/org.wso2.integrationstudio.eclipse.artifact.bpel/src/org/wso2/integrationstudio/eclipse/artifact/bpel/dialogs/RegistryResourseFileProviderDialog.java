@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.bpel.dialogs;
+package org.wso2.integrationstudio.artifact.bpel.dialogs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.general.project.dialogs.IntegrationStudioElementProviderDialog;
-import org.wso2.integrationstudio.eclipse.registry.core.RegistryManager;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryFile;
+import org.wso2.integrationstudio.general.project.dialogs.IntegrationStudioElementProviderDialog;
+import org.wso2.integrationstudio.registry.core.RegistryManager;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryFile;
 
 /**
  * Provides a dialog box to select resource files from the workspace for BPEL artifacts

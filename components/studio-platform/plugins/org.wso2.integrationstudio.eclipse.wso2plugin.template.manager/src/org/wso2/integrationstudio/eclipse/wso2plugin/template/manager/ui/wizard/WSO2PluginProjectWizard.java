@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.wizard;
+package org.wso2.integrationstudio.wso2plugin.template.manager.ui.wizard;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -45,22 +45,22 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectWizardSettings;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.MessageDialogUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsPage;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.Activator;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.project.WSO2PluginProjectModel;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExt;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExtList;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.util.AbstractDefaultProjectTemplateManager;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.util.DefaultProjectTemplateManager;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.util.IProjectTemplateManager;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.util.WSO2PluginConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectWizardSettings;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.ui.utils.MessageDialogUtils;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsDataPage;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsPage;
+import org.wso2.integrationstudio.wso2plugin.template.manager.Activator;
+import org.wso2.integrationstudio.wso2plugin.template.manager.project.WSO2PluginProjectModel;
+import org.wso2.integrationstudio.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExt;
+import org.wso2.integrationstudio.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExtList;
+import org.wso2.integrationstudio.wso2plugin.template.manager.util.AbstractDefaultProjectTemplateManager;
+import org.wso2.integrationstudio.wso2plugin.template.manager.util.DefaultProjectTemplateManager;
+import org.wso2.integrationstudio.wso2plugin.template.manager.util.IProjectTemplateManager;
+import org.wso2.integrationstudio.wso2plugin.template.manager.util.WSO2PluginConstants;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -59,10 +59,10 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -383,7 +383,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#getSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#getSequenceType()
 	 * 
 	 */
 	public Enumerator getSequenceType() {
@@ -394,7 +394,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#initSequenceType(Object input, Enumerator current)
 	 */
 	public void initSequenceType(Object input, Enumerator current) {
 		sequenceType.setInput(input);
@@ -412,7 +412,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#setSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#setSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setSequenceType(Enumerator newValue) {
@@ -430,7 +430,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#getSequence()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#getSequence()
 	 * 
 	 */
 	public EObject getSequence() {
@@ -445,7 +445,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#initSequence(EObjectFlatComboSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#initSequence(EObjectFlatComboSettings)
 	 */
 	public void initSequence(EObjectFlatComboSettings settings) {
 		sequence.setInput(settings);
@@ -465,7 +465,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#setSequence(EObject newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#setSequence(EObject newValue)
 	 * 
 	 */
 	public void setSequence(EObject newValue) {
@@ -487,7 +487,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#setSequenceButtonMode(ButtonsModeEnum newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#setSequenceButtonMode(ButtonsModeEnum newValue)
 	 */
 	public void setSequenceButtonMode(ButtonsModeEnum newValue) {
 		sequence.setButtonMode(newValue);
@@ -496,7 +496,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#addFilterSequence(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#addFilterSequence(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToSequence(ViewerFilter filter) {
@@ -506,7 +506,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#addBusinessFilterSequence(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#addBusinessFilterSequence(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToSequence(ViewerFilter filter) {
@@ -516,7 +516,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#getEndpointType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#getEndpointType()
 	 * 
 	 */
 	public Enumerator getEndpointType() {
@@ -527,7 +527,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#initEndpointType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#initEndpointType(Object input, Enumerator current)
 	 */
 	public void initEndpointType(Object input, Enumerator current) {
 		endpointType.setInput(input);
@@ -545,7 +545,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#setEndpointType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#setEndpointType(Enumerator newValue)
 	 * 
 	 */
 	public void setEndpointType(Enumerator newValue) {
@@ -563,7 +563,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#getSoapAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#getSoapAction()
 	 * 
 	 */
 	public String getSoapAction() {
@@ -573,7 +573,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#setSoapAction(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#setSoapAction(String newValue)
 	 * 
 	 */
 	public void setSoapAction(String newValue) {
@@ -595,7 +595,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#getToAddress()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#getToAddress()
 	 * 
 	 */
 	public String getToAddress() {
@@ -605,7 +605,7 @@ public class ForEachTargetPropertiesEditionPartImpl extends CompositePropertiesE
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ForEachTargetPropertiesEditionPart#setToAddress(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachTargetPropertiesEditionPart#setToAddress(String newValue)
 	 * 
 	 */
 	public void setToAddress(String newValue) {

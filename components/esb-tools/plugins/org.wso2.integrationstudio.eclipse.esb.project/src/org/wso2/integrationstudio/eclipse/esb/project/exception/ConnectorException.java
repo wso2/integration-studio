@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.integrationstudio.eclipse.esb.project.exception;
+package org.wso2.integrationstudio.esb.project.exception;
 
 /**
  * Exception thrown when an error occurs during connector processes such as

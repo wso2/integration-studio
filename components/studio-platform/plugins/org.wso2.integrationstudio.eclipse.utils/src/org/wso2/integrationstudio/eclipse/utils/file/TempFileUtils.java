@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.file;
+package org.wso2.integrationstudio.utils.file;
 
 import org.apache.commons.io.FileUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class TempFileUtils {
-	private static IIntegrationStudioLog log=Logger.getLog(org.wso2.integrationstudio.eclipse.utils.Activator.PLUGIN_ID);
+	private static IIntegrationStudioLog log=Logger.getLog(org.wso2.integrationstudio.utils.Activator.PLUGIN_ID);
 	
 	private static List<File> tempFiles=new ArrayList<File>();
 

@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.EventSubscriptionList#getSubscription <em>Subscription</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.EventSubscriptionList#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.EventSubscriptionList#getSubscription <em>Subscription</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getEventSubscriptionList()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getEventSubscriptionList()
  * @model extendedMetaData="name='subscriptions_._type' kind='mixed'"
  * @generated
  */
@@ -40,7 +40,7 @@ public interface EventSubscriptionList extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getEventSubscriptionList_Mixed()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getEventSubscriptionList_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -49,7 +49,7 @@ public interface EventSubscriptionList extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Subscription</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.Subscription}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.Subscription}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Subscription</em>' containment reference list
@@ -57,7 +57,7 @@ public interface EventSubscriptionList extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subscription</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getEventSubscriptionList_Subscription()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getEventSubscriptionList_Subscription()
 	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='subscription' namespace='##targetNamespace'"
 	 * @generated

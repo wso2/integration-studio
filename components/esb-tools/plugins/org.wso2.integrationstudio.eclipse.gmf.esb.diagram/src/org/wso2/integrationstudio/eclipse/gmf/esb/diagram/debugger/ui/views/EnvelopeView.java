@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.views;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.views;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT;
 
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.swt.SWT;
@@ -34,10 +34,10 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.AddPropertyToTableDialogRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.ClearPropertyFromTableDialogRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.AddPropertyToTableDialogRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.ClearPropertyFromTableDialogRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.Messages;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
 
 /**
  * This class define view to show the ESB Mediation Debugger envelope properties while debugging

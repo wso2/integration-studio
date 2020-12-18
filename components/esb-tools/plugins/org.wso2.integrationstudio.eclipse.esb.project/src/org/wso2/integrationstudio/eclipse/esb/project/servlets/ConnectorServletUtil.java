@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.esb.project.servlets;
+package org.wso2.integrationstudio.esb.project.servlets;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -41,15 +41,15 @@ import javax.net.ssl.X509TrustManager;
 import org.apache.commons.httpclient.HttpClient;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.esb.project.connector.store.Connector;
-import org.wso2.integrationstudio.eclipse.esb.project.connector.store.ConnectorData;
-import org.wso2.integrationstudio.eclipse.esb.project.connector.store.ConnectorStore;
-import org.wso2.integrationstudio.eclipse.esb.project.control.graphicalproject.GMFPluginDetails;
-import org.wso2.integrationstudio.eclipse.esb.project.control.graphicalproject.IUpdateGMFPlugin;
-import org.wso2.integrationstudio.eclipse.esb.project.exception.ConnectorException;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
+import org.wso2.integrationstudio.esb.project.connector.store.Connector;
+import org.wso2.integrationstudio.esb.project.connector.store.ConnectorData;
+import org.wso2.integrationstudio.esb.project.connector.store.ConnectorStore;
+import org.wso2.integrationstudio.esb.project.control.graphicalproject.GMFPluginDetails;
+import org.wso2.integrationstudio.esb.project.control.graphicalproject.IUpdateGMFPlugin;
+import org.wso2.integrationstudio.esb.project.exception.ConnectorException;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.Activator;
 
 import com.google.gson.Gson;
 

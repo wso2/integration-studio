@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.ui.wizard;
+package org.wso2.integrationstudio.distribution.project.ui.wizard;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -38,18 +38,18 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.capp.maven.utils.MavenConstants;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.DependencyData;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.DistributionProjectModel;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.ArtifactTypeMapping;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.DistProjectUtils;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.DistributionProjectImageUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.distribution.project.model.DependencyData;
+import org.wso2.integrationstudio.distribution.project.model.DistributionProjectModel;
+import org.wso2.integrationstudio.distribution.project.util.ArtifactTypeMapping;
+import org.wso2.integrationstudio.distribution.project.util.DistProjectUtils;
+import org.wso2.integrationstudio.distribution.project.util.DistributionProjectImageUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class DistributionProjectWizard extends
 		AbstractWSO2ProjectCreationWizard {
@@ -159,7 +159,7 @@ public class DistributionProjectWizard extends
 		     IWorkbenchWindow window=PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 	         IWorkbenchPage page = window.getActivePage();
 	         ((CommonNavigator) page.findViewReference(IPageLayout.ID_PROJECT_EXPLORER, null).getView(true)).setLinkingEnabled(true);
-	      	 page.openEditor(new FileEditorInput(pom), "org.wso2.integrationstudio.eclipse.distribution.project.editor.DistProjectEditor"); 
+	      	 page.openEditor(new FileEditorInput(pom), "org.wso2.integrationstudio.distribution.project.editor.DistProjectEditor"); 
 		} catch (Exception e) { /* ignore */}
 	}
 

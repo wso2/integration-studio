@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.dashboard;
+package org.wso2.integrationstudio.dashboard;
 
 import java.util.Map;
 
@@ -22,11 +22,11 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.util.ServerExtensionsRegistryUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver40.register.product.servers.DynamicServer40ExtensionGenerator;
-import org.wso2.integrationstudio.eclipse.carbonserver42.register.product.servers.DynamicServer42ExtensionGenerator;
-import org.wso2.integrationstudio.eclipse.carbonserver44.register.product.servers.DynamicServer44ExtensionGenerator;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.carbonserver.base.util.ServerExtensionsRegistryUtils;
+import org.wso2.integrationstudio.carbonserver40.register.product.servers.DynamicServer40ExtensionGenerator;
+import org.wso2.integrationstudio.carbonserver42.register.product.servers.DynamicServer42ExtensionGenerator;
+import org.wso2.integrationstudio.carbonserver44.register.product.servers.DynamicServer44ExtensionGenerator;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -34,7 +34,7 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.dashboad"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.dashboad"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;

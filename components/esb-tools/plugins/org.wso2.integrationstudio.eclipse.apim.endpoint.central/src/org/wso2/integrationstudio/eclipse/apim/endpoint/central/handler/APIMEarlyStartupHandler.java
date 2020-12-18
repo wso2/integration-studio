@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.handler;
+package org.wso2.integrationstudio.apim.endpoint.central.handler;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,17 +34,17 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.ui.IStartup;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.Activator;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.UserSession;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.EndpointCentralServletConstants;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.EndpointRegistryServiceConstants;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.servlets.EndpointCentralServlet;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils.EncoderUtil;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils.UserSessionManager;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.handlers.JettyServerHandler;
-import org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
+import org.wso2.integrationstudio.apim.endpoint.central.Activator;
+import org.wso2.integrationstudio.apim.endpoint.central.model.UserSession;
+import org.wso2.integrationstudio.apim.endpoint.central.resources.EndpointCentralServletConstants;
+import org.wso2.integrationstudio.apim.endpoint.central.resources.EndpointRegistryServiceConstants;
+import org.wso2.integrationstudio.apim.endpoint.central.servlets.EndpointCentralServlet;
+import org.wso2.integrationstudio.apim.endpoint.central.utils.EncoderUtil;
+import org.wso2.integrationstudio.apim.endpoint.central.utils.UserSessionManager;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.templates.dashboard.handlers.JettyServerHandler;
+import org.wso2.integrationstudio.templates.dashboard.web.function.server.FunctionServerConstants;
 
 /**
  * This startup handler will add the Endpoint central context handler to Jetty.

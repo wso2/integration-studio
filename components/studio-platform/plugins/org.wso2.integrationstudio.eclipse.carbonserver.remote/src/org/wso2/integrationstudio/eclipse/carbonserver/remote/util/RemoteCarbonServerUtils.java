@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.remote.util;
+package org.wso2.integrationstudio.carbonserver.remote.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -63,14 +63,14 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.utils.CarbonServerUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver.remote.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver.remote.internal.RemoteCarbonServer;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonConstants;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.utils.CarbonServerUtils;
+import org.wso2.integrationstudio.carbonserver.remote.Activator;
+import org.wso2.integrationstudio.carbonserver.remote.internal.RemoteCarbonServer;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 @SuppressWarnings("restriction")
 public class RemoteCarbonServerUtils {

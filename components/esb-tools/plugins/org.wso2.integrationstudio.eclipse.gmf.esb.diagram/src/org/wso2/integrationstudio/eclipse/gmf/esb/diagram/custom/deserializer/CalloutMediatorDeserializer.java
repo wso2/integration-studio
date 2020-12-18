@@ -1,20 +1,20 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutEndpointType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutPayloadType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutResultType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutSecurityPolicies;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CalloutSecurityType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.CalloutEndpointType;
+import org.wso2.integrationstudio.gmf.esb.CalloutMediator;
+import org.wso2.integrationstudio.gmf.esb.CalloutPayloadType;
+import org.wso2.integrationstudio.gmf.esb.CalloutResultType;
+import org.wso2.integrationstudio.gmf.esb.CalloutSecurityPolicies;
+import org.wso2.integrationstudio.gmf.esb.CalloutSecurityType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class CalloutMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CalloutMediator> {
 

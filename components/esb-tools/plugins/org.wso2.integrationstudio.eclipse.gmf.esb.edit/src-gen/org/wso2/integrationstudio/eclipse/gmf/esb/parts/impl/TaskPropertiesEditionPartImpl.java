@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -73,12 +73,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -756,7 +756,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -766,7 +766,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -788,7 +788,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -798,7 +798,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -839,7 +839,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#getTaskName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#getTaskName()
 	 * 
 	 */
 	public String getTaskName() {
@@ -849,7 +849,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#setTaskName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#setTaskName(String newValue)
 	 * 
 	 */
 	public void setTaskName(String newValue) {
@@ -871,7 +871,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#getTaskGroup()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#getTaskGroup()
 	 * 
 	 */
 	public String getTaskGroup() {
@@ -881,7 +881,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#setTaskGroup(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#setTaskGroup(String newValue)
 	 * 
 	 */
 	public void setTaskGroup(String newValue) {
@@ -903,7 +903,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#getTriggerType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#getTriggerType()
 	 * 
 	 */
 	public Enumerator getTriggerType() {
@@ -914,7 +914,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#initTriggerType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#initTriggerType(Object input, Enumerator current)
 	 */
 	public void initTriggerType(Object input, Enumerator current) {
 		triggerType.setInput(input);
@@ -932,7 +932,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#setTriggerType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#setTriggerType(Enumerator newValue)
 	 * 
 	 */
 	public void setTriggerType(Enumerator newValue) {
@@ -950,7 +950,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#getCount()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#getCount()
 	 * 
 	 */
 	public String getCount() {
@@ -960,7 +960,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#setCount(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#setCount(String newValue)
 	 * 
 	 */
 	public void setCount(String newValue) {
@@ -982,7 +982,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#getInterval()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#getInterval()
 	 * 
 	 */
 	public String getInterval() {
@@ -992,7 +992,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#setInterval(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#setInterval(String newValue)
 	 * 
 	 */
 	public void setInterval(String newValue) {
@@ -1014,7 +1014,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#getCron()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#getCron()
 	 * 
 	 */
 	public String getCron() {
@@ -1024,7 +1024,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#setCron(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#setCron(String newValue)
 	 * 
 	 */
 	public void setCron(String newValue) {
@@ -1046,7 +1046,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#getPinnedServers()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#getPinnedServers()
 	 * 
 	 */
 	public String getPinnedServers() {
@@ -1056,7 +1056,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#setPinnedServers(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#setPinnedServers(String newValue)
 	 * 
 	 */
 	public void setPinnedServers(String newValue) {
@@ -1078,7 +1078,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#getTaskImplementation()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#getTaskImplementation()
 	 * 
 	 */
 	public String getTaskImplementation() {
@@ -1088,7 +1088,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#setTaskImplementation(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#setTaskImplementation(String newValue)
 	 * 
 	 */
 	public void setTaskImplementation(String newValue) {
@@ -1112,7 +1112,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#initTaskProperties(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#initTaskProperties(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initTaskProperties(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1133,7 +1133,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#updateTaskProperties()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#updateTaskProperties()
 	 * 
 	 */
 	public void updateTaskProperties() {
@@ -1143,7 +1143,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#addFilterTaskProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#addFilterTaskProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToTaskProperties(ViewerFilter filter) {
@@ -1156,7 +1156,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#addBusinessFilterTaskProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#addBusinessFilterTaskProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToTaskProperties(ViewerFilter filter) {
@@ -1166,7 +1166,7 @@ public class TaskPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TaskPropertiesEditionPart#isContainedInTaskPropertiesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TaskPropertiesEditionPart#isContainedInTaskPropertiesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInTaskPropertiesTable(EObject element) {

@@ -15,12 +15,12 @@
  */
 
 
-package org.wso2.integrationstudio.eclipse.security.project.utils;
+package org.wso2.integrationstudio.security.project.utils;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.security.Activator;
-import org.wso2.integrationstudio.eclipse.utils.template.TemplateUtil;
+import org.wso2.integrationstudio.security.Activator;
+import org.wso2.integrationstudio.utils.template.TemplateUtil;
 
 public class SecurityTemplateUtil extends TemplateUtil {
 private static SecurityTemplateUtil instance;

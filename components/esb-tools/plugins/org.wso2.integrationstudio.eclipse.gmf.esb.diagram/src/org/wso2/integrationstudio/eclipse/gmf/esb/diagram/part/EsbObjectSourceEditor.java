@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.part;
 
 import org.eclipse.core.internal.resources.ModelObject;
 import org.eclipse.core.resources.IFile;
@@ -33,13 +33,13 @@ import org.eclipse.wst.sse.core.internal.provisional.IStructuredModel;
 import org.eclipse.wst.sse.core.internal.provisional.text.IStructuredDocument;
 import org.eclipse.wst.sse.core.internal.text.rules.StructuredTextPartitioner;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.ExceptionMessageMapper;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.ExceptionMessageMapper;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbModelTransformer;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.esb.form.editors.mockservice.MockServiceFormToSourceTransformer;
 import org.wso2.integrationstudio.esb.form.editors.unittest.SynapseUnitTestFormToSourceTransformer;
 

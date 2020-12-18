@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.unittest;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.unittest;
 
 import java.io.File;
 
@@ -45,10 +45,10 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.DependencyTree;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.constant.Constants;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.SynapseUnitTest;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.propertytester.UnitTestResourceTester;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.DependencyTree;
+import org.wso2.integrationstudio.esb.synapse.unit.test.constant.Constants;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.SynapseUnitTest;
+import org.wso2.integrationstudio.esb.synapse.unit.test.propertytester.UnitTestResourceTester;
 
 /**
  * Class responsible for creation of wizard page for unit test details.

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.connector.ui.wizard;
+package org.wso2.integrationstudio.artifact.connector.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,18 +30,18 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.IWizardPage;
-import org.wso2.integrationstudio.eclipse.artifact.connector.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.connector.artifact.ConnectorProjectArtifact;
-import org.wso2.integrationstudio.eclipse.artifact.connector.model.ConnectorModel;
-import org.wso2.integrationstudio.eclipse.artifact.connector.utils.ConnectorImageUtils;
-import org.wso2.integrationstudio.eclipse.esb.core.ESBMavenConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.model.MavenInfo;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.artifact.connector.Activator;
+import org.wso2.integrationstudio.artifact.connector.artifact.ConnectorProjectArtifact;
+import org.wso2.integrationstudio.artifact.connector.model.ConnectorModel;
+import org.wso2.integrationstudio.artifact.connector.utils.ConnectorImageUtils;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.model.MavenInfo;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsDataPage;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class ConnectorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 

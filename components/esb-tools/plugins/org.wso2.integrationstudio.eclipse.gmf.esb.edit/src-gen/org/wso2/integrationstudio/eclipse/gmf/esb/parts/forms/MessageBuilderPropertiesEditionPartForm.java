@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -42,10 +42,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.MessageBuilderPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -366,7 +366,7 @@ public class MessageBuilderPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#getContentType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageBuilderPropertiesEditionPart#getContentType()
 	 * 
 	 */
 	public String getContentType() {
@@ -376,7 +376,7 @@ public class MessageBuilderPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#setContentType(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageBuilderPropertiesEditionPart#setContentType(String newValue)
 	 * 
 	 */
 	public void setContentType(String newValue) {
@@ -398,7 +398,7 @@ public class MessageBuilderPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#getBuilderClass()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageBuilderPropertiesEditionPart#getBuilderClass()
 	 * 
 	 */
 	public String getBuilderClass() {
@@ -408,7 +408,7 @@ public class MessageBuilderPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#setBuilderClass(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageBuilderPropertiesEditionPart#setBuilderClass(String newValue)
 	 * 
 	 */
 	public void setBuilderClass(String newValue) {
@@ -430,7 +430,7 @@ public class MessageBuilderPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#getFormatterClass()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageBuilderPropertiesEditionPart#getFormatterClass()
 	 * 
 	 */
 	public String getFormatterClass() {
@@ -440,7 +440,7 @@ public class MessageBuilderPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.MessageBuilderPropertiesEditionPart#setFormatterClass(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.MessageBuilderPropertiesEditionPart#setFormatterClass(String newValue)
 	 * 
 	 */
 	public void setFormatterClass(String newValue) {

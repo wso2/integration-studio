@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.util;
+package org.wso2.integrationstudio.wso2plugin.template.manager.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,9 +7,9 @@ import org.eclipse.jgit.api.*;
 import org.eclipse.jgit.api.errors.*;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.wso2plugin.template.manager.Activator;
 
 public class JGitSampleRepoManager {
 

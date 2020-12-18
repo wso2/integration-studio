@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.FeatureMap;
@@ -18,14 +18,14 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.Resource#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.Resource#getCallQuery <em>Call Query</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.Resource#getMethod <em>Method</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.Resource#getPath <em>Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.Resource#isReturnRequestStatus <em>Return Request Status</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.Resource#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.Resource#getCallQuery <em>Call Query</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.Resource#getMethod <em>Method</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.Resource#getPath <em>Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.Resource#isReturnRequestStatus <em>Return Request Status</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResource()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getResource()
  * @model extendedMetaData="name='resource_._type' kind='mixed'"
  * @generated
  */
@@ -40,7 +40,7 @@ public interface Resource extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResource_Mixed()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResource_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -57,7 +57,7 @@ public interface Resource extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Call Query</em>' containment reference.
 	 * @see #setCallQuery(CallQuery)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResource_CallQuery()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResource_CallQuery()
 	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='call-query' namespace='##targetNamespace'"
 	 * @generated
@@ -65,7 +65,7 @@ public interface Resource extends EObject {
 	CallQuery getCallQuery();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.Resource#getCallQuery <em>Call Query</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.Resource#getCallQuery <em>Call Query</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Call Query</em>' containment reference.
@@ -84,7 +84,7 @@ public interface Resource extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Method</em>' attribute.
 	 * @see #setMethod(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResource_Method()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResource_Method()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='method' namespace='##targetNamespace'"
 	 * @generated
@@ -92,7 +92,7 @@ public interface Resource extends EObject {
 	String getMethod();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.Resource#getMethod <em>Method</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.Resource#getMethod <em>Method</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Method</em>' attribute.
@@ -111,7 +111,7 @@ public interface Resource extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResource_Path()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResource_Path()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='path' namespace='##targetNamespace'"
 	 * @generated
@@ -119,7 +119,7 @@ public interface Resource extends EObject {
 	String getPath();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.Resource#getPath <em>Path</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.Resource#getPath <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Path</em>' attribute.
@@ -138,7 +138,7 @@ public interface Resource extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Return Request Status</em>' attribute.
 	 * @see #setReturnRequestStatus(boolean)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getResource_ReturnRequestStatus()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getResource_ReturnRequestStatus()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean" required="true"
 	 *        extendedMetaData="kind='attribute' name='returnRequestStatus' namespace='##targetNamespace'"
 	 * @generated
@@ -146,7 +146,7 @@ public interface Resource extends EObject {
 	boolean isReturnRequestStatus();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.Resource#isReturnRequestStatus <em>Return Request Status</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.Resource#isReturnRequestStatus <em>Return Request Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Return Request Status</em>' attribute.

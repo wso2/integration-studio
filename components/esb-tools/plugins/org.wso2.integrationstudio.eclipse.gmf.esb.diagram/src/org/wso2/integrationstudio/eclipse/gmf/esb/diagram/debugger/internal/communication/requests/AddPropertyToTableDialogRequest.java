@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model.ESBStackFrame;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.ui.views.EnvelopeView;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.model.ESBStackFrame;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.ui.views.EnvelopeView;
 
 /**
  * This class represent the request event from {@link EnvelopeView} to {@link ESBStackFrame} when property value is

@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.welcome.perspective;
+package org.wso2.integrationstudio.welcome.perspective;
 
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
@@ -25,8 +25,8 @@ import org.eclipse.ui.IPerspectiveFactory;
 public class WelcomePerspectiveFactory implements IPerspectiveFactory {
 
     String browserViewID = "org.wso2.integrationstudio.welcome.remote.welcome.view";
-    String metadataViewID = "org.wso2.integrationstudio.eclipse.welcome.properties";
-    String resourceInfoViewID = "org.wso2.integrationstudio.eclipse.welcome.resource.info";
+    String metadataViewID = "org.wso2.integrationstudio.welcome.properties";
+    String resourceInfoViewID = "org.wso2.integrationstudio.welcome.resource.info";
 
     public void createInitialLayout(IPageLayout layout) {
         defineAction(layout);

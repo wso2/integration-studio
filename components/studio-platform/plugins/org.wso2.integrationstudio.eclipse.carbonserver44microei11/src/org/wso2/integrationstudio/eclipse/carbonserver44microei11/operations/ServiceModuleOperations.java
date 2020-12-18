@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei11.operations;
+package org.wso2.integrationstudio.carbonserver44microei11.operations;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,25 +47,25 @@ import org.eclipse.jst.ws.internal.common.J2EEUtils;
 import org.eclipse.jst.ws.internal.common.ResourceUtils;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.impl.CarbonServer;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.interfaces.ICarbonServerModulePublisher;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerInformation;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.util.CarbonUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.util.CarbonServer44eiUtils;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.DistProjectUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.wst.Axis2ServiceUtils;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonUtils;
+import org.wso2.integrationstudio.carbonserver.base.impl.CarbonServer;
+import org.wso2.integrationstudio.carbonserver.base.interfaces.ICarbonServerModulePublisher;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerInformation;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.util.CarbonUtils;
+import org.wso2.integrationstudio.carbonserver44microei11.Activator;
+import org.wso2.integrationstudio.carbonserver44microei11.util.CarbonServer44eiUtils;
+import org.wso2.integrationstudio.distribution.project.util.DistProjectUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.wst.Axis2ServiceUtils;
 
 public class ServiceModuleOperations {
 	private static final String CARBONSERVER_PUBLISHER_EXTENSION_ID =
-	                                                                  "org.wso2.integrationstudio.eclipse.carbonserver.publisher";
+	                                                                  "org.wso2.integrationstudio.carbonserver.publisher";
 	private static final String WEBAPP_PROJECT_PUBLISHER44ei_ID =
-	                                                            "org.wso2.integrationstudio.eclipse.webapp.project.publisher44ei";
+	                                                            "org.wso2.integrationstudio.webapp.project.publisher44ei";
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 

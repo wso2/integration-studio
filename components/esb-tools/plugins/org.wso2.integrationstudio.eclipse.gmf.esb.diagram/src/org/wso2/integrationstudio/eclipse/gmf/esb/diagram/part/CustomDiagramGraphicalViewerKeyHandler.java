@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.part;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gef.GraphicalViewer;
@@ -12,8 +12,8 @@ import org.eclipse.swt.events.HelpListener;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.IWorkbenchPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 
 public class CustomDiagramGraphicalViewerKeyHandler extends DiagramGraphicalViewerKeyHandler {
     private DeleteElementAction deleteAction;

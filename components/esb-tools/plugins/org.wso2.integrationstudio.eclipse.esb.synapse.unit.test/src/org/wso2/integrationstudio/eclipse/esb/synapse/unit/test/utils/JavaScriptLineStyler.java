@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils;
+package org.wso2.integrationstudio.esb.synapse.unit.test.utils;
 
 import java.io.IOException;
 import java.io.StringReader;

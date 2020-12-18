@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei12.monitoring.dashboard.util;
+package org.wso2.integrationstudio.carbonserver44microei12.monitoring.dashboard.util;
 
 import java.io.File;
 

@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__FEATURES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__RESOURCES;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__SCHEMAS;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__SOURCE_XPATH;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__FEATURES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__RESOURCES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__SCHEMAS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__SOURCE_XPATH;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -36,15 +36,15 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.KeyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateFeature;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ValidateSchema;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.ValidateFeature;
+import org.wso2.integrationstudio.gmf.esb.ValidateMediator;
+import org.wso2.integrationstudio.gmf.esb.ValidateResource;
+import org.wso2.integrationstudio.gmf.esb.ValidateSchema;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class ValidateMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, ValidateMediator> {
 
@@ -56,7 +56,7 @@ public class ValidateMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
 
         org.apache.synapse.mediators.builtin.ValidateMediator validateMediator = (org.apache.synapse.mediators.builtin.ValidateMediator) mediator;
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediator VisualValidateMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.ValidateMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.ValidateMediator VisualValidateMediator = (org.wso2.integrationstudio.gmf.esb.ValidateMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.ValidateMediator_3623);
         setElementToEdit(VisualValidateMediator);
         setCommonProperties(validateMediator, VisualValidateMediator);

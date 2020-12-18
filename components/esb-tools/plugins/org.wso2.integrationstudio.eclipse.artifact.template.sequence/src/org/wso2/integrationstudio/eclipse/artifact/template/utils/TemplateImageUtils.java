@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.artifact.template.utils;
+package org.wso2.integrationstudio.artifact.template.utils;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.artifact.template.Activator;
-import org.wso2.integrationstudio.eclipse.utils.ui.ImageUtils;
+import org.wso2.integrationstudio.artifact.template.Activator;
+import org.wso2.integrationstudio.utils.ui.ImageUtils;
 
 public class TemplateImageUtils extends ImageUtils {
 

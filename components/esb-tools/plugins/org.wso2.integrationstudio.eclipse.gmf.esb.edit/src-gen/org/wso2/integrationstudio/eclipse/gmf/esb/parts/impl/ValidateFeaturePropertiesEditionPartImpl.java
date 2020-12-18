@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -41,10 +41,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateFeaturePropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ValidateFeaturePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -217,7 +217,7 @@ public class ValidateFeaturePropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateFeaturePropertiesEditionPart#getFeatureName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateFeaturePropertiesEditionPart#getFeatureName()
 	 * 
 	 */
 	public String getFeatureName() {
@@ -227,7 +227,7 @@ public class ValidateFeaturePropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateFeaturePropertiesEditionPart#setFeatureName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateFeaturePropertiesEditionPart#setFeatureName(String newValue)
 	 * 
 	 */
 	public void setFeatureName(String newValue) {
@@ -249,7 +249,7 @@ public class ValidateFeaturePropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateFeaturePropertiesEditionPart#getFeatureEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateFeaturePropertiesEditionPart#getFeatureEnabled()
 	 * 
 	 */
 	public Boolean getFeatureEnabled() {
@@ -259,7 +259,7 @@ public class ValidateFeaturePropertiesEditionPartImpl extends CompositePropertie
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ValidateFeaturePropertiesEditionPart#setFeatureEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ValidateFeaturePropertiesEditionPart#setFeatureEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setFeatureEnabled(Boolean newValue) {

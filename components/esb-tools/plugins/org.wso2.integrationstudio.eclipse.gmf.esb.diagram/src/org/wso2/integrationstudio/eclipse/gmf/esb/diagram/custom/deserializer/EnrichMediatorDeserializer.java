@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Map;
 
@@ -28,15 +28,15 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichSourceInlineType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichSourceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichTargetAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EnrichTargetType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.EnrichMediator;
+import org.wso2.integrationstudio.gmf.esb.EnrichSourceInlineType;
+import org.wso2.integrationstudio.gmf.esb.EnrichSourceType;
+import org.wso2.integrationstudio.gmf.esb.EnrichTargetAction;
+import org.wso2.integrationstudio.gmf.esb.EnrichTargetType;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, EnrichMediator> {
 
@@ -47,7 +47,7 @@ public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 
         org.apache.synapse.mediators.elementary.EnrichMediator enrichMediator = (org.apache.synapse.mediators.elementary.EnrichMediator) mediator;
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediator visualEnrichMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.EnrichMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.EnrichMediator visualEnrichMediator = (org.wso2.integrationstudio.gmf.esb.EnrichMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.EnrichMediator_3496);
         setElementToEdit(visualEnrichMediator);
         setCommonProperties(enrichMediator, visualEnrichMediator);

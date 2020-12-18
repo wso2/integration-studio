@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -46,10 +46,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorContainerPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorContainerPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -212,7 +212,7 @@ public class RouterMediatorContainerPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorContainerPropertiesEditionPart#initRouterTargetContainer(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorContainerPropertiesEditionPart#initRouterTargetContainer(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initRouterTargetContainer(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -233,7 +233,7 @@ public class RouterMediatorContainerPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorContainerPropertiesEditionPart#updateRouterTargetContainer()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorContainerPropertiesEditionPart#updateRouterTargetContainer()
 	 * 
 	 */
 	public void updateRouterTargetContainer() {
@@ -243,7 +243,7 @@ public class RouterMediatorContainerPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorContainerPropertiesEditionPart#addFilterRouterTargetContainer(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorContainerPropertiesEditionPart#addFilterRouterTargetContainer(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToRouterTargetContainer(ViewerFilter filter) {
@@ -256,7 +256,7 @@ public class RouterMediatorContainerPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorContainerPropertiesEditionPart#addBusinessFilterRouterTargetContainer(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorContainerPropertiesEditionPart#addBusinessFilterRouterTargetContainer(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToRouterTargetContainer(ViewerFilter filter) {
@@ -266,7 +266,7 @@ public class RouterMediatorContainerPropertiesEditionPartForm extends SectionPro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterMediatorContainerPropertiesEditionPart#isContainedInRouterTargetContainerTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterMediatorContainerPropertiesEditionPart#isContainedInRouterTargetContainerTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInRouterTargetContainerTable(EObject element) {

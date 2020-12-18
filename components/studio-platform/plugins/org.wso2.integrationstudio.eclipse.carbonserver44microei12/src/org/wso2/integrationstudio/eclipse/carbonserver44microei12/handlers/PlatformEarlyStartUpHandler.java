@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei12.handlers;
+package org.wso2.integrationstudio.carbonserver44microei12.handlers;
 
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
@@ -45,10 +45,10 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PerspectiveAdapter;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.WorkbenchWindow;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.integrationstudio.carbonserver44microei12.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
 
 /**
  * This is the early startup handler of the Integration Studio platform, all
@@ -210,7 +210,7 @@ public class PlatformEarlyStartUpHandler implements IStartup {
     private void createESBDebugProfile(ILaunchManager launchManager) throws CoreException {
         if (findLaunchConfigurationByName(launchManager, DEBUG_PROFILE_NAME) == null) {
             ILaunchConfigurationType debugESBLaunchType = launchManager
-                    .getLaunchConfigurationType("org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.launch");
+                    .getLaunchConfigurationType("org.wso2.integrationstudio.gmf.esb.diagram.debugger.launch");
             ILaunchConfigurationWorkingCopy debugESBLaunchConfig = debugESBLaunchType.newInstance(null,
                     DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(DEBUG_PROFILE_NAME));
             debugESBLaunchConfig.doSave();
@@ -220,7 +220,7 @@ public class PlatformEarlyStartUpHandler implements IStartup {
     private void createMicroIntegratorRunProfile(ILaunchManager launchManager) throws CoreException {
         if (findLaunchConfigurationByName(launchManager, RUN_PROFILE_NAME) == null) {
             ILaunchConfigurationType debugESBLaunchType = launchManager
-                    .getLaunchConfigurationType("org.wso2.integrationstudio.eclipse.carbonserver44microei12.launch");
+                    .getLaunchConfigurationType("org.wso2.integrationstudio.carbonserver44microei12.launch");
             ILaunchConfigurationWorkingCopy debugESBLaunchConfig = debugESBLaunchType.newInstance(null,
                     DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(RUN_PROFILE_NAME));
             debugESBLaunchConfig.doSave();

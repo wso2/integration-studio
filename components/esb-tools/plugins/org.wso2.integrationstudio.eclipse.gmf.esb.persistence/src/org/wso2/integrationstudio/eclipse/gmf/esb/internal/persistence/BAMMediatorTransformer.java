@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 
@@ -23,11 +23,11 @@ import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.carbon.mediator.bam.config.stream.StreamConfiguration;
-import org.wso2.integrationstudio.eclipse.gmf.esb.BAMMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.ValidationConstansts;
+import org.wso2.integrationstudio.gmf.esb.BAMMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.persistence.ValidationConstansts;
 
 public class BAMMediatorTransformer extends AbstractEsbNodeTransformer {
 

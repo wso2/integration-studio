@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.localentry.ui.wizard;
+package org.wso2.integrationstudio.artifact.localentry.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,22 +41,22 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.artifact.localentry.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.localentry.model.LocalEntryModel;
-import org.wso2.integrationstudio.eclipse.artifact.localentry.utils.LocalEntryArtifactConstants;
-import org.wso2.integrationstudio.eclipse.artifact.localentry.utils.LocalEntryImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.localentry.utils.LocalEntryTemplateUtils;
-import org.wso2.integrationstudio.eclipse.esb.core.ESBMavenConstants;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.artifact.localentry.Activator;
+import org.wso2.integrationstudio.artifact.localentry.model.LocalEntryModel;
+import org.wso2.integrationstudio.artifact.localentry.utils.LocalEntryArtifactConstants;
+import org.wso2.integrationstudio.artifact.localentry.utils.LocalEntryImageUtils;
+import org.wso2.integrationstudio.artifact.localentry.utils.LocalEntryTemplateUtils;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	

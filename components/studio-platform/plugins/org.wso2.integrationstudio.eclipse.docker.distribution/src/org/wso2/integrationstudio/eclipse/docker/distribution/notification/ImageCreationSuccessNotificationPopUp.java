@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.notification;
+package org.wso2.integrationstudio.docker.distribution.notification;
 
 import org.eclipse.mylyn.commons.ui.dialogs.AbstractNotificationPopup;
 import org.eclipse.swt.SWT;
@@ -25,7 +25,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
-import org.wso2.integrationstudio.eclipse.docker.distribution.resources.DockerGenConstants;
+import org.wso2.integrationstudio.docker.distribution.resources.DockerGenConstants;
 
 /**
  * This class represents the notification popup displayed when the docker image

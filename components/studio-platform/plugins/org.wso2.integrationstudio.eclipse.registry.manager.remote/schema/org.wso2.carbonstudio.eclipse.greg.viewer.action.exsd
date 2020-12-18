@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.greg.manager.remote" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.greg.manager.remote" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.greg.manager.remote" id="org.wso2.integrationstudio.eclipse.greg.viewer.action" name="WSO2 Registry Viewer Action Contributor"/>
+         <meta.schema plugin="org.wso2.integrationstudio.greg.manager.remote" id="org.wso2.integrationstudio.greg.viewer.action" name="WSO2 Registry Viewer Action Contributor"/>
       </appinfo>
       <documentation>
          This is the extension point to add a custom menu item to the right click menu of a resource or collection in the registry browser.
@@ -62,7 +62,7 @@
                   fully qualified class name of the contributing class
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.greg.base.interfaces.IRegistryAction"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.greg.base.interfaces.IRegistryAction"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -85,7 +85,7 @@
       <documentation>
          The following is an example usage of the extension point.
 &lt;extension
-       point=&quot;org.wso2.integrationstudio.eclipse.greg.viewer.action&quot;&gt;
+       point=&quot;org.wso2.integrationstudio.greg.viewer.action&quot;&gt;
     &lt;action
           class=&quot;org.wso2.integrationstudio.sample.ui.actions.SampleActionContributor&quot;
           id=&quot;org.wso2.integrationstudio.sample.ui.sample.action&quot;&gt;
@@ -99,7 +99,7 @@
          <meta.section type="apiinfo"/>
       </appinfo>
       <documentation>
-         The value of the class attribute must be the fully qualified name of a class that implements org.wso2.integrationstudio.eclipse.greg.base.interfaces.IRegistryAction. Both class and id field are mandatory.
+         The value of the class attribute must be the fully qualified name of a class that implements org.wso2.integrationstudio.greg.base.interfaces.IRegistryAction. Both class and id field are mandatory.
       </documentation>
    </annotation>
 

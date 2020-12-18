@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.preferences;
+package org.wso2.integrationstudio.platform.ui.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.ComboFieldEditor;
@@ -30,11 +30,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
-import org.wso2.integrationstudio.eclipse.platform.ui.WorkbenchToolkit;
+import org.wso2.integrationstudio.platform.ui.WorkbenchToolkit;
 
 public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
-	public static final String PREFERENCE_PLUGIN_ID = "org.wso2.integrationstudio.eclipse.platform.ui";
+	public static final String PREFERENCE_PLUGIN_ID = "org.wso2.integrationstudio.platform.ui";
 
 	private static IPreferenceStore preferenceStore;
 	private ComboFieldEditor intervalDayEditor;

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -12,10 +12,10 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureCloneMediatorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureURLrewriteruleDialog;
+import org.wso2.integrationstudio.gmf.esb.CloneMediator;
+import org.wso2.integrationstudio.gmf.esb.URLRewriteMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui.ConfigureCloneMediatorDialog;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui.ConfigureURLrewriteruleDialog;
 
 public class ConfigureURLRewriteMediatorAction extends ConfigureEsbNodeAction {
     public static final String URLREWRITE_MEDIATOR_ACTION_CONFIGURATOR_ID = "configure-urlRewrite-mediator-action-id";

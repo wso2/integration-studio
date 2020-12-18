@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.registry.connector.provider;
+package org.wso2.integrationstudio.capp.registry.connector.provider;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.GroupMarker;
@@ -26,11 +26,11 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.navigator.CommonActionProvider;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.integrationstudio.eclipse.capp.core.model.RegistryData;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.model.RegistryConnectionNode;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.utils.RegistryConnectorImageUtils;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.utils.RegistryHandlerUtils;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.CAppEnvironment;
+import org.wso2.integrationstudio.capp.core.model.RegistryData;
+import org.wso2.integrationstudio.capp.registry.connector.model.RegistryConnectionNode;
+import org.wso2.integrationstudio.capp.registry.connector.utils.RegistryConnectorImageUtils;
+import org.wso2.integrationstudio.capp.registry.connector.utils.RegistryHandlerUtils;
 
 public class RegistryConnectionActionProvider extends CommonActionProvider{
 	private Action actionOpenRegistryBrowserViewer;

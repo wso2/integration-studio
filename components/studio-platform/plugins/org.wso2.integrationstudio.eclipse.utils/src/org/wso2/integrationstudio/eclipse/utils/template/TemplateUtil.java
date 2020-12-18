@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.utils.template;
+package org.wso2.integrationstudio.utils.template;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +24,7 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public abstract class TemplateUtil {
 	public String getTemplateString(String filename) throws IOException {

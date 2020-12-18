@@ -5,7 +5,7 @@
     <artifactId>wso2-integrationstudio-data-service-plugins</artifactId>
     <version>7.2.0-SNAPSHOT</version>
   </parent>
-  <artifactId>org.wso2.integrationstudio.eclipse.artifact.datasource</artifactId>
+  <artifactId>org.wso2.integrationstudio.artifact.datasource</artifactId>
   <packaging>eclipse-plugin</packaging>
   <name>WSO2 Integration Studio Datasource</name>
 </project>

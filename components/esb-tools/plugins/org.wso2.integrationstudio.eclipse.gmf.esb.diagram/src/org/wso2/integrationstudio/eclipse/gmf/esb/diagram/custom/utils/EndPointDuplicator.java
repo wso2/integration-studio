@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.utils;
 
 import java.io.StringWriter;
 import java.util.Collections;
@@ -47,15 +47,15 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.DeserializerException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.EsbDeserializerRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.IEsbNodeDeserializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.AbstractEndPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DeserializerException;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.EsbDeserializerRegistry;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.IEsbNodeDeserializer;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * 

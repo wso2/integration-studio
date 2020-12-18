@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.remote.utils;
+package org.wso2.integrationstudio.registry.manager.remote.utils;
 
 import java.io.File;
 import java.net.HttpURLConnection;

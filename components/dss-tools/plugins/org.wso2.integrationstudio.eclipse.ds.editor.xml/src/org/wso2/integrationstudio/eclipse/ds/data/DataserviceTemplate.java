@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.data;
+package org.wso2.integrationstudio.ds.data;
 
 import org.apache.xerces.impl.xs.XMLSchemaLoader;
 import org.apache.xerces.impl.xs.XSAttributeUseImpl;
@@ -28,9 +28,9 @@ import org.apache.xerces.xs.XSNamedMap;
 import org.apache.xerces.xs.XSNamespaceItem;
 import org.apache.xerces.xs.XSNamespaceItemList;
 import org.apache.xerces.xs.XSObjectList;
-import org.wso2.integrationstudio.eclipse.ds.model.DataserviceAttributeElement;
-import org.wso2.integrationstudio.eclipse.ds.model.DataserviceTagElement;
-import org.wso2.integrationstudio.eclipse.ds.util.DataserviceUtils;
+import org.wso2.integrationstudio.ds.model.DataserviceAttributeElement;
+import org.wso2.integrationstudio.ds.model.DataserviceTagElement;
+import org.wso2.integrationstudio.ds.util.DataserviceUtils;
 
 public class DataserviceTemplate {
 	private static DataserviceTemplate INSTANCE = new DataserviceTemplate();

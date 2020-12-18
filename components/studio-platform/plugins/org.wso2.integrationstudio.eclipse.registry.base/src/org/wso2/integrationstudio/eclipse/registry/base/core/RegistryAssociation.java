@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.core;
+package org.wso2.integrationstudio.registry.base.core;
 
 /**
  * This class is to store resource associations. Association can be made between 1. Registry

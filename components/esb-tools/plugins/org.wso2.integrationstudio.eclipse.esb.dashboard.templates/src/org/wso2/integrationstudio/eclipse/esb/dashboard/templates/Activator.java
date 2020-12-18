@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.dashboard.templates;
+package org.wso2.integrationstudio.esb.dashboard.templates;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -27,7 +27,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
     // The plug-in ID
-    public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.esb.dashboard.templates"; //$NON-NLS-1$
+    public static final String PLUGIN_ID = "org.wso2.integrationstudio.esb.dashboard.templates"; //$NON-NLS-1$
 
     // The shared instance
     private static Activator plugin;

@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.MediatorProperty;
@@ -24,14 +24,14 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediatorProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.JsonTransformMediator;
+import org.wso2.integrationstudio.gmf.esb.JsonTransformMediatorProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__SCHEMA;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__SCHEMA;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.JSON_TRANSFORM_MEDIATOR__JSON_TRANSFORM_PROPERTIES;
 
 public class JsonTransformMediatorDeserializer
         extends AbstractEsbNodeDeserializer<AbstractMediator, JsonTransformMediator> {

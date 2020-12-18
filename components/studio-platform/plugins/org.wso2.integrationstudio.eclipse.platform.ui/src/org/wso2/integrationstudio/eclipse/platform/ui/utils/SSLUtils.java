@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.utils;
+package org.wso2.integrationstudio.platform.ui.utils;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
@@ -29,7 +29,7 @@ import org.apache.axis2.client.Stub;
 import org.apache.axis2.transport.http.HTTPConstants;
 import org.apache.commons.httpclient.protocol.Protocol;
 import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
-import org.wso2.integrationstudio.eclipse.platform.ui.manager.EclipseSWTTrustManager;
+import org.wso2.integrationstudio.platform.ui.manager.EclipseSWTTrustManager;
 
 /**
  * Contains utilities to manage SSL related operations

@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver40.configuration;
+package org.wso2.integrationstudio.carbonserver40.configuration;
 
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.wst.server.core.ServerPort;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.configuration.ConfigurationPortCommonEditorSection;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver40.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver40.util.CarbonServer40Utils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.server.base.core.ServerController;
+import org.wso2.integrationstudio.carbon.server.model.configuration.ConfigurationPortCommonEditorSection;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonConstants;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonUtils;
+import org.wso2.integrationstudio.carbonserver40.Activator;
+import org.wso2.integrationstudio.carbonserver40.util.CarbonServer40Utils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.server.base.core.ServerController;
 
 public class ConfigurationPortEditorSection extends ConfigurationPortCommonEditorSection {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

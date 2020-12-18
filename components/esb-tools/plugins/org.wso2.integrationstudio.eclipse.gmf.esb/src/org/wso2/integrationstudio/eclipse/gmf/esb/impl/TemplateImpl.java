@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -18,12 +18,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Template;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateType;
+import org.wso2.integrationstudio.gmf.esb.EsbElement;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.Template;
+import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.TemplateType;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,11 +33,11 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateImpl#getTemplateType <em>Template Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateImpl#getChild <em>Child</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateImpl#getOnError <em>On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TemplateImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TemplateImpl#getTemplateType <em>Template Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TemplateImpl#getChild <em>Child</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TemplateImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TemplateImpl#getOnError <em>On Error</em>}</li>
  * </ul>
  *
  * @generated

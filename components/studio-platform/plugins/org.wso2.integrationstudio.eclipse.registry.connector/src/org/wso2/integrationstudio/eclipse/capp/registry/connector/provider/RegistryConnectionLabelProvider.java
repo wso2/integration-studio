@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.registry.connector.provider;
+package org.wso2.integrationstudio.capp.registry.connector.provider;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -22,9 +22,9 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.model.RegistryConnectionNode;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.model.RegistryConnectionsNode;
-import org.wso2.integrationstudio.eclipse.capp.registry.connector.utils.RegistryConnectorImageUtils;
+import org.wso2.integrationstudio.capp.registry.connector.model.RegistryConnectionNode;
+import org.wso2.integrationstudio.capp.registry.connector.model.RegistryConnectionsNode;
+import org.wso2.integrationstudio.capp.registry.connector.utils.RegistryConnectorImageUtils;
 
 public class RegistryConnectionLabelProvider implements ICommonLabelProvider{
 

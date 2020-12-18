@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.general.project.artifact.bean;
+package org.wso2.integrationstudio.general.project.artifact.bean;
 
 public class RegistryDump extends RegistryElement{
 	

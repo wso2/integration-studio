@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,22 +15,22 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator#getRmSpecVersion <em>Rm Spec Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator#getCorrelationXpath <em>Correlation Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator#getLastMessageXpath <em>Last Message Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator#getRmSpecVersion <em>Rm Spec Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator#getSequenceType <em>Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator#getCorrelationXpath <em>Correlation Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator#getLastMessageXpath <em>Last Message Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRMSequenceMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRMSequenceMediator()
  * @model
  * @generated
  */
 public interface RMSequenceMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Rm Spec Version</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSpecVersion}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.RMSpecVersion}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Rm Spec Version</em>' attribute isn't clear,
@@ -38,20 +38,20 @@ public interface RMSequenceMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Rm Spec Version</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RMSpecVersion
+     * @see org.wso2.integrationstudio.gmf.esb.RMSpecVersion
      * @see #setRmSpecVersion(RMSpecVersion)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRMSequenceMediator_RmSpecVersion()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRMSequenceMediator_RmSpecVersion()
      * @model
      * @generated
      */
     RMSpecVersion getRmSpecVersion();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator#getRmSpecVersion <em>Rm Spec Version</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator#getRmSpecVersion <em>Rm Spec Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Rm Spec Version</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RMSpecVersion
+     * @see org.wso2.integrationstudio.gmf.esb.RMSpecVersion
      * @see #getRmSpecVersion()
      * @generated
      */
@@ -60,7 +60,7 @@ public interface RMSequenceMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Sequence Type</b></em>' attribute.
      * The default value is <code>"SINGLE_MESSAGE"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.RMSequenceType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Sequence Type</em>' attribute isn't clear,
@@ -68,20 +68,20 @@ public interface RMSequenceMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.RMSequenceType
      * @see #setSequenceType(RMSequenceType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRMSequenceMediator_SequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRMSequenceMediator_SequenceType()
      * @model default="SINGLE_MESSAGE"
      * @generated
      */
     RMSequenceType getSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator#getSequenceType <em>Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator#getSequenceType <em>Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceType
+     * @see org.wso2.integrationstudio.gmf.esb.RMSequenceType
      * @see #getSequenceType()
      * @generated
      */
@@ -97,14 +97,14 @@ public interface RMSequenceMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Correlation Xpath</em>' containment reference.
      * @see #setCorrelationXpath(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRMSequenceMediator_CorrelationXpath()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRMSequenceMediator_CorrelationXpath()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getCorrelationXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator#getCorrelationXpath <em>Correlation Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator#getCorrelationXpath <em>Correlation Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Correlation Xpath</em>' containment reference.
@@ -123,14 +123,14 @@ public interface RMSequenceMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Last Message Xpath</em>' containment reference.
      * @see #setLastMessageXpath(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRMSequenceMediator_LastMessageXpath()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRMSequenceMediator_LastMessageXpath()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getLastMessageXpath();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator#getLastMessageXpath <em>Last Message Xpath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator#getLastMessageXpath <em>Last Message Xpath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Last Message Xpath</em>' containment reference.
@@ -149,14 +149,14 @@ public interface RMSequenceMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(RMSequenceMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRMSequenceMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRMSequenceMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     RMSequenceMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -175,14 +175,14 @@ public interface RMSequenceMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(RMSequenceMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getRMSequenceMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getRMSequenceMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     RMSequenceMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.RMSequenceMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
 import java.util.Map.Entry;
@@ -29,17 +29,17 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediaType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryArgument;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryEvaluatorType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFactoryMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFormatType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.MediaType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgument;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgumentType;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryEvaluatorType;
+import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator;
+import org.wso2.integrationstudio.gmf.esb.PayloadFormatType;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 /**
  * PayloadFactory mediator transformer

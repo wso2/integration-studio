@@ -1,7 +1,7 @@
-package org.wso2.integrationstudio.eclipse.registry.core.internal.impl;
+package org.wso2.integrationstudio.registry.core.internal.impl;
 
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryResourceProvider;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryResourceProviderData;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryResourceProvider;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryResourceProviderData;
 
 public class RegistryResourceProviderData implements
 		IRegistryResourceProviderData {

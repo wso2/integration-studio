@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -70,18 +70,18 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-    import org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+    import org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.persistence.Activator;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -626,7 +626,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -636,7 +636,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -658,7 +658,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -668,7 +668,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -709,7 +709,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -719,7 +719,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -741,7 +741,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#getRecieveSequence()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#getRecieveSequence()
 	 * 
 	 */
 	public Boolean getRecieveSequence() {
@@ -751,7 +751,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#setRecieveSequence(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#setRecieveSequence(Boolean newValue)
 	 * 
 	 */
 	public void setRecieveSequence(Boolean newValue) {
@@ -773,7 +773,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#getAssociatedProxy()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#getAssociatedProxy()
 	 * 
 	 */
 	public EList getAssociatedProxy() {
@@ -783,7 +783,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#setAssociatedProxy(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#setAssociatedProxy(EList newValue)
 	 * 
 	 */
 	public void setAssociatedProxy(EList newValue) {
@@ -826,7 +826,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#initTemplateParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#initTemplateParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initTemplateParameters(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -847,7 +847,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#updateTemplateParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#updateTemplateParameters()
 	 * 
 	 */
 	public void updateTemplateParameters() {
@@ -857,7 +857,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#addFilterTemplateParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#addFilterTemplateParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToTemplateParameters(ViewerFilter filter) {
@@ -870,7 +870,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#addBusinessFilterTemplateParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#addBusinessFilterTemplateParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToTemplateParameters(ViewerFilter filter) {
@@ -880,7 +880,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#isContainedInTemplateParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#isContainedInTemplateParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInTemplateParametersTable(EObject element) {
@@ -890,7 +890,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#getTraceEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#getTraceEnabled()
 	 * 
 	 */
 	public Boolean getTraceEnabled() {
@@ -900,7 +900,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#setTraceEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#setTraceEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setTraceEnabled(Boolean newValue) {
@@ -922,7 +922,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#getStatisticsEnabled()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#getStatisticsEnabled()
 	 * 
 	 */
 	public Boolean getStatisticsEnabled() {
@@ -932,7 +932,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SequencesPropertiesEditionPart#setStatisticsEnabled(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SequencesPropertiesEditionPart#setStatisticsEnabled(Boolean newValue)
 	 * 
 	 */
 	public void setStatisticsEnabled(Boolean newValue) {
@@ -1070,7 +1070,7 @@ public class SequencesPropertiesEditionPartForm extends SectionPropertiesEditing
         } catch (Exception e) {
             log.error(e);
         }
-        if (!(container instanceof org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateImpl)) {
+        if (!(container instanceof org.wso2.integrationstudio.gmf.esb.impl.TemplateImpl)) {
             viewUtil.showEntry(nameElements, false);
             viewUtil.showEntry(onErrorElements, false);
             viewUtil.showEntry(traceEnabledElements, false);

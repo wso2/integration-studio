@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -9,11 +9,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Task;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskImplementation;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskTriggerType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.Task;
+import org.wso2.integrationstudio.gmf.esb.TaskProperty;
+import org.wso2.integrationstudio.gmf.esb.TaskImplementation;
+import org.wso2.integrationstudio.gmf.esb.TaskTriggerType;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,15 +23,15 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.TaskTriggerType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TaskImpl#getTaskName <em>Task Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TaskImpl#getTaskGroup <em>Task Group</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TaskImpl#getTriggerType <em>Trigger Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TaskImpl#getCount <em>Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TaskImpl#getInterval <em>Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TaskImpl#getCron <em>Cron</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TaskImpl#getPinnedServers <em>Pinned Servers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TaskImpl#getTaskImplementation <em>Task Implementation</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.TaskImpl#getTaskProperties <em>Task Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TaskImpl#getTaskName <em>Task Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TaskImpl#getTaskGroup <em>Task Group</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TaskImpl#getTriggerType <em>Trigger Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TaskImpl#getCount <em>Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TaskImpl#getInterval <em>Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TaskImpl#getCron <em>Cron</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TaskImpl#getPinnedServers <em>Pinned Servers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TaskImpl#getTaskImplementation <em>Task Implementation</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.TaskImpl#getTaskProperties <em>Task Properties</em>}</li>
  * </ul>
  *
  * @generated

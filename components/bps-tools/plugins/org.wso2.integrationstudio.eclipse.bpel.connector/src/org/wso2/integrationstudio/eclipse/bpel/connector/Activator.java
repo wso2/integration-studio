@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.bpel.connector;
+package org.wso2.integrationstudio.bpel.connector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 import org.eclipse.integrationstudio.eclipse.bpel.core.handler.IBPELHandler;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.wso2.integrationstudio.eclipse.bpel.connector.utils.BPELExtensionPointHandler;
+import org.wso2.integrationstudio.bpel.connector.utils.BPELExtensionPointHandler;
 
 public class Activator implements BundleActivator {
 

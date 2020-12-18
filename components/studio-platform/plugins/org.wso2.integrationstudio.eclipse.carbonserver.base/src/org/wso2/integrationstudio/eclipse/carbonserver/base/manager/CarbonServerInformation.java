@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.manager;
+package org.wso2.integrationstudio.carbonserver.base.manager;
 
 import java.util.ArrayList;
 import java.util.List;

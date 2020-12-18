@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.model;
+package org.wso2.integrationstudio.capp.core.model;
 
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryData;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryData;
 
 public class RegistryData extends RegistryConnection implements IRegistryData {
 

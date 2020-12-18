@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,12 +15,12 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint#getURI <em>URI</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AddressEndPoint#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AddressEndPoint#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AddressEndPoint#getURI <em>URI</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAddressEndPoint()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAddressEndPoint()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface AddressEndPoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(AddressEndPointInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAddressEndPoint_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAddressEndPoint_InputConnector()
      * @model containment="true"
      * @generated
      */
     AddressEndPointInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AddressEndPoint#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -61,14 +61,14 @@ public interface AddressEndPoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(AddressEndPointOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAddressEndPoint_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAddressEndPoint_OutputConnector()
      * @model containment="true"
      * @generated
      */
     AddressEndPointOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AddressEndPoint#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -88,14 +88,14 @@ public interface AddressEndPoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>URI</em>' attribute.
      * @see #setURI(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAddressEndPoint_URI()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAddressEndPoint_URI()
      * @model default="http://www.example.org/service"
      * @generated
      */
     String getURI();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint#getURI <em>URI</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AddressEndPoint#getURI <em>URI</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>URI</em>' attribute.

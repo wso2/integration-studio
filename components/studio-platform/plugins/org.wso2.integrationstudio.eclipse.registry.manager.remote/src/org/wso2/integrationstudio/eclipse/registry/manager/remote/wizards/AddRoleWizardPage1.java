@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.remote.wizards;
+package org.wso2.integrationstudio.registry.manager.remote.wizards;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -29,11 +29,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryUserRoleContainer;
-import org.wso2.integrationstudio.eclipse.registry.manager.remote.Activator;
-import org.wso2.integrationstudio.eclipse.usermgt.remote.UserManager;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.base.model.RegistryUserRoleContainer;
+import org.wso2.integrationstudio.registry.manager.remote.Activator;
+import org.wso2.integrationstudio.usermgt.remote.UserManager;
 
 import java.util.ArrayList;
 

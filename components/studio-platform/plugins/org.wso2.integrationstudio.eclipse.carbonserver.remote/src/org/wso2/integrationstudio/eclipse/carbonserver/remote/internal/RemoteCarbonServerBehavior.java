@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.remote.internal;
+package org.wso2.integrationstudio.carbonserver.remote.internal;
 
 import java.net.URL;
 
@@ -29,8 +29,8 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.model.ServerBehaviourDelegate;
-import org.wso2.integrationstudio.eclipse.carbonfeatures.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver.remote.operations.ServiceModuleOperations;
+import org.wso2.integrationstudio.carbonfeatures.Activator;
+import org.wso2.integrationstudio.carbonserver.remote.operations.ServiceModuleOperations;
 
 public class RemoteCarbonServerBehavior extends ServerBehaviourDelegate {
 	private CarbonPingThread ping;

@@ -4,15 +4,15 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LocalEntry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LocalEntryValueType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.LocalEntry;
+import org.wso2.integrationstudio.gmf.esb.LocalEntryValueType;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,11 +22,11 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.LocalEntryValueType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getEntryName <em>Entry Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getLocalEntryType <em>Local Entry Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueLiteral <em>Value Literal</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueXML <em>Value XML</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueURL <em>Value URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LocalEntryImpl#getEntryName <em>Entry Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LocalEntryImpl#getLocalEntryType <em>Local Entry Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LocalEntryImpl#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LocalEntryImpl#getValueXML <em>Value XML</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.LocalEntryImpl#getValueURL <em>Value URL</em>}</li>
  * </ul>
  *
  * @generated

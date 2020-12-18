@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -23,12 +23,12 @@ import org.apache.synapse.config.SynapseConfiguration;
 import org.apache.synapse.config.xml.SynapseXMLConfigurationSerializer;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.SequenceModelTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.EsbSequence;
+import org.wso2.integrationstudio.gmf.esb.EsbSequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.persistence.SequenceModelTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
 
 public class SequenceModelTranformerImpl implements SequenceModelTransformer {
 

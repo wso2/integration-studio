@@ -15,22 +15,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils;
+package org.wso2.integrationstudio.apim.endpoint.central.utils;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.APIArtifact;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.APIImportPayload;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.CTLAPI;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.CTLEnvironment;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.LoginPayload;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.ProjectData;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.Registry;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.RegistryEntry;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.UserSession;
+import org.wso2.integrationstudio.apim.endpoint.central.model.APIArtifact;
+import org.wso2.integrationstudio.apim.endpoint.central.model.APIImportPayload;
+import org.wso2.integrationstudio.apim.endpoint.central.model.CTLAPI;
+import org.wso2.integrationstudio.apim.endpoint.central.model.CTLEnvironment;
+import org.wso2.integrationstudio.apim.endpoint.central.model.LoginPayload;
+import org.wso2.integrationstudio.apim.endpoint.central.model.ProjectData;
+import org.wso2.integrationstudio.apim.endpoint.central.model.Registry;
+import org.wso2.integrationstudio.apim.endpoint.central.model.RegistryEntry;
+import org.wso2.integrationstudio.apim.endpoint.central.model.UserSession;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;

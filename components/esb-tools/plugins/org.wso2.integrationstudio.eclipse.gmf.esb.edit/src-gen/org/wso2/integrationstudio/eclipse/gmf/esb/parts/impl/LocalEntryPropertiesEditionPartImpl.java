@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
@@ -60,12 +60,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -523,7 +523,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -533,7 +533,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -555,7 +555,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -565,7 +565,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -606,7 +606,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#getEntryName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#getEntryName()
 	 * 
 	 */
 	public String getEntryName() {
@@ -616,7 +616,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#setEntryName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#setEntryName(String newValue)
 	 * 
 	 */
 	public void setEntryName(String newValue) {
@@ -638,7 +638,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#getLocalEntryType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#getLocalEntryType()
 	 * 
 	 */
 	public Enumerator getLocalEntryType() {
@@ -649,7 +649,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#initLocalEntryType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#initLocalEntryType(Object input, Enumerator current)
 	 */
 	public void initLocalEntryType(Object input, Enumerator current) {
 		localEntryType.setInput(input);
@@ -667,7 +667,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#setLocalEntryType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#setLocalEntryType(Enumerator newValue)
 	 * 
 	 */
 	public void setLocalEntryType(Enumerator newValue) {
@@ -685,7 +685,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#getValueLiteral()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#getValueLiteral()
 	 * 
 	 */
 	public String getValueLiteral() {
@@ -695,7 +695,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#setValueLiteral(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#setValueLiteral(String newValue)
 	 * 
 	 */
 	public void setValueLiteral(String newValue) {
@@ -717,7 +717,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#getValueXML()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#getValueXML()
 	 * 
 	 */
 	public String getValueXML() {
@@ -727,7 +727,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#setValueXML(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#setValueXML(String newValue)
 	 * 
 	 */
 	public void setValueXML(String newValue) {
@@ -749,7 +749,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#getValueURL()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#getValueURL()
 	 * 
 	 */
 	public String getValueURL() {
@@ -759,7 +759,7 @@ public class LocalEntryPropertiesEditionPartImpl extends CompositePropertiesEdit
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LocalEntryPropertiesEditionPart#setValueURL(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LocalEntryPropertiesEditionPart#setValueURL(String newValue)
 	 * 
 	 */
 	public void setValueURL(String newValue) {

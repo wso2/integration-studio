@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Module
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.distributionproject.module;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.distributionproject.module;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.distributionproject.module.Activator
+Bundle-Activator: org.wso2.integrationstudio.distributionproject.module.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.m2e.maven.runtime;bundle-version="1.6.2"
@@ -19,5 +19,5 @@ Import-Package: org.eclipse.core.expressions,
  org.eclipse.wst.server.core,
  org.eclipse.wst.server.core.internal,
  org.eclipse.wst.server.core.model,
- org.wso2.integrationstudio.eclipse.logging.core,
- org.wso2.integrationstudio.eclipse.maven.util
+ org.wso2.integrationstudio.logging.core,
+ org.wso2.integrationstudio.maven.util

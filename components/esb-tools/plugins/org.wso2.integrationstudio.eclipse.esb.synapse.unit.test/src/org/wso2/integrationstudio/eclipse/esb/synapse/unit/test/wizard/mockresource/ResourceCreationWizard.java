@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.mockresource;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.mockresource;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -25,9 +25,9 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.MockService;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.MockServiceResource;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.CommonUtil;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.MockService;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.MockServiceResource;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.CommonUtil;
 
 /**
  * Class responsible for creation of wizard for mock service resources.

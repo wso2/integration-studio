@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.messages"; //$NON-NLS-1$
+    private static final String BUNDLE_NAME = "org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.messages"; //$NON-NLS-1$
     public static String AggregateMediatorEditPart_ToolTipMessage;
     public static String BAMMediatorEditPart_NodeName;
     public static String BAMMediatorEditPart_ToolTipMessage;

@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.constant;
+package org.wso2.integrationstudio.esb.synapse.unit.test.constant;
 
 /**
  * Constants for unit test and mock services form views.

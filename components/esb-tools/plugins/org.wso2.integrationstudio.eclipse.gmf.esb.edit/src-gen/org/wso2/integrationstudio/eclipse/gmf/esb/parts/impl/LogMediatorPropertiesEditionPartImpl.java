@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -73,12 +73,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -426,7 +426,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#getLogCategory()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#getLogCategory()
 	 * 
 	 */
 	public Enumerator getLogCategory() {
@@ -437,7 +437,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#initLogCategory(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#initLogCategory(Object input, Enumerator current)
 	 */
 	public void initLogCategory(Object input, Enumerator current) {
 		logCategory.setInput(input);
@@ -455,7 +455,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#setLogCategory(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#setLogCategory(Enumerator newValue)
 	 * 
 	 */
 	public void setLogCategory(Enumerator newValue) {
@@ -473,7 +473,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#getLogLevel()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#getLogLevel()
 	 * 
 	 */
 	public Enumerator getLogLevel() {
@@ -484,7 +484,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#initLogLevel(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#initLogLevel(Object input, Enumerator current)
 	 */
 	public void initLogLevel(Object input, Enumerator current) {
 		logLevel.setInput(input);
@@ -502,7 +502,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#setLogLevel(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#setLogLevel(Enumerator newValue)
 	 * 
 	 */
 	public void setLogLevel(Enumerator newValue) {
@@ -520,7 +520,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#getLogSeparator()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#getLogSeparator()
 	 * 
 	 */
 	public String getLogSeparator() {
@@ -530,7 +530,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#setLogSeparator(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#setLogSeparator(String newValue)
 	 * 
 	 */
 	public void setLogSeparator(String newValue) {
@@ -554,7 +554,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initProperties(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -575,7 +575,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#updateProperties()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#updateProperties()
 	 * 
 	 */
 	public void updateProperties() {
@@ -585,7 +585,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToProperties(ViewerFilter filter) {
@@ -598,7 +598,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToProperties(ViewerFilter filter) {
@@ -608,7 +608,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInPropertiesTable(EObject element) {
@@ -618,7 +618,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -628,7 +628,7 @@ public class LogMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {

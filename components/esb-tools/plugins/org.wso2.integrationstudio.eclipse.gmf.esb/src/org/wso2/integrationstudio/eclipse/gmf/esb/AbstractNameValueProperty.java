@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueProperty#getPropertyName <em>Property Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueProperty#getPropertyValue <em>Property Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueProperty#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueProperty#getPropertyValue <em>Property Value</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueProperty()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractNameValueProperty()
  * @model abstract="true"
  * @generated
  */
@@ -37,14 +37,14 @@ public interface AbstractNameValueProperty extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Property Name</em>' attribute.
      * @see #setPropertyName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueProperty_PropertyName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractNameValueProperty_PropertyName()
      * @model default="property_name"
      * @generated
      */
     String getPropertyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueProperty#getPropertyName <em>Property Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueProperty#getPropertyName <em>Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Property Name</em>' attribute.
@@ -64,14 +64,14 @@ public interface AbstractNameValueProperty extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Property Value</em>' attribute.
      * @see #setPropertyValue(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueProperty_PropertyValue()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractNameValueProperty_PropertyValue()
      * @model default="property_value"
      * @generated
      */
     String getPropertyValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.AbstractNameValueProperty#getPropertyValue <em>Property Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.AbstractNameValueProperty#getPropertyValue <em>Property Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Property Value</em>' attribute.

@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.samples.utils;
+package org.wso2.integrationstudio.samples.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.wso2.integrationstudio.eclipse.samples.contributor.IIntegrationStudioSampleCategoryContributor;
-import org.wso2.integrationstudio.eclipse.samples.contributor.IIntegrationStudioSampleContributor;
+import org.wso2.integrationstudio.samples.contributor.IIntegrationStudioSampleCategoryContributor;
+import org.wso2.integrationstudio.samples.contributor.IIntegrationStudioSampleContributor;
 
 
 public class ExtensionPointHandler {
-	private static String SAMPLE_HANDLER_EXTENSION="org.wso2.integrationstudio.eclipse.samples";
+	private static String SAMPLE_HANDLER_EXTENSION="org.wso2.integrationstudio.samples";
 	
 	public static List<IIntegrationStudioSampleContributor> getSamples(){
 		List<IIntegrationStudioSampleContributor> samples = new ArrayList<IIntegrationStudioSampleContributor>();

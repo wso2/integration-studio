@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,12 +21,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseParentContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultParentContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorContainer;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.SwitchCaseParentContainer;
+import org.wso2.integrationstudio.gmf.esb.SwitchDefaultParentContainer;
+import org.wso2.integrationstudio.gmf.esb.SwitchCaseContainer;
+import org.wso2.integrationstudio.gmf.esb.SwitchDefaultContainer;
+import org.wso2.integrationstudio.gmf.esb.SwitchMediatorContainer;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,8 +36,8 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorContainer;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchMediatorContainerImpl#getSwitchCaseParentContainer <em>Switch Case Parent Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchMediatorContainerImpl#getSwitchDefaultParentContainer <em>Switch Default Parent Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SwitchMediatorContainerImpl#getSwitchCaseParentContainer <em>Switch Case Parent Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SwitchMediatorContainerImpl#getSwitchDefaultParentContainer <em>Switch Default Parent Container</em>}</li>
  * </ul>
  *
  * @generated

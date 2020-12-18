@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 
@@ -21,15 +21,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchDefaultBranchOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.SwitchCaseBranchOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.SwitchDefaultBranchOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.SwitchMediator;
+import org.wso2.integrationstudio.gmf.esb.SwitchMediatorContainer;
+import org.wso2.integrationstudio.gmf.esb.SwitchMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.SwitchMediatorOutputConnector;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,15 +39,15 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchMediatorOutputConnector;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getSourceXpath <em>Source Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getSource <em>Source</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getNamespacePrefix <em>Namespace Prefix</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getCaseBranches <em>Case Branches</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getDefaultBranch <em>Default Branch</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getSwitchContainer <em>Switch Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SwitchMediatorImpl#getSourceXpath <em>Source Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SwitchMediatorImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SwitchMediatorImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SwitchMediatorImpl#getNamespacePrefix <em>Namespace Prefix</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SwitchMediatorImpl#getCaseBranches <em>Case Branches</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SwitchMediatorImpl#getDefaultBranch <em>Default Branch</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SwitchMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SwitchMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.SwitchMediatorImpl#getSwitchContainer <em>Switch Container</em>}</li>
  * </ul>
  *
  * @generated

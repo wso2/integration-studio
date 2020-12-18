@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,26 +44,26 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndpointDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceSessionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Member;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.AddressEndPointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbTransformerRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerUtils;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbEditorInput;
+import org.wso2.integrationstudio.gmf.esb.EndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EndpointDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceSessionType;
+import org.wso2.integrationstudio.gmf.esb.Member;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.SequenceInputConnector;
+import org.wso2.integrationstudio.gmf.esb.impl.AddressEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.FailoverEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.TemplateEndpointImpl;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbNodeTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbTransformerRegistry;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerUtils;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.LoadbalanceEndpointFormPage;
 
 public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer {
@@ -243,7 +243,7 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
         if (synapseLBEP instanceof SALoadbalanceEndpoint) {
             List<Endpoint> synapseChildren = new ArrayList<>();
             if (visualEndPoint.getChildren() != null && visualEndPoint.getChildren().size() > 0) {
-                for (org.wso2.integrationstudio.eclipse.gmf.esb.EndPoint viEndpoint : visualEndPoint.getChildren()) {
+                for (org.wso2.integrationstudio.gmf.esb.EndPoint viEndpoint : visualEndPoint.getChildren()) {
                     if (viEndpoint instanceof AddressEndPointImpl || viEndpoint instanceof TemplateEndpointImpl || viEndpoint instanceof FailoverEndPointImpl) {
                         synapseChildren.add(TransformerUtils.getSynapseEndpoint(viEndpoint));
                     }

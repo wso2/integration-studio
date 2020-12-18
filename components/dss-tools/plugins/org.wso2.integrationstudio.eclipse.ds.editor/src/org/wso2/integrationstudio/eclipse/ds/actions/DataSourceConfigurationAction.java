@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.ds.actions;
+package org.wso2.integrationstudio.ds.actions;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,14 +31,14 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.StaticSelectionCommandAction;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
-import org.wso2.integrationstudio.eclipse.ds.ConfigurationProperty;
-import org.wso2.integrationstudio.eclipse.ds.DataSourceConfiguration;
-import org.wso2.integrationstudio.eclipse.ds.Description;
-import org.wso2.integrationstudio.eclipse.ds.DsFactory;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsActionBarContributor;
-import org.wso2.integrationstudio.eclipse.ds.presentation.DsEditor;
-import org.wso2.integrationstudio.eclipse.ds.provider.DsEditPlugin;
+import org.wso2.integrationstudio.ds.ConfigurationProperty;
+import org.wso2.integrationstudio.ds.DataSourceConfiguration;
+import org.wso2.integrationstudio.ds.Description;
+import org.wso2.integrationstudio.ds.DsFactory;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.presentation.DsActionBarContributor;
+import org.wso2.integrationstudio.ds.presentation.DsEditor;
+import org.wso2.integrationstudio.ds.provider.DsEditPlugin;
 
 /**
  * Defines the actions under a config element.

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication;
 
 /**
  * All debug events sent from {@link ESBDebugger} to {@link ESBDebugTarget} should implement this interface.

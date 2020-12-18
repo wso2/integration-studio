@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.sequence.provider;
+package org.wso2.integrationstudio.artifact.sequence.provider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +23,10 @@ import java.util.Map;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbSequence;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.ISequenceProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioElement;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.ResourceManager;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbSequence;
+import org.wso2.integrationstudio.esb.core.interfaces.ISequenceProvider;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
+import org.wso2.integrationstudio.platform.core.utils.ResourceManager;
 
 public class SequenceProvider implements ISequenceProvider {
 	private List<ISequenceProvider> subProviders;

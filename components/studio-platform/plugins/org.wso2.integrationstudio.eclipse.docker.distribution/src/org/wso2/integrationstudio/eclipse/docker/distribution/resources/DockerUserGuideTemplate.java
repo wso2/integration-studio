@@ -14,7 +14,7 @@
  * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.resources;
+package org.wso2.integrationstudio.docker.distribution.resources;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,13 +29,13 @@ import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.docker.distribution.Activator;
-import org.wso2.integrationstudio.eclipse.docker.distribution.utils.DockerProjectConstants;
+import org.wso2.integrationstudio.docker.distribution.Activator;
+import org.wso2.integrationstudio.docker.distribution.utils.DockerProjectConstants;
 
 public class DockerUserGuideTemplate extends ViewPart {
 
     private Browser browser;
-    public static final String TEMPLATE_GUIDE_VIEW_ID = "org.wso2.integrationstudio.eclipse.esb.templates.docker.view";
+    public static final String TEMPLATE_GUIDE_VIEW_ID = "org.wso2.integrationstudio.esb.templates.docker.view";
     public static final String ERROR_MESSAGE_OPENING_EDITOR = "Error opening editor";
     private static final String NO_CACHE = "?nocache=1";
 

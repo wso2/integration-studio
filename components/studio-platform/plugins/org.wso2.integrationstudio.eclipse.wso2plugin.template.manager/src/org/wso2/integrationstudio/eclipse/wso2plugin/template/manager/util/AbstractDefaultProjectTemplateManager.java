@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.util;
+package org.wso2.integrationstudio.wso2plugin.template.manager.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,15 +39,15 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.MessageDialogUtils;
-import org.wso2.integrationstudio.eclipse.utils.archive.ArchiveManipulator;
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.Activator;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.project.WSO2PluginProjectModel;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExt;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.utils.MessageDialogUtils;
+import org.wso2.integrationstudio.utils.archive.ArchiveManipulator;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.wso2plugin.template.manager.Activator;
+import org.wso2.integrationstudio.wso2plugin.template.manager.project.WSO2PluginProjectModel;
+import org.wso2.integrationstudio.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExt;
 
 public abstract class AbstractDefaultProjectTemplateManager implements IProjectTemplateManager{
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

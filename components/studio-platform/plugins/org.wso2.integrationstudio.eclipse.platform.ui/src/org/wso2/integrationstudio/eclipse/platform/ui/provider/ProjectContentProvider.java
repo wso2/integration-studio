@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.provider;
+package org.wso2.integrationstudio.platform.ui.provider;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -37,10 +37,10 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
-import org.wso2.integrationstudio.eclipse.platform.ui.provider.internal.EmptyNavigatorContentProvider;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.Activator;
+import org.wso2.integrationstudio.platform.ui.provider.internal.EmptyNavigatorContentProvider;
 
 public class ProjectContentProvider extends EmptyNavigatorContentProvider {
 

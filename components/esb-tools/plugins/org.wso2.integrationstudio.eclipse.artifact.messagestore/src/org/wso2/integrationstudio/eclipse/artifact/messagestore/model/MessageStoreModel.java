@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.messagestore.model;
+package org.wso2.integrationstudio.artifact.messagestore.model;
 
-import static org.wso2.integrationstudio.eclipse.platform.core.utils.Constants.ESB_PROJECT_NATURE;
+import static org.wso2.integrationstudio.platform.core.utils.Constants.ESB_PROJECT_NATURE;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,21 +38,21 @@ import org.eclipse.emf.common.util.SegmentSequence;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.artifact.messagestore.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.messagestore.Constants;
-import org.wso2.integrationstudio.eclipse.artifact.messagestore.provider.DatabaseTypeList.DatabaseType;
-import org.wso2.integrationstudio.eclipse.artifact.messagestore.provider.JMSProfileTypeList.JMSProfileType;
-import org.wso2.integrationstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
-import org.wso2.integrationstudio.eclipse.esb.project.utils.ESBProjectUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.artifact.messagestore.Activator;
+import org.wso2.integrationstudio.artifact.messagestore.Constants;
+import org.wso2.integrationstudio.artifact.messagestore.provider.DatabaseTypeList.DatabaseType;
+import org.wso2.integrationstudio.artifact.messagestore.provider.JMSProfileTypeList.JMSProfileType;
+import org.wso2.integrationstudio.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
+import org.wso2.integrationstudio.esb.project.utils.ESBProjectUtils;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamespacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseEntryType;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseFileUtils;
+import org.wso2.integrationstudio.esb.core.utils.SynapseEntryType;
+import org.wso2.integrationstudio.esb.core.utils.SynapseFileUtils;
 
 /**
  * The model class for message-store artifact wizard specific objects.

@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -57,11 +57,11 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -361,7 +361,7 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#getParameterName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#getParameterName()
 	 * 
 	 */
 	public String getParameterName() {
@@ -371,7 +371,7 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#setParameterName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#setParameterName(String newValue)
 	 * 
 	 */
 	public void setParameterName(String newValue) {
@@ -393,7 +393,7 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#getTemplateParameterType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#getTemplateParameterType()
 	 * 
 	 */
 	public Enumerator getTemplateParameterType() {
@@ -404,7 +404,7 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#initTemplateParameterType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#initTemplateParameterType(Object input, Enumerator current)
 	 */
 	public void initTemplateParameterType(Object input, Enumerator current) {
 		templateParameterType.setInput(input);
@@ -422,7 +422,7 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#setTemplateParameterType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#setTemplateParameterType(Enumerator newValue)
 	 * 
 	 */
 	public void setTemplateParameterType(Enumerator newValue) {
@@ -440,7 +440,7 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#getParameterValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#getParameterValue()
 	 * 
 	 */
 	public String getParameterValue() {
@@ -450,7 +450,7 @@ public class CallTemplateParameterPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#setParameterValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallTemplateParameterPropertiesEditionPart#setParameterValue(String newValue)
 	 * 
 	 */
 	public void setParameterValue(String newValue) {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.model;
+package org.wso2.integrationstudio.artifact.registry.model;
 
 import java.io.File;
 import java.util.HashMap;
@@ -26,15 +26,15 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.artifact.registry.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.registry.utils.RegistryArtifactConstants;
-import org.wso2.integrationstudio.eclipse.artifact.registry.utils.RegistryTemplate;
-import org.wso2.integrationstudio.eclipse.general.project.utils.GeneralProjectUtils;
-import org.wso2.integrationstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.artifact.registry.Activator;
+import org.wso2.integrationstudio.artifact.registry.utils.RegistryArtifactConstants;
+import org.wso2.integrationstudio.artifact.registry.utils.RegistryTemplate;
+import org.wso2.integrationstudio.general.project.utils.GeneralProjectUtils;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
 
 public class RegistryArtifactModel extends ProjectDataModel {
 	
@@ -53,39 +53,39 @@ public class RegistryArtifactModel extends ProjectDataModel {
 	static{
 		//FIXME: move hard-coded vales to template ext-point
 		registryPrefix.put("custom", "custom/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.sequence", "sequences/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.ep1", "endpoints/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.ep2", "endpoints/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.ep5", "endpoints/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.ep3", "endpoints/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.ep4", "endpoints/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.ep6", "endpoints/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.ep7", "endpoints/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.ep8", "endpoints/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.smooks", "smooks/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.proxy3", "proxies/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.proxy6", "proxies/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.proxy1", "proxies/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.proxy2", "proxies/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.proxy4", "proxies/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.proxy5", "proxies/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.css", "css/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.html", "html/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.js", "js/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.sql", "sql/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.xsl", "xsl/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.xslt", "xslt/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.wsdl", "wsdl/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.sq_template", "templates/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.endpoint_templates.Address", "templates/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.endpoint_templates.default", "templates/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.endpoint_templates.wsdl", "templates/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.endpoint_templates.http", "templates/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.template.datamapper", "datamapper/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.esb.localentry", "localEntry/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.sequence", "sequences/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.ep1", "endpoints/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.ep2", "endpoints/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.ep5", "endpoints/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.ep3", "endpoints/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.ep4", "endpoints/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.ep6", "endpoints/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.ep7", "endpoints/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.ep8", "endpoints/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.smooks", "smooks/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.proxy3", "proxies/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.proxy6", "proxies/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.proxy1", "proxies/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.proxy2", "proxies/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.proxy4", "proxies/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.proxy5", "proxies/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.css", "css/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.html", "html/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.js", "js/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.sql", "sql/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.xsl", "xsl/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.xslt", "xslt/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.wsdl", "wsdl/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.sq_template", "templates/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.endpoint_templates.Address", "templates/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.endpoint_templates.default", "templates/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.endpoint_templates.wsdl", "templates/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.endpoint_templates.http", "templates/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.template.datamapper", "datamapper/");
+		registryPrefix.put("org.wso2.integrationstudio.esb.localentry", "localEntry/");
 		//Adding template for ws-policy
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.security.ws_policy", "ws-policy/");
-		registryPrefix.put("org.wso2.integrationstudio.eclipse.sample.xsd", "xsds/");
+		registryPrefix.put("org.wso2.integrationstudio.security.ws_policy", "ws-policy/");
+		registryPrefix.put("org.wso2.integrationstudio.sample.xsd", "xsds/");
 	}
 	
 	public RegistryArtifactModel() {

@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.provider;
+package org.wso2.integrationstudio.platform.ui.provider;
 
 import org.eclipse.swt.graphics.Image;
-import org.wso2.integrationstudio.eclipse.platform.ui.provider.internal.EmptyNavigatorLabelProvider;
+import org.wso2.integrationstudio.platform.ui.provider.internal.EmptyNavigatorLabelProvider;
 
 public class ProjectLabelProvider extends EmptyNavigatorLabelProvider {
 

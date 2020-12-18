@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.part;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
+import org.wso2.integrationstudio.esb.core.interfaces.IEsbEditorInput;
 
 public class EsbEditorInput extends FileEditorInput implements IEsbEditorInput {
     private Resource diagramResource;

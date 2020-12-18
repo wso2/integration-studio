@@ -1,5 +1,5 @@
 /*
- * package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+ * package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
  * 
  * import org.eclipse.draw2d.IFigure;
  * import org.eclipse.draw2d.MarginBorder;
@@ -15,21 +15,21 @@
  * import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
  * import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
  * import org.eclipse.gmf.runtime.notation.View;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPoint;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.editpolicy.CustomDragDropEditPolicy;
+ * import org.wso2.integrationstudio.gmf.esb.AddressEndPoint;
+ * import org.wso2.integrationstudio.gmf.esb.DefaultEndPoint;
+ * import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+ * import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+ * import org.wso2.integrationstudio.gmf.esb.FailoverEndPoint;
+ * import org.wso2.integrationstudio.gmf.esb.FailoverEndPointOutputConnector;
+ * import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint;
+ * import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointOutputConnector;
+ * import org.wso2.integrationstudio.gmf.esb.WSDLEndPoint;
+ * import org.wso2.integrationstudio.gmf.esb.diagram.custom.editpolicy.CustomDragDropEditPolicy;
  * import
- * org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.EndpointFlowEndpointCompartment2CanonicalEditPolicy;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.
+ * org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.EndpointFlowEndpointCompartment2CanonicalEditPolicy;
+ * import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.
  * EndpointFlowEndpointCompartment2ItemSemanticEditPolicy;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.Messages;
+ * import org.wso2.integrationstudio.gmf.esb.diagram.part.Messages;
  * 
  *//**
     * @generated

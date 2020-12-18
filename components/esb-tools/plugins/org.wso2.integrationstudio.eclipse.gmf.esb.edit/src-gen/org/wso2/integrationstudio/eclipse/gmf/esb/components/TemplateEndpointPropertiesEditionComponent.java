@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.components;
+package org.wso2.integrationstudio.gmf.esb.components;
 
 // Start of user code for imports
 import java.util.Iterator;
@@ -51,18 +51,18 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointAddressingVersion;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointAttachmentOptimization;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointMessageFormat;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointTimeOutAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpointParameter;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.EndPointAddressingVersion;
+import org.wso2.integrationstudio.gmf.esb.EndPointAttachmentOptimization;
+import org.wso2.integrationstudio.gmf.esb.EndPointMessageFormat;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EndPointTimeOutAction;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.TemplateEndpoint;
+import org.wso2.integrationstudio.gmf.esb.TemplateEndpointParameter;
+import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplateEndpointPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.TemplateEndpointPropertiesEditionPart;
 
 
 // End of user code

@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.artifact.dataservice.utils;
+package org.wso2.integrationstudio.artifact.dataservice.utils;
 
 import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.Activator;
-import org.wso2.integrationstudio.eclipse.utils.template.TemplateUtil;
+import org.wso2.integrationstudio.artifact.dataservice.Activator;
+import org.wso2.integrationstudio.utils.template.TemplateUtil;
 
 public class DataServiceTemplateUtils extends TemplateUtil{
 

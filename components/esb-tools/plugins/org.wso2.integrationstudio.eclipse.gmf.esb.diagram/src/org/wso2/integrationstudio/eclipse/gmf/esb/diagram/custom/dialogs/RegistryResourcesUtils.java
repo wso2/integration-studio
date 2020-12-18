@@ -1,14 +1,14 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.dialogs;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.dialogs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProvider;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProviderData;
-import org.wso2.integrationstudio.eclipse.registry.core.RegistryManager;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryFile;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProvider;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProviderData;
+import org.wso2.integrationstudio.registry.core.RegistryManager;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryFile;
 
 public class RegistryResourcesUtils {
 

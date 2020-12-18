@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,13 +14,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RMSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RMSpecVersion;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RMSequenceMediator;
+import org.wso2.integrationstudio.gmf.esb.RMSequenceMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.RMSequenceMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RMSequenceType;
+import org.wso2.integrationstudio.gmf.esb.RMSpecVersion;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,12 +30,12 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RMSpecVersion;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RMSequenceMediatorImpl#getRmSpecVersion <em>Rm Spec Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RMSequenceMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RMSequenceMediatorImpl#getCorrelationXpath <em>Correlation Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RMSequenceMediatorImpl#getLastMessageXpath <em>Last Message Xpath</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RMSequenceMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RMSequenceMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RMSequenceMediatorImpl#getRmSpecVersion <em>Rm Spec Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RMSequenceMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RMSequenceMediatorImpl#getCorrelationXpath <em>Correlation Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RMSequenceMediatorImpl#getLastMessageXpath <em>Last Message Xpath</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RMSequenceMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RMSequenceMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated

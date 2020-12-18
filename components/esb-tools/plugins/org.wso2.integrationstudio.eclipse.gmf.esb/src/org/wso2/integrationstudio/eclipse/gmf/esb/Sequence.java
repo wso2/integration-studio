@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,19 +17,19 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getKey <em>Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getIncludedMediators <em>Included Mediators</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#isReceiveSequence <em>Receive Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#isDuplicate <em>Duplicate</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getReferringSequenceType <em>Referring Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getDynamicReferenceKey <em>Dynamic Reference Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getStaticReferenceKey <em>Static Reference Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Sequence#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Sequence#getKey <em>Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Sequence#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Sequence#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Sequence#getIncludedMediators <em>Included Mediators</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Sequence#isReceiveSequence <em>Receive Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Sequence#isDuplicate <em>Duplicate</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Sequence#getReferringSequenceType <em>Referring Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Sequence#getDynamicReferenceKey <em>Dynamic Reference Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.Sequence#getStaticReferenceKey <em>Static Reference Key</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequence()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequence()
  * @model
  * @generated
  */
@@ -44,14 +44,14 @@ public interface Sequence extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequence_Name()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequence_Name()
      * @model
      * @generated
      */
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Sequence#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Name</em>' attribute.
@@ -71,14 +71,14 @@ public interface Sequence extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Key</em>' attribute.
      * @see #setKey(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequence_Key()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequence_Key()
      * @model default="&lt;inline/&gt;"
      * @generated
      */
     String getKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getKey <em>Key</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Sequence#getKey <em>Key</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Key</em>' attribute.
@@ -97,14 +97,14 @@ public interface Sequence extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(SequenceInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequence_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequence_InputConnector()
      * @model containment="true"
      * @generated
      */
     SequenceInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Sequence#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -115,7 +115,7 @@ public interface Sequence extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Output Connector</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.SequenceOutputConnector}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.SequenceOutputConnector}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Output Connector</em>' containment reference isn't clear,
@@ -123,7 +123,7 @@ public interface Sequence extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequence_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequence_OutputConnector()
      * @model containment="true"
      * @generated
      */
@@ -131,7 +131,7 @@ public interface Sequence extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Included Mediators</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.Mediator}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.Mediator}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Included Mediators</em>' containment reference list isn't clear,
@@ -139,7 +139,7 @@ public interface Sequence extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Included Mediators</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequence_IncludedMediators()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequence_IncludedMediators()
      * @model containment="true"
      * @generated
      */
@@ -155,14 +155,14 @@ public interface Sequence extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Receive Sequence</em>' attribute.
      * @see #setReceiveSequence(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequence_ReceiveSequence()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequence_ReceiveSequence()
      * @model
      * @generated
      */
     boolean isReceiveSequence();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#isReceiveSequence <em>Receive Sequence</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Sequence#isReceiveSequence <em>Receive Sequence</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Receive Sequence</em>' attribute.
@@ -181,14 +181,14 @@ public interface Sequence extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Duplicate</em>' attribute.
      * @see #setDuplicate(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequence_Duplicate()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequence_Duplicate()
      * @model
      * @generated
      */
     boolean isDuplicate();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#isDuplicate <em>Duplicate</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Sequence#isDuplicate <em>Duplicate</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Duplicate</em>' attribute.
@@ -199,7 +199,7 @@ public interface Sequence extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Referring Sequence Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.KeyType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.KeyType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Referring Sequence Type</em>' attribute isn't clear,
@@ -207,20 +207,20 @@ public interface Sequence extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Referring Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.KeyType
+     * @see org.wso2.integrationstudio.gmf.esb.KeyType
      * @see #setReferringSequenceType(KeyType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequence_ReferringSequenceType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequence_ReferringSequenceType()
      * @model
      * @generated
      */
     KeyType getReferringSequenceType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getReferringSequenceType <em>Referring Sequence Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Sequence#getReferringSequenceType <em>Referring Sequence Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Referring Sequence Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.KeyType
+     * @see org.wso2.integrationstudio.gmf.esb.KeyType
      * @see #getReferringSequenceType()
      * @generated
      */
@@ -236,14 +236,14 @@ public interface Sequence extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Dynamic Reference Key</em>' containment reference.
      * @see #setDynamicReferenceKey(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequence_DynamicReferenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequence_DynamicReferenceKey()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getDynamicReferenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getDynamicReferenceKey <em>Dynamic Reference Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Sequence#getDynamicReferenceKey <em>Dynamic Reference Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Dynamic Reference Key</em>' containment reference.
@@ -262,14 +262,14 @@ public interface Sequence extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Static Reference Key</em>' containment reference.
      * @see #setStaticReferenceKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getSequence_StaticReferenceKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getSequence_StaticReferenceKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getStaticReferenceKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.Sequence#getStaticReferenceKey <em>Static Reference Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.Sequence#getStaticReferenceKey <em>Static Reference Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Static Reference Key</em>' containment reference.

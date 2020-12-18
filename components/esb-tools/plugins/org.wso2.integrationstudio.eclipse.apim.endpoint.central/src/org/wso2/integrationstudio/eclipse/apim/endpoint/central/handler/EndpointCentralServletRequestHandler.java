@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.handler;
+package org.wso2.integrationstudio.apim.endpoint.central.handler;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,34 +55,34 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.wso2.carbon.rest.api.APIException;
 import org.wso2.carbon.rest.api.service.RestApiAdmin;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.Activator;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.client.APIMCTLClient;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.client.APIMServiceClient;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.APIMCTLException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.EndpointRegistryConnectException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.HttpClientException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.exceptions.InvalidTokenException;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.APIArtifact;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.APIImportPayload;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.LoginPayload;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.ProjectData;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.RegistryEntry;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.model.UserSession;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.EndpointCentralConstants;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources.EndpointCentralServletConstants;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils.JsonUtils;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.utils.UserSessionManager;
-import org.wso2.integrationstudio.eclipse.distribution.project.model.DependencyData;
-import org.wso2.integrationstudio.eclipse.distribution.project.validator.ProjectList;
-import org.wso2.integrationstudio.eclipse.esb.core.ESBMavenConstants;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.apim.endpoint.central.Activator;
+import org.wso2.integrationstudio.apim.endpoint.central.client.APIMCTLClient;
+import org.wso2.integrationstudio.apim.endpoint.central.client.APIMServiceClient;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.APIMCTLException;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.EndpointRegistryConnectException;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.HttpClientException;
+import org.wso2.integrationstudio.apim.endpoint.central.exceptions.InvalidTokenException;
+import org.wso2.integrationstudio.apim.endpoint.central.model.APIArtifact;
+import org.wso2.integrationstudio.apim.endpoint.central.model.APIImportPayload;
+import org.wso2.integrationstudio.apim.endpoint.central.model.LoginPayload;
+import org.wso2.integrationstudio.apim.endpoint.central.model.ProjectData;
+import org.wso2.integrationstudio.apim.endpoint.central.model.RegistryEntry;
+import org.wso2.integrationstudio.apim.endpoint.central.model.UserSession;
+import org.wso2.integrationstudio.apim.endpoint.central.resources.EndpointCentralConstants;
+import org.wso2.integrationstudio.apim.endpoint.central.resources.EndpointCentralServletConstants;
+import org.wso2.integrationstudio.apim.endpoint.central.utils.JsonUtils;
+import org.wso2.integrationstudio.apim.endpoint.central.utils.UserSessionManager;
+import org.wso2.integrationstudio.distribution.project.model.DependencyData;
+import org.wso2.integrationstudio.distribution.project.validator.ProjectList;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 /**
  * This class handle requests from endpoint central wizard.

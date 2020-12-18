@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,22 +15,22 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction#getRuleAction <em>Rule Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction#getRuleFragment <em>Rule Fragment</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction#getRuleOption <em>Rule Option</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction#getActionExpression <em>Action Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction#getActionValue <em>Action Value</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction#getActionRegex <em>Action Regex</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction#getRuleAction <em>Rule Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction#getRuleFragment <em>Rule Fragment</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction#getRuleOption <em>Rule Option</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction#getActionExpression <em>Action Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction#getActionValue <em>Action Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction#getActionRegex <em>Action Regex</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRuleAction()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getURLRewriteRuleAction()
  * @model
  * @generated
  */
 public interface URLRewriteRuleAction extends EsbNode {
     /**
      * Returns the value of the '<em><b>Rule Action</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleActionType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.RuleActionType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Rule Action</em>' attribute isn't clear,
@@ -38,20 +38,20 @@ public interface URLRewriteRuleAction extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Rule Action</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RuleActionType
+     * @see org.wso2.integrationstudio.gmf.esb.RuleActionType
      * @see #setRuleAction(RuleActionType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRuleAction_RuleAction()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getURLRewriteRuleAction_RuleAction()
      * @model
      * @generated
      */
     RuleActionType getRuleAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction#getRuleAction <em>Rule Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction#getRuleAction <em>Rule Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Rule Action</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RuleActionType
+     * @see org.wso2.integrationstudio.gmf.esb.RuleActionType
      * @see #getRuleAction()
      * @generated
      */
@@ -59,7 +59,7 @@ public interface URLRewriteRuleAction extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>Rule Fragment</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleFragmentType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.RuleFragmentType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Rule Fragment</em>' attribute isn't clear,
@@ -67,20 +67,20 @@ public interface URLRewriteRuleAction extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Rule Fragment</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RuleFragmentType
+     * @see org.wso2.integrationstudio.gmf.esb.RuleFragmentType
      * @see #setRuleFragment(RuleFragmentType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRuleAction_RuleFragment()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getURLRewriteRuleAction_RuleFragment()
      * @model
      * @generated
      */
     RuleFragmentType getRuleFragment();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction#getRuleFragment <em>Rule Fragment</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction#getRuleFragment <em>Rule Fragment</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Rule Fragment</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RuleFragmentType
+     * @see org.wso2.integrationstudio.gmf.esb.RuleFragmentType
      * @see #getRuleFragment()
      * @generated
      */
@@ -88,7 +88,7 @@ public interface URLRewriteRuleAction extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>Rule Option</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.RuleOptionType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.RuleOptionType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Rule Option</em>' attribute isn't clear,
@@ -96,20 +96,20 @@ public interface URLRewriteRuleAction extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Rule Option</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RuleOptionType
+     * @see org.wso2.integrationstudio.gmf.esb.RuleOptionType
      * @see #setRuleOption(RuleOptionType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRuleAction_RuleOption()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getURLRewriteRuleAction_RuleOption()
      * @model
      * @generated
      */
     RuleOptionType getRuleOption();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction#getRuleOption <em>Rule Option</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction#getRuleOption <em>Rule Option</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Rule Option</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.RuleOptionType
+     * @see org.wso2.integrationstudio.gmf.esb.RuleOptionType
      * @see #getRuleOption()
      * @generated
      */
@@ -125,14 +125,14 @@ public interface URLRewriteRuleAction extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Action Expression</em>' containment reference.
      * @see #setActionExpression(NamespacedProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRuleAction_ActionExpression()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getURLRewriteRuleAction_ActionExpression()
      * @model containment="true"
      * @generated
      */
     NamespacedProperty getActionExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction#getActionExpression <em>Action Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction#getActionExpression <em>Action Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Action Expression</em>' containment reference.
@@ -151,14 +151,14 @@ public interface URLRewriteRuleAction extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Action Value</em>' attribute.
      * @see #setActionValue(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRuleAction_ActionValue()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getURLRewriteRuleAction_ActionValue()
      * @model
      * @generated
      */
     String getActionValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction#getActionValue <em>Action Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction#getActionValue <em>Action Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Action Value</em>' attribute.
@@ -177,14 +177,14 @@ public interface URLRewriteRuleAction extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Action Regex</em>' attribute.
      * @see #setActionRegex(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRuleAction_ActionRegex()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getURLRewriteRuleAction_ActionRegex()
      * @model
      * @generated
      */
     String getActionRegex();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.URLRewriteRuleAction#getActionRegex <em>Action Regex</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.URLRewriteRuleAction#getActionRegex <em>Action Regex</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Action Regex</em>' attribute.

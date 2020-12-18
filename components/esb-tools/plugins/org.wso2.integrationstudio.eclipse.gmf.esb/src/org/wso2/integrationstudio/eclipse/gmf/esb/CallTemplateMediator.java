@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,15 +17,15 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator#getAvailableTemplates <em>Available Templates</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator#getTemplateParameters <em>Template Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator#getTargetTemplate <em>Target Template</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator#getOnError <em>On Error</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator#getAvailableTemplates <em>Available Templates</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator#getTemplateParameters <em>Template Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator#getTargetTemplate <em>Target Template</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator#getOnError <em>On Error</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateMediator()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCallTemplateMediator()
  * @model
  * @generated
  */
@@ -40,14 +40,14 @@ public interface CallTemplateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Available Templates</em>' attribute.
      * @see #setAvailableTemplates(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateMediator_AvailableTemplates()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCallTemplateMediator_AvailableTemplates()
      * @model
      * @generated
      */
     String getAvailableTemplates();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator#getAvailableTemplates <em>Available Templates</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator#getAvailableTemplates <em>Available Templates</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Available Templates</em>' attribute.
@@ -58,7 +58,7 @@ public interface CallTemplateMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Template Parameters</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateParameter}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.CallTemplateParameter}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Template Parameters</em>' containment reference list isn't clear,
@@ -66,7 +66,7 @@ public interface CallTemplateMediator extends Mediator {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Template Parameters</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateMediator_TemplateParameters()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCallTemplateMediator_TemplateParameters()
      * @model containment="true"
      * @generated
      */
@@ -82,14 +82,14 @@ public interface CallTemplateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(CallTemplateMediatorInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateMediator_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCallTemplateMediator_InputConnector()
      * @model containment="true"
      * @generated
      */
     CallTemplateMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -108,14 +108,14 @@ public interface CallTemplateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(CallTemplateMediatorOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateMediator_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCallTemplateMediator_OutputConnector()
      * @model containment="true"
      * @generated
      */
     CallTemplateMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -134,14 +134,14 @@ public interface CallTemplateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Target Template</em>' attribute.
      * @see #setTargetTemplate(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateMediator_TargetTemplate()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCallTemplateMediator_TargetTemplate()
      * @model
      * @generated
      */
     String getTargetTemplate();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator#getTargetTemplate <em>Target Template</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator#getTargetTemplate <em>Target Template</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Target Template</em>' attribute.
@@ -160,14 +160,14 @@ public interface CallTemplateMediator extends Mediator {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Error</em>' containment reference.
      * @see #setOnError(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateMediator_OnError()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCallTemplateMediator_OnError()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getOnError();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator#getOnError <em>On Error</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CallTemplateMediator#getOnError <em>On Error</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Error</em>' containment reference.

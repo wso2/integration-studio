@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.registry.connector.model;
+package org.wso2.integrationstudio.capp.registry.connector.model;
 
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryConnection;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryConnection;
 
 public class RegistryConnectionNode {
 	private IRegistryConnection registryConnection;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.model;
+package org.wso2.integrationstudio.capp.core.model;
 
 public class CARArtifactFeature {
 	//TODO find why this is here and remove once fixed

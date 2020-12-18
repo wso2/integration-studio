@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceEndpointContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceSequenceAndEndpointContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceSequenceContainer;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceEndpointContainer;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceSequenceAndEndpointContainer;
+import org.wso2.integrationstudio.gmf.esb.ProxyServiceSequenceContainer;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +28,7 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyServiceSequenceContainer;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceSequenceAndEndpointContainerImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceSequenceAndEndpointContainerImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  * </ul>
  *
  * @generated

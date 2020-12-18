@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.utils;
+package org.wso2.integrationstudio.platform.core.utils;
 
 import org.eclipse.osgi.util.NLS;
 
@@ -31,7 +31,7 @@ import java.util.List;
  */
 public class Constants extends NLS {
 	public static final String PROPERTIES_FILE_BASE_NAME =
-	                                                       "org.wso2.integrationstudio.eclipse.platform.core.utils.constants";
+	                                                       "org.wso2.integrationstudio.platform.core.utils.constants";
 	public static final String POM_FILE_NAME = "pom";
 	public static final String POM_FILE_EXTENSION = "xml";
 	public static final String ARTIFACT_XML = "artifact.xml";

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.dashboad" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.dashboad" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.dashboad" id="org.wso2.integrationstudio.create.dashbaord.new.section" name="Dashboard Section RHS"/>
+         <meta.schema plugin="org.wso2.integrationstudio.dashboad" id="org.wso2.integrationstudio.create.dashbaord.new.section" name="Dashboard Section RHS"/>
       </appinfo>
       <documentation>
          This will give information necessary to create a dashboard section in the right hand side of the Integration Studio dashboard.
@@ -104,18 +104,18 @@
          &lt;extension
           point=&quot;org.wso2.integrationstudio.create.dashbaord.section&quot;&gt;
            &lt;dashboard.section
-             id=&quot;org.wso2.integrationstudio.eclipse.maven.features&quot;
+             id=&quot;org.wso2.integrationstudio.maven.features&quot;
              nametag=&quot;Maven&quot;
              name=&quot;Maven&quot;
-             bundleID=&quot;org.wso2.integrationstudio.eclipse.maven.multi.module&quot;
+             bundleID=&quot;org.wso2.integrationstudio.maven.multi.module&quot;
              icon=&quot;icons/maven-24x24.png&quot;&gt;
              &lt;/dashboard.section&gt;
     &lt;/extension&gt;
     
     --Optional , if category is not define then add use following extention point to define categrory 
     &lt;extension point=&quot;org.eclipse.ui.newWizards&quot;&gt;
-       &lt;category name=&quot;Maven Project&quot; id=&quot;org.wso2.integrationstudio.eclipse.maven.features&quot;
-                  parentCategory=&quot;org.wso2.integrationstudio.eclipse.capp.project&quot;&gt;
+       &lt;category name=&quot;Maven Project&quot; id=&quot;org.wso2.integrationstudio.maven.features&quot;
+                  parentCategory=&quot;org.wso2.integrationstudio.capp.project&quot;&gt;
         &lt;/category&gt;
    &lt;/extension&gt;
       </documentation>

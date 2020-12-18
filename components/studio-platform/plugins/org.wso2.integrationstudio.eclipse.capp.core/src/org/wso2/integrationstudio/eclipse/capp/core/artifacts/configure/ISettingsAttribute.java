@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.artifacts.configure;
+package org.wso2.integrationstudio.capp.core.artifacts.configure;
 
 public interface ISettingsAttribute {
 	public String getAttributeName();

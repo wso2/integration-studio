@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.channel.messagefactory;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.channel.messagefactory;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.IEventMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.IResponseMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.CommandMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.IEventMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.IResponseMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.CommandMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 
 import com.google.gson.JsonObject;
 

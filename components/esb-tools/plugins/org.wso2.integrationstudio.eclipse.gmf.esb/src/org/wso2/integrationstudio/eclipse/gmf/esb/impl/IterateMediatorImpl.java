@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,16 +14,16 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.IterateMediatorTargetOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.IterateTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.MediatorFlow;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.IterateMediator;
+import org.wso2.integrationstudio.gmf.esb.IterateMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.IterateMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.IterateMediatorTargetOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.IterateTarget;
+import org.wso2.integrationstudio.gmf.esb.MediatorFlow;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SequenceType;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,20 +33,20 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getIterateID <em>Iterate ID</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#isSequentialMediation <em>Sequential Mediation</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#isContinueParent <em>Continue Parent</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#isPreservePayload <em>Preserve Payload</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getIterateExpression <em>Iterate Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getAttachPath <em>Attach Path</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getTargetOutputConnector <em>Target Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getSequenceName <em>Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#getIterateID <em>Iterate ID</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#isSequentialMediation <em>Sequential Mediation</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#isContinueParent <em>Continue Parent</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#isPreservePayload <em>Preserve Payload</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#getIterateExpression <em>Iterate Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#getAttachPath <em>Attach Path</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#getTargetOutputConnector <em>Target Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl#getSequenceName <em>Sequence Name</em>}</li>
  * </ul>
  *
  * @generated

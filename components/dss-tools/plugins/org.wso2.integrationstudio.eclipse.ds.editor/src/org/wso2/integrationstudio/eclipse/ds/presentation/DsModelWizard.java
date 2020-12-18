@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.presentation;
+package org.wso2.integrationstudio.ds.presentation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,10 +72,10 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
-import org.wso2.integrationstudio.eclipse.ds.DsFactory;
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.provider.DsEditPlugin;
-import org.wso2.integrationstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
+import org.wso2.integrationstudio.ds.DsFactory;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.provider.DsEditPlugin;
+import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
 import org.eclipse.core.runtime.Path;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -173,7 +173,7 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 */
 	protected List<String> initialObjectNames;
 
-	private static final String DSS_PERSPECTIVE = "org.wso2.integrationstudio.eclipse.ds.presentation.custom.perspective";
+	private static final String DSS_PERSPECTIVE = "org.wso2.integrationstudio.ds.presentation.custom.perspective";
 
 	/**
 	 * This just records the information.

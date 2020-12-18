@@ -1,25 +1,25 @@
-package org.wso2.integrationstudio.eclipse.esb.core.utils;
+package org.wso2.integrationstudio.esb.core.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.wso2.integrationstudio.eclipse.esb.core.Activator;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEndpointProvider;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.IEndpointProviderData;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.ILocalEntryProvider;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.ILocalEntryProviderData;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.ISequenceProvider;
-import org.wso2.integrationstudio.eclipse.esb.core.interfaces.ISequenceProviderData;
-import org.wso2.integrationstudio.eclipse.esb.core.internal.impl.EndpointProviderDataImpl;
-import org.wso2.integrationstudio.eclipse.esb.core.internal.impl.LocalEntryProviderDataImpl;
-import org.wso2.integrationstudio.eclipse.esb.core.internal.impl.SequenceProviderDataImpl;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.esb.core.Activator;
+import org.wso2.integrationstudio.esb.core.interfaces.IEndpointProvider;
+import org.wso2.integrationstudio.esb.core.interfaces.IEndpointProviderData;
+import org.wso2.integrationstudio.esb.core.interfaces.ILocalEntryProvider;
+import org.wso2.integrationstudio.esb.core.interfaces.ILocalEntryProviderData;
+import org.wso2.integrationstudio.esb.core.interfaces.ISequenceProvider;
+import org.wso2.integrationstudio.esb.core.interfaces.ISequenceProviderData;
+import org.wso2.integrationstudio.esb.core.internal.impl.EndpointProviderDataImpl;
+import org.wso2.integrationstudio.esb.core.internal.impl.LocalEntryProviderDataImpl;
+import org.wso2.integrationstudio.esb.core.internal.impl.SequenceProviderDataImpl;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class EsbConfigurationExtensionPointHandler {
-	private static String ESB_CONFIGURATION_EXTENSION="org.wso2.integrationstudio.eclipse.esb.configurationProvider";
+	private static String ESB_CONFIGURATION_EXTENSION="org.wso2.integrationstudio.esb.configurationProvider";
 	
 	private static List<IEndpointProviderData> endpointProviderList;
 	private static List<ISequenceProviderData> sequenceProviderList;

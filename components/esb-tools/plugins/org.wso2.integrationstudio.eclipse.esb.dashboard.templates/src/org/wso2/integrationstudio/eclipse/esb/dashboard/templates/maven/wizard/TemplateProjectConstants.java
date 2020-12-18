@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard;
+package org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard;
 
 public class TemplateProjectConstants {
     
@@ -33,17 +33,17 @@ public class TemplateProjectConstants {
 
     public static final String GENERAL_TEMPLATE_NAME = "IS_SAMPLE";
 
-    public static final String SYNAPSE_CONFIG_EDITOR_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorID";
+    public static final String SYNAPSE_CONFIG_EDITOR_ID = "org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorID";
     
-    public static final String DOCKER_EDITOR = "org.wso2.integrationstudio.eclipse.docker.distribution.editor.DistProjectEditor";
+    public static final String DOCKER_EDITOR = "org.wso2.integrationstudio.docker.distribution.editor.DistProjectEditor";
     
-    public static final String DS_EDITOR_ID = "org.wso2.integrationstudio.eclipse.ds.presentation.DsEditorID";
+    public static final String DS_EDITOR_ID = "org.wso2.integrationstudio.ds.presentation.DsEditorID";
 
-    public static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.perspective";
+    public static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.integrationstudio.gmf.esb.diagram.custom.perspective";
 
     public static final String ERROR_MESSAGE = "Error";
 
     public static final String ERROR_MESSAGE_OPENING_EDITOR = "Error opening editor";
 
-    public final static String TEMPLATE_GUIDE_VIEW_ID = "org.wso2.integrationstudio.eclipse.esb.templates.view";
+    public final static String TEMPLATE_GUIDE_VIEW_ID = "org.wso2.integrationstudio.esb.templates.view";
 }

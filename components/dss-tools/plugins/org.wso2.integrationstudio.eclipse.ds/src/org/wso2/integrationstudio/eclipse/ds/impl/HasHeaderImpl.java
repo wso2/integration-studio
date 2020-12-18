@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds.impl;
+package org.wso2.integrationstudio.ds.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.ds.DsPackage;
-import org.wso2.integrationstudio.eclipse.ds.HasHeader;
+import org.wso2.integrationstudio.ds.DsPackage;
+import org.wso2.integrationstudio.ds.HasHeader;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +24,7 @@ import org.wso2.integrationstudio.eclipse.ds.HasHeader;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.impl.HasHeaderImpl#isValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.impl.HasHeaderImpl#isValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated

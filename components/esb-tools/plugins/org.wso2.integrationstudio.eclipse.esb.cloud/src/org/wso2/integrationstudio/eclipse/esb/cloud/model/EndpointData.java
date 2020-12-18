@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.cloud.model;
+package org.wso2.integrationstudio.esb.cloud.model;
 
 import java.util.ArrayList;
 import java.util.List;

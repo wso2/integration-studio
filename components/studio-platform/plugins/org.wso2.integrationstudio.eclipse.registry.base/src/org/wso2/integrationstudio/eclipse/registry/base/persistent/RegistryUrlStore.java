@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.base.persistent;
+package org.wso2.integrationstudio.registry.base.persistent;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -30,9 +30,9 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.base.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.base.Activator;
 
 public final class RegistryUrlStore {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.data;
+package org.wso2.integrationstudio.capp.core.data;
 
 
 public class ImportFeature {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,16 +37,16 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DBLookupMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlParameterDataType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlParameterDefinition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlParameterValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement;
+import org.wso2.integrationstudio.gmf.esb.AbstractSqlExecutorMediator;
+import org.wso2.integrationstudio.gmf.esb.DBLookupMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.SqlParameterDataType;
+import org.wso2.integrationstudio.gmf.esb.SqlParameterDefinition;
+import org.wso2.integrationstudio.gmf.esb.SqlParameterValueType;
+import org.wso2.integrationstudio.gmf.esb.SqlResultMapping;
+import org.wso2.integrationstudio.gmf.esb.SqlStatement;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FormLayout;

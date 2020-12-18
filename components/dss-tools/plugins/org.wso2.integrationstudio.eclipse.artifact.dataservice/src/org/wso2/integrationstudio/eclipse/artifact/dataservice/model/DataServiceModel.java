@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.artifact.dataservice.model;
+package org.wso2.integrationstudio.artifact.dataservice.model;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -32,14 +32,14 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.utils.DataServiceArtifactConstants;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.dataserviceProject.ui.wizard.DataServiceProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceArtifactConstants;
+import org.wso2.integrationstudio.artifact.dataservice.Activator;
+import org.wso2.integrationstudio.artifact.dataserviceProject.ui.wizard.DataServiceProjectCreationWizard;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class DataServiceModel extends ProjectDataModel {
 
@@ -777,7 +777,7 @@ public class DataServiceModel extends ProjectDataModel {
 
 	public static IProject createDSSProject(Shell shell) {
 		IWizardDescriptor wizardDesc = PlatformUI.getWorkbench().getNewWizardRegistry()
-				.findWizard("org.wso2.integrationstudio.eclipse.artifact.newdsproject");
+				.findWizard("org.wso2.integrationstudio.artifact.newdsproject");
 		if (wizardDesc != null) {
 			try {
 				IProject dsProject = null;

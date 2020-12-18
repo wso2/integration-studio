@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,20 +28,20 @@ import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ClassProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.ClassMediatorExt;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.DummyClassMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.ClassMediator;
+import org.wso2.integrationstudio.gmf.esb.ClassProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.ClassMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.DummyClassMediator;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbNodeTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
- * {@link org.wso2.integrationstudio.eclipse.gmf.esb.ClassMediator} model objects into
+ * {@link org.wso2.integrationstudio.gmf.esb.ClassMediator} model objects into
  * corresponding synapse artifact(s).
  */
 public class ClassMediatorTransformer extends AbstractEsbNodeTransformer {

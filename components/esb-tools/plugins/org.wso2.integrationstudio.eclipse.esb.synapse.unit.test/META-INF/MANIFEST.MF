@@ -1,14 +1,14 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Synapse Unit Testing Framework
-Bundle-SymbolicName: org.wso2.integrationstudio.eclipse.esb.synapse.unit.test;singleton:=true
+Bundle-SymbolicName: org.wso2.integrationstudio.esb.synapse.unit.test;singleton:=true
 Bundle-Version: 7.2.0.qualifier
-Bundle-Activator: org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.Activator
+Bundle-Activator: org.wso2.integrationstudio.esb.synapse.unit.test.Activator
 Bundle-Vendor: WSO2 Inc
 Require-Bundle: org.eclipse.ui,
- org.wso2.integrationstudio.eclipse.kernel.libraries,
- org.wso2.integrationstudio.eclipse.platform.core,
- org.wso2.integrationstudio.eclipse.platform.ui,
+ org.wso2.integrationstudio.kernel.libraries,
+ org.wso2.integrationstudio.platform.core,
+ org.wso2.integrationstudio.platform.ui,
  org.eclipse.core.runtime,
  org.eclipse.equinox.registry,
  org.eclipse.jface,
@@ -40,12 +40,12 @@ Import-Package: org.apache.commons.lang3;version="3.1.0",
  org.eclipse.ui.forms.widgets,
  org.eclipse.ui.ide,
  org.eclipse.ui.navigator,
- org.wso2.integrationstudio.eclipse.logging.core
-Export-Package: org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component,
- org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model,
- org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.propertytester,
- org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils,
- org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.mockheader,
- org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.mockresource,
- org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.mockservice,
- org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.testcase
+ org.wso2.integrationstudio.logging.core
+Export-Package: org.wso2.integrationstudio.esb.synapse.unit.test.component,
+ org.wso2.integrationstudio.esb.synapse.unit.test.model,
+ org.wso2.integrationstudio.esb.synapse.unit.test.propertytester,
+ org.wso2.integrationstudio.esb.synapse.unit.test.utils,
+ org.wso2.integrationstudio.esb.synapse.unit.test.wizard.mockheader,
+ org.wso2.integrationstudio.esb.synapse.unit.test.wizard.mockresource,
+ org.wso2.integrationstudio.esb.synapse.unit.test.wizard.mockservice,
+ org.wso2.integrationstudio.esb.synapse.unit.test.wizard.testcase

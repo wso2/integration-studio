@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.carbonserver.remote.internal;
+package org.wso2.integrationstudio.carbonserver.remote.internal;
 
 import java.net.MalformedURLException;
 import java.net.URL;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.remote.exception;
+package org.wso2.integrationstudio.carbonserver.remote.exception;
 
 public class InvalidCredentialsException extends Exception {
 	/**

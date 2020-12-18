@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component;
+package org.wso2.integrationstudio.esb.synapse.unit.test.component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +28,11 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Layout;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.constant.Constants;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.JavaScriptLineStyler;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.JsonLineStyler;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.XmlRegion;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.XmlRegionAnalyzer;
+import org.wso2.integrationstudio.esb.synapse.unit.test.constant.Constants;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.JavaScriptLineStyler;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.JsonLineStyler;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.XmlRegion;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.XmlRegionAnalyzer;
 
 /**
  * Class responsible for create syntax highlighting style box.

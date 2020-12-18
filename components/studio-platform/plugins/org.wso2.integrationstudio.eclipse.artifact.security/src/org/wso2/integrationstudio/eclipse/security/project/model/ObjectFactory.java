@@ -6,7 +6,7 @@
 //
 
 
-package org.wso2.integrationstudio.eclipse.security.project.model;
+package org.wso2.integrationstudio.security.project.model;
 
 import java.math.BigInteger;
 import javax.xml.bind.JAXBElement;
@@ -20,7 +20,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the org.wso2.integrationstudio.eclipse.qos.project.model package. 
+ * generated in the org.wso2.integrationstudio.qos.project.model package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -86,7 +86,7 @@ public class ObjectFactory {
     private final static QName _SignatureMethodTypeHMACOutputLength_QNAME = new QName("http://www.w3.org/2000/09/xmldsig#", "HMACOutputLength");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.wso2.integrationstudio.eclipse.qos.project.model
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.wso2.integrationstudio.qos.project.model
      * 
      */
     public ObjectFactory() {

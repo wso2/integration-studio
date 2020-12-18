@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.dashboard.handlers;
+package org.wso2.integrationstudio.dashboard.handlers;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 
 import org.eclipse.ui.IStartup;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.util.ServerExtensionsRegistryUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver40.register.product.servers.DynamicServer40ExtensionGenerator;
-import org.wso2.integrationstudio.eclipse.carbonserver42.register.product.servers.DynamicServer42ExtensionGenerator;
-import org.wso2.integrationstudio.eclipse.carbonserver44.register.product.servers.DynamicServer44ExtensionGenerator;
-import org.wso2.integrationstudio.eclipse.carbonserver44ei.register.product.servers.DynamicServer44eiExtensionGenerator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei.register.product.servers.DynamicServer44MicroeiExtensionGenerator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.register.product.servers.DynamicServer44Microei12ExtensionGenerator;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei11.register.product.servers.DynamicServer44Microei11ExtensionGenerator;
+import org.wso2.integrationstudio.carbonserver.base.util.ServerExtensionsRegistryUtils;
+import org.wso2.integrationstudio.carbonserver40.register.product.servers.DynamicServer40ExtensionGenerator;
+import org.wso2.integrationstudio.carbonserver42.register.product.servers.DynamicServer42ExtensionGenerator;
+import org.wso2.integrationstudio.carbonserver44.register.product.servers.DynamicServer44ExtensionGenerator;
+import org.wso2.integrationstudio.carbonserver44ei.register.product.servers.DynamicServer44eiExtensionGenerator;
+import org.wso2.integrationstudio.carbonserver44microei.register.product.servers.DynamicServer44MicroeiExtensionGenerator;
+import org.wso2.integrationstudio.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
+import org.wso2.integrationstudio.carbonserver44microei12.register.product.servers.DynamicServer44Microei12ExtensionGenerator;
+import org.wso2.integrationstudio.carbonserver44microei11.register.product.servers.DynamicServer44Microei11ExtensionGenerator;
 
 /**
  * This is the early startup handler of the Integration Studio platform, all

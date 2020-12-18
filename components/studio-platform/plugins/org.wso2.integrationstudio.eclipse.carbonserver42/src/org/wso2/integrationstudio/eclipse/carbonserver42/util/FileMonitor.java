@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver42.util;
+package org.wso2.integrationstudio.carbonserver42.util;
 
 import java.io.File;
 import java.util.ArrayList;

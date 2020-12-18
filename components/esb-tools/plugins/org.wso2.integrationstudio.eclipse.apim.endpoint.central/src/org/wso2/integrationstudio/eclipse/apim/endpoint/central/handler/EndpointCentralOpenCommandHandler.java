@@ -15,14 +15,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.handler;
+package org.wso2.integrationstudio.apim.endpoint.central.handler;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.apim.endpoint.central.wizard.EndpointCentralWizard;
+import org.wso2.integrationstudio.apim.endpoint.central.wizard.EndpointCentralWizard;
 
 /**
  * This handler class open endpoint central wizard.

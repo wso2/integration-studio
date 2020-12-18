@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages;
+package org.wso2.integrationstudio.platform.ui.wizard.pages;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -48,13 +48,13 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.model.MavenInfo;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.ui.Activator;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.model.MavenInfo;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.ui.Activator;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class MavenDetailsPage extends WizardPage implements Observer {
 
@@ -222,7 +222,7 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 				if (!btnhasMavenParent.getSelection()) {
 					// Check whether the global setting is set. If set, user
 					// them. otherwise simply null
-					String text = preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+					String text = preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 							GLOBAL_PARENT_MAVEN_GROUP_ID, null, null);
 					if (text == null) {
 						mavenProjectInfo.setParentProject(null);
@@ -349,7 +349,7 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 				if (info != null) {
 					setParentMavenInfo(info);
 					updateParent();
-				} else if (preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+				} else if (preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 						GLOBAL_PARENT_MAVEN_GROUP_ID, null, null) != null) {
 					Parent parentFromPreferernceStore = getParentFromPreferernceStore();
 					setParentMavenInfo(parentFromPreferernceStore);
@@ -371,11 +371,11 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 
 	private Parent getParentFromPreferernceStore() {
 		Parent parent = new Parent();
-		parent.setGroupId(preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		parent.setGroupId(preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 		                                               GLOBAL_PARENT_MAVEN_GROUP_ID, null, null));
-		parent.setArtifactId(preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		parent.setArtifactId(preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 		                                                  GLOBAL_PARENT_MAVEN_ARTIFACTID, null, null));
-		parent.setVersion(preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		parent.setVersion(preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 		                                               GLOBAL_PARENT_MAVEN_VERSION, null, null));
 		parent.setRelativePath(null);
 		return parent;
@@ -488,7 +488,7 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 
 	private void updateMavenParentControlState() {
 		String text =
-		              preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		              preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 		                                           GLOBAL_PARENT_MAVEN_GROUP_ID, null, null);
 		if (btnhasMavenParent != null || text != null) {
 			boolean hasParent = btnhasMavenParent.getSelection();

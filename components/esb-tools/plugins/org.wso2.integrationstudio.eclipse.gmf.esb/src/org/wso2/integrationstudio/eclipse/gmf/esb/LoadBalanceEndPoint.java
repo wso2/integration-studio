@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,20 +17,20 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#isFailover <em>Failover</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getPolicy <em>Policy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getWestOutputConnector <em>West Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getMember <em>Member</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getSessionType <em>Session Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getAlgorithm <em>Algorithm</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getSessionTimeout <em>Session Timeout</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getMediatorFlow <em>Mediator Flow</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#isBuildMessage <em>Build Message</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#isFailover <em>Failover</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getPolicy <em>Policy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getWestOutputConnector <em>West Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getMember <em>Member</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getSessionType <em>Session Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getAlgorithm <em>Algorithm</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getSessionTimeout <em>Session Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#isBuildMessage <em>Build Message</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getLoadBalanceEndPoint()
  * @model
  * @generated
  */
@@ -45,14 +45,14 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Failover</em>' attribute.
      * @see #setFailover(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint_Failover()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getLoadBalanceEndPoint_Failover()
      * @model
      * @generated
      */
     boolean isFailover();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#isFailover <em>Failover</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#isFailover <em>Failover</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Failover</em>' attribute.
@@ -71,14 +71,14 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Policy</em>' attribute.
      * @see #setPolicy(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint_Policy()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getLoadBalanceEndPoint_Policy()
      * @model
      * @generated
      */
     String getPolicy();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getPolicy <em>Policy</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getPolicy <em>Policy</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Policy</em>' attribute.
@@ -97,14 +97,14 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(LoadBalanceEndPointInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getLoadBalanceEndPoint_InputConnector()
      * @model containment="true"
      * @generated
      */
     LoadBalanceEndPointInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -115,7 +115,7 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
 
     /**
      * Returns the value of the '<em><b>Output Connector</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPointOutputConnector}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Output Connector</em>' containment reference list isn't clear,
@@ -123,7 +123,7 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getLoadBalanceEndPoint_OutputConnector()
      * @model containment="true"
      * @generated
      */
@@ -139,14 +139,14 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>West Output Connector</em>' containment reference.
      * @see #setWestOutputConnector(LoadBalanceEndPointWestOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint_WestOutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getLoadBalanceEndPoint_WestOutputConnector()
      * @model containment="true"
      * @generated
      */
     LoadBalanceEndPointWestOutputConnector getWestOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getWestOutputConnector <em>West Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getWestOutputConnector <em>West Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>West Output Connector</em>' containment reference.
@@ -157,7 +157,7 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
 
     /**
      * Returns the value of the '<em><b>Member</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.Member}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.Member}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Member</em>' containment reference list isn't clear,
@@ -165,7 +165,7 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Member</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint_Member()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getLoadBalanceEndPoint_Member()
      * @model containment="true" derived="true"
      * @generated
      */
@@ -174,7 +174,7 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
     /**
      * Returns the value of the '<em><b>Session Type</b></em>' attribute.
      * The default value is <code>"NONE"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceSessionType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.LoadBalanceSessionType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Session Type</em>' attribute isn't clear,
@@ -182,20 +182,20 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Session Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceSessionType
+     * @see org.wso2.integrationstudio.gmf.esb.LoadBalanceSessionType
      * @see #setSessionType(LoadBalanceSessionType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint_SessionType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getLoadBalanceEndPoint_SessionType()
      * @model default="NONE"
      * @generated
      */
     LoadBalanceSessionType getSessionType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getSessionType <em>Session Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getSessionType <em>Session Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Session Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceSessionType
+     * @see org.wso2.integrationstudio.gmf.esb.LoadBalanceSessionType
      * @see #getSessionType()
      * @generated
      */
@@ -212,14 +212,14 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Algorithm</em>' attribute.
      * @see #setAlgorithm(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint_Algorithm()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getLoadBalanceEndPoint_Algorithm()
      * @model default="org.apache.synapse.endpoints.algorithms.RoundRobin"
      * @generated
      */
     String getAlgorithm();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getAlgorithm <em>Algorithm</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getAlgorithm <em>Algorithm</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Algorithm</em>' attribute.
@@ -239,14 +239,14 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Session Timeout</em>' attribute.
      * @see #setSessionTimeout(long)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint_SessionTimeout()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getLoadBalanceEndPoint_SessionTimeout()
      * @model default="0"
      * @generated
      */
     long getSessionTimeout();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getSessionTimeout <em>Session Timeout</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getSessionTimeout <em>Session Timeout</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Session Timeout</em>' attribute.
@@ -265,14 +265,14 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Mediator Flow</em>' containment reference.
      * @see #setMediatorFlow(MediatorFlow)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint_MediatorFlow()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getLoadBalanceEndPoint_MediatorFlow()
      * @model containment="true"
      * @generated
      */
     MediatorFlow getMediatorFlow();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
@@ -291,14 +291,14 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Build Message</em>' attribute.
      * @see #setBuildMessage(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint_BuildMessage()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getLoadBalanceEndPoint_BuildMessage()
      * @model
      * @generated
      */
     boolean isBuildMessage();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint#isBuildMessage <em>Build Message</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint#isBuildMessage <em>Build Message</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Build Message</em>' attribute.

@@ -16,17 +16,17 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.esb.cloud.util;
+package org.wso2.integrationstudio.esb.cloud.util;
 
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.esb.cloud.client.IntegrationCloudServiceClient;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.CloudDeploymentException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.HttpClientException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.InvalidTokenException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.exceptions.NetworkUnavailableException;
-import org.wso2.integrationstudio.eclipse.esb.cloud.resources.CloudServiceConstants;
-import org.wso2.integrationstudio.eclipse.esb.cloud.wizard.AppDetailsWizardPage;
+import org.wso2.integrationstudio.esb.cloud.client.IntegrationCloudServiceClient;
+import org.wso2.integrationstudio.esb.cloud.exceptions.CloudDeploymentException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.HttpClientException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.InvalidTokenException;
+import org.wso2.integrationstudio.esb.cloud.exceptions.NetworkUnavailableException;
+import org.wso2.integrationstudio.esb.cloud.resources.CloudServiceConstants;
+import org.wso2.integrationstudio.esb.cloud.wizard.AppDetailsWizardPage;
 
 /**
  * Utilities used buy Cloud Deployment wizards
@@ -57,7 +57,7 @@ public class CloudDeploymentWizardUtils {
      * @param runtimes
      * @return
      */
-    public static String[] getRuntimeNames(List<org.wso2.integrationstudio.eclipse.esb.cloud.model.Runtime> runtimes) {
+    public static String[] getRuntimeNames(List<org.wso2.integrationstudio.esb.cloud.model.Runtime> runtimes) {
         String[] runtimeNames = new String[runtimes.size()];
         for (int i = 0; i < runtimes.size(); i++) {
             runtimeNames[i] = runtimes.get(i).getRuntimeName();

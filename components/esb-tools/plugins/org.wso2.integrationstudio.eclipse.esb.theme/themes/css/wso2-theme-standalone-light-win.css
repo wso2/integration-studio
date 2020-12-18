@@ -69,7 +69,7 @@ FigureCanvas{
 }
 
 CTabFolder{
-	swt-tab-renderer: url('bundleclass://org.wso2.integrationstudio.eclipse.esb.theme/org.wso2.integrationstudio.eclipse.esb.theme.TabTopRenderer');
+	swt-tab-renderer: url('bundleclass://org.wso2.integrationstudio.esb.theme/org.wso2.integrationstudio.esb.theme.TabTopRenderer');
 	swt-mru-visible: true;
 	swt-outer-keyline-color: #ffffff;
     swt-inner-keyline-color: #ffffff;
@@ -126,7 +126,7 @@ CTabFolder{
 }
 
 CTabFolder[style~='SWT.BOTTOM']{
-	swt-tab-renderer: url('bundleclass://org.wso2.integrationstudio.eclipse.esb.theme/org.wso2.integrationstudio.eclipse.esb.theme.TabTopRenderer');
+	swt-tab-renderer: url('bundleclass://org.wso2.integrationstudio.esb.theme/org.wso2.integrationstudio.esb.theme.TabTopRenderer');
 	swt-simple:true;
 	border-visible: false;
 	swt-corner-radius:10px;
@@ -136,7 +136,7 @@ CTabFolder[style~='SWT.BOTTOM']{
 }
 
 VerticalPropertiesTabFolder{
-	swt-tab-renderer: url('bundleclass://org.wso2.integrationstudio.eclipse.esb.theme/org.wso2.integrationstudio.eclipse.esb.theme.TabTopRenderer');
+	swt-tab-renderer: url('bundleclass://org.wso2.integrationstudio.esb.theme/org.wso2.integrationstudio.esb.theme.TabTopRenderer');
 	border-color:#cccccc;
 	border-width: 0;
 	swt-outer-keyline-color: #ffffff;

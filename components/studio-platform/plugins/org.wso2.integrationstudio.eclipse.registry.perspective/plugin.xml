@@ -3,7 +3,7 @@
 <plugin>
 
                      
-<extension point="org.wso2.integrationstudio.eclipse.dashboad.link">        
+<extension point="org.wso2.integrationstudio.dashboad.link">        
          <wizardLink category="dashboard.category.greg"
                     id="dashboard.wizardLink.registry.pespective"
                     wizard="org.wso2.integrationstudio.registry.remote.registry.perspective.action"
@@ -11,7 +11,7 @@
         </wizardLink>
         
         <customAction
-                class="org.wso2.integrationstudio.eclipse.registry.perspective.intro.action.ShowRegistryPerspective"
+                class="org.wso2.integrationstudio.registry.perspective.intro.action.ShowRegistryPerspective"
                 id="org.wso2.integrationstudio.registry.remote.registry.perspective.action">
         </customAction>
     </extension>
@@ -19,7 +19,7 @@
 	<extension point="org.eclipse.ui.perspectives">
 		<perspective id="org.wso2.integrationstudio.registry.remote.registry.pespective"
 			name="WSO2 Registry" icon="icons/registry.png"
-			class="org.wso2.integrationstudio.eclipse.registry.perspective.RegistryPerspectiveFactory" />
+			class="org.wso2.integrationstudio.registry.perspective.RegistryPerspectiveFactory" />
 	</extension>
 	
 

@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.testcase;
+package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.testcase;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -52,19 +52,19 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.CustomUpdateWizardDialog;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.CustomWizardDialog;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.ReferenceTable;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.constant.Constants;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.Assertion;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.InputProperty;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.SynapseUnitTest;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model.TestCase;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.ComboItems;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.utils.CommonUtil;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.assertion.AssertionCreationWizard;
-import org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.wizard.inputproperty.InputPropertyCreationWizard;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.CustomUpdateWizardDialog;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.CustomWizardDialog;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.ReferenceTable;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
+import org.wso2.integrationstudio.esb.synapse.unit.test.constant.Constants;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.Assertion;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.InputProperty;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.SynapseUnitTest;
+import org.wso2.integrationstudio.esb.synapse.unit.test.model.TestCase;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.ComboItems;
+import org.wso2.integrationstudio.esb.synapse.unit.test.utils.CommonUtil;
+import org.wso2.integrationstudio.esb.synapse.unit.test.wizard.assertion.AssertionCreationWizard;
+import org.wso2.integrationstudio.esb.synapse.unit.test.wizard.inputproperty.InputPropertyCreationWizard;
 
 /**
  * Class responsible for creation of wizard page for test cases.

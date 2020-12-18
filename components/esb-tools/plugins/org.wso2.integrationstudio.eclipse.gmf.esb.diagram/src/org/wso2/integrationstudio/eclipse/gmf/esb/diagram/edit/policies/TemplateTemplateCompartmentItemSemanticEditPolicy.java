@@ -1,10 +1,10 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies;
+package org.wso2.integrationstudio.gmf.esb.diagram.edit.policies;
 
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.EndpointDiagram2CreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.commands.Sequences2CreateCommand;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.EndpointDiagram2CreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.Sequences2CreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
  * @generated

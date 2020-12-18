@@ -24,7 +24,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>    
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.integrationstudio.eclipse.distributionproject.module</artifactId>
+    <artifactId>org.wso2.integrationstudio.distributionproject.module</artifactId>
   	<packaging>eclipse-plugin</packaging>
     <name>Integration Studio Composite Application Project Module for WTP Server Tools</name>
 </project>

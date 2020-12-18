@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.registry.connector.wizards;
+package org.wso2.integrationstudio.capp.registry.connector.wizards;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -41,10 +41,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
-//import org.wso2.integrationstudio.eclipse.capp.project.ui.wizard.CAppProjectWizard;
-//import org.wso2.integrationstudio.eclipse.capp.project.utils.CAppConstants;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryHandler;
+//import org.wso2.integrationstudio.capp.project.ui.wizard.CAppProjectWizard;
+//import org.wso2.integrationstudio.capp.project.utils.CAppConstants;
+import org.wso2.integrationstudio.capp.core.artifacts.manager.CAppEnvironment;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryHandler;
 
 public class RegistryConnectionPage extends WizardPage {
 

@@ -4,25 +4,25 @@
    <extension
          point="org.eclipse.ui.newWizards">
          <wizard
-               category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.service.hosting/org.wso2.integrationstudio.eclipse.service.hosting.project.types"
-               class="org.wso2.integrationstudio.eclipse.artifact.datasourceProject.ui.wizard.DataSourceProjectCreationWizard"
+               category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.service.hosting/org.wso2.integrationstudio.service.hosting.project.types"
+               class="org.wso2.integrationstudio.artifact.datasourceProject.ui.wizard.DataSourceProjectCreationWizard"
                icon="icons/ds-16x16.png"
-               id="org.wso2.integrationstudio.eclipse.artifact.newdatasourceproject"
+               id="org.wso2.integrationstudio.artifact.newdatasourceproject"
                name="Data Source Configs"
                project="true"
                wizardManifest="project_wizard.xml">
 			<description>Data Source Configs</description>
 		</wizard>
    </extension>
-      <extension point="org.wso2.integrationstudio.eclipse.capp.artifacts.provider">
-    	<provider class="org.wso2.integrationstudio.eclipse.artifact.datasourceProject.project.export.DataSourceArtifactsProvider"
+      <extension point="org.wso2.integrationstudio.capp.artifacts.provider">
+    	<provider class="org.wso2.integrationstudio.artifact.datasourceProject.project.export.DataSourceArtifactsProvider"
           nature="org.wso2.developerstudio.eclipse.datasource.project.nature"></provider>
    </extension>
    <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.datasource.project.nature" name="Data Source Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.artifact.datasourceProject.project.nature.DataSourceProjectNature">
+				class="org.wso2.integrationstudio.artifact.datasourceProject.project.nature.DataSourceProjectNature">
 			</run>
 		</runtime>
 	</extension>
@@ -37,9 +37,9 @@
 			id="org.eclipse.ui.navigator.resourceContent"
 			name="test">
 				<commonWizard 
-					menuGroupId="3org.wso2.integrationstudio.eclipse.artifact.newdsartifact"
+					menuGroupId="3org.wso2.integrationstudio.artifact.newdsartifact"
 			  	 	type="new"
-					wizardId="org.wso2.integrationstudio.eclipse.artifact.newdsartifact">
+					wizardId="org.wso2.integrationstudio.artifact.newdsartifact">
 					<enablement>
 						<or>
 							<adapt type="org.eclipse.core.resources.IProject"/>
@@ -61,8 +61,8 @@
 	</extension>-->
 			<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.newdatasourceproject">
+                menuGroupId="2org.wso2.integrationstudio.artifact.esb"
+                wizardId="org.wso2.integrationstudio.artifact.newdatasourceproject">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
@@ -78,10 +78,10 @@
             </commonWizard>
     </extension>
 
-    <!--extension point="org.wso2.integrationstudio.eclipse.samples">
+    <!--extension point="org.wso2.integrationstudio.samples">
       <sample
-            class="org.wso2.integrationstudio.eclipse.artifact.dataserviceProject.sample.DataserviceSampleContributor"
-            id="org.wso2.integrationstudio.eclipse.capp.artifact.dataserviceProject.sample"
+            class="org.wso2.integrationstudio.artifact.dataserviceProject.sample.DataserviceSampleContributor"
+            id="org.wso2.integrationstudio.capp.artifact.dataserviceProject.sample"
             isCustomCreateSample="false"
             sampleProjectName="EmployeeDataService">
       </sample>

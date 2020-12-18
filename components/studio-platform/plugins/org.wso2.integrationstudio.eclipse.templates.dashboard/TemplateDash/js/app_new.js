@@ -63,11 +63,11 @@ function loadWelcomeNodes(contributionsString) {
 }
 
 
-var esbNewProjectWizard = "org.wso2.integrationstudio.eclipse.artifact.newesbsolutionproject";
-var projectExportWizard = "org.wso2.integrationstudio.eclipse.distribution.importAsArtifact";
+var esbNewProjectWizard = "org.wso2.integrationstudio.artifact.newesbsolutionproject";
+var projectExportWizard = "org.wso2.integrationstudio.distribution.importAsArtifact";
 
-var dataSourceProject = "org.wso2.integrationstudio.eclipse.artifact.newdatasourceproject";
-var dataServiceProject = "org.wso2.integrationstudio.eclipse.artifact.newdsproject";
+var dataSourceProject = "org.wso2.integrationstudio.artifact.newdatasourceproject";
+var dataServiceProject = "org.wso2.integrationstudio.artifact.newdsproject";
 
 $("#DataServiceProject").click(function(){
 	//OpenIDEWizard(esbNewProjectWizard);
@@ -79,7 +79,7 @@ $("#DataSourceProject").click(function(){
 });
 
 var BPMNProject = "org.wso2.integrationstudio.bpmn.wizards.CreateBPMNProjectWizard";
-var BPELProject = "org.wso2.integrationstudio.eclipse.artifact.newbpelartifact";
+var BPELProject = "org.wso2.integrationstudio.artifact.newbpelartifact";
 var HumanTaskProject = "org.wso2.integrationstudio.humantaskeditor.wizards.HumanTaskProjectWizard";
 
 $("#BPMNProject").click(function(){
@@ -95,14 +95,14 @@ $("#BPELWorkFlowProject").click(function(){
 	openWizard(BPELProject);
 });
 
-var mavenWizard = "org.wso2.integrationstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard";
-var cappWizard = 'org.wso2.integrationstudio.eclipse.distribution.project';
+var mavenWizard = "org.wso2.integrationstudio.platform.ui.mvn.wizard.MvnMultiModuleWizard";
+var cappWizard = 'org.wso2.integrationstudio.distribution.project';
 var serverWizard = 'org.eclipse.wst.server.ui.new.server';
-var registryWizard = 'org.wso2.integrationstudio.eclipse.general.project';
-var configWizard = 'org.wso2.integrationstudio.eclipse.artifact.newesbproject';
-var mediatorWizard = 'org.wso2.integrationstudio.eclipse.artifact.newmediatorartifact';
-var dockerWizard = 'org.wso2.integrationstudio.eclipse.artifact.newdockerproject';
-var kubernetesWizard = 'org.wso2.integrationstudio.eclipse.artifact.newkubernetesproject';
+var registryWizard = 'org.wso2.integrationstudio.general.project';
+var configWizard = 'org.wso2.integrationstudio.artifact.newesbproject';
+var mediatorWizard = 'org.wso2.integrationstudio.artifact.newmediatorartifact';
+var dockerWizard = 'org.wso2.integrationstudio.artifact.newdockerproject';
+var kubernetesWizard = 'org.wso2.integrationstudio.artifact.newkubernetesproject';
 
 $("#CompositeApplicationProject").click(function(){
 	openWizard(cappWizard);

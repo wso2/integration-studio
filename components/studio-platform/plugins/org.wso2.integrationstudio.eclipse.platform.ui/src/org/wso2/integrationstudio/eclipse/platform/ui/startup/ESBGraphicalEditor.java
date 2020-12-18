@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.startup;
+package org.wso2.integrationstudio.platform.ui.startup;
 
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
 
 public class ESBGraphicalEditor {
 

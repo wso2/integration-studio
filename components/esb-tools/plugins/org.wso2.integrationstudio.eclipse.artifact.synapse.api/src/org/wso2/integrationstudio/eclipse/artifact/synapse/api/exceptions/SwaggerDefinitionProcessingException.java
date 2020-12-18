@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.artifact.synapse.api.exceptions;
+package org.wso2.integrationstudio.artifact.synapse.api.exceptions;
 
 /**
  * Exception thrown when processing swagger definition.

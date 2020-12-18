@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.configure.ui;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,13 +32,13 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleAccessType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleConditionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyEntry;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EvaluatorExpressionProperty;
+import org.wso2.integrationstudio.gmf.esb.ThrottleAccessType;
+import org.wso2.integrationstudio.gmf.esb.ThrottleConditionType;
+import org.wso2.integrationstudio.gmf.esb.ThrottleMediator;
+import org.wso2.integrationstudio.gmf.esb.ThrottlePolicyEntry;
 
 /**
  * 

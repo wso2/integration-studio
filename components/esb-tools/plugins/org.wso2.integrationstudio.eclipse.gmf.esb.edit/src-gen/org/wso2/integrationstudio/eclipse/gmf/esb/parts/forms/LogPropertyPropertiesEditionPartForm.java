@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -58,16 +58,16 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CompletionMessagesType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LogProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.AggregateSequenceType;
+import org.wso2.integrationstudio.gmf.esb.CompletionMessagesType;
+import org.wso2.integrationstudio.gmf.esb.LogProperty;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.LogPropertyPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -415,7 +415,7 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#getPropertyName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogPropertyPropertiesEditionPart#getPropertyName()
 	 * 
 	 */
 	public String getPropertyName() {
@@ -425,7 +425,7 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#setPropertyName(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogPropertyPropertiesEditionPart#setPropertyName(String
 	 *      newValue)
 	 * 
 	 */
@@ -448,7 +448,7 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#getPropertyValueType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogPropertyPropertiesEditionPart#getPropertyValueType()
 	 * 
 	 */
 	public Enumerator getPropertyValueType() {
@@ -459,7 +459,7 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#initPropertyValueType(Object
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogPropertyPropertiesEditionPart#initPropertyValueType(Object
 	 *      input, Enumerator current)
 	 */
 	public void initPropertyValueType(Object input, Enumerator current) {
@@ -478,7 +478,7 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#setPropertyValueType(Enumerator
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogPropertyPropertiesEditionPart#setPropertyValueType(Enumerator
 	 *      newValue)
 	 * 
 	 */
@@ -497,7 +497,7 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#getPropertyValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogPropertyPropertiesEditionPart#getPropertyValue()
 	 * 
 	 */
 	public String getPropertyValue() {
@@ -507,7 +507,7 @@ public class LogPropertyPropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LogPropertyPropertiesEditionPart#setPropertyValue(String
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LogPropertyPropertiesEditionPart#setPropertyValue(String
 	 *      newValue)
 	 * 
 	 */

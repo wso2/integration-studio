@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.bpel.connector;
+package org.wso2.integrationstudio.bpel.connector;
 
 import org.eclipse.ui.IStartup;
 

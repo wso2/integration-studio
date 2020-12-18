@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.export;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.export;
 
 import java.io.File;
 
@@ -23,7 +23,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbModelTransformer;
 
 /**
  * Command responsible for exporting ESB visual model.

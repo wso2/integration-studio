@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.endpoint.central.resources;
+package org.wso2.integrationstudio.apim.endpoint.central.resources;
 
 /**
  * Constants related to APIM Controller.

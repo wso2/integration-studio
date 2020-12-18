@@ -12,22 +12,22 @@
     <packaging>pom</packaging>
     <name>WSO2 Integration Studio Data Service Plugins</name>
     <modules>
-        <module>org.wso2.integrationstudio.eclipse.ds.editor.xml</module>
-        <module>org.wso2.integrationstudio.eclipse.ds.customvalidator</module>
-        <module>org.wso2.integrationstudio.eclipse.ds</module>
-        <module>org.wso2.integrationstudio.eclipse.ds.edit</module>
-        <module>org.wso2.integrationstudio.eclipse.ds.editor</module>
-        <module>org.wso2.integrationstudio.eclipse.ds.source.editor</module>
-        <module>org.wso2.integrationstudio.eclipse.artifact.dataserviceProject</module>
-        <module>org.wso2.integrationstudio.eclipse.artifact.dataserviceTemplate</module>
-        <module>org.wso2.integrationstudio.eclipse.artifact.dataservice</module>
-        <module>org.wso2.integrationstudio.eclipse.artifact.dataservice.validator</module>
+        <module>org.wso2.integrationstudio.ds.editor.xml</module>
+        <module>org.wso2.integrationstudio.ds.customvalidator</module>
+        <module>org.wso2.integrationstudio.ds</module>
+        <module>org.wso2.integrationstudio.ds.edit</module>
+        <module>org.wso2.integrationstudio.ds.editor</module>
+        <module>org.wso2.integrationstudio.ds.source.editor</module>
+        <module>org.wso2.integrationstudio.artifact.dataserviceProject</module>
+        <module>org.wso2.integrationstudio.artifact.dataserviceTemplate</module>
+        <module>org.wso2.integrationstudio.artifact.dataservice</module>
+        <module>org.wso2.integrationstudio.artifact.dataservice.validator</module>
 
         <module>
-            org.wso2.integrationstudio.eclipse.artifact.datasourceproject
+            org.wso2.integrationstudio.artifact.datasourceproject
         </module>
         <module>
-            org.wso2.integrationstudio.eclipse.artifact.datasource
+            org.wso2.integrationstudio.artifact.datasource
         </module>
     </modules>
     <build>

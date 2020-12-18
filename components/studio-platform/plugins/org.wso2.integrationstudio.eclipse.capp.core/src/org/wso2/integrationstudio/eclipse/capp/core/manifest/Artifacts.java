@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.manifest;
+package org.wso2.integrationstudio.capp.core.manifest;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -24,9 +24,9 @@ import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMDocument;
 import org.apache.axiom.om.OMElement;
-import org.wso2.integrationstudio.eclipse.capp.core.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.capp.core.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class Artifacts extends AbstractXMLDoc{
 	private static final String ARTIFACTS_XML = "artifacts.xml";

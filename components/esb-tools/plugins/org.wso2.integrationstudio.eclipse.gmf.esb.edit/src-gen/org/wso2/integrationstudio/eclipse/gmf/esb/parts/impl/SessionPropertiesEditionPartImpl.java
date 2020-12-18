@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
@@ -42,10 +42,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.SessionPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.SessionPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -184,7 +184,7 @@ public class SessionPropertiesEditionPartImpl extends CompositePropertiesEdition
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SessionPropertiesEditionPart#getType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SessionPropertiesEditionPart#getType()
 	 * 
 	 */
 	public Enumerator getType() {
@@ -195,7 +195,7 @@ public class SessionPropertiesEditionPartImpl extends CompositePropertiesEdition
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SessionPropertiesEditionPart#initType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SessionPropertiesEditionPart#initType(Object input, Enumerator current)
 	 */
 	public void initType(Object input, Enumerator current) {
 		type.setInput(input);
@@ -213,7 +213,7 @@ public class SessionPropertiesEditionPartImpl extends CompositePropertiesEdition
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.SessionPropertiesEditionPart#setType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.SessionPropertiesEditionPart#setType(Enumerator newValue)
 	 * 
 	 */
 	public void setType(Enumerator newValue) {

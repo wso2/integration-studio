@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.part;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.tooling.runtime.update.UpdaterNodeDescriptor;

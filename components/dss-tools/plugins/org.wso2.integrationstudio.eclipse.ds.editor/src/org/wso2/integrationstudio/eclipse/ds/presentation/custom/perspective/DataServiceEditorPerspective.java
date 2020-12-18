@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.presentation.custom.perspective;
+package org.wso2.integrationstudio.ds.presentation.custom.perspective;
 
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
@@ -28,7 +28,7 @@ import org.eclipse.ui.IPerspectiveFactory;
  */
 public class DataServiceEditorPerspective implements IPerspectiveFactory {
     
-    private static final String TEMPLATE_GUIDE_VIEW = "org.wso2.integrationstudio.eclipse.esb.templates.view";
+    private static final String TEMPLATE_GUIDE_VIEW = "org.wso2.integrationstudio.esb.templates.view";
 
     public void createInitialLayout(IPageLayout perspectiveLayout) {
         defineAction(perspectiveLayout);

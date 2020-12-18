@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.core;
+package org.wso2.integrationstudio.registry.core;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,20 +18,20 @@ import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.MediaManager;
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProviderData;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.IResourceManager;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryResourceProvider;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IRegistryResourceProviderData;
-import org.wso2.integrationstudio.eclipse.registry.core.internal.impl.RegistryResourceProviderData;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.MediaManager;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProviderData;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.ui.utils.IResourceManager;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryResourceProvider;
+import org.wso2.integrationstudio.registry.core.interfaces.IRegistryResourceProviderData;
+import org.wso2.integrationstudio.registry.core.internal.impl.RegistryResourceProviderData;
 
 public class RegistryManager implements IResourceManager {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private static final String REGISTRY_RESOURCE_EXTENSION = "org.wso2.integrationstudio.eclipse.greg.resourceProvider";
+	private static final String REGISTRY_RESOURCE_EXTENSION = "org.wso2.integrationstudio.greg.resourceProvider";
 	private static List<IRegistryResourceProviderData> providerList;
 
 	@Override

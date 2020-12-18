@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.preferences;
+package org.wso2.integrationstudio.platform.ui.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
@@ -23,13 +23,13 @@ import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.platform.ui.WorkbenchToolkit;
+import org.wso2.integrationstudio.platform.ui.WorkbenchToolkit;
 
 public class DeveloperPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	public static final String PLUGIN_TEMPLATE_URL = "PLUGIN_TEMPLATE_URL";
 	public static final String SHOW_HIDDEN_FEATURES = "SHOW_HIDDEN_FEATURES";    
-	public static final String PREFERENCES_PLUGIN_ID = "org.wso2.integrationstudio.eclipse.platform.ui";
+	public static final String PREFERENCES_PLUGIN_ID = "org.wso2.integrationstudio.platform.ui";
     private IPreferenceStore preferenceStore;
 
     public DeveloperPreferencePage() {

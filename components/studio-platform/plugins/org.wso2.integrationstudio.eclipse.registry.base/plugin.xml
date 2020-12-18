@@ -3,19 +3,19 @@
 <plugin>
 	<extension point="org.eclipse.ui.editors">
 		<editor default="true"
-			class="org.wso2.integrationstudio.eclipse.registry.base.ui.editor.RegistryResourceEditor"
-			id="org.wso2.integrationstudio.eclipse.editors.registry.formEditor" name="Registry Collection"
+			class="org.wso2.integrationstudio.registry.base.ui.editor.RegistryResourceEditor"
+			id="org.wso2.integrationstudio.editors.registry.formEditor" name="Registry Collection"
 			extensions="readme">
 		</editor>
 	</extension>
 	<extension point="org.eclipse.ui.newWizards">
-		<category name="WSO2" id="org.wso2.integrationstudio.eclipse.capp.project">
+		<category name="WSO2" id="org.wso2.integrationstudio.capp.project">
 		</category>
-		<category name="Registry" id="org.wso2.integrationstudio.eclipse.greg" 
-			parentCategory="org.wso2.integrationstudio.eclipse.capp.project">
+		<category name="Registry" id="org.wso2.integrationstudio.greg" 
+			parentCategory="org.wso2.integrationstudio.capp.project">
 		</category>
 	</extension>
  <extension point="org.eclipse.ui.startup">
- 		<startup class="org.wso2.integrationstudio.eclipse.registry.base.startup.RegistryStartup"/>
+ 		<startup class="org.wso2.integrationstudio.registry.base.startup.RegistryStartup"/>
  </extension>
 </plugin>

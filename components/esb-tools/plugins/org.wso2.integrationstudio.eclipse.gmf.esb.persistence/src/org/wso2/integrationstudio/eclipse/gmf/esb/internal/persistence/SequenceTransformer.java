@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.io.File;
 import java.util.List;
@@ -38,33 +38,33 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AddressEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CommentMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.DefaultEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamedEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ProxyService;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.WSDLEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.SequencesImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.EsbTransformerRegistry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.integrationstudio.gmf.esb.AbstractEndPoint;
+import org.wso2.integrationstudio.gmf.esb.AddressEndPoint;
+import org.wso2.integrationstudio.gmf.esb.CommentMediator;
+import org.wso2.integrationstudio.gmf.esb.DefaultEndPoint;
+import org.wso2.integrationstudio.gmf.esb.EsbDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbElement;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.NamedEndpoint;
+import org.wso2.integrationstudio.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ProxyService;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.TemplateEndpoint;
+import org.wso2.integrationstudio.gmf.esb.WSDLEndPoint;
+import org.wso2.integrationstudio.gmf.esb.impl.SequencesImpl;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbNodeTransformer;
+import org.wso2.integrationstudio.gmf.esb.persistence.EsbTransformerRegistry;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 
 public class SequenceTransformer extends AbstractEsbNodeTransformer {
 
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
         // Check subject.
-        Assert.isTrue(subject instanceof org.wso2.integrationstudio.eclipse.gmf.esb.Sequences, "Invalid subject.");
-        org.wso2.integrationstudio.eclipse.gmf.esb.Sequences visualSequence = (org.wso2.integrationstudio.eclipse.gmf.esb.Sequences) subject;
+        Assert.isTrue(subject instanceof org.wso2.integrationstudio.gmf.esb.Sequences, "Invalid subject.");
+        org.wso2.integrationstudio.gmf.esb.Sequences visualSequence = (org.wso2.integrationstudio.gmf.esb.Sequences) subject;
         if (visualSequence.isRecieveSequence()) {
             handleServiceChaining(visualSequence, (SequenceMediator) information.getParentSequence(),
                     visualSequence.getAssociatedProxy());
@@ -78,8 +78,8 @@ public class SequenceTransformer extends AbstractEsbNodeTransformer {
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
         // Check subject.
-        Assert.isTrue(subject instanceof org.wso2.integrationstudio.eclipse.gmf.esb.Sequences, "Invalid subject.");
-        org.wso2.integrationstudio.eclipse.gmf.esb.Sequences visualSequence = (org.wso2.integrationstudio.eclipse.gmf.esb.Sequences) subject;
+        Assert.isTrue(subject instanceof org.wso2.integrationstudio.gmf.esb.Sequences, "Invalid subject.");
+        org.wso2.integrationstudio.gmf.esb.Sequences visualSequence = (org.wso2.integrationstudio.gmf.esb.Sequences) subject;
         if (!"".equals(visualSequence.getOnError().getKeyValue())) {
             sequence.setErrorHandler(visualSequence.getOnError().getKeyValue());
         }
@@ -115,7 +115,7 @@ public class SequenceTransformer extends AbstractEsbNodeTransformer {
         }
     }
 
-    private void handleServiceChaining(org.wso2.integrationstudio.eclipse.gmf.esb.Sequences visualSequence,
+    private void handleServiceChaining(org.wso2.integrationstudio.gmf.esb.Sequences visualSequence,
             SequenceMediator sequence, List proxyNames) throws TransformerException {
         IEditorPart editorPart = null;
         IProject activeProject = null;

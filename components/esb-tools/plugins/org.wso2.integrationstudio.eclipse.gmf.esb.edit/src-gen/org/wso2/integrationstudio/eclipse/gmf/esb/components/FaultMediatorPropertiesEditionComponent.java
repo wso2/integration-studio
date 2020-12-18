@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.components;
+package org.wso2.integrationstudio.gmf.esb.components;
 
 // Start of user code for imports
 import java.util.Iterator;
@@ -37,20 +37,20 @@ import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultCodeSoap11;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultCodeSoap12;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultCodeType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultDetailType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultReasonType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultSoapVersion;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FaultStringType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.FaultMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FaultCodeSoap11;
+import org.wso2.integrationstudio.gmf.esb.FaultCodeSoap12;
+import org.wso2.integrationstudio.gmf.esb.FaultCodeType;
+import org.wso2.integrationstudio.gmf.esb.FaultDetailType;
+import org.wso2.integrationstudio.gmf.esb.FaultMediator;
+import org.wso2.integrationstudio.gmf.esb.FaultReasonType;
+import org.wso2.integrationstudio.gmf.esb.FaultSoapVersion;
+import org.wso2.integrationstudio.gmf.esb.FaultStringType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.FaultMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
 
 
 // End of user code

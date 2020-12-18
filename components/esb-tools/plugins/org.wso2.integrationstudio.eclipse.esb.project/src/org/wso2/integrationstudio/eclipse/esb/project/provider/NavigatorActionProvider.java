@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.provider;
+package org.wso2.integrationstudio.esb.project.provider;
 
 import java.io.File;
 import java.util.HashMap;
@@ -45,13 +45,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.integrationstudio.eclipse.esb.project.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.esb.project.Activator;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 /**
  * Custom NavigatorActionProvider for handling editor switching for ESB files
@@ -92,7 +92,7 @@ public class NavigatorActionProvider extends CommonActionProvider {
 					if (contentDescription != null) {
 						IContentType contentType = contentDescription.getContentType();
 						if (contentType.getId() != null) {
-							if ("org.wso2.integrationstudio.eclipse.esb.contenttype.esbconfxml"
+							if ("org.wso2.integrationstudio.esb.contenttype.esbconfxml"
 									.equals(contentType.getId())) {
 								openEditorAction.setSelection(file);
 								actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN,
@@ -131,7 +131,7 @@ public class NavigatorActionProvider extends CommonActionProvider {
 				String[] type=getType(selection.getLocation().toOSString());
 				if(type.length==0 || "full-synapse".equals(type[0])){							
 					fileTobeOpen = selection.getWorkspace().getRoot().getFile(new Path(synFilePath));
-					page.openEditor(new FileEditorInput(fileTobeOpen),"org.wso2.integrationstudio.eclipse.esb.presentation.EsbEditor");
+					page.openEditor(new FileEditorInput(fileTobeOpen),"org.wso2.integrationstudio.esb.presentation.EsbEditor");
 				}else{
 					String location=selection.getLocation().toOSString();				
 					String source = FileUtils.getContentAsString(new File(location));

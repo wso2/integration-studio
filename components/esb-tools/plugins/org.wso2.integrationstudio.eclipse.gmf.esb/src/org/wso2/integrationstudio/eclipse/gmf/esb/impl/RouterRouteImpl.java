@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouteTarget;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RouterRoute;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RouteTarget;
+import org.wso2.integrationstudio.gmf.esb.RouterRoute;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,9 +28,9 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.RouterRoute;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RouterRouteImpl#isBreakAfterRoute <em>Break After Route</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RouterRouteImpl#getRouteExpression <em>Route Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.RouterRouteImpl#getRoutePattern <em>Route Pattern</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RouterRouteImpl#isBreakAfterRoute <em>Break After Route</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RouterRouteImpl#getRouteExpression <em>Route Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.RouterRouteImpl#getRoutePattern <em>Route Pattern</em>}</li>
  * </ul>
  *
  * @generated

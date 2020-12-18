@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.project.extensions;
+package org.wso2.integrationstudio.project.extensions;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -10,7 +10,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.project.extensions"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.wso2.integrationstudio.project.extensions"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;

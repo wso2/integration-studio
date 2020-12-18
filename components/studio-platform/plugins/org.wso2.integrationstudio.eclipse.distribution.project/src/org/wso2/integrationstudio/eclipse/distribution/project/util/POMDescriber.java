@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.distribution.project.util;
+package org.wso2.integrationstudio.distribution.project.util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,10 +22,10 @@ import java.io.InputStream;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.runtime.content.IContentDescription;
 import org.eclipse.core.runtime.content.XMLContentDescriber;
-import org.wso2.integrationstudio.eclipse.distribution.project.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.integrationstudio.distribution.project.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
 
 public class POMDescriber extends XMLContentDescriber {
 	

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.editor.contentassistant.proposals;
+package org.wso2.integrationstudio.ds.editor.contentassistant.proposals;
 
 import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocument;
@@ -27,8 +27,8 @@ import org.eclipse.jface.text.contentassist.ICompletionProposalExtension3;
 import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
-import org.wso2.integrationstudio.eclipse.ds.model.DataserviceAttributeElement;
-import org.wso2.integrationstudio.eclipse.ds.model.DataserviceTagElement;
+import org.wso2.integrationstudio.ds.model.DataserviceAttributeElement;
+import org.wso2.integrationstudio.ds.model.DataserviceTagElement;
 
 public class DataserviceTagCompletionProposal implements ICompletionProposal,
                                              ICompletionProposalExtension,

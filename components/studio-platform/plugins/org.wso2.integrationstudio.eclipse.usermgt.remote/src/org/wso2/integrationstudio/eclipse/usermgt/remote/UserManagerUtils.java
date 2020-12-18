@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.usermgt.remote;
+package org.wso2.integrationstudio.usermgt.remote;
 
-import org.wso2.integrationstudio.eclipse.usermgt.remote.UserManager;
+import org.wso2.integrationstudio.usermgt.remote.UserManager;
 
 public class UserManagerUtils {
 

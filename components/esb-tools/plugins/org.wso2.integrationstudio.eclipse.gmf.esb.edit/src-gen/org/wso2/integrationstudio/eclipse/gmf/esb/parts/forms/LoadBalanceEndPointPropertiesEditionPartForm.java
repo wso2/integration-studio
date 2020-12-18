@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -76,12 +76,12 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -1215,7 +1215,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -1225,7 +1225,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -1247,7 +1247,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -1257,7 +1257,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -1298,7 +1298,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getEndPointName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getEndPointName()
 	 * 
 	 */
 	public String getEndPointName() {
@@ -1308,7 +1308,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setEndPointName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setEndPointName(String newValue)
 	 * 
 	 */
 	public void setEndPointName(String newValue) {
@@ -1330,7 +1330,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getAnonymous()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getAnonymous()
 	 * 
 	 */
 	public Boolean getAnonymous() {
@@ -1340,7 +1340,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setAnonymous(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setAnonymous(Boolean newValue)
 	 * 
 	 */
 	public void setAnonymous(Boolean newValue) {
@@ -1362,7 +1362,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getInLine()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getInLine()
 	 * 
 	 */
 	public Boolean getInLine() {
@@ -1372,7 +1372,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setInLine(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setInLine(Boolean newValue)
 	 * 
 	 */
 	public void setInLine(Boolean newValue) {
@@ -1394,7 +1394,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getDuplicate()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getDuplicate()
 	 * 
 	 */
 	public Boolean getDuplicate() {
@@ -1404,7 +1404,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setDuplicate(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setDuplicate(Boolean newValue)
 	 * 
 	 */
 	public void setDuplicate(Boolean newValue) {
@@ -1428,7 +1428,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#initProperties(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initProperties(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1449,7 +1449,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#updateProperties()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#updateProperties()
 	 * 
 	 */
 	public void updateProperties() {
@@ -1459,7 +1459,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToProperties(ViewerFilter filter) {
@@ -1472,7 +1472,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addBusinessFilterProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToProperties(ViewerFilter filter) {
@@ -1482,7 +1482,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#isContainedInPropertiesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInPropertiesTable(EObject element) {
@@ -1492,7 +1492,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getReversed()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getReversed()
 	 * 
 	 */
 	public Boolean getReversed() {
@@ -1502,7 +1502,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setReversed(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setReversed(Boolean newValue)
 	 * 
 	 */
 	public void setReversed(Boolean newValue) {
@@ -1526,7 +1526,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#initChildren(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#initChildren(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initChildren(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1547,7 +1547,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#updateChildren()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#updateChildren()
 	 * 
 	 */
 	public void updateChildren() {
@@ -1557,7 +1557,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addFilterChildren(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addFilterChildren(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToChildren(ViewerFilter filter) {
@@ -1570,7 +1570,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addBusinessFilterChildren(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addBusinessFilterChildren(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToChildren(ViewerFilter filter) {
@@ -1580,7 +1580,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#isContainedInChildrenTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#isContainedInChildrenTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInChildrenTable(EObject element) {
@@ -1590,7 +1590,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -1600,7 +1600,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -1622,7 +1622,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getFailover()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getFailover()
 	 * 
 	 */
 	public Boolean getFailover() {
@@ -1632,7 +1632,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setFailover(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setFailover(Boolean newValue)
 	 * 
 	 */
 	public void setFailover(Boolean newValue) {
@@ -1654,7 +1654,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getPolicy()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getPolicy()
 	 * 
 	 */
 	public String getPolicy() {
@@ -1664,7 +1664,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setPolicy(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setPolicy(String newValue)
 	 * 
 	 */
 	public void setPolicy(String newValue) {
@@ -1688,7 +1688,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#initOutputConnector(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#initOutputConnector(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initOutputConnector(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1709,7 +1709,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#updateOutputConnector()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#updateOutputConnector()
 	 * 
 	 */
 	public void updateOutputConnector() {
@@ -1719,7 +1719,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addFilterOutputConnector(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addFilterOutputConnector(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToOutputConnector(ViewerFilter filter) {
@@ -1732,7 +1732,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addBusinessFilterOutputConnector(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addBusinessFilterOutputConnector(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToOutputConnector(ViewerFilter filter) {
@@ -1742,7 +1742,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#isContainedInOutputConnectorTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#isContainedInOutputConnectorTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInOutputConnectorTable(EObject element) {
@@ -1752,7 +1752,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getSessionType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getSessionType()
 	 * 
 	 */
 	public Enumerator getSessionType() {
@@ -1763,7 +1763,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#initSessionType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#initSessionType(Object input, Enumerator current)
 	 */
 	public void initSessionType(Object input, Enumerator current) {
 		sessionType.setInput(input);
@@ -1781,7 +1781,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setSessionType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setSessionType(Enumerator newValue)
 	 * 
 	 */
 	public void setSessionType(Enumerator newValue) {
@@ -1799,7 +1799,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getAlgorithm()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getAlgorithm()
 	 * 
 	 */
 	public String getAlgorithm() {
@@ -1809,7 +1809,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setAlgorithm(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setAlgorithm(String newValue)
 	 * 
 	 */
 	public void setAlgorithm(String newValue) {
@@ -1831,7 +1831,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getSessionTimeout()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getSessionTimeout()
 	 * 
 	 */
 	public String getSessionTimeout() {
@@ -1841,7 +1841,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setSessionTimeout(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setSessionTimeout(String newValue)
 	 * 
 	 */
 	public void setSessionTimeout(String newValue) {
@@ -1863,7 +1863,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getBuildMessage()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#getBuildMessage()
 	 * 
 	 */
 	public Boolean getBuildMessage() {
@@ -1873,7 +1873,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setBuildMessage(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#setBuildMessage(Boolean newValue)
 	 * 
 	 */
 	public void setBuildMessage(Boolean newValue) {
@@ -1900,7 +1900,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
 	/**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#initMembers(EObject current, EReference containingFeature, EReference feature)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#initMembers(EObject current, EReference containingFeature, EReference feature)
    */
   public void initMembers(ReferencesTableSettings settings) {
     if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1921,7 +1921,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#updateMembers()
+   * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#updateMembers()
    * 
    */
   public void updateMembers() {
@@ -1931,7 +1931,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addFilterMembers(ViewerFilter filter)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addFilterMembers(ViewerFilter filter)
    * 
    */
   public void addFilterToMembers(ViewerFilter filter) {
@@ -1944,7 +1944,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addBusinessFilterMembers(ViewerFilter filter)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#addBusinessFilterMembers(ViewerFilter filter)
    * 
    */
   public void addBusinessFilterToMembers(ViewerFilter filter) {
@@ -1954,7 +1954,7 @@ public class LoadBalanceEndPointPropertiesEditionPartForm extends SectionPropert
   /**
    * {@inheritDoc}
    * 
-   * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#isContainedInMembersTable(EObject element)
+   * @see org.wso2.integrationstudio.gmf.esb.parts.LoadBalanceEndPointPropertiesEditionPart#isContainedInMembersTable(EObject element)
    * 
    */
   public boolean isContainedInMembersTable(EObject element) {

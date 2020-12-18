@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -38,10 +38,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -297,7 +297,7 @@ public class EvaluatorExpressionPropertyPropertiesEditionPartImpl extends Compos
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart#getPrettyName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart#getPrettyName()
 	 * 
 	 */
 	public String getPrettyName() {
@@ -307,7 +307,7 @@ public class EvaluatorExpressionPropertyPropertiesEditionPartImpl extends Compos
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart#setPrettyName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart#setPrettyName(String newValue)
 	 * 
 	 */
 	public void setPrettyName(String newValue) {
@@ -329,7 +329,7 @@ public class EvaluatorExpressionPropertyPropertiesEditionPartImpl extends Compos
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart#getEvaluatorName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart#getEvaluatorName()
 	 * 
 	 */
 	public String getEvaluatorName() {
@@ -339,7 +339,7 @@ public class EvaluatorExpressionPropertyPropertiesEditionPartImpl extends Compos
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart#setEvaluatorName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart#setEvaluatorName(String newValue)
 	 * 
 	 */
 	public void setEvaluatorName(String newValue) {
@@ -361,7 +361,7 @@ public class EvaluatorExpressionPropertyPropertiesEditionPartImpl extends Compos
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart#getEvaluatorValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart#getEvaluatorValue()
 	 * 
 	 */
 	public String getEvaluatorValue() {
@@ -371,7 +371,7 @@ public class EvaluatorExpressionPropertyPropertiesEditionPartImpl extends Compos
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart#setEvaluatorValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EvaluatorExpressionPropertyPropertiesEditionPart#setEvaluatorValue(String newValue)
 	 * 
 	 */
 	public void setEvaluatorValue(String newValue) {

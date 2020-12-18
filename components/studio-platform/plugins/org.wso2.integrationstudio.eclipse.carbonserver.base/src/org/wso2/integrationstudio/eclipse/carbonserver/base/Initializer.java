@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base;
+package org.wso2.integrationstudio.carbonserver.base;
 
 import org.eclipse.ui.IStartup;
 

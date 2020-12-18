@@ -3,23 +3,23 @@
 <plugin>
  <extension point="org.eclipse.ui.newWizards">
 		<wizard name="Connector Exporter" 
-			category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.extensions/org.wso2.integrationstudio.eclipse.extensions.project.types"
-			class="org.wso2.integrationstudio.eclipse.artifact.connector.ui.wizard.ConnectorCreationWizard"
+			category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.extensions/org.wso2.integrationstudio.extensions.project.types"
+			class="org.wso2.integrationstudio.artifact.connector.ui.wizard.ConnectorCreationWizard"
 			wizardManifest="project_wizard.xml"
-			id="org.wso2.integrationstudio.eclipse.artifact.newconnectorartifact"
+			id="org.wso2.integrationstudio.artifact.newconnectorartifact"
 			project="true" icon="icons/new-mediator-16x16.png">
 			<description>Connector Exporter</description>
 		</wizard>
 	</extension>
-	<extension point="org.wso2.integrationstudio.eclipse.capp.artifacts.provider">
-    	<provider class="org.wso2.integrationstudio.eclipse.artifact.connector.project.export.ConnectorArtifactProvider"
+	<extension point="org.wso2.integrationstudio.capp.artifacts.provider">
+    	<provider class="org.wso2.integrationstudio.artifact.connector.project.export.ConnectorArtifactProvider"
           nature="org.wso2.developerstudio.eclipse.artifact.connector.project.nature"></provider>
     </extension>
 	 <extension point="org.eclipse.ui.newWizards">
 		<wizard name="Add/Remove Connectors" 
-			category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.extensions/org.wso2.integrationstudio.eclipse.extensions.project.types"
-			class="org.wso2.integrationstudio.eclipse.artifact.connector.ui.wizard.AddRemoveConnectorWizard"
-			id="org.wso2.integrationstudio.eclipse.artifact.addremovenewconnectorartifact"
+			category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.extensions/org.wso2.integrationstudio.extensions.project.types"
+			class="org.wso2.integrationstudio.artifact.connector.ui.wizard.AddRemoveConnectorWizard"
+			id="org.wso2.integrationstudio.artifact.addremovenewconnectorartifact"
 			project="true" icon="icons/new-mediator-16x16.png">
 			<description>Add/Remove Connectors</description>
 		</wizard>
@@ -41,19 +41,19 @@
 		id="org.wso2.developerstudio.eclipse.artifact.connector.project.nature" name="Connector Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.artifact.connector.project.nature.ConnectorProjectNature">
+				class="org.wso2.integrationstudio.artifact.connector.project.nature.ConnectorProjectNature">
 			</run>
 		</runtime>
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
-		<image id="org.wso2.integrationstudio.eclipse.connector.project.natureImage"
+		<image id="org.wso2.integrationstudio.connector.project.natureImage"
 			natureId="org.wso2.developerstudio.eclipse.artifact.connector.project.nature" icon="icons/new-mediator-12x12.png">
 		</image>
 	</extension>
 			<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.newconnectorartifact">
+                menuGroupId="2org.wso2.integrationstudio.artifact.esb"
+                wizardId="org.wso2.integrationstudio.artifact.newconnectorartifact">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
@@ -70,8 +70,8 @@
     </extension>    
     <extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="2org.wso2.integrationstudio.eclipse.artifact.esb"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.addremovenewconnectorartifact">
+                menuGroupId="2org.wso2.integrationstudio.artifact.esb"
+                wizardId="org.wso2.integrationstudio.artifact.addremovenewconnectorartifact">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">

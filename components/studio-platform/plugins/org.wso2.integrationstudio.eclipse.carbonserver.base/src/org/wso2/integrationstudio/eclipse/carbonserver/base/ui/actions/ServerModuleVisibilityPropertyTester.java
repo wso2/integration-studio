@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.ui.actions;
+package org.wso2.integrationstudio.carbonserver.base.ui.actions;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.wst.server.core.IRuntime;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.ui.IServerModule;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ import java.util.List;
  */
 public class ServerModuleVisibilityPropertyTester extends PropertyTester {
 
-	private static final String WSO2_CARBON_MODULE = "org.wso2.integrationstudio.eclipse.carbon.module";
+	private static final String WSO2_CARBON_MODULE = "org.wso2.integrationstudio.carbon.module";
 
 	public boolean test(Object arg0, String arg1, Object[] arg2, Object arg3) {
 

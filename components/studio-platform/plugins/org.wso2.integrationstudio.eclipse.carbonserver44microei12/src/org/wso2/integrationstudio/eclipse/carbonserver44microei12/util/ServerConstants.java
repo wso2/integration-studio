@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver44microei12.util;
+package org.wso2.integrationstudio.carbonserver44microei12.util;
 
 import java.io.File;
 
@@ -37,14 +37,14 @@ public class ServerConstants {
     public static final String INTEGRATION_STUDIO_HOME_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
     
     //runtimes
-    public static final String WSO2_MI_120_RUNTIME = "org.wso2.integrationstudio.eclipse.carbon.runtime44microei12";
-    public static final String WSO2_MI_110_RUNTIME = "org.wso2.integrationstudio.eclipse.carbon.runtime44microei11";
-    public static final String WSO2_MI_100_RUNTIME = "org.wso2.integrationstudio.eclipse.carbon.runtime44microei";
+    public static final String WSO2_MI_120_RUNTIME = "org.wso2.integrationstudio.carbon.runtime44microei12";
+    public static final String WSO2_MI_110_RUNTIME = "org.wso2.integrationstudio.carbon.runtime44microei11";
+    public static final String WSO2_MI_100_RUNTIME = "org.wso2.integrationstudio.carbon.runtime44microei";
     
     //server types
-    public static final String WSO2_MI_120_SERVER_TYPE = "org.wso2.integrationstudio.eclipse.carbon.server44microei12";
-    public static final String WSO2_MI_110_SERVER_TYPE = "org.wso2.integrationstudio.eclipse.carbon.server44microei11";
-    public static final String WSO2_MI_100_SERVER_TYPE = "org.wso2.integrationstudio.eclipse.carbon.server44microei";
+    public static final String WSO2_MI_120_SERVER_TYPE = "org.wso2.integrationstudio.carbon.server44microei12";
+    public static final String WSO2_MI_110_SERVER_TYPE = "org.wso2.integrationstudio.carbon.server44microei11";
+    public static final String WSO2_MI_100_SERVER_TYPE = "org.wso2.integrationstudio.carbon.server44microei";
     
     //debug
     public static final String ESB_DEBUG_ATTRIBUTE = "esb.debug";
@@ -75,5 +75,5 @@ public class ServerConstants {
     public static final String CURRENT_DROPINS_MD5SUM = "current.dropins.md5sum";
     
     //deployed services
-    public static final String DEPLOYED_SERVICES_VIEW = "org.wso2.integrationstudio.eclipse.esb.project.deployed.endpoint.view";
+    public static final String DEPLOYED_SERVICES_VIEW = "org.wso2.integrationstudio.esb.project.deployed.endpoint.view";
 }

@@ -1,6 +1,6 @@
-package org.wso2.integrationstudio.eclipse.esb.core.interfaces;
+package org.wso2.integrationstudio.esb.core.interfaces;
 
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioProviderData;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProviderData;
 
 public interface ISequenceProviderData extends IIntegrationStudioProviderData {
 	public ISequenceProvider getProvider();

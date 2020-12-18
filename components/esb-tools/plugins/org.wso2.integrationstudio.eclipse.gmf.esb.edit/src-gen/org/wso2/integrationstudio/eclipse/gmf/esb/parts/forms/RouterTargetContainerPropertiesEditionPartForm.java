@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -45,10 +45,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -257,7 +257,7 @@ public class RouterTargetContainerPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#getBreakAfterRoute()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#getBreakAfterRoute()
 	 * 
 	 */
 	public Boolean getBreakAfterRoute() {
@@ -267,7 +267,7 @@ public class RouterTargetContainerPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#setBreakAfterRoute(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#setBreakAfterRoute(Boolean newValue)
 	 * 
 	 */
 	public void setBreakAfterRoute(Boolean newValue) {
@@ -289,7 +289,7 @@ public class RouterTargetContainerPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#getRoutePattern()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#getRoutePattern()
 	 * 
 	 */
 	public String getRoutePattern() {
@@ -299,7 +299,7 @@ public class RouterTargetContainerPropertiesEditionPartForm extends SectionPrope
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#setRoutePattern(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.RouterTargetContainerPropertiesEditionPart#setRoutePattern(String newValue)
 	 * 
 	 */
 	public void setRoutePattern(String newValue) {

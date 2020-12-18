@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -54,10 +54,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -243,7 +243,7 @@ public class CloudConnectorInputConnectorPropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#initIncomingLinks(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
 	public void initIncomingLinks(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -266,7 +266,7 @@ public class CloudConnectorInputConnectorPropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#updateIncomingLinks()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#updateIncomingLinks()
 	 * 
 	 */
 	public void updateIncomingLinks() {
@@ -276,7 +276,7 @@ public class CloudConnectorInputConnectorPropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#addFilterIncomingLinks(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToIncomingLinks(ViewerFilter filter) {
@@ -286,7 +286,7 @@ public class CloudConnectorInputConnectorPropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#addBusinessFilterIncomingLinks(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToIncomingLinks(ViewerFilter filter) {
@@ -296,7 +296,7 @@ public class CloudConnectorInputConnectorPropertiesEditionPartImpl extends Compo
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CloudConnectorInputConnectorPropertiesEditionPart#isContainedInIncomingLinksTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInIncomingLinksTable(EObject element) {

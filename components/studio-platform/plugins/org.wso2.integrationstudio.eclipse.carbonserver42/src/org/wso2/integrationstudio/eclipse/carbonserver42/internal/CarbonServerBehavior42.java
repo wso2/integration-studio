@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver42.internal;
+package org.wso2.integrationstudio.carbonserver42.internal;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -51,17 +51,17 @@ import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerPort;
 import org.eclipse.wst.server.core.internal.DeletedModule;
 import org.w3c.dom.Document;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
-import org.wso2.integrationstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.impl.CarbonServerBehaviour;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
-import org.wso2.integrationstudio.eclipse.carbonserver.base.service.util.CarbonUploadServiceRequestUtil;
-import org.wso2.integrationstudio.eclipse.carbonserver42.Activator;
-import org.wso2.integrationstudio.eclipse.carbonserver42.operations.CommonOperations;
-import org.wso2.integrationstudio.eclipse.carbonserver42.util.CarbonServer42Utils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.server.base.core.ServerController;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonConstants;
+import org.wso2.integrationstudio.carbon.server.model.util.CarbonServerCommonUtils;
+import org.wso2.integrationstudio.carbonserver.base.impl.CarbonServerBehaviour;
+import org.wso2.integrationstudio.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.integrationstudio.carbonserver.base.service.util.CarbonUploadServiceRequestUtil;
+import org.wso2.integrationstudio.carbonserver42.Activator;
+import org.wso2.integrationstudio.carbonserver42.operations.CommonOperations;
+import org.wso2.integrationstudio.carbonserver42.util.CarbonServer42Utils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.server.base.core.ServerController;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
+import static org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -45,28 +45,28 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ArtifactType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FailoverEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ParentEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RecipientListEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils.OpenEditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplate;
-import org.wso2.integrationstudio.eclipse.project.extensions.templates.ArtifactTemplateHandler;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Openable;
-import org.wso2.integrationstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FailoverEndPoint;
+import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint;
+import org.wso2.integrationstudio.gmf.esb.ParentEndPoint;
+import org.wso2.integrationstudio.gmf.esb.RecipientListEndPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.Deserializer;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.OpenEditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbEditorInput;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplate;
+import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplateHandler;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.platform.ui.editor.Openable;
+import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
 
 public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint {
 
-    private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.eclipse.gmf.esb.diagram");
+    private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.gmf.esb.diagram");
 
     public ComplexFiguredAbstractEndpoint(View view) {
         super(view);
@@ -166,7 +166,7 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint {
                 }
                 fileTobeOpened.create(complexEndpointArtifactTemplate.getTemplateDataStream(), true,
                         new NullProgressMonitor());
-                String source = org.wso2.integrationstudio.eclipse.utils.file.FileUtils
+                String source = org.wso2.integrationstudio.utils.file.FileUtils
                         .getContentAsString(complexEndpointArtifactTemplate.getTemplateDataStream());
                 source = source.replaceAll("\\{", "<").replaceAll("\\}", ">");
                 source = StringUtils.replace(source, "<ep.name>", name);

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -18,15 +18,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractEndPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointAddressingVersion;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointAttachmentOptimization;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointFailoverRetryType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointMessageFormat;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointTimeOutAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter;
+import org.wso2.integrationstudio.gmf.esb.AbstractEndPoint;
+import org.wso2.integrationstudio.gmf.esb.EndPointAddressingVersion;
+import org.wso2.integrationstudio.gmf.esb.EndPointAttachmentOptimization;
+import org.wso2.integrationstudio.gmf.esb.EndPointFailoverRetryType;
+import org.wso2.integrationstudio.gmf.esb.EndPointMessageFormat;
+import org.wso2.integrationstudio.gmf.esb.EndPointTimeOutAction;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,32 +36,32 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.TemplateParameter;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isReliableMessagingEnabled <em>Reliable Messaging Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isSecurityEnabled <em>Security Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isAddressingEnabled <em>Addressing Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getAddressingVersion <em>Addressing Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isAddressingSeparateListener <em>Addressing Separate Listener</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getTimeOutDuration <em>Time Out Duration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getTimeOutAction <em>Time Out Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getRetryErrorCodes <em>Retry Error Codes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getRetryCount <em>Retry Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getRetryDelay <em>Retry Delay</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getSuspendErrorCodes <em>Suspend Error Codes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getSuspendInitialDuration <em>Suspend Initial Duration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getSuspendMaximumDuration <em>Suspend Maximum Duration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getSuspendProgressionFactor <em>Suspend Progression Factor</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getReliableMessagingPolicy <em>Reliable Messaging Policy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getSecurityPolicy <em>Security Policy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getFormat <em>Format</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getOptimize <em>Optimize</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getTemplateParameters <em>Template Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getInboundPolicy <em>Inbound Policy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getOutboundPolicy <em>Outbound Policy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getFailoverRetryType <em>Failover Retry Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getFailoverRetryErrorCodes <em>Failover Retry Error Codes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getFailoverNonRetryErrorCodes <em>Failover Non Retry Error Codes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#isReliableMessagingEnabled <em>Reliable Messaging Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#isSecurityEnabled <em>Security Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#isAddressingEnabled <em>Addressing Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getAddressingVersion <em>Addressing Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#isAddressingSeparateListener <em>Addressing Separate Listener</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getTimeOutDuration <em>Time Out Duration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getTimeOutAction <em>Time Out Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getRetryErrorCodes <em>Retry Error Codes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getRetryCount <em>Retry Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getRetryDelay <em>Retry Delay</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getSuspendErrorCodes <em>Suspend Error Codes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getSuspendInitialDuration <em>Suspend Initial Duration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getSuspendMaximumDuration <em>Suspend Maximum Duration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getSuspendProgressionFactor <em>Suspend Progression Factor</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getReliableMessagingPolicy <em>Reliable Messaging Policy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getSecurityPolicy <em>Security Policy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getFormat <em>Format</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getOptimize <em>Optimize</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getTemplateParameters <em>Template Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getInboundPolicy <em>Inbound Policy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getOutboundPolicy <em>Outbound Policy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getFailoverRetryType <em>Failover Retry Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getFailoverRetryErrorCodes <em>Failover Retry Error Codes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.AbstractEndPointImpl#getFailoverNonRetryErrorCodes <em>Failover Non Retry Error Codes</em>}</li>
  * </ul>
  *
  * @generated

@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.data;
+package org.wso2.integrationstudio.capp.core.data;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.configure.ISettingsAttribute;
-import org.wso2.integrationstudio.eclipse.capp.core.artifacts.configure.ISettingsData;
+import org.wso2.integrationstudio.capp.core.artifacts.configure.ISettingsAttribute;
+import org.wso2.integrationstudio.capp.core.artifacts.configure.ISettingsData;
 
 public class SettingsData implements ISettingsData {
 

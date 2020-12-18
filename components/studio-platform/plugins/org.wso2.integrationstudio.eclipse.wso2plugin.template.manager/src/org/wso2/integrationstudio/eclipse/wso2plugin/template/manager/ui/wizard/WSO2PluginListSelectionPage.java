@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.wizard;
+package org.wso2.integrationstudio.wso2plugin.template.manager.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,18 +46,18 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.DeveloperPreferencePage;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.MessageDialogUtils;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.PluginImageUtils;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.Activator;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExt;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExtList;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.util.JGitSampleRepoManager;
-import org.wso2.integrationstudio.eclipse.wso2plugin.template.manager.util.WSO2PluginConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.preferences.DeveloperPreferencePage;
+import org.wso2.integrationstudio.platform.ui.preferences.PreferenceInitializer;
+import org.wso2.integrationstudio.platform.ui.preferences.UpdateCheckerPreferencePage;
+import org.wso2.integrationstudio.platform.ui.utils.MessageDialogUtils;
+import org.wso2.integrationstudio.platform.ui.utils.PluginImageUtils;
+import org.wso2.integrationstudio.wso2plugin.template.manager.Activator;
+import org.wso2.integrationstudio.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExt;
+import org.wso2.integrationstudio.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExtList;
+import org.wso2.integrationstudio.wso2plugin.template.manager.util.JGitSampleRepoManager;
+import org.wso2.integrationstudio.wso2plugin.template.manager.util.WSO2PluginConstants;
 
 public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 

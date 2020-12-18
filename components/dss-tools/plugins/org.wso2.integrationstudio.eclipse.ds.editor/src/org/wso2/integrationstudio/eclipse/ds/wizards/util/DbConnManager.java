@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.wizards.util;
+package org.wso2.integrationstudio.ds.wizards.util;
 
 import java.net.MalformedURLException;
 import java.net.URL;

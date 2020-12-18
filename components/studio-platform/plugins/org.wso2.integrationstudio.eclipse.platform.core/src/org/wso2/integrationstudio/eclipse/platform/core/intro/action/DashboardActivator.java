@@ -16,7 +16,7 @@
 * under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.platform.core.intro.action;
+package org.wso2.integrationstudio.platform.core.intro.action;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -25,7 +25,7 @@ import org.osgi.framework.BundleContext;
 public class DashboardActivator extends AbstractUIPlugin {
 
     // The plug-in ID
-    public static final String PLUGIN_ID = "org.wso2.integrationstudio.eclipse.kernel.dashboard";
+    public static final String PLUGIN_ID = "org.wso2.integrationstudio.kernel.dashboard";
 
     // The shared instance
     private static DashboardActivator plugin;

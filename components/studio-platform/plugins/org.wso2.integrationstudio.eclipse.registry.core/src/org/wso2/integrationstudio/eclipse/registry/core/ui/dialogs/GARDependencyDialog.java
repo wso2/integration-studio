@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.core.ui.dialogs;
+package org.wso2.integrationstudio.registry.core.ui.dialogs;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,14 +31,14 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.core.Activator;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.GARFileType;
-import org.wso2.integrationstudio.eclipse.registry.core.interfaces.IGARImportDependency;
-import org.wso2.integrationstudio.eclipse.registry.core.ui.widgets.GRegImageUtils;
-import org.wso2.integrationstudio.eclipse.ui.image.OverlayImageDescriptor;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.core.Activator;
+import org.wso2.integrationstudio.registry.core.interfaces.GARFileType;
+import org.wso2.integrationstudio.registry.core.interfaces.IGARImportDependency;
+import org.wso2.integrationstudio.registry.core.ui.widgets.GRegImageUtils;
+import org.wso2.integrationstudio.ui.image.OverlayImageDescriptor;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class GARDependencyDialog extends Dialog {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

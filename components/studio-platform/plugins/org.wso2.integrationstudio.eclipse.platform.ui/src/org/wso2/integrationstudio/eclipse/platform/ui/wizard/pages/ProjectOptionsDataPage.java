@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages;
+package org.wso2.integrationstudio.platform.ui.wizard.pages;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -54,23 +54,23 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.Activator;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractComposite;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractFieldController;
-import org.wso2.integrationstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectOptionData;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectOptionDataGroup;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectOptionInfo;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectWizardSettings;
-import org.wso2.integrationstudio.eclipse.platform.ui.interfaces.IFieldControlData;
-import org.wso2.integrationstudio.eclipse.platform.ui.interfaces.IOnAction;
-import org.wso2.integrationstudio.eclipse.platform.ui.utils.WSO2UIToolkit;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.Activator;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.core.model.AbstractComposite;
+import org.wso2.integrationstudio.platform.core.model.AbstractFieldController;
+import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectOptionData;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectOptionDataGroup;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectOptionInfo;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectWizardSettings;
+import org.wso2.integrationstudio.platform.ui.interfaces.IFieldControlData;
+import org.wso2.integrationstudio.platform.ui.interfaces.IOnAction;
+import org.wso2.integrationstudio.platform.ui.utils.WSO2UIToolkit;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 
 import java.io.File;
 import java.util.ArrayList;

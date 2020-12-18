@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.library.util;
+package org.wso2.integrationstudio.artifact.library.util;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Constants extends NLS{
-	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.eclipse.artifact.library.util.constants";
+	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.artifact.library.util.constants";
 	
 	public static String LIBRARY_PROJECT_NATURE;
 	

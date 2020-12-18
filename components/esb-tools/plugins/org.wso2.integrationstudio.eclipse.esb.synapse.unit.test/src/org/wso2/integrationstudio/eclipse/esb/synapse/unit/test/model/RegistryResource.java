@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.synapse.unit.test.model;
+package org.wso2.integrationstudio.esb.synapse.unit.test.model;
 
 /**
  * Class responsible handle Registry resource data.

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.mediators.AbstractMediator;
@@ -22,13 +22,13 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.carbon.mediator.transform.SmooksMediator.TYPES;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ExpressionAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputMethod;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SmooksIODataType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SmooksMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SmooksOutputDataType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.integrationstudio.gmf.esb.ExpressionAction;
+import org.wso2.integrationstudio.gmf.esb.OutputMethod;
+import org.wso2.integrationstudio.gmf.esb.SmooksIODataType;
+import org.wso2.integrationstudio.gmf.esb.SmooksMediator;
+import org.wso2.integrationstudio.gmf.esb.SmooksOutputDataType;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 import static org.wso2.carbon.mediator.transform.Output.*;
 
 public class SmooksMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, SmooksMediator> {

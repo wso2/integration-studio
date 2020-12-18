@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.ds.presentation.custom;
+package org.wso2.integrationstudio.ds.presentation.custom;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.swt.widgets.Composite;
-import org.wso2.integrationstudio.eclipse.ds.presentation.ui.RegistryKeyPropertyEditor;
+import org.wso2.integrationstudio.ds.presentation.ui.RegistryKeyPropertyEditor;
 
 /**
  * Factory for generating custom property editors based on property type.

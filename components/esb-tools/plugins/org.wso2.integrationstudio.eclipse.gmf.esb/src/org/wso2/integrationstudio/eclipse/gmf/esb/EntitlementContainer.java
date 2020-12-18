@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,13 +24,13 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementContainer#getOnRejectContainer <em>On Reject Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementContainer#getOnAcceptContainer <em>On Accept Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementContainer#getAdviceContainer <em>Advice Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementContainer#getObligationsContainer <em>Obligations Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EntitlementContainer#getOnRejectContainer <em>On Reject Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EntitlementContainer#getOnAcceptContainer <em>On Accept Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EntitlementContainer#getAdviceContainer <em>Advice Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.EntitlementContainer#getObligationsContainer <em>Obligations Container</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEntitlementContainer()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEntitlementContainer()
  * @model
  * @generated
  */
@@ -45,14 +45,14 @@ public interface EntitlementContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Reject Container</em>' containment reference.
      * @see #setOnRejectContainer(EntitlementOnRejectContainer)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEntitlementContainer_OnRejectContainer()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEntitlementContainer_OnRejectContainer()
      * @model containment="true"
      * @generated
      */
     EntitlementOnRejectContainer getOnRejectContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementContainer#getOnRejectContainer <em>On Reject Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EntitlementContainer#getOnRejectContainer <em>On Reject Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Reject Container</em>' containment reference.
@@ -71,14 +71,14 @@ public interface EntitlementContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Accept Container</em>' containment reference.
      * @see #setOnAcceptContainer(EntitlementOnAcceptContainer)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEntitlementContainer_OnAcceptContainer()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEntitlementContainer_OnAcceptContainer()
      * @model containment="true"
      * @generated
      */
     EntitlementOnAcceptContainer getOnAcceptContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementContainer#getOnAcceptContainer <em>On Accept Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EntitlementContainer#getOnAcceptContainer <em>On Accept Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Accept Container</em>' containment reference.
@@ -97,14 +97,14 @@ public interface EntitlementContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Advice Container</em>' containment reference.
      * @see #setAdviceContainer(EntitlementAdviceContainer)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEntitlementContainer_AdviceContainer()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEntitlementContainer_AdviceContainer()
      * @model containment="true"
      * @generated
      */
     EntitlementAdviceContainer getAdviceContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementContainer#getAdviceContainer <em>Advice Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EntitlementContainer#getAdviceContainer <em>Advice Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Advice Container</em>' containment reference.
@@ -123,14 +123,14 @@ public interface EntitlementContainer extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Obligations Container</em>' containment reference.
      * @see #setObligationsContainer(EntitlementObligationsContainer)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getEntitlementContainer_ObligationsContainer()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getEntitlementContainer_ObligationsContainer()
      * @model containment="true"
      * @generated
      */
     EntitlementObligationsContainer getObligationsContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementContainer#getObligationsContainer <em>Obligations Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.EntitlementContainer#getObligationsContainer <em>Obligations Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Obligations Container</em>' containment reference.

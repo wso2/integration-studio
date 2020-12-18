@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.provider;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.provider;
 
 import org.eclipse.jface.viewers.DialogCellEditor;
 import org.eclipse.swt.widgets.Composite;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
 
 /**
  * An abstract {@link DialogCellEditor} extension providing utility useful

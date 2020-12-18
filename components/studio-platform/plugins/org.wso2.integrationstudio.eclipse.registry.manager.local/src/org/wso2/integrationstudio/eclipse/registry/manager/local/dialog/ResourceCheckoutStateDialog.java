@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.manager.local.dialog;
+package org.wso2.integrationstudio.registry.manager.local.dialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +31,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.Activator;
-import org.wso2.integrationstudio.eclipse.registry.manager.local.ui.controls.WorkspaceResourceTreeViewer;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.manager.local.Activator;
+import org.wso2.integrationstudio.registry.manager.local.ui.controls.WorkspaceResourceTreeViewer;
 
 public class ResourceCheckoutStateDialog extends Dialog {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

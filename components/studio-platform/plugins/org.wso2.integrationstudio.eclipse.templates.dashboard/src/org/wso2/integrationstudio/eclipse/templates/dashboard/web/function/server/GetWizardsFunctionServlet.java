@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.templates.dashboard.web.function.server;
+package org.wso2.integrationstudio.templates.dashboard.web.function.server;
 
 import java.io.IOException;
 

@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.ds.customvalidator.ui.wizard;
+package org.wso2.integrationstudio.ds.customvalidator.ui.wizard;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-import org.wso2.integrationstudio.eclipse.ds.customvalidator.Activator;
-import org.wso2.integrationstudio.eclipse.ds.customvalidator.utils.DataserviceImageUtils;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.ds.customvalidator.Activator;
+import org.wso2.integrationstudio.ds.customvalidator.utils.DataserviceImageUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class NewDataserviceValidatorClassWizard extends Wizard implements INewWizard {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

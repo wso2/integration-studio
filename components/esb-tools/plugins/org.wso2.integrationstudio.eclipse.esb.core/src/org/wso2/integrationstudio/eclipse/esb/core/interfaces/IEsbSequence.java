@@ -1,6 +1,6 @@
-package org.wso2.integrationstudio.eclipse.esb.core.interfaces;
+package org.wso2.integrationstudio.esb.core.interfaces;
 
-import org.wso2.integrationstudio.eclipse.platform.core.interfaces.IIntegrationStudioElement;
+import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
 
 public interface IEsbSequence extends IIntegrationStudioElement{
 

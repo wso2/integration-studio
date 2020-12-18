@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.part;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.ENDPOINT_RESOURCE_DIR;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SEQUENCE_RESOURCE_DIR;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.updateToolpalette;
+import static org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils.ENDPOINT_RESOURCE_DIR;
+import static org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils.SEQUENCE_RESOURCE_DIR;
+import static org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils.updateToolpalette;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -64,28 +64,28 @@ import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbServer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractBaseFigureEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractBaseFigureFaultInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractBaseFigureInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractProxyServiceContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.ToolPalleteDetails;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.NamedEndpointEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceFaultContainerEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.gmf.esb.EsbDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbServer;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractBaseFigureEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractBaseFigureFaultInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractBaseFigureInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractEndpointInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractProxyServiceContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.ToolPalleteDetails;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.NamedEndpointEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ProxyServiceFaultContainerEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 /**
  * @generated
@@ -1423,12 +1423,12 @@ public class EsbPaletteFactory {
      * try {
      * CloudConnectorZIPReader cloudConnectorZIPReader = CloudConnectorZIPReader
      * .getInstance(new File(
-     * "/home/viraj/WSO2/IntegrationStudio/Trunk/eclipse/esb/org.wso2.integrationstudio.eclipse.gmf.esb.diagram/resources/cloudConnectors/twilio-connector.zip"
+     * "/home/viraj/WSO2/IntegrationStudio/Trunk/eclipse/esb/org.wso2.integrationstudio.gmf.esb.diagram/resources/cloudConnectors/twilio-connector.zip"
      * ));
      * InputStream inputStream = cloudConnectorZIPReader.getFileContentInZIP("artifacts.xml");
      * 
      * File artifactsFile = new File(
-     * "/home/viraj/WSO2/IntegrationStudio/Trunk/eclipse/esb/org.wso2.integrationstudio.eclipse.gmf.esb.diagram/resources/cloudConnectors/temp/twilio-connector/artifacts.xml"
+     * "/home/viraj/WSO2/IntegrationStudio/Trunk/eclipse/esb/org.wso2.integrationstudio.gmf.esb.diagram/resources/cloudConnectors/temp/twilio-connector/artifacts.xml"
      * );
      * 
      * String artifactsContent = FileUtils.getContentAsString(artifactsFile);
@@ -1445,14 +1445,14 @@ public class EsbPaletteFactory {
      * ZipEntry zipEntry=cloudConnectorZIPReader.getZipFile().getEntry(artifactDependency.getName());
      * 
      * String pathname =
-     * "/home/viraj/WSO2/IntegrationStudio/Trunk/eclipse/esb/org.wso2.integrationstudio.eclipse.gmf.esb.diagram/resources/cloudConnectors/temp/twilio-connector/"
+     * "/home/viraj/WSO2/IntegrationStudio/Trunk/eclipse/esb/org.wso2.integrationstudio.gmf.esb.diagram/resources/cloudConnectors/temp/twilio-connector/"
      * + artifactDependency.getName();
      * File artifactFile = new File(
      * pathname + "/artifact.xml");
      * String artifactContent = FileUtils.getContentAsString(artifactFile);
      * Artifact artifact = new Artifact();
      * artifact.deserialize(artifactContent);
-     * for (org.wso2.integrationstudio.eclipse.capp.core.manifest.Artifact artifact_ : artifact
+     * for (org.wso2.integrationstudio.capp.core.manifest.Artifact artifact_ : artifact
      * .getArtifacts()) {
      * if("configure".equals(artifact_.getName())){
      * parameters=readTemplateConfiguration(pathname+"/configure.xml");

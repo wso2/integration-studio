@@ -4,15 +4,15 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AggregateMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.AggregateMediator;
+import org.wso2.integrationstudio.gmf.esb.AggregateMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.OutputConnector;
 
 /**
  * <!-- begin-user-doc -->

@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.model;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.model;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESBDEBUGGER_EVENT_TOPIC;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_DEBUGGER_EVENT_BROKER_DATA_NAME;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_DEBUG_TARGET_EVENT_TOPIC;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SUSPEND_POINT_MODEL_ID;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESBDEBUGGER_EVENT_TOPIC;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_DEBUGGER_EVENT_BROKER_DATA_NAME;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_DEBUG_TARGET_EVENT_TOPIC;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SUSPEND_POINT_MODEL_ID;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,32 +38,32 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
-import org.wso2.integrationstudio.eclipse.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.DebuggerStartedEvent;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.MediationFlowCompleteEvent;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.PropertyRecievedEvent;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.ResumedEvent;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.SuspendedEvent;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.TerminatedEvent;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.DebugPointRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.FetchVariablesRequest;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.response.PropertyRespondMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.suspendpoint.ESBSuspendPoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.DebugPointEventAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerResumeType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBPropertyScopeType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
+import org.wso2.integrationstudio.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.events.DebuggerStartedEvent;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.events.MediationFlowCompleteEvent;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.events.PropertyRecievedEvent;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.events.ResumedEvent;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.events.SuspendedEvent;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.events.TerminatedEvent;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.DebugPointRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.internal.communication.requests.FetchVariablesRequest;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.response.PropertyRespondMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.suspendpoint.ESBSuspendPoint;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.DebugPointEventAction;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerResumeType;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBPropertyScopeType;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.Messages;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
 
 import com.google.gson.JsonObject;
 
@@ -80,7 +80,7 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
     private final ILaunch esbDebugerLaunch;
 
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    private static final String ESB_GRAPHICAL_PERSPECTIVE_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.perspective";
+    private static final String ESB_GRAPHICAL_PERSPECTIVE_ID = "org.wso2.integrationstudio.gmf.esb.diagram.custom.perspective";
 
     public ESBDebugTarget(final ILaunch launch) {
         super(null);

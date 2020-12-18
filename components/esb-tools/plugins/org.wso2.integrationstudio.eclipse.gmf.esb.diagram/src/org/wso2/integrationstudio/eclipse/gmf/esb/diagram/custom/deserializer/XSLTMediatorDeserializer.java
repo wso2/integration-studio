@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,19 +16,19 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.KeyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTFeature;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.XSLTResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.XSLTFeature;
+import org.wso2.integrationstudio.gmf.esb.XSLTMediator;
+import org.wso2.integrationstudio.gmf.esb.XSLTProperty;
+import org.wso2.integrationstudio.gmf.esb.XSLTResource;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class XSLTMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, XSLTMediator> {
 
@@ -40,7 +40,7 @@ public class XSLTMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
 
         org.apache.synapse.mediators.transform.XSLTMediator xsltMediator = (org.apache.synapse.mediators.transform.XSLTMediator) mediator;
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediator VisualXsltMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.XSLTMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.XSLTMediator VisualXsltMediator = (org.wso2.integrationstudio.gmf.esb.XSLTMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.XSLTMediator_3497);
 
         setElementToEdit(VisualXsltMediator);

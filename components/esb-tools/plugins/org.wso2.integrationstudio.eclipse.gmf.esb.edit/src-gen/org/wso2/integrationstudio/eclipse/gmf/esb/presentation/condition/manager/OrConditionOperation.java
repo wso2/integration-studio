@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation.condition.manager;
+package org.wso2.integrationstudio.gmf.esb.presentation.condition.manager;
 
 import java.util.List;
 import java.util.Map;

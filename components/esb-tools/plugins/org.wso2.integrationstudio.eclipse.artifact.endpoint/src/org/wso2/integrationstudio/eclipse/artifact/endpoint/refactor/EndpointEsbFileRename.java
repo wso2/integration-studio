@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.refactor;
+package org.wso2.integrationstudio.artifact.endpoint.refactor;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.ltk.core.refactoring.resource.RenameResourceChange;

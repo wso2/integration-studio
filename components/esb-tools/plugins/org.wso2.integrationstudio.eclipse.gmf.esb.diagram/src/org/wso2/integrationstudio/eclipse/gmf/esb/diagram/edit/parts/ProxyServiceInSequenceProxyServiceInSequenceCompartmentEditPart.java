@@ -1,5 +1,5 @@
 /*
- * package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts;
+ * package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
  * 
  * import org.eclipse.draw2d.IFigure;
  * import org.eclipse.draw2d.MarginBorder;
@@ -21,16 +21,16 @@
  * import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
  * import org.eclipse.gmf.runtime.emf.type.core.IHintedType;
  * import org.eclipse.gmf.runtime.notation.View;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractInputConnector;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnector;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.editpolicy.CustomDragDropEditPolicy;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.
+ * import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractInputConnector;
+ * import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator;
+ * import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractOutputConnector;
+ * import org.wso2.integrationstudio.gmf.esb.diagram.custom.editpolicy.CustomDragDropEditPolicy;
+ * import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.
  * ProxyServiceInSequenceProxyServiceInSequenceCompartmentCanonicalEditPolicy;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.policies.
+ * import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.
  * ProxyServiceInSequenceProxyServiceInSequenceCompartmentItemSemanticEditPolicy;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.Messages;
- * import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+ * import org.wso2.integrationstudio.gmf.esb.diagram.part.Messages;
+ * import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
  * 
  *//**
     * @generated

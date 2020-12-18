@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -82,17 +82,17 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FilterMediatorConditionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FilterMediatorConditionType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.ThrottlePolicyType;
+import org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -877,7 +877,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -887,7 +887,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -928,7 +928,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -938,7 +938,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -960,7 +960,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getGroupId()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getGroupId()
 	 * 
 	 */
 	public String getGroupId() {
@@ -970,7 +970,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setGroupId(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setGroupId(String newValue)
 	 * 
 	 */
 	public void setGroupId(String newValue) {
@@ -992,7 +992,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -1002,7 +1002,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -1024,7 +1024,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getOnAcceptBranchsequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getOnAcceptBranchsequenceType()
 	 * 
 	 */
 	public Enumerator getOnAcceptBranchsequenceType() {
@@ -1035,7 +1035,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#initOnAcceptBranchsequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#initOnAcceptBranchsequenceType(Object input, Enumerator current)
 	 */
 	public void initOnAcceptBranchsequenceType(Object input, Enumerator current) {
 		onAcceptBranchsequenceType.setInput(input);
@@ -1053,7 +1053,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setOnAcceptBranchsequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setOnAcceptBranchsequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setOnAcceptBranchsequenceType(Enumerator newValue) {
@@ -1071,7 +1071,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getOnRejectBranchsequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getOnRejectBranchsequenceType()
 	 * 
 	 */
 	public Enumerator getOnRejectBranchsequenceType() {
@@ -1082,7 +1082,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#initOnRejectBranchsequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#initOnRejectBranchsequenceType(Object input, Enumerator current)
 	 */
 	public void initOnRejectBranchsequenceType(Object input, Enumerator current) {
 		onRejectBranchsequenceType.setInput(input);
@@ -1100,7 +1100,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setOnRejectBranchsequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setOnRejectBranchsequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setOnRejectBranchsequenceType(Enumerator newValue) {
@@ -1118,7 +1118,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getPolicyType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getPolicyType()
 	 * 
 	 */
 	public Enumerator getPolicyType() {
@@ -1129,7 +1129,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#initPolicyType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#initPolicyType(Object input, Enumerator current)
 	 */
 	public void initPolicyType(Object input, Enumerator current) {
 		policyType.setInput(input);
@@ -1147,7 +1147,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setPolicyType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setPolicyType(Enumerator newValue)
 	 * 
 	 */
 	public void setPolicyType(Enumerator newValue) {
@@ -1165,7 +1165,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getMaxConcurrentAccessCount()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#getMaxConcurrentAccessCount()
 	 * 
 	 */
 	public String getMaxConcurrentAccessCount() {
@@ -1175,7 +1175,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setMaxConcurrentAccessCount(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#setMaxConcurrentAccessCount(String newValue)
 	 * 
 	 */
 	public void setMaxConcurrentAccessCount(String newValue) {
@@ -1199,7 +1199,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#initPolicyEntries(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#initPolicyEntries(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initPolicyEntries(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1220,7 +1220,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#updatePolicyEntries()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#updatePolicyEntries()
 	 * 
 	 */
 	public void updatePolicyEntries() {
@@ -1230,7 +1230,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#addFilterPolicyEntries(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#addFilterPolicyEntries(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToPolicyEntries(ViewerFilter filter) {
@@ -1243,7 +1243,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#addBusinessFilterPolicyEntries(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#addBusinessFilterPolicyEntries(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToPolicyEntries(ViewerFilter filter) {
@@ -1253,7 +1253,7 @@ public class ThrottleMediatorPropertiesEditionPartForm extends SectionProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#isContainedInPolicyEntriesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.ThrottleMediatorPropertiesEditionPart#isContainedInPolicyEntriesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInPolicyEntriesTable(EObject element) {

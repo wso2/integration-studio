@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.updater.handler;
+package org.wso2.integrationstudio.updater.handler;
 
 import java.util.Calendar;
 
@@ -8,17 +8,17 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.PreferenceConstants;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
-import org.wso2.integrationstudio.eclipse.updater.UpdaterPlugin;
-import org.wso2.integrationstudio.eclipse.updater.core.UpdateManager;
-import org.wso2.integrationstudio.eclipse.updater.job.BackgroundUpdateTaskJob;
-import org.wso2.integrationstudio.eclipse.updater.job.BackgroundUpdaterTaskListener;
-import org.wso2.integrationstudio.eclipse.updater.job.UpdateMetaFileReaderJob;
-import org.wso2.integrationstudio.eclipse.updater.job.UpdateMetaFileReaderJobListener;
-import org.wso2.integrationstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.ui.preferences.PreferenceConstants;
+import org.wso2.integrationstudio.platform.ui.preferences.UpdateCheckerPreferencePage;
+import org.wso2.integrationstudio.updater.UpdaterPlugin;
+import org.wso2.integrationstudio.updater.core.UpdateManager;
+import org.wso2.integrationstudio.updater.job.BackgroundUpdateTaskJob;
+import org.wso2.integrationstudio.updater.job.BackgroundUpdaterTaskListener;
+import org.wso2.integrationstudio.updater.job.UpdateMetaFileReaderJob;
+import org.wso2.integrationstudio.updater.job.UpdateMetaFileReaderJobListener;
+import org.wso2.integrationstudio.updater.ui.UpdaterDialog.ActiveTab;
 
 public class UpdaterRootJob extends Job {
 

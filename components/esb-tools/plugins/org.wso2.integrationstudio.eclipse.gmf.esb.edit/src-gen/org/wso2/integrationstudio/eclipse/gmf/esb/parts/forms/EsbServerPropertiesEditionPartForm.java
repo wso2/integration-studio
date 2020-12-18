@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -62,10 +62,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbServerPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbServerPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -271,7 +271,7 @@ public class EsbServerPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbServerPropertiesEditionPart#initChildren(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbServerPropertiesEditionPart#initChildren(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initChildren(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -292,7 +292,7 @@ public class EsbServerPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbServerPropertiesEditionPart#updateChildren()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbServerPropertiesEditionPart#updateChildren()
 	 * 
 	 */
 	public void updateChildren() {
@@ -302,7 +302,7 @@ public class EsbServerPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbServerPropertiesEditionPart#addFilterChildren(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbServerPropertiesEditionPart#addFilterChildren(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToChildren(ViewerFilter filter) {
@@ -315,7 +315,7 @@ public class EsbServerPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbServerPropertiesEditionPart#addBusinessFilterChildren(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbServerPropertiesEditionPart#addBusinessFilterChildren(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToChildren(ViewerFilter filter) {
@@ -325,7 +325,7 @@ public class EsbServerPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbServerPropertiesEditionPart#isContainedInChildrenTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbServerPropertiesEditionPart#isContainedInChildrenTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInChildrenTable(EObject element) {
@@ -335,7 +335,7 @@ public class EsbServerPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbServerPropertiesEditionPart#getType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbServerPropertiesEditionPart#getType()
 	 * 
 	 */
 	public Enumerator getType() {
@@ -346,7 +346,7 @@ public class EsbServerPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbServerPropertiesEditionPart#initType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbServerPropertiesEditionPart#initType(Object input, Enumerator current)
 	 */
 	public void initType(Object input, Enumerator current) {
 		type.setInput(input);
@@ -364,7 +364,7 @@ public class EsbServerPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbServerPropertiesEditionPart#setType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbServerPropertiesEditionPart#setType(Enumerator newValue)
 	 * 
 	 */
 	public void setType(Enumerator newValue) {

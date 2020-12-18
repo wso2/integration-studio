@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.sequence.utils;
+package org.wso2.integrationstudio.artifact.sequence.utils;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.utils.template.TemplateUtil;
+import org.wso2.integrationstudio.utils.template.TemplateUtil;
 
 public class SequenceTemplateUtils extends TemplateUtil{
 
@@ -31,7 +31,7 @@ public class SequenceTemplateUtils extends TemplateUtil{
 	}
 	
 	protected Bundle getBundle() {
-		return Platform.getBundle(org.wso2.integrationstudio.eclipse.artifact.sequence.Activator.PLUGIN_ID);
+		return Platform.getBundle(org.wso2.integrationstudio.artifact.sequence.Activator.PLUGIN_ID);
 	}
 
 }

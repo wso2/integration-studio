@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -26,240 +26,240 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSequenceInputConnector <em>Sequence Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSequenceOutputConnector <em>Sequence Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequenceInputConnector <em>On Error Sequence Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequenceOutputConnector <em>On Error Sequence Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getContainer <em>Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getName <em>Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getType <em>Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getProtocol <em>Protocol</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundEndpointBehaviour <em>Inbound Endpoint Behaviour</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHttpPort <em>Inbound Http Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeCore <em>Inbound Worker Pool Size Core</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeMax <em>Inbound Worker Pool Size Max</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerThreadKeepAliveSec <em>Inbound Worker Thread Keep Alive Sec</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolQueueLength <em>Inbound Worker Pool Queue Length</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundThreadGroupId <em>Inbound Thread Group Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundThreadId <em>Inbound Thread Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getDispatchFilterPattern <em>Dispatch Filter Pattern</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInterval <em>Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isSequential <em>Sequential</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isCoordination <em>Coordination</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileURI <em>Transport VFS File URI</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWso2mbConnectionUrl <em>Wso2mb Connection Url</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSContentType <em>Transport VFS Content Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileNamePattern <em>Transport VFS File Name Pattern</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileProcessInterval <em>Transport VFS File Process Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileProcessCount <em>Transport VFS File Process Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSLocking <em>Transport VFS Locking</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMaxRetryCount <em>Transport VFS Max Retry Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterFailedMove <em>Transport VFS Move After Failed Move</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSReconnectTimeout <em>Transport VFS Reconnect Timeout</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportJMSSharedSubscription <em>Transport JMS Shared Subscription</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSSubscriptionName <em>Transport JMS Subscription Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPinnedServers <em>Transport JMS Pinned Servers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSActionAfterProcess <em>Transport VFS Action After Process</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterProcess <em>Transport VFS Move After Process</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSActionAfterErrors <em>Transport VFS Action After Errors</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterErrors <em>Transport VFS Move After Errors</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFailedRecordsFileName <em>Transport VFS Failed Records File Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFailedRecordsFileDestination <em>Transport VFS Failed Records File Destination</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveFailedRecordTimestampFormat <em>Transport VFS Move Failed Record Timestamp Format</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFailedRecordNextRetryDuration <em>Transport VFS Failed Record Next Retry Duration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSActionAfterFailure <em>Transport VFS Action After Failure</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterFailure <em>Transport VFS Move After Failure</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSReplyFileURI <em>Transport VFS Reply File URI</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSReplyFileName <em>Transport VFS Reply File Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSAutoLockRelease <em>Transport VFS Auto Lock Release</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSAutoLockReleaseInterval <em>Transport VFS Auto Lock Release Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSLockReleaseSameNode <em>Transport VFS Lock Release Same Node</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSDistributedLock <em>Transport VFS Distributed Lock</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSStreaming <em>Transport VFS Streaming</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSBuild <em>Transport VFS Build</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSDistributedTimeout <em>Transport VFS Distributed Timeout</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentities <em>Transport VFSSFTP Identities</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentityPassPhrase <em>Transport VFSSFTP Identity Pass Phrase</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSSFTPUserDirIsRoot <em>Transport VFSSFTP User Dir Is Root</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryType <em>Transport JMS Connection Factory Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSConcurrentConsumers <em>Transport JMS Concurrent Consumers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDestination <em>Transport JMS Destination</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportJMSSessionTransacted <em>Transport JMS Session Transacted</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSSessionAcknowledgement <em>Transport JMS Session Acknowledgement</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSCacheLevel <em>Transport JMS Cache Level</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSUserName <em>Transport JMS User Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPassword <em>Transport JMS Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSJMSSpecVersion <em>Transport JMSJMS Spec Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSSubscriptionDurable <em>Transport JMS Subscription Durable</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberClientID <em>Transport JMS Durable Subscriber Client ID</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSMessageSelector <em>Transport JMS Message Selector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSRetryDuration <em>Transport JMS Retry Duration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSubFolderTimestampFormat <em>Transport VFS Sub Folder Timestamp Format</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSContentType <em>Transport JMS Content Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSContentTypeProperty <em>Transport JMS Content Type Property</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberName <em>Transport JMS Durable Subscriber Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSBrokerType <em>Transport JMS Broker Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTTopicName <em>Transport MQTT Topic Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionQOS <em>Transport MQTT Subscription QOS</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportMQTTSessionClean <em>Transport MQTT Session Clean</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslEnable <em>Transport MQTT Ssl Enable</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionUsername <em>Transport MQTT Subscription Username</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionPassword <em>Transport MQTT Subscription Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTClientId <em>Transport MQTT Client Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTruststore <em>Truststore</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getKeystore <em>Keystore</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSslVerifyClient <em>Ssl Verify Client</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSslProtocol <em>Ssl Protocol</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getHttpsProtocols <em>Https Protocols</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7Port <em>Inbound HL7 Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7AutoAck <em>Inbound HL7 Auto Ack</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7MessagePreProcessor <em>Inbound HL7 Message Pre Processor</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7CharSet <em>Inbound HL7 Char Set</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7TimeOut <em>Inbound HL7 Time Out</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7ValidateMessage <em>Inbound HL7 Validate Message</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperConnect <em>Zookeeper Connect</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getGroupId <em>Group Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getContentType <em>Content Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerType <em>Consumer Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTopicsOrTopicFilter <em>Topics Or Topic Filter</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTopicsName <em>Topics Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTopicFilterFrom <em>Topic Filter From</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTopicFilterName <em>Topic Filter Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerTopic <em>Simple Consumer Topic</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerBrokers <em>Simple Consumer Brokers</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerPort <em>Simple Consumer Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerPartition <em>Simple Consumer Partition</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerMaxMessagesToRead <em>Simple Consumer Max Messages To Read</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getThreadCount <em>Thread Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerId <em>Consumer Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSocketTimeoutMs <em>Socket Timeout Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSocketReceiveBufferBytes <em>Socket Receive Buffer Bytes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getFetchMessageMaxBytes <em>Fetch Message Max Bytes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getNumConsumerFetches <em>Num Consumer Fetches</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isAutoCommitEnable <em>Auto Commit Enable</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getQueuedMaxMessageChunks <em>Queued Max Message Chunks</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getRebalanceMaxRetries <em>Rebalance Max Retries</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getFetchMinBytes <em>Fetch Min Bytes</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getFetchWaitMaxMs <em>Fetch Wait Max Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getRebalanceBackoffMs <em>Rebalance Backoff Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getRefreshLeaderBackoffMs <em>Refresh Leader Backoff Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getAutoOffsetReset <em>Auto Offset Reset</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerTimeoutMs <em>Consumer Timeout Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isExcludeInternalTopics <em>Exclude Internal Topics</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getPartitionAssignmentStrategy <em>Partition Assignment Strategy</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getClientId <em>Client Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperConnectionTimeoutMs <em>Zookeeper Connection Timeout Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsStorage <em>Offsets Storage</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsChannelBackoffMs <em>Offsets Channel Backoff Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsChannelSocketTimeoutMs <em>Offsets Channel Socket Timeout Ms</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsCommitMaxRetries <em>Offsets Commit Max Retries</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isDualCommitEnabled <em>Dual Commit Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isEnableSSL <em>Enable SSL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getServiceParameters <em>Service Parameters</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isSuspend <em>Suspend</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionFactory <em>Transport Rabbit Mq Connection Factory</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerHostName <em>Transport Rabbit Mq Server Host Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPort <em>Transport Rabbit Mq Server Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerUserName <em>Transport Rabbit Mq Server User Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPassword <em>Transport Rabbit Mq Server Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueName <em>Transport Rabbit Mq Queue Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeName <em>Transport Rabbit Mq Exchange Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDurable <em>Transport Rabbit Mq Queue Durable</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueExclusive <em>Transport Rabbit Mq Queue Exclusive</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoDelete <em>Transport Rabbit Mq Queue Auto Delete</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoAck <em>Transport Rabbit Mq Queue Auto Ack</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueRoutingKey <em>Transport Rabbit Mq Queue Routing Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDeliveryMode <em>Transport Rabbit Mq Queue Delivery Mode</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeType <em>Transport Rabbit Mq Exchange Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeDurable <em>Transport Rabbit Mq Exchange Durable</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeAutoDelete <em>Transport Rabbit Mq Exchange Auto Delete</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerVirtualHost <em>Transport Rabbit Mq Server Virtual Host</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryHeartbeat <em>Transport Rabbit Mq Factory Heartbeat</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslEnabled <em>Transport Rabbit Mq Connection Ssl Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreLocation <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreType <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystorePassword <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreLocation <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosKey <em>Transport Rabbit Mq Consumer Qos Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsInboundPort <em>Ws Inbound Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchFaultSequence <em>Ws Outflow Dispatch Fault Sequence</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsBossThreadPoolSize <em>Ws Boss Thread Pool Size</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsWorkerThreadPoolSize <em>Ws Worker Thread Pool Size</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsSubprotocolHandlerClass <em>Ws Subprotocol Handler Class</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsPipelineHandlerClass <em>Ws Pipeline Handler Class</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedType <em>Transport Feed Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTraceEnabled <em>Trace Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSRetriesBeforeSuspension <em>Transport JMS Retries Before Suspension</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportJMSResetConnectionOnPollingSuspension <em>Transport JMS Reset Connection On Polling Suspension</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPollingSuspensionPeriod <em>Transport JMS Polling Suspension Period</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreLocation <em>Transport MQTT Ssl Keystore Location</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreType <em>Transport MQTT Ssl Keystore Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystorePassword <em>Transport MQTT Ssl Keystore Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreLocation <em>Transport MQTT Ssl Truststore Location</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreType <em>Transport MQTT Ssl Truststore Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststorePassword <em>Transport MQTT Ssl Truststore Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslVersion <em>Transport MQTT Ssl Version</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslKeyStoreFile <em>Wss Ssl Key Store File</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslKeyStorePass <em>Wss Ssl Key Store Pass</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslTrustStoreFile <em>Wss Ssl Trust Store File</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslTrustStorePass <em>Wss Ssl Trust Store Pass</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCertPass <em>Wss Ssl Cert Pass</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsDefaultContentType <em>Ws Default Content Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsShutdownStatusCode <em>Ws Shutdown Status Code</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsShutdownStatusMessage <em>Ws Shutdown Status Message</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isWsUsePortOffset <em>Ws Use Port Offset</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslProtocols <em>Wss Ssl Protocols</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDBUrl <em>Transport JMSDB Url</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMaxDeadLetteredCount <em>Transport Rabbit Mq Max Dead Lettered Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqRequeueDelay <em>Transport Rabbit Mq Requeue Delay</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqExchangeAutoDeclare <em>Transport Rabbit Mq Exchange Auto Declare</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerTag <em>Transport Rabbit Mq Consumer Tag</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorQueueRoutingKey <em>Transport Rabbit Mq Error Queue Routing Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorExchangeName <em>Transport Rabbit Mq Error Exchange Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryConnectionTimeout <em>Transport Rabbit Mq Factory Connection Timeout</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryNetworkRecoveryInterval <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSequenceInputConnector <em>Sequence Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSequenceOutputConnector <em>Sequence Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getOnErrorSequenceInputConnector <em>On Error Sequence Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getOnErrorSequenceOutputConnector <em>On Error Sequence Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getType <em>Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getClass_ <em>Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getProtocol <em>Protocol</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundEndpointBehaviour <em>Inbound Endpoint Behaviour</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundHttpPort <em>Inbound Http Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeCore <em>Inbound Worker Pool Size Core</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeMax <em>Inbound Worker Pool Size Max</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundWorkerThreadKeepAliveSec <em>Inbound Worker Thread Keep Alive Sec</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundWorkerPoolQueueLength <em>Inbound Worker Pool Queue Length</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundThreadGroupId <em>Inbound Thread Group Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundThreadId <em>Inbound Thread Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getDispatchFilterPattern <em>Dispatch Filter Pattern</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInterval <em>Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isSequential <em>Sequential</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isCoordination <em>Coordination</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFileURI <em>Transport VFS File URI</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWso2mbConnectionUrl <em>Wso2mb Connection Url</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSContentType <em>Transport VFS Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFileNamePattern <em>Transport VFS File Name Pattern</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFileProcessInterval <em>Transport VFS File Process Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFileProcessCount <em>Transport VFS File Process Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSLocking <em>Transport VFS Locking</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMaxRetryCount <em>Transport VFS Max Retry Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterFailedMove <em>Transport VFS Move After Failed Move</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSReconnectTimeout <em>Transport VFS Reconnect Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportJMSSharedSubscription <em>Transport JMS Shared Subscription</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSSubscriptionName <em>Transport JMS Subscription Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSPinnedServers <em>Transport JMS Pinned Servers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSActionAfterProcess <em>Transport VFS Action After Process</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterProcess <em>Transport VFS Move After Process</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSActionAfterErrors <em>Transport VFS Action After Errors</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterErrors <em>Transport VFS Move After Errors</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFailedRecordsFileName <em>Transport VFS Failed Records File Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFailedRecordsFileDestination <em>Transport VFS Failed Records File Destination</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveFailedRecordTimestampFormat <em>Transport VFS Move Failed Record Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFailedRecordNextRetryDuration <em>Transport VFS Failed Record Next Retry Duration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSActionAfterFailure <em>Transport VFS Action After Failure</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterFailure <em>Transport VFS Move After Failure</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSReplyFileURI <em>Transport VFS Reply File URI</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSReplyFileName <em>Transport VFS Reply File Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSAutoLockRelease <em>Transport VFS Auto Lock Release</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSAutoLockReleaseInterval <em>Transport VFS Auto Lock Release Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSLockReleaseSameNode <em>Transport VFS Lock Release Same Node</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSDistributedLock <em>Transport VFS Distributed Lock</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSStreaming <em>Transport VFS Streaming</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSBuild <em>Transport VFS Build</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSDistributedTimeout <em>Transport VFS Distributed Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentities <em>Transport VFSSFTP Identities</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentityPassPhrase <em>Transport VFSSFTP Identity Pass Phrase</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSSFTPUserDirIsRoot <em>Transport VFSSFTP User Dir Is Root</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryType <em>Transport JMS Connection Factory Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSConcurrentConsumers <em>Transport JMS Concurrent Consumers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSDestination <em>Transport JMS Destination</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportJMSSessionTransacted <em>Transport JMS Session Transacted</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSSessionAcknowledgement <em>Transport JMS Session Acknowledgement</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSCacheLevel <em>Transport JMS Cache Level</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSUserName <em>Transport JMS User Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSPassword <em>Transport JMS Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSJMSSpecVersion <em>Transport JMSJMS Spec Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSSubscriptionDurable <em>Transport JMS Subscription Durable</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberClientID <em>Transport JMS Durable Subscriber Client ID</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSMessageSelector <em>Transport JMS Message Selector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSRetryDuration <em>Transport JMS Retry Duration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSSubFolderTimestampFormat <em>Transport VFS Sub Folder Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSContentType <em>Transport JMS Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSContentTypeProperty <em>Transport JMS Content Type Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberName <em>Transport JMS Durable Subscriber Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSBrokerType <em>Transport JMS Broker Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTTopicName <em>Transport MQTT Topic Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionQOS <em>Transport MQTT Subscription QOS</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportMQTTSessionClean <em>Transport MQTT Session Clean</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslEnable <em>Transport MQTT Ssl Enable</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionUsername <em>Transport MQTT Subscription Username</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionPassword <em>Transport MQTT Subscription Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTClientId <em>Transport MQTT Client Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTruststore <em>Truststore</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getKeystore <em>Keystore</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSslVerifyClient <em>Ssl Verify Client</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSslProtocol <em>Ssl Protocol</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getHttpsProtocols <em>Https Protocols</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundHL7Port <em>Inbound HL7 Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isInboundHL7AutoAck <em>Inbound HL7 Auto Ack</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundHL7MessagePreProcessor <em>Inbound HL7 Message Pre Processor</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundHL7CharSet <em>Inbound HL7 Char Set</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundHL7TimeOut <em>Inbound HL7 Time Out</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isInboundHL7ValidateMessage <em>Inbound HL7 Validate Message</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getZookeeperConnect <em>Zookeeper Connect</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getGroupId <em>Group Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getContentType <em>Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getConsumerType <em>Consumer Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTopicsOrTopicFilter <em>Topics Or Topic Filter</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTopicsName <em>Topics Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTopicFilterFrom <em>Topic Filter From</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTopicFilterName <em>Topic Filter Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSimpleConsumerTopic <em>Simple Consumer Topic</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSimpleConsumerBrokers <em>Simple Consumer Brokers</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSimpleConsumerPort <em>Simple Consumer Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSimpleConsumerPartition <em>Simple Consumer Partition</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSimpleConsumerMaxMessagesToRead <em>Simple Consumer Max Messages To Read</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getThreadCount <em>Thread Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getConsumerId <em>Consumer Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSocketTimeoutMs <em>Socket Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSocketReceiveBufferBytes <em>Socket Receive Buffer Bytes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getFetchMessageMaxBytes <em>Fetch Message Max Bytes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getNumConsumerFetches <em>Num Consumer Fetches</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isAutoCommitEnable <em>Auto Commit Enable</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getQueuedMaxMessageChunks <em>Queued Max Message Chunks</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getRebalanceMaxRetries <em>Rebalance Max Retries</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getFetchMinBytes <em>Fetch Min Bytes</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getFetchWaitMaxMs <em>Fetch Wait Max Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getRebalanceBackoffMs <em>Rebalance Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getRefreshLeaderBackoffMs <em>Refresh Leader Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getAutoOffsetReset <em>Auto Offset Reset</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getConsumerTimeoutMs <em>Consumer Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isExcludeInternalTopics <em>Exclude Internal Topics</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getPartitionAssignmentStrategy <em>Partition Assignment Strategy</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getClientId <em>Client Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getZookeeperConnectionTimeoutMs <em>Zookeeper Connection Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getOffsetsStorage <em>Offsets Storage</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getOffsetsChannelBackoffMs <em>Offsets Channel Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getOffsetsChannelSocketTimeoutMs <em>Offsets Channel Socket Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getOffsetsCommitMaxRetries <em>Offsets Commit Max Retries</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isDualCommitEnabled <em>Dual Commit Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isEnableSSL <em>Enable SSL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getServiceParameters <em>Service Parameters</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isSuspend <em>Suspend</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionFactory <em>Transport Rabbit Mq Connection Factory</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqServerHostName <em>Transport Rabbit Mq Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPort <em>Transport Rabbit Mq Server Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqServerUserName <em>Transport Rabbit Mq Server User Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPassword <em>Transport Rabbit Mq Server Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueName <em>Transport Rabbit Mq Queue Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeName <em>Transport Rabbit Mq Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDurable <em>Transport Rabbit Mq Queue Durable</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueExclusive <em>Transport Rabbit Mq Queue Exclusive</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoDelete <em>Transport Rabbit Mq Queue Auto Delete</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoAck <em>Transport Rabbit Mq Queue Auto Ack</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueRoutingKey <em>Transport Rabbit Mq Queue Routing Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDeliveryMode <em>Transport Rabbit Mq Queue Delivery Mode</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeType <em>Transport Rabbit Mq Exchange Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeDurable <em>Transport Rabbit Mq Exchange Durable</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeAutoDelete <em>Transport Rabbit Mq Exchange Auto Delete</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqServerVirtualHost <em>Transport Rabbit Mq Server Virtual Host</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryHeartbeat <em>Transport Rabbit Mq Factory Heartbeat</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslEnabled <em>Transport Rabbit Mq Connection Ssl Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreLocation <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreType <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystorePassword <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreLocation <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosKey <em>Transport Rabbit Mq Consumer Qos Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsInboundPort <em>Ws Inbound Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsOutflowDispatchFaultSequence <em>Ws Outflow Dispatch Fault Sequence</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsBossThreadPoolSize <em>Ws Boss Thread Pool Size</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsWorkerThreadPoolSize <em>Ws Worker Thread Pool Size</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsSubprotocolHandlerClass <em>Ws Subprotocol Handler Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsPipelineHandlerClass <em>Ws Pipeline Handler Class</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportFeedType <em>Transport Feed Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSRetriesBeforeSuspension <em>Transport JMS Retries Before Suspension</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportJMSResetConnectionOnPollingSuspension <em>Transport JMS Reset Connection On Polling Suspension</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSPollingSuspensionPeriod <em>Transport JMS Polling Suspension Period</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreLocation <em>Transport MQTT Ssl Keystore Location</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreType <em>Transport MQTT Ssl Keystore Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystorePassword <em>Transport MQTT Ssl Keystore Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreLocation <em>Transport MQTT Ssl Truststore Location</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreType <em>Transport MQTT Ssl Truststore Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststorePassword <em>Transport MQTT Ssl Truststore Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslVersion <em>Transport MQTT Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslKeyStoreFile <em>Wss Ssl Key Store File</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslKeyStorePass <em>Wss Ssl Key Store Pass</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslTrustStoreFile <em>Wss Ssl Trust Store File</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslTrustStorePass <em>Wss Ssl Trust Store Pass</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslCertPass <em>Wss Ssl Cert Pass</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsDefaultContentType <em>Ws Default Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsShutdownStatusCode <em>Ws Shutdown Status Code</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsShutdownStatusMessage <em>Ws Shutdown Status Message</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isWsUsePortOffset <em>Ws Use Port Offset</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslProtocols <em>Wss Ssl Protocols</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSDBUrl <em>Transport JMSDB Url</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqMaxDeadLetteredCount <em>Transport Rabbit Mq Max Dead Lettered Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqRequeueDelay <em>Transport Rabbit Mq Requeue Delay</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportRabbitMqExchangeAutoDeclare <em>Transport Rabbit Mq Exchange Auto Declare</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerTag <em>Transport Rabbit Mq Consumer Tag</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorQueueRoutingKey <em>Transport Rabbit Mq Error Queue Routing Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorExchangeName <em>Transport Rabbit Mq Error Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryConnectionTimeout <em>Transport Rabbit Mq Factory Connection Timeout</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryNetworkRecoveryInterval <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint()
  * @model
  * @generated
  */
@@ -274,14 +274,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Input Connector</em>' containment reference.
      * @see #setSequenceInputConnector(InboundEndpointSequenceInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SequenceInputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_SequenceInputConnector()
      * @model containment="true"
      * @generated
      */
     InboundEndpointSequenceInputConnector getSequenceInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSequenceInputConnector <em>Sequence Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSequenceInputConnector <em>Sequence Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Input Connector</em>' containment reference.
@@ -300,14 +300,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequence Output Connector</em>' containment reference.
      * @see #setSequenceOutputConnector(InboundEndpointSequenceOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SequenceOutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_SequenceOutputConnector()
      * @model containment="true"
      * @generated
      */
     InboundEndpointSequenceOutputConnector getSequenceOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSequenceOutputConnector <em>Sequence Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSequenceOutputConnector <em>Sequence Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequence Output Connector</em>' containment reference.
@@ -326,14 +326,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Error Sequence Input Connector</em>' containment reference.
      * @see #setOnErrorSequenceInputConnector(InboundEndpointOnErrorSequenceInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OnErrorSequenceInputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_OnErrorSequenceInputConnector()
      * @model containment="true"
      * @generated
      */
     InboundEndpointOnErrorSequenceInputConnector getOnErrorSequenceInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequenceInputConnector <em>On Error Sequence Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getOnErrorSequenceInputConnector <em>On Error Sequence Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Error Sequence Input Connector</em>' containment reference.
@@ -352,14 +352,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>On Error Sequence Output Connector</em>' containment reference.
      * @see #setOnErrorSequenceOutputConnector(InboundEndpointOnErrorSequenceOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OnErrorSequenceOutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_OnErrorSequenceOutputConnector()
      * @model containment="true"
      * @generated
      */
     InboundEndpointOnErrorSequenceOutputConnector getOnErrorSequenceOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequenceOutputConnector <em>On Error Sequence Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getOnErrorSequenceOutputConnector <em>On Error Sequence Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>On Error Sequence Output Connector</em>' containment reference.
@@ -378,14 +378,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Container</em>' containment reference.
      * @see #setContainer(InboundEndpointContainer)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Container()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_Container()
      * @model containment="true"
      * @generated
      */
     InboundEndpointContainer getContainer();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getContainer <em>Container</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getContainer <em>Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Container</em>' containment reference.
@@ -404,14 +404,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Name()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_Name()
      * @model
      * @generated
      */
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getName <em>Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Name</em>' attribute.
@@ -422,7 +422,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Type</em>' attribute isn't clear,
@@ -430,20 +430,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointType
+     * @see org.wso2.integrationstudio.gmf.esb.InboundEndpointType
      * @see #setType(InboundEndpointType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Type()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_Type()
      * @model
      * @generated
      */
     InboundEndpointType getType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getType <em>Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getType <em>Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointType
+     * @see org.wso2.integrationstudio.gmf.esb.InboundEndpointType
      * @see #getType()
      * @generated
      */
@@ -460,14 +460,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound HL7 Port</em>' attribute.
      * @see #setInboundHL7Port(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7Port()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7Port()
      * @model default=""
      * @generated
      */
     String getInboundHL7Port();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7Port <em>Inbound HL7 Port</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundHL7Port <em>Inbound HL7 Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound HL7 Port</em>' attribute.
@@ -487,14 +487,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound HL7 Auto Ack</em>' attribute.
      * @see #setInboundHL7AutoAck(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7AutoAck()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7AutoAck()
      * @model default="true"
      * @generated
      */
     boolean isInboundHL7AutoAck();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7AutoAck <em>Inbound HL7 Auto Ack</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isInboundHL7AutoAck <em>Inbound HL7 Auto Ack</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound HL7 Auto Ack</em>' attribute.
@@ -514,14 +514,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound HL7 Message Pre Processor</em>' attribute.
      * @see #setInboundHL7MessagePreProcessor(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7MessagePreProcessor()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7MessagePreProcessor()
      * @model default=""
      * @generated
      */
     String getInboundHL7MessagePreProcessor();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7MessagePreProcessor <em>Inbound HL7 Message Pre Processor</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundHL7MessagePreProcessor <em>Inbound HL7 Message Pre Processor</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound HL7 Message Pre Processor</em>' attribute.
@@ -541,14 +541,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound HL7 Char Set</em>' attribute.
      * @see #setInboundHL7CharSet(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7CharSet()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7CharSet()
      * @model default="UTF-8"
      * @generated
      */
     String getInboundHL7CharSet();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7CharSet <em>Inbound HL7 Char Set</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundHL7CharSet <em>Inbound HL7 Char Set</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound HL7 Char Set</em>' attribute.
@@ -568,14 +568,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound HL7 Time Out</em>' attribute.
      * @see #setInboundHL7TimeOut(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7TimeOut()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7TimeOut()
      * @model default="10000"
      * @generated
      */
     String getInboundHL7TimeOut();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7TimeOut <em>Inbound HL7 Time Out</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundHL7TimeOut <em>Inbound HL7 Time Out</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound HL7 Time Out</em>' attribute.
@@ -595,14 +595,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound HL7 Validate Message</em>' attribute.
      * @see #setInboundHL7ValidateMessage(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7ValidateMessage()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7ValidateMessage()
      * @model default="true"
      * @generated
      */
     boolean isInboundHL7ValidateMessage();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7ValidateMessage <em>Inbound HL7 Validate Message</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isInboundHL7ValidateMessage <em>Inbound HL7 Validate Message</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound HL7 Validate Message</em>' attribute.
@@ -622,14 +622,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound HL7 Build Invalid Messages</em>' attribute.
      * @see #setInboundHL7BuildInvalidMessages(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7BuildInvalidMessages()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7BuildInvalidMessages()
      * @model default="true"
      * @generated
      */
     boolean isInboundHL7BuildInvalidMessages();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound HL7 Build Invalid Messages</em>' attribute.
@@ -649,14 +649,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound HL7 Pass Through Invalid Messages</em>' attribute.
      * @see #setInboundHL7PassThroughInvalidMessages(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7PassThroughInvalidMessages()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7PassThroughInvalidMessages()
      * @model default="true"
      * @generated
      */
     boolean isInboundHL7PassThroughInvalidMessages();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound HL7 Pass Through Invalid Messages</em>' attribute.
@@ -676,14 +676,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Zookeeper Connect</em>' attribute.
      * @see #setZookeeperConnect(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperConnect()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperConnect()
      * @model default="localhost:2181"
      * @generated
      */
     String getZookeeperConnect();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperConnect <em>Zookeeper Connect</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getZookeeperConnect <em>Zookeeper Connect</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Zookeeper Connect</em>' attribute.
@@ -703,14 +703,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Group Id</em>' attribute.
      * @see #setGroupId(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_GroupId()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_GroupId()
      * @model default=""
      * @generated
      */
     String getGroupId();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getGroupId <em>Group Id</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getGroupId <em>Group Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Group Id</em>' attribute.
@@ -721,7 +721,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Consumer Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.ConsumerType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.ConsumerType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Consumer Type</em>' attribute isn't clear,
@@ -729,20 +729,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Consumer Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ConsumerType
+     * @see org.wso2.integrationstudio.gmf.esb.ConsumerType
      * @see #setConsumerType(ConsumerType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ConsumerType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_ConsumerType()
      * @model
      * @generated
      */
     ConsumerType getConsumerType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerType <em>Consumer Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getConsumerType <em>Consumer Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Consumer Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.ConsumerType
+     * @see org.wso2.integrationstudio.gmf.esb.ConsumerType
      * @see #getConsumerType()
      * @generated
      */
@@ -750,7 +750,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Topics Or Topic Filter</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.TopicsType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.TopicsType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Topics Or Topic Filter</em>' attribute isn't clear,
@@ -758,20 +758,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Topics Or Topic Filter</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.TopicsType
+     * @see org.wso2.integrationstudio.gmf.esb.TopicsType
      * @see #setTopicsOrTopicFilter(TopicsType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TopicsOrTopicFilter()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TopicsOrTopicFilter()
      * @model
      * @generated
      */
     TopicsType getTopicsOrTopicFilter();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTopicsOrTopicFilter <em>Topics Or Topic Filter</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTopicsOrTopicFilter <em>Topics Or Topic Filter</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Topics Or Topic Filter</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.TopicsType
+     * @see org.wso2.integrationstudio.gmf.esb.TopicsType
      * @see #getTopicsOrTopicFilter()
      * @generated
      */
@@ -787,14 +787,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Topics Name</em>' attribute.
      * @see #setTopicsName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TopicsName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TopicsName()
      * @model
      * @generated
      */
     String getTopicsName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTopicsName <em>Topics Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTopicsName <em>Topics Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Topics Name</em>' attribute.
@@ -805,7 +805,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Topic Filter From</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.TopicFilterFromType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.TopicFilterFromType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Topic Filter From</em>' attribute isn't clear,
@@ -813,20 +813,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Topic Filter From</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.TopicFilterFromType
+     * @see org.wso2.integrationstudio.gmf.esb.TopicFilterFromType
      * @see #setTopicFilterFrom(TopicFilterFromType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TopicFilterFrom()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TopicFilterFrom()
      * @model
      * @generated
      */
     TopicFilterFromType getTopicFilterFrom();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTopicFilterFrom <em>Topic Filter From</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTopicFilterFrom <em>Topic Filter From</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Topic Filter From</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.TopicFilterFromType
+     * @see org.wso2.integrationstudio.gmf.esb.TopicFilterFromType
      * @see #getTopicFilterFrom()
      * @generated
      */
@@ -842,14 +842,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Topic Filter Name</em>' attribute.
      * @see #setTopicFilterName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TopicFilterName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TopicFilterName()
      * @model
      * @generated
      */
     String getTopicFilterName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTopicFilterName <em>Topic Filter Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTopicFilterName <em>Topic Filter Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Topic Filter Name</em>' attribute.
@@ -868,14 +868,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Simple Consumer Topic</em>' attribute.
      * @see #setSimpleConsumerTopic(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerTopic()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerTopic()
      * @model
      * @generated
      */
     String getSimpleConsumerTopic();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerTopic <em>Simple Consumer Topic</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSimpleConsumerTopic <em>Simple Consumer Topic</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Simple Consumer Topic</em>' attribute.
@@ -894,14 +894,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Simple Consumer Brokers</em>' attribute.
      * @see #setSimpleConsumerBrokers(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerBrokers()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerBrokers()
      * @model
      * @generated
      */
     String getSimpleConsumerBrokers();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerBrokers <em>Simple Consumer Brokers</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSimpleConsumerBrokers <em>Simple Consumer Brokers</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Simple Consumer Brokers</em>' attribute.
@@ -920,14 +920,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Simple Consumer Port</em>' attribute.
      * @see #setSimpleConsumerPort(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerPort()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerPort()
      * @model
      * @generated
      */
     String getSimpleConsumerPort();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerPort <em>Simple Consumer Port</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSimpleConsumerPort <em>Simple Consumer Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Simple Consumer Port</em>' attribute.
@@ -946,14 +946,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Simple Consumer Partition</em>' attribute.
      * @see #setSimpleConsumerPartition(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerPartition()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerPartition()
      * @model
      * @generated
      */
     String getSimpleConsumerPartition();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerPartition <em>Simple Consumer Partition</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSimpleConsumerPartition <em>Simple Consumer Partition</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Simple Consumer Partition</em>' attribute.
@@ -972,14 +972,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Simple Consumer Max Messages To Read</em>' attribute.
      * @see #setSimpleConsumerMaxMessagesToRead(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerMaxMessagesToRead()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerMaxMessagesToRead()
      * @model
      * @generated
      */
     String getSimpleConsumerMaxMessagesToRead();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerMaxMessagesToRead <em>Simple Consumer Max Messages To Read</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSimpleConsumerMaxMessagesToRead <em>Simple Consumer Max Messages To Read</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Simple Consumer Max Messages To Read</em>' attribute.
@@ -998,14 +998,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Content Type</em>' attribute.
      * @see #setContentType(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ContentType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_ContentType()
      * @model
      * @generated
      */
     String getContentType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getContentType <em>Content Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getContentType <em>Content Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Content Type</em>' attribute.
@@ -1025,14 +1025,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Thread Count</em>' attribute.
      * @see #setThreadCount(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ThreadCount()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_ThreadCount()
      * @model default="1"
      * @generated
      */
     String getThreadCount();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getThreadCount <em>Thread Count</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getThreadCount <em>Thread Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Thread Count</em>' attribute.
@@ -1051,14 +1051,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Consumer Id</em>' attribute.
      * @see #setConsumerId(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ConsumerId()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_ConsumerId()
      * @model
      * @generated
      */
     String getConsumerId();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerId <em>Consumer Id</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getConsumerId <em>Consumer Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Consumer Id</em>' attribute.
@@ -1078,14 +1078,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Socket Timeout Ms</em>' attribute.
      * @see #setSocketTimeoutMs(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SocketTimeoutMs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_SocketTimeoutMs()
      * @model default="30000"
      * @generated
      */
     String getSocketTimeoutMs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSocketTimeoutMs <em>Socket Timeout Ms</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSocketTimeoutMs <em>Socket Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Socket Timeout Ms</em>' attribute.
@@ -1105,14 +1105,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Socket Receive Buffer Bytes</em>' attribute.
      * @see #setSocketReceiveBufferBytes(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SocketReceiveBufferBytes()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_SocketReceiveBufferBytes()
      * @model default="65536"
      * @generated
      */
     String getSocketReceiveBufferBytes();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSocketReceiveBufferBytes <em>Socket Receive Buffer Bytes</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSocketReceiveBufferBytes <em>Socket Receive Buffer Bytes</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Socket Receive Buffer Bytes</em>' attribute.
@@ -1132,14 +1132,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fetch Message Max Bytes</em>' attribute.
      * @see #setFetchMessageMaxBytes(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_FetchMessageMaxBytes()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_FetchMessageMaxBytes()
      * @model default="1048576"
      * @generated
      */
     String getFetchMessageMaxBytes();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getFetchMessageMaxBytes <em>Fetch Message Max Bytes</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getFetchMessageMaxBytes <em>Fetch Message Max Bytes</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fetch Message Max Bytes</em>' attribute.
@@ -1159,14 +1159,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Num Consumer Fetches</em>' attribute.
      * @see #setNumConsumerFetches(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_NumConsumerFetches()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_NumConsumerFetches()
      * @model default="1"
      * @generated
      */
     String getNumConsumerFetches();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getNumConsumerFetches <em>Num Consumer Fetches</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getNumConsumerFetches <em>Num Consumer Fetches</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Num Consumer Fetches</em>' attribute.
@@ -1185,14 +1185,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Auto Commit Enable</em>' attribute.
      * @see #setAutoCommitEnable(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_AutoCommitEnable()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_AutoCommitEnable()
      * @model
      * @generated
      */
     boolean isAutoCommitEnable();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isAutoCommitEnable <em>Auto Commit Enable</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isAutoCommitEnable <em>Auto Commit Enable</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Auto Commit Enable</em>' attribute.
@@ -1212,14 +1212,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Zookeeper Session Timeout Ms</em>' attribute.
      * @see #setZookeeperSessionTimeoutMs(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperSessionTimeoutMs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperSessionTimeoutMs()
      * @model default="6000"
      * @generated
      */
     String getZookeeperSessionTimeoutMs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Zookeeper Session Timeout Ms</em>' attribute.
@@ -1239,14 +1239,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Zookeeper Connection Timeout Ms</em>' attribute.
      * @see #setZookeeperConnectionTimeoutMs(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperConnectionTimeoutMs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperConnectionTimeoutMs()
      * @model default="6000"
      * @generated
      */
     String getZookeeperConnectionTimeoutMs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperConnectionTimeoutMs <em>Zookeeper Connection Timeout Ms</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getZookeeperConnectionTimeoutMs <em>Zookeeper Connection Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Zookeeper Connection Timeout Ms</em>' attribute.
@@ -1266,14 +1266,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Zookeeper Sync Time Ms</em>' attribute.
      * @see #setZookeeperSyncTimeMs(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperSyncTimeMs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperSyncTimeMs()
      * @model default="2000"
      * @generated
      */
     String getZookeeperSyncTimeMs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Zookeeper Sync Time Ms</em>' attribute.
@@ -1285,7 +1285,7 @@ public interface InboundEndpoint extends EsbElement {
     /**
      * Returns the value of the '<em><b>Offsets Storage</b></em>' attribute.
      * The default value is <code>"zookeeper"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.OffsetsStorageType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.OffsetsStorageType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Offsets Storage</em>' attribute isn't clear,
@@ -1293,20 +1293,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Offsets Storage</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.OffsetsStorageType
+     * @see org.wso2.integrationstudio.gmf.esb.OffsetsStorageType
      * @see #setOffsetsStorage(OffsetsStorageType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsStorage()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsStorage()
      * @model default="zookeeper"
      * @generated
      */
     OffsetsStorageType getOffsetsStorage();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsStorage <em>Offsets Storage</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getOffsetsStorage <em>Offsets Storage</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Offsets Storage</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.OffsetsStorageType
+     * @see org.wso2.integrationstudio.gmf.esb.OffsetsStorageType
      * @see #getOffsetsStorage()
      * @generated
      */
@@ -1323,14 +1323,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Offsets Channel Backoff Ms</em>' attribute.
      * @see #setOffsetsChannelBackoffMs(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsChannelBackoffMs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsChannelBackoffMs()
      * @model default="1000"
      * @generated
      */
     String getOffsetsChannelBackoffMs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsChannelBackoffMs <em>Offsets Channel Backoff Ms</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getOffsetsChannelBackoffMs <em>Offsets Channel Backoff Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Offsets Channel Backoff Ms</em>' attribute.
@@ -1350,14 +1350,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Offsets Channel Socket Timeout Ms</em>' attribute.
      * @see #setOffsetsChannelSocketTimeoutMs(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsChannelSocketTimeoutMs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsChannelSocketTimeoutMs()
      * @model default="10000"
      * @generated
      */
     String getOffsetsChannelSocketTimeoutMs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsChannelSocketTimeoutMs <em>Offsets Channel Socket Timeout Ms</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getOffsetsChannelSocketTimeoutMs <em>Offsets Channel Socket Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Offsets Channel Socket Timeout Ms</em>' attribute.
@@ -1377,14 +1377,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Offsets Commit Max Retries</em>' attribute.
      * @see #setOffsetsCommitMaxRetries(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsCommitMaxRetries()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsCommitMaxRetries()
      * @model default="5"
      * @generated
      */
     String getOffsetsCommitMaxRetries();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsCommitMaxRetries <em>Offsets Commit Max Retries</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getOffsetsCommitMaxRetries <em>Offsets Commit Max Retries</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Offsets Commit Max Retries</em>' attribute.
@@ -1404,14 +1404,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Dual Commit Enabled</em>' attribute.
      * @see #setDualCommitEnabled(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_DualCommitEnabled()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_DualCommitEnabled()
      * @model default="true"
      * @generated
      */
     boolean isDualCommitEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isDualCommitEnabled <em>Dual Commit Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isDualCommitEnabled <em>Dual Commit Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Dual Commit Enabled</em>' attribute.
@@ -1431,14 +1431,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Auto Commit Interval Ms</em>' attribute.
      * @see #setAutoCommitIntervalMs(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_AutoCommitIntervalMs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_AutoCommitIntervalMs()
      * @model default="60000"
      * @generated
      */
     String getAutoCommitIntervalMs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Auto Commit Interval Ms</em>' attribute.
@@ -1458,14 +1458,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Queued Max Message Chunks</em>' attribute.
      * @see #setQueuedMaxMessageChunks(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_QueuedMaxMessageChunks()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_QueuedMaxMessageChunks()
      * @model default="2"
      * @generated
      */
     String getQueuedMaxMessageChunks();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getQueuedMaxMessageChunks <em>Queued Max Message Chunks</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getQueuedMaxMessageChunks <em>Queued Max Message Chunks</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Queued Max Message Chunks</em>' attribute.
@@ -1485,14 +1485,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Rebalance Max Retries</em>' attribute.
      * @see #setRebalanceMaxRetries(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_RebalanceMaxRetries()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_RebalanceMaxRetries()
      * @model default="4"
      * @generated
      */
     String getRebalanceMaxRetries();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getRebalanceMaxRetries <em>Rebalance Max Retries</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getRebalanceMaxRetries <em>Rebalance Max Retries</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Rebalance Max Retries</em>' attribute.
@@ -1512,14 +1512,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fetch Min Bytes</em>' attribute.
      * @see #setFetchMinBytes(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_FetchMinBytes()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_FetchMinBytes()
      * @model default="1"
      * @generated
      */
     String getFetchMinBytes();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getFetchMinBytes <em>Fetch Min Bytes</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getFetchMinBytes <em>Fetch Min Bytes</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fetch Min Bytes</em>' attribute.
@@ -1539,14 +1539,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Fetch Wait Max Ms</em>' attribute.
      * @see #setFetchWaitMaxMs(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_FetchWaitMaxMs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_FetchWaitMaxMs()
      * @model default="100"
      * @generated
      */
     String getFetchWaitMaxMs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getFetchWaitMaxMs <em>Fetch Wait Max Ms</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getFetchWaitMaxMs <em>Fetch Wait Max Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Fetch Wait Max Ms</em>' attribute.
@@ -1566,14 +1566,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Rebalance Backoff Ms</em>' attribute.
      * @see #setRebalanceBackoffMs(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_RebalanceBackoffMs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_RebalanceBackoffMs()
      * @model default="2000"
      * @generated
      */
     String getRebalanceBackoffMs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getRebalanceBackoffMs <em>Rebalance Backoff Ms</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getRebalanceBackoffMs <em>Rebalance Backoff Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Rebalance Backoff Ms</em>' attribute.
@@ -1593,14 +1593,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Refresh Leader Backoff Ms</em>' attribute.
      * @see #setRefreshLeaderBackoffMs(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_RefreshLeaderBackoffMs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_RefreshLeaderBackoffMs()
      * @model default="200"
      * @generated
      */
     String getRefreshLeaderBackoffMs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getRefreshLeaderBackoffMs <em>Refresh Leader Backoff Ms</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getRefreshLeaderBackoffMs <em>Refresh Leader Backoff Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Refresh Leader Backoff Ms</em>' attribute.
@@ -1612,7 +1612,7 @@ public interface InboundEndpoint extends EsbElement {
     /**
      * Returns the value of the '<em><b>Auto Offset Reset</b></em>' attribute.
      * The default value is <code>"largest"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.AutoOffsetResetType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.AutoOffsetResetType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Auto Offset Reset</em>' attribute isn't clear,
@@ -1620,20 +1620,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Auto Offset Reset</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.AutoOffsetResetType
+     * @see org.wso2.integrationstudio.gmf.esb.AutoOffsetResetType
      * @see #setAutoOffsetReset(AutoOffsetResetType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_AutoOffsetReset()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_AutoOffsetReset()
      * @model default="largest"
      * @generated
      */
     AutoOffsetResetType getAutoOffsetReset();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getAutoOffsetReset <em>Auto Offset Reset</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getAutoOffsetReset <em>Auto Offset Reset</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Auto Offset Reset</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.AutoOffsetResetType
+     * @see org.wso2.integrationstudio.gmf.esb.AutoOffsetResetType
      * @see #getAutoOffsetReset()
      * @generated
      */
@@ -1650,14 +1650,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Consumer Timeout Ms</em>' attribute.
      * @see #setConsumerTimeoutMs(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ConsumerTimeoutMs()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_ConsumerTimeoutMs()
      * @model default="3000"
      * @generated
      */
     String getConsumerTimeoutMs();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerTimeoutMs <em>Consumer Timeout Ms</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getConsumerTimeoutMs <em>Consumer Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Consumer Timeout Ms</em>' attribute.
@@ -1677,14 +1677,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Exclude Internal Topics</em>' attribute.
      * @see #setExcludeInternalTopics(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ExcludeInternalTopics()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_ExcludeInternalTopics()
      * @model default="false"
      * @generated
      */
     boolean isExcludeInternalTopics();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isExcludeInternalTopics <em>Exclude Internal Topics</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isExcludeInternalTopics <em>Exclude Internal Topics</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Exclude Internal Topics</em>' attribute.
@@ -1696,7 +1696,7 @@ public interface InboundEndpoint extends EsbElement {
     /**
      * Returns the value of the '<em><b>Partition Assignment Strategy</b></em>' attribute.
      * The default value is <code>"roundrobin"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.PartitionAssignmentStrategyType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Partition Assignment Strategy</em>' attribute isn't clear,
@@ -1704,20 +1704,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Partition Assignment Strategy</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType
+     * @see org.wso2.integrationstudio.gmf.esb.PartitionAssignmentStrategyType
      * @see #setPartitionAssignmentStrategy(PartitionAssignmentStrategyType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_PartitionAssignmentStrategy()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_PartitionAssignmentStrategy()
      * @model default="roundrobin"
      * @generated
      */
     PartitionAssignmentStrategyType getPartitionAssignmentStrategy();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getPartitionAssignmentStrategy <em>Partition Assignment Strategy</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getPartitionAssignmentStrategy <em>Partition Assignment Strategy</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Partition Assignment Strategy</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType
+     * @see org.wso2.integrationstudio.gmf.esb.PartitionAssignmentStrategyType
      * @see #getPartitionAssignmentStrategy()
      * @generated
      */
@@ -1734,14 +1734,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Client Id</em>' attribute.
      * @see #setClientId(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ClientId()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_ClientId()
      * @model default=""
      * @generated
      */
     String getClientId();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getClientId <em>Client Id</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getClientId <em>Client Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Client Id</em>' attribute.
@@ -1761,14 +1761,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound Cxf Rm Host</em>' attribute.
      * @see #setInboundCxfRmHost(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundCxfRmHost()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundCxfRmHost()
      * @model default=""
      * @generated
      */
     String getInboundCxfRmHost();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound Cxf Rm Host</em>' attribute.
@@ -1788,14 +1788,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound Cxf Rm Port</em>' attribute.
      * @see #setInboundCxfRmPort(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundCxfRmPort()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundCxfRmPort()
      * @model default=""
      * @generated
      */
     String getInboundCxfRmPort();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound Cxf Rm Port</em>' attribute.
@@ -1815,14 +1815,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound Cxf Rm Config File</em>' attribute.
      * @see #setInboundCxfRmConfigFile(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundCxfRmConfigFile()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundCxfRmConfigFile()
      * @model default=""
      * @generated
      */
     String getInboundCxfRmConfigFile();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound Cxf Rm Config File</em>' attribute.
@@ -1841,14 +1841,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Enable SSL</em>' attribute.
      * @see #setEnableSSL(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_EnableSSL()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_EnableSSL()
      * @model
      * @generated
      */
     boolean isEnableSSL();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isEnableSSL <em>Enable SSL</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isEnableSSL <em>Enable SSL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Enable SSL</em>' attribute.
@@ -1859,7 +1859,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Service Parameters</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointParameter}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Service Parameters</em>' reference list isn't clear,
@@ -1867,7 +1867,7 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Service Parameters</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ServiceParameters()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_ServiceParameters()
      * @model containment="true"
      * @generated
      */
@@ -1884,14 +1884,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Suspend</em>' attribute.
      * @see #setSuspend(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Suspend()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_Suspend()
      * @model default="false"
      * @generated
      */
     boolean isSuspend();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isSuspend <em>Suspend</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isSuspend <em>Suspend</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Suspend</em>' attribute.
@@ -1911,14 +1911,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Connection Factory</em>' attribute.
      * @see #setTransportRabbitMqConnectionFactory(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionFactory()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionFactory()
      * @model default="AMQPConnectionFactory"
      * @generated
      */
     String getTransportRabbitMqConnectionFactory();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionFactory <em>Transport Rabbit Mq Connection Factory</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionFactory <em>Transport Rabbit Mq Connection Factory</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Connection Factory</em>' attribute.
@@ -1937,14 +1937,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Server Host Name</em>' attribute.
      * @see #setTransportRabbitMqServerHostName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerHostName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerHostName()
      * @model
      * @generated
      */
     String getTransportRabbitMqServerHostName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerHostName <em>Transport Rabbit Mq Server Host Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqServerHostName <em>Transport Rabbit Mq Server Host Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Server Host Name</em>' attribute.
@@ -1963,14 +1963,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Server Port</em>' attribute.
      * @see #setTransportRabbitMqServerPort(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerPort()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerPort()
      * @model
      * @generated
      */
     String getTransportRabbitMqServerPort();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPort <em>Transport Rabbit Mq Server Port</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPort <em>Transport Rabbit Mq Server Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Server Port</em>' attribute.
@@ -1989,14 +1989,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Server User Name</em>' attribute.
      * @see #setTransportRabbitMqServerUserName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerUserName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerUserName()
      * @model
      * @generated
      */
     String getTransportRabbitMqServerUserName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerUserName <em>Transport Rabbit Mq Server User Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqServerUserName <em>Transport Rabbit Mq Server User Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Server User Name</em>' attribute.
@@ -2015,14 +2015,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Server Password</em>' attribute.
      * @see #setTransportRabbitMqServerPassword(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerPassword()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerPassword()
      * @model
      * @generated
      */
     String getTransportRabbitMqServerPassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPassword <em>Transport Rabbit Mq Server Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPassword <em>Transport Rabbit Mq Server Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Server Password</em>' attribute.
@@ -2041,14 +2041,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Queue Name</em>' attribute.
      * @see #setTransportRabbitMqQueueName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueName()
      * @model
      * @generated
      */
     String getTransportRabbitMqQueueName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueName <em>Transport Rabbit Mq Queue Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueName <em>Transport Rabbit Mq Queue Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Queue Name</em>' attribute.
@@ -2067,14 +2067,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Exchange Name</em>' attribute.
      * @see #setTransportRabbitMqExchangeName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeName()
      * @model
      * @generated
      */
     String getTransportRabbitMqExchangeName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeName <em>Transport Rabbit Mq Exchange Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeName <em>Transport Rabbit Mq Exchange Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Exchange Name</em>' attribute.
@@ -2093,14 +2093,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Queue Durable</em>' attribute.
      * @see #setTransportRabbitMqQueueDurable(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueDurable()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueDurable()
      * @model
      * @generated
      */
     String getTransportRabbitMqQueueDurable();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDurable <em>Transport Rabbit Mq Queue Durable</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDurable <em>Transport Rabbit Mq Queue Durable</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Queue Durable</em>' attribute.
@@ -2119,14 +2119,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Queue Exclusive</em>' attribute.
      * @see #setTransportRabbitMqQueueExclusive(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueExclusive()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueExclusive()
      * @model
      * @generated
      */
     String getTransportRabbitMqQueueExclusive();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueExclusive <em>Transport Rabbit Mq Queue Exclusive</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueExclusive <em>Transport Rabbit Mq Queue Exclusive</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Queue Exclusive</em>' attribute.
@@ -2145,14 +2145,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Queue Auto Delete</em>' attribute.
      * @see #setTransportRabbitMqQueueAutoDelete(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueAutoDelete()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueAutoDelete()
      * @model
      * @generated
      */
     String getTransportRabbitMqQueueAutoDelete();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoDelete <em>Transport Rabbit Mq Queue Auto Delete</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoDelete <em>Transport Rabbit Mq Queue Auto Delete</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Queue Auto Delete</em>' attribute.
@@ -2171,14 +2171,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Queue Auto Ack</em>' attribute.
      * @see #setTransportRabbitMqQueueAutoAck(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueAutoAck()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueAutoAck()
      * @model
      * @generated
      */
     String getTransportRabbitMqQueueAutoAck();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoAck <em>Transport Rabbit Mq Queue Auto Ack</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoAck <em>Transport Rabbit Mq Queue Auto Ack</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Queue Auto Ack</em>' attribute.
@@ -2197,14 +2197,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Queue Routing Key</em>' attribute.
      * @see #setTransportRabbitMqQueueRoutingKey(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueRoutingKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueRoutingKey()
      * @model
      * @generated
      */
     String getTransportRabbitMqQueueRoutingKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueRoutingKey <em>Transport Rabbit Mq Queue Routing Key</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueRoutingKey <em>Transport Rabbit Mq Queue Routing Key</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Queue Routing Key</em>' attribute.
@@ -2223,14 +2223,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Queue Delivery Mode</em>' attribute.
      * @see #setTransportRabbitMqQueueDeliveryMode(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueDeliveryMode()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueDeliveryMode()
      * @model
      * @generated
      */
     String getTransportRabbitMqQueueDeliveryMode();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDeliveryMode <em>Transport Rabbit Mq Queue Delivery Mode</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDeliveryMode <em>Transport Rabbit Mq Queue Delivery Mode</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Queue Delivery Mode</em>' attribute.
@@ -2249,14 +2249,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Exchange Type</em>' attribute.
      * @see #setTransportRabbitMqExchangeType(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeType()
      * @model
      * @generated
      */
     String getTransportRabbitMqExchangeType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeType <em>Transport Rabbit Mq Exchange Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeType <em>Transport Rabbit Mq Exchange Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Exchange Type</em>' attribute.
@@ -2275,14 +2275,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Exchange Durable</em>' attribute.
      * @see #setTransportRabbitMqExchangeDurable(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeDurable()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeDurable()
      * @model
      * @generated
      */
     String getTransportRabbitMqExchangeDurable();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeDurable <em>Transport Rabbit Mq Exchange Durable</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeDurable <em>Transport Rabbit Mq Exchange Durable</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Exchange Durable</em>' attribute.
@@ -2301,14 +2301,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Exchange Auto Delete</em>' attribute.
      * @see #setTransportRabbitMqExchangeAutoDelete(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeAutoDelete()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeAutoDelete()
      * @model
      * @generated
      */
     String getTransportRabbitMqExchangeAutoDelete();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeAutoDelete <em>Transport Rabbit Mq Exchange Auto Delete</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeAutoDelete <em>Transport Rabbit Mq Exchange Auto Delete</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Exchange Auto Delete</em>' attribute.
@@ -2327,14 +2327,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Server Virtual Host</em>' attribute.
      * @see #setTransportRabbitMqServerVirtualHost(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerVirtualHost()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerVirtualHost()
      * @model
      * @generated
      */
     String getTransportRabbitMqServerVirtualHost();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerVirtualHost <em>Transport Rabbit Mq Server Virtual Host</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqServerVirtualHost <em>Transport Rabbit Mq Server Virtual Host</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Server Virtual Host</em>' attribute.
@@ -2353,14 +2353,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Factory Heartbeat</em>' attribute.
      * @see #setTransportRabbitMqFactoryHeartbeat(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqFactoryHeartbeat()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqFactoryHeartbeat()
      * @model
      * @generated
      */
     String getTransportRabbitMqFactoryHeartbeat();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryHeartbeat <em>Transport Rabbit Mq Factory Heartbeat</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryHeartbeat <em>Transport Rabbit Mq Factory Heartbeat</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Factory Heartbeat</em>' attribute.
@@ -2379,14 +2379,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Enabled</em>' attribute.
      * @see #setTransportRabbitMqConnectionSslEnabled(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslEnabled()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslEnabled()
      * @model
      * @generated
      */
     String getTransportRabbitMqConnectionSslEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslEnabled <em>Transport Rabbit Mq Connection Ssl Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslEnabled <em>Transport Rabbit Mq Connection Ssl Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Enabled</em>' attribute.
@@ -2405,14 +2405,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Keystore Location</em>' attribute.
      * @see #setTransportRabbitMqConnectionSslKeystoreLocation(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreLocation()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreLocation()
      * @model
      * @generated
      */
     String getTransportRabbitMqConnectionSslKeystoreLocation();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreLocation <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreLocation <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Keystore Location</em>' attribute.
@@ -2431,14 +2431,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Keystore Type</em>' attribute.
      * @see #setTransportRabbitMqConnectionSslKeystoreType(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreType()
      * @model
      * @generated
      */
     String getTransportRabbitMqConnectionSslKeystoreType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreType <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreType <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Keystore Type</em>' attribute.
@@ -2457,14 +2457,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Keystore Password</em>' attribute.
      * @see #setTransportRabbitMqConnectionSslKeystorePassword(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslKeystorePassword()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslKeystorePassword()
      * @model
      * @generated
      */
     String getTransportRabbitMqConnectionSslKeystorePassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystorePassword <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystorePassword <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Keystore Password</em>' attribute.
@@ -2483,14 +2483,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Truststore Location</em>' attribute.
      * @see #setTransportRabbitMqConnectionSslTruststoreLocation(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreLocation()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreLocation()
      * @model
      * @generated
      */
     String getTransportRabbitMqConnectionSslTruststoreLocation();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreLocation <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreLocation <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Truststore Location</em>' attribute.
@@ -2509,14 +2509,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Truststore Type</em>' attribute.
      * @see #setTransportRabbitMqConnectionSslTruststoreType(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreType()
      * @model
      * @generated
      */
     String getTransportRabbitMqConnectionSslTruststoreType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Truststore Type</em>' attribute.
@@ -2535,14 +2535,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Truststore Password</em>' attribute.
      * @see #setTransportRabbitMqConnectionSslTruststorePassword(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslTruststorePassword()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslTruststorePassword()
      * @model
      * @generated
      */
     String getTransportRabbitMqConnectionSslTruststorePassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Truststore Password</em>' attribute.
@@ -2561,14 +2561,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Version</em>' attribute.
      * @see #setTransportRabbitMqConnectionSslVersion(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslVersion()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslVersion()
      * @model
      * @generated
      */
     String getTransportRabbitMqConnectionSslVersion();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Version</em>' attribute.
@@ -2587,14 +2587,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Message Content Type</em>' attribute.
      * @see #setTransportRabbitMqMessageContentType(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqMessageContentType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqMessageContentType()
      * @model
      * @generated
      */
     String getTransportRabbitMqMessageContentType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Message Content Type</em>' attribute.
@@ -2613,14 +2613,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Connection Retry Count</em>' attribute.
      * @see #setTransportRabbitMqConnectionRetryCount(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionRetryCount()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionRetryCount()
      * @model
      * @generated
      */
     String getTransportRabbitMqConnectionRetryCount();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Connection Retry Count</em>' attribute.
@@ -2639,14 +2639,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Connection Retry Interval</em>' attribute.
      * @see #setTransportRabbitMqConnectionRetryInterval(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionRetryInterval()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionRetryInterval()
      * @model
      * @generated
      */
     String getTransportRabbitMqConnectionRetryInterval();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Connection Retry Interval</em>' attribute.
@@ -2665,14 +2665,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Server Retry Interval</em>' attribute.
      * @see #setTransportRabbitMqServerRetryInterval(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerRetryInterval()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerRetryInterval()
      * @model
      * @generated
      */
     String getTransportRabbitMqServerRetryInterval();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Server Retry Interval</em>' attribute.
@@ -2691,14 +2691,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Consumer Qos Key</em>' containment reference.
      * @see #setTransportRabbitMqConsumerQosKey(RegistryKeyProperty)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerQosKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerQosKey()
      * @model containment="true"
      * @generated
      */
     RegistryKeyProperty getTransportRabbitMqConsumerQosKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosKey <em>Transport Rabbit Mq Consumer Qos Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosKey <em>Transport Rabbit Mq Consumer Qos Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Consumer Qos Key</em>' containment reference.
@@ -2717,14 +2717,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ws Inbound Port</em>' attribute.
      * @see #setWsInboundPort(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsInboundPort()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WsInboundPort()
      * @model
      * @generated
      */
     String getWsInboundPort();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsInboundPort <em>Ws Inbound Port</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsInboundPort <em>Ws Inbound Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ws Inbound Port</em>' attribute.
@@ -2735,7 +2735,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Ws Client Side Broadcast Level</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.WSClientSideBroadcastLevel}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Ws Client Side Broadcast Level</em>' attribute isn't clear,
@@ -2743,20 +2743,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ws Client Side Broadcast Level</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel
+     * @see org.wso2.integrationstudio.gmf.esb.WSClientSideBroadcastLevel
      * @see #setWsClientSideBroadcastLevel(WSClientSideBroadcastLevel)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsClientSideBroadcastLevel()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WsClientSideBroadcastLevel()
      * @model
      * @generated
      */
     WSClientSideBroadcastLevel getWsClientSideBroadcastLevel();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ws Client Side Broadcast Level</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel
+     * @see org.wso2.integrationstudio.gmf.esb.WSClientSideBroadcastLevel
      * @see #getWsClientSideBroadcastLevel()
      * @generated
      */
@@ -2772,14 +2772,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ws Outflow Dispatch Sequence</em>' attribute.
      * @see #setWsOutflowDispatchSequence(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsOutflowDispatchSequence()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WsOutflowDispatchSequence()
      * @model
      * @generated
      */
     String getWsOutflowDispatchSequence();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ws Outflow Dispatch Sequence</em>' attribute.
@@ -2798,14 +2798,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ws Outflow Dispatch Fault Sequence</em>' attribute.
      * @see #setWsOutflowDispatchFaultSequence(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsOutflowDispatchFaultSequence()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WsOutflowDispatchFaultSequence()
      * @model
      * @generated
      */
     String getWsOutflowDispatchFaultSequence();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchFaultSequence <em>Ws Outflow Dispatch Fault Sequence</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsOutflowDispatchFaultSequence <em>Ws Outflow Dispatch Fault Sequence</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ws Outflow Dispatch Fault Sequence</em>' attribute.
@@ -2824,14 +2824,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ws Boss Thread Pool Size</em>' attribute.
      * @see #setWsBossThreadPoolSize(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsBossThreadPoolSize()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WsBossThreadPoolSize()
      * @model
      * @generated
      */
     String getWsBossThreadPoolSize();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsBossThreadPoolSize <em>Ws Boss Thread Pool Size</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsBossThreadPoolSize <em>Ws Boss Thread Pool Size</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ws Boss Thread Pool Size</em>' attribute.
@@ -2850,14 +2850,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ws Worker Thread Pool Size</em>' attribute.
      * @see #setWsWorkerThreadPoolSize(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsWorkerThreadPoolSize()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WsWorkerThreadPoolSize()
      * @model
      * @generated
      */
     String getWsWorkerThreadPoolSize();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsWorkerThreadPoolSize <em>Ws Worker Thread Pool Size</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsWorkerThreadPoolSize <em>Ws Worker Thread Pool Size</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ws Worker Thread Pool Size</em>' attribute.
@@ -2876,14 +2876,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ws Subprotocol Handler Class</em>' attribute.
      * @see #setWsSubprotocolHandlerClass(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsSubprotocolHandlerClass()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WsSubprotocolHandlerClass()
      * @model
      * @generated
      */
     String getWsSubprotocolHandlerClass();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsSubprotocolHandlerClass <em>Ws Subprotocol Handler Class</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsSubprotocolHandlerClass <em>Ws Subprotocol Handler Class</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ws Subprotocol Handler Class</em>' attribute.
@@ -2902,14 +2902,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ws Pipeline Handler Class</em>' attribute.
      * @see #setWsPipelineHandlerClass(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsPipelineHandlerClass()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WsPipelineHandlerClass()
      * @model
      * @generated
      */
     String getWsPipelineHandlerClass();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsPipelineHandlerClass <em>Ws Pipeline Handler Class</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsPipelineHandlerClass <em>Ws Pipeline Handler Class</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ws Pipeline Handler Class</em>' attribute.
@@ -2929,14 +2929,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Feed URL</em>' attribute.
      * @see #setTransportFeedURL(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportFeedURL()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportFeedURL()
      * @model default=""
      * @generated
      */
     String getTransportFeedURL();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Feed URL</em>' attribute.
@@ -2947,7 +2947,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport Feed Type</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.FeedType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.FeedType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport Feed Type</em>' attribute isn't clear,
@@ -2955,20 +2955,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Feed Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.FeedType
+     * @see org.wso2.integrationstudio.gmf.esb.FeedType
      * @see #setTransportFeedType(FeedType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportFeedType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportFeedType()
      * @model
      * @generated
      */
     FeedType getTransportFeedType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedType <em>Transport Feed Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportFeedType <em>Transport Feed Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Feed Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.FeedType
+     * @see org.wso2.integrationstudio.gmf.esb.FeedType
      * @see #getTransportFeedType()
      * @generated
      */
@@ -2984,14 +2984,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Trace Enabled</em>' attribute.
      * @see #setTraceEnabled(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TraceEnabled()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TraceEnabled()
      * @model
      * @generated
      */
     boolean isTraceEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTraceEnabled <em>Trace Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTraceEnabled <em>Trace Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Trace Enabled</em>' attribute.
@@ -3010,14 +3010,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Statistics Enabled</em>' attribute.
      * @see #setStatisticsEnabled(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_StatisticsEnabled()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_StatisticsEnabled()
      * @model
      * @generated
      */
     boolean isStatisticsEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isStatisticsEnabled <em>Statistics Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isStatisticsEnabled <em>Statistics Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Statistics Enabled</em>' attribute.
@@ -3036,14 +3036,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Retries Before Suspension</em>' attribute.
      * @see #setTransportJMSRetriesBeforeSuspension(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSRetriesBeforeSuspension()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSRetriesBeforeSuspension()
      * @model
      * @generated
      */
     String getTransportJMSRetriesBeforeSuspension();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSRetriesBeforeSuspension <em>Transport JMS Retries Before Suspension</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSRetriesBeforeSuspension <em>Transport JMS Retries Before Suspension</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Retries Before Suspension</em>' attribute.
@@ -3063,14 +3063,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Reset Connection On Polling Suspension</em>' attribute.
      * @see #setTransportJMSResetConnectionOnPollingSuspension(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSResetConnectionOnPollingSuspension()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSResetConnectionOnPollingSuspension()
      * @model default="false"
      * @generated
      */
     boolean isTransportJMSResetConnectionOnPollingSuspension();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportJMSResetConnectionOnPollingSuspension <em>Transport JMS Reset Connection On Polling Suspension</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportJMSResetConnectionOnPollingSuspension <em>Transport JMS Reset Connection On Polling Suspension</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Reset Connection On Polling Suspension</em>' attribute.
@@ -3089,14 +3089,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Polling Suspension Period</em>' attribute.
      * @see #setTransportJMSPollingSuspensionPeriod(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPollingSuspensionPeriod()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPollingSuspensionPeriod()
      * @model
      * @generated
      */
     String getTransportJMSPollingSuspensionPeriod();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPollingSuspensionPeriod <em>Transport JMS Polling Suspension Period</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSPollingSuspensionPeriod <em>Transport JMS Polling Suspension Period</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Polling Suspension Period</em>' attribute.
@@ -3115,14 +3115,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Ssl Keystore Location</em>' attribute.
      * @see #setTransportMQTTSslKeystoreLocation(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslKeystoreLocation()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslKeystoreLocation()
      * @model
      * @generated
      */
     String getTransportMQTTSslKeystoreLocation();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreLocation <em>Transport MQTT Ssl Keystore Location</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreLocation <em>Transport MQTT Ssl Keystore Location</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Ssl Keystore Location</em>' attribute.
@@ -3141,14 +3141,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Ssl Keystore Type</em>' attribute.
      * @see #setTransportMQTTSslKeystoreType(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslKeystoreType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslKeystoreType()
      * @model
      * @generated
      */
     String getTransportMQTTSslKeystoreType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreType <em>Transport MQTT Ssl Keystore Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreType <em>Transport MQTT Ssl Keystore Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Ssl Keystore Type</em>' attribute.
@@ -3167,14 +3167,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Ssl Keystore Password</em>' attribute.
      * @see #setTransportMQTTSslKeystorePassword(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslKeystorePassword()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslKeystorePassword()
      * @model
      * @generated
      */
     String getTransportMQTTSslKeystorePassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystorePassword <em>Transport MQTT Ssl Keystore Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystorePassword <em>Transport MQTT Ssl Keystore Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Ssl Keystore Password</em>' attribute.
@@ -3193,14 +3193,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Ssl Truststore Location</em>' attribute.
      * @see #setTransportMQTTSslTruststoreLocation(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslTruststoreLocation()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslTruststoreLocation()
      * @model
      * @generated
      */
     String getTransportMQTTSslTruststoreLocation();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreLocation <em>Transport MQTT Ssl Truststore Location</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreLocation <em>Transport MQTT Ssl Truststore Location</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Ssl Truststore Location</em>' attribute.
@@ -3219,14 +3219,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Ssl Truststore Type</em>' attribute.
      * @see #setTransportMQTTSslTruststoreType(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslTruststoreType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslTruststoreType()
      * @model
      * @generated
      */
     String getTransportMQTTSslTruststoreType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreType <em>Transport MQTT Ssl Truststore Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreType <em>Transport MQTT Ssl Truststore Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Ssl Truststore Type</em>' attribute.
@@ -3245,14 +3245,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Ssl Truststore Password</em>' attribute.
      * @see #setTransportMQTTSslTruststorePassword(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslTruststorePassword()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslTruststorePassword()
      * @model
      * @generated
      */
     String getTransportMQTTSslTruststorePassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststorePassword <em>Transport MQTT Ssl Truststore Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststorePassword <em>Transport MQTT Ssl Truststore Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Ssl Truststore Password</em>' attribute.
@@ -3271,14 +3271,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Ssl Version</em>' attribute.
      * @see #setTransportMQTTSslVersion(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslVersion()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslVersion()
      * @model
      * @generated
      */
     String getTransportMQTTSslVersion();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslVersion <em>Transport MQTT Ssl Version</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslVersion <em>Transport MQTT Ssl Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Ssl Version</em>' attribute.
@@ -3297,14 +3297,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wss Ssl Key Store File</em>' attribute.
      * @see #setWssSslKeyStoreFile(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslKeyStoreFile()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WssSslKeyStoreFile()
      * @model
      * @generated
      */
     String getWssSslKeyStoreFile();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslKeyStoreFile <em>Wss Ssl Key Store File</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslKeyStoreFile <em>Wss Ssl Key Store File</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wss Ssl Key Store File</em>' attribute.
@@ -3323,14 +3323,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wss Ssl Key Store Pass</em>' attribute.
      * @see #setWssSslKeyStorePass(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslKeyStorePass()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WssSslKeyStorePass()
      * @model
      * @generated
      */
     String getWssSslKeyStorePass();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslKeyStorePass <em>Wss Ssl Key Store Pass</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslKeyStorePass <em>Wss Ssl Key Store Pass</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wss Ssl Key Store Pass</em>' attribute.
@@ -3349,14 +3349,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wss Ssl Trust Store File</em>' attribute.
      * @see #setWssSslTrustStoreFile(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslTrustStoreFile()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WssSslTrustStoreFile()
      * @model
      * @generated
      */
     String getWssSslTrustStoreFile();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslTrustStoreFile <em>Wss Ssl Trust Store File</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslTrustStoreFile <em>Wss Ssl Trust Store File</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wss Ssl Trust Store File</em>' attribute.
@@ -3376,14 +3376,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wss Ssl Trust Store Pass</em>' attribute.
      * @see #setWssSslTrustStorePass(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslTrustStorePass()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WssSslTrustStorePass()
      * @model default=""
      * @generated
      */
     String getWssSslTrustStorePass();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslTrustStorePass <em>Wss Ssl Trust Store Pass</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslTrustStorePass <em>Wss Ssl Trust Store Pass</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wss Ssl Trust Store Pass</em>' attribute.
@@ -3402,14 +3402,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wss Ssl Cert Pass</em>' attribute.
      * @see #setWssSslCertPass(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslCertPass()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WssSslCertPass()
      * @model
      * @generated
      */
     String getWssSslCertPass();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCertPass <em>Wss Ssl Cert Pass</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslCertPass <em>Wss Ssl Cert Pass</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wss Ssl Cert Pass</em>' attribute.
@@ -3428,14 +3428,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ws Default Content Type</em>' attribute.
      * @see #setWsDefaultContentType(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsDefaultContentType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WsDefaultContentType()
      * @model
      * @generated
      */
     String getWsDefaultContentType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsDefaultContentType <em>Ws Default Content Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsDefaultContentType <em>Ws Default Content Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ws Default Content Type</em>' attribute.
@@ -3454,14 +3454,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ws Shutdown Status Code</em>' attribute.
      * @see #setWsShutdownStatusCode(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsShutdownStatusCode()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WsShutdownStatusCode()
      * @model
      * @generated
      */
     String getWsShutdownStatusCode();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsShutdownStatusCode <em>Ws Shutdown Status Code</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsShutdownStatusCode <em>Ws Shutdown Status Code</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ws Shutdown Status Code</em>' attribute.
@@ -3480,14 +3480,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ws Shutdown Status Message</em>' attribute.
      * @see #setWsShutdownStatusMessage(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsShutdownStatusMessage()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WsShutdownStatusMessage()
      * @model
      * @generated
      */
     String getWsShutdownStatusMessage();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWsShutdownStatusMessage <em>Ws Shutdown Status Message</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWsShutdownStatusMessage <em>Ws Shutdown Status Message</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ws Shutdown Status Message</em>' attribute.
@@ -3506,14 +3506,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ws Use Port Offset</em>' attribute.
      * @see #setWsUsePortOffset(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsUsePortOffset()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WsUsePortOffset()
      * @model
      * @generated
      */
     boolean isWsUsePortOffset();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isWsUsePortOffset <em>Ws Use Port Offset</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isWsUsePortOffset <em>Ws Use Port Offset</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ws Use Port Offset</em>' attribute.
@@ -3532,14 +3532,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wss Ssl Protocols</em>' attribute.
      * @see #setWssSslProtocols(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslProtocols()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WssSslProtocols()
      * @model
      * @generated
      */
     String getWssSslProtocols();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslProtocols <em>Wss Ssl Protocols</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslProtocols <em>Wss Ssl Protocols</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wss Ssl Protocols</em>' attribute.
@@ -3558,14 +3558,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wss Ssl Cipher Suites</em>' attribute.
      * @see #setWssSslCipherSuites(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslCipherSuites()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_WssSslCipherSuites()
      * @model
      * @generated
      */
     String getWssSslCipherSuites();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wss Ssl Cipher Suites</em>' attribute.
@@ -3584,14 +3584,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Consumer Qos</em>' attribute.
      * @see #setTransportRabbitMqConsumerQos(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerQos()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerQos()
      * @model
      * @generated
      */
     String getTransportRabbitMqConsumerQos();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Consumer Qos</em>' attribute.
@@ -3603,7 +3603,7 @@ public interface InboundEndpoint extends EsbElement {
     /**
      * Returns the value of the '<em><b>Transport Rabbit Mq Consumer Qos Type</b></em>' attribute.
      * The default value is <code>"Registry Reference"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFormatType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.PayloadFormatType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport Rabbit Mq Consumer Qos Type</em>' attribute isn't clear,
@@ -3611,20 +3611,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Consumer Qos Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFormatType
+     * @see org.wso2.integrationstudio.gmf.esb.PayloadFormatType
      * @see #setTransportRabbitMqConsumerQosType(PayloadFormatType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerQosType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerQosType()
      * @model default="Registry Reference"
      * @generated
      */
     PayloadFormatType getTransportRabbitMqConsumerQosType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Consumer Qos Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.PayloadFormatType
+     * @see org.wso2.integrationstudio.gmf.esb.PayloadFormatType
      * @see #getTransportRabbitMqConsumerQosType()
      * @generated
      */
@@ -3641,14 +3641,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMSDB Url</em>' attribute.
      * @see #setTransportJMSDBUrl(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSDBUrl()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSDBUrl()
      * @model default=""
      * @generated
      */
     String getTransportJMSDBUrl();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDBUrl <em>Transport JMSDB Url</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSDBUrl <em>Transport JMSDB Url</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMSDB Url</em>' attribute.
@@ -3668,14 +3668,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Auto Declare</em>' attribute.
      * @see #setTransportRabbitMqAutoDeclare(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqAutoDeclare()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqAutoDeclare()
      * @model default="true"
      * @generated
      */
     boolean isTransportRabbitMqAutoDeclare();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportRabbitMqAutoDeclare <em>Transport Rabbit Mq Auto Declare</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Auto Declare</em>' attribute.
@@ -3694,14 +3694,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Max Dead Lettered Count</em>' attribute.
      * @see #setTransportRabbitMqMaxDeadLetteredCount(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqMaxDeadLetteredCount()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqMaxDeadLetteredCount()
      * @model
      * @generated
      */
     String getTransportRabbitMqMaxDeadLetteredCount();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMaxDeadLetteredCount <em>Transport Rabbit Mq Max Dead Lettered Count</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqMaxDeadLetteredCount <em>Transport Rabbit Mq Max Dead Lettered Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Max Dead Lettered Count</em>' attribute.
@@ -3720,14 +3720,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Requeue Delay</em>' attribute.
      * @see #setTransportRabbitMqRequeueDelay(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqRequeueDelay()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqRequeueDelay()
      * @model
      * @generated
      */
     String getTransportRabbitMqRequeueDelay();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqRequeueDelay <em>Transport Rabbit Mq Requeue Delay</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqRequeueDelay <em>Transport Rabbit Mq Requeue Delay</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Requeue Delay</em>' attribute.
@@ -3747,14 +3747,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Exchange Auto Declare</em>' attribute.
      * @see #setTransportRabbitMqExchangeAutoDeclare(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeAutoDeclare()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeAutoDeclare()
      * @model default="true"
      * @generated
      */
     boolean isTransportRabbitMqExchangeAutoDeclare();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportRabbitMqExchangeAutoDeclare <em>Transport Rabbit Mq Exchange Auto Declare</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportRabbitMqExchangeAutoDeclare <em>Transport Rabbit Mq Exchange Auto Declare</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Exchange Auto Declare</em>' attribute.
@@ -3773,14 +3773,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Consumer Tag</em>' attribute.
      * @see #setTransportRabbitMqConsumerTag(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerTag()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerTag()
      * @model
      * @generated
      */
     String getTransportRabbitMqConsumerTag();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerTag <em>Transport Rabbit Mq Consumer Tag</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerTag <em>Transport Rabbit Mq Consumer Tag</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Consumer Tag</em>' attribute.
@@ -3799,14 +3799,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Error Queue Routing Key</em>' attribute.
      * @see #setTransportRabbitMqErrorQueueRoutingKey(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqErrorQueueRoutingKey()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqErrorQueueRoutingKey()
      * @model
      * @generated
      */
     String getTransportRabbitMqErrorQueueRoutingKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorQueueRoutingKey <em>Transport Rabbit Mq Error Queue Routing Key</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorQueueRoutingKey <em>Transport Rabbit Mq Error Queue Routing Key</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Error Queue Routing Key</em>' attribute.
@@ -3825,14 +3825,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Error Exchange Name</em>' attribute.
      * @see #setTransportRabbitMqErrorExchangeName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqErrorExchangeName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqErrorExchangeName()
      * @model
      * @generated
      */
     String getTransportRabbitMqErrorExchangeName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorExchangeName <em>Transport Rabbit Mq Error Exchange Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorExchangeName <em>Transport Rabbit Mq Error Exchange Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Error Exchange Name</em>' attribute.
@@ -3851,14 +3851,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Factory Connection Timeout</em>' attribute.
      * @see #setTransportRabbitMqFactoryConnectionTimeout(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqFactoryConnectionTimeout()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqFactoryConnectionTimeout()
      * @model
      * @generated
      */
     String getTransportRabbitMqFactoryConnectionTimeout();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryConnectionTimeout <em>Transport Rabbit Mq Factory Connection Timeout</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryConnectionTimeout <em>Transport Rabbit Mq Factory Connection Timeout</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Factory Connection Timeout</em>' attribute.
@@ -3877,14 +3877,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport Rabbit Mq Factory Network Recovery Interval</em>' attribute.
      * @see #setTransportRabbitMqFactoryNetworkRecoveryInterval(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval()
      * @model
      * @generated
      */
     String getTransportRabbitMqFactoryNetworkRecoveryInterval();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryNetworkRecoveryInterval <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryNetworkRecoveryInterval <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport Rabbit Mq Factory Network Recovery Interval</em>' attribute.
@@ -3904,14 +3904,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Class</em>' attribute.
      * @see #setClass(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Class()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_Class()
      * @model default=""
      * @generated
      */
     String getClass_();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getClass_ <em>Class</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getClass_ <em>Class</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Class</em>' attribute.
@@ -3931,14 +3931,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Protocol</em>' attribute.
      * @see #setProtocol(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Protocol()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_Protocol()
      * @model default=""
      * @generated
      */
     String getProtocol();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getProtocol <em>Protocol</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getProtocol <em>Protocol</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Protocol</em>' attribute.
@@ -3949,7 +3949,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Inbound Endpoint Behaviour</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointBehaviourType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.InboundEndpointBehaviourType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Inbound Endpoint Behaviour</em>' attribute isn't clear,
@@ -3957,20 +3957,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound Endpoint Behaviour</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointBehaviourType
+     * @see org.wso2.integrationstudio.gmf.esb.InboundEndpointBehaviourType
      * @see #setInboundEndpointBehaviour(InboundEndpointBehaviourType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundEndpointBehaviour()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundEndpointBehaviour()
      * @model
      * @generated
      */
     InboundEndpointBehaviourType getInboundEndpointBehaviour();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundEndpointBehaviour <em>Inbound Endpoint Behaviour</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundEndpointBehaviour <em>Inbound Endpoint Behaviour</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound Endpoint Behaviour</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpointBehaviourType
+     * @see org.wso2.integrationstudio.gmf.esb.InboundEndpointBehaviourType
      * @see #getInboundEndpointBehaviour()
      * @generated
      */
@@ -3987,14 +3987,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound Http Port</em>' attribute.
      * @see #setInboundHttpPort(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHttpPort()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundHttpPort()
      * @model default="8000"
      * @generated
      */
     String getInboundHttpPort();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHttpPort <em>Inbound Http Port</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundHttpPort <em>Inbound Http Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound Http Port</em>' attribute.
@@ -4014,14 +4014,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound Worker Pool Size Core</em>' attribute.
      * @see #setInboundWorkerPoolSizeCore(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolSizeCore()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolSizeCore()
      * @model default="400"
      * @generated
      */
     String getInboundWorkerPoolSizeCore();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeCore <em>Inbound Worker Pool Size Core</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeCore <em>Inbound Worker Pool Size Core</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound Worker Pool Size Core</em>' attribute.
@@ -4041,14 +4041,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound Worker Pool Size Max</em>' attribute.
      * @see #setInboundWorkerPoolSizeMax(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolSizeMax()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolSizeMax()
      * @model default="500"
      * @generated
      */
     String getInboundWorkerPoolSizeMax();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeMax <em>Inbound Worker Pool Size Max</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeMax <em>Inbound Worker Pool Size Max</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound Worker Pool Size Max</em>' attribute.
@@ -4068,14 +4068,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound Worker Thread Keep Alive Sec</em>' attribute.
      * @see #setInboundWorkerThreadKeepAliveSec(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerThreadKeepAliveSec()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerThreadKeepAliveSec()
      * @model default="60"
      * @generated
      */
     String getInboundWorkerThreadKeepAliveSec();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerThreadKeepAliveSec <em>Inbound Worker Thread Keep Alive Sec</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundWorkerThreadKeepAliveSec <em>Inbound Worker Thread Keep Alive Sec</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound Worker Thread Keep Alive Sec</em>' attribute.
@@ -4095,14 +4095,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound Worker Pool Queue Length</em>' attribute.
      * @see #setInboundWorkerPoolQueueLength(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolQueueLength()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolQueueLength()
      * @model default="-1"
      * @generated
      */
     String getInboundWorkerPoolQueueLength();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolQueueLength <em>Inbound Worker Pool Queue Length</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundWorkerPoolQueueLength <em>Inbound Worker Pool Queue Length</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound Worker Pool Queue Length</em>' attribute.
@@ -4122,14 +4122,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound Thread Group Id</em>' attribute.
      * @see #setInboundThreadGroupId(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundThreadGroupId()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundThreadGroupId()
      * @model default=""
      * @generated
      */
     String getInboundThreadGroupId();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundThreadGroupId <em>Inbound Thread Group Id</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundThreadGroupId <em>Inbound Thread Group Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound Thread Group Id</em>' attribute.
@@ -4149,14 +4149,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Inbound Thread Id</em>' attribute.
      * @see #setInboundThreadId(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundThreadId()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_InboundThreadId()
      * @model default="PassThroughInboundWorkerPool"
      * @generated
      */
     String getInboundThreadId();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInboundThreadId <em>Inbound Thread Id</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInboundThreadId <em>Inbound Thread Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Inbound Thread Id</em>' attribute.
@@ -4176,14 +4176,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Dispatch Filter Pattern</em>' attribute.
      * @see #setDispatchFilterPattern(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_DispatchFilterPattern()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_DispatchFilterPattern()
      * @model default=""
      * @generated
      */
     String getDispatchFilterPattern();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getDispatchFilterPattern <em>Dispatch Filter Pattern</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getDispatchFilterPattern <em>Dispatch Filter Pattern</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Dispatch Filter Pattern</em>' attribute.
@@ -4203,14 +4203,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Interval</em>' attribute.
      * @see #setInterval(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Interval()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_Interval()
      * @model default="1000"
      * @generated
      */
     String getInterval();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getInterval <em>Interval</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getInterval <em>Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Interval</em>' attribute.
@@ -4230,14 +4230,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Sequential</em>' attribute.
      * @see #setSequential(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Sequential()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_Sequential()
      * @model default="true"
      * @generated
      */
     boolean isSequential();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isSequential <em>Sequential</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isSequential <em>Sequential</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Sequential</em>' attribute.
@@ -4257,14 +4257,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Coordination</em>' attribute.
      * @see #setCoordination(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Coordination()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_Coordination()
      * @model default="true"
      * @generated
      */
     boolean isCoordination();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isCoordination <em>Coordination</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isCoordination <em>Coordination</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Coordination</em>' attribute.
@@ -4284,14 +4284,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS File URI</em>' attribute.
      * @see #setTransportVFSFileURI(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileURI()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileURI()
      * @model default=""
      * @generated
      */
     String getTransportVFSFileURI();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileURI <em>Transport VFS File URI</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFileURI <em>Transport VFS File URI</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS File URI</em>' attribute.
@@ -4310,14 +4310,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Wso2mb Connection Url</em>' attribute.
      * @see #setWso2mbConnectionUrl(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Wso2mbConnectionUrl()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_Wso2mbConnectionUrl()
      * @model
      * @generated
      */
     String getWso2mbConnectionUrl();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getWso2mbConnectionUrl <em>Wso2mb Connection Url</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getWso2mbConnectionUrl <em>Wso2mb Connection Url</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Wso2mb Connection Url</em>' attribute.
@@ -4337,14 +4337,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Content Type</em>' attribute.
      * @see #setTransportVFSContentType(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSContentType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSContentType()
      * @model default="text/plain"
      * @generated
      */
     String getTransportVFSContentType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSContentType <em>Transport VFS Content Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSContentType <em>Transport VFS Content Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Content Type</em>' attribute.
@@ -4364,14 +4364,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS File Name Pattern</em>' attribute.
      * @see #setTransportVFSFileNamePattern(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileNamePattern()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileNamePattern()
      * @model default=".*.txt"
      * @generated
      */
     String getTransportVFSFileNamePattern();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileNamePattern <em>Transport VFS File Name Pattern</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFileNamePattern <em>Transport VFS File Name Pattern</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS File Name Pattern</em>' attribute.
@@ -4391,14 +4391,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS File Process Interval</em>' attribute.
      * @see #setTransportVFSFileProcessInterval(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileProcessInterval()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileProcessInterval()
      * @model default=""
      * @generated
      */
     String getTransportVFSFileProcessInterval();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileProcessInterval <em>Transport VFS File Process Interval</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFileProcessInterval <em>Transport VFS File Process Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS File Process Interval</em>' attribute.
@@ -4418,14 +4418,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS File Process Count</em>' attribute.
      * @see #setTransportVFSFileProcessCount(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileProcessCount()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileProcessCount()
      * @model default=""
      * @generated
      */
     String getTransportVFSFileProcessCount();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileProcessCount <em>Transport VFS File Process Count</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFileProcessCount <em>Transport VFS File Process Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS File Process Count</em>' attribute.
@@ -4436,7 +4436,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport VFS Locking</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.Enable}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.Enable}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport VFS Locking</em>' attribute isn't clear,
@@ -4444,20 +4444,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Locking</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.Enable
+     * @see org.wso2.integrationstudio.gmf.esb.Enable
      * @see #setTransportVFSLocking(Enable)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSLocking()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSLocking()
      * @model
      * @generated
      */
     Enable getTransportVFSLocking();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSLocking <em>Transport VFS Locking</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSLocking <em>Transport VFS Locking</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Locking</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.Enable
+     * @see org.wso2.integrationstudio.gmf.esb.Enable
      * @see #getTransportVFSLocking()
      * @generated
      */
@@ -4474,14 +4474,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Max Retry Count</em>' attribute.
      * @see #setTransportVFSMaxRetryCount(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMaxRetryCount()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMaxRetryCount()
      * @model default=""
      * @generated
      */
     String getTransportVFSMaxRetryCount();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMaxRetryCount <em>Transport VFS Max Retry Count</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMaxRetryCount <em>Transport VFS Max Retry Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Max Retry Count</em>' attribute.
@@ -4500,14 +4500,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Move After Failed Move</em>' attribute.
      * @see #setTransportVFSMoveAfterFailedMove(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveAfterFailedMove()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveAfterFailedMove()
      * @model
      * @generated
      */
     String getTransportVFSMoveAfterFailedMove();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterFailedMove <em>Transport VFS Move After Failed Move</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterFailedMove <em>Transport VFS Move After Failed Move</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Move After Failed Move</em>' attribute.
@@ -4527,14 +4527,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Reconnect Timeout</em>' attribute.
      * @see #setTransportVFSReconnectTimeout(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSReconnectTimeout()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSReconnectTimeout()
      * @model default=""
      * @generated
      */
     String getTransportVFSReconnectTimeout();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSReconnectTimeout <em>Transport VFS Reconnect Timeout</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSReconnectTimeout <em>Transport VFS Reconnect Timeout</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Reconnect Timeout</em>' attribute.
@@ -4554,14 +4554,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Shared Subscription</em>' attribute.
      * @see #setTransportJMSSharedSubscription(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSharedSubscription()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSharedSubscription()
      * @model default="false"
      * @generated
      */
     boolean isTransportJMSSharedSubscription();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportJMSSharedSubscription <em>Transport JMS Shared Subscription</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportJMSSharedSubscription <em>Transport JMS Shared Subscription</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Shared Subscription</em>' attribute.
@@ -4580,14 +4580,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Subscription Name</em>' attribute.
      * @see #setTransportJMSSubscriptionName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSubscriptionName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSubscriptionName()
      * @model
      * @generated
      */
     String getTransportJMSSubscriptionName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSSubscriptionName <em>Transport JMS Subscription Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSSubscriptionName <em>Transport JMS Subscription Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Subscription Name</em>' attribute.
@@ -4606,14 +4606,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Pinned Servers</em>' attribute.
      * @see #setTransportJMSPinnedServers(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPinnedServers()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPinnedServers()
      * @model
      * @generated
      */
     String getTransportJMSPinnedServers();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPinnedServers <em>Transport JMS Pinned Servers</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSPinnedServers <em>Transport JMS Pinned Servers</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Pinned Servers</em>' attribute.
@@ -4624,7 +4624,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport VFS Action After Process</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.VFSAction}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.VFSAction}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport VFS Action After Process</em>' attribute isn't clear,
@@ -4632,20 +4632,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Action After Process</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.VFSAction
+     * @see org.wso2.integrationstudio.gmf.esb.VFSAction
      * @see #setTransportVFSActionAfterProcess(VFSAction)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSActionAfterProcess()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSActionAfterProcess()
      * @model
      * @generated
      */
     VFSAction getTransportVFSActionAfterProcess();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSActionAfterProcess <em>Transport VFS Action After Process</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSActionAfterProcess <em>Transport VFS Action After Process</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Action After Process</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.VFSAction
+     * @see org.wso2.integrationstudio.gmf.esb.VFSAction
      * @see #getTransportVFSActionAfterProcess()
      * @generated
      */
@@ -4662,14 +4662,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Move After Process</em>' attribute.
      * @see #setTransportVFSMoveAfterProcess(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveAfterProcess()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveAfterProcess()
      * @model default=""
      * @generated
      */
     String getTransportVFSMoveAfterProcess();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterProcess <em>Transport VFS Move After Process</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterProcess <em>Transport VFS Move After Process</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Move After Process</em>' attribute.
@@ -4680,7 +4680,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport VFS Action After Errors</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.VFSAction}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.VFSAction}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport VFS Action After Errors</em>' attribute isn't clear,
@@ -4688,20 +4688,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Action After Errors</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.VFSAction
+     * @see org.wso2.integrationstudio.gmf.esb.VFSAction
      * @see #setTransportVFSActionAfterErrors(VFSAction)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSActionAfterErrors()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSActionAfterErrors()
      * @model
      * @generated
      */
     VFSAction getTransportVFSActionAfterErrors();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSActionAfterErrors <em>Transport VFS Action After Errors</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSActionAfterErrors <em>Transport VFS Action After Errors</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Action After Errors</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.VFSAction
+     * @see org.wso2.integrationstudio.gmf.esb.VFSAction
      * @see #getTransportVFSActionAfterErrors()
      * @generated
      */
@@ -4718,14 +4718,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Move After Errors</em>' attribute.
      * @see #setTransportVFSMoveAfterErrors(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveAfterErrors()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveAfterErrors()
      * @model default=""
      * @generated
      */
     String getTransportVFSMoveAfterErrors();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterErrors <em>Transport VFS Move After Errors</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterErrors <em>Transport VFS Move After Errors</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Move After Errors</em>' attribute.
@@ -4745,14 +4745,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Failed Records File Name</em>' attribute.
      * @see #setTransportVFSFailedRecordsFileName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFailedRecordsFileName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFailedRecordsFileName()
      * @model default="vfs-move-failed-records.properties"
      * @generated
      */
     String getTransportVFSFailedRecordsFileName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFailedRecordsFileName <em>Transport VFS Failed Records File Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFailedRecordsFileName <em>Transport VFS Failed Records File Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Failed Records File Name</em>' attribute.
@@ -4772,14 +4772,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Failed Records File Destination</em>' attribute.
      * @see #setTransportVFSFailedRecordsFileDestination(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFailedRecordsFileDestination()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFailedRecordsFileDestination()
      * @model default="repository/conf/"
      * @generated
      */
     String getTransportVFSFailedRecordsFileDestination();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFailedRecordsFileDestination <em>Transport VFS Failed Records File Destination</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFailedRecordsFileDestination <em>Transport VFS Failed Records File Destination</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Failed Records File Destination</em>' attribute.
@@ -4799,14 +4799,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Move Failed Record Timestamp Format</em>' attribute.
      * @see #setTransportVFSMoveFailedRecordTimestampFormat(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveFailedRecordTimestampFormat()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveFailedRecordTimestampFormat()
      * @model default="dd-MM-yyyy HH:mm:ss"
      * @generated
      */
     String getTransportVFSMoveFailedRecordTimestampFormat();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveFailedRecordTimestampFormat <em>Transport VFS Move Failed Record Timestamp Format</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveFailedRecordTimestampFormat <em>Transport VFS Move Failed Record Timestamp Format</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Move Failed Record Timestamp Format</em>' attribute.
@@ -4826,14 +4826,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Failed Record Next Retry Duration</em>' attribute.
      * @see #setTransportVFSFailedRecordNextRetryDuration(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFailedRecordNextRetryDuration()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFailedRecordNextRetryDuration()
      * @model default="3000"
      * @generated
      */
     String getTransportVFSFailedRecordNextRetryDuration();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFailedRecordNextRetryDuration <em>Transport VFS Failed Record Next Retry Duration</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFailedRecordNextRetryDuration <em>Transport VFS Failed Record Next Retry Duration</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Failed Record Next Retry Duration</em>' attribute.
@@ -4844,7 +4844,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport VFS Action After Failure</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.VFSAction}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.VFSAction}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport VFS Action After Failure</em>' attribute isn't clear,
@@ -4852,20 +4852,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Action After Failure</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.VFSAction
+     * @see org.wso2.integrationstudio.gmf.esb.VFSAction
      * @see #setTransportVFSActionAfterFailure(VFSAction)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSActionAfterFailure()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSActionAfterFailure()
      * @model
      * @generated
      */
     VFSAction getTransportVFSActionAfterFailure();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSActionAfterFailure <em>Transport VFS Action After Failure</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSActionAfterFailure <em>Transport VFS Action After Failure</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Action After Failure</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.VFSAction
+     * @see org.wso2.integrationstudio.gmf.esb.VFSAction
      * @see #getTransportVFSActionAfterFailure()
      * @generated
      */
@@ -4882,14 +4882,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Move After Failure</em>' attribute.
      * @see #setTransportVFSMoveAfterFailure(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveAfterFailure()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveAfterFailure()
      * @model default=""
      * @generated
      */
     String getTransportVFSMoveAfterFailure();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterFailure <em>Transport VFS Move After Failure</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterFailure <em>Transport VFS Move After Failure</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Move After Failure</em>' attribute.
@@ -4908,14 +4908,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Reply File URI</em>' attribute.
      * @see #setTransportVFSReplyFileURI(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSReplyFileURI()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSReplyFileURI()
      * @model
      * @generated
      */
     String getTransportVFSReplyFileURI();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSReplyFileURI <em>Transport VFS Reply File URI</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSReplyFileURI <em>Transport VFS Reply File URI</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Reply File URI</em>' attribute.
@@ -4935,14 +4935,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Reply File Name</em>' attribute.
      * @see #setTransportVFSReplyFileName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSReplyFileName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSReplyFileName()
      * @model default="response.xml"
      * @generated
      */
     String getTransportVFSReplyFileName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSReplyFileName <em>Transport VFS Reply File Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSReplyFileName <em>Transport VFS Reply File Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Reply File Name</em>' attribute.
@@ -4962,14 +4962,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Auto Lock Release</em>' attribute.
      * @see #setTransportVFSAutoLockRelease(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSAutoLockRelease()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSAutoLockRelease()
      * @model default="false"
      * @generated
      */
     boolean isTransportVFSAutoLockRelease();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSAutoLockRelease <em>Transport VFS Auto Lock Release</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSAutoLockRelease <em>Transport VFS Auto Lock Release</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Auto Lock Release</em>' attribute.
@@ -4989,14 +4989,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Auto Lock Release Interval</em>' attribute.
      * @see #setTransportVFSAutoLockReleaseInterval(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSAutoLockReleaseInterval()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSAutoLockReleaseInterval()
      * @model default=""
      * @generated
      */
     String getTransportVFSAutoLockReleaseInterval();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSAutoLockReleaseInterval <em>Transport VFS Auto Lock Release Interval</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSAutoLockReleaseInterval <em>Transport VFS Auto Lock Release Interval</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Auto Lock Release Interval</em>' attribute.
@@ -5016,14 +5016,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Lock Release Same Node</em>' attribute.
      * @see #setTransportVFSLockReleaseSameNode(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSLockReleaseSameNode()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSLockReleaseSameNode()
      * @model default="false"
      * @generated
      */
     boolean isTransportVFSLockReleaseSameNode();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSLockReleaseSameNode <em>Transport VFS Lock Release Same Node</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSLockReleaseSameNode <em>Transport VFS Lock Release Same Node</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Lock Release Same Node</em>' attribute.
@@ -5043,14 +5043,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Distributed Lock</em>' attribute.
      * @see #setTransportVFSDistributedLock(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSDistributedLock()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSDistributedLock()
      * @model default="false"
      * @generated
      */
     boolean isTransportVFSDistributedLock();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSDistributedLock <em>Transport VFS Distributed Lock</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSDistributedLock <em>Transport VFS Distributed Lock</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Distributed Lock</em>' attribute.
@@ -5070,14 +5070,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Streaming</em>' attribute.
      * @see #setTransportVFSStreaming(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSStreaming()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSStreaming()
      * @model default="false"
      * @generated
      */
     boolean isTransportVFSStreaming();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSStreaming <em>Transport VFS Streaming</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSStreaming <em>Transport VFS Streaming</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Streaming</em>' attribute.
@@ -5097,14 +5097,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Build</em>' attribute.
      * @see #setTransportVFSBuild(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSBuild()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSBuild()
      * @model default="false"
      * @generated
      */
     boolean isTransportVFSBuild();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSBuild <em>Transport VFS Build</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSBuild <em>Transport VFS Build</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Build</em>' attribute.
@@ -5124,14 +5124,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Distributed Timeout</em>' attribute.
      * @see #setTransportVFSDistributedTimeout(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSDistributedTimeout()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSDistributedTimeout()
      * @model default=""
      * @generated
      */
     String getTransportVFSDistributedTimeout();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSDistributedTimeout <em>Transport VFS Distributed Timeout</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSDistributedTimeout <em>Transport VFS Distributed Timeout</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Distributed Timeout</em>' attribute.
@@ -5150,14 +5150,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFSSFTP Identities</em>' attribute.
      * @see #setTransportVFSSFTPIdentities(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSFTPIdentities()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSFTPIdentities()
      * @model
      * @generated
      */
     String getTransportVFSSFTPIdentities();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentities <em>Transport VFSSFTP Identities</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentities <em>Transport VFSSFTP Identities</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFSSFTP Identities</em>' attribute.
@@ -5176,14 +5176,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFSSFTP Identity Pass Phrase</em>' attribute.
      * @see #setTransportVFSSFTPIdentityPassPhrase(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSFTPIdentityPassPhrase()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSFTPIdentityPassPhrase()
      * @model
      * @generated
      */
     String getTransportVFSSFTPIdentityPassPhrase();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentityPassPhrase <em>Transport VFSSFTP Identity Pass Phrase</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentityPassPhrase <em>Transport VFSSFTP Identity Pass Phrase</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFSSFTP Identity Pass Phrase</em>' attribute.
@@ -5202,14 +5202,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFSSFTP User Dir Is Root</em>' attribute.
      * @see #setTransportVFSSFTPUserDirIsRoot(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSFTPUserDirIsRoot()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSFTPUserDirIsRoot()
      * @model
      * @generated
      */
     boolean isTransportVFSSFTPUserDirIsRoot();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSSFTPUserDirIsRoot <em>Transport VFSSFTP User Dir Is Root</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSSFTPUserDirIsRoot <em>Transport VFSSFTP User Dir Is Root</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFSSFTP User Dir Is Root</em>' attribute.
@@ -5229,14 +5229,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Java Naming Factory Initial</em>' attribute.
      * @see #setJavaNamingFactoryInitial(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_JavaNamingFactoryInitial()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_JavaNamingFactoryInitial()
      * @model default=""
      * @generated
      */
     String getJavaNamingFactoryInitial();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Java Naming Factory Initial</em>' attribute.
@@ -5256,14 +5256,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Java Naming Provider Url</em>' attribute.
      * @see #setJavaNamingProviderUrl(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_JavaNamingProviderUrl()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_JavaNamingProviderUrl()
      * @model default=""
      * @generated
      */
     String getJavaNamingProviderUrl();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Java Naming Provider Url</em>' attribute.
@@ -5283,14 +5283,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Connection Factory JNDI Name</em>' attribute.
      * @see #setTransportJMSConnectionFactoryJNDIName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSConnectionFactoryJNDIName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSConnectionFactoryJNDIName()
      * @model default=""
      * @generated
      */
     String getTransportJMSConnectionFactoryJNDIName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Connection Factory JNDI Name</em>' attribute.
@@ -5302,7 +5302,7 @@ public interface InboundEndpoint extends EsbElement {
     /**
      * Returns the value of the '<em><b>Transport JMS Connection Factory Type</b></em>' attribute.
      * The default value is <code>"queue"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.JMSConnectionFactoryType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.JMSConnectionFactoryType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport JMS Connection Factory Type</em>' attribute isn't clear,
@@ -5310,20 +5310,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Connection Factory Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.JMSConnectionFactoryType
+     * @see org.wso2.integrationstudio.gmf.esb.JMSConnectionFactoryType
      * @see #setTransportJMSConnectionFactoryType(JMSConnectionFactoryType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSConnectionFactoryType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSConnectionFactoryType()
      * @model default="queue"
      * @generated
      */
     JMSConnectionFactoryType getTransportJMSConnectionFactoryType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryType <em>Transport JMS Connection Factory Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryType <em>Transport JMS Connection Factory Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Connection Factory Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.JMSConnectionFactoryType
+     * @see org.wso2.integrationstudio.gmf.esb.JMSConnectionFactoryType
      * @see #getTransportJMSConnectionFactoryType()
      * @generated
      */
@@ -5339,14 +5339,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Concurrent Consumers</em>' attribute.
      * @see #setTransportJMSConcurrentConsumers(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSConcurrentConsumers()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSConcurrentConsumers()
      * @model
      * @generated
      */
     String getTransportJMSConcurrentConsumers();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSConcurrentConsumers <em>Transport JMS Concurrent Consumers</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSConcurrentConsumers <em>Transport JMS Concurrent Consumers</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Concurrent Consumers</em>' attribute.
@@ -5366,14 +5366,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Destination</em>' attribute.
      * @see #setTransportJMSDestination(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSDestination()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSDestination()
      * @model default=""
      * @generated
      */
     String getTransportJMSDestination();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDestination <em>Transport JMS Destination</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSDestination <em>Transport JMS Destination</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Destination</em>' attribute.
@@ -5393,14 +5393,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Session Transacted</em>' attribute.
      * @see #setTransportJMSSessionTransacted(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSessionTransacted()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSessionTransacted()
      * @model default="false"
      * @generated
      */
     boolean isTransportJMSSessionTransacted();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportJMSSessionTransacted <em>Transport JMS Session Transacted</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportJMSSessionTransacted <em>Transport JMS Session Transacted</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Session Transacted</em>' attribute.
@@ -5411,7 +5411,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport JMS Session Acknowledgement</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.JMSSessionAcknowledgement}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.JMSSessionAcknowledgement}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport JMS Session Acknowledgement</em>' attribute isn't clear,
@@ -5419,20 +5419,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Session Acknowledgement</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.JMSSessionAcknowledgement
+     * @see org.wso2.integrationstudio.gmf.esb.JMSSessionAcknowledgement
      * @see #setTransportJMSSessionAcknowledgement(JMSSessionAcknowledgement)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSessionAcknowledgement()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSessionAcknowledgement()
      * @model
      * @generated
      */
     JMSSessionAcknowledgement getTransportJMSSessionAcknowledgement();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSSessionAcknowledgement <em>Transport JMS Session Acknowledgement</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSSessionAcknowledgement <em>Transport JMS Session Acknowledgement</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Session Acknowledgement</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.JMSSessionAcknowledgement
+     * @see org.wso2.integrationstudio.gmf.esb.JMSSessionAcknowledgement
      * @see #getTransportJMSSessionAcknowledgement()
      * @generated
      */
@@ -5440,7 +5440,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport JMS Cache Level</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.JMSCacheLevel}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.JMSCacheLevel}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport JMS Cache Level</em>' attribute isn't clear,
@@ -5448,20 +5448,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Cache Level</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.JMSCacheLevel
+     * @see org.wso2.integrationstudio.gmf.esb.JMSCacheLevel
      * @see #setTransportJMSCacheLevel(JMSCacheLevel)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSCacheLevel()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSCacheLevel()
      * @model
      * @generated
      */
     JMSCacheLevel getTransportJMSCacheLevel();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSCacheLevel <em>Transport JMS Cache Level</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSCacheLevel <em>Transport JMS Cache Level</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Cache Level</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.JMSCacheLevel
+     * @see org.wso2.integrationstudio.gmf.esb.JMSCacheLevel
      * @see #getTransportJMSCacheLevel()
      * @generated
      */
@@ -5478,14 +5478,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS User Name</em>' attribute.
      * @see #setTransportJMSUserName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSUserName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSUserName()
      * @model default=""
      * @generated
      */
     String getTransportJMSUserName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSUserName <em>Transport JMS User Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSUserName <em>Transport JMS User Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS User Name</em>' attribute.
@@ -5505,14 +5505,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Password</em>' attribute.
      * @see #setTransportJMSPassword(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPassword()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPassword()
      * @model default=""
      * @generated
      */
     String getTransportJMSPassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPassword <em>Transport JMS Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSPassword <em>Transport JMS Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Password</em>' attribute.
@@ -5532,14 +5532,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMSJMS Spec Version</em>' attribute.
      * @see #setTransportJMSJMSSpecVersion(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSJMSSpecVersion()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSJMSSpecVersion()
      * @model default=""
      * @generated
      */
     String getTransportJMSJMSSpecVersion();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSJMSSpecVersion <em>Transport JMSJMS Spec Version</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSJMSSpecVersion <em>Transport JMSJMS Spec Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMSJMS Spec Version</em>' attribute.
@@ -5559,14 +5559,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Subscription Durable</em>' attribute.
      * @see #setTransportJMSSubscriptionDurable(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSubscriptionDurable()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSubscriptionDurable()
      * @model default=""
      * @generated
      */
     String getTransportJMSSubscriptionDurable();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSSubscriptionDurable <em>Transport JMS Subscription Durable</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSSubscriptionDurable <em>Transport JMS Subscription Durable</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Subscription Durable</em>' attribute.
@@ -5586,14 +5586,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Durable Subscriber Client ID</em>' attribute.
      * @see #setTransportJMSDurableSubscriberClientID(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSDurableSubscriberClientID()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSDurableSubscriberClientID()
      * @model default=""
      * @generated
      */
     String getTransportJMSDurableSubscriberClientID();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberClientID <em>Transport JMS Durable Subscriber Client ID</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberClientID <em>Transport JMS Durable Subscriber Client ID</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Durable Subscriber Client ID</em>' attribute.
@@ -5613,14 +5613,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Message Selector</em>' attribute.
      * @see #setTransportJMSMessageSelector(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSMessageSelector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSMessageSelector()
      * @model default=""
      * @generated
      */
     String getTransportJMSMessageSelector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSMessageSelector <em>Transport JMS Message Selector</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSMessageSelector <em>Transport JMS Message Selector</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Message Selector</em>' attribute.
@@ -5639,14 +5639,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Retry Duration</em>' attribute.
      * @see #setTransportJMSRetryDuration(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSRetryDuration()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSRetryDuration()
      * @model
      * @generated
      */
     String getTransportJMSRetryDuration();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSRetryDuration <em>Transport JMS Retry Duration</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSRetryDuration <em>Transport JMS Retry Duration</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Retry Duration</em>' attribute.
@@ -5666,14 +5666,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Move Timestamp Format</em>' attribute.
      * @see #setTransportVFSMoveTimestampFormat(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveTimestampFormat()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveTimestampFormat()
      * @model default=""
      * @generated
      */
     String getTransportVFSMoveTimestampFormat();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Move Timestamp Format</em>' attribute.
@@ -5684,7 +5684,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport VFS File Sort Attribute</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.VFSFileSort}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.VFSFileSort}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport VFS File Sort Attribute</em>' attribute isn't clear,
@@ -5692,20 +5692,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS File Sort Attribute</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.VFSFileSort
+     * @see org.wso2.integrationstudio.gmf.esb.VFSFileSort
      * @see #setTransportVFSFileSortAttribute(VFSFileSort)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileSortAttribute()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileSortAttribute()
      * @model
      * @generated
      */
     VFSFileSort getTransportVFSFileSortAttribute();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS File Sort Attribute</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.VFSFileSort
+     * @see org.wso2.integrationstudio.gmf.esb.VFSFileSort
      * @see #getTransportVFSFileSortAttribute()
      * @generated
      */
@@ -5722,14 +5722,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS File Sort Ascending</em>' attribute.
      * @see #setTransportVFSFileSortAscending(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileSortAscending()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileSortAscending()
      * @model default="true"
      * @generated
      */
     boolean isTransportVFSFileSortAscending();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS File Sort Ascending</em>' attribute.
@@ -5749,14 +5749,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Sub Folder Timestamp Format</em>' attribute.
      * @see #setTransportVFSSubFolderTimestampFormat(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSubFolderTimestampFormat()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSubFolderTimestampFormat()
      * @model default=""
      * @generated
      */
     String getTransportVFSSubFolderTimestampFormat();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSubFolderTimestampFormat <em>Transport VFS Sub Folder Timestamp Format</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSSubFolderTimestampFormat <em>Transport VFS Sub Folder Timestamp Format</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Sub Folder Timestamp Format</em>' attribute.
@@ -5776,14 +5776,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport VFS Create Folder</em>' attribute.
      * @see #setTransportVFSCreateFolder(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSCreateFolder()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSCreateFolder()
      * @model default="true"
      * @generated
      */
     boolean isTransportVFSCreateFolder();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport VFS Create Folder</em>' attribute.
@@ -5803,14 +5803,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Receive Timeout</em>' attribute.
      * @see #setTransportJMSReceiveTimeout(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSReceiveTimeout()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSReceiveTimeout()
      * @model default=""
      * @generated
      */
     String getTransportJMSReceiveTimeout();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Receive Timeout</em>' attribute.
@@ -5830,14 +5830,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Content Type</em>' attribute.
      * @see #setTransportJMSContentType(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSContentType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSContentType()
      * @model default=""
      * @generated
      */
     String getTransportJMSContentType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSContentType <em>Transport JMS Content Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSContentType <em>Transport JMS Content Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Content Type</em>' attribute.
@@ -5857,14 +5857,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Content Type Property</em>' attribute.
      * @see #setTransportJMSContentTypeProperty(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSContentTypeProperty()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSContentTypeProperty()
      * @model default=""
      * @generated
      */
     String getTransportJMSContentTypeProperty();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSContentTypeProperty <em>Transport JMS Content Type Property</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSContentTypeProperty <em>Transport JMS Content Type Property</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Content Type Property</em>' attribute.
@@ -5884,14 +5884,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Reply Destination</em>' attribute.
      * @see #setTransportJMSReplyDestination(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSReplyDestination()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSReplyDestination()
      * @model default=""
      * @generated
      */
     String getTransportJMSReplyDestination();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Reply Destination</em>' attribute.
@@ -5911,14 +5911,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Pub Sub No Local</em>' attribute.
      * @see #setTransportJMSPubSubNoLocal(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPubSubNoLocal()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPubSubNoLocal()
      * @model default=""
      * @generated
      */
     String getTransportJMSPubSubNoLocal();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Pub Sub No Local</em>' attribute.
@@ -5937,14 +5937,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Durable Subscriber Name</em>' attribute.
      * @see #setTransportJMSDurableSubscriberName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSDurableSubscriberName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSDurableSubscriberName()
      * @model
      * @generated
      */
     String getTransportJMSDurableSubscriberName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberName <em>Transport JMS Durable Subscriber Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberName <em>Transport JMS Durable Subscriber Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Durable Subscriber Name</em>' attribute.
@@ -5956,7 +5956,7 @@ public interface InboundEndpoint extends EsbElement {
     /**
      * Returns the value of the '<em><b>Transport JMS Broker Type</b></em>' attribute.
      * The default value is <code>"OTHER"</code>.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.JMSBrokerType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.JMSBrokerType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport JMS Broker Type</em>' attribute isn't clear,
@@ -5964,20 +5964,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport JMS Broker Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.JMSBrokerType
+     * @see org.wso2.integrationstudio.gmf.esb.JMSBrokerType
      * @see #setTransportJMSBrokerType(JMSBrokerType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSBrokerType()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSBrokerType()
      * @model default="OTHER"
      * @generated
      */
     JMSBrokerType getTransportJMSBrokerType();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSBrokerType <em>Transport JMS Broker Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSBrokerType <em>Transport JMS Broker Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport JMS Broker Type</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.JMSBrokerType
+     * @see org.wso2.integrationstudio.gmf.esb.JMSBrokerType
      * @see #getTransportJMSBrokerType()
      * @generated
      */
@@ -5994,14 +5994,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Connection Factory</em>' attribute.
      * @see #setTransportMQTTConnectionFactory(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTConnectionFactory()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTConnectionFactory()
      * @model default="AMQPConnectionFactory"
      * @generated
      */
     String getTransportMQTTConnectionFactory();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Connection Factory</em>' attribute.
@@ -6021,14 +6021,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Server Host Name</em>' attribute.
      * @see #setTransportMQTTServerHostName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTServerHostName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTServerHostName()
      * @model default=""
      * @generated
      */
     String getTransportMQTTServerHostName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Server Host Name</em>' attribute.
@@ -6048,14 +6048,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Server Port</em>' attribute.
      * @see #setTransportMQTTServerPort(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTServerPort()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTServerPort()
      * @model default=""
      * @generated
      */
     String getTransportMQTTServerPort();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Server Port</em>' attribute.
@@ -6075,14 +6075,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Topic Name</em>' attribute.
      * @see #setTransportMQTTTopicName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTTopicName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTTopicName()
      * @model default=""
      * @generated
      */
     String getTransportMQTTTopicName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTTopicName <em>Transport MQTT Topic Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTTopicName <em>Transport MQTT Topic Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Topic Name</em>' attribute.
@@ -6093,7 +6093,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport MQTT Subscription QOS</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.MQTTSubscriptionQOS}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.MQTTSubscriptionQOS}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport MQTT Subscription QOS</em>' attribute isn't clear,
@@ -6101,20 +6101,20 @@ public interface InboundEndpoint extends EsbElement {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Subscription QOS</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.MQTTSubscriptionQOS
+     * @see org.wso2.integrationstudio.gmf.esb.MQTTSubscriptionQOS
      * @see #setTransportMQTTSubscriptionQOS(MQTTSubscriptionQOS)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSubscriptionQOS()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSubscriptionQOS()
      * @model
      * @generated
      */
     MQTTSubscriptionQOS getTransportMQTTSubscriptionQOS();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionQOS <em>Transport MQTT Subscription QOS</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionQOS <em>Transport MQTT Subscription QOS</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Subscription QOS</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.MQTTSubscriptionQOS
+     * @see org.wso2.integrationstudio.gmf.esb.MQTTSubscriptionQOS
      * @see #getTransportMQTTSubscriptionQOS()
      * @generated
      */
@@ -6130,14 +6130,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Session Clean</em>' attribute.
      * @see #setTransportMQTTSessionClean(boolean)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSessionClean()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSessionClean()
      * @model
      * @generated
      */
     boolean isTransportMQTTSessionClean();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#isTransportMQTTSessionClean <em>Transport MQTT Session Clean</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportMQTTSessionClean <em>Transport MQTT Session Clean</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Session Clean</em>' attribute.
@@ -6157,14 +6157,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Ssl Enable</em>' attribute.
      * @see #setTransportMQTTSslEnable(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslEnable()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslEnable()
      * @model default=""
      * @generated
      */
     String getTransportMQTTSslEnable();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslEnable <em>Transport MQTT Ssl Enable</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSslEnable <em>Transport MQTT Ssl Enable</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Ssl Enable</em>' attribute.
@@ -6184,14 +6184,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Temporary Store Directory</em>' attribute.
      * @see #setTransportMQTTTemporaryStoreDirectory(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTTemporaryStoreDirectory()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTTemporaryStoreDirectory()
      * @model default=""
      * @generated
      */
     String getTransportMQTTTemporaryStoreDirectory();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Temporary Store Directory</em>' attribute.
@@ -6211,14 +6211,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Subscription Username</em>' attribute.
      * @see #setTransportMQTTSubscriptionUsername(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSubscriptionUsername()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSubscriptionUsername()
      * @model default=""
      * @generated
      */
     String getTransportMQTTSubscriptionUsername();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionUsername <em>Transport MQTT Subscription Username</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionUsername <em>Transport MQTT Subscription Username</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Subscription Username</em>' attribute.
@@ -6238,14 +6238,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Subscription Password</em>' attribute.
      * @see #setTransportMQTTSubscriptionPassword(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSubscriptionPassword()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSubscriptionPassword()
      * @model default=""
      * @generated
      */
     String getTransportMQTTSubscriptionPassword();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionPassword <em>Transport MQTT Subscription Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionPassword <em>Transport MQTT Subscription Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Subscription Password</em>' attribute.
@@ -6265,14 +6265,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Transport MQTT Client Id</em>' attribute.
      * @see #setTransportMQTTClientId(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTClientId()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTClientId()
      * @model default=""
      * @generated
      */
     String getTransportMQTTClientId();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTClientId <em>Transport MQTT Client Id</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportMQTTClientId <em>Transport MQTT Client Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Transport MQTT Client Id</em>' attribute.
@@ -6292,14 +6292,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Truststore</em>' attribute.
      * @see #setTruststore(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Truststore()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_Truststore()
      * @model default=""
      * @generated
      */
     String getTruststore();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getTruststore <em>Truststore</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTruststore <em>Truststore</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Truststore</em>' attribute.
@@ -6319,14 +6319,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Keystore</em>' attribute.
      * @see #setKeystore(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Keystore()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_Keystore()
      * @model default=""
      * @generated
      */
     String getKeystore();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getKeystore <em>Keystore</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getKeystore <em>Keystore</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Keystore</em>' attribute.
@@ -6346,14 +6346,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ssl Verify Client</em>' attribute.
      * @see #setSslVerifyClient(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SslVerifyClient()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_SslVerifyClient()
      * @model default=""
      * @generated
      */
     String getSslVerifyClient();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSslVerifyClient <em>Ssl Verify Client</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSslVerifyClient <em>Ssl Verify Client</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ssl Verify Client</em>' attribute.
@@ -6373,14 +6373,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Ssl Protocol</em>' attribute.
      * @see #setSslProtocol(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SslProtocol()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_SslProtocol()
      * @model default=""
      * @generated
      */
     String getSslProtocol();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getSslProtocol <em>Ssl Protocol</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getSslProtocol <em>Ssl Protocol</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Ssl Protocol</em>' attribute.
@@ -6400,14 +6400,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Https Protocols</em>' attribute.
      * @see #setHttpsProtocols(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_HttpsProtocols()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_HttpsProtocols()
      * @model default=""
      * @generated
      */
     String getHttpsProtocols();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getHttpsProtocols <em>Https Protocols</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getHttpsProtocols <em>Https Protocols</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Https Protocols</em>' attribute.
@@ -6427,14 +6427,14 @@ public interface InboundEndpoint extends EsbElement {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Certificate Revocation Verifier</em>' attribute.
      * @see #setCertificateRevocationVerifier(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_CertificateRevocationVerifier()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_CertificateRevocationVerifier()
      * @model default=""
      * @generated
      */
     String getCertificateRevocationVerifier();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.InboundEndpoint#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Certificate Revocation Verifier</em>' attribute.

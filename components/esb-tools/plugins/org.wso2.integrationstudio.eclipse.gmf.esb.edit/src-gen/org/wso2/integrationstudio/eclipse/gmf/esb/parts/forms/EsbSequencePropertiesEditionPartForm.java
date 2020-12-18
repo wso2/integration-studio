@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -57,10 +57,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbSequencePropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbSequencePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -293,7 +293,7 @@ public class EsbSequencePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbSequencePropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbSequencePropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -303,7 +303,7 @@ public class EsbSequencePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbSequencePropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbSequencePropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -327,7 +327,7 @@ public class EsbSequencePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbSequencePropertiesEditionPart#initChildMediators(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbSequencePropertiesEditionPart#initChildMediators(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initChildMediators(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -348,7 +348,7 @@ public class EsbSequencePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbSequencePropertiesEditionPart#updateChildMediators()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbSequencePropertiesEditionPart#updateChildMediators()
 	 * 
 	 */
 	public void updateChildMediators() {
@@ -358,7 +358,7 @@ public class EsbSequencePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbSequencePropertiesEditionPart#addFilterChildMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbSequencePropertiesEditionPart#addFilterChildMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToChildMediators(ViewerFilter filter) {
@@ -371,7 +371,7 @@ public class EsbSequencePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbSequencePropertiesEditionPart#addBusinessFilterChildMediators(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbSequencePropertiesEditionPart#addBusinessFilterChildMediators(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToChildMediators(ViewerFilter filter) {
@@ -381,7 +381,7 @@ public class EsbSequencePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbSequencePropertiesEditionPart#isContainedInChildMediatorsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbSequencePropertiesEditionPart#isContainedInChildMediatorsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInChildMediatorsTable(EObject element) {

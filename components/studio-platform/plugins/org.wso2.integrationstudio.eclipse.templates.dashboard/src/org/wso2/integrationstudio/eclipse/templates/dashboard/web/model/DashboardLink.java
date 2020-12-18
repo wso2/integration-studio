@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.templates.dashboard.web.model;
+package org.wso2.integrationstudio.templates.dashboard.web.model;
 
 public class DashboardLink {
 

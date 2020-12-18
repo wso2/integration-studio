@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.updater.job;
+package org.wso2.integrationstudio.updater.job;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -22,7 +22,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.PreferenceConstants;
+import org.wso2.integrationstudio.platform.ui.preferences.PreferenceConstants;
 
 /**
  * This is the background job that runs on the scheduled time by user to execute

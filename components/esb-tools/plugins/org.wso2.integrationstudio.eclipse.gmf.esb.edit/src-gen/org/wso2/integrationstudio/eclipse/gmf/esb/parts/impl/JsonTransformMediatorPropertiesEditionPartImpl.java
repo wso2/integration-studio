@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -72,12 +72,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -376,7 +376,7 @@ public class JsonTransformMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -386,7 +386,7 @@ public class JsonTransformMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -427,7 +427,7 @@ public class JsonTransformMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -437,7 +437,7 @@ public class JsonTransformMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -461,7 +461,7 @@ public class JsonTransformMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#initJsonTransformProperties(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#initJsonTransformProperties(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initJsonTransformProperties(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -482,7 +482,7 @@ public class JsonTransformMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#updateJsonTransformProperties()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#updateJsonTransformProperties()
 	 * 
 	 */
 	public void updateJsonTransformProperties() {
@@ -492,7 +492,7 @@ public class JsonTransformMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#addFilterJsonTransformProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#addFilterJsonTransformProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToJsonTransformProperties(ViewerFilter filter) {
@@ -505,7 +505,7 @@ public class JsonTransformMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#addBusinessFilterJsonTransformProperties(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#addBusinessFilterJsonTransformProperties(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToJsonTransformProperties(ViewerFilter filter) {
@@ -515,7 +515,7 @@ public class JsonTransformMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#isContainedInJsonTransformPropertiesTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#isContainedInJsonTransformPropertiesTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInJsonTransformPropertiesTable(EObject element) {
@@ -525,7 +525,7 @@ public class JsonTransformMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -535,7 +535,7 @@ public class JsonTransformMediatorPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.JsonTransformMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {

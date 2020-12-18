@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.carbonserver.remote.ui;
+package org.wso2.integrationstudio.carbonserver.remote.ui;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -14,8 +14,8 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.carbonserver.remote.internal.RemoteCarbonServer;
-import org.wso2.integrationstudio.eclipse.carbonserver.remote.util.RemoteCarbonServerUtils;
+import org.wso2.integrationstudio.carbonserver.remote.internal.RemoteCarbonServer;
+import org.wso2.integrationstudio.carbonserver.remote.util.RemoteCarbonServerUtils;
 import org.eclipse.swt.widgets.Button;
 
 public class RemoteServerCredentialDialog extends Dialog {

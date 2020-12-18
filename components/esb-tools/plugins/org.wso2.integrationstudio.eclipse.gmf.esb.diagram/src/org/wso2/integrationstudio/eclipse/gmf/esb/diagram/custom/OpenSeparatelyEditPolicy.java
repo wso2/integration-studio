@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
@@ -7,23 +7,23 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CallTemplateMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamedEndpoint;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.CallTemplateMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.DataMapperMediatorEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.FailoverEndPointEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.NamedEndpointEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.RecipientListEndPointEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.CallTemplateMediator;
+import org.wso2.integrationstudio.gmf.esb.NamedEndpoint;
+import org.wso2.integrationstudio.gmf.esb.Sequence;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.CallTemplateMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DataMapperMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.FailoverEndPointEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.LoadBalanceEndPointEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.NamedEndpointEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.RecipientListEndPointEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceEditPart;
+import org.wso2.integrationstudio.gmf.esb.impl.FailoverEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.LoadBalanceEndPointImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.RecipientListEndPointImpl;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 public class OpenSeparatelyEditPolicy extends OpenEditPolicy {
 

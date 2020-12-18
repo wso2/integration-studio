@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part;
+package org.wso2.integrationstudio.gmf.esb.diagram.part;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EAnnotation;
@@ -6,9 +6,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbDiagram;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.edit.parts.*;
+import org.wso2.integrationstudio.gmf.esb.EsbDiagram;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.*;
 
 /**
  * This registry is used to determine which type of visual object should be
@@ -22,7 +22,7 @@ public class EsbVisualIDRegistry {
     /**
      * @generated
      */
-    private static final String DEBUG_KEY = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram/debug/visualID"; //$NON-NLS-1$
+    private static final String DEBUG_KEY = "org.wso2.integrationstudio.gmf.esb.diagram/debug/visualID"; //$NON-NLS-1$
 
     /**
      * @generated
@@ -35,7 +35,7 @@ public class EsbVisualIDRegistry {
                 return -1;
             }
         }
-        return org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry.getVisualID(view.getType());
+        return org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry.getVisualID(view.getType());
     }
 
     /**
@@ -96,14 +96,14 @@ public class EsbVisualIDRegistry {
         if (domainElement == null) {
             return -1;
         }
-        String containerModelID = org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
+        String containerModelID = org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry
                 .getModelID(containerView);
         if (!EsbDiagramEditPart.MODEL_ID.equals(containerModelID)) {
             return -1;
         }
         int containerVisualID;
         if (EsbDiagramEditPart.MODEL_ID.equals(containerModelID)) {
-            containerVisualID = org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
+            containerVisualID = org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry
                     .getVisualID(containerView);
         } else {
             if (containerView instanceof Diagram) {
@@ -10725,14 +10725,14 @@ public class EsbVisualIDRegistry {
      * @generated
      */
     public static boolean canCreateNode(View containerView, int nodeVisualID) {
-        String containerModelID = org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
+        String containerModelID = org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry
                 .getModelID(containerView);
         if (!EsbDiagramEditPart.MODEL_ID.equals(containerModelID)) {
             return false;
         }
         int containerVisualID;
         if (EsbDiagramEditPart.MODEL_ID.equals(containerModelID)) {
-            containerVisualID = org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
+            containerVisualID = org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry
                     .getVisualID(containerView);
         } else {
             if (containerView instanceof Diagram) {
@@ -18418,7 +18418,7 @@ public class EsbVisualIDRegistry {
         */
 
         public int getVisualID(View view) {
-            return org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry.getVisualID(view);
+            return org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry.getVisualID(view);
         }
 
         /**
@@ -18426,7 +18426,7 @@ public class EsbVisualIDRegistry {
         */
 
         public String getModelID(View view) {
-            return org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry.getModelID(view);
+            return org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry.getModelID(view);
         }
 
         /**
@@ -18434,7 +18434,7 @@ public class EsbVisualIDRegistry {
         */
 
         public int getNodeVisualID(View containerView, EObject domainElement) {
-            return org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
+            return org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry
                     .getNodeVisualID(containerView, domainElement);
         }
 
@@ -18443,7 +18443,7 @@ public class EsbVisualIDRegistry {
         */
 
         public boolean checkNodeVisualID(View containerView, EObject domainElement, int candidate) {
-            return org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
+            return org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry
                     .checkNodeVisualID(containerView, domainElement, candidate);
         }
 
@@ -18452,7 +18452,7 @@ public class EsbVisualIDRegistry {
         */
 
         public boolean isCompartmentVisualID(int visualID) {
-            return org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
+            return org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry
                     .isCompartmentVisualID(visualID);
         }
 
@@ -18461,7 +18461,7 @@ public class EsbVisualIDRegistry {
         */
 
         public boolean isSemanticLeafVisualID(int visualID) {
-            return org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
+            return org.wso2.integrationstudio.gmf.esb.diagram.part.EsbVisualIDRegistry
                     .isSemanticLeafVisualID(visualID);
         }
     };

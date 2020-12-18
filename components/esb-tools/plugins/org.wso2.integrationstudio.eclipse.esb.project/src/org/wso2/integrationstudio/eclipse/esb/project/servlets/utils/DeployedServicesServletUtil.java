@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.project.servlets.utils;
+package org.wso2.integrationstudio.esb.project.servlets.utils;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -25,9 +25,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.wso2.integrationstudio.eclipse.esb.project.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.esb.project.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import com.google.gson.Gson;
 

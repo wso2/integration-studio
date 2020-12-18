@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -73,12 +73,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -432,7 +432,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -442,7 +442,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -464,7 +464,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -474,7 +474,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -515,7 +515,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#getName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -525,7 +525,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#setName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -547,7 +547,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#getTemplateType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#getTemplateType()
 	 * 
 	 */
 	public Enumerator getTemplateType() {
@@ -558,7 +558,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#initTemplateType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#initTemplateType(Object input, Enumerator current)
 	 */
 	public void initTemplateType(Object input, Enumerator current) {
 		templateType.setInput(input);
@@ -576,7 +576,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#setTemplateType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#setTemplateType(Enumerator newValue)
 	 * 
 	 */
 	public void setTemplateType(Enumerator newValue) {
@@ -596,7 +596,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#initParameters(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#initParameters(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initParameters(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -617,7 +617,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#updateParameters()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#updateParameters()
 	 * 
 	 */
 	public void updateParameters() {
@@ -627,7 +627,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#addFilterParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#addFilterParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToParameters(ViewerFilter filter) {
@@ -640,7 +640,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#addBusinessFilterParameters(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#addBusinessFilterParameters(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToParameters(ViewerFilter filter) {
@@ -650,7 +650,7 @@ public class TemplatePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.TemplatePropertiesEditionPart#isContainedInParametersTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.TemplatePropertiesEditionPart#isContainedInParametersTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInParametersTable(EObject element) {

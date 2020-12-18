@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,11 +15,11 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector#getSoapAction <em>Soap Action</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector#getToAddress <em>To Address</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector#getSoapAction <em>Soap Action</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector#getToAddress <em>To Address</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloneMediatorTargetOutputConnector()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloneMediatorTargetOutputConnector()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface CloneMediatorTargetOutputConnector extends OutputConnector {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Soap Action</em>' attribute.
      * @see #setSoapAction(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloneMediatorTargetOutputConnector_SoapAction()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloneMediatorTargetOutputConnector_SoapAction()
      * @model default="soapAction"
      * @generated
      */
     String getSoapAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector#getSoapAction <em>Soap Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector#getSoapAction <em>Soap Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Soap Action</em>' attribute.
@@ -62,14 +62,14 @@ public interface CloneMediatorTargetOutputConnector extends OutputConnector {
      * <!-- end-user-doc -->
      * @return the value of the '<em>To Address</em>' attribute.
      * @see #setToAddress(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getCloneMediatorTargetOutputConnector_ToAddress()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCloneMediatorTargetOutputConnector_ToAddress()
      * @model default="toAddress"
      * @generated
      */
     String getToAddress();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector#getToAddress <em>To Address</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector#getToAddress <em>To Address</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>To Address</em>' attribute.

@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.webui.core.editor.function;
+package org.wso2.integrationstudio.webui.core.editor.function;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.IUndoableOperation;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.commands.operations.UndoContext;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.AbstractWebBasedEditor;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.Constants;
-import org.wso2.integrationstudio.eclipse.webui.core.editor.operation.UndoableBrowserOperation;
+import org.wso2.integrationstudio.webui.core.editor.AbstractWebBasedEditor;
+import org.wso2.integrationstudio.webui.core.editor.Constants;
+import org.wso2.integrationstudio.webui.core.editor.operation.UndoableBrowserOperation;
 
 public class ExecuteUndoableTaskFunction extends AbstractWebEditorFunction {
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -23,16 +23,16 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.FastXSLTMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.KeyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.FastXSLTMediator;
+import org.wso2.integrationstudio.gmf.esb.FastXSLTMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.FastXSLTMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.platform.core.mediatype.PlatformMediaTypeConstants;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,11 +42,11 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltSchemaKeyType <em>Fast Xslt Schema Key Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltStaticSchemaKey <em>Fast Xslt Static Schema Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltDynamicSchemaKey <em>Fast Xslt Dynamic Schema Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltSchemaKeyType <em>Fast Xslt Schema Key Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltStaticSchemaKey <em>Fast Xslt Static Schema Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltDynamicSchemaKey <em>Fast Xslt Dynamic Schema Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FastXSLTMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.FastXSLTMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated

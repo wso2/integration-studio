@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -78,18 +78,18 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.internal.WorkbenchWindow;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.integrationstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
+import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -577,7 +577,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -587,7 +587,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -609,7 +609,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#getCommentsList()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#getCommentsList()
 	 * 
 	 */
 	public EList getCommentsList() {
@@ -619,7 +619,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#setCommentsList(EList newValue)
 	 * 
 	 */
 	public void setCommentsList(EList newValue) {
@@ -660,7 +660,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#getReverse()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#getReverse()
 	 * 
 	 */
 	public Boolean getReverse() {
@@ -670,7 +670,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#setReverse(Boolean newValue)
 	 * 
 	 */
 	public void setReverse(Boolean newValue) {
@@ -692,7 +692,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#getMessageStore()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#getMessageStore()
 	 * 
 	 */
 	public String getMessageStore() {
@@ -702,7 +702,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#setMessageStore(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#setMessageStore(String newValue)
 	 * 
 	 */
 	public void setMessageStore(String newValue) {
@@ -724,7 +724,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#getAvailableMessageStores()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#getAvailableMessageStores()
 	 * 
 	 */
 	public String getAvailableMessageStores() {
@@ -734,7 +734,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#setAvailableMessageStores(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#setAvailableMessageStores(String newValue)
 	 * 
 	 */
 	public void setAvailableMessageStores(String newValue) {
@@ -748,7 +748,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#getSpecifyAs()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#getSpecifyAs()
 	 * 
 	 */
 	public Enumerator getSpecifyAs() {
@@ -759,7 +759,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#initSpecifyAs(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#initSpecifyAs(Object input, Enumerator current)
 	 */
 	public void initSpecifyAs(Object input, Enumerator current) {
 		specifyAs.setInput(input);
@@ -777,7 +777,7 @@ public class StoreMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.StoreMediatorPropertiesEditionPart#setSpecifyAs(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.StoreMediatorPropertiesEditionPart#setSpecifyAs(Enumerator newValue)
 	 * 
 	 */
 	public void setSpecifyAs(Enumerator newValue) {

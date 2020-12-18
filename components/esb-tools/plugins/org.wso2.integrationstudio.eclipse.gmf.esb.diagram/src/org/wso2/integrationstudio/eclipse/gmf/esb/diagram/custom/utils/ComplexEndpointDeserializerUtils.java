@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.utils;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.utils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -44,12 +44,12 @@ import org.apache.synapse.endpoints.RecipientListEndpoint;
 import org.apache.synapse.endpoints.TemplateEndpoint;
 import org.apache.synapse.endpoints.WSDLEndpoint;
 import org.apache.synapse.mediators.MediatorProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EndPointPropertyScope;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Member;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
+import org.wso2.integrationstudio.gmf.esb.EndPointPropertyScope;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.Member;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.ComplexEndpointWizardUtils;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.EndpointTableEntry;
 

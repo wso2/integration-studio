@@ -59,9 +59,9 @@
         <plugin id="org.eclipse.bpel.wsil.model" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
         <plugin id="org.eclipse.bpel.xpath10" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
         <plugin id="org.wso2.wsf.ide.bpel.export" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.artifact.bpel" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.bpel.connector" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-        <plugin id="org.wso2.integrationstudio.eclipse.bpel.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.artifact.bpel" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.bpel.connector" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+        <plugin id="org.wso2.integrationstudio.bpel.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
         <plugin id="org.wso2.integrationstudio.humantaskeditor" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
         
 </feature>

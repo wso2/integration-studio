@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.samples.wizards;
+package org.wso2.integrationstudio.samples.wizards;
 
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 

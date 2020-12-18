@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.carbonserver.base.exception;
+package org.wso2.integrationstudio.carbonserver.base.exception;
 
 public class NoSuchCarbonOperationDefinedException extends Exception {
 	public NoSuchCarbonOperationDefinedException() {

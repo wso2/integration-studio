@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.theme;
+package org.wso2.integrationstudio.esb.theme;
 
 import org.eclipse.e4.ui.workbench.renderers.swt.CTabRendering;
 import org.eclipse.swt.SWT;

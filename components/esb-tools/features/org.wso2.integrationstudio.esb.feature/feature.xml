@@ -16,31 +16,31 @@
             <import feature="org.wso2.integrationstudio.platform.feature" version="0.0.0"/>
       </requires>
 
-      <plugin id="org.wso2.integrationstudio.eclipse.esb.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.connector" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.endpoint" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.inboundendpoint" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.localentry" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.mediator" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.messageprocessor" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.messagestore" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.proxyservice" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.sequence" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.synapse" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.synapse.api" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.task" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.artifact.template.sequence" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.esb.project" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.esb.dashboard.templates" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.esb.theme" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.esb.docker" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.esb.cloud" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.esb.synapse.unit.test" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.gmf.esb" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.gmf.esb.diagram" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.gmf.esb.edit" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.gmf.esb.persistence" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-      <plugin id="org.wso2.integrationstudio.eclipse.esb.libraries" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.esb.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.connector" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.endpoint" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.inboundendpoint" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.localentry" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.mediator" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.messageprocessor" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.messagestore" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.proxyservice" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.sequence" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.synapse" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.synapse.api" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.task" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.artifact.template.sequence" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.esb.project" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.esb.dashboard.templates" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.esb.theme" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.esb.docker" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.esb.cloud" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.esb.synapse.unit.test" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.gmf.esb" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.gmf.esb.diagram" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.gmf.esb.edit" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.gmf.esb.persistence" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.esb.libraries" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
       <plugin id="org.wso2.integrationstudio.esb.form.editors" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
       <plugin id="org.wso2.integrationstudio.visualdatamapper" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
       <plugin id="org.wso2.integrationstudio.visualdatamapper.diagram" download-size="0" install-size="0" version="0.0.0" unpack="false"/>

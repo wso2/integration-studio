@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.provider;
+package org.wso2.integrationstudio.gmf.esb.provider;
 
 
 import java.util.Collection;
@@ -24,10 +24,10 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediatorProperty;
+import org.wso2.integrationstudio.gmf.esb.JsonTransformMediatorProperty;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.integrationstudio.eclipse.gmf.esb.JsonTransformMediatorProperty} object.
+ * This is the item provider adapter for a {@link org.wso2.integrationstudio.gmf.esb.JsonTransformMediatorProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

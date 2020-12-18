@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.registry.editor;
+package org.wso2.integrationstudio.artifact.registry.editor;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.artifact.registry.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.artifact.registry.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
  
 
 public class ResourceFormEditor extends FormEditor  {
@@ -38,7 +38,7 @@ public class ResourceFormEditor extends FormEditor  {
 	protected void addPages() {
 		resourcePage = new RegistryResourcePage(
 				this,
-				"org.wso2.integrationstudio.eclipse.artifact.registry.editor.FormEditor",
+				"org.wso2.integrationstudio.artifact.registry.editor.FormEditor",
 				"Design");
 		 try {
 			 addPage(resourcePage);

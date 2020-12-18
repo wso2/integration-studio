@@ -1,9 +1,9 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.integrationstudio.eclipse.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.InputConnector;
 
 public abstract class AbstractBaseFigureFaultInputConnectorEditPart extends AbstractInputConnectorEditPart {
 

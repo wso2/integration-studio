@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.project.export.util;
+package org.wso2.integrationstudio.platform.core.project.export.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,17 +25,17 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.Activator;
-import org.wso2.integrationstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.Activator;
+import org.wso2.integrationstudio.platform.core.project.export.ProjectArtifactHandler;
 
 /**
  * Carbon application export utility
  *
  */
 public class ExportUtil {
-	private static final String EXT_POINT_ID = "org.wso2.integrationstudio.eclipse.project.export.handler";
+	private static final String EXT_POINT_ID = "org.wso2.integrationstudio.project.export.handler";
 	private static Map<String, IConfigurationElement> handlers = new HashMap<String, IConfigurationElement>();
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 

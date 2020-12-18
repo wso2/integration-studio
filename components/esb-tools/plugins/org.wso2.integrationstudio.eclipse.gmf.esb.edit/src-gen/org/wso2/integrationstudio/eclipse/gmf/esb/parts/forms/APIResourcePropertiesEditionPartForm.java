@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import java.util.ArrayList;
@@ -74,15 +74,15 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ApiResourceUrlStyle;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.ApiResourceUrlStyle;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SequenceType;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 
 // End of user code
@@ -1253,7 +1253,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#initInSequenceInputConnectors(EObject current, EReference containingFeature, EReference feature)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#initInSequenceInputConnectors(EObject current, EReference containingFeature, EReference feature)
 	 */
 	public void initInSequenceInputConnectors(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
@@ -1274,7 +1274,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#updateInSequenceInputConnectors()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#updateInSequenceInputConnectors()
 	 * 
 	 */
 	public void updateInSequenceInputConnectors() {
@@ -1284,7 +1284,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#addFilterInSequenceInputConnectors(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#addFilterInSequenceInputConnectors(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToInSequenceInputConnectors(ViewerFilter filter) {
@@ -1297,7 +1297,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#addBusinessFilterInSequenceInputConnectors(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#addBusinessFilterInSequenceInputConnectors(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToInSequenceInputConnectors(ViewerFilter filter) {
@@ -1307,7 +1307,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#isContainedInInSequenceInputConnectorsTable(EObject element)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#isContainedInInSequenceInputConnectorsTable(EObject element)
 	 * 
 	 */
 	public boolean isContainedInInSequenceInputConnectorsTable(EObject element) {
@@ -1317,7 +1317,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getUrlStyle()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getUrlStyle()
 	 * 
 	 */
 	public Enumerator getUrlStyle() {
@@ -1328,7 +1328,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#initUrlStyle(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#initUrlStyle(Object input, Enumerator current)
 	 */
 	public void initUrlStyle(Object input, Enumerator current) {
 		urlStyle.setInput(input);
@@ -1346,7 +1346,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setUrlStyle(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setUrlStyle(Enumerator newValue)
 	 * 
 	 */
 	public void setUrlStyle(Enumerator newValue) {
@@ -1364,7 +1364,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getUriTemplate()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getUriTemplate()
 	 * 
 	 */
 	public String getUriTemplate() {
@@ -1374,7 +1374,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setUriTemplate(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setUriTemplate(String newValue)
 	 * 
 	 */
 	public void setUriTemplate(String newValue) {
@@ -1396,7 +1396,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getUrlMapping()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getUrlMapping()
 	 * 
 	 */
 	public String getUrlMapping() {
@@ -1406,7 +1406,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setUrlMapping(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setUrlMapping(String newValue)
 	 * 
 	 */
 	public void setUrlMapping(String newValue) {
@@ -1428,7 +1428,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getProtocol()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getProtocol()
 	 * 
 	 */
 	public Enumerator getProtocol() {
@@ -1439,7 +1439,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#initProtocol(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#initProtocol(Object input, Enumerator current)
 	 */
 	public void initProtocol(Object input, Enumerator current) {
 		protocol.setInput(input);
@@ -1457,7 +1457,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setProtocol(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setProtocol(Enumerator newValue)
 	 * 
 	 */
 	public void setProtocol(Enumerator newValue) {
@@ -1475,7 +1475,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowGet()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowGet()
 	 * 
 	 */
 	public Boolean getAllowGet() {
@@ -1485,7 +1485,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowGet(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowGet(Boolean newValue)
 	 * 
 	 */
 	public void setAllowGet(Boolean newValue) {
@@ -1507,7 +1507,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowPost()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowPost()
 	 * 
 	 */
 	public Boolean getAllowPost() {
@@ -1517,7 +1517,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowPost(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowPost(Boolean newValue)
 	 * 
 	 */
 	public void setAllowPost(Boolean newValue) {
@@ -1539,7 +1539,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowPut()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowPut()
 	 * 
 	 */
 	public Boolean getAllowPut() {
@@ -1549,7 +1549,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowPut(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowPut(Boolean newValue)
 	 * 
 	 */
 	public void setAllowPut(Boolean newValue) {
@@ -1571,7 +1571,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowDelete()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowDelete()
 	 * 
 	 */
 	public Boolean getAllowDelete() {
@@ -1581,7 +1581,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowDelete(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowDelete(Boolean newValue)
 	 * 
 	 */
 	public void setAllowDelete(Boolean newValue) {
@@ -1603,7 +1603,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowOptions()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowOptions()
 	 * 
 	 */
 	public Boolean getAllowOptions() {
@@ -1613,7 +1613,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowOptions(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowOptions(Boolean newValue)
 	 * 
 	 */
 	public void setAllowOptions(Boolean newValue) {
@@ -1635,7 +1635,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowHead()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowHead()
 	 * 
 	 */
 	public Boolean getAllowHead() {
@@ -1645,7 +1645,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowHead(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowHead(Boolean newValue)
 	 * 
 	 */
 	public void setAllowHead(Boolean newValue) {
@@ -1667,7 +1667,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowPatch()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getAllowPatch()
 	 * 
 	 */
 	public Boolean getAllowPatch() {
@@ -1677,7 +1677,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowPatch(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setAllowPatch(Boolean newValue)
 	 * 
 	 */
 	public void setAllowPatch(Boolean newValue) {
@@ -1699,7 +1699,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getInSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getInSequenceType()
 	 * 
 	 */
 	public Enumerator getInSequenceType() {
@@ -1710,7 +1710,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#initInSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#initInSequenceType(Object input, Enumerator current)
 	 */
 	public void initInSequenceType(Object input, Enumerator current) {
 		inSequenceType.setInput(input);
@@ -1728,7 +1728,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setInSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setInSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setInSequenceType(Enumerator newValue) {
@@ -1746,7 +1746,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getInSequenceName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getInSequenceName()
 	 * 
 	 */
 	public String getInSequenceName() {
@@ -1756,7 +1756,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setInSequenceName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setInSequenceName(String newValue)
 	 * 
 	 */
 	public void setInSequenceName(String newValue) {
@@ -1778,7 +1778,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getOutSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getOutSequenceType()
 	 * 
 	 */
 	public Enumerator getOutSequenceType() {
@@ -1789,7 +1789,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#initOutSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#initOutSequenceType(Object input, Enumerator current)
 	 */
 	public void initOutSequenceType(Object input, Enumerator current) {
 		outSequenceType.setInput(input);
@@ -1807,7 +1807,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setOutSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setOutSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setOutSequenceType(Enumerator newValue) {
@@ -1825,7 +1825,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getOutSequenceName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getOutSequenceName()
 	 * 
 	 */
 	public String getOutSequenceName() {
@@ -1835,7 +1835,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setOutSequenceName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setOutSequenceName(String newValue)
 	 * 
 	 */
 	public void setOutSequenceName(String newValue) {
@@ -1857,7 +1857,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getFaultSequenceType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getFaultSequenceType()
 	 * 
 	 */
 	public Enumerator getFaultSequenceType() {
@@ -1868,7 +1868,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#initFaultSequenceType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#initFaultSequenceType(Object input, Enumerator current)
 	 */
 	public void initFaultSequenceType(Object input, Enumerator current) {
 		faultSequenceType.setInput(input);
@@ -1886,7 +1886,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setFaultSequenceType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setFaultSequenceType(Enumerator newValue)
 	 * 
 	 */
 	public void setFaultSequenceType(Enumerator newValue) {
@@ -1904,7 +1904,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#getFaultSequenceName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#getFaultSequenceName()
 	 * 
 	 */
 	public String getFaultSequenceName() {
@@ -1914,7 +1914,7 @@ public class APIResourcePropertiesEditionPartForm extends SectionPropertiesEditi
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.APIResourcePropertiesEditionPart#setFaultSequenceName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.APIResourcePropertiesEditionPart#setFaultSequenceName(String newValue)
 	 * 
 	 */
 	public void setFaultSequenceName(String newValue) {

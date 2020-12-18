@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence;
+package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,19 +10,19 @@ import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.task.TaskDescription;
 import org.eclipse.ui.forms.editor.FormPage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.TaskPropertyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.TaskProperty;
+import org.wso2.integrationstudio.gmf.esb.TaskPropertyType;
+import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.ScheduledTaskFormPage;
 
 public class TaskTransformer {
 
     public void transform(TransformationInfo info, EsbNode subject, int startupCount) throws Exception {
-        create((org.wso2.integrationstudio.eclipse.gmf.esb.Task) subject);
+        create((org.wso2.integrationstudio.gmf.esb.Task) subject);
     }
 
-    public TaskDescription create(org.wso2.integrationstudio.eclipse.gmf.esb.Task visualTask) {
+    public TaskDescription create(org.wso2.integrationstudio.gmf.esb.Task visualTask) {
         org.apache.synapse.task.TaskDescription taskDescription = new TaskDescription();
         if (visualTask.getTaskName() != null) {
             taskDescription.setName(visualTask.getTaskName());

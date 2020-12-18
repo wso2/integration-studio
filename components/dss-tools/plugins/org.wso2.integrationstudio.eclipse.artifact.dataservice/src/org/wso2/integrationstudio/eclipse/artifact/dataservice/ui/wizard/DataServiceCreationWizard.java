@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.dataservice.ui.wizard;
+package org.wso2.integrationstudio.artifact.dataservice.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,28 +45,28 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.Activator;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.artifact.DSSArtifact;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.artifact.DSSProjectArtifact;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.model.DataServiceModel;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.utils.DataServiceArtifactConstants;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.utils.DataServiceImageUtils;
-import org.wso2.integrationstudio.eclipse.artifact.dataservice.utils.DataServiceTemplateUtils;
-import org.wso2.integrationstudio.eclipse.capp.maven.utils.MavenConstants;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.wso2.integrationstudio.eclipse.platform.core.project.presentation.ProjectPresentation;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.XMLUtil;
-import org.wso2.integrationstudio.eclipse.platform.ui.validator.CommonFieldValidator;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsPage;
-import org.wso2.integrationstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.ide.FileExtensionResourcevisitor;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.artifact.dataservice.Activator;
+import org.wso2.integrationstudio.artifact.dataservice.artifact.DSSArtifact;
+import org.wso2.integrationstudio.artifact.dataservice.artifact.DSSProjectArtifact;
+import org.wso2.integrationstudio.artifact.dataservice.model.DataServiceModel;
+import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceArtifactConstants;
+import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceImageUtils;
+import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceTemplateUtils;
+import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
+import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
+import org.wso2.integrationstudio.platform.core.utils.XMLUtil;
+import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
+import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsDataPage;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsPage;
+import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.ide.FileExtensionResourcevisitor;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard {
 
@@ -86,7 +86,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	private static final String DATASERVICE_TEMPLATE = "templates/Dataservice1.dbs";
 	private static final String DATASERVICE_TEMPLATE_SECRETALIAS = "templates/Dataservice2.dbs";
 	private String version = "1.0.0";
-	private static final String DSS_PERSPECTIVE = "org.wso2.integrationstudio.eclipse.ds.presentation.custom.perspective";
+	private static final String DSS_PERSPECTIVE = "org.wso2.integrationstudio.ds.presentation.custom.perspective";
 
 
 	private final DataServiceModel dsModel;

@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.persistence;
+package org.wso2.integrationstudio.gmf.esb.persistence;
 
 import java.io.File;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbSequence;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.SequenceModelTranformerImpl;
+import org.wso2.integrationstudio.gmf.esb.EsbSequence;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.SequenceModelTranformerImpl;
 
 /**
  * Defines the interface used to export ESB visual model into other persisted

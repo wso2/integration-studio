@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.core.artifacts.configure;
+package org.wso2.integrationstudio.capp.core.artifacts.configure;
 
 public interface ICAppProjectSettings {
 	public void setSettings(String id,ISettingsData data);

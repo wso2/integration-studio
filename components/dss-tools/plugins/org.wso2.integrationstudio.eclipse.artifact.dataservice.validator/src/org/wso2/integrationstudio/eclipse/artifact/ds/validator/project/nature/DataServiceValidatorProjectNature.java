@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.ds.validator.project.nature;
+package org.wso2.integrationstudio.artifact.ds.validator.project.nature;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -30,12 +30,12 @@ import org.apache.maven.model.RepositoryPolicy;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.runtime.CoreException;
-import org.wso2.integrationstudio.eclipse.artifact.ds.validator.ui.wizard.DataServiceValidatorCreationWizard;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.maven.util.ProjectDependencyConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.nature.AbstractWSO2ProjectNature;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaLibraryBean;
-import org.wso2.integrationstudio.eclipse.utils.jdt.JavaLibraryUtil;
+import org.wso2.integrationstudio.artifact.ds.validator.ui.wizard.DataServiceValidatorCreationWizard;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.maven.util.ProjectDependencyConstants;
+import org.wso2.integrationstudio.platform.core.nature.AbstractWSO2ProjectNature;
+import org.wso2.integrationstudio.utils.jdt.JavaLibraryBean;
+import org.wso2.integrationstudio.utils.jdt.JavaLibraryUtil;
 
 public class DataServiceValidatorProjectNature extends AbstractWSO2ProjectNature {
 

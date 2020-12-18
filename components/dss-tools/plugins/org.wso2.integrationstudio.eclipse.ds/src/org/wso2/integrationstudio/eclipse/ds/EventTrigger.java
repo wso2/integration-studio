@@ -4,7 +4,7 @@
  * 
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.FeatureMap;
@@ -18,15 +18,15 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getTargetTopic <em>Target Topic</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getSubscriptions <em>Subscriptions</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getId <em>Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getLanguage <em>Language</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.EventTrigger#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.EventTrigger#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.EventTrigger#getTargetTopic <em>Target Topic</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.EventTrigger#getSubscriptions <em>Subscriptions</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.EventTrigger#getId <em>Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.EventTrigger#getLanguage <em>Language</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getEventTrigger()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getEventTrigger()
  * @model extendedMetaData="name='event-trigger_._type' kind='mixed'"
  * @generated
  */
@@ -41,7 +41,7 @@ public interface EventTrigger extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getEventTrigger_Mixed()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getEventTrigger_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -58,7 +58,7 @@ public interface EventTrigger extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Expression</em>' containment reference.
 	 * @see #setExpression(Expression)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getEventTrigger_Expression()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getEventTrigger_Expression()
 	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='expression' namespace='##targetNamespace'"
 	 * @generated
@@ -66,7 +66,7 @@ public interface EventTrigger extends EObject {
 	Expression getExpression();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getExpression <em>Expression</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.EventTrigger#getExpression <em>Expression</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Expression</em>' containment reference.
@@ -85,7 +85,7 @@ public interface EventTrigger extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target Topic</em>' containment reference.
 	 * @see #setTargetTopic(TargetTopic)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getEventTrigger_TargetTopic()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getEventTrigger_TargetTopic()
 	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='target-topic' namespace='##targetNamespace'"
 	 * @generated
@@ -93,7 +93,7 @@ public interface EventTrigger extends EObject {
 	TargetTopic getTargetTopic();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getTargetTopic <em>Target Topic</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.EventTrigger#getTargetTopic <em>Target Topic</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Target Topic</em>' containment reference.
@@ -112,7 +112,7 @@ public interface EventTrigger extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subscriptions</em>' containment reference.
 	 * @see #setSubscriptions(EventSubscriptionList)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getEventTrigger_Subscriptions()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getEventTrigger_Subscriptions()
 	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='subscriptions' namespace='##targetNamespace'"
 	 * @generated
@@ -120,7 +120,7 @@ public interface EventTrigger extends EObject {
 	EventSubscriptionList getSubscriptions();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getSubscriptions <em>Subscriptions</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.EventTrigger#getSubscriptions <em>Subscriptions</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Subscriptions</em>' containment reference.
@@ -139,7 +139,7 @@ public interface EventTrigger extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getEventTrigger_Id()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getEventTrigger_Id()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='id' namespace='##targetNamespace'"
 	 * @generated
@@ -147,7 +147,7 @@ public interface EventTrigger extends EObject {
 	String getId();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getId <em>Id</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.EventTrigger#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
@@ -166,7 +166,7 @@ public interface EventTrigger extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Language</em>' attribute.
 	 * @see #setLanguage(String)
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getEventTrigger_Language()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getEventTrigger_Language()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='language' namespace='##targetNamespace'"
 	 * @generated
@@ -174,7 +174,7 @@ public interface EventTrigger extends EObject {
 	String getLanguage();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.ds.EventTrigger#getLanguage <em>Language</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.integrationstudio.ds.EventTrigger#getLanguage <em>Language</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Language</em>' attribute.

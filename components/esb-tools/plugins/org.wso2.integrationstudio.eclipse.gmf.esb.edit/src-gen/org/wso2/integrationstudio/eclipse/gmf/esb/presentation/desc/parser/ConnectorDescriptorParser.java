@@ -15,17 +15,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.presentation.desc.parser;
+package org.wso2.integrationstudio.gmf.esb.presentation.desc.parser;
 
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.condition.manager.AndConditionOperation;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.condition.manager.ConditionArgument;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.condition.manager.ConditionOperatorType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.condition.manager.EnableCondition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.condition.manager.NotConditionOperation;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.condition.manager.OrConditionOperation;
+import org.wso2.integrationstudio.gmf.esb.presentation.condition.manager.AndConditionOperation;
+import org.wso2.integrationstudio.gmf.esb.presentation.condition.manager.ConditionArgument;
+import org.wso2.integrationstudio.gmf.esb.presentation.condition.manager.ConditionOperatorType;
+import org.wso2.integrationstudio.gmf.esb.presentation.condition.manager.EnableCondition;
+import org.wso2.integrationstudio.gmf.esb.presentation.condition.manager.NotConditionOperation;
+import org.wso2.integrationstudio.gmf.esb.presentation.condition.manager.OrConditionOperation;
 
 import java.util.ArrayList;
 import java.util.List;

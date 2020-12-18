@@ -11,7 +11,7 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.refactor;
+package org.wso2.integrationstudio.artifact.endpoint.refactor;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -32,10 +32,10 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.RenameParticipant;
-import org.wso2.integrationstudio.eclipse.artifact.endpoint.Activator;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.integrationstudio.artifact.endpoint.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
 
 public class EndpointRenameRefactorParticipant extends RenameParticipant {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -44,7 +44,7 @@ public class EndpointRenameRefactorParticipant extends RenameParticipant {
 	private String changedFileName;
 	private IProject esbProject;
 	private static List<String> skipList;
-	protected final static String EDITOR_ID = "org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor";
+	protected final static String EDITOR_ID = "org.wso2.integrationstudio.gmf.esb.diagram.part.EsbMultiPageEditor";
 
 	static {
 		skipList = new ArrayList<String>();
@@ -62,7 +62,7 @@ public class EndpointRenameRefactorParticipant extends RenameParticipant {
 			fileName = RefactorUtils.getFilenameWOExtension(changedFileName);
 			ext = RefactorUtils.getFilenameExtension(changedFileName);
 
-			org.wso2.integrationstudio.eclipse.utils.file.FileUtils.getAllExactMatchingFiles(esbProject.getLocation()
+			org.wso2.integrationstudio.utils.file.FileUtils.getAllExactMatchingFiles(esbProject.getLocation()
 					.toOSString(), fileName, ext, matchinFilesList, skipList);
 
 			if (!matchinFilesList.isEmpty()) {

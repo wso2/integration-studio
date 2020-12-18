@@ -23,7 +23,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.integrationstudio.eclipse.ei.project</artifactId>
+    <artifactId>org.wso2.integrationstudio.ei.project</artifactId>
     <packaging>eclipse-plugin</packaging>
     <name>WSO2 Integration Studio Tooling - EI Server plugin</name>
 </project>

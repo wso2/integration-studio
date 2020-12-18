@@ -13,47 +13,47 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator.impl;
+package org.wso2.integrationstudio.gmf.esb.diagram.debugger.mediatorlocator.impl;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ADVICE_CONTAINER_POSITION_VALUE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_OBLIGATIONS_CONTAINER_POSITION_VALUE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ON_ACCEPT_CONTAINER_POSITION_VALUE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ON_REJECT_CONTAINER_POSITION_VALUE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.FILTER_FAIL_CONTAINER_POSITION_VALUE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.FILTER_PASS_CONTAINER_POSITION_VALUE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SWITCH_DEFAULT_CONTAINER_POSITION_VALUE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.THROTTLE_ON_ACCEPT_CONTAINER_POSITION_VALUE;
-import static org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.THROTTLE_ON_REJECT_CONTAINER_POSITION_VALUE;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ADVICE_CONTAINER_POSITION_VALUE;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_OBLIGATIONS_CONTAINER_POSITION_VALUE;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ON_ACCEPT_CONTAINER_POSITION_VALUE;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ON_REJECT_CONTAINER_POSITION_VALUE;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.FILTER_FAIL_CONTAINER_POSITION_VALUE;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.FILTER_PASS_CONTAINER_POSITION_VALUE;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SWITCH_DEFAULT_CONTAINER_POSITION_VALUE;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.THROTTLE_ON_ACCEPT_CONTAINER_POSITION_VALUE;
+import static org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.THROTTLE_ON_REJECT_CONTAINER_POSITION_VALUE;
 
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.APIResource;
-import org.wso2.integrationstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbElement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Mediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.OutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.impl.AbstractESBDebugPointBuilder;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator.IMediatorLocator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.CacheMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.CloneMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.FilterMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.IterateMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.ProxyServiceImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.RuleMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.APIResource;
+import org.wso2.integrationstudio.gmf.esb.CloneMediatorTargetOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EsbElement;
+import org.wso2.integrationstudio.gmf.esb.EsbLink;
+import org.wso2.integrationstudio.gmf.esb.Mediator;
+import org.wso2.integrationstudio.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.SwitchCaseBranchOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.debugpoint.builder.impl.AbstractESBDebugPointBuilder;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.mediatorlocator.IMediatorLocator;
+import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
+import org.wso2.integrationstudio.gmf.esb.impl.AggregateMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.CloneMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.FilterMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.IterateMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.ProxyServiceImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.RuleMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.SwitchMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.ValidateMediatorImpl;
 
 /**
  * This class should be implemented by all Mediator locator class

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.maven.types;
+package org.wso2.integrationstudio.maven.types;
 
 /**
  * This class contains the Maven Archetype related parameters to be consumed for

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.registry.libraries.utils;
+package org.wso2.integrationstudio.registry.libraries.utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,9 +25,9 @@ import java.net.URL;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.registry.libraries.Activator;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.libraries.Activator;
 
 public class LibraryUtils {
 	private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);

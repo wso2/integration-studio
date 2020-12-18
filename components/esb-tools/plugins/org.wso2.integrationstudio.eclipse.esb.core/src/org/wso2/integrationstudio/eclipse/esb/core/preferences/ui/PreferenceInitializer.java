@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.esb.core.preferences.ui;
+package org.wso2.integrationstudio.esb.core.preferences.ui;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 
-import org.wso2.integrationstudio.eclipse.esb.core.Activator;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.EsbVersions;
-import org.wso2.integrationstudio.eclipse.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.Activator;
+import org.wso2.integrationstudio.esb.core.utils.EsbVersions;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
 
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
 

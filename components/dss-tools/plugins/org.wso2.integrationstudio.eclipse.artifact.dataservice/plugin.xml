@@ -3,10 +3,10 @@
 <plugin>
    <extension
          point="org.eclipse.ui.newWizards">
-         <wizard name="Data Service" category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.service.hosting/org.wso2.integrationstudio.eclipse.service.hosting.project.types"
-			class="org.wso2.integrationstudio.eclipse.artifact.dataservice.ui.wizard.DataServiceCreationWizard"
+         <wizard name="Data Service" category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.service.hosting/org.wso2.integrationstudio.service.hosting.project.types"
+			class="org.wso2.integrationstudio.artifact.dataservice.ui.wizard.DataServiceCreationWizard"
 			wizardManifest="project_wizard.xml"
-			id="org.wso2.integrationstudio.eclipse.artifact.newdsartifact"
+			id="org.wso2.integrationstudio.artifact.newdsartifact"
 			project="true"
 			icon="icons/ds-16x16.png">
 			<description>Data Service</description>
@@ -16,7 +16,7 @@
 		id="org.wso2.developerstudio.eclipse.ds.project.nature" name="Data Service Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.artifact.dataservice.project.nature.DataServiceNature">
+				class="org.wso2.integrationstudio.artifact.dataservice.project.nature.DataServiceNature">
 			</run>
 		</runtime>
 	</extension>
@@ -27,8 +27,8 @@
 	</extension>		
     <extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="1org.wso2.integrationstudio.eclipse.artifact.webservice"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.newdsartifact">
+                menuGroupId="1org.wso2.integrationstudio.artifact.webservice"
+                wizardId="org.wso2.integrationstudio.artifact.newdsartifact">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
@@ -40,7 +40,7 @@
 								value="org.wso2.developerstudio.eclipse.ds.project.nature" />
 						</adapt>
 						<adapt type="org.eclipse.core.resources.IResource">
-								<test property="org.wso2.integrationstudio.eclipse.esb.dss.propertytester.checkResourceType"
+								<test property="org.wso2.integrationstudio.esb.dss.propertytester.checkResourceType"
                             		value="true" forcePluginActivation="true" />
                         </adapt>
                     </or>
@@ -50,45 +50,45 @@
     <extension
             point="org.eclipse.core.expressions.propertyTesters">
         <propertyTester
-                class="org.wso2.integrationstudio.eclipse.artifact.dataservice.validators.DataServiceResourceTester"
+                class="org.wso2.integrationstudio.artifact.dataservice.validators.DataServiceResourceTester"
                 id="ResourceDSSTester"
-                namespace="org.wso2.integrationstudio.eclipse.esb.dss.propertytester"
+                namespace="org.wso2.integrationstudio.esb.dss.propertytester"
                 properties="checkResourceType"
                 type="org.eclipse.core.resources.IResource">
         </propertyTester>
     </extension>
   <extension
-       point="org.wso2.integrationstudio.eclipse.project.export.handler">
+       point="org.wso2.integrationstudio.project.export.handler">
     <handler
-          class="org.wso2.integrationstudio.eclipse.artifact.dataservice.project.export.DataServiceArtfactExportHandler"
-          id="org.wso2.integrationstudio.eclipse.artifact.dataservice.project.export.handler"
+          class="org.wso2.integrationstudio.artifact.dataservice.project.export.DataServiceArtfactExportHandler"
+          id="org.wso2.integrationstudio.artifact.dataservice.project.export.handler"
           type="service/dataservice">
     </handler>
  </extension>
-    <extension point="org.wso2.integrationstudio.eclipse.samples">
+    <extension point="org.wso2.integrationstudio.samples">
       <sample
-            class="org.wso2.integrationstudio.eclipse.artifact.dataservice.sample.DataserviceSampleContributor"
-            id="org.wso2.integrationstudio.eclipse.capp.artifact.dataservice.sample"
+            class="org.wso2.integrationstudio.artifact.dataservice.sample.DataserviceSampleContributor"
+            id="org.wso2.integrationstudio.capp.artifact.dataservice.sample"
             isCustomCreateSample="false"
             sampleProjectName="EmployeeDataService">
       </sample>
    </extension>
     		
-	<extension point="org.wso2.integrationstudio.eclipse.dashboad.link">
+	<extension point="org.wso2.integrationstudio.dashboad.link">
 	<category id="dashboard.category.dss.project" showTitle="true" title="DSS Project Types" priority="3" />
 	
        <wizardLink category="dashboard.category.dss.project" id="dashboard.wizardLink.ds.project"
-                    wizard="org.wso2.integrationstudio.eclipse.artifact.newdsproject" priority="1">
+                    wizard="org.wso2.integrationstudio.artifact.newdsproject" priority="1">
        </wizardLink>
        <wizardLink category="dashboard.category.dss.project" id="dashboard.wizardLink.ds.validiator"
-                    wizard="org.wso2.integrationstudio.eclipse.artifact.newvalidiatorartifact" priority="2">
+                    wizard="org.wso2.integrationstudio.artifact.newvalidiatorartifact" priority="2">
        </wizardLink>
     </extension>
    
-    <extension point="org.wso2.integrationstudio.eclipse.dashboad.link">
+    <extension point="org.wso2.integrationstudio.dashboad.link">
 	<category id="dashboard.category.dss.artifacts" showTitle="true" title="DSS Artifact Types" priority="4" />
      <wizardLink category="dashboard.category.dss.artifacts" id="dashboard.wizardLink.ds.project"
-                    wizard="org.wso2.integrationstudio.eclipse.artifact.newdsartifact" priority="1">
+                    wizard="org.wso2.integrationstudio.artifact.newdsartifact" priority="1">
      </wizardLink>
     </extension>
 

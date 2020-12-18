@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.endpoint.utils;
+package org.wso2.integrationstudio.artifact.endpoint.utils;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.utils.template.TemplateUtil;
+import org.wso2.integrationstudio.utils.template.TemplateUtil;
 
 public class EndpointTemplateUtils extends TemplateUtil{
 
 	protected Bundle getBundle() {
-		return Platform.getBundle(org.wso2.integrationstudio.eclipse.artifact.endpoint.Activator.PLUGIN_ID);
+		return Platform.getBundle(org.wso2.integrationstudio.artifact.endpoint.Activator.PLUGIN_ID);
 	}
 
 }

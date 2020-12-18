@@ -48,8 +48,8 @@ import org.wso2.integrationstudio.datamapper.TreeNode;
 import org.wso2.integrationstudio.datamapper.diagram.Activator;
 import org.wso2.integrationstudio.datamapper.diagram.tree.model.Tree;
 import org.wso2.integrationstudio.datamapper.impl.TreeNodeImpl;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;

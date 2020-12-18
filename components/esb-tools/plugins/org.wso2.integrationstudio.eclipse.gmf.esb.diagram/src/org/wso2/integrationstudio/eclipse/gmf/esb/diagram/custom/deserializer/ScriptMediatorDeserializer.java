@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Set;
 
@@ -27,15 +27,15 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ScriptLanguage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ScriptMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ScriptType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.scriptKeyTypeEnum;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.ScriptLanguage;
+import org.wso2.integrationstudio.gmf.esb.ScriptMediator;
+import org.wso2.integrationstudio.gmf.esb.ScriptType;
+import org.wso2.integrationstudio.gmf.esb.scriptKeyTypeEnum;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class ScriptMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, ScriptMediator> {
 

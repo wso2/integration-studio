@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -17,22 +17,22 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wso2.integrationstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementCallbackHandler;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementClientType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorAdviceOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorObligationsOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorOnAcceptOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorOnRejectOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EntitlementSequenceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.CSProviderConstants;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioProviderUtils;
+import org.wso2.integrationstudio.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.integrationstudio.gmf.esb.EntitlementCallbackHandler;
+import org.wso2.integrationstudio.gmf.esb.EntitlementClientType;
+import org.wso2.integrationstudio.gmf.esb.EntitlementContainer;
+import org.wso2.integrationstudio.gmf.esb.EntitlementMediator;
+import org.wso2.integrationstudio.gmf.esb.EntitlementMediatorAdviceOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EntitlementMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.EntitlementMediatorObligationsOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EntitlementMediatorOnAcceptOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EntitlementMediatorOnRejectOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EntitlementMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.EntitlementSequenceType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.platform.core.utils.CSProviderConstants;
+import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,29 +42,29 @@ import org.wso2.integrationstudio.eclipse.platform.core.utils.IntegrationStudioP
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getEntitlementServerURL <em>Entitlement Server URL</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getUsername <em>Username</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getPassword <em>Password</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getCallbackClassName <em>Callback Class Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getThriftHost <em>Thrift Host</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getThriftPort <em>Thrift Port</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getEntitlementClientType <em>Entitlement Client Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getOnRejectSequenceType <em>On Reject Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getOnAcceptSequenceType <em>On Accept Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getAdviceSequenceType <em>Advice Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getObligationsSequenceType <em>Obligations Sequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getOnRejectSequenceKey <em>On Reject Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getOnAcceptSequenceKey <em>On Accept Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getAdviceSequenceKey <em>Advice Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getObligationsSequenceKey <em>Obligations Sequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getEntitlementContainer <em>Entitlement Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getOnRejectOutputConnector <em>On Reject Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getOnAcceptOutputConnector <em>On Accept Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getAdviceOutputConnector <em>Advice Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getObligationsOutputConnector <em>Obligations Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getCallbackHandler <em>Callback Handler</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getEntitlementServerURL <em>Entitlement Server URL</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getUsername <em>Username</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getPassword <em>Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getCallbackClassName <em>Callback Class Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getThriftHost <em>Thrift Host</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getThriftPort <em>Thrift Port</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getEntitlementClientType <em>Entitlement Client Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getOnRejectSequenceType <em>On Reject Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getOnAcceptSequenceType <em>On Accept Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getAdviceSequenceType <em>Advice Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getObligationsSequenceType <em>Obligations Sequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getOnRejectSequenceKey <em>On Reject Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getOnAcceptSequenceKey <em>On Accept Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getAdviceSequenceKey <em>Advice Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getObligationsSequenceKey <em>Obligations Sequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getEntitlementContainer <em>Entitlement Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getOnRejectOutputConnector <em>On Reject Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getOnAcceptOutputConnector <em>On Accept Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getAdviceOutputConnector <em>Advice Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getObligationsOutputConnector <em>Obligations Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.EntitlementMediatorImpl#getCallbackHandler <em>Callback Handler</em>}</li>
  * </ul>
  *
  * @generated

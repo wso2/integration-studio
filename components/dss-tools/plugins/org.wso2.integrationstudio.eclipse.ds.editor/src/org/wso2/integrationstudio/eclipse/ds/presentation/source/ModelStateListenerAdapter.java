@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.presentation.source;
+package org.wso2.integrationstudio.ds.presentation.source;
 
 import org.eclipse.wst.sse.core.internal.provisional.IModelStateListener;
 import org.eclipse.wst.sse.core.internal.provisional.IStructuredModel;

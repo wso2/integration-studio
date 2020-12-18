@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.integrationstudio.eclipse.capp.maven" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.integrationstudio.capp.maven" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.integrationstudio.eclipse.capp.maven" id="org.wso2.integrationstudio.eclipse.capp.maven.artifact.mavenplugin.generator" name="Extension point to define plugin inputs for pom generation for a capp artifact"/>
+         <meta.schema plugin="org.wso2.integrationstudio.capp.maven" id="org.wso2.integrationstudio.capp.maven.artifact.mavenplugin.generator" name="Extension point to define plugin inputs for pom generation for a capp artifact"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -55,7 +55,7 @@
                   Class responsible for adding artifact type pom generation plugin definition for the maven project
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.eclipse.capp.maven.IMavenPluginContributorProvider"/>
+                  <meta.attribute kind="java" basedOn=":org.wso2.integrationstudio.capp.maven.IMavenPluginContributorProvider"/>
                </appinfo>
             </annotation>
          </attribute>

@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.sql.Types;
 
@@ -10,21 +10,21 @@ import org.apache.synapse.mediators.db.AbstractDBMediator;
 import org.apache.synapse.mediators.db.Statement.Parameter;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlDatabaseType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorBooleanValue;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlExecutorIsolationLevel;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlParameterDataType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlParameterDefinition;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlParameterValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlResultMapping;
-import org.wso2.integrationstudio.eclipse.gmf.esb.SqlStatement;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals;
-import org.wso2.integrationstudio.eclipse.gmf.esb.Constants;
+import org.wso2.integrationstudio.gmf.esb.AbstractSqlExecutorMediator;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.SqlDatabaseType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorBooleanValue;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorConnectionType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorDatasourceType;
+import org.wso2.integrationstudio.gmf.esb.SqlExecutorIsolationLevel;
+import org.wso2.integrationstudio.gmf.esb.SqlParameterDataType;
+import org.wso2.integrationstudio.gmf.esb.SqlParameterDefinition;
+import org.wso2.integrationstudio.gmf.esb.SqlParameterValueType;
+import org.wso2.integrationstudio.gmf.esb.SqlResultMapping;
+import org.wso2.integrationstudio.gmf.esb.SqlStatement;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals;
+import org.wso2.integrationstudio.gmf.esb.Constants;
 
 public abstract class AbstractDBMediatorDeserializer
         extends AbstractEsbNodeDeserializer<AbstractMediator, AbstractSqlExecutorMediator> {

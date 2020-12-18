@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard;
+package org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,9 +48,9 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.osgi.framework.Bundle;
-import org.wso2.integrationstudio.eclipse.distribution.project.util.MavenMultiModuleImportUtils;
-import org.wso2.integrationstudio.eclipse.esb.dashboard.templates.Activator;
-import org.wso2.integrationstudio.eclipse.esb.dashboard.templates.maven.wizard.TemplateProjectWizardPage;
+import org.wso2.integrationstudio.distribution.project.util.MavenMultiModuleImportUtils;
+import org.wso2.integrationstudio.esb.dashboard.templates.Activator;
+import org.wso2.integrationstudio.esb.dashboard.templates.maven.wizard.TemplateProjectWizardPage;
 
 public class CommonTemplateProjectCreationWizard extends Wizard implements INewWizard, IExecutableExtension {
 

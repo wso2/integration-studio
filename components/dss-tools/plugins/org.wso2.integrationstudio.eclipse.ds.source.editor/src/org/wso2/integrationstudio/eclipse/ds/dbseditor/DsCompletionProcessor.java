@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.dbseditor;
+package org.wso2.integrationstudio.ds.dbseditor;
 
 import java.util.Iterator;
 import java.util.Vector;

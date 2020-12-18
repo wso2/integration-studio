@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package org.wso2.integrationstudio.eclipse.carbon.server.model.operations;
+package org.wso2.integrationstudio.carbon.server.model.operations;
 
 import java.io.File;
 import java.io.IOException;

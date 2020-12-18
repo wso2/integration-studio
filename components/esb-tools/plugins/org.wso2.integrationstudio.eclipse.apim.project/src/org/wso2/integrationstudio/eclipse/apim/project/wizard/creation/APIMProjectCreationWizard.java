@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.apim.project.wizard.creation;
+package org.wso2.integrationstudio.apim.project.wizard.creation;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -50,11 +50,11 @@ import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.w3c.dom.Document;
-import org.wso2.integrationstudio.eclipse.apim.project.Activator;
-import org.wso2.integrationstudio.eclipse.apim.project.constant.APIMConstant;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.apim.project.Activator;
+import org.wso2.integrationstudio.apim.project.constant.APIMConstant;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 

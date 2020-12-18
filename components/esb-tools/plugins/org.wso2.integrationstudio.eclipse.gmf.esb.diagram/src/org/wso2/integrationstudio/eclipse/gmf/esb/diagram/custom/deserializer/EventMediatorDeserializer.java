@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Map;
 
@@ -26,13 +26,13 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EventTopicType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EventMediator;
+import org.wso2.integrationstudio.gmf.esb.EventTopicType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 
-import static org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.*;
 
 public class EventMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, EventMediator> {
 
@@ -43,7 +43,7 @@ public class EventMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 
         org.wso2.carbon.mediator.event.EventMediator eventMediator = (org.wso2.carbon.mediator.event.EventMediator) mediator;
 
-        org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator VisualEventMediator = (org.wso2.integrationstudio.eclipse.gmf.esb.EventMediator) DeserializerUtils
+        org.wso2.integrationstudio.gmf.esb.EventMediator VisualEventMediator = (org.wso2.integrationstudio.gmf.esb.EventMediator) DeserializerUtils
                 .createNode(part, EsbElementTypes.EventMediator_3504);
         setElementToEdit(VisualEventMediator);
         setCommonProperties(eventMediator, VisualEventMediator);

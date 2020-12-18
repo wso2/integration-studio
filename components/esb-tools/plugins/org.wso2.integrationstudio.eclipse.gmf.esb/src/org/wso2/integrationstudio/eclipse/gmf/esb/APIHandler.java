@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -26,11 +26,11 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIHandler#getClassName <em>Class Name</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIHandler#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIHandler#getClassName <em>Class Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIHandler#getProperties <em>Properties</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIHandler()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIHandler()
  * @model
  * @generated
  */
@@ -45,14 +45,14 @@ public interface APIHandler extends EsbNode {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Class Name</em>' attribute.
      * @see #setClassName(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIHandler_ClassName()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIHandler_ClassName()
      * @model
      * @generated
      */
     String getClassName();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.APIHandler#getClassName <em>Class Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIHandler#getClassName <em>Class Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Class Name</em>' attribute.
@@ -63,7 +63,7 @@ public interface APIHandler extends EsbNode {
 
     /**
      * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.eclipse.gmf.esb.APIHandlerProperty}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.APIHandlerProperty}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Properties</em>' reference list isn't clear,
@@ -71,7 +71,7 @@ public interface APIHandler extends EsbNode {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Properties</em>' containment reference list.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getAPIHandler_Properties()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIHandler_Properties()
      * @model containment="true"
      * @generated
      */

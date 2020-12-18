@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.startup.alert;
+package org.wso2.integrationstudio.platform.core.startup.alert;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.graphics.Rectangle;
@@ -24,7 +24,7 @@ import org.eclipse.ui.IStartup;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 
 /**
  * A Startup class that checks whether Integration Studio has started with a

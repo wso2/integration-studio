@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.core.project.model;
+package org.wso2.integrationstudio.platform.core.project.model;
 
 public class ProjectOption {
 	private String id;

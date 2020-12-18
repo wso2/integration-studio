@@ -1,6 +1,6 @@
 /**
  */
-package org.wso2.integrationstudio.eclipse.ds;
+package org.wso2.integrationstudio.ds;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList#getMixed <em>Mixed</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorPropertyList#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.CustomValidatorPropertyList#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.ds.CustomValidatorPropertyList#getProperty <em>Property</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getCustomValidatorPropertyList()
+ * @see org.wso2.integrationstudio.ds.DsPackage#getCustomValidatorPropertyList()
  * @model extendedMetaData="name='properties_._type' kind='mixed'"
  * @generated
  */
@@ -36,7 +36,7 @@ public interface CustomValidatorPropertyList extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getCustomValidatorPropertyList_Mixed()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getCustomValidatorPropertyList_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -45,7 +45,7 @@ public interface CustomValidatorPropertyList extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Property</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.integrationstudio.eclipse.ds.CustomValidatorProperty}.
+	 * The list contents are of type {@link org.wso2.integrationstudio.ds.CustomValidatorProperty}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Property</em>' containment reference list isn't clear,
@@ -53,7 +53,7 @@ public interface CustomValidatorPropertyList extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Property</em>' containment reference list.
-	 * @see org.wso2.integrationstudio.eclipse.ds.DsPackage#getCustomValidatorPropertyList_Property()
+	 * @see org.wso2.integrationstudio.ds.DsPackage#getCustomValidatorPropertyList_Property()
 	 * @model containment="true" upper="5" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='property' namespace='##targetNamespace'"
 	 * @generated

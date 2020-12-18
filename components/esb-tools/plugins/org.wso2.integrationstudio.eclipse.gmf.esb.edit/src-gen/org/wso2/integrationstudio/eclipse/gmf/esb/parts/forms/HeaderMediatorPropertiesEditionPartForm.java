@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 import org.eclipse.emf.common.util.EList;
 // Start of user code for imports
@@ -59,15 +59,15 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HeaderAction;
-import org.wso2.integrationstudio.eclipse.gmf.esb.HeaderValueType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
-import org.wso2.integrationstudio.eclipse.gmf.esb.presentation.EEFPropertyViewUtil;
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.HeaderAction;
+import org.wso2.integrationstudio.gmf.esb.HeaderValueType;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFNameSpacedPropertyEditorDialog;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -589,7 +589,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getHeaderAction()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getHeaderAction()
 	 * 
 	 */
 	public Enumerator getHeaderAction() {
@@ -600,7 +600,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#initHeaderAction(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#initHeaderAction(Object input, Enumerator current)
 	 */
 	public void initHeaderAction(Object input, Enumerator current) {
 		headerAction.setInput(input);
@@ -618,7 +618,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setHeaderAction(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setHeaderAction(Enumerator newValue)
 	 * 
 	 */
 	public void setHeaderAction(Enumerator newValue) {
@@ -636,7 +636,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getValueType()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getValueType()
 	 * 
 	 */
 	public Enumerator getValueType() {
@@ -647,7 +647,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#initValueType(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#initValueType(Object input, Enumerator current)
 	 */
 	public void initValueType(Object input, Enumerator current) {
 		valueType.setInput(input);
@@ -665,7 +665,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setValueType(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setValueType(Enumerator newValue)
 	 * 
 	 */
 	public void setValueType(Enumerator newValue) {
@@ -683,7 +683,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getScope()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getScope()
 	 * 
 	 */
 	public Enumerator getScope() {
@@ -694,7 +694,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#initScope(Object input, Enumerator current)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#initScope(Object input, Enumerator current)
 	 */
 	public void initScope(Object input, Enumerator current) {
 		scope.setInput(input);
@@ -712,7 +712,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setScope(Enumerator newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setScope(Enumerator newValue)
 	 * 
 	 */
 	public void setScope(Enumerator newValue) {
@@ -730,7 +730,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getValueLiteral()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getValueLiteral()
 	 * 
 	 */
 	public String getValueLiteral() {
@@ -740,7 +740,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setValueLiteral(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setValueLiteral(String newValue)
 	 * 
 	 */
 	public void setValueLiteral(String newValue) {
@@ -762,7 +762,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getValueInline()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getValueInline()
 	 * 
 	 */
 	public String getValueInline() {
@@ -772,7 +772,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setValueInline(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setValueInline(String newValue)
 	 * 
 	 */
 	public void setValueInline(String newValue) {
@@ -794,7 +794,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getDescription()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getDescription()
 	 * 
 	 */
 	public String getDescription() {
@@ -804,7 +804,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setDescription(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setDescription(String newValue)
 	 * 
 	 */
 	public void setDescription(String newValue) {
@@ -868,7 +868,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
 	/**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getCommentsList()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getCommentsList()
      * 
      */
     public EList getCommentsList() {
@@ -878,7 +878,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setCommentsList(EList newValue)
+     * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setCommentsList(EList newValue)
      * 
      */
     public void setCommentsList(EList newValue) {
@@ -919,7 +919,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getReverse()
+     * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#getReverse()
      * 
      */
     public Boolean getReverse() {
@@ -929,7 +929,7 @@ public class HeaderMediatorPropertiesEditionPartForm extends SectionPropertiesEd
     /**
      * {@inheritDoc}
      * 
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setReverse(Boolean newValue)
+     * @see org.wso2.integrationstudio.gmf.esb.parts.HeaderMediatorPropertiesEditionPart#setReverse(Boolean newValue)
      * 
      */
     public void setReverse(Boolean newValue) {

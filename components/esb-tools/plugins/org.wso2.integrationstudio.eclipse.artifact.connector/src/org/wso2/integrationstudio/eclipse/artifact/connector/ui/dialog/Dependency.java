@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.connector.ui.dialog;
+package org.wso2.integrationstudio.artifact.connector.ui.dialog;
 
 public class Dependency {
 	private String component;

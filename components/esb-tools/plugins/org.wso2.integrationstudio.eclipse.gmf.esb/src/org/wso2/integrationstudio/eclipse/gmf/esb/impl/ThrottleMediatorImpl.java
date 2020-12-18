@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.impl;
+package org.wso2.integrationstudio.gmf.esb.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -18,20 +18,20 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.integrationstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleContainer;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediatorInputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediatorOnAcceptOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediatorOnRejectOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleMediatorOutputConnector;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnAcceptBranch;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleOnRejectBranch;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyEntry;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottlePolicyType;
-import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.ThrottleContainer;
+import org.wso2.integrationstudio.gmf.esb.ThrottleMediator;
+import org.wso2.integrationstudio.gmf.esb.ThrottleMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.ThrottleMediatorOnAcceptOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ThrottleMediatorOnRejectOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ThrottleMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.ThrottleOnAcceptBranch;
+import org.wso2.integrationstudio.gmf.esb.ThrottleOnRejectBranch;
+import org.wso2.integrationstudio.gmf.esb.ThrottlePolicyConfiguration;
+import org.wso2.integrationstudio.gmf.esb.ThrottlePolicyEntry;
+import org.wso2.integrationstudio.gmf.esb.ThrottlePolicyType;
+import org.wso2.integrationstudio.gmf.esb.ThrottleSequenceType;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,23 +41,23 @@ import org.wso2.integrationstudio.eclipse.gmf.esb.ThrottleSequenceType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getGroupId <em>Group Id</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getPolicyType <em>Policy Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getPolicyKey <em>Policy Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getPolicyEntries <em>Policy Entries</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getPolicyConfiguration <em>Policy Configuration</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getOnAcceptBranch <em>On Accept Branch</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getOnRejectBranch <em>On Reject Branch</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getOnAcceptOutputConnector <em>On Accept Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getOnRejectOutputConnector <em>On Reject Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getThrottleContainer <em>Throttle Container</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getOnAcceptBranchsequenceType <em>On Accept Branchsequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getOnAcceptBranchsequenceKey <em>On Accept Branchsequence Key</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getOnRejectBranchsequenceType <em>On Reject Branchsequence Type</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getOnRejectBranchsequenceKey <em>On Reject Branchsequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getGroupId <em>Group Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getPolicyType <em>Policy Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getPolicyKey <em>Policy Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getPolicyEntries <em>Policy Entries</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getPolicyConfiguration <em>Policy Configuration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getOnAcceptBranch <em>On Accept Branch</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getOnRejectBranch <em>On Reject Branch</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getOnAcceptOutputConnector <em>On Accept Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getOnRejectOutputConnector <em>On Reject Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getThrottleContainer <em>Throttle Container</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getOnAcceptBranchsequenceType <em>On Accept Branchsequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getOnAcceptBranchsequenceKey <em>On Accept Branchsequence Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getOnRejectBranchsequenceType <em>On Reject Branchsequence Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ThrottleMediatorImpl#getOnRejectBranchsequenceKey <em>On Reject Branchsequence Key</em>}</li>
  * </ul>
  *
  * @generated

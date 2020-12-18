@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.docker.distribution.exceptions;
+package org.wso2.integrationstudio.docker.distribution.exceptions;
 
 import com.spotify.docker.client.exceptions.DockerException;
 

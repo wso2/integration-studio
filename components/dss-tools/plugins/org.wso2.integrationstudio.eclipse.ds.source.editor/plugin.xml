@@ -4,10 +4,10 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.wso2.integrationstudio.eclipse.ds.dbseditor.DsSourceEditor"
-            contributorClass="org.wso2.integrationstudio.eclipse.ds.dbseditor.DsEditorActionContributor"
+            class="org.wso2.integrationstudio.ds.dbseditor.DsSourceEditor"
+            contributorClass="org.wso2.integrationstudio.ds.dbseditor.DsEditorActionContributor"
             extensions="dbs"
-            id="org.wso2.integrationstudio.eclipse.ds.dbseditor.DsEditorID"
+            id="org.wso2.integrationstudio.ds.dbseditor.DsEditorID"
             name="DsSourceEditor">
       </editor>
    </extension>

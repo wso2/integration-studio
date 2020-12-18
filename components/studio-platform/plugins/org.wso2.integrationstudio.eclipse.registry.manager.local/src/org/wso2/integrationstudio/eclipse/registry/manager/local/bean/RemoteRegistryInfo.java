@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.registry.manager.local.bean;
+package org.wso2.integrationstudio.registry.manager.local.bean;
 
 import java.net.URL;
 

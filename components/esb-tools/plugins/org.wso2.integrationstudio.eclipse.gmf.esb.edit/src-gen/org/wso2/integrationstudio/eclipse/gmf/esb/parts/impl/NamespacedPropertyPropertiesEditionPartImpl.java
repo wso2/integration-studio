@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.impl;
+package org.wso2.integrationstudio.gmf.esb.parts.impl;
 
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -41,10 +41,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -424,7 +424,7 @@ public class NamespacedPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#getPrettyName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#getPrettyName()
 	 * 
 	 */
 	public String getPrettyName() {
@@ -434,7 +434,7 @@ public class NamespacedPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#setPrettyName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#setPrettyName(String newValue)
 	 * 
 	 */
 	public void setPrettyName(String newValue) {
@@ -456,7 +456,7 @@ public class NamespacedPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#getPropertyName()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#getPropertyName()
 	 * 
 	 */
 	public String getPropertyName() {
@@ -466,7 +466,7 @@ public class NamespacedPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#setPropertyName(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#setPropertyName(String newValue)
 	 * 
 	 */
 	public void setPropertyName(String newValue) {
@@ -488,7 +488,7 @@ public class NamespacedPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#getPropertyValue()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#getPropertyValue()
 	 * 
 	 */
 	public String getPropertyValue() {
@@ -498,7 +498,7 @@ public class NamespacedPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#setPropertyValue(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#setPropertyValue(String newValue)
 	 * 
 	 */
 	public void setPropertyValue(String newValue) {
@@ -520,7 +520,7 @@ public class NamespacedPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#getNamespaces()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#getNamespaces()
 	 * 
 	 */
 	public String getNamespaces() {
@@ -530,7 +530,7 @@ public class NamespacedPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#setNamespaces(String newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#setNamespaces(String newValue)
 	 * 
 	 */
 	public void setNamespaces(String newValue) {
@@ -552,7 +552,7 @@ public class NamespacedPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#getSupportsDynamicXPaths()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#getSupportsDynamicXPaths()
 	 * 
 	 */
 	public Boolean getSupportsDynamicXPaths() {
@@ -562,7 +562,7 @@ public class NamespacedPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#setSupportsDynamicXPaths(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#setSupportsDynamicXPaths(Boolean newValue)
 	 * 
 	 */
 	public void setSupportsDynamicXPaths(Boolean newValue) {
@@ -584,7 +584,7 @@ public class NamespacedPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#getDynamic()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#getDynamic()
 	 * 
 	 */
 	public Boolean getDynamic() {
@@ -594,7 +594,7 @@ public class NamespacedPropertyPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#setDynamic(Boolean newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NamespacedPropertyPropertiesEditionPart#setDynamic(Boolean newValue)
 	 * 
 	 */
 	public void setDynamic(Boolean newValue) {

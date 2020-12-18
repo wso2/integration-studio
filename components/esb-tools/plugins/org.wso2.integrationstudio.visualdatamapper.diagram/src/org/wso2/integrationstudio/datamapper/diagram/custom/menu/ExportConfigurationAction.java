@@ -29,7 +29,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
 
-//import org.wso2.integrationstudio.eclipse.distribution.project.ui.wizard.ProjectExportWizard;
+//import org.wso2.integrationstudio.distribution.project.ui.wizard.ProjectExportWizard;
 
 public class ExportConfigurationAction implements IActionDelegate {
 

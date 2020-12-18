@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.preferences;
+package org.wso2.integrationstudio.platform.ui.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.ComboFieldEditor;
@@ -24,7 +24,7 @@ import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.eclipse.platform.ui.preferences.controls.LabelFieldEditor;
+import org.wso2.integrationstudio.platform.ui.preferences.controls.LabelFieldEditor;
 
 public class MavenInfoPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 

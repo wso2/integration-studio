@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb;
+package org.wso2.integrationstudio.gmf.esb;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,13 +24,13 @@ package org.wso2.integrationstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndpoint#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndpoint#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndpoint#getURITemplate <em>URI Template</em>}</li>
- *   <li>{@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndpoint#getHttpMethod <em>Http Method</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getURITemplate <em>URI Template</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getHttpMethod <em>Http Method</em>}</li>
  * </ul>
  *
- * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getHTTPEndpoint()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint()
  * @model
  * @generated
  */
@@ -45,14 +45,14 @@ public interface HTTPEndpoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(HTTPEndPointInputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getHTTPEndpoint_InputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_InputConnector()
      * @model containment="true"
      * @generated
      */
     HTTPEndPointInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndpoint#getInputConnector <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
@@ -71,14 +71,14 @@ public interface HTTPEndpoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(HTTPEndPointOutputConnector)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getHTTPEndpoint_OutputConnector()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OutputConnector()
      * @model containment="true"
      * @generated
      */
     HTTPEndPointOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndpoint#getOutputConnector <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
@@ -97,14 +97,14 @@ public interface HTTPEndpoint extends AbstractEndPoint {
      * <!-- end-user-doc -->
      * @return the value of the '<em>URI Template</em>' attribute.
      * @see #setURITemplate(String)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getHTTPEndpoint_URITemplate()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_URITemplate()
      * @model
      * @generated
      */
     String getURITemplate();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndpoint#getURITemplate <em>URI Template</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getURITemplate <em>URI Template</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>URI Template</em>' attribute.
@@ -115,7 +115,7 @@ public interface HTTPEndpoint extends AbstractEndPoint {
 
     /**
      * Returns the value of the '<em><b>Http Method</b></em>' attribute.
-     * The literals are from the enumeration {@link org.wso2.integrationstudio.eclipse.gmf.esb.HttpMethodType}.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.HttpMethodType}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Http Method</em>' attribute isn't clear,
@@ -123,20 +123,20 @@ public interface HTTPEndpoint extends AbstractEndPoint {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Http Method</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.HttpMethodType
+     * @see org.wso2.integrationstudio.gmf.esb.HttpMethodType
      * @see #setHttpMethod(HttpMethodType)
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.EsbPackage#getHTTPEndpoint_HttpMethod()
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_HttpMethod()
      * @model
      * @generated
      */
     HttpMethodType getHttpMethod();
 
     /**
-     * Sets the value of the '{@link org.wso2.integrationstudio.eclipse.gmf.esb.HTTPEndpoint#getHttpMethod <em>Http Method</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getHttpMethod <em>Http Method</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>Http Method</em>' attribute.
-     * @see org.wso2.integrationstudio.eclipse.gmf.esb.HttpMethodType
+     * @see org.wso2.integrationstudio.gmf.esb.HttpMethodType
      * @see #getHttpMethod()
      * @generated
      */

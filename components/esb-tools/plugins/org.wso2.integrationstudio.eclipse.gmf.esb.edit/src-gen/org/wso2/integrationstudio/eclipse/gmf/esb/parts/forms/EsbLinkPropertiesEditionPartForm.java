@@ -1,7 +1,7 @@
 /**
  * Generated with Acceleo
  */
-package org.wso2.integrationstudio.eclipse.gmf.esb.parts.forms;
+package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
 // Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
@@ -45,10 +45,10 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart;
-import org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart;
+import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
-import org.wso2.integrationstudio.eclipse.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
 
@@ -226,7 +226,7 @@ public class EsbLinkPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart#getSource()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart#getSource()
 	 * 
 	 */
 	public EObject getSource() {
@@ -241,7 +241,7 @@ public class EsbLinkPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart#initSource(EObjectFlatComboSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart#initSource(EObjectFlatComboSettings)
 	 */
 	public void initSource(EObjectFlatComboSettings settings) {
 		source.setInput(settings);
@@ -261,7 +261,7 @@ public class EsbLinkPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart#setSource(EObject newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart#setSource(EObject newValue)
 	 * 
 	 */
 	public void setSource(EObject newValue) {
@@ -283,7 +283,7 @@ public class EsbLinkPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart#setSourceButtonMode(ButtonsModeEnum newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart#setSourceButtonMode(ButtonsModeEnum newValue)
 	 */
 	public void setSourceButtonMode(ButtonsModeEnum newValue) {
 		source.setButtonMode(newValue);
@@ -292,7 +292,7 @@ public class EsbLinkPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart#addFilterSource(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart#addFilterSource(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToSource(ViewerFilter filter) {
@@ -302,7 +302,7 @@ public class EsbLinkPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart#addBusinessFilterSource(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart#addBusinessFilterSource(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToSource(ViewerFilter filter) {
@@ -312,7 +312,7 @@ public class EsbLinkPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart#getTarget()
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart#getTarget()
 	 * 
 	 */
 	public EObject getTarget() {
@@ -327,7 +327,7 @@ public class EsbLinkPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart#initTarget(EObjectFlatComboSettings)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart#initTarget(EObjectFlatComboSettings)
 	 */
 	public void initTarget(EObjectFlatComboSettings settings) {
 		target.setInput(settings);
@@ -347,7 +347,7 @@ public class EsbLinkPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart#setTarget(EObject newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart#setTarget(EObject newValue)
 	 * 
 	 */
 	public void setTarget(EObject newValue) {
@@ -369,7 +369,7 @@ public class EsbLinkPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart#setTargetButtonMode(ButtonsModeEnum newValue)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart#setTargetButtonMode(ButtonsModeEnum newValue)
 	 */
 	public void setTargetButtonMode(ButtonsModeEnum newValue) {
 		target.setButtonMode(newValue);
@@ -378,7 +378,7 @@ public class EsbLinkPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart#addFilterTarget(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart#addFilterTarget(ViewerFilter filter)
 	 * 
 	 */
 	public void addFilterToTarget(ViewerFilter filter) {
@@ -388,7 +388,7 @@ public class EsbLinkPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.wso2.integrationstudio.eclipse.gmf.esb.parts.EsbLinkPropertiesEditionPart#addBusinessFilterTarget(ViewerFilter filter)
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.EsbLinkPropertiesEditionPart#addBusinessFilterTarget(ViewerFilter filter)
 	 * 
 	 */
 	public void addBusinessFilterToTarget(ViewerFilter filter) {

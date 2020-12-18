@@ -13,7 +13,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.wso2.integrationstudio.eclipse.docker.distribution.editor;
+package org.wso2.integrationstudio.docker.distribution.editor;
 
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.wizard.IWizard;

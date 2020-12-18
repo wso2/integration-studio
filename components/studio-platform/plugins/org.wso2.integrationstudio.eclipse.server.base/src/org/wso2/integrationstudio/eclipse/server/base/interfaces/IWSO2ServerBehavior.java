@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.server.base.interfaces;
+package org.wso2.integrationstudio.server.base.interfaces;
 
 public interface IWSO2ServerBehavior {
 

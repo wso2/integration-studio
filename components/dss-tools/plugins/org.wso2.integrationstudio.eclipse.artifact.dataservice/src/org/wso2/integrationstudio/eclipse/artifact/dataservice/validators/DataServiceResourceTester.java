@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.artifact.dataservice.validators;
+package org.wso2.integrationstudio.artifact.dataservice.validators;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.core.resources.IFolder;

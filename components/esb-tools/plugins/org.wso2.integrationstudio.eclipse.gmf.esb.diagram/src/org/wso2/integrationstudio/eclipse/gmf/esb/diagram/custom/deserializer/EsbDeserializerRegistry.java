@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -72,7 +72,7 @@ import org.apache.synapse.mediators.transform.PayloadFactoryMediator;
 import org.apache.synapse.mediators.transform.XSLTMediator;
 import org.apache.synapse.mediators.transform.url.URLRewriteMediator;
 import org.apache.synapse.mediators.xquery.XQueryMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageStore;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.DummyMessageStore;
 import org.apache.synapse.rest.API;
 import org.apache.synapse.task.TaskDescription;
 import org.wso2.carbon.identity.oauth.mediator.OAuthMediator;
@@ -82,18 +82,18 @@ import org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator;
 import org.wso2.carbon.mediator.publishevent.PublishEventMediator;
 import org.wso2.carbon.mediator.transform.SmooksMediator;
 import org.wso2.carbon.mediators.router.impl.RouterMediator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.integrationstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.BeanMediatorExt;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.BuilderMediatorExt;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.ClassMediatorExt;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.CloudConnectorOperationExt;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageProcessor;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.EJBMediatorExt;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.EntitlementMediatorExt;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.gmf.esb.internal.persistence.custom.POJOCommandMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.diagram.Activator;
+import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.BeanMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.BuilderMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.ClassMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.CloudConnectorOperationExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.DummyMessageProcessor;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.EJBMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.EntitlementMediatorExt;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.POJOCommandMediatorExt;
 import org.apache.synapse.message.store.impl.memory.InMemoryStore;
 import org.wso2.carbon.mediator.datamapper.DataMapperMediator;
 

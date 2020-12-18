@@ -1,4 +1,4 @@
-package org.wso2.integrationstudio.eclipse.ds.wizards;
+package org.wso2.integrationstudio.ds.wizards;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -26,10 +26,10 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.DBUriConstants;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.DbConnManager;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.DriverShim;
-import org.wso2.integrationstudio.eclipse.ds.wizards.util.ValidateUtil;
+import org.wso2.integrationstudio.ds.wizards.util.DBUriConstants;
+import org.wso2.integrationstudio.ds.wizards.util.DbConnManager;
+import org.wso2.integrationstudio.ds.wizards.util.DriverShim;
+import org.wso2.integrationstudio.ds.wizards.util.ValidateUtil;
 
 public class DriverConnDetailPage extends WizardPage implements Listener {
 

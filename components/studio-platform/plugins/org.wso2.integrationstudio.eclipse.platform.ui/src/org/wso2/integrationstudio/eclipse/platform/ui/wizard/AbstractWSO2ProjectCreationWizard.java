@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.platform.ui.wizard;
+package org.wso2.integrationstudio.platform.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,20 +56,20 @@ import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.wso2.integrationstudio.eclipse.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.eclipse.logging.core.Logger;
-import org.wso2.integrationstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.integrationstudio.eclipse.platform.core.Activator;
-import org.wso2.integrationstudio.eclipse.platform.core.model.MavenInfo;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.integrationstudio.eclipse.platform.core.project.model.ProjectWizardSettings;
-import org.wso2.integrationstudio.eclipse.platform.core.utils.Constants;
-import org.wso2.integrationstudio.eclipse.platform.ui.editor.Refreshable;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.MavenDetailsPage;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
-import org.wso2.integrationstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsPage;
-import org.wso2.integrationstudio.eclipse.utils.file.FileUtils;
-import org.wso2.integrationstudio.eclipse.utils.project.ProjectUtils;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.Activator;
+import org.wso2.integrationstudio.platform.core.model.MavenInfo;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.wso2.integrationstudio.platform.core.project.model.ProjectWizardSettings;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
+import org.wso2.integrationstudio.platform.ui.editor.Refreshable;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.MavenDetailsPage;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsDataPage;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsPage;
+import org.wso2.integrationstudio.utils.file.FileUtils;
+import org.wso2.integrationstudio.utils.project.ProjectUtils;
 
 public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implements INewWizard, IExecutableExtension {
 	protected static final String SNAPSHOTS_UPDATE_POLICY = "SNAPSHOTS_UPDATE_POLICY";
@@ -92,8 +92,8 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	private WizardPage customPage;
 
 	protected final static String DIST_EDITOR_ID =
-	                                               "org.wso2.integrationstudio.eclipse.distribution.project.editor.DistProjectEditor";
-	protected final static String MMM_EDITOR_ID = "org.wso2.integrationstudio.eclipse.maven.multi.module.editor.DistProjectEditor";
+	                                               "org.wso2.integrationstudio.distribution.project.editor.DistProjectEditor";
+	protected final static String MMM_EDITOR_ID = "org.wso2.integrationstudio.maven.multi.module.editor.DistProjectEditor";
 	protected final static String JDT_BUILD_COMMAND = "org.eclipse.jdt.core.javabuilder";
 	protected final static String JDT_PROJECT_NATURE = "org.eclipse.jdt.core.javanature";
 	private Map<String, Text> map = new HashMap<String, Text>();
@@ -149,32 +149,32 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	protected Repository getGlobalRepositoryFromPreference() {
 
 		String repoURL =
-		                 preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		                 preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 		                                              GLOBAL_REPOSITORY_URL, null, null);
 		if (repoURL != null) {
 			Repository repo = new Repository();
 			repo.setUrl(repoURL);
-			repo.setId(preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+			repo.setId(preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 			                                        GLOBAL_REPOSITORY_ID, null, null));
 			RepositoryPolicy releasePolicy = new RepositoryPolicy();
 			String releaseEnabled =
-			                        preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+			                        preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 			                                                     RELEASES_ENABLED, null, null);
 			releasePolicy.setEnabled(releaseEnabled != null);
-			releasePolicy.setUpdatePolicy(preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+			releasePolicy.setUpdatePolicy(preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 			                                                           RELEASES_UPDATE_POLICY, null, null));
-			releasePolicy.setChecksumPolicy(preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+			releasePolicy.setChecksumPolicy(preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 			                                                             RELEASES_CHECKSUM_POLICY, null, null));
 			repo.setReleases(releasePolicy);
 
 			RepositoryPolicy snapshotPolicy = new RepositoryPolicy();
 			String snapshotsEnabled =
-			                          preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+			                          preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 			                                                       SNAPSHOTS_ENABLED, null, null);
 			snapshotPolicy.setEnabled(snapshotsEnabled != null);
-			snapshotPolicy.setUpdatePolicy(preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+			snapshotPolicy.setUpdatePolicy(preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 			                                                            SNAPSHOTS_UPDATE_POLICY, null, null));
-			snapshotPolicy.setChecksumPolicy(preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+			snapshotPolicy.setChecksumPolicy(preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 			                                                              SNAPSHOTS_CHECKSUM_POLICY, null, null));
 			repo.setSnapshots(snapshotPolicy);
 
@@ -500,9 +500,9 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	public void createPOM(File pomLocation) throws Exception {
 		MavenInfo mavenInfo = getModel().getMavenInfo();
 
-		String customGroupId = preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		String customGroupId = preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 		                                                    GLOBAL_MAVEN_GROUP_ID, null, null);
-		String customVersion = preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		String customVersion = preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 		                                                    GLOBAL_MAVEN_VERSION, null, null);
 
 		MavenProject mavenProject = MavenUtils.createMavenProject(customGroupId != null ? customGroupId
@@ -515,7 +515,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		if (parentProject != null) {
 			mavenProject.getModel().setParent(parentProject);
 		}
-		String disableWSO2Repo = preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		String disableWSO2Repo = preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 		                                                      DISABLE_WSO2_REPOSITORY, null, null);
 		if (disableWSO2Repo == null) {
 			MavenUtils.updateMavenRepo(mavenProject);
@@ -534,10 +534,10 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		MavenInfo mavenInfo = getModel().getMavenInfo();
 
 		String customGroupId =
-		                       preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		                       preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 		                                                    GLOBAL_MAVEN_GROUP_ID, null, null);
 		String customVersion =
-		                       preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		                       preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 		                                                    GLOBAL_MAVEN_VERSION, null, null);
 
 		MavenProject mavenProject =
@@ -552,7 +552,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		if (parentProject != null) {
 			mavenProject.getModel().setParent(parentProject);
 		}
-		String disableWSO2Repo = preferencesService.getString("org.wso2.integrationstudio.eclipse.platform.ui",
+		String disableWSO2Repo = preferencesService.getString("org.wso2.integrationstudio.platform.ui",
 		                                                      DISABLE_WSO2_REPOSITORY, null, null);
 		if (disableWSO2Repo == null) {
 			MavenUtils.updateMavenRepo(mavenProject);

@@ -4,11 +4,11 @@
    <extension
          point="org.eclipse.ui.newWizards">
          <wizard name="Java Library Project" 
-         	category="org.wso2.integrationstudio.eclipse.capp.project/org.wso2.integrationstudio.eclipse.extensions/org.wso2.integrationstudio.eclipse.extensions.project.types"
-			class="org.wso2.integrationstudio.eclipse.artifact.library.ui.wizard.LibraryArtifactCreationWizard"
+         	category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.extensions/org.wso2.integrationstudio.extensions.project.types"
+			class="org.wso2.integrationstudio.artifact.library.ui.wizard.LibraryArtifactCreationWizard"
 			wizardManifest="project_wizard.xml"
 			project="true"
-			id="org.wso2.integrationstudio.eclipse.artifact.newlibraryartifact"
+			id="org.wso2.integrationstudio.artifact.newlibraryartifact"
 			icon="icons/jar-16x16.png">
 			<description>Java Library Project</description>
 		</wizard>
@@ -40,7 +40,7 @@
  
   <extension point="org.eclipse.ui.handlers">
 	    <handler
-	        class="org.wso2.integrationstudio.eclipse.artifact.library.ui.menu.AddRemoveJavaLibsMenuHandler"
+	        class="org.wso2.integrationstudio.artifact.library.ui.menu.AddRemoveJavaLibsMenuHandler"
 	        commandId="AddRemoveJavaLibsMenuCommandID">
 	  		</handler>
   </extension>
@@ -50,7 +50,7 @@
 		id="org.wso2.developerstudio.eclipse.library.project.nature" name="Java Library Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.integrationstudio.eclipse.artifact.library.project.nature.LibraryArtifactProjectNature">
+				class="org.wso2.integrationstudio.artifact.library.project.nature.LibraryArtifactProjectNature">
 			</run>
 		</runtime>
 	</extension>
@@ -66,9 +66,9 @@
 			id="org.eclipse.ui.navigator.resourceContent"
 			name="test">
 				<commonWizard 
-					menuGroupId="5org.wso2.integrationstudio.eclipse.artifact.newlibraryartifact"
+					menuGroupId="5org.wso2.integrationstudio.artifact.newlibraryartifact"
 			  	 	type="new"
-					wizardId="org.wso2.integrationstudio.eclipse.artifact.newlibraryartifact">
+					wizardId="org.wso2.integrationstudio.artifact.newlibraryartifact">
 					<enablement>
 						<or>
 							<adapt type="org.eclipse.core.resources.IProject"/>
@@ -90,8 +90,8 @@
 	  </extension>-->
 			<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="5org.wso2.integrationstudio.eclipse.artifact.newlibraryartifact"
-                wizardId="org.wso2.integrationstudio.eclipse.artifact.newlibraryartifact">
+                menuGroupId="5org.wso2.integrationstudio.artifact.newlibraryartifact"
+                wizardId="org.wso2.integrationstudio.artifact.newlibraryartifact">
                 <enablement>
                     <or>
                         <adapt type="org.eclipse.core.resources.IProject">
@@ -107,10 +107,10 @@
             </commonWizard>
     </extension>
        <extension
-          point="org.wso2.integrationstudio.eclipse.project.export.handler">
+          point="org.wso2.integrationstudio.project.export.handler">
        <handler
-             class="org.wso2.integrationstudio.eclipse.artifact.library.project.export.LibraryArtifactHandler"
-             id="org.wso2.integrationstudio.eclipse.artifact.library.project.export.handler"
+             class="org.wso2.integrationstudio.artifact.library.project.export.LibraryArtifactHandler"
+             id="org.wso2.integrationstudio.artifact.library.project.export.handler"
              type="lib/library/bundle">
        </handler>
     </extension>

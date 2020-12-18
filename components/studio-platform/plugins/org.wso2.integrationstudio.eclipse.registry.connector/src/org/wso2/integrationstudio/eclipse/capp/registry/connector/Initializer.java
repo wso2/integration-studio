@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.integrationstudio.eclipse.capp.registry.connector;
+package org.wso2.integrationstudio.capp.registry.connector;
 
 import org.eclipse.ui.IStartup;
 

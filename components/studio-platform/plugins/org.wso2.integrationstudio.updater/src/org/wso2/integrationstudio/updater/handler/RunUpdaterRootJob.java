@@ -48,6 +48,7 @@ public class RunUpdaterRootJob extends Job {
     protected static IIntegrationStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
     private static final String UPDATE_DOMAIN = "http://192.168.1.7:8000/p2";
+//    private static final String UPDATE_DOMAIN = "http://product-dist.wso2.com/p2";
     private static final String PLATFORM_P2_URL = UPDATE_DOMAIN + "/integration-studio/7.2.0/studio-platform";
     private static final String ESB_P2_URL = UPDATE_DOMAIN + "/integration-studio/7.2.0/esb-tools";
     private static final String DSS_P2_URL = UPDATE_DOMAIN + "/integration-studio/7.2.0/dss-tools";
@@ -122,6 +123,9 @@ public class RunUpdaterRootJob extends Job {
 
         Display.getDefault().asyncExec(new Runnable() {
             public void run() {
+            	if (releaseNoteItems.isEmpty()) {
+            		releaseNoteItems.add("Bug fixes and improvements");
+            	}
                 UpdateNotificationPopUp notification = new UpdateNotificationPopUp(
                         PlatformUI.getWorkbench().getDisplay(), releaseNoteItems);
                 notification.setFadingEnabled(false);
@@ -248,7 +252,7 @@ public class RunUpdaterRootJob extends Job {
             Elements links = doc.select("a[href]");
             for (Element link : links) {
                 if (link.attr("href").startsWith("release_") && link.attr("href").endsWith(".txt")) {
-                    String currentItemTimestamp = StringUtils.substringBetween(link.attr("href"), "release_", ".txt");;
+                    String currentItemTimestamp = StringUtils.substringBetween(link.attr("href"), "release_", ".txt");
                     try {
                         relasedTimestampList.add(Long.parseLong(currentItemTimestamp));
                     } catch (NumberFormatException error) {
@@ -261,8 +265,9 @@ public class RunUpdaterRootJob extends Job {
                     URL url = new URL(RELEASE_NOTE_URL + "/release_" + Long.toString(currentTimestamp) + ".txt");
                     InputStream is = url.openStream();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-                    while (reader.ready()) {
-                        stringArray.add(reader.readLine());
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        stringArray.add(line);
                     }
 
                     is.close();

@@ -13,11 +13,11 @@
          </property>
          <property
                name="aboutImage"
-               value="icons/carbon-studio-logo.gif">
+               value="icons/about_banner.png">
          </property>
          <property
                name="aboutText"
-               value="Licensed under Apache License, version 2.&#x0A;Please visit : http://wso2.com/products/developer-studio/">
+               value="Licensed under Apache License, version 2.&#x0A;Please visit : https://wso2.com/integration/integration-studio/">
          </property>
          <property
                name="windowImages"
@@ -33,7 +33,7 @@
          </property>
          <property
                name="startupForegroundColor"
-               value="729FCF">
+               value="FFFFFF">
          </property>
          <property
                name="startupMessageRect"

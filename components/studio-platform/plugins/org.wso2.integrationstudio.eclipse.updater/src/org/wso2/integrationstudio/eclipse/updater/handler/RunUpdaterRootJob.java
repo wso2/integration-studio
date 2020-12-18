@@ -47,22 +47,12 @@ public class RunUpdaterRootJob extends Job {
 
     protected static IIntegrationStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
-    private static final String KERNEL_P2_URL = "http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/kernel/updates";
-    private static final String PLATFORM_P2_URL = "http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/platform-bundles/updates/7.0.0";
-    private static final String ESB_P2_URL = "http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/esb-tools/updates/7.0.0";
-    private static final String DSS_P2_URL = "http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/dss-tools/updates";
-    private static final String BPS_P2_URL = "http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/bps-tools/updates/7.0.0";
-    private static final String EI_P2_URL = "http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/ei-tools/updates/7.0.0";
-    private static final String RELEASE_NOTE_URL = "http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/release-notes";
-    
-    // testing URLs
-//    private static final String KERNEL_P2_URL = "https://integrationstudiotooling.000webhostapp.com/dist/kernel";
-//    private static final String PLATFORM_P2_URL = "https://integrationstudiotooling.000webhostapp.com/dist/platform-bundles";
-//    private static final String ESB_P2_URL = "https://integrationstudiotooling.000webhostapp.com/dist/esb-tools";
-//    private static final String DSS_P2_URL = "https://integrationstudiotooling.000webhostapp.com/dist/dss-tools";
-//    private static final String BPS_P2_URL = "https://integrationstudiotooling.000webhostapp.com/dist/bps-tools";
-//    private static final String EI_P2_URL = "https://integrationstudiotooling.000webhostapp.com/dist/ei-tools";
-//    private static final String RELEASE_NOTE_URL = "https://integrationstudiotooling.000webhostapp.com/dist/release-notes";
+    private static final String UPDATE_DOMAIN = "http://product-dist.wso2.com";
+    private static final String PLATFORM_P2_URL = UPDATE_DOMAIN + "/p2/integration-studio/7.2.0/studio-platform";
+    private static final String ESB_P2_URL = UPDATE_DOMAIN + "/p2/integration-studio/7.2.0/esb-tools";
+    private static final String DSS_P2_URL = UPDATE_DOMAIN + "/p2/integration-studio/7.2.0/dss-tools";
+    private static final String BPS_P2_URL = UPDATE_DOMAIN + "/p2/integration-studio/7.2.0/bps-tools";
+    private static final String RELEASE_NOTE_URL = UPDATE_DOMAIN + "/integration-studio/7.2.0/release-notes";
     
     private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
     private static final String EMPTY_STRING = "";
@@ -93,12 +83,6 @@ public class RunUpdaterRootJob extends Job {
     }
 
     private static boolean checkUpdateAvailability() {
-        // check kernel timestamps
-        long hostedKernelTimestamp = maximumTimestampInGivenURL(KERNEL_P2_URL);
-        long localKernelTimestamp = getLatestTimestampOfKernel();
-        if (hostedKernelTimestamp > localKernelTimestamp) {
-            return true;
-        }
 
         // check platform timestamps
         long hostedPlatformTimestamp = maximumTimestampInGivenURL(PLATFORM_P2_URL);
@@ -125,13 +109,6 @@ public class RunUpdaterRootJob extends Job {
         long hostedBPSTimestamp = maximumTimestampInGivenURL(BPS_P2_URL);
         long localBPSTimestamp = getLatestTimestampOfBPS();
         if (hostedBPSTimestamp > localBPSTimestamp) {
-            return true;
-        }
-
-        // check EI timestamps
-        long hostedEITimestamp = maximumTimestampInGivenURL(EI_P2_URL);
-        long localEIimestamp = getLatestTimestampOfEI();
-        if (hostedEITimestamp > localEIimestamp) {
             return true;
         }
 
@@ -216,24 +193,6 @@ public class RunUpdaterRootJob extends Job {
         return toolingRootPath;
     }
 
-    private static long getLatestTimestampOfKernel() {
-        List<Long> kernelPluginsTimestampList = new ArrayList<>();
-        String[] kernelPlugins = { "org.wso2.integrationstudio.eclipse.kernel.libraries",
-                "org.wso2.integrationstudio.eclipse.logging", "org.wso2.integrationstudio.eclipse.maven",
-                "org.wso2.integrationstudio.eclipse.platform.core", "org.wso2.integrationstudio.eclipse.platform.ui",
-                "org.wso2.integrationstudio.eclipse.updater", "org.wso2.integrationstudio.eclipse.utils",
-                "org.wso2.integrationstudio.eclipse.wso2plugin.template.manager" };
-
-        for (String plugin : kernelPlugins) {
-            List<Long> currentPluginTimestamp = checkLocalPluginTimestamp(plugin, pluginDirFile);
-            if (currentPluginTimestamp.size() > 0) {
-                kernelPluginsTimestampList.add(Collections.max(currentPluginTimestamp));
-            }
-        }
-
-        return Collections.max(kernelPluginsTimestampList);
-    }
-
     private static long getLatestTimestampOfPlstform() {
         String platformPLugin = "org.wso2.integrationstudio.eclipse.docker.distribution";
 
@@ -248,12 +207,6 @@ public class RunUpdaterRootJob extends Job {
 
     private static long getLatestTimestampOfDSS() {
         String esbPLugin = "org.wso2.integrationstudio.eclipse.ds.editor";
-
-        return Collections.max(checkLocalPluginTimestamp(esbPLugin, pluginDirFile));
-    }
-
-    private static long getLatestTimestampOfEI() {
-        String esbPLugin = "org.wso2.integrationstudio.eclipse.ei.project";
 
         return Collections.max(checkLocalPluginTimestamp(esbPLugin, pluginDirFile));
     }
@@ -280,12 +233,10 @@ public class RunUpdaterRootJob extends Job {
     
     private static long getLocalMaxTimestamp() {
         List<Long> localTimestampList = new ArrayList<>();
-        localTimestampList.add(getLatestTimestampOfKernel());
         localTimestampList.add(getLatestTimestampOfPlstform());
         localTimestampList.add(getLatestTimestampOfESB());
         localTimestampList.add(getLatestTimestampOfDSS());
         localTimestampList.add(getLatestTimestampOfBPS());
-        localTimestampList.add(getLatestTimestampOfEI());
         
         return Collections.max(localTimestampList);
     }

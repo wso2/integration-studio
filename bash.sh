@@ -1,1 +1,0 @@
-find . -depth -path '*/org/wso2/integrationstudio/eclipse' -type d -execdir bash -c 'mv eclipse/* .; rmdir eclipse; pwd;' _ {} \;

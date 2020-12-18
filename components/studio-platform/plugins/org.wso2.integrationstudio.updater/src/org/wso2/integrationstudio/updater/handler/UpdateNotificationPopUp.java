@@ -137,9 +137,9 @@ public class UpdateNotificationPopUp extends AbstractNotificationPopup {
                 IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench()
                         .getService(IHandlerService.class);
                 try {
-                    handlerService.executeCommand("org.wso2.integrationstudio.updater.CheckUpdatesCmd", null);
+                    handlerService.executeCommand("org.eclipse.equinox.p2.ui.sdk.update", null);
                 } catch (Exception err) {
-                    log.error("org.wso2.integrationstudio.updater.CheckUpdatesCmd not found", err);
+                    log.error("org.eclipse.equinox.p2.ui.sdk.update not found", err);
                 }
                 
                 updateNowLbl.setVisible(false);

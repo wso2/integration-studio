@@ -246,7 +246,7 @@ public class ProxyServiceModel extends ProjectDataModel {
             String url = (String) data;
             if (StringUtils.isNotBlank(url)) {
                 setProxyWSDLurl(url);
-                UrlValidator urlValidator = new UrlValidator();
+                UrlValidator urlValidator = new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS);
                 if (urlValidator.isValid(url)) {
                     addAvailableNames(url);
                 }

@@ -47,11 +47,11 @@ public class RunUpdaterRootJob extends Job {
 
     protected static IIntegrationStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
-    private static final String UPDATE_DOMAIN = "http://product-dist.wso2.com";
-    private static final String PLATFORM_P2_URL = UPDATE_DOMAIN + "/p2/integration-studio/7.2.0/studio-platform";
-    private static final String ESB_P2_URL = UPDATE_DOMAIN + "/p2/integration-studio/7.2.0/esb-tools";
-    private static final String DSS_P2_URL = UPDATE_DOMAIN + "/p2/integration-studio/7.2.0/dss-tools";
-    private static final String BPS_P2_URL = UPDATE_DOMAIN + "/p2/integration-studio/7.2.0/bps-tools";
+    private static final String UPDATE_DOMAIN = "http://192.168.1.7:8000/p2";
+    private static final String PLATFORM_P2_URL = UPDATE_DOMAIN + "/integration-studio/7.2.0/studio-platform";
+    private static final String ESB_P2_URL = UPDATE_DOMAIN + "/integration-studio/7.2.0/esb-tools";
+    private static final String DSS_P2_URL = UPDATE_DOMAIN + "/integration-studio/7.2.0/dss-tools";
+    private static final String BPS_P2_URL = UPDATE_DOMAIN + "/integration-studio/7.2.0/bps-tools";
     private static final String RELEASE_NOTE_URL = UPDATE_DOMAIN + "/integration-studio/7.2.0/release-notes";
     
     private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";

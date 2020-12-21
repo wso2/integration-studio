@@ -121,7 +121,7 @@ public class EEFPropertyViewUtil {
     static {
         URL url;
         try {
-            url = new URL("platform:/plugin/org.wso2.integrationstudio.gmf.esb.edit/src-gen/org/wso2/integrationstudio/eclipse/gmf/esb/presentation/helpcontent.properties");
+            url = new URL("platform:/plugin/org.wso2.integrationstudio.gmf.esb.edit/src-gen/org/wso2/integrationstudio/gmf/esb/presentation/helpcontent.properties");
             InputStream inputStream = url.openConnection().getInputStream();
             properties = new Properties();
             properties.load(inputStream);

@@ -352,7 +352,7 @@ Please visit : http://wso2.com/products/integration-studio/
    </configurations>
 
    <repositories>
-      <repository location="http://192.168.1.7:8000/integration-studio/7.2.0/" enabled="true" />
+      <repository location="http://product-dist.wso2.com/p2/integration-studio/7.2.0/" enabled="true" />
    </repositories>
 
    <preferencesInfo>

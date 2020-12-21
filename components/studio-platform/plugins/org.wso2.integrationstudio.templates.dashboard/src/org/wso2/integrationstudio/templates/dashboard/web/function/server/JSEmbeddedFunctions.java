@@ -227,7 +227,7 @@ public class JSEmbeddedFunctions {
             url = "https://ei.docs.wso2.com/en/latest/micro-integrator/develop/WSO2-Integration-Studio/";
             break;
         case "github":
-            url = "https://github.com/wso2/devstudio-tooling-ei";
+            url = "https://github.com/wso2/integration-studio";
             break;
         case "slack":
             url = "https://wso2-ei.slack.com";

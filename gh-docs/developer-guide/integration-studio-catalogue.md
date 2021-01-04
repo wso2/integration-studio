@@ -1,17 +1,16 @@
 # WSO2 Integration Studio Catalog
 
-WSO2 Integration Studio is an Eclipse Oxygen based development environment used to design your integration scenarios and develop them. It can be used to develop services, features, and artifacts as well as manage their links and dependencies through a simplified graphical editor. It provides inbuilt debugging and testing capabilities to troubleshoot and identify the integration aspects while creating the artifacts. Furthermore, WSO2 Integration Studio offers different deployment approaches, including CAR (Carbon Application Archive) deployment, docker deployment, kubernetes deployment, WSO2 integration cloud deployment, etc., to cater your CI/CD (Continuous Integration/Continuous Development) requirements.
+WSO2 Integration Studio is an Eclipse 2020-06 based development environment used to design your integration scenarios and develop them. It can be used to develop services, features, and artifacts as well as manage their links and dependencies through a simplified graphical editor. It provides inbuilt debugging and testing capabilities to troubleshoot and identify the integration aspects while creating the artifacts. Furthermore, WSO2 Integration Studio offers different deployment approaches, including CAR (Carbon Application Archive) deployment, docker deployment, kubernetes deployment, WSO2 integration cloud deployment, etc., to cater your CI/CD (Continuous Integration/Continuous Development) requirements.
 
 ## Table of Content
 
 * [High Level Architecture](#High-Level-Architecture)
-* [Introduction to the repos](#Introduction-to-the-repos)
-    * [Integration Studio Kernel](#Integration-Studio-Kernelhttpsgithubcomwso2developer-studio)
-    * [Integration Studio Platform](#Integration-Studio-Platformhttpsgithubcomwso2devstudio-tooling-platform)
-    * [ESB Tooling](#ESB-Toolinghttpsgithubcomwso2devstudio-tooling-esb)
-    * [DSS Tooling](#DSS-Toolinghttpsgithubcomwso2devstudio-tooling-dss)
-    * [BPS Tooling](#BPS-Toolinghttpsgithubcomwso2devstudio-tooling-bps)
-    * [Integration Studio EI](#Integration-Studio-EIhttpsgithubcomwso2devstudio-tooling-ei)
+* [Introduction to the Components](#Introduction-to-the-Components)
+    * [Integration Studio - studio-platform](#integration-studio---studio-platformhttpsgithubcomwso2integration-studiotreemaincomponentsstudio-platform)
+    * [ESB Tools](#ESB-Toolshttpsgithubcomwso2integration-studiotreemaincomponentsesb-tools)
+    * [DSS Tools](#DSS-Toolshttpsgithubcomwso2integration-studiotreemaincomponentsdss-tools)
+    * [BPS Tools](#BPS-Toolshttpsgithubcomwso2integration-studiotreemaincomponentsbps-tools)
+    * [Integration Studio Distribution](#Integration-Studio-Distributionhttpsgithubcomwso2integration-studiotreemaindistributionrcp-product)
 * [Introduction on Integration Studio package components](#Introduction-on-Integration-Studio-package-components)
 * [Setting up Integration Studio for developers](#Setting-up-Integration-Studio-for-Developers)
 * [Running Integration Studio in Developer Mode](#Running-Integration-Studio-in-Developer-Mode)
@@ -81,23 +80,22 @@ The Eclipse Graphical Editing Framework (GEF) provides Eclipse-integrated end-us
 EEF is a presentation framework for the Eclipse Modeling Framework (EMF). It allows users to create rich user interfaces (Properties view of ESB components like mediators, proxies, API resources, Inbound Endpoints, etc.) to edit EMF models.
 
 ### How is the Integration Studio designed with Eclipse Frameworks?
-The Integration Studio IDE is an Eclipse Oxygen based Rich Client Platform(RCP). All the synapse level constructs (including mediators, proxies, inbound endpoints, etc), are first described as an XMI model using the Eclipse Modeling Framework(EMF). The EMF XMI model is in the devstudio-tooling-esb repository: https://github.com/wso2/devstudio-tooling-esb/blob/master/plugins/org.wso2.integrationstudio.gmf.esb/model/esb.ecore
+The Integration Studio IDE is an Eclipse 2020-06 based Rich Client Platform(RCP). All the synapse level constructs (including mediators, proxies, inbound endpoints, etc), are first described as an XMI model using the Eclipse Modeling Framework(EMF). The EMF XMI model is in the devstudio-tooling-esb repository: https://github.com/wso2/integration-studio/blob/main/components/esb-tools/plugins/org.wso2.integrationstudio.gmf.esb/model/esb.ecore
 Then, the EMF framework generates the model classes for the MVC architecture. 
 The EMF generated classes include Mediators(Interface of the model), and MediatorImpl(model).
 
 GMF “provides a generative component and runtime infrastructure for developing graphical editors based on EMF and GEF”, that is, it acts as a bridge between EMF (that allows the model definition) and GEF (a lightweight graphical framework, based on MVC architecture), generating the complete infrastructure needed to coordinate the model objects’ lifecycle (EMF EObject) and their corresponding graphical representation (GEF EditPart).
-All the GMF related model files can be found at https://github.com/wso2/devstudio-tooling-esb/tree/master/plugins/org.wso2.integrationstudio.gmf.esb/model
+All the GMF related model files can be found at https://github.com/wso2/integration-studio/blob/main/components/esb-tools/plugins/org.wso2.integrationstudio.gmf.esb/model
 
-Finally, using the EEF framework, the Classes related to the Properties view are generated. The EEF model is deduced from the EMF model(.ecore file). The EEF model is hosted at https://github.com/rosensilva/devstudio-tooling-esb/blob/ec4f86d2a46bb23a6a1933b65bcf3e4603375253/plugins/org.wso2.integrationstudio.gmf.esb.edit/model/esb.components
+Finally, using the EEF framework, the Classes related to the Properties view are generated. The EEF model is deduced from the EMF model(.ecore file). The EEF model is hosted at https://github.com/wso2/integration-studio/blob/main/components/esb-tools/plugins/org.wso2.integrationstudio.gmf.esb.edit/model/esb.components
 
-# Introduction to the repos
+# Introduction to the Components
 
-## Integration Studio Kernel(https://github.com/wso2/developer-studio)
+## Integration Studio - studio-platform(https://github.com/wso2/integration-studio/tree/main/components/studio-platform)
 
+WSO2 Integration Studio studio-platform provides a set of common plugins, which can be used to develop Eclipse plugins for WSO2 products that are based on WSO2 Carbon platform. All the product specific plugins will use the Integration Studio Kernel as the base for their respective tooling implementation. Also, WSO2 Integration Studio studio-platform acts as a middle layer from Integration Studio Kernel to Integration Studio product Tooling by bridging the gap for carbon specific requirement implementation on top of Eclipse.
 
-WSO2 Integration Studio Kernel provides a set of common plugins, which can be used to develop Eclipse plugins for WSO2 products that are based on WSO2 Carbon platform. All the product specific plugins will use the Integration Studio Kernel as the base for their respective tooling implementation.
-
-#### Integration Studio kernel has following key capabilities
+#### Integration Studio studio-platform has following key capabilities
 
 * A UI toolkit that will generate UIs using XML instead of visually designing
 * A platform and a framework to use web technologies for plugin development
@@ -106,70 +104,57 @@ WSO2 Integration Studio Kernel provides a set of common plugins, which can be us
 * Provide Maven utilities to add maven support for developed plugins
 * Built in support for CApp and Carbon servers
 * Seamless integration with Eclipse, Integration Studio kernel and other plugin features using extension points
-
-## Integration Studio Platform(https://github.com/wso2/devstudio-tooling-platform)
-WSO2 Integration Studio Platform acts as a middle layer from Devleoper Studio Kernel to Integration Studio product Tooling by bridging the gap for carbon specific requirement implementation on top of Eclipse.
-
-#### WSO2 Integration Studio Platform has following key capabilities
-
 * Provide Maven utilities to add maven support for developed plugins
 * Built in support for CApp and Carbon servers
 * Seamless integration with Eclipse, Integration Studio kernel and other plugin features using extension points
 * Connectivity to Carbon Servers and WSO2 cloud
 * Integration Studio Platform will provide comprehensive support for developing tools and speedup the development process by providing generic Carbon based implementations and requirements.
 
-## ESB Tooling(https://github.com/wso2/devstudio-tooling-esb)
-WSO2 ESB tooling provides capabilities of a complete eclipse-based development environment for the ESB. You can develop services, features and artifacts as well as manage their links and dependencies through a simplified graphical editor via WSO2 ESB tooling. 
-#### WSO2 ESB Tooling has the following key capabilities
+## ESB Tools(https://github.com/wso2/integration-studio/tree/main/components/esb-tools)
+WSO2 ESB Tools provides capabilities of a complete eclipse-based development environment for the ESB. You can develop services, features and artifacts as well as manage their links and dependencies through a simplified graphical editor via WSO2 ESB tooling. 
+
+#### WSO2 ESB Tools has the following key capabilities
 * Develop ESB configurations (Proxy, API, Sequence, etc.) for the runtime
 * Debug ESB configurations using the mediation debugger
 * Mapping data across different formats using data mapper
 * Deploying ESB configurations directly to local and remote ESB instances
 * Provides a graphical editor to build ESB configurations in a drag and drop manner
 
-## DSS Tooling(https://github.com/wso2/devstudio-tooling-dss)
-WSO2 DSS tooling provides capabilities of a complete eclipse-based development environment for the DSS. You can develop dss artifacts through a simplified graphical editor via WSO2 DSS tooling.
+## DSS Tools(https://github.com/wso2/integration-studio/tree/main/components/dss-tools)
+WSO2 DSS Tools provides capabilities of a complete eclipse-based development environment for the DSS. You can develop dss artifacts through a simplified graphical editor via WSO2 DSS tooling.
 #### WSO2 DSS Tooling has following key capabilities
 Develop Data Services for the runtime Develop Data Source configurations Deploy DSS configurations directly to local and remote DSS instances Provides a graphical editor to develop Data Services configurations
 
-## BPS Tooling(https://github.com/wso2/devstudio-tooling-bps)
-BPS Tooling repo is maintained for the Business Process development of WSO2 Enterprise Integrator. Devstudio Tooling for BPS project contains two main components,
+## BPS Tools(https://github.com/wso2/integration-studio/tree/main/components/bps-tools)
+BPS Tools repo is maintained for the Business Process development of WSO2 Enterprise Integrator. Devstudio Tooling for BPS project contains two main components,
 * BPEL Editor
 * Human Task Editor
 
-## Integration Studio EI(https://github.com/wso2/devstudio-tooling-ei)
-Integration Studio EI contains the source code to create Eclipse RCP(Rich Client Application) for WSO2 Enterprise Integrator. This will package all the WSO2 Enterprise Integrator tooling plugins into one WSO2 branded eclipse based RCP application. Also, this will contain the packaging of third-party components such as Adopt OpenJDK, Maven, WSO2 Micro-integrator, WSO2 Monitoring dashbord, HTTP4e client, etc.
+## Integration Studio Distribution(https://github.com/wso2/integration-studio/tree/main/distribution/rcp-product)
+Integration Studio Distribution contains the source code to create Eclipse RCP(Rich Client Application) for WSO2 Enterprise Integrator. This will package all the WSO2 Enterprise Integrator tooling plugins into one WSO2 branded eclipse based RCP application. Also, this will contain the packaging of third-party components such as Adopt OpenJDK, Maven, WSO2 Micro-integrator, WSO2 Monitoring dashbord, HTTP4e client, etc.
 
 # Introduction on Integration Studio package components
+Integration Studio has been released with the following package components.
+    * OS specific JDK 1.8 (8u252b09)
+    * OS specific Maven v3.6
+    * Micro Integration latest runtime
+    * Micro Integration Monitoring Dashboard latest runtime
 
 # Setting up Integration Studio for Developers
-1. Download [Eclipse IDE Oxygen IDE](https://www.eclipse.org/downloads/packages/release/oxygen/3a) based on the OS [Eclipse IDE for Java EE Developers]
+1. Download [Eclipse IDE 2020-06 IDE](https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-enterprise-java-developers) based on the OS [Eclipse IDE for Java EE Developers]
 2. Use [JDK 8u202](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html) for development(Other java versions might not work).
-3. Import the Kernel source to eclipse. 
-    * Clone Integration Studio kernal repository https://github.com/wso2/developer-studio.
-    * Switch to **developer-studio-kernel-4.3.0_update** branch
-    * Build the branch using maven
-    * Import the **plugins directory** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
+3. Import the **studio-platform** component source to eclipse. 
+    * Clone Integration Studio kernal repository https://github.com/wso2/integration-studio.git.
+    * Import the **plugins directory** which located in the **<TOOLING_ROOT>/components/studio-platform** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
     * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
 
-4. Import the Platform source to eclipse. 
-    * Clone Integration Studio platform repository https://github.com/wso2/devstudio-tooling-platform.
-    * Import the **plugins directory** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
+4. Import the **esb-tools** component source to eclipse. 
+    * Import the **plugins directory** which located in the **<TOOLING_ROOT>/components/esb-tools** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
     * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
 
-5. Import the ESB source to eclipse. 
-    * Clone Integration Studio platform repository https://github.com/wso2/devstudio-tooling-esb.
-    * Import the **plugins directory** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
-    * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
-
-6. Import the EI source to eclipse. 
-    * Clone Integration Studio platform repository https://github.com/wso2/devstudio-tooling-ei.
-    * Import the **plugins directory** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
-    * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
-
-7. Install Modeling features(EMF) to eclipse
+5. Install Modeling features(EMF) to eclipse
     * Click on Help -> Install New Software
-    * Select **Oxygen - http://download.eclipse.org/releases/oxygen/** from work with drop down list 
+    * Select **2020-06 - http://download.eclipse.org/releases/2020-06/** from work with drop down list 
     * Click on **Modeling** checkbox in the install window
     * Then untick **Contact all updates sites during install to find required software** and Click on **Next**
     * Then you will get Install details page, again click on **Next**
@@ -177,7 +162,7 @@ Integration Studio EI contains the source code to create Eclipse RCP(Rich Client
     * It will take sometime to install the software, during the process you will get a security warning pop-up, click on **Install anyway**.
     * Then it will ask to restart the server, click on **Yes**.
 
-8. Install GMF related tooling runtime for oxygen, using the p2. (some features might not be able to install but install what is allowed)
+6. Install GMF related tooling runtime for 2020-06, using the p2. (some features might not be able to install but install what is allowed)
     * Click on **Help** -> Install New Software
     * Click on **Add** -> Add the url http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/ into **Location**, and click OK.
     * Select only **GMF Tooling** from the dropdown list.
@@ -187,19 +172,17 @@ Integration Studio EI contains the source code to create Eclipse RCP(Rich Client
     * It will take sometime to install the selected software.
     * Finally, it will ask to restart the eclipse, click on **Yes**.
 
-9. Copy micro-integrator runtime eclipse 
+7. Copy micro-integrator runtime eclipse 
     * Create a directory under the eclipse directory (macOS: /Applications/Eclipse.app/Contents/Eclipse/, Linux/Windows /eclipse directory) as **/runtime/microesb/** 
     * Download and copy the contents of micro integrator runtime to the folder created in the above step
 
 
-10. [Optional - add only if you need to work on DSS] Import DSS and BPS Source to eclpise.
-    * Clone Integration Studio DSS repository https://github.com/wso2/devstudio-tooling-dss.
-    * Import the **plugins directory** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
+8. [Optional - add only if you need to work on DSS] Import the **dss-tools** Source to eclpise.
+    * Import the **plugins directory** which located in the **<TOOLING_ROOT>/components/dss-tools** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
     * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
 
-11. [Optional - add only if you need to work on BPS] Import BPS and BPS Source to eclpise.
-    * Clone Integration Studio DSS repository https://github.com/wso2/devstudio-tooling-bps.
-    * Import the **plugins directory** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
+11. [Optional - add only if you need to work on BPS] Import the **bps-tools** Source to eclpise.
+    * Import the **plugins directory** which located in the **<TOOLING_ROOT>/components/bps-tools** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
     * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
 
 12. Apply WSO2 code style settings file for Eclipse.
@@ -225,9 +208,6 @@ Integration Studio EI contains the source code to create Eclipse RCP(Rich Client
     3. Create a new Eclipse Application
     4. Click on Debug
 
-* **[Important]** For macOS 
-Go to **Run -> Run configuration -> Select eclipse run configuration -> Select Arguments tab** and add **-nosplash** as an argument
-
 * To ignore all the **Plugin execurtion not covered by lifecycle configuration**  maven errors (pom.xml errors), please do the following steps.
     1. Navigate to Preferences window
     2. Search Maven
@@ -236,7 +216,7 @@ Go to **Run -> Run configuration -> Select eclipse run configuration -> Select A
 
 # Introduction to all the plugins
 
-## Kernal Plugins
+## Studio Platform Plugins
 
 1. **org.wso2.integrationstudio.kernel.libraries**
     * This plugin is used to add the third-party library jars that is required by the Integration Studio Kernal repository. This plugin contains the jar files and expose their required classes to be used by other kernal level packages
@@ -270,66 +250,65 @@ Go to **Run -> Run configuration -> Select eclipse run configuration -> Select A
 9. **org.wso2.integrationstudio.wso2plugin.template.manager**
     * This plugin contains the WSO2 Plugin Project related code
 
-## Platform Plugins
-
-1. **org.wso2.integrationstudio.capp.core**
+10. **org.wso2.integrationstudio.capp.core**
     * Carbon Application related code 
 
-2. **org.wso2.integrationstudio.carbonserver.base**
+11. **org.wso2.integrationstudio.carbonserver.base**
     * Base eclipse server abstraction for all the carbon servers including Enterprise Integrator and Micro Integrator
 
-3. **org.wso2.integrationstudio.carbonserver.remote**
+12. **org.wso2.integrationstudio.carbonserver.remote**
     * Contains the Carbon Remote Server code. The remote servers are used to connect to remote WSO2 server using port and URL
 
-4. **org.wso2.integrationstudio.carbonserver40 - org.wso2.integrationstudio.carbonserver44**
+13. **org.wso2.integrationstudio.carbonserver40 - org.wso2.integrationstudio.carbonserver44**
     * These plugins have eclipse server abstraction for Older ESB servers before EI 6.0.0
-5. **org.wso2.integrationstudio.carbonserver44ei**
+
+14. **org.wso2.integrationstudio.carbonserver44ei**
     * Contains the Server plugin for Enterprise Integrator from version 6.0.0 to 6.6.0
     * Server definition is in the following path from the plugin serverdefinition/carbon.definition.xml
 
-6. **org.wso2.integrationstudio.carbonserver44microei**
+15. **org.wso2.integrationstudio.carbonserver44microei**
     * Server for Micro Integrator 1.0.0
 
-7. **org.wso2.integrationstudio.carbonserver44microei11**
+16. **org.wso2.integrationstudio.carbonserver44microei11**
     * Server for Micro Integrator 1.1.0
 
-8. **org.wso2.integrationstudio.carbonserver44microei12**
+17. **org.wso2.integrationstudio.carbonserver44microei12**
     * Server for Micro Integrator 1.2.0
 
-9. **org.wso2.integrationstudio.dashboard**
+18. **org.wso2.integrationstudio.dashboard**
     * Older version for Getting started page. Contains Open dashboard
 
-10. **org.wso2.integrationstudio.distribution.project**
+19. **org.wso2.integrationstudio.distribution.project**
     * Contains the Composite Application Project(Composite Exporter Project) related code
 
-11. **org.wso2.integrationstudio.docker.distribution**
+20. **org.wso2.integrationstudio.docker.distribution**
     * This plugin contains the docker and kubernetes project related code. Including Docker/Kubernetes editors.
 
-12. **org.wso2.integrationstudio.general.project**
+21. **org.wso2.integrationstudio.general.project**
     * The Registry Resource Project related code is under this plugin
 
-13. **org.wso2.integrationstudio.libraries**
+22. **org.wso2.integrationstudio.libraries**
     * This plugin is used to add the third-party library jars that is required by the Integration Studio Platform repository. This plugin contains the jar files and expose their required classes to be used by other platform level packages
 
-14. **org.wso2.integrationstudio.maven.multi.module**
+23. **org.wso2.integrationstudio.maven.multi.module**
     * This contain the Integration Project(Maven Multi Module Project in version prior to 7.1.0) related code.
 
-15. **org.wso2.integrationstudio.project.extension**
+24. **org.wso2.integrationstudio.project.extension**
     * Contains extension point to add project natures to developer studio
     * Templates for WSO2 Integration artifacts including proxy, syapse API, address endpoints, message store, etc.
 
-16. **org.wso2.integrationstudio.registry.***
+25. **org.wso2.integrationstudio.registry.***
     * These plugins were use to connected remote wso2 registry to the Integration Studio(WSO2 Registry Perspective) 
     * base, connector, core, libraries, manager.local, manager.remote, perspective, resource.authorization, search are the plugins for the registry connection
 
-17. **org.wso2.integrationstudio.templates.dashboard**
+26. **org.wso2.integrationstudio.templates.dashboard**
     * This plugin contain the Web Page for the Getting Stared Dashboard
     * All the HTML, CSS, JS scripts for Getting Started Pages can be located at /WelcomeDashboard
 
-18. **org.wso2.integrationstudio.webui.core**
+27. **org.wso2.integrationstudio.webui.core**
     * This plugin contains the Web Based Editor Abstract class(AbstractWebBasedEditor), which is used for all the Web Editors including Getting Started Page, Data Services Editor, Swagger Editor, etc.
 
-## ESB Plugins
+## ESB Tools Plugins
 
 1. **integrationstudio.eclipse.apim.endpoint.central**
     * Used to connect with WSO2 APIM Endpoint Registry. This feature is not active in the Integration Studio released pack as the strategy changed
@@ -1972,13 +1951,12 @@ sample descriptor goes here
 ```
 
 ## Hosting an update for Integration Studio
-Integration Studio does patch releases over the air updates. That means Integration Studio developers can update or introduce new features on Kernel, Platform, ESB, DSS, BPS or EI plugins and broadcast updates for every user. Here, updates are hosted as P2 plugins in relevant hosting locations which are maintained by the WSO2 Marketing team.
+Integration Studio does patch releases over the air updates. That means Integration Studio developers can update or introduce new features on studio-platform, esb-tools, dss-tools, bps-tools plugins and broadcast updates for every user. Here, updates are hosted as P2 plugins in relevant hosting locations which are maintained by the WSO2 Marketing team.
 
 To deliver a new update for the Integration Studio latest release, follow the below steps. 
 
-1. Build the relevant Jenkins build with the modified source.
-Ex: For the EI update build https://jenkins-support-ei.wso2.com/jenkins/job/devstudio-tooling-ei/ Jenkins job.
-2. Download the built P2 ZIP file from the Jenkins build. You can find the P2 file from the <JOB_LOCATION>/ws/repository/main/target/ path.
+1. Build the [integration-studio-update_release](https://wso2.org/jenkins/job/integration-studio/job/integration-studio-update_release/) Jenkins build with the modified source. Choose the *Build with Parameters* option and select the relevant profile which you want to build.
+2. Download the built P2 ZIP file from the Jenkins build. You can find the P2 file from the <JOB_LOCATION>/ws/components/<relevant-component>/repository/main/target/ path.
 3. Get the timestamp of the built plugins from the downloaded P2 file (To get the built timestamp to check the plugins directory inside the P2 file).
 4. Download **compositeArtifacts.xm**l and **compositeContent.xml** files and update the content as follows.
 ```xml
@@ -1991,45 +1969,37 @@ Ex: For the EI update build https://jenkins-support-ei.wso2.com/jenkins/job/de
     </children>
 </repository>
 ```
-5. Host the modified `compositeArtifacts.xml`, `compositeContent.xml` and P2 file (renamed with the built timestamp) in the relevant P2 host locations.
+5. Host the modified `compositeArtifacts.xml`, `compositeContent.xml` and P2 file (renamed with the built timestamp) in the relevant following P2 host locations.
 6. Create a `release_<NEW_TIMESTAMP>.txt` file and add release notes of the update. 
-7. Host the release note inside the `http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/release-notes/` location. 
+7. Host the release note inside the `http://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/release-notes/` location. 
 
-* **P2 host root location** - http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/
-* **Kernel P2 location** - http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/kernel/updates/
-* **Platform P2 location** - http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/platform-bundles/updates/7.0.0/
-* **ESB P2 location** - http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/esb-tools/updates/7.0.0/
-* **DSS P2 location** - http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/dss-tools/updates/
-* **BPS P2 location** - http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/bps-tools/updates/7.0.0/
-* **EI P2 location** - http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/ei-tools/updates/7.0.0/
+*Note* - Current release version of the tooling is - *7.2.0*
+
+* **P2 host root location** - http://product-dist.wso2.com/p2/integration-studio
+* **Studio Platform P2 location** - http://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/studio-platform/
+* **ESB Tools P2 location** - http://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/esb-tools/
+* **DSS Tools P2 location** - http://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/dss-tools/
+* **BPS Tools P2 location** - http://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/bps-tools/
+
 ## Releasing Integration Studio new version
 To release a new version of the Integration Studio, follow the below steps to move forward.
 
 1. Upgrade the MI version to latest in the EI plugin.
 2. Check Documentation Link from **Help -> Help** Content.
 3. Integration Studio icon with new release version.
+3. Integration Studio splash image with new release version.
 4. Check ConfigMapper plugin version in Docker/K8s project pom.
 5. Check Unit test client plugin version in ESB project pom.
 6. Host templates related to MI to the dist (supports Docker build).
 7. Update toml in docker file and in EI installation.
-8. Trigger the **devstudio-kernel** release build.
-9. Host the devstudio-kernel P2.
-10. Trigger the **devstudio-platform** release build.
-11. Host devstudio-platform P2.
-12. Trigger the **devstudio-bps** release build.
-13. Host devstudio-bps P2.
-14. Trigger **the devstudio-dss** release build. 
-15. Host devstudio-dss P2.
-16. Trigger the **devstudio-esb** release build.
-17. Host devstudio-esb P2.
-18. Trigger the **devstudio-ei** release build. 
-19. Host devstudio-ei packages.
-20. Add license files for every distribution.
-21. Generate DMG for MacOS.
-22. Sign distributions before releasing.
-23. Ask marketing team to host the packs in website.
-24. Ask marketing team to add the packs to Atuwa.
-25. Test the Integration Studio in all platforms and release.
+8. Trigger the [integration-studio](https://wso2.org/jenkins/job/integration-studio/job/integration-studio/) release build (*Perform Maven Release* option defining the release version and new development version).
+9. Add license files for every distribution.
+10. Generate DMG for MacOS.
+11. Sign distributions before releasing.
+12. Ask marketing team to host the packs in website.
+13. Ask marketing team to add the packs to Atuwa.
+14. Test the Integration Studio in all platforms and release.
+15. Update the new release tag [here](https://github.com/wso2/integration-studio/releases)
 
 ## Creating DMG for macOS
 

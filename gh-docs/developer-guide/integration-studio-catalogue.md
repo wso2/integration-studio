@@ -142,17 +142,22 @@ Integration Studio has been released with the following package components.
 
 # Setting up Integration Studio for Developers
 1. Download [Eclipse IDE 2020-06 IDE](https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-enterprise-java-developers) based on the OS [Eclipse IDE for Java EE Developers]
+
 2. Use [JDK 8u202](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html) for development(Other java versions might not work).
-3. Import the **studio-platform** component source to eclipse. 
-    * Clone Integration Studio kernal repository https://github.com/wso2/integration-studio.git.
+
+3. Clone Integration Studio GitHub repository https://github.com/wso2/integration-studio.git.
+
+4. If you are doing a fix for an update, checkout to the branch **updates-<LAST_VERSION>** and work on it (ex: LAST_VERSION=7.2.0). Also, make sure to add the same fix for the **main** branch to have it in the future tooling releases. Otherwise, proceed with **main** branch.
+
+5. Import the **studio-platform** component source to eclipse. 
     * Import the **plugins directory** which located in the **<TOOLING_ROOT>/components/studio-platform** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
     * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
 
-4. Import the **esb-tools** component source to eclipse. 
+6. Import the **esb-tools** component source to eclipse. 
     * Import the **plugins directory** which located in the **<TOOLING_ROOT>/components/esb-tools** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
     * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
 
-5. Install Modeling features(EMF) to eclipse
+7. Install Modeling features(EMF) to eclipse
     * Click on Help -> Install New Software
     * Select **2020-06 - http://download.eclipse.org/releases/2020-06/** from work with drop down list 
     * Click on **Modeling** checkbox in the install window
@@ -162,7 +167,7 @@ Integration Studio has been released with the following package components.
     * It will take sometime to install the software, during the process you will get a security warning pop-up, click on **Install anyway**.
     * Then it will ask to restart the server, click on **Yes**.
 
-6. Install GMF related tooling runtime for 2020-06, using the p2. (some features might not be able to install but install what is allowed)
+8. Install GMF related tooling runtime for 2020-06, using the p2. (some features might not be able to install but install what is allowed)
     * Click on **Help** -> Install New Software
     * Click on **Add** -> Add the url http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/ into **Location**, and click OK.
     * Select only **GMF Tooling** from the dropdown list.
@@ -172,12 +177,12 @@ Integration Studio has been released with the following package components.
     * It will take sometime to install the selected software.
     * Finally, it will ask to restart the eclipse, click on **Yes**.
 
-7. Copy micro-integrator runtime eclipse 
+9. Copy micro-integrator runtime eclipse 
     * Create a directory under the eclipse directory (macOS: /Applications/Eclipse.app/Contents/Eclipse/, Linux/Windows /eclipse directory) as **/runtime/microesb/** 
     * Download and copy the contents of micro integrator runtime to the folder created in the above step
 
 
-8. [Optional - add only if you need to work on DSS] Import the **dss-tools** Source to eclpise.
+10. [Optional - add only if you need to work on DSS] Import the **dss-tools** Source to eclpise.
     * Import the **plugins directory** which located in the **<TOOLING_ROOT>/components/dss-tools** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
     * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
 
@@ -1955,7 +1960,7 @@ Integration Studio does patch releases over the air updates. That means Integrat
 
 To deliver a new update for the Integration Studio latest release, follow the below steps. 
 
-1. Build the [integration-studio-update_release](https://wso2.org/jenkins/job/integration-studio/job/integration-studio-update_release/) Jenkins build with the modified source. Choose the *Build with Parameters* option and select the relevant profile which you want to build.
+1. Build the [integration-studio-update_release](https://wso2.org/jenkins/job/integration-studio/job/integration-studio-update_release/) Jenkins build with the modified source. Choose the **Build with Parameters** option and select the relevant profile which you want to build (Build is configured to build the **updates-<LATEST_VERSION>** branch).
 2. Download the built P2 ZIP file from the Jenkins build. You can find the P2 file from the <JOB_LOCATION>/ws/components/<relevant-component>/repository/main/target/ path.
 3. Get the timestamp of the built plugins from the downloaded P2 file (To get the built timestamp to check the plugins directory inside the P2 file).
 4. Download **compositeArtifacts.xm**l and **compositeContent.xml** files and update the content as follows.
@@ -2000,6 +2005,7 @@ To release a new version of the Integration Studio, follow the below steps to mo
 13. Ask marketing team to add the packs to Atuwa.
 14. Test the Integration Studio in all platforms and release.
 15. Update the new release tag [here](https://github.com/wso2/integration-studio/releases)
+16. Create a new branch for the latest release updates.
 
 ## Creating DMG for macOS
 

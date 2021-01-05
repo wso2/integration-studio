@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Project
 Bundle-SymbolicName: org.wso2.integrationstudio.esb.project;singleton:=true
-Bundle-Version: 7.2.0.qualifier
+Bundle-Version: 8.0.0.qualifier
 Bundle-Activator: org.wso2.integrationstudio.esb.project.Activator
 Require-Bundle: org.eclipse.ltk.core.refactoring,
  org.wso2.integrationstudio.kernel.libraries,

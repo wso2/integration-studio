@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.integrationstudio.rcp.feature"
       label="Integration Studio RCP Feature"
-      version="7.2.0.qualifier"
+      version="8.0.0.qualifier"
       provider-name="WSO2 Inc.">
 
    <description url="http://www.example.com/description">

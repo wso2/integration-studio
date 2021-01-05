@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.integrationstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="7.2.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.integrationstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="8.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.wso2.integrationstudio.rcp.plugin/icons/about_banner.png"/>
@@ -20,7 +20,7 @@ Please visit : http://wso2.com/products/integration-studio/
       <vmArgs>-Xms512m
 -Xmx2048m
 -XX:MaxPermSize=512m
--Dosgi.instance.area.default=@user.home/IntegrationStudio/7.2.0/workspace
+-Dosgi.instance.area.default=@user.home/IntegrationStudio/8.0.0/workspace
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
@@ -352,7 +352,7 @@ Please visit : http://wso2.com/products/integration-studio/
    </configurations>
 
    <repositories>
-      <repository location="http://product-dist.wso2.com/p2/integration-studio/7.2.0/" enabled="true" />
+      <repository location="http://product-dist.wso2.com/p2/integration-studio/8.0.0/" enabled="true" />
    </repositories>
 
    <preferencesInfo>

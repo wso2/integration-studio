@@ -32,6 +32,7 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
+import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
@@ -183,6 +184,11 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
 				"wso2-esb-messageprocessor-plugin", ESBMavenConstants.WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION, true);
+        Dependency activationDependency = new Dependency();
+        activationDependency.setGroupId("com.sun.activation");
+        activationDependency.setArtifactId("javax.activation");
+        activationDependency.setVersion("1.2.0");
+        plugin.addDependency(activationDependency);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");

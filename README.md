@@ -93,19 +93,7 @@ All open issues pertaining to WSO2 Integration Studio are reported at the follow
 
 
 ### Building from Source
-
-If you intend to build the project from the source you can do that with or without building the dependent projects. 
-Here is an outline how the dependent project are structured. If you build with dependencies, you need to do it from 
-bottom to top in the hierarchy.
-
-Repositories referred above
-
-- [devstudio-tooling-ei](https://github.com/wso2/devstudio-tooling-ei/): contains Integration Studio packaging.
-- [devstudio-tooling-bps](https://github.com/wso2/devstudio-tooling-bps): contains features related to business processes. 
-- [devstudio-tooling-dss](https://github.com/wso2/devstudio-tooling-dss/): contains features related to data services.
-- [devstudio-tooling-esb](https://github.com/wso2/devstudio-tooling-esb/): mediation features related to WSO2 ESB are developed in this repository. 
-- [devstudio-tooling-platform](https://github.com/wso2/devstudio-tooling-platform/): implementation common WSO2 features for the Eclipse platform. 
-- [developer-studio](https://github.com/wso2/developer-studio/): implements Eclipse platform customizations for Integration Studio.
+You can download this repository and run ```mvn clean install``` from the root directory, to build the Integration Studio from the source code
 
 ## Enterprise Support
 

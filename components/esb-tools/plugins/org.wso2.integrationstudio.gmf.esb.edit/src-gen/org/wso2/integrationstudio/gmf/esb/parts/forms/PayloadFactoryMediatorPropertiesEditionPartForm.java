@@ -427,7 +427,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 		mediaType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData mediaTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		mediaType.getCombo().setLayoutData(mediaTypeData);
-        mediaType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+                mediaType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
                     @Override
                     public void handleEvent(Event arg0) {

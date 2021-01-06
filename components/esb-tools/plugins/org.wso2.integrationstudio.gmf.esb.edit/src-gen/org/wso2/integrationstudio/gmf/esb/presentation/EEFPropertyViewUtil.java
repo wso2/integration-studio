@@ -43,6 +43,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
@@ -548,6 +549,11 @@ public class EEFPropertyViewUtil {
         Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-localentry-plugin",
                 WSO2_ESB_LOCAL_ENTRY_VERSION, true);
         PluginExecution pluginExecution = new PluginExecution();
+        Dependency activationDependency = new Dependency();
+        activationDependency.setGroupId("com.sun.activation");
+        activationDependency.setArtifactId("javax.activation");
+        activationDependency.setVersion("1.2.0");
+        plugin.addDependency(activationDependency);
         pluginExecution.addGoal("pom-gen");
         pluginExecution.setPhase("process-resources");
         pluginExecution.setId("localentry");

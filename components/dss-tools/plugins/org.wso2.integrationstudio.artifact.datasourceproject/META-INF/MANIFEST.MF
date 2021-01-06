@@ -11,6 +11,9 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.eclipse.jdt.core,
+ org.eclipse.ltk.core.refactoring,
+ org.eclipse.ltk.core.refactoring.participants,
+ org.eclipse.text.edits,
  org.eclipse.ui.ide,
  org.wso2.integrationstudio.capp.core.artifacts.manager,
  org.wso2.integrationstudio.capp.core.model,

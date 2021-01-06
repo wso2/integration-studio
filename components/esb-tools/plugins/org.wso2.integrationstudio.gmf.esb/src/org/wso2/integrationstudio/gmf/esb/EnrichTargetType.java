@@ -59,7 +59,15 @@ public enum EnrichTargetType implements Enumerator {
      * @generated
      * @ordered
      */
-    ENVELOPE(1, "ENVELOPE", "envelope");
+    ENVELOPE(1, "ENVELOPE", "envelope"), /**
+     * The '<em><b>KEY</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #KEY_VALUE
+     * @generated
+     * @ordered
+     */
+    KEY(5, "KEY", "key");
 
     /**
      * The '<em><b>CUSTOM</b></em>' literal value.
@@ -122,6 +130,17 @@ public enum EnrichTargetType implements Enumerator {
     public static final int ENVELOPE_VALUE = 1;
 
     /**
+     * The '<em><b>KEY</b></em>' literal value.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #KEY
+     * @model literal="key"
+     * @generated
+     * @ordered
+     */
+    public static final int KEY_VALUE = 5;
+
+    /**
      * An array of all the '<em><b>Enrich Target Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -132,6 +151,7 @@ public enum EnrichTargetType implements Enumerator {
             BODY,
             PROPERTY,
             ENVELOPE,
+            KEY,
         };
 
     /**
@@ -192,6 +212,7 @@ public enum EnrichTargetType implements Enumerator {
             case BODY_VALUE: return BODY;
             case PROPERTY_VALUE: return PROPERTY;
             case ENVELOPE_VALUE: return ENVELOPE;
+            case KEY_VALUE: return KEY;
         }
         return null;
     }

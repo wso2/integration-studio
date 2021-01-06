@@ -176,15 +176,13 @@ public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 
                 break;
 
-            case org.apache.synapse.mediators.elementary.EnrichMediator.CUSTOM:
+            case org.apache.synapse.mediators.elementary.EnrichMediator.CUSTOM: {
 
                 // vishualEnrich.setTargetType(EnrichTargetType.CUSTOM);
                 executeSetValueCommand(ENRICH_MEDIATOR__TARGET_TYPE, EnrichTargetType.CUSTOM);
-
                 SynapsePath xpath = target.getXpath();
-
                 NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
-                
+
                 if (xpath == null) {
                     nsp.setPropertyValue("");
                 } else {
@@ -199,12 +197,34 @@ public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 
                     nsp.setNamespaces(map);
                 }
-
                 // vishualEnrich.setTargetXpath(nsp);
                 executeSetValueCommand(ENRICH_MEDIATOR__TARGET_XPATH, nsp);
-
                 break;
             }
+            case org.apache.synapse.mediators.elementary.EnrichMediator.KEY: {
+                executeSetValueCommand(ENRICH_MEDIATOR__TARGET_TYPE, EnrichTargetType.KEY);
+                SynapsePath xpath = target.getXpath();
+                NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
+
+                if (xpath == null) {
+                    nsp.setPropertyValue("");
+                } else {
+                    nsp.setPropertyValue(xpath.toString());
+                    nsp.setSupportJsonPaths(true);
+                }
+
+                if (xpath != null && xpath.getNamespaces() != null) {
+                    @SuppressWarnings("unchecked")
+                    Map<String, String> map = xpath.getNamespaces();
+
+                    nsp.setNamespaces(map);
+                }
+                // vishualEnrich.setTargetXpath(nsp);
+                executeSetValueCommand(ENRICH_MEDIATOR__TARGET_XPATH, nsp);
+                break;
+            }
+		}
+            
 
             // Setting the target action
             String targetAction = target.getAction();

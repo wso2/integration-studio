@@ -3576,6 +3576,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_YMhNcDGnEemo6qC30gq9Xg" name="Reverse" views="_SRXdoDGnEemo6qC30gq9Xg">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//Mediator/Reverse"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_g079kE8dEeurupPJJbQ4TA" name="templateEngine" views="_KmhaoE8dEeurupPJJbQ4TA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//PayloadFactoryMediator/templateEngine"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//PayloadFactoryMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v9g_JnEei6boXzpRIfnA" name="PayloadFactoryMediatorInputConnector" views="_E7xJUfJnEei6boXzpRIfnA">
@@ -10060,6 +10063,9 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_SRXdoDGnEemo6qC30gq9Xg" name="Reverse">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_KmhaoE8dEeurupPJJbQ4TA" name="templateEngine">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
         </elements>
       </views>

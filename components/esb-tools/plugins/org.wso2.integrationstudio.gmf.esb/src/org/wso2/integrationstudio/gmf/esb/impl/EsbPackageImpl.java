@@ -482,6 +482,7 @@ import org.wso2.integrationstudio.gmf.esb.TemplateEndpoint;
 import org.wso2.integrationstudio.gmf.esb.TemplateEndpointInputConnector;
 import org.wso2.integrationstudio.gmf.esb.TemplateEndpointOutputConnector;
 import org.wso2.integrationstudio.gmf.esb.TemplateEndpointParameter;
+import org.wso2.integrationstudio.gmf.esb.TemplateEngine;
 import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
 import org.wso2.integrationstudio.gmf.esb.TemplateType;
 import org.wso2.integrationstudio.gmf.esb.Task;
@@ -3775,6 +3776,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    private EEnum templateEngineEEnum = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     private EEnum mediaTypeEEnum = null;
 
     /**
@@ -4134,7 +4142,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-     * 
+     *
      * <p>This method is used to initialize {@link EsbPackage#eINSTANCE} when that field is accessed.
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
@@ -4161,7 +4169,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         // Mark meta-data to indicate it can't be changed
         theEsbPackage.freeze();
 
-  
         // Update the registry and return the package
         EPackage.Registry.INSTANCE.put(EsbPackage.eNS_URI, theEsbPackage);
         return theEsbPackage;
@@ -17645,6 +17652,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getPayloadFactoryMediator_TemplateEngine() {
+        return (EAttribute)payloadFactoryMediatorEClass.getEStructuralFeatures().get(7);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getPayloadFactoryMediatorInputConnector() {
         return payloadFactoryMediatorInputConnectorEClass;
     }
@@ -19490,6 +19506,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EEnum getTemplateEngine() {
+        return templateEngineEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EEnum getMediaType() {
         return mediaTypeEEnum;
     }
@@ -21195,6 +21220,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEReference(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__OUTPUT_CONNECTOR);
         createEAttribute(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE);
         createEAttribute(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT);
+        createEAttribute(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_ENGINE);
 
         payloadFactoryMediatorInputConnectorEClass = createEClass(PAYLOAD_FACTORY_MEDIATOR_INPUT_CONNECTOR);
 
@@ -22018,6 +22044,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         outputMethodEEnum = createEEnum(OUTPUT_METHOD);
         receivingSequenceTypeEEnum = createEEnum(RECEIVING_SEQUENCE_TYPE);
         keyTypeEEnum = createEEnum(KEY_TYPE);
+        templateEngineEEnum = createEEnum(TEMPLATE_ENGINE);
         mediaTypeEEnum = createEEnum(MEDIA_TYPE);
         payloadFactoryArgumentTypeEEnum = createEEnum(PAYLOAD_FACTORY_ARGUMENT_TYPE);
         payloadFormatTypeEEnum = createEEnum(PAYLOAD_FORMAT_TYPE);
@@ -23712,6 +23739,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEReference(getPayloadFactoryMediator_OutputConnector(), this.getPayloadFactoryMediatorOutputConnector(), null, "outputConnector", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getPayloadFactoryMediator_MediaType(), this.getMediaType(), "mediaType", "xml", 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getPayloadFactoryMediator_PayloadFormat(), this.getPayloadFormatType(), "payloadFormat", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getPayloadFactoryMediator_TemplateEngine(), this.getTemplateEngine(), "templateEngine", "Regex", 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(payloadFactoryMediatorInputConnectorEClass, PayloadFactoryMediatorInputConnector.class, "PayloadFactoryMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -25014,6 +25042,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEEnum(keyTypeEEnum, KeyType.class, "KeyType");
         addEEnumLiteral(keyTypeEEnum, KeyType.STATIC);
         addEEnumLiteral(keyTypeEEnum, KeyType.DYNAMIC);
+
+        initEEnum(templateEngineEEnum, TemplateEngine.class, "TemplateEngine");
+        addEEnumLiteral(templateEngineEEnum, TemplateEngine.DEFAULT);
+        addEEnumLiteral(templateEngineEEnum, TemplateEngine.FREEMARKER);
 
         initEEnum(mediaTypeEEnum, MediaType.class, "MediaType");
         addEEnumLiteral(mediaTypeEEnum, MediaType.XML);

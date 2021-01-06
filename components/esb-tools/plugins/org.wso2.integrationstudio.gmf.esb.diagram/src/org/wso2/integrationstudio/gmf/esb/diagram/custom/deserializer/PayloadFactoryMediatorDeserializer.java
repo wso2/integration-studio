@@ -7,6 +7,7 @@ import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PAYLOAD_FAC
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__LITERAL;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__ARGS;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_ENGINE;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY;
@@ -20,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.wso2.integrationstudio.gmf.esb.EsbFactory;
 import org.wso2.integrationstudio.gmf.esb.MediaType;
+import org.wso2.integrationstudio.gmf.esb.TemplateEngine;
 import org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgument;
 import org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgumentType;
 import org.wso2.integrationstudio.gmf.esb.PayloadFactoryEvaluatorType;
@@ -33,6 +35,7 @@ public class PayloadFactoryMediatorDeserializer
     private static String XML_LITERAL = "xml";
     private static String JSON_LITERAL = "json";
     private static String TEXT_LITERAL = "text";
+    private static String FREEMAKER_LITERAL = "freemarker";
 
     public PayloadFactoryMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) {
         Assert.isTrue(mediator instanceof org.apache.synapse.mediators.transform.PayloadFactoryMediator,
@@ -54,7 +57,17 @@ public class PayloadFactoryMediatorDeserializer
                 executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE, MediaType.TEXT);
             }
         }
-        
+
+        if (payloadFactoryMediator.getTemplateType() != null) {
+            if (payloadFactoryMediator.getTemplateType().equals(FREEMAKER_LITERAL)) {
+                executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_ENGINE, TemplateEngine.FREEMARKER);
+            } else {
+                executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_ENGINE, TemplateEngine.DEFAULT);
+            }
+        } else {
+            executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_ENGINE, TemplateEngine.DEFAULT);
+        }
+
         if (payloadFactoryMediator.getFormatKey() != null) {
             executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT, PayloadFormatType.REGISTRY_REFERENCE);
             RegistryKeyProperty payloadFormatKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();

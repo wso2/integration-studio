@@ -29,6 +29,7 @@ import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediatorInputConnector;
 import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediatorOutputConnector;
 import org.wso2.integrationstudio.gmf.esb.PayloadFormatType;
 import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.TemplateEngine;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,6 +46,7 @@ import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryMediatorImpl#getMediaType <em>Media Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryMediatorImpl#getPayloadFormat <em>Payload Format</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.PayloadFactoryMediatorImpl#getTemplateEngine <em>Template Engine</em>}</li>
  * </ul>
  *
  * @generated
@@ -149,6 +151,26 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
      * @ordered
      */
     protected PayloadFormatType payloadFormat = PAYLOAD_FORMAT_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTemplateEngine() <em>Template Engine</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTemplateEngine()
+     * @generated
+     * @ordered
+     */
+    protected static final TemplateEngine TEMPLATE_ENGINE_EDEFAULT = TemplateEngine.DEFAULT;
+
+    /**
+     * The cached value of the '{@link #getTemplateEngine() <em>Template Engine</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTemplateEngine()
+     * @generated
+     * @ordered
+     */
+    protected TemplateEngine templateEngine = TEMPLATE_ENGINE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -388,6 +410,27 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
      * <!-- end-user-doc -->
      * @generated
      */
+    public TemplateEngine getTemplateEngine() {
+        return templateEngine;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTemplateEngine(TemplateEngine newTemplateEngine) {
+        TemplateEngine oldTemplateEngine = templateEngine;
+        templateEngine = newTemplateEngine == null ? TEMPLATE_ENGINE_EDEFAULT : newTemplateEngine;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_ENGINE, oldTemplateEngine, templateEngine));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -425,6 +468,8 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
                 return getMediaType();
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT:
                 return getPayloadFormat();
+            case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_ENGINE:
+                return getTemplateEngine();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -460,6 +505,9 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT:
                 setPayloadFormat((PayloadFormatType)newValue);
                 return;
+            case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_ENGINE:
+                setTemplateEngine((TemplateEngine)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -493,6 +541,9 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT:
                 setPayloadFormat(PAYLOAD_FORMAT_EDEFAULT);
                 return;
+            case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_ENGINE:
+                setTemplateEngine(TEMPLATE_ENGINE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -519,6 +570,8 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
                 return mediaType != MEDIA_TYPE_EDEFAULT;
             case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT:
                 return payloadFormat != PAYLOAD_FORMAT_EDEFAULT;
+            case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_ENGINE:
+                return templateEngine != TEMPLATE_ENGINE_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -539,6 +592,8 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
         result.append(mediaType);
         result.append(", payloadFormat: ");
         result.append(payloadFormat);
+        result.append(", templateEngine: ");
+        result.append(templateEngine);
         result.append(')');
         return result.toString();
     }

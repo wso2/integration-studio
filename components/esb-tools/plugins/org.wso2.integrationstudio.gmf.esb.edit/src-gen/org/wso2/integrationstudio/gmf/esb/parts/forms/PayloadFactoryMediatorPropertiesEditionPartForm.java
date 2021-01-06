@@ -113,6 +113,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	protected Control[] descriptionElements;
 	protected Control[] payloadKeyElements;
 	protected Control[] argsTableElements;
+	protected Control[] templateEngineElements;
 	
 	protected RegistryKeyProperty payloadKey;
 	protected Text payloadKeyText;
@@ -126,6 +127,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 	protected List<ViewerFilter> argsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> argsFilters = new ArrayList<ViewerFilter>();
 	protected EMFComboViewer mediaType;
+	protected EMFComboViewer templateEngine;
 	protected Text description;
 
 
@@ -184,6 +186,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 		// Start of user code
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.payloadFormat);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType);
+		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.templateEngine);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.payloadKey);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.payload);
 		propertiesStep.addStep(EsbViewsRepository.PayloadFactoryMediator.Properties.args);
@@ -212,6 +215,9 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 				}
 				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.mediaType) {
 					return createMediaTypeEMFComboViewer(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.templateEngine) {
+					return createTemplateEngineEMFComboViewer(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.PayloadFactoryMediator.Properties.description) {
 					return createDescriptionText(widgetFactory, parent);
@@ -421,7 +427,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 		mediaType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData mediaTypeData = new GridData(GridData.FILL_HORIZONTAL);
 		mediaType.getCombo().setLayoutData(mediaTypeData);
-                mediaType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+        mediaType.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
 
                     @Override
                     public void handleEvent(Event arg0) {
@@ -596,6 +602,45 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
 
     // End of user code
     return parent;
+  }
+
+  protected Composite createTemplateEngineEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+	Control templateEngineLabel = createDescription(parent, EsbViewsRepository.PayloadFactoryMediator.Properties.templateEngine, EsbMessages.PayloadFactoryMediatorPropertiesEditionPart_TemplateEngineLabel);
+	templateEngine = new EMFComboViewer(parent);
+	templateEngine.setContentProvider(new ArrayContentProvider());
+	templateEngine.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+	GridData templateEngineData = new GridData(GridData.FILL_HORIZONTAL);
+	templateEngine.getCombo().setLayoutData(templateEngineData);
+	templateEngine.getCombo().addListener(SWT.MouseVerticalWheel, new Listener() {
+	
+	    @Override
+	    public void handleEvent(Event arg0) {
+	        arg0.doit = false;
+	    }
+	});
+	templateEngine.addSelectionChangedListener(new ISelectionChangedListener() {
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+	 * 	
+	 */
+	public void selectionChanged(SelectionChangedEvent event) {
+		if (propertiesEditionComponent != null) {
+			validate();
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PayloadFactoryMediatorPropertiesEditionPartForm.this, EsbViewsRepository.PayloadFactoryMediator.Properties.templateEngine, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTemplateEngine()));
+	
+		}
+	}
+	
+	});
+	templateEngine.setID(EsbViewsRepository.PayloadFactoryMediator.Properties.templateEngine);
+	Control templateEngineHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.PayloadFactoryMediator.Properties.templateEngine, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+	// Start of user code for createMediaTypeEMFComboViewer
+	templateEngineElements = new Control[] {templateEngineLabel, templateEngine.getCombo(), templateEngineHelp};
+	// End of user code
+	return parent;
   }
 
   /**
@@ -922,6 +967,53 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
     
   }
 
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#getTemplateEngine()
+   * 
+   */
+  public Enumerator getTemplateEngine() {
+    Enumerator selection = (Enumerator) ((StructuredSelection) templateEngine.getSelection()).getFirstElement();
+    return selection;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#initTemplateEngine(Object input, Enumerator current)
+   */
+  public void initTemplateEngine(Object input, Enumerator current) {
+    templateEngine.setInput(input);
+    templateEngine.modelUpdating(new StructuredSelection(current));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.PayloadFactoryMediator.Properties.templateEngine);
+    if (eefElementEditorReadOnlyState && templateEngine.isEnabled()) {
+      templateEngine.setEnabled(false);
+      templateEngine.setToolTipText(EsbMessages.PayloadFactoryMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !templateEngine.isEnabled()) {
+      templateEngine.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.PayloadFactoryMediatorPropertiesEditionPart#setTemplateEngine(Enumerator newValue)
+   * 
+   */
+  public void setTemplateEngine(Enumerator newValue) {
+    templateEngine.modelUpdating(new StructuredSelection(newValue));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.PayloadFactoryMediator.Properties.templateEngine);
+    if (eefElementEditorReadOnlyState && templateEngine.isEnabled()) {
+      templateEngine.setEnabled(false);
+      templateEngine.setToolTipText(EsbMessages.PayloadFactoryMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !templateEngine.isEnabled()) {
+      templateEngine.setEnabled(true);
+    }	
+    
+  }
+
   // Start of user code for payloadKey specific getters and setters implementation
 	@Override
 	public void setPayloadKey(RegistryKeyProperty registryKeyProperty) {
@@ -1024,6 +1116,7 @@ public class PayloadFactoryMediatorPropertiesEditionPartForm extends SectionProp
         }
 
         eu.showEntry(mediaTypeElements, false);
+        eu.showEntry(templateEngineElements, false);
         eu.showEntry(descriptionElements, false);
         view.layout(true, true);
     }

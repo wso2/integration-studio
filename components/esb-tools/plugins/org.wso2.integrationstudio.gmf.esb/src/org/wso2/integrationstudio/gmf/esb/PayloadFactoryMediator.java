@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator#getMediaType <em>Media Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator#getPayloadFormat <em>Payload Format</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator#getTemplateEngine <em>Template Engine</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPayloadFactoryMediator()
@@ -209,5 +210,31 @@ public interface PayloadFactoryMediator extends Mediator {
      * @generated
      */
     void setPayloadFormat(PayloadFormatType value);
+
+    /**
+     * Returns the value of the '<em><b>Template Engine</b></em>' attribute.
+     * The default value is <code>"Regex"</code>.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.TemplateEngine}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Template Engine</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.TemplateEngine
+     * @see #setTemplateEngine(TemplateEngine)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPayloadFactoryMediator_TemplateEngine()
+     * @model default="Regex"
+     * @generated
+     */
+    TemplateEngine getTemplateEngine();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator#getTemplateEngine <em>Template Engine</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Template Engine</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.TemplateEngine
+     * @see #getTemplateEngine()
+     * @generated
+     */
+    void setTemplateEngine(TemplateEngine value);
 
 } // PayloadFactoryMediator

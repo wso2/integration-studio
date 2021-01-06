@@ -197,7 +197,7 @@ public class PayloadFactoryArgumentPropertiesEditionComponent extends SinglePart
 				}
 			}
 			if (EsbPackage.eINSTANCE.getPayloadFactoryArgument_Evaluator().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.PayloadFactoryArgument.Properties.evaluator))
-				basePart.setEvaluator((MediaType)msg.getNewValue());
+				basePart.setEvaluator((PayloadFactoryEvaluatorType)msg.getNewValue());
 			
 			if (EsbPackage.eINSTANCE.getPayloadFactoryArgument_Literal().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.PayloadFactoryArgument.Properties.literal))
 				basePart.setLiteral((Boolean)msg.getNewValue());

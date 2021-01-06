@@ -86,4 +86,47 @@
             sampleProjectName="EmployeeDataService">
       </sample>
    </extension-->
+   
+   <extension
+         point="org.eclipse.ltk.core.refactoring.deleteParticipants">
+       <deleteParticipant
+			class="org.wso2.integrationstudio.artifact.datasourceProject.refactor.DataSourceDeleteParticipant"
+			id="DataSourceDeleteParticipant"
+			name="DataSourceDelete">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.datasource.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</deleteParticipant>
+   </extension>
+   <extension
+         point="org.eclipse.ltk.core.refactoring.deleteParticipants">
+       <deleteParticipant
+			class="org.wso2.integrationstudio.artifact.datasourceProject.capp.refactor.DataSourceDeleteParticipant"
+			id="DataSourceDeleteParticipantForCapp"
+			name="DataSourceDelete and Update CApp">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.datasource.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</deleteParticipant>
+   </extension>
 </plugin>

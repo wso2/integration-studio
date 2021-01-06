@@ -34,6 +34,10 @@ public class DataSourceProjectConstants extends NLS {
 	public static String ERROR_DBS_FILE;
 	public static String ERROR_DS_NAME;
 	
+	public static String DataSourceDeleteParticipant_ArtifactXmlDeleteChangeFailed;
+	public static String DataSourceDeleteParticipant_DataSourceDelete;
+	public static String DataSourceDeleteParticipant_DeleteWarning;
+	public static String DataSourceRenameParticipant_MetaDataChange;
 	
 	static {
 		// initialize resource bundle

@@ -35,6 +35,7 @@ import java.util.Map;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
@@ -679,6 +680,11 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 
         Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-sequence-plugin", //$NON-NLS-1$ //$NON-NLS-2$
                 ESBMavenConstants.WSO2_ESB_SEQUENCE_VERSION, true);
+        Dependency activationDependency = new Dependency();
+        activationDependency.setGroupId("com.sun.activation");
+        activationDependency.setArtifactId("javax.activation");
+        activationDependency.setVersion("1.2.0");
+        plugin.addDependency(activationDependency);
         PluginExecution pluginExecution = new PluginExecution();
         pluginExecution.addGoal("pom-gen"); //$NON-NLS-1$
         pluginExecution.setPhase("process-resources"); //$NON-NLS-1$

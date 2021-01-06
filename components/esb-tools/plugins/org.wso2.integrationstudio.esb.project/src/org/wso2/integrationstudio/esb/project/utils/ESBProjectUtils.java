@@ -25,6 +25,7 @@ import javax.xml.namespace.QName;
 import javax.xml.stream.FactoryConfigurationError;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
@@ -290,7 +291,13 @@ public class ESBProjectUtils {
 			}
 		}
 		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, groupId, artifactId, version, true);		
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, groupId, artifactId, version, true);
+        // Add javax dependency to resolve build issue with java 11
+        Dependency activationDependency = new Dependency();
+        activationDependency.setGroupId("com.sun.activation");
+        activationDependency.setArtifactId("javax.activation");
+        activationDependency.setVersion("1.2.0");
+        plugin.addDependency(activationDependency);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");

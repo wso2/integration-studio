@@ -686,22 +686,24 @@ public class SchemaTransformer implements ISchemaTransformer {
 				namespaceMap, null);
 		setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, UNAMED, TRUE);
 		inputRootTreeNode.getNode().add(treeNode);
-		if (getSchemaItems(jsonSchemaMap).size() > 0) {
-			// If array has attributes
-			if (getSchemaItems(jsonSchemaMap).get(JSON_SCHEMA_ATTRIBUTES) != null) {
-				setAttributesForElements(getSchemaItems(jsonSchemaMap), level, namespaceMap, treeNode);
-			}
-			if (getSchemaItems(jsonSchemaMap).containsKey(JSON_SCHEMA_PROPERTIES)) {
-				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
-						JSON_SCHEMA_PROPERTIES_ID,
-						getSchemaProperties(getSchemaItems(jsonSchemaMap)).toString());
-				setProperties(getSchemaItems(jsonSchemaMap), treeNode, level, namespaceMap);
-			} else if (jsonSchemaMap.containsKey(JSON_SCHEMA_ITEMS)) {
-				// if the array has an array, then it has no properties and only items
-				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
-						JSON_SCHEMA_PROPERTIES_ID,
-						jsonSchemaMap.get(JSON_SCHEMA_ITEMS).toString());
-				setItemsToArray(getSchemaItems(jsonSchemaMap), treeNode, level, namespaceMap);
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_ITEMS)) {
+			if (getSchemaItems(jsonSchemaMap).size() > 0) {
+				// If array has attributes
+				if (getSchemaItems(jsonSchemaMap).get(JSON_SCHEMA_ATTRIBUTES) != null) {
+					setAttributesForElements(getSchemaItems(jsonSchemaMap), level, namespaceMap, treeNode);
+				}
+				if (getSchemaItems(jsonSchemaMap).containsKey(JSON_SCHEMA_PROPERTIES)) {
+					setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
+							JSON_SCHEMA_PROPERTIES_ID,
+							getSchemaProperties(getSchemaItems(jsonSchemaMap)).toString());
+					setProperties(getSchemaItems(jsonSchemaMap), treeNode, level, namespaceMap);
+				} else if (jsonSchemaMap.containsKey(JSON_SCHEMA_ITEMS)) {
+					// if the array has an array, then it has no properties and only items
+					setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
+							JSON_SCHEMA_PROPERTIES_ID,
+							jsonSchemaMap.get(JSON_SCHEMA_ITEMS).toString());
+					setItemsToArray(getSchemaItems(jsonSchemaMap), treeNode, level, namespaceMap);
+				}
 			}
 		}
 		return inputRootTreeNode;

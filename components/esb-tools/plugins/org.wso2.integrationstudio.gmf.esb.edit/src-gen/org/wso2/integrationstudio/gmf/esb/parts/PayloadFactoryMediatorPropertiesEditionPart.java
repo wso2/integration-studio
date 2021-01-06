@@ -177,6 +177,27 @@ public interface PayloadFactoryMediatorPropertiesEditionPart {
 	public void setReverse(Boolean newValue);
 
 
+	/**
+	 * @return the templateEngine
+	 * 
+	 */
+	public Enumerator getTemplateEngine();
+
+	/**
+	 * Init the templateEngine
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initTemplateEngine(Object input, Enumerator current);
+
+	/**
+	 * Defines a new templateEngine
+	 * @param newValue the new templateEngine to set
+	 * 
+	 */
+	public void setTemplateEngine(Enumerator newValue);
+
+
 
 
 	// Start of user code for payloadKey specific getters and setters declaration

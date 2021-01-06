@@ -2265,6 +2265,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mediaType" eType="#//MediaType"
         defaultValueLiteral="xml"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="payloadFormat" eType="#//PayloadFormatType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="templateEngine" eType="#//TemplateEngine"
+        defaultValueLiteral="Default"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TemplateEngine">
+    <eLiterals name="DEFAULT" literal="Default"/>
+    <eLiterals name="FREEMARKER" value="1" literal="Freemarker"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MediaType">
     <eLiterals name="XML" literal="xml"/>

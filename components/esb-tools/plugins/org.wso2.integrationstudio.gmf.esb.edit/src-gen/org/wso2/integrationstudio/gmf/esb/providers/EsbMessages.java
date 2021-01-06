@@ -6250,6 +6250,9 @@ public class EsbMessages extends NLS {
 	public static String PayloadFactoryMediatorPropertiesEditionPart_ReverseLabel;
 
 	
+	public static String PayloadFactoryMediatorPropertiesEditionPart_TemplateEngineLabel;
+
+	
 	public static String PayloadFactoryMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
 
 	

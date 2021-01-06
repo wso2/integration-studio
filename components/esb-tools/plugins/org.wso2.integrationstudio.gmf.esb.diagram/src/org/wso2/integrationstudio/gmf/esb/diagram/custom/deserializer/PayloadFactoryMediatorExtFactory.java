@@ -64,6 +64,7 @@ public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFact
         QName ATT_LITERAL = new QName("literal");
 
         QName TYPE_Q = new QName("media-type");
+        QName TEMPLATE_TYPE_Q = new QName("template-type");
 
         String JSON_TYPE = "json";
         String XML_TYPE = "xml";
@@ -78,6 +79,11 @@ public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFact
             ((PayloadFactoryMediator) mediator).setType(mediaTypeValue);
         } else {
             ((PayloadFactoryMediator) mediator).setType(XML_TYPE);
+        }
+
+        String templateTypeValue = omElement.getAttributeValue(TEMPLATE_TYPE_Q);
+        if (templateTypeValue != null) {
+            ((PayloadFactoryMediator) mediator).setTemplateType(templateTypeValue);
         }
 
         OMElement formatElem = omElement.getFirstChildWithName(FORMAT_Q);

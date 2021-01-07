@@ -191,9 +191,9 @@ Integration Studio has been released with the following package components.
     * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
 
 12. Apply WSO2 code style settings file for Eclipse.
-    * Download [wso2-codestyle-eclipse-clean-up.xml](http://wso2-oxygen-tank.10903.n7.nabble.com/attachment/23355/0/wso2-codestyle-eclipse-clean-up.xml). 
+    * Download [wso2-codestyle-eclipse-clean-up.xml](https://docs.google.com/a/wso2.com/viewer?a=v&pid=sites&srcid=d3NvMi5jb218ZW5naW5lZXJpbmd8Z3g6MWYyNmMxMmU5ZWYzY2ZmMw). 
     * Go to **windows > Preference > Java > Code Style >Clean up** and import **wso2-codestyle-eclipse-clean-up.xml**.
-    * Download [wso2-codestyle-eclipse-formatter.xml](http://wso2-oxygen-tank.10903.n7.nabble.com/attachment/23355/1/wso2-codestyle-eclipse-formatter.xml).
+    * Download [wso2-codestyle-eclipse-formatter.xml](https://docs.google.com/a/wso2.com/viewer?a=v&pid=sites&srcid=d3NvMi5jb218ZW5naW5lZXJpbmd8Z3g6N2U0YzVlNWFjYmY5OGNmMA).
     * Go to **windows > Preference > Java > Code Style >Formatter** and import **wso2-codestyle-eclipse-formatter.xml**.
  
 

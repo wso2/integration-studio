@@ -187,7 +187,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
                             "<dockerfile.base.image>wso2/wso2mi:1.2.0</dockerfile.base.image>");
                     
                     //replace config mapper plugin version
-                    content = content.replaceAll("<version>5.2.28</version>", "<version>5.2.28</version>");
+                    content = content.replaceAll("<version>5.2.28</version>", "<version>5.2.32</version>");
                     
                     //replace config mapper plugin's mi version
                     content = content.replaceAll("<miVersion>1.1.0</miVersion>", "<miVersion>1.2.0</miVersion>");

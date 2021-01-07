@@ -98,7 +98,7 @@ public class MicroIntegratorInstance {
         IServerType serverType120 = ServerCore.findServerType(ServerConstants.WSO2_MI_120_SERVER_TYPE);
         IServerType serverType110 = ServerCore.findServerType(ServerConstants.WSO2_MI_110_SERVER_TYPE);
         IServerType serverType100 = ServerCore.findServerType(ServerConstants.WSO2_MI_100_SERVER_TYPE);
-
+        boolean isServerExists= false;
         // Remove already existing servers and runtime of micro-ei
         try {
             IRuntime[] availableRuntimes = ServerCore.getRuntimes();
@@ -109,7 +109,7 @@ public class MicroIntegratorInstance {
                                 && temRuntime.getName().equals(ServerConstants.MICRO_INTEGRATOR_RUNTIME))
                         || (temRuntime.getRuntimeType().equals(runtimeType110)
                                 && temRuntime.getName().contains(ServerConstants.MICRO_INTEGRATOR_RUNTIME))) {
-                    temRuntime.delete();
+                    // temRuntime.delete();
                 }
             }
 
@@ -121,7 +121,10 @@ public class MicroIntegratorInstance {
                                 && tempServers.getName().equals(ServerConstants.MICRO_INTEGRATOR_SERVER))
                         || (tempServers.getServerType().equals(serverType110)
                                 && tempServers.getName().contains(ServerConstants.MICRO_INTEGRATOR_SERVER))) {
-                    tempServers.delete();
+                    // tempServers.delete();
+                    server = tempServers.createWorkingCopy();
+                    microIntegratorServer = server.saveAll(false, new NullProgressMonitor());
+                    isServerExists = true;
                 }
             }
         } catch (CoreException e) {
@@ -129,20 +132,22 @@ public class MicroIntegratorInstance {
         }
         
         try {
-            NullProgressMonitor progressMonitor = new NullProgressMonitor();
+            if (!isServerExists) {
+                NullProgressMonitor progressMonitor = new NullProgressMonitor();
 
-            IRuntimeWorkingCopy runtime = runtimeType120.createRuntime("org.wso2.micro.integrator.runtime12",
-                    progressMonitor);
-            runtime.setName(ServerConstants.MICRO_INTEGRATOR_RUNTIME + " " + ServerConstants.VERSION);
-            runtime.setLocation(new Path(getServerHome()));
+                IRuntimeWorkingCopy runtime = runtimeType120.createRuntime("org.wso2.micro.integrator.runtime12",
+                        progressMonitor);
+                runtime.setName(ServerConstants.MICRO_INTEGRATOR_RUNTIME + " " + ServerConstants.VERSION);
+                runtime.setLocation(new Path(getServerHome()));
 
-            IRuntime microIntegratorRuntime = runtime.save(true, progressMonitor);
-            server = serverType120.createServer("org.wso2.micro.integrator.server12", null, microIntegratorRuntime,
-                    progressMonitor);
-            server.setName(ServerConstants.MICRO_INTEGRATOR_SERVER + " " + ServerConstants.VERSION);
-            readConfigs(server);
+                IRuntime microIntegratorRuntime = runtime.save(true, progressMonitor);
+                server = serverType120.createServer("org.wso2.micro.integrator.server12", null, microIntegratorRuntime,
+                        progressMonitor);
+                server.setName(ServerConstants.MICRO_INTEGRATOR_SERVER + " " + ServerConstants.VERSION);
+                readConfigs(server);
 
-            microIntegratorServer = server.saveAll(false, progressMonitor);
+                microIntegratorServer = server.saveAll(false, progressMonitor);
+            }
 
         } catch (CoreException e) {
             log.error("Error while creating Micro Integrator profile.", e);

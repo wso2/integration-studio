@@ -1039,7 +1039,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             String targetRepository = DockerBuildActionUtil.readDockerImageDetailsFromPomPlugin(pomFile,
                     isThisOldContainerProject);
             String[] reposirotyTags = targetRepository.split(DockerProjectConstants.REPOSITORY_SEPERATOR);
-            if (reposirotyTags.length == 3) {
+            if (reposirotyTags.length == 3 && configuration != null && !configuration.isDockerRegistry()) {
                 targetRepository = reposirotyTags[1] + DockerProjectConstants.REPOSITORY_SEPERATOR + reposirotyTags[2];
             }
 

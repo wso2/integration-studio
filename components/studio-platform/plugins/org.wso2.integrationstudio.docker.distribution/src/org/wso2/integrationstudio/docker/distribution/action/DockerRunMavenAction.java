@@ -193,7 +193,7 @@ public class DockerRunMavenAction implements IActionDelegate, IExecutableExtensi
             // check docker registry URL has changed, if yes append the private remote url to the target repository
             String targetRepository = DockerBuildActionUtil.readDockerImageDetailsFromPomPlugin(pomFile, isThisOldContainerProject);
             String[] reposirotyTags = targetRepository.split(DockerProjectConstants.REPOSITORY_SEPERATOR);
-            if (reposirotyTags.length == 3) {
+            if (reposirotyTags.length == 3 && configuration != null && !configuration.isDockerRegistry()) {
                 targetRepository = reposirotyTags[1] + DockerProjectConstants.REPOSITORY_SEPERATOR + reposirotyTags[2];
             }
 

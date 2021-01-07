@@ -363,7 +363,7 @@ public class InboundEndpointDeserializer
                             executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, false);
                         }
                     } else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_LOCKING)) {
-                        if (paramEntry.getValue().equals(ENABLE)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.ENABLE)) {
                             executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING, Enable.ENABLE);
                         } else {
                             executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING, Enable.DISABLE);

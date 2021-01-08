@@ -161,15 +161,15 @@ public abstract class CarbonServerBehaviour extends GenericServerBehaviour imple
 	protected void setupLaunch(ILaunch launch, String launchMode, IProgressMonitor monitor) throws CoreException {
 		if ("true".equals(launch.getLaunchConfiguration().getAttribute(ATTR_STOP, "false"))) //$NON-NLS-1$ //$NON-NLS-2$
 			return;
-		// since port check is already do inside the server, this functionality does not require to run the method
-		//		checkPorts();
+		checkPorts();
 		setServerState(IServer.STATE_STARTING);
 		setMode(launchMode);
 	}
 	
 	
 
-//	protected void checkPorts() throws CoreException {
+	protected void checkPorts() throws CoreException {
+		// since the port check is already done inside the server, this functionality does not required
 //		String host = getServer().getHost();
 //		Integer[] ports = getAllPortsServerWillUse(getServer());
 //		if (SocketUtil.isLocalhost(host)) {
@@ -180,7 +180,7 @@ public abstract class CarbonServerBehaviour extends GenericServerBehaviour imple
 //				}
 //			}
 //		}
-//	}
+	}
 
 	public void setupLaunchConfiguration(ILaunchConfigurationWorkingCopy workingCopy, IProgressMonitor monitor)
 	                                                                                                           throws CoreException {

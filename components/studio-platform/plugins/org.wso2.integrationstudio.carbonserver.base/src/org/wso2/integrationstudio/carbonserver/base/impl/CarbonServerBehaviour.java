@@ -161,25 +161,26 @@ public abstract class CarbonServerBehaviour extends GenericServerBehaviour imple
 	protected void setupLaunch(ILaunch launch, String launchMode, IProgressMonitor monitor) throws CoreException {
 		if ("true".equals(launch.getLaunchConfiguration().getAttribute(ATTR_STOP, "false"))) //$NON-NLS-1$ //$NON-NLS-2$
 			return;
-		checkPorts();
+		// since port check is already do inside the server, this functionality does not require to run the method
+		//		checkPorts();
 		setServerState(IServer.STATE_STARTING);
 		setMode(launchMode);
 	}
 	
 	
 
-	protected void checkPorts() throws CoreException {
-		String host = getServer().getHost();
-		Integer[] ports = getAllPortsServerWillUse(getServer());
-		if (SocketUtil.isLocalhost(host)) {
-			for (int port : ports) {
-				if (SocketUtil.isPortInUse(port, 5)) {
-					throw new CoreException(new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0,
-					                                   "Server port is in use: " + port, null));
-				}
-			}
-		}
-	}
+//	protected void checkPorts() throws CoreException {
+//		String host = getServer().getHost();
+//		Integer[] ports = getAllPortsServerWillUse(getServer());
+//		if (SocketUtil.isLocalhost(host)) {
+//			for (int port : ports) {
+//				if (SocketUtil.isPortInUse(port, 5)) {
+//					throw new CoreException(new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0,
+//					                                   "Server port is in use: " + port, null));
+//				}
+//			}
+//		}
+//	}
 
 	public void setupLaunchConfiguration(ILaunchConfigurationWorkingCopy workingCopy, IProgressMonitor monitor)
 	                                                                                                           throws CoreException {

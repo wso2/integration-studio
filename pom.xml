@@ -41,6 +41,15 @@
 
     <profiles>
         <profile>
+            <id>all-components</id>
+            <modules>
+                <module>components/studio-platform</module>
+                <module>components/esb-tools</module>
+                <module>components/dss-tools</module>
+                <module>components/bps-tools</module>
+            </modules>
+        </profile>
+        <profile>
             <id>studio-platform</id>
             <modules>
                 <module>components/studio-platform</module>

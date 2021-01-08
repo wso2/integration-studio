@@ -21,7 +21,6 @@ package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.synapse.Mediator;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.Value;
@@ -47,7 +46,7 @@ public class JsonTransformMediatorTransformer extends AbstractEsbNodeTransformer
         doTransform(information, visualJsonTransform.getOutputConnector());
     }
 
-    private Mediator createJsonTransformMediator(JsonTransformMediator visualJsonTransform, boolean b) {
+    public static org.apache.synapse.mediators.builtin.JSONTransformMediator createJsonTransformMediator(JsonTransformMediator visualJsonTransform, boolean b) {
         org.apache.synapse.mediators.builtin.JSONTransformMediator jsonTransformMediator = new org.apache.synapse.mediators.builtin.JSONTransformMediator();
         setCommonProperties(jsonTransformMediator, visualJsonTransform);
 
@@ -98,7 +97,10 @@ public class JsonTransformMediatorTransformer extends AbstractEsbNodeTransformer
     @Override
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
-        // TODO Auto-generated method stub
+        JsonTransformMediator visualJsonTransform = (JsonTransformMediator) subject;
+        sequence.addChild(createJsonTransformMediator(visualJsonTransform, false));
+        doTransformWithinSequence(information, ((JsonTransformMediator) subject).getOutputConnector().getOutgoingLink(),
+                sequence);
     }
 
 }

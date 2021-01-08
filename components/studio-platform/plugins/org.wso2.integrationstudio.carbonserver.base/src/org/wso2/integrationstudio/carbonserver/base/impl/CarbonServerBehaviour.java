@@ -169,16 +169,17 @@ public abstract class CarbonServerBehaviour extends GenericServerBehaviour imple
 	
 
 	protected void checkPorts() throws CoreException {
-		String host = getServer().getHost();
-		Integer[] ports = getAllPortsServerWillUse(getServer());
-		if (SocketUtil.isLocalhost(host)) {
-			for (int port : ports) {
-				if (SocketUtil.isPortInUse(port, 5)) {
-					throw new CoreException(new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0,
-					                                   "Server port is in use: " + port, null));
-				}
-			}
-		}
+		// since the port check is already done inside the server, this functionality does not required
+//		String host = getServer().getHost();
+//		Integer[] ports = getAllPortsServerWillUse(getServer());
+//		if (SocketUtil.isLocalhost(host)) {
+//			for (int port : ports) {
+//				if (SocketUtil.isPortInUse(port, 5)) {
+//					throw new CoreException(new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0,
+//					                                   "Server port is in use: " + port, null));
+//				}
+//			}
+//		}
 	}
 
 	public void setupLaunchConfiguration(ILaunchConfigurationWorkingCopy workingCopy, IProgressMonitor monitor)

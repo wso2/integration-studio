@@ -2,6 +2,9 @@
 
 WSO2 Integration Studio is an Eclipse 2020-06 based development environment used to design your integration scenarios and develop them. It can be used to develop services, features, and artifacts as well as manage their links and dependencies through a simplified graphical editor. It provides inbuilt debugging and testing capabilities to troubleshoot and identify the integration aspects while creating the artifacts. Furthermore, WSO2 Integration Studio offers different deployment approaches, including CAR (Carbon Application Archive) deployment, docker deployment, kubernetes deployment, WSO2 integration cloud deployment, etc., to cater your CI/CD (Continuous Integration/Continuous Development) requirements.
 
+**Note:** During development refer to plugin names by replacing **developerstudio.eclipse** with keyword **integrationstudio** wherever possible.
+i.e. The plugin name **org.wso2.developerstudio.eclipse.gmf.esb.edit** in the document/screenshot need to be referred as  **org.wso2.integrationstudio.gmf.esb.edit** 
+
 ## Table of Content
 
 * [High Level Architecture](#High-Level-Architecture)
@@ -558,6 +561,8 @@ Now we need to add attributes to the Calculator mediator.
 
 20. Save the file. Now, We have modeled the minimum structure for Calculator mediator to start with.
 
+In this part we have only added the attributes that are common to all mediators. We need to make sure to add all the attributes, references of the mediator that we are creating.
+
 This ends the modeling of esb.ecore. There is a complete reference/sample for GMF at
 
 https://wiki.eclipse.org/Graphical_Modeling_Framework/Tutorial/Part_1 and more parts are covered at https://wiki.eclipse.org/Graphical_Modeling_Framework/Tutorial/Part_2 and https://wiki.eclipse.org/Graphical_Modeling_Framework/Tutorial/Part_3
@@ -618,6 +623,9 @@ https://drive.google.com/file/d/1swkQ8LemkUssms28mnCSNNduF9otHiGR/view?usp=shari
 ![](https://i.imgur.com/nT3lSsB.png)
 
 We have generated the model and edit code. This ends the modeling of esb.genmodel.
+
+After following the above steps we will have a set of files including the generated code for the mediator. To make things easier going forward we may commit the newly created, modified files.
+We need to commit the changes in plugin.properties, EsbItemProviderAdapterFactory.java, EsbFactory.java, EsbPackage.java, EsbFactoryImpl.java, EsbPackageImpl.java, EsbAdapterFactory.java, EsbSwitch.java classes.
 
 ### esb.gmfgraph
 Let’s move on to esb.gmfgraph modeling. In esb.gmfgraph we have to consider the following three modeling
@@ -929,6 +937,8 @@ Click the “Load” button which is beside the Model URI field. Then click “F
 
 Click “Finish”. This ends the modeling of esb.gmfmap.
 
+We encourage to commit the modified esb.gmfgen, esb.gmfgraph, esb.gmfmap, esb.gmftool, esb.trace files before moving forward.
+
 If you get **java.lang.NoClassDefFoundError: org/eclipse/m2m/internal/qvt/oml/runtime/project/BundleUnitResolver** exception, you need to install the relevant dependencies from, http://archive.eclipse.org/mmt/qvto/downloads/drops/3.9.1/R201812101559/.
 
 After downloading Go to **Help > Install New Software > Add** and select the downloaded archive to install.
@@ -952,6 +962,219 @@ It will take some time to generate the diagram code. Once the generation is done
 This ends the modeling of esb.gmfgen.
 
 This is how you can generate a new mediator in Integration Studio. For more information refer the existing simple mediator(log or property).
+
+### Steps to follow after generating the diagram code
+
+Once the generation part is completed we need to follow the below steps to add a mediator. Always refer to any existing similar mediator for more details.
+
+1. We need to add the input connector EsbElement type to **InputConnectorEditPart** classes located inside **integrationstudio/gmf/esb/diagram/edit/parts/**. Make sure to replace the mediator name and corresponding number.
+
+    Example:    In "APIResourceInputConnectorEditPart.java" under "getMATypesForSource(IElementType relationshipType)"" method we need to add the following line, 
+    ```java
+    types.add(EsbElementTypes.CalculatorMediatorOutputConnector_3796);
+    ```
+2. Similarly we need to add the output connector EsbElement type to **OutputConnectorEditPart** classes located inside **integrationstudio/gmf/esb/diagram/edit/parts/**. Make sure to replace the mediator name and corresponding number.
+
+    Example: In "APIResourceOutputConnectorEditPart.java" under "getMARelTypesOnSourceAndTarget(IGraphicalEditPart targetEditPart)" method we need to add the following line,
+    
+    ```java
+    if (targetEditPart instanceof CalculatorMediatorInputConnectorEditPart) {
+        types.add(EsbElementTypes.EsbLink_4001);
+    }
+    ```
+
+    In "getMATypesForTarget(IElementType relationshipType)" method we need to add the output connector element as shown below,
+    ```java
+    types.add(EsbElementTypes.CalculatorMediatorInputConnector_3795);
+    ```
+3. Add NodeName, ToolTipMessage (to be shown in the mediators palette) for the mediator in **/integrationstudio/gmf/esb/diagram/edit/parts/messages.properties** file
+
+    ```java=
+    CalculatorMediator51CreationTool_title=Calculator
+    CalculatorMediator51CreationTool_desc=Executes calculator operations
+    ```
+
+4. We need to refactor the following methods to limit the size of the method to 65536 bytes,
+    * **getViewChildren(View view, Object parentElement)** method in **EsbNavigatorContentProvider.java** class
+    * **getNodeVisualID(View containerView, EObject domainElement)** method in **EsbVisualIDRegistry.java** class
+
+5. Set input, output connectors for the mediator in **EsbFactoryImpl.java** class.
+    Example: 
+    ```java
+    public CalculatorMediator createCalculatorMediator() {
+        CalculatorMediatorImpl calculatorMediator = new CalculatorMediatorImpl();
+        calculatorMediator.setInputConnector(createCalculatorMediatorInputConnector());
+        calculatorMediator.setOutputConnector(createCalculatorMediatorOutputConnector());
+        return calculatorMediator;
+    }it
+    ```
+6. Change the super class of CalculatorEditMediatorEditPart to **FixedSizedAbstractMediator** class and fix the issues. Update createLayoutEditPolicy(), createNodeShape(), addFixedChild(EditPart childEditPart), createMainFigure() methods as of other mediators. Add getIconPath(), getNodeName(), getToolTip() methods to CalculatorMediatorEditPart.java class. Refer same class in other mediators for more details.
+
+7. Change the super class of CalculatorMediatorFigure to **EsbGraphicalShapeWithLabel** class and fix the issues. Update createContents() method as of other mediators.
+
+8. Change the super class of CalculatorMediatorInputConnectorEditPart.java, CalculatorMediatorOutputConnectorEditPart.java to **AbstractMediatorOutputConnectorEditPart** class and fix the issues. Refer same classes in other mediators for more details.
+
+9. Add the createCalculatorMediatorCreationTool() method to palette container. Make sure the entry generated for CalculatorMediatorCreationTool is of type NodeToolEntry. Also, commit only the changes relevant to CalculatorMediator in **EsbPaletteFactory.java** class.
+
+10. Add the mediator icons in the following directories,
+**org.wso2.integrationstudio.gmf.esb.diagram/icons/ico20/calculator-mediator.png**, **org.wso2.integrationstudio.gmf.esb.edit/icons/full/obj16/calculator.png**. The former icon is for the mediator and the latter one is for the mediator palette.
+
+11. Create the xml schema for the mediator as **org.wso2.integrationstudio.gmf.esb.diagram/resources/schema/mediators/core/calculator.xsd**
+
+12. Add the created schema location in **org.wso2.integrationstudio.gmf.esb.diagram
+/resources/schema/mediators/mediators.xsd** as shown below,
+    ```xml
+    <xs:include schemaLocation="core/calculator.xsd"/>
+    ```
+    If the mediator elements can come inside a sequence then we need to add the following line under **<xs:group name="mediatorList">**,
+    ```xml
+    <xs:element ref="calculator"/>
+    ```
+
+13. Then we need to add the relevant mediator in **DummyCreateMediator.java**, **DummyMediatorFactoryFinder.java**, **MediatorValidationUtil.java** and **ProcessSourceView.java** classes. You may refer the existing configurations and add similar configuration for calculator mediator.
+
+14. Create a transformer class called **CalculatorMediatorTransformer** extending **AbstractEsbNodeTransformer** class in  **org.wso2.integrationstudio/gmf/esb/internal/persistence/CalculatorMediatorTransformer.java** directory. This class is needed to process source view of the mediator.
+
+15. Add the created transformer in **EsbTransformerRegistry.java** and **APIResourceTransformer.java** classes. Refer existing configurations for other mediators and follow the same approach.
+
+## Add properties view
+
+Before doing the generation part for properties view, we need to apply the default Eclipse code style settings file.
+
+Go to **windows > Preference > Java > Code Style > Clean up** and select **Eclipse [built-in]** profile.
+
+Go to **windows > Preference > Java > Code Style > Formatter** and select **Eclipse [built-in]** profile.
+
+1. Go to the plugin “org.wso2.developerstudio.eclipse.gmf.esb” in the project explorer. Double click on it. Select model → esb.genmodel
+
+![](https://i.imgur.com/0b132iR.png)
+
+2. Right click on esb.genmodel and go to “EEF” and click on "Initialize EEF models"
+
+![](https://i.imgur.com/6vLdncT.png)
+
+3. In the window select "model" under plugin “org.wso2.developerstudio.eclipse.gmf.esb.edit" and click on "OK"
+
+![](https://i.imgur.com/laQVEuB.png)
+
+You should have the following modified files,
+
+![](https://i.imgur.com/SpHu11W.png)
+
+4. Go to the plugin “org.wso2.developerstudio.eclipse.gmf.esb.edit” in the project explorer. Double click on it. Select model → esb.eefgen
+
+![](https://i.imgur.com/FaNrmqf.png)
+
+5. Right click on esb.eefgen and go to “EEF” and click on "Generate EEF architecture"
+
+![](https://i.imgur.com/GqcyjYa.png)
+
+This ends the modeling of properties view.
+
+### Steps to follow after generating the properties code
+
+1. Make sure to have only the changes related to the mediator (bindings, views xml configuration) in **org.wso2.integrationstudio.gmf.esb.edit/model/
+esb.components** file and revert other modifications (if any).
+
+2. Verify the propertySection related to the mediator is generated in **org.wso2.developerstudio.eclipse.gmf.esb.edit/plugin.xml**, **org.wso2.integrationstudio.gmf.esb.edit/src-gen/esb_properties.plugin.xml** files. If not you may copy the configurations from one file to another.
+
+3. You need to commit the following modified files, (on top of the newly created files) EsbViewsRepository.java, EsbEEFAdapterFactory.java, EsbMessages.java, EsbPropertiesEditionPartProvider.java, esbMessages.properties and esbMessages_fr.properties
+
+4. You may hide the auto generated unnecessary UI parts in properties view by configuring **CalculatorMediatorPropertiesEditionPartForm.java** class.
+
+## Add new Property element to a mediator
+
+To add a new element to the properties view of a mediator you have to follow the following steps. In this example we are adding a new combo box to the Payload Factory mediator called Template Engine.
+
+- Open the **esb.ecore** model in the package **org.wso2.developerstudio.eclipse.gmf.esb**. It is inside of the model folder of that package.  
+- Add a new element in to the ecore model by right clicking on an existing element and click one **New Sibling**. Then you have to click on the type of the element you are adding. In this scenario we are clicking on the **EEnum** since we are adding a enum value (a combo box represents an enum value).
+
+![](https://i.imgur.com/FYMXPUX.png)
+
+- Click on the newly added element and go to the properties view of it. Then change the name value of it. 
+
+![](https://i.imgur.com/xaeGSsl.png)
+- If the new value is an enum. Then you have to add the options in the enum as children elements of the newly added element. Then, set the default value of the parent element.
+
+![](https://i.imgur.com/a8HDXKU.png)
+- If you have done the above steps correctly you would see the new element similar to following, 
+
+![](https://i.imgur.com/kLwSeIl.png)
+- Find the mediator you are adding new property to from the list in the ecore model.
+- Right click on it and click on **New Child -> EAttribute** from the menue.
+
+![](https://i.imgur.com/bPxl9C6.png)
+- Fill properties of the new attribute (Reffer an existing one).
+
+![](https://i.imgur.com/gvbMZ9K.png)
+- After editing the ecore model, save it. Then reload the genmodel and generate model code and edit code.
+- Then, what you have to do is editing the esb.components in esb.edit package.
+
+![](https://i.imgur.com/l4WT1pY.png)
+- Open that file and go to **Platform -> Repository esb -> Category esb **
+- In there find the relevant view for the mediator that you are modifying and expand it.
+
+![](https://i.imgur.com/HKnh6w8.png)
+
+- Add a new child Element editor to Container properties ot the mediator view.
+
+![](https://i.imgur.com/SaBdIcb.png)
+- Fill its’ properties by referring to an already existing one.
+
+![](https://i.imgur.com/ulkmVCw.png)
+- Go to **platform -> Properties Edition Context Editoin Context for esb GenPackage -> Category esb**.
+
+![](https://i.imgur.com/vGqbm4q.png)
+- Find the mediator that you are editing from the list and expand it.
+
+![](https://i.imgur.com/SyUBZnS.png)
+- Add new **Property Edition Element** into that.
+
+![](https://i.imgur.com/SaBdIcb.png)
+- In the properties view of the new element, Give it a name and add the view we created in the above step into that and add the relevant model.
+
+![](https://i.imgur.com/ulkmVCw.png)
+- Save the esb.components file. Then right-click on the **esb.eefgen** file and click EEF -> Generate EEF architecture.
+
+![](https://i.imgur.com/HXrdNZ8.png)
+- You may have to do coding changes depending on your requirements. Reffer a PR for that.
+- You may have to do changes to the **integration-studio-synapse** branch of the **wso2-synspse** repo. Reffer a PR for that.
+
+## Add a new extension point
+
+To add a new extension point to the Integration Studio pop-up context menus, toolbar items and menubar items, edit the **plugin.xml** file inside the relevant plugin which is used to develp the feature as follows.
+
+### Add an item under "New" option in right click context menu
+
+![](https://i.imgur.com/24ftlAo.png)
+
+```xml
+<extension
+            point="org.eclipse.ui.newWizards">
+        <wizard name="Unit Test Suite"
+                class="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.wizard.unittest.UnitTestSuiteCreationWizard"
+                id="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.testsuite"
+                icon="icons/UnitTestSuite16x16.png">
+        </wizard>
+    </extension>
+
+    <extension point="org.eclipse.ui.navigator.navigatorContent">
+        <commonWizard type="new"
+                      menuGroupId="a-group-integrationTest"
+                      wizardId="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.testsuite">
+            <enablement>
+                <adapt
+                        type="org.eclipse.core.resources.IResource">
+                    <test
+                            property="org.wso2.developerstudio.eclipse.esb.synapse.unit.test.propertytester.checkResourceType"
+                            value="true"
+                            forcePluginActivation="true">
+                    </test>
+                </adapt>
+            </enablement>
+        </commonWizard>
+    </extension>
+```
 
 ## Add a new extension point
 

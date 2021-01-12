@@ -106,7 +106,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>https://github.com/wso2/micro-integrator/releases/download/v${mi.product.version}/wso2mi-monitoring-dashboard-${mi.product.version}.zip</url>
+                            <url>https://github.com/wso2/micro-integrator/releases/download/v${mi.dashboard.version}/wso2mi-monitoring-dashboard-${mi.dashboard.version}.zip</url>
                             <unpack>false</unpack>
                             <outputDirectory>${project.build.directory}/products</outputDirectory>
                         </configuration>
@@ -217,7 +217,7 @@
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <commandlineArgs>${mi.product.version} ${apache.maven.version} ${mi.product.directory}</commandlineArgs>
+                            <commandlineArgs>${mi.product.version} ${apache.maven.version} ${mi.product.directory} ${mi.dashboard.version}</commandlineArgs>
                             <executable>${project.basedir}/scripts/package-installer-script.sh</executable>
                         </configuration>
                     </execution>

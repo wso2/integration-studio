@@ -5,14 +5,14 @@ hostname = "localhost"
 [user_store]
 type = "read_only_ldap"
 
-[keystore.tls]
-file_name = "wso2carbon.jks"
+[keystore.primary]
+file_name = "repository/resources/security/wso2carbon.jks"
 password = "wso2carbon"
 alias = "wso2carbon"
 key_password = "wso2carbon"
 
 [truststore]
-file_name = "client-truststore.jks"
+file_name = "repository/resources/security/client-truststore.jks"
 password = "wso2carbon"
 alias = "symmetric.key.value"
 algorithm = "AES"
@@ -26,6 +26,7 @@ algorithm = "AES"
 
 # [transport.jms]
 # sender_enable = true
+# listener_enable = true
 
 # [[transport.jms.sender]]
 # name = "myQueueSender"
@@ -35,8 +36,6 @@ algorithm = "AES"
 # parameter.connection_factory_type = "queue"
 # parameter.cache_level = "producer"
 
-# [transport.jms]
-# listener_enable = true
 
 #[[transport.jms.listener]]
 # name = "myQueueConnectionFactory"
@@ -57,6 +56,7 @@ algorithm = "AES"
 
 # [transport.rabbitmq]
 # sender_enable = true
+# listener_enable = true
 
 # [[transport.rabbitmq.sender]]
 # name = "AMQPConnectionFactory"
@@ -64,9 +64,6 @@ algorithm = "AES"
 # parameter.port = 5672
 # parameter.username = "guest"
 # parameter.password = "guest"
-
-# [transport.rabbitmq]
-# listener_enable = true
 
 # [[transport.rabbitmq.listener]]
 # name = "AMQPConnectionFactory"

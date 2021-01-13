@@ -2394,6 +2394,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_FjBBUEv2EemCVabDpQrwfQ" name="cacheMediatorImplementation" views="_KvNBEEvwEemCVabDpQrwfQ">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//CacheMediator/cacheMediatorImplementation"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_EaRnkFVvEeuSgqsGmpwUMw" name="headersToIncludeInHash" views="__X554FVuEeuSgqsGmpwUMw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//CacheMediator/headersToIncludeInHash"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//CacheMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7v8LfJnEei6boXzpRIfnA" name="CacheMediatorInputConnector" views="_E7wlpPJnEei6boXzpRIfnA">
@@ -8734,6 +8737,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7wlmvJnEei6boXzpRIfnA" name="hashGenerator">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="__X554FVuEeuSgqsGmpwUMw" name="headersToIncludeInHash">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>

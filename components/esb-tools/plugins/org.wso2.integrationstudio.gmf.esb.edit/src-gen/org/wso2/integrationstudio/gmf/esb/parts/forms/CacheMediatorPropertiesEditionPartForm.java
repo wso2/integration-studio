@@ -147,6 +147,8 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
     protected Button includeAgeHeader;
     protected Text hashGenerator;
 
+    protected Text headersToIncludeInHash;
+
     /**
      * For {@link ISection} use only.
      */
@@ -1569,6 +1571,73 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         return parent;
     }
 
+    protected Composite createHeadersToIncludeInHashText(FormToolkit widgetFactory, Composite parent) {
+    createDescription(parent, EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash, EsbMessages.CacheMediatorPropertiesEditionPart_HeadersToIncludeInHashLabel);
+    headersToIncludeInHash = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+    headersToIncludeInHash.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+    widgetFactory.paintBordersFor(parent);
+    GridData headersToIncludeInHashData = new GridData(GridData.FILL_HORIZONTAL);
+    headersToIncludeInHash.setLayoutData(headersToIncludeInHashData);
+    headersToIncludeInHash.addFocusListener(new FocusAdapter() {
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              CacheMediatorPropertiesEditionPartForm.this,
+              EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, headersToIncludeInHash.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  CacheMediatorPropertiesEditionPartForm.this,
+                  EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, headersToIncludeInHash.getText()));
+        }
+      }
+
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  CacheMediatorPropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    headersToIncludeInHash.addKeyListener(new KeyAdapter() {
+      /**
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, headersToIncludeInHash.getText()));
+        }
+      }
+    });
+    EditingUtils.setID(headersToIncludeInHash, EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash);
+    EditingUtils.setEEFtype(headersToIncludeInHash, "eef::Text"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createHeadersToIncludeInHashText
+
+    // End of user code
+    return parent;
+  }
+
     /**
      * {@inheritDoc}
      * 
@@ -2349,6 +2418,38 @@ public class CacheMediatorPropertiesEditionPartForm extends SectionPropertiesEdi
         }
 
     }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getHeadersToIncludeInHash()
+   * 
+   */
+  public String getHeadersToIncludeInHash() {
+    return headersToIncludeInHash.getText();
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setHeadersToIncludeInHash(String newValue)
+   * 
+   */
+  public void setHeadersToIncludeInHash(String newValue) {
+    if (newValue != null) {
+      headersToIncludeInHash.setText(newValue);
+    } else {
+      headersToIncludeInHash.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash);
+    if (eefElementEditorReadOnlyState && headersToIncludeInHash.isEnabled()) {
+      headersToIncludeInHash.setEnabled(false);
+      headersToIncludeInHash.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !headersToIncludeInHash.isEnabled()) {
+      headersToIncludeInHash.setEnabled(true);
+    }	
+    
+  }
 
     // Start of user code for sequenceKey specific getters and setters implementation
     @Override

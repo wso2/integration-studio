@@ -338,6 +338,20 @@ public interface CacheMediatorPropertiesEditionPart {
 
 
 	/**
+	 * @return the headersToIncludeInHash
+	 * 
+	 */
+	public String getHeadersToIncludeInHash();
+
+	/**
+	 * Defines a new headersToIncludeInHash
+	 * @param newValue the new headersToIncludeInHash to set
+	 * 
+	 */
+	public void setHeadersToIncludeInHash(String newValue);
+
+
+	/**
 	 * @return the description
 	 * 
 	 */

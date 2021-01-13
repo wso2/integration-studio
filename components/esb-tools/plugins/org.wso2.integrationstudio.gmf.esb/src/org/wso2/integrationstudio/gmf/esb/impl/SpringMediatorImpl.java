@@ -388,7 +388,7 @@ public class SpringMediatorImpl extends MediatorImpl implements SpringMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (beanName: ");
         result.append(beanName);
         result.append(')');

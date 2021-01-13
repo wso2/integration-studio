@@ -348,7 +348,7 @@ public class ClassMediatorImpl extends MediatorImpl implements ClassMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (className: ");
         result.append(className);
         result.append(')');

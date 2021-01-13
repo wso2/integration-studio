@@ -425,7 +425,7 @@ public class ThrottlePolicyEntryImpl extends EObjectImpl implements ThrottlePoli
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (throttleType: ");
         result.append(throttleType);
         result.append(", throttleRange: ");

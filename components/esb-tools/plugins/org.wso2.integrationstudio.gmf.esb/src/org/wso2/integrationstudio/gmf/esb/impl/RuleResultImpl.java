@@ -535,7 +535,7 @@ public class RuleResultImpl extends EObjectImpl implements RuleResult {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (resultType: ");
         result.append(resultType);
         result.append(", resultCustomType: ");

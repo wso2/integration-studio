@@ -426,7 +426,7 @@ public abstract class EndPointImpl extends EsbElementImpl implements EndPoint {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (endPointName: ");
         result.append(endPointName);
         result.append(", anonymous: ");

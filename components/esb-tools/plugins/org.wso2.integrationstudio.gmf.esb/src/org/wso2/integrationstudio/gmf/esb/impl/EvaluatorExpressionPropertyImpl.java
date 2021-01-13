@@ -260,7 +260,7 @@ public class EvaluatorExpressionPropertyImpl extends EsbNodeImpl implements Eval
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (prettyName: ");
         result.append(prettyName);
         result.append(", evaluatorName: ");

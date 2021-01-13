@@ -695,7 +695,7 @@ public class CloudConnectorOperationImpl extends MediatorImpl implements CloudCo
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (configRef: ");
         result.append(configRef);
         result.append(", connectorName: ");

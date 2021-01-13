@@ -368,7 +368,7 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (URITemplate: ");
         result.append(uriTemplate);
         result.append(", HttpMethod: ");

@@ -448,7 +448,7 @@ public class URLRewriteRuleActionImpl extends EsbNodeImpl implements URLRewriteR
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (ruleAction: ");
         result.append(ruleAction);
         result.append(", ruleFragment: ");

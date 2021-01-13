@@ -1553,7 +1553,7 @@ public class RuleMediatorImpl extends MediatorImpl implements RuleMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (RuleSetURL: ");
         result.append(ruleSetURL);
         result.append(", ruleSetSourceType: ");

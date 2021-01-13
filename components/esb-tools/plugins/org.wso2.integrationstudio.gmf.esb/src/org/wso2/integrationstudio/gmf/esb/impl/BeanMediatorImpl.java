@@ -826,7 +826,7 @@ public class BeanMediatorImpl extends MediatorImpl implements BeanMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (class: ");
         result.append(class_);
         result.append(", action: ");

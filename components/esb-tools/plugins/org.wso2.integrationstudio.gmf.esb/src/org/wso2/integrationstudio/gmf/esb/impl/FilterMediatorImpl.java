@@ -720,7 +720,7 @@ public class FilterMediatorImpl extends MediatorImpl implements FilterMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (conditionType: ");
         result.append(conditionType);
         result.append(", regex: ");

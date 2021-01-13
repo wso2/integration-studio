@@ -438,7 +438,7 @@ public class EnqueueMediatorImpl extends MediatorImpl implements EnqueueMediator
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (executor: ");
         result.append(executor);
         result.append(", priority: ");

@@ -1243,7 +1243,7 @@ public class AggregateMediatorImpl extends MediatorImpl implements AggregateMedi
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (aggregateID: ");
         result.append(aggregateID);
         result.append(", completionTimeout: ");

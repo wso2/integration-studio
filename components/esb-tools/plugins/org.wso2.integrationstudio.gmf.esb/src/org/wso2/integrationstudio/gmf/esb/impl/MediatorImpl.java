@@ -154,7 +154,7 @@ public abstract class MediatorImpl extends EsbElementImpl implements Mediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (Reverse: ");
         result.append(reverse);
         result.append(')');

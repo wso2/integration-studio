@@ -417,7 +417,7 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (wsdlUri: ");
         result.append(wsdlUri);
         result.append(", service: ");

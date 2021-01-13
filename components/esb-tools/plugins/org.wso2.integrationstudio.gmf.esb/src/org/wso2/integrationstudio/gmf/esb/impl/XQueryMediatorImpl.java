@@ -652,7 +652,7 @@ public class XQueryMediatorImpl extends MediatorImpl implements XQueryMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (scriptKeyType: ");
         result.append(scriptKeyType);
         result.append(')');

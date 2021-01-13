@@ -578,7 +578,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//KeyType/DYNAMIC"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//TemplateEngine">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TemplateEngine/DEFAULT"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TemplateEngine/REGEX"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TemplateEngine/FREEMARKER"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//MediaType">

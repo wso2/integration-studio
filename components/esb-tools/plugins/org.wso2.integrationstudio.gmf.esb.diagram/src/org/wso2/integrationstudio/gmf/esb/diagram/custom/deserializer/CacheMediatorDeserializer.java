@@ -23,6 +23,7 @@ import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIA
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__HASH_GENERATOR;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__HEADERS_TO_INCLUDE_IN_HASH;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__INCLUDE_AGE_HEADER;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__MAX_ENTRY_COUNT;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__MAX_MESSAGE_SIZE;
@@ -98,13 +99,24 @@ public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
                             method.append(methods[methods.length - 1]);
                             executeSetValueCommand(CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS, method.toString());
                         }
+                        
+                        // headers to exclude in hash
                         String[] headerstoExclude = mediator.getHeadersToExcludeInHash();
-                        StringBuilder header = new StringBuilder();
+                        StringBuilder excludeHeader = new StringBuilder();
                         for (int i = 0; i < headerstoExclude.length - 1; i++) {
-                            header.append(headerstoExclude[i]).append(", ");
+                            excludeHeader.append(headerstoExclude[i]).append(", ");
                         }
-                        header.append(headerstoExclude[headerstoExclude.length - 1]);
-                        executeSetValueCommand(CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH, header.toString());
+                        excludeHeader.append(headerstoExclude[headerstoExclude.length - 1]);
+                        
+                        // headers to include in hash
+                        String[] headerstoInclude = mediator.getHeadersToIncludeInHash();
+                        StringBuilder includeHeader = new StringBuilder();
+                        for (int i = 0; i < headerstoInclude.length - 1; i++) {
+                            includeHeader.append(headerstoInclude[i]).append(", ");
+                        }
+                        includeHeader.append(headerstoInclude[headerstoInclude.length - 1]);
+                        executeSetValueCommand(CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH, excludeHeader.toString());
+                        executeSetValueCommand(CACHE_MEDIATOR__HEADERS_TO_INCLUDE_IN_HASH, includeHeader.toString());
                         executeSetValueCommand(CACHE_MEDIATOR__RESPONSE_CODES, mediator.getResponseCodes());
                         executeSetValueCommand(CACHE_MEDIATOR__ENABLE_CACHE_CONTROL, mediator.isCacheControlEnabled());
                         executeSetValueCommand(CACHE_MEDIATOR__INCLUDE_AGE_HEADER, mediator.isAddAgeHeaderEnabled());

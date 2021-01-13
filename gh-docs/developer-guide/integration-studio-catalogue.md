@@ -2214,21 +2214,24 @@ To release a new version of the Integration Studio, follow the below steps to mo
 
 1. Upgrade the MI version to latest in the EI plugin.
 2. Check Documentation Link from **Help -> Help** Content.
-3. Integration Studio icon with new release version.
-3. Integration Studio splash image with new release version.
-4. Check ConfigMapper plugin version in Docker/K8s project pom.
-5. Check Unit test client plugin version in ESB project pom.
-6. Host templates related to MI to the dist (supports Docker build).
-7. Update toml in docker file and in EI installation.
-8. Trigger the [integration-studio](https://wso2.org/jenkins/job/integration-studio/job/integration-studio/) release build (*Perform Maven Release* option defining the release version and new development version).
-9. Add license files for every distribution.
-10. Generate DMG for MacOS.
-11. Sign distributions before releasing.
-12. Ask marketing team to host the packs in website.
-13. Ask marketing team to add the packs to Atuwa.
-14. Test the Integration Studio in all platforms and release.
-15. Update the new release tag [here](https://github.com/wso2/integration-studio/releases)
-16. Create a new branch for the latest release updates.
+3. Check Documentation Link in Getting Started page.
+4. Integration Studio icon with new release version.
+5. Integration Studio splash image with new release version.
+6. Integration Studio About image with new release version.
+7. Update the Docker base image tag to new embedded server version in CommonTemplateProjectCreationWizard.java and ContainerProjectCreationWizard.java.
+8. Check ConfigMapper plugin version in Docker/K8s project pom (ContainerProjectCreationWizard.java) and Getting Started Samples (CommonTemplateProjectCreationWizard.java).
+9. Check Unit test client plugin version in ESB project pom and Getting Started Samples (CommonTemplateProjectCreationWizard.java).
+10. Host templates related to the MI inside the dist (to support Docker build) in location https://product-dist.wso2.com/p2/templates/.
+11. Update deployment.toml files inside docker.distribution.plugin/resources, distribution/rcp.product/resources, HelloDocker and HelloKubernetes sample zips.
+12. Trigger the [integration-studio](https://wso2.org/jenkins/job/integration-studio/job/integration-studio/) release build (*Build with Parameters* option defining the release version).
+13. Add license files for every distribution.
+14. Generate DMG for MacOS.
+15. Sign distributions before releasing.
+16. Ask marketing team to host the packs in website.
+17. Ask marketing team to add the packs to Atuwa.
+18. Test the Integration Studio in all platforms and release.
+19. Update the new release tag [here](https://github.com/wso2/integration-studio/releases)
+20. Create a new branch for the latest release updates.
 
 ## Creating DMG for macOS
 

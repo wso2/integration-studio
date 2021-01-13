@@ -11744,13 +11744,22 @@ public interface EsbPackage extends EPackage {
     int CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION = MEDIATOR_FEATURE_COUNT + 21;
 
     /**
+     * The feature id for the '<em><b>Headers To Include In Hash</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CACHE_MEDIATOR__HEADERS_TO_INCLUDE_IN_HASH = MEDIATOR_FEATURE_COUNT + 22;
+
+    /**
      * The number of structural features of the '<em>Cache Mediator</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int CACHE_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 22;
+    int CACHE_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 23;
 
     /**
      * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorInputConnectorImpl <em>Cache Mediator Input Connector</em>}' class.
@@ -40740,6 +40749,17 @@ public interface EsbPackage extends EPackage {
     EAttribute getCacheMediator_CacheMediatorImplementation();
 
     /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.CacheMediator#getHeadersToIncludeInHash <em>Headers To Include In Hash</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Headers To Include In Hash</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.CacheMediator#getHeadersToIncludeInHash()
+     * @see #getCacheMediator()
+     * @generated
+     */
+    EAttribute getCacheMediator_HeadersToIncludeInHash();
+
+    /**
      * Returns the meta object for class '{@link org.wso2.integrationstudio.gmf.esb.CacheMediatorInputConnector <em>Cache Mediator Input Connector</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -56744,6 +56764,14 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION = eINSTANCE.getCacheMediator_CacheMediatorImplementation();
+
+        /**
+         * The meta object literal for the '<em><b>Headers To Include In Hash</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute CACHE_MEDIATOR__HEADERS_TO_INCLUDE_IN_HASH = eINSTANCE.getCacheMediator_HeadersToIncludeInHash();
 
         /**
          * The meta object literal for the '{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorInputConnectorImpl <em>Cache Mediator Input Connector</em>}' class.

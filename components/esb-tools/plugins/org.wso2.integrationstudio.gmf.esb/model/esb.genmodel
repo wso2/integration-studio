@@ -578,7 +578,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//KeyType/DYNAMIC"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//TemplateEngine">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TemplateEngine/REGEX"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TemplateEngine/DEFAULT"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TemplateEngine/FREEMARKER"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//MediaType">
@@ -1599,6 +1599,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/scope"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/implementationType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheMediatorImplementation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/headersToIncludeInHash"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CacheMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//CacheMediatorOutputConnector"/>

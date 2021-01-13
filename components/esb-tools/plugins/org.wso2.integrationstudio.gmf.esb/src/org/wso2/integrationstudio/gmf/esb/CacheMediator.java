@@ -37,6 +37,7 @@ package org.wso2.integrationstudio.gmf.esb;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.CacheMediator#getScope <em>Scope</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.CacheMediator#getImplementationType <em>Implementation Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.CacheMediator#getCacheMediatorImplementation <em>Cache Mediator Implementation</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CacheMediator#getHeadersToIncludeInHash <em>Headers To Include In Hash</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCacheMediator()
@@ -648,5 +649,27 @@ public interface CacheMediator extends Mediator {
      * @generated
      */
     void setCacheMediatorImplementation(CacheMediatorType value);
+
+    /**
+     * Returns the value of the '<em><b>Headers To Include In Hash</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Headers To Include In Hash</em>' attribute.
+     * @see #setHeadersToIncludeInHash(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCacheMediator_HeadersToIncludeInHash()
+     * @model
+     * @generated
+     */
+    String getHeadersToIncludeInHash();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CacheMediator#getHeadersToIncludeInHash <em>Headers To Include In Hash</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Headers To Include In Hash</em>' attribute.
+     * @see #getHeadersToIncludeInHash()
+     * @generated
+     */
+    void setHeadersToIncludeInHash(String value);
 
 } // CacheMediator

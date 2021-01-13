@@ -68,6 +68,7 @@ import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderU
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getScope <em>Scope</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getImplementationType <em>Implementation Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getCacheMediatorImplementation <em>Cache Mediator Implementation</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CacheMediatorImpl#getHeadersToIncludeInHash <em>Headers To Include In Hash</em>}</li>
  * </ul>
  *
  * @generated
@@ -463,6 +464,26 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
      * @ordered
      */
     protected CacheMediatorType cacheMediatorImplementation = CACHE_MEDIATOR_IMPLEMENTATION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getHeadersToIncludeInHash() <em>Headers To Include In Hash</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getHeadersToIncludeInHash()
+     * @generated
+     * @ordered
+     */
+    protected static final String HEADERS_TO_INCLUDE_IN_HASH_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getHeadersToIncludeInHash() <em>Headers To Include In Hash</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getHeadersToIncludeInHash()
+     * @generated
+     * @ordered
+     */
+    protected String headersToIncludeInHash = HEADERS_TO_INCLUDE_IN_HASH_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -1072,6 +1093,27 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
      * <!-- end-user-doc -->
      * @generated
      */
+    public String getHeadersToIncludeInHash() {
+        return headersToIncludeInHash;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setHeadersToIncludeInHash(String newHeadersToIncludeInHash) {
+        String oldHeadersToIncludeInHash = headersToIncludeInHash;
+        headersToIncludeInHash = newHeadersToIncludeInHash;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__HEADERS_TO_INCLUDE_IN_HASH, oldHeadersToIncludeInHash, headersToIncludeInHash));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -1143,6 +1185,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
                 return getImplementationType();
             case EsbPackage.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION:
                 return getCacheMediatorImplementation();
+            case EsbPackage.CACHE_MEDIATOR__HEADERS_TO_INCLUDE_IN_HASH:
+                return getHeadersToIncludeInHash();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -1221,6 +1265,9 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
                 return;
             case EsbPackage.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION:
                 setCacheMediatorImplementation((CacheMediatorType)newValue);
+                return;
+            case EsbPackage.CACHE_MEDIATOR__HEADERS_TO_INCLUDE_IN_HASH:
+                setHeadersToIncludeInHash((String)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -1301,6 +1348,9 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
             case EsbPackage.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION:
                 setCacheMediatorImplementation(CACHE_MEDIATOR_IMPLEMENTATION_EDEFAULT);
                 return;
+            case EsbPackage.CACHE_MEDIATOR__HEADERS_TO_INCLUDE_IN_HASH:
+                setHeadersToIncludeInHash(HEADERS_TO_INCLUDE_IN_HASH_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -1358,6 +1408,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
                 return implementationType != IMPLEMENTATION_TYPE_EDEFAULT;
             case EsbPackage.CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION:
                 return cacheMediatorImplementation != CACHE_MEDIATOR_IMPLEMENTATION_EDEFAULT;
+            case EsbPackage.CACHE_MEDIATOR__HEADERS_TO_INCLUDE_IN_HASH:
+                return HEADERS_TO_INCLUDE_IN_HASH_EDEFAULT == null ? headersToIncludeInHash != null : !HEADERS_TO_INCLUDE_IN_HASH_EDEFAULT.equals(headersToIncludeInHash);
         }
         return super.eIsSet(featureID);
     }
@@ -1372,7 +1424,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (cacheProtocolType: ");
         result.append(cacheProtocolType);
         result.append(", cacheType: ");
@@ -1407,6 +1459,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
         result.append(implementationType);
         result.append(", cacheMediatorImplementation: ");
         result.append(cacheMediatorImplementation);
+        result.append(", headersToIncludeInHash: ");
+        result.append(headersToIncludeInHash);
         result.append(')');
         return result.toString();
     }

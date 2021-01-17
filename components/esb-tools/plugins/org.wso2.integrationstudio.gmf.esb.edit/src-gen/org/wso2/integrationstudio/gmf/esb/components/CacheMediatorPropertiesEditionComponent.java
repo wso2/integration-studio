@@ -132,6 +132,10 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
             if (isAccessible(EsbViewsRepository.CacheMediator.Protocol.headersToExcludeInHash))
                 basePart.setHeadersToExcludeInHash(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING,
                         cacheMediator.getHeadersToExcludeInHash()));
+            
+            if (isAccessible(EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash))
+                basePart.setHeadersToIncludeInHash(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING,
+                        cacheMediator.getHeadersToIncludeInHash()));
 
             if (isAccessible(EsbViewsRepository.CacheMediator.Protocol.responseCodes))
                 basePart.setResponseCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING,
@@ -230,6 +234,9 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
         if (editorKey == EsbViewsRepository.CacheMediator.Protocol.headersToExcludeInHash) {
             return EsbPackage.eINSTANCE.getCacheMediator_HeadersToExcludeInHash();
         }
+        if (editorKey == EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash) {
+            return EsbPackage.eINSTANCE.getCacheMediator_HeadersToIncludeInHash();
+        }
         if (editorKey == EsbViewsRepository.CacheMediator.Protocol.responseCodes) {
             return EsbPackage.eINSTANCE.getCacheMediator_ResponseCodes();
         }
@@ -309,6 +316,10 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
         }
         if (EsbViewsRepository.CacheMediator.Protocol.headersToExcludeInHash == event.getAffectedEditor()) {
             cacheMediator.setHeadersToExcludeInHash((java.lang.String) EEFConverterUtil
+                    .createFromString(EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
+        }
+        if (EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash == event.getAffectedEditor()) {
+            cacheMediator.setHeadersToIncludeInHash((java.lang.String) EEFConverterUtil
                     .createFromString(EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
         }
         if (EsbViewsRepository.CacheMediator.Protocol.responseCodes == event.getAffectedEditor()) {
@@ -452,6 +463,16 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
                     basePart.setHeadersToExcludeInHash("");
                 }
             }
+            if (EsbPackage.eINSTANCE.getCacheMediator_HeadersToIncludeInHash().equals(msg.getFeature())
+                    && msg.getNotifier().equals(semanticObject) && basePart != null
+                    && isAccessible(EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setHeadersToIncludeInHash(
+                            EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+                } else {
+                    basePart.setHeadersToIncludeInHash("");
+                }
+            }
             if (EsbPackage.eINSTANCE.getCacheMediator_ResponseCodes().equals(msg.getFeature())
                     && msg.getNotifier().equals(semanticObject) && basePart != null
                     && isAccessible(EsbViewsRepository.CacheMediator.Protocol.responseCodes)) {
@@ -563,6 +584,7 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
                 EsbPackage.eINSTANCE.getCacheMediator_MaxEntryCount(),
                 EsbPackage.eINSTANCE.getCacheMediator_SequenceType(),
                 EsbPackage.eINSTANCE.getCacheMediator_HeadersToExcludeInHash(),
+                EsbPackage.eINSTANCE.getCacheMediator_HeadersToIncludeInHash(),
                 EsbPackage.eINSTANCE.getCacheMediator_ResponseCodes(),
                 EsbPackage.eINSTANCE.getCacheMediator_EnableCacheControl(),
                 EsbPackage.eINSTANCE.getCacheMediator_IncludeAgeHeader(),
@@ -686,6 +708,17 @@ public class CacheMediatorPropertiesEditionComponent extends SinglePartPropertie
                     }
                     ret = Diagnostician.INSTANCE.validate(
                             EsbPackage.eINSTANCE.getCacheMediator_HeadersToExcludeInHash().getEAttributeType(),
+                            newValue);
+                }
+                if (EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash == event.getAffectedEditor()) {
+                    Object newValue = event.getNewValue();
+                    if (newValue instanceof String) {
+                        newValue = EEFConverterUtil.createFromString(
+                                EsbPackage.eINSTANCE.getCacheMediator_HeadersToIncludeInHash().getEAttributeType(),
+                                (String) newValue);
+                    }
+                    ret = Diagnostician.INSTANCE.validate(
+                            EsbPackage.eINSTANCE.getCacheMediator_HeadersToIncludeInHash().getEAttributeType(),
                             newValue);
                 }
                 if (EsbViewsRepository.CacheMediator.Protocol.responseCodes == event.getAffectedEditor()) {

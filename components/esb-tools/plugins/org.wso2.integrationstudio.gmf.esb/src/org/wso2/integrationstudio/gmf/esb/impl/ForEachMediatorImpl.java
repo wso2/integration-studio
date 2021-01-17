@@ -842,7 +842,7 @@ public class ForEachMediatorImpl extends MediatorImpl implements ForEachMediator
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (forEachID: ");
         result.append(forEachID);
         result.append(", sequenceType: ");

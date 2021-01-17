@@ -4156,7 +4156,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         if (isInited) return (EsbPackage)EPackage.Registry.INSTANCE.getEPackage(EsbPackage.eNS_URI);
 
         // Obtain or create and register package
-        EsbPackageImpl theEsbPackage = (EsbPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof EsbPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new EsbPackageImpl());
+        Object registeredEsbPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+        EsbPackageImpl theEsbPackage = registeredEsbPackage instanceof EsbPackageImpl ? (EsbPackageImpl)registeredEsbPackage : new EsbPackageImpl();
 
         isInited = true;
 
@@ -14808,6 +14809,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getCacheMediator_HeadersToIncludeInHash() {
+        return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(22);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getCacheMediatorInputConnector() {
         return cacheMediatorInputConnectorEClass;
     }
@@ -20821,6 +20831,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(cacheMediatorEClass, CACHE_MEDIATOR__SCOPE);
         createEAttribute(cacheMediatorEClass, CACHE_MEDIATOR__IMPLEMENTATION_TYPE);
         createEAttribute(cacheMediatorEClass, CACHE_MEDIATOR__CACHE_MEDIATOR_IMPLEMENTATION);
+        createEAttribute(cacheMediatorEClass, CACHE_MEDIATOR__HEADERS_TO_INCLUDE_IN_HASH);
 
         cacheMediatorInputConnectorEClass = createEClass(CACHE_MEDIATOR_INPUT_CONNECTOR);
 
@@ -23340,6 +23351,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getCacheMediator_Scope(), this.getCacheScopeType(), "scope", "Per_Host", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getCacheMediator_ImplementationType(), this.getCacheImplementationType(), "implementationType", "memory", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getCacheMediator_CacheMediatorImplementation(), this.getCacheMediatorType(), "cacheMediatorImplementation", "Default", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getCacheMediator_HeadersToIncludeInHash(), ecorePackage.getEString(), "headersToIncludeInHash", null, 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(cacheMediatorInputConnectorEClass, CacheMediatorInputConnector.class, "CacheMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

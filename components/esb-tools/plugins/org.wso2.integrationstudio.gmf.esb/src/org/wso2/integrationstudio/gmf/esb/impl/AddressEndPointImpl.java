@@ -313,7 +313,7 @@ public class AddressEndPointImpl extends AbstractEndPointImpl implements Address
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (URI: ");
         result.append(uri);
         result.append(')');

@@ -1740,7 +1740,7 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (connectionType: ");
         result.append(connectionType);
         result.append(", connectionDsType: ");

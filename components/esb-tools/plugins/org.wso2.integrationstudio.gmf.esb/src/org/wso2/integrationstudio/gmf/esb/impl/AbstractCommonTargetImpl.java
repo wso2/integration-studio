@@ -487,7 +487,7 @@ public class AbstractCommonTargetImpl extends EsbNodeImpl implements AbstractCom
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (sequenceType: ");
         result.append(sequenceType);
         result.append(", endpointType: ");

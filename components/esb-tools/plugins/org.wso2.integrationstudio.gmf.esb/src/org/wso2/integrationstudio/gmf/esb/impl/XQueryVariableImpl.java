@@ -483,7 +483,7 @@ public class XQueryVariableImpl extends EObjectImpl implements XQueryVariable {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (variableName: ");
         result.append(variableName);
         result.append(", variableType: ");

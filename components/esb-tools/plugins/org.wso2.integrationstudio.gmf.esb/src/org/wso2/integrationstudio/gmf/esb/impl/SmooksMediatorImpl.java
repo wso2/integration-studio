@@ -744,7 +744,7 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (inputType: ");
         result.append(inputType);
         result.append(", outputType: ");

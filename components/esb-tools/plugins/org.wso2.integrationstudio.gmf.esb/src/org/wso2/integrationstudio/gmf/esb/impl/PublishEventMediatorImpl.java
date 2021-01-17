@@ -675,7 +675,7 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (streamName: ");
         result.append(streamName);
         result.append(", streamVersion: ");

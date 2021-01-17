@@ -1394,7 +1394,7 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (serviceURL: ");
         result.append(serviceURL);
         result.append(", soapAction: ");

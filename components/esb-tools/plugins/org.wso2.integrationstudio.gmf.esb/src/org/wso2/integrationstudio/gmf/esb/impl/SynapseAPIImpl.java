@@ -690,7 +690,7 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (apiName: ");
         result.append(apiName);
         result.append(", context: ");

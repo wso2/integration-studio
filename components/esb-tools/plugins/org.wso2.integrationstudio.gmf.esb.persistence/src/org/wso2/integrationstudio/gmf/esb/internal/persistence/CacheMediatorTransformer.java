@@ -110,6 +110,9 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
                     if (StringUtils.isNotBlank(visualCache.getHeadersToExcludeInHash())) {
                         cacheMediator.setHeadersToExcludeInHash(visualCache.getHeadersToExcludeInHash().split(","));
                     }
+                    if (StringUtils.isNotBlank(visualCache.getHeadersToIncludeInHash())) {
+                        cacheMediator.setHeadersToIncludeInHash(visualCache.getHeadersToIncludeInHash().split(","));
+                    }
                 }
 
                 DigestGenerator httpRequestHashGenerator = null;

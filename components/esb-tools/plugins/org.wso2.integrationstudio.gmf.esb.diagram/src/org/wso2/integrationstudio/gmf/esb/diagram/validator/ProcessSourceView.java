@@ -100,7 +100,7 @@ public class ProcessSourceView {
             "retriesBeforeSuspension", "retryDelay", "suspendOnFailure", "initialDuration", "progressionFactor",
             "maximumDuration", "membershipHandler", "definition", "member", "http", "address", "failover",
             "dynamicLoadbalance", "wsdl", "loadBalance", "default", "recipientlist", "format", "args", "source",
-            "onCacheHit", "protocol", "methods", "headersToExcludeInHash", "responseCodes", "enableCacheControl",
+            "onCacheHit", "protocol", "methods", "headersToExcludeInHash", "headersToIncludeInHash", "responseCodes", "enableCacheControl",
             "includeAgeHeader", "hashGenerator", "implementation", "onReject", "onAccept", "obligations", "advice",
             "case", "on-fail", "then", "else", "eventSink", "streamName", "streamVersion", "attributes", "meta",
             "correlation", "payload", "arbitrary", "serverProfile", "streamConfig", "with-param", "schema", "feature",

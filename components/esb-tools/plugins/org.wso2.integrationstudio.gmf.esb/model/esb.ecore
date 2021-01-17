@@ -1488,6 +1488,8 @@
         defaultValueLiteral="memory"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheMediatorImplementation"
         eType="#//CacheMediatorType" defaultValueLiteral="Default"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="headersToIncludeInHash"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CacheMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="CacheMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>

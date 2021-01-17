@@ -96,7 +96,8 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	protected Button enableCacheControl;
 	protected Button includeAgeHeader;
 	protected Text hashGenerator;
-	protected Text description;
+	protected Text headersToIncludeInHash;
+  protected Text description;
 
 
 
@@ -1144,7 +1145,55 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 		return parent;
 	}
 
-	/**
+	protected Composite createHeadersToIncludeInHashText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash, EsbMessages.CacheMediatorPropertiesEditionPart_HeadersToIncludeInHashLabel);
+    headersToIncludeInHash = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData headersToIncludeInHashData = new GridData(GridData.FILL_HORIZONTAL);
+    headersToIncludeInHash.setLayoutData(headersToIncludeInHashData);
+    headersToIncludeInHash.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, headersToIncludeInHash.getText()));
+      }
+
+    });
+    headersToIncludeInHash.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CacheMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, headersToIncludeInHash.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(headersToIncludeInHash, EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash);
+    EditingUtils.setEEFtype(headersToIncludeInHash, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createHeadersToIncludeInHashText
+
+    // End of user code
+    return parent;
+  }
+
+  /**
 	 * 
 	 */
 	protected Composite createMiscGroup(Composite parent) {
@@ -1939,6 +1988,38 @@ public class CacheMediatorPropertiesEditionPartImpl extends CompositePropertiesE
 	}
 
 	/**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getHeadersToIncludeInHash()
+   * 
+   */
+  public String getHeadersToIncludeInHash() {
+    return headersToIncludeInHash.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#setHeadersToIncludeInHash(String newValue)
+   * 
+   */
+  public void setHeadersToIncludeInHash(String newValue) {
+    if (newValue != null) {
+      headersToIncludeInHash.setText(newValue);
+    } else {
+      headersToIncludeInHash.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CacheMediator.Protocol.headersToIncludeInHash);
+    if (eefElementEditorReadOnlyState && headersToIncludeInHash.isEnabled()) {
+      headersToIncludeInHash.setEnabled(false);
+      headersToIncludeInHash.setToolTipText(EsbMessages.CacheMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !headersToIncludeInHash.isEnabled()) {
+      headersToIncludeInHash.setEnabled(true);
+    }	
+    
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.wso2.integrationstudio.gmf.esb.parts.CacheMediatorPropertiesEditionPart#getDescription()

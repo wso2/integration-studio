@@ -416,7 +416,7 @@ public class OAuthMediatorImpl extends MediatorImpl implements OAuthMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (remoteServiceUrl: ");
         result.append(remoteServiceUrl);
         result.append(", username: ");

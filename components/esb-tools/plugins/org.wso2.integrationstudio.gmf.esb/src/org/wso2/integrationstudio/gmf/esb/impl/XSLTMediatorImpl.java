@@ -743,7 +743,7 @@ public class XSLTMediatorImpl extends MediatorImpl implements XSLTMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (xsltSchemaKeyType: ");
         result.append(xsltSchemaKeyType);
         result.append(')');

@@ -165,7 +165,7 @@ public class CommentMediatorImpl extends MediatorImpl implements CommentMediator
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (commentText: ");
         result.append(commentText);
         result.append(')');

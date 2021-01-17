@@ -692,7 +692,7 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (endpointType: ");
         result.append(endpointType);
         result.append(", enableBlockingCalls: ");

@@ -752,7 +752,7 @@ public class SendMediatorImpl extends MediatorImpl implements SendMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (receivingSequenceType: ");
         result.append(receivingSequenceType);
         result.append(", skipSerialization: ");

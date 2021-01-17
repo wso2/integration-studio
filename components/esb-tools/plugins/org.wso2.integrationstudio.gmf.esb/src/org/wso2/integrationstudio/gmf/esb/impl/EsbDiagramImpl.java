@@ -244,7 +244,7 @@ public class EsbDiagramImpl extends EObjectImpl implements EsbDiagram {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (Test: ");
         result.append(test);
         result.append(')');

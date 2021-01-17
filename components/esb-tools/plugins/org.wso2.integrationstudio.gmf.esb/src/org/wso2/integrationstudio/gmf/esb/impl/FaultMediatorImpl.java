@@ -1345,7 +1345,7 @@ public class FaultMediatorImpl extends MediatorImpl implements FaultMediator {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (soapVersion: ");
         result.append(soapVersion);
         result.append(", serializeResponse: ");

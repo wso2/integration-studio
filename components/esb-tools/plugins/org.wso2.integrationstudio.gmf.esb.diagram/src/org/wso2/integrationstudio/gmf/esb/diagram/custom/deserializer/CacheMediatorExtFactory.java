@@ -112,6 +112,11 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
                     OMElement child = (OMElement) itrChildren.next();
                     cacheMediator.setHeadersToExcludeInHash(child.getText().split(","));
                 }
+                for (Iterator itrChildren = implElem.getChildrenWithLocalName("headersToIncludeInHash"); itrChildren
+                        .hasNext();) {
+                    OMElement child = (OMElement) itrChildren.next();
+                    cacheMediator.setHeadersToIncludeInHash(child.getText().split(","));
+                }
                 for (Iterator itrChildren = implElem.getChildrenWithLocalName("responseCodes"); itrChildren
                         .hasNext();) {
                     OMElement child = (OMElement) itrChildren.next();

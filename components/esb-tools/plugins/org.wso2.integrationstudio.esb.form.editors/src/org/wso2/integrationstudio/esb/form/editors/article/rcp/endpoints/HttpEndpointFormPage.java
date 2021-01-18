@@ -31,8 +31,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
@@ -53,11 +55,22 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 	public Combo httpEP_Method;
 	public Button httpEP_Properties;
 
+	public Combo httpEP_OAuthType;
+	public Label oAuthClientIdLabel;
+	public Text oAuthClientId;
+	public Label oAuthClientSecretLabel;
+	public Text oAuthClientSecret;
+	public Label oAuthTokenUrlLabel;
+	public Text oAuthTokenUrl;
+	public Label oAuthRefreshTokenLabel;
+	public Text oAuthRefreshToken;
+
 	public List<EndPointProperty> endpointPropertyList;
 	
     Section basicSection;
     Section miscSection;
-	
+    Section oauthSection;
+
     public HttpEndpointFormPage(FormEditor editor, boolean isTemplate) {
 		super(editor);
 		this.isTemplate = isTemplate;
@@ -266,7 +279,132 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		
 		
 	}
-	
+
+	public void createFormOAuthSection() {
+
+		/* OAuth Section */
+		oauthSection = endpointCommons.createSection(form, toolkit, "OAuth Configuration");
+
+		GridData oauthSectionGridData = new GridData();
+		oauthSectionGridData.horizontalSpan = 3;
+		oauthSectionGridData.horizontalAlignment = GridData.FILL;
+		oauthSectionGridData.grabExcessHorizontalSpace = true;
+		oauthSection.setLayoutData(oauthSectionGridData);
+
+		Composite oauthSectionClient = toolkit.createComposite(oauthSection);
+		oauthSectionClient.setLayout(new GridLayout());
+		oauthSection.setClient(oauthSectionClient);
+
+		toolkit.createLabel(oauthSectionClient, "OAuth Grant Type :");
+		httpEP_OAuthType = new Combo(oauthSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
+		String[] oAuthTypes = { "None", "Authorization Code", "Client Credentials" };
+		httpEP_OAuthType.setItems(oAuthTypes);
+		httpEP_OAuthType.select(0);
+		httpEP_OAuthType.setBackground(new Color(null, 229, 236, 253));
+		GridData httpEPOAuthTypeGridData = new GridData();
+		httpEPOAuthTypeGridData.horizontalSpan = 3;
+		httpEPOAuthTypeGridData.horizontalAlignment = GridData.FILL;
+		httpEPOAuthTypeGridData.grabExcessHorizontalSpace = true;
+		httpEP_OAuthType.setLayoutData(httpEPOAuthTypeGridData);
+
+		httpEP_OAuthType.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				if (httpEP_OAuthType.getSelectionIndex() == 1) {
+					enableOAuthAuthorizationCodeFields();
+				} else if (httpEP_OAuthType.getSelectionIndex() == 2) {
+					enableOAuthClientCredentialsFields();
+				} else {
+					disabeOAuthFields();
+				}
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+
+		httpEP_OAuthType.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
+
+		httpEP_OAuthType.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				if (httpEP_OAuthType.getSelectionIndex() == 1) {
+					enableOAuthAuthorizationCodeFields();
+				} else if (httpEP_OAuthType.getSelectionIndex() == 2) {
+					enableOAuthClientCredentialsFields();
+				} else {
+					disabeOAuthFields();
+				}
+			}
+		});
+
+		oAuthClientIdLabel = toolkit.createLabel(oauthSectionClient, "Client Id :");
+		oAuthClientIdLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
+
+		oAuthClientId = toolkit.createText(oauthSectionClient, "");
+		oAuthClientId.setBackground(new Color(null, 229, 236, 253));
+		setGridLayout(oAuthClientId);
+
+		oAuthClientId.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+
+		oAuthClientSecretLabel = toolkit.createLabel(oauthSectionClient, "Client Secret :");
+		oAuthClientSecretLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
+
+		oAuthClientSecret = toolkit.createText(oauthSectionClient, "");
+		oAuthClientSecret.setBackground(new Color(null, 229, 236, 253));
+		setGridLayout(oAuthClientSecret);
+
+		oAuthClientSecret.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+
+		oAuthRefreshTokenLabel = toolkit.createLabel(oauthSectionClient, "Refresh Token :");
+		oAuthRefreshTokenLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
+
+		oAuthRefreshToken = toolkit.createText(oauthSectionClient, "");
+		oAuthRefreshToken.setBackground(new Color(null, 229, 236, 253));
+		setGridLayout(oAuthRefreshToken);
+
+		oAuthRefreshToken.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+
+		oAuthTokenUrlLabel = toolkit.createLabel(oauthSectionClient, "Token Url :");
+		oAuthTokenUrlLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
+
+		oAuthTokenUrl = toolkit.createText(oauthSectionClient, "");
+		oAuthTokenUrl.setBackground(new Color(null, 229, 236, 253));
+		setGridLayout(oAuthTokenUrl);
+
+		oAuthTokenUrl.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+
+		disabeOAuthFields();
+	}
+
 	public void createFormQosSection() {
 		endpointCommons.createFormQosSection(form, toolkit);
 	}
@@ -278,5 +416,57 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 	public EndpointCommons getEndpointCommons() {
 		return endpointCommons;
 	}
-	
+
+	private void disabeOAuthFields() {
+		setOAuthCommonFieldsVisibility(false);
+		setOAuthRefreshTokenVisibility(false);
+		enbaleVisualizingOAuthFields();
+	}
+
+	private void enableOAuthClientCredentialsFields() {
+		setOAuthCommonFieldsVisibility(true);
+		setOAuthRefreshTokenVisibility(false);
+		enbaleVisualizingOAuthFields();
+	}
+
+	private void enableOAuthAuthorizationCodeFields() {
+		setOAuthCommonFieldsVisibility(true);
+		setOAuthRefreshTokenVisibility(true);
+		enbaleVisualizingOAuthFields();
+	}
+
+	private void setOAuthCommonFieldsVisibility(boolean visible) {
+		setFieldVisibility(oAuthClientIdLabel, visible);
+		setFieldVisibility(oAuthClientId, visible);
+		setFieldVisibility(oAuthClientSecretLabel, visible);
+		setFieldVisibility(oAuthClientSecret, visible);
+		setFieldVisibility(oAuthTokenUrlLabel, visible);
+		setFieldVisibility(oAuthTokenUrl, visible);
+	}
+
+	private void setOAuthRefreshTokenVisibility(boolean visible) {
+		setFieldVisibility(oAuthRefreshTokenLabel, visible);
+		setFieldVisibility(oAuthRefreshToken, visible);
+	}
+
+	private void enbaleVisualizingOAuthFields() {
+		if (oauthSection.isExpanded() == true) {
+			oauthSection.setExpanded(false);
+			oauthSection.setExpanded(true);
+		}
+	}
+
+	private void setGridLayout(Text text) {
+		GridData gridData = new GridData();
+		gridData.horizontalSpan = 3;
+		gridData.horizontalAlignment = GridData.FILL;
+		gridData.grabExcessHorizontalSpace = true;
+		text.setLayoutData(gridData);
+	}
+
+	private void setFieldVisibility(Control control, boolean visible) {
+		GridData gridData = (GridData) control.getLayoutData();
+		gridData.exclude = !visible;
+		control.setVisible(visible);
+	}
 }

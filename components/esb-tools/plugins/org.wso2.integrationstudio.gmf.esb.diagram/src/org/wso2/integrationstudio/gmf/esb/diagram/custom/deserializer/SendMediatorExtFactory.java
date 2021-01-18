@@ -74,7 +74,7 @@ public class SendMediatorExtFactory extends SendMediatorFactory {
 
             Endpoint endpoint = null;
             try {
-                endpoint = EndpointFactory.getEndpointFromElement(epElement, true, null);
+                endpoint = DummyEndpointFactory.getEndpointFromElement(epElement, true, null);
             } catch (Exception e) {
 
                 if (omElement.getAttribute(ATT_KEY) != null) {

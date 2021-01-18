@@ -107,7 +107,8 @@ public class ProcessSourceView {
             "code", "reason", "equal", "condition", "include", "detail", "input", "output", "rewriterule", "variable",
             "result", "messageCount", "correlateOn", "completeCondition", "onComplete", "configuration", "source",
             "messageBuilder", "target", "ruleSet", "properties", "input", "output", "attribute", "arg", "fact",
-            "trigger", "in", "out", "handlers", "handler", "session", "match", "role"));
+            "trigger", "in", "out", "handlers", "handler", "session", "match", "role", "clientId", "clientSecret",
+            "refreshToken", "tokenUrl", "authorizationCode", "clientCredentials", "oauth", "authentication"));
     
     private static Set<String> graphicalEndpoint = new HashSet<>(Arrays.asList("loadbalance", "failover", "recipientlist"));
     

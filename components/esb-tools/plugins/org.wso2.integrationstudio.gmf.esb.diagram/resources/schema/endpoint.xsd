@@ -77,6 +77,39 @@
                     </xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="authentication">
+                            <xs:complexType>
+                                <xs:sequence>
+                                <xs:element name="oauth">
+                                    <xs:complexType>
+                                    <xs:choice minOccurs="1" maxOccurs="1">
+                                        <xs:element name="clientCredentials" minOccurs="0" maxOccurs="1">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="clientId" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                                                    <xs:element name="clientSecret" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                                                    <xs:element name="tokenUrl" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="authorizationCode" minOccurs="0" maxOccurs="1">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="clientId" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                                                    <xs:element name="clientSecret" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                                                    <xs:element name="refreshToken" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                                                    <xs:element name="tokenUrl" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>
+                                    </xs:complexType>
+                                </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
                     <xs:attribute name="uri-template" type="xs:string" use="required"/>
                     <xs:attribute name="method" use="required">
                         <xs:simpleType>

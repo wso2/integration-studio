@@ -68,6 +68,14 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
         addHttpMethodPropertyDescriptor(object);
         addDescriptionPropertyDescriptor(object);
         addPropertiesPropertyDescriptor(object);
+
+        // OAuth Configuration
+        addOAuthGrantTypePropertyDescriptor(object);
+        addOAuthClientIdPropertyDescriptor(object);
+        addOAuthClientSecretPropertyDescriptor(object);
+        addOAuthRefreshTokenPropertyDescriptor(object);
+        addOAuthTokenUrlPropertyDescriptor(object);
+
         // Suspend.
         addSuspendErrorCodesPropertyDescriptor(object);
         addSuspendInitialDurationPropertyDescriptor(object);
@@ -132,6 +140,116 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
                                 "_UI_HTTPEndpoint_type"),
                         EsbPackage.Literals.HTTP_ENDPOINT__HTTP_METHOD, true, false, false,
                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Basic", null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Grant Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthGrantTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthGrantType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthGrantType_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_GRANT_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Client Id feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthClientIdPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthClientId_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthClientId_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_CLIENT_ID,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Client Secret feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthClientSecretPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthClientSecret_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthClientSecret_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_CLIENT_SECRET,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Token Url feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthTokenUrlPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthTokenUrl_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthTokenUrl_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_TOKEN_URL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Refresh Token feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthRefreshTokenPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthRefreshToken_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthRefreshToken_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -391,6 +509,11 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
         switch (notification.getFeatureID(HTTPEndpoint.class)) {
             case EsbPackage.HTTP_ENDPOINT__URI_TEMPLATE:
             case EsbPackage.HTTP_ENDPOINT__HTTP_METHOD:
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_GRANT_TYPE:
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_ID:
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_SECRET:
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_TOKEN_URL:
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.HTTP_ENDPOINT__INPUT_CONNECTOR:

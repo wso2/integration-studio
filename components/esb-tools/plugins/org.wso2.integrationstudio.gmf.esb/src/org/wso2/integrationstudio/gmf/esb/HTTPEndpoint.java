@@ -28,6 +28,11 @@ package org.wso2.integrationstudio.gmf.esb;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getURITemplate <em>URI Template</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getHttpMethod <em>Http Method</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthGrantType <em>OAuth Grant Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthClientId <em>OAuth Client Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthClientSecret <em>OAuth Client Secret</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthTokenUrl <em>OAuth Token Url</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthRefreshToken <em>OAuth Refresh Token</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint()
@@ -141,5 +146,118 @@ public interface HTTPEndpoint extends AbstractEndPoint {
      * @generated
      */
     void setHttpMethod(HttpMethodType value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Grant Type</b></em>' attribute.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthGrantType}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Grant Type</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthGrantType
+     * @see #setOAuthGrantType(HTTPEndpointOAuthGrantType)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthGrantType()
+     * @model
+     * @generated
+     */
+    HTTPEndpointOAuthGrantType getOAuthGrantType();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthGrantType <em>OAuth Grant Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Grant Type</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthGrantType
+     * @see #getOAuthGrantType()
+     * @generated
+     */
+    void setOAuthGrantType(HTTPEndpointOAuthGrantType value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Client Id</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Client Id</em>' attribute.
+     * @see #setOAuthClientId(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthClientId()
+     * @model
+     * @generated
+     */
+    String getOAuthClientId();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthClientId <em>OAuth Client Id</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Client Id</em>' attribute.
+     * @see #getOAuthClientId()
+     * @generated
+     */
+    void setOAuthClientId(String value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Client Secret</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Client Secret</em>' attribute.
+     * @see #setOAuthClientSecret(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthClientSecret()
+     * @model
+     * @generated
+     */
+    String getOAuthClientSecret();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthClientSecret <em>OAuth Client Secret</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Client Secret</em>' attribute.
+     * @see #getOAuthClientSecret()
+     * @generated
+     */
+    void setOAuthClientSecret(String value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Token Url</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Token Url</em>' attribute.
+     * @see #setOAuthTokenUrl(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthTokenUrl()
+     * @model
+     * @generated
+     */
+    String getOAuthTokenUrl();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthTokenUrl <em>OAuth Token Url</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Token Url</em>' attribute.
+     * @see #getOAuthTokenUrl()
+     * @generated
+     */
+    void setOAuthTokenUrl(String value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Refresh Token</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Refresh Token</em>' attribute.
+     * @see #setOAuthRefreshToken(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthRefreshToken()
+     * @model
+     * @generated
+     */
+    String getOAuthRefreshToken();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthRefreshToken <em>OAuth Refresh Token</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Refresh Token</em>' attribute.
+     * @see #getOAuthRefreshToken()
+     * @generated
+     */
+    void setOAuthRefreshToken(String value);
 
 } // HTTPEndpoint

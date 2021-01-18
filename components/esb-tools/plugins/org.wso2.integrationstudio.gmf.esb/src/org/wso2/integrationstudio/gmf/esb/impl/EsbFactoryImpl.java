@@ -445,6 +445,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return createProxyWsdlTypeFromString(eDataType, initialValue);
             case EsbPackage.HTTP_METHOD_TYPE:
                 return createHttpMethodTypeFromString(eDataType, initialValue);
+            case EsbPackage.HTTP_ENDPOINT_OAUTH_GRANT_TYPE:
+                return createHTTPEndpointOAuthGrantTypeFromString(eDataType, initialValue);
             case EsbPackage.FILTER_MEDIATOR_CONDITION_TYPE:
                 return createFilterMediatorConditionTypeFromString(eDataType, initialValue);
             case EsbPackage.LOG_CATEGORY:
@@ -735,6 +737,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return convertProxyWsdlTypeToString(eDataType, instanceValue);
             case EsbPackage.HTTP_METHOD_TYPE:
                 return convertHttpMethodTypeToString(eDataType, instanceValue);
+            case EsbPackage.HTTP_ENDPOINT_OAUTH_GRANT_TYPE:
+                return convertHTTPEndpointOAuthGrantTypeToString(eDataType, instanceValue);
             case EsbPackage.FILTER_MEDIATOR_CONDITION_TYPE:
                 return convertFilterMediatorConditionTypeToString(eDataType, instanceValue);
             case EsbPackage.LOG_CATEGORY:
@@ -5058,6 +5062,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
      * @generated
      */
     public String convertHttpMethodTypeToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public HTTPEndpointOAuthGrantType createHTTPEndpointOAuthGrantTypeFromString(EDataType eDataType, String initialValue) {
+        HTTPEndpointOAuthGrantType result = HTTPEndpointOAuthGrantType.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertHTTPEndpointOAuthGrantTypeToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

@@ -27,6 +27,7 @@ import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndPointInputConnector;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndPointOutputConnector;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpoint;
+import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthGrantType;
 import org.wso2.integrationstudio.gmf.esb.HttpMethodType;
 
 /**
@@ -41,6 +42,11 @@ import org.wso2.integrationstudio.gmf.esb.HttpMethodType;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getURITemplate <em>URI Template</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getHttpMethod <em>Http Method</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getOAuthGrantType <em>OAuth Grant Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getOAuthClientId <em>OAuth Client Id</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getOAuthClientSecret <em>OAuth Client Secret</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getOAuthTokenUrl <em>OAuth Token Url</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getOAuthRefreshToken <em>OAuth Refresh Token</em>}</li>
  * </ul>
  *
  * @generated
@@ -105,6 +111,106 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
      * @ordered
      */
     protected HttpMethodType httpMethod = HTTP_METHOD_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getOAuthGrantType() <em>OAuth Grant Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOAuthGrantType()
+     * @generated
+     * @ordered
+     */
+    protected static final HTTPEndpointOAuthGrantType OAUTH_GRANT_TYPE_EDEFAULT = HTTPEndpointOAuthGrantType.NONE;
+
+    /**
+     * The cached value of the '{@link #getOAuthGrantType() <em>OAuth Grant Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOAuthGrantType()
+     * @generated
+     * @ordered
+     */
+    protected HTTPEndpointOAuthGrantType oAuthGrantType = OAUTH_GRANT_TYPE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getOAuthClientId() <em>OAuth Client Id</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOAuthClientId()
+     * @generated
+     * @ordered
+     */
+    protected static final String OAUTH_CLIENT_ID_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getOAuthClientId() <em>OAuth Client Id</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOAuthClientId()
+     * @generated
+     * @ordered
+     */
+    protected String oAuthClientId = OAUTH_CLIENT_ID_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getOAuthClientSecret() <em>OAuth Client Secret</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOAuthClientSecret()
+     * @generated
+     * @ordered
+     */
+    protected static final String OAUTH_CLIENT_SECRET_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getOAuthClientSecret() <em>OAuth Client Secret</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOAuthClientSecret()
+     * @generated
+     * @ordered
+     */
+    protected String oAuthClientSecret = OAUTH_CLIENT_SECRET_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getOAuthTokenUrl() <em>OAuth Token Url</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOAuthTokenUrl()
+     * @generated
+     * @ordered
+     */
+    protected static final String OAUTH_TOKEN_URL_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getOAuthTokenUrl() <em>OAuth Token Url</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOAuthTokenUrl()
+     * @generated
+     * @ordered
+     */
+    protected String oAuthTokenUrl = OAUTH_TOKEN_URL_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getOAuthRefreshToken() <em>OAuth Refresh Token</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOAuthRefreshToken()
+     * @generated
+     * @ordered
+     */
+    protected static final String OAUTH_REFRESH_TOKEN_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getOAuthRefreshToken() <em>OAuth Refresh Token</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOAuthRefreshToken()
+     * @generated
+     * @ordered
+     */
+    protected String oAuthRefreshToken = OAUTH_REFRESH_TOKEN_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -260,6 +366,111 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
      * <!-- end-user-doc -->
      * @generated
      */
+    public HTTPEndpointOAuthGrantType getOAuthGrantType() {
+        return oAuthGrantType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setOAuthGrantType(HTTPEndpointOAuthGrantType newOAuthGrantType) {
+        HTTPEndpointOAuthGrantType oldOAuthGrantType = oAuthGrantType;
+        oAuthGrantType = newOAuthGrantType == null ? OAUTH_GRANT_TYPE_EDEFAULT : newOAuthGrantType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.HTTP_ENDPOINT__OAUTH_GRANT_TYPE, oldOAuthGrantType, oAuthGrantType));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getOAuthClientId() {
+        return oAuthClientId;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setOAuthClientId(String newOAuthClientId) {
+        String oldOAuthClientId = oAuthClientId;
+        oAuthClientId = newOAuthClientId;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_ID, oldOAuthClientId, oAuthClientId));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getOAuthClientSecret() {
+        return oAuthClientSecret;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setOAuthClientSecret(String newOAuthClientSecret) {
+        String oldOAuthClientSecret = oAuthClientSecret;
+        oAuthClientSecret = newOAuthClientSecret;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_SECRET, oldOAuthClientSecret, oAuthClientSecret));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getOAuthTokenUrl() {
+        return oAuthTokenUrl;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setOAuthTokenUrl(String newOAuthTokenUrl) {
+        String oldOAuthTokenUrl = oAuthTokenUrl;
+        oAuthTokenUrl = newOAuthTokenUrl;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.HTTP_ENDPOINT__OAUTH_TOKEN_URL, oldOAuthTokenUrl, oAuthTokenUrl));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getOAuthRefreshToken() {
+        return oAuthRefreshToken;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setOAuthRefreshToken(String newOAuthRefreshToken) {
+        String oldOAuthRefreshToken = oAuthRefreshToken;
+        oAuthRefreshToken = newOAuthRefreshToken;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN, oldOAuthRefreshToken, oAuthRefreshToken));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -287,6 +498,16 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
                 return getURITemplate();
             case EsbPackage.HTTP_ENDPOINT__HTTP_METHOD:
                 return getHttpMethod();
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_GRANT_TYPE:
+                return getOAuthGrantType();
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_ID:
+                return getOAuthClientId();
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_SECRET:
+                return getOAuthClientSecret();
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_TOKEN_URL:
+                return getOAuthTokenUrl();
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN:
+                return getOAuthRefreshToken();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -310,6 +531,21 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
                 return;
             case EsbPackage.HTTP_ENDPOINT__HTTP_METHOD:
                 setHttpMethod((HttpMethodType)newValue);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_GRANT_TYPE:
+                setOAuthGrantType((HTTPEndpointOAuthGrantType)newValue);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_ID:
+                setOAuthClientId((String)newValue);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_SECRET:
+                setOAuthClientSecret((String)newValue);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_TOKEN_URL:
+                setOAuthTokenUrl((String)newValue);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN:
+                setOAuthRefreshToken((String)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -335,6 +571,21 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
             case EsbPackage.HTTP_ENDPOINT__HTTP_METHOD:
                 setHttpMethod(HTTP_METHOD_EDEFAULT);
                 return;
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_GRANT_TYPE:
+                setOAuthGrantType(OAUTH_GRANT_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_ID:
+                setOAuthClientId(OAUTH_CLIENT_ID_EDEFAULT);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_SECRET:
+                setOAuthClientSecret(OAUTH_CLIENT_SECRET_EDEFAULT);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_TOKEN_URL:
+                setOAuthTokenUrl(OAUTH_TOKEN_URL_EDEFAULT);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN:
+                setOAuthRefreshToken(OAUTH_REFRESH_TOKEN_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -355,6 +606,16 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
                 return URI_TEMPLATE_EDEFAULT == null ? uriTemplate != null : !URI_TEMPLATE_EDEFAULT.equals(uriTemplate);
             case EsbPackage.HTTP_ENDPOINT__HTTP_METHOD:
                 return httpMethod != HTTP_METHOD_EDEFAULT;
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_GRANT_TYPE:
+                return oAuthGrantType != OAUTH_GRANT_TYPE_EDEFAULT;
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_ID:
+                return OAUTH_CLIENT_ID_EDEFAULT == null ? oAuthClientId != null : !OAUTH_CLIENT_ID_EDEFAULT.equals(oAuthClientId);
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_SECRET:
+                return OAUTH_CLIENT_SECRET_EDEFAULT == null ? oAuthClientSecret != null : !OAUTH_CLIENT_SECRET_EDEFAULT.equals(oAuthClientSecret);
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_TOKEN_URL:
+                return OAUTH_TOKEN_URL_EDEFAULT == null ? oAuthTokenUrl != null : !OAUTH_TOKEN_URL_EDEFAULT.equals(oAuthTokenUrl);
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN:
+                return OAUTH_REFRESH_TOKEN_EDEFAULT == null ? oAuthRefreshToken != null : !OAUTH_REFRESH_TOKEN_EDEFAULT.equals(oAuthRefreshToken);
         }
         return super.eIsSet(featureID);
     }
@@ -373,6 +634,16 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
         result.append(uriTemplate);
         result.append(", HttpMethod: ");
         result.append(httpMethod);
+        result.append(", OAuthGrantType: ");
+        result.append(oAuthGrantType);
+        result.append(", OAuthClientId: ");
+        result.append(oAuthClientId);
+        result.append(", OAuthClientSecret: ");
+        result.append(oAuthClientSecret);
+        result.append(", OAuthTokenUrl: ");
+        result.append(oAuthTokenUrl);
+        result.append(", OAuthRefreshToken: ");
+        result.append(oAuthRefreshToken);
         result.append(')');
         return result.toString();
     }

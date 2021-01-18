@@ -68,6 +68,14 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
         addHttpMethodPropertyDescriptor(object);
         addDescriptionPropertyDescriptor(object);
         addPropertiesPropertyDescriptor(object);
+
+        // OAuth Configuration
+        addOAuthGrantTypePropertyDescriptor(object);
+        addOAuthClientIdPropertyDescriptor(object);
+        addOAuthClientSecretPropertyDescriptor(object);
+        addOAuthRefreshTokenPropertyDescriptor(object);
+        addOAuthTokenUrlPropertyDescriptor(object);
+
         // Suspend.
         addSuspendErrorCodesPropertyDescriptor(object);
         addSuspendInitialDurationPropertyDescriptor(object);

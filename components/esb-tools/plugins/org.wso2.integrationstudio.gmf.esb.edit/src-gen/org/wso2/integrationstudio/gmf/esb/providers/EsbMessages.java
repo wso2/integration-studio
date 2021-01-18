@@ -206,6 +206,9 @@ public class EsbMessages extends NLS {
 	public static String HTTPEndpointPropertiesEditionPart_FailoverErrorCodesGroupLabel;
 
 	
+	public static String HTTPEndpointPropertiesEditionPart_OAuthConfigurationGroupLabel;
+
+	
 	public static String HTTPEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -4058,6 +4061,21 @@ public class EsbMessages extends NLS {
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_FailoverNonRetryErrorCodesLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_OAuthGrantTypeLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_OAuthClientIdLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_OAuthClientSecretLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_OAuthRefreshTokenLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_OAuthTokenUrlLabel;
 
 	
 	public static String HTTPEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;

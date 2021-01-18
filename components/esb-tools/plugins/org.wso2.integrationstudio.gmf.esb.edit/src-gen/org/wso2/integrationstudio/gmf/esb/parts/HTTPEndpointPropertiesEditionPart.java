@@ -549,6 +549,83 @@ public interface HTTPEndpointPropertiesEditionPart {
 	public void setFailoverNonRetryErrorCodes(String newValue);
 
 
+	/**
+	 * @return the oAuthGrantType
+	 * 
+	 */
+	public Enumerator getOAuthGrantType();
+
+	/**
+	 * Init the oAuthGrantType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initOAuthGrantType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new oAuthGrantType
+	 * @param newValue the new oAuthGrantType to set
+	 * 
+	 */
+	public void setOAuthGrantType(Enumerator newValue);
+
+
+	/**
+	 * @return the oAuthClientId
+	 * 
+	 */
+	public String getOAuthClientId();
+
+	/**
+	 * Defines a new oAuthClientId
+	 * @param newValue the new oAuthClientId to set
+	 * 
+	 */
+	public void setOAuthClientId(String newValue);
+
+
+	/**
+	 * @return the oAuthClientSecret
+	 * 
+	 */
+	public String getOAuthClientSecret();
+
+	/**
+	 * Defines a new oAuthClientSecret
+	 * @param newValue the new oAuthClientSecret to set
+	 * 
+	 */
+	public void setOAuthClientSecret(String newValue);
+
+
+	/**
+	 * @return the oAuthRefreshToken
+	 * 
+	 */
+	public String getOAuthRefreshToken();
+
+	/**
+	 * Defines a new oAuthRefreshToken
+	 * @param newValue the new oAuthRefreshToken to set
+	 * 
+	 */
+	public void setOAuthRefreshToken(String newValue);
+
+
+	/**
+	 * @return the oAuthTokenUrl
+	 * 
+	 */
+	public String getOAuthTokenUrl();
+
+	/**
+	 * Defines a new oAuthTokenUrl
+	 * @param newValue the new oAuthTokenUrl to set
+	 * 
+	 */
+	public void setOAuthTokenUrl(String newValue);
+
+
 
 
 

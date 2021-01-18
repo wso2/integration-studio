@@ -1240,6 +1240,26 @@ public class EsbViewsRepository {
 	
 		}
 	
+		public static class OAuthConfiguration {
+	
+			
+			public static String oAuthGrantType = "esb::HTTPEndpoint::oAuthConfiguration::oAuthGrantType";
+			
+			
+			public static String oAuthClientId = "esb::HTTPEndpoint::oAuthConfiguration::oAuthClientId";
+			
+			
+			public static String oAuthClientSecret = "esb::HTTPEndpoint::oAuthConfiguration::oAuthClientSecret";
+			
+			
+			public static String oAuthRefreshToken = "esb::HTTPEndpoint::oAuthConfiguration::oAuthRefreshToken";
+			
+			
+			public static String oAuthTokenUrl = "esb::HTTPEndpoint::oAuthConfiguration::oAuthTokenUrl";
+			
+	
+		}
+	
 	}
 
 	/**
@@ -9488,22 +9508,31 @@ public class EsbViewsRepository {
 			
 			
 			public static String transportRabbitMqAutoDeclare = "esb::InboundEndpoint::properties::transportRabbitMqAutoDeclare";
-
+			
+			
 			public static String transportRabbitMqMaxDeadLetteredCount = "esb::InboundEndpoint::properties::transportRabbitMqMaxDeadLetteredCount";
-
+			
+			
 			public static String transportRabbitMqRequeueDelay = "esb::InboundEndpoint::properties::transportRabbitMqRequeueDelay";
-
+			
+			
 			public static String transportRabbitMqExchangeAutoDeclare = "esb::InboundEndpoint::properties::transportRabbitMqExchangeAutoDeclare";
-
+			
+			
 			public static String transportRabbitMqConsumerTag = "esb::InboundEndpoint::properties::transportRabbitMqConsumerTag";
-
+			
+			
 			public static String transportRabbitMqErrorQueueRoutingKey = "esb::InboundEndpoint::properties::transportRabbitMqErrorQueueRoutingKey";
-
+			
+			
 			public static String transportRabbitMqErrorExchangeName = "esb::InboundEndpoint::properties::transportRabbitMqErrorExchangeName";
-
+			
+			
 			public static String transportRabbitMqFactoryConnectionTimeout = "esb::InboundEndpoint::properties::transportRabbitMqFactoryConnectionTimeout";
-
+			
+			
 			public static String transportRabbitMqFactoryNetworkRecoveryInterval = "esb::InboundEndpoint::properties::transportRabbitMqFactoryNetworkRecoveryInterval";
+			
 	
 		}
 	

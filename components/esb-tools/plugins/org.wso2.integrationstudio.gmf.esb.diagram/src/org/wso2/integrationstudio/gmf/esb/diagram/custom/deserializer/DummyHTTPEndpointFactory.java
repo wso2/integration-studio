@@ -29,6 +29,11 @@ import org.apache.synapse.config.xml.endpoints.EndpointDefinitionFactory;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.endpoints.HTTPEndpoint;
+import org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint;
+import org.apache.synapse.endpoints.oauth.AuthorizationCodeHandler;
+import org.apache.synapse.endpoints.oauth.ClientCredentialsHandler;
+import org.apache.synapse.endpoints.oauth.OAuthConstants;
+import org.apache.synapse.endpoints.oauth.OAuthHandler;
 import org.apache.synapse.rest.RESTConstants;
 
 import javax.xml.namespace.QName;
@@ -57,14 +62,29 @@ public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
 
     @Override
     protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
-        HTTPEndpoint httpEndpoint = new HTTPEndpoint();
-        OMAttribute name = epConfig.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
+    	OMAttribute nameAttr = epConfig.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
 
-        if (name != null) {
-            httpEndpoint.setName(name.getAttributeValue());
+        String name = null;
+
+        if (nameAttr != null) {
+            name = nameAttr.getAttributeValue();
         }
 
         OMElement httpElement = epConfig.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "http"));
+
+        HTTPEndpoint httpEndpoint;
+
+        OAuthHandler oAuthhandler = createOAuthHandler(httpElement);
+
+        if (oAuthhandler != null) {
+            httpEndpoint = new OAuthConfiguredHTTPEndpoint(oAuthhandler);
+        } else {
+            httpEndpoint = new HTTPEndpoint();
+        }
+
+        if (name != null) {
+            httpEndpoint.setName(name);
+        }
 
         if (httpElement != null) {
             EndpointDefinition definition = createEndpointDefinition(httpElement);
@@ -122,4 +142,107 @@ public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
         }
     }
 
+    /**
+     * This method will return an OAuthHandler instance depending on the oauth configs
+     *
+     * @param httpElement Element containing http configs
+     * @return OAuthHandler instance if valid oauth configuration is found
+     */
+    private OAuthHandler createOAuthHandler(OMElement httpElement) {
+        if (httpElement != null) {
+            OMElement authElement = httpElement.getFirstChildWithName(
+                    new QName(SynapseConstants.SYNAPSE_NAMESPACE, OAuthConstants.AUTHENTICATION));
+
+            if (authElement != null) {
+                OMElement oauthElement = authElement
+                        .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, OAuthConstants.OAUTH));
+
+                if (oauthElement != null) {
+
+                    OAuthHandler oAuthHandler = getSpecificOAuthHandler(oauthElement);
+                    if (oAuthHandler != null) {
+                        return oAuthHandler;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * This method will return an OAuthHandler instance depending on the oauth configs
+     *
+     * @param oauthElement Element containing OAuth configs
+     * @return OAuthHandler object
+     */
+    private static OAuthHandler getSpecificOAuthHandler(OMElement oauthElement) {
+
+        OAuthHandler oAuthHandler = null;
+
+        OMElement authCodeElement = oauthElement.getFirstChildWithName(
+                new QName(SynapseConstants.SYNAPSE_NAMESPACE, OAuthConstants.AUTHORIZATION_CODE));
+
+        OMElement clientCredentialsElement = oauthElement.getFirstChildWithName(
+                new QName(SynapseConstants.SYNAPSE_NAMESPACE, OAuthConstants.CLIENT_CREDENTIALS));
+
+        if (authCodeElement != null) {
+            oAuthHandler = getAuthorizationCodeHandler(authCodeElement);
+        }
+
+        if (clientCredentialsElement != null) {
+            oAuthHandler = getClientCredentialsHandler(clientCredentialsElement);
+        }
+        return oAuthHandler;
+    }
+
+    /**
+     * Method to get a AuthorizationCodeHandler
+     *
+     * @param authCodeElement Element containing authorization code configs
+     * @return AuthorizationCodeHandler object
+     */
+    private static AuthorizationCodeHandler getAuthorizationCodeHandler(OMElement authCodeElement) {
+
+        String clientId = getChildValue(authCodeElement, OAuthConstants.OAUTH_CLIENT_ID);
+        String clientSecret = getChildValue(authCodeElement, OAuthConstants.OAUTH_CLIENT_SECRET);
+        String refreshToken = getChildValue(authCodeElement, OAuthConstants.OAUTH_REFRESH_TOKEN);
+        String tokenApiUrl = getChildValue(authCodeElement, OAuthConstants.TOKEN_API_URL);
+
+        return new AuthorizationCodeHandler(tokenApiUrl, clientId, clientSecret, refreshToken);
+
+    }
+
+    /**
+     * Method to get a ClientCredentialsHandler
+     *
+     * @param clientCredentialsElement Element containing client credentials configs
+     * @return ClientCredentialsHandler object
+     */
+    private static ClientCredentialsHandler getClientCredentialsHandler(OMElement clientCredentialsElement) {
+
+        String clientId = getChildValue(clientCredentialsElement, OAuthConstants.OAUTH_CLIENT_ID);
+        String clientSecret = getChildValue(clientCredentialsElement, OAuthConstants.OAUTH_CLIENT_SECRET);
+        String tokenApiUrl = getChildValue(clientCredentialsElement, OAuthConstants.TOKEN_API_URL);
+
+        return new ClientCredentialsHandler(tokenApiUrl, clientId, clientSecret);
+
+    }
+
+    /**
+     * Method to get the value inside a child element
+     *
+     * @param parentElement Parent OMElement
+     * @param childName name of the child
+     * @return String containing the value of the child
+     */
+    private static String getChildValue(OMElement parentElement, String childName) {
+
+        OMElement childElement = parentElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, childName));
+
+        if (childElement != null) {
+            return childElement.getText().trim();
+        }
+        return "";
+    }
 }

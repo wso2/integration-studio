@@ -22,6 +22,8 @@ import org.apache.axis2.Constants;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.xml.endpoints.EndpointSerializer;
 import org.apache.synapse.endpoints.Endpoint;
+import org.apache.synapse.endpoints.oauth.AuthorizationCodeHandler;
+import org.apache.synapse.endpoints.oauth.ClientCredentialsHandler;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.rest.RESTConstants;
@@ -93,7 +95,28 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
     public org.apache.synapse.endpoints.HTTPEndpoint create(HTTPEndpoint visualEndPoint, String name)
             throws TransformerException {
         HTTPEndpoint httpEndPoint = visualEndPoint;
-        org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
+        org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP;
+
+        switch (visualEndPoint.getOAuthGrantType()) {
+        case AUTHORIZATION_CODE_GRANT:
+            String clientId = visualEndPoint.getOAuthClientId();
+            String clientSecret = visualEndPoint.getOAuthClientSecret();
+            String tokenUrl = visualEndPoint.getOAuthTokenUrl();
+            String refreshToken = visualEndPoint.getOAuthRefreshToken();
+            synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(
+                    new AuthorizationCodeHandler(tokenUrl, clientId, clientSecret, refreshToken));
+            break;
+        case CLIENT_CREDENTIALS_GRANT:
+            clientId = visualEndPoint.getOAuthClientId();
+            clientSecret = httpEndPoint.getOAuthClientSecret();
+            tokenUrl = httpEndPoint.getOAuthTokenUrl();
+            synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(
+                    new ClientCredentialsHandler(tokenUrl, clientId, clientSecret));
+            break;
+        default:
+            synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
+            break;
+        }
 
         if (StringUtils.isNotBlank(name)) {
             synapseHttpEP.setName(name);
@@ -139,7 +162,24 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 
     public org.apache.synapse.SynapseArtifact create(HttpEndpointFormPage httpFormPage)
             throws NumberFormatException, JaxenException {
-        org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
+    	org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP;
+
+        if (httpFormPage.httpEP_OAuthType.getSelectionIndex() == 1) {
+            String clientId = httpFormPage.oAuthClientId.getText();
+            String clientSecret = httpFormPage.oAuthClientSecret.getText();
+            String tokenUrl = httpFormPage.oAuthTokenUrl.getText();
+            String refreshToken = httpFormPage.oAuthRefreshToken.getText();
+            synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(
+                    new AuthorizationCodeHandler(tokenUrl, clientId, clientSecret, refreshToken));
+        } else if (httpFormPage.httpEP_OAuthType.getSelectionIndex() == 2) {
+            String clientId = httpFormPage.oAuthClientId.getText();
+            String clientSecret = httpFormPage.oAuthClientSecret.getText();
+            String tokenUrl = httpFormPage.oAuthTokenUrl.getText();
+            synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(
+                    new ClientCredentialsHandler(tokenUrl, clientId, clientSecret));
+        } else {
+            synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
+        }
 
         if (StringUtils.isNotBlank(httpFormPage.getEndpointName().getText())) {
             synapseHttpEP.setName(httpFormPage.getEndpointName().getText());

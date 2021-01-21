@@ -260,11 +260,8 @@ public class MockServiceFormPage extends AbstractEsbFormPage {
         resourceTable.setLinesVisible(true);
         resourceTable.setHeaderVisible(true);
 
-        TableColumn columnURI = new TableColumn(resourceTable, SWT.CENTER);
-        columnURI.setText("URI");
-
         TableColumn columnSubContext = new TableColumn(resourceTable, SWT.CENTER);
-        columnSubContext.setText("Sub Context");
+        columnSubContext.setText("Sub Resource");
 
         TableColumn columnMethod = new TableColumn(resourceTable, SWT.CENTER);
         columnMethod.setText("Method");
@@ -274,9 +271,8 @@ public class MockServiceFormPage extends AbstractEsbFormPage {
             public void controlResized(ControlEvent e) {
                 Rectangle area = txtServiceContext.getClientArea();
                 int width = area.width;
-                columnURI.setWidth(width / 3);
-                columnSubContext.setWidth(width / 3);
-                columnMethod.setWidth(width / 3);
+                columnSubContext.setWidth(width / 2);
+                columnMethod.setWidth(width / 2);
             }
         });
 
@@ -367,11 +363,8 @@ public class MockServiceFormPage extends AbstractEsbFormPage {
 
         for (Map.Entry<String, MockServiceResource> resource : resourceHolder.getMockResources().entrySet()) {
             TableItem item = new TableItem(resourceTable, SWT.NONE);
-            String subContext = resource.getValue().getSubContext();
-            String enteredUrl = "http://localhost:" + getServicePort() + getServiceContext() + subContext;
-            item.setText(0, enteredUrl);
-            item.setText(1, subContext);
-            item.setText(2, resource.getValue().getMethod());
+            item.setText(0, resource.getValue().getSubContext());
+            item.setText(1, resource.getValue().getMethod());
         }
     }
 

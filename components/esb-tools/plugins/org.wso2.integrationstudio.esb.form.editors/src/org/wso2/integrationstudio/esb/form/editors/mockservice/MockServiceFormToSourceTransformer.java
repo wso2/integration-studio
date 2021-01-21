@@ -72,7 +72,7 @@ public class MockServiceFormToSourceTransformer {
             throw new RuntimeException("Please specify a service context without whitespaces");
         } else if (formPage.getServiceName().contains(Constants.WHITESPACE)) {
             throw new RuntimeException("Please specify a end point name which want to mock without whitespaces");
-        } else if (context.endsWith(Constants.PATH_PREFIX)) {
+        } else if (context.length() != 1 && context.endsWith(Constants.PATH_PREFIX)) {
             throw new RuntimeException("Please specify service context without having '/' in the end");
         } else if (context.matches(Constants.CONTEXT_VALIDATE_REGEX)) {
             throw new RuntimeException("Please specify service context without having '/' repeatedly");

@@ -101,6 +101,38 @@ public class EsbViewsRepository {
 	
 		}
 	
+		public static class Source {
+	
+			
+			public static String sourcePayload = "esb::CallMediator::source::sourcePayload";
+			
+			
+			public static String sourceProperty = "esb::CallMediator::source::sourceProperty";
+			
+			
+			public static String contentType = "esb::CallMediator::source::contentType";
+			
+			
+			public static String sourceType = "esb::CallMediator::source::sourceType";
+			
+			// Start of user code for sourceXPath ElementEditor key
+			public static String sourceXPath = "esb::RuleMediator::source::sourceXPath";
+			// End of user code
+			
+	
+		}
+	
+		public static class Target {
+	
+			
+			public static String targetProperty = "esb::CallMediator::target::targetProperty";
+			
+			
+			public static String targetType = "esb::CallMediator::target::targetType";
+			
+	
+		}
+	
 	}
 
 	/**

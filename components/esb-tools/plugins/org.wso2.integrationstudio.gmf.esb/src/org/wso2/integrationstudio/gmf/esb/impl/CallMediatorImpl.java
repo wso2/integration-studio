@@ -324,6 +324,7 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
         xpath.setPropertyName("expression");
         xpath.setPropertyValue("");
         setEndpointXpath(xpath);
+        setSourceXPath(xpath);
 
         RegistryKeyProperty sequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
         sequenceKey.setKeyName("Endpoint Key");

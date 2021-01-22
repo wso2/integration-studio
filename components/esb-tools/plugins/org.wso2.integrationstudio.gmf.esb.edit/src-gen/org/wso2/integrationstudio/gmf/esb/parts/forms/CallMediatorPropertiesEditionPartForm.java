@@ -141,6 +141,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     protected Control[] targetTypeElements;
     protected Control[] sourcePayloadElements;
     protected Control[] sourcePropertyElements;
+    protected Control[] sourceContentTypeElements;
     protected Control[] targetPropertyElements;
     protected Composite propertiesGroup;
     protected Composite sourceGroup;
@@ -151,6 +152,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     protected Composite filterEndpointTypeSubPropertiesGroup;
 	protected Text sourcePayload;
     protected Text sourceProperty;
+    protected Text sourceContentType;
     protected Text contentType;
     protected EMFComboViewer sourceType;
     protected Text targetProperty;
@@ -213,11 +215,11 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.description);
 		
 		CompositionStep sourceStep = callMediatorStep.addStep(EsbViewsRepository.CallMediator.Source.class);
-        sourceStep.addStep(EsbViewsRepository.CallMediator.Source.contentType);
         sourceStep.addStep(EsbViewsRepository.CallMediator.Source.sourceType);
         sourceStep.addStep(EsbViewsRepository.CallMediator.Source.sourcePayload);
         sourceStep.addStep(EsbViewsRepository.CallMediator.Source.sourceProperty);
         sourceStep.addStep(EsbViewsRepository.CallMediator.Source.sourceXPath);
+        sourceStep.addStep(EsbViewsRepository.CallMediator.Source.contentType);
 
         CompositionStep targetStep = callMediatorStep.addStep(EsbViewsRepository.CallMediator.Target.class);
         targetStep.addStep(EsbViewsRepository.CallMediator.Target.targetType);
@@ -776,7 +778,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     }
 
     protected Composite createContentTypeText(FormToolkit widgetFactory, Composite parent) {
-        createDescription(parent, EsbViewsRepository.CallMediator.Source.contentType,
+        Control itemLabel = createDescription(parent, EsbViewsRepository.CallMediator.Source.contentType,
                 EsbMessages.CallMediatorPropertiesEditionPart_ContentTypeLabel);
         contentType = widgetFactory.createText(parent, ""); //$NON-NLS-1$
         contentType.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
@@ -834,10 +836,10 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         });
         EditingUtils.setID(contentType, EsbViewsRepository.CallMediator.Source.contentType);
         EditingUtils.setEEFtype(contentType, "eef::Text"); //$NON-NLS-1$
-        FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
+        Control itemHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(
                 EsbViewsRepository.CallMediator.Source.contentType, EsbViewsRepository.FORM_KIND), null); // $NON-NLS-1$
         // Start of user code for createContentTypeText
-
+        sourceContentTypeElements = new Control[] { itemLabel, contentType, itemHelp };
         // End of user code
         return parent;
     }
@@ -1705,14 +1707,17 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
             break;
         case "INLINE": {
             epv.showEntry(sourcePayloadElements, false);
+            epv.showEntry(sourceContentTypeElements, false);
             break;
         }
         case "CUSTOM": {
             epv.showEntry(sourceXpathElements, false);
+            epv.showEntry(sourceContentTypeElements, false);
             break;
         }
         case "PROPERTY": {
             epv.showEntry(sourcePropertyElements, false);
+            epv.showEntry(sourceContentTypeElements, false);
             break;
         }
         }

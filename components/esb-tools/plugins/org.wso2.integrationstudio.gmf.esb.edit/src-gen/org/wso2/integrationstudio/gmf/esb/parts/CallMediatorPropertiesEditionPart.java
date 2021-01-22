@@ -266,7 +266,8 @@ public interface CallMediatorPropertiesEditionPart {
     public void setEndpointRegistryKey(RegistryKeyProperty registryKeyProperty);
 	// End of user code
 	// Start of user code for sourceXPath specific getters and setters declaration
-	
+    public void setSourceXPath(NamespacedProperty nameSpacedProperty);
+    public NamespacedProperty getSourceXPath();
 	// End of user code
 
 	/**

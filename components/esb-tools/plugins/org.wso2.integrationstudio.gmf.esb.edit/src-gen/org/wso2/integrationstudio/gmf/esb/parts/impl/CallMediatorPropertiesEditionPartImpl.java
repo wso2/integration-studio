@@ -1318,5 +1318,16 @@ public class CallMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
     }
 	// End of user code
 
+    @Override
+    public void setSourceXPath(NamespacedProperty nameSpacedProperty) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public NamespacedProperty getSourceXPath() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

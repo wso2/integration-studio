@@ -431,7 +431,7 @@ public class MockServiceDetailPage extends WizardPage {
             setErrorMessage("Please specify a end point name which want to mock without whitespaces");
             setPageComplete(false);
             return;
-        } else if (getServiceContext().endsWith(Constants.PATH_PREFIX)) {
+        } else if (getServiceContext().length() != 1 && getServiceContext().endsWith(Constants.PATH_PREFIX)) {
             setErrorMessage("Please specify service context without having '/' in the end");
             setPageComplete(false);
             return;

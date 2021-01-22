@@ -633,7 +633,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         GridData sourceSectionData = new GridData(GridData.FILL_HORIZONTAL);
         sourceSectionData.horizontalSpan = 3;
         sourceSection.setLayoutData(sourceSectionData);
-        Composite sourceGroup = widgetFactory.createComposite(sourceSection);
+        sourceGroup = widgetFactory.createComposite(sourceSection);
         GridLayout sourceGroupLayout = new GridLayout();
         sourceGroupLayout.numColumns = 3;
         sourceGroup.setLayout(sourceGroupLayout);
@@ -898,7 +898,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         GridData targetSectionData = new GridData(GridData.FILL_HORIZONTAL);
         targetSectionData.horizontalSpan = 3;
         targetSection.setLayoutData(targetSectionData);
-        Composite targetGroup = widgetFactory.createComposite(targetSection);
+        targetGroup = widgetFactory.createComposite(targetSection);
         GridLayout targetGroupLayout = new GridLayout();
         targetGroupLayout.numColumns = 3;
         targetGroup.setLayout(targetGroupLayout);

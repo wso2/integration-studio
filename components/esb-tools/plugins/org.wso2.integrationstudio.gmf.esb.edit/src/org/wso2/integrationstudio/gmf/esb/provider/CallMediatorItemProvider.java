@@ -85,6 +85,31 @@ public class CallMediatorItemProvider extends MediatorItemProvider {
         }
 
         addDescriptionPropertyDescriptor(object);
+        
+        addSourceTypePropertyDescriptor(object);
+        addContentTypePropertyDescriptor(object);
+        switch (callMediator.getSourceType()) {
+        case NONE:
+        case BODY:
+            break;
+        case PROPERTY:
+            addSourcePropertyPropertyDescriptor(object);
+            break;
+        case INLINE:
+            addSourcePayloadPropertyDescriptor(object);
+            break;
+        case CUSTOM:
+            addSourceXpathPropertyDescriptor(object);
+        }
+        addTargetTypePropertyDescriptor(object);
+        switch (callMediator.getTargetType()) {
+        case NONE:
+        case BODY:
+            break;
+        case PROPERTY:
+            addTargetPropertyPropertyDescriptor(object);
+            break;
+        }
 
         return itemPropertyDescriptors;
     }
@@ -177,6 +202,28 @@ public class CallMediatorItemProvider extends MediatorItemProvider {
                  null));
     }
 
+    /**
+     * This adds a property descriptor for the Source Xpath feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    protected void addSourceXpathPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CallMediator_sourceXPath_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CallMediator_sourceXPath_feature", "_UI_CallMediator_type"),
+                 EsbPackage.Literals.CALL_MEDIATOR__SOURCE_XPATH,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
+    }
+    
     /**
      * This adds a property descriptor for the Source Payload feature.
      * <!-- begin-user-doc -->

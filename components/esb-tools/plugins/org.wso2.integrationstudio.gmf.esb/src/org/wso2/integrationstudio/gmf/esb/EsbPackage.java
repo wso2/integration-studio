@@ -605,13 +605,76 @@ public interface EsbPackage extends EPackage {
     int CALL_MEDIATOR__ENDPOINT_XPATH = MEDIATOR_FEATURE_COUNT + 8;
 
     /**
+     * The feature id for the '<em><b>Source Payload</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CALL_MEDIATOR__SOURCE_PAYLOAD = MEDIATOR_FEATURE_COUNT + 9;
+
+    /**
+     * The feature id for the '<em><b>Source Property</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CALL_MEDIATOR__SOURCE_PROPERTY = MEDIATOR_FEATURE_COUNT + 10;
+
+    /**
+     * The feature id for the '<em><b>Source XPath</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CALL_MEDIATOR__SOURCE_XPATH = MEDIATOR_FEATURE_COUNT + 11;
+
+    /**
+     * The feature id for the '<em><b>Target Property</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CALL_MEDIATOR__TARGET_PROPERTY = MEDIATOR_FEATURE_COUNT + 12;
+
+    /**
+     * The feature id for the '<em><b>Source Type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CALL_MEDIATOR__SOURCE_TYPE = MEDIATOR_FEATURE_COUNT + 13;
+
+    /**
+     * The feature id for the '<em><b>Target Type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CALL_MEDIATOR__TARGET_TYPE = MEDIATOR_FEATURE_COUNT + 14;
+
+    /**
+     * The feature id for the '<em><b>Content Type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CALL_MEDIATOR__CONTENT_TYPE = MEDIATOR_FEATURE_COUNT + 15;
+
+    /**
      * The number of structural features of the '<em>Call Mediator</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int CALL_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
+    int CALL_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 16;
 
     /**
      * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.impl.CallMediatorInputConnectorImpl <em>Call Mediator Input Connector</em>}' class.
@@ -28056,6 +28119,26 @@ public interface EsbPackage extends EPackage {
     int PAYLOAD_FACTORY_EVALUATOR_TYPE = 507;
 
     /**
+     * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.CallSourceType <em>Call Source Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.wso2.integrationstudio.gmf.esb.CallSourceType
+     * @see org.wso2.integrationstudio.gmf.esb.impl.EsbPackageImpl#getCallSourceType()
+     * @generated
+     */
+    int CALL_SOURCE_TYPE = 508;
+
+    /**
+     * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.CallTargetType <em>Call Target Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.wso2.integrationstudio.gmf.esb.CallTargetType
+     * @see org.wso2.integrationstudio.gmf.esb.impl.EsbPackageImpl#getCallTargetType()
+     * @generated
+     */
+    int CALL_TARGET_TYPE = 509;
+
+    /**
      * The meta object id for the '<em>Map</em>' data type.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -28063,7 +28146,7 @@ public interface EsbPackage extends EPackage {
      * @see org.wso2.integrationstudio.gmf.esb.impl.EsbPackageImpl#getMap()
      * @generated
      */
-    int MAP = 508;
+    int MAP = 510;
 
     /**
      * Returns the meta object for class '{@link org.wso2.integrationstudio.gmf.esb.EsbDiagram <em>Diagram</em>}'.
@@ -28503,6 +28586,83 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EReference getCallMediator_EndpointXpath();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.CallMediator#getSourcePayload <em>Source Payload</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Source Payload</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.CallMediator#getSourcePayload()
+     * @see #getCallMediator()
+     * @generated
+     */
+    EAttribute getCallMediator_SourcePayload();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.CallMediator#getSourceProperty <em>Source Property</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Source Property</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.CallMediator#getSourceProperty()
+     * @see #getCallMediator()
+     * @generated
+     */
+    EAttribute getCallMediator_SourceProperty();
+
+    /**
+     * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.gmf.esb.CallMediator#getSourceXPath <em>Source XPath</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Source XPath</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.CallMediator#getSourceXPath()
+     * @see #getCallMediator()
+     * @generated
+     */
+    EReference getCallMediator_SourceXPath();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.CallMediator#getTargetProperty <em>Target Property</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Target Property</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.CallMediator#getTargetProperty()
+     * @see #getCallMediator()
+     * @generated
+     */
+    EAttribute getCallMediator_TargetProperty();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.CallMediator#getSourceType <em>Source Type</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Source Type</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.CallMediator#getSourceType()
+     * @see #getCallMediator()
+     * @generated
+     */
+    EAttribute getCallMediator_SourceType();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.CallMediator#getTargetType <em>Target Type</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Target Type</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.CallMediator#getTargetType()
+     * @see #getCallMediator()
+     * @generated
+     */
+    EAttribute getCallMediator_TargetType();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.CallMediator#getContentType <em>Content Type</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Content Type</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.CallMediator#getContentType()
+     * @see #getCallMediator()
+     * @generated
+     */
+    EAttribute getCallMediator_ContentType();
 
     /**
      * Returns the meta object for class '{@link org.wso2.integrationstudio.gmf.esb.CallMediatorInputConnector <em>Call Mediator Input Connector</em>}'.
@@ -46897,6 +47057,26 @@ public interface EsbPackage extends EPackage {
     EEnum getPayloadFactoryEvaluatorType();
 
     /**
+     * Returns the meta object for enum '{@link org.wso2.integrationstudio.gmf.esb.CallSourceType <em>Call Source Type</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for enum '<em>Call Source Type</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.CallSourceType
+     * @generated
+     */
+    EEnum getCallSourceType();
+
+    /**
+     * Returns the meta object for enum '{@link org.wso2.integrationstudio.gmf.esb.CallTargetType <em>Call Target Type</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for enum '<em>Call Target Type</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.CallTargetType
+     * @generated
+     */
+    EEnum getCallTargetType();
+
+    /**
      * Returns the meta object for data type '{@link java.util.Map <em>Map</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -47280,6 +47460,62 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EReference CALL_MEDIATOR__ENDPOINT_XPATH = eINSTANCE.getCallMediator_EndpointXpath();
+
+        /**
+         * The meta object literal for the '<em><b>Source Payload</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute CALL_MEDIATOR__SOURCE_PAYLOAD = eINSTANCE.getCallMediator_SourcePayload();
+
+        /**
+         * The meta object literal for the '<em><b>Source Property</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute CALL_MEDIATOR__SOURCE_PROPERTY = eINSTANCE.getCallMediator_SourceProperty();
+
+        /**
+         * The meta object literal for the '<em><b>Source XPath</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference CALL_MEDIATOR__SOURCE_XPATH = eINSTANCE.getCallMediator_SourceXPath();
+
+        /**
+         * The meta object literal for the '<em><b>Target Property</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute CALL_MEDIATOR__TARGET_PROPERTY = eINSTANCE.getCallMediator_TargetProperty();
+
+        /**
+         * The meta object literal for the '<em><b>Source Type</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute CALL_MEDIATOR__SOURCE_TYPE = eINSTANCE.getCallMediator_SourceType();
+
+        /**
+         * The meta object literal for the '<em><b>Target Type</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute CALL_MEDIATOR__TARGET_TYPE = eINSTANCE.getCallMediator_TargetType();
+
+        /**
+         * The meta object literal for the '<em><b>Content Type</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute CALL_MEDIATOR__CONTENT_TYPE = eINSTANCE.getCallMediator_ContentType();
 
         /**
          * The meta object literal for the '{@link org.wso2.integrationstudio.gmf.esb.impl.CallMediatorInputConnectorImpl <em>Call Mediator Input Connector</em>}' class.
@@ -62008,6 +62244,26 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EEnum PAYLOAD_FACTORY_EVALUATOR_TYPE = eINSTANCE.getPayloadFactoryEvaluatorType();
+
+        /**
+         * The meta object literal for the '{@link org.wso2.integrationstudio.gmf.esb.CallSourceType <em>Call Source Type</em>}' enum.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.wso2.integrationstudio.gmf.esb.CallSourceType
+         * @see org.wso2.integrationstudio.gmf.esb.impl.EsbPackageImpl#getCallSourceType()
+         * @generated
+         */
+        EEnum CALL_SOURCE_TYPE = eINSTANCE.getCallSourceType();
+
+        /**
+         * The meta object literal for the '{@link org.wso2.integrationstudio.gmf.esb.CallTargetType <em>Call Target Type</em>}' enum.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.wso2.integrationstudio.gmf.esb.CallTargetType
+         * @see org.wso2.integrationstudio.gmf.esb.impl.EsbPackageImpl#getCallTargetType()
+         * @generated
+         */
+        EEnum CALL_TARGET_TYPE = eINSTANCE.getCallTargetType();
 
         /**
          * The meta object literal for the '<em>Map</em>' data type.

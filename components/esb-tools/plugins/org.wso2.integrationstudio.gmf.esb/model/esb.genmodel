@@ -820,6 +820,18 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PayloadFactoryEvaluatorType/XML"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PayloadFactoryEvaluatorType/JSON"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CallSourceType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallSourceType/BODY"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallSourceType/PROPERTY"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallSourceType/INLINE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallSourceType/CUSTOM"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallSourceType/NONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CallTargetType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallTargetType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallTargetType/BODY"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallTargetType/PROPERTY"/>
+    </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/V"/>
@@ -885,6 +897,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/enableBlockingCalls"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CallMediator/endpointRegistrykey"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CallMediator/endpointXpath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/sourcePayload"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/sourceProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CallMediator/sourceXPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/targetProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/sourceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/targetType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/contentType"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CallMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//CallMediatorOutputConnector"/>

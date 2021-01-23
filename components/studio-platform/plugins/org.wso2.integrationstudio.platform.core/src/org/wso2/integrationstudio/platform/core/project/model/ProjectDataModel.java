@@ -63,6 +63,24 @@ public abstract class ProjectDataModel extends Observable {
 	private Map<String, String> dockerEnvParameters = new HashMap<String, String>();
 	private Map<String, String> kubernetesEnvParameters = new HashMap<String, String>();
 	private Map<String, String> kubernetesPortParameters = new HashMap<String, String>();
+	private IProject nestedCreationProject;
+	private boolean isArtifactsForK8sEIOprator = true;
+
+	public boolean isArtifactsForK8sEIOprator() {
+        return isArtifactsForK8sEIOprator;
+    }
+
+    public void setArtifactsForK8sEIOprator(boolean isArtifactsForK8sEIOprator) {
+        this.isArtifactsForK8sEIOprator = isArtifactsForK8sEIOprator;
+    }
+
+    public IProject getNestedCreationProject() {
+		return nestedCreationProject;
+	}
+
+	public void setNestedCreationProject(IProject nestedMMMCreationParent) {
+		this.nestedCreationProject = nestedMMMCreationParent;
+	}
 
 	public IProject getSelectedCompositeProjectOnCreation() {
 		return selectedCompositeProjectOnCreation;

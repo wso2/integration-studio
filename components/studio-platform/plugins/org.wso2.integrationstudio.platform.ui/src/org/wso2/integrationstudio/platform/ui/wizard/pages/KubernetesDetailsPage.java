@@ -33,6 +33,7 @@ import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
@@ -56,11 +57,10 @@ public class KubernetesDetailsPage extends WizardPage {
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	private static final String CONTAINER_PROJECT = "Kubernetes Exporter - Integration CR Details";
 	private static final String HELP_ICON = "/icons/help.png";
 	private static final String TARGET_REPOSITORY_DESCRIPTION = "This parameter is used to specify a name for the Docker image. "
 			+ "This value should be in convention of {registry-url}/{username}/{repository} or {username}/{repository} pattern";
-	private static final String TARGET_TAG_DESCRIPTION = "This parameter is used to specify a version for the Docker image.";
+	private static final String TARGET_TAG_DESCRIPTION = "This parameter is used to specify a version for the Docker image. Defaults to ${project.version}.";
 	private static final String DEFAULT_REPLICA_COUNT = "1";
 	private static final String IS_NUMBER_EXPRESSION = "-?\\d+(\\.\\d+)?";
 
@@ -78,6 +78,7 @@ public class KubernetesDetailsPage extends WizardPage {
 	private Button btnPortRemove;
 	private Button btnPortAdd;
 	private Button btnDeploymentTomlEnableChecker;
+	private Label lblExposePorts;
 
 	private final ProjectDataModel dataModel;
 	private Group kubernetsContainer;
@@ -144,19 +145,50 @@ public class KubernetesDetailsPage extends WizardPage {
 		data.left = new FormAttachment(2);
 		data.right = new FormAttachment(98);
 		separator.setLayoutData(data);
+		
+		// Kubernetes artifact type
+        Label lblArtifactsType = new Label(container, SWT.NONE);
+        lblArtifactsType.setText("Generate K8s Artifacts for");
+        data = new FormData();
+        FormAttachment dataTop;
+        if (dataModel.isDirectContainerProjectCreation()) {
+            dataTop = new FormAttachment(projectNameContainer, 20);
+            projectNameContainer.setVisible(true);
+        } else {
+            projectNameContainer.setVisible(false);
+            dataTop = new FormAttachment(1);
+        }
+        data.top = dataTop;
+        data.width = 200;
+        data.left = new FormAttachment(3);
+        lblArtifactsType.setLayoutData(data);
 
-		kubernetsContainer = new Group(container, SWT.BORDER);
-		kubernetsContainer.setText(CONTAINER_PROJECT);
+        final Combo kubeArtifactType = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
+        String items[] = { "K8s EI Operator", "Pure K8s artifacts" };
+        kubeArtifactType.setItems(items);
+        kubeArtifactType.select(0);
+        data = new FormData();
+        data.top = dataTop;
+        data.left = new FormAttachment(lblArtifactsType, 0);
+        data.right = new FormAttachment(97);
+        kubeArtifactType.setLayoutData(data);
+
+        kubeArtifactType.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                if (kubeArtifactType.getSelectionIndex() == 0) {
+                    dataModel.setArtifactsForK8sEIOprator(true);
+                    lblExposePorts.setText("Inbound Port(s)");
+                } else {
+                    dataModel.setArtifactsForK8sEIOprator(false);
+                    lblExposePorts.setText("Expose port(s)");
+                }
+            }
+        });
+
+        kubernetsContainer = new Group(container, SWT.BORDER);
 		kubernetsContainer.setLayout(new FormLayout());
-
 		data = new FormData();
-		if (dataModel.isDirectContainerProjectCreation()) {
-			data.top = new FormAttachment(projectNameContainer, 20);
-			projectNameContainer.setVisible(true);
-		} else {
-			projectNameContainer.setVisible(false);
-			data.top = new FormAttachment(1);
-		}
+		data.top = new FormAttachment(lblArtifactsType, 20);
 		data.left = new FormAttachment(2);
 		data.right = new FormAttachment(98);
 		kubernetsContainer.setLayoutData(data);
@@ -164,7 +196,7 @@ public class KubernetesDetailsPage extends WizardPage {
 		// Kubernetes container project details
 		Label lblContainerName = new Label(kubernetsContainer, SWT.NONE);
 		data = new FormData();
-		data.top = new FormAttachment(kubernetsContainer, 20);
+		data.top = new FormAttachment(kubernetsContainer, 10);
 		data.left = new FormAttachment(2);
 		data.width = 200;
 		lblContainerName.setLayoutData(data);
@@ -172,7 +204,7 @@ public class KubernetesDetailsPage extends WizardPage {
 
 		txtContainerName = new Text(kubernetsContainer, SWT.BORDER);
 		data = new FormData();
-		data.top = new FormAttachment(kubernetsContainer, 20);
+		data.top = new FormAttachment(kubernetsContainer, 10);
 		data.left = new FormAttachment(lblContainerName, 0);
 		data.right = new FormAttachment(97);
 		txtContainerName.setLayoutData(data);
@@ -296,6 +328,8 @@ public class KubernetesDetailsPage extends WizardPage {
 		data.left = new FormAttachment(lblKubeTargetTag, 0);
 		data.right = new FormAttachment(90);
 		txtKubeTargetTag.setLayoutData(data);
+		txtKubeTargetTag.setText("${project.version}");
+		dataModel.setKubeTargetTag(txtKubeTargetTag.getText());
 		txtKubeTargetTag.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 				dataModel.setKubeTargetTag(txtKubeTargetTag.getText());
@@ -335,7 +369,7 @@ public class KubernetesDetailsPage extends WizardPage {
 			}
 		});
 
-		Label lblExposePorts = new Label(kubernetsContainer, SWT.NONE);
+		lblExposePorts = new Label(kubernetsContainer, SWT.NONE);
 		data = new FormData();
 		data.top = new FormAttachment(btnDeploymentTomlEnableChecker, 20);
 		data.left = new FormAttachment(2);

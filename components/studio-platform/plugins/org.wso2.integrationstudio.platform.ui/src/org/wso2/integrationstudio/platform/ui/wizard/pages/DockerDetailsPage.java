@@ -60,7 +60,7 @@ public class DockerDetailsPage extends WizardPage {
 	private static final String HELP_ICON = "/icons/help.png";
 	private static final String TARGET_REPOSITORY_DESCRIPTION = "This parameter is used to specify a name for the Docker image. "
 			+ "This value should be in convention of {registry-url}/{username}/{repository} or {username}/{repository} pattern";
-	private static final String TARGET_TAG_DESCRIPTION = "This parameter is used to specify a version for the Docker image.";
+	private static final String TARGET_TAG_DESCRIPTION = "This parameter is used to specify a version for the Docker image. Defaults to ${project.version}.";
 
 	private Text txtProjectName;
 	private Text txtRemoteRepository;
@@ -246,6 +246,8 @@ public class DockerDetailsPage extends WizardPage {
 		data.left = new FormAttachment(lblTargetTag, 0);
 		data.right = new FormAttachment(90);
 		txtTargetTag.setLayoutData(data);
+		txtTargetTag.setText("${project.version}");
+		dataModel.setDockerTargetTag(txtTargetTag.getText());
 		txtTargetTag.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 				dataModel.setDockerTargetTag(txtTargetTag.getText());

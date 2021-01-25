@@ -28,6 +28,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.SortedMap;
 import java.util.TreeMap;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
@@ -123,6 +125,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
 	IStatus editorStatus = new Status(IStatus.OK, Activator.PLUGIN_ID, "");
 
+	private Map<String, String> projectListToDependencyMapping = new LinkedHashMap<String,String>(); 
+	private Map<String, String> artifactIdToDependencyMapping = new LinkedHashMap<String,String>(); 
 	private Map<String, Dependency> dependencyList = new LinkedHashMap<String, Dependency>();
 	private Map<String, String> serverRoleList = new HashMap<String, String>();
 	private SortedMap<String, DependencyData> projectList =
@@ -165,6 +169,10 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 		for (ListData data : projectListData) {
 			DependencyData dependencyData = (DependencyData) data.getData();
 			projectList.put(data.getCaption(), dependencyData);
+            String caption = data.getCaption(); 
+            String keyword = caption.substring(StringUtils.indexOf(caption, ":=") + 2, caption.length()); 
+            projectListToDependencyMapping.put(keyword, caption); 
+            artifactIdToDependencyMapping.put(((DependencyData)data.getData()).getDependency().getArtifactId(), keyword); 
 		}
 
 		parentPrj = MavenUtils.getMavenProject(pomFile);
@@ -573,17 +581,31 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 	 *            NodeData of selected treeitem
 	 */
 	private void removeDependency(NodeData nodeData) {
+		List<String> removingArtifacts = new ArrayList<>(); 
 		Dependency project = nodeData.getDependency();
 		String artifactInfo = DistProjectUtils.getArtifactInfoAsString(project);
-
-		if (getDependencyList().containsKey(artifactInfo)) {
-			getDependencyList().remove(artifactInfo);
-			if (serverRoleList.containsKey(artifactInfo)) {
-				serverRoleList.remove(artifactInfo);
-			}
-		}
+		DependencyData dependencyData = projectList.get(projectListToDependencyMapping.get(artifactInfo)); 
+		if("synapse/api".equals(dependencyData.getCApptype())) { 
+		    String medataName = project.getArtifactId() + "_metadata"; 
+		    String swaggerName = project.getArtifactId() + "_swagger"; 
+		    removingArtifacts.add(artifactIdToDependencyMapping.get(medataName)); 
+		    removingArtifacts.add(artifactIdToDependencyMapping.get(swaggerName)); 
+		} 
+		removingArtifacts.add(artifactInfo); 
+		removeDependency(removingArtifacts); 
 	}
 
+	private void removeDependency(List<String> artifacts) {
+        for (String artifactInfo : artifacts) {
+            if (getDependencyList().containsKey(artifactInfo)) {
+                getDependencyList().remove(artifactInfo);
+                if (serverRoleList.containsKey(artifactInfo)) {
+                    serverRoleList.remove(artifactInfo);
+                }
+            }
+        }
+    }
+	
 	/**
 	 * Add a project dependencies to the maven model
 	 * 
@@ -594,7 +616,25 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 		Dependency project = nodeData.getDependency();
 		String serverRole = nodeData.getServerRole();
 		String artifactInfo = DistProjectUtils.getArtifactInfoAsString(project);
-
+		
+		DependencyData dependencyData = projectList.get(projectListToDependencyMapping.get(artifactInfo)); 
+        if("synapse/api".equals(dependencyData.getCApptype())) { 
+            String medataName = project.getArtifactId() + "_metadata"; 
+            String swaggerName = project.getArtifactId() + "_swagger"; 
+            String metadataArtifactInfo =  artifactIdToDependencyMapping.get(medataName); 
+            String swaggerArtifactInfo = artifactIdToDependencyMapping.get(swaggerName); 
+            Dependency metaDependency = projectList.get(projectListToDependencyMapping.get(metadataArtifactInfo)).getDependency(); 
+            Dependency swaggerDependency = projectList.get(projectListToDependencyMapping.get(swaggerArtifactInfo)).getDependency(); 
+            if (!getDependencyList().containsKey(metadataArtifactInfo)) { 
+                serverRoleList.put(metadataArtifactInfo, "capp/" + serverRole); 
+                getDependencyList().put(metadataArtifactInfo, metaDependency); 
+            } 
+            if (!getDependencyList().containsKey(swaggerArtifactInfo)) { 
+                serverRoleList.put(swaggerArtifactInfo, "capp/" + serverRole); 
+                getDependencyList().put(swaggerArtifactInfo, swaggerDependency); 
+            } 
+        } 
+        
 		if (!getDependencyList().containsKey(artifactInfo)) {
 
 			Dependency dependency = new Dependency();
@@ -646,6 +686,9 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
 		for (String project : getProjectList().keySet()) {
 			DependencyData dependencyData = getProjectList().get(project);
+			if ("synapse/metadata".equals(dependencyData.getCApptype())) {
+				continue;
+			}
 			Object parent = dependencyData.getParent();
 			Object self = dependencyData.getSelf();
 			if ((parent == null) && (self != null)) {

@@ -21,11 +21,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.ltk.core.refactoring.Change;
 import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
@@ -39,6 +42,7 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 	private static final String ARTIFACT_XML_FILE = "artifact.xml";
 	private static final String ESB_APRTIFACT_DELETE_CHANGE_OBJECT_NAME = "ESB Artifact Delete";
 	private static final String UPDATE_ARTIFACT_XML_CHANGE_OBJECT_NAME = "Update arifact.xml";
+	private static final String SYNAPSE_CONFIG_DIR_API = "api";
 	private IFile originalFile;
 	private static int numOfFiles;
 	private static int currentFileNum;
@@ -63,6 +67,30 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 					UPDATE_ARTIFACT_XML_CHANGE_OBJECT_NAME);
 			for (IProject project : projectList) {
 				List<IFile> fileList = changeFileList.get(project);
+				List<IFile> metaFileList = new ArrayList<>();
+		           
+				for (IFile file : fileList) {
+	                 IPath location = file.getLocation();
+	                 String[] locationSegments = location.segments();
+	                 if(locationSegments[location.segmentCount()-2].equals(SYNAPSE_CONFIG_DIR_API)) {
+	                     String APIXML = locationSegments[location.segmentCount()-1];
+	                     String APIName = APIXML.substring(0, APIXML.length() - 4);
+	                     IContainer metadataLocation = project.getFolder("src/main/synapse-config/metadata");
+	                     IFile APIMetaFile = metadataLocation.getFile(new Path(APIName+"_metadata.yaml"));
+	                     IFile swaggerFile = metadataLocation.getFile(new Path(APIName+"_swagger.yaml"));
+	                     metaFileList.add(APIMetaFile);
+	                     metaFileList.add(swaggerFile);
+	                     if(APIMetaFile.exists()) {
+	                         APIMetaFile.delete(true, null);
+	                     }
+	                     if(swaggerFile.exists()) {
+	                         swaggerFile.delete(true, null);
+	                     }
+	                 }
+	             }
+                for (IFile file : metaFileList) {
+                    fileList.add(file);
+                }
 				change.add(new ESBMetaDataFileDeleteChange(project.getName(),
 						project.getFile(ARTIFACT_XML_FILE), fileList));
 			}

@@ -37,11 +37,12 @@ public class ESBProjectNature extends AbstractWSO2ProjectNature {
 	
 	public void configure() throws CoreException {
 		String[] childrenList = { "endpoints", "proxy-services", "sequences", "local-entries", "tasks", "templates",
-				"api", "message-stores", "message-processors", "inbound-endpoints" };
+				"api", "message-stores", "message-processors", "inbound-endpoints", "metadata" };
 		IFolder parentFolder = ProjectUtils.getWorkspaceFolder(getProject(), "src", "main", "synapse-config");
 		IFolder parentTestFolder = ProjectUtils.getWorkspaceFolder(getProject(), "test", "resources", "mock-services");
 		ProjectUtils.createFolder(parentFolder);
 		ProjectUtils.createFolder(parentTestFolder);
+		// Create metadata folder and sub-folders
 		getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		for (String child : childrenList) {
 			createChildren(parentFolder, child);

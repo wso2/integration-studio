@@ -160,6 +160,7 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 		File messageProcessorsDir = new File(synapseConfigDir, "message-processors");
 		File eventSourcesDir = new File(synapseConfigDir, "event-sources");
 		File priorityExecutorsDir = new File(synapseConfigDir, "priority-executors");
+		File metadataDir = new File(synapseConfigDir, "metadata");
 		if (!synapseConfigDir.exists())
 			synapseConfigDir.mkdirs();
 		if (!endpointsDir.exists())
@@ -184,6 +185,8 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 			eventSourcesDir.mkdirs();
 		if (!priorityExecutorsDir.exists())
 			priorityExecutorsDir.mkdirs();
+		if (!metadataDir.exists())
+		    metadataDir.mkdirs();
 		for (GeneralArtifact artifact : artifacts) {
 			String type = artifact.getType();
 			File file = project.getFile(artifact.getFile()).getLocation().toFile();
@@ -214,6 +217,8 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 					dstFile = new File(eventSourcesDir,artifactFile);
 				} else if("synapse/priority-executor".equals(type)){
 					dstFile = new File(priorityExecutorsDir,artifactFile);
+				} else if ("synapse/metadata".equals(type)) {
+                    dstFile = new File(metadataDir, artifactFile);
 				} else{
 					log.warn("ignoring unrecognized type " + type);	
 					continue;

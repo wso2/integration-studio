@@ -8,6 +8,7 @@ public class ESBMavenConstants {
 	public static final String WSO2_ESB_SEQUENCE_VERSION="2.1.0";
 	public static final String WSO2_ESB_SYNAPSE_VERSION="2.1.0";
 	public static final String WSO2_ESB_API_VERSION="2.1.0";
+	public static final String WSO2_ESB_METADATA_VERSION="5.2.31";
 	public static final String WSO2_ESB_TASK_VERSION="2.1.0";
 	public static final String WSO2_ESB_TEMPLATE_VERSION="2.1.0";
 	public static final String WSO2_ESB_INBOUND_ENDPOINT_VERSION="1.0.0";

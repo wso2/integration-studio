@@ -257,7 +257,7 @@ public abstract class ProjectDataModel extends Observable {
 
 	public MavenInfo getMavenInfo() {
 		if (mavenInfo == null) {
-			mavenInfo = new MavenInfo(getGroupId(), getProjectName(), "1.0.0");
+		    mavenInfo = new MavenInfo(getGroupId(), getProjectName(), "1.0.0-SNAPSHOT");
 		}
 		return mavenInfo;
 	}

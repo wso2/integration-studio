@@ -26,6 +26,12 @@ public class EsbMessages extends NLS {
 	public static String CallMediatorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String CallMediatorPropertiesEditionPart_SourceGroupLabel;
+
+	
+	public static String CallMediatorPropertiesEditionPart_TargetGroupLabel;
+
+	
 	public static String CallMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -3467,6 +3473,27 @@ public class EsbMessages extends NLS {
 
 	
 	public static String CallMediatorPropertiesEditionPart_EndpointRegistryKeyLabel;
+
+	
+	public static String CallMediatorPropertiesEditionPart_SourcePayloadLabel;
+
+	
+	public static String CallMediatorPropertiesEditionPart_SourcePropertyLabel;
+
+	
+	public static String CallMediatorPropertiesEditionPart_ContentTypeLabel;
+
+	
+	public static String CallMediatorPropertiesEditionPart_SourceTypeLabel;
+
+	
+	public static String CallMediatorPropertiesEditionPart_SourceXPathLabel;
+
+	
+	public static String CallMediatorPropertiesEditionPart_TargetPropertyLabel;
+
+	
+	public static String CallMediatorPropertiesEditionPart_TargetTypeLabel;
 
 	
 	public static String CallMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;

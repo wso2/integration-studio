@@ -709,6 +709,10 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return createCacheMediatorTypeFromString(eDataType, initialValue);
             case EsbPackage.PAYLOAD_FACTORY_EVALUATOR_TYPE:
                 return createPayloadFactoryEvaluatorTypeFromString(eDataType, initialValue);
+            case EsbPackage.CALL_SOURCE_TYPE:
+                return createCallSourceTypeFromString(eDataType, initialValue);
+            case EsbPackage.CALL_TARGET_TYPE:
+                return createCallTargetTypeFromString(eDataType, initialValue);
             case EsbPackage.MAP:
                 return createMapFromString(eDataType, initialValue);
             default:
@@ -1001,6 +1005,10 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return convertCacheMediatorTypeToString(eDataType, instanceValue);
             case EsbPackage.PAYLOAD_FACTORY_EVALUATOR_TYPE:
                 return convertPayloadFactoryEvaluatorTypeToString(eDataType, instanceValue);
+            case EsbPackage.CALL_SOURCE_TYPE:
+                return convertCallSourceTypeToString(eDataType, instanceValue);
+            case EsbPackage.CALL_TARGET_TYPE:
+                return convertCallTargetTypeToString(eDataType, instanceValue);
             case EsbPackage.MAP:
                 return convertMapToString(eDataType, instanceValue);
             default:
@@ -7720,6 +7728,46 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
      * @generated
      */
     public String convertPayloadFactoryEvaluatorTypeToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CallSourceType createCallSourceTypeFromString(EDataType eDataType, String initialValue) {
+        CallSourceType result = CallSourceType.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertCallSourceTypeToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CallTargetType createCallTargetTypeFromString(EDataType eDataType, String initialValue) {
+        CallTargetType result = CallTargetType.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertCallTargetTypeToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

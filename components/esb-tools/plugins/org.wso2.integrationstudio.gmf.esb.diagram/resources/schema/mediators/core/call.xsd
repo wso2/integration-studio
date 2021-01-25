@@ -31,10 +31,42 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="endpoint" type="Endpoint" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="source" type="SourceCall" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="target" type="TargetCall" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
             <xs:attribute name="blocking" type="xs:boolean" use="optional" default="true"/>
             <xs:attribute name="description" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>
+    
+    <xs:complexType name="SourceCall">
+    	<xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+        </xs:sequence>
+        <xs:attribute name="type" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="none"/>
+                    <xs:enumeration value="custom"/>
+                    <xs:enumeration value="body"/>
+                    <xs:enumeration value="property"/>
+                    <xs:enumeration value="inline"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="contentType" type="xs:string" use="optional"/>
+    </xs:complexType>
+    
+    <xs:complexType name="TargetCall">
+        <xs:attribute name="type" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="none"/>
+                    <xs:enumeration value="body"/>
+                    <xs:enumeration value="property"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
 
 </xs:schema>

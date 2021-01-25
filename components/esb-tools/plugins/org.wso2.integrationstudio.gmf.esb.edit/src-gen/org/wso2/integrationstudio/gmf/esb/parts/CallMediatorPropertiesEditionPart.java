@@ -155,6 +155,104 @@ public interface CallMediatorPropertiesEditionPart {
 	public void setEnableBlockingCalls(Boolean newValue);
 
 
+	/**
+	 * @return the sourcePayload
+	 * 
+	 */
+	public String getSourcePayload();
+
+	/**
+	 * Defines a new sourcePayload
+	 * @param newValue the new sourcePayload to set
+	 * 
+	 */
+	public void setSourcePayload(String newValue);
+
+
+	/**
+	 * @return the sourceProperty
+	 * 
+	 */
+	public String getSourceProperty();
+
+	/**
+	 * Defines a new sourceProperty
+	 * @param newValue the new sourceProperty to set
+	 * 
+	 */
+	public void setSourceProperty(String newValue);
+
+
+	/**
+	 * @return the contentType
+	 * 
+	 */
+	public String getContentType();
+
+	/**
+	 * Defines a new contentType
+	 * @param newValue the new contentType to set
+	 * 
+	 */
+	public void setContentType(String newValue);
+
+
+	/**
+	 * @return the sourceType
+	 * 
+	 */
+	public Enumerator getSourceType();
+
+	/**
+	 * Init the sourceType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initSourceType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new sourceType
+	 * @param newValue the new sourceType to set
+	 * 
+	 */
+	public void setSourceType(Enumerator newValue);
+
+
+	/**
+	 * @return the targetProperty
+	 * 
+	 */
+	public String getTargetProperty();
+
+	/**
+	 * Defines a new targetProperty
+	 * @param newValue the new targetProperty to set
+	 * 
+	 */
+	public void setTargetProperty(String newValue);
+
+
+	/**
+	 * @return the targetType
+	 * 
+	 */
+	public Enumerator getTargetType();
+
+	/**
+	 * Init the targetType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initTargetType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new targetType
+	 * @param newValue the new targetType to set
+	 * 
+	 */
+	public void setTargetType(Enumerator newValue);
+
+
 
 
 	// Start of user code for endpointXpath specific getters and setters declaration
@@ -166,6 +264,10 @@ public interface CallMediatorPropertiesEditionPart {
     public RegistryKeyProperty getEndpointRegistryKey();
     
     public void setEndpointRegistryKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
+	// Start of user code for sourceXPath specific getters and setters declaration
+    public void setSourceXPath(NamespacedProperty nameSpacedProperty);
+    public NamespacedProperty getSourceXPath();
 	// End of user code
 
 	/**

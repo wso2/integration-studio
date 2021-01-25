@@ -1164,6 +1164,10 @@ public class DependencyProvider extends Dialog {
                 jarLocationText.setText(path);
                 BundleGeneratorTool bcg = new BundleGeneratorTool();
                 String p[] = { path, dependencyDir, dependencyDir };
+                File dependenciesFolder = new File(dependencyDir);
+                if (!dependenciesFolder.exists()) {
+                    dependenciesFolder.mkdir();
+                }
                 bcg.execute(p);
 
                 jdbcBundledConnectivityJar = dependencyDir + File.separator + pluginName;

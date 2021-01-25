@@ -219,14 +219,15 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             }
             changed = true;
         }
-        while (!mavenProject.getBuild().getPlugins().isEmpty()) {
-            Plugin plugin = mavenProject.getBuild().getPlugins().get(0);
-            for (Profile profile : mavenProject.getModel().getProfiles()) {
-                profile.getBuild().addPlugin(plugin);
-            }
-            mavenProject.getBuild().getPlugins().remove(plugin);
-            changed = true;
-        }
+////    Commented this since adding same plugin into the each profile is not necessary task
+//    while (!mavenProject.getBuild().getPlugins().isEmpty()) {
+//        Plugin plugin = mavenProject.getBuild().getPlugins().get(0);
+//        for (Profile profile : mavenProject.getModel().getProfiles()) {
+//            profile.getBuild().addPlugin(plugin);
+//        }
+//        mavenProject.getBuild().getPlugins().remove(plugin);
+//        changed = true;
+//    }
         return changed;
     }
 

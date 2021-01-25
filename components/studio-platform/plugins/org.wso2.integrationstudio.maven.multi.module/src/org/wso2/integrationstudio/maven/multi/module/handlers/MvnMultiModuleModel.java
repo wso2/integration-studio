@@ -30,7 +30,7 @@ public class MvnMultiModuleModel extends ProjectDataModel {
 
 	private String groupId = "com.example";
 	private String artifactId = "MavenParentProject";
-	private String version = "1.0.0";
+	private String version = "1.0.0-SNAPSHOT";
 	private boolean requiredParent = false;
 	private ISelection currentSelection;
 	private Parent parentSelection;

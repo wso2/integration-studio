@@ -82,8 +82,10 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		} else {
 			if (esbSolutionProjectModel.isMMMProjectChecked()) {
 				this.getMavenDetailPage().updateArtifactId(esbSolutionProjectModel.getMMMProjectName());
+				this.getMavenDetailPage().setMMMProjectCheckedInIntegrationWizard(true);
 			} else {
 				this.getMavenDetailPage().updateArtifactId(esbSolutionProjectModel.getEsbProjectName());
+				this.getMavenDetailPage().setMMMProjectCheckedInIntegrationWizard(false);
 			}
 			return getMavenDetailPage();
 		}

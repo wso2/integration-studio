@@ -259,7 +259,7 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
      * @generated
      * @ordered
      */
-    protected static final CallSourceType SOURCE_TYPE_EDEFAULT = CallSourceType.BODY;
+    protected static final CallSourceType SOURCE_TYPE_EDEFAULT = CallSourceType.NONE;
 
     /**
      * The cached value of the '{@link #getSourceType() <em>Source Type</em>}' attribute.

@@ -25486,11 +25486,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         addEEnumLiteral(payloadFactoryEvaluatorTypeEEnum, PayloadFactoryEvaluatorType.JSON);
 
         initEEnum(callSourceTypeEEnum, CallSourceType.class, "CallSourceType");
+        addEEnumLiteral(callSourceTypeEEnum, CallSourceType.NONE);
         addEEnumLiteral(callSourceTypeEEnum, CallSourceType.BODY);
         addEEnumLiteral(callSourceTypeEEnum, CallSourceType.PROPERTY);
         addEEnumLiteral(callSourceTypeEEnum, CallSourceType.INLINE);
         addEEnumLiteral(callSourceTypeEEnum, CallSourceType.CUSTOM);
-        addEEnumLiteral(callSourceTypeEEnum, CallSourceType.NONE);
 
         initEEnum(callTargetTypeEEnum, CallTargetType.class, "CallTargetType");
         addEEnumLiteral(callTargetTypeEEnum, CallTargetType.NONE);

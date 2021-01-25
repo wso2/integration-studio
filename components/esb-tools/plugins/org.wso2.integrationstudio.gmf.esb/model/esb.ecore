@@ -3597,11 +3597,11 @@
       eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="JsonTransformMediatorProperty" eSuperTypes="#//AbstractNameValueExpressionProperty"/>
   <eClassifiers xsi:type="ecore:EEnum" name="CallSourceType">
+    <eLiterals name="NONE" value="6" literal="none"/>
     <eLiterals name="BODY" value="2" literal="body"/>
     <eLiterals name="PROPERTY" value="3" literal="property"/>
     <eLiterals name="INLINE" value="4" literal="inline"/>
     <eLiterals name="CUSTOM" literal="custom"/>
-    <eLiterals name="NONE" value="6" literal="none"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CallTargetType">
     <eLiterals name="NONE" value="6" literal="none"/>

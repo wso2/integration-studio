@@ -32,46 +32,6 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum CallSourceType implements Enumerator {
     /**
-     * The '<em><b>BODY</b></em>' literal object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #BODY_VALUE
-     * @generated
-     * @ordered
-     */
-    BODY(2, "BODY", "body"),
-
-    /**
-     * The '<em><b>PROPERTY</b></em>' literal object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #PROPERTY_VALUE
-     * @generated
-     * @ordered
-     */
-    PROPERTY(3, "PROPERTY", "property"),
-
-    /**
-     * The '<em><b>INLINE</b></em>' literal object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #INLINE_VALUE
-     * @generated
-     * @ordered
-     */
-    INLINE(4, "INLINE", "inline"),
-
-    /**
-     * The '<em><b>CUSTOM</b></em>' literal object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #CUSTOM_VALUE
-     * @generated
-     * @ordered
-     */
-    CUSTOM(0, "CUSTOM", "custom"),
-
-    /**
      * The '<em><b>NONE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -79,7 +39,50 @@ public enum CallSourceType implements Enumerator {
      * @generated
      * @ordered
      */
-    NONE(6, "NONE", "none");
+    NONE(6, "NONE", "none"), /**
+     * The '<em><b>BODY</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #BODY_VALUE
+     * @generated
+     * @ordered
+     */
+    BODY(2, "BODY", "body"), /**
+     * The '<em><b>PROPERTY</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #PROPERTY_VALUE
+     * @generated
+     * @ordered
+     */
+    PROPERTY(3, "PROPERTY", "property"), /**
+     * The '<em><b>INLINE</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #INLINE_VALUE
+     * @generated
+     * @ordered
+     */
+    INLINE(4, "INLINE", "inline"), /**
+     * The '<em><b>CUSTOM</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #CUSTOM_VALUE
+     * @generated
+     * @ordered
+     */
+    CUSTOM(0, "CUSTOM", "custom");
+
+    /**
+     * The '<em><b>NONE</b></em>' literal value.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #NONE
+     * @model literal="none"
+     * @generated
+     * @ordered
+     */
+    public static final int NONE_VALUE = 6;
 
     /**
      * The '<em><b>BODY</b></em>' literal value.
@@ -126,17 +129,6 @@ public enum CallSourceType implements Enumerator {
     public static final int CUSTOM_VALUE = 0;
 
     /**
-     * The '<em><b>NONE</b></em>' literal value.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #NONE
-     * @model literal="none"
-     * @generated
-     * @ordered
-     */
-    public static final int NONE_VALUE = 6;
-
-    /**
      * An array of all the '<em><b>Call Source Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -144,11 +136,11 @@ public enum CallSourceType implements Enumerator {
      */
     private static final CallSourceType[] VALUES_ARRAY =
         new CallSourceType[] {
+            NONE,
             BODY,
             PROPERTY,
             INLINE,
             CUSTOM,
-            NONE,
         };
 
     /**
@@ -205,11 +197,11 @@ public enum CallSourceType implements Enumerator {
      */
     public static CallSourceType get(int value) {
         switch (value) {
+            case NONE_VALUE: return NONE;
             case BODY_VALUE: return BODY;
             case PROPERTY_VALUE: return PROPERTY;
             case INLINE_VALUE: return INLINE;
             case CUSTOM_VALUE: return CUSTOM;
-            case NONE_VALUE: return NONE;
         }
         return null;
     }

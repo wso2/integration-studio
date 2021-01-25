@@ -821,11 +821,11 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PayloadFactoryEvaluatorType/JSON"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CallSourceType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallSourceType/NONE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallSourceType/BODY"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallSourceType/PROPERTY"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallSourceType/INLINE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallSourceType/CUSTOM"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallSourceType/NONE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CallTargetType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallTargetType/NONE"/>

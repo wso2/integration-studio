@@ -61,6 +61,7 @@ public class DockerProjectCreationWizard extends Wizard implements IExportWizard
         setWindowTitle(WINDOW_TITLE);
         try {
             IProject project = getSelectedProject(selection);
+            dockerModel.setNestedCreationProject(project);
             File location;
             if (project != null) {
                 if (dockerModel.isCompositeOnClickContainerCreation()) {

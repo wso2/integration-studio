@@ -30,6 +30,8 @@ import java.util.List;
 
 public class MavenPropertyTester extends PropertyTester {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	
+	private static IProject selectedProject;
 
 	public boolean test(Object arg0, String arg1, Object[] arg2, Object arg3) {
 
@@ -39,6 +41,7 @@ public class MavenPropertyTester extends PropertyTester {
 
 				try {
 					if (project.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
+					    this.selectedProject = project;
 						return true;
 					}
 				} catch (CoreException e) {
@@ -49,5 +52,9 @@ public class MavenPropertyTester extends PropertyTester {
 
 		return false;
 	}
+	
+	public static IProject getSelectedProjectToCreateMMM() {
+        return selectedProject;
+    }
 
 }

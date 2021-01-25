@@ -21,9 +21,13 @@ import java.net.URL;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import org.apache.maven.model.DeploymentRepository;
+import org.apache.maven.model.DistributionManagement;
 import org.apache.maven.model.Parent;
 import org.apache.maven.model.Plugin;
+import org.apache.maven.model.Scm;
 import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -112,7 +116,7 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
                     log.error("Error occured while trying to create the Maven Project", e);
                 }
             } else {
-                setMavenProperty("com.example", multiModuleProject.getName(), "1.0.0");
+                setMavenProperty("com.example", multiModuleProject.getName(), "1.0.0-SNAPSHOT");
             }
         }
     }
@@ -274,6 +278,8 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
                 log.warn("Project list cannot be sorted", e);
             }
         }
+        
+        addMavenReleaseDeployElementsToPOM(mavenProject);
 
         try {
             MavenUtils.saveMavenProject(mavenProject, pomFile.getLocation().toFile());
@@ -282,32 +288,75 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
             log.error("Error occured while trying to save the maven project", e);
         }
 
-        try {
-            MavenProject mproject = MavenUtils.getMavenProject(pomFile.getLocation().toFile());
-            List<Plugin> buildPlugins = mproject.getBuildPlugins();
-            if (buildPlugins.isEmpty()) {
-                MavenUtils.updateWithMavenEclipsePlugin(pomFile.getLocation().toFile(), new String[] {},
-                        new String[] { Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE },
-                        Constants.getAllMavenMultiModuleProfiles());
-            } else {
-                for (Plugin plugin : buildPlugins) {
-                    if (MAVEN_ECLIPSE_PLUGIN.equals(plugin.getId())) {
-                        break;// Since plugin is already in the pom no need to
-                              // add it again
-                    } else {
-                        MavenUtils.updateWithMavenEclipsePlugin(pomFile.getLocation().toFile(), new String[] {},
-                                new String[] { Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE },
-                                Constants.getAllMavenMultiModuleProfiles());
-                    }
-                }
-            }
-            mproject = MavenUtils.getMavenProject(pomFile.getLocation().toFile());
-            mproject.setBuild(null);
-            MavenUtils.saveMavenProject(mproject, pomFile.getLocation().toFile());
-            selectedProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-        } catch (Exception e) {
-            log.error("Error occured while trying to update the maven project with Eclipse Maven plugin.", e);
-        }
+////    Commented this since adding same plugin into the each profile is not necessary task
+//      try {
+//          MavenProject mproject = MavenUtils.getMavenProject(pomFile.getLocation().toFile());
+//          List<Plugin> buildPlugins = mproject.getBuildPlugins();
+//          if (buildPlugins.isEmpty()) {
+//              MavenUtils.updateWithMavenEclipsePlugin(pomFile.getLocation().toFile(), new String[] {},
+//                      new String[] { Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE },
+//                      Constants.getAllMavenMultiModuleProfiles());
+//          } else {
+//              for (Plugin plugin : buildPlugins) {
+//                  if (MAVEN_ECLIPSE_PLUGIN.equals(plugin.getId())) {
+//                      break;// Since plugin is already in the pom no need to
+//                            // add it again
+//                  } else {
+//                      MavenUtils.updateWithMavenEclipsePlugin(pomFile.getLocation().toFile(), new String[] {},
+//                              new String[] { Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE },
+//                              Constants.getAllMavenMultiModuleProfiles());
+//                  }
+//              }
+//          }
+//          mproject = MavenUtils.getMavenProject(pomFile.getLocation().toFile());
+//          MavenUtils.saveMavenProject(mproject, pomFile.getLocation().toFile());
+//          selectedProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+//      } catch (Exception e) {
+//          log.error("Error occured while trying to update the maven project with Eclipse Maven plugin.", e);
+//      }
+    }
+    
+    private void addMavenReleaseDeployElementsToPOM(MavenProject mavenProject) {
+
+        mavenProject.getProperties().put("project.scm.id", "integration-project");
+        MavenUtils.createPluginEntry(mavenProject,
+                "org.apache.maven.plugins", "maven-release-plugin", "3.0.0-M1", false);
+        MavenUtils.createPluginEntry(mavenProject,
+                "org.apache.maven.plugins", "maven-deploy-plugin", "3.0.0-M1", false);
+
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject,
+                "org.apache.maven.plugins", "maven-eclipse-plugin", "2.9", false);
+        Xpp3Dom configurationNode = createXpp3Node("configuration");
+        Xpp3Dom projectNaturesNode = createXpp3Node(configurationNode, "projectnatures");
+        Xpp3Dom projectNature = createXpp3Node(projectNaturesNode, "projectnature");
+        projectNature.setValue(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE);
+        plugin.setConfiguration(configurationNode);
+
+        DistributionManagement mnagement = new DistributionManagement();
+        DeploymentRepository repository = new DeploymentRepository();
+        repository.setId("release");
+        repository.setName("Release Distribution Repository");
+        repository.setUrl("https://example.com/nexus/repository");
+        mnagement.setRepository(repository);
+        mavenProject.setDistributionManagement(mnagement);
+
+        Scm scm = new Scm();
+        scm.setConnection("scm:git:https://github.com/username/repository.git");
+        scm.setDeveloperConnection("scm:git:https://github.com/username/repository.git");
+        scm.setUrl("https://github.com/username/repository.git");
+        scm.setTag("HEAD");
+        mavenProject.setScm(scm);
+    }
+
+    private Xpp3Dom createXpp3Node(Xpp3Dom parent, String tagName) {
+        Xpp3Dom node = createXpp3Node(tagName);
+        parent.addChild(node);
+        return node;
+    }
+
+    private Xpp3Dom createXpp3Node(String tagName) {
+        Xpp3Dom node = new Xpp3Dom(tagName);
+        return node;
     }
     
     /**

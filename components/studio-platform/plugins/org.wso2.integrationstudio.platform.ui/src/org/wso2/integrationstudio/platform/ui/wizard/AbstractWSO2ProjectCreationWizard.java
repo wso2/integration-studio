@@ -138,6 +138,15 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 			}
 
 			if (isProjectWizard()) {
+			    IProject project = getSelectedProject(getCurrentSelection());
+                File location;
+                if (project != null) {
+                    location = project.getLocation().toFile();
+                } else {
+                    location = ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile();
+                }
+                getModel().setNestedCreationProject(project);
+                getModel().setLocation(location);
 				mavenDetailPage = new MavenDetailsPage(getModel());
 				addPage(mavenDetailPage);
 			}
@@ -456,13 +465,15 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		}
 		
 		// Moving existing build sections from root to inside the profiles.
-		while (!mavenProject.getBuild().getPlugins().isEmpty()) {
-			Plugin plugin = mavenProject.getBuild().getPlugins().get(0);
-			for (Profile profile : mavenProject.getModel().getProfiles()) {
-				profile.getBuild().addPlugin(plugin);
-			}
-			mavenProject.getBuild().getPlugins().remove(plugin);
-		}
+//      *Commented this since adding same plugin into the each profile is not necessary task*
+//      Moving existing build sections from root to inside the profiles.
+//      while (!mavenProject.getBuild().getPlugins().isEmpty()) {
+//          Plugin plugin = mavenProject.getBuild().getPlugins().get(0);
+//          for (Profile profile : mavenProject.getModel().getProfiles()) {
+//              profile.getBuild().addPlugin(plugin);
+//          }
+//          mavenProject.getBuild().getPlugins().remove(plugin);
+//      }
 	}
 
 	private List<String> getSortedModuleList(List<String> moduleList, IProject parentProject) {
@@ -699,4 +710,23 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	public ProjectOptionsDataPage getMainWizardPage() {
 		return mainWizardPage;
 	}
+
+    /**
+     * Method for getting current project from IStructuredSelection.
+     * 
+     * @param obj
+     *            IStructuredSelection as an object
+     * @return IProject
+     */
+    public static IProject getSelectedProject(Object obj) throws Exception {
+        if (obj == null) {
+            return null;
+        }
+        if (obj instanceof IResource) {
+            return ((IResource) obj).getProject();
+        } else if (obj instanceof IStructuredSelection) {
+            return getSelectedProject(((IStructuredSelection) obj).getFirstElement());
+        }
+        return null;
+    }
 }

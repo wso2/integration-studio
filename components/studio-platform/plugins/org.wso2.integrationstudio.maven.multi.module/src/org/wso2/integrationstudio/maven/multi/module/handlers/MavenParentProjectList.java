@@ -32,7 +32,7 @@ import org.wso2.integrationstudio.maven.multi.module.Activator;
 import org.wso2.integrationstudio.maven.util.MavenUtils;
 import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider;
 import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
-
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class MavenParentProjectList extends AbstractListDataProvider {
@@ -49,7 +49,7 @@ public class MavenParentProjectList extends AbstractListDataProvider {
 			IProject[] projects = root.getProjects();
 			for (IProject project : projects) {
 				try {
-					if (project.isOpen()) {
+					if (project.isOpen() && project.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
 						File pomFile = project.getFile("pom.xml").getLocation().toFile();
 						if (pomFile.exists()) {
 							MavenProject mavenProject = MavenUtils.getMavenProject(pomFile);
@@ -60,6 +60,9 @@ public class MavenParentProjectList extends AbstractListDataProvider {
 								parent.setVersion(mavenProject.getVersion());
 								try {
 									String relativePath = FileUtils.getRelativePath(model.getLocation(), pomFile);
+									if (relativePath.equals("pom.xml")) {
+                                        relativePath = "../" + relativePath;
+                                    }
 									parent.setRelativePath(relativePath);
 									ListData data = new ListData(parent.getArtifactId(), parent);
 									list.add(data);
@@ -78,4 +81,14 @@ public class MavenParentProjectList extends AbstractListDataProvider {
 		return list;
 	}
 
+	private void setLocationOfCurrentSelection(ProjectDataModel model) {
+        IProject selectedProject = MavenPropertyTester.getSelectedProjectToCreateMMM();
+        File location;
+        if (selectedProject != null) {
+            location = selectedProject.getLocation().toFile();
+        } else {
+            location = ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile();
+        }
+        model.setLocation(location);        
+    }
 }

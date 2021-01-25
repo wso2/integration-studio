@@ -740,6 +740,7 @@ public class ProcessSourceView {
                                         || (currentMediator.getqName().equals("pojoCommand") && !tempTag.getqName().equals("pojoCommand")) 
                                         || (currentMediator.getqName().equals("validate") && !tempTag.getqName().equals("validate"))
                                         || (currentMediator.getqName().equals("enrich") && !tempTag.getqName().equals("enrich"))
+                                        || (currentMediator.getqName().equals("call") && !tempTag.getqName().equals("call"))
                                         || (currentMediator.getqName().equals("header") && !tempTag.getqName().equals("header")))) {
                             intermediaryStack.push(currentMediator);
 

@@ -788,7 +788,7 @@ public class DependencyTree {
                     String fileType = registryItemFileTypeNode.getText();
                     resource.setMediaType(fileType);
 
-                    String absolutePath = File.separator + registry.getProject().getName() + File.separator + fileName;
+                    String absolutePath = Constants.PATH_PREFIX + registry.getProject().getName() + Constants.PATH_PREFIX + fileName;
                     resource.setAbsolutePath(absolutePath);
                 }
 

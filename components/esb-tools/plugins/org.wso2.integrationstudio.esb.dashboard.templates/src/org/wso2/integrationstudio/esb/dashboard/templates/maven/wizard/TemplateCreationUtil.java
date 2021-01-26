@@ -129,7 +129,7 @@ public class TemplateCreationUtil {
             Xpp3Dom testServerPath = MavenUtils.createXpp3Node(serverDetails, "testServerPath");
             testServerPath.setValue("${testServerPath}");
             Xpp3Dom testCasesFilePath = MavenUtils.createXpp3Node(unitTestConfElement, "testCasesFilePath");
-            testCasesFilePath.setValue("${project.basedir}" + File.separator + "test" + File.separator + "${testFile}");
+            testCasesFilePath.setValue("${project.basedir}/test/${testFile}");
             Xpp3Dom testSkip = MavenUtils.createXpp3Node(unitTestConfElement, "mavenTestSkip");
             testSkip.setValue("${maven.test.skip}");
 

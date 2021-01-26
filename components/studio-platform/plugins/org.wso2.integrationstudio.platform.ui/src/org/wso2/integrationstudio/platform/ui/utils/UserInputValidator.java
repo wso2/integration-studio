@@ -27,6 +27,9 @@ public class UserInputValidator {
     }
 
     public static boolean isTagValid(String dockertag) {
+    	if ("${project.version}".equals(dockertag)) {
+    		return true;
+    	}
         Pattern pattern = Pattern.compile(PlatformUIConstants.DOCKER_TAG_REGEX);
         Matcher matcher = pattern.matcher(dockertag);
         return matcher.matches();

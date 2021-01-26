@@ -44,6 +44,8 @@ public class DockerProjectConstants extends NLS {
     public static String TOML_FILE_EDITOR;
     public static String DOCKER_FILE_NAME;
     public static String KUBE_YAML_FILE_NAME;
+    public static String KUBE_DATA_YAML_FILE_NAME;
+    public static String KUBE_YAML_K8S_FILE_NAME;
     public static String DEPLOYMENT_TOML_FILE_NAME;
     public static String KUBE_PROPERTIES_FILE_NAME;
     public static String YAML_FILE_EDITOR;

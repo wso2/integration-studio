@@ -118,6 +118,13 @@
 			</describer>
 		</content-type>
 		<content-type base-type="org.eclipse.core.runtime.text"
+			id="org.wso2.integrationstudio.docker.distribution.project.contenttype.yamlfile"
+			name="Yaml File" priority="normal" file-extensions="integration_k8s.yaml">
+			<describer
+				class="org.wso2.integrationstudio.docker.distribution.utils.DockerPOMDiscriber">
+			</describer>
+		</content-type>
+		<content-type base-type="org.eclipse.core.runtime.text"
 			id="org.wso2.integrationstudio.docker.distribution.project.contenttype.tomlfile"
 			name="Toml File" priority="normal" file-extensions="deployment.toml">
 			<describer

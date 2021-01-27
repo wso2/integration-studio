@@ -333,6 +333,8 @@ Please visit : http://wso2.com/products/integration-studio/
       <!-- Integration Studio kernel/platform features -->
       <feature id="org.wso2.integrationstudio.platform.feature" installMode="root"/>
       <feature id="org.wso2.integrationstudio.platform.dependencies.feature" installMode="root"/>
+      <!-- Integration Studio Server features -->
+      <feature id="org.wso2.integrationstudio.server.feature" installMode="root"/>
       <!-- Integration Studio ESB features -->
       <feature id="org.wso2.integrationstudio.esb.feature" installMode="root"/>
       <!-- Integration Studio DSS features -->
@@ -341,6 +343,7 @@ Please visit : http://wso2.com/products/integration-studio/
       <feature id="org.wso2.integrationstudio.bps.feature" installMode="root"/>
       <!-- Integration Studio RCP features -->
       <feature id="org.wso2.integrationstudio.rcp.feature" installMode="root"/>
+
    </features>
 
    <configurations>

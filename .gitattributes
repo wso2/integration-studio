@@ -1,0 +1,1 @@
+components/server-tools/plugins/org.wso2.integrationstudio.carbonserver44microei40/resources/server/microesb.zip filter=lfs diff=lfs merge=lfs -text

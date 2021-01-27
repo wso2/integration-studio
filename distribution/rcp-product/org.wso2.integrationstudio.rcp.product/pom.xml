@@ -88,18 +88,6 @@
                 <version>${maven.download.plugin}</version>
                 <executions>
                     <execution>
-                        <id>download-micro-esb</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>wget</goal>
-                        </goals>
-                        <configuration>
-                            <url>https://github.com/wso2/micro-integrator/releases/download/v${mi.product.version}/wso2mi-${mi.product.version}.zip</url>
-                            <unpack>false</unpack>
-                            <outputDirectory>${project.build.directory}/products</outputDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>download-mi-monitoring-dashboard</id>
                         <phase>prepare-package</phase>
                         <goals>

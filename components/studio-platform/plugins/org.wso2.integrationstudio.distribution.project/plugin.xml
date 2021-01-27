@@ -296,6 +296,11 @@
           id="org.wso2.integrationstudio.capp.project.publisher44"
           serverid="org.wso2.integrationstudio.carbon.server44microei12">
     </publisher>
+    <publisher
+          class="org.wso2.integrationstudio.distribution.project.publisher.CAppProjectPublisher"
+          id="org.wso2.integrationstudio.capp.project.publisher44"
+          serverid="org.wso2.integrationstudio.carbon.server44microei40">
+    </publisher>
 	<publisher
           class="org.wso2.integrationstudio.distribution.project.publisher.CAppProjectRemotePublisher"
           id="org.wso2.integrationstudio.capp.project.publisher.remote"

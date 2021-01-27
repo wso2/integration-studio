@@ -25,7 +25,8 @@ import org.wso2.integrationstudio.carbonserver42.register.product.servers.Dynami
 import org.wso2.integrationstudio.carbonserver44.register.product.servers.DynamicServer44ExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44ei.register.product.servers.DynamicServer44eiExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44microei.register.product.servers.DynamicServer44MicroeiExtensionGenerator;
-import org.wso2.integrationstudio.carbonserver44microei12.register.product.servers.MicroIntegratorInstance;
+import org.wso2.integrationstudio.carbonserver44microei40.register.product.servers.MicroIntegratorInstance;
+import org.wso2.integrationstudio.carbonserver44microei40.register.product.servers.DynamicServer44Microei40ExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44microei12.register.product.servers.DynamicServer44Microei12ExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44microei11.register.product.servers.DynamicServer44Microei11ExtensionGenerator;
 
@@ -56,10 +57,15 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 		dynamicMicroEI11ServerExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
 		
 		DynamicServer44Microei12ExtensionGenerator dynamicMicroEI12ServerExtensionGenerator = new DynamicServer44Microei12ExtensionGenerator();
-		dynamicMicroEI12ServerExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
+        dynamicMicroEI12ServerExtensionGenerator.readProductServerExtensions(registeredServers,
+                serverExtensionsRegistryUtils);
 
-		DynamicServer44ExtensionGenerator dynamicServerExtensionGenerator = new DynamicServer44ExtensionGenerator();
-		dynamicServerExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
+        DynamicServer44Microei40ExtensionGenerator dynamicMicroEI40ServerExtensionGenerator = new DynamicServer44Microei40ExtensionGenerator();
+        dynamicMicroEI40ServerExtensionGenerator.readProductServerExtensions(registeredServers,
+                serverExtensionsRegistryUtils);
+
+        DynamicServer44ExtensionGenerator dynamicServerExtensionGenerator = new DynamicServer44ExtensionGenerator();
+        dynamicServerExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
 		DynamicServer42ExtensionGenerator dynamicServer42ExtensionGenerator = new DynamicServer42ExtensionGenerator();
 		dynamicServer42ExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
 		DynamicServer40ExtensionGenerator dynamicServer40ExtensionGenerator = new DynamicServer40ExtensionGenerator();

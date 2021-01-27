@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="org.wso2.integrationstudio.server.feature.category" label="WSO2 Server Tools"/>
+<description>
+		This is the Server Feature for the Integration Studio. This provides WSO2 Micro Integratoe tooling support for WSO2 Integration Studio.
+      </description>
+ <feature id="org.wso2.integrationstudio.server.feature" version="0.0.0">
+      <category name="org.wso2.integrationstudio.sercer.feature.category"/>
+   </feature>
+</site>

@@ -77,6 +77,13 @@
             </modules>
         </profile>
         <profile>
+            <id>server-tools</id>
+            <modules>
+                <module>components/studio-platform</module>
+                <module>components/sever-tools</module>
+            </modules>
+        </profile>
+        <profile>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>

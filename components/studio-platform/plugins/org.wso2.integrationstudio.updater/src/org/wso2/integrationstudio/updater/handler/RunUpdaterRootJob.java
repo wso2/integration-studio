@@ -52,6 +52,7 @@ public class RunUpdaterRootJob extends Job {
     private static final String ESB_P2_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/esb-tools";
     private static final String DSS_P2_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/dss-tools";
     private static final String BPS_P2_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/bps-tools";
+    private static final String SERVER_P2_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/server-tools";
     private static final String RELEASE_NOTE_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/release-notes";
     
     private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
@@ -109,6 +110,13 @@ public class RunUpdaterRootJob extends Job {
         long hostedBPSTimestamp = maximumTimestampInGivenURL(BPS_P2_URL);
         long localBPSTimestamp = getLatestTimestampOfBPS();
         if (hostedBPSTimestamp > localBPSTimestamp) {
+            return true;
+        }
+
+        // check server timestamps
+        long hostedServerTimestamp = maximumTimestampInGivenURL(SERVER_P2_URL);
+        long localServerTimestamp = getLatestTimestampOfServer();
+        if (hostedServerTimestamp > localServerTimestamp) {
             return true;
         }
 
@@ -197,9 +205,9 @@ public class RunUpdaterRootJob extends Job {
     }
 
     private static long getLatestTimestampOfPlstform() {
-        String platformPLugin = "org.wso2.integrationstudio.docker.distribution";
+        String platformPlugin = "org.wso2.integrationstudio.docker.distribution";
 
-        return Collections.max(checkLocalPluginTimestamp(platformPLugin, pluginDirFile));
+        return Collections.max(checkLocalPluginTimestamp(platformPlugin, pluginDirFile));
     }
 
     private static long getLatestTimestampOfESB() {
@@ -209,15 +217,21 @@ public class RunUpdaterRootJob extends Job {
     }
 
     private static long getLatestTimestampOfDSS() {
-        String esbPLugin = "org.wso2.integrationstudio.ds.editor";
+        String dssPlugin = "org.wso2.integrationstudio.ds.editor";
 
-        return Collections.max(checkLocalPluginTimestamp(esbPLugin, pluginDirFile));
+        return Collections.max(checkLocalPluginTimestamp(dssPlugin, pluginDirFile));
     }
 
     private static long getLatestTimestampOfBPS() {
-        String esbPLugin = "org.wso2.integrationstudio.bpel.core";
+        String bpsPlugin = "org.wso2.integrationstudio.bpel.core";
 
-        return Collections.max(checkLocalPluginTimestamp(esbPLugin, pluginDirFile));
+        return Collections.max(checkLocalPluginTimestamp(bpsPlugin, pluginDirFile));
+    }
+
+    private static long getLatestTimestampOfServer() {
+        String serverPlugin = "org.wso2.integrationstudio.carbonserver44microei40";
+
+        return Collections.max(checkLocalPluginTimestamp(serverPlugin, pluginDirFile));
     }
 
     private static List<Long> checkLocalPluginTimestamp(String plugin, File pluginDirFile) {
@@ -240,6 +254,7 @@ public class RunUpdaterRootJob extends Job {
         localTimestampList.add(getLatestTimestampOfESB());
         localTimestampList.add(getLatestTimestampOfDSS());
         localTimestampList.add(getLatestTimestampOfBPS());
+        localTimestampList.add(getLatestTimestampOfServer());
         
         return Collections.max(localTimestampList);
     }

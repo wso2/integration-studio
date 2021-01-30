@@ -139,18 +139,27 @@ public class MavenUtils {
 		return node;
 	}
 
-	public static Plugin createPluginEntry(MavenProject project, String groupId, String artifactId, String version,boolean isExtension){
-		Plugin plugin = new Plugin();
-		plugin.setGroupId(groupId);
-		plugin.setArtifactId(artifactId);
-		plugin.setVersion(version);
-		if (isExtension){
-			plugin.setExtensions(true);
-		}
-		MavenUtils.createMainConfigurationNode(plugin);
-		project.getBuild().addPlugin(plugin);
-		return plugin;
-	}
+    public static Plugin createPluginEntry(MavenProject project, String groupId, String artifactId, String version,
+            boolean isExtension) {
+        Plugin plugin = new Plugin();
+        plugin.setGroupId(groupId);
+        plugin.setArtifactId(artifactId);
+        plugin.setVersion(version);
+        if (isExtension) {
+            plugin.setExtensions(true);
+        }
+        // Add javax dependency to the pom file to fix JDK11 build failure
+        if (WSO2MavenPluginVersions.isWSO2Plugin(artifactId)) {
+            Dependency activationDependency = new Dependency();
+            activationDependency.setGroupId("com.sun.activation");
+            activationDependency.setArtifactId("javax.activation");
+            activationDependency.setVersion("1.2.0");
+            plugin.addDependency(activationDependency);
+        }
+        MavenUtils.createMainConfigurationNode(plugin);
+        project.getBuild().addPlugin(plugin);
+        return plugin;
+    }
 	
 	/**
 	 * This method add a new profile to given maven project if not exists.

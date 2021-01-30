@@ -26,7 +26,6 @@ import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
-import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
@@ -212,11 +211,6 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, MAVEN_ID, INBOUND_EP_PLUGIN_ID,
 				ESBMavenConstants.WSO2_ESB_INBOUND_ENDPOINT_VERSION, true);
-        Dependency activationDependency = new Dependency();
-        activationDependency.setGroupId("com.sun.activation");
-        activationDependency.setArtifactId("javax.activation");
-        activationDependency.setVersion("1.2.0");
-        plugin.addDependency(activationDependency);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal(PLUGIN_GOAL);
 		pluginExecution.setPhase(PLUGIN_PHASE);

@@ -62,6 +62,7 @@ public class WSO2MavenPluginVersions {
 		PLUGIN_VERSIONS.put("wso2-esb-template-plugin", "2.1.0");
 		PLUGIN_VERSIONS.put("wso2-esb-messageprocessor-plugin", "1.1.0");
 		PLUGIN_VERSIONS.put("wso2-esb-messagestore-plugin", "1.1.0");
+		PLUGIN_VERSIONS.put("wso2-esb-connector-plugin", "1.0.0");
 
 		PLUGIN_VERSIONS.put("wso2-general-project-plugin", "2.1.0");
 
@@ -78,5 +79,9 @@ public class WSO2MavenPluginVersions {
 	public static String getPluginVersion(String artifactID) {
 		return PLUGIN_VERSIONS.get(artifactID);
 	}
+
+	public static boolean isWSO2Plugin(String key) {
+	    return  PLUGIN_VERSIONS.containsKey(key);
+    }
 
 }

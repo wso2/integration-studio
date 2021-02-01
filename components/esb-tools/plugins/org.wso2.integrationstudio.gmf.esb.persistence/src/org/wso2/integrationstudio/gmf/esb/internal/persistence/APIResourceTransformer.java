@@ -20,9 +20,9 @@ import java.util.List;
 
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
-import org.apache.synapse.rest.Resource;
-import org.apache.synapse.rest.dispatch.URITemplateHelper;
-import org.apache.synapse.rest.dispatch.URLMappingHelper;
+import org.apache.synapse.api.Resource;
+import org.apache.synapse.api.dispatch.URITemplateHelper;
+import org.apache.synapse.api.dispatch.URLMappingHelper;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;

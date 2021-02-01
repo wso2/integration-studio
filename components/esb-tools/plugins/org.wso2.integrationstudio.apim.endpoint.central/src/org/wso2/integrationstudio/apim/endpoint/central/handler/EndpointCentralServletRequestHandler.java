@@ -40,7 +40,7 @@ import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.rest.APIFactory;
-import org.apache.synapse.rest.API;
+import org.apache.synapse.api.API;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;

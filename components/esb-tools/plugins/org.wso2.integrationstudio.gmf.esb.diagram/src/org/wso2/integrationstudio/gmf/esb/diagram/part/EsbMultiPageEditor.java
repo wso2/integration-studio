@@ -40,7 +40,7 @@ import org.apache.synapse.SynapseException;
 import org.apache.synapse.commons.SynapseCommonsException;
 import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.mediators.builtin.LogMediator;
-import org.apache.synapse.rest.API;
+import org.apache.synapse.api.API;
 import org.apache.synapse.task.SynapseTaskException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;

@@ -50,7 +50,7 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
 import org.apache.synapse.message.processor.MessageProcessor;
 import org.apache.synapse.message.store.MessageStore;
-import org.apache.synapse.rest.API;
+import org.apache.synapse.api.API;
 import org.apache.synapse.task.TaskDescription;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;

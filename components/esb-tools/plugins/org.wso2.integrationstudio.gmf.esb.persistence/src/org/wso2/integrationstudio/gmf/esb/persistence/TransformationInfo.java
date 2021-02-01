@@ -7,7 +7,7 @@ import org.apache.synapse.config.SynapseConfiguration;
 import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.mediators.ListMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
-import org.apache.synapse.rest.API;
+import org.apache.synapse.api.API;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.integrationstudio.gmf.esb.EsbLink;
 import org.wso2.integrationstudio.gmf.esb.EsbNode;

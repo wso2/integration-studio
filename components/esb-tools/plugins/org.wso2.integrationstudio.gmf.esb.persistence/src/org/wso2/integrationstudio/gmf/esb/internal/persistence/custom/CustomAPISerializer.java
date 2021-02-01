@@ -29,9 +29,9 @@ import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.rest.ResourceSerializer;
 import org.apache.synapse.config.xml.rest.VersionStrategySerializer;
-import org.apache.synapse.rest.API;
-import org.apache.synapse.rest.Handler;
-import org.apache.synapse.rest.Resource;
+import org.apache.synapse.api.API;
+import org.apache.synapse.api.Handler;
+import org.apache.synapse.api.Resource;
 import org.apache.synapse.util.CommentListUtil;
 
 /**

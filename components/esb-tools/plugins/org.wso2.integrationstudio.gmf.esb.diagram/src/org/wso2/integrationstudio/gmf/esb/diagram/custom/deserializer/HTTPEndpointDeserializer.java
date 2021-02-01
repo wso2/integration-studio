@@ -37,7 +37,7 @@ import org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint;
 import org.apache.synapse.endpoints.oauth.AuthorizationCodeHandler;
 import org.apache.synapse.endpoints.oauth.ClientCredentialsHandler;
 import org.apache.synapse.mediators.MediatorProperty;
-import org.apache.synapse.rest.RESTConstants;
+import org.apache.synapse.api.RESTConstants;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;

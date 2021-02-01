@@ -35,7 +35,6 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.model.Repository;
@@ -369,11 +368,6 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		Plugin plugin =
 		                MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-endpoint-plugin",
 		                                             ESBMavenConstants.WSO2_ESB_ENDPOINT_VERSION, true);
-        Dependency activationDependency = new Dependency();
-        activationDependency.setGroupId("com.sun.activation");
-        activationDependency.setArtifactId("javax.activation");
-        activationDependency.setVersion("1.2.0");
-        plugin.addDependency(activationDependency);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");

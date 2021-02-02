@@ -365,7 +365,10 @@
        serverRole="DataServicesServer"/>
         <register.serverRole
        artifactType="synapse/inbound-endpoint"
-       serverRole="EnterpriseIntegrator"/>        
+       serverRole="EnterpriseIntegrator"/>
+        <register.serverRole
+       artifactType="synapse/metadata"
+       serverRole="EnterpriseIntegrator"/>           
  </extension>
  
  <extension
@@ -528,6 +531,9 @@
 	         <artifact.mapping
         artifactType="datasource/datasource"
         fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/metadata"
+        fileExtension="yaml"/>
   </extension>
   
   <!-- extension point for configure embedded MI server configurations -->	

@@ -81,7 +81,7 @@ public class PayloadFactoryMediatorDeserializer
         }
 
         EList<PayloadFactoryArgument> arguments = new BasicEList<PayloadFactoryArgument>();
-        for (Argument argument : payloadFactoryMediator.getPathArgumentList()) {
+        for (Argument argument : payloadFactoryMediator.getTemplateProcessor().getPathArgumentList()) {
             PayloadFactoryArgument payloadFactoryArgument = EsbFactory.eINSTANCE.createPayloadFactoryArgument();
             if (argument.getExpression() != null) {
                 executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION,

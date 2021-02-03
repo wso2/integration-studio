@@ -82,6 +82,7 @@ public class PlatformEarlyStartUpHandler implements IStartup {
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     // relative path to where microesb is packaged
     public static final String MICRO_ESB_PATH = "runtime" + File.separator + "microesb";
+    public static final String MICRO_ESB_EXTRACT_PATH = "runtime";
     public static final String MICRO_ESB_VERSION_PROPERTIES_FILE = "runtime" + File.separator +"version.properties";
     public static final String INTEGRATION_STUDIO_HOME_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";    
 
@@ -144,9 +145,9 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 
                 File esbSeverDestination = null;
                 if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
-                    esbSeverDestination = new File(INTEGRATION_STUDIO_HOME_MAC + File.separator + MICRO_ESB_PATH);
+                    esbSeverDestination = new File(INTEGRATION_STUDIO_HOME_MAC + File.separator + MICRO_ESB_EXTRACT_PATH);
                 } else {
-                    esbSeverDestination = new File(MICRO_ESB_PATH);
+                    esbSeverDestination = new File(MICRO_ESB_EXTRACT_PATH);
                 }
                 if (esbSeverDestination.exists()) {
                     File backupDir = new File(esbSeverDestination.getAbsolutePath().concat("_old"));

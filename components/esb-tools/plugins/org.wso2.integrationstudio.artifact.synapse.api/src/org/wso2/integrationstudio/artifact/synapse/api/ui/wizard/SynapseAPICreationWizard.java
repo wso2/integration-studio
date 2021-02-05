@@ -39,7 +39,7 @@ import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.rest.APIFactory;
-import org.apache.synapse.rest.API;
+import org.apache.synapse.api.API;
 import org.codehaus.jettison.json.JSONObject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
@@ -202,8 +202,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                 esbProjectArtifact.addESBArtifact(createArtifact(apiName, groupId, version, relativePath));
                 esbProjectArtifact.toFile();
                 // Copy swagger file to the registry
-                createRegistryResource(artifactModel.getSwaggerRegistryLocation(), artifactModel.getSwaggerFile(),
-                        REGISTRY_RESOURCE_PATH);
+                // createRegistryResource(artifactModel.getSwaggerRegistryLocation(), artifactModel.getSwaggerFile(),
+                //        REGISTRY_RESOURCE_PATH);
               //------------------------------------------------------------------------------
                 synapseApi = APIFactory.createAPI(omElement);
                 IFile swaggerFile = metadataLocation.getFile(new Path(apiName + "_swagger.yaml"));

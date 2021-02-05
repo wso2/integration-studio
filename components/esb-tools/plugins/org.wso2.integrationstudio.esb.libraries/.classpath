@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-dataformat-yaml-2.12.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/snakeyaml-1.27.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/smooks-1.5.1.wso2v4.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-core-2.1.7-wso2v142.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-dataformat-yaml-2.12.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-datatype-jsr310-2.12.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-annotations-2.12.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-databind-2.12.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swagger-annotations-2.1.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swagger-models-2.1.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-core-2.12.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/snakeyaml-1.27.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/validation-api-1.1.0.Final.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swagger-core-2.1.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swagger-parser-v3-2.0.24.wso2v1.jar"/>

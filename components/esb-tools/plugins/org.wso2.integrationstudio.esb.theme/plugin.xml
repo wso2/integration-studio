@@ -75,7 +75,29 @@
       	disabledIcon="icons/full/dtool16/saveall_edit.png" 
       	/>
    </extension>
-   <extension point="org.eclipse.ui.decorators">
+	<extension point="org.eclipse.ui.decorators">
+		<decorator
+        adaptable="true"
+        icon="icons/resources_icon.png"
+        id="org.wso2.integrationstudio.esb.theme.zesourceFolderDecorator"
+        label="Resource Folder Decorator"
+        lightweight="true"
+        location="TOP_LEFT"
+        state="true">
+		    <enablement>
+			   <and> 
+			      <objectClass
+			          name="org.eclipse.core.resources.IFolder">
+			      </objectClass>
+			      <objectState
+			          name="name"
+			          value="resources">
+			      </objectState>
+			   </and>
+			</enablement>
+		</decorator>
+	</extension>
+	<extension point="org.eclipse.ui.decorators">
 		<decorator
         adaptable="true"
         icon="icons/source-folder.png"

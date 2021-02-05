@@ -58,6 +58,8 @@ public class CarExportHandler extends ProjectArtifactHandler {
     DistProjectUtils distProjectUtils = new DistProjectUtils();
     private static final String POM_FILE = "pom.xml";
     private static final String SPLIT_DIR_NAME = "split_esb_resources";
+    private static final String METADATA_TYPE = "synapse/metadata";
+    private static final String METADATA_FOLDER_NAME = "metadata";
     IntegrationStudioProviderUtils devStudioUtils = new IntegrationStudioProviderUtils();
     boolean isExecClassFound;
 
@@ -149,7 +151,14 @@ public class CarExportHandler extends ProjectArtifactHandler {
         Collections.sort(artifactList);
 
         for (ArtifactData artifact : artifactList) {
-            File artifactDir = new File(carResources, getArtifactDir(artifact.getDependencyData()));
+            File artifactDir = null;
+            // Adding all the metadata inside "metadata" folder
+            if (METADATA_TYPE.equals(artifact.getDependencyData().getCApptype())) {
+                File metaDir = new File(carResources, METADATA_FOLDER_NAME);
+                artifactDir = new File(metaDir, getArtifactDir(artifact.getDependencyData()));
+            } else {
+                artifactDir = new File(carResources, getArtifactDir(artifact.getDependencyData()));
+            }
             if (artifact.getResource() instanceof IFolder) {
                 FileUtils.copyDirectory(artifact.getResource().getLocation().toFile(), artifactDir);
             } else if (artifact.getResource() instanceof IFile) {

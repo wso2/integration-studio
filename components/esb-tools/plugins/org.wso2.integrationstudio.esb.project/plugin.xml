@@ -422,6 +422,9 @@
 		 <artifact.priority
       artifactType="synapse/inbound-endpoint"
       priority="7"/>
+		 <artifact.priority
+      artifactType="synapse/metadata"
+      priority="5"/>
   </extension>
   <extension
         point="org.wso2.integrationstudio.register.artifact.mapping">
@@ -491,6 +494,9 @@
 		 <artifact.mapping
         artifactType="synapse/lib"
         fileExtension="zip"/>
+        <artifact.mapping
+        artifactType="synapse/metadata"
+        fileExtension="yaml"/>
   </extension>
   
    <extension

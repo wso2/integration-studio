@@ -44,6 +44,7 @@ public class EsbSwaggerEditor extends AbstractWebBasedEditor {
     private static final String WEB_APP_PATH = "swagger-editor";
     private static final String INDEX_HTML_FILE_NAME = "index.html";
     public static final int EMBEDDED_JETTY_SERVER_PORT = 7774;
+    private  boolean isDirty;
 
     public EsbSwaggerEditor() {
         super();
@@ -109,6 +110,14 @@ public class EsbSwaggerEditor extends AbstractWebBasedEditor {
         return browser;
     }
 
+    public void setDirty(boolean isDirty) {
+        super.setDirty(isDirty);
+    }
+    
+    public boolean isDirty() {
+        return isDirty;
+    } 
+    
     /**
      * This method gets port value retrieved from preferences
      * 

@@ -67,7 +67,9 @@
 				  description="Create a Synapse API Artifact using a Swagger Definition file"
 				  error="Browse and select a Swagger file">
 			<data modelProperty="swagger.file" type="file" filter="*.yaml;*.yml;*.json"
-				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Swagger Definition File</data>
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Swagger Definition File*</data>
+				<data modelProperty="swagger.api.name" type="string"
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">API Name*</data>
 			<group id ="location"/>
 			<!-- <data modelProperty="swagger.reg.location" type="workspacefolder" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" 
 			controlData="filterClass=org.wso2.integrationstudio.artifact.synapse.api.validator.RegistryProjectFilter" >Swagger Registry Path </data>

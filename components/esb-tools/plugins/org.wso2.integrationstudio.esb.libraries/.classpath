@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/swagger-annotations-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/swagger-core-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/swagger-models-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/swagger-parser-2.0.20.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediation.commons-4.7.79.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rest.api-4.7.79.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-lang3-3.11.0.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-dataformat-yaml-2.12.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/snakeyaml-1.27.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/smooks-1.5.1.wso2v4.jar"/>
@@ -7,19 +14,12 @@
 	<classpathentry exported="true" kind="lib" path="lib/jackson-datatype-jsr310-2.12.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-annotations-2.12.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-databind-2.12.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/swagger-annotations-2.1.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/swagger-models-2.1.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-core-2.12.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/validation-api-1.1.0.Final.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/swagger-core-2.1.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/swagger-parser-v3-2.0.24.wso2v1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediation.commons-4.7.77.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rest.api-4.7.77.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-commons-2.1.7-wso2v142.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.cache-4.7.67.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/asm-1.0.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/json-smart-2.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-dataformat-yaml-2.9.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediation.initializer-4.7.33.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.oauth.mediator_4.6.142.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam_4.6.142.jar"/>

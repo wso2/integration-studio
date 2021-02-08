@@ -21,6 +21,8 @@ import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +37,8 @@ import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.synapse.SynapseException;
 import org.apache.synapse.commons.SynapseCommonsException;
@@ -42,10 +46,12 @@ import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.mediators.builtin.LogMediator;
 import org.apache.synapse.api.API;
 import org.apache.synapse.task.SynapseTaskException;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -88,7 +94,9 @@ import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPropertyListener;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
@@ -811,13 +819,15 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 			break;
 		}
 		case SWAGGER_VIEW_PAGE_INDEX: {
+		    String currentSwaggerYaml = getCurrentSwaggerYamlOfAPI();
 			if (lastActivePage == SOURCE_VIEW_PAGE_INDEX) {
 				try {
 					String currentSource = sourceEditor.getDocument().get();
 					RestApiAdmin restAPIAdmin = new RestApiAdmin();
 					OMElement element = AXIOMUtil.stringToOM(currentSource);
 					API api = APIFactory.createAPI(element);
-					String swaggerDefinition = restAPIAdmin.generateSwaggerFromSynapseAPI(api);
+					String swaggerDefinition = 
+					        restAPIAdmin.generateUpdatedSwaggerFromAPI(currentSwaggerYaml, false, true, api);
 					setOldSwaggerSource(swaggerDefinition);
 					setSwaggerSource(swaggerDefinition);
 					swaggerlEditor.getBrowser().refresh();
@@ -836,7 +846,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					RestApiAdmin restAPIAdmin = new RestApiAdmin();
 					OMElement element = AXIOMUtil.stringToOM(currentSource);
 					API api = APIFactory.createAPI(element);
-					String swaggerDefinition = restAPIAdmin.generateSwaggerFromSynapseAPI(api);
+					String swaggerDefinition = 
+                            restAPIAdmin.generateUpdatedSwaggerFromAPI(currentSwaggerYaml, false, true, api);
 					setSwaggerSource(swaggerDefinition);
 					setOldSwaggerSource(swaggerDefinition);
 					swaggerlEditor.getBrowser().refresh();
@@ -852,6 +863,29 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		}
 		lastActivePage = getActivePage();
 	}
+    
+    private String getCurrentSwaggerYamlOfAPI() {
+        IWorkbench workbench = PlatformUI.getWorkbench();
+        IWorkbenchWindow window = workbench == null ? null : workbench.getActiveWorkbenchWindow();
+        IWorkbenchPage activePage = window == null ? null : window.getActivePage();
+        IEditorPart editor = activePage == null ? null : activePage.getActiveEditor();
+        IEditorInput input = editor == null ? null : editor.getEditorInput();
+        IPath filePath = input instanceof FileEditorInput ? ((FileEditorInput) input).getPath() : null;
+        IProject esbProject = input instanceof FileEditorInput ? ((FileEditorInput) input).getFile().getProject()
+                : null;
+        if (esbProject != null && filePath != null) {
+            IFolder metadataDir = esbProject.getFolder("src/main/resources/metadata");
+            String fileName = FilenameUtils.removeExtension(Paths.get(filePath.toOSString()).getFileName().toString())
+                    + "_swagger.yaml";
+            try {
+                return FileUtils.readFileToString(metadataDir.getFile(fileName).getLocation().toFile(), "UTF-8");
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+            }
+        }
+
+        return null;
+    }
 
     /**
      * Performs necessary house-keeping tasks whenever the design view is activated.
@@ -1613,4 +1647,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		return swaggerJsonFile;
 	}
 
+	public EsbSwaggerEditor getSwaggerEditor() {
+	    return swaggerlEditor;
+	}
 }

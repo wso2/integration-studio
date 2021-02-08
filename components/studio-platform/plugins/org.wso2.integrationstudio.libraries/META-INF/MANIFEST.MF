@@ -722,8 +722,7 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
    javax.xml.namespace,
    javax.wsdl",
  org.wso2.uri.template;version="1.6.4",
- org.wso2.uri.template.parser;version="1.6.4",
- org.yaml.snakeyaml
+ org.wso2.uri.template.parser;version="1.6.4"
 Bundle-ClassPath: .,
  lib/abdera_1.0.0.wso2v3.jar,
  lib/axis2-json_1.6.1.wso2v14.jar,

@@ -56,6 +56,9 @@ public class SwaggerEditorServlet extends HttpServlet {
 				}
 			}
 		});
+		if (editor.getSwaggerEditor() != null) {
+            editor.getSwaggerEditor().setDirty(true);
+        }
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		out.println((editor.getSource()));
@@ -73,6 +76,9 @@ public class SwaggerEditorServlet extends HttpServlet {
 				editor.setSwaggerSource(swagJson);
 			}
 		});
+		if (editor.getSwaggerEditor() != null) {
+            editor.getSwaggerEditor().setDirty(true);
+        }
 		response.setStatus(HttpServletResponse.SC_OK);
 	}
 }

@@ -94,6 +94,14 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 			log.error("Error saving content to file.", e);
 		}
 	}
+	
+    public void doSaveSwagger(IProgressMonitor arg0) {
+        try {
+            executeScriptOnBrowser(ScriptFactory.INVOKE_FN_SAVE_FILE);
+        } catch (WebUIException e) {
+            //ignore
+        }
+    }
 
 	@Override
 	public void doSaveAs() {

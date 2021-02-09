@@ -38,7 +38,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
-import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.api.API;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
@@ -86,10 +85,6 @@ import org.wso2.integrationstudio.utils.project.ProjectUtils;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-
 /**
  * WSO2 ESB API creation wizard class
  */
@@ -106,8 +101,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     private static final int REGISTRY_RESOURCE = 0;
     private static final int REGISTRY_COLLECTION = 1;
     private static final int REGISTRY_DUMP = 2;
-    private static final String REGISTRY_RESOURCE_PATH = "/_system/governance/swagger_files";
     private static final String EMPTY_STRING = "";
+    private static final String WHITE_SPACE = " ";
     private static final String METADATA_TYPE = "synapse/metadata";
 
     private String version;
@@ -142,7 +137,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             return false;
         } else if (getModel().getSelectedOption().equals("create.swagger")
                 && (artifactModel.getSwaggerFile().getPath().equals(EMPTY_STRING) 
-                        || artifactModel.getSwaggerAPIName().equals(EMPTY_STRING))) {
+                        || artifactModel.getSwaggerAPIName().equals(EMPTY_STRING)
+                        || artifactModel.getSwaggerAPIName().contains(WHITE_SPACE))) {
             // If option to generate API from swagger definition is selected,
             // can finish only if swagger definition is selected.
             return false;
@@ -335,9 +331,6 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             // Inject the publish swagger property to the synapse api artifact
             OMFactory fac = OMAbstractFactory.getOMFactory();
             element = AXIOMUtil.stringToOM(generatedAPI);
-            element.addAttribute(fac.createOMAttribute("publishSwagger",
-                    fac.createOMNamespace(XMLConfigConstants.NULL_NAMESPACE, ""),
-                    REGISTRY_RESOURCE_PATH + "/" + artifactModel.getSwaggerFile().getName().replaceAll(" ", "_")));
             generatedAPI = element.toString();
         } catch (APIException | XMLStreamException e) {
             log.error("Exception occured while generating API using swagger file", e);

@@ -25,6 +25,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.swt.browser.Browser;
@@ -118,6 +119,11 @@ public class EsbSwaggerEditor extends AbstractWebBasedEditor {
         return isDirty;
     } 
     
+    @Override
+    public void doSave(IProgressMonitor arg0) {
+        super.doSaveSwagger(arg0);
+    }
+    
     /**
      * This method gets port value retrieved from preferences
      * 
@@ -128,5 +134,4 @@ public class EsbSwaggerEditor extends AbstractWebBasedEditor {
         IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
         return rootNode.get("portDetails", String.valueOf(FunctionServerConstants.EMBEDDED_SERVER_PORT));
     }
-
 }

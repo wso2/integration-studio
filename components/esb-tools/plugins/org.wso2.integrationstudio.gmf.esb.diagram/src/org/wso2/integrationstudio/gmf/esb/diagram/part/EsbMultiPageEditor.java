@@ -21,7 +21,6 @@ import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,12 +45,11 @@ import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.mediators.builtin.LogMediator;
 import org.apache.synapse.api.API;
 import org.apache.synapse.task.SynapseTaskException;
-import org.eclipse.core.resources.IContainer;
+import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -128,7 +126,6 @@ import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.Deserializ
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.Deserializer.DeserializeStatus;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.dialogs.RegistryResourcesUtils;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DeserializerException;
-import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DummyAPIFactory;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.MediatorFactoryUtils;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.UpdateGMFPlugin;
 import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
@@ -155,6 +152,8 @@ import org.wso2.integrationstudio.esb.form.editors.unittest.SynapseUnitTestFormT
 import org.wso2.integrationstudio.esb.form.editors.unittest.SynapseUnitTestSourceToFormDeserializer;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.Yaml;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.DefaultEsbModelExporter;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DataMapperMediatorEditPart;
 
@@ -819,15 +818,27 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 			break;
 		}
 		case SWAGGER_VIEW_PAGE_INDEX: {
-		    String currentSwaggerYaml = getCurrentSwaggerYamlOfAPI();
+		    String currentSwaggerYaml = getCurrentSwaggerYamlOfAPIinMetadata();
 			if (lastActivePage == SOURCE_VIEW_PAGE_INDEX) {
 				try {
 					String currentSource = sourceEditor.getDocument().get();
 					RestApiAdmin restAPIAdmin = new RestApiAdmin();
 					OMElement element = AXIOMUtil.stringToOM(currentSource);
 					API api = APIFactory.createAPI(element);
-					String swaggerDefinition = 
-					        restAPIAdmin.generateUpdatedSwaggerFromAPI(currentSwaggerYaml, false, true, api);
+					String swaggerDefinition;
+					// check API has a swagger publisher in the registry
+					if (currentSwaggerYaml == null) {
+					    currentSwaggerYaml = getSwaggerJSONFromRegistry(api);
+					}
+					
+                    if (currentSwaggerYaml != null) {
+                        // generate a swagger content using the current swagger content and API source
+                        swaggerDefinition = restAPIAdmin.generateUpdatedSwaggerFromAPI(currentSwaggerYaml, false, true,
+                                api);
+                    } else {
+                        // generate a new swagger content using the API source
+                        swaggerDefinition = restAPIAdmin.generateSwaggerFromSynapseAPI(api);
+                    }
 					setOldSwaggerSource(swaggerDefinition);
 					setSwaggerSource(swaggerDefinition);
 					swaggerlEditor.getBrowser().refresh();
@@ -846,8 +857,19 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					RestApiAdmin restAPIAdmin = new RestApiAdmin();
 					OMElement element = AXIOMUtil.stringToOM(currentSource);
 					API api = APIFactory.createAPI(element);
-					String swaggerDefinition = 
-                            restAPIAdmin.generateUpdatedSwaggerFromAPI(currentSwaggerYaml, false, true, api);
+					String swaggerDefinition;
+					// check API has a swagger publisher in the registry
+                    if (currentSwaggerYaml == null) {
+                        currentSwaggerYaml = getSwaggerJSONFromRegistry(api);
+                    }
+                    if (currentSwaggerYaml != null) {
+                        // generate a swagger content using the current swagger content and API source
+                        swaggerDefinition = restAPIAdmin.generateUpdatedSwaggerFromAPI(currentSwaggerYaml, false, true,
+                                api);
+                    } else {
+                        // generate a new swagger content using the API source
+                        swaggerDefinition = restAPIAdmin.generateSwaggerFromSynapseAPI(api);
+                    }
 					setSwaggerSource(swaggerDefinition);
 					setOldSwaggerSource(swaggerDefinition);
 					swaggerlEditor.getBrowser().refresh();
@@ -864,26 +886,41 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		lastActivePage = getActivePage();
 	}
     
-    private String getCurrentSwaggerYamlOfAPI() {
-        IWorkbench workbench = PlatformUI.getWorkbench();
-        IWorkbenchWindow window = workbench == null ? null : workbench.getActiveWorkbenchWindow();
-        IWorkbenchPage activePage = window == null ? null : window.getActivePage();
-        IEditorPart editor = activePage == null ? null : activePage.getActiveEditor();
-        IEditorInput input = editor == null ? null : editor.getEditorInput();
-        IPath filePath = input instanceof FileEditorInput ? ((FileEditorInput) input).getPath() : null;
-        IProject esbProject = input instanceof FileEditorInput ? ((FileEditorInput) input).getFile().getProject()
-                : null;
-        if (esbProject != null && filePath != null) {
-            IFolder metadataDir = esbProject.getFolder("src/main/resources/metadata");
-            String fileName = FilenameUtils.removeExtension(Paths.get(filePath.toOSString()).getFileName().toString())
-                    + "_swagger.yaml";
-            try {
-                return FileUtils.readFileToString(metadataDir.getFile(fileName).getLocation().toFile(), "UTF-8");
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
+    private String getCurrentSwaggerYamlOfAPIinMetadata() {
+        try {
+            File swaggerFile = getCurrentAPISwaggerDefinitionInMetadataDirectory();
+            if (swaggerFile != null) {
+                return FileUtils.readFileToString(swaggerFile, "UTF-8");
             }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
         }
+        return null;
+    }
+    
+    private File getCurrentAPISwaggerDefinitionInMetadataDirectory() {
+        try {
+            IWorkbench workbench = PlatformUI.getWorkbench();
+            IWorkbenchWindow window = workbench == null ? null : workbench.getActiveWorkbenchWindow();
+            IWorkbenchPage activePage = window == null ? null : window.getActivePage();
+            IEditorPart editor = activePage == null ? null : activePage.getActiveEditor();
+            IEditorInput input = editor == null ? null : editor.getEditorInput();
+            IPath filePath = input instanceof FileEditorInput ? ((FileEditorInput) input).getPath() : null;
+            IProject esbProject = input instanceof FileEditorInput ? ((FileEditorInput) input).getFile().getProject()
+                    : null;
 
+            if (esbProject != null && filePath != null) {
+                IFolder metadataDir = esbProject.getFolder("src/main/resources/metadata");
+                String fileName = FilenameUtils.removeExtension(Paths.get(filePath.toOSString()).getFileName().toString())
+                        + "_swagger.yaml";
+                if (metadataDir.exists() && metadataDir.getFile(fileName) != null
+                        && metadataDir.getFile(fileName).exists()) {
+                    return metadataDir.getFile(fileName).getLocation().toFile();
+                }
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+        }
         return null;
     }
 
@@ -1189,6 +1226,34 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                 firePropertyChange(PROP_DIRTY);
 
             }
+        } else if (getActivePage() == SWAGGER_VIEW_PAGE_INDEX) {
+            try {
+                String currentSource = sourceEditor.getDocument().get();
+                OMElement element = AXIOMUtil.stringToOM(currentSource);
+                API api = APIFactory.createAPI(element);
+                File swaggerPublisherInRegistry = getSwaggerJsonFromRegistry(api);
+                File swaggerDefinitonInMetadata = getCurrentAPISwaggerDefinitionInMetadataDirectory();
+                // persist updated swagger source in metadata
+                if (swaggerDefinitonInMetadata != null && swaggerDefinitonInMetadata.exists()) {
+                    FileUtils.writeStringToFile(swaggerDefinitonInMetadata, convertJSONtoYaml(swaggerSource));
+                }
+                // persist updated swagger source in registry publisher
+                if (swaggerPublisherInRegistry != null && swaggerPublisherInRegistry.exists()) {
+                    if (isYamlFile(swaggerPublisherInRegistry)) {
+                        swaggerSource = convertJSONtoYaml(swaggerSource);
+                    }
+                    FileUtils.writeStringToFile(swaggerPublisherInRegistry, swaggerSource);
+                }
+                swaggerlEditor.doSave(monitor);
+            } catch (Exception e) {
+                sourceDirty = true;
+                log.error("Error while saving the swagger file", e);
+                String errorMsgHeader = "Save failed. Following error(s) have been detected."
+                        + " Please see the error log for more details.";
+                String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
+                IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+                ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+            }
         }
 
         if (isSaveAllow) {
@@ -1266,6 +1331,40 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             }
         });
     }
+    
+    public static String convertJSONtoYaml(String jsonSource) throws Exception {
+        try {
+            Yaml yaml = new Yaml();
+            Map<String, Object> obj = yaml.load(jsonSource);
+            DumperOptions options = new DumperOptions();
+            options.setIndent(2);
+            options.setPrettyFlow(true);
+            options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+            Yaml output = new Yaml(options);
+            return output.dump(obj);
+        } catch (Exception e) {
+            log.error("Exception while converting json to yaml", e);
+            throw new Exception(e);
+        } 
+    }
+    
+    public static String convertYamlToJson(String yamlSource) {
+        try {
+            Yaml yaml = new Yaml();
+            Map<String, Object> map = (Map<String, Object>) yaml.load(yamlSource);
+            JSONObject jsonObject = new JSONObject(map);
+            return jsonObject.toString();
+        } catch (Exception e) {
+            log.error("Exception while converting yaml to json", e);
+        } 
+        
+        return null;
+    }
+    
+    private boolean isYamlFile(File file) {
+        String fileExtension = FilenameUtils.getExtension(file.getName());
+        return fileExtension.equals("yaml") || fileExtension.equals("yml");
+    }
 
     private void deleteMarkers() {
         // remove markers from temporary xml files
@@ -1317,7 +1416,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             return getEditor(0).isDirty() || sourceDirty;
         } else if (getEditor(0) instanceof ESBFormEditor) {
             return getEditor(0).isDirty() || sourceDirty;
-        }
+        } 
         return super.isDirty();
     }
 
@@ -1593,7 +1692,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	 */
 	public boolean isSwaggerDirty() {
 		if (swaggerSource != null && oldSwaggerSource != null) {
-			return !oldSwaggerSource.equals(swaggerSource);
+		    boolean result = !oldSwaggerSource.equals(swaggerSource);
+			return result;
 		}
 		return false;
 	}
@@ -1606,11 +1706,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	 * 
 	 * @return Swagger File content as a String
 	 */
-	public static String getSwaggerJsonFromRegistry(API api) {
-		String swaggerJsonFile = null;
+	private File getSwaggerJsonFromRegistry(API api) {
+		File swaggerFile = null;
 
 		try {
 			String swaggerRegistryPath = api.getSwaggerResourcePath();
+			if (swaggerRegistryPath == null || swaggerRegistryPath.isEmpty()) {
+			    return swaggerFile;
+			}
 			IIntegrationStudioProviderData[] providerProjectsList = RegistryResourcesUtils
 					.loadProviderProjectsList(new Class[] { IRegistryFile.class });
 			Map<String, List<String>> filters = new HashMap<String, List<String>>();
@@ -1622,32 +1725,45 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 			String swaggerName = swaggerRegistryPath.substring(swaggerRegistryPath.lastIndexOf("/") + 1,
 					swaggerRegistryPath.length());
-
 			String pathForSwagger = DataMapperMediatorEditPart.getConfigurationLocalPath(providerProjectsList, filters,
 					swaggerName);
 
 			// Copy to string, use the file's encoding
 			Path path = new Path(pathForSwagger);
 			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
-			InputStream inputStream = file.getContents();
-			StringWriter writer = new StringWriter();
-
-			IOUtils.copy(inputStream, writer, file.getCharset());
-			inputStream.close();
-			swaggerJsonFile = writer.toString();
-
-		} catch (IOException e) {
-			log.error("IO Exceprion occured while trying to retrieve swagger file", e);
-		} catch (CoreException e) {
-			log.error("Eclipse Core exception occured while trying to retrieve swagger file", e);
+			return file.getLocation().toFile();
 		} catch (Exception e) {
-			log.error("Error occured while trying to retrieve swagger file", e);
+			log.error("Error occured while trying to retrieve swagger file from registry", e);
 		}
 
-		return swaggerJsonFile;
+		return swaggerFile;
 	}
+	
+    private String getSwaggerJSONFromRegistry(API api) {
+        String currentSwaggerYaml = null;
+        try {
+            File swaggerPublisherInRegistry = getSwaggerJsonFromRegistry(api);
+            if (swaggerPublisherInRegistry != null && swaggerPublisherInRegistry.exists()) {
+                currentSwaggerYaml = FileUtils.readFileToString(swaggerPublisherInRegistry, "UTF-8");
+                if (isYamlFile(swaggerPublisherInRegistry)) {
+                    currentSwaggerYaml = convertYamlToJson(currentSwaggerYaml);
+                }
+            }
+        } catch (IOException e) {
+            log.error("Error occured while trying to retrieve swagger content from registry", e);
+        }
+        return currentSwaggerYaml;
+    }
 
 	public EsbSwaggerEditor getSwaggerEditor() {
 	    return swaggerlEditor;
 	}
+
+    public boolean isSourceDirty() {
+        return sourceDirty;
+    }
+
+    public void setSourceDirty(boolean sourceDirty) {
+        this.sourceDirty = sourceDirty;
+    }
 }

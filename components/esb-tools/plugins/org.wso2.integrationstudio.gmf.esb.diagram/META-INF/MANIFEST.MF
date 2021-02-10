@@ -113,5 +113,4 @@ Import-Package: net.sf.saxon.s9api,
  org.wso2.integrationstudio.esb.form.editors.article.rcp.message.processors,
  org.wso2.integrationstudio.esb.form.editors.article.rcp.message.stores,
  org.wso2.integrationstudio.esb.form.editors.mockservice,
- org.wso2.integrationstudio.esb.form.editors.unittest,
- org.yaml.snakeyaml
+ org.wso2.integrationstudio.esb.form.editors.unittest

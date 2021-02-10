@@ -134,7 +134,7 @@ public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFact
 
                         arg.setValue(value);
                         arg.setExpression(null);
-                        ((PayloadFactoryMediator) mediator).addPathArgument(arg);
+                        ((PayloadFactoryMediator) mediator).getTemplateProcessor().addPathArgument(arg);
 
                     } else if ((value = argElem.getAttributeValue(ATT_EXPRN)) != null) {
 
@@ -148,7 +148,7 @@ public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFact
                                 arg.setExpression(SynapseJsonPathFactory.getSynapseJsonPath(value));
 
                                 arg.getExpression().setPathType(SynapsePath.JSON_PATH);
-                                ((PayloadFactoryMediator) mediator).addPathArgument(arg);
+                                ((PayloadFactoryMediator) mediator).getTemplateProcessor().addPathArgument(arg);
                             } else {
                                 SynapseXPath sxp = null;
                                 if (value.trim().length() > 0) {
@@ -159,7 +159,7 @@ public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFact
                                 sxp.setForceDisableStreamXpath(Boolean.TRUE);
                                 arg.setExpression(sxp);
                                 arg.getExpression().setPathType(SynapsePath.X_PATH);
-                                ((PayloadFactoryMediator) mediator).addPathArgument(arg);
+                                ((PayloadFactoryMediator) mediator).getTemplateProcessor().addPathArgument(arg);
                             }
                         } catch (JaxenException e) {
                             // ignore

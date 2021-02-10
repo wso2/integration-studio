@@ -20,7 +20,7 @@ Bundle-ActivationPolicy: lazy
 Import-Package: com.google.common.reflect,
  com.google.gson,
  org.apache.synapse.config.xml.rest,
- org.apache.synapse.rest,
+ org.apache.synapse.api,
  org.wso2.carbon.rest.api,
  org.wso2.carbon.rest.api.service,
  org.wso2.integrationstudio.esb.core,

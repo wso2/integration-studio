@@ -51,12 +51,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.synapse.mediators.base.SequenceMediator;
-import org.apache.synapse.rest.API;
-import org.apache.synapse.rest.Handler;
-import org.apache.synapse.rest.Resource;
-import org.apache.synapse.rest.dispatch.DispatcherHelper;
-import org.apache.synapse.rest.dispatch.URITemplateHelper;
-import org.apache.synapse.rest.dispatch.URLMappingHelper;
+import org.apache.synapse.api.API;
+import org.apache.synapse.api.Handler;
+import org.apache.synapse.api.Resource;
+import org.apache.synapse.api.dispatch.DispatcherHelper;
+import org.apache.synapse.api.dispatch.URITemplateHelper;
+import org.apache.synapse.api.dispatch.URLMappingHelper;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;

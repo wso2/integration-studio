@@ -24,10 +24,10 @@ import org.apache.axis2.Constants;
 import org.apache.synapse.SequenceType;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.base.SequenceMediator;
-import org.apache.synapse.rest.RESTConstants;
-import org.apache.synapse.rest.Resource;
-import org.apache.synapse.rest.dispatch.URITemplateHelper;
-import org.apache.synapse.rest.dispatch.URLMappingHelper;
+import org.apache.synapse.api.RESTConstants;
+import org.apache.synapse.api.Resource;
+import org.apache.synapse.api.dispatch.URITemplateHelper;
+import org.apache.synapse.api.dispatch.URLMappingHelper;
 
 import javax.xml.namespace.QName;
 import java.util.Properties;

@@ -74,7 +74,7 @@ import org.apache.synapse.mediators.transform.XSLTMediator;
 import org.apache.synapse.mediators.transform.url.URLRewriteMediator;
 import org.apache.synapse.mediators.xquery.XQueryMediator;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.DummyMessageStore;
-import org.apache.synapse.rest.API;
+import org.apache.synapse.api.API;
 import org.apache.synapse.task.TaskDescription;
 import org.wso2.carbon.identity.oauth.mediator.OAuthMediator;
 import org.wso2.carbon.mediator.bam.BamMediator;

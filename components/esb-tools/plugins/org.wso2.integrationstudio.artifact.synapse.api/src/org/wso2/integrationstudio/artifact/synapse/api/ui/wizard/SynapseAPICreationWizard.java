@@ -22,6 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.xml.namespace.QName;
@@ -37,10 +38,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
-import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.rest.APIFactory;
-import org.apache.synapse.rest.API;
-import org.codehaus.jettison.json.JSONObject;
+import org.apache.synapse.api.API;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
@@ -83,6 +82,7 @@ import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfoDoc;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceUtils;
 import org.wso2.integrationstudio.utils.file.FileUtils;
 import org.wso2.integrationstudio.utils.project.ProjectUtils;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
 /**
@@ -101,8 +101,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     private static final int REGISTRY_RESOURCE = 0;
     private static final int REGISTRY_COLLECTION = 1;
     private static final int REGISTRY_DUMP = 2;
-    private static final String REGISTRY_RESOURCE_PATH = "/_system/governance/swagger_files";
     private static final String EMPTY_STRING = "";
+    private static final String WHITE_SPACE = " ";
     private static final String METADATA_TYPE = "synapse/metadata";
 
     private String version;
@@ -136,7 +136,9 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             // can finish only if artifact file is selected.
             return false;
         } else if (getModel().getSelectedOption().equals("create.swagger")
-                && artifactModel.getSwaggerFile().getPath().equals(EMPTY_STRING)) {
+                && (artifactModel.getSwaggerFile().getPath().equals(EMPTY_STRING) 
+                        || artifactModel.getSwaggerAPIName().equals(EMPTY_STRING)
+                        || artifactModel.getSwaggerAPIName().contains(WHITE_SPACE))) {
             // If option to generate API from swagger definition is selected,
             // can finish only if swagger definition is selected.
             return false;
@@ -181,18 +183,19 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                 OMElement omElement = AXIOMUtil.stringToOM(fileContent);
                 synapseApi = APIFactory.createAPI(omElement);
                 apiFileName = api.getName().substring(0, api.getName().indexOf(".xml"));
-                String swagger = restAPIAdmin.generateSwaggerFromSynapseAPI(synapseApi);
+                String swagger = restAPIAdmin.generateSwaggerFromSynapseAPI(synapseApi, false);
                 IFile swaggerFile = metadataLocation.getFile(new Path(apiFileName + "_swagger.yaml"));
                 //FileUtils.createFile(swaggerFile.getLocation().toFile(), convertJsonToYaml(swagger));
                 FileUtils.createFile(swaggerFile.getLocation().toFile(), swagger);
                 createMetadataArtifactEntry(metadataLocation, apiFileName, metadataGroupId, true);
                 //-------------------------------------------------------------------------------------
             } else if (getModel().getSelectedOption().equals("create.swagger")) {
-                String apiName = getAPINameFromSwagger(artifactModel.getSwaggerFile()).replaceAll(" ", "_");
+                String apiName = artifactModel.getSwaggerAPIName();
                 artifactModel.setName(apiName);
                 artifactFile = location.getFile(new Path(apiName + ".xml"));
                 File destFile = artifactFile.getLocation().toFile();
-                OMElement omElement = getSynapseAPIFromSwagger(artifactModel.getSwaggerFile());
+                String swaggerYaml = getSwaggerFileAsYAML(artifactModel.getSwaggerFile(), apiName);
+                OMElement omElement = getSynapseAPIFromSwagger(swaggerYaml, apiName);
                 FileUtils.createFile(destFile, omElement.toString());
                 fileLst.add(destFile);
                 String relativePath = FileUtils
@@ -202,13 +205,12 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                 esbProjectArtifact.addESBArtifact(createArtifact(apiName, groupId, version, relativePath));
                 esbProjectArtifact.toFile();
                 // Copy swagger file to the registry
-                createRegistryResource(artifactModel.getSwaggerRegistryLocation(), artifactModel.getSwaggerFile(),
-                        REGISTRY_RESOURCE_PATH);
+                // createRegistryResource(artifactModel.getSwaggerRegistryLocation(), artifactModel.getSwaggerFile(),
+                //        REGISTRY_RESOURCE_PATH);
               //------------------------------------------------------------------------------
                 synapseApi = APIFactory.createAPI(omElement);
                 IFile swaggerFile = metadataLocation.getFile(new Path(apiName + "_swagger.yaml"));
-                String swaggerJson = getSwaggerFileAsJSON(artifactModel.getSwaggerFile());
-                FileUtils.createFile(swaggerFile.getLocation().toFile(),swaggerJson);
+                FileUtils.createFile(swaggerFile.getLocation().toFile(), swaggerYaml);
                 createMetadataArtifactEntry(metadataLocation, apiName, metadataGroupId, true);
                 apiFileName = apiName;
                 //----------------------------------------------------------------------------------------
@@ -227,7 +229,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                 String fileContent = FileUtils.getContentAsString(destFile);
                 OMElement omElement = AXIOMUtil.stringToOM(fileContent);
                 synapseApi = APIFactory.createAPI(omElement);
-                String swagger = restAPIAdmin.generateSwaggerFromSynapseAPI(synapseApi);
+                String swagger = restAPIAdmin.generateSwaggerFromSynapseAPI(synapseApi, false);
                 IFile swaggerFile = metadataLocation.getFile(new Path(synapseApi.getAPIName() + "_swagger.yaml"));
                 //FileUtils.createFile(swaggerFile.getLocation().toFile(), convertJsonToYaml(swagger));
                 FileUtils.createFile(swaggerFile.getLocation().toFile(), swagger);
@@ -320,19 +322,15 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         return content.toString();
     }
 
-    private OMElement getSynapseAPIFromSwagger(File swaggerFile) throws SwaggerDefinitionProcessingException {
+    private OMElement getSynapseAPIFromSwagger(String swaggerYaml, String apiName) throws SwaggerDefinitionProcessingException {
         RestApiAdmin restAPIAdmin = new RestApiAdmin();
-        String swaggerJson = getSwaggerFileAsJSON(swaggerFile);
 
         OMElement element;
         try {
-            String generatedAPI = restAPIAdmin.generateAPIFromSwagger(swaggerJson);
+            String generatedAPI = restAPIAdmin.generateAPIFromSwagger(swaggerYaml, false);
             // Inject the publish swagger property to the synapse api artifact
             OMFactory fac = OMAbstractFactory.getOMFactory();
             element = AXIOMUtil.stringToOM(generatedAPI);
-            element.addAttribute(fac.createOMAttribute("publishSwagger",
-                    fac.createOMNamespace(XMLConfigConstants.NULL_NAMESPACE, ""),
-                    REGISTRY_RESOURCE_PATH + "/" + artifactModel.getSwaggerFile().getName().replaceAll(" ", "_")));
             generatedAPI = element.toString();
         } catch (APIException | XMLStreamException e) {
             log.error("Exception occured while generating API using swagger file", e);
@@ -341,19 +339,19 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         return element;
     }
 
-    private String getAPINameFromSwagger(File swaggerFile) throws SwaggerDefinitionProcessingException {
-        String apiName = "";
-        try {
-            String swaggerJson = getSwaggerFileAsJSON(swaggerFile);
-            JSONObject fullSwaggerJSON = new JSONObject(swaggerJson);
-            JSONObject swaggerInfo = (JSONObject) fullSwaggerJSON.get("info");
-            apiName = swaggerInfo.get("title").toString();
-        } catch (Exception e) {
-            log.error("Exception occured while extracting API name from the swagger file", e);
-            throw new SwaggerDefinitionProcessingException("Invalid swagger definition.", e);
-        }
-        return apiName;
-    }
+//    private String getAPINameFromSwagger(File swaggerFile) throws SwaggerDefinitionProcessingException {
+//        String apiName = "";
+//        try {
+//            String swaggerJson = getSwaggerFileAsJSON(swaggerFile);
+//            JSONObject fullSwaggerJSON = new JSONObject(swaggerJson);
+//            JSONObject swaggerInfo = (JSONObject) fullSwaggerJSON.get("info");
+//            apiName = swaggerInfo.get("title").toString();
+//        } catch (Exception e) {
+//            log.error("Exception occured while extracting API name from the swagger file", e);
+//            throw new SwaggerDefinitionProcessingException("Invalid swagger definition.", e);
+//        }
+//        return apiName;
+//    }
 
     public void copyImportFile(IContainer importLocation, boolean isNewAritfact, String groupId) throws IOException {
         File importFile = getModel().getImportFile();
@@ -416,22 +414,40 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         Object object = yaml.load(yamlSource);
         return JSONValue.toJSONString(object);
     }
-
-    private String getSwaggerFileAsJSON(File swaggerFile) {
-        String swaggerJson = "";
-        String fileContent = "";
+    
+    public static String convertJSONtoYaml(String jsonSource) throws Exception {
         try {
-            fileContent = new String(Files.readAllBytes(Paths.get(swaggerFile.getAbsolutePath())));
-            if (FilenameUtils.getExtension((swaggerFile).getAbsolutePath()).equals("yaml")) {
-                // Convert to JSON if the file extension is yaml
-                swaggerJson = convertYamlToJson(fileContent);
-            } else if (FilenameUtils.getExtension(swaggerFile.getAbsolutePath()).equals("json")) {
-                swaggerJson = fileContent;
+            Yaml yaml = new Yaml();
+            Map<String, Object> obj = yaml.load(jsonSource);
+            DumperOptions options = new DumperOptions();
+            options.setIndent(2);
+            options.setPrettyFlow(true);
+            options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+            Yaml output = new Yaml(options);
+            return output.dump(obj);
+        } catch (Exception e) {
+            log.error("Exception while converting json to yaml", e);
+            throw new Exception(e);
+        } 
+    }
+
+    private String getSwaggerFileAsYAML(File swaggerFile, String apiName) {
+        String swaggerContent = "";
+        try {
+            swaggerContent = new String(Files.readAllBytes(Paths.get(swaggerFile.getAbsolutePath())));
+            if (FilenameUtils.getExtension(swaggerFile.getAbsolutePath()).equals("json")) {
+                swaggerContent = convertJSONtoYaml(swaggerContent);
             }
+            RestApiAdmin restAPIAdmin = new RestApiAdmin();
+            swaggerContent = restAPIAdmin.updateNameInSwagger(apiName, swaggerContent);
         } catch (IOException e) {
             log.error("Exception occured while reading swagger file", e);
+        } catch (APIException e) {
+            log.error("Exception occured while updating swagger name", e);
+        } catch (Exception e) {
+            log.error("Exception occured while converting swagger JSON to YAML", e);
         }
-        return swaggerJson;
+        return swaggerContent;
     }
 
     /*

@@ -76,7 +76,9 @@ public class ProjectFieldController extends AbstractFieldController {
 			if (!value.toString().equals("none") && apiArtifactModel.getVersion().isEmpty()) {
 				throw new FieldValidationException("Please enter a valid version");
 			}
-		}
+		} else if (modelProperty.equals(ArtifactConstants.ID_SWAGGER_API_NAME)) {
+            CommonFieldValidator.validateArtifactName(value);
+        }
 	}
 	
 	public List<String> getUpdateFields(String modelProperty, ProjectDataModel model) {
@@ -91,13 +93,16 @@ public class ProjectFieldController extends AbstractFieldController {
 			updateFields.add("api.version");
 		} else if (modelProperty.equals("create.reg.prj")) {
 			updateFields.add("swagger.reg.location");
-		}
+		} else if (modelProperty.equals(ArtifactConstants.ID_API_SWAGGER_FILE)) {
+            updateFields.add(ArtifactConstants.ID_SWAGGER_API_NAME);
+        }
 		return updateFields;
 	}
 	
 	public boolean isReadOnlyField(String modelProperty, ProjectDataModel model) {
 		boolean readOnlyField = super.isReadOnlyField(modelProperty, model);
-		if (modelProperty.equals(ArtifactConstants.ID_SAVE_LOCATION)) {
+		if (modelProperty.equals(ArtifactConstants.ID_SAVE_LOCATION) 
+		        || modelProperty.equals(ArtifactConstants.ID_API_SWAGGER_FILE)) {
 			readOnlyField = true;
 		}
 	    return readOnlyField;

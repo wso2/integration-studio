@@ -55,7 +55,7 @@ import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
 import org.apache.synapse.mediators.template.TemplateParam;
-import org.apache.synapse.rest.API;
+import org.apache.synapse.api.API;
 import org.apache.synapse.task.TaskDescriptionSerializer;
 import org.apache.xml.serialize.OutputFormat;
 import org.apache.xml.serialize.XMLSerializer;
@@ -322,7 +322,7 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
         return transformer.createMessageStore(messageProcessorFormPage);
     }
 
-    private org.apache.synapse.rest.API transformAPI(SynapseAPI visualAPI) throws Exception {
+    private org.apache.synapse.api.API transformAPI(SynapseAPI visualAPI) throws Exception {
         TransformationInfo info = new TransformationInfo();
         info.getTransformedMediators().clear();
         SynapseConfiguration configuration = new SynapseConfiguration();;

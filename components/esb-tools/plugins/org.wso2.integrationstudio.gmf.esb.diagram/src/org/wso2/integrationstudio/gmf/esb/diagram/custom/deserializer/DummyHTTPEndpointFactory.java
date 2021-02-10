@@ -34,7 +34,7 @@ import org.apache.synapse.endpoints.oauth.AuthorizationCodeHandler;
 import org.apache.synapse.endpoints.oauth.ClientCredentialsHandler;
 import org.apache.synapse.endpoints.oauth.OAuthConstants;
 import org.apache.synapse.endpoints.oauth.OAuthHandler;
-import org.apache.synapse.rest.RESTConstants;
+import org.apache.synapse.api.RESTConstants;
 
 import javax.xml.namespace.QName;
 import java.util.Properties;

@@ -17,7 +17,7 @@
 package org.wso2.integrationstudio.gmf.esb.internal.persistence.custom;
 
 import org.apache.synapse.MessageContext;
-import org.apache.synapse.rest.AbstractHandler;
+import org.apache.synapse.api.AbstractHandler;
 
 public class DummyHandler extends AbstractHandler {
     private String className;

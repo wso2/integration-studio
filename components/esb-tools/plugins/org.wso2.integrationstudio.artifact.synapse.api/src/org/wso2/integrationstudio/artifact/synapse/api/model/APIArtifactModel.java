@@ -17,6 +17,7 @@
 package org.wso2.integrationstudio.artifact.synapse.api.model;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,10 @@ import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMException;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -32,6 +37,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.json.simple.JSONValue;
 import org.wso2.integrationstudio.artifact.synapse.api.Activator;
 import org.wso2.integrationstudio.artifact.synapse.api.util.ArtifactConstants;
 import org.wso2.integrationstudio.esb.core.utils.SynapseEntryType;
@@ -43,6 +49,7 @@ import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
 import org.wso2.integrationstudio.platform.core.project.model.ProjectDataModel;
+import org.yaml.snakeyaml.Yaml;
 
 import static org.wso2.integrationstudio.platform.core.utils.Constants.*;
 
@@ -64,6 +71,7 @@ public class APIArtifactModel extends ProjectDataModel {
 	private List<OMElement> selectedAPIsList;
 	private String publishSwagger = "";
 	private File importSwaggerFile;
+	private String swaggerAPIName = "";
 	
 	public APIArtifactModel() {
 		availableAPIslist = new ArrayList<OMElement>();
@@ -150,7 +158,15 @@ public class APIArtifactModel extends ProjectDataModel {
 		this.swaggerRegistryLocation = swaggerRegistryLocation;
 	}
 	
-	@Override
+	public String getSwaggerAPIName() {
+        return swaggerAPIName;
+    }
+
+    public void setSwaggerAPIName(String swaggerAPIName) {
+        this.swaggerAPIName = swaggerAPIName;
+    }
+
+    @Override
 	public Object getModelPropertyValue(String key) {
 		Object modelPropertyValue = super.getModelPropertyValue(key);
 		if (modelPropertyValue == null) {
@@ -183,7 +199,9 @@ public class APIArtifactModel extends ProjectDataModel {
 				modelPropertyValue = getVersion();
 			} else if (key.equals(ArtifactConstants.ID_SWAGGER_FILE_REGISTRY_LOCATION)) {
 				modelPropertyValue = getSwaggerRegistryLocation();
-			}
+			}  else if (key.equals(ArtifactConstants.ID_SWAGGER_API_NAME)) {
+                modelPropertyValue = getSwaggerAPIName();
+            }
 		}
 	 
 		return modelPropertyValue;
@@ -266,9 +284,12 @@ public class APIArtifactModel extends ProjectDataModel {
 			setVersion(data.toString());
 		} else if (key.equals(ArtifactConstants.ID_API_SWAGGER_FILE)) {
 			setSwaggerFile((File) data);
+			setSwaggerAPIName(readAPINameFromSwaggerFile((File) data));
 		} else if (key.equals(ArtifactConstants.ID_SWAGGER_FILE_REGISTRY_LOCATION)) {
 			setSwaggerRegistryLocation((IProject)data);
-		}
+		} else if (key.equals(ArtifactConstants.ID_SWAGGER_API_NAME)) {
+            setSwaggerAPIName(data.toString());
+        }
 		
 		return result;
 	}
@@ -321,6 +342,44 @@ public class APIArtifactModel extends ProjectDataModel {
 		return newAPIsSaveLocation;
 	}
 	
+	private String readAPINameFromSwaggerFile(File swaggerFile) {
+	    if (swaggerFile.exists()){
+            try {
+                String content = FileUtils.readFileToString(swaggerFile, "UTF-8").trim();
+                JSONObject jsonObject;
+                String fileExtension = FilenameUtils.getExtension((swaggerFile).getAbsolutePath());
+                if (fileExtension.equals("yaml") || fileExtension.equals("yml")) {
+                    content = convertYamlToJson(content);
+                    jsonObject = new JSONObject(content);
+                } else {
+                    jsonObject = new JSONObject(content);
+                }
+                return jsonObject.getJSONObject("info").getString("title");
+            } catch (FileNotFoundException er) {
+                log.error("Exception while reading given swagger file", er);
+            } catch (JSONException e) {
+                log.error("Exception while reading given swagger file", e);
+            } catch (IOException e) {
+                log.error("Exception while reading given swagger file", e);
+            } catch (Exception e) {
+                log.error("Exception while reading given swagger file", e);
+            }
+        }
+	    
+	    return "";
+	}
+	
+	/**
+     * Converts a given YAML content to JSON.
+     * 
+     * @param yamlSource yaml content
+     * @return converted JSON content
+     */
+    public static String convertYamlToJson(String yamlSource) {
+        Yaml yaml = new Yaml();
+        Object object = yaml.load(yamlSource);
+        return JSONValue.toJSONString(object);
+    }
 	
 	public void setAvailableAPIslist(List<OMElement> availableAPIslist) {
 		this.availableAPIslist = availableAPIslist;

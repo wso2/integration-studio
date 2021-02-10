@@ -120,5 +120,5 @@ Bundle-ClassPath: .,
  lib/asm-5.0.3.jar,
  icons/,
  lib/jackson-dataformat-yaml-2.9.2.jar,
- lib/snakeyaml-1.18.jar
+ lib/snakeyaml-1.27.jar
 Automatic-Module-Name: org.wso2.integrationstudio.docker.distribution

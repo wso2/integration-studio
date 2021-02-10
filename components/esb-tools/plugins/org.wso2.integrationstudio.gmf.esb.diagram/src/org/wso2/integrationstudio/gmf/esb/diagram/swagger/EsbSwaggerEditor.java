@@ -25,6 +25,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.swt.browser.Browser;
@@ -44,6 +45,7 @@ public class EsbSwaggerEditor extends AbstractWebBasedEditor {
     private static final String WEB_APP_PATH = "swagger-editor";
     private static final String INDEX_HTML_FILE_NAME = "index.html";
     public static final int EMBEDDED_JETTY_SERVER_PORT = 7774;
+    private  boolean isDirty;
 
     public EsbSwaggerEditor() {
         super();
@@ -109,6 +111,19 @@ public class EsbSwaggerEditor extends AbstractWebBasedEditor {
         return browser;
     }
 
+    public void setDirty(boolean isDirty) {
+        super.setDirty(isDirty);
+    }
+    
+    public boolean isDirty() {
+        return isDirty;
+    } 
+    
+    @Override
+    public void doSave(IProgressMonitor arg0) {
+        super.doSaveSwagger(arg0);
+    }
+    
     /**
      * This method gets port value retrieved from preferences
      * 
@@ -119,5 +134,4 @@ public class EsbSwaggerEditor extends AbstractWebBasedEditor {
         IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
         return rootNode.get("portDetails", String.valueOf(FunctionServerConstants.EMBEDDED_SERVER_PORT));
     }
-
 }

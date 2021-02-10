@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediation.commons-4.7.80.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rest.api-4.7.80.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/swagger-annotations-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/swagger-core-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/swagger-models-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/swagger-parser-2.0.20.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-lang3-3.11.0.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-dataformat-yaml-2.12.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/snakeyaml-1.27.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/smooks-1.5.1.wso2v4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-core-2.1.7-wso2v142.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-datatype-jsr310-2.12.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-annotations-2.12.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-databind-2.12.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-core-2.12.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/validation-api-1.1.0.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-commons-2.1.7-wso2v142.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.cache-4.7.67.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediation.commons-4.7.51.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rest.api-4.7.34.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/asm-1.0.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/json-smart-2.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/snakeyaml-1.18.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-dataformat-yaml-2.9.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediation.initializer-4.7.33.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.oauth.mediator_4.6.142.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam_4.6.142.jar"/>
@@ -24,9 +37,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/synapse-tasks_2.1.7.wso2v142.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-samples_2.1.7.wso2v142.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-nhttp-transport_2.1.7.wso2v142.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-commons_2.1.7.wso2v142.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-fix-transport_2.1.7.wso2v142.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v142.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/json-path-2.4.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.tools.core.5.2.8.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.mediation_4.4.9.jar"/>
@@ -52,10 +63,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/geronimo-stax-api_1.0_spec_1.0.1.wso2v2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/gson-2.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/httpcore_4.3.3.wso2v1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-annotations_2.6.1.wso2v1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-core_2.6.1.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-core-asl-1.8.10.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-databind_2.6.1.wso2v3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-mapper-asl-1.8.10.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jakarta-oro-2.0.8.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jettison_1.3.4.wso2v1.jar"/>
@@ -102,7 +110,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/rampart-core_1.6.1.wso2v21.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/rampart-policy_1.6.1.wso2v21.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/rampart-trust_1.6.1.wso2v21.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/smooks_1.5.1.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/spring.framework_3.2.9.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/svnkit-1.7.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/tomcat-catalina-ha_7.0.69.wso2v1.jar"/>

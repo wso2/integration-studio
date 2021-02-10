@@ -1239,12 +1239,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                 }
                 // persist updated swagger source in registry publisher
                 if (swaggerPublisherInRegistry != null && swaggerPublisherInRegistry.exists()) {
+                    String swaggerCommonSource = swaggerSource;
                     if (isYamlFile(swaggerPublisherInRegistry)) {
-                        swaggerSource = convertJSONtoYaml(swaggerSource);
+                        swaggerCommonSource = convertJSONtoYaml(swaggerCommonSource);
                     }
-                    FileUtils.writeStringToFile(swaggerPublisherInRegistry, swaggerSource);
+                    FileUtils.writeStringToFile(swaggerPublisherInRegistry, swaggerCommonSource);
                 }
                 swaggerlEditor.doSave(monitor);
+                oldSwaggerSource = swaggerSource;
             } catch (Exception e) {
                 sourceDirty = true;
                 log.error("Error while saving the swagger file", e);

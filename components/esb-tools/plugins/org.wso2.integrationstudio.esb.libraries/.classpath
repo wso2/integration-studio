@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediation.commons-4.7.80.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rest.api-4.7.80.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swagger-annotations-1.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swagger-core-1.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swagger-models-1.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swagger-parser-2.0.20.wso2v1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediation.commons-4.7.79.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rest.api-4.7.79.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-lang3-3.11.0.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-dataformat-yaml-2.12.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/snakeyaml-1.27.jar"/>

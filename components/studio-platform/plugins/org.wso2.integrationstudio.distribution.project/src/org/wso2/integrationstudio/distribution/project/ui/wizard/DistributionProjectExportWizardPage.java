@@ -81,6 +81,7 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 	private Composite container;
 	private IFile selectedProjectPomFileRes;
 	private IProject selectedCompositeProject;
+	private String METADATA_TYPE = "synapse/metadata";
 
 	// need to get the server roles via an extension point without hard-coding
 	private final String[] serverRoles = new String[] { "BusinessProcessServer",
@@ -346,6 +347,9 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 		nodesWithSubNodes.clear();
 		for (String project : getProjectList().keySet()) {
 			DependencyData dependencyData = getProjectList().get(project);
+			if (METADATA_TYPE.equals(dependencyData.getCApptype())) {
+			    continue;
+			}
 			Object parent = dependencyData.getParent();
 			Object self = dependencyData.getSelf();
 			if((parent==null) && (self!=null)){

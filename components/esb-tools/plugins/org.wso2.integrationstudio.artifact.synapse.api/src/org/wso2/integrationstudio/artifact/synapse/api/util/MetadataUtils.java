@@ -18,9 +18,8 @@ package org.wso2.integrationstudio.artifact.synapse.api.util;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.api.API;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -30,39 +29,34 @@ import org.eclipse.core.runtime.Path;
  * This class will create a metadata file an API with the given details.
  */
 public class MetadataUtils {
-    public static void createMedataFile(IContainer metadataLocation, API synapseApi,
-                                        String fileName) throws IOException {
+    public static void createMedataFile(IContainer metadataLocation, API synapseApi, String fileName)
+            throws IOException {
 
         IFile swaggerFile = metadataLocation.getFile(new Path(fileName + "_metadata.yaml"));
 
         File newFile = new File(swaggerFile.getLocationURI().getPath());
         if (!newFile.exists()) {
             try (FileWriter fw = new FileWriter(newFile);) {
-
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-                Date now = new Date();
-                String strDate = sdf.format(now);
                 StringBuilder builder = new StringBuilder();
 
+                String version = synapseApi.getVersion();
+                if (StringUtils.isEmpty(version)) {
+                    version = "1.0.0";
+                }
                 // Creating the YAML file
                 builder.append("---\n");
-                builder.append("id: \"id1\"\n");
-                builder.append("name : \"").append(synapseApi.getName()).append("\"\n");
-                builder.append("displayName : \"").append(synapseApi.getName()).append("\"\n");
+                builder.append("key: \"").append(synapseApi.getAPIName()).append("-").append(version).append("\"\n");
+                builder.append("name : \"").append(synapseApi.getAPIName()).append("\"\n");
+                builder.append("displayName : \"").append(synapseApi.getAPIName()).append("\"\n");
                 builder.append("description: \"Sample API\"\n");
-                builder.append("version: \"1.0.0\"\n");
-                builder.append("serviceUrl: \"http://localhost:8290/").append(synapseApi.getName())
-                       .append("\"\n");
+                builder.append("version: \"").append(version).append("\"\n");
+                builder.append("serviceUrl: \"https://{host}:{port}").append(synapseApi.getContext()).append("\"\n");
+                builder.append("definitionType: \"OAS3\"\n");
                 builder.append("securityType: \"BASIC\"\n");
                 builder.append("mutualSSLEnabled: false\n");
-                builder.append("usage: 1\n");
-                builder.append("createdTime: \"").append(strDate).append("\"\n");
-                builder.append("lastUpdatedTime: \"").append(strDate).append("\"\n");
-                builder.append("etag: \"32c890312cfadc94a7c1153f65a4f100\"");
                 fw.write(builder.toString());
             }
         }
     }
 
 }
-

@@ -327,7 +327,7 @@ public class MockServiceFormPage extends AbstractEsbFormPage {
                 TableItem tableItem = resourceTable.getSelection()[0];
 
                 if (tableItem != null) {
-                    String resourceKey = tableItem.getText(1) + tableItem.getText(2);
+                    String resourceKey = tableItem.getText(0) + tableItem.getText(1);
                     resourceHolder.setMockServiceResourceUpdate(true);
                     resourceHolder.setSelectedMockResourceKey(resourceKey);
 

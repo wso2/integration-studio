@@ -142,11 +142,18 @@ public class CarExportHandler extends ProjectArtifactHandler {
 
         OMFactory factory = OMAbstractFactory.getOMFactory();
         OMElement artifactsDocRoot = factory.createOMElement(new QName("artifacts"));
+        OMElement metadaDocRoot = factory.createOMElement(new QName("metadata"));
         OMElement artifactElt = factory.createOMElement(new QName("artifact"));
+        OMElement artifactEltMetadata = factory.createOMElement(new QName("artifact"));
         artifactElt.addAttribute("name", cAppName != null ? cAppName : parentPrj.getModel().getArtifactId(), null);
         artifactElt.addAttribute("version", cAppVersion != null ? cAppVersion : parentPrj.getModel().getVersion(),
                 null);
         artifactElt.addAttribute("type", "carbon/application", null);
+        
+        artifactEltMetadata.addAttribute("name", cAppName != null ? cAppName : parentPrj.getModel().getArtifactId(), null);
+        artifactEltMetadata.addAttribute("version", cAppVersion != null ? cAppVersion : parentPrj.getModel().getVersion(),
+                null);
+        artifactEltMetadata.addAttribute("type", "carbon/application", null);
 
         Collections.sort(artifactList);
 
@@ -165,13 +172,20 @@ public class CarExportHandler extends ProjectArtifactHandler {
                 FileUtils.copy(artifact.getResource().getLocation().toFile(),
                         new File(artifactDir, artifact.getFile()));
             }
-            artifactElt.addChild(createDependencyElement(factory, artifact));
+            if (!METADATA_TYPE.equals(artifact.getDependencyData().getCApptype())) {
+            	 artifactElt.addChild(createDependencyElement(factory, artifact));
+            }
+            artifactEltMetadata.addChild(createDependencyElement(factory, artifact));
             createArtifactXML(artifactDir, artifact);
         }
 
+        metadaDocRoot.addChild(artifactEltMetadata);
         artifactsDocRoot.addChild(artifactElt);
         File artifactsXml = new File(carResources, "artifacts.xml");
         XMLUtil.prettify(artifactsDocRoot, new FileOutputStream(artifactsXml));
+        
+        File metadataXml = new File(carResources, "metadata.xml");
+        XMLUtil.prettify(metadaDocRoot, new FileOutputStream(metadataXml));
 
         File tmpArchive = new File(tempProject,
                 project.getName().concat("_").concat(parentPrj.getVersion()).concat(".car"));

@@ -188,4 +188,36 @@
 			</includes>
 		</viewerContentBinding>
 	</extension>
+	
+	<!-- Adding "Registry Properties" item to the popup menu-->
+	<extension point="org.eclipse.ui.popupMenus">
+        <objectContribution objectClass="org.eclipse.core.resources.IResource"
+                            id="org.wso2.developerstudio.eclipse.artifact.registry.properties">
+            <action
+                label="Registry Properties"
+                icon="icons/registry-properties-16x16.png"
+                class="org.wso2.integrationstudio.artifact.registry.ui.actions.RegistryPropertiesRunAction"
+                id="org.wso2.integrationstudio.artifact.registry.properties">
+            </action>
+            <enablement>
+                <adapt type="org.eclipse.core.resources.IResource">
+                    <test
+                        property="org.wso2.integrationstudio.artifact.registry.propertytester.checkResourceType"
+                        value="true"
+                        forcePluginActivation="true">
+                    </test>
+                </adapt>
+            </enablement>
+        </objectContribution>
+    </extension>
+    <!-- Adding property tester to add "Registry Properties" item to the right click menu based on the resource type-->
+    <extension point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+            class="org.wso2.integrationstudio.artifact.registry.propertytester.RunResourcePropertyTester"
+            id="RegistryPropertyRunTester"
+            namespace="org.wso2.integrationstudio.artifact.registry.propertytester"
+            properties="checkResourceType"
+            type="org.eclipse.core.resources.IResource">
+        </propertyTester>
+    </extension>
 </plugin>

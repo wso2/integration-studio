@@ -17,7 +17,10 @@
 package org.wso2.integrationstudio.registry.core.utils;
 
 import java.io.File;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.axiom.om.OMDocument;
 import org.apache.axiom.om.OMElement;
@@ -33,9 +36,21 @@ public class RegistryResourceInfo extends AbstractXMLDoc {
 	private File base;
 	private String relativePath;
 	private String mediaType;
+	private Map<String, String> properties  = new HashMap<>();
+
 	private static final String RESOURCE_TAG_NAME = "item";
 	private static final String COLLECTION_TAG_NAME = "collection";
 	private static final String DUMP_TAG_NAME = "dump";
+	private static final String FILE = "file";
+	private static final String PATH = "path";
+	private static final String MEDIA_TYPE = "mediaType";
+	private static final String DIRECTORY = "directory";
+    private static final String PROPERTIES = "properties";
+    private static final String PROPERTY = "property";
+    private static final String KEY = "key";
+    private static final String VALUE = "value";
+    static final String EMPTY_STRING = "";
+
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	public String getRelativePath() {
@@ -78,31 +93,40 @@ public class RegistryResourceInfo extends AbstractXMLDoc {
 
 		if (documentElement.getLocalName().equals(RESOURCE_TAG_NAME)) {
 			setType(Constants.REGISTRY_RESOURCE);
-			List<OMElement> childElements = getChildElements(documentElement, "file");
+			List<OMElement> childElements = getChildElements(documentElement, FILE);
 			if (childElements.size() > 0) {
 				setRelativePath(childElements.get(0).getText());
 			}
 
-			List<OMElement> childElement = getChildElements(documentElement, "mediaType");
+			List<OMElement> childElement = getChildElements(documentElement, MEDIA_TYPE);
 			if (childElement.size() > 0) {
 				setMediaType(childElements.get(0).getText());
 			}
 		} else if (documentElement.getLocalName().equals(COLLECTION_TAG_NAME)) {
 			setType(Constants.REGISTRY_COLLECTION);
-			List<OMElement> childElements = getChildElements(documentElement, "directory");
+			List<OMElement> childElements = getChildElements(documentElement, DIRECTORY);
 			if (childElements.size() > 0) {
 				setRelativePath(childElements.get(0).getText());
 			}
 		} else if (documentElement.getLocalName().equals(DUMP_TAG_NAME)) {
 			setType(Constants.REGISTRY_DUMP);
-			List<OMElement> childElements = getChildElements(documentElement, "file");
+			List<OMElement> childElements = getChildElements(documentElement, FILE);
 			if (childElements.size() > 0) {
 				setRelativePath(childElements.get(0).getText());
 			}
 		}
-		List<OMElement> childElements = getChildElements(documentElement, "path");
+		List<OMElement> childElements = getChildElements(documentElement, PATH);
 		if (childElements.size() > 0) {
 			setPath(childElements.get(0).getText());
+		}
+		
+		List<OMElement> propertiesElement = getChildElements(documentElement, PROPERTIES);
+		if (!propertiesElement.isEmpty()) {
+			OMElement properties = propertiesElement.get(0);
+			List<OMElement> propertyList = getChildElements(properties, PROPERTY);
+			for (OMElement property : propertyList) {
+			    addProperty(getAttribute(property, KEY), getAttribute(property, VALUE));
+			}
 		}
 	}
 
@@ -124,17 +148,17 @@ public class RegistryResourceInfo extends AbstractXMLDoc {
 		OMElement documentElement;
 		// String content = "";
 		if (getType() == Constants.REGISTRY_RESOURCE) {
-			documentElement = getElement("item", "");
-			OMElement fileElement = getElement("file", getResourceBaseRelativePath());
-			OMElement mediaTypeElement = getElement("mediatype", getMediaType());
+			documentElement = getElement(RESOURCE_TAG_NAME, EMPTY_STRING);
+			OMElement fileElement = getElement(FILE, getResourceBaseRelativePath());
+			OMElement mediaTypeElement = getElement(MEDIA_TYPE, getMediaType());
 			documentElement.addChild(fileElement);
 			documentElement.addChild(mediaTypeElement);
 			// content = "\t<item>\n\t\t" + "<path>" + getPath()
 			// + "</path>\n\t\t" + "<file>" + getResourceBaseRelativePath()
 			// + "</file>\n\t" + "</item>";
 		} else if (getType() == Constants.REGISTRY_COLLECTION) {
-			documentElement = getElement("collection", "");
-			OMElement fileElement = getElement("directory", getResourceBaseRelativePath());
+			documentElement = getElement(COLLECTION_TAG_NAME, EMPTY_STRING);
+			OMElement fileElement = getElement(DIRECTORY, getResourceBaseRelativePath());
 			documentElement.addChild(fileElement);
 			// content = "\t<collection>\n\t\t" + "<path>"
 			// + getPath() + "</path>\n\t\t"
@@ -143,15 +167,26 @@ public class RegistryResourceInfo extends AbstractXMLDoc {
 			// + "</collection>\n";
 
 		} else {
-			documentElement = getElement("dump", "");
-			OMElement fileElement = getElement("file", getResourceBaseRelativePath());
+			documentElement = getElement(DUMP_TAG_NAME, EMPTY_STRING);
+			OMElement fileElement = getElement(FILE, getResourceBaseRelativePath());
 			documentElement.addChild(fileElement);
 			// content = "\t<item>\n\t\t" + "<path>" + getPath()
 			// + "</path>\n\t\t" + "<file>" + getResourceBaseRelativePath()
 			// + "</file>\n\t" + "</item>";
 		}
-		OMElement fileElement = getElement("path", getPath());
+		OMElement fileElement = getElement(PATH, getPath());
 		documentElement.addChild(fileElement);
+		
+		OMElement propertiesElement = getElement(PROPERTIES, EMPTY_STRING);
+
+		for (Map.Entry<String, String> property : getProperties().entrySet()) {
+			OMElement propertyElement = getElement(PROPERTY, EMPTY_STRING);
+			addAttribute(propertyElement, KEY, property.getKey());
+			addAttribute(propertyElement, VALUE, property.getValue());
+			propertiesElement.addChild(propertyElement);
+		}
+		documentElement.addChild(propertiesElement);
+        
 		return documentElement;
 	}
 
@@ -190,4 +225,16 @@ public class RegistryResourceInfo extends AbstractXMLDoc {
 	public String getMediaType() {
 		return mediaType;
 	}
+	
+	public Map<String, String> getProperties() {
+        return Collections.unmodifiableMap(properties);
+    }
+
+    public void addProperty(String key, String value) {
+        this.properties.put(key, value);
+    }
+
+    public void removeProperty(String key) {
+        this.properties.remove(key);
+    }
 }

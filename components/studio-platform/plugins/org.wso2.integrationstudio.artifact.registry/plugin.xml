@@ -190,15 +190,18 @@
 	</extension>
 	
 	<!-- Adding "Registry Properties" item to the popup menu-->
-	<extension point="org.eclipse.ui.popupMenus">
-        <objectContribution objectClass="org.eclipse.core.resources.IResource"
-                            id="org.wso2.developerstudio.eclipse.artifact.registry.properties">
-            <action
-                label="Registry Properties"
-                icon="icons/registry-properties-16x16.png"
-                class="org.wso2.integrationstudio.artifact.registry.ui.actions.RegistryPropertiesRunAction"
-                id="org.wso2.integrationstudio.artifact.registry.properties">
-            </action>
+	<extension
+            point="org.eclipse.ui.newWizards">
+        <wizard name="Registry Properties"
+                class="org.wso2.integrationstudio.artifact.registry.ui.wizard.RegistryPropertiesCreationWizard"
+                id="org.wso2.integrationstudio.artifact.registry.properties"
+                icon="icons/registry-properties-16x16.png">
+        </wizard>
+    </extension>
+    <extension point="org.eclipse.ui.navigator.navigatorContent">
+        <commonWizard type="new"
+                      menuGroupId="a-group-registry.properties"
+                      wizardId="org.wso2.integrationstudio.artifact.registry.properties">
             <enablement>
                 <adapt type="org.eclipse.core.resources.IResource">
                     <test
@@ -208,8 +211,9 @@
                     </test>
                 </adapt>
             </enablement>
-        </objectContribution>
+        </commonWizard>
     </extension>
+	
     <!-- Adding property tester to add "Registry Properties" item to the right click menu based on the resource type-->
     <extension point="org.eclipse.core.expressions.propertyTesters">
         <propertyTester

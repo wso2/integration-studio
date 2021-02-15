@@ -88,6 +88,7 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
                          }
                      }
                  }
+                // adding to fileList to remove entries from artifact.xml file 
                 for (IFile file : metaFileList) {
                     fileList.add(file);
                 }

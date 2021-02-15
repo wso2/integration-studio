@@ -34,6 +34,7 @@ import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
@@ -42,6 +43,7 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.QualifiedName;
@@ -173,11 +175,15 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         for (ListData data : projectListData) {
             DependencyData dependencyData = (DependencyData) data.getData();
             projectList.put(data.getCaption(), dependencyData);
-            String caption = data.getCaption();
-            String keyword = caption.substring(StringUtils.indexOf(caption, ":=") + 2, caption.length());
-            projectListToDependencyMapping.put(keyword, caption);
-            artifactIdToDependencyMapping.put(((DependencyData) data.getData()).getDependency().getArtifactId(),
-                    keyword);
+            IProject mainProject = (IProject) ((DependencyData) data.getData()).getParent();
+            IFolder metaFolder = mainProject.getFolder("src/main/resources/metadata");
+            if (metaFolder.exists()) {
+                String caption = data.getCaption();
+                String keyword = caption.substring(StringUtils.indexOf(caption, ":=") + 2, caption.length());
+                projectListToDependencyMapping.put(keyword, caption);
+                artifactIdToDependencyMapping.put(((DependencyData) data.getData()).getDependency().getArtifactId(),
+                        keyword);
+            }
         }
 
 		parentPrj = MavenUtils.getMavenProject(pomFile);
@@ -621,24 +627,33 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         Dependency project = nodeData.getDependency();
         String serverRole = nodeData.getServerRole();
         String artifactInfo = DistProjectUtils.getArtifactInfoAsString(project);
-        
-        DependencyData dependencyData = projectList.get(projectListToDependencyMapping.get(artifactInfo));
-        if (API_TYPE.equals(dependencyData.getCApptype())) {
-            String medataName = project.getArtifactId() + METADATA_SUFFIX;
-            String swaggerName = project.getArtifactId() + SWAGGER_SUFFIX;
-            String metadataArtifactInfo = artifactIdToDependencyMapping.get(medataName);
-            String swaggerArtifactInfo = artifactIdToDependencyMapping.get(swaggerName);
-            Dependency metaDependency = projectList.get(projectListToDependencyMapping.get(metadataArtifactInfo))
-                    .getDependency();
-            Dependency swaggerDependency = projectList.get(projectListToDependencyMapping.get(swaggerArtifactInfo))
-                    .getDependency();
-            if (!getDependencyList().containsKey(metadataArtifactInfo)) {
-                serverRoleList.put(metadataArtifactInfo, "capp/" + serverRole);
-                getDependencyList().put(metadataArtifactInfo, metaDependency);
-            }
-            if (!getDependencyList().containsKey(swaggerArtifactInfo)) {
-                serverRoleList.put(swaggerArtifactInfo, "capp/" + serverRole);
-                getDependencyList().put(swaggerArtifactInfo, swaggerDependency);
+
+        if (projectListToDependencyMapping.containsKey(artifactInfo)) {
+            String dependencyMapping = projectListToDependencyMapping.get(artifactInfo);
+            if (projectList.containsKey(dependencyMapping)) {
+                DependencyData dependencyData = projectList.get(dependencyMapping);
+                if (API_TYPE.equals(dependencyData.getCApptype())) {
+                    String medataName = project.getArtifactId() + METADATA_SUFFIX;
+                    String swaggerName = project.getArtifactId() + SWAGGER_SUFFIX;
+                    String metadataArtifactInfo = artifactIdToDependencyMapping.get(medataName);
+                    String swaggerArtifactInfo = artifactIdToDependencyMapping.get(swaggerName);
+                    if (projectListToDependencyMapping.containsKey(metadataArtifactInfo)) {
+                        Dependency metaDependency = projectList
+                                .get(projectListToDependencyMapping.get(metadataArtifactInfo)).getDependency();
+                        if (metaDependency != null && !getDependencyList().containsKey(metadataArtifactInfo)) {
+                            serverRoleList.put(metadataArtifactInfo, "capp/" + serverRole);
+                            getDependencyList().put(metadataArtifactInfo, metaDependency);
+                        }
+                    }
+                    if (projectListToDependencyMapping.containsKey(swaggerArtifactInfo)) {
+                        Dependency swaggerDependency = projectList
+                                .get(projectListToDependencyMapping.get(swaggerArtifactInfo)).getDependency();
+                        if (swaggerDependency != null && !getDependencyList().containsKey(swaggerArtifactInfo)) {
+                            serverRoleList.put(swaggerArtifactInfo, "capp/" + serverRole);
+                            getDependencyList().put(swaggerArtifactInfo, swaggerDependency);
+                        }
+                    }
+                }
             }
         }
 

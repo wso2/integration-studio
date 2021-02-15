@@ -164,6 +164,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             String groupId = mavenGroupId + ".api";
             String metadataGroupId = mavenGroupId + ".metadata";
             IContainer metadataLocation = esbProject.getFolder("src/main/resources/metadata");
+            // no medatadata folder-> old project structure
+            boolean meadataEnabled = metadataLocation.exists();
             RestApiAdmin restAPIAdmin = new RestApiAdmin();
             String apiFileName = null;
             API synapseApi = null;
@@ -177,18 +179,17 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     isNewArtifact = false;
                 }
                 copyImportFile(location, isNewArtifact, groupId);
-              //-------------------------------------------------------------------------------------
-                File file = api.getLocation().toFile();
-                String fileContent = FileUtils.getContentAsString(file);
-                OMElement omElement = AXIOMUtil.stringToOM(fileContent);
-                synapseApi = APIFactory.createAPI(omElement);
-                apiFileName = api.getName().substring(0, api.getName().indexOf(".xml"));
-                String swagger = restAPIAdmin.generateSwaggerFromSynapseAPI(synapseApi, false);
-                IFile swaggerFile = metadataLocation.getFile(new Path(apiFileName + "_swagger.yaml"));
-                //FileUtils.createFile(swaggerFile.getLocation().toFile(), convertJsonToYaml(swagger));
-                FileUtils.createFile(swaggerFile.getLocation().toFile(), swagger);
-                createMetadataArtifactEntry(metadataLocation, apiFileName, metadataGroupId, true);
-                //-------------------------------------------------------------------------------------
+              if (meadataEnabled) {
+                  File file = api.getLocation().toFile();
+                  String fileContent = FileUtils.getContentAsString(file);
+                  OMElement omElement = AXIOMUtil.stringToOM(fileContent);
+                  synapseApi = APIFactory.createAPI(omElement);
+                  apiFileName = api.getName().substring(0, api.getName().indexOf(".xml"));
+                  String swagger = restAPIAdmin.generateSwaggerFromSynapseAPI(synapseApi, false);
+                  IFile swaggerFile = metadataLocation.getFile(new Path(apiFileName + "_swagger.yaml"));
+                  FileUtils.createFile(swaggerFile.getLocation().toFile(), swagger);
+                  createMetadataArtifactEntry(metadataLocation, apiFileName, metadataGroupId, true);
+              }
             } else if (getModel().getSelectedOption().equals("create.swagger")) {
                 String apiName = artifactModel.getSwaggerAPIName();
                 artifactModel.setName(apiName);
@@ -204,16 +205,13 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                         .replaceAll(Pattern.quote(File.separator), "/");
                 esbProjectArtifact.addESBArtifact(createArtifact(apiName, groupId, version, relativePath));
                 esbProjectArtifact.toFile();
-                // Copy swagger file to the registry
-                // createRegistryResource(artifactModel.getSwaggerRegistryLocation(), artifactModel.getSwaggerFile(),
-                //        REGISTRY_RESOURCE_PATH);
-              //------------------------------------------------------------------------------
-                synapseApi = APIFactory.createAPI(omElement);
-                IFile swaggerFile = metadataLocation.getFile(new Path(apiName + "_swagger.yaml"));
-                FileUtils.createFile(swaggerFile.getLocation().toFile(), swaggerYaml);
-                createMetadataArtifactEntry(metadataLocation, apiName, metadataGroupId, true);
-                apiFileName = apiName;
-                //----------------------------------------------------------------------------------------
+                if (meadataEnabled) {
+                    synapseApi = APIFactory.createAPI(omElement);
+                    IFile swaggerFile = metadataLocation.getFile(new Path(apiName + "_swagger.yaml"));
+                    FileUtils.createFile(swaggerFile.getLocation().toFile(), swaggerYaml);
+                    createMetadataArtifactEntry(metadataLocation, apiName, metadataGroupId, true);
+                    apiFileName = apiName;
+                }
             } else {
                 artifactFile = location.getFile(new Path(artifactModel.getName() + ".xml"));
                 File destFile = artifactFile.getLocation().toFile();
@@ -225,22 +223,23 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                         .replaceAll(Pattern.quote(File.separator), "/");
                 esbProjectArtifact
                         .addESBArtifact(createArtifact(artifactModel.getName(), groupId, version, relativePath));
-              //-------------------------------------------------------------------------
-                String fileContent = FileUtils.getContentAsString(destFile);
-                OMElement omElement = AXIOMUtil.stringToOM(fileContent);
-                synapseApi = APIFactory.createAPI(omElement);
-                String swagger = restAPIAdmin.generateSwaggerFromSynapseAPI(synapseApi, false);
-                IFile swaggerFile = metadataLocation.getFile(new Path(synapseApi.getAPIName() + "_swagger.yaml"));
-                //FileUtils.createFile(swaggerFile.getLocation().toFile(), convertJsonToYaml(swagger));
-                FileUtils.createFile(swaggerFile.getLocation().toFile(), swagger);
-                createMetadataArtifactEntry(metadataLocation, artifactModel.getName(), metadataGroupId, true);
-                apiFileName = artifactModel.getName();
-                //--------------------------------------------------------------------------
                 esbProjectArtifact.toFile();
+                if (meadataEnabled) {
+                    String fileContent = FileUtils.getContentAsString(destFile);
+                    OMElement omElement = AXIOMUtil.stringToOM(fileContent);
+                    synapseApi = APIFactory.createAPI(omElement);
+                    String swagger = restAPIAdmin.generateSwaggerFromSynapseAPI(synapseApi, false);
+                    IFile swaggerFile = metadataLocation.getFile(new Path(synapseApi.getAPIName() + "_swagger.yaml"));
+                    FileUtils.createFile(swaggerFile.getLocation().toFile(), swagger);
+                    createMetadataArtifactEntry(metadataLocation, artifactModel.getName(), metadataGroupId, true);
+                    apiFileName = artifactModel.getName();
+                }
             }
-            // Create the metadata file and update the artifact.xml file
-            MetadataUtils.createMedataFile(metadataLocation, synapseApi, apiFileName);
-            createMetadataArtifactEntry(metadataLocation, apiFileName, metadataGroupId, false);
+            if (meadataEnabled) {
+                // Create the metadata file and update the artifact.xml file
+                MetadataUtils.createMedataFile(metadataLocation, synapseApi, apiFileName);
+                createMetadataArtifactEntry(metadataLocation, apiFileName, metadataGroupId, false);
+            }
             esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
             for (File file : fileLst) {

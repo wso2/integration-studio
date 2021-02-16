@@ -21,6 +21,7 @@ import java.io.IOException;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.api.API;
+import org.apache.synapse.api.version.URLBasedVersionStrategy;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Path;
@@ -33,16 +34,20 @@ public class MetadataUtils {
             throws IOException {
 
         IFile swaggerFile = metadataLocation.getFile(new Path(fileName + "_metadata.yaml"));
+        String context = synapseApi.getContext();
+        String version = synapseApi.getVersion();
+        if (synapseApi.getVersionStrategy() instanceof URLBasedVersionStrategy
+                && !StringUtils.isEmpty(version)) {
+            context = context + "/" + version;
+        }
+        if (StringUtils.isEmpty(version)) {
+            version = "1.0.0";
+        }
 
         File newFile = new File(swaggerFile.getLocationURI().getPath());
         if (!newFile.exists()) {
             try (FileWriter fw = new FileWriter(newFile);) {
                 StringBuilder builder = new StringBuilder();
-
-                String version = synapseApi.getVersion();
-                if (StringUtils.isEmpty(version)) {
-                    version = "1.0.0";
-                }
                 // Creating the YAML file
                 builder.append("---\n");
                 builder.append("key: \"").append(synapseApi.getAPIName()).append("-").append(version).append("\"\n");
@@ -50,7 +55,7 @@ public class MetadataUtils {
                 builder.append("displayName : \"").append(synapseApi.getAPIName()).append("\"\n");
                 builder.append("description: \"Sample API\"\n");
                 builder.append("version: \"").append(version).append("\"\n");
-                builder.append("serviceUrl: \"https://{host}:{port}").append(synapseApi.getContext()).append("\"\n");
+                builder.append("serviceUrl: \"https://{host}:{port}").append(context).append("\"\n");
                 builder.append("definitionType: \"OAS3\"\n");
                 builder.append("securityType: \"BASIC\"\n");
                 builder.append("mutualSSLEnabled: false\n");

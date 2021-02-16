@@ -24,6 +24,8 @@ const DS_TYPE_RDBMS = "rdbms_ds";
 const DS_TYPE_CARBONDS = "carbon_ds";
 const DS_TYPE_MONGODB = "mongodb_ds";
 const DS_TYPE_CSV = "csv";
+const DS_TYPE_CASSANDRA = "cassandra";
+
 
 //// RDBMS Types
 const RDBMS_TYPE_DEFAULT = "default_ds";

@@ -82,6 +82,7 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 	private IFile selectedProjectPomFileRes;
 	private IProject selectedCompositeProject;
 	private String METADATA_TYPE = "synapse/metadata";
+	private String METADATA_FILE_TYPE = "yaml";
 
 	// need to get the server roles via an extension point without hard-coding
 	private final String[] serverRoles = new String[] { "BusinessProcessServer",
@@ -374,11 +375,14 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 			}
 		}
 
-		if (getMissingDependencyList().size() > 0) {
-			for (String dependency : getMissingDependencyList().keySet()) {
-				createNode(trDependencies, getMissingDependencyList().get(dependency), false);
-			}
-		}
+        if (getMissingDependencyList().size() > 0) {
+            for (String dependency : getMissingDependencyList().keySet()) {
+                Dependency missingDependency = getMissingDependencyList().get(dependency);
+                if (!METADATA_FILE_TYPE.equals(missingDependency.getType())) {
+                    createNode(trDependencies, missingDependency, false);
+                }
+            }
+        }
 		trDependencies.layout();
 	}
 	

@@ -142,7 +142,7 @@ public class CarExportHandler extends ProjectArtifactHandler {
 
         OMFactory factory = OMAbstractFactory.getOMFactory();
         OMElement artifactsDocRoot = factory.createOMElement(new QName("artifacts"));
-        OMElement metadaDocRoot = factory.createOMElement(new QName("metadata"));
+        OMElement metadaDocRoot = factory.createOMElement(new QName("artifacts"));
         OMElement artifactElt = factory.createOMElement(new QName("artifact"));
         OMElement artifactEltMetadata = factory.createOMElement(new QName("artifact"));
         artifactElt.addAttribute("name", cAppName != null ? cAppName : parentPrj.getModel().getArtifactId(), null);

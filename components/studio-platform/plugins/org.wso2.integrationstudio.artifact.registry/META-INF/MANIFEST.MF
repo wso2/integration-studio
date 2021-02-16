@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.ui,
  org.wso2.integrationstudio.libraries
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.eclipse.jdt.core,
+Import-Package: org.eclipse.core.expressions,
+ org.eclipse.jdt.core,
  org.eclipse.jface.text,
  org.eclipse.ui.forms,
  org.eclipse.ui.forms.editor,

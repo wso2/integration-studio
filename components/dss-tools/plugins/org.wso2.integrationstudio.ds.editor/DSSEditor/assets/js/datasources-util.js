@@ -121,6 +121,7 @@ function populateDSModal(root, dsId, metadata) {
                 $("#ds-dstype-select").val(DS_TYPE_RDBMS);
                 setVisibleDSTypeMongo(false);
                 setVisibleDSTypeCSV(false);
+                setVisibleDSTypeCassandra(false);
                 setVisibleDSTypeRDBMS(true);
 
                 if (rdbmsType === RDBMS_TYPE_DEFAULT) {
@@ -217,6 +218,7 @@ function populateDSModal(root, dsId, metadata) {
                 setVisibleDSTypeMongo(false);
                 setVisibleDSTypeRDBMS(false);
                 setVisibleDSTypeCSV(false);
+                setVisibleDSTypeCassandra(false);
                 setVisibleDSTypeCarbon(true);
 
                 // datasource name
@@ -309,6 +311,7 @@ function populateDSModal(root, dsId, metadata) {
                 setVisibleDSTypeRDBMS(false);
                 setVisibleDSTypeCarbon(false);
                 setVisibleDSTypeCSV(false);
+                setVisibleDSTypeCassandra(false);
                 setVisibleDSTypeMongo(true);
                 
             } else if (dsType === DS_TYPE_CSV) {
@@ -348,6 +351,205 @@ function populateDSModal(root, dsId, metadata) {
                 setVisibleDSTypeCarbon(false);
                 setVisibleDSTypeMongo(false);
                 setVisibleDSTypeCSV(true);
+                setVisibleDSTypeCassandra(false);
+
+            } else if (dsType === DS_TYPE_CASSANDRA) {
+
+                $("#ds-dstype-select").val(DS_TYPE_CASSANDRA);
+
+                $('#ds-cassandra-cassandra-servers-input').val(getDSConfigPropertyValue(properties, "cassandraServers"));
+
+                let keySpace = getDSConfigPropertyValue(properties, "keyspace");
+                if (keySpace != null && keySpace != "") {
+                    $('#ds-cassandra-keyspace-input').val(keySpace);
+                }
+
+                let cassandraPort = getDSConfigPropertyValue(properties, "port");
+                if (cassandraPort != null && cassandraPort != "") {
+                    $('#ds-cassandra-port-input').val(cassandraPort);
+                }
+
+                let cluster = getDSConfigPropertyValue(properties, "clusterName");
+                if (cluster != null && cluster != "") {
+                    $('#ds-cassandra-cluster-name-input').val(cluster);
+                }
+
+                let compression = getDSConfigPropertyValue(properties, "compression");
+                if (compression != null && compression != "") {
+                    $('#ds-cassandra-compression-select').val(compression);
+                }
+
+                let username = getDSConfigPropertyValue(properties, "username");
+                if (username != null && username != "") {
+                    $('#ds-cassandra-user-name-input').val(username);
+                }
+
+                let password = getDSConfigPropertyValue(properties, "password");
+                if (password != null && password != "") {
+                    $('#ds-cassandra-password-input').val(password);
+                }
+
+                let loadBalancingPolicy = getDSConfigPropertyValue(properties, "loadBalancingPolicy");
+                if (loadBalancingPolicy != null && loadBalancingPolicy != "") {
+                    $('#ds-cassandra-loadbalancing-policy-select').val(loadBalancingPolicy);
+                }
+
+                let dataCenter = getDSConfigPropertyValue(properties, "dataCenter");
+                if (dataCenter != null && dataCenter != "") {
+                    $('#ds-cassandra-data-center-input').val(dataCenter);
+                }
+
+                let remoteDCs = getDSConfigPropertyValue(properties, "allowRemoteDCsForLocalConsistencyLevel");
+                if (remoteDCs != null && remoteDCs != "") {
+                    $('#ds-cassandra-allow-remotedcs-select').val(remoteDCs);
+                }
+
+                let jmx = getDSConfigPropertyValue(properties, "enableJMXReporting");
+                if (jmx != null && jmx != "") {
+                    $('#ds-cassandra-enable-jmx-input').val(jmx);
+                }
+
+                let matrics = getDSConfigPropertyValue(properties, "enableMetrics");
+                if (matrics != null && matrics != "") {
+                    $('#ds-cassandra-enable-matrics-input').val(matrics);
+                }
+
+                let localConnections = getDSConfigPropertyValue(properties, "localCoreConnectionsPerHost");
+                if (localConnections != null && localConnections != "") {
+                    $('#ds-cassandra-local-core-connections-input').val(localConnections);
+                }
+
+                let remoteConenctions = getDSConfigPropertyValue(properties, "remoteCoreConnectionsPerHost");
+                if (remoteConenctions != null && remoteConenctions != "") {
+                    $('#ds-cassandra-remote-core-connections-input').val(remoteConenctions);
+                }
+
+                let localMax = getDSConfigPropertyValue(properties, "localMaxConnectionsPerHost");
+                if (localMax != null && localMax != "") {
+                    $('#ds-cassandra-local-max-host-input').val(localMax);
+                }
+
+                let remoteMax = getDSConfigPropertyValue(properties, "remoteMaxConnectionsPerHost");
+                if (remoteMax != null && remoteMax != "") {
+                    $('#ds-cassandra-remote-max-host-input').val(remoteMax);
+                }
+
+                let localNewConn = getDSConfigPropertyValue(properties, "localNewConnectionThreshold");
+                if (localNewConn != null && localNewConn != "") {
+                    $('#ds-cassandra-local-new-connection-input').val(localNewConn);
+                }
+
+                let remoteNewConn = getDSConfigPropertyValue(properties, "remoteNewConnectionThreshold");
+                if (remoteNewConn != null && remoteNewConn != "") {
+                    $('#ds-cassandra-remote-new-connection-input').val(remoteNewConn);
+                }
+
+                let localMaxReq = getDSConfigPropertyValue(properties, "localMaxRequestsPerConnection");
+                if (localMaxReq != null && localMaxReq != "") {
+                    $('#ds-cassandra-local-max-connection-input').val(localMaxReq);
+                }
+
+                let remoteMaxReq = getDSConfigPropertyValue(properties, "remoteMaxRequestsPerConnection");
+                if (remoteMaxReq != null && remoteMaxReq != "") {
+                    $('#ds-cassandra-remote-max-connection-input').val(remoteMaxReq);
+                }
+
+                let protocolVersion = getDSConfigPropertyValue(properties, "protocolVersion");
+                if (protocolVersion != null && protocolVersion != "") {
+                    $('#ds-cassandra-protocol-version-select').val(protocolVersion);
+                }
+
+                let consistencyLevel = getDSConfigPropertyValue(properties, "consistencyLevel");
+                if (consistencyLevel != null && consistencyLevel != "") {
+                    $('#ds-cassandra-consistency-level-select').val(consistencyLevel);
+                }
+
+                let fetchSize = getDSConfigPropertyValue(properties, "fetchSize");
+                if (fetchSize != null && fetchSize != "") {
+                    $('#ds-cassandra-fetch-size-input').val(fetchSize);
+                }
+
+                let serialConsistencyLevel = getDSConfigPropertyValue(properties, "serialConsistencyLevel");
+                if (serialConsistencyLevel != null && serialConsistencyLevel != "") {
+                    $('#ds-cassandra-serial-consistency-level-select').val(serialConsistencyLevel);
+                }
+
+                let reconnectionPolicy = getDSConfigPropertyValue(properties, "reconnectionPolicy");
+                if (reconnectionPolicy != null && reconnectionPolicy != "") {
+                    $('#ds-cassandra-reconnection-policy-select').val(reconnectionPolicy);
+                }
+
+                let delay = getDSConfigPropertyValue(properties, "constantReconnectionPolicyDelay");
+                if (delay != null && delay != "") {
+                    $('#ds-cassandra-policy-delay-input').val(delay);
+                }
+
+                let baseDelay = getDSConfigPropertyValue(properties, "exponentialReconnectionPolicyBaseDelay");
+                if (baseDelay != null && baseDelay != "") {
+                    $('#ds-cassandra-policy-base-dealay-input').val(baseDelay);
+                }
+
+                let maxDelay = getDSConfigPropertyValue(properties, "exponentialReconnectionPolicyMaxDelay");
+                if (maxDelay != null && maxDelay != "") {
+                    $('#ds-cassandra-policy-max-dealay-input').val(maxDelay);
+                }
+
+                let retryPolicy = getDSConfigPropertyValue(properties, "retryPolicy");
+                if (retryPolicy != null && retryPolicy != "") {
+                    $('#ds-cassandra-retry-policy-select').val(retryPolicy);
+                }
+
+                let timeout = getDSConfigPropertyValue(properties, "connectionTimeoutMillis");
+                if (timeout != null && timeout != "") {
+                    $('#ds-cassandra-connection-timeout-input').val(timeout);
+                }
+
+                let keepAlive = getDSConfigPropertyValue(properties, "keepAlive");
+                if (keepAlive != null && keepAlive != "") {
+                    $('#ds-cassandra-keep-alive-selec').val(keepAlive);
+                }
+
+                let readTimeout = getDSConfigPropertyValue(properties, "readTimeoutMillis");
+                if (readTimeout != null && readTimeout != "") {
+                    $('#ds-cassandra-read-timeout-input').val(readTimeout);
+                }
+
+                let buffer = getDSConfigPropertyValue(properties, "receiverBufferSize");
+                if (buffer != null && buffer != "") {
+                    $('#ds-cassandra-receive-buffer-size-input').val(buffer);
+                }
+
+                let sendBufferSize = getDSConfigPropertyValue(properties, "sendBufferSize");
+                if (sendBufferSize != null && sendBufferSize != "") {
+                    $('#ds-cassandra-send-buffer-size-input').val(sendBufferSize);
+                }
+
+                let reuseAddress = getDSConfigPropertyValue(properties, "reuseAddress");
+                if (reuseAddress != null && reuseAddress != "") {
+                    $('#ds-cassandra-reuse-address-select').val(reuseAddress);
+                }
+
+                let soLinger = getDSConfigPropertyValue(properties, "soLinger");
+                if (soLinger != null && soLinger != "") {
+                    $('#ds-cassandra-so-linger-input').val(soLinger);
+                }
+
+                let tcpNoDelay = getDSConfigPropertyValue(properties, "tcpNoDelay");
+                if (tcpNoDelay != null && tcpNoDelay != "") {
+                    $('#ds-cassandra-tcp-no-delay-select').val(tcpNoDelay);
+                }
+
+                let enableSSL = getDSConfigPropertyValue(properties, "enableSSL");
+                if (enableSSL != null && enableSSL != "") {
+                    $('#ds-cassandra-enable-ssl-select').val(enableSSL);
+                }
+
+                setVisibleDSTypeRDBMS(false);
+                setVisibleDSTypeCarbon(false);
+                setVisibleDSTypeMongo(false);
+                setVisibleDSTypeCSV(false);
+                setVisibleDSTypeCassandra(true);
+
             }
 
             // dynamic auth details
@@ -581,6 +783,195 @@ function processDSInputData(root, data, deleteIfExists) {
     	if (headerRow != "") {
     		properties.push(createTextNode(root, createPropertyNode(root, "csv_headerrow"), headerRow));
     	}
+    } else if (dsType === "cassandra") {
+
+        properties.push(createTextNode(root, createPropertyNode(root, "cassandraServers"), data['ds-cassandra-cassandra-servers-input']));
+
+        let keySpace = data['ds-cassandra-keyspace-input'];
+        if (keySpace != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "keyspace"), keySpace));
+        }
+
+        let cassandraPort = data['ds-cassandra-port-input'];
+        if (cassandraPort != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "port"), cassandraPort));
+        }
+
+        let cluster = data['ds-cassandra-cluster-name-input'];
+        if (cluster != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "clusterName"), cluster));
+        }
+
+        let compression = data['ds-cassandra-compression-select'];
+        if (compression != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "compression"), compression));
+        }
+
+        let username = data['ds-cassandra-user-name-input'];
+        if (username != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "username"), username));
+        }
+
+        let password = data['ds-cassandra-password-input'];
+        if (password != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "password"), password));
+        }
+
+        let loadBalancingPolicy = data['ds-cassandra-loadbalancing-policy-select'];
+        if (loadBalancingPolicy != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "loadBalancingPolicy"), loadBalancingPolicy));
+        }
+
+        let dataCenter = data['ds-cassandra-data-center-input'];
+        if (dataCenter != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "dataCenter"), dataCenter));
+        }
+
+        let remoteDCs = data['ds-cassandra-allow-remotedcs-select'];
+        if (remoteDCs != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "allowRemoteDCsForLocalConsistencyLevel"), remoteDCs));
+        }
+
+        let jmx = data['ds-cassandra-enable-jmx-input'];
+        if (jmx != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "enableJMXReporting"), jmx));
+        }
+
+        let matrics = data['ds-cassandra-enable-matrics-input'];
+        if (matrics != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "enableMetrics"), matrics));
+        }
+
+        let localConnections = data['ds-cassandra-local-core-connections-input'];
+        if (localConnections != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "localCoreConnectionsPerHost"), localConnections));
+        }
+
+        let remoteConenctions = data['ds-cassandra-remote-core-connections-input'];
+        if (remoteConenctions != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "remoteCoreConnectionsPerHost"), remoteConenctions));
+        }
+
+        let localMax = data['ds-cassandra-local-max-host-input'];
+        if (localMax != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "localMaxConnectionsPerHost"), localMax));
+        }
+
+        let remoteMax = data['ds-cassandra-remote-max-host-input'];
+        if (remoteMax != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "remoteMaxConnectionsPerHost"), remoteMax));
+        }
+
+        let localNewConn = data['ds-cassandra-local-new-connection-input'];
+        if (localNewConn != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "localNewConnectionThreshold"), localNewConn));
+        }
+
+        let remoteNewConn = data['ds-cassandra-remote-new-connection-input'];
+        if (remoteNewConn != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "remoteNewConnectionThreshold"), remoteNewConn));
+        }
+
+        let localMaxReq = data['ds-cassandra-local-max-connection-input'];
+        if (localMaxReq != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "localMaxRequestsPerConnection"), localMaxReq));
+        }
+
+        let remoteMaxReq = data['ds-cassandra-remote-max-connection-input'];
+        if (remoteMaxReq != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "remoteMaxRequestsPerConnection"), remoteMaxReq));
+        }
+
+        let protocolVersion = data['ds-cassandra-protocol-version-select'];
+        if (protocolVersion != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "protocolVersion"), protocolVersion));
+        }
+
+        let consistencyLevel = data['ds-cassandra-consistency-level-select'];
+        if (consistencyLevel != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "consistencyLevel"), consistencyLevel));
+        }
+
+        let fetchSize = data['ds-cassandra-fetch-size-input'];
+        if (fetchSize != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "fetchSize"), fetchSize));
+        }
+
+        let serialConsistencyLevel = data['ds-cassandra-serial-consistency-level-select'];
+        if (serialConsistencyLevel != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "serialConsistencyLevel"), serialConsistencyLevel));
+        }
+
+        let reconnectionPolicy = data['ds-cassandra-reconnection-policy-select'];
+        if (reconnectionPolicy != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "reconnectionPolicy"), reconnectionPolicy));
+        }
+
+        let delay = data['ds-cassandra-policy-delay-input'];
+        if (delay != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "constantReconnectionPolicyDelay"), delay));
+        }
+
+        let baseDelay = data['ds-cassandra-policy-base-dealay-input'];
+        if (baseDelay != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "exponentialReconnectionPolicyBaseDelay"), baseDelay));
+        }
+
+        let maxDelay = data['ds-cassandra-policy-max-dealay-input'];
+        if (maxDelay != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "exponentialReconnectionPolicyMaxDelay"), maxDelay));
+        }
+
+        let retryPolicy = data['ds-cassandra-retry-policy-select'];
+        if (retryPolicy != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "retryPolicy"), retryPolicy));
+        }
+
+        let timeout = data['ds-cassandra-connection-timeout-input'];
+        if (timeout != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "connectionTimeoutMillis"), timeout));
+        }
+
+        let keepAlive = data['ds-cassandra-keep-alive-selec'];
+        if (keepAlive != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "keepAlive"), keepAlive));
+        }
+
+        let readTimeout = data['ds-cassandra-read-timeout-input'];
+        if (readTimeout != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "readTimeoutMillis"), readTimeout));
+        }
+
+        let buffer = data['ds-cassandra-receive-buffer-size-input'];
+        if (buffer != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "receiverBufferSize"), buffer));
+        }
+
+        let sendBufferSize = data['ds-cassandra-send-buffer-size-input'];
+        if (sendBufferSize != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "sendBufferSize"), sendBufferSize));
+        }
+
+        let reuseAddress = data['ds-cassandra-reuse-address-select'];
+        if (reuseAddress != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "reuseAddress"), reuseAddress));
+        }
+
+        let soLinger = data['ds-cassandra-so-linger-input'];
+        if (soLinger != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "soLinger"), soLinger));
+        }
+
+        let tcpNoDelay = data['ds-cassandra-tcp-no-delay-select'];
+        if (tcpNoDelay != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "tcpNoDelay"), tcpNoDelay));
+        }
+
+        let enableSSL = data['ds-cassandra-enable-ssl-select'];
+        if (enableSSL != "") {
+            properties.push(createTextNode(root, createPropertyNode(root, "enableSSL"), enableSSL));
+        }
+
     }
 
     if (dynamicAuthClass !== "" && dynamicAuthClass !== undefined) {

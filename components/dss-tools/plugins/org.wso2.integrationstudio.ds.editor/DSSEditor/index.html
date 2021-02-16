@@ -599,6 +599,7 @@
                                     <option value="mongodb_ds">MongoDB</option>
                                     <option value="csv">CSV</option>
                                     <option value="carbon_ds">Carbon Datasource</option>
+                                    <option value="cassandra">Cassandra</option>
                                 </select>
                                 <select class="form-control" value="default" required="" id="ds-dstype-2-select"
                                     name="ds-dstype-2-select">
@@ -808,6 +809,353 @@
                                     name="ds-header-row-input"><label class="mb-0" for="ds-header-row-input">Header
                                     Row</label></div>
                         </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-cassandra-servers-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-cassandra-servers-input"
+                                    name="ds-cassandra-cassandra-servers-input" required=""><label class="mb-0"
+                                    for="ds-cassandra-cassandra-servers-input">Cassandra
+                                    Servers</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-keyspace-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-keyspace-input"
+                                    name="ds-cassandra-keyspace-input"><label class="mb-0" for="ds-cassandra-keyspace-input">Keyspace</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-port-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-port-input"
+                                    name="ds-cassandra-port-input"><label class="mb-0" for="ds-cassandra-port-input">Port</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-cluster-name-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-cluster-name-input"
+                                    name="ds-cassandra-cluster-name-input"><label class="mb-0" for="ds-cassandra-cluster-name-input">Cluster
+                                    Name</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-compression-input">
+                            <div class="form-group">
+                                <label>Compression</label> <select class="form-control" value="" id="ds-cassandra-compression-select"
+                                    name="ds-cassandra-compression-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="LZ4">LZ4</option>
+                                    <option value="NONE">NONE</option>
+                                    <option value="SNAPPY">SNAPPY</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-user-name-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-user-name-input"
+                                    name="ds-cassandra-user-name-input"><label class="mb-0" for="ds-cassandra-user-name-input">User
+                                    Name</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-password-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-password-input"
+                                    name="ds-cassandra-password-input"><label class="mb-0" for="ds-cassandra-password-input">Password</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-loadbalancing-policy-input">
+                            <div class="form-group">
+                                <label>Compression</label> <select class="form-control" value="" id="ds-cassandra-loadbalancing-policy-select"
+                                    name="ds-cassandra-loadbalancing-policy-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="RoundRobinPolicy">RoundRobinPolicy</option>
+                                    <option value="DCAwareRoundRobinPolicy">DCAwareRoundRobinPolicy</option>
+                                    <option value="LatencyAwareRoundRobinPolicy">LatencyAwareRoundRobinPolicy</option>
+                                    <option value="TokenAwareRoundRobinPolicy">TokenAwareRoundRobinPolicy</option>
+                                    <option value="TokenAwareDCAwareRoundRobinPolicy">TokenAwareDCAwareRoundRobinPolicy</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-data-center-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-data-center-input"
+                                    name="ds-cassandra-data-center-input"><label class="mb-0" for="ds-cassandra-data-center-input">Cassandra
+                                    Data Center</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-allow-remotedcs-input">
+                            <div class="form-group">
+                                <label>Allow RemoteDCs For Local Consistency Level</label> <select class="form-control" value=""
+                                    id="ds-cassandra-allow-remotedcs-select" name="ds-cassandra-allow-remotedcs-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-enable-jmx-input">
+                            <div class="form-group">
+                                <label>Enable JMX Reporting</label> <select class="form-control" value="" id="ds-cassandra-enable-jmx-select"
+                                    name="ds-cassandra-enable-jmx-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-enable-matrics-input">
+                            <div class="form-group">
+                                <label>Enable Metrics</label> <select class="form-control" value="" id="ds-cassandra-enable-matrics-select"
+                                    name="ds-cassandra-enable-matrics-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-local-core-connections-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-local-core-connections-input"
+                                    name="ds-cassandra-local-core-connections-input"><label class="mb-0"
+                                    for="ds-cassandra-local-core-connections-input">Local
+                                    Core Connections Per Host</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-remote-core-connections-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-remote-core-connections-input"
+                                    name="ds-cassandra-remote-core-connections-input"><label class="mb-0"
+                                    for="ds-cassandra-remote-core-connections-input">Remote
+                                    Core Connections Per Host</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-local-max-host-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-local-max-host-input"
+                                    name="ds-cassandra-local-max-host-input"><label class="mb-0" for="ds-cassandra-local-max-host-input">Local
+                                    Max.Connections Per Host</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-remote-max-host-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-remote-max-host-input"
+                                    name="ds-cassandra-remote-max-host-input"><label class="mb-0"
+                                    for="ds-cassandra-remote-max-host-input">Remote
+                                    Max.Connections Per Host</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-local-new-connection-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-local-new-connection-input"
+                                    name="ds-cassandra-local-new-connection-input"><label class="mb-0"
+                                    for="ds-cassandra-local-new-connection-input">Local
+                                    New Connection Threshold</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-remote-new-connection-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-remote-new-connection-input"
+                                    name="ds-cassandra-remote-new-connection-input"><label class="mb-0"
+                                    for="ds-cassandra-remote-new-connection-input">Remote
+                                    New Connection Threshold</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-local-max-connection-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-local-max-connection-input"
+                                    name="ds-cassandra-local-max-connection-input"><label class="mb-0"
+                                    for="ds-cassandra-local-max-connection-input">Local
+                                    Max Requests Per Connection</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-remote-max-connection-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-remote-max-connection-input"
+                                    name="ds-cassandra-remote-max-connection-input"><label class="mb-0"
+                                    for="ds-cassandra-remote-max-connection-input">Remote
+                                    Max Requests Per Connection</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-protocol-version-input">
+                            <div class="form-group">
+                                <label>Protocol Version</label> <select class="form-control" value="" id="ds-cassandra-protocol-version-select"
+                                    name="ds-cassandra-protocol-version-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-consistency-level-input">
+                            <div class="form-group">
+                                <label>Consistency Level</label> <select class="form-control" value=""
+                                    id="ds-cassandra-consistency-level-select" name="ds-cassandra-consistency-level-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="ANY">ANY</option>
+                                    <option value="EACH_QUORUM">EACH_QUORUM</option>
+                                    <option value="LOCAL_ONE">LOCAL_ONE</option>
+                                    <option value="LOCAL_QUORUM">LOCAL_QUORUM</option>
+                                    <option value="LOCAL_SERIAL">LOCAL_SERIAL</option>
+                                    <option value="ONE">ONE</option>
+                                    <option value="QUORUM">QUORUM</option>
+                                    <option value="SERIAL">SERIAL</option>
+                                    <option value="THREE">THREE</option>
+                                    <option value="TWO">TWO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-fetch-size-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-fetch-size-input"
+                                    name="ds-cassandra-fetch-size-input"><label class="mb-0" for="ds-cassandra-fetch-size-input">Fetch
+                                    Size</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-serial-consistency-level-input">
+                            <div class="form-group">
+                                <label>Serial Consistency Level</label> <select class="form-control" value=""
+                                    id="ds-cassandra-serial-consistency-level-select" name="ds-cassandra-serial-consistency-level-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="ANY">ANY</option>
+                                    <option value="EACH_QUORUM">EACH_QUORUM</option>
+                                    <option value="LOCAL_ONE">LOCAL_ONE</option>
+                                    <option value="LOCAL_QUORUM">LOCAL_QUORUM</option>
+                                    <option value="LOCAL_SERIAL">LOCAL_SERIAL</option>
+                                    <option value="ONE">ONE</option>
+                                    <option value="QUORUM">QUORUM</option>
+                                    <option value="SERIAL">SERIAL</option>
+                                    <option value="THREE">THREE</option>
+                                    <option value="TWO">TWO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-reconnection-policy-input">
+                            <div class="form-group">
+                                <label>Serial Consistency Level</label> <select class="form-control" value=""
+                                    id="ds-cassandra-reconnection-policy-select" name="ds-cassandra-reconnection-policy-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="ConstantReconnectionPolicy">ConstantReconnectionPolicy</option>
+                                    <option value="ExponentialReconnectionPolicy">ExponentialReconnectionPolicy</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-policy-dealay-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-policy-delay-input"
+                                    name="ds-cassandra-policy-delay-input"><label class="mb-0" for="ds-cassandra-policy-dealay-input">Constant
+                                    Reconnection Policy Delay</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-policy-base-dealay-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-policy-base-dealay-input"
+                                    name="ds-cassandra-policy-base-dealay-input"><label class="mb-0"
+                                    for="ds-cassandra-policy-base-dealay-input">Exponential
+                                    Reconnection Policy Base Delay</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-policy-max-dealay-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-policy-max-dealay-input"
+                                    name="ds-cassandra-policy-max-dealay-input"><label class="mb-0"
+                                    for="ds-cassandra-policy-max-dealay-input">Exponential
+                                    Reconnection Policy Max. Delay</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-retry-policy-input">
+                            <div class="form-group">
+                                <label>Serial Consistency Level</label> <select class="form-control" value=""
+                                    id="ds-cassandra-retry-policy-select" name="ds-cassandra-retry-policy-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="DefaultRetryPolicy">DefaultRetryPolicy</option>
+                                    <option value="DowngradingConsistencyRetryPolicy">DowngradingConsistencyRetryPolicy</option>
+                                    <option value="FallthroughRetryPolicy">FallthroughRetryPolicy</option>
+                                    <option value="LoggingDefaultRetryPolicy">LoggingDefaultRetryPolicy</option>
+                                    <option value="LoggingDowngradingConsistencyRetryPolicy">LoggingDowngradingConsistencyRetryPolicy</option>
+                                    <option value="LoggingFallthroughRetryPolicy">LoggingFallthroughRetryPolicy</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-connection-timeout-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-connection-timeout-input"
+                                    name="ds-cassandra-connection-timeout-input"><label class="mb-0"
+                                    for="ds-cassandra-connection-timeout-input">Connection
+                                    Timeout</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-keep-alive-input">
+                            <div class="form-group">
+                                <label>Keep Alive</label> <select class="form-control" value="" id="ds-cassandra-keep-alive-select"
+                                    name="ds-cassandra-keep-alive-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-read-timeout-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-read-timeout-input"
+                                    name="ds-cassandra-read-timeout-input"><label class="mb-0" for="ds-cassandra-read-timeout-input">Read
+                                    Timeout</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-receive-buffer-size-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-receive-buffer-size-input"
+                                    name="ds-cassandra-receive-buffer-size-input"><label class="mb-0"
+                                    for="ds-cassandra-receive-buffer-size-input">Receive
+                                    Buffer Size</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-send-buffer-size-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-send-buffer-size-input"
+                                    name="ds-cassandra-send-buffer-size-input"><label class="mb-0"
+                                    for="ds-cassandra-send-buffer-size-input">Send
+                                    Buffer Size</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-reuse-address-input">
+                            <div class="form-group">
+                                <label>Reuse Address</label> <select class="form-control" value="" id="ds-cassandra-reuse-address-select"
+                                    name="ds-cassandra-reuse-address-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-cassandra-so-linger-inputgroup" class="field inputgroup">
+                                <input class="form-control" type="text" placeholder=" " id="ds-cassandra-so-linger-input"
+                                    name="ds-cassandra-so-linger-input"><label class="mb-0" for="ds-cassandra-so-linger-input">So
+                                    Linger</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-tcp-no-delay-input">
+                            <div class="form-group">
+                                <label>TCP no Delay</label> <select class="form-control" value="" id="ds-cassandra-tcp-no-delay-select"
+                                    name="ds-cassandra-tcp-no-delay-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-cassandra-enable-ssl-input">
+                            <div class="form-group">
+                                <label>Enable SSL</label> <select class="form-control" value="" id="ds-cassandra-enable-ssl-select"
+                                    name="ds-cassandra-enable-ssl-select">
+                                    <option value="">-- Select --</option>
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="form-check" id="ds-enable-odata-check-inputgroup"><input
                                     class="form-check-input" type="checkbox" id="ds-enable-odata-check"

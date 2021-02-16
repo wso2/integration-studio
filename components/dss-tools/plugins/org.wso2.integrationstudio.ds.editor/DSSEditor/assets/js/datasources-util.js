@@ -9,6 +9,11 @@ function openDSModal(isEditEnabled) {
     } else {
         $("#ds-modal-header").text("Create Datasource");
         $("#ds-ds-id-input").prop('disabled', false);
+		setVisibleDSTypeMongo(false);
+		setVisibleDSTypeRDBMS(true);
+		setVisibleDSTypeCSV(false);
+		setVisibleDSTypeCassandra(false);
+		setVisibleDSTypeCarbon(true);
     }
 
     $('#ds-add-edit-ds-modal').modal({backdrop: 'static', show: false});  
@@ -406,12 +411,12 @@ function populateDSModal(root, dsId, metadata) {
 
                 let jmx = getDSConfigPropertyValue(properties, "enableJMXReporting");
                 if (jmx != null && jmx != "") {
-                    $('#ds-cassandra-enable-jmx-input').val(jmx);
+                    $('#ds-cassandra-enable-jmx-select').val(jmx);
                 }
 
                 let matrics = getDSConfigPropertyValue(properties, "enableMetrics");
                 if (matrics != null && matrics != "") {
-                    $('#ds-cassandra-enable-matrics-input').val(matrics);
+                    $('#ds-cassandra-enable-matrics-select').val(matrics);
                 }
 
                 let localConnections = getDSConfigPropertyValue(properties, "localCoreConnectionsPerHost");
@@ -506,7 +511,7 @@ function populateDSModal(root, dsId, metadata) {
 
                 let keepAlive = getDSConfigPropertyValue(properties, "keepAlive");
                 if (keepAlive != null && keepAlive != "") {
-                    $('#ds-cassandra-keep-alive-selec').val(keepAlive);
+                    $('#ds-cassandra-keep-alive-select').val(keepAlive);
                 }
 
                 let readTimeout = getDSConfigPropertyValue(properties, "readTimeoutMillis");
@@ -832,12 +837,12 @@ function processDSInputData(root, data, deleteIfExists) {
             properties.push(createTextNode(root, createPropertyNode(root, "allowRemoteDCsForLocalConsistencyLevel"), remoteDCs));
         }
 
-        let jmx = data['ds-cassandra-enable-jmx-input'];
+        let jmx = data['ds-cassandra-enable-jmx-select'];
         if (jmx != "") {
             properties.push(createTextNode(root, createPropertyNode(root, "enableJMXReporting"), jmx));
         }
 
-        let matrics = data['ds-cassandra-enable-matrics-input'];
+        let matrics = data['ds-cassandra-enable-matrics-select'];
         if (matrics != "") {
             properties.push(createTextNode(root, createPropertyNode(root, "enableMetrics"), matrics));
         }
@@ -932,7 +937,7 @@ function processDSInputData(root, data, deleteIfExists) {
             properties.push(createTextNode(root, createPropertyNode(root, "connectionTimeoutMillis"), timeout));
         }
 
-        let keepAlive = data['ds-cassandra-keep-alive-selec'];
+        let keepAlive = data['ds-cassandra-keep-alive-select'];
         if (keepAlive != "") {
             properties.push(createTextNode(root, createPropertyNode(root, "keepAlive"), keepAlive));
         }

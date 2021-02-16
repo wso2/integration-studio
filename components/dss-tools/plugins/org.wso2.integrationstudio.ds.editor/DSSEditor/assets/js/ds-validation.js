@@ -3,6 +3,7 @@ $(document).ready(function(){
     setVisibleDSTypeCarbon(false);
     setVisibleDSTypeMongo(false);
     setVisibleDSTypeCSV(false);
+    setVisibleDSTypeCassandra(false);
     setVisibleDSTypeRDBMS(true);
     
     //--- Start of Data Source Type ---//
@@ -11,26 +12,36 @@ $(document).ready(function(){
         	setVisibleDSTypeRDBMS(false);
         	setVisibleDSTypeMongo(false);
         	setVisibleDSTypeCSV(false);
+            setVisibleDSTypeCassandra(false);
             setVisibleDSTypeCarbon(true);
             
         } else if ($(this).val() == "rdbms_ds") {
             setVisibleDSTypeMongo(false);
             setVisibleDSTypeCarbon(false);
             setVisibleDSTypeCSV(false);
+            setVisibleDSTypeCassandra(false);
             setVisibleDSTypeRDBMS(true);
             
         } else if ($(this).val() == "mongodb_ds") {
             setVisibleDSTypeRDBMS(false);
             setVisibleDSTypeCarbon(false);
             setVisibleDSTypeCSV(false);
+            setVisibleDSTypeCassandra(false);
             setVisibleDSTypeMongo(true);
             
         } else if ($(this).val() == "csv") {
             setVisibleDSTypeRDBMS(false);
             setVisibleDSTypeCarbon(false);
             setVisibleDSTypeMongo(false);
+            setVisibleDSTypeCassandra(false);
             setVisibleDSTypeCSV(true);
-            
+
+        } else if ($(this).val() == "cassandra") {
+            setVisibleDSTypeRDBMS(false);
+            setVisibleDSTypeCarbon(false);
+            setVisibleDSTypeMongo(false);
+            setVisibleDSTypeCSV(false);
+            setVisibleDSTypeCassandra(true);
         }
     });
 
@@ -52,6 +63,48 @@ $(document).ready(function(){
     //--- End of Data Source Type 2 ---//
         
 });
+
+function setVisibleDSTypeCassandra(isVisible) {
+    $('#ds-cassandra-cassandra-servers-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-keyspace-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-port-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-cluster-name-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-compression-input').toggle(isVisible);
+    $('#ds-cassandra-user-name-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-password-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-password-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-loadbalancing-policy-input').toggle(isVisible);
+    $('#ds-cassandra-data-center-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-allow-remotedcs-input').toggle(isVisible);
+    $('#ds-cassandra-enable-jmx-input').toggle(isVisible);
+    $('#ds-cassandra-enable-matrics-input').toggle(isVisible);
+    $('#ds-cassandra-local-core-connections-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-remote-core-connections-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-local-max-host-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-remote-max-host-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-local-new-connection-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-remote-new-connection-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-local-max-connection-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-remote-max-connection-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-protocol-version-input').toggle(isVisible);
+    $('#ds-cassandra-consistency-level-input').toggle(isVisible);
+    $('#ds-cassandra-fetch-size-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-serial-consistency-level-input').toggle(isVisible);
+    $('#ds-cassandra-reconnection-policy-input').toggle(isVisible);
+    $('#ds-cassandra-policy-dealay-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-policy-base-dealay-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-policy-max-dealay-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-retry-policy-input').toggle(isVisible);
+    $('#ds-cassandra-connection-timeout-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-keep-alive-input').toggle(isVisible);
+    $('#ds-cassandra-read-timeout-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-receive-buffer-size-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-send-buffer-size-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-reuse-address-input').toggle(isVisible);
+    $('#ds-cassandra-so-linger-inputgroup').toggle(isVisible);
+    $('#ds-cassandra-tcp-no-delay-input').toggle(isVisible);
+    $('#ds-cassandra-enable-ssl-input').toggle(isVisible);
+}
 
 function setVisibleDSTypeCSV(isVisible) {
 	$('#ds-csv-file-location-inputgroup').toggle(isVisible);

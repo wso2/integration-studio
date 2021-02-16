@@ -121,9 +121,10 @@ $(document).ready(function ($) {
     
     $("#ds-add-save-btn").click(function (e) {
     	//check validation
-    	let RDBMS_DS_TYPE = "rdbms_ds";
-    	let MONGO_DB_TYPE = "mongodb_ds";
-    	let CSV_DB_TYPE = "csv";
+        let RDBMS_DS_TYPE = "rdbms_ds";
+        let MONGO_DB_TYPE = "mongodb_ds";
+        let CSV_DB_TYPE = "csv";
+        let DS_TYPE_CASSANDRA = "cassandra";
     	
     	if ($("#ds-ds-id-input").val().trim() == "") {
     		showErrorNotification("danger", "Please provide a datasource identifier", 3000, "ds-notification-alert-holder");
@@ -175,6 +176,11 @@ $(document).ready(function ($) {
             return false;
     	}
     	
+        if ($("#ds-dstype-select").val() == DS_TYPE_CASSANDRA && $("#ds-cassandra-cassandra-servers-input").val().trim() == "") {
+            showErrorNotification("danger", "Please provide Cassandra Servers", 3000, "ds-notification-alert-holder");
+            return false;
+        }
+
         e.preventDefault();
         let result = addDataSource(root);
 

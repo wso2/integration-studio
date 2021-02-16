@@ -1261,6 +1261,10 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         if (isSaveAllow) {
             sourceDirty = false;
         }
+        
+        if (swaggerlEditor != null) {
+            doSaveSwaggerSources(monitor);
+        }
 
         getEditor(0).doSave(monitor);
         // Since Complex endpoint type editors dose not have associated xml
@@ -1334,6 +1338,77 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         });
     }
     
+    private void doSaveSwaggerSources(IProgressMonitor monitor) {
+        String currentSource;
+        if (getActivePage() == SOURCE_VIEW_PAGE_INDEX) {
+            currentSource = sourceEditor.getDocument().get();
+        } else {
+            try {
+                EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
+                EsbServer server = diagram.getServer();
+                currentSource = EsbModelTransformer.instance.designToSource(server);
+            } catch (Exception e) {
+                MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
+                        "Error in saving swagger definition in source files : " + e.getMessage());
+                return;
+            }
+        }
+        
+        try {
+            if (currentSource == null) {
+                return;
+            }
+            
+            RestApiAdmin restAPIAdmin = new RestApiAdmin();
+            OMElement element = AXIOMUtil.stringToOM(currentSource);
+            API api = APIFactory.createAPI(element);
+            File swaggerDefinitonInMetadata = getCurrentAPISwaggerDefinitionInMetadataDirectory();
+            File swaggerPublisherInRegistry = getSwaggerJsonFromRegistry(api);
+            if (!isYamlFile(swaggerPublisherInRegistry) && !isJSONFile(swaggerPublisherInRegistry)) {
+                MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
+                        "Error in saving swagger definition in source files : "
+                        + "registry resource should be in JSON or YAML format");
+            }
+            String currentSwaggerYaml = null;
+            if (swaggerDefinitonInMetadata != null) {
+                currentSwaggerYaml = FileUtils.readFileToString(swaggerDefinitonInMetadata, "UTF-8");
+            }
+            String swaggerDefinition;
+            // check API has a swagger publisher in the registry
+            if (currentSwaggerYaml == null) {
+                if (swaggerPublisherInRegistry != null && swaggerPublisherInRegistry.exists()) {
+                    currentSwaggerYaml = FileUtils.readFileToString(swaggerPublisherInRegistry, "UTF-8");
+                    if (isJSONFile(swaggerPublisherInRegistry)) {
+                        currentSwaggerYaml = convertJSONtoYaml(currentSwaggerYaml);
+                    }
+                }
+            }
+            if (currentSwaggerYaml != null) {
+                // generate a swagger content using the current swagger content and API source
+                swaggerDefinition = restAPIAdmin.generateUpdatedSwaggerFromAPI(currentSwaggerYaml, false, true,
+                        api);
+            } else {
+                return;
+            }
+
+            // persist updated swagger source in metadata
+            if (swaggerDefinitonInMetadata != null && swaggerDefinitonInMetadata.exists()) {
+                FileUtils.writeStringToFile(swaggerDefinitonInMetadata, convertJSONtoYaml(swaggerDefinition));
+            }
+            // persist updated swagger source in registry publisher
+            if (swaggerPublisherInRegistry != null && swaggerPublisherInRegistry.exists()) {
+                String swaggerCommonSource = swaggerDefinition;
+                if (isYamlFile(swaggerPublisherInRegistry)) {
+                    swaggerCommonSource = convertJSONtoYaml(swaggerCommonSource);
+                }
+                FileUtils.writeStringToFile(swaggerPublisherInRegistry, swaggerCommonSource);
+            }
+        } catch (Exception e) {
+            MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
+                    "Error in saving swagger definition in source files : " + e.getMessage());
+        }
+    }
+    
     public static String convertJSONtoYaml(String jsonSource) throws Exception {
         try {
             Yaml yaml = new Yaml();
@@ -1366,6 +1441,11 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
     private boolean isYamlFile(File file) {
         String fileExtension = FilenameUtils.getExtension(file.getName());
         return fileExtension.equals("yaml") || fileExtension.equals("yml");
+    }
+    
+    private boolean isJSONFile(File file) {
+        String fileExtension = FilenameUtils.getExtension(file.getName());
+        return fileExtension.equals("json");
     }
 
     private void deleteMarkers() {

@@ -123,42 +123,23 @@ public class RegistryPropertiesCreationWizardPage extends WizardPage {
         data.top = new FormAttachment(lblDockerProjectName, 15);
         data.left = new FormAttachment(2);
         data.right = new FormAttachment(98);
+        data.bottom = new FormAttachment(98);
         registryPropertiesContainer.setLayoutData(data);
 
         // Registry Properties table
         Label lblParameters = new Label(registryPropertiesContainer, SWT.NONE);
         lblParameters.setText("Registry Properties:");
         data = new FormData();
-        data.top = new FormAttachment(container, 20);
+        data.top = new FormAttachment(container, 15);
         data.left = new FormAttachment(2);
         lblParameters.setLayoutData(data);
-
-        // Property add button
-        btnPropertyAdd = new Button(registryPropertiesContainer, SWT.NONE);
-        data = new FormData();
-        data.width = 100;
-        data.top = new FormAttachment(lblParameters, 10);
-        data.left = new FormAttachment(2);
-        btnPropertyAdd.setLayoutData(data);
-        btnPropertyAdd.setText("Add");
-        btnPropertyAdd.setEnabled(false);
-        btnPropertyAdd.addSelectionListener(new SelectionAdapter() {
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                TableItem item = new TableItem(tblRegistryProperties, SWT.NONE);
-                item.setText(0, "Key-" + tblRegistryProperties.getItemCount());
-                item.setText(1, "value");
-                tblRegistryProperties.select(tblRegistryProperties.indexOf(item));
-                updateRegistryProperties();
-            }
-        });
 
         // Property remove button
         btnPropertyRemove = new Button(registryPropertiesContainer, SWT.NONE);
         data = new FormData();
         data.width = 100;
-        data.top = new FormAttachment(lblParameters, 10);
-        data.left = new FormAttachment(btnPropertyAdd, 5);
+        data.top = new FormAttachment(container, 10);
+        data.right = new FormAttachment(98);
         btnPropertyRemove.setLayoutData(data);
         btnPropertyRemove.setText("Remove");
         btnPropertyRemove.setEnabled(false);
@@ -180,13 +161,34 @@ public class RegistryPropertiesCreationWizardPage extends WizardPage {
                 updateRegistryProperties();
             }
         });
+        
+        // Property add button
+        btnPropertyAdd = new Button(registryPropertiesContainer, SWT.NONE);
+        data = new FormData();
+        data.width = 100;
+        data.top = new FormAttachment(container, 10);
+        data.right = new FormAttachment(btnPropertyRemove, 5);
+        btnPropertyAdd.setLayoutData(data);
+        btnPropertyAdd.setText("Add");
+        btnPropertyAdd.setEnabled(false);
+        btnPropertyAdd.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                TableItem item = new TableItem(tblRegistryProperties, SWT.NONE);
+                item.setText(0, "Key-" + tblRegistryProperties.getItemCount());
+                item.setText(1, "value");
+                tblRegistryProperties.select(tblRegistryProperties.indexOf(item));
+                updateRegistryProperties();
+            }
+        });
 
         tblRegistryProperties = new Table(registryPropertiesContainer, SWT.BORDER | SWT.FULL_SELECTION);
         data = new FormData();
         data.top = new FormAttachment(btnPropertyAdd, 7);
         data.left = new FormAttachment(2);
         data.right = new FormAttachment(98);
-        data.height = 130;
+        data.bottom = new FormAttachment(98);
+        data.height = 150;
         tblRegistryProperties.setLayoutData(data);
         tblRegistryProperties.setHeaderVisible(true);
         tblRegistryProperties.setLinesVisible(true);

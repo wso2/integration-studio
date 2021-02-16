@@ -71,14 +71,14 @@
 				<data modelProperty="swagger.api.name" type="string"
 				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">API Name*</data>
 			<group id ="location"/>
-			<!-- <data modelProperty="swagger.reg.location" type="workspacefolder" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" 
-			controlData="filterClass=org.wso2.integrationstudio.artifact.synapse.api.validator.RegistryProjectFilter" >Swagger Registry Path </data>
-			<data modelProperty="create.reg.prj" type="link" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" 
-			controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data> -->
+			<data group="location" modelProperty="swagger.reg.location" type="workspacefolder" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" 
+			controlData="filterClass=org.wso2.integrationstudio.artifact.synapse.api.validator.RegistryProjectFilter" >Save Registry Path:</data>
+			<data group="location" modelProperty="create.reg.prj" type="link" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" 
+			controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 			<data modelProperty="save.location" type="workspacefolder"
 				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController"
 				group="location"
-				controlData="filterClass=org.wso2.integrationstudio.artifact.synapse.api.validator.ESBProjectFilter">Save location:</data>
+				controlData="filterClass=org.wso2.integrationstudio.artifact.synapse.api.validator.ESBProjectFilter">Save Location:</data>
 			<data modelProperty="create.esb.prj" type="link"
 				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController"
 				group="location"

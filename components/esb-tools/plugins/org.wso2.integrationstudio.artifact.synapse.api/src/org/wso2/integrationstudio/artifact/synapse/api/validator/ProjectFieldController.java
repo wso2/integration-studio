@@ -102,7 +102,8 @@ public class ProjectFieldController extends AbstractFieldController {
 	public boolean isReadOnlyField(String modelProperty, ProjectDataModel model) {
 		boolean readOnlyField = super.isReadOnlyField(modelProperty, model);
 		if (modelProperty.equals(ArtifactConstants.ID_SAVE_LOCATION) 
-		        || modelProperty.equals(ArtifactConstants.ID_API_SWAGGER_FILE)) {
+		        || modelProperty.equals(ArtifactConstants.ID_API_SWAGGER_FILE)
+		        || modelProperty.equals(ArtifactConstants.ID_SWAGGER_FILE_REGISTRY_LOCATION)) {
 			readOnlyField = true;
 		}
 	    return readOnlyField;

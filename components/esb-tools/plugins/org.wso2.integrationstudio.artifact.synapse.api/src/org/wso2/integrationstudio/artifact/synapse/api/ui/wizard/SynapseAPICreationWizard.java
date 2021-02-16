@@ -38,6 +38,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
+import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.api.API;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
@@ -104,6 +105,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     private static final String EMPTY_STRING = "";
     private static final String WHITE_SPACE = " ";
     private static final String METADATA_TYPE = "synapse/metadata";
+    private static final String REGISTRY_RESOURCE_PATH = "/_system/governance/swagger_files";
 
     private String version;
 
@@ -205,6 +207,14 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                         .replaceAll(Pattern.quote(File.separator), "/");
                 esbProjectArtifact.addESBArtifact(createArtifact(apiName, groupId, version, relativePath));
                 esbProjectArtifact.toFile();
+                
+                // Copy swagger file to the registry
+                if (artifactModel.getSwaggerRegistryLocation() != null 
+                        && artifactModel.getSwaggerRegistryLocation().exists()) {
+                    createRegistryResource(artifactModel.getSwaggerRegistryLocation(), artifactModel.getSwaggerFile(),
+                            REGISTRY_RESOURCE_PATH);
+                }
+                
                 if (meadataEnabled) {
                     synapseApi = APIFactory.createAPI(omElement);
                     IFile swaggerFile = metadataLocation.getFile(new Path(apiName + "_swagger.yaml"));
@@ -324,18 +334,22 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     private OMElement getSynapseAPIFromSwagger(String swaggerYaml, String apiName) throws SwaggerDefinitionProcessingException {
         RestApiAdmin restAPIAdmin = new RestApiAdmin();
 
-        OMElement element;
         try {
             String generatedAPI = restAPIAdmin.generateAPIFromSwagger(swaggerYaml, false);
+            OMElement element = AXIOMUtil.stringToOM(generatedAPI);
             // Inject the publish swagger property to the synapse api artifact
-            OMFactory fac = OMAbstractFactory.getOMFactory();
-            element = AXIOMUtil.stringToOM(generatedAPI);
-            generatedAPI = element.toString();
+            if (artifactModel.getSwaggerRegistryLocation() != null
+                    && artifactModel.getSwaggerRegistryLocation().exists()) {
+                OMFactory fac = OMAbstractFactory.getOMFactory();
+                element.addAttribute(fac.createOMAttribute("publishSwagger",
+                        fac.createOMNamespace(XMLConfigConstants.NULL_NAMESPACE, ""),
+                        REGISTRY_RESOURCE_PATH + "/" + artifactModel.getSwaggerFile().getName().replaceAll(" ", "_")));
+            }
+            return element;
         } catch (APIException | XMLStreamException e) {
             log.error("Exception occured while generating API using swagger file", e);
             throw new SwaggerDefinitionProcessingException("Failed to generate API from the definition.", e);
         }
-        return element;
     }
 
 //    private String getAPINameFromSwagger(File swaggerFile) throws SwaggerDefinitionProcessingException {
@@ -453,11 +467,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
      * This method will create a resource inside the given registry project
      * 
      * @param regProject the registry project
-     * 
      * @param importFile the file that needs to add to the registry project
-     * 
      * @param registryPath the path to the resource inside the registry project
-     * 
      * @return the status of the operation
      */
     public boolean createRegistryResource(IContainer regProject, File importFile, String registryPath) {

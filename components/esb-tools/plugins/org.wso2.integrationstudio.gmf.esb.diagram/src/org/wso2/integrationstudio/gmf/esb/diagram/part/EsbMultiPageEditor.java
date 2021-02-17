@@ -1364,13 +1364,18 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             API api = APIFactory.createAPI(element);
             File swaggerDefinitonInMetadata = getCurrentAPISwaggerDefinitionInMetadataDirectory();
             File swaggerPublisherInRegistry = getSwaggerJsonFromRegistry(api);
-            if (!isYamlFile(swaggerPublisherInRegistry) && !isJSONFile(swaggerPublisherInRegistry)) {
+            if (swaggerDefinitonInMetadata == null && swaggerPublisherInRegistry == null) {
+                return;
+            }
+            if (swaggerPublisherInRegistry != null && !isYamlFile(swaggerPublisherInRegistry)
+                    && !isJSONFile(swaggerPublisherInRegistry)) {
                 MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
                         "Error in saving swagger definition in source files : "
-                        + "registry resource should be in JSON or YAML format");
+                                + "registry resource should be in JSON or YAML format");
+                return;
             }
             String currentSwaggerYaml = null;
-            if (swaggerDefinitonInMetadata != null) {
+            if (swaggerDefinitonInMetadata != null && swaggerDefinitonInMetadata.exists()) {
                 currentSwaggerYaml = FileUtils.readFileToString(swaggerDefinitonInMetadata, "UTF-8");
             }
             String swaggerDefinition;

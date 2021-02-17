@@ -104,3 +104,9 @@ algorithm = "AES"
 'synapse.rest.CORSConfig.enabled' = "true"
 'synapse.rest.CORSConfig.Access-Control-Allow-Origin' = "*"
 'synapse.rest.CORSConfig.Access-Control-Allow-Headers' = "content-type"
+
+# [[service_catalog]]
+# apimHost = "https://localhost:9443"
+# enable = true
+# userName = "admin"
+# password = "admin"

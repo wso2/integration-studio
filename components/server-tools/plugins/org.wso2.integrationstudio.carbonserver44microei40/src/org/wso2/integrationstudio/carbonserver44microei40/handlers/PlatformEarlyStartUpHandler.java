@@ -116,24 +116,23 @@ public class PlatformEarlyStartUpHandler implements IStartup {
             } else {
                 internalServerVersionFile = new File(MICRO_ESB_VERSION_PROPERTIES_FILE);
             }
-            if (!internalServerVersionFile.exists()) {
-                internalServerVersionFile.getParentFile().mkdirs();
-                internalServerVersionFile.createNewFile();
-            }
-            try (InputStream inStream = new FileInputStream(internalServerVersionFile)) {
-                Properties prop = new Properties();
-                prop.load(inStream);
-                Object property = prop.get("version");
-                if (property == null) {
-                    internalServerVersion = "00";
-                } else {
-                    internalServerVersion = property.toString();
+            if (internalServerVersionFile.exists()) {
+                try (InputStream inStream = new FileInputStream(internalServerVersionFile)) {
+                    Properties prop = new Properties();
+                    prop.load(inStream);
+                    Object property = prop.get("version");
+                    if (property == null) {
+                        internalServerVersion = "00";
+                    } else {
+                        internalServerVersion = property.toString();
+                    }
+
+                } catch (IOException io) {
+                    log.error("Error occured while trying to retreive server version from the application", io);
                 }
-
-            } catch (IOException io) {
-                log.error("Error occured while trying to retreive server version from the application", io);
+            } else {
+                internalServerVersion = "00";
             }
-
             int internalVersion = Integer.parseInt(internalServerVersion);
             int pluginVersion = Integer.parseInt(PluginServerVersion);
 
@@ -157,7 +156,10 @@ public class PlatformEarlyStartUpHandler implements IStartup {
                     esbSeverDestination.renameTo(backupDir);
                 }
                 MavenMultiModuleImportUtils.extractZipFile(esbServerZipFromPlugin, esbSeverDestination);
-
+                if (!internalServerVersionFile.exists()) {
+                    internalServerVersionFile.getParentFile().mkdirs();
+                    internalServerVersionFile.createNewFile();
+                }
                 try (OutputStream output = new FileOutputStream(internalServerVersionFile)) {
                     Properties prop = new Properties();
                     prop.setProperty("version", PluginServerVersion);

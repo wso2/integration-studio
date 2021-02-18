@@ -237,6 +237,11 @@ public class EsbServerItemProvider extends EsbNodeItemProvider {
         newChildDescriptors.add
             (createChildParameter
                 (EsbPackage.Literals.ESB_SERVER__CHILDREN,
+                 EsbFactory.eINSTANCE.createDSSMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ESB_SERVER__CHILDREN,
                  EsbFactory.eINSTANCE.createPublishEventMediator()));
 
         newChildDescriptors.add

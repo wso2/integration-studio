@@ -220,6 +220,11 @@ public class EsbSequenceItemProvider extends EsbNodeItemProvider {
         newChildDescriptors.add
             (createChildParameter
                 (EsbPackage.Literals.ESB_SEQUENCE__CHILD_MEDIATORS,
+                 EsbFactory.eINSTANCE.createDSSMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ESB_SEQUENCE__CHILD_MEDIATORS,
                  EsbFactory.eINSTANCE.createPublishEventMediator()));
 
         newChildDescriptors.add

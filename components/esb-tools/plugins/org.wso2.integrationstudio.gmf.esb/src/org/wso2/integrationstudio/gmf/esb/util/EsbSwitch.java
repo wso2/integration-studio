@@ -578,6 +578,39 @@ public class EsbSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case EsbPackage.DSS_MEDIATOR: {
+                DSSMediator dssMediator = (DSSMediator)theEObject;
+                T result = caseDSSMediator(dssMediator);
+                if (result == null) result = caseMediator(dssMediator);
+                if (result == null) result = caseEsbElement(dssMediator);
+                if (result == null) result = caseEsbNode(dssMediator);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case EsbPackage.DS_SOPERATION_PROPERTY: {
+                DSSoperationProperty dsSoperationProperty = (DSSoperationProperty)theEObject;
+                T result = caseDSSoperationProperty(dsSoperationProperty);
+                if (result == null) result = caseAbstractNameValueExpressionProperty(dsSoperationProperty);
+                if (result == null) result = caseEsbNode(dsSoperationProperty);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case EsbPackage.DSS_MEDIATOR_INPUT_CONNECTOR: {
+                DSSMediatorInputConnector dssMediatorInputConnector = (DSSMediatorInputConnector)theEObject;
+                T result = caseDSSMediatorInputConnector(dssMediatorInputConnector);
+                if (result == null) result = caseInputConnector(dssMediatorInputConnector);
+                if (result == null) result = caseEsbConnector(dssMediatorInputConnector);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case EsbPackage.DSS_MEDIATOR_OUTPUT_CONNECTOR: {
+                DSSMediatorOutputConnector dssMediatorOutputConnector = (DSSMediatorOutputConnector)theEObject;
+                T result = caseDSSMediatorOutputConnector(dssMediatorOutputConnector);
+                if (result == null) result = caseOutputConnector(dssMediatorOutputConnector);
+                if (result == null) result = caseEsbConnector(dssMediatorOutputConnector);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             case EsbPackage.PUBLISH_EVENT_MEDIATOR: {
                 PublishEventMediator publishEventMediator = (PublishEventMediator)theEObject;
                 T result = casePublishEventMediator(publishEventMediator);
@@ -793,6 +826,13 @@ public class EsbSwitch<T> extends Switch<T> {
                 AbstractNameValueExpressionProperty abstractNameValueExpressionProperty = (AbstractNameValueExpressionProperty)theEObject;
                 T result = caseAbstractNameValueExpressionProperty(abstractNameValueExpressionProperty);
                 if (result == null) result = caseEsbNode(abstractNameValueExpressionProperty);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case EsbPackage.ABSTRACT_DSS_OPERATION: {
+                AbstractDSSOperation abstractDSSOperation = (AbstractDSSOperation)theEObject;
+                T result = caseAbstractDSSOperation(abstractDSSOperation);
+                if (result == null) result = caseEsbNode(abstractDSSOperation);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -3977,6 +4017,66 @@ public class EsbSwitch<T> extends Switch<T> {
     }
 
     /**
+     * Returns the result of interpreting the object as an instance of '<em>DSS Mediator</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>DSS Mediator</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDSSMediator(DSSMediator object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>DS Soperation Property</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>DS Soperation Property</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDSSoperationProperty(DSSoperationProperty object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>DSS Mediator Input Connector</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>DSS Mediator Input Connector</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDSSMediatorInputConnector(DSSMediatorInputConnector object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>DSS Mediator Output Connector</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>DSS Mediator Output Connector</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDSSMediatorOutputConnector(DSSMediatorOutputConnector object) {
+        return null;
+    }
+
+    /**
      * Returns the result of interpreting the object as an instance of '<em>Publish Event Mediator</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;
@@ -4378,6 +4478,21 @@ public class EsbSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseAbstractNameValueExpressionProperty(AbstractNameValueExpressionProperty object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Abstract DSS Operation</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Abstract DSS Operation</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseAbstractDSSOperation(AbstractDSSOperation object) {
         return null;
     }
 

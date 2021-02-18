@@ -333,6 +333,22 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
                 return createLogPropertyAdapter();
             }
             @Override
+            public Adapter caseDSSMediator(DSSMediator object) {
+                return createDSSMediatorAdapter();
+            }
+            @Override
+            public Adapter caseDSSoperationProperty(DSSoperationProperty object) {
+                return createDSSoperationPropertyAdapter();
+            }
+            @Override
+            public Adapter caseDSSMediatorInputConnector(DSSMediatorInputConnector object) {
+                return createDSSMediatorInputConnectorAdapter();
+            }
+            @Override
+            public Adapter caseDSSMediatorOutputConnector(DSSMediatorOutputConnector object) {
+                return createDSSMediatorOutputConnectorAdapter();
+            }
+            @Override
             public Adapter casePublishEventMediator(PublishEventMediator object) {
                 return createPublishEventMediatorAdapter();
             }
@@ -439,6 +455,10 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
             @Override
             public Adapter caseAbstractNameValueExpressionProperty(AbstractNameValueExpressionProperty object) {
                 return createAbstractNameValueExpressionPropertyAdapter();
+            }
+            @Override
+            public Adapter caseAbstractDSSOperation(AbstractDSSOperation object) {
+                return createAbstractDSSOperationAdapter();
             }
             @Override
             public Adapter caseAbstractBooleanFeature(AbstractBooleanFeature object) {
@@ -2483,6 +2503,62 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
+     * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.gmf.esb.DSSMediator <em>DSS Mediator</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.integrationstudio.gmf.esb.DSSMediator
+     * @generated
+     */
+    public Adapter createDSSMediatorAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.gmf.esb.DSSoperationProperty <em>DS Soperation Property</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.integrationstudio.gmf.esb.DSSoperationProperty
+     * @generated
+     */
+    public Adapter createDSSoperationPropertyAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.gmf.esb.DSSMediatorInputConnector <em>DSS Mediator Input Connector</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.integrationstudio.gmf.esb.DSSMediatorInputConnector
+     * @generated
+     */
+    public Adapter createDSSMediatorInputConnectorAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.gmf.esb.DSSMediatorOutputConnector <em>DSS Mediator Output Connector</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.integrationstudio.gmf.esb.DSSMediatorOutputConnector
+     * @generated
+     */
+    public Adapter createDSSMediatorOutputConnectorAdapter() {
+        return null;
+    }
+
+    /**
      * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.gmf.esb.PublishEventMediator <em>Publish Event Mediator</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
@@ -2857,6 +2933,20 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createAbstractNameValueExpressionPropertyAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation <em>Abstract DSS Operation</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation
+     * @generated
+     */
+    public Adapter createAbstractDSSOperationAdapter() {
         return null;
     }
 

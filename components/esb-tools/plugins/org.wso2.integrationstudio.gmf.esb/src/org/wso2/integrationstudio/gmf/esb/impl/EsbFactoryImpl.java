@@ -120,6 +120,10 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
             case EsbPackage.LOG_MEDIATOR_INPUT_CONNECTOR: return createLogMediatorInputConnector();
             case EsbPackage.LOG_MEDIATOR_OUTPUT_CONNECTOR: return createLogMediatorOutputConnector();
             case EsbPackage.LOG_PROPERTY: return createLogProperty();
+            case EsbPackage.DSS_MEDIATOR: return createDSSMediator();
+            case EsbPackage.DS_SOPERATION_PROPERTY: return createDSSoperationProperty();
+            case EsbPackage.DSS_MEDIATOR_INPUT_CONNECTOR: return createDSSMediatorInputConnector();
+            case EsbPackage.DSS_MEDIATOR_OUTPUT_CONNECTOR: return createDSSMediatorOutputConnector();
             case EsbPackage.PUBLISH_EVENT_MEDIATOR: return createPublishEventMediator();
             case EsbPackage.PUBLISH_EVENT_MEDIATOR_INPUT_CONNECTOR: return createPublishEventMediatorInputConnector();
             case EsbPackage.PUBLISH_EVENT_MEDIATOR_OUTPUT_CONNECTOR: return createPublishEventMediatorOutputConnector();
@@ -453,6 +457,10 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return createLogCategoryFromString(eDataType, initialValue);
             case EsbPackage.LOG_LEVEL:
                 return createLogLevelFromString(eDataType, initialValue);
+            case EsbPackage.DSS_SOURCE_TYPE:
+                return createDSSSourceTypeFromString(eDataType, initialValue);
+            case EsbPackage.DSS_TARGET_TYPE:
+                return createDSSTargetTypeFromString(eDataType, initialValue);
             case EsbPackage.ATTRIBUTE_VALUE_TYPE:
                 return createAttributeValueTypeFromString(eDataType, initialValue);
             case EsbPackage.ATTRIBUTE_TYPE:
@@ -749,6 +757,10 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return convertLogCategoryToString(eDataType, instanceValue);
             case EsbPackage.LOG_LEVEL:
                 return convertLogLevelToString(eDataType, instanceValue);
+            case EsbPackage.DSS_SOURCE_TYPE:
+                return convertDSSSourceTypeToString(eDataType, instanceValue);
+            case EsbPackage.DSS_TARGET_TYPE:
+                return convertDSSTargetTypeToString(eDataType, instanceValue);
             case EsbPackage.ATTRIBUTE_VALUE_TYPE:
                 return convertAttributeValueTypeToString(eDataType, instanceValue);
             case EsbPackage.ATTRIBUTE_TYPE:
@@ -1532,6 +1544,46 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
         logProperty.setPropertyName("");
         logProperty.setPropertyValue("");
         return logProperty;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public DSSMediator createDSSMediator() {
+        DSSMediatorImpl dssMediator = new DSSMediatorImpl();
+        return dssMediator;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public DSSoperationProperty createDSSoperationProperty() {
+        DSSoperationPropertyImpl dsSoperationProperty = new DSSoperationPropertyImpl();
+        return dsSoperationProperty;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public DSSMediatorInputConnector createDSSMediatorInputConnector() {
+        DSSMediatorInputConnectorImpl dssMediatorInputConnector = new DSSMediatorInputConnectorImpl();
+        return dssMediatorInputConnector;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public DSSMediatorOutputConnector createDSSMediatorOutputConnector() {
+        DSSMediatorOutputConnectorImpl dssMediatorOutputConnector = new DSSMediatorOutputConnectorImpl();
+        return dssMediatorOutputConnector;
     }
 
     /**
@@ -5151,6 +5203,46 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
      * @generated
      */
     public String convertLogLevelToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public DSSSourceType createDSSSourceTypeFromString(EDataType eDataType, String initialValue) {
+        DSSSourceType result = DSSSourceType.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertDSSSourceTypeToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public DSSTargetType createDSSTargetTypeFromString(EDataType eDataType, String initialValue) {
+        DSSTargetType result = DSSTargetType.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertDSSTargetTypeToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

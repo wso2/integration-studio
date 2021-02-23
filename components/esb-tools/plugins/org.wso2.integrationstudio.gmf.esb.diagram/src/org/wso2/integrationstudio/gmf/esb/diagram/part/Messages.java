@@ -865,6 +865,16 @@ public class Messages extends NLS {
     public static String JsonTransformMediator50CreationTool_desc;
 
     /**
+    * @generated
+    */
+    public static String DSSMediator51CreationTool_title;
+
+    /**
+    * @generated
+    */
+    public static String DSSMediator51CreationTool_desc;
+
+    /**
      * @generated
      */
     public static String DefaultEndPoint1CreationTool_title;
@@ -1508,6 +1518,16 @@ public class Messages extends NLS {
     * @generated
     */
     public static String NavigatorGroupName_JsonTransformMediatorOutputConnector_3793_outgoinglinks;
+
+    /**
+    * @generated
+    */
+    public static String NavigatorGroupName_DSSMediatorInputConnector_3795_incominglinks;
+
+    /**
+    * @generated
+    */
+    public static String NavigatorGroupName_DSSMediatorOutputConnector_3796_outgoinglinks;
 
     /**
      * @generated

@@ -53,6 +53,8 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.gmf.tooling.runtime.part.DefaultLinkToolEntry;
+import org.eclipse.gmf.tooling.runtime.part.DefaultNodeToolEntry;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWTException;
@@ -93,13 +95,13 @@ import org.wso2.integrationstudio.logging.core.Logger;
 public class EsbPaletteFactory {
 
     public static final int INITIAL_STATE_OPEN = 0, INITIAL_STATE_CLOSED = 1, INITIAL_STATE_PINNED_OPEN = 2;
-    
+
     private static final String CLOUD_CONNECTOR_PREFIX = "CloudConnector-";
-    
+
     private static final String FILE_PROTOCOL_PREFIX = "file:///";
 
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    
+
     private static HashMap<String, ImageDescriptor> imageDescriptorMap = new HashMap<String, ImageDescriptor>();
 
     /**
@@ -415,7 +417,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createEsbServer1CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.EsbServer1CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.EsbServer1CreationTool_title,
                 Messages.EsbServer1CreationTool_desc, Collections.singletonList(EsbElementTypes.EsbServer_2001));
         entry.setId("createEsbServer1CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EsbServer_2001));
@@ -427,7 +429,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createProxyService2CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.ProxyService2CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.ProxyService2CreationTool_title,
                 Messages.ProxyService2CreationTool_desc, Collections.singletonList(EsbElementTypes.ProxyService_3001));
         entry.setId("createProxyService2CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ProxyService_3001));
@@ -439,7 +441,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createMessageMediator3CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.MessageMediator3CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.MessageMediator3CreationTool_title,
                 Messages.MessageMediator3CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.MessageMediator_3045));
         entry.setId("createMessageMediator3CreationTool"); //$NON-NLS-1$
@@ -452,7 +454,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createSequence4CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.Sequence4CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Sequence4CreationTool_title,
                 Messages.Sequence4CreationTool_desc, Collections.singletonList(EsbElementTypes.Sequence_3503));
         entry.setId("createSequence4CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.Sequence_3503));
@@ -464,7 +466,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createAPIResource5CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.APIResource5CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.APIResource5CreationTool_title,
                 Messages.APIResource5CreationTool_desc, Collections.singletonList(EsbElementTypes.APIResource_3669));
         entry.setId("createAPIResource5CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.APIResource_3669));
@@ -476,7 +478,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createCloudConnectorOperation6CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CloudConnectorOperation6CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.CloudConnectorOperation6CreationTool_title,
                 Messages.CloudConnectorOperation6CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CloudConnectorOperation_3722));
         entry.setId("createCloudConnectorOperation6CreationTool"); //$NON-NLS-1$
@@ -489,7 +491,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createForEachMediator7CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.ForEachMediator7CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.ForEachMediator7CreationTool_title,
                 Messages.ForEachMediator7CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.ForEachMediator_3780));
         entry.setId("createForEachMediator7CreationTool"); //$NON-NLS-1$
@@ -524,7 +526,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createDropMediator1CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.DropMediator1CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.DropMediator1CreationTool_title,
                 Messages.DropMediator1CreationTool_desc, Collections.singletonList(EsbElementTypes.DropMediator_3491));
         entry.setId("createDropMediator1CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.DropMediator_3491));
@@ -536,7 +538,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createFilterMediator2CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.FilterMediator2CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.FilterMediator2CreationTool_title,
                 Messages.FilterMediator2CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.FilterMediator_3494));
         entry.setId("createFilterMediator2CreationTool"); //$NON-NLS-1$
@@ -549,7 +551,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createLogMediator3CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.LogMediator3CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.LogMediator3CreationTool_title,
                 Messages.LogMediator3CreationTool_desc, Collections.singletonList(EsbElementTypes.LogMediator_3495));
         entry.setId("createLogMediator3CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.LogMediator_3495));
@@ -561,7 +563,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createPropertyMediator4CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.PropertyMediator4CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.PropertyMediator4CreationTool_title,
                 Messages.PropertyMediator4CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.PropertyMediator_3492));
         entry.setId("createPropertyMediator4CreationTool"); //$NON-NLS-1$
@@ -587,23 +589,10 @@ public class EsbPaletteFactory {
     * @generated
     */
     private ToolEntry createEnrichMediator6CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.EnrichMediator6CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.EnrichMediator6CreationTool_title,
                 Messages.EnrichMediator6CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.EnrichMediator_3496));
-        entry.setId("createEnrichMediator6CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EnrichMediator_3496));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-    * @generated
-    */
-    private ToolEntry createXSLTMediator7CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.XSLTMediator7CreationTool_title,
-                Messages.XSLTMediator7CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.XSLTMediator_3497));
-        entry.setId("createXSLTMediator7CreationTool"); //$NON-NLS-1$
+        entry.setId("createEnrichMediator6CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.XSLTMediator_3497));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -612,11 +601,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createSwitchMediator8CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.SwitchMediator8CreationTool_title,
-                Messages.SwitchMediator8CreationTool_desc,
+    private ToolEntry createXSLTMediator7CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.XSLTMediator7CreationTool_title,
+                Messages.XSLTMediator7CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.SwitchMediator_3498));
-        entry.setId("createSwitchMediator8CreationTool"); //$NON-NLS-1$
+        entry.setId("createXSLTMediator7CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.SwitchMediator_3498));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -625,11 +614,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createEventMediator9CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.EventMediator9CreationTool_title,
-                Messages.EventMediator9CreationTool_desc,
+    private ToolEntry createSwitchMediator8CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.SwitchMediator8CreationTool_title,
+                Messages.SwitchMediator8CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.EventMediator_3504));
-        entry.setId("createEventMediator9CreationTool"); //$NON-NLS-1$
+        entry.setId("createSwitchMediator8CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EventMediator_3504));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -638,11 +627,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createEntitlementMediator10CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.EntitlementMediator10CreationTool_title,
-                Messages.EntitlementMediator10CreationTool_desc,
+    private ToolEntry createEventMediator9CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.EventMediator9CreationTool_title,
+                Messages.EventMediator9CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.EntitlementMediator_3505));
-        entry.setId("createEntitlementMediator10CreationTool"); //$NON-NLS-1$
+        entry.setId("createEventMediator9CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EntitlementMediator_3505));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -651,11 +640,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createClassMediator11CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.ClassMediator11CreationTool_title,
-                Messages.ClassMediator11CreationTool_desc,
+    private ToolEntry createEntitlementMediator10CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.EntitlementMediator10CreationTool_title,
+                Messages.EntitlementMediator10CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.ClassMediator_3506));
-        entry.setId("createClassMediator11CreationTool"); //$NON-NLS-1$
+        entry.setId("createEntitlementMediator10CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ClassMediator_3506));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -664,11 +653,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createSpringMediator12CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.SpringMediator12CreationTool_title,
-                Messages.SpringMediator12CreationTool_desc,
+    private ToolEntry createClassMediator11CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.ClassMediator11CreationTool_title,
+                Messages.ClassMediator11CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.SpringMediator_3507));
-        entry.setId("createSpringMediator12CreationTool"); //$NON-NLS-1$
+        entry.setId("createClassMediator11CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.SpringMediator_3507));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -677,11 +666,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createScriptMediator13CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.ScriptMediator13CreationTool_title,
-                Messages.ScriptMediator13CreationTool_desc,
+    private ToolEntry createSpringMediator12CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.SpringMediator12CreationTool_title,
+                Messages.SpringMediator12CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.ScriptMediator_3508));
-        entry.setId("createScriptMediator13CreationTool"); //$NON-NLS-1$
+        entry.setId("createSpringMediator12CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ScriptMediator_3508));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -690,11 +679,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createFaultMediator14CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.FaultMediator14CreationTool_title,
-                Messages.FaultMediator14CreationTool_desc,
+    private ToolEntry createScriptMediator13CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.ScriptMediator13CreationTool_title,
+                Messages.ScriptMediator13CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.FaultMediator_3509));
-        entry.setId("createFaultMediator14CreationTool"); //$NON-NLS-1$
+        entry.setId("createScriptMediator13CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.FaultMediator_3509));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -703,11 +692,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createXQueryMediator15CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.XQueryMediator15CreationTool_title,
-                Messages.XQueryMediator15CreationTool_desc,
+    private ToolEntry createFaultMediator14CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.FaultMediator14CreationTool_title,
+                Messages.FaultMediator14CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.XQueryMediator_3510));
-        entry.setId("createXQueryMediator15CreationTool"); //$NON-NLS-1$
+        entry.setId("createFaultMediator14CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.XQueryMediator_3510));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -716,11 +705,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createCommandMediator16CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CommandMediator16CreationTool_title,
-                Messages.CommandMediator16CreationTool_desc,
+    private ToolEntry createXQueryMediator15CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.XQueryMediator15CreationTool_title,
+                Messages.XQueryMediator15CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CommandMediator_3511));
-        entry.setId("createCommandMediator16CreationTool"); //$NON-NLS-1$
+        entry.setId("createXQueryMediator15CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CommandMediator_3511));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -729,11 +718,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createDBLookupMediator17CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.DBLookupMediator17CreationTool_title,
-                Messages.DBLookupMediator17CreationTool_desc,
+    private ToolEntry createCommandMediator16CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.CommandMediator16CreationTool_title,
+                Messages.CommandMediator16CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.DBLookupMediator_3512));
-        entry.setId("createDBLookupMediator17CreationTool"); //$NON-NLS-1$
+        entry.setId("createCommandMediator16CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.DBLookupMediator_3512));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -742,11 +731,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createDBReportMediator18CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.DBReportMediator18CreationTool_title,
-                Messages.DBReportMediator18CreationTool_desc,
+    private ToolEntry createDBLookupMediator17CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.DBLookupMediator17CreationTool_title,
+                Messages.DBLookupMediator17CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.DBReportMediator_3513));
-        entry.setId("createDBReportMediator18CreationTool"); //$NON-NLS-1$
+        entry.setId("createDBLookupMediator17CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.DBReportMediator_3513));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -755,11 +744,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createSmooksMediator19CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.SmooksMediator19CreationTool_title,
-                Messages.SmooksMediator19CreationTool_desc,
+    private ToolEntry createDBReportMediator18CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.DBReportMediator18CreationTool_title,
+                Messages.DBReportMediator18CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.SmooksMediator_3514));
-        entry.setId("createSmooksMediator19CreationTool"); //$NON-NLS-1$
+        entry.setId("createDBReportMediator18CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.SmooksMediator_3514));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -768,11 +757,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createSendMediator20CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.SendMediator20CreationTool_title,
-                Messages.SendMediator20CreationTool_desc,
+    private ToolEntry createSmooksMediator19CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.SmooksMediator19CreationTool_title,
+                Messages.SmooksMediator19CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.SendMediator_3515));
-        entry.setId("createSendMediator20CreationTool"); //$NON-NLS-1$
+        entry.setId("createSmooksMediator19CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.SendMediator_3515));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -781,11 +770,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createHeaderMediator21CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.HeaderMediator21CreationTool_title,
-                Messages.HeaderMediator21CreationTool_desc,
+    private ToolEntry createSendMediator20CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.SendMediator20CreationTool_title,
+                Messages.SendMediator20CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.HeaderMediator_3516));
-        entry.setId("createHeaderMediator21CreationTool"); //$NON-NLS-1$
+        entry.setId("createSendMediator20CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.HeaderMediator_3516));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -794,11 +783,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createCloneMediator22CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CloneMediator22CreationTool_title,
-                Messages.CloneMediator22CreationTool_desc,
+    private ToolEntry createHeaderMediator21CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.HeaderMediator21CreationTool_title,
+                Messages.HeaderMediator21CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CloneMediator_3517));
-        entry.setId("createCloneMediator22CreationTool"); //$NON-NLS-1$
+        entry.setId("createHeaderMediator21CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CloneMediator_3517));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -807,11 +796,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createIterateMediator23CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.IterateMediator23CreationTool_title,
-                Messages.IterateMediator23CreationTool_desc,
+    private ToolEntry createCloneMediator22CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.CloneMediator22CreationTool_title,
+                Messages.CloneMediator22CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.IterateMediator_3519));
-        entry.setId("createIterateMediator23CreationTool"); //$NON-NLS-1$
+        entry.setId("createCloneMediator22CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.IterateMediator_3519));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -820,11 +809,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createCacheMediator24CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CacheMediator24CreationTool_title,
-                Messages.CacheMediator24CreationTool_desc,
+    private ToolEntry createIterateMediator23CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.IterateMediator23CreationTool_title,
+                Messages.IterateMediator23CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CacheMediator_3518));
-        entry.setId("createCacheMediator24CreationTool"); //$NON-NLS-1$
+        entry.setId("createIterateMediator23CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CacheMediator_3518));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -833,11 +822,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createAggregateMediator25CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.AggregateMediator25CreationTool_title,
-                Messages.AggregateMediator25CreationTool_desc,
+    private ToolEntry createCacheMediator24CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.CacheMediator24CreationTool_title,
+                Messages.CacheMediator24CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.AggregateMediator_3525));
-        entry.setId("createAggregateMediator25CreationTool"); //$NON-NLS-1$
+        entry.setId("createCacheMediator24CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.AggregateMediator_3525));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -846,11 +835,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createCalloutMediator26CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CalloutMediator26CreationTool_title,
-                Messages.CalloutMediator26CreationTool_desc,
+    private ToolEntry createAggregateMediator25CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.AggregateMediator25CreationTool_title,
+                Messages.AggregateMediator25CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CalloutMediator_3520));
-        entry.setId("createCalloutMediator26CreationTool"); //$NON-NLS-1$
+        entry.setId("createAggregateMediator25CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CalloutMediator_3520));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -859,11 +848,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createTransactionMediator27CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.TransactionMediator27CreationTool_title,
-                Messages.TransactionMediator27CreationTool_desc,
+    private ToolEntry createCalloutMediator26CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.CalloutMediator26CreationTool_title,
+                Messages.CalloutMediator26CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.TransactionMediator_3521));
-        entry.setId("createTransactionMediator27CreationTool"); //$NON-NLS-1$
+        entry.setId("createCalloutMediator26CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.TransactionMediator_3521));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -872,11 +861,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createThrottleMediator28CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.ThrottleMediator28CreationTool_title,
-                Messages.ThrottleMediator28CreationTool_desc,
+    private ToolEntry createTransactionMediator27CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.TransactionMediator27CreationTool_title,
+                Messages.TransactionMediator27CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.ThrottleMediator_3493));
-        entry.setId("createThrottleMediator28CreationTool"); //$NON-NLS-1$
+        entry.setId("createTransactionMediator27CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ThrottleMediator_3493));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -885,11 +874,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createRMSequenceMediator29CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.RMSequenceMediator29CreationTool_title,
-                Messages.RMSequenceMediator29CreationTool_desc,
+    private ToolEntry createThrottleMediator28CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.ThrottleMediator28CreationTool_title,
+                Messages.ThrottleMediator28CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.RMSequenceMediator_3522));
-        entry.setId("createRMSequenceMediator29CreationTool"); //$NON-NLS-1$
+        entry.setId("createThrottleMediator28CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.RMSequenceMediator_3522));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -898,11 +887,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createOAuthMediator30CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.OAuthMediator30CreationTool_title,
-                Messages.OAuthMediator30CreationTool_desc,
+    private ToolEntry createRMSequenceMediator29CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.RMSequenceMediator29CreationTool_title,
+                Messages.RMSequenceMediator29CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.OAuthMediator_3524));
-        entry.setId("createOAuthMediator30CreationTool"); //$NON-NLS-1$
+        entry.setId("createRMSequenceMediator29CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.OAuthMediator_3524));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -911,12 +900,24 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createRuleMediator31CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.RuleMediator31CreationTool_title,
-                Messages.RuleMediator31CreationTool_desc, Collections.singletonList(EsbElementTypes.RuleMediator_3523));
-        entry.setId("createRuleMediator30CreationTool"); //$NON-NLS-1$
+    private ToolEntry createOAuthMediator30CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.OAuthMediator30CreationTool_title,
+                Messages.OAuthMediator30CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.RuleMediator_3523));
+        entry.setId("createOAuthMediator30CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.RuleMediator_3523));
         entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createRuleMediator31CreationTool() {
+        ToolEntry entry = new ToolEntry(Messages.RuleMediator31CreationTool_title,
+                Messages.RuleMediator31CreationTool_desc, null, null) {
+        };
+        entry.setId("createRuleMediator31CreationTool"); //$NON-NLS-1$
         return entry;
     }
 
@@ -946,23 +947,10 @@ public class EsbPaletteFactory {
     * @generated
     */
     private ToolEntry createCallTemplateMediator34CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CallTemplateMediator34CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.CallTemplateMediator34CreationTool_title,
                 Messages.CallTemplateMediator34CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.CallTemplateMediator_3594));
-        entry.setId("createCallTemplateMediator34CreationTool"); //$NON-NLS-1$
-        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CallTemplateMediator_3594));
-        entry.setLargeIcon(entry.getSmallIcon());
-        return entry;
-    }
-
-    /**
-    * @generated
-    */
-    private ToolEntry createPayloadFactoryMediator35CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.PayloadFactoryMediator35CreationTool_title,
-                Messages.PayloadFactoryMediator35CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.PayloadFactoryMediator_3597));
-        entry.setId("createPayloadFactoryMediator35CreationTool"); //$NON-NLS-1$
+        entry.setId("createCallTemplateMediator34CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.PayloadFactoryMediator_3597));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -971,11 +959,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createEnqueueMediator36CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.EnqueueMediator36CreationTool_title,
-                Messages.EnqueueMediator36CreationTool_desc,
+    private ToolEntry createPayloadFactoryMediator35CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.PayloadFactoryMediator35CreationTool_title,
+                Messages.PayloadFactoryMediator35CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.EnqueueMediator_3600));
-        entry.setId("createEnqueueMediator36CreationTool"); //$NON-NLS-1$
+        entry.setId("createPayloadFactoryMediator35CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EnqueueMediator_3600));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -984,11 +972,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createURLRewriteMediator37CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.URLRewriteMediator37CreationTool_title,
-                Messages.URLRewriteMediator37CreationTool_desc,
+    private ToolEntry createEnqueueMediator36CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.EnqueueMediator36CreationTool_title,
+                Messages.EnqueueMediator36CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.URLRewriteMediator_3620));
-        entry.setId("createURLRewriteMediator37CreationTool"); //$NON-NLS-1$
+        entry.setId("createEnqueueMediator36CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.URLRewriteMediator_3620));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -997,11 +985,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createValidateMediator38CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.ValidateMediator38CreationTool_title,
-                Messages.ValidateMediator38CreationTool_desc,
+    private ToolEntry createURLRewriteMediator37CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.URLRewriteMediator37CreationTool_title,
+                Messages.URLRewriteMediator37CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.ValidateMediator_3623));
-        entry.setId("createValidateMediator38CreationTool"); //$NON-NLS-1$
+        entry.setId("createURLRewriteMediator37CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ValidateMediator_3623));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -1010,11 +998,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createRouterMediator39CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.RouterMediator39CreationTool_title,
-                Messages.RouterMediator39CreationTool_desc,
+    private ToolEntry createValidateMediator38CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.ValidateMediator38CreationTool_title,
+                Messages.ValidateMediator38CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.RouterMediator_3628));
-        entry.setId("createRouterMediator39CreationTool"); //$NON-NLS-1$
+        entry.setId("createValidateMediator38CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.RouterMediator_3628));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -1023,11 +1011,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createConditionalRouterMediator40CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.ConditionalRouterMediator40CreationTool_title,
-                Messages.ConditionalRouterMediator40CreationTool_desc,
+    private ToolEntry createRouterMediator39CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.RouterMediator39CreationTool_title,
+                Messages.RouterMediator39CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.ConditionalRouterMediator_3635));
-        entry.setId("createConditionalRouterMediator40CreationTool"); //$NON-NLS-1$
+        entry.setId("createRouterMediator39CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ConditionalRouterMediator_3635));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -1036,10 +1024,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createBAMMediator41CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.BAMMediator41CreationTool_title,
-                Messages.BAMMediator41CreationTool_desc, Collections.singletonList(EsbElementTypes.BAMMediator_3680));
-        entry.setId("createBAMMediator41CreationTool"); //$NON-NLS-1$
+    private ToolEntry createConditionalRouterMediator40CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.ConditionalRouterMediator40CreationTool_title,
+                Messages.ConditionalRouterMediator40CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.BAMMediator_3680));
+        entry.setId("createConditionalRouterMediator40CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.BAMMediator_3680));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -1048,10 +1037,10 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createBeanMediator42CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.BeanMediator42CreationTool_title,
-                Messages.BeanMediator42CreationTool_desc, Collections.singletonList(EsbElementTypes.BeanMediator_3683));
-        entry.setId("createBeanMediator42CreationTool"); //$NON-NLS-1$
+    private ToolEntry createBAMMediator41CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.BAMMediator41CreationTool_title,
+                Messages.BAMMediator41CreationTool_desc, Collections.singletonList(EsbElementTypes.BeanMediator_3683));
+        entry.setId("createBAMMediator41CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.BeanMediator_3683));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -1060,11 +1049,10 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createEJBMediator43CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.EJBMediator43CreationTool_title,
-                Messages.EJBMediator43CreationTool_desc,
-                Collections.singletonList(EsbElementTypes.EJBMediator_3686));
-        entry.setId("createEJBMediator43CreationTool"); //$NON-NLS-1$
+    private ToolEntry createBeanMediator42CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.BeanMediator42CreationTool_title,
+                Messages.BeanMediator42CreationTool_desc, Collections.singletonList(EsbElementTypes.EJBMediator_3686));
+        entry.setId("createBeanMediator42CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EJBMediator_3686));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -1073,11 +1061,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createLoopBackMediator44CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.LoopBackMediator44CreationTool_title,
-                Messages.LoopBackMediator44CreationTool_desc,
+    private ToolEntry createEJBMediator43CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.EJBMediator43CreationTool_title,
+                Messages.EJBMediator43CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.LoopBackMediator_3736));
-        entry.setId("createLoopBackMediator44CreationTool"); //$NON-NLS-1$
+        entry.setId("createEJBMediator43CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.LoopBackMediator_3736));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -1086,11 +1074,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createRespondMediator45CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.RespondMediator45CreationTool_title,
-                Messages.RespondMediator45CreationTool_desc,
+    private ToolEntry createLoopBackMediator44CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.LoopBackMediator44CreationTool_title,
+                Messages.LoopBackMediator44CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.RespondMediator_3739));
-        entry.setId("createRespondMediator45CreationTool"); //$NON-NLS-1$
+        entry.setId("createLoopBackMediator44CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.RespondMediator_3739));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -1099,11 +1087,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createCallMediator46CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CallMediator46CreationTool_title,
-                Messages.CallMediator46CreationTool_desc,
+    private ToolEntry createRespondMediator45CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.RespondMediator45CreationTool_title,
+                Messages.RespondMediator45CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CallMediator_3742));
-        entry.setId("createCallMediator46CreationTool"); //$NON-NLS-1$
+        entry.setId("createRespondMediator45CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.CallMediator_3742));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -1112,11 +1100,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createDataMapperMediator47CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.DataMapperMediator47CreationTool_title,
-                Messages.DataMapperMediator47CreationTool_desc,
+    private ToolEntry createCallMediator46CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.CallMediator46CreationTool_title,
+                Messages.CallMediator46CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.DataMapperMediator_3761));
-        entry.setId("createDataMapperMediator47CreationTool"); //$NON-NLS-1$
+        entry.setId("createCallMediator46CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.DataMapperMediator_3761));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -1125,11 +1113,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createFastXSLTMediator48CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.FastXSLTMediator48CreationTool_title,
-                Messages.FastXSLTMediator48CreationTool_desc,
+    private ToolEntry createDataMapperMediator47CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.DataMapperMediator47CreationTool_title,
+                Messages.DataMapperMediator47CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.FastXSLTMediator_3764));
-        entry.setId("createFastXSLTMediator48CreationTool"); //$NON-NLS-1$
+        entry.setId("createDataMapperMediator47CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.FastXSLTMediator_3764));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -1138,11 +1126,11 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
-    private ToolEntry createPublishEventMediator49CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.PublishEventMediator49CreationTool_title,
-                Messages.PublishEventMediator49CreationTool_desc,
+    private ToolEntry createFastXSLTMediator48CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.FastXSLTMediator48CreationTool_title,
+                Messages.FastXSLTMediator48CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.PublishEventMediator_3785));
-        entry.setId("createPublishEventMediator48CreationTool"); //$NON-NLS-1$
+        entry.setId("createFastXSLTMediator48CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.PublishEventMediator_3785));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
@@ -1151,12 +1139,35 @@ public class EsbPaletteFactory {
     /**
     * @generated
     */
+    private ToolEntry createPublishEventMediator49CreationTool() {
+        ToolEntry entry = new ToolEntry(Messages.PublishEventMediator49CreationTool_title,
+                Messages.PublishEventMediator49CreationTool_desc, null, null) {
+        };
+        entry.setId("createPublishEventMediator49CreationTool"); //$NON-NLS-1$
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
     private ToolEntry createJsonTransformMediator50CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.JsonTransformMediator50CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.JsonTransformMediator50CreationTool_title,
                 Messages.JsonTransformMediator50CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.JsonTransformMediator_3791));
         entry.setId("createJsonTransformMediator50CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.JsonTransformMediator_3791));
+        entry.setLargeIcon(entry.getSmallIcon());
+        return entry;
+    }
+
+    /**
+    * @generated
+    */
+    private ToolEntry createDSSMediator51CreationTool() {
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.DSSMediator51CreationTool_title,
+                Messages.DSSMediator51CreationTool_desc, Collections.singletonList(EsbElementTypes.DSSMediator_3794));
+        entry.setId("createDSSMediator51CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.DSSMediator_3794));
         entry.setLargeIcon(entry.getSmallIcon());
         return entry;
     }
@@ -1207,7 +1218,7 @@ public class EsbPaletteFactory {
         ArrayList<IElementType> types = new ArrayList<IElementType>(2);
         types.add(EsbElementTypes.DefaultEndPoint_3609);
         types.add(EsbElementTypes.DefaultEndPoint_3643);
-        NodeToolEntry entry = new NodeToolEntry(Messages.DefaultEndPoint1CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.DefaultEndPoint1CreationTool_title,
                 Messages.DefaultEndPoint1CreationTool_desc, types);
         entry.setId("createDefaultEndPoint1CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.DefaultEndPoint_3609));
@@ -1222,7 +1233,7 @@ public class EsbPaletteFactory {
         ArrayList<IElementType> types = new ArrayList<IElementType>(2);
         types.add(EsbElementTypes.AddressEndPoint_3610);
         types.add(EsbElementTypes.AddressEndPoint_3646);
-        NodeToolEntry entry = new NodeToolEntry(Messages.AddressEndPoint2CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.AddressEndPoint2CreationTool_title,
                 Messages.AddressEndPoint2CreationTool_desc, types);
         entry.setId("createAddressEndPoint2CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.AddressEndPoint_3610));
@@ -1237,7 +1248,7 @@ public class EsbPaletteFactory {
         ArrayList<IElementType> types = new ArrayList<IElementType>(2);
         types.add(EsbElementTypes.FailoverEndPoint_3611);
         types.add(EsbElementTypes.FailoverEndPoint_3649);
-        NodeToolEntry entry = new NodeToolEntry(Messages.FailoverEndPoint3CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.FailoverEndPoint3CreationTool_title,
                 Messages.FailoverEndPoint3CreationTool_desc, types);
         entry.setId("createFailoverEndPoint3CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.FailoverEndPoint_3611));
@@ -1252,7 +1263,7 @@ public class EsbPaletteFactory {
         ArrayList<IElementType> types = new ArrayList<IElementType>(2);
         types.add(EsbElementTypes.WSDLEndPoint_3612);
         types.add(EsbElementTypes.WSDLEndPoint_3653);
-        NodeToolEntry entry = new NodeToolEntry(Messages.WSDLEndPoint4CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.WSDLEndPoint4CreationTool_title,
                 Messages.WSDLEndPoint4CreationTool_desc, types);
         entry.setId("createWSDLEndPoint4CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.WSDLEndPoint_3612));
@@ -1267,7 +1278,7 @@ public class EsbPaletteFactory {
         ArrayList<IElementType> types = new ArrayList<IElementType>(2);
         types.add(EsbElementTypes.LoadBalanceEndPoint_3613);
         types.add(EsbElementTypes.LoadBalanceEndPoint_3656);
-        NodeToolEntry entry = new NodeToolEntry(Messages.LoadBalanceEndPoint5CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.LoadBalanceEndPoint5CreationTool_title,
                 Messages.LoadBalanceEndPoint5CreationTool_desc, types);
         entry.setId("createLoadBalanceEndPoint5CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.LoadBalanceEndPoint_3613));
@@ -1279,7 +1290,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createNamedEndpoint6CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.NamedEndpoint6CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.NamedEndpoint6CreationTool_title,
                 Messages.NamedEndpoint6CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.NamedEndpoint_3660));
         entry.setId("createNamedEndpoint6CreationTool"); //$NON-NLS-1$
@@ -1292,7 +1303,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createAddressingEndpoint7CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.AddressingEndpoint7CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.AddressingEndpoint7CreationTool_title,
                 Messages.AddressingEndpoint7CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.AddressingEndpoint_3689));
         entry.setId("createAddressingEndpoint7CreationTool"); //$NON-NLS-1$
@@ -1308,7 +1319,7 @@ public class EsbPaletteFactory {
         ArrayList<IElementType> types = new ArrayList<IElementType>(2);
         types.add(EsbElementTypes.RecipientListEndPoint_3692);
         types.add(EsbElementTypes.RecipientListEndPoint_3696);
-        NodeToolEntry entry = new NodeToolEntry(Messages.RecipientListEndPoint8CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.RecipientListEndPoint8CreationTool_title,
                 Messages.RecipientListEndPoint8CreationTool_desc, types);
         entry.setId("createRecipientListEndPoint8CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.RecipientListEndPoint_3692));
@@ -1323,7 +1334,7 @@ public class EsbPaletteFactory {
         ArrayList<IElementType> types = new ArrayList<IElementType>(2);
         types.add(EsbElementTypes.HTTPEndpoint_3709);
         types.add(EsbElementTypes.HTTPEndpoint_3712);
-        NodeToolEntry entry = new NodeToolEntry(Messages.HTTPEndpoint9CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.HTTPEndpoint9CreationTool_title,
                 Messages.HTTPEndpoint9CreationTool_desc, types);
         entry.setId("createHTTPEndpoint9CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.HTTPEndpoint_3709));
@@ -1338,7 +1349,7 @@ public class EsbPaletteFactory {
         ArrayList<IElementType> types = new ArrayList<IElementType>(2);
         types.add(EsbElementTypes.TemplateEndpoint_3716);
         types.add(EsbElementTypes.TemplateEndpoint_3725);
-        NodeToolEntry entry = new NodeToolEntry(Messages.TemplateEndpoint10CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.TemplateEndpoint10CreationTool_title,
                 Messages.TemplateEndpoint10CreationTool_desc, types);
         entry.setId("createTemplateEndpoint10CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.TemplateEndpoint_3716));
@@ -1350,7 +1361,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createEsbLink1CreationTool() {
-        LinkToolEntry entry = new LinkToolEntry(Messages.EsbLink1CreationTool_title,
+        DefaultLinkToolEntry entry = new DefaultLinkToolEntry(Messages.EsbLink1CreationTool_title,
                 Messages.EsbLink1CreationTool_desc, Collections.singletonList(EsbElementTypes.EsbLink_4001));
         entry.setId("createEsbLink1CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EsbLink_4001));
@@ -1362,7 +1373,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createMergeNode1CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.MergeNode1CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.MergeNode1CreationTool_title,
                 Messages.MergeNode1CreationTool_desc, Collections.singletonList(EsbElementTypes.MergeNode_3013));
         entry.setId("createMergeNode1CreationTool"); //$NON-NLS-1$
         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.MergeNode_3013));
@@ -1374,7 +1385,7 @@ public class EsbPaletteFactory {
      * @generated
      */
     private ToolEntry createCloudConnector1CreationTool() {
-        NodeToolEntry entry = new NodeToolEntry(Messages.CloudConnector1CreationTool_title,
+        DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.CloudConnector1CreationTool_title,
                 Messages.CloudConnector1CreationTool_desc,
                 Collections.singletonList(EsbElementTypes.CloudConnector_3719));
         entry.setId("createCloudConnector1CreationTool"); //$NON-NLS-1$
@@ -1524,7 +1535,7 @@ public class EsbPaletteFactory {
             }
         }
     }
-    
+
     /**
      * This method removes connector palettes from editor if the connector is not in the given list.
      * 
@@ -1592,7 +1603,8 @@ public class EsbPaletteFactory {
 
         if (!definedEndpointsAdded) {
             ((DiagramEditDomain) ((EsbDiagramEditor) editor).getDiagramEditDomain()).getPaletteViewer().getPaletteRoot()
-                    .add(createCloudConnectorGroup(WordUtils.capitalize(cloudConnectorName) + " " + WordUtils.capitalize(connectorType),
+                    .add(createCloudConnectorGroup(
+                            WordUtils.capitalize(cloudConnectorName) + " " + WordUtils.capitalize(connectorType),
                             "CloudConnector-" + cloudConnectorName));
             indexOfDefinedEndpoints = list.size() - 1;
         } /*

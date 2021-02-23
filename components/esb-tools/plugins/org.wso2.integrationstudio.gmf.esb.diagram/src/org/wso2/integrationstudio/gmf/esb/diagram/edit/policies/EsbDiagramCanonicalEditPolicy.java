@@ -2018,6 +2018,27 @@ public class EsbDiagramCanonicalEditPolicy extends CanonicalEditPolicy {
             domain2NotationMap.putView(view.getElement(), view);
             break;
         }
+        case DSSMediatorEditPart.VISUAL_ID: {
+            if (!domain2NotationMap.containsKey(view.getElement())) {
+                result.addAll(EsbDiagramUpdater.getDSSMediator_3794ContainedLinks(view));
+            }
+            domain2NotationMap.putView(view.getElement(), view);
+            break;
+        }
+        case DSSMediatorInputConnectorEditPart.VISUAL_ID: {
+            if (!domain2NotationMap.containsKey(view.getElement())) {
+                result.addAll(EsbDiagramUpdater.getDSSMediatorInputConnector_3795ContainedLinks(view));
+            }
+            domain2NotationMap.putView(view.getElement(), view);
+            break;
+        }
+        case DSSMediatorOutputConnectorEditPart.VISUAL_ID: {
+            if (!domain2NotationMap.containsKey(view.getElement())) {
+                result.addAll(EsbDiagramUpdater.getDSSMediatorOutputConnector_3796ContainedLinks(view));
+            }
+            domain2NotationMap.putView(view.getElement(), view);
+            break;
+        }
         case EntitlementOnAcceptContainerEditPart.VISUAL_ID: {
             if (!domain2NotationMap.containsKey(view.getElement())) {
                 result.addAll(EsbDiagramUpdater.getEntitlementOnAcceptContainer_3755ContainedLinks(view));

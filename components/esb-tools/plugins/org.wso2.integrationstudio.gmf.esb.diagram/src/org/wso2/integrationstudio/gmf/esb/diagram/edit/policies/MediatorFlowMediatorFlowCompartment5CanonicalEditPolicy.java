@@ -39,6 +39,7 @@ import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.CommandMediatorEdit
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.ConditionalRouterMediatorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DBLookupMediatorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DBReportMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DSSMediatorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DataMapperMediatorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DefaultEndPointEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DropMediatorEditPart;
@@ -206,6 +207,7 @@ public class MediatorFlowMediatorFlowCompartment5CanonicalEditPolicy extends Can
         case ForEachMediatorEditPart.VISUAL_ID:
         case PublishEventMediatorEditPart.VISUAL_ID:
         case JsonTransformMediatorEditPart.VISUAL_ID:
+        case DSSMediatorEditPart.VISUAL_ID:
             return true;
         }
         return false;

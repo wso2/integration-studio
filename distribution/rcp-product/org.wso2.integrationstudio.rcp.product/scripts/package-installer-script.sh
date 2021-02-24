@@ -56,11 +56,6 @@ mv $PRODUCT_PATH_LINUX_64/wso2mi-monitoring-dashboard-$DASHBOARD_VERSION $PRODUC
 mv $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/wso2mi-monitoring-dashboard-$DASHBOARD_VERSION $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/mi-monitoring-dashboard
 mv $PRODUCT_PATH_WIN_64/wso2mi-monitoring-dashboard-$DASHBOARD_VERSION $PRODUCT_PATH_WIN_64/mi-monitoring-dashboard
 
-# Change default configuration to http in mi-moniroting-dashboard
-sed -i 's/transportId: "https"/transportId: "http"/g' $PRODUCT_PATH_LINUX_64/mi-monitoring-dashboard/conf/server/deployment.yaml
-sed -i 's/transportId: "https"/transportId: "http"/g' $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/mi-monitoring-dashboard/conf/server/deployment.yaml
-sed -i 's/transportId: "https"/transportId: "http"/g' $PRODUCT_PATH_WIN_64/mi-monitoring-dashboard/conf/server/deployment.yaml
-
 # Unzip apche maven to relevant packages
 unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_LINUX_64/
 unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/

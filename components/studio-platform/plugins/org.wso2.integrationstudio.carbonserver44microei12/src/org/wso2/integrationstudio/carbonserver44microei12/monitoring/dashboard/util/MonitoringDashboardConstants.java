@@ -22,7 +22,7 @@ import java.io.File;
 
 public class MonitoringDashboardConstants {
     public static final String EMPTY_STRING = "";
-    public static final String MI_DASHBOARD_PATH = "mi-monitoring-dashboard" + File.separator + "bin" + File.separator;
+    public static final String MI_DASHBOARD_PATH = "mi-dashboard" + File.separator + "bin" + File.separator;
     public static final String MI_DASHBOARD_APP_WINDOWS = "dashboard.bat";
     public static final String MI_DASHBOARD_APP_UNIX = "dashboard.sh";
     public static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";

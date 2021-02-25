@@ -88,13 +88,13 @@
                 <version>${maven.download.plugin}</version>
                 <executions>
                     <execution>
-                        <id>download-mi-monitoring-dashboard</id>
+                        <id>download-mi-dashboard</id>
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>https://github.com/wso2/micro-integrator/releases/download/v${mi.dashboard.version}/wso2mi-monitoring-dashboard-${mi.dashboard.version}.zip</url>
+                            <url>https://github.com/wso2/micro-integrator/releases/download/v${mi.dashboard.version}/wso2mi-dashboard-${mi.dashboard.version}.zip</url>
                             <unpack>false</unpack>
                             <outputDirectory>${project.build.directory}/products</outputDirectory>
                         </configuration>

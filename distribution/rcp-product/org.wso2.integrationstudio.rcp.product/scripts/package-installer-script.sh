@@ -46,20 +46,15 @@ unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-linux.gtk.x86_64.zip -d $PRODUC
 unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.x86_64.zip -d $PRODUCT_PATH_MACOS
 unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86_64.zip -d $PRODUCT_PATH_WIN_64
 
-# Unzip mi-monitoring-dashboard to relevant packages
-unzip $PRODUCT_PATH_ROOT/wso2mi-monitoring-dashboard-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_LINUX_64/
-unzip $PRODUCT_PATH_ROOT/wso2mi-monitoring-dashboard-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/
-unzip $PRODUCT_PATH_ROOT/wso2mi-monitoring-dashboard-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_WIN_64/
+# Unzip mi-dashboard to relevant packages
+unzip $PRODUCT_PATH_ROOT/wso2mi-dashboard-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_LINUX_64/
+unzip $PRODUCT_PATH_ROOT/wso2mi-dashboard-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/
+unzip $PRODUCT_PATH_ROOT/wso2mi-dashboard-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_WIN_64/
 
-# Rename as "mi-monitoring-dashboard" (this is the static name used in EI Tooling code)
-mv $PRODUCT_PATH_LINUX_64/wso2mi-monitoring-dashboard-$DASHBOARD_VERSION $PRODUCT_PATH_LINUX_64/mi-monitoring-dashboard
-mv $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/wso2mi-monitoring-dashboard-$DASHBOARD_VERSION $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/mi-monitoring-dashboard
-mv $PRODUCT_PATH_WIN_64/wso2mi-monitoring-dashboard-$DASHBOARD_VERSION $PRODUCT_PATH_WIN_64/mi-monitoring-dashboard
-
-# Change default configuration to http in mi-moniroting-dashboard
-sed -i 's/transportId: "https"/transportId: "http"/g' $PRODUCT_PATH_LINUX_64/mi-monitoring-dashboard/conf/server/deployment.yaml
-sed -i 's/transportId: "https"/transportId: "http"/g' $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/mi-monitoring-dashboard/conf/server/deployment.yaml
-sed -i 's/transportId: "https"/transportId: "http"/g' $PRODUCT_PATH_WIN_64/mi-monitoring-dashboard/conf/server/deployment.yaml
+# Rename as "mi-dashboard" (this is the static name used in EI Tooling code)
+mv $PRODUCT_PATH_LINUX_64/wso2mi-dashboard-$DASHBOARD_VERSION $PRODUCT_PATH_LINUX_64/mi-dashboard
+mv $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/wso2mi-dashboard-$DASHBOARD_VERSION $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/mi-dashboard
+mv $PRODUCT_PATH_WIN_64/wso2mi-dashboard-$DASHBOARD_VERSION $PRODUCT_PATH_WIN_64/mi-dashboard
 
 # Unzip apche maven to relevant packages
 unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_LINUX_64/
@@ -167,7 +162,7 @@ popd
 
 # Cleanup
 rm $PRODUCT_PATH_ROOT/wso2mi-$PRODUCT_VERSION.zip
-rm $PRODUCT_PATH_ROOT/wso2mi-monitoring-dashboard-$DASHBOARD_VERSION.zip
+rm $PRODUCT_PATH_ROOT/wso2mi-dashboard-$DASHBOARD_VERSION.zip
 rm $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip
 rm -rf $APICTL_DISTRIBUTION_PATH
 rm -rf $PRODUCT_PATH_ROOT/temp

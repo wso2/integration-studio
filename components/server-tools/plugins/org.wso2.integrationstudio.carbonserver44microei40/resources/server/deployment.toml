@@ -17,6 +17,10 @@ password = "wso2carbon"
 alias = "symmetric.key.value"
 algorithm = "AES"
 
+[dashboard_config]
+dashboard_url = "https://localhost:9743/dashboard/api/"
+heartbeat_interval = 15
+
 ## Following are set of example configs. Please refer docs for complete set of configurations.
 
 # [transport.http]

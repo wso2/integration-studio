@@ -206,12 +206,16 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
         if (!newFile.exists()) {
             // Creating the new yml file
             YAMLFactory yamlFactory = new YAMLFactory();
-            String imagePath = dockerModel.getKubeTargetRepository() + ":" + dockerModel.getKubeTargetTag();
+            String dockerImageTag = dockerModel.getKubeTargetTag();
+            if (dockerImageTag.equals("${project.version}")) {
+                dockerImageTag = dockerModel.getMavenInfo().getVersion();
+            }
+            String imagePath = dockerModel.getKubeTargetRepository() + ":" + dockerImageTag;
             try (FileWriter fw = new FileWriter(newFile);) {
                 YAMLGenerator yamlGenerator = yamlFactory.createGenerator(fw);
                 yamlGenerator.writeStartObject();
 
-                yamlGenerator.writeObjectField("apiVersion", "wso2.com/v1alpha1");
+                yamlGenerator.writeObjectField("apiVersion", "wso2.com/v1alpha2");
                 yamlGenerator.writeObjectField("kind", "Integration");
                 yamlGenerator.writeFieldName("metadata");
                 yamlGenerator.writeStartObject();
@@ -219,12 +223,18 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 yamlGenerator.writeEndObject();
                 yamlGenerator.writeFieldName("spec");
                 yamlGenerator.writeStartObject();
-                yamlGenerator.writeObjectField("replicas", Integer.parseInt(dockerModel.getKubeReplicsas()));
                 yamlGenerator.writeObjectField("image", imagePath);
+                
+                yamlGenerator.writeFieldName("deploySpec");
+                yamlGenerator.writeStartObject();
+                yamlGenerator.writeObjectField("minReplicas", Integer.parseInt(dockerModel.getKubeReplicsas()));
+                yamlGenerator.writeEndObject();
                 
                 // check whether there are Inbound Ports given by user and append to the yaml
                 // file
                 if (dockerModel.getKubernetesPortParameters().size() > 0) {
+                    yamlGenerator.writeFieldName("expose");
+                    yamlGenerator.writeStartObject();
                     yamlGenerator.writeFieldName("inboundPorts");
                     yamlGenerator.writeStartArray();
 
@@ -233,6 +243,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                     }
 
                     yamlGenerator.writeEndArray();
+                    yamlGenerator.writeEndObject();
                 }
 
                 // check whether there are ENV variables given by user and create a new data yaml

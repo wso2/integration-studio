@@ -19,6 +19,8 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
     private static final String BUNDLE_NAME = "org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.messages"; //$NON-NLS-1$
+    public static String DSSMediatorEditPart_ToolTipMessage;
+    public static String DSSMediatorEditPart_NodeName;
     public static String AggregateMediatorEditPart_ToolTipMessage;
     public static String BAMMediatorEditPart_NodeName;
     public static String BAMMediatorEditPart_ToolTipMessage;

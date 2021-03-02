@@ -257,6 +257,7 @@ public class EntitlementMediatorInputConnectorEditPart extends AbstractMediatorI
             types.add(EsbElementTypes.MessageOutputConnector_3047);
             types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
             types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
+            types.add(EsbElementTypes.DSSMediatorInputConnector_3795);
         }
         return types;
     }

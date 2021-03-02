@@ -1553,6 +1553,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
      */
     public DSSMediator createDSSMediator() {
         DSSMediatorImpl dssMediator = new DSSMediatorImpl();
+        dssMediator.setInputConnector(createDSSMediatorInputConnector());
+        dssMediator.setOutputConnector(createDSSMediatorOutputConnector());
         return dssMediator;
     }
 

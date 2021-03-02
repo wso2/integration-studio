@@ -289,6 +289,7 @@ public class BAMMediatorInputConnectorEditPart extends AbstractMediatorInputConn
             types.add(EsbElementTypes.APIResourceOutputConnector_3671);
             types.add(EsbElementTypes.ComplexEndpointsOutputConnector_3679);
             types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
+            types.add(EsbElementTypes.DSSMediatorInputConnector_3795);
         }
         return types;
     }

@@ -6838,7 +6838,7 @@
 			class="org.wso2.integrationstudio.gmf.esb.diagram.swagger.SwaggerEditorEarlyStartup">
 		</startup>
 	</extension>
-<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+<!--<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
       <?gmfgen generated="true"?>
       <propertyContributor
             contributorId="org.wso2.integrationstudio.gmf.esb.diagram"
@@ -6899,7 +6899,7 @@
             <input type="org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbAbstractNavigatorItem"/>
          </propertySection>
       </propertySections>
-   </extension>
+   </extension>-->
 
 
 </plugin>

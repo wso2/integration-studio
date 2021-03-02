@@ -423,6 +423,9 @@ public class APIResourceOutputConnectorEditPart extends AbstractOutputConnectorE
         if (targetEditPart instanceof APIResourceFaultInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof DSSMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         return types;
     }
 
@@ -492,6 +495,7 @@ public class APIResourceOutputConnectorEditPart extends AbstractOutputConnectorE
             types.add(EsbElementTypes.LoadBalanceEndPointInputConnector_3657);
             types.add(EsbElementTypes.APIResourceInputConnector_3670);
             types.add(EsbElementTypes.APIResourceFaultInputConnector_3672);
+            types.add(EsbElementTypes.DSSMediatorInputConnector_3795);
         }
         return types;
     }

@@ -306,6 +306,7 @@ public class RespondMediatorInputConnectorEditPart extends AbstractMediatorInput
             types.add(EsbElementTypes.APIResourceOutSequenceOutputConnector_3730);
             types.add(EsbElementTypes.ComplexEndpointsOutputConnector_3679);
             types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
+            types.add(EsbElementTypes.DSSMediatorInputConnector_3795);
         }
         return types;
     }

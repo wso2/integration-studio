@@ -284,6 +284,7 @@ public class NamedEndpointInputConnectorEditPart extends AbstractEndpointInputCo
             types.add(EsbElementTypes.LoadBalanceEndPointOutputConnector_3658);
             types.add(EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3659);
             types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
+            types.add(EsbElementTypes.DSSMediatorInputConnector_3795);
         }
         return types;
     }

@@ -112,5 +112,5 @@ heartbeat_interval = 15
 # [[service_catalog]]
 # apimHost = "https://localhost:9443"
 # enable = true
-# userName = "admin"
+# username = "admin"
 # password = "admin"

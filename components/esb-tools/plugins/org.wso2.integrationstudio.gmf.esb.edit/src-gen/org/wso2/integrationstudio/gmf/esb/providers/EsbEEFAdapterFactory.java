@@ -415,6 +415,22 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDSSMediatorAdapter()
+	 * 
+	 */
+	public Adapter createDSSMediatorAdapter() {
+		return new DSSMediatorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createDSSoperationPropertyAdapter()
+	 * 
+	 */
+	public Adapter createDSSoperationPropertyAdapter() {
+		return new DSSoperationPropertyPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createPublishEventMediatorAdapter()
 	 * 
 	 */

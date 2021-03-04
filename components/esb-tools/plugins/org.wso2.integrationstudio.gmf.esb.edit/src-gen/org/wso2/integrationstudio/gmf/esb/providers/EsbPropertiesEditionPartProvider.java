@@ -94,6 +94,8 @@ import org.wso2.integrationstudio.gmf.esb.parts.forms.DBLookupMediatorProperties
 import org.wso2.integrationstudio.gmf.esb.parts.forms.DBReportMediatorInputConnectorPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.DBReportMediatorOutputConnectorPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.DBReportMediatorPropertiesEditionPartForm;
+import org.wso2.integrationstudio.gmf.esb.parts.forms.DSSMediatorPropertiesEditionPartForm;
+import org.wso2.integrationstudio.gmf.esb.parts.forms.DSSoperationPropertyPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.DataMapperMediatorInputConnectorPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.DataMapperMediatorOutputConnectorPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.DataMapperMediatorPropertiesEditionPartForm;
@@ -448,6 +450,8 @@ import org.wso2.integrationstudio.gmf.esb.parts.impl.DBLookupMediatorPropertiesE
 import org.wso2.integrationstudio.gmf.esb.parts.impl.DBReportMediatorInputConnectorPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.DBReportMediatorOutputConnectorPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.DBReportMediatorPropertiesEditionPartImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.impl.DSSMediatorPropertiesEditionPartImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.impl.DSSoperationPropertyPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.DataMapperMediatorInputConnectorPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.DataMapperMediatorOutputConnectorPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.DataMapperMediatorPropertiesEditionPartImpl;
@@ -1075,6 +1079,18 @@ public class EsbPropertiesEditionPartProvider implements IPropertiesEditionPartP
 				return new LogPropertyPropertiesEditionPartImpl(component);
 			if (kind == EsbViewsRepository.FORM_KIND)
 				return new LogPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DSSMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DSSMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DSSMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.DSSoperationProperty.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new DSSoperationPropertyPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new DSSoperationPropertyPropertiesEditionPartForm(component);
 		}
 		if (key == EsbViewsRepository.PublishEventMediator.class) {
 			if (kind == EsbViewsRepository.SWT_KIND)

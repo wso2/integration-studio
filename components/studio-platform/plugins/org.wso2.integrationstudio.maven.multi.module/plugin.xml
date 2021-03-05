@@ -173,7 +173,7 @@
             <objectContribution objectClass="org.eclipse.core.resources.IProject"
                                 id="org.wso2.integrationstudio.maven.multi.module.add.other.project.id">
                 <action
-                        label="Import to a Maven Multi Module"
+                        label="Import into Integration Project"
                         icon="icons/mmm-import-16px.png"
                         class="org.wso2.integrationstudio.maven.multi.module.add.other.projects.ImportToMMMProjectAction"
                         id="org.wso2.integrationstudio.maven.multi.module.add.other.projects">

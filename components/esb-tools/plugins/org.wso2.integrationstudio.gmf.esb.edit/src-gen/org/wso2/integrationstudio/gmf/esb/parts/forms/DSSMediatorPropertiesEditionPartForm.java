@@ -69,6 +69,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import org.eclipse.ui.forms.widgets.Form;
@@ -77,10 +78,12 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.integrationstudio.gmf.esb.EsbPackage;
-
+import org.wso2.integrationstudio.gmf.esb.MediaType;
+import org.wso2.integrationstudio.gmf.esb.DSSSourceType;
+import org.wso2.integrationstudio.gmf.esb.DSSTargetType;
 import org.wso2.integrationstudio.gmf.esb.parts.DSSMediatorPropertiesEditionPart;
 import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
-
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 
 // End of user code
@@ -103,8 +106,17 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	protected List<ViewerFilter> operationsFilters = new ArrayList<ViewerFilter>();
 	protected EMFComboViewer targetType;
 	protected Text targetProperty;
+	
+	// Start of user code  for payloadKey widgets declarations
+	Composite propertiesGroup;
+	protected Control[] serviceNameElements;
+	protected Control[] descriptionElements;
+	protected Control[] sourceTypeElements;
+	protected Control[] operationsTableElements;
+	protected Control[] targetPropertyElements;
+	protected Control[] targetTypeElements;
 
-
+	// End of user code
 
 	/**
 	 * For {@link ISection} use only.
@@ -148,7 +160,6 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence dSSMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = dSSMediatorStep.addStep(EsbViewsRepository.DSSMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.description);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.serviceName);
@@ -156,7 +167,7 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.operations);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.targetType);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.targetProperty);
-		
+		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.description);
 		
 		composer = new PartComposer(dSSMediatorStep) {
 
@@ -203,7 +214,7 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesSectionData.horizontalSpan = 3;
 		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+		propertiesGroup = widgetFactory.createComposite(propertiesSection);
 		GridLayout propertiesGroupLayout = new GridLayout();
 		propertiesGroupLayout.numColumns = 3;
 		propertiesGroup.setLayout(propertiesGroupLayout);
@@ -213,7 +224,7 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createDescriptionText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.DSSMediator.Properties.description, EsbMessages.DSSMediatorPropertiesEditionPart_DescriptionLabel);
+		Control descriptionLabel = createDescription(parent, EsbViewsRepository.DSSMediator.Properties.description, EsbMessages.DSSMediatorPropertiesEditionPart_DescriptionLabel);
 		description = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		description.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -272,9 +283,9 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		EditingUtils.setID(description, EsbViewsRepository.DSSMediator.Properties.description);
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control descriptionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
+		descriptionElements = new Control[] {descriptionLabel, description, descriptionHelp};
 		// End of user code
 		return parent;
 	}
@@ -356,7 +367,7 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 
 	
 	protected Composite createServiceNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.DSSMediator.Properties.serviceName, EsbMessages.DSSMediatorPropertiesEditionPart_ServiceNameLabel);
+		Control serviceNameLabel = createDescription(parent, EsbViewsRepository.DSSMediator.Properties.serviceName, EsbMessages.DSSMediatorPropertiesEditionPart_ServiceNameLabel);
 		serviceName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		serviceName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -415,16 +426,16 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		EditingUtils.setID(serviceName, EsbViewsRepository.DSSMediator.Properties.serviceName);
 		EditingUtils.setEEFtype(serviceName, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.serviceName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control serviceNameHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.serviceName, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createServiceNameText
-
+		serviceNameElements = new Control[] {serviceNameLabel,serviceName, serviceNameHelp};
 		// End of user code
 		return parent;
 	}
 
 	
 	protected Composite createSourceTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.DSSMediator.Properties.sourceType, EsbMessages.DSSMediatorPropertiesEditionPart_SourceTypeLabel);
+		Control sourceTypeLabel = createDescription(parent, EsbViewsRepository.DSSMediator.Properties.sourceType, EsbMessages.DSSMediatorPropertiesEditionPart_SourceTypeLabel);
 		sourceType = new EMFComboViewer(parent);
 		sourceType.setContentProvider(new ArrayContentProvider());
 		sourceType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -445,9 +456,21 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 
 		});
 		sourceType.setID(EsbViewsRepository.DSSMediator.Properties.sourceType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.sourceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control sourceTypeHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.sourceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSourceTypeEMFComboViewer
+		sourceTypeElements = new Control[] {sourceTypeLabel, sourceType.getCombo(), sourceTypeHelp};
+		sourceType.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                refresh();
+            }
+        });
 		// End of user code
 		return parent;
 	}
@@ -457,6 +480,7 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	 * 
 	 */
 	protected Composite createOperationsTableComposition(FormToolkit widgetFactory, Composite parent) {
+		Control[] previousControls = propertiesGroup.getChildren();
 		this.operations = new ReferencesTable(getDescription(EsbViewsRepository.DSSMediator.Properties.operations, EsbMessages.DSSMediatorPropertiesEditionPart_OperationsLabel), new ReferencesTableListener() {
 			public void handleAdd() {
 				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DSSMediatorPropertiesEditionPartForm.this, EsbViewsRepository.DSSMediator.Properties.operations, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
@@ -498,14 +522,15 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		operations.setID(EsbViewsRepository.DSSMediator.Properties.operations);
 		operations.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createOperationsTableComposition
-
+		Control[] newControls = propertiesGroup.getChildren();
+		operationsTableElements = EEFPropertyViewUtil.getTableElements(previousControls, newControls);
 		// End of user code
 		return parent;
 	}
 
 	
 	protected Composite createTargetTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.DSSMediator.Properties.targetType, EsbMessages.DSSMediatorPropertiesEditionPart_TargetTypeLabel);
+		Control targetTypeCombo = createDescription(parent, EsbViewsRepository.DSSMediator.Properties.targetType, EsbMessages.DSSMediatorPropertiesEditionPart_TargetTypeLabel);
 		targetType = new EMFComboViewer(parent);
 		targetType.setContentProvider(new ArrayContentProvider());
 		targetType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -526,16 +551,16 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 
 		});
 		targetType.setID(EsbViewsRepository.DSSMediator.Properties.targetType);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.targetType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control targetTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.targetType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTargetTypeEMFComboViewer
-
+		targetTypeElements = new Control[] {targetTypeCombo, targetType.getCombo(), targetTypeHelp};
 		// End of user code
 		return parent;
 	}
 
 	
 	protected Composite createTargetPropertyText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.DSSMediator.Properties.targetProperty, EsbMessages.DSSMediatorPropertiesEditionPart_TargetPropertyLabel);
+		Control targetPropertyLabel = createDescription(parent, EsbViewsRepository.DSSMediator.Properties.targetProperty, EsbMessages.DSSMediatorPropertiesEditionPart_TargetPropertyLabel);
 		targetProperty = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		targetProperty.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -594,9 +619,21 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		});
 		EditingUtils.setID(targetProperty, EsbViewsRepository.DSSMediator.Properties.targetProperty);
 		EditingUtils.setEEFtype(targetProperty, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.targetProperty, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control targetPropertyHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.targetProperty, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTargetPropertyText
+		targetPropertyElements = new Control[] {targetPropertyLabel, targetProperty, targetPropertyHelp};
+		targetType.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                refresh();
+            }
+        });
 		// End of user code
 		return parent;
 	}
@@ -969,7 +1006,32 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	}
 
 	// Start of user code additional methods
+	@Override
+    public void refresh() {
+        super.refresh();
+        validate();
+    }
+    
+    public void validate() {
+        EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
+        eu.clearElements(new Composite[] { propertiesGroup });
+        
+        eu.showEntry(serviceNameElements, false);
+        eu.showEntry(descriptionElements, false);
+        eu.showEntry(sourceTypeElements, false);
+		if (getSourceType().getName().equals(DSSSourceType.INLINE.getName())) {
+			eu.showEntry(operationsTableElements, false);
+		}
+        eu.showEntry(targetTypeElements, false);
+		if (getTargetType().getName().equals(DSSTargetType.PROPERTY.getName())) {
+			eu.showEntry(targetPropertyElements, false);
+		}
+        // Sets a default XML value. If not, parsing to XML fails and is unable to load the source view
+        
+        view.layout(true, true);
+    }
 	
+	// End of user code
 	// End of user code
 
 

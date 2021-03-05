@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation;
 import org.wso2.integrationstudio.gmf.esb.DSSMediator;
 import org.wso2.integrationstudio.gmf.esb.DSSMediatorInputConnector;
 import org.wso2.integrationstudio.gmf.esb.DSSMediatorOutputConnector;
@@ -106,7 +107,7 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
      * @generated
      * @ordered
      */
-    protected EList<DSSoperationProperty> operations;
+    protected EList<AbstractDSSOperation> operations;
 
     /**
      * The default value of the '{@link #getTargetType() <em>Target Type</em>}' attribute.
@@ -234,9 +235,9 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EList<DSSoperationProperty> getOperations() {
+    public EList<AbstractDSSOperation> getOperations() {
         if (operations == null) {
-            operations = new EObjectContainmentEList<DSSoperationProperty>(DSSoperationProperty.class, this, EsbPackage.DSS_MEDIATOR__OPERATIONS);
+            operations = new EObjectContainmentEList<AbstractDSSOperation>(AbstractDSSOperation.class, this, EsbPackage.DSS_MEDIATOR__OPERATIONS);
         }
         return operations;
     }
@@ -430,7 +431,7 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
                 return;
             case EsbPackage.DSS_MEDIATOR__OPERATIONS:
                 getOperations().clear();
-                getOperations().addAll((Collection<? extends DSSoperationProperty>)newValue);
+                getOperations().addAll((Collection<? extends AbstractDSSOperation>)newValue);
                 return;
             case EsbPackage.DSS_MEDIATOR__TARGET_TYPE:
                 setTargetType((DSSTargetType)newValue);

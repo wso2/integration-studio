@@ -814,6 +814,15 @@ public interface EsbFactory extends EFactory {
     EnrichMediatorOutputConnector createEnrichMediatorOutputConnector();
 
     /**
+     * Returns a new object of class '<em>Abstract DSS Operation</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Abstract DSS Operation</em>'.
+     * @generated
+     */
+    AbstractDSSOperation createAbstractDSSOperation();
+
+    /**
      * Returns a new object of class '<em>XSLT Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

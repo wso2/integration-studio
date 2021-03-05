@@ -480,7 +480,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceType" eType="#//DSSSourceType"
         defaultValueLiteral="INLINE"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
-        eType="#//DSSoperationProperty" containment="true"/>
+        eType="#//AbstractDSSOperation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetType" eType="#//DSSTargetType"
         defaultValueLiteral="BODY"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -872,8 +872,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertyExpression" eType="#//NamespacedProperty"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractDSSOperation" abstract="true"
-      eSuperTypes="#//EsbNode">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractDSSOperation" eSuperTypes="#//EsbNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="DSSPrperties" upperBound="-1"
         eType="#//DSSoperationProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

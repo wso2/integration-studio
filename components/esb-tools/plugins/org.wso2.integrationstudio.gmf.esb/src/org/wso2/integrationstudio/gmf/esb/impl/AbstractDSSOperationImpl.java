@@ -48,7 +48,7 @@ import org.wso2.integrationstudio.gmf.esb.EsbPackage;
  *
  * @generated
  */
-public abstract class AbstractDSSOperationImpl extends EsbNodeImpl implements AbstractDSSOperation {
+public class AbstractDSSOperationImpl extends EsbNodeImpl implements AbstractDSSOperation {
     /**
      * The cached value of the '{@link #getDSSPrperties() <em>DSS Prperties</em>}' containment reference list.
      * <!-- begin-user-doc -->

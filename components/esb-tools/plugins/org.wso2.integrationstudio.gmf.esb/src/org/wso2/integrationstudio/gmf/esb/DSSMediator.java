@@ -90,7 +90,7 @@ public interface DSSMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Operations</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.DSSoperationProperty}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @return the value of the '<em>Operations</em>' containment reference list.
@@ -98,7 +98,7 @@ public interface DSSMediator extends Mediator {
      * @model containment="true"
      * @generated
      */
-    EList<DSSoperationProperty> getOperations();
+    EList<AbstractDSSOperation> getOperations();
 
     /**
      * Returns the value of the '<em><b>Target Type</b></em>' attribute.

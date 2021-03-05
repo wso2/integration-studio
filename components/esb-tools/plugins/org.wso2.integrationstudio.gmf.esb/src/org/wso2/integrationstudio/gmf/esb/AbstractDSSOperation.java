@@ -31,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAbstractDSSOperation()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface AbstractDSSOperation extends EsbNode {

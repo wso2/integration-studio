@@ -149,6 +149,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
             case EsbPackage.ENRICH_MEDIATOR: return createEnrichMediator();
             case EsbPackage.ENRICH_MEDIATOR_INPUT_CONNECTOR: return createEnrichMediatorInputConnector();
             case EsbPackage.ENRICH_MEDIATOR_OUTPUT_CONNECTOR: return createEnrichMediatorOutputConnector();
+            case EsbPackage.ABSTRACT_DSS_OPERATION: return createAbstractDSSOperation();
             case EsbPackage.XSLT_MEDIATOR: return createXSLTMediator();
             case EsbPackage.XSLT_PROPERTY: return createXSLTProperty();
             case EsbPackage.XSLT_FEATURE: return createXSLTFeature();
@@ -1995,6 +1996,16 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
     public EnrichMediatorOutputConnector createEnrichMediatorOutputConnector() {
         EnrichMediatorOutputConnectorImpl enrichMediatorOutputConnector = new EnrichMediatorOutputConnectorImpl();
         return enrichMediatorOutputConnector;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public AbstractDSSOperation createAbstractDSSOperation() {
+        AbstractDSSOperationImpl abstractDSSOperation = new AbstractDSSOperationImpl();
+        return abstractDSSOperation;
     }
 
     /**

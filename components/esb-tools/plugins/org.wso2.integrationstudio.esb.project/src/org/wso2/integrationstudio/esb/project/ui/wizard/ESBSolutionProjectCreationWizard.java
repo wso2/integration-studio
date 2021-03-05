@@ -120,7 +120,12 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	}
 
 	public boolean performFinish() {
-		File location = new File(ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString());
+	    File definedLocation = esbSolutionProjectModel.getLocation();
+	    File location = new File(ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString());
+	    if (!definedLocation.equals(location)) {
+	        location = esbSolutionProjectModel.getLocation();
+	    }
+		
 		boolean isMMMChecked = esbSolutionProjectModel.isMMMProjectChecked();
 		String projectRootPath = location.getAbsolutePath();
 		String version = this.getMavenDetailPage().getMavenInformation().getVersion();
@@ -142,7 +147,12 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 				mmmModel.setArtifactId(mmmProjectName);
 				mmmModel.setVersion(version);
 				mmmModel.setGroupId(esbSolutionProjectModel.getGroupId());
-				mmmModel.setLocation(location);
+				if (esbSolutionProjectModel.isUserSet()) {
+				    mmmModel.setLocation(new File(location.getAbsolutePath() + File.separator + mmmProjectName));
+				} else {
+				    mmmModel.setLocation(location);
+				}
+				mmmModel.setLocation(new File(location.getAbsolutePath() + File.separator + mmmProjectName));
 				mmmModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 				mmmModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
 				mmmModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());

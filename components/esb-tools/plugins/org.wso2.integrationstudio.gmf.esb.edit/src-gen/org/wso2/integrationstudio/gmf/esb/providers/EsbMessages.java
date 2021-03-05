@@ -362,6 +362,9 @@ public class EsbMessages extends NLS {
 	public static String EnrichMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String AbstractDSSOperationPropertiesEditionPart_PropertiesGroupLabel;
+
+	
 	public static String XSLTMediatorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -1807,6 +1810,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String EnrichMediatorOutputConnector_Part_Title;
+
+	
+	public static String AbstractDSSOperation_ReadOnly;
+
+	
+	public static String AbstractDSSOperation_Part_Title;
 
 	
 	public static String XSLTMediator_ReadOnly;
@@ -4592,6 +4601,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String EnrichMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
+
+	
+	public static String AbstractDSSOperationPropertiesEditionPart_DSSPrpertiesLabel;
+
+	
+	public static String AbstractDSSOperationPropertiesEditionPart_OperationNameLabel;
 
 	
 	public static String XSLTMediatorPropertiesEditionPart_DescriptionLabel;

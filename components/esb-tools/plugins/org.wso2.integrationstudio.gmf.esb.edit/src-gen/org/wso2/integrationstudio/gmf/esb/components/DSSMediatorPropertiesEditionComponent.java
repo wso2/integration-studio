@@ -50,7 +50,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-
+import org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation;
 import org.wso2.integrationstudio.gmf.esb.DSSMediator;
 import org.wso2.integrationstudio.gmf.esb.DSSSourceType;
 import org.wso2.integrationstudio.gmf.esb.DSSTargetType;
@@ -144,7 +144,7 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof DSSoperationProperty); //$NON-NLS-1$ 
+						return (element instanceof String && element.equals("")) || (element instanceof AbstractDSSOperation); //$NON-NLS-1$ 
 					}
 			
 				});
@@ -250,7 +250,7 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 				operationsSettings.removeFromReference((EObject) event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				operationsSettings.move(event.getNewIndex(), (DSSoperationProperty) event.getNewValue());
+				operationsSettings.move(event.getNewIndex(), (AbstractDSSOperation) event.getNewValue());
 			}
 		}
 		if (EsbViewsRepository.DSSMediator.Properties.targetType == event.getAffectedEditor()) {

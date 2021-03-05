@@ -623,6 +623,14 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createAbstractDSSOperationAdapter()
+	 * 
+	 */
+	public Adapter createAbstractDSSOperationAdapter() {
+		return new AbstractDSSOperationPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createXSLTMediatorAdapter()
 	 * 
 	 */

@@ -2352,6 +2352,24 @@ public class EsbViewsRepository {
 	}
 
 	/**
+	 * AbstractDSSOperation view descriptor
+	 * 
+	 */
+	public static class AbstractDSSOperation {
+		public static class Properties {
+	
+	
+		}
+	
+	
+	public static String dSSPrperties = "esb::AbstractDSSOperation::DSSPrperties";
+	
+	
+	public static String operationName = "esb::AbstractDSSOperation::operationName";
+	
+	}
+
+	/**
 	 * XSLTMediator view descriptor
 	 * 
 	 */

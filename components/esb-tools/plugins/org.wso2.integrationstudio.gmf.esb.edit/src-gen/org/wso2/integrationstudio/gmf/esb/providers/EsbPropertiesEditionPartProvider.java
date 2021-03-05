@@ -23,6 +23,7 @@ import org.wso2.integrationstudio.gmf.esb.parts.forms.APIResourceOutSequenceOutp
 import org.wso2.integrationstudio.gmf.esb.parts.forms.APIResourceOutputConnectorPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.APIResourcePropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.AbstractCommonTargetPropertiesEditionPartForm;
+import org.wso2.integrationstudio.gmf.esb.parts.forms.AbstractDSSOperationPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.AddressEndPointInputConnectorPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.AddressEndPointOutputConnectorPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.AddressEndPointPropertiesEditionPartForm;
@@ -379,6 +380,7 @@ import org.wso2.integrationstudio.gmf.esb.parts.impl.APIResourceOutSequenceOutpu
 import org.wso2.integrationstudio.gmf.esb.parts.impl.APIResourceOutputConnectorPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.APIResourcePropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.AbstractCommonTargetPropertiesEditionPartImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.impl.AbstractDSSOperationPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.AddressEndPointInputConnectorPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.AddressEndPointOutputConnectorPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.AddressEndPointPropertiesEditionPartImpl;
@@ -1241,6 +1243,12 @@ public class EsbPropertiesEditionPartProvider implements IPropertiesEditionPartP
 				return new EnrichMediatorOutputConnectorPropertiesEditionPartImpl(component);
 			if (kind == EsbViewsRepository.FORM_KIND)
 				return new EnrichMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.AbstractDSSOperation.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new AbstractDSSOperationPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new AbstractDSSOperationPropertiesEditionPartForm(component);
 		}
 		if (key == EsbViewsRepository.XSLTMediator.class) {
 			if (kind == EsbViewsRepository.SWT_KIND)

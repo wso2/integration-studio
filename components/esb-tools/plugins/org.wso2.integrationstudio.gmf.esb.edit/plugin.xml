@@ -365,6 +365,12 @@
                tab="Base">
          </propertySection>
          <propertySection
+               class="org.wso2.integrationstudio.gmf.esb.parts.forms.AbstractDSSOperationPropertiesEditionPartForm"
+               filter="org.wso2.integrationstudio.gmf.esb.providers.AbstractDSSOperationPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.integrationstudio.gmf.esb.section.AbstractDSSOperation"
+               tab="Base">
+         </propertySection>
+         <propertySection
                class="org.wso2.integrationstudio.gmf.esb.parts.forms.DSSMediatorPropertiesEditionPartForm"
                filter="org.wso2.integrationstudio.gmf.esb.providers.DSSMediatorPropertiesEditionProvider$EditionFilter"
                id="org.wso2.integrationstudio.gmf.esb.section.DSSMediator"

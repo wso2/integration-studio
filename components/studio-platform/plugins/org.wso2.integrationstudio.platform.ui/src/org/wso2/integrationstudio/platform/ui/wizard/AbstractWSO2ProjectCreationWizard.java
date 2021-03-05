@@ -281,7 +281,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 
 	private IProject createProjectInUserDefineSpace(String name, File location) throws CoreException {
 
-		location = new File(location.getPath() + File.separator + name);
+		//location = new File(location.getPath() + File.separator + name);
 		getModel().setLocation(location);
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IProject project = root.getProject(name);

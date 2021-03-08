@@ -1641,59 +1641,63 @@ public class EsbViewsRepository {
 
 	/**
 	 * DSSMediator view descriptor
-	 *
+	 * 
 	 */
 	public static class DSSMediator {
 		public static class Properties {
-
-
+	
+			
 			public static String description = "esb::DSSMediator::properties::description";
-
-
+			
+			
 			public static String commentsList = "esb::DSSMediator::properties::commentsList";
-
-
+			
+			
 			public static String reverse = "esb::DSSMediator::properties::Reverse";
-
-
+			
+			
 			public static String serviceName = "esb::DSSMediator::properties::serviceName";
-
-
+			
+			
 			public static String sourceType = "esb::DSSMediator::properties::sourceType";
-
-
+			
+			
 			public static String operations = "esb::DSSMediator::properties::operations";
-
-
+			
+			
 			public static String targetType = "esb::DSSMediator::properties::targetType";
-
-
+			
+			
 			public static String targetProperty = "esb::DSSMediator::properties::targetProperty";
-
-
+			
+	
 		}
-
+	
 	}
 
 	/**
 	 * DSSoperationProperty view descriptor
-	 *
+	 * 
 	 */
 	public static class DSSoperationProperty {
 		public static class Properties {
-
-
+	
+			
 			public static String propertyName = "esb::DSSoperationProperty::properties::propertyName";
-
-
+			
+			
 			public static String propertyValueType = "esb::DSSoperationProperty::properties::propertyValueType";
-
-
+			
+			
 			public static String propertyValue = "esb::DSSoperationProperty::properties::propertyValue";
-
-
+			
+			// Start of user code for propertyExpression ElementEditor key
+			public static String propertyExpression = "esb::DSSoperationProperty::properties::propertyExpression";
+			// End of user code
+			
+	
 		}
-
+	
 	}
 
 	/**

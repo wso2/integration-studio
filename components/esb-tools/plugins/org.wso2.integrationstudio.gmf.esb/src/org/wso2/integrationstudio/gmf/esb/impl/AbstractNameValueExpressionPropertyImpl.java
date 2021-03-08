@@ -114,6 +114,12 @@ public abstract class AbstractNameValueExpressionPropertyImpl extends EsbNodeImp
      */
     protected AbstractNameValueExpressionPropertyImpl() {
         super();
+        NamespacedProperty valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        valueExpression.setPrettyName("Property Expression");
+        valueExpression.setPropertyName("expression");
+        valueExpression.setSupportJsonPaths(true);
+        valueExpression.setPropertyValue("");
+        setPropertyExpression(valueExpression);
     }
 
     /**

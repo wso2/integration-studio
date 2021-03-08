@@ -224,10 +224,9 @@ public class AbstractDSSOperationImpl extends EsbNodeImpl implements AbstractDSS
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuilder result = new StringBuilder(super.toString());
-        result.append(" (operationName: ");
+        StringBuilder result = new StringBuilder("");
+        result.append(" Operation: ");
         result.append(operationName);
-        result.append(')');
         return result.toString();
     }
 

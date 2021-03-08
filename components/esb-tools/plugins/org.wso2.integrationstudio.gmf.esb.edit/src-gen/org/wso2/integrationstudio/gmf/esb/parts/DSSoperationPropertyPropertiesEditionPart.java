@@ -5,6 +5,7 @@ package org.wso2.integrationstudio.gmf.esb.parts;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 
 
 // End of user code
@@ -66,6 +67,9 @@ public interface DSSoperationPropertyPropertiesEditionPart {
 
 
 
+	// Start of user code for propertyExpression specific getters and setters declaration
+	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.
@@ -74,6 +78,16 @@ public interface DSSoperationPropertyPropertiesEditionPart {
 	 * 
 	 */
 	public String getTitle();
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+	 * 
+	 */
+	NamespacedProperty getExpressionValue();
+
+	void setExpressionValue(NamespacedProperty nameSpacedProperty);
 
 	// Start of user code for additional methods
 	

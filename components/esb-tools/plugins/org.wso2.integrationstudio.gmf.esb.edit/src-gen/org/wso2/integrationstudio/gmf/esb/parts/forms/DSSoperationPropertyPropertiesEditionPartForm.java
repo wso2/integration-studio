@@ -55,7 +55,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 import org.wso2.integrationstudio.gmf.esb.parts.DSSoperationPropertyPropertiesEditionPart;
 import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 
@@ -72,6 +72,10 @@ public class DSSoperationPropertyPropertiesEditionPartForm extends SectionProper
 	protected Text propertyName;
 	protected EMFComboViewer propertyValueType;
 	protected Text propertyValue;
+	// Start of user code  for propertyExpression widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -120,6 +124,7 @@ public class DSSoperationPropertyPropertiesEditionPartForm extends SectionProper
 		propertiesStep.addStep(EsbViewsRepository.DSSoperationProperty.Properties.propertyName);
 		propertiesStep.addStep(EsbViewsRepository.DSSoperationProperty.Properties.propertyValueType);
 		propertiesStep.addStep(EsbViewsRepository.DSSoperationProperty.Properties.propertyValue);
+		propertiesStep.addStep(EsbViewsRepository.DSSoperationProperty.Properties.propertyExpression);
 		
 		
 		composer = new PartComposer(dSSoperationPropertyStep) {
@@ -138,6 +143,9 @@ public class DSSoperationPropertyPropertiesEditionPartForm extends SectionProper
 				if (key == EsbViewsRepository.DSSoperationProperty.Properties.propertyValue) {
 					return createPropertyValueText(widgetFactory, parent);
 				}
+				// Start of user code for propertyExpression addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -455,6 +463,10 @@ public class DSSoperationPropertyPropertiesEditionPartForm extends SectionProper
 
 
 
+	// Start of user code for propertyExpression specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -463,6 +475,18 @@ public class DSSoperationPropertyPropertiesEditionPartForm extends SectionProper
 	 */
 	public String getTitle() {
 		return EsbMessages.DSSoperationProperty_Part_Title;
+	}
+
+	@Override
+	public NamespacedProperty getExpressionValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setExpressionValue(NamespacedProperty nameSpacedProperty) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	// Start of user code additional methods

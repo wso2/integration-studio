@@ -160,7 +160,11 @@ Integration Studio has been released with the following package components.
     * Import the **plugins directory** which located in the **<TOOLING_ROOT>/components/esb-tools** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
     * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
 
-7. Install Modeling features(EMF) to eclipse
+7. Import the **server-tools** component source to eclipse.
+    * Import the **plugins directory** which is located in the **<TOOLING_ROOT>/components/server-tools** to the eclipse workspace by selecting **File -> Import -> General -> Existing Projects into workspace**
+    * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
+    
+8. Install Modeling features(EMF) to eclipse
     * Click on Help -> Install New Software
     * Select **2020-06 - http://download.eclipse.org/releases/2020-06/** from work with drop down list 
     * Click on **Modeling** checkbox in the install window
@@ -170,7 +174,7 @@ Integration Studio has been released with the following package components.
     * It will take sometime to install the software, during the process you will get a security warning pop-up, click on **Install anyway**.
     * Then it will ask to restart the server, click on **Yes**.
 
-8. Install GMF related tooling runtime for 2020-06, using the p2. (some features might not be able to install but install what is allowed)
+9. Install GMF related tooling runtime for 2020-06, using the p2. (some features might not be able to install but install what is allowed)
     * Click on **Help** -> Install New Software
     * Click on **Add** -> Add the url http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/ into **Location**, and click OK.
     * Select only **GMF Tooling** from the dropdown list.
@@ -180,20 +184,20 @@ Integration Studio has been released with the following package components.
     * It will take sometime to install the selected software.
     * Finally, it will ask to restart the eclipse, click on **Yes**.
 
-9. Copy micro-integrator runtime eclipse 
+10. Copy micro-integrator runtime eclipse 
     * Create a directory under the eclipse directory (macOS: /Applications/Eclipse.app/Contents/Eclipse/, Linux/Windows /eclipse directory) as **/runtime/microesb/** 
     * Download and copy the contents of micro integrator runtime to the folder created in the above step
 
 
-10. [Optional - add only if you need to work on DSS] Import the **dss-tools** Source to eclpise.
+11. [Optional - add only if you need to work on DSS] Import the **dss-tools** Source to eclpise.
     * Import the **plugins directory** which located in the **<TOOLING_ROOT>/components/dss-tools** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
     * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
 
-11. [Optional - add only if you need to work on BPS] Import the **bps-tools** Source to eclpise.
+12. [Optional - add only if you need to work on BPS] Import the **bps-tools** Source to eclpise.
     * Import the **plugins directory** which located in the **<TOOLING_ROOT>/components/bps-tools** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
     * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder
 
-12. Apply WSO2 code style settings file for Eclipse.
+13. Apply WSO2 code style settings file for Eclipse.
     * Download [wso2-codestyle-eclipse-clean-up.xml](https://docs.google.com/a/wso2.com/viewer?a=v&pid=sites&srcid=d3NvMi5jb218ZW5naW5lZXJpbmd8Z3g6MWYyNmMxMmU5ZWYzY2ZmMw). 
     * Go to **windows > Preference > Java > Code Style >Clean up** and import **wso2-codestyle-eclipse-clean-up.xml**.
     * Download [wso2-codestyle-eclipse-formatter.xml](https://docs.google.com/a/wso2.com/viewer?a=v&pid=sites&srcid=d3NvMi5jb218ZW5naW5lZXJpbmd8Z3g6N2U0YzVlNWFjYmY5OGNmMA).

@@ -24,6 +24,8 @@ import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.transform.Argument;
+import org.apache.synapse.mediators.transform.pfutils.FreeMarkerTemplateProcessor;
+import org.apache.synapse.mediators.transform.pfutils.RegexTemplateProcessor;
 import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
@@ -37,6 +39,7 @@ import org.wso2.integrationstudio.gmf.esb.PayloadFactoryArgumentType;
 import org.wso2.integrationstudio.gmf.esb.PayloadFactoryEvaluatorType;
 import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator;
 import org.wso2.integrationstudio.gmf.esb.PayloadFormatType;
+import org.wso2.integrationstudio.gmf.esb.TemplateEngine;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
 import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
 import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
@@ -81,7 +84,12 @@ public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransforme
 
         org.apache.synapse.mediators.transform.PayloadFactoryMediator payloadFactoryMediator = new org.apache.synapse.mediators.transform.PayloadFactoryMediator();
         setCommonProperties(payloadFactoryMediator, visualPayloadFactory);
-
+        if (visualPayloadFactory.getTemplateEngine() == TemplateEngine.FREEMARKER) {
+            payloadFactoryMediator.setTemplateProcessor(new FreeMarkerTemplateProcessor());
+        } else {
+            payloadFactoryMediator.setTemplateProcessor(new RegexTemplateProcessor());
+        }
+        
         if (visualPayloadFactory.getPayloadFormat().equals(PayloadFormatType.REGISTRY_REFERENCE)) {
             Value formatKey = new Value(visualPayloadFactory.getPayloadKey().getKeyValue());
             payloadFactoryMediator.setFormatKey(formatKey);

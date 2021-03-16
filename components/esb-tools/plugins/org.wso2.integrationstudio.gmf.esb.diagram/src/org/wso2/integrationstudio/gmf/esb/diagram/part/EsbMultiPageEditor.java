@@ -1261,10 +1261,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         if (isSaveAllow) {
             sourceDirty = false;
         }
-        
-        if (swaggerlEditor != null) {
-            doSaveSwaggerSources(monitor);
-        }
 
         getEditor(0).doSave(monitor);
         // Since Complex endpoint type editors dose not have associated xml
@@ -1334,6 +1330,10 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     ESBDebuggerUtil.setPageSaveOperationActivated(false);
                     EditorUtils.setLockmode(graphicalEditor, false);
                 }
+                
+                if (swaggerlEditor != null) {
+                    doSaveSwaggerSources(monitor);
+                }
             }
         });
     }
@@ -1348,8 +1348,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                 EsbServer server = diagram.getServer();
                 currentSource = EsbModelTransformer.instance.designToSource(server);
             } catch (Exception e) {
-                MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
-                        "Error in saving swagger definition in source files : " + e.getMessage());
+                log.error("Error while getting current source from the esb diagram editor : ", e);
                 return;
             }
         }
@@ -1409,8 +1408,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                 FileUtils.writeStringToFile(swaggerPublisherInRegistry, swaggerCommonSource);
             }
         } catch (Exception e) {
-            MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
-                    "Error in saving swagger definition in source files : " + e.getMessage());
+            // ignore
+            log.error("Error while saving swagger file", e);
         }
     }
     

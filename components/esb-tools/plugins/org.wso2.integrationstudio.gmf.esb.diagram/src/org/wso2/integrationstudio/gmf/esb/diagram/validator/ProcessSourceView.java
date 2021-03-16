@@ -89,7 +89,7 @@ public class ProcessSourceView {
             "makefault", "header", "payloadFactory", "smooks", "rewrite", "xquery", "xslt", "datamapper", "fastXSLT",
             "cache", "dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone",
             "iterate", "foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent",
-            "builder", "propertyGroup", "jsontransform"));
+            "builder", "propertyGroup", "jsontransform", "dataServiceCall"));
 
     private static Set<String> artifacts = new HashSet<>(Arrays.asList("api", "proxy", "endpoint", "inboundEndpoint",
             "localEntry", "messageProcessor", "messageStore", "sequence", "task", "template"));
@@ -105,10 +105,11 @@ public class ProcessSourceView {
             "case", "on-fail", "then", "else", "eventSink", "streamName", "streamVersion", "attributes", "meta",
             "correlation", "payload", "arbitrary", "serverProfile", "streamConfig", "with-param", "schema", "feature",
             "code", "reason", "equal", "condition", "include", "detail", "input", "output", "rewriterule", "variable",
-            "result", "messageCount", "correlateOn", "completeCondition", "onComplete", "configuration", "source",
+            "result", "messageCount", "correlateOn", "completeCondition", "onComplete", "configuration",
             "messageBuilder", "target", "ruleSet", "properties", "input", "output", "attribute", "arg", "fact",
             "trigger", "in", "out", "handlers", "handler", "session", "match", "role", "clientId", "clientSecret",
-            "refreshToken", "tokenUrl", "authorizationCode", "clientCredentials", "oauth", "authentication"));
+			"refreshToken", "tokenUrl", "authorizationCode", "clientCredentials", "oauth", "authentication",
+			"operations", "operation", "param"));
     
     private static Set<String> graphicalEndpoint = new HashSet<>(Arrays.asList("loadbalance", "failover", "recipientlist"));
     
@@ -799,7 +800,8 @@ public class ProcessSourceView {
                                     && (currentMediator.getqName().equals("foreach")
                                             || currentMediator.getqName().equals("clone")
                                             || currentMediator.getqName().equals("iterate")
-                                            || currentMediator.getqName().equals("property") || currentMediator.getqName().equals("jsontransform"))
+											|| currentMediator.getqName().equals("property")
+											|| currentMediator.getqName().equals("jsontransform"))
                                     && !tempTag.getqName().equals(currentMediator.getqName())) {
                                 intermediaryStack.push(currentMediator);
 

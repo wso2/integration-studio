@@ -1261,10 +1261,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         if (isSaveAllow) {
             sourceDirty = false;
         }
-        
-        if (swaggerlEditor != null) {
-            doSaveSwaggerSources(monitor);
-        }
 
         getEditor(0).doSave(monitor);
         // Since Complex endpoint type editors dose not have associated xml
@@ -1333,6 +1329,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     getEditor(0).doSave(monitor);
                     ESBDebuggerUtil.setPageSaveOperationActivated(false);
                     EditorUtils.setLockmode(graphicalEditor, false);
+                    if (swaggerlEditor != null) {
+                        doSaveSwaggerSources(monitor);
+                    }
                 }
             }
         });

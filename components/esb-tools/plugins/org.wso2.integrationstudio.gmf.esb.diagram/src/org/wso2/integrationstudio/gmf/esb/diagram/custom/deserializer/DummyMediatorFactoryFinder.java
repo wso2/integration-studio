@@ -94,6 +94,7 @@ import org.wso2.carbon.mediator.fastXSLT.config.xml.FastXSLTMediatorFactory;
 import org.wso2.carbon.mediator.publishevent.PublishEventMediatorFactory;
 import org.wso2.carbon.mediator.service.MediatorException;
 import org.wso2.carbon.mediator.transform.xml.SmooksMediatorFactory;
+import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediatorFactory;
 
 public class DummyMediatorFactoryFinder {
 
@@ -118,7 +119,8 @@ public class DummyMediatorFactoryFinder {
             ForEachMediatorFactory.class, OAuthMediatorFactory.class, SpringMediatorFactory.class,
             PublishEventMediatorFactory.class, EventMediatorFactory.class, ScriptMediatorFactory.class,
             SmooksMediatorFactory.class, XQueryMediatorFactory.class, FastXSLTMediatorFactory.class,
-            DataMapperMediatorFactory.class, ThrottleMediatorFactory.class, JSONTransformMediatorFactory.class };
+			DataMapperMediatorFactory.class, ThrottleMediatorFactory.class, JSONTransformMediatorFactory.class,
+			DataServiceCallMediatorFactory.class };
 
     private final static DummyMediatorFactoryFinder instance = new DummyMediatorFactoryFinder();
 

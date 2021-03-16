@@ -58,6 +58,7 @@
     <xs:include schemaLocation="advanced/db_mediators.xsd"/>
     <xs:include schemaLocation="advanced/enqueue.xsd"/>
     <xs:include schemaLocation="advanced/event.xsd"/>
+    <xs:include schemaLocation="advanced/dataservicescall.xsd"/>
     <xs:include schemaLocation="filter/throttle.xsd"/>
     <xs:include schemaLocation="advanced/transaction.xsd"/>
     <xs:include schemaLocation="eip/aggregate.xsd"/>

@@ -47,6 +47,7 @@ import org.wso2.integrationstudio.gmf.esb.CloneMediator;
 import org.wso2.integrationstudio.gmf.esb.CommandMediator;
 import org.wso2.integrationstudio.gmf.esb.DBLookupMediator;
 import org.wso2.integrationstudio.gmf.esb.DBReportMediator;
+import org.wso2.integrationstudio.gmf.esb.DSSMediator;
 import org.wso2.integrationstudio.gmf.esb.DefaultEndPoint;
 import org.wso2.integrationstudio.gmf.esb.DropMediator;
 import org.wso2.integrationstudio.gmf.esb.EnqueueMediator;
@@ -106,6 +107,7 @@ import org.wso2.integrationstudio.gmf.esb.internal.persistence.ConditionalRouter
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.DBLookupMediatorTransformer;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.DBReportMediatorTransformer;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.DataMapperMediatorTransformer;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.DataServiceCallMediatorTransformer;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.DefaultEndPointTransformer;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.DropMediatorTransformer;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.EJBMediatorTransformer;
@@ -243,6 +245,7 @@ public class EsbTransformerRegistry {
         addTransformer(ForEachMediator.class, new ForEachMediatorTransformer());
         addTransformer(PublishEventMediator.class, new PublishEventMediatorTransformer());
         addTransformer(JsonTransformMediator.class, new JsonTransformMediatorTransformer());
+        addTransformer(DSSMediator.class, new DataServiceCallMediatorTransformer());
     }
 
     /**

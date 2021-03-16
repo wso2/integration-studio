@@ -88,7 +88,7 @@ public class DummyCreateMediator {
 	    "validate", "conditionalRouter", "bean", "class", "pojoCommand", "ejb", "script", "spring", "enrich",
 	    "makefault", "header", "payloadFactory", "smooks", "rewrite", "xquery", "xslt", "datamapper", "fastXSLT",
 	    "cache", "dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone",
-	    "iterate", "foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent", "jsontransform"));
+	    "iterate", "foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent", "jsontransform", "dataServiceCall"));
     
     private static CloneMediatorFactory cloneMediatorFactory;
 
@@ -357,6 +357,11 @@ public class DummyCreateMediator {
 	} else if ("jsontransform".equals(localName)) {
 	    
 	    JsonTransformMediatorExtFactory factory = JsonTransformMediatorExtFactory.getInstance();
+	    return factory.createMediator(omElement, null);
+	    
+	} else if ("dataServiceCall".equals(localName)) {
+	    
+		DataServiceCallMediatorExtFactory factory = DataServiceCallMediatorExtFactory.getInstance();
 	    return factory.createMediator(omElement, null);
 	    
 	}

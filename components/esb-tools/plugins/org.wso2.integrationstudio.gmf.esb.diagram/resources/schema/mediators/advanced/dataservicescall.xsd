@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+* Copyright (c) 2021, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           targetNamespace="http://ws.apache.org/ns/synapse"
+           xmlns="http://ws.apache.org/ns/synapse">
+
+    <xs:include schemaLocation="../../misc/common.xsd"/>
+
+    <xs:element name="dataServiceCall">
+        <xs:annotation>
+            <xs:documentation source="description">
+                Invokes data service operations
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="operations" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="source" type="SourceType" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="target" type="TargetType" minOccurs="1" maxOccurs="1"/>
+        	</xs:sequence>
+        	<xs:attribute name="serviceName" type="xs:string" default="" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="operations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="operation" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="optional" type="OperationsType"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="operation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="param" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="name" use="optional" type="xs:string" default=""/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="param">
+        <xs:complexType>
+            <xs:attributeGroup ref="valueOrExpression"/>
+            <xs:attribute name="name" use="optional" type="xs:string"/>
+            <xs:attribute name="type" use="optional" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="OperationsType">
+        <xs:attribute name="type" use="optional" default="single_req">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="single_req"/>
+                    <xs:enumeration value="batch_req"/>
+                    <xs:enumeration value="request_box"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="SourceType">
+        <xs:attribute name="type" use="optional" default="body">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="body"/>
+                    <xs:enumeration value="inline"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="TargetType">
+        <xs:attribute name="type" use="optional" default="body">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="body"/>
+                    <xs:enumeration value="property"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+</xs:schema>

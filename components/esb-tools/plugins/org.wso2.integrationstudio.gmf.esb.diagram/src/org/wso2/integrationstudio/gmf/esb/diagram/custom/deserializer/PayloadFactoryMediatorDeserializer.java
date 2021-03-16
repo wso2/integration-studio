@@ -59,7 +59,7 @@ public class PayloadFactoryMediatorDeserializer
         }
 
         if (payloadFactoryMediator.getTemplateType() != null) {
-            if (payloadFactoryMediator.getTemplateType().equals(FREEMAKER_LITERAL)) {
+            if (payloadFactoryMediator.getTemplateType().equalsIgnoreCase(FREEMAKER_LITERAL)) {
                 executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_ENGINE, TemplateEngine.FREEMARKER);
             } else {
                 executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__TEMPLATE_ENGINE, TemplateEngine.DEFAULT);

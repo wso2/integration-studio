@@ -143,6 +143,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     protected Control[] sourcePropertyElements;
     protected Control[] sourceContentTypeElements;
     protected Control[] targetPropertyElements;
+    protected Control[] dummyLabels;
     protected Composite propertiesGroup;
     protected Composite sourceGroup;
     protected Composite targetGroup;
@@ -204,26 +205,23 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence callMediatorStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = callMediatorStep.addStep(EsbViewsRepository.CallMediator.Properties.class);
-		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.commentsList);
-		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.reverse);
-		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpoint);
-		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.enableBlockingCalls);
-		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointType);
-		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointXpath);
-		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointRegistryKey);
-		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.description);
-		
-		CompositionStep sourceStep = callMediatorStep.addStep(EsbViewsRepository.CallMediator.Source.class);
-        sourceStep.addStep(EsbViewsRepository.CallMediator.Source.sourceType);
-        sourceStep.addStep(EsbViewsRepository.CallMediator.Source.sourcePayload);
-        sourceStep.addStep(EsbViewsRepository.CallMediator.Source.sourceProperty);
-        sourceStep.addStep(EsbViewsRepository.CallMediator.Source.sourceXPath);
-        sourceStep.addStep(EsbViewsRepository.CallMediator.Source.contentType);
+        CompositionStep propertiesStep = callMediatorStep.addStep(EsbViewsRepository.CallMediator.Properties.class);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.commentsList);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.reverse);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpoint);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.enableBlockingCalls);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointType);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointXpath);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointRegistryKey);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Source.sourceType);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Source.sourcePayload);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Source.sourceProperty);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Source.sourceXPath);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Source.contentType);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Target.targetType);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Target.targetProperty);
+        propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.description);
 
-        CompositionStep targetStep = callMediatorStep.addStep(EsbViewsRepository.CallMediator.Target.class);
-        targetStep.addStep(EsbViewsRepository.CallMediator.Target.targetType);
-        targetStep.addStep(EsbViewsRepository.CallMediator.Target.targetProperty);
 		
 		composer = new PartComposer(callMediatorStep) {
 
@@ -374,8 +372,8 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		EditingUtils.setEEFtype(description, "eef::Text"); //$NON-NLS-1$
 		Control descriptionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
-
-		descriptionElements = new Control[] { descriptionText, description, descriptionHelp };
+        descriptionElements = new Control[] { descriptionText, description, descriptionHelp};
+        dummyLabels = addDummyLabels(parent, widgetFactory, 5);
 		// End of user code
 		return parent;
 	}
@@ -1676,10 +1674,10 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     }
 
     public void validate() {
-        epv.clearElements(new Composite[] {propertiesGroup, sourceGroup, targetGroup });
+        epv.clearElements(new Composite[] {propertiesGroup});
         epv.showEntry(new Control[] {filterEndpointTypeSubPropertiesGroup.getParent()}, false);
         epv.clearElements(new Composite[] { filterEndpointTypeSubPropertiesGroup });
-        
+        epv.showEntry(dummyLabels, false);
         epv.showEntry(endpointTypeElements, false);
         epv.showEntry(enableBlockingCallsElements, false);
         epv.showEntry(sourceTypeElements, false);
@@ -1810,5 +1808,14 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
                 null); // $NON-NLS-1$
         sourceXpathElements = new Control[] { sourceXpathLabel, sourceXPathText, sourceXPathHelp };
         return parent;
+    }
+    
+    // This method is use to create dummy labels to fix issue https://github.com/wso2/integration-studio/issues/684
+    private Control[] addDummyLabels(Composite parent, FormToolkit widgetFactory, int size) {
+        Control[] controlList = new Control[size * 3];
+        for (int i = 0; i < 3 * size; i++) {
+            controlList[i] = (widgetFactory.createLabel(parent, ""));
+        }
+        return controlList;
     }
 }

@@ -77,8 +77,8 @@ import org.wso2.integrationstudio.maven.util.MavenUtils;
  */
 public class PlatformEarlyStartUpHandler implements IStartup {
 
-    public static final String DEBUG_PROFILE_NAME = "Microei_Debug_Profile";
-    public static final String RUN_PROFILE_NAME = "Microei_Run_Profile";
+    public static final String DEBUG_PROFILE_NAME = "Debug on embedded Micro Integrator Server";
+    public static final String RUN_PROFILE_NAME = "Run on embedded Micro Integrator Server";
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     // relative path to where microesb is packaged
     public static final String MICRO_ESB_PATH = "runtime" + File.separator + "microesb";

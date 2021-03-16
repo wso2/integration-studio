@@ -56,7 +56,7 @@
 			
 			<data modelProperty="solution.docker" type="string"
 				fieldController="org.wso2.integrationstudio.esb.project.controller.ESBSolutionProjectFieldController"
-				group="solution.projects.group">Project Name</data>
+				group="solution.projects.group">Module Name</data>
 				
 			<data modelProperty="solution.kubernetes.choice" type="choice"
 				fieldController="org.wso2.integrationstudio.esb.project.controller.ESBSolutionProjectFieldController"

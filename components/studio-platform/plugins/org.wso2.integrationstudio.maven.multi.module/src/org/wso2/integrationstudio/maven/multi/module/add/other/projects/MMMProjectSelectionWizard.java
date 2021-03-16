@@ -49,7 +49,7 @@ public class MMMProjectSelectionWizard extends AbstractWSO2ProjectCreationWizard
 
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
-        setWindowTitle("Import into Integration Project");
+        setWindowTitle("Move to Integration Project");
         setDefaultPageImageDescriptor(MavenMultiModuleProjectImageUtils.getInstance().getImageDescriptor("mmm-import.png"));
         selectionPage = new MMMProjectSelectionWizardPage();
 

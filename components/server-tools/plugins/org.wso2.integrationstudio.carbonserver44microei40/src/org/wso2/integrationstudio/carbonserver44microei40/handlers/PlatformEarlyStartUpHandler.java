@@ -156,6 +156,15 @@ public class PlatformEarlyStartUpHandler implements IStartup {
                     esbSeverDestination.renameTo(backupDir);
                 }
                 MavenMultiModuleImportUtils.extractZipFile(esbServerZipFromPlugin, esbSeverDestination);
+                // Set executable permission for micro-integrator executable
+                File serverExecutableFile = new File(esbSeverDestination + File.separator + "microesb" + File.separator
+                        + "bin" + File.separator + "micro-integrator.sh");
+                if (serverExecutableFile.exists()) {
+                    serverExecutableFile.setExecutable(true);
+                } else {
+                    log.error("Cannot Find Micro Integrator executable");
+                }
+
                 if (!internalServerVersionFile.exists()) {
                     internalServerVersionFile.getParentFile().mkdirs();
                     internalServerVersionFile.createNewFile();

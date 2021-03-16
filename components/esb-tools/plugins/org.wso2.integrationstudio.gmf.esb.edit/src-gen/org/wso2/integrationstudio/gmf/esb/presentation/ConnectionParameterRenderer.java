@@ -21,6 +21,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -80,7 +81,7 @@ public class ConnectionParameterRenderer {
         // connectionName
         for (Element elem : connectorRoot.getElements()) {
             if (elem.getType().equals("attribute")) {
-                evaluateAttribute((AttributeValue) elem.getValue(), parent, widgetFactory, 0);
+                evaluateAttribute((AttributeValue) elem.getValue(), parent, widgetFactory, 0, updateConfigMap);
                 break;
             }
         }
@@ -142,12 +143,12 @@ public class ConnectionParameterRenderer {
                     controlList.remove(item);
                 }
                 // render new UI based on dropdown value
-                renderContentOfConenction(newConnectorRoot, parent);
+                renderContentOfConenction(newConnectorRoot, parent, updateConfigMap);
             }
         });
 
         // load rest of the connection components
-        renderContentOfConenction(connectorRoot, parent);
+        renderContentOfConenction(connectorRoot, parent, updateConfigMap);
 
         if (updateConfigMap != null && updateConfigMap.size() > 0) {
             for (Map.Entry<String, String> entry : updateConfigMap.entrySet()) {
@@ -158,6 +159,11 @@ public class ConnectionParameterRenderer {
                             control.setEnabled(false);
                         }
                         ((Text) control).setText(entry.getValue());
+                    } else if (control instanceof StyledText) {
+                        if (entry.getKey().equals("connectionNameexp")) {
+                            control.setEnabled(false);
+                        }
+                        ((StyledText) control).setText(entry.getValue());
                     } else if (control instanceof Combo) {
                         if (entry.getKey().equals(CONNECTION_TYPE)) {
                             control.setEnabled(false);
@@ -176,7 +182,8 @@ public class ConnectionParameterRenderer {
         return controlList;
     }
 
-    private void renderContentOfConenction(ConnectorRoot connectorRoot, Composite parent) {
+    private void renderContentOfConenction(ConnectorRoot connectorRoot, Composite parent, 
+            Map<String, String> updateConfigMap) {
 
         for (Element elem : connectorRoot.getElements()) {
             if (elem.getType().equals("attributeGroup")) {
@@ -200,7 +207,7 @@ public class ConnectionParameterRenderer {
                 tabComposite.setLayout(new GridLayout());
 
                 for (Element ele : agv.getElements()) {
-                    createDynamicWidgetComponents(ele, tabComposite);
+                    createDynamicWidgetComponents(ele, tabComposite, updateConfigMap);
                 }
 
                 scroller.layout();
@@ -224,30 +231,30 @@ public class ConnectionParameterRenderer {
         tabFolder.setSelection(0);
     }
 
-    public void createDynamicWidgetComponents(Element element, Composite parent) {
+    public void createDynamicWidgetComponents(Element element, Composite parent, Map<String, String> updateConfigMap) {
 
         if (element.getType().equals("attribute")) {
-            evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, 0);
+            evaluateAttribute((AttributeValue) element.getValue(), parent, widgetFactory, 0, updateConfigMap);
         } else {
             AttributeGroupValue agv = (AttributeGroupValue) element.getValue();
             Group subGroup = widgetProvider.createGroup(parent, agv.getGroupName());
             for (Element elem : agv.getElements()) {
-                createDynamicWidgetComponents(elem, subGroup);
+                createDynamicWidgetComponents(elem, subGroup, updateConfigMap);
             }
         }
     }
 
-    public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level) {
+    public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level, Map<String, String> updateConfigMap) {
 
         if (AttributeValueType.STRING.equals(value.getType())) {
-            widgetProvider.createTextBoxFieldWithButton(widgetFactory, parent, value);
+            widgetProvider.createTextBoxFieldWithButtonForConnections(widgetFactory, parent, value, updateConfigMap);
         } else if (AttributeValueType.BOOLEANOREXPRESSION.equals(value.getType())) {
             widgetProvider.createDropDownField(widgetFactory, parent, new String[]{"true", "false"}, value);
         } else if (AttributeValueType.COMBO.equals(value.getType())) {
             widgetProvider.createDropDownField(widgetFactory, parent, value.getComboValues().toArray(new String[0]),
                     value);
         } else if (AttributeValueType.PASSWORDTEXTOREXPRESSION.equals(value.getType())) {
-            widgetProvider.createPasswordTextBoxFieldWithButton(widgetFactory, parent, value);
+            widgetProvider.createPasswordTextBoxFieldWithButtonForConnections(widgetFactory, parent, value, updateConfigMap);
         } else if (AttributeValueType.SEARCHBOX.equals(value.getType())) {
             widgetProvider.createSearchBoxFieldWithButton(widgetFactory, parent, value);
         }

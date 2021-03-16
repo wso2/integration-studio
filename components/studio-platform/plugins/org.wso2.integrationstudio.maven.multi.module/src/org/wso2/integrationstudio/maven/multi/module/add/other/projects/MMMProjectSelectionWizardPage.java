@@ -62,9 +62,9 @@ public class MMMProjectSelectionWizardPage extends WizardPage {
      * Create the wizard.
      */
     public MMMProjectSelectionWizardPage() {
-        super("Select a Maven Multi Module Project");
-        setTitle("Select a Maven Multi Module Project");
-        setDescription("Select a Maven Multi Module project as a parent project.");
+        super("Select a Integration Project");
+        setTitle("Select a Integration Project");
+        setDescription("Select a integration project as a parent project.");
     }
 
     /**
@@ -87,7 +87,7 @@ public class MMMProjectSelectionWizardPage extends WizardPage {
         data.top = new FormAttachment(trDependencies, 20);
         data.right = new FormAttachment(98);
         linkCompositeLabel.setLayoutData(data);
-        linkCompositeLabel.setText("<A>" + "Create a Maven Multi Module Project" + "</A>");
+        linkCompositeLabel.setText("<A>" + "Create a Integration Project (MMM)" + "</A>");
 
         linkCompositeLabel.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {

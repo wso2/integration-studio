@@ -57,7 +57,7 @@ public class DockerHubLoginPage extends WizardPage {
     private static final String SUB_DIALOG_TITLE = "Enter Docker Registry Credentials";
     private static final String EMPTY_STRING = "";
     private static final String REGISTRY_URL = "Registry URL Type:";
-    private static final String IMAGE_NAME = "Docker Image Name:";
+    private static final String IMAGE_NAME = "Image Name:";
     private static final String ENTER_REGISTRY_URL = "Enter Registry URL:";
     private static final String USERNAME = "Username:";
     private static final String PASSWORD = "Password:";

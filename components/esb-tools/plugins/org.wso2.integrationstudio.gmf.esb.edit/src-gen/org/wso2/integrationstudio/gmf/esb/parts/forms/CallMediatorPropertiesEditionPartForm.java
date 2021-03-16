@@ -66,13 +66,15 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 
 import org.eclipse.swt.SWT;
-
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -104,6 +106,7 @@ import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.integrationstudio.gmf.esb.presentation.EEFRegistryKeyPropertyEditorDialog;
 import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 import org.wso2.integrationstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
+import org.wso2.integrationstudio.esb.synapse.unit.test.component.SyntaxHighlightTextBox;
 
 // End of user code
 
@@ -151,7 +154,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     protected final EEFPropertyViewUtil epv = new EEFPropertyViewUtil(view);
     
     protected Composite filterEndpointTypeSubPropertiesGroup;
-	protected Text sourcePayload;
+	protected StyledText sourcePayload;
     protected Text sourceProperty;
     protected Text sourceContentType;
     protected Text contentType;
@@ -373,7 +376,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		Control descriptionHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Properties.description, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDescriptionText
         descriptionElements = new Control[] { descriptionText, description, descriptionHelp};
-        dummyLabels = addDummyLabels(parent, widgetFactory, 5);
+        dummyLabels = addDummyLabels(parent, widgetFactory, 15);
 		// End of user code
 		return parent;
 	}
@@ -644,10 +647,13 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     protected Composite createSourcePayloadText(FormToolkit widgetFactory, Composite parent) {
         Control itemLabel = createDescription(parent, EsbViewsRepository.CallMediator.Source.sourcePayload,
                 EsbMessages.CallMediatorPropertiesEditionPart_SourcePayloadLabel);
-        sourcePayload = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+        final SyntaxHighlightTextBox syntaxStyler = new SyntaxHighlightTextBox();
+        sourcePayload = syntaxStyler.getStyledTextBox(parent);
         sourcePayload.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         widgetFactory.paintBordersFor(parent);
         GridData sourcePayloadData = new GridData(GridData.FILL_HORIZONTAL);
+        sourcePayloadData.heightHint = sourcePayload.getLineHeight() * 11;
+        sourcePayloadData.widthHint = 100;
         sourcePayload.setLayoutData(sourcePayloadData);
         sourcePayload.addFocusListener(new FocusAdapter() {
             /**
@@ -681,21 +687,9 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
                 }
             }
         });
-        sourcePayload.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                if (e.character == SWT.CR) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                                CallMediatorPropertiesEditionPartForm.this,
-                                EsbViewsRepository.CallMediator.Source.sourcePayload, PropertiesEditionEvent.COMMIT,
-                                PropertiesEditionEvent.SET, null, sourcePayload.getText()));
-                }
+        sourcePayload.addModifyListener(new ModifyListener() {
+            public void modifyText(ModifyEvent arg0) {
+                syntaxStyler.chooseSyntaxHighlighter(sourcePayload.getText(), false);
             }
         });
         EditingUtils.setID(sourcePayload, EsbViewsRepository.CallMediator.Source.sourcePayload);
@@ -1671,6 +1665,8 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     public void refresh() {
         super.refresh();
         validate();
+        enableBlockingCalls.setFocus();
+        propertiesGroup.setFocus();
     }
 
     public void validate() {

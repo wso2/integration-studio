@@ -70,6 +70,7 @@ public class WSO2MavenPluginVersions {
 
 		PLUGIN_VERSIONS.put("maven-car-deploy-plugin", "1.1.0");
 		PLUGIN_VERSIONS.put("maven-car-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("wso2-esb-metadata-plugin", "5.2.34");
 	}
 	
 	private WSO2MavenPluginVersions(){

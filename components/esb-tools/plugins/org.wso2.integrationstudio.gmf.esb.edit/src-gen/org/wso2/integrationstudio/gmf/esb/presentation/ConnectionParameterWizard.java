@@ -46,6 +46,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
@@ -181,17 +182,28 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                 String elementId = mapElement.getKey();
                 Control elementControl = mapElement.getValue();
 
-                if (elementControl instanceof Text) {
-                    String value = ((Text) elementControl).getText();
+                if (elementControl instanceof Text || elementControl instanceof StyledText) {
+                    String value;
+                    if (elementControl instanceof StyledText) {
+                        value = ((StyledText) elementControl).getText();
+                        if (!StringUtils.isEmpty(value)) {
+                            value = "{" + value + "}";
+                        }
+                        if (elementId.endsWith("exp")) {
+                            elementId = elementId.substring(0, elementId.length() - 3);
+                        }
+                    } else {
+                        value = ((Text) elementControl).getText();
+                    }
                     if (elementId.equals("connectionName") && !StringUtils.isEmpty(value)) {
-                        localEntryPath = localEntryPath + value + XML_EXTENSION;
+                        localEntryPath = localEntryPath + removeExpressionBrackets(value) + XML_EXTENSION;
                         if (valueExpressionCombo != null) {
                             Combo connectionCombo = (Combo) valueExpressionCombo;
-                            connectionCombo.add(value);
+                            connectionCombo.add(removeExpressionBrackets(value));
                             connectionCombo.select(connectionCombo.getItemCount() - 1);
                         }
                         Attr localEntryKey = doc.createAttribute("key");
-                        localEntryKey.setValue(value);
+                        localEntryKey.setValue(removeExpressionBrackets(value));
                         localEntryTag.setAttributeNode(localEntryKey);
 
                         org.w3c.dom.Element configElement = doc.createElement("name");
@@ -239,7 +251,11 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
 
     private void deserializeConnector(OMElement localEntryNode) {
         String connectionName = localEntryNode.getAttributeValue(new QName("key"));
-        updateComponentWidgets.put("connectionName", connectionName);
+        if (isExpression(connectionName)) {
+            updateComponentWidgets.put("connectionNameexp", removeExpressionBrackets(connectionName));
+        } else {
+            updateComponentWidgets.put("connectionName", connectionName);
+        }
 
         Iterator<?> resourceIterator = localEntryNode.getFirstElement().getChildElements();
         while (resourceIterator.hasNext()) {
@@ -247,8 +263,24 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
             if (resource.getLocalName().equals("connectionType")) {
                 updatingConnectionType = resource.getText();
             }
-            updateComponentWidgets.put(resource.getLocalName(), resource.getText());
+            if (isExpression(resource.getText())) {
+                updateComponentWidgets.put(resource.getLocalName() + "exp",
+                        removeExpressionBrackets(resource.getText()));
+            } else {
+                updateComponentWidgets.put(resource.getLocalName(), resource.getText());
+            }
         }
+    }
+    
+    private boolean isExpression(String value) {
+        if (value.startsWith("{") && value.endsWith("}")) {
+            return true;
+        }
+        return false;
+    }
+    
+    private String removeExpressionBrackets(String value) {
+        return value.substring(1, value.length() - 1);
     }
 
     @Override

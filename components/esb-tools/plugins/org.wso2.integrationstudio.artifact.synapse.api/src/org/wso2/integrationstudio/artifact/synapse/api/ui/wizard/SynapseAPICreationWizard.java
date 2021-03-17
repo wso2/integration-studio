@@ -491,7 +491,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             String groupId = getMavenGroupId(pomLocation);
             groupId += ".resource";
             MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
-            String version = mavenProject.getVersion();
+            String version = mavenProject.getVersion().replace("-SNAPSHOT", "");
             // Adding the metadata about the endpoint to the metadata store.
             GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
             generalProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());
@@ -583,7 +583,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     public void updatePom() throws IOException, XmlPullParserException {
         File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
         MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-        version = mavenProject.getVersion();
+        version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 
         // Skip changing the pom file if group ID and artifact ID are matched
         boolean apiPluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-api-plugin");

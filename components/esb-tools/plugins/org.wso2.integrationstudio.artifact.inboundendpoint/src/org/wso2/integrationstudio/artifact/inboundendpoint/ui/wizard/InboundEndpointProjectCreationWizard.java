@@ -202,7 +202,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 	public void updatePom() throws IOException, XmlPullParserException {
 		File mavenProjectPomLocation = esbProject.getFile(POM_FILE).getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		version = mavenProject.getVersion();
+		version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 
 		// Skip changing the pom file if group ID and artifact ID are matched
 		if (MavenUtils.checkOldPluginEntry(mavenProject, MAVEN_ID, INBOUND_EP_PLUGIN_ID)) {

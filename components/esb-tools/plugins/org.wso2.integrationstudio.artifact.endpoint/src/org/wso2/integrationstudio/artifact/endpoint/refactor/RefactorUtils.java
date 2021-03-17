@@ -47,7 +47,7 @@ public class RefactorUtils {
 
 		String groupId = mavenProject.getGroupId();
 		String artifactId = mavenProject.getArtifactId();
-		String version = mavenProject.getVersion();
+		String version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 		
 		String filePath = file.getLocation().toOSString();
 		int startIndex = (project.getLocation().toOSString()+File.separator+"src"+File.separator+"main"+File.separator+"synapse-config"+File.separator).length();

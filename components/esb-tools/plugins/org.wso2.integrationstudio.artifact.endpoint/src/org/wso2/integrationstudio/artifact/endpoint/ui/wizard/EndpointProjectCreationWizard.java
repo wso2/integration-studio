@@ -106,7 +106,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		try {
 			epModel = (EndpointModel) getModel();
 			project = epModel.getEndpointSaveLocation().getProject();
-			version = MavenUtils.getMavenProject(project.getFile("pom.xml").getLocation().toFile()).getVersion();
+			version = MavenUtils.getMavenProject(project.getFile("pom.xml").getLocation().toFile()).getVersion().replace("-SNAPSHOT", "");
 
 			if (epModel.getSelectedOption_DynamicEP()) {
 				createDynamicEndpointArtifact(epModel.getEndpointSaveLocation(), epModel);

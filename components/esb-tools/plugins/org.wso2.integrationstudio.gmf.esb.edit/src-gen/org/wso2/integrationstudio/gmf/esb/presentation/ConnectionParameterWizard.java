@@ -280,7 +280,10 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
     }
     
     private String removeExpressionBrackets(String value) {
-        return value.substring(1, value.length() - 1);
+        if (value.startsWith("{") && value.endsWith("}")) {
+            return value.substring(1, value.length() - 1);
+        }
+        return value;
     }
 
     @Override

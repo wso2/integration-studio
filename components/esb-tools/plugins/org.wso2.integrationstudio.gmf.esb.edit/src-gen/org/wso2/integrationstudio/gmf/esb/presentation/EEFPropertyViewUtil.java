@@ -524,7 +524,7 @@ public class EEFPropertyViewUtil {
         esbProjectArtifact.fromFile(currentProject.getFile("artifact.xml").getLocation().toFile());
         ESBArtifact artifact = new ESBArtifact();
         artifact.setName(localEntryName);
-        artifact.setVersion(mvp.getVersion());
+        artifact.setVersion(mvp.getVersion().replace("-SNAPSHOT", ""));
         artifact.setType("synapse/local-entry");
         artifact.setServerRole("EnterpriseServiceBus");
         artifact.setGroupId(mvp.getGroupId() + CONNECTION_LOCAL_ENTRY_ARTIFACT_XML_PREFIX);

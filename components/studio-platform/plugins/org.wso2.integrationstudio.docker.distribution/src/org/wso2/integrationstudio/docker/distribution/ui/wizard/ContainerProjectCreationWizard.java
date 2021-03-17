@@ -569,9 +569,20 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 MavenUtils.addMavenDependency(mavenProject, dependencies);
             }
             
+            // adding maven-clean-plugin to clear CompisiteApps directory before the build
+            Plugin cleanPlugin = MavenUtils.createPluginEntry(mavenProject, "org.apache.maven.plugins",
+                    "maven-clean-plugin", DockerProjectConstants.MAVEN_CLEAN_PLUGIN_VERSION, true);
+            String cleanPluginConfig = "<configuration>\n"
+                    + "                <filesets>\n"
+                    + "                <fileset>\n"
+                    + "                <directory>${basedir}/CompositeApps</directory>\n"
+                    + "                </fileset>\n"
+                    + "                </filesets>\n" + "            </configuration>";
+            Xpp3Dom cleanDom = Xpp3DomBuilder.build(new ByteArrayInputStream(cleanPluginConfig.getBytes()), "UTF-8");
+            cleanPlugin.setConfiguration(cleanDom);
+            
             // Adding maven-dependency plugin
             // This will copy the CAR files from .m2 to CarbonApps folder
-            
             Plugin dependencyPlugin = MavenUtils.createPluginEntry(mavenProject, "org.apache.maven.plugins",
                     "maven-dependency-plugin", DockerProjectConstants.MAVEN_DEPENDENCY_PLUGIN_VERSION, true);
             PluginExecution dependencyPluginExecution = new PluginExecution();

@@ -60,6 +60,7 @@ public class DockerProjectConstants extends NLS {
     public static String CONF_FOLDER_LOCATION;
 
     public static String MAVEN_DEPENDENCY_PLUGIN_VERSION;
+    public static String MAVEN_CLEAN_PLUGIN_VERSION;
     public static String SPOTIFY_DOCKER_PLUGIN_VERSION;
 
     public static String PLUGIN_ID;

@@ -244,7 +244,7 @@ public class EndpointCentralServletRequestHandler {
             File mavenProjectPomLocation = esbProject.getFile(EndpointCentralConstants.POM_XML).getLocation().
                     toFile();
             MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-            String version = mavenProject.getVersion();
+            String version = mavenProject.getVersion().replace("-SNAPSHOT", "");
             String groupId = mavenProject.getGroupId() + EndpointCentralConstants.DOT + EndpointCentralConstants.API;
             updatePom(mavenProject, mavenProjectPomLocation);
             esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());

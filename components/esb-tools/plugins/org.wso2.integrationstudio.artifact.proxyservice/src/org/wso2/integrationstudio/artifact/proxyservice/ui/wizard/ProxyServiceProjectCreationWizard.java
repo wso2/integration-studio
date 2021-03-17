@@ -205,7 +205,7 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 	public void updatePom() throws IOException, XmlPullParserException {
 		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		version = mavenProject.getVersion();
+		version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 
 		// Skip changing the pom file if group ID and artifact ID are matched
 		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-proxy-plugin")) {

@@ -175,7 +175,7 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 			String groupId = getMavenGroupId(pomLocation);
 			groupId += ".resource";
 			MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
-			String version = mavenProject.getVersion();
+			String version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 			//Adding the metadata about the endpoint to the metadata store.
 			GeneralProjectArtifact generalProjectArtifact=new GeneralProjectArtifact();
 			generalProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());

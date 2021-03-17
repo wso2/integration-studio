@@ -148,7 +148,7 @@ public class FileModificationManager implements IResourceChangeListener {
 
 														ESBArtifact esbArtifact = new ESBArtifact();
 														esbArtifact.setName(name);
-														esbArtifact.setVersion(version);
+														esbArtifact.setVersion(version.replace("-SNAPSHOT", ""));
 														esbArtifact.setType(type);
 														esbArtifact.setServerRole(ESB_SEVER_ROLE);
 														esbArtifact.setGroupId(groupId);

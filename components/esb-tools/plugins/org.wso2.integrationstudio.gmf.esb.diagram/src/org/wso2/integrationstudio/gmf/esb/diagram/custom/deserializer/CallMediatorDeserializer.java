@@ -143,7 +143,7 @@ public class CallMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
                 break;
             }
             case org.apache.synapse.mediators.elementary.EnrichMediator.PROPERTY: {
-                executeSetValueCommand(CALL_MEDIATOR__SOURCE_TYPE, CallSourceType.PROPERTY);
+                executeSetValueCommand(CALL_MEDIATOR__TARGET_TYPE, CallTargetType.PROPERTY);
                 if (target.getProperty() != null && !target.getProperty().equals("")) {
                     executeSetValueCommand(CALL_MEDIATOR__TARGET_PROPERTY, target.getProperty());
                 }

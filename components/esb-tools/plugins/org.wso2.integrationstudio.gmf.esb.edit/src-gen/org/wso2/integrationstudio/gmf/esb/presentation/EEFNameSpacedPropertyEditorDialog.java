@@ -411,8 +411,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
     private static final String INFO_LABEL_DEFAULT_TEXT = "Enter or load XML file from disk";
     private static final String INVALID_XPATH_EXPRESSION_TEXT = "Invalid XPath expression";
     private static final String EXPR_HELP_HTML_FILE_PATH = "platform:/plugin/org.wso2."
-    		+ "integrationstudio.eclipse.gmf.esb.edit/resources/expressions-help.html";
-
+            + "integrationstudio.gmf.esb.edit/resources/expressions-help.html";
     private static final String UI_JOB_ID = "add-root-tree-item-job";
     private static final String XML_EXTENSION_TYPE = "*.xml";
     private static final String TREE_ITEM_DATA_KEY = "dom_user_data_key";

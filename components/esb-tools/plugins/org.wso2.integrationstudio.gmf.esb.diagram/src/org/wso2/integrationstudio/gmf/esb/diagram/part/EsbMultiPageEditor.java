@@ -1246,7 +1246,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     FileUtils.writeStringToFile(swaggerPublisherInRegistry, swaggerCommonSource);
                 }
                 swaggerlEditor.doSave(monitor);
-                oldSwaggerSource = swaggerSource;
             } catch (Exception e) {
                 sourceDirty = true;
                 log.error("Error while saving the swagger file", e);
@@ -1331,7 +1330,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     EditorUtils.setLockmode(graphicalEditor, false);
                 }
                 
-                if (swaggerlEditor != null) {
+                if (swaggerlEditor != null && getActivePage() != SWAGGER_VIEW_PAGE_INDEX) {
                     doSaveSwaggerSources(monitor);
                 }
             }
@@ -1779,6 +1778,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	public boolean isSwaggerDirty() {
 		if (swaggerSource != null && oldSwaggerSource != null) {
 		    boolean result = !oldSwaggerSource.equals(swaggerSource);
+		    // if the dirty check is true - update the old swagger
+		    setOldSwaggerSource(swaggerSource);
 			return result;
 		}
 		return false;

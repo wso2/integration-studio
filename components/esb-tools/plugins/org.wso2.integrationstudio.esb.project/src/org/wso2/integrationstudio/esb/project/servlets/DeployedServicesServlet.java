@@ -28,11 +28,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.carbonserver44microei12.monitoring.dashboard.MonitoringDashboard;
-import org.wso2.integrationstudio.esb.project.Activator;
+import org.wso2.integrationstudio.carbonserver44microei40.monitoring.dashboard.MonitoringDashboard;
 import org.wso2.integrationstudio.esb.project.servlets.utils.DeployedServicesServletUtil;
-import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
-import org.wso2.integrationstudio.logging.core.Logger;
 
 public class DeployedServicesServlet extends HttpServlet {
 

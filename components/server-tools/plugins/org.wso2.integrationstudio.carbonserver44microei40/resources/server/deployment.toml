@@ -110,7 +110,7 @@ heartbeat_interval = 15
 'synapse.rest.CORSConfig.Access-Control-Allow-Headers' = "content-type"
 
 # [[service_catalog]]
-# apimHost = "https://localhost:9443"
+# apim_host = "https://localhost:9443"
 # enable = true
 # username = "admin"
 # password = "admin"

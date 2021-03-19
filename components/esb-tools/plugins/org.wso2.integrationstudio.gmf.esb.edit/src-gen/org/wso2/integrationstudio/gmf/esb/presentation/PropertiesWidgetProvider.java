@@ -398,7 +398,7 @@ public class PropertiesWidgetProvider {
         }
         addToEnableConditionManager(jsonSchemaObject, jsonSchemaObject.getName());
         // Create Text box widget
-        final Text valueTextBox = widgetFactory.createText(textBoxComposite, "", SWT.BORDER );
+        final Text valueTextBox = widgetFactory.createText(textBoxComposite, getDefaultValue(jsonSchemaObject), SWT.BORDER );
         valueTextBox.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
         GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
         // Set the height of the value input text box since there is issue with toggling expression text box is
@@ -484,6 +484,15 @@ public class PropertiesWidgetProvider {
             requiredList.put(jsonSchemaObject.getName(), valueTextBox);
         }
         return parent;
+    }
+
+    private String getDefaultValue(AttributeValue jsonSchemaObject) {
+
+        String defultValue = jsonSchemaObject.getDefaultValue();
+        if(defultValue == null) {
+        	defultValue = "";
+        }
+        return defultValue;
     }
 
     /**
@@ -955,6 +964,7 @@ public class PropertiesWidgetProvider {
         valueComboBox.setBackground(colorWhite);
         valueComboBox.setItems(options);
         valueComboBox.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject);
+        valueComboBox.setText(getDefaultValue(jsonSchemaObject));
         GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
         valueComboBox.setLayoutData(configRefData);
         valueComboBox.addSelectionListener(new SelectionAdapter() {

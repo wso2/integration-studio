@@ -259,14 +259,15 @@ public class ConnectorParameterRenderer extends PropertyParameterRenderer {
                 if (control instanceof Text) {
                     Text text = (Text) control;
                     if (uiSchemaValue.getRequired() && defaultValue != null && !defaultValue.isEmpty()
-                            && text.getText().equals("")) {
+                            && (text.getText().equals("") || text.getText().equals(defaultValue))) {
                         text.setText(defaultValue);
                         text.notifyListeners(SWT.KeyUp, new Event());
                     }
 
                 } else if (control instanceof Combo) {
                     Combo combo = (Combo) control;
-                    if (defaultValue != null && !defaultValue.isEmpty() && combo.getText().equals("")) {
+                    if (defaultValue != null && !defaultValue.isEmpty() && (combo.getText().equals("") 
+                            || combo.getText().equals(defaultValue))) {
                         combo.setText(defaultValue);
                         combo.notifyListeners(SWT.Selection, new Event());
                     }

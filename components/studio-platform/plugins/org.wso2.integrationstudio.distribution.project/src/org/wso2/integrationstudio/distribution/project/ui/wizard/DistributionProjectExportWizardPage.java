@@ -18,14 +18,18 @@ package org.wso2.integrationstudio.distribution.project.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -67,11 +71,18 @@ import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 public class DistributionProjectExportWizardPage extends WizardPage {
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     
+    private static final String METADATA_TYPE = "synapse/metadata";
+    private static final String API_TYPE = "synapse/api";
+    private static final String METADATA_SUFFIX = "_metadata";
+    private static final String SWAGGER_SUFFIX = "_swagger";
+	
 	private MavenProject mavenProject;
 	private Map<String,Dependency> dependencyList;
 	private Map<String,DependencyData> projectList;
 	private Map<String,Dependency> missingDependencyList;
 	private Map<String,String> serverRoleList = new HashMap<String, String>();
+    private Map<String, String> projectListToDependencyMapping = new LinkedHashMap<String, String>();
+    private Map<String, String> artifactIdToDependencyMapping = new LinkedHashMap<String, String>();
 	private Tree trDependencies;
 	private TreeEditor editor;
 	private Map<String,TreeItem>  nodesWithSubNodes = new HashMap<String,TreeItem>();
@@ -81,7 +92,6 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 	private Composite container;
 	private IFile selectedProjectPomFileRes;
 	private IProject selectedCompositeProject;
-	private String METADATA_TYPE = "synapse/metadata";
 	private String METADATA_FILE_TYPE = "yaml";
 
 	// need to get the server roles via an extension point without hard-coding
@@ -264,6 +274,24 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 		controlCreated = true;
 		validate();
 	}
+	
+    private void initializeProjectDetails() {
+        ProjectList projectListProvider = new ProjectList();
+        List<ListData> projectListData = projectListProvider.getListData(null, null);
+        for (ListData data : projectListData) {
+            DependencyData dependencyData = (DependencyData) data.getData();
+            projectList.put(data.getCaption(), dependencyData);
+            IProject mainProject = (IProject) ((DependencyData) data.getData()).getParent();
+            IFolder metaFolder = mainProject.getFolder("src/main/resources/metadata");
+            if (metaFolder.exists()) {
+                String caption = data.getCaption();
+                String keyword = caption.substring(StringUtils.indexOf(caption, ":=") + 2, caption.length());
+                projectListToDependencyMapping.put(keyword, caption);
+                artifactIdToDependencyMapping.put(((DependencyData) data.getData()).getDependency().getArtifactId(),
+                        keyword);
+            }
+        }
+    }
 	
 	private void loadMavenProjectDetails() {
 		selectedCompositeProject = ResourcesPlugin.getWorkspace().getRoot()
@@ -617,42 +645,82 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 	 * Remove a project dependencies from the maven model
 	 * @param nodeData NodeData of selected treeitem
 	 */
-	private void removeDependency(NodeData nodeData){
-		Dependency project = nodeData.getDependency();
-		String artifactInfo = DistProjectUtils
-		.getArtifactInfoAsString(project);
-		
-		if (getDependencyList().containsKey(artifactInfo)) {
-			getDependencyList().remove(artifactInfo);
-			if(serverRoleList.containsKey(artifactInfo)){
-				serverRoleList.remove(artifactInfo);
-			}
-		}
-	}
+    private void removeDependency(NodeData nodeData) {
+        List<String> removingArtifacts = new ArrayList<>();
+        Dependency project = nodeData.getDependency();
+        String artifactInfo = DistProjectUtils.getArtifactInfoAsString(project);
+        DependencyData dependencyData = projectList.get(projectListToDependencyMapping.get(artifactInfo));
+        if (API_TYPE.equals(dependencyData.getCApptype())) {
+            String medataName = project.getArtifactId() + METADATA_SUFFIX;
+            String swaggerName = project.getArtifactId() + SWAGGER_SUFFIX;
+            removingArtifacts.add(artifactIdToDependencyMapping.get(medataName));
+            removingArtifacts.add(artifactIdToDependencyMapping.get(swaggerName));
+        }
+        removingArtifacts.add(artifactInfo);
+        removeDependency(removingArtifacts);
+    }
 	
+    private void removeDependency(List<String> artifacts) {
+        for (String artifactInfo : artifacts) {
+            if (getDependencyList().containsKey(artifactInfo)) {
+                getDependencyList().remove(artifactInfo);
+                if (serverRoleList.containsKey(artifactInfo)) {
+                    serverRoleList.remove(artifactInfo);
+                }
+            }
+        }
+    }
 	/**
 	 * Add a project dependencies to the maven model
 	 * @param nodeData NodeData of selected treeitem
 	 */
-	private void addDependency(NodeData nodeData){
-		Dependency project = nodeData.getDependency();
-		String serverRole = nodeData.getServerRole();
-		String artifactInfo = DistProjectUtils
-		.getArtifactInfoAsString(project);
-		
-		if (!getDependencyList().containsKey(artifactInfo)) {
-			
-			Dependency dependency = new Dependency();
-			dependency.setArtifactId(project.getArtifactId());
-			dependency.setGroupId(project.getGroupId());
-			dependency.setVersion(project.getVersion());
-			dependency.setType(project.getType());
-			if(!serverRoleList.containsKey(artifactInfo)){
-				serverRoleList.put(artifactInfo, "capp/" + serverRole);
-			}
-			getDependencyList().put(artifactInfo, dependency);
-		}
-	}
+    private void addDependency(NodeData nodeData) {
+        Dependency project = nodeData.getDependency();
+        String serverRole = nodeData.getServerRole();
+        String artifactInfo = DistProjectUtils.getArtifactInfoAsString(project);
+
+        if (projectListToDependencyMapping.containsKey(artifactInfo)) {
+            String dependencyMapping = projectListToDependencyMapping.get(artifactInfo);
+            if (projectList.containsKey(dependencyMapping)) {
+                DependencyData dependencyData = projectList.get(dependencyMapping);
+                if (API_TYPE.equals(dependencyData.getCApptype())) {
+                    String medataName = project.getArtifactId() + METADATA_SUFFIX;
+                    String swaggerName = project.getArtifactId() + SWAGGER_SUFFIX;
+                    String metadataArtifactInfo = artifactIdToDependencyMapping.get(medataName);
+                    String swaggerArtifactInfo = artifactIdToDependencyMapping.get(swaggerName);
+                    if (projectListToDependencyMapping.containsKey(metadataArtifactInfo)) {
+                        Dependency metaDependency = projectList
+                                .get(projectListToDependencyMapping.get(metadataArtifactInfo)).getDependency();
+                        if (metaDependency != null && !getDependencyList().containsKey(metadataArtifactInfo)) {
+                            serverRoleList.put(metadataArtifactInfo, "capp/" + serverRole);
+                            getDependencyList().put(metadataArtifactInfo, metaDependency);
+                        }
+                    }
+                    if (projectListToDependencyMapping.containsKey(swaggerArtifactInfo)) {
+                        Dependency swaggerDependency = projectList
+                                .get(projectListToDependencyMapping.get(swaggerArtifactInfo)).getDependency();
+                        if (swaggerDependency != null && !getDependencyList().containsKey(swaggerArtifactInfo)) {
+                            serverRoleList.put(swaggerArtifactInfo, "capp/" + serverRole);
+                            getDependencyList().put(swaggerArtifactInfo, swaggerDependency);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (!getDependencyList().containsKey(artifactInfo)) {
+
+            Dependency dependency = new Dependency();
+            dependency.setArtifactId(project.getArtifactId());
+            dependency.setGroupId(project.getGroupId());
+            dependency.setVersion(project.getVersion());
+            dependency.setType(project.getType());
+            if(!serverRoleList.containsKey(artifactInfo)){
+                serverRoleList.put(artifactInfo, "capp/" + serverRole);
+            }
+            getDependencyList().put(artifactInfo, dependency);
+        }
+    }
 	
 	private void validate() {
 		if (getDependencyList().size() == 0) {
@@ -673,7 +741,7 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 				validate();
 			}
 		}
-		
+		initializeProjectDetails();
 		container.setVisible(visible);
 	}
 }

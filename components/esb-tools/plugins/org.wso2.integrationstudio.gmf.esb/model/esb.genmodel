@@ -100,6 +100,11 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DSSTargetType/BODY"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DSSTargetType/PROPERTY"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//DSSOperationType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DSSOperationType/SINGLE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DSSOperationType/BATCH"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DSSOperationType/REQUESTBOX"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//AttributeValueType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeValueType/VALUE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeValueType/EXPRESSION"/>
@@ -1125,6 +1130,7 @@
     <genClasses ecoreClass="esb.ecore#//DSSMediator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DSSMediator/serviceName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DSSMediator/sourceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DSSMediator/operationType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DSSMediator/operations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DSSMediator/targetType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DSSMediator/targetProperty"/>

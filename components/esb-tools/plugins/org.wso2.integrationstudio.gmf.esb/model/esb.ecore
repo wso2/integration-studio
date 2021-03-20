@@ -479,6 +479,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceType" eType="#//DSSSourceType"
         defaultValueLiteral="INLINE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationType" eType="#//DSSOperationType"
+        defaultValueLiteral="SINGLE"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
         eType="#//AbstractDSSOperation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetType" eType="#//DSSTargetType"
@@ -499,6 +501,11 @@
   <eClassifiers xsi:type="ecore:EEnum" name="DSSTargetType">
     <eLiterals name="BODY"/>
     <eLiterals name="PROPERTY"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DSSOperationType">
+    <eLiterals name="SINGLE"/>
+    <eLiterals name="BATCH"/>
+    <eLiterals name="REQUESTBOX"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PublishEventMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//PublishEventMediatorInputConnector"

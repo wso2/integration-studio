@@ -147,6 +147,7 @@ import org.wso2.integrationstudio.gmf.esb.DBReportMediatorOutputConnector;
 import org.wso2.integrationstudio.gmf.esb.DSSMediator;
 import org.wso2.integrationstudio.gmf.esb.DSSMediatorInputConnector;
 import org.wso2.integrationstudio.gmf.esb.DSSMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.DSSOperationType;
 import org.wso2.integrationstudio.gmf.esb.DSSSourceType;
 import org.wso2.integrationstudio.gmf.esb.DSSTargetType;
 import org.wso2.integrationstudio.gmf.esb.DSSoperationProperty;
@@ -3282,6 +3283,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    private EEnum dssOperationTypeEEnum = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     private EEnum attributeValueTypeEEnum = null;
 
     /**
@@ -6348,8 +6356,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getDSSMediator_OperationType() {
+        return (EAttribute)dssMediatorEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EReference getDSSMediator_Operations() {
-        return (EReference)dssMediatorEClass.getEStructuralFeatures().get(2);
+        return (EReference)dssMediatorEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -6358,15 +6375,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     public EAttribute getDSSMediator_TargetType() {
-        return (EAttribute)dssMediatorEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getDSSMediator_TargetProperty() {
         return (EAttribute)dssMediatorEClass.getEStructuralFeatures().get(4);
     }
 
@@ -6375,8 +6383,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getDSSMediator_TargetProperty() {
+        return (EAttribute)dssMediatorEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EReference getDSSMediator_InputConnector() {
-        return (EReference)dssMediatorEClass.getEStructuralFeatures().get(5);
+        return (EReference)dssMediatorEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -6385,7 +6402,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     public EReference getDSSMediator_OutputConnector() {
-        return (EReference)dssMediatorEClass.getEStructuralFeatures().get(6);
+        return (EReference)dssMediatorEClass.getEStructuralFeatures().get(7);
     }
 
     /**
@@ -19137,6 +19154,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EEnum getDSSOperationType() {
+        return dssOperationTypeEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EEnum getAttributeValueType() {
         return attributeValueTypeEEnum;
     }
@@ -20636,6 +20662,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         dssMediatorEClass = createEClass(DSS_MEDIATOR);
         createEAttribute(dssMediatorEClass, DSS_MEDIATOR__SERVICE_NAME);
         createEAttribute(dssMediatorEClass, DSS_MEDIATOR__SOURCE_TYPE);
+        createEAttribute(dssMediatorEClass, DSS_MEDIATOR__OPERATION_TYPE);
         createEReference(dssMediatorEClass, DSS_MEDIATOR__OPERATIONS);
         createEAttribute(dssMediatorEClass, DSS_MEDIATOR__TARGET_TYPE);
         createEAttribute(dssMediatorEClass, DSS_MEDIATOR__TARGET_PROPERTY);
@@ -22368,6 +22395,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         logLevelEEnum = createEEnum(LOG_LEVEL);
         dssSourceTypeEEnum = createEEnum(DSS_SOURCE_TYPE);
         dssTargetTypeEEnum = createEEnum(DSS_TARGET_TYPE);
+        dssOperationTypeEEnum = createEEnum(DSS_OPERATION_TYPE);
         attributeValueTypeEEnum = createEEnum(ATTRIBUTE_VALUE_TYPE);
         attributeTypeEEnum = createEEnum(ATTRIBUTE_TYPE);
         beanMediatorActionEEnum = createEEnum(BEAN_MEDIATOR_ACTION);
@@ -23187,6 +23215,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEClass(dssMediatorEClass, DSSMediator.class, "DSSMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDSSMediator_ServiceName(), ecorePackage.getEString(), "serviceName", null, 0, 1, DSSMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDSSMediator_SourceType(), this.getDSSSourceType(), "sourceType", "INLINE", 0, 1, DSSMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getDSSMediator_OperationType(), this.getDSSOperationType(), "operationType", "SINGLE", 0, 1, DSSMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDSSMediator_Operations(), this.getAbstractDSSOperation(), null, "operations", null, 0, -1, DSSMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDSSMediator_TargetType(), this.getDSSTargetType(), "targetType", "BODY", 0, 1, DSSMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDSSMediator_TargetProperty(), ecorePackage.getEString(), "targetProperty", null, 0, 1, DSSMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -25009,6 +25038,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEEnum(dssTargetTypeEEnum, DSSTargetType.class, "DSSTargetType");
         addEEnumLiteral(dssTargetTypeEEnum, DSSTargetType.BODY);
         addEEnumLiteral(dssTargetTypeEEnum, DSSTargetType.PROPERTY);
+
+        initEEnum(dssOperationTypeEEnum, DSSOperationType.class, "DSSOperationType");
+        addEEnumLiteral(dssOperationTypeEEnum, DSSOperationType.SINGLE);
+        addEEnumLiteral(dssOperationTypeEEnum, DSSOperationType.BATCH);
+        addEEnumLiteral(dssOperationTypeEEnum, DSSOperationType.REQUESTBOX);
 
         initEEnum(attributeValueTypeEEnum, AttributeValueType.class, "AttributeValueType");
         addEEnumLiteral(attributeValueTypeEEnum, AttributeValueType.VALUE);

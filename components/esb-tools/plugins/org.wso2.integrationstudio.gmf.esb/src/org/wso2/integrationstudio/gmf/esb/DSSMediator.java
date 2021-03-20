@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getServiceName <em>Service Name</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getSourceType <em>Source Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getOperationType <em>Operation Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getOperations <em>Operations</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getTargetType <em>Target Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getTargetProperty <em>Target Property</em>}</li>
@@ -87,6 +88,32 @@ public interface DSSMediator extends Mediator {
      * @generated
      */
     void setSourceType(DSSSourceType value);
+
+    /**
+     * Returns the value of the '<em><b>Operation Type</b></em>' attribute.
+     * The default value is <code>"SINGLE"</code>.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.DSSOperationType}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Operation Type</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.DSSOperationType
+     * @see #setOperationType(DSSOperationType)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getDSSMediator_OperationType()
+     * @model default="SINGLE"
+     * @generated
+     */
+    DSSOperationType getOperationType();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getOperationType <em>Operation Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Operation Type</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.DSSOperationType
+     * @see #getOperationType()
+     * @generated
+     */
+    void setOperationType(DSSOperationType value);
 
     /**
      * Returns the value of the '<em><b>Operations</b></em>' containment reference list.

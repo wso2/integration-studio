@@ -2067,6 +2067,29 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected AbstractDSSOperationItemProvider abstractDSSOperationItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createAbstractDSSOperationAdapter() {
+        if (abstractDSSOperationItemProvider == null) {
+            abstractDSSOperationItemProvider = new AbstractDSSOperationItemProvider(this);
+        }
+
+        return abstractDSSOperationItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.XSLTMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8651,6 +8674,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
         if (enrichMediatorItemProvider != null) enrichMediatorItemProvider.dispose();
         if (enrichMediatorInputConnectorItemProvider != null) enrichMediatorInputConnectorItemProvider.dispose();
         if (enrichMediatorOutputConnectorItemProvider != null) enrichMediatorOutputConnectorItemProvider.dispose();
+        if (abstractDSSOperationItemProvider != null) abstractDSSOperationItemProvider.dispose();
         if (xsltMediatorItemProvider != null) xsltMediatorItemProvider.dispose();
         if (xsltPropertyItemProvider != null) xsltPropertyItemProvider.dispose();
         if (xsltFeatureItemProvider != null) xsltFeatureItemProvider.dispose();

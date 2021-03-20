@@ -34,6 +34,7 @@ import org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation;
 import org.wso2.integrationstudio.gmf.esb.DSSMediator;
 import org.wso2.integrationstudio.gmf.esb.DSSMediatorInputConnector;
 import org.wso2.integrationstudio.gmf.esb.DSSMediatorOutputConnector;
+import org.wso2.integrationstudio.gmf.esb.DSSOperationType;
 import org.wso2.integrationstudio.gmf.esb.DSSSourceType;
 import org.wso2.integrationstudio.gmf.esb.DSSTargetType;
 import org.wso2.integrationstudio.gmf.esb.DSSoperationProperty;
@@ -49,6 +50,7 @@ import org.wso2.integrationstudio.gmf.esb.EsbPackage;
  * <ul>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl#getServiceName <em>Service Name</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl#getSourceType <em>Source Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl#getOperationType <em>Operation Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl#getOperations <em>Operations</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl#getTargetType <em>Target Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl#getTargetProperty <em>Target Property</em>}</li>
@@ -98,6 +100,26 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
      * @ordered
      */
     protected DSSSourceType sourceType = SOURCE_TYPE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getOperationType() <em>Operation Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOperationType()
+     * @generated
+     * @ordered
+     */
+    protected static final DSSOperationType OPERATION_TYPE_EDEFAULT = DSSOperationType.SINGLE;
+
+    /**
+     * The cached value of the '{@link #getOperationType() <em>Operation Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOperationType()
+     * @generated
+     * @ordered
+     */
+    protected DSSOperationType operationType = OPERATION_TYPE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
@@ -228,6 +250,27 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
         sourceType = newSourceType == null ? SOURCE_TYPE_EDEFAULT : newSourceType;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DSS_MEDIATOR__SOURCE_TYPE, oldSourceType, sourceType));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public DSSOperationType getOperationType() {
+        return operationType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setOperationType(DSSOperationType newOperationType) {
+        DSSOperationType oldOperationType = operationType;
+        operationType = newOperationType == null ? OPERATION_TYPE_EDEFAULT : newOperationType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DSS_MEDIATOR__OPERATION_TYPE, oldOperationType, operationType));
     }
 
     /**
@@ -400,6 +443,8 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
                 return getServiceName();
             case EsbPackage.DSS_MEDIATOR__SOURCE_TYPE:
                 return getSourceType();
+            case EsbPackage.DSS_MEDIATOR__OPERATION_TYPE:
+                return getOperationType();
             case EsbPackage.DSS_MEDIATOR__OPERATIONS:
                 return getOperations();
             case EsbPackage.DSS_MEDIATOR__TARGET_TYPE:
@@ -428,6 +473,9 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
                 return;
             case EsbPackage.DSS_MEDIATOR__SOURCE_TYPE:
                 setSourceType((DSSSourceType)newValue);
+                return;
+            case EsbPackage.DSS_MEDIATOR__OPERATION_TYPE:
+                setOperationType((DSSOperationType)newValue);
                 return;
             case EsbPackage.DSS_MEDIATOR__OPERATIONS:
                 getOperations().clear();
@@ -463,6 +511,9 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
             case EsbPackage.DSS_MEDIATOR__SOURCE_TYPE:
                 setSourceType(SOURCE_TYPE_EDEFAULT);
                 return;
+            case EsbPackage.DSS_MEDIATOR__OPERATION_TYPE:
+                setOperationType(OPERATION_TYPE_EDEFAULT);
+                return;
             case EsbPackage.DSS_MEDIATOR__OPERATIONS:
                 getOperations().clear();
                 return;
@@ -494,6 +545,8 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
                 return SERVICE_NAME_EDEFAULT == null ? serviceName != null : !SERVICE_NAME_EDEFAULT.equals(serviceName);
             case EsbPackage.DSS_MEDIATOR__SOURCE_TYPE:
                 return sourceType != SOURCE_TYPE_EDEFAULT;
+            case EsbPackage.DSS_MEDIATOR__OPERATION_TYPE:
+                return operationType != OPERATION_TYPE_EDEFAULT;
             case EsbPackage.DSS_MEDIATOR__OPERATIONS:
                 return operations != null && !operations.isEmpty();
             case EsbPackage.DSS_MEDIATOR__TARGET_TYPE:
@@ -522,6 +575,8 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
         result.append(serviceName);
         result.append(", sourceType: ");
         result.append(sourceType);
+        result.append(", operationType: ");
+        result.append(operationType);
         result.append(", targetType: ");
         result.append(targetType);
         result.append(", targetProperty: ");

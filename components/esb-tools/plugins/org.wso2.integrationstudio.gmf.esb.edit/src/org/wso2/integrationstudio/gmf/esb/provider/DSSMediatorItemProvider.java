@@ -63,6 +63,7 @@ public class DSSMediatorItemProvider extends MediatorItemProvider {
 
             addServiceNamePropertyDescriptor(object);
             addSourceTypePropertyDescriptor(object);
+            addOperationTypePropertyDescriptor(object);
             addTargetTypePropertyDescriptor(object);
             addTargetPropertyPropertyDescriptor(object);
         }
@@ -105,6 +106,28 @@ public class DSSMediatorItemProvider extends MediatorItemProvider {
                  getString("_UI_DSSMediator_sourceType_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_DSSMediator_sourceType_feature", "_UI_DSSMediator_type"),
                  EsbPackage.Literals.DSS_MEDIATOR__SOURCE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Operation Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOperationTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_DSSMediator_operationType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_DSSMediator_operationType_feature", "_UI_DSSMediator_type"),
+                 EsbPackage.Literals.DSS_MEDIATOR__OPERATION_TYPE,
                  true,
                  false,
                  false,
@@ -229,6 +252,7 @@ public class DSSMediatorItemProvider extends MediatorItemProvider {
         switch (notification.getFeatureID(DSSMediator.class)) {
             case EsbPackage.DSS_MEDIATOR__SERVICE_NAME:
             case EsbPackage.DSS_MEDIATOR__SOURCE_TYPE:
+            case EsbPackage.DSS_MEDIATOR__OPERATION_TYPE:
             case EsbPackage.DSS_MEDIATOR__TARGET_TYPE:
             case EsbPackage.DSS_MEDIATOR__TARGET_PROPERTY:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

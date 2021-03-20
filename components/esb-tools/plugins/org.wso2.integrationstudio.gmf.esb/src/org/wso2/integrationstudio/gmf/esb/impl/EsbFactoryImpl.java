@@ -462,6 +462,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return createDSSSourceTypeFromString(eDataType, initialValue);
             case EsbPackage.DSS_TARGET_TYPE:
                 return createDSSTargetTypeFromString(eDataType, initialValue);
+            case EsbPackage.DSS_OPERATION_TYPE:
+                return createDSSOperationTypeFromString(eDataType, initialValue);
             case EsbPackage.ATTRIBUTE_VALUE_TYPE:
                 return createAttributeValueTypeFromString(eDataType, initialValue);
             case EsbPackage.ATTRIBUTE_TYPE:
@@ -762,6 +764,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return convertDSSSourceTypeToString(eDataType, instanceValue);
             case EsbPackage.DSS_TARGET_TYPE:
                 return convertDSSTargetTypeToString(eDataType, instanceValue);
+            case EsbPackage.DSS_OPERATION_TYPE:
+                return convertDSSOperationTypeToString(eDataType, instanceValue);
             case EsbPackage.ATTRIBUTE_VALUE_TYPE:
                 return convertAttributeValueTypeToString(eDataType, instanceValue);
             case EsbPackage.ATTRIBUTE_TYPE:
@@ -5256,6 +5260,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
      * @generated
      */
     public String convertDSSTargetTypeToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public DSSOperationType createDSSOperationTypeFromString(EDataType eDataType, String initialValue) {
+        DSSOperationType result = DSSOperationType.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertDSSOperationTypeToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

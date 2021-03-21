@@ -52,6 +52,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation;
 import org.wso2.integrationstudio.gmf.esb.DSSMediator;
+import org.wso2.integrationstudio.gmf.esb.DSSOperationType;
 import org.wso2.integrationstudio.gmf.esb.DSSSourceType;
 import org.wso2.integrationstudio.gmf.esb.DSSTargetType;
 import org.wso2.integrationstudio.gmf.esb.DSSoperationProperty;
@@ -120,6 +121,9 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 			if (isAccessible(EsbViewsRepository.DSSMediator.Properties.sourceType)) {
 				basePart.initSourceType(EEFUtils.choiceOfValues(dSSMediator, EsbPackage.eINSTANCE.getDSSMediator_SourceType()), dSSMediator.getSourceType());
 			}
+			if (isAccessible(EsbViewsRepository.DSSMediator.Properties.operationType)) {
+				basePart.initOperationType(EEFUtils.choiceOfValues(dSSMediator, EsbPackage.eINSTANCE.getDSSMediator_OperationType()), dSSMediator.getOperationType());
+			}
 			if (isAccessible(EsbViewsRepository.DSSMediator.Properties.operations)) {
 				operationsSettings = new ReferencesTableSettings(dSSMediator, EsbPackage.eINSTANCE.getDSSMediator_Operations());
 				basePart.initOperations(operationsSettings);
@@ -131,6 +135,7 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 				basePart.setTargetProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dSSMediator.getTargetProperty()));
 			
 			// init filters
+			
 			
 			
 			
@@ -171,6 +176,7 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -190,6 +196,9 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (editorKey == EsbViewsRepository.DSSMediator.Properties.sourceType) {
 			return EsbPackage.eINSTANCE.getDSSMediator_SourceType();
+		}
+		if (editorKey == EsbViewsRepository.DSSMediator.Properties.operationType) {
+			return EsbPackage.eINSTANCE.getDSSMediator_OperationType();
 		}
 		if (editorKey == EsbViewsRepository.DSSMediator.Properties.operations) {
 			return EsbPackage.eINSTANCE.getDSSMediator_Operations();
@@ -227,6 +236,9 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (EsbViewsRepository.DSSMediator.Properties.sourceType == event.getAffectedEditor()) {
 			dSSMediator.setSourceType((DSSSourceType)event.getNewValue());
+		}
+		if (EsbViewsRepository.DSSMediator.Properties.operationType == event.getAffectedEditor()) {
+			dSSMediator.setOperationType((DSSOperationType)event.getNewValue());
 		}
 		if (EsbViewsRepository.DSSMediator.Properties.operations == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -301,6 +313,9 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 			if (EsbPackage.eINSTANCE.getDSSMediator_SourceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.DSSMediator.Properties.sourceType))
 				basePart.setSourceType((DSSSourceType)msg.getNewValue());
 			
+			if (EsbPackage.eINSTANCE.getDSSMediator_OperationType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.DSSMediator.Properties.operationType))
+				basePart.setOperationType((DSSOperationType)msg.getNewValue());
+			
 			if (EsbPackage.eINSTANCE.getDSSMediator_Operations().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.DSSMediator.Properties.operations))
 				basePart.updateOperations();
 			if (EsbPackage.eINSTANCE.getDSSMediator_TargetType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.DSSMediator.Properties.targetType))
@@ -330,6 +345,7 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 			EsbPackage.eINSTANCE.getMediator_Reverse(),
 			EsbPackage.eINSTANCE.getDSSMediator_ServiceName(),
 			EsbPackage.eINSTANCE.getDSSMediator_SourceType(),
+			EsbPackage.eINSTANCE.getDSSMediator_OperationType(),
 			EsbPackage.eINSTANCE.getDSSMediator_Operations(),
 			EsbPackage.eINSTANCE.getDSSMediator_TargetType(),
 			EsbPackage.eINSTANCE.getDSSMediator_TargetProperty()		);
@@ -381,6 +397,13 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getDSSMediator_SourceType().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getDSSMediator_SourceType().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.DSSMediator.Properties.operationType == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getDSSMediator_OperationType().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getDSSMediator_OperationType().getEAttributeType(), newValue);
 				}
 				if (EsbViewsRepository.DSSMediator.Properties.targetType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();

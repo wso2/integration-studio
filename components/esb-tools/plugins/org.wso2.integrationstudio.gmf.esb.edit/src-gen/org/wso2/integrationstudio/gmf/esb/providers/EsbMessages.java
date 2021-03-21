@@ -4249,6 +4249,9 @@ public class EsbMessages extends NLS {
 	public static String DSSMediatorPropertiesEditionPart_SourceTypeLabel;
 
 	
+	public static String DSSMediatorPropertiesEditionPart_OperationTypeLabel;
+
+	
 	public static String DSSMediatorPropertiesEditionPart_OperationsLabel;
 
 	

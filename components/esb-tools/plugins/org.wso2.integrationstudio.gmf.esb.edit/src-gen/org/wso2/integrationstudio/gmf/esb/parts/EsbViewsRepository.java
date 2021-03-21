@@ -1662,6 +1662,9 @@ public class EsbViewsRepository {
 			public static String sourceType = "esb::DSSMediator::properties::sourceType";
 			
 			
+			public static String operationType = "esb::DSSMediator::properties::operationType";
+			
+			
 			public static String operations = "esb::DSSMediator::properties::operations";
 			
 			

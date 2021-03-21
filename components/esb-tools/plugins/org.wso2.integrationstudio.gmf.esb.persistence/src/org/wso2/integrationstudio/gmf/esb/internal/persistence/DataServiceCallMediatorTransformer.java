@@ -17,16 +17,24 @@
  */
 package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.synapse.Mediator;
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation;
 import org.wso2.integrationstudio.gmf.esb.DSSMediator;
+import org.wso2.integrationstudio.gmf.esb.DSSoperationProperty;
 import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
 import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
+import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator.Operation;
+import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator.Operations;
+import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator.Param;
 
 public class DataServiceCallMediatorTransformer extends AbstractEsbNodeTransformer {
 
@@ -52,10 +60,41 @@ public class DataServiceCallMediatorTransformer extends AbstractEsbNodeTransform
 
         String sourceType = visualDataServicesCall.getSourceType().getLiteral();
         String targetType = visualDataServicesCall.getTargetType().getLiteral();
+        String operationType = visualDataServicesCall.getOperationType().getLiteral();
 
+        
         if (!sourceType.isEmpty()) {
             dataServicesCallMediator.setSourceType(sourceType);
-        } 
+		}
+		if (operationType.contains("INLINE")) {
+			if (operationType.contains("SINGLE")) {
+//				
+//				EList<AbstractDSSOperation> visualOperations = visualDataServicesCall.getOperations();
+//				List<Operation> synapseOperationList = new ArrayList<Operation>();
+//
+//				for (AbstractDSSOperation visualOperation : visualOperations) {
+//					EList<DSSoperationProperty> visualProperties = visualOperation.getDSSPrperties();
+//					List<Param> synapseParams = new ArrayList<Param>();
+//					for (DSSoperationProperty visualProperty : visualProperties) {
+//
+//						Param synapseParam = dataServicesCallMediator.new Param(visualProperty.getPropertyName());
+//						if (visualProperty.getPropertyValueType().getLiteral().contains("EXPRESSION")) {
+//							synapseParam.setEvaluator("xml");
+//							synapseParam.setParamExpression((SynapsePath) visualProperty.getPropertyExpression());
+//						} else {
+//							synapseParam.setParamValue(visualProperty.getPropertyValue());
+//						}
+//						synapseParams.add(synapseParam);
+//					}
+//					Operation synapseOPeration = dataServicesCallMediator.new Operation(visualOperation.getOperationName(), synapseParams);
+//					synapseOperationList.add(synapseOPeration);
+//				}
+//				Operations synapseOPerations = dataServicesCallMediator.new Operations("SINGLE", synapseOperationList);
+//				dataServicesCallMediator.setOperations(synapseOPerations);
+
+			}
+
+		}
 
         if (!targetType.isEmpty()) {
             dataServicesCallMediator.setTargetType(targetType);

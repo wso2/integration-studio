@@ -107,10 +107,10 @@ public class AbstractDSSOperationPropertiesEditionPartImpl extends CompositeProp
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence abstractDSSOperationStep = new BindingCompositionSequence(propertiesEditionComponent);
-//		abstractDSSOperationStep
-//			.addStep(EsbViewsRepository.AbstractDSSOperation.Properties.class);
-		abstractDSSOperationStep.addStep(EsbViewsRepository.AbstractDSSOperation.operationName);
+		abstractDSSOperationStep
+			.addStep(EsbViewsRepository.AbstractDSSOperation.Properties.class);
 		abstractDSSOperationStep.addStep(EsbViewsRepository.AbstractDSSOperation.dSSPrperties);
+		abstractDSSOperationStep.addStep(EsbViewsRepository.AbstractDSSOperation.operationName);
 		
 		composer = new PartComposer(abstractDSSOperationStep) {
 

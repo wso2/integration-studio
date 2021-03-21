@@ -111,6 +111,27 @@ public interface DSSMediatorPropertiesEditionPart {
 	public void setSourceType(Enumerator newValue);
 
 
+	/**
+	 * @return the operationType
+	 * 
+	 */
+	public Enumerator getOperationType();
+
+	/**
+	 * Init the operationType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initOperationType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new operationType
+	 * @param newValue the new operationType to set
+	 * 
+	 */
+	public void setOperationType(Enumerator newValue);
+
+
 
 
 	/**

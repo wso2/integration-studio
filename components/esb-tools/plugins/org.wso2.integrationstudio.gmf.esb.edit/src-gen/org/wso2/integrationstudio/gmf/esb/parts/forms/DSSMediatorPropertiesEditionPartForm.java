@@ -106,12 +106,14 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 	protected List<ViewerFilter> operationsFilters = new ArrayList<ViewerFilter>();
 	protected EMFComboViewer targetType;
 	protected Text targetProperty;
+	protected EMFComboViewer operationType;
 	
 	// Start of user code  for payloadKey widgets declarations
 	Composite propertiesGroup;
 	protected Control[] serviceNameElements;
 	protected Control[] descriptionElements;
 	protected Control[] sourceTypeElements;
+	protected Control[] operationTypeElements;
 	protected Control[] operationsTableElements;
 	protected Control[] targetPropertyElements;
 	protected Control[] targetTypeElements;
@@ -164,10 +166,12 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.serviceName);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.sourceType);
+		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.operationType);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.operations);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.targetType);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.targetProperty);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.description);
+		
 		
 		composer = new PartComposer(dSSMediatorStep) {
 
@@ -190,6 +194,9 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 				}
 				if (key == EsbViewsRepository.DSSMediator.Properties.sourceType) {
 					return createSourceTypeEMFComboViewer(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.DSSMediator.Properties.operationType) {
+					return createOperationTypeEMFComboViewer(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.DSSMediator.Properties.operations) {
 					return createOperationsTableComposition(widgetFactory, parent);
@@ -456,10 +463,52 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 
 		});
 		sourceType.setID(EsbViewsRepository.DSSMediator.Properties.sourceType);
-		Control sourceTypeHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.sourceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		Control sourceTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.sourceType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSourceTypeEMFComboViewer
 		sourceTypeElements = new Control[] {sourceTypeLabel, sourceType.getCombo(), sourceTypeHelp};
 		sourceType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             *  
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                refresh();
+            }
+        });
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createOperationTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+		Control operationTypeLabel = createDescription(parent, EsbViewsRepository.DSSMediator.Properties.operationType, EsbMessages.DSSMediatorPropertiesEditionPart_OperationTypeLabel);
+		operationType = new EMFComboViewer(parent);
+		operationType.setContentProvider(new ArrayContentProvider());
+		operationType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+		GridData operationTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		operationType.getCombo().setLayoutData(operationTypeData);
+		operationType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 * 	
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DSSMediatorPropertiesEditionPartForm.this, EsbViewsRepository.DSSMediator.Properties.operationType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOperationType()));
+			}
+
+		});
+		operationType.setID(EsbViewsRepository.DSSMediator.Properties.operationType);
+		Control operationTypeHelp =FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.operationType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOperationTypeEMFComboViewer
+		operationTypeElements = new Control[] {operationTypeLabel, operationType.getCombo(), operationTypeHelp};
+		operationType.addSelectionChangedListener(new ISelectionChangedListener() {
 
             /**
              * {@inheritDoc}
@@ -845,6 +894,53 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DSSMediatorPropertiesEditionPart#getOperationType()
+	 * 
+	 */
+	public Enumerator getOperationType() {
+		Enumerator selection = (Enumerator) ((StructuredSelection) operationType.getSelection()).getFirstElement();
+		return selection;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DSSMediatorPropertiesEditionPart#initOperationType(Object input, Enumerator current)
+	 */
+	public void initOperationType(Object input, Enumerator current) {
+		operationType.setInput(input);
+		operationType.modelUpdating(new StructuredSelection(current));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DSSMediator.Properties.operationType);
+		if (eefElementEditorReadOnlyState && operationType.isEnabled()) {
+			operationType.setEnabled(false);
+			operationType.setToolTipText(EsbMessages.DSSMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !operationType.isEnabled()) {
+			operationType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DSSMediatorPropertiesEditionPart#setOperationType(Enumerator newValue)
+	 * 
+	 */
+	public void setOperationType(Enumerator newValue) {
+		operationType.modelUpdating(new StructuredSelection(newValue));
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DSSMediator.Properties.operationType);
+		if (eefElementEditorReadOnlyState && operationType.isEnabled()) {
+			operationType.setEnabled(false);
+			operationType.setToolTipText(EsbMessages.DSSMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !operationType.isEnabled()) {
+			operationType.setEnabled(true);
+		}	
+		
+	}
+
 
 
 	/**
@@ -1019,6 +1115,7 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
         eu.showEntry(serviceNameElements, false);
         eu.showEntry(descriptionElements, false);
         eu.showEntry(sourceTypeElements, false);
+        eu.showEntry(operationTypeElements, false);
 		if (getSourceType().getName().equals(DSSSourceType.INLINE.getName())) {
 			eu.showEntry(operationsTableElements, false);
 		}

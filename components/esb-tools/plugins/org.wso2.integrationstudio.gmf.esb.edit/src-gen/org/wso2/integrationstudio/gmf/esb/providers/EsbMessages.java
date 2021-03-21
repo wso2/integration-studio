@@ -275,6 +275,12 @@ public class EsbMessages extends NLS {
 	public static String LogPropertyPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String DSSMediatorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String DSSoperationPropertyPropertiesEditionPart_PropertiesGroupLabel;
+
+	
 	public static String PublishEventMediatorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -354,6 +360,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String EnrichMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String AbstractDSSOperationPropertiesEditionPart_PropertiesGroupLabel;
 
 	
 	public static String XSLTMediatorPropertiesEditionPart_PropertiesGroupLabel;
@@ -1641,6 +1650,18 @@ public class EsbMessages extends NLS {
 	public static String LogProperty_Part_Title;
 
 	
+	public static String DSSMediator_ReadOnly;
+
+	
+	public static String DSSMediator_Part_Title;
+
+	
+	public static String DSSoperationProperty_ReadOnly;
+
+	
+	public static String DSSoperationProperty_Part_Title;
+
+	
 	public static String PublishEventMediator_ReadOnly;
 
 	
@@ -1789,6 +1810,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String EnrichMediatorOutputConnector_Part_Title;
+
+	
+	public static String AbstractDSSOperation_ReadOnly;
+
+	
+	public static String AbstractDSSOperation_Part_Title;
 
 	
 	public static String XSLTMediator_ReadOnly;
@@ -4207,6 +4234,45 @@ public class EsbMessages extends NLS {
 	public static String LogPropertyPropertiesEditionPart_PropertyExpressionLabel;
 
 	
+	public static String DSSMediatorPropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String DSSMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String DSSMediatorPropertiesEditionPart_ReverseLabel;
+
+	
+	public static String DSSMediatorPropertiesEditionPart_ServiceNameLabel;
+
+	
+	public static String DSSMediatorPropertiesEditionPart_SourceTypeLabel;
+
+	
+	public static String DSSMediatorPropertiesEditionPart_OperationTypeLabel;
+
+	
+	public static String DSSMediatorPropertiesEditionPart_OperationsLabel;
+
+	
+	public static String DSSMediatorPropertiesEditionPart_TargetTypeLabel;
+
+	
+	public static String DSSMediatorPropertiesEditionPart_TargetPropertyLabel;
+
+	
+	public static String DSSoperationPropertyPropertiesEditionPart_PropertyNameLabel;
+
+	
+	public static String DSSoperationPropertyPropertiesEditionPart_PropertyValueTypeLabel;
+
+	
+	public static String DSSoperationPropertyPropertiesEditionPart_PropertyValueLabel;
+
+	
+	public static String DSSoperationPropertyPropertiesEditionPart_PropertyExpressionLabel;
+
+	
 	public static String PublishEventMediatorPropertiesEditionPart_DescriptionLabel;
 
 	
@@ -4541,6 +4607,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String EnrichMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
+
+	
+	public static String AbstractDSSOperationPropertiesEditionPart_DSSPrpertiesLabel;
+
+	
+	public static String AbstractDSSOperationPropertiesEditionPart_OperationNameLabel;
 
 	
 	public static String XSLTMediatorPropertiesEditionPart_DescriptionLabel;

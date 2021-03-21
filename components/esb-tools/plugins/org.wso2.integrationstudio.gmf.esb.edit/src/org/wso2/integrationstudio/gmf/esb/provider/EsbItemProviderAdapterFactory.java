@@ -1159,6 +1159,98 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DSSMediator} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DSSMediatorItemProvider dssMediatorItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DSSMediator}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDSSMediatorAdapter() {
+        if (dssMediatorItemProvider == null) {
+            dssMediatorItemProvider = new DSSMediatorItemProvider(this);
+        }
+
+        return dssMediatorItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DSSoperationProperty} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DSSoperationPropertyItemProvider dsSoperationPropertyItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DSSoperationProperty}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDSSoperationPropertyAdapter() {
+        if (dsSoperationPropertyItemProvider == null) {
+            dsSoperationPropertyItemProvider = new DSSoperationPropertyItemProvider(this);
+        }
+
+        return dsSoperationPropertyItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DSSMediatorInputConnector} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DSSMediatorInputConnectorItemProvider dssMediatorInputConnectorItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DSSMediatorInputConnector}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDSSMediatorInputConnectorAdapter() {
+        if (dssMediatorInputConnectorItemProvider == null) {
+            dssMediatorInputConnectorItemProvider = new DSSMediatorInputConnectorItemProvider(this);
+        }
+
+        return dssMediatorInputConnectorItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.DSSMediatorOutputConnector} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DSSMediatorOutputConnectorItemProvider dssMediatorOutputConnectorItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.DSSMediatorOutputConnector}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDSSMediatorOutputConnectorAdapter() {
+        if (dssMediatorOutputConnectorItemProvider == null) {
+            dssMediatorOutputConnectorItemProvider = new DSSMediatorOutputConnectorItemProvider(this);
+        }
+
+        return dssMediatorOutputConnectorItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.PublishEventMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1972,6 +2064,29 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
         }
 
         return enrichMediatorOutputConnectorItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected AbstractDSSOperationItemProvider abstractDSSOperationItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createAbstractDSSOperationAdapter() {
+        if (abstractDSSOperationItemProvider == null) {
+            abstractDSSOperationItemProvider = new AbstractDSSOperationItemProvider(this);
+        }
+
+        return abstractDSSOperationItemProvider;
     }
 
     /**
@@ -8530,6 +8645,10 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
         if (logMediatorInputConnectorItemProvider != null) logMediatorInputConnectorItemProvider.dispose();
         if (logMediatorOutputConnectorItemProvider != null) logMediatorOutputConnectorItemProvider.dispose();
         if (logPropertyItemProvider != null) logPropertyItemProvider.dispose();
+        if (dssMediatorItemProvider != null) dssMediatorItemProvider.dispose();
+        if (dsSoperationPropertyItemProvider != null) dsSoperationPropertyItemProvider.dispose();
+        if (dssMediatorInputConnectorItemProvider != null) dssMediatorInputConnectorItemProvider.dispose();
+        if (dssMediatorOutputConnectorItemProvider != null) dssMediatorOutputConnectorItemProvider.dispose();
         if (publishEventMediatorItemProvider != null) publishEventMediatorItemProvider.dispose();
         if (publishEventMediatorInputConnectorItemProvider != null) publishEventMediatorInputConnectorItemProvider.dispose();
         if (publishEventMediatorOutputConnectorItemProvider != null) publishEventMediatorOutputConnectorItemProvider.dispose();
@@ -8555,6 +8674,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
         if (enrichMediatorItemProvider != null) enrichMediatorItemProvider.dispose();
         if (enrichMediatorInputConnectorItemProvider != null) enrichMediatorInputConnectorItemProvider.dispose();
         if (enrichMediatorOutputConnectorItemProvider != null) enrichMediatorOutputConnectorItemProvider.dispose();
+        if (abstractDSSOperationItemProvider != null) abstractDSSOperationItemProvider.dispose();
         if (xsltMediatorItemProvider != null) xsltMediatorItemProvider.dispose();
         if (xsltPropertyItemProvider != null) xsltPropertyItemProvider.dispose();
         if (xsltFeatureItemProvider != null) xsltFeatureItemProvider.dispose();

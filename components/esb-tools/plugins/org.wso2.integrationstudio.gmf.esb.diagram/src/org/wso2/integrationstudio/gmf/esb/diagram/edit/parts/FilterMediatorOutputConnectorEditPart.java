@@ -333,6 +333,9 @@ public class FilterMediatorOutputConnectorEditPart extends AbstractMediatorOutpu
         if (targetEditPart instanceof JsonTransformMediatorInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof DSSMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         return types;
     }
 

@@ -475,6 +475,38 @@
     <eLiterals name="CUSTOM" value="3" literal="CUSTOM"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LogProperty" eSuperTypes="#//AbstractNameValueExpressionProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DSSMediator" eSuperTypes="#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceType" eType="#//DSSSourceType"
+        defaultValueLiteral="INLINE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationType" eType="#//DSSOperationType"
+        defaultValueLiteral="SINGLE"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
+        eType="#//AbstractDSSOperation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetType" eType="#//DSSTargetType"
+        defaultValueLiteral="BODY"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//DSSMediatorInputConnector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputConnector" eType="#//DSSMediatorOutputConnector"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DSSoperationProperty" eSuperTypes="#//AbstractNameValueExpressionProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DSSMediatorInputConnector" eSuperTypes="#//InputConnector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DSSMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="DSSSourceType">
+    <eLiterals name="INLINE"/>
+    <eLiterals name="BODY"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DSSTargetType">
+    <eLiterals name="BODY"/>
+    <eLiterals name="PROPERTY"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DSSOperationType">
+    <eLiterals name="SINGLE"/>
+    <eLiterals name="BATCH"/>
+    <eLiterals name="REQUESTBOX"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PublishEventMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//PublishEventMediatorInputConnector"
         containment="true"/>
@@ -846,6 +878,11 @@
         defaultValueLiteral="property_value"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertyExpression" eType="#//NamespacedProperty"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractDSSOperation" eSuperTypes="#//EsbNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DSSPrperties" upperBound="-1"
+        eType="#//DSSoperationProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractBooleanFeature" abstract="true"
       eSuperTypes="#//EsbNode">
@@ -2288,10 +2325,10 @@
         defaultValueLiteral="xml"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="payloadFormat" eType="#//PayloadFormatType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="templateEngine" eType="#//TemplateEngine"
-        defaultValueLiteral="Default"/>
+        defaultValueLiteral="REGEX"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TemplateEngine">
-    <eLiterals name="DEFAULT" literal="Default"/>
+    <eLiterals name="REGEX" literal="REGEX"/>
     <eLiterals name="FREEMARKER" value="1" literal="Freemarker"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MediaType">

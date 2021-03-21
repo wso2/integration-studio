@@ -451,8 +451,7 @@ public class EsbElementTypes {
     /**
      * @generated
      */
-    public static final IElementType Task_3667 = getElementType(
-            "org.wso2.integrationstudio.gmf.esb.diagram.Task_3667"); //$NON-NLS-1$
+    public static final IElementType Task_3667 = getElementType("org.wso2.integrationstudio.gmf.esb.diagram.Task_3667"); //$NON-NLS-1$
 
     /**
      * @generated
@@ -1401,6 +1400,24 @@ public class EsbElementTypes {
     */
     public static final IElementType JsonTransformMediatorOutputConnector_3793 = getElementType(
             "org.wso2.integrationstudio.gmf.esb.diagram.JsonTransformMediatorOutputConnector_3793"); //$NON-NLS-1$
+
+    /**
+    * @generated
+    */
+    public static final IElementType DSSMediator_3794 = getElementType(
+            "org.wso2.integrationstudio.gmf.esb.diagram.DSSMediator_3794"); //$NON-NLS-1$
+
+    /**
+    * @generated
+    */
+    public static final IElementType DSSMediatorInputConnector_3795 = getElementType(
+            "org.wso2.integrationstudio.gmf.esb.diagram.DSSMediatorInputConnector_3795"); //$NON-NLS-1$
+
+    /**
+    * @generated
+    */
+    public static final IElementType DSSMediatorOutputConnector_3796 = getElementType(
+            "org.wso2.integrationstudio.gmf.esb.diagram.DSSMediatorOutputConnector_3796"); //$NON-NLS-1$
 
     /**
      * @generated
@@ -2723,6 +2740,12 @@ public class EsbElementTypes {
             elements.put(JsonTransformMediatorOutputConnector_3793,
                     EsbPackage.eINSTANCE.getJsonTransformMediatorOutputConnector());
 
+            elements.put(DSSMediator_3794, EsbPackage.eINSTANCE.getDSSMediator());
+
+            elements.put(DSSMediatorInputConnector_3795, EsbPackage.eINSTANCE.getDSSMediatorInputConnector());
+
+            elements.put(DSSMediatorOutputConnector_3796, EsbPackage.eINSTANCE.getDSSMediatorOutputConnector());
+
             elements.put(EntitlementOnAcceptContainer_3755, EsbPackage.eINSTANCE.getEntitlementOnAcceptContainer());
 
             elements.put(MediatorFlow_3756, EsbPackage.eINSTANCE.getMediatorFlow());
@@ -3188,6 +3211,9 @@ public class EsbElementTypes {
             KNOWN_ELEMENT_TYPES.add(JsonTransformMediator_3791);
             KNOWN_ELEMENT_TYPES.add(JsonTransformMediatorInputConnector_3792);
             KNOWN_ELEMENT_TYPES.add(JsonTransformMediatorOutputConnector_3793);
+            KNOWN_ELEMENT_TYPES.add(DSSMediator_3794);
+            KNOWN_ELEMENT_TYPES.add(DSSMediatorInputConnector_3795);
+            KNOWN_ELEMENT_TYPES.add(DSSMediatorOutputConnector_3796);
             KNOWN_ELEMENT_TYPES.add(EntitlementOnAcceptContainer_3755);
             KNOWN_ELEMENT_TYPES.add(MediatorFlow_3756);
             KNOWN_ELEMENT_TYPES.add(EntitlementAdviceContainer_3757);
@@ -3796,6 +3822,12 @@ public class EsbElementTypes {
             return JsonTransformMediatorInputConnector_3792;
         case JsonTransformMediatorOutputConnectorEditPart.VISUAL_ID:
             return JsonTransformMediatorOutputConnector_3793;
+        case DSSMediatorEditPart.VISUAL_ID:
+            return DSSMediator_3794;
+        case DSSMediatorInputConnectorEditPart.VISUAL_ID:
+            return DSSMediatorInputConnector_3795;
+        case DSSMediatorOutputConnectorEditPart.VISUAL_ID:
+            return DSSMediatorOutputConnector_3796;
         case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
             return EntitlementOnAcceptContainer_3755;
         case MediatorFlow22EditPart.VISUAL_ID:
@@ -3985,8 +4017,7 @@ public class EsbElementTypes {
         @Override
 
         public boolean isKnownElementType(IElementType elementType) {
-            return org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes
-                    .isKnownElementType(elementType);
+            return org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes.isKnownElementType(elementType);
         }
 
         /**
@@ -4004,8 +4035,7 @@ public class EsbElementTypes {
         @Override
 
         public ENamedElement getDefiningNamedElement(IAdaptable elementTypeAdapter) {
-            return org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes
-                    .getElement(elementTypeAdapter);
+            return org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes.getElement(elementTypeAdapter);
         }
     };
 

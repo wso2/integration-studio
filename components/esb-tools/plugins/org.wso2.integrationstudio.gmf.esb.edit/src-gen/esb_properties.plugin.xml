@@ -351,6 +351,18 @@
                tab="Base">
          </propertySection>
          <propertySection
+               class="org.wso2.integrationstudio.gmf.esb.parts.forms.DSSMediatorPropertiesEditionPartForm"
+               filter="org.wso2.integrationstudio.gmf.esb.providers.DSSMediatorPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.integrationstudio.gmf.esb.section.DSSMediator"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.wso2.integrationstudio.gmf.esb.parts.forms.DSSoperationPropertyPropertiesEditionPartForm"
+               filter="org.wso2.integrationstudio.gmf.esb.providers.DSSoperationPropertyPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.integrationstudio.gmf.esb.section.DSSoperationProperty"
+               tab="Base">
+         </propertySection>
+         <propertySection
                class="org.wso2.integrationstudio.gmf.esb.parts.forms.PublishEventMediatorPropertiesEditionPartForm"
                filter="org.wso2.integrationstudio.gmf.esb.providers.PublishEventMediatorPropertiesEditionProvider$EditionFilter"
                id="org.wso2.integrationstudio.gmf.esb.section.PublishEventMediator"
@@ -498,6 +510,12 @@
                class="org.wso2.integrationstudio.gmf.esb.parts.forms.EnrichMediatorOutputConnectorPropertiesEditionPartForm"
                filter="org.wso2.integrationstudio.gmf.esb.providers.EnrichMediatorOutputConnectorPropertiesEditionProvider$EditionFilter"
                id="org.wso2.integrationstudio.gmf.esb.section.EnrichMediatorOutputConnector"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.wso2.integrationstudio.gmf.esb.parts.forms.AbstractDSSOperationPropertiesEditionPartForm"
+               filter="org.wso2.integrationstudio.gmf.esb.providers.AbstractDSSOperationPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.integrationstudio.gmf.esb.section.AbstractDSSOperation"
                tab="Base">
          </propertySection>
          <propertySection

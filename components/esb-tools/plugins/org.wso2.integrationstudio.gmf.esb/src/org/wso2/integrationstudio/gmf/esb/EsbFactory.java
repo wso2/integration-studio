@@ -530,6 +530,42 @@ public interface EsbFactory extends EFactory {
     LogProperty createLogProperty();
 
     /**
+     * Returns a new object of class '<em>DSS Mediator</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>DSS Mediator</em>'.
+     * @generated
+     */
+    DSSMediator createDSSMediator();
+
+    /**
+     * Returns a new object of class '<em>DS Soperation Property</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>DS Soperation Property</em>'.
+     * @generated
+     */
+    DSSoperationProperty createDSSoperationProperty();
+
+    /**
+     * Returns a new object of class '<em>DSS Mediator Input Connector</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>DSS Mediator Input Connector</em>'.
+     * @generated
+     */
+    DSSMediatorInputConnector createDSSMediatorInputConnector();
+
+    /**
+     * Returns a new object of class '<em>DSS Mediator Output Connector</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>DSS Mediator Output Connector</em>'.
+     * @generated
+     */
+    DSSMediatorOutputConnector createDSSMediatorOutputConnector();
+
+    /**
      * Returns a new object of class '<em>Publish Event Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -776,6 +812,15 @@ public interface EsbFactory extends EFactory {
      * @generated
      */
     EnrichMediatorOutputConnector createEnrichMediatorOutputConnector();
+
+    /**
+     * Returns a new object of class '<em>Abstract DSS Operation</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Abstract DSS Operation</em>'.
+     * @generated
+     */
+    AbstractDSSOperation createAbstractDSSOperation();
 
     /**
      * Returns a new object of class '<em>XSLT Mediator</em>'.

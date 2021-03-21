@@ -21,6 +21,7 @@ import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.CommandMediatorC
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.ConditionalRouterMediatorCreateCommand;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.DBLookupMediatorCreateCommand;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.DBReportMediatorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.DSSMediatorCreateCommand;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.DataMapperMediatorCreateCommand;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.DefaultEndPointCreateCommand;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.DropMediatorCreateCommand;
@@ -279,6 +280,9 @@ public class MediatorFlowMediatorFlowCompartment10ItemSemanticEditPolicy extends
         }
         if (EsbElementTypes.JsonTransformMediator_3791 == req.getElementType()) {
             return getGEFWrapper(new JsonTransformMediatorCreateCommand(req));
+        }
+        if (EsbElementTypes.DSSMediator_3794 == req.getElementType()) {
+            return getGEFWrapper(new DSSMediatorCreateCommand(req));
         }
         return super.getCreateCommand(req);
     }

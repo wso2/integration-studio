@@ -51,6 +51,7 @@ import org.apache.synapse.mediators.builtin.RespondMediator;
 import org.apache.synapse.mediators.builtin.SendMediator;
 import org.apache.synapse.mediators.builtin.ValidateMediator;
 import org.apache.synapse.mediators.builtin.JSONTransformMediator;
+import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator;
 import org.wso2.carbon.mediator.cache.CacheMediator;
 import org.apache.synapse.mediators.db.DBLookupMediator;
 import org.apache.synapse.mediators.db.DBReportMediator;
@@ -203,6 +204,7 @@ public class EsbDeserializerRegistry {
         addDeserializer(CommentMediator.class, new CommentMediatorDeserializer());
         addDeserializer(PublishEventMediator.class, new PublishEventMediatorDeserializer());
         addDeserializer(JSONTransformMediator.class, new JsonTransformMediatorDeserializer());
+        addDeserializer(DataServiceCallMediator.class, new DataServicesCallMediatorDeserializer());
     }
 
     /**

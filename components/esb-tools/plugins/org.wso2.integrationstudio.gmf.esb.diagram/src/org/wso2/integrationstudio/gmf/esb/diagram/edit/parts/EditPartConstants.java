@@ -69,5 +69,6 @@ public class EditPartConstants {
     public static final String SEQUENCE_MEDIATOR_ICON_PATH = "icons/ico20/sequence-mediator.png";
     public static final String AGGREGATE_MEDIATOR_ICON_PATH = "icons/ico20/aggregate-mediator.png";
     public static final String JSON_TRANSFORM_MEDIATOR_ICON_PATH = "icons/ico20/json-transform-mediator.png";
+    public static final String DSS_MEDIATOR_ICON_PATH = "icons/ico20/dss-mediator.png";
 
 }

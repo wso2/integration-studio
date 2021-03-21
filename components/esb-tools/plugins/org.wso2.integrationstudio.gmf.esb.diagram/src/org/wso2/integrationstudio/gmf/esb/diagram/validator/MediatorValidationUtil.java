@@ -59,6 +59,7 @@ import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.ClassMedia
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DummyPOJOCommandMediatorFactory;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.DummyScriptMediatorFactory;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
+import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediatorFactory;
 
 public class MediatorValidationUtil {
     
@@ -114,6 +115,8 @@ public class MediatorValidationUtil {
     private static BuilderMediatorExtFactory builderMediatorExtFactory;
     private static BamMediatorExtFactory bamMediatorExtFactory;
     private static JSONTransformMediatorFactory jsonTransformMediatorFactory;
+    private static DataServiceCallMediatorFactory dataServiceCallMediatorFactory;
+
 
     /**
      * Validate esb mediators such as log, send, call, etc.
@@ -512,6 +515,13 @@ public class MediatorValidationUtil {
 			    }
 			    setNamespaceForChildren(omElement);
 			    jsonTransformMediatorFactory.createMediator(omElement, null);
+			    break;
+			case "dataServiceCall":
+			    if (dataServiceCallMediatorFactory == null) {
+			    	dataServiceCallMediatorFactory = new DataServiceCallMediatorFactory();
+			    }
+			    setNamespaceForChildren(omElement);
+			    dataServiceCallMediatorFactory.createMediator(omElement, null);
 			    break;
 			default:
 				break;

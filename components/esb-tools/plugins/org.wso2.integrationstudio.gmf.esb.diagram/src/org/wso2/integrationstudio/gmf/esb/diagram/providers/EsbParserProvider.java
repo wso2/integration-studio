@@ -37,6 +37,7 @@ import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DBLookupMediatorCon
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DBLookupMediatorDescriptionEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DBReportMediatorConnectionURLEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DBReportMediatorDescriptionEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DSSMediatorDescriptionEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DataMapperMediatorDescriptionEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DefaultEndPointDescriptionEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.DefaultEndPointEndPointName2EditPart;
@@ -1096,6 +1097,23 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
     }
 
     /**
+    * @generated
+    */
+    private IParser dSSMediatorDescription_5217Parser;
+
+    /**
+    * @generated
+    */
+    private IParser getDSSMediatorDescription_5217Parser() {
+        if (dSSMediatorDescription_5217Parser == null) {
+            EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE.getEsbElement_Description() };
+            MessageFormatParser parser = new MessageFormatParser(features);
+            dSSMediatorDescription_5217Parser = parser;
+        }
+        return dSSMediatorDescription_5217Parser;
+    }
+
+    /**
      * @generated
      */
     private IParser defaultEndPointEndPointName_5160Parser;
@@ -1302,6 +1320,8 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
             return getPublishEventMediatorDescription_5214Parser();
         case JsonTransformMediatorDescriptionEditPart.VISUAL_ID:
             return getJsonTransformMediatorDescription_5216Parser();
+        case DSSMediatorDescriptionEditPart.VISUAL_ID:
+            return getDSSMediatorDescription_5217Parser();
         case DefaultEndPointEndPointName2EditPart.VISUAL_ID:
             return getDefaultEndPointEndPointName_5160Parser();
         case AddressEndPointEndPointName2EditPart.VISUAL_ID:

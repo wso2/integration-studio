@@ -1328,6 +1328,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     getEditor(0).doSave(monitor);
                     ESBDebuggerUtil.setPageSaveOperationActivated(false);
                     EditorUtils.setLockmode(graphicalEditor, false);
+                    if (swaggerlEditor != null) {
+                        doSaveSwaggerSources(monitor);
+                    }
                 }
                 
                 if (swaggerlEditor != null && getActivePage() != SWAGGER_VIEW_PAGE_INDEX) {

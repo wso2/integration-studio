@@ -132,7 +132,9 @@ Bundle-ClassPath: .,
  lib/swagger-models-1.6.1.jar,
  lib/swagger-parser-2.0.20.wso2v1.jar,
  lib/org.wso2.carbon.mediation.commons-4.7.80.jar,
- lib/org.wso2.carbon.rest.api-4.7.80.jar
+ lib/org.wso2.carbon.rest.api-4.7.80.jar,
+ lib/org.wso2.micro.integrator.mediator.dataservice_4.0.0.jar,
+ lib/org.wso2.micro.integrator.dataservices.core_4.0.0.jar
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jdt.ui,
@@ -359,6 +361,8 @@ Export-Package: com.damnhandy.uri.template;version="2.1.6.wso2v2",
  org.wso2.carbon.tools.converter,
  org.wso2.carbon.utils,
  org.wso2.integrationstudio.esb.libraries.utils,
+ org.wso2.micro.integrator.dataservices.core,
+ org.wso2.micro.integrator.mediator.dataservice,
  org.wso2.securevault.secret,
  org.yaml.snakeyaml
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

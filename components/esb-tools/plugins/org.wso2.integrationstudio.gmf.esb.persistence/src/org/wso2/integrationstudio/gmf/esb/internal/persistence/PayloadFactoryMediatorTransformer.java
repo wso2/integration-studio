@@ -98,7 +98,7 @@ public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransforme
             payloadFactoryMediator.setFormat(visualPayloadFactory.getPayload());
             payloadFactoryMediator.setFormatDynamic(false);
         }
-
+		
         String mediaType = visualPayloadFactory.getMediaType().toString();
         payloadFactoryMediator.setType(mediaType);
         String templateType = visualPayloadFactory.getTemplateEngine().toString();

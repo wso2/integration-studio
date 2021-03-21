@@ -92,6 +92,19 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LogLevel/FULL"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LogLevel/CUSTOM"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//DSSSourceType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DSSSourceType/INLINE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DSSSourceType/BODY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//DSSTargetType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DSSTargetType/BODY"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DSSTargetType/PROPERTY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//DSSOperationType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DSSOperationType/SINGLE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DSSOperationType/BATCH"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DSSOperationType/REQUESTBOX"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//AttributeValueType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeValueType/VALUE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeValueType/EXPRESSION"/>
@@ -1114,6 +1127,19 @@
     <genClasses ecoreClass="esb.ecore#//LogMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//LogMediatorOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//LogProperty"/>
+    <genClasses ecoreClass="esb.ecore#//DSSMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DSSMediator/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DSSMediator/sourceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DSSMediator/operationType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DSSMediator/operations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DSSMediator/targetType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DSSMediator/targetProperty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DSSMediator/inputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DSSMediator/outputConnector"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//DSSoperationProperty"/>
+    <genClasses ecoreClass="esb.ecore#//DSSMediatorInputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//DSSMediatorOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//PublishEventMediator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/outputconnector"/>
@@ -1246,6 +1272,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionProperty/propertyValueType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionProperty/propertyValue"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractNameValueExpressionProperty/propertyExpression"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//AbstractDSSOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractDSSOperation/DSSPrperties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractDSSOperation/operationName"/>
     </genClasses>
     <genClasses image="false" ecoreClass="esb.ecore#//AbstractBooleanFeature">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractBooleanFeature/featureName"/>

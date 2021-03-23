@@ -78,6 +78,35 @@ public class MonitoringDashboardUtil {
     }
 
     /**
+     * Returns the path to the MI .
+     * 
+     * @return path to the MI
+     */
+    public static String getMicroIntegratorPath() {
+        String microesbPath = "runtime" + File.separator + "microesb";
+        // static path for IntegrationStudio for MAC when it is on Application folder
+        String eiToolingHomeForMac = "/Applications/IntegrationStudio.app/Contents/Eclipse";
+        String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
+        String microInteratorPath;
+
+        if (OS.indexOf("windows") >= 0) {
+            java.nio.file.Path path = Paths.get("");
+            microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath;
+        } else {
+            // check if EI Tooling is in Application folder for MAC
+            File macOSEIToolingAppFile = new File(eiToolingHomeForMac);
+            if (macOSEIToolingAppFile.exists()) {
+                microInteratorPath = eiToolingHomeForMac + File.separator + microesbPath;
+            } else {
+                java.nio.file.Path path = Paths.get("");
+                microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath;
+            }
+        }
+
+        return microInteratorPath;
+    }
+    
+    /**
      * Check if the OS is windows.
      * 
      * @return is windows

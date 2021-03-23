@@ -20,12 +20,20 @@ package org.wso2.integrationstudio.carbonserver44microei40.monitoring.dashboard;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.integrationstudio.carbonserver44microei40.Activator;
+import org.wso2.integrationstudio.carbonserver44microei40.monitor.EmbeddedServerConfigurationUtil;
 import org.wso2.integrationstudio.carbonserver44microei40.monitoring.dashboard.util.MonitoringDashboardConstants;
 import org.wso2.integrationstudio.carbonserver44microei40.monitoring.dashboard.util.MonitoringDashboardUtil;
+import org.wso2.integrationstudio.carbonserver44microei40.util.ServerConstants;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 
@@ -122,6 +130,13 @@ public class MonitoringDashboard {
                 }
             }
         }
+        
+        // since, CarbonServerListner events are not passing in latest tooling version, couldnt track server stop event via the IServer console.
+        // Hence, this async thread checks the embedded MI server port in every 5 second interval and verify MI server is running.
+        // When it detects, server is down then stopMonitoringDashboard() will be invoked 
+        if (dashboardStarted) {
+            serverStoppedAction();
+        }
     }
 
     /**
@@ -164,5 +179,56 @@ public class MonitoringDashboard {
                 }
             }
         }
+    }
+    
+    private void serverStoppedAction() {
+           
+        new Thread() {
+            public void run() {
+                String portOffset = "10";
+                String deploymentTomlPath = MonitoringDashboardUtil.getMicroIntegratorPath() + File.separator
+                        + "conf" + File.separator + "deployment.toml";
+                try (BufferedReader br = new BufferedReader(new FileReader(new File(deploymentTomlPath)))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        if (line.trim().contains("offset")) {
+                            if (!line.trim().startsWith("#")) {
+                                String[] array = line.trim().split("=");
+                                portOffset = array[1].trim();
+                            }
+                            break;
+                        }
+                    }
+                } catch (FileNotFoundException e1) {
+                    // TODO Auto-generated catch block
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                }
+
+                int miPassthroughPort = 8280 + Integer.parseInt(portOffset);
+                while (!MonitoringDashboardUtil.checkPortAvailability(serverHost, miPassthroughPort)) {
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                    }
+                }
+
+                // Closing the mi dashboard
+                stopMonitoringDashboard();
+                // revert embedded server configuration changes
+                EmbeddedServerConfigurationUtil.revertEmbeddedServerConfigurations();
+                // Closing the deployed services view
+                Display.getDefault().asyncExec(new Runnable() {
+                    @Override
+                    public void run() {
+                        IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+                                .getActivePage();
+                        IViewPart view = page.findView(ServerConstants.DEPLOYED_SERVICES_VIEW);
+                        page.hideView(view);
+                    }
+                });
+            }
+        }.start();
     }
 }

@@ -44,11 +44,13 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IExportWizard;
@@ -146,7 +148,9 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
             if (generatedElements.size() > 0 && currentProject != null) {
                 String localEntryPath = currentProject.getLocation().toOSString() + LOCAL_ENTRY_LOCATION
                         + File.separator;
-                serializeConnector(generatedElements, localEntryPath);
+                if(!serializeConnector(generatedElements, localEntryPath)) {
+                	return false;
+                }
                 currentProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
                 EEFPropertyViewUtil.updateArtifact(generatedElements, currentProject);
                 return true;
@@ -161,7 +165,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
         return false;
     }
 
-    private void serializeConnector(HashMap<String, Control> generatedElements, String localEntryPath) {
+    private boolean serializeConnector(HashMap<String, Control> generatedElements, String localEntryPath) {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -237,7 +241,17 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(localEntryPath));
+            
+            File localEntryFile = new File(localEntryPath);
+            if (localEntryFile.exists()) {
+    			if (!MessageDialog.openQuestion(getShell(), "WARNING",
+    					"The connection already exists in the workspace." +
+                                   " Do you want to override the existing connection ?")) {
+    				return false;
+    			}
+            }
+            
+            StreamResult result = new StreamResult(localEntryFile);
             transformer.transform(source, result);
 
         } catch (ParserConfigurationException | TransformerConfigurationException e) {
@@ -247,6 +261,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return true;
     }
 
     private void deserializeConnector(OMElement localEntryNode) {

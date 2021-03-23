@@ -128,6 +128,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
         File sampleTemplateDirectory = new File(resolvedURI);
         File tmpSampleDirectory = new File(TEMP_DIRECTORY_PATH + File.separator + userEnteredProjectName);
+        File tmpSample = new File(TEMP_DIRECTORY_PATH + File.separator + userEnteredProjectName + File.separator + userEnteredProjectName);
         
         // get Readme.html file from NewSamples
         URL readmeFileURL = bundle.getEntry("NewSamples/" + selectedSample + "/Readme.html");
@@ -141,7 +142,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
         }
 
         MavenMultiModuleImportUtils.isProcessOfSampleCreating = true;
-        if (MavenMultiModuleImportUtils.importMavenMultiModuleProjectToWorkspace(tmpSampleDirectory)) {
+        if (MavenMultiModuleImportUtils.importMavenMultiModuleProjectToWorkspace(tmpSample)) {
             // delete project in .tmp due to creation is success
             MavenMultiModuleImportUtils.isProcessOfSampleCreating = false;
             IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();

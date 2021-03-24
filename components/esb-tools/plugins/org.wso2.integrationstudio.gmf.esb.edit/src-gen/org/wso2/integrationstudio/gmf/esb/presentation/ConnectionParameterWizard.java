@@ -78,6 +78,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
     private AttributeValue allowedConnectionTypes;
     private FormToolkit widgetFactory;
     private String updatingConnectionType;
+    private boolean isWizardOpenForUpdate = false;
 
     ConnectionParameterWizard(FormToolkit widgetFactory, String connectorName, Control valueExpressionCombo,
             AttributeValue allowedConnectionTypes) {
@@ -92,6 +93,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
             AttributeValue allowedConnectionTypes) {
         this.widgetFactory = widgetFactory;
         this.connectorName = connectorName;
+        this.isWizardOpenForUpdate = true;
         this.connectionNameFromLocalEntry = connectionNameFromLocalEntry;
         this.allowedConnectionTypes = allowedConnectionTypes;
         setWindowTitle("Connection Configurations");
@@ -152,7 +154,9 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                 	return false;
                 }
                 currentProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-                EEFPropertyViewUtil.updateArtifact(generatedElements, currentProject);
+                if (!isWizardOpenForUpdate) {
+                    EEFPropertyViewUtil.updateArtifact(generatedElements, currentProject);
+                }
                 return true;
             }
         } catch (CoreException e) {

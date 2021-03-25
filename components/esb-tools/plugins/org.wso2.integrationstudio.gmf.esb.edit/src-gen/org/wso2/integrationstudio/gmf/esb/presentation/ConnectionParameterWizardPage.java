@@ -44,9 +44,10 @@ public class ConnectionParameterWizardPage extends WizardPage {
     private AttributeValue allowedConnectionTypes;
     private FormToolkit widgetFactory;
     private String connectorName;
+    private Map<String,String> requiredAttributes;
 
     protected ConnectionParameterWizardPage(FormToolkit widgetFactory, ConnectorConnectionRoot root,
-            AttributeValue allowedConnectionTypes, String connectorName) {
+            AttributeValue allowedConnectionTypes, String connectorName, Map<String,String> requiredAttributes) {
         super(StringUtils.capitalize(root.getConnectionName()) + DIALOG_TITLE);
         setTitle(StringUtils.capitalize(root.getConnectionName()) + DIALOG_TITLE);
         setDescription(DIALOG_DESCRIPTION);
@@ -54,10 +55,12 @@ public class ConnectionParameterWizardPage extends WizardPage {
         this.root = root;
         this.allowedConnectionTypes = allowedConnectionTypes;
         this.connectorName = connectorName;
+        this.requiredAttributes = requiredAttributes;
     }
 
     protected ConnectionParameterWizardPage(FormToolkit widgetFactory, ConnectorConnectionRoot root,
-            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes, String connectorName) {
+            Map<String, String> updateConfigMap, AttributeValue allowedConnectionTypes, String connectorName, 
+                                            Map<String,String> requiredAttributes) {
         super(DIALOG_TITLE);
         setTitle(DIALOG_TITLE);
         setDescription(DIALOG_DESCRIPTION);
@@ -66,6 +69,7 @@ public class ConnectionParameterWizardPage extends WizardPage {
         this.updateConfigMap = updateConfigMap;
         this.allowedConnectionTypes = allowedConnectionTypes;
         this.connectorName = connectorName;
+        this.requiredAttributes = requiredAttributes;
     }
 
     @Override
@@ -73,7 +77,8 @@ public class ConnectionParameterWizardPage extends WizardPage {
         Composite composite = new Composite(parent, SWT.NONE);
         GridLayout propertiesGroupLayout = new GridLayout();
         composite.setLayout(propertiesGroupLayout);
-        this.connectionParameters = new ReferenceGroup(new ConnectionParameterRenderer(widgetFactory));
+        this.connectionParameters = new ReferenceGroup(
+                new ConnectionParameterRenderer(widgetFactory, requiredAttributes));
         elements = this.connectionParameters.createControls(composite, root, updateConfigMap, allowedConnectionTypes, connectorName);
         setPageComplete(false);
         Text connectionNameText = (Text)getGeneratedElements().get("connectionName");

@@ -61,8 +61,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.AttributeGroupValue;
 import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.AttributeValue;
 import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.ConnectorConnectionRoot;
+import org.wso2.integrationstudio.gmf.esb.presentation.desc.parser.Element;
 
 public class ConnectionParameterWizard extends Wizard implements IExportWizard {
 
@@ -78,6 +80,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
     private AttributeValue allowedConnectionTypes;
     private FormToolkit widgetFactory;
     private String updatingConnectionType;
+    private Map<String,String> requiredAttributes = new HashMap<>();
     private boolean isWizardOpenForUpdate = false;
 
     ConnectionParameterWizard(FormToolkit widgetFactory, String connectorName, Control valueExpressionCombo,
@@ -121,12 +124,12 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                 connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorConnectionSchema(
                         connectorName + "-" + updatingConnectionType);
                 connectionPage = new ConnectionParameterWizardPage(widgetFactory, connectorRoot, updateComponentWidgets,
-                        allowedConnectionTypes, connectorName);
+                        allowedConnectionTypes, connectorName, requiredAttributes);
             } else {
                 connectorRoot = ConnectorSchemaHolder.getInstance().getConnectorConnectionSchema(
                         connectorName + "-" + allowedConnectionTypes.getAllowedConnectionTypes().get(0));
                 connectionPage = new ConnectionParameterWizardPage(widgetFactory, connectorRoot,
-                        allowedConnectionTypes, connectorName);
+                        allowedConnectionTypes, connectorName, requiredAttributes);
             }
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -192,12 +195,14 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
 
                 if (elementControl instanceof Text || elementControl instanceof StyledText) {
                     String value;
+                    boolean isExpElement = false;
                     if (elementControl instanceof StyledText) {
                         value = ((StyledText) elementControl).getText();
                         if (!StringUtils.isEmpty(value)) {
                             value = "{" + value + "}";
                         }
                         if (elementId.endsWith("exp")) {
+                        	isExpElement = true;
                             elementId = elementId.substring(0, elementId.length() - 3);
                         }
                     } else {
@@ -217,11 +222,17 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                         org.w3c.dom.Element configElement = doc.createElement("name");
                         connectorRoot.appendChild(configElement);
                         configElement.appendChild(doc.createTextNode(value));
-                    } else if (!StringUtils.isEmpty(value)) {
-                        org.w3c.dom.Element configElement = doc.createElement(elementId);
-                        connectorRoot.appendChild(configElement);
-                        configElement.appendChild(doc.createTextNode(value));
-                    } 
+                    } else { 
+                    	if (!StringUtils.isEmpty(value)) {
+                            org.w3c.dom.Element configElement = doc.createElement(elementId);
+                            connectorRoot.appendChild(configElement);
+                            configElement.appendChild(doc.createTextNode(value));
+                        }else if (requiredAttributes.containsKey(elementId) && !elementId.equals("connectionName") 
+                        		&& !isExpElement) {
+                        	showRequiredElementMissingWarning(requiredAttributes.get(elementId));
+                        	return false;
+                        }
+                    }
                 } else if (elementControl instanceof Combo) {
                     String value = ((Combo) elementControl).getText();
                     if (elementId.equals("connectionType")) {
@@ -233,6 +244,9 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                         org.w3c.dom.Element configElement = doc.createElement(elementId);
                         connectorRoot.appendChild(configElement);
                         configElement.appendChild(doc.createTextNode(value));
+                    }else if (requiredAttributes.containsKey(elementId)) {
+                    	showRequiredElementMissingWarning(requiredAttributes.get(elementId));
+                    	return false;
                     }
                 }
             }
@@ -247,7 +261,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
             DOMSource source = new DOMSource(doc);
             
             File localEntryFile = new File(localEntryPath);
-            if (localEntryFile.exists()) {
+            if (localEntryFile.exists() && !isWizardOpenForUpdate) {
     			if (!MessageDialog.openQuestion(getShell(), "WARNING",
     					"The connection already exists in the workspace." +
                                    " Do you want to override the existing connection ?")) {
@@ -266,6 +280,10 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
             e.printStackTrace();
         }
         return true;
+    }
+    
+    private void showRequiredElementMissingWarning(String element) {
+    	MessageDialog.openWarning(getShell(), "Missing required value", "\"" + element + "\" is required");
     }
 
     private void deserializeConnector(OMElement localEntryNode) {

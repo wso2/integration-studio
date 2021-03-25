@@ -62,14 +62,16 @@ public class ConnectionParameterRenderer {
     private Map<String, String> connectionTitleTypeMap = new HashMap<>();
     private static final String CONNECTION_TYPE = "connectionType";
     private EnableConditionManager enableConditionManager;
+    private Map<String,String> requiredAttributes;
 
-    public ConnectionParameterRenderer(FormToolkit widgetFactory) {
+    public ConnectionParameterRenderer(FormToolkit widgetFactory, Map<String,String> requiredAttributes) {
 
         this.widgetFactory = widgetFactory;
         this.controlList = new HashMap<>();
         this.compositeList = new HashMap<>();
         this.requiredList = new HashMap<>();
         this.widgetProvider = new PropertiesWidgetProvider(controlList, compositeList, requiredList);
+        this.requiredAttributes = requiredAttributes;
     }
 
     public HashMap<String, Control> generate(final Composite parent, ConnectorRoot connectorRoot,
@@ -131,6 +133,7 @@ public class ConnectionParameterRenderer {
                 tabFolder.dispose();
                 tabSection.dispose();
                 isFirstTime = true;
+                requiredAttributes.clear();
 
                 // remove dispose items from controlList
                 List<String> controlListItems = new ArrayList<>();
@@ -245,7 +248,9 @@ public class ConnectionParameterRenderer {
     }
 
     public void evaluateAttribute(AttributeValue value, Composite parent, FormToolkit widgetFactory, int level, Map<String, String> updateConfigMap) {
-
+    	if(value.getRequired()) {
+    		requiredAttributes.put(value.getName(), value.getDisplayName());
+    	}
         if (AttributeValueType.STRING.equals(value.getType())) {
             widgetProvider.createTextBoxFieldWithButtonForConnections(widgetFactory, parent, value, updateConfigMap);
         } else if (AttributeValueType.BOOLEANOREXPRESSION.equals(value.getType())) {

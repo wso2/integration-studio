@@ -184,14 +184,14 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
                 if (file.getName().equals("pom.xml") && (file.getParentFile().getName().contains("DockerExporter")
                         || file.getParentFile().getName().contains("KubernetesExporter"))) {
                     // replace mi base image
-                    content = content.replaceAll("<dockerfile.base.image>wso2/wso2mi:1.1.0</dockerfile.base.image>",
+                    content = content.replaceAll("<dockerfile.base.image>wso2/wso2mi:4.0.0-alpha</dockerfile.base.image>",
                             "<dockerfile.base.image>wso2/wso2mi:4.0.0-alpha</dockerfile.base.image>");
                     
                     //replace config mapper plugin version
-                    content = content.replaceAll("<version>5.2.28</version>", "<version>5.2.32</version>");
+                    content = content.replaceAll("<version>5.2.32</version>", "<version>5.2.35</version>");
                     
                     //replace config mapper plugin's mi version
-                    content = content.replaceAll("<miVersion>1.2.0</miVersion>", "<miVersion>4.0.0</miVersion>");
+                    content = content.replaceAll("<miVersion>4.0.0</miVersion>", "<miVersion>4.0.0</miVersion>");
                     
                     //replace dockerfile-spotify plugin version
                     content = content.replaceAll("<version>1.4.13</version>", "<version>1.4.13</version>");

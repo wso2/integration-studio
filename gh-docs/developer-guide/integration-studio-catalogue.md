@@ -2203,15 +2203,15 @@ To deliver a new update for the Integration Studio latest release, follow the be
 ```
 5. Host the modified `compositeArtifacts.xml`, `compositeContent.xml` and P2 file (renamed with the built timestamp) in the relevant following P2 host locations.
 6. Create a `release_<NEW_TIMESTAMP>.txt` file and add release notes of the update. 
-7. Host the release note inside the `http://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/release-notes/` location. 
+7. Host the release note inside the `https://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/release-notes/` location. 
 
 *Note* - Current release version of the tooling is - *7.2.0*
 
-* **P2 host root location** - http://product-dist.wso2.com/p2/integration-studio
-* **Studio Platform P2 location** - http://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/studio-platform/
-* **ESB Tools P2 location** - http://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/esb-tools/
-* **DSS Tools P2 location** - http://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/dss-tools/
-* **BPS Tools P2 location** - http://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/bps-tools/
+* **P2 host root location** - https://product-dist.wso2.com/p2/integration-studio
+* **Studio Platform P2 location** - https://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/studio-platform/
+* **ESB Tools P2 location** - https://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/esb-tools/
+* **DSS Tools P2 location** - https://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/dss-tools/
+* **BPS Tools P2 location** - https://product-dist.wso2.com/p2/integration-studio/<RELEASE_VERSION>/bps-tools/
 
 ## Releasing Integration Studio new version
 To release a new version of the Integration Studio, follow the below steps to move forward.

@@ -602,7 +602,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
             
             // Add deployment.toml execution plugin
             Plugin deploymentTomlPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
-                    "mi-container-config-mapper", "5.2.32", true);
+                    "mi-container-config-mapper", "5.2.35", true);
             PluginExecution deploymentTomlPluginExecution = new PluginExecution();
             deploymentTomlPluginExecution.addGoal("config-mapper-parser");
             deploymentTomlPluginExecution.setId("config-mapper-parser");

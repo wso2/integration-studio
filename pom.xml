@@ -194,10 +194,10 @@
         <wso2.maven.repository.url>https://maven.wso2.org/nexus/content/groups/wso2-public/</wso2.maven.repository.url>
         <wso2.nexus.repository>http://maven.wso2.org/nexus/content/groups/wso2-public/</wso2.nexus.repository>
         <wso2.nexus.snapshot.repository>https://maven.wso2.org/nexus/content/repositories/wso2.maven2.snapshot/</wso2.nexus.snapshot.repository>
-        <eclipse.older.plugins.repository>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/eclipse/oxygen/p2/</eclipse.older.plugins.repository>
+        <eclipse.older.plugins.repository>https://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/eclipse/oxygen/p2/</eclipse.older.plugins.repository>
         <activiti.releases.repository>http://www.activiti.org/designer/update/</activiti.releases.repository>
         <activiti.alfresco.repository>https://maven.alfresco.com/nexus/content/groups/public/</activiti.alfresco.repository>
-        <wso2.http4e.p2.repository>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/Http4e/</wso2.http4e.p2.repository>
+        <wso2.http4e.p2.repository>https://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/Http4e/</wso2.http4e.p2.repository>
         <maven.compiler.plugin>3.1</maven.compiler.plugin>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>

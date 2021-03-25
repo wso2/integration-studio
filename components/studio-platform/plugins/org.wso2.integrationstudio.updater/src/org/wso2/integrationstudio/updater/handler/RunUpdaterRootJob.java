@@ -47,7 +47,7 @@ public class RunUpdaterRootJob extends Job {
 
     protected static IIntegrationStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
-    private static final String UPDATE_DOMAIN = "http://product-dist.wso2.com/p2";
+    private static final String UPDATE_DOMAIN = "https://product-dist.wso2.com/p2";
     private static final String PLATFORM_P2_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/studio-platform";
     private static final String ESB_P2_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/esb-tools";
     private static final String DSS_P2_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/dss-tools";
@@ -277,7 +277,7 @@ public class RunUpdaterRootJob extends Job {
             for (long currentTimestamp : relasedTimestampList) {
                 if (currentTimestamp > timestamp) {
                     URL url = new URL(RELEASE_NOTE_URL + "/release_" + Long.toString(currentTimestamp) + ".txt");
-                    InputStream is = url.openStream();
+                    InputStream is = url.openConnection().getInputStream();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(is));
                     String line;
                     while ((line = reader.readLine()) != null) {

@@ -284,7 +284,7 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 				artifact.setVersion(version);
 				artifact.setType("synapse/local-entry");
 				artifact.setServerRole("EnterpriseServiceBus");
-				artifact.setFile(groupId);
+				artifact.setGroupId(groupId);
 				artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
 						new File(importLocation.getLocation().toFile(), key + ".xml")).replaceAll(
 						Pattern.quote(File.separator), "/"));

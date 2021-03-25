@@ -180,6 +180,10 @@ public class EmbeddedServerConfigWizard extends Wizard implements INewWizard, IE
                 java.nio.file.Path path = Paths.get(EMPTY_STRING);
                 microInteratorPath = (path).toAbsolutePath().toString() + File.separator + MI_FOLDER;
             }
+        } else if (OS.indexOf("linux") >= 0) {
+            osType = OTHER_OS;
+            java.nio.file.Path path = Paths.get(EMPTY_STRING);
+            microInteratorPath = (path).toAbsolutePath().toString() + File.separator + MI_FOLDER;
         } else {
             osType = WINDOW_OS;
             java.nio.file.Path path = Paths.get(EMPTY_STRING);

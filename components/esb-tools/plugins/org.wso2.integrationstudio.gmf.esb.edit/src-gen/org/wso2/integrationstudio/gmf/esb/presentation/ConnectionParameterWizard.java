@@ -82,7 +82,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
     private String updatingConnectionType;
     private Map<String,String> requiredAttributes = new HashMap<>();
     private boolean isWizardOpenForUpdate = false;
-    
+
     ConnectionParameterWizard(FormToolkit widgetFactory, String connectorName, Control valueExpressionCombo,
             AttributeValue allowedConnectionTypes) {
         setWindowTitle("Connection Configurations");
@@ -261,7 +261,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
             DOMSource source = new DOMSource(doc);
             
             File localEntryFile = new File(localEntryPath);
-            if (localEntryFile.exists()) {
+            if (localEntryFile.exists() && !isWizardOpenForUpdate) {
     			if (!MessageDialog.openQuestion(getShell(), "WARNING",
     					"The connection already exists in the workspace." +
                                    " Do you want to override the existing connection ?")) {
@@ -321,41 +321,6 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
             return value.substring(1, value.length() - 1);
         }
         return value;
-    }
-    
-    private List<String> getRequiredParams(){
-    	List<String> requiredList = new ArrayList<>();
-    	
-    	List<Element> elementsList = connectorRoot.getElements();
-    	for(Element element: elementsList) {
-			requiredList.addAll(getRequiredElements(element));
-		}
-    	
-    	return requiredList;
-    }
-    
-    private List<String> getRequiredElements(Element element){
-    	List<String> requiredList = new ArrayList<>();
-    	
-    	if(element.getType().equals("attribute")) {
-    		if(element.getValue() instanceof AttributeValue) {
-    			AttributeValue attributeValue = (AttributeValue)element.getValue();
-    			if(attributeValue.getRequired()) {
-    				requiredList.add(attributeValue.getName());
-    			}
-    		}
-    	}else if (element.getType().equals("attributeGroup")) {
-    		if(element.getValue() instanceof AttributeGroupValue) {
-    			AttributeGroupValue attributeGroup = (AttributeGroupValue) element.getValue();
-    			List<Element> elementsInGroup = attributeGroup.getElements();
-    			for(Element elementInGroup: elementsInGroup) {
-    				requiredList.addAll(getRequiredElements(elementInGroup));
-    			}
-    		}
-    	}
-    	
-    	return requiredList;
-    	
     }
 
     @Override

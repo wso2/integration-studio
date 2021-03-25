@@ -285,6 +285,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 				kubeModel.setKubeRemoteTag(esbSolutionProjectModel.getKubeRemoteTag());
 				kubeModel.setKubeTargetRepository(esbSolutionProjectModel.getKubeTargetRepository());
 				kubeModel.setKubeTargetTag(esbSolutionProjectModel.getKubeTargetTag());
+				kubeModel.setArtifactsForK8sEIOprator(esbSolutionProjectModel.isArtifactsForK8sEIOprator());
 				kubeModel.setKubernetesExporterProjectChecked(
 						esbSolutionProjectModel.isKubernetesExporterProjectChecked());
 

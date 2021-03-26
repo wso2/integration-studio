@@ -27,6 +27,7 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.integrationstudio.gmf.esb.EsbNode;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.SynapseXPathExt;
 import org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation;
 import org.wso2.integrationstudio.gmf.esb.DSSMediator;
 import org.wso2.integrationstudio.gmf.esb.DSSoperationProperty;
@@ -61,44 +62,49 @@ public class DataServiceCallMediatorTransformer extends AbstractEsbNodeTransform
         String sourceType = visualDataServicesCall.getSourceType().getLiteral();
         String targetType = visualDataServicesCall.getTargetType().getLiteral();
         String operationType = visualDataServicesCall.getOperationType().getLiteral();
-
+        if(operationType.contains("REQUESTBOX")) {
+        	operationType = "request-box";
+        } else {
+        	operationType = operationType.toLowerCase();
+        }
+        targetType = targetType.toLowerCase();
+        sourceType = sourceType.toLowerCase();
         
         if (!sourceType.isEmpty()) {
             dataServicesCallMediator.setSourceType(sourceType);
 		}
-		if (operationType.contains("INLINE")) {
-			if (operationType.contains("SINGLE")) {
-//				
-//				EList<AbstractDSSOperation> visualOperations = visualDataServicesCall.getOperations();
-//				List<Operation> synapseOperationList = new ArrayList<Operation>();
-//
-//				for (AbstractDSSOperation visualOperation : visualOperations) {
-//					EList<DSSoperationProperty> visualProperties = visualOperation.getDSSPrperties();
-//					List<Param> synapseParams = new ArrayList<Param>();
-//					for (DSSoperationProperty visualProperty : visualProperties) {
-//
-//						Param synapseParam = dataServicesCallMediator.new Param(visualProperty.getPropertyName());
-//						if (visualProperty.getPropertyValueType().getLiteral().contains("EXPRESSION")) {
-//							synapseParam.setEvaluator("xml");
-//							synapseParam.setParamExpression((SynapsePath) visualProperty.getPropertyExpression());
-//						} else {
-//							synapseParam.setParamValue(visualProperty.getPropertyValue());
-//						}
-//						synapseParams.add(synapseParam);
-//					}
-//					Operation synapseOPeration = dataServicesCallMediator.new Operation(visualOperation.getOperationName(), synapseParams);
-//					synapseOperationList.add(synapseOPeration);
-//				}
-//				Operations synapseOPerations = dataServicesCallMediator.new Operations("SINGLE", synapseOperationList);
-//				dataServicesCallMediator.setOperations(synapseOPerations);
+		if (sourceType.contains("inline") && !operationType.isEmpty()) {
+			EList<AbstractDSSOperation> visualOperations = visualDataServicesCall.getOperations();
+			List<Operation> synapseOperationList = new ArrayList<Operation>();
 
+			for (AbstractDSSOperation visualOperation : visualOperations) {
+				EList<DSSoperationProperty> visualProperties = visualOperation.getDSSPrperties();
+				List<Param> synapseParams = new ArrayList<Param>();
+				for (DSSoperationProperty visualProperty : visualProperties) {
+
+					Param synapseParam = dataServicesCallMediator.new Param(visualProperty.getPropertyName());
+					if (visualProperty.getPropertyValueType().getLiteral().contains("EXPRESSION")) {
+						synapseParam.setEvaluator("xml");
+
+						SynapsePath xpath = SynapseXPathExt
+								.createSynapsePath(visualProperty.getPropertyExpression().getPropertyValue());
+						synapseParam.setParamExpression(xpath);
+					} else {
+						synapseParam.setParamValue(visualProperty.getPropertyValue());
+					}
+					synapseParams.add(synapseParam);
+				}
+				Operation synapseOPeration = dataServicesCallMediator.new Operation(visualOperation.getOperationName(),
+						synapseParams);
+				synapseOperationList.add(synapseOPeration);
 			}
-
+			Operations synapseOPerations = dataServicesCallMediator.new Operations(operationType, synapseOperationList);
+			dataServicesCallMediator.setOperations(synapseOPerations);
 		}
 
         if (!targetType.isEmpty()) {
             dataServicesCallMediator.setTargetType(targetType);
-            if(targetType.equals("PROPERTY")) {
+            if(targetType.equals("property")) {
             	 String targetProperty = visualDataServicesCall.getTargetProperty();
             	 if(!targetProperty.isEmpty()) {
             		 dataServicesCallMediator.setTargetPropertyName(targetProperty);

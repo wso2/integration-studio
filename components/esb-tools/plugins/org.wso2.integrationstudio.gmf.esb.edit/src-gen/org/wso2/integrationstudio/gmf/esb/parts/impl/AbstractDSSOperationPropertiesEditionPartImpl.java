@@ -109,8 +109,8 @@ public class AbstractDSSOperationPropertiesEditionPartImpl extends CompositeProp
 		CompositionSequence abstractDSSOperationStep = new BindingCompositionSequence(propertiesEditionComponent);
 		abstractDSSOperationStep
 			.addStep(EsbViewsRepository.AbstractDSSOperation.Properties.class);
-		abstractDSSOperationStep.addStep(EsbViewsRepository.AbstractDSSOperation.dSSPrperties);
 		abstractDSSOperationStep.addStep(EsbViewsRepository.AbstractDSSOperation.operationName);
+		abstractDSSOperationStep.addStep(EsbViewsRepository.AbstractDSSOperation.dSSPrperties);
 		
 		composer = new PartComposer(abstractDSSOperationStep) {
 
@@ -230,11 +230,9 @@ public class AbstractDSSOperationPropertiesEditionPartImpl extends CompositeProp
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
 						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(AbstractDSSOperationPropertiesEditionPartImpl.this, EsbViewsRepository.AbstractDSSOperation.operationName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, operationName.getText()));
 				}
-			}
 
 		});
 		EditingUtils.setID(operationName, EsbViewsRepository.AbstractDSSOperation.operationName);

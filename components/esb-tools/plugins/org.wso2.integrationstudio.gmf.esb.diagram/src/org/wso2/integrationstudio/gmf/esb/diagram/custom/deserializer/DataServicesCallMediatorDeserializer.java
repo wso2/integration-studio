@@ -20,42 +20,120 @@ package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
+import org.wso2.integrationstudio.gmf.esb.DSSSourceType;
+import org.wso2.integrationstudio.gmf.esb.DSSTargetType;
+import org.wso2.integrationstudio.gmf.esb.DSSoperationProperty;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
+import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.wso2.integrationstudio.gmf.esb.AbstractDSSOperation;
 import org.wso2.integrationstudio.gmf.esb.DSSMediator;
+import org.wso2.integrationstudio.gmf.esb.DSSOperationType;
 import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator.Operation;
+import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator.Operations;
+import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator.Param;
+import org.wso2.integrationstudio.gmf.esb.impl.AbstractDSSOperationImpl;
 
-import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.DSS_MEDIATOR__SERVICE_NAME;
-import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.DSS_MEDIATOR__SOURCE_TYPE;
-import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.DSS_MEDIATOR__TARGET_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals;
 
-public class DataServicesCallMediatorDeserializer
-        extends AbstractEsbNodeDeserializer<AbstractMediator, DSSMediator> {
+import java.util.ArrayList;
+import java.util.List;
 
-    @Override
-    public DSSMediator createNode(IGraphicalEditPart part, AbstractMediator mediator)
-            throws DeserializerException {
-        Assert.isTrue(mediator instanceof org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator,
-                "Unsupported mediator passed in for deserialization at " + this.getClass());
+public class DataServicesCallMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, DSSMediator> {
 
-        org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator dataServiceCallMediator = (org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator) mediator;
-        DSSMediator visualDataServicesCall = (DSSMediator) DeserializerUtils.createNode(part,
-                EsbElementTypes.DSSMediator_3794);
-        setElementToEdit(visualDataServicesCall);
-        setCommonProperties(dataServiceCallMediator, visualDataServicesCall);
+	@Override
+	public DSSMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) throws DeserializerException {
+		Assert.isTrue(mediator instanceof org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator,
+				"Unsupported mediator passed in for deserialization at " + this.getClass());
 
-        String serviceName = dataServiceCallMediator.getDsName();
-        if (serviceName != null) {
-            executeSetValueCommand(DSS_MEDIATOR__SERVICE_NAME, serviceName);
-        }
+		org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator dataServiceCallMediator = (org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator) mediator;
+		DSSMediator visualDataServicesCall = (DSSMediator) DeserializerUtils.createNode(part,
+				EsbElementTypes.DSSMediator_3794);
+		setElementToEdit(visualDataServicesCall);
+		setCommonProperties(dataServiceCallMediator, visualDataServicesCall);
 
-        if (!dataServiceCallMediator.getSourceType().isEmpty()) {
-            executeSetValueCommand(DSS_MEDIATOR__SOURCE_TYPE, dataServiceCallMediator.getSourceType());
-        }
+		String serviceName = dataServiceCallMediator.getDsName();
+		if (serviceName != null) {
+			executeSetValueCommand(Literals.DSS_MEDIATOR__SERVICE_NAME, serviceName);
+		}
 
-        if (!dataServiceCallMediator.getTargetType().isEmpty()) {
-            executeSetValueCommand(DSS_MEDIATOR__TARGET_TYPE, dataServiceCallMediator.getTargetType());
-        }
+		if (!dataServiceCallMediator.getSourceType().isEmpty()) {
+			switch (dataServiceCallMediator.getSourceType()) {
 
-        return visualDataServicesCall;
-    }
+			case "inline":
+				executeSetValueCommand(Literals.DSS_MEDIATOR__SOURCE_TYPE, DSSSourceType.INLINE);
+				break;
+
+			case "body":
+				executeSetValueCommand(Literals.DSS_MEDIATOR__SOURCE_TYPE, DSSSourceType.BODY);
+				break;
+			}
+		}
+
+		if (!dataServiceCallMediator.getTargetType().isEmpty()) {
+			switch (dataServiceCallMediator.getTargetType()) {
+
+			case "property":
+				executeSetValueCommand(Literals.DSS_MEDIATOR__TARGET_TYPE, DSSTargetType.PROPERTY);
+				executeSetValueCommand(Literals.DSS_MEDIATOR__TARGET_PROPERTY,
+						dataServiceCallMediator.getTargetPropertyName());
+				break;
+
+			case "body":
+				executeSetValueCommand(Literals.DSS_MEDIATOR__TARGET_TYPE, DSSTargetType.BODY);
+				break;
+			}
+		}
+
+		if (dataServiceCallMediator.getOperations() != null) {
+			Operations synapseOperations = dataServiceCallMediator.getOperations();
+
+			switch (synapseOperations.getType()) {
+			case "single":
+				executeSetValueCommand(Literals.DSS_MEDIATOR__OPERATION_TYPE, DSSOperationType.SINGLE);
+				break;
+
+			case "batch":
+				executeSetValueCommand(Literals.DSS_MEDIATOR__OPERATION_TYPE, DSSOperationType.BATCH);
+				break;
+
+			case "request-box":
+				executeSetValueCommand(Literals.DSS_MEDIATOR__OPERATION_TYPE, DSSOperationType.REQUESTBOX);
+				break;
+			}
+
+			@SuppressWarnings("unchecked")
+			List<Operation> synapseOperationList = synapseOperations.getOperations();
+
+			for (Operation synapseOperation : synapseOperationList) {
+				AbstractDSSOperation visualOperation = EsbFactory.eINSTANCE.createAbstractDSSOperation();
+				visualOperation.setOperationName(synapseOperation.getOperationName());
+				List<DSSoperationProperty> visualParamList = new ArrayList<DSSoperationProperty>();
+				List<Param> synapseParams = synapseOperation.getParams();
+				for (Param synapseParam : synapseParams) {
+					DSSoperationProperty visualProperty = EsbFactory.eINSTANCE.createDSSoperationProperty();
+					visualProperty.setPropertyName(synapseParam.getParamName());
+					if (synapseParam.getEvaluator() != null && synapseParam.getEvaluator().contains("xml")) {
+						NamespacedProperty xpath1 = EsbFactory.eINSTANCE.createNamespacedProperty();
+						xpath1.setPropertyName(synapseParam.getParamName());
+						xpath1.setPropertyValue(synapseParam.getParamExpression().getExpression());
+						visualProperty.setPropertyExpression(xpath1);
+						visualProperty.setPropertyValueType(PropertyValueType.EXPRESSION);
+					} else {
+						visualProperty.setPropertyValueType(PropertyValueType.LITERAL);
+						visualProperty.setPropertyValue(synapseParam.getParamValue());
+					}
+					visualParamList.add(visualProperty);
+				}
+				AbstractDSSOperationImpl visualAbstractDSSOperation = (AbstractDSSOperationImpl) visualOperation;
+				visualAbstractDSSOperation.eSet(EsbPackage.ABSTRACT_DSS_OPERATION__DSS_PRPERTIES, visualParamList);
+				executeSetValueCommand(Literals.DSS_MEDIATOR__OPERATIONS, visualAbstractDSSOperation);
+			}
+
+		}
+		return visualDataServicesCall;
+	}
 }

@@ -46,7 +46,9 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableLis
 
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -79,12 +81,15 @@ import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 import org.wso2.integrationstudio.gmf.esb.MediaType;
+import org.wso2.integrationstudio.gmf.esb.components.DSSMediatorPropertiesEditionComponent;
+import org.wso2.integrationstudio.gmf.esb.DSSOperationType;
 import org.wso2.integrationstudio.gmf.esb.DSSSourceType;
 import org.wso2.integrationstudio.gmf.esb.DSSTargetType;
 import org.wso2.integrationstudio.gmf.esb.parts.DSSMediatorPropertiesEditionPart;
 import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
+import org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl;
 
 // End of user code
 
@@ -256,6 +261,7 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
 									EsbViewsRepository.DSSMediator.Properties.description,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
 									null, description.getText()));
+					
 				}
 			}
 
@@ -1118,10 +1124,29 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
         eu.showEntry(operationTypeElements, false);
 		if (getSourceType().getName().equals(DSSSourceType.INLINE.getName())) {
 			eu.showEntry(operationsTableElements, false);
+			
+
 		}
         eu.showEntry(targetTypeElements, false);
 		if (getTargetType().getName().equals(DSSTargetType.PROPERTY.getName())) {
 			eu.showEntry(targetPropertyElements, false);
+			
+        	DSSMediatorPropertiesEditionComponent aa = (DSSMediatorPropertiesEditionComponent)propertiesEditionComponent;
+        	DSSMediatorImpl aaa = aa.getDsimpl();
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(aaa);
+		    domain.getCommandStack().execute(new RecordingCommand(domain) {
+
+		        @Override
+		        protected void doExecute() {
+		            // Implement your write operations here,
+		            // for example: set a new name
+		        	aaa.setOperationType(DSSOperationType.REQUESTBOX);
+					
+//		            element.eSet(element.eClass().getEStructuralFeature("name"), "aNewName");
+		        }
+		    });
+		    
+		    
 		}
         // Sets a default XML value. If not, parsing to XML fails and is unable to load the source view
         

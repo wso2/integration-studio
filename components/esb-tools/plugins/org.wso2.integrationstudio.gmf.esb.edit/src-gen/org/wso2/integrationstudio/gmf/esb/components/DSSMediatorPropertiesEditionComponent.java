@@ -73,12 +73,13 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl dsimpl;
 	
 	/**
 	 * Settings for operations ReferencesTable
 	 */
 	protected ReferencesTableSettings operationsSettings;
-	
+	 
 	
 	/**
 	 * Default constructor
@@ -86,9 +87,16 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 	 */
 	public DSSMediatorPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject dSSMediator, String editing_mode) {
 		super(editingContext, dSSMediator, editing_mode);
+		
+		dsimpl = (org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl)dSSMediator;
+		
 		parts = new String[] { BASE_PART };
 		repositoryKey = EsbViewsRepository.class;
 		partKey = EsbViewsRepository.DSSMediator.class;
+	}
+
+	public org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl getDsimpl() {
+		return dsimpl;
 	}
 
 	/**

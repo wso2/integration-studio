@@ -1136,6 +1136,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DSSMediator/targetProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DSSMediator/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DSSMediator/outputConnector"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DSSMediator/availableDataServices"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//DSSoperationProperty"/>
     <genClasses ecoreClass="esb.ecore#//DSSMediatorInputConnector"/>

@@ -34,6 +34,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getTargetProperty <em>Target Property</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getAvailableDataServices <em>Available Data Services</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getDSSMediator()
@@ -218,5 +219,27 @@ public interface DSSMediator extends Mediator {
      * @generated
      */
     void setOutputConnector(DSSMediatorOutputConnector value);
+
+    /**
+     * Returns the value of the '<em><b>Available Data Services</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Available Data Services</em>' attribute.
+     * @see #setAvailableDataServices(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getDSSMediator_AvailableDataServices()
+     * @model
+     * @generated
+     */
+    String getAvailableDataServices();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getAvailableDataServices <em>Available Data Services</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Available Data Services</em>' attribute.
+     * @see #getAvailableDataServices()
+     * @generated
+     */
+    void setAvailableDataServices(String value);
 
 } // DSSMediator

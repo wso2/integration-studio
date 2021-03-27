@@ -58,6 +58,8 @@ public class DataServicesCallMediatorDeserializer extends AbstractEsbNodeDeseria
 		String serviceName = dataServiceCallMediator.getDsName();
 		if (serviceName != null) {
 			executeSetValueCommand(Literals.DSS_MEDIATOR__SERVICE_NAME, serviceName);
+			executeSetValueCommand(Literals.DSS_MEDIATOR__AVAILABLE_DATA_SERVICES, serviceName);
+
 		}
 
 		if (!dataServiceCallMediator.getSourceType().isEmpty()) {

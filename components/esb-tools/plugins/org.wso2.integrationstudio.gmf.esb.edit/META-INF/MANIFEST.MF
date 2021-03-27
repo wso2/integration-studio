@@ -39,9 +39,10 @@ Import-Package: org.apache.axiom.om.xpath;version="1.2.11.wso2v10",
  org.eclipse.wst.xml.xpath.core.util,
  org.wso2.carbon.core.util,
  org.wso2.carbon.tools.converter,
+ org.wso2.integrationstudio.artifact.dataserviceProject.artifact,
+ org.wso2.integrationstudio.esb.form.editors.article.providers,
  org.wso2.integrationstudio.esb.project.artifact,
  org.wso2.integrationstudio.esb.synapse.unit.test.component,
  org.wso2.integrationstudio.gmf.esb.persistence,
  org.wso2.integrationstudio.logging.core,
- org.wso2.integrationstudio.maven.util,
- org.wso2.integrationstudio.esb.form.editors.article.providers
+ org.wso2.integrationstudio.maven.util

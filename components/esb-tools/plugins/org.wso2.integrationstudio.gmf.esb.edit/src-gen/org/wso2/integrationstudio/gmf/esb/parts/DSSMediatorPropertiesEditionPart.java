@@ -91,6 +91,20 @@ public interface DSSMediatorPropertiesEditionPart {
 
 
 	/**
+	 * @return the availableDataServices
+	 * 
+	 */
+	public String getAvailableDataServices();
+
+	/**
+	 * Defines a new availableDataServices
+	 * @param newValue the new availableDataServices to set
+	 * 
+	 */
+	public void setAvailableDataServices(String newValue);
+
+
+	/**
 	 * @return the sourceType
 	 * 
 	 */

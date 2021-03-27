@@ -1659,6 +1659,9 @@ public class EsbViewsRepository {
 			public static String serviceName = "esb::DSSMediator::properties::serviceName";
 			
 			
+			public static String availableDataServices = "esb::DSSMediator::properties::availableDataServices";
+			
+			
 			public static String sourceType = "esb::DSSMediator::properties::sourceType";
 			
 			

@@ -66,6 +66,7 @@ public class DSSMediatorItemProvider extends MediatorItemProvider {
             addOperationTypePropertyDescriptor(object);
             addTargetTypePropertyDescriptor(object);
             addTargetPropertyPropertyDescriptor(object);
+            addAvailableDataServicesPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -181,6 +182,28 @@ public class DSSMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Available Data Services feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addAvailableDataServicesPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_DSSMediator_availableDataServices_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_DSSMediator_availableDataServices_feature", "_UI_DSSMediator_type"),
+                 EsbPackage.Literals.DSS_MEDIATOR__AVAILABLE_DATA_SERVICES,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -255,6 +278,7 @@ public class DSSMediatorItemProvider extends MediatorItemProvider {
             case EsbPackage.DSS_MEDIATOR__OPERATION_TYPE:
             case EsbPackage.DSS_MEDIATOR__TARGET_TYPE:
             case EsbPackage.DSS_MEDIATOR__TARGET_PROPERTY:
+            case EsbPackage.DSS_MEDIATOR__AVAILABLE_DATA_SERVICES:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.DSS_MEDIATOR__OPERATIONS:
@@ -280,7 +304,7 @@ public class DSSMediatorItemProvider extends MediatorItemProvider {
         newChildDescriptors.add
             (createChildParameter
                 (EsbPackage.Literals.DSS_MEDIATOR__OPERATIONS,
-                 EsbFactory.eINSTANCE.createDSSoperationProperty()));
+                 EsbFactory.eINSTANCE.createAbstractDSSOperation()));
 
         newChildDescriptors.add
             (createChildParameter

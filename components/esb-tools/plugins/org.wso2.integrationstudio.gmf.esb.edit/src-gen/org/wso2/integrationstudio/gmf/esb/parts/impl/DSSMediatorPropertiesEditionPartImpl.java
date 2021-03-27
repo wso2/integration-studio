@@ -92,6 +92,7 @@ public class DSSMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 	protected EList commentsListList;
 	protected Button reverse;
 	protected Text serviceName;
+	protected Text availableDataServices;
 	protected EMFComboViewer sourceType;
 	protected EMFComboViewer operationType;
 	protected ReferencesTable operations;
@@ -141,6 +142,7 @@ public class DSSMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.commentsList);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.serviceName);
+		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.availableDataServices);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.sourceType);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.operationType);
 		propertiesStep.addStep(EsbViewsRepository.DSSMediator.Properties.operations);
@@ -166,6 +168,9 @@ public class DSSMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 				}
 				if (key == EsbViewsRepository.DSSMediator.Properties.serviceName) {
 					return createServiceNameText(parent);
+				}
+				if (key == EsbViewsRepository.DSSMediator.Properties.availableDataServices) {
+					return createAvailableDataServicesText(parent);
 				}
 				if (key == EsbViewsRepository.DSSMediator.Properties.sourceType) {
 					return createSourceTypeEMFComboViewer(parent);
@@ -369,6 +374,55 @@ public class DSSMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 		EditingUtils.setEEFtype(serviceName, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.serviceName, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createServiceNameText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createAvailableDataServicesText(Composite parent) {
+		createDescription(parent, EsbViewsRepository.DSSMediator.Properties.availableDataServices, EsbMessages.DSSMediatorPropertiesEditionPart_AvailableDataServicesLabel);
+		availableDataServices = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData availableDataServicesData = new GridData(GridData.FILL_HORIZONTAL);
+		availableDataServices.setLayoutData(availableDataServicesData);
+		availableDataServices.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DSSMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DSSMediator.Properties.availableDataServices, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, availableDataServices.getText()));
+			}
+
+		});
+		availableDataServices.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DSSMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.DSSMediator.Properties.availableDataServices, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, availableDataServices.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(availableDataServices, EsbViewsRepository.DSSMediator.Properties.availableDataServices);
+		EditingUtils.setEEFtype(availableDataServices, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.DSSMediator.Properties.availableDataServices, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAvailableDataServicesText
 
 		// End of user code
 		return parent;
@@ -720,6 +774,38 @@ public class DSSMediatorPropertiesEditionPartImpl extends CompositePropertiesEdi
 			serviceName.setToolTipText(EsbMessages.DSSMediator_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !serviceName.isEnabled()) {
 			serviceName.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DSSMediatorPropertiesEditionPart#getAvailableDataServices()
+	 * 
+	 */
+	public String getAvailableDataServices() {
+		return availableDataServices.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.DSSMediatorPropertiesEditionPart#setAvailableDataServices(String newValue)
+	 * 
+	 */
+	public void setAvailableDataServices(String newValue) {
+		if (newValue != null) {
+			availableDataServices.setText(newValue);
+		} else {
+			availableDataServices.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.DSSMediator.Properties.availableDataServices);
+		if (eefElementEditorReadOnlyState && availableDataServices.isEnabled()) {
+			availableDataServices.setEnabled(false);
+			availableDataServices.setToolTipText(EsbMessages.DSSMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !availableDataServices.isEnabled()) {
+			availableDataServices.setEnabled(true);
 		}	
 		
 	}

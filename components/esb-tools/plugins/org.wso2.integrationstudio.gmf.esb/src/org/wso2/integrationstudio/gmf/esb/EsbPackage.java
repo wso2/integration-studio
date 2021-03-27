@@ -5089,13 +5089,22 @@ public interface EsbPackage extends EPackage {
     int DSS_MEDIATOR__OUTPUT_CONNECTOR = MEDIATOR_FEATURE_COUNT + 7;
 
     /**
+     * The feature id for the '<em><b>Available Data Services</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DSS_MEDIATOR__AVAILABLE_DATA_SERVICES = MEDIATOR_FEATURE_COUNT + 8;
+
+    /**
      * The number of structural features of the '<em>DSS Mediator</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int DSS_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 8;
+    int DSS_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 
     /**
      * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.impl.DSSoperationPropertyImpl <em>DS Soperation Property</em>}' class.
@@ -31006,6 +31015,17 @@ public interface EsbPackage extends EPackage {
     EReference getDSSMediator_OutputConnector();
 
     /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.DSSMediator#getAvailableDataServices <em>Available Data Services</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Available Data Services</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.DSSMediator#getAvailableDataServices()
+     * @see #getDSSMediator()
+     * @generated
+     */
+    EAttribute getDSSMediator_AvailableDataServices();
+
+    /**
      * Returns the meta object for class '{@link org.wso2.integrationstudio.gmf.esb.DSSoperationProperty <em>DS Soperation Property</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -49639,6 +49659,14 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EReference DSS_MEDIATOR__OUTPUT_CONNECTOR = eINSTANCE.getDSSMediator_OutputConnector();
+
+        /**
+         * The meta object literal for the '<em><b>Available Data Services</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute DSS_MEDIATOR__AVAILABLE_DATA_SERVICES = eINSTANCE.getDSSMediator_AvailableDataServices();
 
         /**
          * The meta object literal for the '{@link org.wso2.integrationstudio.gmf.esb.impl.DSSoperationPropertyImpl <em>DS Soperation Property</em>}' class.

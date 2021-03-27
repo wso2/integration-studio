@@ -73,7 +73,7 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
-	org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl dsimpl;
+	org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl dssMediatorImpl;
 	
 	/**
 	 * Settings for operations ReferencesTable
@@ -88,15 +88,15 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 	public DSSMediatorPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject dSSMediator, String editing_mode) {
 		super(editingContext, dSSMediator, editing_mode);
 		
-		dsimpl = (org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl)dSSMediator;
+		dssMediatorImpl = (org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl)dSSMediator;
 		
 		parts = new String[] { BASE_PART };
 		repositoryKey = EsbViewsRepository.class;
 		partKey = EsbViewsRepository.DSSMediator.class;
 	}
 
-	public org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl getDsimpl() {
-		return dsimpl;
+	public org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl getSymanticDssModel() {
+		return dssMediatorImpl;
 	}
 
 	/**
@@ -126,6 +126,9 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 			if (isAccessible(EsbViewsRepository.DSSMediator.Properties.serviceName))
 				basePart.setServiceName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dSSMediator.getServiceName()));
 			
+			if (isAccessible(EsbViewsRepository.DSSMediator.Properties.availableDataServices))
+				basePart.setAvailableDataServices(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dSSMediator.getAvailableDataServices()));
+			
 			if (isAccessible(EsbViewsRepository.DSSMediator.Properties.sourceType)) {
 				basePart.initSourceType(EEFUtils.choiceOfValues(dSSMediator, EsbPackage.eINSTANCE.getDSSMediator_SourceType()), dSSMediator.getSourceType());
 			}
@@ -143,6 +146,7 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 				basePart.setTargetProperty(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, dSSMediator.getTargetProperty()));
 			
 			// init filters
+			
 			
 			
 			
@@ -185,6 +189,7 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -201,6 +206,9 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (editorKey == EsbViewsRepository.DSSMediator.Properties.serviceName) {
 			return EsbPackage.eINSTANCE.getDSSMediator_ServiceName();
+		}
+		if (editorKey == EsbViewsRepository.DSSMediator.Properties.availableDataServices) {
+			return EsbPackage.eINSTANCE.getDSSMediator_AvailableDataServices();
 		}
 		if (editorKey == EsbViewsRepository.DSSMediator.Properties.sourceType) {
 			return EsbPackage.eINSTANCE.getDSSMediator_SourceType();
@@ -241,6 +249,9 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (EsbViewsRepository.DSSMediator.Properties.serviceName == event.getAffectedEditor()) {
 			dSSMediator.setServiceName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.DSSMediator.Properties.availableDataServices == event.getAffectedEditor()) {
+			dSSMediator.setAvailableDataServices((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.DSSMediator.Properties.sourceType == event.getAffectedEditor()) {
 			dSSMediator.setSourceType((DSSSourceType)event.getNewValue());
@@ -318,6 +329,13 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 					basePart.setServiceName("");
 				}
 			}
+			if (EsbPackage.eINSTANCE.getDSSMediator_AvailableDataServices().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.DSSMediator.Properties.availableDataServices)) {
+				if (msg.getNewValue() != null) {
+					basePart.setAvailableDataServices(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setAvailableDataServices("");
+				}
+			}
 			if (EsbPackage.eINSTANCE.getDSSMediator_SourceType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.DSSMediator.Properties.sourceType))
 				basePart.setSourceType((DSSSourceType)msg.getNewValue());
 			
@@ -352,6 +370,7 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 			EsbPackage.eINSTANCE.getEsbElement_CommentsList(),
 			EsbPackage.eINSTANCE.getMediator_Reverse(),
 			EsbPackage.eINSTANCE.getDSSMediator_ServiceName(),
+			EsbPackage.eINSTANCE.getDSSMediator_AvailableDataServices(),
 			EsbPackage.eINSTANCE.getDSSMediator_SourceType(),
 			EsbPackage.eINSTANCE.getDSSMediator_OperationType(),
 			EsbPackage.eINSTANCE.getDSSMediator_Operations(),
@@ -398,6 +417,13 @@ public class DSSMediatorPropertiesEditionComponent extends SinglePartPropertiesE
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getDSSMediator_ServiceName().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getDSSMediator_ServiceName().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.DSSMediator.Properties.availableDataServices == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getDSSMediator_AvailableDataServices().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getDSSMediator_AvailableDataServices().getEAttributeType(), newValue);
 				}
 				if (EsbViewsRepository.DSSMediator.Properties.sourceType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();

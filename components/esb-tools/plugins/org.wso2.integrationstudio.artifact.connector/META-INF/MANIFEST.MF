@@ -9,7 +9,10 @@ Require-Bundle: org.wso2.integrationstudio.kernel.libraries,
  org.wso2.integrationstudio.platform.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Import-Package: org.wso2.integrationstudio.distribution.project.export,
+Import-Package: org.eclipse.ltk.core.refactoring,
+ org.eclipse.ltk.core.refactoring.participants,
+ org.eclipse.text.edits,
+ org.wso2.integrationstudio.distribution.project.export,
  org.wso2.integrationstudio.esb.core,
  org.wso2.integrationstudio.logging.core,
  org.wso2.integrationstudio.maven.util,

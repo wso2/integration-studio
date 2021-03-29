@@ -85,5 +85,26 @@
                     </or>
                 </enablement>
             </commonWizard>
-    </extension>        
+    </extension>    
+    <extension
+         point="org.eclipse.ltk.core.refactoring.deleteParticipants">
+       <deleteParticipant
+			class="org.wso2.integrationstudio.artifact.connector.artifact.ConnectorDeleteParticipant"
+			id="ConnectorDeleteParticipant"
+			name="ConnectorDelete">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.artifact.connector.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</deleteParticipant>
+   </extension>    
 </plugin>

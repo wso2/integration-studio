@@ -3602,7 +3602,7 @@ public class AddressEndPointPropertiesEditionPartForm extends SectionPropertiesE
 		viewUtil.clearElements(new Composite[] { basicGroup, endpointSuspendStateGroup, endpointTimeoutStateGroup,
 				miscGroup, qoSGroup, timeoutGroup, failoverErrorCodesGroup });
     	
-       	viewUtil.showEntry(inlineTypeElements, false);
+		// viewUtil.showEntry(inlineTypeElements, false);
     	viewUtil.showEntry(formatTypeElements, false);
     	viewUtil.showEntry(traceEnabledTypeElements, false);
     	viewUtil.showEntry(statEnabledTypeElements, false);

@@ -3009,7 +3009,7 @@ public class NamedEndpointPropertiesEditionPartForm extends SectionPropertiesEdi
     public void validate() {
         EEFPropertyViewUtil eu = new EEFPropertyViewUtil(view);
         eu.clearElements(new Composite[] { propertiesGroup });
-        eu.showEntry(inLineCheckBoxElements, false);
+        //eu.showEntry(inLineCheckBoxElements, false);
         eu.showEntry(referringEndpointTypeElements, false);
         
         if (getReferringEndpointType().getName().equals("DYNAMIC")) {

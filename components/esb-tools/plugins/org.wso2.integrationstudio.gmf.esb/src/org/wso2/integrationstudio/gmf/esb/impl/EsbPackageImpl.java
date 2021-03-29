@@ -6410,6 +6410,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getDSSMediator_AvailableDataServices() {
+        return (EAttribute)dssMediatorEClass.getEStructuralFeatures().get(8);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getDSSoperationProperty() {
         return dsSoperationPropertyEClass;
     }
@@ -20668,6 +20677,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(dssMediatorEClass, DSS_MEDIATOR__TARGET_PROPERTY);
         createEReference(dssMediatorEClass, DSS_MEDIATOR__INPUT_CONNECTOR);
         createEReference(dssMediatorEClass, DSS_MEDIATOR__OUTPUT_CONNECTOR);
+        createEAttribute(dssMediatorEClass, DSS_MEDIATOR__AVAILABLE_DATA_SERVICES);
 
         dsSoperationPropertyEClass = createEClass(DS_SOPERATION_PROPERTY);
 
@@ -23221,6 +23231,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getDSSMediator_TargetProperty(), ecorePackage.getEString(), "targetProperty", null, 0, 1, DSSMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDSSMediator_InputConnector(), this.getDSSMediatorInputConnector(), null, "inputConnector", null, 0, 1, DSSMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDSSMediator_OutputConnector(), this.getDSSMediatorOutputConnector(), null, "outputConnector", null, 0, 1, DSSMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getDSSMediator_AvailableDataServices(), ecorePackage.getEString(), "availableDataServices", null, 0, 1, DSSMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(dsSoperationPropertyEClass, DSSoperationProperty.class, "DSSoperationProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

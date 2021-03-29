@@ -490,6 +490,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputConnector" eType="#//DSSMediatorOutputConnector"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="availableDataServices"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DSSoperationProperty" eSuperTypes="#//AbstractNameValueExpressionProperty"/>
   <eClassifiers xsi:type="ecore:EClass" name="DSSMediatorInputConnector" eSuperTypes="#//InputConnector"/>

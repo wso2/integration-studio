@@ -56,6 +56,7 @@ import org.wso2.integrationstudio.gmf.esb.EsbPackage;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl#getTargetProperty <em>Target Property</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.DSSMediatorImpl#getAvailableDataServices <em>Available Data Services</em>}</li>
  * </ul>
  *
  * @generated
@@ -190,6 +191,26 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
      * @ordered
      */
     protected DSSMediatorOutputConnector outputConnector;
+
+    /**
+     * The default value of the '{@link #getAvailableDataServices() <em>Available Data Services</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getAvailableDataServices()
+     * @generated
+     * @ordered
+     */
+    protected static final String AVAILABLE_DATA_SERVICES_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getAvailableDataServices() <em>Available Data Services</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getAvailableDataServices()
+     * @generated
+     * @ordered
+     */
+    protected String availableDataServices = AVAILABLE_DATA_SERVICES_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -418,6 +439,27 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
      * <!-- end-user-doc -->
      * @generated
      */
+    public String getAvailableDataServices() {
+        return availableDataServices;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setAvailableDataServices(String newAvailableDataServices) {
+        String oldAvailableDataServices = availableDataServices;
+        availableDataServices = newAvailableDataServices;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DSS_MEDIATOR__AVAILABLE_DATA_SERVICES, oldAvailableDataServices, availableDataServices));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -455,6 +497,8 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
                 return getInputConnector();
             case EsbPackage.DSS_MEDIATOR__OUTPUT_CONNECTOR:
                 return getOutputConnector();
+            case EsbPackage.DSS_MEDIATOR__AVAILABLE_DATA_SERVICES:
+                return getAvailableDataServices();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -493,6 +537,9 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
             case EsbPackage.DSS_MEDIATOR__OUTPUT_CONNECTOR:
                 setOutputConnector((DSSMediatorOutputConnector)newValue);
                 return;
+            case EsbPackage.DSS_MEDIATOR__AVAILABLE_DATA_SERVICES:
+                setAvailableDataServices((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -529,6 +576,9 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
             case EsbPackage.DSS_MEDIATOR__OUTPUT_CONNECTOR:
                 setOutputConnector((DSSMediatorOutputConnector)null);
                 return;
+            case EsbPackage.DSS_MEDIATOR__AVAILABLE_DATA_SERVICES:
+                setAvailableDataServices(AVAILABLE_DATA_SERVICES_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -557,6 +607,8 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
                 return inputConnector != null;
             case EsbPackage.DSS_MEDIATOR__OUTPUT_CONNECTOR:
                 return outputConnector != null;
+            case EsbPackage.DSS_MEDIATOR__AVAILABLE_DATA_SERVICES:
+                return AVAILABLE_DATA_SERVICES_EDEFAULT == null ? availableDataServices != null : !AVAILABLE_DATA_SERVICES_EDEFAULT.equals(availableDataServices);
         }
         return super.eIsSet(featureID);
     }
@@ -581,6 +633,8 @@ public class DSSMediatorImpl extends MediatorImpl implements DSSMediator {
         result.append(targetType);
         result.append(", targetProperty: ");
         result.append(targetProperty);
+        result.append(", availableDataServices: ");
+        result.append(availableDataServices);
         result.append(')');
         return result.toString();
     }

@@ -954,6 +954,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_L94QeX11Eeui_5m0iLuOTg" name="serviceName" views="_L96GIH11Eeui_5m0iLuOTg">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//DSSMediator/serviceName"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_JhbcEI3tEeuHYcIPzODMNw" name="availableDataServices" views="_1mqWwI3sEeuHYcIPzODMNw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//DSSMediator/availableDataServices"/>
+        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_L94Qen11Eeui_5m0iLuOTg" name="sourceType" views="_L96GIX11Eeui_5m0iLuOTg">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//DSSMediator/sourceType"/>
         </properties>
@@ -7235,6 +7238,9 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_L96GIH11Eeui_5m0iLuOTg" name="serviceName">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_1mqWwI3sEeuHYcIPzODMNw" name="availableDataServices">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_L96GIX11Eeui_5m0iLuOTg" name="sourceType">

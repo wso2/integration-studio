@@ -595,13 +595,16 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         List<String> removingArtifacts = new ArrayList<>();
         Dependency project = nodeData.getDependency();
         String artifactInfo = DistProjectUtils.getArtifactInfoAsString(project);
-        DependencyData dependencyData = projectList.get(projectListToDependencyMapping.get(artifactInfo)); 
-        if(API_TYPE.equals(dependencyData.getCApptype())) { 
-            String medataName = project.getArtifactId() + METADATA_SUFFIX; 
-            String swaggerName = project.getArtifactId() + SWAGGER_SUFFIX; 
-            removingArtifacts.add(artifactIdToDependencyMapping.get(medataName)); 
-            removingArtifacts.add(artifactIdToDependencyMapping.get(swaggerName)); 
-        } 
+        if (projectListToDependencyMapping.containsKey(artifactInfo)) {
+            DependencyData dependencyData = projectList.get(projectListToDependencyMapping.get(artifactInfo)); 
+            if(API_TYPE.equals(dependencyData.getCApptype())) { 
+                String medataName = project.getArtifactId() + METADATA_SUFFIX; 
+                String swaggerName = project.getArtifactId() + SWAGGER_SUFFIX; 
+                removingArtifacts.add(artifactIdToDependencyMapping.get(medataName)); 
+                removingArtifacts.add(artifactIdToDependencyMapping.get(swaggerName)); 
+            } 
+        }
+        
         removingArtifacts.add(artifactInfo); 
         removeDependency(removingArtifacts); 
     }

@@ -65,6 +65,15 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
         addPage(removeWizardPage);
         super.addPages();
     }
+    
+    @Override
+    public boolean canFinish() {
+        if (selectionPage.equals(getContainer().getCurrentPage())) {
+            return false;
+        }
+        
+        return true;
+    }
 
     /**
      * Importing connector zip file to Integration Studio either from fileSystem or connector store.

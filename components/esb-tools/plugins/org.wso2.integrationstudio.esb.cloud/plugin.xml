@@ -18,7 +18,7 @@
 
 <?eclipse version="3.4"?>
 <plugin>
-    <extension point="org.eclipse.ui.popupMenus">
+    <!--extension point="org.eclipse.ui.popupMenus">
         <objectContribution objectClass="org.eclipse.core.resources.IProject" 
         id="org.wso2.integrationstudio.esb.cloud.deploytocloud">
             <action
@@ -34,6 +34,6 @@
                 </adapt>
             </enablement>
         </objectContribution>
-    </extension>
+    </extension-->
     
 </plugin>

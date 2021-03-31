@@ -19,6 +19,7 @@
 package org.wso2.integrationstudio.esb.docker.wizard;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -311,9 +312,18 @@ public class ExportAndGenerateDockerImageWizard extends Wizard implements IExpor
         if ((OS.indexOf(ExportImageWizardConstants.OS_TYPE_MAC) >= 0)
                 || (OS.indexOf(ExportImageWizardConstants.OS_TYPE_DARWIN) >= 0)) {
             String eiToolingHomeForMac = ExportImageWizardConstants.EI_TOOLING_HOME_MACOS;
-            File macOSEIToolingAppFile = new File(eiToolingHomeForMac);
-
-            if (macOSEIToolingAppFile.exists()) {
+            boolean isRelativeToolingAppExists = false;
+            File macOSRelativeToolingApp = null;
+            try {
+                macOSRelativeToolingApp = new File((new File(".").getCanonicalFile()).getParent().toString() 
+                        + File.separator + "Eclipse");
+                if (macOSRelativeToolingApp.exists()) {
+                    isRelativeToolingAppExists = true;
+                }
+            } catch (IOException e) {}
+            if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                workingDirectory = macOSRelativeToolingApp.getAbsolutePath();
+            } else if (new File(eiToolingHomeForMac).exists()) {
                 workingDirectory = eiToolingHomeForMac;
             } else {
                 Path path = Paths.get(ExportImageWizardConstants.EMPTY_STRING);

@@ -17,6 +17,7 @@
 package org.wso2.integrationstudio.templates.dashboard.handlers;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -143,8 +144,18 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 
         if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
             // check if EI Tooling is in Application folder for MAC
-            File macOSEIToolingAppFile = new File(TOOLING_PATH_MAC);
-            if (macOSEIToolingAppFile.exists()) {
+            boolean isRelativeToolingAppExists = false;
+            File macOSRelativeToolingApp = null;
+            try {
+                macOSRelativeToolingApp = new File((new File(".").getCanonicalFile()).getParent().toString() 
+                        + File.separator + "Eclipse");
+                if (macOSRelativeToolingApp.exists()) {
+                    isRelativeToolingAppExists = true;
+                }
+            } catch (IOException e) {}
+            if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                microInteratorPath = macOSRelativeToolingApp.getAbsolutePath() + File.separator + MAVEN_HOME;
+            } else if (new File(TOOLING_PATH_MAC).exists()) {
                 microInteratorPath = TOOLING_PATH_MAC + File.separator + MAVEN_HOME;
             } else {
                 java.nio.file.Path path = Paths.get(EMPTY_STRING);

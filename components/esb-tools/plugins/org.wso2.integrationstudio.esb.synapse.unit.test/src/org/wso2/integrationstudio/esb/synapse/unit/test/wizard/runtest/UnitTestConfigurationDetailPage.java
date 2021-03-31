@@ -18,6 +18,7 @@
 package org.wso2.integrationstudio.esb.synapse.unit.test.wizard.runtest;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Locale;
 
@@ -363,8 +364,18 @@ public class UnitTestConfigurationDetailPage extends WizardPage {
             microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath + windowsPack;
         } else {
             // check if EI Tooling is in Application folder for MAC
-            File macOSEIToolingAppFile = new File(eiToolingHomeForMac);
-            if (macOSEIToolingAppFile.exists()) {
+            boolean isRelativeToolingAppExists = false;
+            File macOSRelativeToolingApp = null;
+            try {
+                macOSRelativeToolingApp = new File((new File(".").getCanonicalFile()).getParent().toString() 
+                        + File.separator + "Eclipse");
+                if (macOSRelativeToolingApp.exists()) {
+                    isRelativeToolingAppExists = true;
+                }
+            } catch (IOException e) {}
+            if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                microInteratorPath = macOSRelativeToolingApp.getAbsolutePath() + File.separator + microesbPath + LinuxMacPack;
+            } else if (new File(eiToolingHomeForMac).exists()) {
                 microInteratorPath = eiToolingHomeForMac + File.separator + microesbPath + LinuxMacPack;
             } else {
                 java.nio.file.Path path = Paths.get("");

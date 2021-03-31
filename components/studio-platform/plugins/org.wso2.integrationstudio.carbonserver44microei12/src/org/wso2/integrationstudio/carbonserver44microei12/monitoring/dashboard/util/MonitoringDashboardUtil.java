@@ -54,8 +54,20 @@ public class MonitoringDashboardUtil {
         String microInteratorPath;
         if (isMac()) {
             // check if EI Tooling is in Application folder for MAC
-            File macOSEIToolingAppFile = new File(MonitoringDashboardConstants.TOOLING_PATH_MAC);
-            if (macOSEIToolingAppFile.exists()) {
+            boolean isRelativeToolingAppExists = false;
+            File macOSRelativeToolingApp = null;
+            try {
+                macOSRelativeToolingApp = new File((new File(".").getCanonicalFile()).getParent().toString() 
+                        + File.separator + "Eclipse");
+                if (macOSRelativeToolingApp.exists()) {
+                    isRelativeToolingAppExists = true;
+                }
+            } catch (IOException e) {
+            }
+            if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                microInteratorPath = macOSRelativeToolingApp.getAbsolutePath() + File.separator 
+                        + MonitoringDashboardConstants.MI_DASHBOARD_PATH;
+            } else if (new File(MonitoringDashboardConstants.TOOLING_PATH_MAC).exists()) {
                 microInteratorPath = MonitoringDashboardConstants.TOOLING_PATH_MAC + File.separator
                         + MonitoringDashboardConstants.MI_DASHBOARD_PATH;
             } else {
@@ -111,8 +123,20 @@ public class MonitoringDashboardUtil {
 
         if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
             // check if EI Tooling is in Application folder for MAC
-            File macOSEIToolingAppFile = new File(MonitoringDashboardConstants.TOOLING_PATH_MAC);
-            if (macOSEIToolingAppFile.exists()) {
+            boolean isRelativeToolingAppExists = false;
+            File macOSRelativeToolingApp = null;
+            try {
+                macOSRelativeToolingApp = new File((new File(".").getCanonicalFile()).getParent().toString() 
+                        + File.separator + "Eclipse");
+                if (macOSRelativeToolingApp.exists()) {
+                    isRelativeToolingAppExists = true;
+                }
+            } catch (IOException e) {
+            }
+            if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                microInteratorPath = macOSRelativeToolingApp.getAbsolutePath() + File.separator 
+                        + MonitoringDashboardConstants.JDK_PATH_MAC;
+            } else if (new File(MonitoringDashboardConstants.TOOLING_PATH_MAC).exists()) {
                 microInteratorPath = MonitoringDashboardConstants.TOOLING_PATH_MAC + File.separator +
                         MonitoringDashboardConstants.JDK_PATH_MAC;
             } else {

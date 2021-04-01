@@ -185,8 +185,20 @@ public class MicroIntegratorInstance {
         String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
         if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
             // check if EI Tooling is in Application folder for MAC
-            File macOSEIToolingAppFile = new File(ServerConstants.INTEGRATION_STUDIO_HOME_MAC);
-            if (macOSEIToolingAppFile.exists()) {
+            boolean isRelativeToolingAppExists = false;
+            File macOSRelativeToolingApp = null;
+            try {
+                macOSRelativeToolingApp = new File((new File(".").getCanonicalFile()).getParent().toString() 
+                        + File.separator + "Eclipse");
+                if (macOSRelativeToolingApp.exists()) {
+                    isRelativeToolingAppExists = true;
+                }
+            } catch (IOException e) {
+            }
+            if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                microInteratorPath = macOSRelativeToolingApp.getAbsolutePath() + File.separator 
+                        + ServerConstants.MICRO_ESB_PATH;
+            } else if (new File(ServerConstants.INTEGRATION_STUDIO_HOME_MAC).exists()) {
                 microInteratorPath = ServerConstants.INTEGRATION_STUDIO_HOME_MAC + File.separator
                         + ServerConstants.MICRO_ESB_PATH;
             } else {

@@ -111,8 +111,22 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 
             File internalServerVersionFile = null;
             if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
-                internalServerVersionFile = new File(
-                        INTEGRATION_STUDIO_HOME_MAC + File.separator + MICRO_ESB_VERSION_PROPERTIES_FILE);
+                boolean isRelativeToolingAppExists = false;
+                File macOSRelativeToolingApp = null;
+                try {
+                    macOSRelativeToolingApp = new File((new File(".").getCanonicalFile()).getParent().toString() 
+                            + File.separator + "Eclipse");
+                    if (macOSRelativeToolingApp.exists()) {
+                        isRelativeToolingAppExists = true;
+                    }
+                } catch (IOException e) {}
+                if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                    internalServerVersionFile = new File(macOSRelativeToolingApp.getAbsolutePath() 
+                            + File.separator + MICRO_ESB_VERSION_PROPERTIES_FILE);
+                } else  {
+                    internalServerVersionFile = new File(
+                            INTEGRATION_STUDIO_HOME_MAC + File.separator + MICRO_ESB_VERSION_PROPERTIES_FILE);
+                }
             } else {
                 internalServerVersionFile = new File(MICRO_ESB_VERSION_PROPERTIES_FILE);
             }
@@ -144,7 +158,21 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 
                 File esbSeverDestination = null;
                 if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
-                    esbSeverDestination = new File(INTEGRATION_STUDIO_HOME_MAC + File.separator + MICRO_ESB_EXTRACT_PATH);
+                    boolean isRelativeToolingAppExists = false;
+                    File macOSRelativeToolingApp = null;
+                    try {
+                        macOSRelativeToolingApp = new File((new File(".").getCanonicalFile()).getParent().toString() 
+                                + File.separator + "Eclipse");
+                        if (macOSRelativeToolingApp.exists()) {
+                            isRelativeToolingAppExists = true;
+                        }
+                    } catch (IOException e) {
+                    }
+                    if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                        esbSeverDestination = new File(macOSRelativeToolingApp.getAbsolutePath() + File.separator + MICRO_ESB_EXTRACT_PATH);
+                    } else  {
+                        esbSeverDestination = new File(INTEGRATION_STUDIO_HOME_MAC + File.separator + MICRO_ESB_EXTRACT_PATH);
+                    }
                 } else {
                     esbSeverDestination = new File(MICRO_ESB_EXTRACT_PATH);
                 }

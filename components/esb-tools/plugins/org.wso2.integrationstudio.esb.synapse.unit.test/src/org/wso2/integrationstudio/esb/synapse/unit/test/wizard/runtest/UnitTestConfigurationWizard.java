@@ -230,8 +230,18 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
 
         if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
             // check if EI Tooling is in Application folder for MAC
-            File macOSEIToolingAppFile = new File(TOOLING_PATH_MAC);
-            if (macOSEIToolingAppFile.exists()) {
+            boolean isRelativeToolingAppExists = false;
+            File macOSRelativeToolingApp = null;
+            try {
+                macOSRelativeToolingApp = new File((new File(".").getCanonicalFile()).getParent().toString() 
+                        + File.separator + "Eclipse");
+                if (macOSRelativeToolingApp.exists()) {
+                    isRelativeToolingAppExists = true;
+                }
+            } catch (IOException e) {}
+            if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                microInteratorPath = macOSRelativeToolingApp.getAbsolutePath() + File.separator + JDK_PATH_MAC;
+            } else if (new File(TOOLING_PATH_MAC).exists()) {
                 microInteratorPath = TOOLING_PATH_MAC + File.separator + JDK_PATH_MAC;
             } else {
                 java.nio.file.Path path = Paths.get("");

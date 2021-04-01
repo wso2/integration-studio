@@ -19,6 +19,7 @@
 package org.wso2.integrationstudio.carbonserver44microei11.register.product.servers;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Locale;
 import java.util.Map;
@@ -143,8 +144,19 @@ public class MicroIntegratorInstance {
 		String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
 		if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
 			//check if EI Tooling is in Application folder for MAC
-			File macOSEIToolingAppFile = new File(eiToolingHomeForMac);
-			if(macOSEIToolingAppFile.exists()) {
+		    boolean isRelativeToolingAppExists = false;
+            File macOSRelativeToolingApp = null;
+            try {
+                macOSRelativeToolingApp = new File((new File(".").getCanonicalFile()).getParent().toString() 
+                        + File.separator + "Eclipse");
+                if (macOSRelativeToolingApp.exists()) {
+                    isRelativeToolingAppExists = true;
+                }
+            } catch (IOException e) {
+            }
+            if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                microInteratorPath = macOSRelativeToolingApp.getAbsolutePath() + File.separator + microesbPath;
+            } else if (new File(eiToolingHomeForMac).exists()) {
 				microInteratorPath = eiToolingHomeForMac + File.separator + microesbPath;
 			} else {
 				java.nio.file.Path path = Paths.get("");

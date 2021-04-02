@@ -95,6 +95,7 @@ import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.maven.util.MavenUtils;
 import org.wso2.integrationstudio.platform.core.model.AbstractListDataProvider.ListData;
 import org.wso2.integrationstudio.platform.core.project.export.util.ExportUtil;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 import org.wso2.integrationstudio.platform.core.utils.IntegrationStudioProviderUtils;
 import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 import org.wso2.integrationstudio.platform.ui.preferences.CappPreferencesPage;
@@ -886,7 +887,17 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 			nodeData.setHaschildren(true);
 			item.setData(nodeData);
 
-			item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/esb-config-folder.png"));
+			if (project.hasNature(Constants.GENERAL_PROJECT_NATURE)) {
+				item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/general-project-12.png"));
+			} else if (project.hasNature(Constants.CONNECTOR_PROJECT_NATURE)) {
+				item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/new-mediator-16x16.png"));
+			} else if (project.hasNature(Constants.DATASOURCE_PROJECT_NATURE)) {
+				item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/dsource-16x16.png"));
+			} else if (project.hasNature(Constants.DS_PROJECT_NATURE)) {
+				item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/ds-16x16.png"));
+			} else {
+				item.setImage(0, SWTResourceManager.getImage(this.getClass(), "/icons/esb-config-folder.png"));
+			}
 		} catch (Exception e) {
 			log.error("createNode fail", e);
 			return null;

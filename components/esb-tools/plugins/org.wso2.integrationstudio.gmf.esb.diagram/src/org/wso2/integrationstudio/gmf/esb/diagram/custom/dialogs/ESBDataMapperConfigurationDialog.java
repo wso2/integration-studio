@@ -2,20 +2,25 @@ package org.wso2.integrationstudio.gmf.esb.diagram.custom.dialogs;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.model.Repository;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -38,7 +43,13 @@ import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
 import org.wso2.integrationstudio.esb.core.utils.ESBUtils;
 import org.wso2.integrationstudio.esb.core.utils.EsbTemplateFormatter;
@@ -54,6 +65,7 @@ import org.wso2.integrationstudio.maven.util.MavenUtils;
 import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioElement;
 import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProvider;
 import org.wso2.integrationstudio.platform.core.interfaces.IIntegrationStudioProviderData;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplate;
 import org.wso2.integrationstudio.project.extensions.templates.ArtifactTemplateHandler;
 import org.wso2.integrationstudio.registry.core.interfaces.RegistryFileImpl;
@@ -213,7 +225,8 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
         link.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
                 Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-                IProject generalProject = GeneralProjectUtils.createGeneralProject(shell, null);
+                
+                IProject generalProject = GeneralProjectUtils.createGeneralProject(shell, getCurrentProjectFile());
                 if (generalProject != null) {
                     comboProject.add(generalProject.getName());
                     if (comboProject.getItems().length > 0) {
@@ -282,6 +295,32 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
         setImportConfigurationsList(providerProjectsList);
         validate();
         return container;
+    }
+    
+    private File getCurrentProjectFile() {
+        try {
+            IWorkbench workbench = PlatformUI.getWorkbench();
+            IWorkbenchWindow window = workbench == null ? null : workbench.getActiveWorkbenchWindow();
+            IWorkbenchPage activePage = window == null ? null : window.getActivePage();
+            IEditorPart editor = activePage == null ? null : activePage.getActiveEditor();
+            IEditorInput input = editor == null ? null : editor.getEditorInput();
+            IPath filePath = input instanceof FileEditorInput ? ((FileEditorInput) input).getPath() : null;
+            IProject esbProject = input instanceof FileEditorInput ? ((FileEditorInput) input).getFile().getProject()
+                    : null;
+
+            if (esbProject != null && filePath != null) {
+                File currentProjectFile = new File(esbProject.getLocation().toOSString());
+                File parentOfCurrentFile = currentProjectFile.getParentFile();
+                String dotProjectLocationOfParent = parentOfCurrentFile.getAbsolutePath() + File.separator + ".project";
+                if (parentOfCurrentFile != null && parentOfCurrentFile.exists() 
+                        && new File(dotProjectLocationOfParent).exists()) {
+                    return parentOfCurrentFile;
+                }
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+        }
+        return null;
     }
 
     /**

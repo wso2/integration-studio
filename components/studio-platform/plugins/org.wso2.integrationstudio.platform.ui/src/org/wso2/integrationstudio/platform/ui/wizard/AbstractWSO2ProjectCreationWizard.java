@@ -142,6 +142,8 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
                 File location;
                 if (project != null) {
                     location = project.getLocation().toFile();
+                } else if (getModel().getLocation() != null) {
+                    location = getModel().getLocation();
                 } else {
                     location = ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile();
                 }

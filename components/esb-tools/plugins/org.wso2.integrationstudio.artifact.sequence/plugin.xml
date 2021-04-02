@@ -92,7 +92,7 @@
       <propertyTester
             class="org.wso2.integrationstudio.artifact.sequence.property.SequencePropertyTester"
             id="org.wso2.integrationstudio.server.propertytester"
-            namespace="org.wso2.integrationstudio.eclipse"
+            namespace="org.wso2.integrationstudio"
             properties="createproxy"
             type="org.eclipse.core.resources.IFile">
       </propertyTester>

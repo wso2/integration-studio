@@ -191,7 +191,7 @@
         <propertyTester
                 class="org.wso2.integrationstudio.platform.ui.property.tester.MavenPropertyTester"
                 id="org.wso2.integrationstudio.maven.propertytester"
-                namespace="org.wso2.integrationstudio.eclipse"
+                namespace="org.wso2.integrationstudio"
                 properties="pomgenModuleVisibility"
                 type="org.eclipse.core.resources.IProject">
         </propertyTester>

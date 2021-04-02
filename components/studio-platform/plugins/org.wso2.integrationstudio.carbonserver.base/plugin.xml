@@ -22,14 +22,14 @@
       <propertyTester
             class="org.wso2.integrationstudio.carbonserver.base.ui.actions.ServerModuleVisibilityPropertyTester"
             id="org.wso2.integrationstudio.server.propertytester"
-            namespace="org.wso2.integrationstudio.eclipse"
+            namespace="org.wso2.integrationstudio"
             properties="serverModuleVisibility"
             type="org.eclipse.wst.server.ui.IServerModule">
       </propertyTester>
       <propertyTester
             class="org.wso2.integrationstudio.carbonserver.base.ui.actions.ServerModuleEnablementPropertyTester"
             id="org.wso2.integrationstudio.server.propertytester"
-            namespace="org.wso2.integrationstudio.eclipse"
+            namespace="org.wso2.integrationstudio"
             properties="serverModuleEnablement"
             type="org.eclipse.wst.server.ui.IServerModule">
       </propertyTester>

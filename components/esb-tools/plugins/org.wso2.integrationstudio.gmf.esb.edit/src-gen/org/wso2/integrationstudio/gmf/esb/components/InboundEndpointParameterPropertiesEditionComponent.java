@@ -28,10 +28,12 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
-
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 import org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter;
-
+import org.wso2.integrationstudio.gmf.esb.KeyType;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart;
 
@@ -81,7 +83,21 @@ public class InboundEndpointParameterPropertiesEditionComponent extends SinglePa
 			if (isAccessible(EsbViewsRepository.InboundEndpointParameter.Properties.value))
 				basePart.setValue(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpointParameter.getValue()));
 			
+			// Start of user code  for key command update
+			// End of user code
+			
+			if (isAccessible(EsbViewsRepository.InboundEndpointParameter.Properties.type)) {
+				basePart.initType(EEFUtils.choiceOfValues(inboundEndpointParameter, EsbPackage.eINSTANCE
+						.getInboundEndpointParameter_Type()), inboundEndpointParameter.getType());
+			}
 			// init filters
+			
+			
+			// Start of user code  for key filter update
+			if (isAccessible(EsbViewsRepository.InboundEndpointParameter.Properties.key)) {
+				basePart.setKey(inboundEndpointParameter.getKey());
+			}
+			// End of user code
 			
 			
 			// init values for referenced views
@@ -107,6 +123,12 @@ public class InboundEndpointParameterPropertiesEditionComponent extends SinglePa
 		if (editorKey == EsbViewsRepository.InboundEndpointParameter.Properties.value) {
 			return EsbPackage.eINSTANCE.getInboundEndpointParameter_Value();
 		}
+		if (editorKey == EsbViewsRepository.InboundEndpointParameter.Properties.key) {
+			return EsbPackage.eINSTANCE.getInboundEndpointParameter_Key();
+		}
+		if (editorKey == EsbViewsRepository.InboundEndpointParameter.Properties.type) {
+			return EsbPackage.eINSTANCE.getInboundEndpointParameter_Type();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -122,6 +144,20 @@ public class InboundEndpointParameterPropertiesEditionComponent extends SinglePa
 		}
 		if (EsbViewsRepository.InboundEndpointParameter.Properties.value == event.getAffectedEditor()) {
 			inboundEndpointParameter.setValue((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.InboundEndpointParameter.Properties.key == event.getAffectedEditor()) {
+			// Start of user code for updateKey method body
+		    if (event.getNewValue() != null) {
+		        RegistryKeyProperty rkp = (RegistryKeyProperty) event.getNewValue();
+		        inboundEndpointParameter.setKey(rkp);
+		    } else {
+		    	inboundEndpointParameter.setKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+		    }
+			// End of user code
+			
+		}
+		if (EsbViewsRepository.InboundEndpointParameter.Properties.type == event.getAffectedEditor()) {
+			inboundEndpointParameter.setType((KeyType)event.getNewValue());
 		}
 	}
 
@@ -147,6 +183,23 @@ public class InboundEndpointParameterPropertiesEditionComponent extends SinglePa
 					basePart.setValue("");
 				}
 			}
+					// Start of user code for key live update
+					
+					// End of user code
+			
+			if (EsbPackage.eINSTANCE.getInboundEndpointParameter_Type().equals(msg.getFeature()) && msg.getNotifier()
+					.equals(semanticObject) && isAccessible(EsbViewsRepository.InboundEndpointParameter.Properties.type))
+				basePart.setType((KeyType)msg.getNewValue());
+			
+			if (EsbPackage.eINSTANCE.getInboundEndpointParameter_Key().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.InboundEndpointParameter.Properties.key)) {
+				if (msg.getNewValue() != null) {
+					basePart.setKey((RegistryKeyProperty) msg.getNewValue());
+				} else {
+					basePart.setKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
+				}
+			}
 			
 		}
 	}
@@ -160,7 +213,9 @@ public class InboundEndpointParameterPropertiesEditionComponent extends SinglePa
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			EsbPackage.eINSTANCE.getInboundEndpointParameter_Name(),
-			EsbPackage.eINSTANCE.getInboundEndpointParameter_Value()		);
+			EsbPackage.eINSTANCE.getInboundEndpointParameter_Value(),
+			EsbPackage.eINSTANCE.getInboundEndpointParameter_Key(),
+			EsbPackage.eINSTANCE.getInboundEndpointParameter_Type()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -188,6 +243,14 @@ public class InboundEndpointParameterPropertiesEditionComponent extends SinglePa
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getInboundEndpointParameter_Value().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getInboundEndpointParameter_Value().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.InboundEndpointParameter.Properties.type == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE
+								.getInboundEndpointParameter_Type().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getInboundEndpointParameter_Type().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

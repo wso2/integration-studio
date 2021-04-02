@@ -28,6 +28,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getKey <em>Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpointParameter()
@@ -88,5 +90,52 @@ public interface InboundEndpointParameter extends EObject {
      * @generated
      */
     void setValue(String value);
+
+                /**
+     * Returns the value of the '<em><b>Key</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Key</em>' reference.
+     * @see #setKey(RegistryKeyProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpointParameter_Key()
+     * @model
+     * @generated
+     */
+    RegistryKeyProperty getKey();
+
+                /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getKey <em>Key</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Key</em>' reference.
+     * @see #getKey()
+     * @generated
+     */
+    void setKey(RegistryKeyProperty value);
+
+                /**
+     * Returns the value of the '<em><b>Type</b></em>' attribute.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.KeyType}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Type</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.KeyType
+     * @see #setType(KeyType)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpointParameter_Type()
+     * @model
+     * @generated
+     */
+    KeyType getType();
+
+                /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getType <em>Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Type</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.KeyType
+     * @see #getType()
+     * @generated
+     */
+    void setType(KeyType value);
 
 } // InboundEndpointParameter

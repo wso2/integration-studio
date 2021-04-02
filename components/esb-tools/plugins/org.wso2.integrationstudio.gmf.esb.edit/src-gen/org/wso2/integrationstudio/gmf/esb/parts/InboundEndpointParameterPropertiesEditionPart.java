@@ -3,6 +3,9 @@
  */
 package org.wso2.integrationstudio.gmf.esb.parts;
 
+import org.eclipse.emf.common.util.Enumerator;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+
 // Start of user code for imports
 
 
@@ -43,8 +46,32 @@ public interface InboundEndpointParameterPropertiesEditionPart {
 	public void setValue(String newValue);
 
 
+    /**
+     * @return the type
+     * 
+     */
+    public Enumerator getType();
+
+    /**
+     * Init the type
+     * @param input the viewer input
+     * @param current the current value
+     */
+    public void initType(Object input, Enumerator current);
+
+    /**
+     * Defines a new type
+     * @param newValue the new type to set
+     * 
+     */
+    public void setType(Enumerator newValue);
 
 
+
+
+    // Start of user code for key specific getters and setters declaration
+    
+    // End of user code
 
 	/**
 	 * Returns the internationalized title text.
@@ -53,6 +80,10 @@ public interface InboundEndpointParameterPropertiesEditionPart {
 	 * 
 	 */
 	public String getTitle();
+
+	public RegistryKeyProperty getKey();
+
+	public void setKey(RegistryKeyProperty keyProperty);
 
 	// Start of user code for additional methods
 	

@@ -68,6 +68,8 @@ public class InboundEndpointParameterItemProvider extends ItemProviderAdapter im
 
             addNamePropertyDescriptor(object);
             addValuePropertyDescriptor(object);
+            addKeyPropertyDescriptor(object);
+            addTypePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -117,6 +119,49 @@ public class InboundEndpointParameterItemProvider extends ItemProviderAdapter im
     }
 
     /**
+     * This adds a property descriptor for the Key feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addKeyPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpointParameter_key_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpointParameter_key_feature", "_UI_InboundEndpointParameter_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT_PARAMETER__KEY,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+                /**
+     * This adds a property descriptor for the Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpointParameter_type_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpointParameter_type_feature", "_UI_InboundEndpointParameter_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT_PARAMETER__TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+    /**
      * This returns InboundEndpointParameter.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -155,6 +200,7 @@ public class InboundEndpointParameterItemProvider extends ItemProviderAdapter im
         switch (notification.getFeatureID(InboundEndpointParameter.class)) {
             case EsbPackage.INBOUND_ENDPOINT_PARAMETER__NAME:
             case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__TYPE:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

@@ -26516,13 +26516,30 @@ public interface EsbPackage extends EPackage {
     int INBOUND_ENDPOINT_PARAMETER__VALUE = 1;
 
     /**
+     * The feature id for the '<em><b>Key</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT_PARAMETER__KEY = 2;
+
+				/**
+     * The feature id for the '<em><b>Type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT_PARAMETER__TYPE = 3;
+    /**
      * The number of structural features of the '<em>Inbound Endpoint Parameter</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT_PARAMETER_FEATURE_COUNT = 2;
+    int INBOUND_ENDPOINT_PARAMETER_FEATURE_COUNT = 4;
 
     /**
      * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointContainerImpl <em>Inbound Endpoint Container</em>}' class.
@@ -38279,6 +38296,27 @@ public interface EsbPackage extends EPackage {
      */
     EAttribute getInboundEndpointParameter_Value();
 
+    /**
+     * Returns the meta object for the reference '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getKey <em>Key</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Key</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getKey()
+     * @see #getInboundEndpointParameter()
+     * @generated
+     */
+    EReference getInboundEndpointParameter_Key();
+
+				/**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getType <em>Type</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Type</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getType()
+     * @see #getInboundEndpointParameter()
+     * @generated
+     */
+    EAttribute getInboundEndpointParameter_Type();
     /**
      * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getClass_ <em>Class</em>}'.
      * <!-- begin-user-doc -->
@@ -55322,6 +55360,21 @@ public interface EsbPackage extends EPackage {
          */
         EAttribute INBOUND_ENDPOINT_PARAMETER__VALUE = eINSTANCE.getInboundEndpointParameter_Value();
 
+        /**
+         * The meta object literal for the '<em><b>Key</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference INBOUND_ENDPOINT_PARAMETER__KEY = eINSTANCE.getInboundEndpointParameter_Key();
+
+                            /**
+         * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT_PARAMETER__TYPE = eINSTANCE.getInboundEndpointParameter_Type();
         /**
          * The meta object literal for the '<em><b>Class</b></em>' attribute feature.
          * <!-- begin-user-doc -->

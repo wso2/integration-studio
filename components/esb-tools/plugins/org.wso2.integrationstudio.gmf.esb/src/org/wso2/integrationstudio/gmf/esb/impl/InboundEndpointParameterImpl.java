@@ -35,6 +35,8 @@ import org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter;
  * <ul>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointParameterImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointParameterImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointParameterImpl#getKey <em>Key</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointParameterImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -81,12 +83,46 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
     protected String value = VALUE_EDEFAULT;
 
     /**
+     * The cached value of the '{@link #getKey() <em>Key</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getKey()
+     * @generated
+     * @ordered
+     */
+    protected RegistryKeyProperty key;
+
+                /**
+     * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getType()
+     * @generated
+     * @ordered
+     */
+    protected static final KeyType TYPE_EDEFAULT = KeyType.STATIC;
+
+                /**
+     * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getType()
+     * @generated
+     * @ordered
+     */
+    protected KeyType type = TYPE_EDEFAULT;
+    /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     protected InboundEndpointParameterImpl() {
         super();
+        RegistryKeyProperty key = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+        key.setPrettyName("Script Key");
+        key.setKeyName("key");
+        key.setKeyValue("");
+        setKey(key);
     }
 
     /**
@@ -146,6 +182,64 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
      * <!-- end-user-doc -->
      * @generated
      */
+    public RegistryKeyProperty getKey() {
+        if (key != null && key.eIsProxy()) {
+            InternalEObject oldKey = (InternalEObject)key;
+            key = (RegistryKeyProperty)eResolveProxy(oldKey);
+            if (key != oldKey) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.INBOUND_ENDPOINT_PARAMETER__KEY, oldKey, key));
+            }
+        }
+        return key;
+    }
+
+                /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public RegistryKeyProperty basicGetKey() {
+        return key;
+    }
+
+                /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setKey(RegistryKeyProperty newKey) {
+        RegistryKeyProperty oldKey = key;
+        key = newKey;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_PARAMETER__KEY, oldKey, key));
+    }
+
+                /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public KeyType getType() {
+        return type;
+    }
+
+                /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setType(KeyType newType) {
+        KeyType oldType = type;
+        type = newType == null ? TYPE_EDEFAULT : newType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_PARAMETER__TYPE, oldType, type));
+    }
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
@@ -153,6 +247,11 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
                 return getName();
             case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
                 return getValue();
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__KEY:
+                if (resolve) return getKey();
+                return basicGetKey();
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__TYPE:
+                return getType();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -170,6 +269,12 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
                 return;
             case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
                 setValue((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__KEY:
+                setKey((RegistryKeyProperty)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__TYPE:
+                setType((KeyType)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -189,6 +294,12 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
             case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
                 setValue(VALUE_EDEFAULT);
                 return;
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__KEY:
+                setKey((RegistryKeyProperty)null);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__TYPE:
+                setType(TYPE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -205,6 +316,10 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
                 return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
             case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
                 return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__KEY:
+                return key != null;
+            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__TYPE:
+                return type != TYPE_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -223,6 +338,8 @@ public class InboundEndpointParameterImpl extends EObjectImpl implements Inbound
         result.append(name);
         result.append(", value: ");
         result.append(value);
+        result.append(", type: ");
+        result.append(type);
         result.append(')');
         return result.toString();
     }

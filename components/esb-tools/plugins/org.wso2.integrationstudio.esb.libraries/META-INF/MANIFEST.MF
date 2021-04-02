@@ -133,8 +133,8 @@ Bundle-ClassPath: .,
  lib/swagger-parser-2.0.20.wso2v1.jar,
  lib/org.wso2.micro.integrator.mediator.dataservice_4.0.0.jar,
  lib/org.wso2.micro.integrator.dataservices.core_4.0.0.jar,
- lib/org.wso2.carbon.rest.api-4.7.85.jar,
- lib/org.wso2.carbon.mediation.commons-4.7.85.jar
+ lib/org.wso2.carbon.mediation.commons-4.7.85.jar,
+ lib/org.wso2.carbon.rest.api-4.7.92.jar
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jdt.ui,

@@ -643,7 +643,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					RestApiAdmin restAPIAdmin = new RestApiAdmin();
 					OMElement element = AXIOMUtil.stringToOM(currentSource);
 					API api = APIFactory.createAPI(element);
-					String updatedAPI = restAPIAdmin.generateUpdatedAPIFromSwagger(getSource(), api);
+					String updatedAPI = restAPIAdmin.generateUpdatedAPIFromSwaggerForAPI(getSource(), api);
 					sourceEditor.getDocument().set(updatedAPI);
 				} catch (Exception e) {
 					log.error("Unable to generate API from the swagger definition", e);
@@ -759,7 +759,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 						RestApiAdmin restAPIAdmin = new RestApiAdmin();
 						OMElement element = AXIOMUtil.stringToOM(currentSource);
 						API api = APIFactory.createAPI(element);
-						String updatedAPI = restAPIAdmin.generateUpdatedAPIFromSwagger(getSource(), api);
+						String updatedAPI = restAPIAdmin.generateUpdatedAPIFromSwaggerForAPI(getSource(), api);
 						sourceEditor.getDocument().set(DefaultEsbModelExporter.format(updatedAPI));
 					} catch (Exception e) {
 						MessageDialog.openError(Display.getCurrent().getActiveShell(),

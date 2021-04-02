@@ -187,7 +187,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                   OMElement omElement = AXIOMUtil.stringToOM(fileContent);
                   synapseApi = APIFactory.createAPI(omElement);
                   apiFileName = api.getName().substring(0, api.getName().indexOf(".xml"));
-                  String swagger = restAPIAdmin.generateSwaggerFromSynapseAPI(synapseApi, false);
+                  String swagger = restAPIAdmin.generateSwaggerFromSynapseAPIByFormat(synapseApi, false);
                   IFile swaggerFile = metadataLocation.getFile(new Path(apiFileName + "_swagger.yaml"));
                   FileUtils.createFile(swaggerFile.getLocation().toFile(), swagger);
                   createMetadataArtifactEntry(metadataLocation, apiFileName, metadataGroupId, true);
@@ -238,7 +238,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     String fileContent = FileUtils.getContentAsString(destFile);
                     OMElement omElement = AXIOMUtil.stringToOM(fileContent);
                     synapseApi = APIFactory.createAPI(omElement);
-                    String swagger = restAPIAdmin.generateSwaggerFromSynapseAPI(synapseApi, false);
+                    String swagger = restAPIAdmin.generateSwaggerFromSynapseAPIByFormat(synapseApi, false);
                     IFile swaggerFile = metadataLocation.getFile(new Path(synapseApi.getAPIName() + "_swagger.yaml"));
                     FileUtils.createFile(swaggerFile.getLocation().toFile(), swagger);
                     createMetadataArtifactEntry(metadataLocation, artifactModel.getName(), metadataGroupId, true);
@@ -335,7 +335,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         RestApiAdmin restAPIAdmin = new RestApiAdmin();
 
         try {
-            String generatedAPI = restAPIAdmin.generateAPIFromSwagger(swaggerYaml, false);
+            String generatedAPI = restAPIAdmin.generateAPIFromSwaggerByFormat(swaggerYaml, false);
             OMElement element = AXIOMUtil.stringToOM(generatedAPI);
             // Inject the publish swagger property to the synapse api artifact
             if (artifactModel.getSwaggerRegistryLocation() != null

@@ -12458,8 +12458,26 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getInboundEndpointParameter_Value() {
+    public EAttribute getInboundEndpointParameter_InboundEndpointParameterType() {
         return (EAttribute)inboundEndpointParameterEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getInboundEndpointParameter_Value() {
+        return (EAttribute)inboundEndpointParameterEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getInboundEndpointParameter_InboundEndpointParameterKey() {
+        return (EReference)inboundEndpointParameterEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -22357,7 +22375,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
         inboundEndpointParameterEClass = createEClass(INBOUND_ENDPOINT_PARAMETER);
         createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__NAME);
+        createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__INBOUND_ENDPOINT_PARAMETER_TYPE);
         createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__VALUE);
+        createEReference(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__INBOUND_ENDPOINT_PARAMETER_KEY);
 
         inboundEndpointContainerEClass = createEClass(INBOUND_ENDPOINT_CONTAINER);
         createEReference(inboundEndpointContainerEClass, INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER);
@@ -24921,7 +24941,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
         initEClass(inboundEndpointParameterEClass, InboundEndpointParameter.class, "InboundEndpointParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getInboundEndpointParameter_Name(), ecorePackage.getEString(), "name", "parameter_name", 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getInboundEndpointParameter_InboundEndpointParameterType(), this.getKeyType(), "inboundEndpointParameterType", null, 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getInboundEndpointParameter_Value(), ecorePackage.getEString(), "value", "parameter_value", 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getInboundEndpointParameter_InboundEndpointParameterKey(), this.getRegistryKeyProperty(), null, "inboundEndpointParameterKey", null, 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(inboundEndpointContainerEClass, InboundEndpointContainer.class, "InboundEndpointContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getInboundEndpointContainer_SequenceContainer(), this.getInboundEndpointSequenceContainer(), null, "sequenceContainer", null, 0, 1, InboundEndpointContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

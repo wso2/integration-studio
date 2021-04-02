@@ -26507,13 +26507,31 @@ public interface EsbPackage extends EPackage {
     int INBOUND_ENDPOINT_PARAMETER__NAME = 0;
 
     /**
+     * The feature id for the '<em><b>Inbound Endpoint Parameter Type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT_PARAMETER__INBOUND_ENDPOINT_PARAMETER_TYPE = 1;
+
+    /**
      * The feature id for the '<em><b>Value</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT_PARAMETER__VALUE = 1;
+    int INBOUND_ENDPOINT_PARAMETER__VALUE = 2;
+
+    /**
+     * The feature id for the '<em><b>Inbound Endpoint Parameter Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT_PARAMETER__INBOUND_ENDPOINT_PARAMETER_KEY = 3;
 
     /**
      * The number of structural features of the '<em>Inbound Endpoint Parameter</em>' class.
@@ -26522,7 +26540,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT_PARAMETER_FEATURE_COUNT = 2;
+    int INBOUND_ENDPOINT_PARAMETER_FEATURE_COUNT = 4;
 
     /**
      * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointContainerImpl <em>Inbound Endpoint Container</em>}' class.
@@ -38269,6 +38287,17 @@ public interface EsbPackage extends EPackage {
     EAttribute getInboundEndpointParameter_Name();
 
     /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getInboundEndpointParameterType <em>Inbound Endpoint Parameter Type</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Inbound Endpoint Parameter Type</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getInboundEndpointParameterType()
+     * @see #getInboundEndpointParameter()
+     * @generated
+     */
+    EAttribute getInboundEndpointParameter_InboundEndpointParameterType();
+
+    /**
      * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getValue <em>Value</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -38278,6 +38307,17 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EAttribute getInboundEndpointParameter_Value();
+
+    /**
+     * Returns the meta object for the containment reference '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getInboundEndpointParameterKey <em>Inbound Endpoint Parameter Key</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Inbound Endpoint Parameter Key</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getInboundEndpointParameterKey()
+     * @see #getInboundEndpointParameter()
+     * @generated
+     */
+    EReference getInboundEndpointParameter_InboundEndpointParameterKey();
 
     /**
      * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getClass_ <em>Class</em>}'.
@@ -55315,12 +55355,28 @@ public interface EsbPackage extends EPackage {
         EAttribute INBOUND_ENDPOINT_PARAMETER__NAME = eINSTANCE.getInboundEndpointParameter_Name();
 
         /**
+         * The meta object literal for the '<em><b>Inbound Endpoint Parameter Type</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT_PARAMETER__INBOUND_ENDPOINT_PARAMETER_TYPE = eINSTANCE.getInboundEndpointParameter_InboundEndpointParameterType();
+
+        /**
          * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
         EAttribute INBOUND_ENDPOINT_PARAMETER__VALUE = eINSTANCE.getInboundEndpointParameter_Value();
+
+        /**
+         * The meta object literal for the '<em><b>Inbound Endpoint Parameter Key</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference INBOUND_ENDPOINT_PARAMETER__INBOUND_ENDPOINT_PARAMETER_KEY = eINSTANCE.getInboundEndpointParameter_InboundEndpointParameterKey();
 
         /**
          * The meta object literal for the '<em><b>Class</b></em>' attribute feature.

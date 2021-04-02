@@ -3463,8 +3463,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointParameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="parameter_name"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inboundEndpointParameterType"
+        eType="#//KeyType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="parameter_value"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inboundEndpointParameterKey"
+        eType="#//RegistryKeyProperty" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InboundEndpointType">
     <eLiterals name="http" literal="HTTP"/>

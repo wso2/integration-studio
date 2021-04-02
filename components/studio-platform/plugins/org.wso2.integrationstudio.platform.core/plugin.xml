@@ -353,7 +353,7 @@
         <propertyTester
                 class="org.wso2.integrationstudio.platform.core.project.refactor.ArtifactProjectRenameParticipantPropertyTester"
                 id="org.wso2.integrationstudio.artifact.project.propertytester"
-                namespace="org.wso2.integrationstudio.eclipse"
+                namespace="org.wso2.integrationstudio"
                 properties="artifactproject"
                 type="org.eclipse.core.resources.IProject"></propertyTester>
     </extension>

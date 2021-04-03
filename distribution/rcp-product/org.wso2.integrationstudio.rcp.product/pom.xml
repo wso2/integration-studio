@@ -94,8 +94,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>https://wso2.org/jenkins/job/products/job/product-mi-tooling/450/artifact/monitoring-dashboard/distribution/target/wso2mi-dashboard-4.0.0-SNAPSHOT.zip</url>
-                            <!-- <url>https://github.com/wso2/micro-integrator/releases/download/v${mi.dashboard.version}/wso2mi-dashboard-${mi.dashboard.version}.zip</url> -->
+                            <url>https://github.com/wso2/micro-integrator/releases/download/v${mi.dashboard.version}/wso2mi-dashboard-${mi.dashboard.version}.zip</url>
                             <unpack>false</unpack>
                             <outputDirectory>${project.build.directory}/products</outputDirectory>
                         </configuration>

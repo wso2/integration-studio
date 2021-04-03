@@ -185,7 +185,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
                         || file.getParentFile().getName().contains("KubernetesExporter"))) {
                     // replace mi base image
                     content = content.replaceAll("<dockerfile.base.image>wso2/wso2mi:4.0.0-alpha</dockerfile.base.image>",
-                            "<dockerfile.base.image>wso2/wso2mi:4.0.0-alpha</dockerfile.base.image>");
+                            "<dockerfile.base.image>wso2/wso2mi:4.0.0-beta</dockerfile.base.image>");
                     
                     //replace config mapper plugin version
                     content = content.replaceAll("<version>5.2.32</version>", "<version>5.2.35</version>");

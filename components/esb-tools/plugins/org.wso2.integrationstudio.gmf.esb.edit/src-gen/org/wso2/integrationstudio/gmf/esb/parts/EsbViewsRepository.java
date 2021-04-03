@@ -9668,13 +9668,6 @@ public class EsbViewsRepository {
 			
 			public static String value = "esb::InboundEndpointParameter::properties::value";
 			
-			
-			public static String type = "esb::InboundEndpointParameter::properties::type";
-			
-			// Start of user code for key ElementEditor key
-			public static String key = "esb::InboundEndpointParameter::properties::key";
-			// End of user code
-			
 	
 		}
 	

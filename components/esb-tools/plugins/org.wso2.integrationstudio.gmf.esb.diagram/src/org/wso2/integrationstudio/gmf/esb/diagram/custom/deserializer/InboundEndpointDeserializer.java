@@ -68,7 +68,6 @@ import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_END
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET;
-import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.PROXY_SERVICE__ON_ERROR;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT;
@@ -265,14 +264,7 @@ public class InboundEndpointDeserializer
         for (Map.Entry<String, String> entry : object.getParametersMap().entrySet()) {
             InboundEndpointParameter parameter = EsbFactory.eINSTANCE.createInboundEndpointParameter();
             parameter.setName(entry.getKey());
-            String paramKey = object.getParameterKey(entry.getKey());
-            if(paramKey != null) {
-                RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-                registryKeyProperty.setKeyValue(paramKey);
-                parameter.setKey(registryKeyProperty);
-            } else {
-            	parameter.setValue(entry.getValue().toString());
-            }
+            parameter.setValue(entry.getValue().toString());
             parameters.add(parameter);
         }
         if (parameters.size() > 0) {

@@ -3,9 +3,6 @@
  */
 package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
-import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
@@ -24,12 +21,9 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
+
 import org.eclipse.swt.SWT;
 
 import org.eclipse.swt.events.FocusAdapter;
@@ -47,7 +41,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+
 import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart;
 
@@ -63,11 +57,6 @@ public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPr
 
 	protected Text name;
 	protected Text value;
-	protected EMFComboViewer type;
-	// Start of user code  for key widgets declarations
-	
-	// End of user code
-
 
 
 
@@ -115,8 +104,6 @@ public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPr
 		CompositionStep propertiesStep = inboundEndpointParameterStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.name);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.value);
-		propertiesStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.type);
-		propertiesStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.key);
 		
 		
 		composer = new PartComposer(inboundEndpointParameterStep) {
@@ -132,12 +119,6 @@ public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPr
 				if (key == EsbViewsRepository.InboundEndpointParameter.Properties.value) {
 					return createValueText(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.InboundEndpointParameter.Properties.type) {
-					return createTypeEMFComboViewer(widgetFactory, parent);
-				}
-				// Start of user code for key addToPart creation
-				
-				// End of user code
 				return parent;
 			}
 		};
@@ -296,41 +277,6 @@ public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPr
 		return parent;
 	}
 
-	
-	protected Composite createTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, EsbViewsRepository.InboundEndpointParameter.Properties.type, 
-				EsbMessages.SequencePropertiesEditionPart_ReferringSequenceTypeLabel);
-		type = new EMFComboViewer(parent);
-		type.setContentProvider(new ArrayContentProvider());
-		type.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
-		type.getCombo().setLayoutData(typeData);
-		type.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent
-							(InboundEndpointParameterPropertiesEditionPartForm.this, 
-									EsbViewsRepository.InboundEndpointParameter.Properties.type, 
-									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getType()));
-			}
-
-		});
-		type.setID(EsbViewsRepository.InboundEndpointParameter.Properties.type);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository
-				.InboundEndpointParameter.Properties.type, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createTypeEMFComboViewer
-
-		// End of user code
-		return parent;
-	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -408,52 +354,7 @@ public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPr
 		
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#getType()
-	 * 
-	 */
-	public Enumerator getType() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) type.getSelection()).getFirstElement();
-		return selection;
-	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#initType(Object input, Enumerator current)
-	 */
-	public void initType(Object input, Enumerator current) {
-		type.setInput(input);
-		type.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpointParameter.Properties.type);
-		if (eefElementEditorReadOnlyState && type.isEnabled()) {
-			type.setEnabled(false);
-			type.setToolTipText(EsbMessages.InboundEndpointParameter_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !type.isEnabled()) {
-			type.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#setType(Enumerator newValue)
-	 * 
-	 */
-	public void setType(Enumerator newValue) {
-		type.modelUpdating(new StructuredSelection(newValue));
-		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpointParameter.Properties.type);
-		if (eefElementEditorReadOnlyState && type.isEnabled()) {
-			type.setEnabled(false);
-			type.setToolTipText(EsbMessages.InboundEndpointParameter_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !type.isEnabled()) {
-			type.setEnabled(true);
-		}	
-		
-	}
 
 
 
@@ -466,18 +367,6 @@ public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPr
 	 */
 	public String getTitle() {
 		return EsbMessages.InboundEndpointParameter_Part_Title;
-	}
-
-	@Override
-	public RegistryKeyProperty getKey() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setKey(RegistryKeyProperty keyProperty) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	// Start of user code additional methods

@@ -3465,8 +3465,6 @@
         defaultValueLiteral="parameter_name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="parameter_value"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="#//RegistryKeyProperty"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//KeyType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InboundEndpointType">
     <eLiterals name="http" literal="HTTP"/>

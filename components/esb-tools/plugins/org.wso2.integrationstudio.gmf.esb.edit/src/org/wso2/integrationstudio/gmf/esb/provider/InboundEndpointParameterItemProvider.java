@@ -201,7 +201,6 @@ public class InboundEndpointParameterItemProvider extends ItemProviderAdapter im
             case EsbPackage.INBOUND_ENDPOINT_PARAMETER__NAME:
             case EsbPackage.INBOUND_ENDPOINT_PARAMETER__VALUE:
             case EsbPackage.INBOUND_ENDPOINT_PARAMETER__TYPE:
-            case EsbPackage.INBOUND_ENDPOINT_PARAMETER__KEY:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

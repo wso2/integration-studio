@@ -18,14 +18,12 @@ package org.wso2.integrationstudio.gmf.esb.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 import org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter;
-import org.wso2.integrationstudio.gmf.esb.KeyType;
-import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
 
 /**
  * <!-- begin-user-doc -->

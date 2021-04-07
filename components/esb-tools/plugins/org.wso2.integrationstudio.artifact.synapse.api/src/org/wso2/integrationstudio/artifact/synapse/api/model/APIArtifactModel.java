@@ -354,7 +354,7 @@ public class APIArtifactModel extends ProjectDataModel {
                 } else {
                     jsonObject = new JSONObject(content);
                 }
-                return jsonObject.getJSONObject("info").getString("title");
+                return jsonObject.getJSONObject("info").getString("title").replaceAll("[^a-zA-Z0-9_-]+", "");
             } catch (FileNotFoundException er) {
                 log.error("Exception while reading given swagger file", er);
             } catch (JSONException e) {

@@ -96,9 +96,9 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 
     private static final String DATAMAPPER_REGISTRY_PATH = "/_system/governance/datamapper"; //$NON-NLS-1$
     private static final String REPO_ID_1 = "wso2-nexus-maven2-repository-1"; //$NON-NLS-1$
-    private static final String REPO_URL_1 = "http://maven.wso2.org/nexus/content/groups/wso2-public/"; //$NON-NLS-1$
+    private static final String REPO_URL_1 = "https://maven.wso2.org/nexus/content/groups/wso2-public/"; //$NON-NLS-1$
     private static final String REPO_ID = "wso2-maven2-repository-1"; //$NON-NLS-1$
-    private static final String REPO_URL = "http://dist.wso2.org/maven2"; //$NON-NLS-1$
+    private static final String REPO_URL = "https://maven.wso2.org/nexus/content/groups/wso2-public/"; //$NON-NLS-1$
     private static final String ARTIFACT_TYPES = "${artifact.types}"; //$NON-NLS-1$
     private static final String TYPE_LIST = "typeList"; //$NON-NLS-1$
     private static final String ARTIFACT_LOCATION = "artifactLocation"; //$NON-NLS-1$

@@ -176,7 +176,7 @@ public class ConnectorWizardPage extends WizardPage {
 			}
 		});
 		GridData gd_btnWorkspace = new GridData(SWT.RIGHT, SWT.TOP, false, false, 2, 1);
-		gd_btnWorkspace.widthHint = 90;
+		gd_btnWorkspace.widthHint = 100;
 		btbWorkspace.setLayoutData(gd_btnWorkspace);
 		btbWorkspace.setText("Workspace");		
 		
@@ -195,7 +195,7 @@ public class ConnectorWizardPage extends WizardPage {
 			}
 		});
 		GridData gd_btnFileSystem = new GridData(SWT.RIGHT, SWT.TOP, false, false, 2, 1);
-		gd_btnFileSystem.widthHint = 90;
+		gd_btnFileSystem.widthHint = 100;
 		btnFileSystem.setLayoutData(gd_btnFileSystem);
 		btnFileSystem.setText("File System");
 
@@ -219,7 +219,7 @@ public class ConnectorWizardPage extends WizardPage {
 			}
 		});
 		GridData gd_btnRemove = new GridData(SWT.RIGHT, SWT.TOP, false, false, 2, 1);
-		gd_btnRemove.widthHint = 90;
+		gd_btnRemove.widthHint = 100;
 		btnRemove.setLayoutData(gd_btnRemove);
 		btnRemove.setText("Remove");
 		setPageComplete(false);

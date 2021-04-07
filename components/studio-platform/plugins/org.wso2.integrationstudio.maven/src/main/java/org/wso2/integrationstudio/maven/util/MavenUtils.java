@@ -405,7 +405,7 @@ public class MavenUtils {
 	        existingRepositories.add(repository);
         }
 		Repository repo = new Repository();
-		repo.setUrl("http://maven.wso2.org/nexus/content/groups/wso2-public/");
+		repo.setUrl("https://maven.wso2.org/nexus/content/groups/wso2-public/");
 		repo.setId("wso2-nexus");
 		
 		RepositoryPolicy releasePolicy=new RepositoryPolicy();
@@ -774,7 +774,7 @@ public class MavenUtils {
 	
 	public static void updateMavenProjectWithWSO2Repository(MavenProject mavenProject){
 		Repository repo = new Repository();
-		repo.setUrl("http://maven.wso2.org/nexus/content/groups/wso2-public/");
+		repo.setUrl("https://maven.wso2.org/nexus/content/groups/wso2-public/");
 		repo.setId("wso2-maven2-repository-1");
 
 		mavenProject.getModel().addRepository(repo);

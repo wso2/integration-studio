@@ -122,7 +122,7 @@ public class LibraryArtifactCreationWizard extends
 		
 
 			Repository repo = new Repository();
-			repo.setUrl("http://dist.wso2.org/maven2");
+			repo.setUrl("https://maven.wso2.org/nexus/content/groups/wso2-public/");
 			repo.setId("wso2-maven2-repository-1");
 
 			mavenProject.getModel().addRepository(repo);
@@ -345,7 +345,7 @@ public class LibraryArtifactCreationWizard extends
 			
 			/* adding wso2 nexus repository */
 			Repository nexusRepo = new Repository();
-			nexusRepo.setUrl("http://maven.wso2.org/nexus/content/groups/wso2-public/");
+			nexusRepo.setUrl("https://maven.wso2.org/nexus/content/groups/wso2-public/");
 			nexusRepo.setId("wso2-maven2-repository-1");
 			mavenProject.getModel().addRepository(nexusRepo);
 			mavenProject.getModel().addPluginRepository(nexusRepo);

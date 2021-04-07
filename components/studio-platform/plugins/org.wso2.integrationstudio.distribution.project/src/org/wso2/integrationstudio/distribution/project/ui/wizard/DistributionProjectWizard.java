@@ -118,11 +118,11 @@ public class DistributionProjectWizard extends
 			serverOperation.setValue("deploy");
 
 			Repository repo = new Repository();
-			repo.setUrl("http://dist.wso2.org/maven2");
+			repo.setUrl("https://maven.wso2.org/nexus/content/groups/wso2-public/");
 			repo.setId("wso2-maven2-repository-1");
 			
 			Repository repo1 = new Repository();
-			repo1.setUrl("http://maven.wso2.org/nexus/content/groups/wso2-public/");
+			repo1.setUrl("https://maven.wso2.org/nexus/content/groups/wso2-public/");
 			repo1.setId("wso2-nexus-repository-1");
 
 			mavenProject.getModel().addRepository(repo);

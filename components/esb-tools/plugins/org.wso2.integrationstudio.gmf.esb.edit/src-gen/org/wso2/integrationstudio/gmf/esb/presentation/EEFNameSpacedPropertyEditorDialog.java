@@ -420,6 +420,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
     public static final String OS_TYPE_WINDOWS = "windows";
     
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static String initialExpressionType = XML;
     
     /**
      * A utility class used to track TreeItem state as well as store
@@ -1028,6 +1029,16 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             dialogShell.setSize(1050, 700);
         }
         centerDialog();
+        
+        if(initialExpressionType.equals(JSON)) {
+            if (operatingSystemType.indexOf(OS_TYPE_WINDOWS) >= 0) {
+                dialogShell.setSize(1050, 180);
+            } else {
+            	dialogShell.setSize(1050, 140);
+            }
+        	initialExpressionType = XML;
+        }
+        
         dialogShell.open();
         Display display = dialogShell.getDisplay();
         while (!dialogShell.isDisposed()) {
@@ -1043,8 +1054,14 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
 
     private void loadConfiguration() {
         dialogShell.setText(String.format(EDITOR_TITLE, nsProperty.getPrettyName()));
-        if (!StringUtils.isBlank(nsProperty.getPropertyValue())) {
-            expressionTextField.setText(nsProperty.getPropertyValue());
+        String propertyValue = nsProperty.getPropertyValue();
+        if (!StringUtils.isBlank(propertyValue)) {
+            expressionTextField.setText(propertyValue);
+            if(propertyValue.startsWith("json-eval")) {
+            	evalTypeComboBox.setText(JSON);
+            	onSelectJSON();
+            	initialExpressionType = JSON;
+            }
         }
 
         // Load namespaces.
@@ -1136,13 +1153,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
 					// Set the visibility to 'false' intentionally.
 					// Can be made visible once JSON path evaluation
 					// features are added.
-					setJSONEvaluatorElementsVisibility(false);
-					
-					setXMLEvaluatorElementsVisibility(false);
-					setExprEvaluatorElementsVisibility(false);
-					
-					dialogShell.layout(true, true);
-					dialogShell.setSize(new Point(1050, 140));
+					onSelectJSON();
 					
 				} else {
 					setExprEvaluatorElementsVisibility(true);
@@ -1535,6 +1546,21 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
         });
     }
 
+    private void onSelectJSON() {
+		setJSONEvaluatorElementsVisibility(false);
+		
+		setXMLEvaluatorElementsVisibility(false);
+		setExprEvaluatorElementsVisibility(false);
+		
+		dialogShell.layout(true, true);
+		
+        if (operatingSystemType.indexOf(OS_TYPE_WINDOWS) >= 0) {
+            dialogShell.setSize(1050, 180);
+        } else {
+        	dialogShell.setSize(1050, 140);
+        }
+    }
+    
     private void addNamespace(String prefix, String uri) {
         collectedNamespaces.put(prefix, uri);
         String namespaceDisplayValue = String.format(namespaceDisplayFormat, prefix, uri);

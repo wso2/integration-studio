@@ -1163,7 +1163,7 @@ public class EsbPaletteFactory {
      * @generated
      */
      private ToolEntry createDSSMediator51CreationTool() {
-         NodeToolEntry entry = new NodeToolEntry(Messages.DSSMediator51CreationTool_title,
+         NodeToolEntry entry = new NodeToolEntry("DataServiceCall",
                  Messages.DSSMediator51CreationTool_desc, Collections.singletonList(EsbElementTypes.DSSMediator_3794));
          entry.setId("createDSSMediator51CreationTool"); //$NON-NLS-1$
          entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.DSSMediator_3794));

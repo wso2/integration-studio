@@ -1063,13 +1063,25 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             } else if (currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
             	source = SynapseUnitTestFormToSourceTransformer.generateUnitTestTemplate(formEditorPage);
             } else {
-            	source = EsbModelTransformer.instance.formToSource(formEditorPage, currArtifactType);
+                source = EsbModelTransformer.instance.formToSource(formEditorPage, currArtifactType);
             }
 
         } else {
             EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
             EsbServer server = diagram.getServer();
             source = EsbModelTransformer.instance.designToSource(server);
+            if (swaggerlEditor != null && getActivePage() == SWAGGER_VIEW_PAGE_INDEX && isSwaggerDirty()) {
+                try {
+                    RestApiAdmin restAPIAdmin = new RestApiAdmin();
+                    OMElement element = AXIOMUtil.stringToOM(source);
+                    API api = APIFactory.createAPI(element);
+                    source = restAPIAdmin.generateUpdatedAPIFromSwaggerForAPI(getSource(), api);
+                    sourceEditor.getDocument().set(DefaultEsbModelExporter.format(source));
+                    sourceDirty = false;
+                } catch (Exception e) {
+                    // ignore
+                }
+            }
         }
         xmlFile = ((EsbEditorInput) getEditor(0).getEditorInput()).getXmlResource();
         if (source == null) {
@@ -1246,6 +1258,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     FileUtils.writeStringToFile(swaggerPublisherInRegistry, swaggerCommonSource);
                 }
                 swaggerlEditor.doSave(monitor);
+                
             } catch (Exception e) {
                 sourceDirty = true;
                 log.error("Error while saving the swagger file", e);
@@ -1328,9 +1341,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     getEditor(0).doSave(monitor);
                     ESBDebuggerUtil.setPageSaveOperationActivated(false);
                     EditorUtils.setLockmode(graphicalEditor, false);
-                    if (swaggerlEditor != null) {
-                        doSaveSwaggerSources(monitor);
-                    }
                 }
                 
                 if (swaggerlEditor != null && getActivePage() != SWAGGER_VIEW_PAGE_INDEX) {

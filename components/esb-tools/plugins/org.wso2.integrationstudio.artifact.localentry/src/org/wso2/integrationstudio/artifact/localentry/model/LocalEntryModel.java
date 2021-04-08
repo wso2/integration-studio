@@ -177,7 +177,7 @@ public class LocalEntryModel extends ProjectDataModel {
 			}
 			setSelectedLEList(selectedLEList);
 		}else if(key.equals(LocalEntryArtifactConstants.WIZARD_OPTION_IMPORT_SOURC_URL_LE_URL)){
-			setSourceURL(createFileURL(data.toString()));
+		    setSourceURL(data.toString());
 		}else if(key.equals(LocalEntryArtifactConstants.WIZARD_OPTION_IN_LINE_TEXT_LE_VALUE)){
 			setInLineTextValue(data.toString());
 		}else if(key.equals(LocalEntryArtifactConstants.WIZARD_OPTION_IN_LINE_XML_LE_VALUE)){
@@ -190,23 +190,6 @@ public class LocalEntryModel extends ProjectDataModel {
 			}	
 		}
 		return returnResult;
-	}
-	
-	private String createFileURL(String fullFilePath){
-		//check how it happens in windows
-		//linux - file:/home/chathuri/Desktop/input.txt
-		//windows - file:\C:\WSO2\tooling\endpoint21.xml
-		String fileURL = "";
-		if(fullFilePath != null && !fullFilePath.equals("")){
-			if(fullFilePath.startsWith("/")){
-				fileURL = "file:" + fullFilePath;
-			}else if(!fullFilePath.startsWith("file")){
-				fileURL = "file:/" + fullFilePath;
-			}else{
-				return fullFilePath;
-			}
-		}
-		return fileURL;
 	}
 
 	public void setAvailableLEList(List<OMElement> availableLEList) {

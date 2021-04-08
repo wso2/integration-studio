@@ -166,6 +166,10 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		try {
 			boolean isNewArtifact = true;
 			localEntryModel = (LocalEntryModel)getModel();
+			if (localEntryModel != null && localEntryModel.getSourceURL() != null 
+			        && !localEntryModel.getSourceURL().startsWith("http")) {
+			    localEntryModel.setSourceURL(createFileURL(localEntryModel.getSourceURL()));
+			}
 			esbProject =  localEntryModel.getLocalEntrySaveLocation().getProject();
 			createLocalEntryArtifact(localEntryModel);
 			
@@ -180,6 +184,23 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		}
 		return true;
 	}
+	
+	private String createFileURL(String fullFilePath){
+        //check how it happens in windows
+        //linux - file:/home/chathuri/Desktop/input.txt
+        //windows - file:\C:\WSO2\tooling\endpoint21.xml
+        String fileURL = "";
+        if(fullFilePath != null && !fullFilePath.equals("")){
+            if(fullFilePath.startsWith("/")){
+                fileURL = "file:" + fullFilePath;
+            }else if(!fullFilePath.startsWith("file")){
+                fileURL = "file:/" + fullFilePath;
+            }else{
+                return fullFilePath;
+            }
+        }
+        return fileURL;
+    }
 	
 	public void updatePom() throws IOException, XmlPullParserException {
 		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();

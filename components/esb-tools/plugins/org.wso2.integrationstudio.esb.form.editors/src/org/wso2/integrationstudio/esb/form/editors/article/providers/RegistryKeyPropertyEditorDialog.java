@@ -209,7 +209,7 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 		fd_link.right = new FormAttachment(100, -4);
 		fd_link.left = new FormAttachment(0);
 		fd_link.top = new FormAttachment(0, -2);
-		fd_link.bottom = new FormAttachment(0, 20);
+		fd_link.bottom = new FormAttachment(0, 25);
 		link.setLayoutData(fd_link);
 
 		// Fixing TOOLS-2553

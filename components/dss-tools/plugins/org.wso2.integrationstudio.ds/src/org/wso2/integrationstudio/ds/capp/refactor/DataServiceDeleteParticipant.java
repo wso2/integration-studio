@@ -13,6 +13,7 @@
 
 package org.wso2.integrationstudio.ds.capp.refactor;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
@@ -21,6 +22,7 @@ import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -37,6 +39,7 @@ import org.wso2.integrationstudio.ds.util.Messages;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 
 public class DataServiceDeleteParticipant extends DeleteParticipant {
 
@@ -76,14 +79,14 @@ public class DataServiceDeleteParticipant extends DeleteParticipant {
 	public Change createChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
 		CompositeChange change = new CompositeChange(Messages.DataServiceDeleteParticipant_DataServiceDelete);
 		try {
-			Change deleteFromPOM = deleteFromPOM();
-			change.add(deleteFromPOM);
+//			Change deleteFromPOM = deleteFromPOM();
+//			change.add(deleteFromPOM);
 
 		} catch (Exception e) {
 			throw new OperationCanceledException(Messages.DataServiceDeleteParticipant_ArtifactXmlDeleteChangeFailed);
 		}
 		try {
-
+		    identyfyAndRemoveChangingItemFromCompositePOM(originalFile);
 		} catch (Exception e) {
 			log.error("Error While updating CApp", e);
 		}
@@ -135,6 +138,46 @@ public class DataServiceDeleteParticipant extends DeleteParticipant {
 		}
 		return deleteChange;
 	}
+	
+	private void identyfyAndRemoveChangingItemFromCompositePOM(IFile changingFile) {
+        
+        try {
+            String changingFileName = changingFile.getName().substring(0, changingFile.getName().lastIndexOf('.'));
+            IFile pomIFile = changingFile.getProject().getFile("pom.xml");
+            File pomFile = pomIFile.getLocation().toFile();
+            MavenProject mvnProject = MavenUtils.getMavenProject(pomFile);
+            String[] sections = changingFile.getFullPath().toOSString().split(File.separator);
+            String artifactType = sections[sections.length - 2];
+            String chandingFileGroupId = mvnProject.getGroupId() + "." + artifactType;
+            
+            IWorkspace workspace = ResourcesPlugin.getPlugin().getWorkspace();
+            IProject [] projects = workspace.getRoot().getProjects();
+            for (IProject project : projects) {
+                if (project.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
+                    IFile compositePOMIFile = project.getFile("pom.xml");
+                    File compositePOMFile = compositePOMIFile.getLocation().toFile();
+                    MavenProject compositeMvnProject = MavenUtils.getMavenProject(compositePOMFile);
+                    List<Dependency> dependencies = compositeMvnProject.getDependencies();
+                    int dependencyIndex = -1;
+                    for (int x = 0; x < dependencies.size(); x++) {
+                        if (dependencies.get(x).getGroupId().equalsIgnoreCase(chandingFileGroupId) 
+                                && dependencies.get(x).getArtifactId().equalsIgnoreCase(changingFileName)) {
+                            dependencyIndex = x;
+                            break;
+                        }
+                    }
+                    if (dependencyIndex != -1) {
+                        dependencies.remove(dependencyIndex);
+                        compositeMvnProject.getProperties().remove(chandingFileGroupId.concat("_._").concat(changingFileName));
+                        compositeMvnProject.setDependencies(dependencies);
+                        MavenUtils.saveMavenProject(compositeMvnProject, compositePOMFile);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            //ignore
+        } 
+    }
 
 	private Dependency getDependencyForTheProject(IProject project) throws Exception {
 
@@ -144,14 +187,14 @@ public class DataServiceDeleteParticipant extends DeleteParticipant {
 			dependency.setGroupId(mavenProject.getGroupId() + ".dataservice");
 			dependency.setArtifactId(mavenProject.getArtifactId());
 			dependency.setVersion(mavenProject.getVersion());
+			dependency.setType("dbs");
 		}
 		return dependency;
 	}
 
 	private boolean isDependenciesEqual(Dependency source, Dependency target) {
 		return (source.getGroupId().equalsIgnoreCase(target.getGroupId())
-				&& source.getArtifactId().equalsIgnoreCase(target.getArtifactId()) && source.getVersion()
-				.equalsIgnoreCase(target.getVersion()));
+				&& source.getArtifactId().equalsIgnoreCase(target.getArtifactId()));
 	}
 
 	/*

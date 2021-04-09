@@ -17,15 +17,23 @@
 package org.wso2.integrationstudio.artifact.connector.artifact;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.maven.model.Dependency;
+import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.ltk.core.refactoring.TextFileChange;
 import org.eclipse.text.edits.DeleteEdit;
 import org.eclipse.text.edits.MultiTextEdit;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 
 public class ConnectorMetaDataFileDeleteChange extends TextFileChange {
     private static final String ARTIFACT_XML_FILE = "artifact.xml";
@@ -39,6 +47,44 @@ public class ConnectorMetaDataFileDeleteChange extends TextFileChange {
         this.originalFileName = originalFileFullName.substring(0, originalFileFullName.lastIndexOf("-"));
 
         addTextEdits();
+        identyfyAndRemoveChangingItemFromCompositePOM(metaDataFile);
+    }
+    
+    private void identyfyAndRemoveChangingItemFromCompositePOM(IFile changingFile) {
+        
+        try {
+            IFile pomIFile = changingFile.getProject().getFile("pom.xml");
+            File pomFile = pomIFile.getLocation().toFile();
+            MavenProject mvnProject = MavenUtils.getMavenProject(pomFile);
+            String chandingFileGroupId = mvnProject.getGroupId() + ".lib";
+            
+            IWorkspace workspace = ResourcesPlugin.getPlugin().getWorkspace();
+            IProject [] projects = workspace.getRoot().getProjects();
+            for (IProject project : projects) {
+                if (project.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
+                    IFile compositePOMIFile = project.getFile("pom.xml");
+                    File compositePOMFile = compositePOMIFile.getLocation().toFile();
+                    MavenProject compositeMvnProject = MavenUtils.getMavenProject(compositePOMFile);
+                    List<Dependency> dependencies = compositeMvnProject.getDependencies();
+                    int dependencyIndex = -1;
+                    for (int x = 0; x < dependencies.size(); x++) {
+                        if (dependencies.get(x).getGroupId().equalsIgnoreCase(chandingFileGroupId) 
+                                && dependencies.get(x).getArtifactId().equalsIgnoreCase(originalFileName)) {
+                            dependencyIndex = x;
+                            break;
+                        }
+                    }
+                    if (dependencyIndex != -1) {
+                        dependencies.remove(dependencyIndex);
+                        compositeMvnProject.getProperties().remove(chandingFileGroupId.concat("_._").concat(originalFileName));
+                        compositeMvnProject.setDependencies(dependencies);
+                        MavenUtils.saveMavenProject(compositeMvnProject, compositePOMFile);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            //ignore
+        } 
     }
 
     private void addTextEdits() throws IOException {

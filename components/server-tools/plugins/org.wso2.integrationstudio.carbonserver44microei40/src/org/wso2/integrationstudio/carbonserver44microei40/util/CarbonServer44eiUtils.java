@@ -18,10 +18,12 @@
 
 package org.wso2.integrationstudio.carbonserver44microei40.util;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -98,6 +100,7 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 
     @Override
     public boolean updateTransportPorts(IServer server) {
+        updateWorkspaceTomlPorts(server);
         return true;
     }
 
@@ -344,6 +347,48 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
             return defaultValue;
         }
         return tomlValue;
+    }
+    
+    private void updateWorkspaceTomlPorts(IServer server) {
+        try {
+            String serverLocalWorkspacePath = CarbonServerManager.getServerLocalWorkspacePath(server);
+            String deploymentTomlPath = FileUtils.addNodesToPath(
+                    getConfPathFromLocalWorkspaceRepo(serverLocalWorkspacePath), new String[] { "deployment.toml" });
+            ServerPort[] serverPorts = CarbonServerManager.getInstance().getServerPorts(server);
+            for (ServerPort serverPort : serverPorts) {
+                if (serverPort.getName().equalsIgnoreCase("Carbon Server Offset") && serverPort.getPort() != 10) {
+                    updatePortOffsetInDeploymentToml(new File(deploymentTomlPath), serverPort.getPort());
+                }
+            }
+        } catch (Exception e) {
+            // ignore
+        }
+    }
+    
+    public static void updatePortOffsetInDeploymentToml(File deploymentToml, int offset) {
+        if (!deploymentToml.exists()) {
+            log.error("TOML file does not exists in the path: " + deploymentToml.getAbsolutePath());
+            return;
+        }
+        
+        StringBuilder contentBuilder = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new FileReader(deploymentToml))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.trim().contains("offset")) {
+                    line = "offset = " + offset;
+                }
+                contentBuilder.append(line).append("\n");
+            }
+        } catch(Exception e){
+            log.error("Error while updating portOffset in file: " + deploymentToml.getAbsolutePath());
+        }
+        
+        try {
+            org.apache.commons.io.FileUtils.writeStringToFile(deploymentToml, contentBuilder.toString());
+        } catch (IOException e) {
+            log.error("Error while updating portOffset in file: " + deploymentToml.getAbsolutePath());
+        }
     }
     
     public static boolean hasEmbeddedConfigsChanged() {

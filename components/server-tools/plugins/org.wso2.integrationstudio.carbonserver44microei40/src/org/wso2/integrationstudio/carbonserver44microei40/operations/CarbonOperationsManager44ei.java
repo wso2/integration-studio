@@ -272,6 +272,9 @@ public class CarbonOperationsManager44ei implements ICarbonOperationManager {
         String serverLocalWorkspacePath = CarbonServerManager.getServerLocalWorkspacePath(server);
         carbonServer44eiUtils.getRepositoryPathFromLocalWorkspaceRepo(serverLocalWorkspacePath);
         carbonServer44eiUtils.getConfPathFromLocalWorkspaceRepo(serverLocalWorkspacePath);
+        if (!CarbonServerManager.getServerLocalWorkspacePath(server).startsWith("/Applications")) {
+            carbonServer44eiUtils.updateTransportPorts(server);
+        }
         isServerHotUpdate(server);
 
         initializeServerRepoLibraries(server);

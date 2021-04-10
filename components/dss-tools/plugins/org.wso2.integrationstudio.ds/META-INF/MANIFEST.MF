@@ -29,5 +29,6 @@ Import-Package: org.eclipse.ltk.core.refactoring,
  org.wso2.integrationstudio.logging.core,
  org.wso2.integrationstudio.maven.util,
  org.wso2.integrationstudio.platform.core.project.export.util,
+ org.wso2.integrationstudio.platform.core.utils,
  org.wso2.integrationstudio.utils.file
 Bundle-Activator: org.wso2.integrationstudio.ds.Activator

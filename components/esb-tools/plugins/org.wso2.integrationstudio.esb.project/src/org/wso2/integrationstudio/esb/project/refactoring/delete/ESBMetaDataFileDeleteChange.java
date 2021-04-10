@@ -16,7 +16,13 @@
 
 package org.wso2.integrationstudio.esb.project.refactoring.delete;
 
+import org.apache.maven.model.Dependency;
+import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ltk.core.refactoring.TextFileChange;
@@ -25,8 +31,11 @@ import org.eclipse.text.edits.MultiTextEdit;
 import org.wso2.integrationstudio.esb.project.Activator;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,6 +71,7 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 			metaDataFile = file;
 			this.originalFile = iFile;
 			addTextEdits();
+			identyfyAndRemoveChangingItemFromCompositePOM(iFile);
 		}
 
 	}
@@ -74,6 +84,54 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 				log.error("Error occurred while generating the Refactoring", e);
 			}
 		}
+	}
+	
+	private void identyfyAndRemoveChangingItemFromCompositePOM(IFile changingFile) {
+	    
+	    try {
+	        String changingFileName = changingFile.getName().substring(0, changingFile.getName().lastIndexOf('.'));
+	        IFile pomIFile = changingFile.getProject().getFile("pom.xml");
+	        pomIFile.refreshLocal(0, new NullProgressMonitor());
+	        File pomFile = pomIFile.getLocation().toFile();
+            MavenProject mvnProject = MavenUtils.getMavenProject(pomFile);
+            String[] sections = changingFile.getFullPath().toOSString().split(File.separator);
+            String artifactType = sections[sections.length - 2];
+            if (artifactType.equalsIgnoreCase("local-entries")) {
+                artifactType = "local-entry";
+            } else if (!artifactType.equalsIgnoreCase("api") 
+                    && !artifactType.equalsIgnoreCase("metadata")) {
+                artifactType = artifactType.substring(0, artifactType.length() - 1);
+            }
+            String chandingFileGroupId = mvnProject.getGroupId() + "." + artifactType;
+            
+            IWorkspace workspace = ResourcesPlugin.getPlugin().getWorkspace();
+            IProject [] projects = workspace.getRoot().getProjects();
+            for (IProject project : projects) {
+                if (project.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE)) {
+                    IFile compositePOMIFile = project.getFile("pom.xml");
+                    compositePOMIFile.refreshLocal(0, new NullProgressMonitor());
+                    File compositePOMFile = compositePOMIFile.getLocation().toFile();
+                    MavenProject compositeMvnProject = MavenUtils.getMavenProject(compositePOMFile);
+                    List<Dependency> dependencies = compositeMvnProject.getDependencies();
+                    int dependencyIndex = -1;
+                    for (int x = 0; x < dependencies.size(); x++) {
+                        if (dependencies.get(x).getGroupId().equalsIgnoreCase(chandingFileGroupId) 
+                                && dependencies.get(x).getArtifactId().equalsIgnoreCase(changingFileName)) {
+                            dependencyIndex = x;
+                            break;
+                        }
+                    }
+                    if (dependencyIndex != -1) {
+                        dependencies.remove(dependencyIndex);
+                        compositeMvnProject.getProperties().remove(chandingFileGroupId.concat("_._").concat(changingFileName));
+                        compositeMvnProject.setDependencies(dependencies);
+                        MavenUtils.saveMavenProject(compositeMvnProject, compositePOMFile);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            //ignore
+        } 
 	}
 
 	private void identifyReplaces() throws IOException {

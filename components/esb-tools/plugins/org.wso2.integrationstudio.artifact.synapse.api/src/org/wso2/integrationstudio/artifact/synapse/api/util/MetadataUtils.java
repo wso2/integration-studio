@@ -55,7 +55,7 @@ public class MetadataUtils {
                 builder.append("displayName : \"").append(synapseApi.getAPIName()).append("\"\n");
                 builder.append("description: \"Sample API\"\n");
                 builder.append("version: \"").append(version).append("\"\n");
-                builder.append("serviceUrl: \"https://{host}:{port}").append(context).append("\"\n");
+                builder.append("serviceUrl: \"https://{MI_HOST}:{MI_PORT}").append(context).append("\"\n");
                 builder.append("definitionType: \"OAS3\"\n");
                 builder.append("securityType: \"BASIC\"\n");
                 builder.append("mutualSSLEnabled: false\n");

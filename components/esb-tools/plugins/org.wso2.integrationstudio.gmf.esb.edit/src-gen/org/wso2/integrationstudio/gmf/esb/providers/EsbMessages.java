@@ -8455,7 +8455,13 @@ public class EsbMessages extends NLS {
 	public static String InboundEndpointParameterPropertiesEditionPart_NameLabel;
 
 	
+	public static String InboundEndpointParameterPropertiesEditionPart_InboundEndpointParameterTypeLabel;
+
+	
 	public static String InboundEndpointParameterPropertiesEditionPart_ValueLabel;
+
+	
+	public static String InboundEndpointParameterPropertiesEditionPart_InboundEndpointParameterKeyLabel;
 
 	
 	public static String InboundEndpointContainerPropertiesEditionPart_DescriptionLabel;

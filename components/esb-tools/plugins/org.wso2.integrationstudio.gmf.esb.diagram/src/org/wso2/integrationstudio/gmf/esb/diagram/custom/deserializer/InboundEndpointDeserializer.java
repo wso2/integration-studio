@@ -263,8 +263,16 @@ public class InboundEndpointDeserializer
         EList<InboundEndpointParameter> parameters = new BasicEList<InboundEndpointParameter>();
         for (Map.Entry<String, String> entry : object.getParametersMap().entrySet()) {
             InboundEndpointParameter parameter = EsbFactory.eINSTANCE.createInboundEndpointParameter();
-            parameter.setName(entry.getKey());
-            parameter.setValue(entry.getValue().toString());
+            parameter.setName(entry.getKey());	
+            
+            String paramKey = object.getParameterKey(entry.getKey());
+            if(paramKey != null) {
+                RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+                registryKeyProperty.setKeyValue(paramKey);
+                parameter.setInboundEndpointParameterKey(registryKeyProperty);
+            } else {
+            	parameter.setValue(entry.getValue().toString());
+            }
             parameters.add(parameter);
         }
         if (parameters.size() > 0) {

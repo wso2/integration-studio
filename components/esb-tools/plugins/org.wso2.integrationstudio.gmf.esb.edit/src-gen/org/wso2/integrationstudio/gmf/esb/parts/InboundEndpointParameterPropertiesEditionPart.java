@@ -3,6 +3,9 @@
  */
 package org.wso2.integrationstudio.gmf.esb.parts;
 
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+
 // Start of user code for imports
 
 
@@ -30,6 +33,37 @@ public interface InboundEndpointParameterPropertiesEditionPart {
 
 
 	/**
+	 * @return the inboundEndpointParameterType
+	 * 
+	 */
+	public Object getInboundEndpointParameterType();
+
+	/**
+	 * Init the inboundEndpointParameterType
+	 * @param input choice of values
+	 * @param currentValue the current value
+	 */
+	public void initInboundEndpointParameterType(Object input, Object currentValue);
+
+	/**
+	 * Defines a new inboundEndpointParameterType
+	 * @param newValue the new inboundEndpointParameterType to set
+	 * 
+	 */
+	public void setInboundEndpointParameterType(Object newValue);
+
+	/**
+	 * Adds the given filter to the inboundEndpointParameterType edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToInboundEndpointParameterType(ViewerFilter filter);
+
+
+	/**
 	 * @return the value
 	 * 
 	 */
@@ -45,6 +79,11 @@ public interface InboundEndpointParameterPropertiesEditionPart {
 
 
 
+	// Start of user code for inboundEndpointParameterKey specific getters and setters declaration
+	public RegistryKeyProperty getInboundEndpointParameterKey();
+
+	public void setInboundEndpointParameterKey(RegistryKeyProperty registryKeyProperty);
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

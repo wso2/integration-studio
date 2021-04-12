@@ -9666,7 +9666,14 @@ public class EsbViewsRepository {
 			public static String name = "esb::InboundEndpointParameter::properties::name";
 			
 			
+			public static String inboundEndpointParameterType = "esb::InboundEndpointParameter::properties::inboundEndpointParameterType";
+			
+			
 			public static String value = "esb::InboundEndpointParameter::properties::value";
+			
+			// Start of user code for inboundEndpointParameterKey ElementEditor key
+			public static String inboundEndpointParameterKey = "esb::InboundEndpointParameter::properties::inboundEndpointParameterKey";
+			// End of user code
 			
 	
 		}

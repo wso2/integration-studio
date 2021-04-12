@@ -29,7 +29,9 @@ import org.wso2.integrationstudio.gmf.esb.EsbLink;
 import org.wso2.integrationstudio.gmf.esb.EsbNode;
 import org.wso2.integrationstudio.gmf.esb.InboundEndpointBehaviourType;
 import org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter;
+import org.wso2.integrationstudio.gmf.esb.KeyType;
 import org.wso2.integrationstudio.gmf.esb.OutputConnector;
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
 import org.wso2.integrationstudio.gmf.esb.Sequence;
 import org.wso2.integrationstudio.gmf.esb.TopicFilterFromType;
 import org.wso2.integrationstudio.gmf.esb.TopicsType;
@@ -140,8 +142,16 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             EList<InboundEndpointParameter> serviceParameters = visualInboundEndpoint.getServiceParameters();
             for (InboundEndpointParameter inboundEndpointParameter : serviceParameters) {
                 String value = inboundEndpointParameter.getValue();
-                if (StringUtils.isNotBlank(value)) {
+                if(inboundEndpointParameter.getInboundEndpointParameterType().equals(KeyType.STATIC) && StringUtils.isNotBlank(value)){
                     inboundEndpoint.addParameter(inboundEndpointParameter.getName(), value);
+                } else {
+                	RegistryKeyProperty registryKeyProperty = inboundEndpointParameter.getInboundEndpointParameterKey();
+                    if(registryKeyProperty != null) {
+                    	String keyValue = registryKeyProperty.getKeyValue();
+                    	if(StringUtils.isNotBlank(keyValue)) {
+                    		inboundEndpoint.addParameter(inboundEndpointParameter.getName(), null, keyValue);
+                    	}
+                    }
                 }
 
             }

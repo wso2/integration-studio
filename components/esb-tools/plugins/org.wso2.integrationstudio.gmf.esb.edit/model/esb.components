@@ -6030,8 +6030,14 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7wiH_JnEei6boXzpRIfnA" name="name" views="_E7xMk_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//InboundEndpointParameter/name"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_F6HjMJtLEeujTZna0Mxv_w" name="inboundEndpointparameterType" views="_SkUaYJtKEeujTZna0Mxv_w">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//InboundEndpointParameter/inboundEndpointParameterType"/>
+        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7wiIPJnEei6boXzpRIfnA" name="value" views="_E7xMlPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//InboundEndpointParameter/value"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_DL5M8JtMEeuq-_UJvUAtlg" name="inboundEndpointParameterKey" views="_7qyocJtKEeujTZna0Mxv_w">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//InboundEndpointParameter/inboundEndpointParameterKey"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//InboundEndpointParameter"/>
       </bindings>
@@ -12802,9 +12808,13 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xMk_JnEei6boXzpRIfnA" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_SkUaYJtKEeujTZna0Mxv_w" name="inboundEndpointParameterType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.6"/>
+          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xMlPJnEei6boXzpRIfnA" name="value">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_7qyocJtKEeujTZna0Mxv_w" name="inboundEndpointParameterKey"/>
         </elements>
       </views>
       <views xmi:id="_E7xMlfJnEei6boXzpRIfnA" name="InboundEndpointContainer">

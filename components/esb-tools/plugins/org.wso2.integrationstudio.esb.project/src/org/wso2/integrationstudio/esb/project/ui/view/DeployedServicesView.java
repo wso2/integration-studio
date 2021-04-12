@@ -188,6 +188,48 @@ public class DeployedServicesView extends ViewPart {
             responseJson.append(line);
         }
         
+        if (URLString.endsWith("apis")) {
+         // add resource of the API
+            try {
+                JSONObject apiResponse = new JSONObject(responseJson.toString());
+                org.codehaus.jettison.json.JSONArray apiList = apiResponse.getJSONArray("list");
+                for (int i = 0 ; i < apiList.length(); i++) {
+                    JSONObject object = apiList.getJSONObject(i);
+                    String apiName = object.getString("name");
+                    JSONObject apiDetails= new JSONObject(getDeployedAPIServiceDetails(URLString, apiName));
+                    org.codehaus.jettison.json.JSONArray resources = apiDetails.getJSONArray("resources");
+                    apiList.getJSONObject(i).put("resources", resources);
+                    
+                }
+                
+                if (apiList.length() > 0) {
+                    apiResponse.put("list", apiList);
+                }
+                
+                return apiResponse.toString();
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+            }
+        }
+        
+        return responseJson.toString();
+    }
+    
+    private String getDeployedAPIServiceDetails(String URLString, String apiName) throws IOException {
+        URL urlrestapi = new URL (URLString + "?apiName=" + apiName);
+        HttpsURLConnection connection = (HttpsURLConnection) urlrestapi.openConnection();
+        connection.setRequestMethod("GET");
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Authorization", "Bearer " + getAccessToken());
+        InputStream content = (InputStream)connection.getInputStream();
+        BufferedReader in  = 
+            new BufferedReader (new InputStreamReader (content));
+        String line;
+        StringBuffer responseJson = new StringBuffer();
+        while ((line = in.readLine()) != null) {
+            responseJson.append(line);
+        }
+        
         return responseJson.toString();
     }
     

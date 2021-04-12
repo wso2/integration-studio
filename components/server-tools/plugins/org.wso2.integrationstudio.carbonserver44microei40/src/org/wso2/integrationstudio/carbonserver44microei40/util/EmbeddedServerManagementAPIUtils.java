@@ -64,6 +64,49 @@ public class EmbeddedServerManagementAPIUtils {
         while ((line = in.readLine()) != null) {
             responseJson.append(line);
         }
+        
+        if (urlPostFix.endsWith("apis")) {
+            // add resource of the API
+            try {
+                JSONObject apiResponse = new JSONObject(responseJson.toString());
+                org.codehaus.jettison.json.JSONArray apiList = apiResponse.getJSONArray("list");
+                for (int i = 0; i < apiList.length(); i++) {
+                    JSONObject object = apiList.getJSONObject(i);
+                    String apiName = object.getString("name");
+                    JSONObject apiDetails = new JSONObject(
+                            getDeployedAPIServiceDetails(port, URL_PREFIX + port + urlPostFix, accessToken, apiName));
+                    org.codehaus.jettison.json.JSONArray resources = apiDetails.getJSONArray("resources");
+                    apiList.getJSONObject(i).put("resources", resources);
+
+                }
+
+                if (apiList.length() > 0) {
+                    apiResponse.put("list", apiList);
+                }
+
+                return apiResponse.toString();
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+            }
+        }
+        return responseJson.toString();
+    }
+    
+    private static String getDeployedAPIServiceDetails(String port, String URLString, String accessToken,
+            String apiName) throws IOException {
+        URL urlrestapi = new URL(URLString + "?apiName=" + apiName);
+        HttpsURLConnection connection = (HttpsURLConnection) urlrestapi.openConnection();
+        connection.setRequestMethod("GET");
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Authorization", "Bearer " + accessToken);
+        InputStream content = (InputStream) connection.getInputStream();
+        BufferedReader in = new BufferedReader(new InputStreamReader(content));
+        String line;
+        StringBuffer responseJson = new StringBuffer();
+        while ((line = in.readLine()) != null) {
+            responseJson.append(line);
+        }
+
         return responseJson.toString();
     }
 

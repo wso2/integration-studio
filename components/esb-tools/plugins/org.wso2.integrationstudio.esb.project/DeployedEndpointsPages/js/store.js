@@ -36,8 +36,22 @@ function populateAPIList() {
 	
 	for(var i = 0; i < apiList.length; i++) {
 	    var item = apiList[i];
-	    $table = $('#table-container-api table tbody');
-	    $table.append('<tr><td><pre><code class="language-bash">' + item.name + '</code></pre></td><td><pre><code class="language-bash">' + item.url + '</code></pre></td></tr>');
+		if (item.resources) {
+			for (var x = 0; x < item.resources.length; x++) {
+				var resourceMethods = item.resources[x].methods.toString();
+				var serviceName = item.name + " | " + resourceMethods.toUpperCase();
+				var resourcePath = item.resources[x].url;
+				if (resourcePath === "N/A") {
+					resourcePath = "";
+				}
+				resourcePath = item.url + resourcePath;
+				$table = $('#table-container-api table tbody');
+				$table.append('<tr><td><pre><code class="language-bash">' + serviceName + '</code></pre></td><td><pre><code class="language-bash">' + resourcePath + '</code></pre></td></tr>');
+			}
+		} else {
+			$table = $('#table-container-api table tbody');
+			$table.append('<tr><td><pre><code class="language-bash">' + item.name + '</code></pre></td><td><pre><code class="language-bash">' + item.url + '</code></pre></td></tr>');
+		}
 	}
 	
 	if (apiList.length == 0) {

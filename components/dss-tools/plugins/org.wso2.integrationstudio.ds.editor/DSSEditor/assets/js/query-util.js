@@ -734,12 +734,12 @@ function generateInputMappings(root) {
     }
 
     if (query.toLowerCase().indexOf("insert") != -1 && query.toLowerCase().indexOf("into") != -1) {
-        let mappingsStr = query.substring(query.toLowerCase().lastIndexOf("into"), query.toLowerCase().indexOf("values"));
+        let mappingsStr = query.substring(query.toLowerCase().lastIndexOf("values"));
         if (mappingsStr) {
             let paramStr = regExp.exec(mappingsStr.trim());
 
             if (paramStr[1]) {
-                mappingsArr = paramStr[1].split(",");
+                mappingsArr = paramStr[1].replaceAll(":", "").split(",");
             }
         }
     } else if (query.toLowerCase().indexOf("update") != -1 && query.toLowerCase().indexOf("set") != -1) {

@@ -1167,6 +1167,9 @@ function generateOutputMapping(root, portValue) {
 			let name = $.trim(val);
 			result = addGeneratedMappingsToRoot(root, result, name);
 		});
+
+		$('#om-grouped-by-element-input').val("Entries");
+        $('#om-row-name-input').val("Entry");
 	}
 	
 	return result;

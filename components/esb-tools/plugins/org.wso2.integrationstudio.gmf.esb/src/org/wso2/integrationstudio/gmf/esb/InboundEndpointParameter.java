@@ -27,7 +27,9 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getInboundEndpointParameterType <em>Inbound Endpoint Parameter Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getInboundEndpointParameterKey <em>Inbound Endpoint Parameter Key</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpointParameter()
@@ -63,6 +65,31 @@ public interface InboundEndpointParameter extends EObject {
     void setName(String value);
 
     /**
+     * Returns the value of the '<em><b>Inbound Endpoint Parameter Type</b></em>' attribute.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.KeyType}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Inbound Endpoint Parameter Type</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.KeyType
+     * @see #setInboundEndpointParameterType(KeyType)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpointParameter_InboundEndpointParameterType()
+     * @model
+     * @generated
+     */
+    KeyType getInboundEndpointParameterType();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getInboundEndpointParameterType <em>Inbound Endpoint Parameter Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Inbound Endpoint Parameter Type</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.KeyType
+     * @see #getInboundEndpointParameterType()
+     * @generated
+     */
+    void setInboundEndpointParameterType(KeyType value);
+
+    /**
      * Returns the value of the '<em><b>Value</b></em>' attribute.
      * The default value is <code>"parameter_value"</code>.
      * <!-- begin-user-doc -->
@@ -88,5 +115,27 @@ public interface InboundEndpointParameter extends EObject {
      * @generated
      */
     void setValue(String value);
+
+    /**
+     * Returns the value of the '<em><b>Inbound Endpoint Parameter Key</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Inbound Endpoint Parameter Key</em>' containment reference.
+     * @see #setInboundEndpointParameterKey(RegistryKeyProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpointParameter_InboundEndpointParameterKey()
+     * @model containment="true"
+     * @generated
+     */
+    RegistryKeyProperty getInboundEndpointParameterKey();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter#getInboundEndpointParameterKey <em>Inbound Endpoint Parameter Key</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Inbound Endpoint Parameter Key</em>' containment reference.
+     * @see #getInboundEndpointParameterKey()
+     * @generated
+     */
+    void setInboundEndpointParameterKey(RegistryKeyProperty value);
 
 } // InboundEndpointParameter

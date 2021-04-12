@@ -3,6 +3,7 @@
  */
 package org.wso2.integrationstudio.gmf.esb.parts.forms;
 
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 // Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
@@ -19,11 +20,14 @@ import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
-
+import org.eclipse.emf.eef.runtime.ui.providers.EMFListContentProvider;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
+import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 
 import org.eclipse.swt.events.FocusAdapter;
@@ -41,7 +45,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
+import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
 import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart;
 
@@ -56,7 +60,12 @@ import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
 public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, InboundEndpointParameterPropertiesEditionPart {
 
 	protected Text name;
+	protected EMFComboViewer inboundEndpointParameterType;
 	protected Text value;
+	// Start of user code  for inboundEndpointParameterKey widgets declarations
+	
+	// End of user code
+
 
 
 
@@ -103,7 +112,9 @@ public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPr
 		CompositionSequence inboundEndpointParameterStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = inboundEndpointParameterStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.class);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.name);
+		propertiesStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.inboundEndpointParameterType);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.value);
+		propertiesStep.addStep(EsbViewsRepository.InboundEndpointParameter.Properties.inboundEndpointParameterKey);
 		
 		
 		composer = new PartComposer(inboundEndpointParameterStep) {
@@ -116,9 +127,15 @@ public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPr
 				if (key == EsbViewsRepository.InboundEndpointParameter.Properties.name) {
 					return createNameText(widgetFactory, parent);
 				}
+				if (key == EsbViewsRepository.InboundEndpointParameter.Properties.inboundEndpointParameterType) {
+					return createInboundEndpointParameterTypeEMFComboViewer(widgetFactory, parent);
+				}
 				if (key == EsbViewsRepository.InboundEndpointParameter.Properties.value) {
 					return createValueText(widgetFactory, parent);
 				}
+				// Start of user code for inboundEndpointParameterKey addToPart creation
+				
+				// End of user code
 				return parent;
 			}
 		};
@@ -204,6 +221,36 @@ public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPr
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpointParameter.Properties.name, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNameText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createInboundEndpointParameterTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, EsbViewsRepository.InboundEndpointParameter.Properties.inboundEndpointParameterType, EsbMessages.InboundEndpointParameterPropertiesEditionPart_InboundEndpointParameterTypeLabel);
+		inboundEndpointParameterType = new EMFComboViewer(parent);
+		GridData inboundEndpointParameterTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		inboundEndpointParameterType.getCombo().setLayoutData(inboundEndpointParameterTypeData);
+		inboundEndpointParameterType.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+		inboundEndpointParameterType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+			 */
+			public void selectionChanged(SelectionChangedEvent event) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointParameterPropertiesEditionPartForm.this, EsbViewsRepository.InboundEndpointParameter.Properties.inboundEndpointParameterType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getInboundEndpointParameterType()));
+			}
+
+		});
+		inboundEndpointParameterType.setContentProvider(new EMFListContentProvider());
+		EditingUtils.setID(inboundEndpointParameterType.getCombo(), EsbViewsRepository.InboundEndpointParameter.Properties.inboundEndpointParameterType);
+		EditingUtils.setEEFtype(inboundEndpointParameterType.getCombo(), "eef::Combo");
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpointParameter.Properties.inboundEndpointParameterType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createInboundEndpointParameterTypeEMFComboViewer
 
 		// End of user code
 		return parent;
@@ -325,6 +372,63 @@ public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPr
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#getInboundEndpointParameterType()
+	 * 
+	 */
+	public Object getInboundEndpointParameterType() {
+		if (inboundEndpointParameterType.getSelection() instanceof StructuredSelection) {
+			return ((StructuredSelection) inboundEndpointParameterType.getSelection()).getFirstElement();
+		}
+		return "";
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#initInboundEndpointParameterType(Object input, Object currentValue)
+	 */
+	public void initInboundEndpointParameterType(Object input, Object currentValue) {
+		inboundEndpointParameterType.setInput(input);
+		if (currentValue != null) {
+			inboundEndpointParameterType.setSelection(new StructuredSelection(currentValue));
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#setInboundEndpointParameterType(Object newValue)
+	 * 
+	 */
+	public void setInboundEndpointParameterType(Object newValue) {
+		if (newValue != null) {
+			inboundEndpointParameterType.modelUpdating(new StructuredSelection(newValue));
+		} else {
+			inboundEndpointParameterType.modelUpdating(new StructuredSelection("")); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpointParameter.Properties.inboundEndpointParameterType);
+		if (eefElementEditorReadOnlyState && inboundEndpointParameterType.isEnabled()) {
+			inboundEndpointParameterType.setEnabled(false);
+			inboundEndpointParameterType.setToolTipText(EsbMessages.InboundEndpointParameter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !inboundEndpointParameterType.isEnabled()) {
+			inboundEndpointParameterType.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#addFilterInboundEndpointParameterType(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToInboundEndpointParameterType(ViewerFilter filter) {
+		inboundEndpointParameterType.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointParameterPropertiesEditionPart#getValue()
 	 * 
 	 */
@@ -359,6 +463,10 @@ public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPr
 
 
 
+	// Start of user code for inboundEndpointParameterKey specific getters and setters implementation
+	
+	// End of user code
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -367,6 +475,18 @@ public class InboundEndpointParameterPropertiesEditionPartForm extends SectionPr
 	 */
 	public String getTitle() {
 		return EsbMessages.InboundEndpointParameter_Part_Title;
+	}
+
+	@Override
+	public RegistryKeyProperty getInboundEndpointParameterKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setInboundEndpointParameterKey(RegistryKeyProperty registryKeyProperty) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	// Start of user code additional methods

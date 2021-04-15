@@ -104,6 +104,7 @@ function setVisibleDSTypeCassandra(isVisible) {
     $('#ds-cassandra-so-linger-inputgroup').toggle(isVisible);
     $('#ds-cassandra-tcp-no-delay-input').toggle(isVisible);
     $('#ds-cassandra-enable-ssl-input').toggle(isVisible);
+    $('#ds-enable-odata-check-inputgroup').toggle(isVisible);
 }
 
 function setVisibleDSTypeCSV(isVisible) {
@@ -128,6 +129,7 @@ function setVisibleDSTypeMongo(isVisible) {
 	$('#ds-socket-timeout-inputgroup').toggle(isVisible);
 	$('#ds-connections-inputgroup').toggle(isVisible);
 	$('#ds-threads-for-mul-inputgroup').toggle(isVisible);
+	$('#ds-enable-odata-check-inputgroup').toggle(isVisible);
 }
 
 function setVisibleDSTypeRDBMS(isVisible) {
@@ -137,9 +139,8 @@ function setVisibleDSTypeRDBMS(isVisible) {
     $('#ds-test-conn-btn-formgroup').toggle(isVisible);
     $('#ds-dstype-2-select').toggle(isVisible);
     $('#ds-test-con-collapse-group').toggle(isVisible);
-
     $('#ds-db-engine-select').attr('required', isVisible);
-    
+    $('#ds-enable-odata-check-inputgroup').toggle(isVisible);
     if (isVisible) {
         if ($("#ds-dstype-2-select").val() == "external_ds") {
             setVisibleDSType2Ext(true);
@@ -158,6 +159,7 @@ function setVisibleDSTypeRDBMS(isVisible) {
 function setVisibleDSTypeCarbon(isVisible) {
     $('#ds-ds-name-inputgroup').toggle(isVisible);
     $('#ds-ds-name-input').attr('required', isVisible);
+    $('#ds-enable-odata-check-inputgroup').toggle(isVisible);
 }
 
 function setVisibleDSType2Ext(isVisible) {
@@ -173,4 +175,5 @@ function setVisibleDSType2Default(isVisible) {
     $('#ds-url-input').attr('required', isVisible);
     $('#ds-username-inputgroup').toggle(isVisible);
     $('#ds-password-formgroup').toggle(isVisible);
+
 }

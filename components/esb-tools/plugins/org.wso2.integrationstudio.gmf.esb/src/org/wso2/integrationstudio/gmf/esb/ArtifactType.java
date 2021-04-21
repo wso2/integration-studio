@@ -728,8 +728,8 @@ public enum ArtifactType implements Enumerator {
             case ENDPOINT_LOADBALANCE_VALUE: return ENDPOINT_LOADBALANCE;
             case ENDPOINT_FAILOVER_VALUE: return ENDPOINT_FAILOVER;
             case ENDPOINT_RECIPIENTLIST_VALUE: return ENDPOINT_RECIPIENTLIST;
-            case MOCK_SERVICE_VALUE:return MOCK_SERVICE;
-            case SYNAPSE_UNIT_TEST_VALUE:return SYNAPSE_UNIT_TEST;
+            case MOCK_SERVICE_VALUE: return MOCK_SERVICE;
+            case SYNAPSE_UNIT_TEST_VALUE: return SYNAPSE_UNIT_TEST;
         }
         return null;
     }

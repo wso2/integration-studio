@@ -110,7 +110,7 @@ public abstract class AbstractNameValueExpressionPropertyImpl extends EsbNodeImp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     protected AbstractNameValueExpressionPropertyImpl() {
         super();

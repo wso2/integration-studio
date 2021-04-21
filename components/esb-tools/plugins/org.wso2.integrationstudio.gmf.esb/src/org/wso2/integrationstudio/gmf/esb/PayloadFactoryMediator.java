@@ -213,7 +213,7 @@ public interface PayloadFactoryMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Template Engine</b></em>' attribute.
-     * The default value is <code>"Regex"</code>.
+     * The default value is <code>"Default"</code>.
      * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.TemplateEngine}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -221,7 +221,7 @@ public interface PayloadFactoryMediator extends Mediator {
      * @see org.wso2.integrationstudio.gmf.esb.TemplateEngine
      * @see #setTemplateEngine(TemplateEngine)
      * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getPayloadFactoryMediator_TemplateEngine()
-     * @model default="Regex"
+     * @model default="Default"
      * @generated
      */
     TemplateEngine getTemplateEngine();

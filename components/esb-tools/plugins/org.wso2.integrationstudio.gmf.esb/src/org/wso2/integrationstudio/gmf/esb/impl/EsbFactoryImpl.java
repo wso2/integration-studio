@@ -1554,7 +1554,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     public DSSMediator createDSSMediator() {
         DSSMediatorImpl dssMediator = new DSSMediatorImpl();

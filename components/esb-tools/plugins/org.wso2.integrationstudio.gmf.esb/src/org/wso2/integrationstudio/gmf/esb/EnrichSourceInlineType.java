@@ -36,7 +36,7 @@ public enum EnrichSourceInlineType implements Enumerator {
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @see #CONTENT_VALUE
-     * @generated
+     * @generated NOT
      * @ordered
      */
     CONTENT(0, "CONTENT", "Inline XML/JSON"),

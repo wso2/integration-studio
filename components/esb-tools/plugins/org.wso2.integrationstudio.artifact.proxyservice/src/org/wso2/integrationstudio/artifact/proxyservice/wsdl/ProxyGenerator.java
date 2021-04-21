@@ -25,6 +25,7 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.builtin.RespondMediator;
 import org.apache.synapse.mediators.filters.SwitchMediator;
 import org.apache.synapse.mediators.transform.PayloadFactoryMediator;
+import org.apache.synapse.mediators.transform.pfutils.RegexTemplateProcessor;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
 
@@ -111,6 +112,7 @@ public class ProxyGenerator {
      */
     public static PayloadFactoryMediator genDummyPayloadFacForOperation(String operationName) {
         PayloadFactoryMediator pf = new PayloadFactoryMediator();
+        pf.setTemplateProcessor(new RegexTemplateProcessor());
         if (StringUtils.isEmpty(operationName)) {
             pf.setFormat(PAYLOAD_FACTORY_ACTION_NOT_FOUND);
         } else {

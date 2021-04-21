@@ -128,7 +128,9 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
             throw new TransformerException(e);
         }
         if (httpEndPoint.getURITemplate() != null) {
-            UriTemplate template = UriTemplate.fromTemplate(httpEndPoint.getURITemplate());
+            String uriTemplate = httpEndPoint.getURITemplate();
+            uriTemplate = uriTemplate.replaceAll("&amp;", "&");
+            UriTemplate template = UriTemplate.fromTemplate(uriTemplate);
             synapseHttpEP.setUriTemplate(template);
         }
 

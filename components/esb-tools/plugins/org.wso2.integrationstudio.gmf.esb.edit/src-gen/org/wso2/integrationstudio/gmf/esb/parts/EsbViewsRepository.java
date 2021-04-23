@@ -9066,6 +9066,9 @@ public class EsbViewsRepository {
 			public static String transportJMSBrokerType = "esb::InboundEndpoint::properties::transportJMSBrokerType";
 			
 			
+			public static String transportJMSMessagePropertyHyphens = "esb::InboundEndpoint::properties::transportJMSMessagePropertyHyphens";
+			
+			
 			public static String transportMQTTConnectionFactory = "esb::InboundEndpoint::properties::transportMQTTConnectionFactory";
 			
 			

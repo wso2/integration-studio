@@ -98,6 +98,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberClientID <em>Transport JMS Durable Subscriber Client ID</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSMessageSelector <em>Transport JMS Message Selector</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSRetryDuration <em>Transport JMS Retry Duration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSMessagePropertyHyphens <em>Transport JMS Message Property Hyphens</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}</li>
@@ -5654,6 +5655,28 @@ public interface InboundEndpoint extends EsbElement {
      * @generated
      */
     void setTransportJMSRetryDuration(String value);
+
+    /**
+     * Returns the value of the '<em><b>Transport JMS Message Property Hyphens</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport JMS Message Property Hyphens</em>' attribute.
+     * @see #setTransportJMSMessagePropertyHyphens(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSMessagePropertyHyphens()
+     * @model
+     * @generated
+     */
+    String getTransportJMSMessagePropertyHyphens();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSMessagePropertyHyphens <em>Transport JMS Message Property Hyphens</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport JMS Message Property Hyphens</em>' attribute.
+     * @see #getTransportJMSMessagePropertyHyphens()
+     * @generated
+     */
+    void setTransportJMSMessagePropertyHyphens(String value);
 
     /**
      * Returns the value of the '<em><b>Transport VFS Move Timestamp Format</b></em>' attribute.

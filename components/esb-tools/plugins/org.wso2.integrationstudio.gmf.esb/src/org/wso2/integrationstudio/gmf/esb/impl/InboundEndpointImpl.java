@@ -137,6 +137,7 @@ import org.wso2.integrationstudio.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDurableSubscriberClientID <em>Transport JMS Durable Subscriber Client ID</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSMessageSelector <em>Transport JMS Message Selector</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSRetryDuration <em>Transport JMS Retry Duration</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSMessagePropertyHyphens <em>Transport JMS Message Property Hyphens</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}</li>
@@ -1724,6 +1725,26 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @ordered
      */
     protected String transportJMSRetryDuration = TRANSPORT_JMS_RETRY_DURATION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportJMSMessagePropertyHyphens() <em>Transport JMS Message Property Hyphens</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportJMSMessagePropertyHyphens()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTransportJMSMessagePropertyHyphens() <em>Transport JMS Message Property Hyphens</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportJMSMessagePropertyHyphens()
+     * @generated
+     * @ordered
+     */
+    protected String transportJMSMessagePropertyHyphens = TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTransportVFSMoveTimestampFormat()
@@ -9030,6 +9051,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportJMSMessagePropertyHyphens() {
+        return transportJMSMessagePropertyHyphens;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportJMSMessagePropertyHyphens(String newTransportJMSMessagePropertyHyphens) {
+        String oldTransportJMSMessagePropertyHyphens = transportJMSMessagePropertyHyphens;
+        transportJMSMessagePropertyHyphens = newTransportJMSMessagePropertyHyphens;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS, oldTransportJMSMessagePropertyHyphens, transportJMSMessagePropertyHyphens));
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
@@ -9758,6 +9800,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return getTransportJMSMessageSelector();
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
                 return getTransportJMSRetryDuration();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS:
+                return getTransportJMSMessagePropertyHyphens();
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
                 return getTransportVFSMoveTimestampFormat();
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
@@ -10303,6 +10347,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return;
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
                 setTransportJMSRetryDuration((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS:
+                setTransportJMSMessagePropertyHyphens((String)newValue);
                 return;
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
                 setTransportVFSMoveTimestampFormat((String)newValue);
@@ -11009,6 +11056,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
                 setTransportJMSRetryDuration(TRANSPORT_JMS_RETRY_DURATION_EDEFAULT);
                 return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS:
+                setTransportJMSMessagePropertyHyphens(TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS_EDEFAULT);
+                return;
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
                 setTransportVFSMoveTimestampFormat(TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT);
                 return;
@@ -11641,6 +11691,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT == null ? transportJMSMessageSelector != null : !TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT.equals(transportJMSMessageSelector);
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
                 return TRANSPORT_JMS_RETRY_DURATION_EDEFAULT == null ? transportJMSRetryDuration != null : !TRANSPORT_JMS_RETRY_DURATION_EDEFAULT.equals(transportJMSRetryDuration);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS:
+                return TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS_EDEFAULT == null ? transportJMSMessagePropertyHyphens != null : !TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS_EDEFAULT.equals(transportJMSMessagePropertyHyphens);
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
                 return TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT == null ? transportVFSMoveTimestampFormat != null : !TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT.equals(transportVFSMoveTimestampFormat);
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
@@ -12106,6 +12158,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         result.append(transportJMSMessageSelector);
         result.append(", transportJMSRetryDuration: ");
         result.append(transportJMSRetryDuration);
+        result.append(", transportJMSMessagePropertyHyphens: ");
+        result.append(transportJMSMessagePropertyHyphens);
         result.append(", transportVFSMoveTimestampFormat: ");
         result.append(transportVFSMoveTimestampFormat);
         result.append(", transportVFSFileSortAttribute: ");

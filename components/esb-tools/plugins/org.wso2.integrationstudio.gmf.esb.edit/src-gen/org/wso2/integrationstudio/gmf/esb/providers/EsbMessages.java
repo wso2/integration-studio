@@ -7885,6 +7885,9 @@ public class EsbMessages extends NLS {
 	public static String InboundEndpointPropertiesEditionPart_TransportJMSBrokerTypeLabel;
 
 	
+	public static String InboundEndpointPropertiesEditionPart_TransportJMSMessagePropertyHyphensLabel;
+
+	
 	public static String InboundEndpointPropertiesEditionPart_TransportMQTTConnectionFactoryLabel;
 
 	

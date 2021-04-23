@@ -1061,6 +1061,11 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             	evalTypeComboBox.setText(JSON);
             	onSelectJSON();
             	initialExpressionType = JSON;
+            } else if(propertyValue.startsWith("get-property") 
+                 	|| propertyValue.startsWith("vault-lookup")
+            		|| propertyValue.startsWith("$")) {
+            	evalTypeComboBox.setText(EXPRESSION);
+            	initialExpressionType = EXPRESSION;
             }
         }
 
@@ -1156,12 +1161,7 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
 					onSelectJSON();
 					
 				} else {
-					setExprEvaluatorElementsVisibility(true);
-					setXMLEvaluatorElementsVisibility(false);
-					setJSONEvaluatorElementsVisibility(false);
-					
-					dialogShell.layout(true, true);
-					dialogShell.setSize(new Point(1050, 800));
+					onSelectExpression();
 				}
 			}
 			
@@ -1558,6 +1558,20 @@ public class EEFNameSpacedPropertyEditorDialog extends Dialog {
             dialogShell.setSize(1050, 180);
         } else {
         	dialogShell.setSize(1050, 140);
+        }
+    }
+    
+    private void onSelectExpression() {
+        setExprEvaluatorElementsVisibility(true);
+        setXMLEvaluatorElementsVisibility(false);
+        setJSONEvaluatorElementsVisibility(false);
+        
+        dialogShell.layout(true, true);
+        
+        if (operatingSystemType.indexOf(OS_TYPE_WINDOWS) >= 0) {
+            dialogShell.setSize(1050, 870);
+        } else {
+            dialogShell.setSize(1050, 800);
         }
     }
     

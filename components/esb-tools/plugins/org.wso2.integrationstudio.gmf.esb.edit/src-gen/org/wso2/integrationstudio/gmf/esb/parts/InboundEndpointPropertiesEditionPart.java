@@ -1247,6 +1247,20 @@ public interface InboundEndpointPropertiesEditionPart {
 
 
 	/**
+	 * @return the transportJMSMessagePropertyHyphens
+	 * 
+	 */
+	public String getTransportJMSMessagePropertyHyphens();
+
+	/**
+	 * Defines a new transportJMSMessagePropertyHyphens
+	 * @param newValue the new transportJMSMessagePropertyHyphens to set
+	 * 
+	 */
+	public void setTransportJMSMessagePropertyHyphens(String newValue);
+
+
+	/**
 	 * @return the transportMQTTConnectionFactory
 	 * 
 	 */

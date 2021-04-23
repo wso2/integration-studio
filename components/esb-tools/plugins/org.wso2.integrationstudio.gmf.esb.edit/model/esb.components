@@ -5583,6 +5583,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v_3vJnEei6boXzpRIfnA" name="transportJMSBrokerType" views="_E7xMB_JnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//InboundEndpoint/transportJMSBrokerType"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_0awGEKNdEeuwuMuUnLM5Fw" name="transportJMSMessagePropertyHyphens" views="_nHybMKNdEeuwuMuUnLM5Fw">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//InboundEndpoint/transportJMSMessagePropertyHyphens"/>
+        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E7v_3_JnEei6boXzpRIfnA" name="transportMQTTConnectionFactory" views="_E7xMCPJnEei6boXzpRIfnA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//InboundEndpoint/transportMQTTConnectionFactory"/>
         </properties>
@@ -12360,6 +12363,9 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xMB_JnEei6boXzpRIfnA" name="transportJMSBrokerType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_nHybMKNdEeuwuMuUnLM5Fw" name="transportJMSMessagePropertyHyphens">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E7xMCPJnEei6boXzpRIfnA" name="transportMQTTConnectionFactory">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>

@@ -484,6 +484,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_DB_URL,
                         visualInboundEndpoint.getTransportJMSDBUrl());
             }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSMessagePropertyHyphens())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_MESSAGE_PROPERTY_HYPHENS,
+                        visualInboundEndpoint.getTransportJMSMessagePropertyHyphens());
+            }
             break;
         case WSO2_MB:
             if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {

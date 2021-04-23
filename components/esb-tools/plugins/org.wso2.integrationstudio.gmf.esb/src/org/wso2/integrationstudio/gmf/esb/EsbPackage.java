@@ -25048,13 +25048,22 @@ public interface EsbPackage extends EPackage {
     int INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION = ESB_ELEMENT_FEATURE_COUNT + 71;
 
     /**
+     * The feature id for the '<em><b>Transport JMS Message Property Hyphens</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS = ESB_ELEMENT_FEATURE_COUNT + 72;
+
+    /**
      * The feature id for the '<em><b>Transport VFS Move Timestamp Format</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT = ESB_ELEMENT_FEATURE_COUNT + 72;
+    int INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT = ESB_ELEMENT_FEATURE_COUNT + 73;
 
     /**
      * The feature id for the '<em><b>Transport VFS File Sort Attribute</b></em>' attribute.
@@ -25063,7 +25072,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE = ESB_ELEMENT_FEATURE_COUNT + 73;
+    int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE = ESB_ELEMENT_FEATURE_COUNT + 74;
 
     /**
      * The feature id for the '<em><b>Transport VFS File Sort Ascending</b></em>' attribute.
@@ -25072,7 +25081,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING = ESB_ELEMENT_FEATURE_COUNT + 74;
+    int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING = ESB_ELEMENT_FEATURE_COUNT + 75;
 
     /**
      * The feature id for the '<em><b>Transport VFS Sub Folder Timestamp Format</b></em>' attribute.
@@ -25081,7 +25090,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT = ESB_ELEMENT_FEATURE_COUNT + 75;
+    int INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT = ESB_ELEMENT_FEATURE_COUNT + 76;
 
     /**
      * The feature id for the '<em><b>Transport VFS Create Folder</b></em>' attribute.
@@ -25090,7 +25099,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER = ESB_ELEMENT_FEATURE_COUNT + 76;
+    int INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER = ESB_ELEMENT_FEATURE_COUNT + 77;
 
     /**
      * The feature id for the '<em><b>Transport JMS Receive Timeout</b></em>' attribute.
@@ -25099,7 +25108,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 77;
+    int INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 78;
 
     /**
      * The feature id for the '<em><b>Transport JMS Content Type</b></em>' attribute.
@@ -25108,7 +25117,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 78;
+    int INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 79;
 
     /**
      * The feature id for the '<em><b>Transport JMS Content Type Property</b></em>' attribute.
@@ -25117,7 +25126,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY = ESB_ELEMENT_FEATURE_COUNT + 79;
+    int INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY = ESB_ELEMENT_FEATURE_COUNT + 80;
 
     /**
      * The feature id for the '<em><b>Transport JMS Reply Destination</b></em>' attribute.
@@ -25126,7 +25135,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION = ESB_ELEMENT_FEATURE_COUNT + 80;
+    int INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION = ESB_ELEMENT_FEATURE_COUNT + 81;
 
     /**
      * The feature id for the '<em><b>Transport JMS Pub Sub No Local</b></em>' attribute.
@@ -25135,7 +25144,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL = ESB_ELEMENT_FEATURE_COUNT + 81;
+    int INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL = ESB_ELEMENT_FEATURE_COUNT + 82;
 
     /**
      * The feature id for the '<em><b>Transport JMS Durable Subscriber Name</b></em>' attribute.
@@ -25144,7 +25153,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME = ESB_ELEMENT_FEATURE_COUNT + 82;
+    int INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME = ESB_ELEMENT_FEATURE_COUNT + 83;
 
     /**
      * The feature id for the '<em><b>Transport JMS Broker Type</b></em>' attribute.
@@ -25153,7 +25162,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE = ESB_ELEMENT_FEATURE_COUNT + 83;
+    int INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE = ESB_ELEMENT_FEATURE_COUNT + 84;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Connection Factory</b></em>' attribute.
@@ -25162,7 +25171,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY = ESB_ELEMENT_FEATURE_COUNT + 84;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY = ESB_ELEMENT_FEATURE_COUNT + 85;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Server Host Name</b></em>' attribute.
@@ -25171,7 +25180,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME = ESB_ELEMENT_FEATURE_COUNT + 85;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME = ESB_ELEMENT_FEATURE_COUNT + 86;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Server Port</b></em>' attribute.
@@ -25180,7 +25189,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT = ESB_ELEMENT_FEATURE_COUNT + 86;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT = ESB_ELEMENT_FEATURE_COUNT + 87;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Topic Name</b></em>' attribute.
@@ -25189,7 +25198,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME = ESB_ELEMENT_FEATURE_COUNT + 87;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME = ESB_ELEMENT_FEATURE_COUNT + 88;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Subscription QOS</b></em>' attribute.
@@ -25198,7 +25207,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS = ESB_ELEMENT_FEATURE_COUNT + 88;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS = ESB_ELEMENT_FEATURE_COUNT + 89;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Session Clean</b></em>' attribute.
@@ -25207,7 +25216,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN = ESB_ELEMENT_FEATURE_COUNT + 89;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN = ESB_ELEMENT_FEATURE_COUNT + 90;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Ssl Enable</b></em>' attribute.
@@ -25216,7 +25225,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE = ESB_ELEMENT_FEATURE_COUNT + 90;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE = ESB_ELEMENT_FEATURE_COUNT + 91;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Temporary Store Directory</b></em>' attribute.
@@ -25225,7 +25234,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY = ESB_ELEMENT_FEATURE_COUNT + 91;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY = ESB_ELEMENT_FEATURE_COUNT + 92;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Subscription Username</b></em>' attribute.
@@ -25234,7 +25243,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME = ESB_ELEMENT_FEATURE_COUNT + 92;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME = ESB_ELEMENT_FEATURE_COUNT + 93;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Subscription Password</b></em>' attribute.
@@ -25243,7 +25252,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 93;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 94;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Client Id</b></em>' attribute.
@@ -25252,7 +25261,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID = ESB_ELEMENT_FEATURE_COUNT + 94;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID = ESB_ELEMENT_FEATURE_COUNT + 95;
 
     /**
      * The feature id for the '<em><b>Truststore</b></em>' attribute.
@@ -25261,7 +25270,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRUSTSTORE = ESB_ELEMENT_FEATURE_COUNT + 95;
+    int INBOUND_ENDPOINT__TRUSTSTORE = ESB_ELEMENT_FEATURE_COUNT + 96;
 
     /**
      * The feature id for the '<em><b>Keystore</b></em>' attribute.
@@ -25270,7 +25279,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__KEYSTORE = ESB_ELEMENT_FEATURE_COUNT + 96;
+    int INBOUND_ENDPOINT__KEYSTORE = ESB_ELEMENT_FEATURE_COUNT + 97;
 
     /**
      * The feature id for the '<em><b>Ssl Verify Client</b></em>' attribute.
@@ -25279,7 +25288,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__SSL_VERIFY_CLIENT = ESB_ELEMENT_FEATURE_COUNT + 97;
+    int INBOUND_ENDPOINT__SSL_VERIFY_CLIENT = ESB_ELEMENT_FEATURE_COUNT + 98;
 
     /**
      * The feature id for the '<em><b>Ssl Protocol</b></em>' attribute.
@@ -25288,7 +25297,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__SSL_PROTOCOL = ESB_ELEMENT_FEATURE_COUNT + 98;
+    int INBOUND_ENDPOINT__SSL_PROTOCOL = ESB_ELEMENT_FEATURE_COUNT + 99;
 
     /**
      * The feature id for the '<em><b>Https Protocols</b></em>' attribute.
@@ -25297,7 +25306,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__HTTPS_PROTOCOLS = ESB_ELEMENT_FEATURE_COUNT + 99;
+    int INBOUND_ENDPOINT__HTTPS_PROTOCOLS = ESB_ELEMENT_FEATURE_COUNT + 100;
 
     /**
      * The feature id for the '<em><b>Certificate Revocation Verifier</b></em>' attribute.
@@ -25306,7 +25315,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER = ESB_ELEMENT_FEATURE_COUNT + 100;
+    int INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER = ESB_ELEMENT_FEATURE_COUNT + 101;
 
     /**
      * The feature id for the '<em><b>Inbound HL7 Port</b></em>' attribute.
@@ -25315,7 +25324,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__INBOUND_HL7_PORT = ESB_ELEMENT_FEATURE_COUNT + 101;
+    int INBOUND_ENDPOINT__INBOUND_HL7_PORT = ESB_ELEMENT_FEATURE_COUNT + 102;
 
     /**
      * The feature id for the '<em><b>Inbound HL7 Auto Ack</b></em>' attribute.
@@ -25324,7 +25333,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK = ESB_ELEMENT_FEATURE_COUNT + 102;
+    int INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK = ESB_ELEMENT_FEATURE_COUNT + 103;
 
     /**
      * The feature id for the '<em><b>Inbound HL7 Message Pre Processor</b></em>' attribute.
@@ -25333,7 +25342,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR = ESB_ELEMENT_FEATURE_COUNT + 103;
+    int INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR = ESB_ELEMENT_FEATURE_COUNT + 104;
 
     /**
      * The feature id for the '<em><b>Inbound HL7 Char Set</b></em>' attribute.
@@ -25342,7 +25351,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET = ESB_ELEMENT_FEATURE_COUNT + 104;
+    int INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET = ESB_ELEMENT_FEATURE_COUNT + 105;
 
     /**
      * The feature id for the '<em><b>Inbound HL7 Time Out</b></em>' attribute.
@@ -25351,7 +25360,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT = ESB_ELEMENT_FEATURE_COUNT + 105;
+    int INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT = ESB_ELEMENT_FEATURE_COUNT + 106;
 
     /**
      * The feature id for the '<em><b>Inbound HL7 Validate Message</b></em>' attribute.
@@ -25360,7 +25369,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE = ESB_ELEMENT_FEATURE_COUNT + 106;
+    int INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE = ESB_ELEMENT_FEATURE_COUNT + 107;
 
     /**
      * The feature id for the '<em><b>Inbound HL7 Build Invalid Messages</b></em>' attribute.
@@ -25369,7 +25378,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES = ESB_ELEMENT_FEATURE_COUNT + 107;
+    int INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES = ESB_ELEMENT_FEATURE_COUNT + 108;
 
     /**
      * The feature id for the '<em><b>Inbound HL7 Pass Through Invalid Messages</b></em>' attribute.
@@ -25378,7 +25387,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES = ESB_ELEMENT_FEATURE_COUNT + 108;
+    int INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES = ESB_ELEMENT_FEATURE_COUNT + 109;
 
     /**
      * The feature id for the '<em><b>Zookeeper Connect</b></em>' attribute.
@@ -25387,7 +25396,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__ZOOKEEPER_CONNECT = ESB_ELEMENT_FEATURE_COUNT + 109;
+    int INBOUND_ENDPOINT__ZOOKEEPER_CONNECT = ESB_ELEMENT_FEATURE_COUNT + 110;
 
     /**
      * The feature id for the '<em><b>Group Id</b></em>' attribute.
@@ -25396,7 +25405,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__GROUP_ID = ESB_ELEMENT_FEATURE_COUNT + 110;
+    int INBOUND_ENDPOINT__GROUP_ID = ESB_ELEMENT_FEATURE_COUNT + 111;
 
     /**
      * The feature id for the '<em><b>Content Type</b></em>' attribute.
@@ -25405,7 +25414,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 111;
+    int INBOUND_ENDPOINT__CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 112;
 
     /**
      * The feature id for the '<em><b>Consumer Type</b></em>' attribute.
@@ -25414,7 +25423,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__CONSUMER_TYPE = ESB_ELEMENT_FEATURE_COUNT + 112;
+    int INBOUND_ENDPOINT__CONSUMER_TYPE = ESB_ELEMENT_FEATURE_COUNT + 113;
 
     /**
      * The feature id for the '<em><b>Topics Or Topic Filter</b></em>' attribute.
@@ -25423,7 +25432,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER = ESB_ELEMENT_FEATURE_COUNT + 113;
+    int INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER = ESB_ELEMENT_FEATURE_COUNT + 114;
 
     /**
      * The feature id for the '<em><b>Topics Name</b></em>' attribute.
@@ -25432,7 +25441,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TOPICS_NAME = ESB_ELEMENT_FEATURE_COUNT + 114;
+    int INBOUND_ENDPOINT__TOPICS_NAME = ESB_ELEMENT_FEATURE_COUNT + 115;
 
     /**
      * The feature id for the '<em><b>Topic Filter From</b></em>' attribute.
@@ -25441,7 +25450,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TOPIC_FILTER_FROM = ESB_ELEMENT_FEATURE_COUNT + 115;
+    int INBOUND_ENDPOINT__TOPIC_FILTER_FROM = ESB_ELEMENT_FEATURE_COUNT + 116;
 
     /**
      * The feature id for the '<em><b>Topic Filter Name</b></em>' attribute.
@@ -25450,7 +25459,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TOPIC_FILTER_NAME = ESB_ELEMENT_FEATURE_COUNT + 116;
+    int INBOUND_ENDPOINT__TOPIC_FILTER_NAME = ESB_ELEMENT_FEATURE_COUNT + 117;
 
     /**
      * The feature id for the '<em><b>Simple Consumer Topic</b></em>' attribute.
@@ -25459,7 +25468,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC = ESB_ELEMENT_FEATURE_COUNT + 117;
+    int INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC = ESB_ELEMENT_FEATURE_COUNT + 118;
 
     /**
      * The feature id for the '<em><b>Simple Consumer Brokers</b></em>' attribute.
@@ -25468,7 +25477,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS = ESB_ELEMENT_FEATURE_COUNT + 118;
+    int INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS = ESB_ELEMENT_FEATURE_COUNT + 119;
 
     /**
      * The feature id for the '<em><b>Simple Consumer Port</b></em>' attribute.
@@ -25477,7 +25486,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT = ESB_ELEMENT_FEATURE_COUNT + 119;
+    int INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT = ESB_ELEMENT_FEATURE_COUNT + 120;
 
     /**
      * The feature id for the '<em><b>Simple Consumer Partition</b></em>' attribute.
@@ -25486,7 +25495,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION = ESB_ELEMENT_FEATURE_COUNT + 120;
+    int INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION = ESB_ELEMENT_FEATURE_COUNT + 121;
 
     /**
      * The feature id for the '<em><b>Simple Consumer Max Messages To Read</b></em>' attribute.
@@ -25495,7 +25504,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ = ESB_ELEMENT_FEATURE_COUNT + 121;
+    int INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ = ESB_ELEMENT_FEATURE_COUNT + 122;
 
     /**
      * The feature id for the '<em><b>Thread Count</b></em>' attribute.
@@ -25504,7 +25513,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__THREAD_COUNT = ESB_ELEMENT_FEATURE_COUNT + 122;
+    int INBOUND_ENDPOINT__THREAD_COUNT = ESB_ELEMENT_FEATURE_COUNT + 123;
 
     /**
      * The feature id for the '<em><b>Consumer Id</b></em>' attribute.
@@ -25513,7 +25522,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__CONSUMER_ID = ESB_ELEMENT_FEATURE_COUNT + 123;
+    int INBOUND_ENDPOINT__CONSUMER_ID = ESB_ELEMENT_FEATURE_COUNT + 124;
 
     /**
      * The feature id for the '<em><b>Socket Timeout Ms</b></em>' attribute.
@@ -25522,7 +25531,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS = ESB_ELEMENT_FEATURE_COUNT + 124;
+    int INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS = ESB_ELEMENT_FEATURE_COUNT + 125;
 
     /**
      * The feature id for the '<em><b>Socket Receive Buffer Bytes</b></em>' attribute.
@@ -25531,7 +25540,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES = ESB_ELEMENT_FEATURE_COUNT + 125;
+    int INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES = ESB_ELEMENT_FEATURE_COUNT + 126;
 
     /**
      * The feature id for the '<em><b>Fetch Message Max Bytes</b></em>' attribute.
@@ -25540,7 +25549,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES = ESB_ELEMENT_FEATURE_COUNT + 126;
+    int INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES = ESB_ELEMENT_FEATURE_COUNT + 127;
 
     /**
      * The feature id for the '<em><b>Num Consumer Fetches</b></em>' attribute.
@@ -25549,7 +25558,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES = ESB_ELEMENT_FEATURE_COUNT + 127;
+    int INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES = ESB_ELEMENT_FEATURE_COUNT + 128;
 
     /**
      * The feature id for the '<em><b>Auto Commit Enable</b></em>' attribute.
@@ -25558,7 +25567,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE = ESB_ELEMENT_FEATURE_COUNT + 128;
+    int INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE = ESB_ELEMENT_FEATURE_COUNT + 129;
 
     /**
      * The feature id for the '<em><b>Auto Commit Interval Ms</b></em>' attribute.
@@ -25567,7 +25576,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS = ESB_ELEMENT_FEATURE_COUNT + 129;
+    int INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS = ESB_ELEMENT_FEATURE_COUNT + 130;
 
     /**
      * The feature id for the '<em><b>Queued Max Message Chunks</b></em>' attribute.
@@ -25576,7 +25585,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS = ESB_ELEMENT_FEATURE_COUNT + 130;
+    int INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS = ESB_ELEMENT_FEATURE_COUNT + 131;
 
     /**
      * The feature id for the '<em><b>Rebalance Max Retries</b></em>' attribute.
@@ -25585,7 +25594,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES = ESB_ELEMENT_FEATURE_COUNT + 131;
+    int INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES = ESB_ELEMENT_FEATURE_COUNT + 132;
 
     /**
      * The feature id for the '<em><b>Fetch Min Bytes</b></em>' attribute.
@@ -25594,7 +25603,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__FETCH_MIN_BYTES = ESB_ELEMENT_FEATURE_COUNT + 132;
+    int INBOUND_ENDPOINT__FETCH_MIN_BYTES = ESB_ELEMENT_FEATURE_COUNT + 133;
 
     /**
      * The feature id for the '<em><b>Fetch Wait Max Ms</b></em>' attribute.
@@ -25603,7 +25612,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS = ESB_ELEMENT_FEATURE_COUNT + 133;
+    int INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS = ESB_ELEMENT_FEATURE_COUNT + 134;
 
     /**
      * The feature id for the '<em><b>Rebalance Backoff Ms</b></em>' attribute.
@@ -25612,7 +25621,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS = ESB_ELEMENT_FEATURE_COUNT + 134;
+    int INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS = ESB_ELEMENT_FEATURE_COUNT + 135;
 
     /**
      * The feature id for the '<em><b>Refresh Leader Backoff Ms</b></em>' attribute.
@@ -25621,7 +25630,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS = ESB_ELEMENT_FEATURE_COUNT + 135;
+    int INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS = ESB_ELEMENT_FEATURE_COUNT + 136;
 
     /**
      * The feature id for the '<em><b>Auto Offset Reset</b></em>' attribute.
@@ -25630,7 +25639,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__AUTO_OFFSET_RESET = ESB_ELEMENT_FEATURE_COUNT + 136;
+    int INBOUND_ENDPOINT__AUTO_OFFSET_RESET = ESB_ELEMENT_FEATURE_COUNT + 137;
 
     /**
      * The feature id for the '<em><b>Consumer Timeout Ms</b></em>' attribute.
@@ -25639,7 +25648,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS = ESB_ELEMENT_FEATURE_COUNT + 137;
+    int INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS = ESB_ELEMENT_FEATURE_COUNT + 138;
 
     /**
      * The feature id for the '<em><b>Exclude Internal Topics</b></em>' attribute.
@@ -25648,7 +25657,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS = ESB_ELEMENT_FEATURE_COUNT + 138;
+    int INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS = ESB_ELEMENT_FEATURE_COUNT + 139;
 
     /**
      * The feature id for the '<em><b>Partition Assignment Strategy</b></em>' attribute.
@@ -25657,7 +25666,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY = ESB_ELEMENT_FEATURE_COUNT + 139;
+    int INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY = ESB_ELEMENT_FEATURE_COUNT + 140;
 
     /**
      * The feature id for the '<em><b>Client Id</b></em>' attribute.
@@ -25666,7 +25675,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__CLIENT_ID = ESB_ELEMENT_FEATURE_COUNT + 140;
+    int INBOUND_ENDPOINT__CLIENT_ID = ESB_ELEMENT_FEATURE_COUNT + 141;
 
     /**
      * The feature id for the '<em><b>Zookeeper Session Timeout Ms</b></em>' attribute.
@@ -25675,7 +25684,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS = ESB_ELEMENT_FEATURE_COUNT + 141;
+    int INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS = ESB_ELEMENT_FEATURE_COUNT + 142;
 
     /**
      * The feature id for the '<em><b>Zookeeper Connection Timeout Ms</b></em>' attribute.
@@ -25684,7 +25693,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS = ESB_ELEMENT_FEATURE_COUNT + 142;
+    int INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS = ESB_ELEMENT_FEATURE_COUNT + 143;
 
     /**
      * The feature id for the '<em><b>Zookeeper Sync Time Ms</b></em>' attribute.
@@ -25693,7 +25702,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS = ESB_ELEMENT_FEATURE_COUNT + 143;
+    int INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS = ESB_ELEMENT_FEATURE_COUNT + 144;
 
     /**
      * The feature id for the '<em><b>Offsets Storage</b></em>' attribute.
@@ -25702,7 +25711,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__OFFSETS_STORAGE = ESB_ELEMENT_FEATURE_COUNT + 144;
+    int INBOUND_ENDPOINT__OFFSETS_STORAGE = ESB_ELEMENT_FEATURE_COUNT + 145;
 
     /**
      * The feature id for the '<em><b>Offsets Channel Backoff Ms</b></em>' attribute.
@@ -25711,7 +25720,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS = ESB_ELEMENT_FEATURE_COUNT + 145;
+    int INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS = ESB_ELEMENT_FEATURE_COUNT + 146;
 
     /**
      * The feature id for the '<em><b>Offsets Channel Socket Timeout Ms</b></em>' attribute.
@@ -25720,7 +25729,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS = ESB_ELEMENT_FEATURE_COUNT + 146;
+    int INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS = ESB_ELEMENT_FEATURE_COUNT + 147;
 
     /**
      * The feature id for the '<em><b>Offsets Commit Max Retries</b></em>' attribute.
@@ -25729,7 +25738,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES = ESB_ELEMENT_FEATURE_COUNT + 147;
+    int INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES = ESB_ELEMENT_FEATURE_COUNT + 148;
 
     /**
      * The feature id for the '<em><b>Dual Commit Enabled</b></em>' attribute.
@@ -25738,7 +25747,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 148;
+    int INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 149;
 
     /**
      * The feature id for the '<em><b>Inbound Cxf Rm Host</b></em>' attribute.
@@ -25747,7 +25756,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST = ESB_ELEMENT_FEATURE_COUNT + 149;
+    int INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST = ESB_ELEMENT_FEATURE_COUNT + 150;
 
     /**
      * The feature id for the '<em><b>Inbound Cxf Rm Port</b></em>' attribute.
@@ -25756,7 +25765,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT = ESB_ELEMENT_FEATURE_COUNT + 150;
+    int INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT = ESB_ELEMENT_FEATURE_COUNT + 151;
 
     /**
      * The feature id for the '<em><b>Inbound Cxf Rm Config File</b></em>' attribute.
@@ -25765,7 +25774,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE = ESB_ELEMENT_FEATURE_COUNT + 151;
+    int INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE = ESB_ELEMENT_FEATURE_COUNT + 152;
 
     /**
      * The feature id for the '<em><b>Enable SSL</b></em>' attribute.
@@ -25774,7 +25783,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__ENABLE_SSL = ESB_ELEMENT_FEATURE_COUNT + 152;
+    int INBOUND_ENDPOINT__ENABLE_SSL = ESB_ELEMENT_FEATURE_COUNT + 153;
 
     /**
      * The feature id for the '<em><b>Service Parameters</b></em>' containment reference list.
@@ -25783,7 +25792,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__SERVICE_PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 153;
+    int INBOUND_ENDPOINT__SERVICE_PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 154;
 
     /**
      * The feature id for the '<em><b>Suspend</b></em>' attribute.
@@ -25792,7 +25801,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__SUSPEND = ESB_ELEMENT_FEATURE_COUNT + 154;
+    int INBOUND_ENDPOINT__SUSPEND = ESB_ELEMENT_FEATURE_COUNT + 155;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Connection Factory</b></em>' attribute.
@@ -25801,7 +25810,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY = ESB_ELEMENT_FEATURE_COUNT + 155;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY = ESB_ELEMENT_FEATURE_COUNT + 156;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Server Host Name</b></em>' attribute.
@@ -25810,7 +25819,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME = ESB_ELEMENT_FEATURE_COUNT + 156;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME = ESB_ELEMENT_FEATURE_COUNT + 157;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Server Port</b></em>' attribute.
@@ -25819,7 +25828,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT = ESB_ELEMENT_FEATURE_COUNT + 157;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT = ESB_ELEMENT_FEATURE_COUNT + 158;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Server User Name</b></em>' attribute.
@@ -25828,7 +25837,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME = ESB_ELEMENT_FEATURE_COUNT + 158;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME = ESB_ELEMENT_FEATURE_COUNT + 159;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Server Password</b></em>' attribute.
@@ -25837,7 +25846,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 159;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 160;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Queue Name</b></em>' attribute.
@@ -25846,7 +25855,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME = ESB_ELEMENT_FEATURE_COUNT + 160;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME = ESB_ELEMENT_FEATURE_COUNT + 161;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Exchange Name</b></em>' attribute.
@@ -25855,7 +25864,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME = ESB_ELEMENT_FEATURE_COUNT + 161;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME = ESB_ELEMENT_FEATURE_COUNT + 162;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Queue Durable</b></em>' attribute.
@@ -25864,7 +25873,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE = ESB_ELEMENT_FEATURE_COUNT + 162;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE = ESB_ELEMENT_FEATURE_COUNT + 163;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Queue Exclusive</b></em>' attribute.
@@ -25873,7 +25882,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE = ESB_ELEMENT_FEATURE_COUNT + 163;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE = ESB_ELEMENT_FEATURE_COUNT + 164;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Queue Auto Delete</b></em>' attribute.
@@ -25882,7 +25891,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE = ESB_ELEMENT_FEATURE_COUNT + 164;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE = ESB_ELEMENT_FEATURE_COUNT + 165;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Queue Auto Ack</b></em>' attribute.
@@ -25891,7 +25900,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK = ESB_ELEMENT_FEATURE_COUNT + 165;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK = ESB_ELEMENT_FEATURE_COUNT + 166;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Queue Routing Key</b></em>' attribute.
@@ -25900,7 +25909,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY = ESB_ELEMENT_FEATURE_COUNT + 166;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY = ESB_ELEMENT_FEATURE_COUNT + 167;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Queue Delivery Mode</b></em>' attribute.
@@ -25909,7 +25918,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE = ESB_ELEMENT_FEATURE_COUNT + 167;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE = ESB_ELEMENT_FEATURE_COUNT + 168;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Exchange Type</b></em>' attribute.
@@ -25918,7 +25927,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 168;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 169;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Exchange Durable</b></em>' attribute.
@@ -25927,7 +25936,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE = ESB_ELEMENT_FEATURE_COUNT + 169;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE = ESB_ELEMENT_FEATURE_COUNT + 170;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Exchange Auto Delete</b></em>' attribute.
@@ -25936,7 +25945,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE = ESB_ELEMENT_FEATURE_COUNT + 170;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE = ESB_ELEMENT_FEATURE_COUNT + 171;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Server Virtual Host</b></em>' attribute.
@@ -25945,7 +25954,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST = ESB_ELEMENT_FEATURE_COUNT + 171;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST = ESB_ELEMENT_FEATURE_COUNT + 172;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Factory Heartbeat</b></em>' attribute.
@@ -25954,7 +25963,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT = ESB_ELEMENT_FEATURE_COUNT + 172;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT = ESB_ELEMENT_FEATURE_COUNT + 173;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Enabled</b></em>' attribute.
@@ -25963,7 +25972,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 173;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 174;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Keystore Location</b></em>' attribute.
@@ -25972,7 +25981,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION = ESB_ELEMENT_FEATURE_COUNT + 174;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION = ESB_ELEMENT_FEATURE_COUNT + 175;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Keystore Type</b></em>' attribute.
@@ -25981,7 +25990,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 175;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 176;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Keystore Password</b></em>' attribute.
@@ -25990,7 +25999,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 176;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 177;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Truststore Location</b></em>' attribute.
@@ -25999,7 +26008,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION = ESB_ELEMENT_FEATURE_COUNT + 177;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION = ESB_ELEMENT_FEATURE_COUNT + 178;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Truststore Type</b></em>' attribute.
@@ -26008,7 +26017,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 178;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 179;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Truststore Password</b></em>' attribute.
@@ -26017,7 +26026,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 179;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 180;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Version</b></em>' attribute.
@@ -26026,7 +26035,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION = ESB_ELEMENT_FEATURE_COUNT + 180;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION = ESB_ELEMENT_FEATURE_COUNT + 181;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Message Content Type</b></em>' attribute.
@@ -26035,7 +26044,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 181;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 182;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Connection Retry Count</b></em>' attribute.
@@ -26044,7 +26053,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT = ESB_ELEMENT_FEATURE_COUNT + 182;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT = ESB_ELEMENT_FEATURE_COUNT + 183;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Connection Retry Interval</b></em>' attribute.
@@ -26053,7 +26062,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 183;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 184;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Server Retry Interval</b></em>' attribute.
@@ -26062,7 +26071,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 184;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 185;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Consumer Qos Key</b></em>' containment reference.
@@ -26071,7 +26080,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY = ESB_ELEMENT_FEATURE_COUNT + 185;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY = ESB_ELEMENT_FEATURE_COUNT + 186;
 
     /**
      * The feature id for the '<em><b>Ws Inbound Port</b></em>' attribute.
@@ -26080,7 +26089,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WS_INBOUND_PORT = ESB_ELEMENT_FEATURE_COUNT + 186;
+    int INBOUND_ENDPOINT__WS_INBOUND_PORT = ESB_ELEMENT_FEATURE_COUNT + 187;
 
     /**
      * The feature id for the '<em><b>Ws Client Side Broadcast Level</b></em>' attribute.
@@ -26089,7 +26098,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL = ESB_ELEMENT_FEATURE_COUNT + 187;
+    int INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL = ESB_ELEMENT_FEATURE_COUNT + 188;
 
     /**
      * The feature id for the '<em><b>Ws Outflow Dispatch Sequence</b></em>' attribute.
@@ -26098,7 +26107,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 188;
+    int INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 189;
 
     /**
      * The feature id for the '<em><b>Ws Outflow Dispatch Fault Sequence</b></em>' attribute.
@@ -26107,7 +26116,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 189;
+    int INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 190;
 
     /**
      * The feature id for the '<em><b>Ws Boss Thread Pool Size</b></em>' attribute.
@@ -26116,7 +26125,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE = ESB_ELEMENT_FEATURE_COUNT + 190;
+    int INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE = ESB_ELEMENT_FEATURE_COUNT + 191;
 
     /**
      * The feature id for the '<em><b>Ws Worker Thread Pool Size</b></em>' attribute.
@@ -26125,7 +26134,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE = ESB_ELEMENT_FEATURE_COUNT + 191;
+    int INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE = ESB_ELEMENT_FEATURE_COUNT + 192;
 
     /**
      * The feature id for the '<em><b>Ws Subprotocol Handler Class</b></em>' attribute.
@@ -26134,7 +26143,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 192;
+    int INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 193;
 
     /**
      * The feature id for the '<em><b>Ws Pipeline Handler Class</b></em>' attribute.
@@ -26143,7 +26152,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 193;
+    int INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 194;
 
     /**
      * The feature id for the '<em><b>Transport Feed URL</b></em>' attribute.
@@ -26152,7 +26161,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_FEED_URL = ESB_ELEMENT_FEATURE_COUNT + 194;
+    int INBOUND_ENDPOINT__TRANSPORT_FEED_URL = ESB_ELEMENT_FEATURE_COUNT + 195;
 
     /**
      * The feature id for the '<em><b>Transport Feed Type</b></em>' attribute.
@@ -26161,7 +26170,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE = ESB_ELEMENT_FEATURE_COUNT + 195;
+    int INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE = ESB_ELEMENT_FEATURE_COUNT + 196;
 
     /**
      * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
@@ -26170,7 +26179,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRACE_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 196;
+    int INBOUND_ENDPOINT__TRACE_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 197;
 
     /**
      * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
@@ -26179,7 +26188,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__STATISTICS_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 197;
+    int INBOUND_ENDPOINT__STATISTICS_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 198;
 
     /**
      * The feature id for the '<em><b>Transport JMS Retries Before Suspension</b></em>' attribute.
@@ -26188,7 +26197,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION = ESB_ELEMENT_FEATURE_COUNT + 198;
+    int INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION = ESB_ELEMENT_FEATURE_COUNT + 199;
 
     /**
      * The feature id for the '<em><b>Transport JMS Reset Connection On Polling Suspension</b></em>' attribute.
@@ -26197,7 +26206,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION = ESB_ELEMENT_FEATURE_COUNT + 199;
+    int INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION = ESB_ELEMENT_FEATURE_COUNT + 200;
 
     /**
      * The feature id for the '<em><b>Transport JMS Polling Suspension Period</b></em>' attribute.
@@ -26206,7 +26215,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD = ESB_ELEMENT_FEATURE_COUNT + 200;
+    int INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD = ESB_ELEMENT_FEATURE_COUNT + 201;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Ssl Keystore Location</b></em>' attribute.
@@ -26215,7 +26224,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION = ESB_ELEMENT_FEATURE_COUNT + 201;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION = ESB_ELEMENT_FEATURE_COUNT + 202;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Ssl Keystore Type</b></em>' attribute.
@@ -26224,7 +26233,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 202;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 203;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Ssl Keystore Password</b></em>' attribute.
@@ -26233,7 +26242,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 203;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 204;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Ssl Truststore Location</b></em>' attribute.
@@ -26242,7 +26251,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION = ESB_ELEMENT_FEATURE_COUNT + 204;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION = ESB_ELEMENT_FEATURE_COUNT + 205;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Ssl Truststore Type</b></em>' attribute.
@@ -26251,7 +26260,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 205;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 206;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Ssl Truststore Password</b></em>' attribute.
@@ -26260,7 +26269,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 206;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 207;
 
     /**
      * The feature id for the '<em><b>Transport MQTT Ssl Version</b></em>' attribute.
@@ -26269,7 +26278,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION = ESB_ELEMENT_FEATURE_COUNT + 207;
+    int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION = ESB_ELEMENT_FEATURE_COUNT + 208;
 
     /**
      * The feature id for the '<em><b>Wss Ssl Key Store File</b></em>' attribute.
@@ -26278,7 +26287,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE = ESB_ELEMENT_FEATURE_COUNT + 208;
+    int INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE = ESB_ELEMENT_FEATURE_COUNT + 209;
 
     /**
      * The feature id for the '<em><b>Wss Ssl Key Store Pass</b></em>' attribute.
@@ -26287,7 +26296,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS = ESB_ELEMENT_FEATURE_COUNT + 209;
+    int INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS = ESB_ELEMENT_FEATURE_COUNT + 210;
 
     /**
      * The feature id for the '<em><b>Wss Ssl Trust Store File</b></em>' attribute.
@@ -26296,7 +26305,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE = ESB_ELEMENT_FEATURE_COUNT + 210;
+    int INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE = ESB_ELEMENT_FEATURE_COUNT + 211;
 
     /**
      * The feature id for the '<em><b>Wss Ssl Trust Store Pass</b></em>' attribute.
@@ -26305,7 +26314,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS = ESB_ELEMENT_FEATURE_COUNT + 211;
+    int INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS = ESB_ELEMENT_FEATURE_COUNT + 212;
 
     /**
      * The feature id for the '<em><b>Wss Ssl Cert Pass</b></em>' attribute.
@@ -26314,7 +26323,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WSS_SSL_CERT_PASS = ESB_ELEMENT_FEATURE_COUNT + 212;
+    int INBOUND_ENDPOINT__WSS_SSL_CERT_PASS = ESB_ELEMENT_FEATURE_COUNT + 213;
 
     /**
      * The feature id for the '<em><b>Ws Default Content Type</b></em>' attribute.
@@ -26323,7 +26332,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 213;
+    int INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 214;
 
     /**
      * The feature id for the '<em><b>Ws Shutdown Status Code</b></em>' attribute.
@@ -26332,7 +26341,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE = ESB_ELEMENT_FEATURE_COUNT + 214;
+    int INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE = ESB_ELEMENT_FEATURE_COUNT + 215;
 
     /**
      * The feature id for the '<em><b>Ws Shutdown Status Message</b></em>' attribute.
@@ -26341,7 +26350,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE = ESB_ELEMENT_FEATURE_COUNT + 215;
+    int INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE = ESB_ELEMENT_FEATURE_COUNT + 216;
 
     /**
      * The feature id for the '<em><b>Ws Use Port Offset</b></em>' attribute.
@@ -26350,7 +26359,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WS_USE_PORT_OFFSET = ESB_ELEMENT_FEATURE_COUNT + 216;
+    int INBOUND_ENDPOINT__WS_USE_PORT_OFFSET = ESB_ELEMENT_FEATURE_COUNT + 217;
 
     /**
      * The feature id for the '<em><b>Wss Ssl Protocols</b></em>' attribute.
@@ -26359,7 +26368,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS = ESB_ELEMENT_FEATURE_COUNT + 217;
+    int INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS = ESB_ELEMENT_FEATURE_COUNT + 218;
 
     /**
      * The feature id for the '<em><b>Wss Ssl Cipher Suites</b></em>' attribute.
@@ -26368,7 +26377,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES = ESB_ELEMENT_FEATURE_COUNT + 218;
+    int INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES = ESB_ELEMENT_FEATURE_COUNT + 219;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Consumer Qos</b></em>' attribute.
@@ -26377,7 +26386,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS = ESB_ELEMENT_FEATURE_COUNT + 219;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS = ESB_ELEMENT_FEATURE_COUNT + 220;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Consumer Qos Type</b></em>' attribute.
@@ -26386,7 +26395,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE = ESB_ELEMENT_FEATURE_COUNT + 220;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE = ESB_ELEMENT_FEATURE_COUNT + 221;
 
     /**
      * The feature id for the '<em><b>Transport JMSDB Url</b></em>' attribute.
@@ -26395,7 +26404,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL = ESB_ELEMENT_FEATURE_COUNT + 221;
+    int INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL = ESB_ELEMENT_FEATURE_COUNT + 222;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Auto Declare</b></em>' attribute.
@@ -26404,7 +26413,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE = ESB_ELEMENT_FEATURE_COUNT + 222;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_AUTO_DECLARE = ESB_ELEMENT_FEATURE_COUNT + 223;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Max Dead Lettered Count</b></em>' attribute.
@@ -26413,7 +26422,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT = ESB_ELEMENT_FEATURE_COUNT + 223;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MAX_DEAD_LETTERED_COUNT = ESB_ELEMENT_FEATURE_COUNT + 224;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Requeue Delay</b></em>' attribute.
@@ -26422,7 +26431,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY = ESB_ELEMENT_FEATURE_COUNT + 224;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_REQUEUE_DELAY = ESB_ELEMENT_FEATURE_COUNT + 225;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Exchange Auto Declare</b></em>' attribute.
@@ -26431,7 +26440,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE = ESB_ELEMENT_FEATURE_COUNT + 225;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DECLARE = ESB_ELEMENT_FEATURE_COUNT + 226;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Consumer Tag</b></em>' attribute.
@@ -26440,7 +26449,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_TAG = ESB_ELEMENT_FEATURE_COUNT + 226;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_TAG = ESB_ELEMENT_FEATURE_COUNT + 227;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Error Queue Routing Key</b></em>' attribute.
@@ -26449,7 +26458,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY = ESB_ELEMENT_FEATURE_COUNT + 227;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_QUEUE_ROUTING_KEY = ESB_ELEMENT_FEATURE_COUNT + 228;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Error Exchange Name</b></em>' attribute.
@@ -26458,7 +26467,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME = ESB_ELEMENT_FEATURE_COUNT + 228;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME = ESB_ELEMENT_FEATURE_COUNT + 229;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Factory Connection Timeout</b></em>' attribute.
@@ -26467,7 +26476,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 229;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 230;
 
     /**
      * The feature id for the '<em><b>Transport Rabbit Mq Factory Network Recovery Interval</b></em>' attribute.
@@ -26476,7 +26485,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 230;
+    int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 231;
 
     /**
      * The number of structural features of the '<em>Inbound Endpoint</em>' class.
@@ -26485,7 +26494,7 @@ public interface EsbPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 231;
+    int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 232;
 
     /**
      * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -39033,6 +39042,17 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EAttribute getInboundEndpoint_TransportJMSRetryDuration();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSMessagePropertyHyphens <em>Transport JMS Message Property Hyphens</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Transport JMS Message Property Hyphens</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSMessagePropertyHyphens()
+     * @see #getInboundEndpoint()
+     * @generated
+     */
+    EAttribute getInboundEndpoint_TransportJMSMessagePropertyHyphens();
 
     /**
      * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}'.
@@ -55897,6 +55917,14 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION = eINSTANCE.getInboundEndpoint_TransportJMSRetryDuration();
+
+        /**
+         * The meta object literal for the '<em><b>Transport JMS Message Property Hyphens</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS = eINSTANCE.getInboundEndpoint_TransportJMSMessagePropertyHyphens();
 
         /**
          * The meta object literal for the '<em><b>Transport VFS Move Timestamp Format</b></em>' attribute feature.

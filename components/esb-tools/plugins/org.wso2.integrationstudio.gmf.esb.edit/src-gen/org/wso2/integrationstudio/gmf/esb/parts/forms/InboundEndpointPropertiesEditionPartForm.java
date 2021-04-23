@@ -179,6 +179,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Text transportJMSPubSubNoLocal;
     protected Text transportJMSDurableSubscriberName;
     protected EMFComboViewer transportJMSBrokerType;
+    protected Text transportJMSMessagePropertyHyphens;
     protected Text transportMQTTConnectionFactory;
     protected Text transportMQTTServerHostName;
     protected Text transportMQTTServerPort;
@@ -618,6 +619,7 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSRetriesBeforeSuspension);
         propertiesStep
                 .addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSResetConnectionOnPollingSuspension);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSPollingSuspensionPeriod);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslKeystoreLocation);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportMQTTSslKeystoreType);
@@ -2098,6 +2100,13 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSPollingSuspensionPeriod) {
                     Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
                     Composite composite = createTransportJMSPollingSuspensionPeriodText(widgetFactory, filterAdvanceSubPropertiesGroup);
+                    Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
+                    return composite;
+                }
+                if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens) {
+                    Control[] previousControls = filterAdvanceSubPropertiesGroup.getChildren();
+                    Composite composite = createTransportJMSMessagePropertyHyphensText(widgetFactory, filterAdvanceSubPropertiesGroup);
                     Control[] newControls = filterAdvanceSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
                     return composite;
@@ -7592,6 +7601,73 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         // End of user code
         return parent;
     }
+
+    protected Composite createTransportJMSMessagePropertyHyphensText(FormToolkit widgetFactory, Composite parent) {
+    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens, EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSMessagePropertyHyphensLabel);
+    transportJMSMessagePropertyHyphens = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+    transportJMSMessagePropertyHyphens.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+    widgetFactory.paintBordersFor(parent);
+    GridData transportJMSMessagePropertyHyphensData = new GridData(GridData.FILL_HORIZONTAL);
+    transportJMSMessagePropertyHyphens.setLayoutData(transportJMSMessagePropertyHyphensData);
+    transportJMSMessagePropertyHyphens.addFocusListener(new FocusAdapter() {
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              InboundEndpointPropertiesEditionPartForm.this,
+              EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportJMSMessagePropertyHyphens.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  InboundEndpointPropertiesEditionPartForm.this,
+                  EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, transportJMSMessagePropertyHyphens.getText()));
+        }
+      }
+
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  InboundEndpointPropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    transportJMSMessagePropertyHyphens.addKeyListener(new KeyAdapter() {
+      /**
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartForm.this, EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportJMSMessagePropertyHyphens.getText()));
+        }
+      }
+    });
+    EditingUtils.setID(transportJMSMessagePropertyHyphens, EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens);
+    EditingUtils.setEEFtype(transportJMSMessagePropertyHyphens, "eef::Text"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportJMSMessagePropertyHyphensText
+
+    // End of user code
+    return parent;
+  }
 
     protected Composite createTransportMQTTConnectionFactoryText(FormToolkit widgetFactory, Composite parent) {
         createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportMQTTConnectionFactory,
@@ -20360,6 +20436,38 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         }
 
     }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSMessagePropertyHyphens()
+   * 
+   */
+  public String getTransportJMSMessagePropertyHyphens() {
+    return transportJMSMessagePropertyHyphens.getText();
+  }
+
+    /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSMessagePropertyHyphens(String newValue)
+   * 
+   */
+  public void setTransportJMSMessagePropertyHyphens(String newValue) {
+    if (newValue != null) {
+      transportJMSMessagePropertyHyphens.setText(newValue);
+    } else {
+      transportJMSMessagePropertyHyphens.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens);
+    if (eefElementEditorReadOnlyState && transportJMSMessagePropertyHyphens.isEnabled()) {
+      transportJMSMessagePropertyHyphens.setEnabled(false);
+      transportJMSMessagePropertyHyphens.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportJMSMessagePropertyHyphens.isEnabled()) {
+      transportJMSMessagePropertyHyphens.setEnabled(true);
+    }	
+    
+  }
 
     /**
      * {@inheritDoc}

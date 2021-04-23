@@ -171,7 +171,8 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	protected Text transportJMSPubSubNoLocal;
 	protected Text transportJMSDurableSubscriberName;
 	protected EMFComboViewer transportJMSBrokerType;
-	protected Text transportMQTTConnectionFactory;
+	protected Text transportJMSMessagePropertyHyphens;
+  protected Text transportMQTTConnectionFactory;
 	protected Text transportMQTTServerHostName;
 	protected Text transportMQTTServerPort;
 	protected Text transportMQTTTopicName;
@@ -4887,7 +4888,55 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	}
 
 	
-	protected Composite createTransportMQTTConnectionFactoryText(Composite parent) {
+	protected Composite createTransportJMSMessagePropertyHyphensText(Composite parent) {
+    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens, EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSMessagePropertyHyphensLabel);
+    transportJMSMessagePropertyHyphens = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData transportJMSMessagePropertyHyphensData = new GridData(GridData.FILL_HORIZONTAL);
+    transportJMSMessagePropertyHyphens.setLayoutData(transportJMSMessagePropertyHyphensData);
+    transportJMSMessagePropertyHyphens.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportJMSMessagePropertyHyphens.getText()));
+      }
+
+    });
+    transportJMSMessagePropertyHyphens.addKeyListener(new KeyAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, transportJMSMessagePropertyHyphens.getText()));
+        }
+      }
+
+    });
+    EditingUtils.setID(transportJMSMessagePropertyHyphens, EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens);
+    EditingUtils.setEEFtype(transportJMSMessagePropertyHyphens, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportJMSMessagePropertyHyphensText
+
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createTransportMQTTConnectionFactoryText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportMQTTConnectionFactory, EsbMessages.InboundEndpointPropertiesEditionPart_TransportMQTTConnectionFactoryLabel);
 		transportMQTTConnectionFactory = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData transportMQTTConnectionFactoryData = new GridData(GridData.FILL_HORIZONTAL);
@@ -14430,6 +14479,38 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 	}
 
 	/**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportJMSMessagePropertyHyphens()
+   * 
+   */
+  public String getTransportJMSMessagePropertyHyphens() {
+    return transportJMSMessagePropertyHyphens.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportJMSMessagePropertyHyphens(String newValue)
+   * 
+   */
+  public void setTransportJMSMessagePropertyHyphens(String newValue) {
+    if (newValue != null) {
+      transportJMSMessagePropertyHyphens.setText(newValue);
+    } else {
+      transportJMSMessagePropertyHyphens.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens);
+    if (eefElementEditorReadOnlyState && transportJMSMessagePropertyHyphens.isEnabled()) {
+      transportJMSMessagePropertyHyphens.setEnabled(false);
+      transportJMSMessagePropertyHyphens.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportJMSMessagePropertyHyphens.isEnabled()) {
+      transportJMSMessagePropertyHyphens.setEnabled(true);
+    }	
+    
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportMQTTConnectionFactory()

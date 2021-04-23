@@ -366,6 +366,9 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportJMSBrokerType)) {
 				basePart.initTransportJMSBrokerType(EEFUtils.choiceOfValues(inboundEndpoint, EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSBrokerType()), inboundEndpoint.getTransportJMSBrokerType());
 			}
+			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens))
+				basePart.setTransportJMSMessagePropertyHyphens(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getTransportJMSMessagePropertyHyphens()));
+			
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportMQTTConnectionFactory))
 				basePart.setTransportMQTTConnectionFactory(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getTransportMQTTConnectionFactory()));
 			
@@ -1090,6 +1093,9 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.transportJMSBrokerType) {
 			return EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSBrokerType();
 		}
+		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens) {
+			return EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSMessagePropertyHyphens();
+		}
 		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.transportMQTTConnectionFactory) {
 			return EsbPackage.eINSTANCE.getInboundEndpoint_TransportMQTTConnectionFactory();
 		}
@@ -1786,6 +1792,9 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 		}
 		if (EsbViewsRepository.InboundEndpoint.Properties.transportJMSBrokerType == event.getAffectedEditor()) {
 			inboundEndpoint.setTransportJMSBrokerType((JMSBrokerType)event.getNewValue());
+		}
+		if (EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens == event.getAffectedEditor()) {
+			inboundEndpoint.setTransportJMSMessagePropertyHyphens((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (EsbViewsRepository.InboundEndpoint.Properties.transportMQTTConnectionFactory == event.getAffectedEditor()) {
 			inboundEndpoint.setTransportMQTTConnectionFactory((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
@@ -2748,6 +2757,13 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			if (EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSBrokerType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportJMSBrokerType))
 				basePart.setTransportJMSBrokerType((JMSBrokerType)msg.getNewValue());
 			
+			if (EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSMessagePropertyHyphens().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens)) {
+				if (msg.getNewValue() != null) {
+					basePart.setTransportJMSMessagePropertyHyphens(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setTransportJMSMessagePropertyHyphens("");
+				}
+			}
 			if (EsbPackage.eINSTANCE.getInboundEndpoint_TransportMQTTConnectionFactory().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportMQTTConnectionFactory)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTransportMQTTConnectionFactory(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
@@ -3764,6 +3780,7 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSPubSubNoLocal(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSDurableSubscriberName(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSBrokerType(),
+			EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSMessagePropertyHyphens(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportMQTTConnectionFactory(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportMQTTServerHostName(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportMQTTServerPort(),
@@ -4501,6 +4518,13 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSBrokerType().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSBrokerType().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.InboundEndpoint.Properties.transportJMSMessagePropertyHyphens == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSMessagePropertyHyphens().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSMessagePropertyHyphens().getEAttributeType(), newValue);
 				}
 				if (EsbViewsRepository.InboundEndpoint.Properties.transportMQTTConnectionFactory == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();

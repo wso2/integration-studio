@@ -46,6 +46,7 @@ import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_END
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.integrationstudio.gmf.esb.persistence.InboundEndpointConstants;
@@ -141,7 +142,10 @@ public enum JMSInboundEndpointParameter {
                                                                                                                                                                                                                                             true), JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_TYPE(
                                                                                                                                                                                                                                                     InboundEndpointConstants.JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,
                                                                                                                                                                                                                                                     INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,
-                                                                                                                                                                                                                                                    false);
+                                                                                                                                                                                                                                                    false), JMS_MESSAGE_PROPERTY_HYPHENS(
+                                                                                                                                                                                                                                                            InboundEndpointConstants.JMS_MESSAGE_PROPERTY_HYPHENS,
+                                                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS,
+                                                                                                                                                                                                                                                            true);
 
     private final String name;
     private final EAttribute eAttributeValue;

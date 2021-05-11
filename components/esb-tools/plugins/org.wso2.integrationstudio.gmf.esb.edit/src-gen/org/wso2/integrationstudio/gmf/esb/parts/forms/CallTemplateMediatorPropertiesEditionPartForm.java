@@ -914,7 +914,7 @@ public class CallTemplateMediatorPropertiesEditionPartForm extends SectionProper
 
     @Override
     public void setOnError(RegistryKeyProperty registryKeyProperty) {
-        if (registryKeyProperty != null) {
+        if (registryKeyProperty != null && registryKeyProperty.getKeyValue() != null) {
             onErrorText.setText(registryKeyProperty.getKeyValue());
             onError = registryKeyProperty;
         }        

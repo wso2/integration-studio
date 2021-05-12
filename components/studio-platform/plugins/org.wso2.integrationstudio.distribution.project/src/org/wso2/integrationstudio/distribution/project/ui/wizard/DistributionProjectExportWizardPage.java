@@ -276,21 +276,25 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 	}
 	
     private void initializeProjectDetails() {
-        ProjectList projectListProvider = new ProjectList();
-        List<ListData> projectListData = projectListProvider.getListData(null, null);
-        for (ListData data : projectListData) {
-            DependencyData dependencyData = (DependencyData) data.getData();
-            projectList.put(data.getCaption(), dependencyData);
-            IProject mainProject = (IProject) ((DependencyData) data.getData()).getParent();
-            IFolder metaFolder = mainProject.getFolder("src/main/resources/metadata");
-            if (metaFolder.exists()) {
-                String caption = data.getCaption();
-                String keyword = caption.substring(StringUtils.indexOf(caption, ":=") + 2, caption.length());
-                projectListToDependencyMapping.put(keyword, caption);
-                artifactIdToDependencyMapping.put(((DependencyData) data.getData()).getDependency().getArtifactId(),
-                        keyword);
-            }
-        }
+		try {
+			ProjectList projectListProvider = new ProjectList();
+			List<ListData> projectListData = projectListProvider.getListData(null, null);
+			for (ListData data : projectListData) {
+				DependencyData dependencyData = (DependencyData) data.getData();
+				projectList.put(data.getCaption(), dependencyData);
+				IProject mainProject = (IProject) ((DependencyData) data.getData()).getParent();
+				IFolder metaFolder = mainProject.getFolder("src/main/resources/metadata");
+				if (metaFolder.exists()) {
+					String caption = data.getCaption();
+					String keyword = caption.substring(StringUtils.indexOf(caption, ":=") + 2, caption.length());
+					projectListToDependencyMapping.put(keyword, caption);
+					artifactIdToDependencyMapping.put(((DependencyData) data.getData()).getDependency().getArtifactId(),
+							keyword);
+				}
+			}
+		} catch (Exception e) {
+			log.error("Error while exporting meta data export in APIM Service catalog", e);
+		}
     }
 	
 	private void loadMavenProjectDetails() {

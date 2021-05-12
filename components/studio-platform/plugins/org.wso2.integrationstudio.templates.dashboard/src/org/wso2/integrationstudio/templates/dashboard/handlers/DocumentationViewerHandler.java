@@ -15,7 +15,7 @@ import org.wso2.integrationstudio.templates.dashboard.Activator;
 public class DocumentationViewerHandler extends AbstractHandler {
 
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    private static final String WSO2_EI_DOCUMENTATION = "https://ei.docs.wso2.com/en/latest/micro-integrator/develop/WSO2-Integration-Studio/";
+    private static final String WSO2_EI_DOCUMENTATION = "https://apim.docs.wso2.com/en/latest/integrate/develop/wso2-integration-studio/";
 
     public Object execute(ExecutionEvent event) throws ExecutionException {
         try {

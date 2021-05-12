@@ -224,7 +224,7 @@ public class JSEmbeddedFunctions {
         String url = "";
         switch (link) {
         case "documentation":
-            url = "https://ei.docs.wso2.com/en/latest/micro-integrator/develop/WSO2-Integration-Studio/";
+            url = "https://apim.docs.wso2.com/en/latest/integrate/develop/wso2-integration-studio/";
             break;
         case "github":
             url = "https://github.com/wso2/integration-studio";

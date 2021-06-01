@@ -28,6 +28,7 @@ import org.wso2.integrationstudio.datamapper.diagram.custom.exception.DataMapper
 import org.wso2.integrationstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.integrationstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.integrationstudio.datamapper.diagram.custom.model.DMVariableType;
+import static org.wso2.integrationstudio.datamapper.diagram.tree.generator.SchemaTransformer.DEFAULT_ARRAY_NAME;
 
 /**
  * This class contains common utility methods used by script generation
@@ -127,7 +128,7 @@ public class ScriptGenerationUtil {
 						prettyVariableName += "ATTR" + getValidNextName(nextName.replaceFirst("@", "attr_"));
 					} else if (nextName.startsWith("@")) {
 						prettyVariableName += getValidNextName(nextName.replaceFirst("@", "attr_"));
-					} else {
+					}  else if (!nextName.equals(DEFAULT_ARRAY_NAME)) {
 						prettyVariableName += getValidNextName(nextName);
 					}
 					if (SchemaDataType.DOUBLE.equals(variableType) || SchemaDataType.INT.equals(variableType)

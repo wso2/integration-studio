@@ -103,7 +103,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static final String ERROR_IN_PARSING_JSONSCHEMA = "Error in parsing the JSONSchema";
 	private static final String ERROR_IN_MAPPING_JSONSCHEMA = "Error in mapping the JSONSchema";
 	private static final String ERROR_IN_PROCESSING_JSONSCHEMA = "Error in processing the JSONSchema";
-	private static final String DEFAULT_ARRAY_NAME = "_";
+	public static final String DEFAULT_ARRAY_NAME = "__";
 	private static final String UNAMED = "unnamed";
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

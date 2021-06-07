@@ -223,7 +223,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     apiFileName = apiName;
                 }
             } else {
-                artifactFile = location.getFile(new Path(artifactModel.getName() + ".xml"));
+                artifactFile = location.getFile(new Path(artifactModel.getName() + "_" + artifactModel.getVersion() + ".xml"));
                 File destFile = artifactFile.getLocation().toFile();
                 FileUtils.createFile(destFile, getTemplateContent());
                 fileLst.add(destFile);

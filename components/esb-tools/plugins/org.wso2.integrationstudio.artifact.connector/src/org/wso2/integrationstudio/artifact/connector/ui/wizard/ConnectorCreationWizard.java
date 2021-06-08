@@ -103,9 +103,9 @@ public class ConnectorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			refreshDistProjects();
 			// Setting the created file to be hidden so that users won't see it.
-			if (file.exists()) {
-				file.setHidden(true);
-			}
+//			if (file.exists()) {
+//				file.setHidden(true);
+//			}
 		} catch (Exception e) {
 			MessageDialog.openError(getShell(), "Error while creating the project", e.getMessage());
 			return false;

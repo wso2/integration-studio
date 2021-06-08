@@ -231,9 +231,9 @@ public class DataSourceProjectCreationWizard extends AbstractWSO2ProjectCreation
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		refreshDistProjects();
 		// Setting the created file to be hidden so that users won't see it.
-		if (file.exists()) {
-			file.setHidden(true);
-		}
+//		if (file.exists()) {
+//			file.setHidden(true);
+//		}
 	}
 
 	public IResource getCreatedResource() {

@@ -102,9 +102,9 @@ public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			refreshDistProjects();
 			//Setting the created file to be hidden so that users won't see it.
-			if(file.exists()){
-				file.setHidden(true);
-			}
+//			if(file.exists()){
+//				file.setHidden(true);
+//			}
 			String groupId = getMavenGroupId(pomfile);
 			if (esbProjectModel.getSelectedOption() != null && esbProjectModel.getSelectedOption().equals("new.esb.synapseConfig")) {				
 				ESBProjectUtils.createESBArtifacts(esbArtiList,project,pomfile,fileList,groupId);

@@ -259,7 +259,6 @@ var XmlBeautify =
             	} else {
             		valueOfElement = elementTextContent;
             	}
-                
             }
 
             if (element.tagName != "undefined" && element.tagName != undefined) {

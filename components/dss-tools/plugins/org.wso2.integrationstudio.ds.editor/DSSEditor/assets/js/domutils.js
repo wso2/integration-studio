@@ -251,11 +251,15 @@ var XmlBeautify =
             		val = element.textContent;
             	}
             	if (val.indexOf("<![CDATA[") != -1 && val.indexOf("]]>") != -1) {
-            		valueOfElement = "<![CDATA[" + elementTextContent + "]]>";
+                    if (elementTextContent.indexOf("<![CDATA[") < 0 && elementTextContent.indexOf("]]>") < 0) {
+                        valueOfElement = "<![CDATA[" + elementTextContent + "]]>";
+                    } else {
+                        valueOfElement = elementTextContent;
+                    }
             	} else {
             		valueOfElement = elementTextContent;
             	}
-
+                
             }
 
             if (element.tagName != "undefined" && element.tagName != undefined) {

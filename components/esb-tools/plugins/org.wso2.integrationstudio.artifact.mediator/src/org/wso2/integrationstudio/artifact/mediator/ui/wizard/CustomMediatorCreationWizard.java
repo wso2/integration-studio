@@ -17,6 +17,10 @@
 package org.wso2.integrationstudio.artifact.mediator.ui.wizard;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
@@ -132,6 +136,17 @@ public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWiz
 			boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 					"org.apache.felix", "maven-bundle-plugin",
 					"2.3.4");
+			
+			// add dependencies
+			List<Dependency> dependencies = new ArrayList<>();
+            dependencies.add(MavenUtils.createDependency("org.apache.synapse", "synapse-core",
+                    "2.1.7-wso2v227"));
+            dependencies.add(MavenUtils.createDependency("org.apache.axis2.wso2", "axis2",
+                    "1.6.1-wso2v63"));
+            dependencies.add(MavenUtils.createDependency("commons-logging", "commons-logging",
+                    "1.1.1"));
+            MavenUtils.addMavenDependency(mavenProject, dependencies);
+            
 			if(!pluginExists){
 				Plugin plugin = MavenUtils
 				.createPluginEntry(mavenProject, "org.apache.felix",

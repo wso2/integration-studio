@@ -283,13 +283,15 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 				DependencyData dependencyData = (DependencyData) data.getData();
 				projectList.put(data.getCaption(), dependencyData);
 				IProject mainProject = (IProject) ((DependencyData) data.getData()).getParent();
-				IFolder metaFolder = mainProject.getFolder("src/main/resources/metadata");
-				if (metaFolder.exists()) {
-					String caption = data.getCaption();
-					String keyword = caption.substring(StringUtils.indexOf(caption, ":=") + 2, caption.length());
-					projectListToDependencyMapping.put(keyword, caption);
-					artifactIdToDependencyMapping.put(((DependencyData) data.getData()).getDependency().getArtifactId(),
-							keyword);
+				if (mainProject != null) {
+				    IFolder metaFolder = mainProject.getFolder("src/main/resources/metadata");
+	                if (metaFolder.exists()) {
+	                    String caption = data.getCaption();
+	                    String keyword = caption.substring(StringUtils.indexOf(caption, ":=") + 2, caption.length());
+	                    projectListToDependencyMapping.put(keyword, caption);
+	                    artifactIdToDependencyMapping.put(((DependencyData) data.getData()).getDependency().getArtifactId(),
+	                            keyword);
+	                }
 				}
 			}
 		} catch (Exception e) {

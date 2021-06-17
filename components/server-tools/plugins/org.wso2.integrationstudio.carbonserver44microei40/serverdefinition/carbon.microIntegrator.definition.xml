@@ -123,6 +123,7 @@
             -Dcarbon.use.registry.repo=false -DworkerNode=false
             -Dorg.apache.cxf.io.CachedOutputStream.Threshold=104857600 -Dprofile=micro-integrator-default
             -Desb.debug=${esb.debug} -DenableManagementApi=true -DenablePrometheusApi=true -DgracefulShutdown=false
+            -Dorg.apache.activemq.SERIALIZABLE_PACKAGES="*"
         </vmParameters>
         <programArguments></programArguments>
         <classpathReference>carbon.libs</classpathReference>

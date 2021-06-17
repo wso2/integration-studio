@@ -173,19 +173,26 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 		SortedMap<String, DependencyData> projectList =
 		                                                Collections.synchronizedSortedMap(new TreeMap<String, DependencyData>());
 		Map<String, Dependency> dependencyMap = new LinkedHashMap<String, Dependency>();
-        for (ListData data : projectListData) {
-            DependencyData dependencyData = (DependencyData) data.getData();
-            projectList.put(data.getCaption(), dependencyData);
-            IProject mainProject = (IProject) ((DependencyData) data.getData()).getParent();
-            IFolder metaFolder = mainProject.getFolder("src/main/resources/metadata");
-            if (metaFolder.exists()) {
-                String caption = data.getCaption();
-                String keyword = caption.substring(StringUtils.indexOf(caption, ":=") + 2, caption.length());
-                projectListToDependencyMapping.put(keyword, caption);
-                artifactIdToDependencyMapping.put(((DependencyData) data.getData()).getDependency().getArtifactId(),
-                        keyword);
+        try {
+            for (ListData data : projectListData) {
+                DependencyData dependencyData = (DependencyData) data.getData();
+                projectList.put(data.getCaption(), dependencyData);
+                IProject mainProject = (IProject) ((DependencyData) data.getData()).getParent();
+                if (mainProject != null) {
+                    IFolder metaFolder = mainProject.getFolder("src/main/resources/metadata");
+                    if (metaFolder.exists()) {
+                        String caption = data.getCaption();
+                        String keyword = caption.substring(StringUtils.indexOf(caption, ":=") + 2, caption.length());
+                        projectListToDependencyMapping.put(keyword, caption);
+                        artifactIdToDependencyMapping.put(((DependencyData) data.getData()).getDependency().getArtifactId(),
+                                keyword);
+                    }
+                }
             }
+        } catch(Exception e) {
+            log.error("Error while loading metadata of the api resources in the Composite Exporter POM file");
         }
+		
 
 		parentPrj = MavenUtils.getMavenProject(pomFile);
 

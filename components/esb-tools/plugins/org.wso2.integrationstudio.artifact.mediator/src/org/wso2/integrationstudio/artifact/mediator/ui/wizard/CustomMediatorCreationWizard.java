@@ -60,6 +60,7 @@ public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWiz
 	
 	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Mediator Artifact";
     private static final String MEDIATOR_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.mediator.project.nature";
+    private static final String MEDIATOR_PROJECT_MAVEN_CONFIGURED_NATURE = "org.eclipse.m2e.core.maven2Nature";
 	private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.integrationstudio.gmf.esb.diagram.custom.perspective";
     
 	private  CustomMediatorModel customMediatorModel;
@@ -188,6 +189,9 @@ public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWiz
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			ProjectUtils.addNatureToProject(project,false,
 			                       MEDIATOR_PROJECT_NATURE);
+			ProjectUtils.addNatureToProject(project,false,
+			        MEDIATOR_PROJECT_MAVEN_CONFIGURED_NATURE);
+			ProjectUtils.addBuildSpecificationsToProject(project, new String[]{"org.eclipse.jdt.core.javabuilder", "org.eclipse.m2e.core.maven2Builder"});
 			MavenUtils
 			.updateWithMavenEclipsePlugin(
 					pomfile,

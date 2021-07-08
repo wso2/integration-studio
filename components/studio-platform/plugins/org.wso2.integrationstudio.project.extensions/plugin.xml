@@ -79,6 +79,12 @@
              mediaType="application/javascript"
              extension="js"></template>
         <template
+             file="resources/templates/other/json-file.json"
+             id="org.wso2.integrationstudio.esb.template.json"
+             name="JSON File"
+             mediaType="application/json"
+             extension="json"></template>     
+        <template
              file="resources/templates/endpoints/load_balance_endpoint.xml"
              id="org.wso2.integrationstudio.esb.template.ep4"
              name="Load Balance Endpoint"
@@ -198,6 +204,11 @@
              name="XSLT File"
              mediaType="application/xslt+xml"
              extension="xslt"></template>
-
+        <template
+             file="resources/templates/other/yaml-file.yaml"
+             id="org.wso2.integrationstudio.esb.template.yaml"
+             name="YAML File"
+             mediaType="application/x-yml"
+             extension="yaml"></template>
     </extension>
 </plugin>

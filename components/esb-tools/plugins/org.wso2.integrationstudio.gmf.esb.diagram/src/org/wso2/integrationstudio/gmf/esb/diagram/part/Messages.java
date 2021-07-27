@@ -323,7 +323,15 @@ public class Messages extends NLS {
      * @generated
      */
     public static String APIResource5CreationTool_desc;
+    /**
+     * @generated
+     */
+    public static String HideShowConnector_title;
 
+    /**
+     * @generated
+     */
+    public static String HideShowConnector_desc;
     /**
      * @generated
      */

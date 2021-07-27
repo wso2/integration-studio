@@ -30,9 +30,16 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.draw2d.ActionEvent;
+import org.eclipse.draw2d.ActionListener;
+import org.eclipse.draw2d.Button;
+import org.eclipse.draw2d.Figure;
+import org.eclipse.draw2d.XYLayout;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.RootEditPart;
+import org.eclipse.gef.internal.ui.palette.editparts.ToolbarEditPart;
 import org.eclipse.gef.ui.palette.PaletteViewer;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -42,10 +49,16 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.wizard.IWizard;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.wso2.integrationstudio.gmf.esb.APIResource;
 import org.wso2.integrationstudio.gmf.esb.AggregateMediator;
 import org.wso2.integrationstudio.gmf.esb.BAMMediator;
@@ -147,6 +160,7 @@ import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditor;
 import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.integrationstudio.gmf.esb.diagram.part.EsbPaletteFactory;
+import org.wso2.integrationstudio.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.integrationstudio.gmf.esb.impl.CloudConnectorOperationImpl;
 import org.wso2.integrationstudio.platform.core.utils.Constants;
 import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
@@ -884,6 +898,57 @@ public class EditorUtils {
                         // Initialize palette viewer key handler.
                         PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editor)
                                 .getGraphicalEditor().getDiagramEditDomain()).getPaletteViewer();
+                        
+                        if (editor.equals(activeEditor)) {
+
+                            // Creates "Hide/Show Connector" button in palette
+                            Figure contents = new Figure();
+                            XYLayout layout = new XYLayout();
+                            contents.setLayoutManager(layout);
+                            Button hideShowButton = new Button(
+                                    EsbElementTypes.getImage(EsbElementTypes.MediatorFlow_3607));
+                            layout.setConstraint(hideShowButton, new Rectangle(0, 0, -1, -1));
+                            contents.add(hideShowButton);
+
+                            hideShowButton.addActionListener(new ActionListener() {
+                                public void actionPerformed(ActionEvent event) {
+                                    String id = "org.wso2.developerstudio.eclipse.artifact.hideshowconnectorartifact"; // registered
+                                    // wizard id
+                                    // First see if this is a "new wizard".
+                                    IWizardDescriptor descriptor = PlatformUI.getWorkbench().getNewWizardRegistry()
+                                            .findWizard(id);
+                                    // If not check if it is an "import wizard".
+                                    if (descriptor == null) {
+                                        descriptor = PlatformUI.getWorkbench().getImportWizardRegistry().findWizard(id);
+                                    }
+                                    // Or maybe an export wizard
+                                    if (descriptor == null) {
+                                        descriptor = PlatformUI.getWorkbench().getExportWizardRegistry().findWizard(id);
+                                    }
+                                    // Then if we have a wizard, open it.
+                                    if (descriptor != null) {
+                                        IWizard wizard;
+                                        try {
+                                            wizard = descriptor.createWizard();
+                                            IWorkbenchWindow win = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                                            WizardDialog wd = new WizardDialog(win.getShell(), wizard);
+                                            if (wizard instanceof IWorkbenchWizard) {
+                                                ((IWorkbenchWizard) wizard).init(PlatformUI.getWorkbench(),
+                                                        StructuredSelection.EMPTY);
+                                            }
+                                            wd.setTitle(wizard.getWindowTitle());
+                                            wd.open();
+                                        } catch (CoreException e) {
+                                            // Handle error
+                                        }
+
+                                    }
+                                }
+                            });
+                            ToolbarEditPart toolbarEditPart = (ToolbarEditPart) paletteViewer.getRootEditPart()
+                                    .getContents().getChildren().get(0);
+                            toolbarEditPart.getContentPane().add(contents);
+                        }
                         if (paletteViewer.getKeyHandler() instanceof CustomPaletteViewerKeyHandler) {
                             ((CustomPaletteViewerKeyHandler) paletteViewer.getKeyHandler()).initializeKeyHandler();
                         }
@@ -891,6 +956,64 @@ public class EditorUtils {
                     }
                 }
                 // Update Cloud Connector UI model 
+                EEFPropertyViewUtil.loadConnectorSchemas();
+            }
+        });
+    }
+    
+    public static void updateToolpaletteOnPluginChange() {
+        Display.getDefault().asyncExec(new Runnable() {
+            public void run() {
+                IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+                        .getActivePage().getEditorReferences();
+                IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                        .getActiveEditor();
+                for (int i = 0; i < editorReferences.length; i++) {
+                    IEditorPart editor = editorReferences[i].getEditor(false);
+                    if ((editor instanceof EsbMultiPageEditor)
+                            && ((EsbMultiPageEditor) editor).getGraphicalEditor() != null) {
+                        /*
+                         * This must be altered. 'addDefinedSequences' and 'addDefinedEndpoints' methods
+                         * should not exist inside EsbPaletteFactory class. Creating new instance of
+                         * 'EsbPaletteFactory' must be avoided.
+                         */
+                        EsbPaletteFactory esbPaletteFactory = new EsbPaletteFactory();
+                        if (!editor.equals(activeEditor)) {
+                            esbPaletteFactory.addDefinedSequences(((EsbMultiPageEditor) editor).getGraphicalEditor());
+                            esbPaletteFactory.addDefinedEndpoints(((EsbMultiPageEditor) editor).getGraphicalEditor());
+                        } else {
+                            // esbPaletteFactory.addCloudConnectorOperations(((EsbMultiPageEditor)
+                            // editor).getGraphicalEditor());
+                        }
+                        try {
+                            EsbEditorInput input = (EsbEditorInput) ((EsbMultiPageEditor) editor).getGraphicalEditor()
+                                    .getEditorInput();
+                            IFile file = input.getXmlResource();
+                            IProject activeProject = file.getProject();
+                            if (CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)) {
+                                addCloudConnectorOperations(((EsbMultiPageEditor) editor).getGraphicalEditor(),
+                                        esbPaletteFactory);
+                            }
+                            removeNonExistingCloudConnectorOperations(
+                                    ((EsbMultiPageEditor) editor).getGraphicalEditor(), esbPaletteFactory);
+                        } catch (Exception e) {
+                            MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+                                    "Developer Studio Error Dialog",
+                                    "Error while loading the connector due to " + e.getMessage());
+                        }
+
+                        // Initialize palette viewer key handler.
+                        PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editor)
+                                .getGraphicalEditor().getDiagramEditDomain()).getPaletteViewer();
+
+                        if (paletteViewer.getKeyHandler() instanceof CustomPaletteViewerKeyHandler) {
+                            ((CustomPaletteViewerKeyHandler) paletteViewer.getKeyHandler()).initializeKeyHandler();
+                        }
+                        esbPaletteFactory.updateToolPaletteItems(((EsbMultiPageEditor) editor).getGraphicalEditor());
+
+                    }
+                }
+                // Update Cloud Connector UI model
                 EEFPropertyViewUtil.loadConnectorSchemas();
             }
         });

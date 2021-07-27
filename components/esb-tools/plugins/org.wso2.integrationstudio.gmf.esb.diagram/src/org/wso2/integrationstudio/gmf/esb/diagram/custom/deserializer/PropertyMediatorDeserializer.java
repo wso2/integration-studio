@@ -83,6 +83,8 @@ public class PropertyMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
                 executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_SCOPE, PropertyScope.OPERATION);
             } else if (scope.equals(XMLConfigConstants.SCOPE_REGISTRY)) {
                 executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_SCOPE, PropertyScope.REGISTRY);
+            } else if (scope.equals(XMLConfigConstants.SCOPE_SYSTEM)) {
+                executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_SCOPE, PropertyScope.SYSTEM);
             }
         }
         // For the remove action

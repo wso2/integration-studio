@@ -78,7 +78,15 @@ public enum PropertyScope implements Enumerator {
      * @generated
      * @ordered
      */
-    REGISTRY(5, "REGISTRY", "registry");
+    REGISTRY(5, "REGISTRY", "registry"), /**
+     * The '<em><b>SYSTEM</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #SYSTEM_VALUE
+     * @generated
+     * @ordered
+     */
+    SYSTEM(6, "SYSTEM", "system");
 
     /**
      * The '<em><b>SYNAPSE</b></em>' literal value.
@@ -171,6 +179,17 @@ public enum PropertyScope implements Enumerator {
     public static final int REGISTRY_VALUE = 5;
 
     /**
+     * The '<em><b>SYSTEM</b></em>' literal value.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #SYSTEM
+     * @model literal="system"
+     * @generated
+     * @ordered
+     */
+    public static final int SYSTEM_VALUE = 6;
+
+    /**
      * An array of all the '<em><b>Property Scope</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -183,6 +202,7 @@ public enum PropertyScope implements Enumerator {
             AXIS2_CLIENT,
             OPERATION,
             REGISTRY,
+            SYSTEM,
         };
 
     /**
@@ -245,6 +265,7 @@ public enum PropertyScope implements Enumerator {
             case AXIS2_CLIENT_VALUE: return AXIS2_CLIENT;
             case OPERATION_VALUE: return OPERATION;
             case REGISTRY_VALUE: return REGISTRY;
+            case SYSTEM_VALUE: return SYSTEM;
         }
         return null;
     }

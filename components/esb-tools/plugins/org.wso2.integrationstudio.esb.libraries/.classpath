@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-core-2.1.7-wso2v142.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rest.api-4.7.92.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediation.commons-4.7.85.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.micro.integrator.dataservices.core_4.0.0.jar"/>
@@ -12,7 +13,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/jackson-dataformat-yaml-2.12.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/snakeyaml-1.27.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/smooks-1.5.1.wso2v4.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-core-2.1.7-wso2v142.jar" sourcepath="/Users/apple/Downloads/wso2-synapse-integration-studio-synapse.zip"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-datatype-jsr310-2.12.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-annotations-2.12.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-databind-2.12.1.jar"/>

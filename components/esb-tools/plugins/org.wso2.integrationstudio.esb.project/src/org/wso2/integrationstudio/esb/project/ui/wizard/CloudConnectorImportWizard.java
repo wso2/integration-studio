@@ -33,6 +33,7 @@ import org.wso2.integrationstudio.esb.project.utils.WizardDialogUtils;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.esb.project.servlets.ConnectorServletUtil;
 
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
@@ -160,6 +161,8 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
         ZipFile zipFile = new ZipFile(source);
         String[] segments = source.split(Pattern.quote(File.separator));
         String zipFileName = segments[segments.length - 1].split(".zip")[0];
+        String connectorDisplayName = zipFileName.substring(0, 1).toUpperCase()
+                + zipFileName.substring(1).replaceAll("\\-(.*)", " Connector");
         String parentDirectoryPath = storeWizardPage.getSelectedProject().getWorkspace().getRoot().getLocation()
                 .toOSString() + File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
         File parentDirectory = new File(parentDirectoryPath);
@@ -173,6 +176,7 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
         if (updateGMFPlugin != null) {
             updateGMFPlugin.updateOpenedEditors();
         }
+        ConnectorServletUtil.updateConnectorMetaData(connectorDisplayName);
         /*
          * Refresh the project.
          */

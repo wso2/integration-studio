@@ -42,6 +42,15 @@
          </launchMode>
       </launchConfigurationTabGroup>
    </extension>
+   	<extension point="org.eclipse.ui.newWizards">
+		<wizard name="Hide/Show Connectors" 
+			category="org.wso2.integrationstudio.capp.project/org.wso2.integrationstudio.extensions/org.wso2.integrationstudio.extensions.project.types"
+			class="org.wso2.integrationstudio.gmf.esb.diagram.part.HideShowConnectorWizard"
+			id="org.wso2.integrationstudio.artifact.hideshowconnectorartifact"
+			project="false" icon="icons/new-mediator-16x16.png">
+			<description>Hide/Show Connectors</description>
+		</wizard>
+	</extension>
    <extension
          point="org.eclipse.debug.ui.launchShortcuts">
       <shortcut

@@ -117,16 +117,19 @@ public class HideShowConnectorWizard extends AbstractWSO2ProjectCreationWizard {
                 .getEditorReferences();
         for (IEditorReference editorReference : editorReferences) {
             if (editorReference.getEditor(true) instanceof EsbMultiPageEditor) {
-                PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editorReference
-                        .getEditor(true)).getDiagramEditDomain()).getPaletteViewer();
-                List children = paletteViewer.getPaletteRoot().getChildren();
-                for (Object child : children) {
-                    if (((PaletteContainer) child).getId().contains("CloudConnector")) {
-                        String connectorId = ((PaletteContainer) child).getId().replaceAll("CloudConnector-", "");
-                        connectorId = connectorId.substring(0, 1).toUpperCase() + connectorId.substring(1)
-                                + " Connector";
-                        if (connectorId.equals(connectorName)) {
-                            ((PaletteContainer) child).setVisible(visible);
+                EsbMultiPageEditor currentEditor = (EsbMultiPageEditor) editorReference.getEditor(true);
+                if (currentEditor.getGraphicalEditor() instanceof EsbDiagramEditor && !currentEditor.isFormEditor) {
+                    PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editorReference
+                            .getEditor(true)).getDiagramEditDomain()).getPaletteViewer();
+                    List children = paletteViewer.getPaletteRoot().getChildren();
+                    for (Object child : children) {
+                        if (((PaletteContainer) child).getId().contains("CloudConnector")) {
+                            String connectorId = ((PaletteContainer) child).getId().replaceAll("CloudConnector-", "");
+                            connectorId = connectorId.substring(0, 1).toUpperCase() + connectorId.substring(1)
+                                    + " Connector";
+                            if (connectorId.equals(connectorName)) {
+                                ((PaletteContainer) child).setVisible(visible);
+                            }
                         }
                     }
                 }

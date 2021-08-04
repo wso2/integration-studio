@@ -912,7 +912,7 @@ public class EditorUtils {
 
                             hideShowButton.addActionListener(new ActionListener() {
                                 public void actionPerformed(ActionEvent event) {
-                                    String id = "org.wso2.developerstudio.eclipse.artifact.hideshowconnectorartifact"; // registered
+                                    String id = "org.wso2.integrationstudio.artifact.hideshowconnectorartifact"; // registered
                                     // wizard id
                                     // First see if this is a "new wizard".
                                     IWizardDescriptor descriptor = PlatformUI.getWorkbench().getNewWizardRegistry()
@@ -998,7 +998,7 @@ public class EditorUtils {
                                     ((EsbMultiPageEditor) editor).getGraphicalEditor(), esbPaletteFactory);
                         } catch (Exception e) {
                             MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-                                    "Developer Studio Error Dialog",
+                                    "Integration Studio Error Dialog",
                                     "Error while loading the connector due to " + e.getMessage());
                         }
 

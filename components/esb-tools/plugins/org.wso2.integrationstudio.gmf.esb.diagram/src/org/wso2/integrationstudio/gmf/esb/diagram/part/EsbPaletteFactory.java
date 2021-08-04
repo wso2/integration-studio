@@ -21,6 +21,7 @@ import static org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils.SEQU
 import static org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils.updateToolpalette;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -59,6 +60,7 @@ import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.MouseEvent;
@@ -1956,16 +1958,33 @@ public class EsbPaletteFactory {
 		String[] checkedConnectors = null;
 		String connectorPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator
 				+ connectorPathFromWorkspace;
+		String connectorCheckedFilePath = connectorPath + File.separator + "checkedConnectors.txt";
 		File directory = new File(connectorPath);
 		String[] names = directory.list();
-		Boolean exist = Files.exists(Paths.get(connectorPath + File.separator + "checkedConnectors.txt"),
-				LinkOption.NOFOLLOW_LINKS);
+		Boolean exist = Files.exists(Paths.get(connectorCheckedFilePath), LinkOption.NOFOLLOW_LINKS);
 
 		if ((names != null) && (names.length > 0)) {
+		    // Create the checked connector list file for the older connector projects
+		    if (!exist) {
+	            try {
+	                Files.createFile(Paths.get(connectorCheckedFilePath));
+	            } catch (IOException e) {
+	                log.error("Error while creating file ", e);
+	            }
+	        }
 			for (String name : names) {
 				if (!((name.contains(".zip")) || (name.contains(".txt")))) {
 					name = name.substring(0, 1).toUpperCase() + name.substring(1).replaceAll("\\-(.*)", " Connector");
 					updateConnectorVisibility(name, false);
+					
+					// Adding all the connectors available in the workspace as checked connectors
+					if (!exist) {
+					    try (FileWriter fileWriter = new FileWriter(connectorCheckedFilePath)) {
+					        fileWriter.write(name + ", ");
+				        } catch (IOException e) {
+				            log.error("Error while creating file ", e);
+				        }
+					}
 				}
 			}
 		}
@@ -1995,19 +2014,22 @@ public class EsbPaletteFactory {
 				.getEditorReferences();
 		for (IEditorReference editorReference : editorReferences) {
 			if (editorReference.getEditor(true) instanceof EsbMultiPageEditor) {
-				PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editorReference
-						.getEditor(true)).getDiagramEditDomain()).getPaletteViewer();
-				List children = paletteViewer.getPaletteRoot().getChildren();
-				for (Object child : children) {
-					if (((PaletteContainer) child).getId().contains("CloudConnector")) {
-						String connectorId = ((PaletteContainer) child).getId().replaceAll("CloudConnector-", "");
-						connectorId = connectorId.substring(0, 1).toUpperCase() + connectorId.substring(1)
-								+ " Connector";
-						if (connectorId.equals(connectorName)) {
-							((PaletteContainer) child).setVisible(visible);
-						}
-					}
-				}
+			    EsbMultiPageEditor currentEditor = (EsbMultiPageEditor) editorReference.getEditor(true);
+			    if (currentEditor.getGraphicalEditor() instanceof EsbDiagramEditor && !currentEditor.isFormEditor) {
+			        PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editorReference
+	                        .getEditor(true)).getDiagramEditDomain()).getPaletteViewer();
+	                List children = paletteViewer.getPaletteRoot().getChildren();
+	                for (Object child : children) {
+	                    if (((PaletteContainer) child).getId().contains("CloudConnector")) {
+	                        String connectorId = ((PaletteContainer) child).getId().replaceAll("CloudConnector-", "");
+	                        connectorId = connectorId.substring(0, 1).toUpperCase() + connectorId.substring(1)
+	                                + " Connector";
+	                        if (connectorId.equals(connectorName)) {
+	                            ((PaletteContainer) child).setVisible(visible);
+	                        }
+	                    }
+	                }
+			    }
 			}
 		}
 	}

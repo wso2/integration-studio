@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.perspectives">
+		<perspective
+        class="org.wso2.developerstudio.eclipse.registry.apim.perspective.ApimRegistryPerspectiveFactory"
+        fixed="true"
+        icon="icons/api-default.png"
+        id="org.wso2.developerstudio.registry.remote.registry.apim.pespective"
+        name="WSO2 APIManager"/>
+	</extension>
+	 <extension point="org.eclipse.ui.preferencePages">
+		<page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.appfactory" name="WSO2 APIManager" 
+		class="org.wso2.developerstudio.eclipse.registry.apim.preferance.ApimPreferencePage" 
+		category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"></page>
+	</extension>
+		<extension point="org.eclipse.ui.views">
+		<view id="org.wso2.developerstudio.registry.remote.registry.api.view" name="WSO2 APIManager" icon="icons/api-default.png"
+			class="org.wso2.developerstudio.eclipse.registry.apim.views.RegistryBrowserAPIMView" />
+	</extension>
+	 <extension-point id="org.wso2.developerstudio.aboutDialog.contributor" name="AboutDialogContributor" schema="schema/org.wso2.developerstudio.aboutDialog.contributor.exsd"/>
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+            <menu label="Developer Studio"
+                  mnemonic="C"
+                  id="org.wso2.developerstudio.eclipse.platform.ui.main">
+                <command
+                        commandId="org.wso2.developerstudio.eclipse.ei.commands.sampleCommand"
+                        icon="icons/carbon-studio-small-logo.gif"
+                        id="org.wso2.developerstudio.eclipse.ei.toolbars.sampleCommand"
+                        label="About"
+                        tooltip="About Developer Studio">
+                </command>
+            </menu>
+        </menuContribution>
+    </extension>
+     <extension
+            point="org.eclipse.ui.handlers">
+        <handler
+                class="org.wso2.developerstudio.eclipse.registry.apim.handler.DeveloperStudioAboutPageHandler"
+                commandId="org.wso2.developerstudio.eclipse.ei.commands.sampleCommand">
+        </handler>
+    </extension>
+</plugin>

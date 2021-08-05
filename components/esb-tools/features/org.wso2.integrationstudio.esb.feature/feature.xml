@@ -47,5 +47,6 @@
       <plugin id="org.wso2.integrationstudio.visualdatamapper.edit" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
       <plugin id="org.wso2.integrationstudio.visualdatamapper.editor" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
       <plugin id="org.wso2.integrationstudio.visualdatamapper.project" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+      <plugin id="org.wso2.integrationstudio.registry.apim.perspective" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
 </feature>

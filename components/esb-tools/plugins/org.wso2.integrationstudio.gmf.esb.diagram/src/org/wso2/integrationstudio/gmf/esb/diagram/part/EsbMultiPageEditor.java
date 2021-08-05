@@ -1752,7 +1752,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
         super.setFocus();
         String currentPerspective = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getPerspective().getLabel();
         try {
-            if(!"debug".equalsIgnoreCase(currentPerspective))
+            if(!"debug".equalsIgnoreCase(currentPerspective) && !"WSO2 APIManager".equalsIgnoreCase(currentPerspective))
             PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE_ID,
                     PlatformUI.getWorkbench().getActiveWorkbenchWindow());
             ProjectPresentation.setHierarchicalProjectPresentation();

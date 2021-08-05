@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.registry.apim.action;
+package org.wso2.integrationstudio.registry.apim.action;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.registry.apim.perspective.Activator;
-import org.wso2.developerstudio.eclipse.registry.apim.preferance.ApimPreferencePage;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.registry.apim.perspective.Activator;
+import org.wso2.integrationstudio.registry.apim.preferance.ApimPreferencePage;
 
 
 public class Login {
 	
-	 private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	 private static IIntegrationStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	 private String username="";
 	 private String password="";
 	 private String url="";
@@ -56,10 +56,10 @@ public class Login {
 		 setRegpath(preferenceStore.getString(ApimPreferencePage.APIM_REG_DEFAULT_PATH));
 
 	 }
-	public static IDeveloperStudioLog getLog() {
+	public static IIntegrationStudioLog getLog() {
 		return log;
 	}
-	public static void setLog(IDeveloperStudioLog log) {
+	public static void setLog(IIntegrationStudioLog log) {
 		Login.log = log;
 	}
 	public String getPassword() {

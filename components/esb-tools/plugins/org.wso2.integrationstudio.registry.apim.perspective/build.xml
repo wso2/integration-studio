@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<!-- <?xml version="1.0"?>
 <project name="build.ant4eclipse"
          basedir="."
          default="build"
@@ -47,4 +47,4 @@
 		             targetplatformid="my.target.platform"
 		             destination="${target.dir}" />
 	</target>
-</project>
+</project> -->

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.registry.apim.handler;
+package org.wso2.integrationstudio.registry.apim.handler;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;

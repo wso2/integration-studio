@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.eclipse.registry.apim.preferance;
+package org.wso2.integrationstudio.registry.apim.preferance;
 
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
-import org.wso2.developerstudio.eclipse.registry.apim.perspective.Activator;
+import org.wso2.integrationstudio.registry.apim.perspective.Activator;
 
 public class ApimPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 

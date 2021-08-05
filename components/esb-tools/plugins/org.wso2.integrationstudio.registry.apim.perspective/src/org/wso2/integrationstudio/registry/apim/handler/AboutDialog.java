@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.registry.apim.handler;
+package org.wso2.integrationstudio.registry.apim.handler;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
@@ -34,21 +34,21 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.developerstudio.eclipse.platform.core.utils.ResourceManager;
-import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.integrationstudio.platform.core.utils.ResourceManager;
+import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 public class AboutDialog extends Dialog {
 
 	private static final String VERSION = "Version : 2.6.0";
 	private static final String LICENSED = "Licensed under the Apache License, Version 2.0";
 	private static final String URL = "https://wso2.com/api-management/";
-	private static final String EXT_POINT = "org.wso2.developerstudio.aboutDialog.contributor";
+	private static final String EXT_POINT = "org.wso2.integrationstudio.aboutDialog.contributor";
 	private int logoWidth;
 	private int logoHeight;
 
 	public AboutDialog(Shell parentShell) {
 		super(parentShell);
-		setDefaultImage(ResourceManager.getPluginImage("org.wso2.developerstudio.eclipse.platform.ui",
+		setDefaultImage(ResourceManager.getPluginImage("org.wso2.integrationstudio.platform.ui",
                 "icons/carbon-studio-small-logo.gif"));
     }
 
@@ -69,7 +69,7 @@ public class AboutDialog extends Dialog {
 	protected Control createDialogArea(Composite parent) {
 
 		Image logoImage =
-                ResourceManager.getPluginImage("org.wso2.developerstudio.eclipse.platform.ui",
+                ResourceManager.getPluginImage("org.wso2.integrationstudio.platform.ui",
                                                "icons/apim-tooling-logo.png");
 		logoWidth = logoImage.getImageData().width;
 		logoHeight = logoImage.getImageData().height;

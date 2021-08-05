@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
-package org.wso2.developerstudio.eclipse.registry.apim.views;
+package org.wso2.integrationstudio.registry.apim.views;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.StyledCellLabelProvider;
@@ -20,11 +20,11 @@ import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.developerstudio.eclipse.registry.base.model.RegistryContentContainer;
-import org.wso2.developerstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.developerstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.developerstudio.eclipse.registry.base.model.RegistryResourceType;
-import org.wso2.developerstudio.eclipse.registry.base.ui.util.ImageUtils;
+import org.wso2.integrationstudio.registry.base.model.RegistryContentContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceType;
+import org.wso2.integrationstudio.registry.base.ui.util.ImageUtils;
 
 public class RegistryBrowserAPIMViewLabelProvider extends StyledCellLabelProvider{
 	

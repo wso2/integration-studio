@@ -11,7 +11,7 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.registry.apim.views;
+package org.wso2.integrationstudio.registry.apim.views;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -85,6 +85,8 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IEditorPart;
@@ -106,38 +108,38 @@ import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
-import org.wso2.developerstudio.eclipse.registry.apim.action.Login;
-import org.wso2.developerstudio.eclipse.registry.base.core.Registry;
-import org.wso2.developerstudio.eclipse.registry.base.interfaces.RegistryBrowserTraverseListener;
-import org.wso2.developerstudio.eclipse.registry.base.logger.ExceptionHandler;
-import org.wso2.developerstudio.eclipse.registry.base.managers.RemoteContentManager;
-import org.wso2.developerstudio.eclipse.registry.base.model.RegistryContentContainer;
-import org.wso2.developerstudio.eclipse.registry.base.model.RegistryNode;
-import org.wso2.developerstudio.eclipse.registry.base.model.RegistryResourceNode;
-import org.wso2.developerstudio.eclipse.registry.base.model.RegistryResourceType;
-import org.wso2.developerstudio.eclipse.registry.base.model.RegistryURLNode;
-import org.wso2.developerstudio.eclipse.registry.base.persistent.RegistryURLInfo;
-import org.wso2.developerstudio.eclipse.registry.base.persistent.RegistryUrlStore;
-import org.wso2.developerstudio.eclipse.registry.base.ui.controls.RegistryTreeViewer;
-import org.wso2.developerstudio.eclipse.registry.base.ui.util.ImageUtils;
-import org.wso2.developerstudio.eclipse.registry.base.ui.util.SWTControlUtils;
-import org.wso2.developerstudio.eclipse.registry.core.exception.InvalidRegistryURLException;
-import org.wso2.developerstudio.eclipse.registry.core.exception.UnknownRegistryException;
-import org.wso2.developerstudio.eclipse.registry.manager.remote.Activator;
-import org.wso2.developerstudio.eclipse.registry.manager.remote.dialog.RegistryInfoDialog;
-import org.wso2.developerstudio.eclipse.registry.manager.remote.views.RegistryPropertyViewer;
-import org.wso2.developerstudio.eclipse.registry.manager.remote.views.ResourceInfoViewer;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.platform.core.event.EsbEditorEvent;
-import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
-import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
-import org.wso2.developerstudio.eclipse.platform.ui.utils.MessageDialogUtils;
+import org.wso2.integrationstudio.registry.apim.action.Login;
+import org.wso2.integrationstudio.registry.base.core.Registry;
+import org.wso2.integrationstudio.registry.base.interfaces.RegistryBrowserTraverseListener;
+import org.wso2.integrationstudio.registry.base.logger.ExceptionHandler;
+import org.wso2.integrationstudio.registry.base.managers.RemoteContentManager;
+import org.wso2.integrationstudio.registry.base.model.RegistryContentContainer;
+import org.wso2.integrationstudio.registry.base.model.RegistryNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceNode;
+import org.wso2.integrationstudio.registry.base.model.RegistryResourceType;
+import org.wso2.integrationstudio.registry.base.model.RegistryURLNode;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryURLInfo;
+import org.wso2.integrationstudio.registry.base.persistent.RegistryUrlStore;
+import org.wso2.integrationstudio.registry.base.ui.controls.RegistryTreeViewer;
+import org.wso2.integrationstudio.registry.base.ui.util.ImageUtils;
+import org.wso2.integrationstudio.registry.base.ui.util.SWTControlUtils;
+import org.wso2.integrationstudio.registry.core.exception.InvalidRegistryURLException;
+import org.wso2.integrationstudio.registry.core.exception.UnknownRegistryException;
+import org.wso2.integrationstudio.registry.manager.remote.Activator;
+import org.wso2.integrationstudio.registry.manager.remote.dialog.RegistryInfoDialog;
+import org.wso2.integrationstudio.registry.manager.remote.views.RegistryPropertyViewer;
+import org.wso2.integrationstudio.registry.manager.remote.views.ResourceInfoViewer;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.event.EsbEditorEvent;
+import org.wso2.integrationstudio.platform.core.templates.ArtifactTemplate;
+import org.wso2.integrationstudio.platform.core.templates.ArtifactTemplateHandler;
+import org.wso2.integrationstudio.platform.ui.utils.MessageDialogUtils;
 import org.xml.sax.SAXException;
 
 public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
-    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
     private static final String SELECT_FILE_TO_BE_UPLOADED = "Select file to be uploaded to the registry";
 	private static final String ERROR_WHILE_PERFORMING_THIS_OPERATION_MSG = "Error while performing this operation";
@@ -264,7 +266,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 	 IPerspectiveDescriptor perspective = workbenchWindow.getActivePage().getPerspective();
 	
-	if ("org.wso2.developerstudio.registry.remote.registry.apim.pespective".equals(perspective.getId())){
+	if ("org.wso2.integrationstudio.registry.remote.registry.apim.pespective".equals(perspective.getId())){
 		return true;
 	}
 	return false;
@@ -273,7 +275,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	public void init(IViewSite site) throws PartInitException {
 		super.init(site);
 		IContextService contextService = (IContextService) getSite().getService(IContextService.class);
-		activation = contextService.activateContext("org.wso2.developerstudio.registry.browser.keybindings.context");
+		activation = contextService.activateContext("org.wso2.integrationstudio.registry.browser.keybindings.context");
 	}
 
 	public void init(IViewSite site, IMemento memento) throws PartInitException {
@@ -442,21 +444,29 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		dialog.getShell().setSize(LOGIN_SHELL_WIDTH, LOGIN_SHELL_HEIGHT);
 		int status = dialog.open();
 		if (status == Window.OK) {
-			URI pathUri = null;
-			pathUri = new URI(dialog.getServerUrl());
-			serverURL = pathUri.toURL();
-			uname = dialog.getUserName();
-			pwd = dialog.getPasswd();
-			apimRegpath = dialog.getPath();
-			verifyRegistryPath(dialog);
-			Display.getDefault().asyncExec(new Runnable() {
-				@SuppressWarnings({})
-				@Override
-				public void run() {
-					cloneRegistryModel();
-				}
-			});
+		    try {
+		        URI pathUri = null;
+	            pathUri = new URI(dialog.getServerUrl());
+	            serverURL = pathUri.toURL();
+	            uname = dialog.getUserName();
+	            pwd = dialog.getPasswd();
+	            apimRegpath = dialog.getPath();
+	            verifyRegistryPath(dialog);
+	            Display.getDefault().asyncExec(new Runnable() {
+	                @SuppressWarnings({})
+	                @Override
+	                public void run() {
+	                    cloneRegistryModel();
+	                }
+	            });
+		    } catch(Exception e) {
+		        MessageBox errorMsg = new MessageBox(PlatformUI.getWorkbench()
+		                .getActiveWorkbenchWindow().getShell(), SWT.OK);
+		        errorMsg.setText("Login to Remote Registry");
+		        errorMsg.setMessage("Error while login to the remote registry. \n " + e.getMessage());
 
+		        errorMsg.open();
+		    }
 		}
 	}
 
@@ -1155,8 +1165,8 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 					monitor.worked(25);
 					
 					ArtifactTemplate selectedTemplate = ArtifactTemplateHandler
-							.getArtifactTemplates("org.wso2.developerstudio.eclipse.esb.sequence");
-					String templateContent = org.wso2.developerstudio.eclipse.utils.file.FileUtils
+							.getArtifactTemplates("org.wso2.integrationstudio.esb.sequence");
+					String templateContent = org.wso2.integrationstudio.utils.file.FileUtils
 							.getContentAsString(selectedTemplate.getTemplateDataStream());
 					templateContent = templateContent.replaceFirst("name=", " name=");
 					String source = MessageFormat.format(templateContent, newName);

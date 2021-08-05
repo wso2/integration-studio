@@ -19,13 +19,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <artifactId>wso2-developerstudio-apim-plugins</artifactId>
-        <groupId>org.wso2.developerstudio</groupId>
-        <version>2.6.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent> 
+        <groupId>org.wso2.integrationstudio</groupId>
+        <artifactId>wso2-integrationstudio-esb-plugins</artifactId>
+        <version>8.0.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.developerstudio.eclipse.registry.apim.perspective</artifactId>
+    <artifactId>org.wso2.integrationstudio.registry.apim.perspective</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <name>Developer Studio API Manager Perspective</name>
+    <name>WSO2 Integration Studio API Manager Perspective</name>
 </project>

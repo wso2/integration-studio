@@ -61,6 +61,7 @@
 		<module>org.wso2.integrationstudio.esb.synapse.unit.test</module>
 		<module>org.wso2.integrationstudio.apim.project</module>
 		<module>org.wso2.integrationstudio.apim.endpoint.central</module>
+		<module>org.wso2.integrationstudio.registry.apim.perspective</module>
 	</modules>
 	<build>
 		<plugins>

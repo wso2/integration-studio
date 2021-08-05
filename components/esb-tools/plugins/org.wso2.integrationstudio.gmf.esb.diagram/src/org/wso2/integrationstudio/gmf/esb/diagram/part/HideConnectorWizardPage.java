@@ -159,6 +159,7 @@ public class HideConnectorWizardPage extends WizardPage {
                             if (checkedConnector.equals(name)) {
                                 // Ticks the check box
                                 tableItem.setChecked(true);
+                                break;
                             }
                         }
                     }

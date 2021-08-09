@@ -49,6 +49,7 @@ import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_END
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_UPDATE_LAST_MODIFIED;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITIES;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT;
@@ -164,7 +165,10 @@ public enum FileInboundEndpointParameter {
                                                                                                                                                                                                                                                                                             true), VFS_SFTP_USER_DIR_IS_ROOT_TYPE(
                                                                                                                                                                                                                                                                                                     InboundEndpointConstants.VFS_SFTP_USER_DIR_IS_ROOT,
                                                                                                                                                                                                                                                                                                     INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT,
-                                                                                                                                                                                                                                                                                                    false);
+                                                                                                                                                                                                                                                                                                    false), VFS_UPDATE_LAST_MODIFIED_TYPE(
+                                                                                                                                                                                                                                                                                                            InboundEndpointConstants.VFS_UPDATE_LAST_MODIFIED,
+                                                                                                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_UPDATE_LAST_MODIFIED,
+                                                                                                                                                                                                                                                                                                            false);
 
     private final String name;
     private final EAttribute eAttributeValue;

@@ -12440,6 +12440,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getInboundEndpoint_TransportVFSUpdateLastModified() {
+        return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(232);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getInboundEndpointParameter() {
         return inboundEndpointParameterEClass;
     }
@@ -22382,6 +22391,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME);
         createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT);
         createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL);
+        createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_UPDATE_LAST_MODIFIED);
 
         inboundEndpointParameterEClass = createEClass(INBOUND_ENDPOINT_PARAMETER);
         createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__NAME);
@@ -24949,6 +24959,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getInboundEndpoint_TransportRabbitMqErrorExchangeName(), ecorePackage.getEString(), "transportRabbitMqErrorExchangeName", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getInboundEndpoint_TransportRabbitMqFactoryConnectionTimeout(), ecorePackage.getEString(), "transportRabbitMqFactoryConnectionTimeout", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval(), ecorePackage.getEString(), "transportRabbitMqFactoryNetworkRecoveryInterval", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getInboundEndpoint_TransportVFSUpdateLastModified(), ecorePackage.getEBoolean(), "transportVFSUpdateLastModified", "true", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(inboundEndpointParameterEClass, InboundEndpointParameter.class, "InboundEndpointParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getInboundEndpointParameter_Name(), ecorePackage.getEString(), "name", "parameter_name", 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

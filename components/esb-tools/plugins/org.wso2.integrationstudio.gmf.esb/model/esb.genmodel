@@ -2734,6 +2734,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqErrorExchangeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqFactoryConnectionTimeout"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqFactoryNetworkRecoveryInterval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSUpdateLastModified"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//InboundEndpointParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpointParameter/name"/>

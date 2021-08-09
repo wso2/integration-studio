@@ -6027,6 +6027,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nvCdW9ZeEeqrxuqKKEwg2g" name="transportRabbitMqFactoryNetworkRecoveryInterval" views="_nvDF9tZeEeqrxuqKKEwg2g">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//InboundEndpoint/transportRabbitMqFactoryNetworkRecoveryInterval"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_x5cIoPkMEeuoNc1XF8nYBA" name="transportVFSUpdateLastModified" views="__H2PMPkCEeuoNc1XF8nYBA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//InboundEndpoint/transportVFSUpdateLastModified"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//InboundEndpoint"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7wiHvJnEei6boXzpRIfnA" name="InboundEndpointParameter" views="_E7xMkfJnEei6boXzpRIfnA">
@@ -12805,6 +12808,9 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_nvDF9tZeEeqrxuqKKEwg2g" name="transportRabbitMqFactoryNetworkRecoveryInterval">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="__H2PMPkCEeuoNc1XF8nYBA" name="transportVFSUpdateLastModified">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
       </views>

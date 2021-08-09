@@ -3404,6 +3404,20 @@ public interface InboundEndpointPropertiesEditionPart {
 	public void setTransportRabbitMqFactoryNetworkRecoveryInterval(String newValue);
 
 
+	/**
+	 * @return the transportVFSUpdateLastModified
+	 * 
+	 */
+	public Boolean getTransportVFSUpdateLastModified();
+
+	/**
+	 * Defines a new transportVFSUpdateLastModified
+	 * @param newValue the new transportVFSUpdateLastModified to set
+	 * 
+	 */
+	public void setTransportVFSUpdateLastModified(Boolean newValue);
+
+
 
 
 	// Start of user code for transportRabbitMqConsumerQosKey specific getters and setters declaration

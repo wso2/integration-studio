@@ -353,6 +353,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_BUILD,
                         String.valueOf(visualInboundEndpoint.isTransportVFSBuild()));
             }
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isTransportVFSUpdateLastModified()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_UPDATE_LAST_MODIFIED,
+                        String.valueOf(visualInboundEndpoint.isTransportVFSUpdateLastModified()));
+            }
             break;
         case JMS:
             if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {

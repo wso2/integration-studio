@@ -297,6 +297,7 @@ import org.wso2.integrationstudio.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqErrorExchangeName <em>Transport Rabbit Mq Error Exchange Name</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryConnectionTimeout <em>Transport Rabbit Mq Factory Connection Timeout</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryNetworkRecoveryInterval <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportVFSUpdateLastModified <em>Transport VFS Update Last Modified</em>}</li>
  * </ul>
  *
  * @generated
@@ -4962,6 +4963,26 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportRabbitMqFactoryNetworkRecoveryInterval = TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL_EDEFAULT;
 
     /**
+     * The default value of the '{@link #isTransportVFSUpdateLastModified() <em>Transport VFS Update Last Modified</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isTransportVFSUpdateLastModified()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean TRANSPORT_VFS_UPDATE_LAST_MODIFIED_EDEFAULT = true;
+
+    /**
+     * The cached value of the '{@link #isTransportVFSUpdateLastModified() <em>Transport VFS Update Last Modified</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isTransportVFSUpdateLastModified()
+     * @generated
+     * @ordered
+     */
+    protected boolean transportVFSUpdateLastModified = TRANSPORT_VFS_UPDATE_LAST_MODIFIED_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated NOT
@@ -7796,6 +7817,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isTransportVFSUpdateLastModified() {
+        return transportVFSUpdateLastModified;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportVFSUpdateLastModified(boolean newTransportVFSUpdateLastModified) {
+        boolean oldTransportVFSUpdateLastModified = transportVFSUpdateLastModified;
+        transportVFSUpdateLastModified = newTransportVFSUpdateLastModified;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_UPDATE_LAST_MODIFIED, oldTransportVFSUpdateLastModified, transportVFSUpdateLastModified));
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
@@ -10120,6 +10162,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return getTransportRabbitMqFactoryConnectionTimeout();
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL:
                 return getTransportRabbitMqFactoryNetworkRecoveryInterval();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_UPDATE_LAST_MODIFIED:
+                return isTransportVFSUpdateLastModified();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -10829,6 +10873,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL:
                 setTransportRabbitMqFactoryNetworkRecoveryInterval((String)newValue);
                 return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_UPDATE_LAST_MODIFIED:
+                setTransportVFSUpdateLastModified((Boolean)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -11536,6 +11583,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL:
                 setTransportRabbitMqFactoryNetworkRecoveryInterval(TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL_EDEFAULT);
                 return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_UPDATE_LAST_MODIFIED:
+                setTransportVFSUpdateLastModified(TRANSPORT_VFS_UPDATE_LAST_MODIFIED_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -12011,6 +12061,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT_EDEFAULT == null ? transportRabbitMqFactoryConnectionTimeout != null : !TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT_EDEFAULT.equals(transportRabbitMqFactoryConnectionTimeout);
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL:
                 return TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL_EDEFAULT == null ? transportRabbitMqFactoryNetworkRecoveryInterval != null : !TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL_EDEFAULT.equals(transportRabbitMqFactoryNetworkRecoveryInterval);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_UPDATE_LAST_MODIFIED:
+                return transportVFSUpdateLastModified != TRANSPORT_VFS_UPDATE_LAST_MODIFIED_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -12474,6 +12526,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         result.append(transportRabbitMqFactoryConnectionTimeout);
         result.append(", transportRabbitMqFactoryNetworkRecoveryInterval: ");
         result.append(transportRabbitMqFactoryNetworkRecoveryInterval);
+        result.append(", transportVFSUpdateLastModified: ");
+        result.append(transportVFSUpdateLastModified);
         result.append(')');
         return result.toString();
     }

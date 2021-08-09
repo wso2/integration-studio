@@ -336,6 +336,10 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 
 
 
+  protected Button transportVFSUpdateLastModified;
+
+
+
   /**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
@@ -11690,6 +11694,35 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
     return parent;
   }
 
+  protected Composite createTransportVFSUpdateLastModifiedCheckbox(Composite parent) {
+    transportVFSUpdateLastModified = new Button(parent, SWT.CHECK);
+    transportVFSUpdateLastModified.setText(getDescription(EsbViewsRepository.InboundEndpoint.Properties.transportVFSUpdateLastModified, EsbMessages.InboundEndpointPropertiesEditionPart_TransportVFSUpdateLastModifiedLabel));
+    transportVFSUpdateLastModified.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.transportVFSUpdateLastModified, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(transportVFSUpdateLastModified.getSelection())));
+      }
+
+    });
+    GridData transportVFSUpdateLastModifiedData = new GridData(GridData.FILL_HORIZONTAL);
+    transportVFSUpdateLastModifiedData.horizontalSpan = 2;
+    transportVFSUpdateLastModified.setLayoutData(transportVFSUpdateLastModifiedData);
+    EditingUtils.setID(transportVFSUpdateLastModified, EsbViewsRepository.InboundEndpoint.Properties.transportVFSUpdateLastModified);
+    EditingUtils.setEEFtype(transportVFSUpdateLastModified, "eef::Checkbox"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.transportVFSUpdateLastModified, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createTransportVFSUpdateLastModifiedCheckbox
+
+    // End of user code
+    return parent;
+  }
+
   /**
 	 * {@inheritDoc}
 	 * 
@@ -19369,6 +19402,38 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
       transportRabbitMqFactoryNetworkRecoveryInterval.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
     } else if (!eefElementEditorReadOnlyState && !transportRabbitMqFactoryNetworkRecoveryInterval.isEnabled()) {
       transportRabbitMqFactoryNetworkRecoveryInterval.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#getTransportVFSUpdateLastModified()
+   * 
+   */
+  public Boolean getTransportVFSUpdateLastModified() {
+    return Boolean.valueOf(transportVFSUpdateLastModified.getSelection());
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.InboundEndpointPropertiesEditionPart#setTransportVFSUpdateLastModified(Boolean newValue)
+   * 
+   */
+  public void setTransportVFSUpdateLastModified(Boolean newValue) {
+    if (newValue != null) {
+      transportVFSUpdateLastModified.setSelection(newValue.booleanValue());
+    } else {
+      transportVFSUpdateLastModified.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.InboundEndpoint.Properties.transportVFSUpdateLastModified);
+    if (eefElementEditorReadOnlyState && transportVFSUpdateLastModified.isEnabled()) {
+      transportVFSUpdateLastModified.setEnabled(false);
+      transportVFSUpdateLastModified.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !transportVFSUpdateLastModified.isEnabled()) {
+      transportVFSUpdateLastModified.setEnabled(true);
     }	
     
   }

@@ -104,6 +104,7 @@ public class InboundEndpointConstants {
     public static final String VFS_CREATE_FOLDER = "transport.vfs.CreateFolder";
     public static final String VFS_STREAMING = "transport.vfs.Streaming";
     public static final String VFS_BUILD = "transport.vfs.Build";
+    public static final String VFS_UPDATE_LAST_MODIFIED = "transport.vfs.UpdateLastModified";
 
     public static final String JMS_JAVA_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
     public static final String JMS_JAVA_NAMING_PROVIDER_URL = "java.naming.provider.url";

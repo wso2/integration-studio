@@ -814,7 +814,160 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryNetworkRecoveryInterval))
 				basePart.setTransportRabbitMqFactoryNetworkRecoveryInterval(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getTransportRabbitMqFactoryNetworkRecoveryInterval()));
 			
+			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportVFSUpdateLastModified)) {
+				basePart.setTransportVFSUpdateLastModified(inboundEndpoint.isTransportVFSUpdateLastModified());
+			}
 			// init filters
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.serviceParameters)) {
 				basePart.addFilterToServiceParameters(new ViewerFilter() {
@@ -1536,6 +1689,9 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 		}
 		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryNetworkRecoveryInterval) {
 			return EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval();
+		}
+		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.transportVFSUpdateLastModified) {
+			return EsbPackage.eINSTANCE.getInboundEndpoint_TransportVFSUpdateLastModified();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -2266,6 +2422,9 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 		}
 		if (EsbViewsRepository.InboundEndpoint.Properties.transportRabbitMqFactoryNetworkRecoveryInterval == event.getAffectedEditor()) {
 			inboundEndpoint.setTransportRabbitMqFactoryNetworkRecoveryInterval((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.InboundEndpoint.Properties.transportVFSUpdateLastModified == event.getAffectedEditor()) {
+			inboundEndpoint.setTransportVFSUpdateLastModified((Boolean)event.getNewValue());
 		}
 	}
 
@@ -3687,6 +3846,9 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 					basePart.setTransportRabbitMqFactoryNetworkRecoveryInterval("");
 				}
 			}
+			if (EsbPackage.eINSTANCE.getInboundEndpoint_TransportVFSUpdateLastModified().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportVFSUpdateLastModified))
+				basePart.setTransportVFSUpdateLastModified((Boolean)msg.getNewValue());
+			
 			
 		}
 	}
@@ -3927,7 +4089,8 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqErrorQueueRoutingKey(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqErrorExchangeName(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqFactoryConnectionTimeout(),
-			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval()		);
+			EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval(),
+			EsbPackage.eINSTANCE.getInboundEndpoint_TransportVFSUpdateLastModified()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -5540,6 +5703,13 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.InboundEndpoint.Properties.transportVFSUpdateLastModified == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getInboundEndpoint_TransportVFSUpdateLastModified().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getInboundEndpoint_TransportVFSUpdateLastModified().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

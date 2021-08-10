@@ -258,6 +258,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqErrorExchangeName <em>Transport Rabbit Mq Error Exchange Name</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryConnectionTimeout <em>Transport Rabbit Mq Factory Connection Timeout</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryNetworkRecoveryInterval <em>Transport Rabbit Mq Factory Network Recovery Interval</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSUpdateLastModified <em>Transport VFS Update Last Modified</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint()
@@ -3893,6 +3894,29 @@ public interface InboundEndpoint extends EsbElement {
      * @generated
      */
     void setTransportRabbitMqFactoryNetworkRecoveryInterval(String value);
+
+    /**
+     * Returns the value of the '<em><b>Transport VFS Update Last Modified</b></em>' attribute.
+     * The default value is <code>"true"</code>.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport VFS Update Last Modified</em>' attribute.
+     * @see #setTransportVFSUpdateLastModified(boolean)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSUpdateLastModified()
+     * @model default="true"
+     * @generated
+     */
+    boolean isTransportVFSUpdateLastModified();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSUpdateLastModified <em>Transport VFS Update Last Modified</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport VFS Update Last Modified</em>' attribute.
+     * @see #isTransportVFSUpdateLastModified()
+     * @generated
+     */
+    void setTransportVFSUpdateLastModified(boolean value);
 
     /**
      * Returns the value of the '<em><b>Class</b></em>' attribute.

@@ -9653,6 +9653,9 @@ public class EsbViewsRepository {
 			
 			public static String transportRabbitMqFactoryNetworkRecoveryInterval = "esb::InboundEndpoint::properties::transportRabbitMqFactoryNetworkRecoveryInterval";
 			
+			
+			public static String transportVFSUpdateLastModified = "esb::InboundEndpoint::properties::transportVFSUpdateLastModified";
+			
 	
 		}
 	

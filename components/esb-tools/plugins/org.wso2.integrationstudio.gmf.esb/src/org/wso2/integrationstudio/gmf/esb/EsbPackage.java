@@ -26488,13 +26488,22 @@ public interface EsbPackage extends EPackage {
     int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 231;
 
     /**
+     * The feature id for the '<em><b>Transport VFS Update Last Modified</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int INBOUND_ENDPOINT__TRANSPORT_VFS_UPDATE_LAST_MODIFIED = ESB_ELEMENT_FEATURE_COUNT + 232;
+
+    /**
      * The number of structural features of the '<em>Inbound Endpoint</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 232;
+    int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 233;
 
     /**
      * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -38273,6 +38282,17 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EAttribute getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSUpdateLastModified <em>Transport VFS Update Last Modified</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Transport VFS Update Last Modified</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSUpdateLastModified()
+     * @see #getInboundEndpoint()
+     * @generated
+     */
+    EAttribute getInboundEndpoint_TransportVFSUpdateLastModified();
 
     /**
      * Returns the meta object for class '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpointParameter <em>Inbound Endpoint Parameter</em>}'.
@@ -55355,6 +55375,14 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL = eINSTANCE.getInboundEndpoint_TransportRabbitMqFactoryNetworkRecoveryInterval();
+
+        /**
+         * The meta object literal for the '<em><b>Transport VFS Update Last Modified</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute INBOUND_ENDPOINT__TRANSPORT_VFS_UPDATE_LAST_MODIFIED = eINSTANCE.getInboundEndpoint_TransportVFSUpdateLastModified();
 
         /**
          * The meta object literal for the '{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.

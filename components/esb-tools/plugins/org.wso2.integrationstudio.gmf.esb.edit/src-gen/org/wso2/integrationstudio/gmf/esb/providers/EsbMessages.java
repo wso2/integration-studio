@@ -8455,6 +8455,9 @@ public class EsbMessages extends NLS {
 	public static String InboundEndpointPropertiesEditionPart_TransportRabbitMqFactoryNetworkRecoveryIntervalLabel;
 
 	
+	public static String InboundEndpointPropertiesEditionPart_TransportVFSUpdateLastModifiedLabel;
+
+	
 	public static String InboundEndpointParameterPropertiesEditionPart_NameLabel;
 
 	

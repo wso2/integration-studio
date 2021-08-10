@@ -2837,6 +2837,28 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Transport VFS Update Last Modified feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addTransportVFSUpdateLastModifiedPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportVFSUpdateLastModified_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportVFSUpdateLastModified_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_UPDATE_LAST_MODIFIED,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This adds a property descriptor for the Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4731,6 +4753,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_ERROR_EXCHANGE_NAME:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_CONNECTION_TIMEOUT:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_NETWORK_RECOVERY_INTERVAL:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_UPDATE_LAST_MODIFIED:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:

@@ -1841,6 +1841,10 @@ public class PropertyMediatorPropertiesEditionPartForm extends SectionProperties
                         viewUtil.showEntry(valueStringCapturingGroupElements, false);
                         break;
                     }
+                    case "OM": {
+                        viewUtil.showEntry(omTextElements, false);
+                        break;
+                    }
                     default: {
                         viewUtil.showEntry(valueElements, false);
                     }

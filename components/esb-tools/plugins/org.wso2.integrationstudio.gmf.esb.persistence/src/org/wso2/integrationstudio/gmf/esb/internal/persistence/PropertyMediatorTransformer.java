@@ -152,7 +152,7 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
                         propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.LONG.toString());
                         break;
                     case OM:
-                        propMediator.setValueElement(AXIOMUtil.stringToOM(visualProp.getValue()));
+                        propMediator.setValueElement(AXIOMUtil.stringToOM(visualProp.getOM()));
                         break;
                     case SHORT:
                         propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.SHORT.toString());

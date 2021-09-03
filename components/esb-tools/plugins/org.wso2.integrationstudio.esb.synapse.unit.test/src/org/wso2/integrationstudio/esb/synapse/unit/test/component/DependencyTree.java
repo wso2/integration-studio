@@ -409,7 +409,7 @@ public class DependencyTree {
                     } else if (member instanceof IFile
                             && member.getFileExtension().toLowerCase().equals(Constants.XML_EXTENSION)
                             && validArtifact((IFile) member)) {
-                        childElements.put(member.getFullPath(), member.getName());
+                        childElements.put(new Path(getArtifactPathWithParent(member)), member.getName());
                     }
                 }
             }
@@ -477,7 +477,7 @@ public class DependencyTree {
 
                 for (IResource member : members) {
                     if (member instanceof IFile && (member.getFileExtension().equals(Constants.XML_EXTENSION))) {
-                        childElements.put(member.getFullPath(), member.getName());
+                        childElements.put(new Path(getArtifactPathWithParent(member)), member.getName());
                     }
                 }
             }
@@ -788,7 +788,20 @@ public class DependencyTree {
                     String fileType = registryItemFileTypeNode.getText();
                     resource.setMediaType(fileType);
 
-                    String absolutePath = Constants.PATH_PREFIX + registry.getProject().getName() + Constants.PATH_PREFIX + fileName;
+                    // add MMM parent to the registry resource
+                    String grandParentPath = "";
+                    try {
+                        IProject artifactProject = artifactFile.getProject();
+                        File artifactParent = new File(artifactProject.getLocationURI().toString());
+                        IProject parentResource = ResourcesPlugin.getWorkspace().getRoot().getProject(artifactParent.getParentFile().getName());
+                        if (parentResource != null
+                                && parentResource.hasNature(org.wso2.integrationstudio.platform.core.utils.Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
+                            grandParentPath = Constants.PATH_PREFIX + ((IProject)parentResource).getName();
+                        }
+                    } catch (CoreException e) {
+                        // ignore;
+                    }
+                    String absolutePath = grandParentPath + Constants.PATH_PREFIX + registry.getProject().getName() + Constants.PATH_PREFIX + fileName;
                     resource.setAbsolutePath(absolutePath);
                 }
 
@@ -817,12 +830,31 @@ public class DependencyTree {
                     addConnectorElements((IContainer) member);
                 } else if (member instanceof IFile
                         && member.getFileExtension().toLowerCase().equals(Constants.ZIP_EXTENSION)) {
-                    connectorElements.put(member.getFullPath(), member.getName());
+                    connectorElements.put(new Path(getArtifactPathWithParent(member)), member.getName());
                 }
             }
         } catch (CoreException e) {
             log.error("Error while reading connector file in connector projects");
         }
 
+    }
+    
+    private String getArtifactPathWithParent(IResource member) {
+       
+        try {
+            IProject artifactProject = ((IFile) member).getProject();
+            String grandParentPath = "";
+            File artifactParent = new File(artifactProject.getLocationURI().toString());
+            IProject parentResource = ResourcesPlugin.getWorkspace().getRoot().getProject(artifactParent.getParentFile().getName());
+            if (parentResource != null
+                    && parentResource.hasNature(org.wso2.integrationstudio.platform.core.utils.Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
+                grandParentPath = ((IProject)parentResource).getName();
+            }
+            
+            return File.separator + grandParentPath + member.getFullPath().toOSString();
+        } catch (CoreException e) {
+            // ignore;
+        }
+        return member.getFullPath().toOSString();
     }
 }

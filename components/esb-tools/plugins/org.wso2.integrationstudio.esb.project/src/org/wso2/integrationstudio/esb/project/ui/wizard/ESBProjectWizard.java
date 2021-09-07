@@ -174,7 +174,7 @@ public class ESBProjectWizard extends AbstractWSO2ProjectCreationWizard {
         try {
             MavenProject mavenProject = MavenUtils.getMavenProject(pomFile);
             Plugin unitTestPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
-                    "synapse-unit-test-maven-plugin", "5.2.27", false);
+                    "synapse-unit-test-maven-plugin", "5.2.38", false);
 
             PluginExecution pluginExecution = new PluginExecution();
             pluginExecution.addGoal("synapse-unit-test");

@@ -79,7 +79,7 @@ public class TestCaseDetailPage extends WizardPage {
     private static final String RESOURCE_PATH = "Resource Path:";
     private static final String TESTCASE_NAME = "Test Case Name:";
     private static final String RESOURCE_METHOD = "Resource Method:";
-    private static final String PROTOCOL_TYPE = "Protocol";
+    private static final String PROTOCOL_TYPE = "Resource Protocol";
     private static final String EMPTY_STRING = "";
     private static final String PATH_PREFIX = "/";
 

@@ -53,6 +53,7 @@ public class Constants {
     public static final String PAYLOAD = "payload";
     public static final String REQUEST_PATH = "request-path";
     public static final String REQUEST_METHOD = "request-method";
+    public static final String PROTOCOL_TYPE = "request-protocol";
     public static final String PROPERTIES = "properties";
     public static final String PROPERTY = "property";
     public static final String NAME = "name";

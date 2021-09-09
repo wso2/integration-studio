@@ -170,6 +170,11 @@ public class SynapseUnitTestFormToSourceTransformer {
                         requestMethod.appendChild(doc.createTextNode(testCaseData.getRequestMethod()));
                         input.appendChild(requestPath);
                         input.appendChild(requestMethod);
+                        if(testCaseData.getProtocolType() != null) {
+                        	Element protocolType = doc.createElement(Constants.PROTOCOL_TYPE);
+                        	protocolType.appendChild(doc.createTextNode(testCaseData.getProtocolType()));
+                        	input.appendChild(protocolType);
+                        }
                     }
 
                     // Add input payload if exist

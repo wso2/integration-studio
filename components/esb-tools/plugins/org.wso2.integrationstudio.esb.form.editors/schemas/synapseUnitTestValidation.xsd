@@ -105,6 +105,8 @@
 				minOccurs='0' maxOccurs='1' />
 			<xs:element name="request-method" type="xs:string"
 				minOccurs='0' maxOccurs='1' />
+			<xs:element name="request-protocol" type="xs:string"
+						minOccurs='0' maxOccurs='1' />
 			<xs:element name="payload" type="xs:string" minOccurs='0'
 				maxOccurs='1' />
 			<xs:element name="properties" type="Properties"

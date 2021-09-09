@@ -64,6 +64,7 @@ public class TestCaseCreationWizard extends Wizard implements IExportWizard {
         String testCaseName = testSuiteDetailPage.getTestCaseName();
         String requestPath = testSuiteDetailPage.getResourcePath();
         String requestMethod = testSuiteDetailPage.getResourceMethod();
+        String protocolType = testSuiteDetailPage.getProtocolType();
         String inputPayload = testSuiteDetailPage.getInputPayload();
         if (inputPayload != null && !inputPayload.isEmpty()) {
             inputPayload = CommonUtil.addCDATATagToPayloads(inputPayload);
@@ -76,6 +77,7 @@ public class TestCaseCreationWizard extends Wizard implements IExportWizard {
             testCase.setTestCaseName(testCaseName);
             testCase.setRequestPath(requestPath);
             testCase.setRequestMethod(requestMethod);
+            testCase.setProtocolType(protocolType);
             testCase.setInputPayload(inputPayload);
 
             for (Map.Entry<String, Assertion> assertEntry : assertions.entrySet()) {
@@ -98,6 +100,7 @@ public class TestCaseCreationWizard extends Wizard implements IExportWizard {
             selectedTestCase.setTestCaseName(testCaseName);
             selectedTestCase.setRequestPath(requestPath);
             selectedTestCase.setRequestMethod(requestMethod);
+            selectedTestCase.setProtocolType(protocolType);
             selectedTestCase.setInputPayload(inputPayload);
 
             for (Map.Entry<String, Assertion> assertEntry : assertions.entrySet()) {

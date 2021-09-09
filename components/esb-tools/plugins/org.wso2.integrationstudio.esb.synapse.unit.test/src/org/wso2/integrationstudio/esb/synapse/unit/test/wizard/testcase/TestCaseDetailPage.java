@@ -79,6 +79,7 @@ public class TestCaseDetailPage extends WizardPage {
     private static final String RESOURCE_PATH = "Resource Path:";
     private static final String TESTCASE_NAME = "Test Case Name:";
     private static final String RESOURCE_METHOD = "Resource Method:";
+    private static final String PROTOCOL_TYPE = "Protocol";
     private static final String EMPTY_STRING = "";
     private static final String PATH_PREFIX = "/";
 
@@ -99,6 +100,7 @@ public class TestCaseDetailPage extends WizardPage {
 
     private String resourcePath = EMPTY_STRING;
     private String resourceMethod = EMPTY_STRING;
+    private String protocolType = EMPTY_STRING;
     private String inputPayload = EMPTY_STRING;
     private String testArtifactType = EMPTY_STRING;
     private String testCaseName = EMPTY_STRING;
@@ -203,7 +205,7 @@ public class TestCaseDetailPage extends WizardPage {
         Label lblInputPayload = new Label(grpInputData, SWT.NONE);
         data = new FormData();
         if (synapseTestDataHolder.getTestArtifactType().equals(Constants.API_ARTIFACT)) {
-            data.top = new FormAttachment(20);
+            data.top = new FormAttachment(27);
         } else {
             data.top = new FormAttachment(2);
         }
@@ -217,7 +219,7 @@ public class TestCaseDetailPage extends WizardPage {
         styledTextInputPayload = syntaxStyler.getStyledTextBox(grpInputData);
         data = new FormData();
         if (synapseTestDataHolder.getTestArtifactType().equals(Constants.API_ARTIFACT)) {
-            data.top = new FormAttachment(20);
+            data.top = new FormAttachment(27);
         } else {
             data.top = new FormAttachment(2);
         }
@@ -425,6 +427,44 @@ public class TestCaseDetailPage extends WizardPage {
             public void widgetDefaultSelected(SelectionEvent e) {
             }
         });
+
+        Label lblProtocol = new Label(grpInputData, SWT.NONE);
+        data = new FormData();
+        data.top = new FormAttachment(lblRequestMethod, 13);
+        data.left = new FormAttachment(1);
+        data.width = 160;
+        lblProtocol.setLayoutData(data);
+        lblProtocol.setText(PROTOCOL_TYPE);
+
+        final Combo comboProtocolSelector = new Combo(grpInputData, SWT.READ_ONLY | SWT.DROP_DOWN);
+        data = new FormData();
+        data.top = new FormAttachment(lblRequestMethod, 13);
+        data.left = new FormAttachment(lblProtocol, 0);
+        data.right = new FormAttachment(99);
+        data.width = 400;
+        comboProtocolSelector.setItems(ComboItems.getProtocolTypes());
+        comboProtocolSelector.setLayoutData(data);
+
+        if (getProtocolType() != null && !getProtocolType().isEmpty()) {
+            comboProtocolSelector.setText(getProtocolType());
+        } else {
+            setProtocolType(ComboItems.getProtocolTypes()[0]);
+            comboProtocolSelector.setText(ComboItems.getProtocolTypes()[0]);
+        }
+
+        comboProtocolSelector.addSelectionListener(new SelectionListener() {
+            public void
+            widgetSelected(SelectionEvent e) {
+
+                setProtocolType(comboProtocolSelector.getText());
+                validate();
+            }
+
+            public void widgetDefaultSelected(SelectionEvent e) {
+
+            }
+        });
+
     }
 
     /**
@@ -703,6 +743,14 @@ public class TestCaseDetailPage extends WizardPage {
 
     public void setResourceMethod(String resourceMethod) {
         this.resourceMethod = resourceMethod;
+    }
+    
+    public String getProtocolType() {
+        return protocolType;
+    }
+    
+    public void setProtocolType(String prototolType) {
+        this.protocolType = prototolType;
     }
 
     public String getInputPayload() {

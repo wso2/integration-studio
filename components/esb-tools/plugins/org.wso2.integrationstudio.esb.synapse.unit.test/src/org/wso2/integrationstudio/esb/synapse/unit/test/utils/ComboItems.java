@@ -55,6 +55,8 @@ public class ComboItems {
             "application/atom+xml", "application/soap+xml", "application/x-www-form-urlencoded" };
 
     private static String[] REST_TYPES = { "GET", "POST", "PUT", "DELETE" };
+    
+    private static String[] PROTOCOL_TYPES = { "http","https"};
 
     public static String[] getStatusCodes() {
         return STATUS_CODES;
@@ -86,5 +88,9 @@ public class ComboItems {
         } else {
             return OTHER_PROP_NAME_ITEMS;
         }
+    }
+    
+    public static String[] getProtocolTypes() {
+    	return PROTOCOL_TYPES;
     }
 }

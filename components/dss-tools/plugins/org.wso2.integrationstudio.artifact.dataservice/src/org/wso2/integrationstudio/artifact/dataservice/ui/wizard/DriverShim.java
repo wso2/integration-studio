@@ -55,7 +55,6 @@ public class DriverShim implements Driver {
     }
 
     public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-
         return null;
     }
 }

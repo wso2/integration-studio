@@ -85,6 +85,7 @@ import org.wso2.integrationstudio.artifact.datasource.artifact.DataSourceProject
 import org.wso2.integrationstudio.ds.presentation.DsEditorPlugin;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
+import org.wso2.integrationstudio.platform.core.utils.Constants;
 import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
 import com.sun.xml.internal.bind.v2.runtime.reflect.opt.MethodAccessor_Short;
@@ -994,7 +995,7 @@ public class GenerateDataServicesWizardPage extends WizardPage {
         File projectPath = null;
         for (IProject workspaceProject : projects) {
             try {
-                if (workspaceProject.hasNature("org.wso2.developerstudio.eclipse.datasource.project.nature")) {
+                if (workspaceProject.isOpen() && workspaceProject.hasNature(Constants.DATASOURCE_PROJECT_NATURE)) {
                     DataSourceProjectArtifact datasourceProjectArtifact = new DataSourceProjectArtifact();
                     String projectName = workspaceProject.getFullPath().segment(workspaceProject.getFullPath().segmentCount() -1);
                     projectPath = workspaceProject.getLocation().toFile();

@@ -42,13 +42,8 @@ public class GenerateDataServicesUtils {
         definedTypeMap.put(java.sql.Types.REAL, "REAL");
         definedTypeMap.put(java.sql.Types.DOUBLE, "DOUBLE");
         definedTypeMap.put(java.sql.Types.VARCHAR, "STRING");
-                definedTypeMap.put(java.sql.Types.NVARCHAR, "STRING");
-        // typeMap.put(java.sql.Types.LONGNVARCHAR, "STRING");
-        // typeMap.put(java.sql.Types.NCHAR, "STRING");
-        // typeMap.put(java.sql.Types.LONGNVARCHAR, "STRING");
-        // typeMap.put(java.sql.Types.NVARCHAR, "STRING");
+        definedTypeMap.put(java.sql.Types.NVARCHAR, "STRING");
         definedTypeMap.put(java.sql.Types.CLOB, "STRING");
-        // typeMap.put(java.sql.Types.SQLXML, "STRING");
         definedTypeMap.put(java.sql.Types.BOOLEAN, "BOOLEAN");
         definedTypeMap.put(java.sql.Types.TIMESTAMP, "TIMESTAMP");
         definedTypeMap.put(java.sql.Types.BIT, "BIT");
@@ -71,13 +66,8 @@ public class GenerateDataServicesUtils {
         qnameTypeMap.put(java.sql.Types.REAL, "double");
         qnameTypeMap.put(java.sql.Types.DOUBLE, "double");
         qnameTypeMap.put(java.sql.Types.VARCHAR, "string");
-                qnameTypeMap.put(java.sql.Types.NVARCHAR, "string");
-        // typeMap.put(java.sql.Types.LONGNVARCHAR, "string");
-        // typeMap.put(java.sql.Types.NCHAR, "string");
-        // typeMap.put(java.sql.Types.NVARCHAR, "string");
-        // typeMap.put(java.sql.Types.LONGNVARCHAR, "string");
+        qnameTypeMap.put(java.sql.Types.NVARCHAR, "string");
         qnameTypeMap.put(java.sql.Types.CLOB, "string");
-        // typeMap.put(java.sql.Types.SQLXML, "string");
         qnameTypeMap.put(java.sql.Types.BOOLEAN, "boolean");
         qnameTypeMap.put(java.sql.Types.TIMESTAMP, "dateTime");
         qnameTypeMap.put(java.sql.Types.BIT, "integer");
@@ -256,11 +246,7 @@ public class GenerateDataServicesUtils {
      * @return true if text is null or trimmed text length is empty, or else false
      */
     private static boolean isEmptyString(String text) {
-        if (text != null && text.trim().length() > 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return text == null || text.trim().length() == 0;
     }
 
     public static Map<Integer, String> getDefinedTypes() {

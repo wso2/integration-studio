@@ -12,7 +12,8 @@ Require-Bundle: org.wso2.integrationstudio.gmf.esb,
  org.wso2.integrationstudio.project.extensions
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: org.wso2.integrationstudio.esb.core,
+Import-Package: org.wso2.integrationstudio.artifact.synapse.api.util,
+ org.wso2.integrationstudio.esb.core,
  org.wso2.integrationstudio.esb.core.utils,
  org.wso2.integrationstudio.esb.project.artifact,
  org.wso2.integrationstudio.esb.project.utils,

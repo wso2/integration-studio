@@ -43,6 +43,7 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 	private static final String ESB_APRTIFACT_DELETE_CHANGE_OBJECT_NAME = "ESB Artifact Delete";
 	private static final String UPDATE_ARTIFACT_XML_CHANGE_OBJECT_NAME = "Update arifact.xml";
 	private static final String SYNAPSE_CONFIG_DIR_API = "api";
+	private static final String SYNAPSE_CONFIG_DIR_PROXY_SERVICE = "proxy-services";
 	private IFile originalFile;
 	private static int numOfFiles;
 	private static int currentFileNum;
@@ -85,6 +86,15 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
                          }
                          if(swaggerFile.exists()) {
                              swaggerFile.delete(true, null);
+                         }
+                     } else if (locationSegments[location.segmentCount() - 2].equals(SYNAPSE_CONFIG_DIR_PROXY_SERVICE)) {
+                         String proxyXML = locationSegments[location.segmentCount()-1];
+                         String proxyName = proxyXML.substring(0, proxyXML.length() - 4);
+                         IContainer metadataLocation = project.getFolder("src/main/resources/metadata");
+                         IFile proxyMetaFile = metadataLocation.getFile(new Path(proxyName + "_proxy_metadata.yaml"));
+                         metaFileList.add(proxyMetaFile);
+                         if(proxyMetaFile.exists()) {
+                             proxyMetaFile.delete(true, null);
                          }
                      }
                  }

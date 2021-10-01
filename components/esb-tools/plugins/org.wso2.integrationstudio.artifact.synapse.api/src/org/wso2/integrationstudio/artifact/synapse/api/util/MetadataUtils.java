@@ -63,5 +63,30 @@ public class MetadataUtils {
             }
         }
     }
+    
+    public static void createMedataFileForProxyServices(IContainer metadataLocation, String fileName)
+            throws IOException {
+
+        IFile metadataFile = metadataLocation.getFile(new Path(fileName + "_proxy_metadata.yaml"));
+        String version = "1.0.0";
+        File newFile = new File(metadataFile.getLocationURI().getPath());
+        if (!newFile.exists()) {
+            try (FileWriter fw = new FileWriter(newFile);) {
+                StringBuilder builder = new StringBuilder();
+                // Creating the YAML file
+                builder.append("---\n");
+                builder.append("key: \"").append(fileName).append("_proxy-").append(version).append("\"\n");
+                builder.append("name : \"").append(fileName).append("\"\n");
+                builder.append("displayName : \"").append(fileName).append("\"\n");
+                builder.append("description: \"Sample Proxy Service\"\n");
+                builder.append("version: \"").append(version).append("\"\n");
+                builder.append("serviceUrl: \"https://{MI_HOST}:{MI_PORT}/services/").append(fileName).append("\"\n");
+                builder.append("definitionType: \"WSDL1\"\n");
+                builder.append("securityType: \"BASIC\"\n");
+                builder.append("mutualSSLEnabled: false\n");
+                fw.write(builder.toString());
+            }
+        }
+    }
 
 }

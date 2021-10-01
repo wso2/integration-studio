@@ -619,4 +619,74 @@
               class="org.wso2.integrationstudio.esb.project.ui.view.DeployedServicesView"
               icon="icons/synapse-16x16png.png"/>
     </extension>
+    
+    <!-- Adding property tester for adding the 'Generate API Metadata' option to API folder-->
+    <extension point="org.eclipse.ui.popupMenus">
+            <objectContribution objectClass="org.eclipse.core.resources.IFolder"
+                                id="org.wso2.integrationstudio.esb.project.generate.api.metadata.id">
+                <action
+                        label="Generate API Metadata"
+                        icon="icons/generate-metadata.png"
+                        class="org.wso2.integrationstudio.esb.project.ui.action.GenerateAPIMetadataAction"
+                        id="org.wso2.integrationstudio.esb.project.generate.api.metadata">
+                </action>
+                <enablement>
+                    <adapt
+                            type="org.eclipse.core.resources.IFolder">
+                        <test
+                                property="org.wso2.integrationstudio.esb.project.propertytesters.checkGenerateAPIMetadataType"
+                                value="true"
+                                forcePluginActivation="true">
+                        </test>
+                    </adapt>
+                </enablement>
+            </objectContribution>
+    </extension>
+        
+    <!-- Adding property tester for adding the item to the right click menu based on the resource type-->
+    <extension
+            point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+                class="org.wso2.integrationstudio.esb.project.propertytesters.GenerateAPIMetadataTester"
+                id="GenerateAPIMetadataTester"
+                namespace="org.wso2.integrationstudio.esb.project.propertytesters"
+                properties="checkGenerateAPIMetadataType"
+                type="org.eclipse.core.resources.IFolder">
+        </propertyTester>
+    </extension>
+    
+    <!-- Adding property tester for adding the 'Generate Proxy Service Metadata' option to API folder-->
+    <extension point="org.eclipse.ui.popupMenus">
+            <objectContribution objectClass="org.eclipse.core.resources.IFolder"
+                                id="org.wso2.integrationstudio.esb.project.generate.proxy.service.metadata.id">
+                <action
+                        label="Generate Proxy Service Metadata"
+                        icon="icons/generate-metadata.png"
+                        class="org.wso2.integrationstudio.esb.project.ui.action.GenerateProxyServiceMetadataAction"
+                        id="org.wso2.integrationstudio.esb.project.generate.proxy.service.metadata">
+                </action>
+                <enablement>
+                    <adapt
+                            type="org.eclipse.core.resources.IFolder">
+                        <test
+                                property="org.wso2.integrationstudio.esb.project.propertytesters.checkGenerateProxyServiceMetadataType"
+                                value="true"
+                                forcePluginActivation="true">
+                        </test>
+                    </adapt>
+                </enablement>
+            </objectContribution>
+    </extension>
+        
+    <!-- Adding property tester for adding the item to the right click menu based on the resource type-->
+    <extension
+            point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+                class="org.wso2.integrationstudio.esb.project.propertytesters.GenerateProxyServiceMetadataTester"
+                id="GenerateProxyServiceMetadataTester"
+                namespace="org.wso2.integrationstudio.esb.project.propertytesters"
+                properties="checkGenerateProxyServiceMetadataType"
+                type="org.eclipse.core.resources.IFolder">
+        </propertyTester>
+    </extension>
 </plugin>

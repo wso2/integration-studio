@@ -4,6 +4,7 @@
 		description="Select how you would like to create your new dataservice"
 		error="Please select a method to create the dataservice">
 		<option id="new.ds" default="true">Create a New Data Service</option>
+		<option id="generate.ds">Generate Data Service from Datasource</option>
 		<option id="import.ds">Import a Data Service</option>
 	</projectOptions>
 	<projectOptionSettings>
@@ -47,6 +48,16 @@
 			<projectNatures>
 				<nature>org.eclipse.jdt.core.javanature</nature>
 			</projectNatures>
+		</settings>
+		<settings optionId="generate.ds" title="Data Service"
+			description="Generate a Data Service"
+			error="Please give a datasrouce">
+			<data modelProperty="datasource" type="list" 
+				fieldController="org.wso2.integrationstudio.artifact.dataservice.validators.DataServiceFieldController">Datasource*</data>
+			<data modelProperty="create.ds.prj" type="link" fieldController="org.wso2.integrationstudio.artifact.dataservice.validators.DataServiceFieldController" controlData="align=right">&lt;a&gt;Create new DSS Project...&lt;/a&gt;</data>
+			<projectNatures>
+                 <nature>org.eclipse.jdt.core.javanature</nature>
+	        </projectNatures>
 		</settings>
 	</projectOptionSettings>
 </wizard>

@@ -56,6 +56,7 @@ public class DataServiceModel extends ProjectDataModel {
 	private IContainer dataServiceSaveLocation;
 	private static boolean enableSecretAlias = false;
 	private List<String> transports = new ArrayList<String>();
+	private boolean isGenerateDataService = false;
 
 	// configuration
 	private RdbmsConfig rdbmsConfig;
@@ -118,6 +119,9 @@ public class DataServiceModel extends ProjectDataModel {
 			} else {
 				modelPropertyValue = container;
 			}
+		} else if (key.equals(DataServiceArtifactConstants.WIZARD_OPTION_DATASOURCE)) {
+		    setGenerateDataService(true);
+		    modelPropertyValue = null;
 		}
 		return modelPropertyValue;
 	}
@@ -799,4 +803,13 @@ public class DataServiceModel extends ProjectDataModel {
 		}
 		return null;
 	}
+	
+	public boolean isGenerateDataService() {
+	    return isGenerateDataService;
+	}
+
+	private void setGenerateDataService(boolean isGenerateDataService) {
+	    this.isGenerateDataService = isGenerateDataService;
+	}
+	
 }

@@ -44,6 +44,7 @@
             <id>all-components</id>
             <modules>
                 <module>components/studio-platform</module>
+                <module>components/sever-tools</module>
                 <module>components/esb-tools</module>
                 <module>components/dss-tools</module>
                 <module>components/bps-tools</module>
@@ -59,6 +60,7 @@
             <id>esb-tools</id>
             <modules>
                 <module>components/studio-platform</module>
+                <module>components/sever-tools</module>
                 <module>components/esb-tools</module>
             </modules>
         </profile>

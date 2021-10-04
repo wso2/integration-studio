@@ -566,21 +566,19 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
         for (Map.Entry<String, EnumSet<Methods>> entry : tables.entrySet()) {
             Map<String, String> columnsList = new HashMap<String, String>();
             Map<String, String> primaryKeys = new HashMap<String, String>();
+            Map<String, String> autoIncrementFeilds = new HashMap<String, String>();
             String columnNameString = "";
             int i = 0;
             String table = entry.getKey();
             try (ResultSet rs = metadata.getColumns(null, null, table, null)) {
                 while (rs.next()) {
-                    if (this.isAutoIncrementField(rs)) {
-                        continue;
-                    }
                     String name = rs.getString(COLUMN_NAME);
                     int type = rs.getInt(DATA_TYPE);
-                    String sqlType;
-                    if ((-1 == type) || (-16 == type) || (-15 == type) || (2009 == type) || (1111 == type)) {
-                        type = 1;
+                    String sqlType = getSQLType(type);
+                    if (this.isAutoIncrementField(rs)) {
+                        autoIncrementFeilds.put(name, sqlType);
+                        continue;
                     }
-                    sqlType = GenerateDataServicesUtils.getDefinedTypes().get(type);
                     columnsList.put(name, sqlType);
                     if (i == 0) {
                         columnNameString = " " + name;
@@ -593,7 +591,11 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
             try (ResultSet rs = metadata.getPrimaryKeys(null, null, table)) {
                 while (rs.next()) {
                     String name = rs.getString(COLUMN_NAME);
-                    primaryKeys.put(name, columnsList.get(name));
+                    String sqlType = columnsList.get(name);
+                    if (sqlType == null) {
+                        sqlType = autoIncrementFeilds.get(name);
+                    }
+                    primaryKeys.put(name, sqlType);
                 }
             }
             EnumSet<Methods> methods = entry.getValue();
@@ -655,21 +657,18 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
         DatabaseMetaData metadata = generateDataServiceModel.getMetadata();
         Map<String, String> columnsList = new HashMap<String, String>();
         Map<String, String> primaryKeys = new HashMap<String, String>();
+        Map<String, String> autoIncrementFeilds = new HashMap<String, String>();
         String columnNameString = "";
         int i = 0;
         try (ResultSet rs = metadata.getColumns(null, null, table, null)) {
             while (rs.next()) {
-                if (this.isAutoIncrementField(rs)) {
-                    continue;
-                }
                 String name = rs.getString(COLUMN_NAME);
                 int type = rs.getInt(DATA_TYPE);
-                String sqlType;
-                if ((-1 == type) || (-16 == type) || (-15 == type)
-                        || (2009 == type) || (1111 == type)) {
-                    type = 1;
+                String sqlType = getSQLType(type);
+                if (this.isAutoIncrementField(rs)) {
+                    autoIncrementFeilds.put(name, sqlType);
+                    continue;
                 }
-                sqlType = GenerateDataServicesUtils.getDefinedTypes().get(type);
                 columnsList.put(name, sqlType);
                 if (i == 0) {
                     columnNameString = " " + name;
@@ -682,7 +681,11 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
         try (ResultSet rs = metadata.getPrimaryKeys(null, null, table)) {
             while (rs.next()) {
                 String name = rs.getString(COLUMN_NAME);
-                primaryKeys.put(name, columnsList.get(name));
+                String sqlType = columnsList.get(name);
+                if (sqlType == null) {
+                    sqlType = autoIncrementFeilds.get(name);
+                }
+                primaryKeys.put(name, sqlType);
             }
         }
         if (methods.contains(Methods.GET)) {
@@ -699,6 +702,14 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
         }
         doc.appendChild(dataElement);       
         return generateServiceFromDoc(doc, table + "_DataService");
+    }
+    
+    private String getSQLType(int type) {
+        if ((-1 == type) || (-16 == type) || (-15 == type)
+                || (2009 == type) || (1111 == type)) {
+            type = 1;
+        }
+        return GenerateDataServicesUtils.getDefinedTypes().get(type);
     }
     
     private Element generateDataElement(Document doc, String name) {

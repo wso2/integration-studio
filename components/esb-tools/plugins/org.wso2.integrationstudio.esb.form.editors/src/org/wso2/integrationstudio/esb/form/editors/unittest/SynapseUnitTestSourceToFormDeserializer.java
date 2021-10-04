@@ -338,6 +338,14 @@ public class SynapseUnitTestSourceToFormDeserializer {
             String requestMethod = testCaseRequestMethodNode.getText();
             testCase.setRequestMethod(requestMethod);
         }
+        
+        QName qualifiedInputProtocolType = new QName("", Constants.PROTOCOL_TYPE, "");
+        OMElement testCaseProtocolTypeNode = testCaseInputNode.getFirstChildWithName(qualifiedInputProtocolType);
+
+        if (testCaseProtocolTypeNode != null) {
+            String protocolType = testCaseProtocolTypeNode.getText();
+            testCase.setProtocolType(protocolType);
+        }
 
         QName qualifiedInputProperties = new QName("", Constants.PROPERTIES, "");
         OMElement testCaseInputPropertyNode = testCaseInputNode.getFirstChildWithName(qualifiedInputProperties);

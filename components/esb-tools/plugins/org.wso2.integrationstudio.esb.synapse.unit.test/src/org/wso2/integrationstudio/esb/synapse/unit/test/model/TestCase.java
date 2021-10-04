@@ -28,6 +28,7 @@ public class TestCase {
     private String testCaseName;
     private String requestPath;
     private String requestMethod;
+    private String protocolType;
     private String inputPayload;
     private LinkedHashMap<String, InputProperty> propertyMap = new LinkedHashMap<>();
     private LinkedHashMap<String, Assertion> assertions = new LinkedHashMap<>();
@@ -136,6 +137,22 @@ public class TestCase {
      */
     public String getRequestMethod() {
         return requestMethod;
+    }
+    
+    /** Get protocol type of the test case
+     * 
+     * @return protocol type of the test case
+     */
+    public String getProtocolType() {
+    	return protocolType;
+    }
+    
+    /** Set protocol type of the test case
+     * 
+     * @param protocolType Protocol type to set
+     */
+    public void setProtocolType(String protocolType) {
+    	this.protocolType = protocolType;
     }
 
     /**

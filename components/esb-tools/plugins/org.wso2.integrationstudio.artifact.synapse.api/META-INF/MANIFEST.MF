@@ -12,7 +12,8 @@ Require-Bundle: org.wso2.integrationstudio.kernel.libraries,
  org.wso2.integrationstudio.docker.distribution
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.wso2.integrationstudio.artifact.synapse.api.validator
+Export-Package: org.wso2.integrationstudio.artifact.synapse.api.util,
+ org.wso2.integrationstudio.artifact.synapse.api.validator
 Import-Package: com.fasterxml.jackson.databind;version="2.7.2",
  org.codehaus.jettison.json;version="1.3.4.wso2v1",
  org.eclipse.core.resources,

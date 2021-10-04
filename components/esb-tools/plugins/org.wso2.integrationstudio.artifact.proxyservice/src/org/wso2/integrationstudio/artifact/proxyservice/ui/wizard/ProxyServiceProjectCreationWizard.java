@@ -50,6 +50,7 @@ import org.wso2.integrationstudio.artifact.proxyservice.utils.ProxyServiceImageU
 import org.wso2.integrationstudio.artifact.proxyservice.utils.PsArtifactConstants;
 import org.wso2.integrationstudio.artifact.proxyservice.wsdl.ProxyGenerator;
 import org.wso2.integrationstudio.artifact.proxyservice.wsdl.WSDL2Java;
+import org.wso2.integrationstudio.artifact.synapse.api.util.MetadataUtils;
 import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
 import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
 import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
@@ -71,6 +72,7 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 	private ESBProjectArtifact esbProjectArtifact;
 	private List<File> fileLst = new ArrayList<File>();
 	private IProject esbProject;
+	private static final String METADATA_TYPE = "synapse/metadata";
 
 	private String version = "1.0.0";
 
@@ -97,6 +99,9 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 			String template = "";
 			ProxyServiceModel proxyServiceModel = (ProxyServiceModel) getModel();
 			esbProject =  proxyServiceModel.getProxyServiceSaveLocation().getProject();
+			IContainer metadataLocation = esbProject.getFolder("src/main/resources/metadata");
+			// no medatadata folder-> old project structure
+			boolean meadataEnabled = metadataLocation.exists();
 			IContainer location = esbProject.getFolder("src" + File.separator + "main" +
                                  File.separator +
                                  "synapse-config" +
@@ -186,6 +191,13 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 						proxyServiceModel.getProxyServiceName(), groupId, version, relativePath));
 			}
 			
+			if (meadataEnabled) {
+				// Create the metadata file and update the artifact.xml file
+				MetadataUtils.createMedataFileForProxyServices(metadataLocation,
+						proxyServiceModel.getProxyServiceName());
+				createMetadataArtifactEntry(metadataLocation, proxyServiceModel.getProxyServiceName(),
+						groupId + ".metadata");
+			}
 			esbProjectArtifact.toFile();
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			
@@ -200,6 +212,19 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 		}
 
 		return true;
+	}
+	
+	private void createMetadataArtifactEntry(IContainer metadataLocation, String proxyName, String metadataGroupId)
+			throws Exception {
+		String filePathPostfix = "_proxy_metadata.yaml";
+		String namePostfix = "_proxy_metadata";
+		String metaRelativePath = FileUtils
+				.getRelativePath(esbProject.getLocation().toFile(),
+						new File(metadataLocation.getLocation().toFile(), proxyName + filePathPostfix))
+				.replaceAll(Pattern.quote(File.separator), "/");
+		esbProjectArtifact.addESBArtifact(
+				createArtifact(proxyName + namePostfix, metadataGroupId, version, metaRelativePath, METADATA_TYPE));
+		esbProjectArtifact.toFile();
 	}
 	
 	public void updatePom() throws IOException, XmlPullParserException {
@@ -343,6 +368,14 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 		} catch (Exception e) {
                 log.error("cannot open the Editor", e);
 		}
+	}
+	
+	private ESBArtifact createArtifact(String name, String groupId, String version, String path, String type) {
+		ESBArtifact artifact = createArtifact(name, groupId, version, path);
+		if (!StringUtils.isEmpty(type)) {
+			artifact.setType(type);
+		}
+		return artifact;
 	}
 	
 	private ESBArtifact createArtifact(String name,String groupId,String version,String path){

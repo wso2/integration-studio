@@ -73,8 +73,10 @@ public class DistributionProjectExportWizardPage extends WizardPage {
     
     private static final String METADATA_TYPE = "synapse/metadata";
     private static final String API_TYPE = "synapse/api";
+    private static final String PROXY_SERVICE_TYPE = "synapse/proxy-service";
     private static final String METADATA_SUFFIX = "_metadata";
     private static final String SWAGGER_SUFFIX = "_swagger";
+    private static final String PROXY_METADATA_SUFFIX = "_proxy";
 	
 	private MavenProject mavenProject;
 	private Map<String,Dependency> dependencyList;
@@ -662,6 +664,9 @@ public class DistributionProjectExportWizardPage extends WizardPage {
                 String swaggerName = project.getArtifactId() + SWAGGER_SUFFIX;
                 removingArtifacts.add(artifactIdToDependencyMapping.get(medataName));
                 removingArtifacts.add(artifactIdToDependencyMapping.get(swaggerName));
+            } else if (PROXY_SERVICE_TYPE.equals(dependencyData.getCApptype())) {
+                String medataName = project.getArtifactId() + PROXY_METADATA_SUFFIX + METADATA_SUFFIX;
+                removingArtifacts.add(artifactIdToDependencyMapping.get(medataName));
             }
         }
         removingArtifacts.add(artifactInfo);
@@ -710,6 +715,17 @@ public class DistributionProjectExportWizardPage extends WizardPage {
                         if (swaggerDependency != null && !getDependencyList().containsKey(swaggerArtifactInfo)) {
                             serverRoleList.put(swaggerArtifactInfo, "capp/" + serverRole);
                             getDependencyList().put(swaggerArtifactInfo, swaggerDependency);
+                        }
+                    }
+                } else if (PROXY_SERVICE_TYPE.equals(dependencyData.getCApptype())) {
+                    String medataName = project.getArtifactId() + PROXY_METADATA_SUFFIX + METADATA_SUFFIX;
+                    String metadataArtifactInfo = artifactIdToDependencyMapping.get(medataName);
+                    if (projectListToDependencyMapping.containsKey(metadataArtifactInfo)) {
+                        Dependency metaDependency = projectList
+                                .get(projectListToDependencyMapping.get(metadataArtifactInfo)).getDependency();
+                        if (metaDependency != null && !getDependencyList().containsKey(metadataArtifactInfo)) {
+                            serverRoleList.put(metadataArtifactInfo, "capp/" + serverRole);
+                            getDependencyList().put(metadataArtifactInfo, metaDependency);
                         }
                     }
                 }

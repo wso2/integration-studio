@@ -8,7 +8,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.wso2.integrationstudio.kernel.libraries,
- org.eclipse.m2e.core.ui;bundle-version="1.8.3"
+ org.eclipse.m2e.core.ui;bundle-version="1.8.3",
+ org.wso2.integrationstudio.ds.editor
 Bundle-ActivationPolicy: lazy
 DynamicImport-Package: com.mysql.jdbc,
  com.mysql.cj.jdbc,
@@ -34,6 +35,7 @@ Import-Package: org.eclipse.core.expressions,
  org.eclipse.ui,
  org.eclipse.ui.ide,
  org.wso2.integrationstudio.artifact.dataserviceProject.ui.wizard,
+ org.wso2.integrationstudio.artifact.datasource.artifact,
  org.wso2.integrationstudio.capp.core.artifacts.manager,
  org.wso2.integrationstudio.capp.core.model,
  org.wso2.integrationstudio.capp.maven.sample,

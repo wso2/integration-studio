@@ -18,11 +18,27 @@ package org.wso2.integrationstudio.artifact.dataservice.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringWriter;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.stream.FactoryConfigurationError;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.maven.model.Plugin;
@@ -45,10 +61,14 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.wso2.integrationstudio.artifact.dataservice.Activator;
 import org.wso2.integrationstudio.artifact.dataservice.artifact.DSSArtifact;
 import org.wso2.integrationstudio.artifact.dataservice.artifact.DSSProjectArtifact;
 import org.wso2.integrationstudio.artifact.dataservice.model.DataServiceModel;
+import org.wso2.integrationstudio.artifact.dataservice.model.GenerateDataServiceModel;
+import org.wso2.integrationstudio.artifact.dataservice.ui.wizard.GenerateDataServicesUtils.Methods;
 import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceArtifactConstants;
 import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceImageUtils;
 import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceTemplateUtils;
@@ -56,7 +76,6 @@ import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.maven.util.MavenUtils;
-import org.wso2.integrationstudio.platform.core.exception.FieldValidationException;
 import org.wso2.integrationstudio.platform.core.project.presentation.ProjectPresentation;
 import org.wso2.integrationstudio.platform.core.utils.XMLUtil;
 import org.wso2.integrationstudio.platform.ui.validator.CommonFieldValidator;
@@ -75,6 +94,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	private static final String DS_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.ds.project.nature";
 	private static final String IMPORT_OPTION = "import.ds";
 	private static final String NEW_OPTION = "new.ds";
+	private static final String GENERATE_OPTION = "generate.ds";
 	private static final String POM_FILE = "pom.xml";
 	private static final String GROUP_ID = "org.wso2.maven";
 	private static final String ARTIFACT_ID = "maven-dataservice-plugin";
@@ -87,24 +107,39 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	private static final String DATASERVICE_TEMPLATE_SECRETALIAS = "templates/Dataservice2.dbs";
 	private String version = "1.0.0";
 	private static final String DSS_PERSPECTIVE = "org.wso2.integrationstudio.ds.presentation.custom.perspective";
+	
+	private static final String SINGLE_SERVICE_DESCRIPTION = "single service for whole database";
+	private static final String MUTLIPLE_SERVICE_DESCRIPTION = "multiple services per each table";
+	private static final String WSO2_DS_NAMESPACE = "http://ws.wso2.org/dataservice";
+	private static final String COLUMN_NAME = "COLUMN_NAME";
+	private static final String DATA_TYPE = "DATA_TYPE";
+	private static final String AUTOINCREMENT_COLUMN = "IS_AUTOINCREMENT";
+	private static final String IDENTITY_COLUMN = "Identity";
+	private static final String IS_AUTOINCREMENT = "YES";
 
 
 	private final DataServiceModel dsModel;
 	private DSSProjectArtifact dssProjectArtifact;
 	private IProject project;
 	private IWizardPage[] pages;
+	private GenerateDataServicesWizardPage generateDataServiceWizard;
+	private GenerateDataServiceModel generateDataServiceModel;
 
 	public DataServiceCreationWizard() {
 		this.dsModel = new DataServiceModel();
 		setModel(this.dsModel);
 		setWindowTitle(DataServiceArtifactConstants.DS_WIZARD_WINDOW_TITLE);
+		
+		generateDataServiceModel = new GenerateDataServiceModel();
+		generateDataServiceWizard = new GenerateDataServicesWizardPage(generateDataServiceModel);
 		setDefaultPageImageDescriptor(DataServiceImageUtils.getInstance().getImageDescriptor("ds-wizard.png"));
 	}
 
 	public boolean performFinish() {
 		try {
-			File openFile = null;
+			
 			if (getModel().getSelectedOption().equals(IMPORT_OPTION)) {
+			    File openFile = null;
 				if (dsModel.getDataServiceSaveLocation() != null) {
 					project = dsModel.getDataServiceSaveLocation().getProject();
 				} else {
@@ -126,9 +161,11 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 					}
 				}
 				FileUtils.copy(importFile, openFile);
+				createServiceArtifacts(openFile);
 			}
 
 			if (getModel().getSelectedOption().equals(NEW_OPTION)) {
+			    File openFile = null;
 				if (dsModel.getDataServiceSaveLocation() != null) {
 
 					if (dsModel.getDataServiceSaveLocation().getProject().getLocation() != null) {
@@ -140,32 +177,29 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 				}
 
 				openFile = addDSTemplate(project);
+				createServiceArtifacts(openFile);
 			}
-
-			getModel().addToWorkingSet(project);
-			File mavenProjectPom = project.getFile(POM_FILE).getLocation().toFile();
-			updateDSSPlugin(openFile, mavenProjectPom);
-			String groupId = getMavenGroupId(mavenProjectPom)+ ".dataservice";
-			String relativePath = FileUtils.getRelativePath(project.getLocation().toFile(), openFile).replaceAll(
-					Pattern.quote(File.separator), "/");
-
-			// adds meta data about the data service
-			addMetaData(openFile, groupId, relativePath);
-			try {
-				refreshDistProjects();
-				IFile dbsFile = ResourcesPlugin.getWorkspace().getRoot()
-						.getFileForLocation(Path.fromOSString(openFile.getAbsolutePath()));
-				IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), dbsFile);
-			} catch (Exception e) {
-				log.error(DataServiceArtifactConstants.ERROR_MESSAGE_FILE_OPEN, e);
-			}
-            try {
-                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
-                ProjectPresentation.setHierarchicalProjectPresentation();
-            } catch (Exception e) {
-                log.error(DataServiceArtifactConstants.ERROR_MESSAGE_FILE_OPEN, e);
-            }
+			
+			if (getModel().getSelectedOption().equals(GENERATE_OPTION)) {
+			    if (generateDataServiceModel.getDatasource() != null) {
+			        if (dsModel.getDataServiceSaveLocation().getProject().getLocation() != null) {
+			            project = dsModel.getDataServiceSaveLocation().getProject();
+			        } else {
+			            project = createNewDSSProject(dsModel.getDataServiceSaveLocation().getProject().getName());
+			            createDSSProjectStructure(project);
+			        }
+			        if (generateDataServiceModel.isGenerateSingleService()) {
+			            File openFile = generateSingleDataService(project);
+			            createServiceArtifacts(openFile);
+                    } else {
+                        Map<String, EnumSet<Methods>> tables = generateDataServiceModel.getTables();
+                        for (Map.Entry<String, EnumSet<Methods>> entry : tables.entrySet()) {
+                            File openFile = generatePerTableDataService(project, entry.getKey(), entry.getValue());
+                            createServiceArtifacts(openFile);
+                        }
+                    }                            
+                }               
+            }			
 		} catch (CoreException e) {
 			log.error(DataServiceArtifactConstants.ERROR_MESSAGE_CORE_EXCEPTION, e);
 		} catch (Exception e) {
@@ -174,6 +208,33 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 
 		return true;
 	}
+	
+    private void createServiceArtifacts(File openFile) throws FactoryConfigurationError, CoreException, Exception {
+        getModel().addToWorkingSet(project);
+        File mavenProjectPom = project.getFile(POM_FILE).getLocation().toFile();
+        updateDSSPlugin(openFile, mavenProjectPom);
+        String groupId = getMavenGroupId(mavenProjectPom) + ".dataservice";
+        String relativePath = FileUtils.getRelativePath(project.getLocation().toFile(), openFile)
+                .replaceAll(Pattern.quote(File.separator), "/");
+
+        // adds meta data about the data service
+        addMetaData(openFile, groupId, relativePath);
+        try {
+            refreshDistProjects();
+            IFile dbsFile = ResourcesPlugin.getWorkspace().getRoot()
+                    .getFileForLocation(Path.fromOSString(openFile.getAbsolutePath()));
+            IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), dbsFile);
+        } catch (Exception e) {
+            log.error(DataServiceArtifactConstants.ERROR_MESSAGE_FILE_OPEN, e);
+        }
+        try {
+            IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+            PlatformUI.getWorkbench().showPerspective(DSS_PERSPECTIVE, window);
+            ProjectPresentation.setHierarchicalProjectPresentation();
+        } catch (Exception e) {
+            log.error(DataServiceArtifactConstants.ERROR_MESSAGE_FILE_OPEN, e);
+        }
+    }
 
 	/**
 	 * Adds meta data
@@ -478,7 +539,392 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		dsTempTag.clearAndEnd();
 		return template;
 	}
+	
+    /**
+     * Adds the template
+     * 
+     * @param project
+     *            project
+     * @return .dbs file
+     * @throws Exception
+     */
+    private File generateSingleDataService(IProject project) throws Exception {
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+        Document doc = docBuilder.newDocument();
+        Element dataElement = generateDataElement(doc, generateDataServiceModel.getServiceName());
 
+        Element descriptionEle = doc.createElement("description");
+        descriptionEle.setTextContent(SINGLE_SERVICE_DESCRIPTION);
+        dataElement.appendChild(descriptionEle);
+
+        Element configEle = generateConfigElement(doc);
+        dataElement.appendChild(configEle);
+        
+        Map<String, EnumSet<Methods>> tables = generateDataServiceModel.getTables();
+        DatabaseMetaData metadata = generateDataServiceModel.getMetadata();
+        for (Map.Entry<String, EnumSet<Methods>> entry : tables.entrySet()) {
+            Map<String, String> columnsList = new HashMap<String, String>();
+            Map<String, String> primaryKeys = new HashMap<String, String>();
+            Map<String, String> autoIncrementFeilds = new HashMap<String, String>();
+            String columnNameString = "";
+            int i = 0;
+            String table = entry.getKey();
+            try (ResultSet rs = metadata.getColumns(null, null, table, null)) {
+                while (rs.next()) {
+                    String name = rs.getString(COLUMN_NAME);
+                    int type = rs.getInt(DATA_TYPE);
+                    String sqlType = getSQLType(type);
+                    if (this.isAutoIncrementField(rs)) {
+                        autoIncrementFeilds.put(name, sqlType);
+                        continue;
+                    }
+                    columnsList.put(name, sqlType);
+                    if (i == 0) {
+                        columnNameString = " " + name;
+                    } else {
+                        columnNameString = columnNameString + ", " + name;
+                    }
+                    i++;
+                }
+            }
+            try (ResultSet rs = metadata.getPrimaryKeys(null, null, table)) {
+                while (rs.next()) {
+                    String name = rs.getString(COLUMN_NAME);
+                    String sqlType = columnsList.get(name);
+                    if (sqlType == null) {
+                        sqlType = autoIncrementFeilds.get(name);
+                    }
+                    primaryKeys.put(name, sqlType);
+                }
+            }
+            EnumSet<Methods> methods = entry.getValue();
+            if (methods.contains(Methods.GET)) {
+                generateSelectAllDefinition(doc, dataElement, table, columnNameString, columnsList);
+            }
+            if (methods.contains(Methods.POST)) {
+                generateInsertDefinition(doc, dataElement, table, columnsList);
+            }
+            if (methods.contains(Methods.PUT)) {
+                generateUpdateDefinition(doc, dataElement, table, columnsList, primaryKeys);
+            }
+            if (methods.contains(Methods.DELETE)) {
+                generateDeleteDefinition(doc, dataElement, table, columnsList, primaryKeys);
+            }
+        }
+
+        doc.appendChild(dataElement);
+        return generateServiceFromDoc(doc, generateDataServiceModel.getServiceName());
+    }
+    
+    private boolean isAutoIncrementField(ResultSet columnNames) {
+        try {
+            String autoIncrString = columnNames.getString(AUTOINCREMENT_COLUMN);
+            if (IS_AUTOINCREMENT.equalsIgnoreCase(autoIncrString)) {
+                return true;
+            }
+            Boolean identity = columnNames.getBoolean(IDENTITY_COLUMN);
+            if (identity != null) {
+                return identity;
+            }
+        } catch (SQLException ignore) {
+            // ignore
+        }       
+        return false;
+    }
+    
+    /**
+     * Adds the template
+     * 
+     * @param project
+     *            project
+     * @return .dbs file
+     * @throws Exception
+     */
+    private File generatePerTableDataService(IProject project, String table, EnumSet<Methods> methods) throws Exception {
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+        Document doc = docBuilder.newDocument();
+        Element dataElement = generateDataElement(doc, table + "_DataService");
+        
+        Element descriptionEle = doc.createElement("description");
+        descriptionEle.setTextContent(MUTLIPLE_SERVICE_DESCRIPTION);
+        dataElement.appendChild(descriptionEle);
+    
+        Element configEle = generateConfigElement(doc);
+        dataElement.appendChild(configEle);
+        
+        DatabaseMetaData metadata = generateDataServiceModel.getMetadata();
+        Map<String, String> columnsList = new HashMap<String, String>();
+        Map<String, String> primaryKeys = new HashMap<String, String>();
+        Map<String, String> autoIncrementFeilds = new HashMap<String, String>();
+        String columnNameString = "";
+        int i = 0;
+        try (ResultSet rs = metadata.getColumns(null, null, table, null)) {
+            while (rs.next()) {
+                String name = rs.getString(COLUMN_NAME);
+                int type = rs.getInt(DATA_TYPE);
+                String sqlType = getSQLType(type);
+                if (this.isAutoIncrementField(rs)) {
+                    autoIncrementFeilds.put(name, sqlType);
+                    continue;
+                }
+                columnsList.put(name, sqlType);
+                if (i == 0) {
+                    columnNameString = " " + name;
+                } else {
+                    columnNameString = columnNameString + ", " + name;
+                }
+                i++;
+            }
+        }
+        try (ResultSet rs = metadata.getPrimaryKeys(null, null, table)) {
+            while (rs.next()) {
+                String name = rs.getString(COLUMN_NAME);
+                String sqlType = columnsList.get(name);
+                if (sqlType == null) {
+                    sqlType = autoIncrementFeilds.get(name);
+                }
+                primaryKeys.put(name, sqlType);
+            }
+        }
+        if (methods.contains(Methods.GET)) {
+            generateSelectAllDefinition(doc, dataElement, table, columnNameString, columnsList);
+        }
+        if (methods.contains(Methods.POST)) {
+            generateInsertDefinition(doc, dataElement, table, columnsList);
+        }
+        if (methods.contains(Methods.PUT)) {
+            generateUpdateDefinition(doc, dataElement, table, columnsList, primaryKeys);
+        }
+        if (methods.contains(Methods.DELETE)) {
+            generateDeleteDefinition(doc, dataElement, table, columnsList, primaryKeys);
+        }
+        doc.appendChild(dataElement);       
+        return generateServiceFromDoc(doc, table + "_DataService");
+    }
+    
+    private String getSQLType(int type) {
+        if ((-1 == type) || (-16 == type) || (-15 == type)
+                || (2009 == type) || (1111 == type)) {
+            type = 1;
+        }
+        return GenerateDataServicesUtils.getDefinedTypes().get(type);
+    }
+    
+    private Element generateDataElement(Document doc, String name) {
+        Element dataElement = doc.createElement("data");
+        dataElement.setAttribute("name", name);
+        dataElement.setAttribute("disableLegacyBoxcarringMode", "false");
+        dataElement.setAttribute("enableBatchRequests", "false");
+        dataElement.setAttribute("enableBoxcarring", "false");
+        dataElement.setAttribute("serviceNamespace", WSO2_DS_NAMESPACE);
+        dataElement.setAttribute("serviceStatus", "active");
+        dataElement.setAttribute("transports", "http https");
+        return dataElement;
+    }
+    
+    private Element generateConfigElement(Document doc) {
+        Element configEle = doc.createElement("config");
+        configEle.setAttribute("id", "default");
+        Element configPropEle = doc.createElement("property");
+        configPropEle.setAttribute("name", "carbon_datasource_name");
+        String datasource = generateDataServiceModel.getDatasource().split("/")[1];
+        configPropEle.setTextContent(datasource);
+        configEle.appendChild(configPropEle);
+        return configEle;
+    }
+
+    private void generateSelectAllDefinition(Document doc, Element dataElement, String table, String columnNameString,
+            Map<String, String> columnsList) {
+        Element queryEle = doc.createElement("query");
+        queryEle.setAttribute("id", "select_all_" + table + "_query");
+        queryEle.setAttribute("useConfig", "default");
+        String query = GenerateDataServicesUtils.getSelectAll(table, "", columnNameString);
+        Element sqlEle = doc.createElement("sql");
+        sqlEle.setTextContent(query);
+        queryEle.appendChild(sqlEle);
+
+        Element resultEle = doc.createElement("result");
+        resultEle.setAttribute("element", table + "Collection");
+        resultEle.setAttribute("rowName", table);
+
+        for (Map.Entry<String, String> column : columnsList.entrySet()) {
+            Element columnEle = doc.createElement("element");
+            columnEle.setAttribute("column", column.getKey());
+            columnEle.setAttribute("name", column.getKey());
+            columnEle.setAttribute("xsdType", "xs:" + column.getValue().toLowerCase());
+            resultEle.appendChild(columnEle);
+        }
+        queryEle.appendChild(resultEle);
+
+        Element resourceEle = doc.createElement("resource");
+        resourceEle.setAttribute("method", "GET");
+        resourceEle.setAttribute("path", table);
+        Element callQueryEle = doc.createElement("call-query");
+        callQueryEle.setAttribute("href", "select_all_" + table + "_query");
+        resourceEle.appendChild(callQueryEle);
+
+        dataElement.appendChild(queryEle);
+        dataElement.appendChild(resourceEle);
+    }
+
+    private void generateInsertDefinition(Document doc, Element dataElement, String table,
+            Map<String, String> columnsList) {
+        Element queryEle = doc.createElement("query");
+        queryEle.setAttribute("id", "insert_" + table + "_query");
+        queryEle.setAttribute("useConfig", "default");
+        String query = GenerateDataServicesUtils.getInsertStatement(table, "",
+                columnsList.keySet().stream().collect(Collectors.toList()));
+        Element sqlEle = doc.createElement("sql");
+        sqlEle.setTextContent(query);
+        queryEle.appendChild(sqlEle);
+
+        Element callQueryEle = doc.createElement("call-query");
+        callQueryEle.setAttribute("href", "insert_" + table + "_query");
+
+        int i = 1;
+        for (Map.Entry<String, String> column : columnsList.entrySet()) {
+            Element paramEle = doc.createElement("param");
+            paramEle.setAttribute("name", column.getKey());
+            paramEle.setAttribute("ordinal", "" + i);
+            paramEle.setAttribute("paramType", "SCALAR");
+            paramEle.setAttribute("sqlType", column.getValue());
+            paramEle.setAttribute("type", "IN");
+            queryEle.appendChild(paramEle);
+
+            Element withParamEle = doc.createElement("with-param");
+            withParamEle.setAttribute("name", column.getKey());
+            withParamEle.setAttribute("query-param", column.getKey());
+            callQueryEle.appendChild(withParamEle);
+            i++;
+        }
+        Element resourceEle = doc.createElement("resource");
+        resourceEle.setAttribute("method", "POST");
+        resourceEle.setAttribute("path", table);
+        resourceEle.appendChild(callQueryEle);
+
+        dataElement.appendChild(queryEle);
+        dataElement.appendChild(resourceEle);
+    }
+
+    private void generateUpdateDefinition(Document doc, Element dataElement, String table,
+            Map<String, String> columnsList, Map<String, String> primaryKeys) {
+        Element queryEle = doc.createElement("query");
+        queryEle.setAttribute("id", "update_" + table + "_query");
+        queryEle.setAttribute("useConfig", "default");
+        String query = GenerateDataServicesUtils.getUpdateStatement(table, "",
+                columnsList.keySet().stream().collect(Collectors.toList()),
+                primaryKeys.keySet().stream().collect(Collectors.toList()));
+        Element sqlEle = doc.createElement("sql");
+        sqlEle.setTextContent(query);
+        queryEle.appendChild(sqlEle);
+
+        Element callQueryEle = doc.createElement("call-query");
+        callQueryEle.setAttribute("href", "update_" + table + "_query");
+
+        int i = 1;
+        for (Map.Entry<String, String> column : columnsList.entrySet()) {
+            if (primaryKeys.containsKey(column.getKey())) {
+                continue;
+            }
+            Element paramEle = doc.createElement("param");
+            paramEle.setAttribute("name", column.getKey());
+            paramEle.setAttribute("ordinal", "" + i);
+            paramEle.setAttribute("paramType", "SCALAR");
+            paramEle.setAttribute("sqlType", column.getValue());
+            paramEle.setAttribute("type", "IN");
+            queryEle.appendChild(paramEle);
+
+            Element withParamEle = doc.createElement("with-param");
+            withParamEle.setAttribute("name", column.getKey());
+            withParamEle.setAttribute("query-param", column.getKey());
+            callQueryEle.appendChild(withParamEle);
+            i++;
+        }
+        for (Map.Entry<String, String> primaryKey : primaryKeys.entrySet()) {
+            Element paramEle = doc.createElement("param");
+            paramEle.setAttribute("name", primaryKey.getKey());
+            paramEle.setAttribute("ordinal", "" + i);
+            paramEle.setAttribute("paramType", "SCALAR");
+            paramEle.setAttribute("sqlType", primaryKey.getValue());
+            paramEle.setAttribute("type", "IN");
+            queryEle.appendChild(paramEle);
+
+            Element withParamEle = doc.createElement("with-param");
+            withParamEle.setAttribute("name", primaryKey.getKey());
+            withParamEle.setAttribute("query-param", primaryKey.getKey());
+            callQueryEle.appendChild(withParamEle);
+            i++;
+        }
+
+        Element resourceEle = doc.createElement("resource");
+        resourceEle.setAttribute("method", "PUT");
+        resourceEle.setAttribute("path", table);
+        resourceEle.appendChild(callQueryEle);
+
+        dataElement.appendChild(queryEle);
+        dataElement.appendChild(resourceEle);
+
+    }
+
+    private void generateDeleteDefinition(Document doc, Element dataElement, String table,
+            Map<String, String> columnsList, Map<String, String> primaryKeys) {
+        Element queryEle = doc.createElement("query");
+        queryEle.setAttribute("id", "delete_" + table + "_query");
+        queryEle.setAttribute("useConfig", "default");
+        String query = GenerateDataServicesUtils.getDeleteStatement(table, "",
+                primaryKeys.keySet().stream().collect(Collectors.toList()));
+        Element sqlEle = doc.createElement("sql");
+        sqlEle.setTextContent(query);
+        queryEle.appendChild(sqlEle);
+
+        Element callQueryEle = doc.createElement("call-query");
+        callQueryEle.setAttribute("href", "delete_" + table + "_query");
+
+        int i = 1;
+        for (Map.Entry<String, String> column : primaryKeys.entrySet()) {
+            Element paramEle = doc.createElement("param");
+            paramEle.setAttribute("name", column.getKey());
+            paramEle.setAttribute("ordinal", "" + i);
+            paramEle.setAttribute("paramType", "SCALAR");
+            paramEle.setAttribute("sqlType", column.getValue());
+            paramEle.setAttribute("type", "IN");
+            queryEle.appendChild(paramEle);
+
+            Element withParamEle = doc.createElement("with-param");
+            withParamEle.setAttribute("name", column.getKey());
+            withParamEle.setAttribute("query-param", column.getKey());
+            callQueryEle.appendChild(withParamEle);
+            i++;
+        }
+
+        Element resourceEle = doc.createElement("resource");
+        resourceEle.setAttribute("method", "DELETE");
+        resourceEle.setAttribute("path", table);
+        resourceEle.appendChild(callQueryEle);
+
+        dataElement.appendChild(queryEle);
+        dataElement.appendChild(resourceEle);
+
+    }
+    
+    private File generateServiceFromDoc(Document doc, String name) throws TransformerException, IOException {
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer trans = tf.newTransformer();
+        StringWriter sw = new StringWriter();
+        trans.setOutputProperty(OutputKeys.INDENT, "yes");
+        trans.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+        trans.transform(new DOMSource(doc), new StreamResult(sw));
+
+        IFolder dsfolder = project.getFolder(DataServiceArtifactConstants.DS_PROJECT_DATASERVICE_FOLDER);
+        File template = new File(dsfolder.getLocation().toFile(), name + DBS_EXTENSION);
+        String templateContent = sw.toString();
+        templateContent = templateContent.replace("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>", "");
+        FileUtils.createFile(template, templateContent);
+        return template;
+    }
+    
 	public IResource getCreatedResource() {
 		return project;
 	}
@@ -490,6 +936,8 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	public void addPages() {
 		super.addPages();
 		pages = getPages();
+		generateDataServiceModel.setLocation(dsModel.getLocation());
+		addPage(generateDataServiceWizard);
 	}
 
 	public IWizardPage getNextPage(IWizardPage page) {
@@ -500,7 +948,14 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 			} else {
 				nextPage = null;
 			}
-		}
+		} else if (dsModel.isGenerateDataService()) {
+		    IWizardPage currentPage = getContainer().getCurrentPage();
+		    if (currentPage instanceof GenerateDataServicesWizardPage) {
+		        nextPage = null;
+		    } else {
+		        nextPage = generateDataServiceWizard;
+		    }
+		} 
 		return nextPage;
 	}
 
@@ -531,6 +986,16 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 			}
 		} else if (page instanceof ProjectOptionsPage) {
 		    return false;
+		} else if (page instanceof GenerateDataServicesWizardPage) {
+            if (generateDataServiceModel.getDatasource() != null
+                    && generateDataServiceModel.getTables() != null
+                    && generateDataServiceModel.getTables().size() > 0
+                    && !(new File(getModel().getLocation().getAbsolutePath() + File.separator
+                            + "dataservice" + File.separator + 
+                            generateDataServiceModel.getServiceName() + ".dbs").exists())) {
+                return true;
+            }
+            return false;
 		}
 	    return true;
 	}

@@ -41,6 +41,7 @@ public class DataServiceArtifactConstants extends NLS {
 	public static String WIZARD_OPTION_SAVE_NAME;
 	public static String CREATE_DS_PROJECT;
 	public static String WIZARD_OPTION_SAVE_FILE;
+	public static String WIZARD_OPTION_DATASOURCE;
 
 
 	public static String WARNING_MESSAGE;

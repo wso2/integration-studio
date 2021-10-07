@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.integrationstudio.visualdatamapper.editor;singleton:=true
-Bundle-Version: 8.0.0.qualifier
+Bundle-Version: 8.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.wso2.integrationstudio.datamapper.presentation.DataMapperEditorPlugin$Implementation
 Bundle-Vendor: %providerName

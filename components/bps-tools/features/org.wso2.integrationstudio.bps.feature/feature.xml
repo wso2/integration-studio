@@ -16,7 +16,7 @@
   specific language governing permissions and limitations
   under the License.
    -->
-<feature id="org.wso2.integrationstudio.bps.feature" label="WSO2 BPS and BPMN Feature" version="8.0.0.qualifier" provider-name="%providerName">
+<feature id="org.wso2.integrationstudio.bps.feature" label="WSO2 BPS and BPMN Feature" version="8.1.0.qualifier" provider-name="%providerName">
 
         <description url="http://wso2.com">
       This feature will install plugins related WSO2 Business Process Service Support.

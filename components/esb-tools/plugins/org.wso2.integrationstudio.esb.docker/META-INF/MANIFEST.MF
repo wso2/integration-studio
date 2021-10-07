@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ESB Docker Image Generation Utility
 Bundle-SymbolicName: org.wso2.integrationstudio.esb.docker;singleton:=true
-Bundle-Version: 8.0.0.qualifier
+Bundle-Version: 8.1.0.qualifier
 Bundle-Activator: org.wso2.integrationstudio.esb.docker.Activator
 Bundle-Vendor: WSO2 Inc
 Require-Bundle: org.wso2.integrationstudio.kernel.libraries,

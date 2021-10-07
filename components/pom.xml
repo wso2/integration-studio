@@ -20,7 +20,7 @@
     <parent>
         <groupId>org.wso2.integrationstudio</groupId>
         <artifactId>wso2-integration-studio-parent</artifactId>
-        <version>8.0.0-SNAPSHOT</version>
+        <version>8.1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -32,9 +32,9 @@
 
     <modules>
         <module>studio-platform</module>
-        <module>server-tools</module>
+        <!-- <module>server-tools</module>
         <module>esb-tools</module>
-        <module>dss-tools</module>
-        <module>bps-tools</module>
+        <module>dss-tools</module> -->
+        <!-- <module>bps-tools</module> -->
     </modules>
 </project>

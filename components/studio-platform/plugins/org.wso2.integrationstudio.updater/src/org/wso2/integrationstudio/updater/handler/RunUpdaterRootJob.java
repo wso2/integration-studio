@@ -47,18 +47,18 @@ public class RunUpdaterRootJob extends Job {
 
     protected static IIntegrationStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
-    private static final String RELEASE_NOTE_URL = "https://product-dist.wso2.com/p2/integration-studio/8.1.0/release-notes";
+    private static final String RELEASE_NOTE_URL = "https://product-dist.wso2.com/p2/integration-studio/release-notes/8.1.0";
     private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
     private static final String EMPTY_STRING = "";
 
     private static String pluginDirectory = getIntegrationStudioRootPath() + File.separator + "plugins";
     private static File pluginDirFile = new File(pluginDirectory);
-    
+
     public RunUpdaterRootJob(String name) {
         super(name);
         // TODO Auto-generated constructor stub
     }
-    
+
     @Override
     protected IStatus run(IProgressMonitor arg0) {
         checkUpdatesAvailable();
@@ -68,7 +68,7 @@ public class RunUpdaterRootJob extends Job {
     public static void checkUpdatesAvailable() {
         try {
             loadUpdateNotificationPopup();
-        } catch(Exception e) {
+        } catch (Exception e) {
             log.error("Exception while running updater tool notifier", e);
         }
     }
@@ -80,7 +80,7 @@ public class RunUpdaterRootJob extends Job {
         if (releaseNoteItems.isEmpty()) {
             return;
         }
-        
+
         Display.getDefault().asyncExec(new Runnable() {
             public void run() {
                 UpdateNotificationPopUp notification = new UpdateNotificationPopUp(
@@ -171,7 +171,7 @@ public class RunUpdaterRootJob extends Job {
 
         return kernelLibraryPluginsTimestampList;
     }
-    
+
     private static long getLocalMaxTimestamp() {
         List<Long> localTimestampList = new ArrayList<>();
         localTimestampList.add(getLatestTimestampOfPlstform());
@@ -179,10 +179,10 @@ public class RunUpdaterRootJob extends Job {
         localTimestampList.add(getLatestTimestampOfDSS());
         localTimestampList.add(getLatestTimestampOfBPS());
         localTimestampList.add(getLatestTimestampOfServer());
-        
+
         return Collections.max(localTimestampList);
     }
-    
+
     private static void getReleaseNotes(List<String> stringArray, long timestamp) {
         try {
             List<Long> relasedTimestampList = new ArrayList<>();

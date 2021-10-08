@@ -47,14 +47,7 @@ public class RunUpdaterRootJob extends Job {
 
     protected static IIntegrationStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
-    private static final String UPDATE_DOMAIN = "https://product-dist.wso2.com/p2";
-    private static final String PLATFORM_P2_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/studio-platform";
-    private static final String ESB_P2_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/esb-tools";
-    private static final String DSS_P2_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/dss-tools";
-    private static final String BPS_P2_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/bps-tools";
-    private static final String SERVER_P2_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/server-tools";
-    private static final String RELEASE_NOTE_URL = UPDATE_DOMAIN + "/integration-studio/8.0.0/release-notes";
-    
+    private static final String RELEASE_NOTE_URL = "https://product-dist.wso2.com/p2/integration-studio/8.1.0/release-notes";
     private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
     private static final String EMPTY_STRING = "";
 
@@ -69,70 +62,27 @@ public class RunUpdaterRootJob extends Job {
     @Override
     protected IStatus run(IProgressMonitor arg0) {
         checkUpdatesAvailable();
-        
         return Status.OK_STATUS;
     }
 
     public static void checkUpdatesAvailable() {
         try {
-            if (checkUpdateAvailability()) {
-                loadUpdateNotificationPopup();
-            }
+            loadUpdateNotificationPopup();
         } catch(Exception e) {
-            log.error("Exception while running updater tool process", e);
+            log.error("Exception while running updater tool notifier", e);
         }
-    }
-
-    private static boolean checkUpdateAvailability() {
-
-        // check platform timestamps
-        long hostedPlatformTimestamp = maximumTimestampInGivenURL(PLATFORM_P2_URL);
-        long localPlatformTimestamp = getLatestTimestampOfPlstform();
-        if (hostedPlatformTimestamp > localPlatformTimestamp) {
-            return true;
-        }
-
-        // check ESB timestamps
-        long hostedESBTimestamp = maximumTimestampInGivenURL(ESB_P2_URL);
-        long localESBTimestamp = getLatestTimestampOfESB();
-        if (hostedESBTimestamp > localESBTimestamp) {
-            return true;
-        }
-
-        // check DSS timestamps
-        long hostedDSSTimestamp = maximumTimestampInGivenURL(DSS_P2_URL);
-        long localDSSTimestamp = getLatestTimestampOfDSS();
-        if (hostedDSSTimestamp > localDSSTimestamp) {
-            return true;
-        }
-
-        // check BPS timestamps
-        long hostedBPSTimestamp = maximumTimestampInGivenURL(BPS_P2_URL);
-        long localBPSTimestamp = getLatestTimestampOfBPS();
-        if (hostedBPSTimestamp > localBPSTimestamp) {
-            return true;
-        }
-
-        // check server timestamps
-        long hostedServerTimestamp = maximumTimestampInGivenURL(SERVER_P2_URL);
-        long localServerTimestamp = getLatestTimestampOfServer();
-        if (hostedServerTimestamp > localServerTimestamp) {
-            return true;
-        }
-
-        return false;
     }
 
     private static void loadUpdateNotificationPopup() {
         long localMaxTimestamp = getLocalMaxTimestamp();
         final List<String> releaseNoteItems = new ArrayList<>();
         getReleaseNotes(releaseNoteItems, localMaxTimestamp);
-
+        if (releaseNoteItems.isEmpty()) {
+            return;
+        }
+        
         Display.getDefault().asyncExec(new Runnable() {
             public void run() {
-            	if (releaseNoteItems.isEmpty()) {
-            		releaseNoteItems.add("Bug fixes and improvements");
-            	}
                 UpdateNotificationPopUp notification = new UpdateNotificationPopUp(
                         PlatformUI.getWorkbench().getDisplay(), releaseNoteItems);
                 notification.setFadingEnabled(false);
@@ -140,43 +90,6 @@ public class RunUpdaterRootJob extends Job {
                 notification.open();
             }
         });
-    }
-
-    private static long maximumTimestampInGivenURL(String url) {
-        long timestamp = 0;
-        try {
-            List<Long> timestampList = new ArrayList<>();
-            Document doc = Jsoup.connect(url).get();
-            Elements links = doc.select("a[href]");
-            for (Element link : links) {
-                if (link.attr("href").endsWith("/")) {
-                    String[] dirNameSeperator = link.attr("href").split("\\.");
-                    if (dirNameSeperator.length > 1) {
-                        String timestampWithSlash = dirNameSeperator[dirNameSeperator.length - 1];
-                        String[] timestampWithDash = timestampWithSlash.split("-");
-                        if (timestampWithDash.length > 1) {
-                            timestampWithSlash = timestampWithDash[1];
-                        } else {
-                            timestampWithSlash = timestampWithDash[0];
-                        }
-
-                        try {
-                            timestampList.add(
-                                    Long.parseLong(timestampWithSlash.substring(0, timestampWithSlash.length() - 1)));
-                        } catch (NumberFormatException error) {
-                        }
-                    }
-                }
-            }
-
-            if (timestampList.size() > 0) {
-                timestamp = Collections.max(timestampList);
-            }
-        } catch (IOException e) {
-            log.error("Error while connecting to " + url, e);
-        }
-
-        return timestamp;
     }
 
     /**

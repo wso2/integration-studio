@@ -10820,6 +10820,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getAPIHandlerProperty_OM() {
+        return (EAttribute)apiHandlerPropertyEClass.getEStructuralFeatures().get(2);
+    }
+
+                /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getCloudConnector() {
         return cloudConnectorEClass;
     }
@@ -22103,6 +22112,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         apiHandlerPropertyEClass = createEClass(API_HANDLER_PROPERTY);
         createEAttribute(apiHandlerPropertyEClass, API_HANDLER_PROPERTY__NAME);
         createEAttribute(apiHandlerPropertyEClass, API_HANDLER_PROPERTY__VALUE);
+        createEAttribute(apiHandlerPropertyEClass, API_HANDLER_PROPERTY__OM);
 
         cloudConnectorEClass = createEClass(CLOUD_CONNECTOR);
         createEReference(cloudConnectorEClass, CLOUD_CONNECTOR__INPUT_CONNECTOR);
@@ -24671,6 +24681,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEClass(apiHandlerPropertyEClass, APIHandlerProperty.class, "APIHandlerProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getAPIHandlerProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, APIHandlerProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAPIHandlerProperty_Value(), ecorePackage.getEString(), "value", null, 0, 1, APIHandlerProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAPIHandlerProperty_OM(), ecorePackage.getEString(), "OM", null, 0, 1, APIHandlerProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(cloudConnectorEClass, CloudConnector.class, "CloudConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getCloudConnector_InputConnector(), this.getCloudConnectorInputConnector(), null, "inputConnector", null, 0, 1, CloudConnector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

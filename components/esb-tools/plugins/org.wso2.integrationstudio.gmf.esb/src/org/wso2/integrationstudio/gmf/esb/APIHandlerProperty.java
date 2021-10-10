@@ -26,6 +26,7 @@ package org.wso2.integrationstudio.gmf.esb;
  * <ul>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIHandlerProperty#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIHandlerProperty#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.APIHandlerProperty#getOM <em>OM</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIHandlerProperty()
@@ -84,5 +85,27 @@ public interface APIHandlerProperty extends EsbNode {
      * @generated
      */
     void setValue(String value);
+
+				/**
+	 * Returns the value of the '<em><b>OM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>OM</em>' attribute.
+	 * @see #setOM(String)
+	 * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getAPIHandlerProperty_OM()
+	 * @model
+	 * @generated
+	 */
+	String getOM();
+
+				/**
+	 * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.APIHandlerProperty#getOM <em>OM</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>OM</em>' attribute.
+	 * @see #getOM()
+	 * @generated
+	 */
+	void setOM(String value);
 
 } // APIHandlerProperty

@@ -676,6 +676,9 @@ public class TestCaseDetailPage extends WizardPage {
         setTestCaseName(selectedTestCase.getTestCaseName());
         setResourcePath(selectedTestCase.getRequestPath());
         setResourceMethod(selectedTestCase.getRequestMethod());
+        if(selectedTestCase.getProtocolType() != null) {
+            setProtocolType(selectedTestCase.getProtocolType());
+        }
         setInputPayload(selectedTestCase.getInputPayload());
     }
 

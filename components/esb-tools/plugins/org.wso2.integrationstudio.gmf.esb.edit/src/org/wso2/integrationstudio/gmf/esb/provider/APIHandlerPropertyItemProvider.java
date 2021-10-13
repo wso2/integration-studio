@@ -64,6 +64,7 @@ public class APIHandlerPropertyItemProvider extends EsbNodeItemProvider {
 
             addNamePropertyDescriptor(object);
             addValuePropertyDescriptor(object);
+            addOMPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -113,6 +114,28 @@ public class APIHandlerPropertyItemProvider extends EsbNodeItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the OM feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOMPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_APIHandlerProperty_OM_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_APIHandlerProperty_OM_feature", "_UI_APIHandlerProperty_type"),
+                 EsbPackage.Literals.API_HANDLER_PROPERTY__OM,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This returns APIHandlerProperty.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -151,6 +174,7 @@ public class APIHandlerPropertyItemProvider extends EsbNodeItemProvider {
         switch (notification.getFeatureID(APIHandlerProperty.class)) {
             case EsbPackage.API_HANDLER_PROPERTY__NAME:
             case EsbPackage.API_HANDLER_PROPERTY__VALUE:
+            case EsbPackage.API_HANDLER_PROPERTY__OM:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

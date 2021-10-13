@@ -2453,6 +2453,7 @@
     <genClasses ecoreClass="esb.ecore#//APIHandlerProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//APIHandlerProperty/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//APIHandlerProperty/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//APIHandlerProperty/OM"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CloudConnector">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CloudConnector/inputConnector"/>

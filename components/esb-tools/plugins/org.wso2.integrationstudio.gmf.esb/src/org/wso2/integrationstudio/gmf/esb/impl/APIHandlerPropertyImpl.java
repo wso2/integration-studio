@@ -34,6 +34,7 @@ import org.wso2.integrationstudio.gmf.esb.EsbPackage;
  * <ul>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIHandlerPropertyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIHandlerPropertyImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.APIHandlerPropertyImpl#getOM <em>OM</em>}</li>
  * </ul>
  *
  * @generated
@@ -78,6 +79,26 @@ public class APIHandlerPropertyImpl extends EsbNodeImpl implements APIHandlerPro
      * @ordered
      */
     protected String value = VALUE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getOM() <em>OM</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOM()
+     * @generated
+     * @ordered
+     */
+    protected static final String OM_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getOM() <em>OM</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getOM()
+     * @generated
+     * @ordered
+     */
+    protected String om = OM_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -145,6 +166,27 @@ public class APIHandlerPropertyImpl extends EsbNodeImpl implements APIHandlerPro
      * <!-- end-user-doc -->
      * @generated
      */
+    public String getOM() {
+        return om;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setOM(String newOM) {
+        String oldOM = om;
+        om = newOM;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.API_HANDLER_PROPERTY__OM, oldOM, om));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
@@ -152,6 +194,8 @@ public class APIHandlerPropertyImpl extends EsbNodeImpl implements APIHandlerPro
                 return getName();
             case EsbPackage.API_HANDLER_PROPERTY__VALUE:
                 return getValue();
+            case EsbPackage.API_HANDLER_PROPERTY__OM:
+                return getOM();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -169,6 +213,9 @@ public class APIHandlerPropertyImpl extends EsbNodeImpl implements APIHandlerPro
                 return;
             case EsbPackage.API_HANDLER_PROPERTY__VALUE:
                 setValue((String)newValue);
+                return;
+            case EsbPackage.API_HANDLER_PROPERTY__OM:
+                setOM((String)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -188,6 +235,9 @@ public class APIHandlerPropertyImpl extends EsbNodeImpl implements APIHandlerPro
             case EsbPackage.API_HANDLER_PROPERTY__VALUE:
                 setValue(VALUE_EDEFAULT);
                 return;
+            case EsbPackage.API_HANDLER_PROPERTY__OM:
+                setOM(OM_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -204,6 +254,8 @@ public class APIHandlerPropertyImpl extends EsbNodeImpl implements APIHandlerPro
                 return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
             case EsbPackage.API_HANDLER_PROPERTY__VALUE:
                 return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+            case EsbPackage.API_HANDLER_PROPERTY__OM:
+                return OM_EDEFAULT == null ? om != null : !OM_EDEFAULT.equals(om);
         }
         return super.eIsSet(featureID);
     }
@@ -222,6 +274,8 @@ public class APIHandlerPropertyImpl extends EsbNodeImpl implements APIHandlerPro
         result.append(name);
         result.append(", value: ");
         result.append(value);
+        result.append(", OM: ");
+        result.append(om);
         result.append(')');
         return result.toString();
     }

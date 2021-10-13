@@ -284,7 +284,7 @@ public class ConfigureAPIHandlersDialog extends Dialog {
         newPropertyButton.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
                 APIHandlerProperty property = EsbFactory.eINSTANCE.createAPIHandlerProperty();
-                WrapperProperty wrapperProperty = new WrapperProperty(property.getName(), property.getValue());
+                WrapperProperty wrapperProperty = new WrapperProperty(property.getName(), property.getValue(), property.getOM());
                 TableItem item = bindProperty(wrapperProperty);
                 item.setText(0, "param" + propertiesTable.getItemCount());
                 item.setText(1, "value");
@@ -323,7 +323,7 @@ public class ConfigureAPIHandlersDialog extends Dialog {
             APIHandlerWrapper wrapper = new APIHandlerWrapper(handler.getClassName());
             wrapper.setHandler(handler);
             for (APIHandlerProperty property : handler.getProperties()) {
-                wrapper.getWrapperHandlerProperties().add(new WrapperProperty(property.getName(), property.getValue()));
+                wrapper.getWrapperHandlerProperties().add(new WrapperProperty(property.getName(), property.getValue(), property.getOM()));
             }
             bindHanler(wrapper);
         }
@@ -351,7 +351,12 @@ public class ConfigureAPIHandlersDialog extends Dialog {
 
     private TableItem bindProperty(WrapperProperty property) {
         TableItem item = new TableItem(propertiesTable, SWT.NONE);
-        item.setText(new String[] { property.getName(), property.getValue() });
+        Object omObj = property.getOm();
+        String omString = "";
+        if (omObj != null) {
+        	omString = omObj.toString();
+        }
+        item.setText(new String[] { property.getName(), property.getValue().toString(), omString});
         item.setData(property);
         return item;
     }
@@ -591,7 +596,14 @@ public class ConfigureAPIHandlersDialog extends Dialog {
                     for (WrapperProperty wrapperProperty : wrapperHandler.getWrapperHandlerProperties()) {
                         APIHandlerProperty property = EsbFactory.eINSTANCE.createAPIHandlerProperty();
                         property.setName(wrapperProperty.getName());
-                        property.setValue(wrapperProperty.getValue());
+                        Object value = wrapperProperty.getValue();
+                        if (value instanceof String) {
+                        	property.setValue((String)value);
+                        } else if (value != null) {
+                        	property.setOM(value.toString());
+                        } else {
+                        	property.setValue("");
+                        }
                         handler.getProperties().add(property);
                     }
 
@@ -628,8 +640,14 @@ public class ConfigureAPIHandlersDialog extends Dialog {
                     for (WrapperProperty wrapperProperty : wrapperHandler.getWrapperHandlerProperties()) {
                         APIHandlerProperty property = EsbFactory.eINSTANCE.createAPIHandlerProperty();
                         property.setName(wrapperProperty.getName());
-                        property.setValue(wrapperProperty.getValue());
-
+                        Object value = wrapperProperty.getValue();
+                        if (value instanceof String) {
+                        	property.setValue((String)value);
+                        } else if (value != null) {
+                        	property.setOM(value.toString());
+                        } else {
+                        	property.setValue("");
+                        }
                         AddCommand addCmd = new AddCommand(editingDomain, handler,
                                 EsbPackage.Literals.API_HANDLER__PROPERTIES, property);
                         getResultCommand().append(addCmd);
@@ -684,10 +702,12 @@ public class ConfigureAPIHandlersDialog extends Dialog {
     class WrapperProperty {
         private String name;
         private String value;
+        private Object om;
 
-        public WrapperProperty(String propertyName, String propertyValue) {
+        public WrapperProperty(String propertyName, String propertyValue, Object om) {
             this.name = propertyName;
             this.value = propertyValue;
+            this.om = om;
         }
 
         public String getName() {
@@ -704,6 +724,14 @@ public class ConfigureAPIHandlersDialog extends Dialog {
 
         public void setValue(String value) {
             this.value = value;
+        }
+        
+        public void setOm(Object om) {
+        	this.om = om;
+        }
+        
+        public Object getOm() {
+        	return this.om;
         }
     }
 }

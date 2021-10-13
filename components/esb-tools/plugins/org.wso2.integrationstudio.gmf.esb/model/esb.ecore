@@ -2944,6 +2944,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="APIHandlerProperty" eSuperTypes="#//EsbNode">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="OM" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CloudConnector" eSuperTypes="#//EsbElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//CloudConnectorInputConnector"

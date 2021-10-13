@@ -23658,13 +23658,22 @@ public interface EsbPackage extends EPackage {
     int API_HANDLER_PROPERTY__VALUE = ESB_NODE_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>OM</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int API_HANDLER_PROPERTY__OM = ESB_NODE_FEATURE_COUNT + 2;
+
+    /**
      * The number of structural features of the '<em>API Handler Property</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int API_HANDLER_PROPERTY_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 2;
+    int API_HANDLER_PROPERTY_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.impl.CloudConnectorImpl <em>Cloud Connector</em>}' class.
@@ -36315,6 +36324,17 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EAttribute getAPIHandlerProperty_Value();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.APIHandlerProperty#getOM <em>OM</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>OM</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.APIHandlerProperty#getOM()
+     * @see #getAPIHandlerProperty()
+     * @generated
+     */
+    EAttribute getAPIHandlerProperty_OM();
 
     /**
      * Returns the meta object for class '{@link org.wso2.integrationstudio.gmf.esb.CloudConnector <em>Cloud Connector</em>}'.
@@ -53909,6 +53929,14 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute API_HANDLER_PROPERTY__VALUE = eINSTANCE.getAPIHandlerProperty_Value();
+
+        /**
+         * The meta object literal for the '<em><b>OM</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute API_HANDLER_PROPERTY__OM = eINSTANCE.getAPIHandlerProperty_OM();
 
         /**
          * The meta object literal for the '{@link org.wso2.integrationstudio.gmf.esb.impl.CloudConnectorImpl <em>Cloud Connector</em>}' class.

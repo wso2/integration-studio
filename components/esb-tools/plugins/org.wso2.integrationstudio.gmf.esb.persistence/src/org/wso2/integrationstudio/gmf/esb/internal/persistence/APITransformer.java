@@ -16,11 +16,17 @@
 
 package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
 
+import javax.lang.model.element.Element;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.impl.llom.factory.OMXMLBuilderFactory;
 import org.apache.axiom.om.impl.llom.util.AXIOMUtil;
 import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.config.xml.rest.VersionStrategyFactory;
@@ -39,6 +45,7 @@ import org.wso2.integrationstudio.gmf.esb.SynapseAPI;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.DummyHandler;
 import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
 import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
+import org.xml.sax.SAXException;
 
 /**
  * Synapse API transformer class
@@ -72,7 +79,17 @@ public class APITransformer extends AbstractEsbNodeTransformer {
             DummyHandler dummyHandler = new DummyHandler();
             dummyHandler.setClassName(handler.getClassName());
             for (APIHandlerProperty property : handler.getProperties()) {
-                dummyHandler.addProperty(property.getName(), property.getValue());
+                String value = property.getValue();
+                String om = property.getOM();
+                if (value != null) {
+                    dummyHandler.addProperty(property.getName(), value);
+                } else if (om != null){
+                    OMElement omNode = org.apache.axiom.om.OMXMLBuilderFactory
+                            .createOMBuilder(new ByteArrayInputStream(om.getBytes()))
+                            .getDocumentElement();
+
+                    dummyHandler.addProperty(property.getName(), omNode);
+                }
             }
 
             api.addHandler(dummyHandler);

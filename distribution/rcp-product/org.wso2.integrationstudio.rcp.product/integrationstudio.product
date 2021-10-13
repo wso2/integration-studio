@@ -357,7 +357,7 @@ Please visit : http://wso2.com/products/integration-studio/
    </configurations>
 
    <repositories>
-      <repository location="https://product-dist.wso2.com/p2/integration-studio/8.0.0/" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
    </repositories>
 
    <preferencesInfo>

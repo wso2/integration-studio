@@ -274,7 +274,12 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
                 APIHandlerProperty handlerProperty = EsbFactory.eINSTANCE.createAPIHandlerProperty();
                 String propertyName = (String) itr.next();
                 handlerProperty.setName(propertyName);
-                handlerProperty.setValue((String) handler.getProperties().get(propertyName));
+                Object handlerValue = handler.getProperties().get(propertyName);
+                if (handlerValue instanceof String) {
+                	handlerProperty.setValue((String)handlerValue );
+                } else if (handlerValue != null) {
+                	handlerProperty.setOM(handlerValue.toString());
+                }
                 apiHandler.getProperties().add(handlerProperty);
 
             }

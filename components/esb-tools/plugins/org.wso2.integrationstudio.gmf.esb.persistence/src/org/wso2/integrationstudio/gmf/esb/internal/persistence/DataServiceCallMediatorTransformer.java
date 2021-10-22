@@ -33,6 +33,7 @@ import org.wso2.integrationstudio.gmf.esb.DSSMediator;
 import org.wso2.integrationstudio.gmf.esb.DSSoperationProperty;
 import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
 import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
+import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator;
 import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator.Operation;
 import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator.Operations;
 import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator.Param;
@@ -125,7 +126,14 @@ public class DataServiceCallMediatorTransformer extends AbstractEsbNodeTransform
     @Override
     public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
             throws TransformerException {
-        // TODO Auto-generated method stub
+        Assert.isTrue(subject instanceof DSSMediator, "Invalid subject.");
+        DSSMediator visualDataServicesCall = (DSSMediator) subject;
+        org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator dataServicesCallMediator  = 
+        		(DataServiceCallMediator) createDataServicesCallMediator(visualDataServicesCall);
+        sequence.addChild(dataServicesCallMediator);
+        doTransformWithinSequence(information,
+                ((DSSMediator) subject).getOutputConnector().getOutgoingLink(), sequence);
+       
     }
 
 }

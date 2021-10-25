@@ -31,6 +31,18 @@
 						<outputDirectory>${project.basedir}/resources/server/</outputDirectory>
 					</configuration>
 				</execution>
+				<execution>
+					<id>download-mi-update-scripts</id>
+					<phase>initialize</phase>
+					<goals>
+						<goal>wget</goal>
+					</goals>
+					<configuration>
+						<url>https://product-dist.wso2.com/downloads/update-tool/release/update.zip</url>
+						<unpack>false</unpack>
+						<outputDirectory>${project.basedir}/resources/server/</outputDirectory>
+					</configuration>
+				</execution>
 			</executions>
 		</plugin>
 		<plugin>
@@ -39,13 +51,37 @@
 			<version>${org.codehaus.mojo.exec.maven.plugin}</version>
 			<executions>
 				<execution>
+					<id>script-chmod</id>
+					<phase>install</phase>
+					<goals>
+						<goal>exec</goal>
+					</goals>
+					<configuration>
+						<executable>chmod</executable>
+						<arguments>
+							<argument>+x</argument>
+							<argument>${project.basedir}/resources/server/update.zip</argument>
+						</arguments>
+					</configuration>
+				</execution>
+				<execution>
+					<id>Run-inplace-mi-update-tool</id>
+					<phase>initialize</phase>
+					<goals>
+						<goal>exec</goal>
+					</goals>
+					<configuration>
+						<commandlineArgs>${WSO2_USERNAME} ${WSO2_PASSWORD} ${mi.product.version}</commandlineArgs>
+						<executable>${project.basedir}/resources/scripts/wso2-update.sh</executable>
+					</configuration>
+				</execution>
+				<execution>
 					<id>change-mi-deployment-toml</id>
 					<phase>initialize</phase>
 					<goals>
 						<goal>exec</goal>
 					</goals>
 					<configuration>
-						<commandlineArgs>${mi.product.version}</commandlineArgs>
 						<executable>${project.basedir}/resources/scripts/configure-mi-script.sh</executable>
 					</configuration>
 				</execution>

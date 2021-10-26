@@ -35,6 +35,7 @@ import org.eclipse.ui.forms.editor.FormPage;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.wso2.integrationstudio.esb.synapse.unit.test.model.MockServiceResource;
 import org.wso2.integrationstudio.esb.synapse.unit.test.utils.ComboItems;
 import org.wso2.integrationstudio.esb.synapse.unit.test.utils.CommonUtil;
@@ -130,6 +131,8 @@ public class MockServiceFormToSourceTransformer {
                     if (resource.getRequestPayload() != null && !resource.getRequestPayload().isEmpty()) {
                         Element requestPayload = doc.createElement(Constants.PAYLOAD);
                         resourceRequest.appendChild(requestPayload);
+                        Node disableEscaping = doc.createProcessingInstruction(StreamResult.PI_DISABLE_OUTPUT_ESCAPING, "&");
+                        requestPayload.appendChild(disableEscaping );
                         requestPayload.appendChild(doc.createTextNode(resource.getRequestPayload()));
                     }
 
@@ -171,6 +174,8 @@ public class MockServiceFormToSourceTransformer {
 
                     Element responsePayload = doc.createElement(Constants.PAYLOAD);
                     resourceResponse.appendChild(responsePayload);
+                    Node disableEscaping = doc.createProcessingInstruction(StreamResult.PI_DISABLE_OUTPUT_ESCAPING, "&");
+                    responsePayload.appendChild(disableEscaping );
                     responsePayload.appendChild(doc.createTextNode(resource.getResponsePayload()));
 
                     if (resource.getResponseHeaders().size() > 0) {

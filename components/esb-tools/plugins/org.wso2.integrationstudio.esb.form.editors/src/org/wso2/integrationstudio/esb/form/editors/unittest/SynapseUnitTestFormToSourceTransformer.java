@@ -39,6 +39,7 @@ import org.eclipse.ui.forms.editor.FormPage;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.wso2.integrationstudio.esb.synapse.unit.test.model.Assertion;
 import org.wso2.integrationstudio.esb.synapse.unit.test.model.InputProperty;
 import org.wso2.integrationstudio.esb.synapse.unit.test.model.RegistryResource;
@@ -225,6 +226,8 @@ public class SynapseUnitTestFormToSourceTransformer {
                             Element assertActual = doc.createElement(Constants.ASSERT_ACTUAL);
                             Element assertExpected = doc.createElement(Constants.ASSERT_EXPECTED);
                             Element assertMessage = doc.createElement(Constants.ASSERT_MESSAGE);
+                            Node disableEscaping = doc.createProcessingInstruction(StreamResult.PI_DISABLE_OUTPUT_ESCAPING, "&");
+                            assertActual.appendChild(disableEscaping );
                             assertActual.appendChild(doc.createTextNode(assertElement.getActual()));
                             assertExpected.appendChild(doc.createTextNode(assertElement.getExpected()));
                             assertMessage.appendChild(doc.createTextNode(assertElement.getMessage()));

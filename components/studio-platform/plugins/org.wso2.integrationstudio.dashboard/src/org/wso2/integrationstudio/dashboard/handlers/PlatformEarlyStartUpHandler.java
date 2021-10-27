@@ -25,10 +25,12 @@ import org.wso2.integrationstudio.carbonserver42.register.product.servers.Dynami
 import org.wso2.integrationstudio.carbonserver44.register.product.servers.DynamicServer44ExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44ei.register.product.servers.DynamicServer44eiExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44microei.register.product.servers.DynamicServer44MicroeiExtensionGenerator;
-import org.wso2.integrationstudio.carbonserver44microei40.register.product.servers.MicroIntegratorInstance;
+import org.wso2.integrationstudio.carbonserver44microei41.register.product.servers.MicroIntegratorInstance;
+import org.wso2.integrationstudio.carbonserver44microei41.register.product.servers.DynamicServer44Microei41ExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44microei40.register.product.servers.DynamicServer44Microei40ExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44microei12.register.product.servers.DynamicServer44Microei12ExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44microei11.register.product.servers.DynamicServer44Microei11ExtensionGenerator;
+
 
 /**
  * This is the early startup handler of the Integration Studio platform, all
@@ -63,6 +65,10 @@ public class PlatformEarlyStartUpHandler implements IStartup {
         DynamicServer44Microei40ExtensionGenerator dynamicMicroEI40ServerExtensionGenerator = new DynamicServer44Microei40ExtensionGenerator();
         dynamicMicroEI40ServerExtensionGenerator.readProductServerExtensions(registeredServers,
                 serverExtensionsRegistryUtils);
+        
+        DynamicServer44Microei41ExtensionGenerator dynamicMicroEI41ServerExtensionGenerator = new DynamicServer44Microei41ExtensionGenerator();
+        dynamicMicroEI41ServerExtensionGenerator.readProductServerExtensions(registeredServers,
+                serverExtensionsRegistryUtils);
 
         DynamicServer44ExtensionGenerator dynamicServerExtensionGenerator = new DynamicServer44ExtensionGenerator();
         dynamicServerExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
@@ -70,6 +76,7 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 		dynamicServer42ExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
 		DynamicServer40ExtensionGenerator dynamicServer40ExtensionGenerator = new DynamicServer40ExtensionGenerator();
 		dynamicServer40ExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
+		
 	}
 	
 

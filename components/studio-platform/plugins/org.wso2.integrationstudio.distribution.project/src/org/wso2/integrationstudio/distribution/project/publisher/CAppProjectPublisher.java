@@ -53,6 +53,7 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
     private static final String MI_110_PLUGIN_ID = "org.wso2.integrationstudio.carbon.server44microei11";
     private static final String MI_120_PLUGIN_ID = "org.wso2.integrationstudio.carbon.server44microei12";
     private static final String MI_400_PLUGIN_ID = "org.wso2.integrationstudio.carbon.server44microei40";
+    private static final String MI_410_PLUGIN_ID = "org.wso2.integrationstudio.carbon.server44microei41";
     private static final String MI_CAPP_PATH = File.separator + "repository" + File.separator + "deployment"
             + File.separator + "server" + File.separator + "carbonapps";
 
@@ -178,7 +179,7 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
             }
 
             boolean hotDeploymentEnabled = true;
-            boolean isMI400Server = server.getServerType().getId().equals(MI_400_PLUGIN_ID);
+            boolean isMI400Server = server.getServerType().getId().equals(MI_410_PLUGIN_ID);
 
             if (isMI400Server) {
                 String carbonHomePath = CarbonServerManager.getServerHome(server).toOSString();
@@ -274,7 +275,8 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
 //				cappName = carFile.getName().substring(0, carFile.getName().length()-4);
 //			}
 			if (server.getServerType().getId().equals(MI_PLUGIN_ID) || server.getServerType().getId().equals(MI_110_PLUGIN_ID) 
-			        || server.getServerType().getId().equals(MI_120_PLUGIN_ID) || server.getServerType().getId().equals(MI_400_PLUGIN_ID)) {
+			        || server.getServerType().getId().equals(MI_120_PLUGIN_ID) || server.getServerType().getId().equals(MI_400_PLUGIN_ID)
+			        || server.getServerType().getId().equals(MI_410_PLUGIN_ID)) {
 				IPath iPath = CarbonServerManager.getServerHome(server);
 				File file = iPath.toFile();
 				deleteCApp(file.getAbsolutePath(), project);

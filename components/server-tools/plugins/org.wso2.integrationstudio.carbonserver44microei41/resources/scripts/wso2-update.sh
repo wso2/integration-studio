@@ -41,7 +41,7 @@ mv $SERVER_PATH_ROOT/wso2mi-$PRODUCT_VERSION $SERVER_PATH_ROOT/microesb
 # Chek WSO2 Credentials
 echo "Check WSO2 Credentials to proceed with update"
 
-if [ "$WSO2_USERNAME" -eq "${WSO2_USERNAME}" ] || [ "$WSO2_PASSWORD" -eq "${WSO2_PASSWORD}" ]; then
+if [ -z $WSO2_USERNAME ] || [ -z $WSO2_PASSWORD ] || [[ "$WSO2_USERNAME" == '${WSO2_USERNAME}' ]] || [[ "$WSO2_PASSWORD" == '${WSO2_PASSWORD}' ]]; then
   echo "WSO2 Credentials are empty. Build proceeding with wso2mi-${PRODUCT_VERSION} vanilla pack."
   exit 0
 fi

@@ -25165,6 +25165,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         addEEnumLiteral(propertyDataTypeEEnum, PropertyDataType.LONG);
         addEEnumLiteral(propertyDataTypeEEnum, PropertyDataType.SHORT);
         addEEnumLiteral(propertyDataTypeEEnum, PropertyDataType.OM);
+		addEEnumLiteral(propertyDataTypeEEnum, PropertyDataType.JSON);
 
         initEEnum(propertyActionEEnum, PropertyAction.class, "PropertyAction");
         addEEnumLiteral(propertyActionEEnum, PropertyAction.SET);

@@ -941,7 +941,7 @@ Model URI — platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ge
 
 ![](https://i.imgur.com/5L9ogrJ.png)
 
-Click the “Load” button which is beside the Model URI field. Then click “Next”.
+Click the “Load” button that is beside the Model URI field. Then, click “Next”.
 
 22. You will get the following window. Tick the following checkboxes
 * Use IMapMode

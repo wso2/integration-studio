@@ -983,7 +983,7 @@ Once the generation part is completed we need to follow the below steps to add a
 
 1. We need to add the input connector EsbElement type to **InputConnectorEditPart** classes located inside **integrationstudio/gmf/esb/diagram/edit/parts/**. Make sure to replace the mediator name and corresponding number.
 
-    Example:    In "APIResourceInputConnectorEditPart.java" under "getMATypesForSource(IElementType relationshipType)"" method we need to add the following line,
+    Example:    You need to add the following line in the "APIResourceInputConnectorEditPart.java" file inside the "getMATypesForSource(IElementType relationshipType)" method.
 
     ```java
     types.add(EsbElementTypes.CalculatorMediatorOutputConnector_3796);

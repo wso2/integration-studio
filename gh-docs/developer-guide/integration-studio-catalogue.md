@@ -814,7 +814,19 @@ Let’s move on to esb.gmfmap modeling.
 
 ![](https://i.imgur.com/cgjmdgq.png)
 
-2. Double click on “esb.gmfmap. Select platform → Mapping → Top Node Reference<server:EsbServer/EsbServer> → Node Mapping<EsbServer/EsbServer> → Child Reference<children:ProxyService/ProxyService> → Node Mapping<ProxyService/ProxyService> → Child Reference<container:ProxyServiceContainer/ProxyServiceContainer> → Node Mapping<ProxyServiceContainer/ProxyServiceContainer> → Child Reference<sequenceAndEndpointContainer:ProxyServiceSequenceAndEndpointContainer/ProxyServiceSequenceAndEndpointContainer> → Node Mapping<ProxyServiceSequenceAndEndpointContainer/ProxyServiceSequenceAndEndpointContainer> → Child Reference<mediatorFlow:MediatorFlow/MediatorFlow> → Node Mapping<MediatorFlow/MediatorFlow>
+2. Double click on “esb.gmfmap. \
+Select platform \
+→ Mapping \
+→ Top Node Reference \<server:EsbServer/EsbServer\> \
+→ Node Mapping \<EsbServer/EsbServer\> \
+→ Child Reference \<children:ProxyService/ProxyService\> \
+→ Node Mapping \<ProxyService/ProxyService\> \
+→ Child Reference \<container:ProxyServiceContainer/ProxyServiceContainer\> \
+→ Node Mapping \<ProxyServiceContainer/ProxyServiceContainer\> \
+→ Child Reference \<sequenceAndEndpointContainer:ProxyServiceSequenceAndEndpointContainer/ProxyServiceSequenceAndEndpointContainer\> \
+→ Node Mapping \<ProxyServiceSequenceAndEndpointContainer/ProxyServiceSequenceAndEndpointContainer\> \
+→ Child Reference \<mediatorFlow:MediatorFlow/MediatorFlow\> \
+→ Node Mapping \<MediatorFlow/MediatorFlow\>
 
 ![](https://i.imgur.com/WlLsHBQ.png)
 
@@ -929,7 +941,7 @@ Model URI — platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ge
 
 ![](https://i.imgur.com/5L9ogrJ.png)
 
-Click the “Load” button which is beside the Model URI field. Then click “Finish”.
+Click the “Load” button that is beside the Model URI field. Then, click “Next”.
 
 22. You will get the following window. Tick the following checkboxes
 * Use IMapMode
@@ -971,14 +983,16 @@ Once the generation part is completed we need to follow the below steps to add a
 
 1. We need to add the input connector EsbElement type to **InputConnectorEditPart** classes located inside **integrationstudio/gmf/esb/diagram/edit/parts/**. Make sure to replace the mediator name and corresponding number.
 
-    Example:    In "APIResourceInputConnectorEditPart.java" under "getMATypesForSource(IElementType relationshipType)"" method we need to add the following line, 
+    Example:    You need to add the following line in the "APIResourceInputConnectorEditPart.java" file inside the "getMATypesForSource(IElementType relationshipType)" method.
+
     ```java
     types.add(EsbElementTypes.CalculatorMediatorOutputConnector_3796);
     ```
+
 2. Similarly we need to add the output connector EsbElement type to **OutputConnectorEditPart** classes located inside **integrationstudio/gmf/esb/diagram/edit/parts/**. Make sure to replace the mediator name and corresponding number.
 
     Example: In "APIResourceOutputConnectorEditPart.java" under "getMARelTypesOnSourceAndTarget(IGraphicalEditPart targetEditPart)" method we need to add the following line,
-    
+
     ```java
     if (targetEditPart instanceof CalculatorMediatorInputConnectorEditPart) {
         types.add(EsbElementTypes.EsbLink_4001);
@@ -986,9 +1000,11 @@ Once the generation part is completed we need to follow the below steps to add a
     ```
 
     In "getMATypesForTarget(IElementType relationshipType)" method we need to add the output connector element as shown below,
+
     ```java
     types.add(EsbElementTypes.CalculatorMediatorInputConnector_3795);
     ```
+
 3. Add NodeName, ToolTipMessage (to be shown in the mediators palette) for the mediator in **/integrationstudio/gmf/esb/diagram/edit/parts/messages.properties** file
 
     ```java=
@@ -997,26 +1013,71 @@ Once the generation part is completed we need to follow the below steps to add a
     ```
 
 4. We need to refactor the following methods to limit the size of the method to 65536 bytes,
-    * **getViewChildren(View view, Object parentElement)** method in **EsbNavigatorContentProvider.java** class
-    * **getNodeVisualID(View containerView, EObject domainElement)** method in **EsbVisualIDRegistry.java** class
+    1. **getViewChildren(View view, Object parentElement)** method in **EsbNavigatorContentProvider.java** class in the org.wso2.integrationstudio.gmf.esb.diagram.navigator package.
 
-5. Set input, output connectors for the mediator in **EsbFactoryImpl.java** class.
-    Example: 
+        Example (13EditPart)
+        * Move content of case block from switch-case from getViewChildren(View view, Object parentElement) to corresponding mediatorFlow13EditPart(View view, Object parentElement) function.
+
+            ```java
+            private Object[] mediatorFlow13EditPart(View view, Object parentElement) {
+                //rest of the code
+                connectedViews = getChildrenByType(Collections.singleton(sv), EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment13EditPart.VISUAL_ID));
+                connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(CalculatorMediatorEditPart.VISUAL_ID));
+                result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+                return result.toArray();
+            }
+            ```
+
+        * Put corresponding function call inside the case block.
+
+            ```java
+            case MediatorFlow13EditPart.VISUAL_ID: {
+                return mediatorFlow13EditPart(view, parentElement);
+            }
+            ```
+
+    2. **getNodeVisualID(View containerView, EObject domainElement)** method in **EsbVisualIDRegistry.java** class in org.wso2.integrationstudio.gmf.esb.diagram.part package.
+
+        Example (13EditPart)
+        * Move content of case block from switch-case from getNodeVisualID(View containerView, EObject domainElement) to corresponding mediatorFlowMediatorFlowCompartment13EditPart(domainElement) function.
+
+            ```java
+            private static int mediatorFlowMediatorFlowCompartment26EditPart(EObject domainElement) {
+                //rest of the code
+                if (EsbPackage.eINSTANCE.getCalculatorMediator().isSuperTypeOf(domainElement.eClass())) {
+                    return CalculatorMediatorEditPart.VISUAL_ID;
+                }
+                return -1;
+            }
+            ```
+
+        * Put corresponding function call inside the case block.
+
+            ```java
+            case MediatorFlowMediatorFlowCompartment13EditPart.VISUAL_ID:
+                return mediatorFlowMediatorFlowCompartment13EditPart(domainElement);
+            ```
+
+5. Set input, output connectors for the mediator in **EsbFactoryImpl.java** class in org.wso2.integrationstudio.gmf.esb.impl package.
+
+    Example:
+
     ```java
     public CalculatorMediator createCalculatorMediator() {
         CalculatorMediatorImpl calculatorMediator = new CalculatorMediatorImpl();
         calculatorMediator.setInputConnector(createCalculatorMediatorInputConnector());
         calculatorMediator.setOutputConnector(createCalculatorMediatorOutputConnector());
         return calculatorMediator;
-    }it
+    }
     ```
-6. Change the super class of CalculatorEditMediatorEditPart to **FixedSizedAbstractMediator** class and fix the issues. Update createLayoutEditPolicy(), createNodeShape(), addFixedChild(EditPart childEditPart), createMainFigure() methods as of other mediators. Add getIconPath(), getNodeName(), getToolTip() methods to CalculatorMediatorEditPart.java class. Refer same class in other mediators for more details.
+
+6. Change the super class of CalculatorMediatorEditPart (org.wso2.integrationstudio.gmf.esb.diagram.edit.parts) to **FixedSizedAbstractMediator** class and fix the issues. Update createLayoutEditPolicy(), createNodeShape(), addFixedChild(EditPart childEditPart), createMainFigure() methods as of other mediators. Add getIconPath(), getNodeName(), getToolTip() methods to CalculatorMediatorEditPart.java class. Refer same class in other mediators for more details.
 
 7. Change the super class of CalculatorMediatorFigure to **EsbGraphicalShapeWithLabel** class and fix the issues. Update createContents() method as of other mediators.
 
-8. Change the super class of CalculatorMediatorInputConnectorEditPart.java, CalculatorMediatorOutputConnectorEditPart.java to **AbstractMediatorOutputConnectorEditPart** class and fix the issues. Refer same classes in other mediators for more details.
+8. Change the super class of CalculatorMediatorInputConnectorEditPart.java, CalculatorMediatorOutputConnectorEditPart.java in org.wso2.integrationstudio.gmf.esb.diagram.edit.parts package to **AbstractMediatorInputConnectorEditPart**, **AbstractMediatorOutputConnectorEditPart** class in given order and fix the issues. Refer same classes in other mediators for more details.
 
-9. Add the createCalculatorMediatorCreationTool() method to palette container. Make sure the entry generated for CalculatorMediatorCreationTool is of type NodeToolEntry. Also, commit only the changes relevant to CalculatorMediator in **EsbPaletteFactory.java** class.
+9. Add the createCalculatorMediatorCreationTool() method to palette container. Make sure the entry generated for CalculatorMediatorCreationTool is of type NodeToolEntry. Also, commit only the changes relevant to CalculatorMediator in **EsbPaletteFactory.java** class in org.wso2.integrationstudio.gmf.esb.diagram.part package.
 
 10. Add the mediator icons in the following directories,
 **org.wso2.integrationstudio.gmf.esb.diagram/icons/ico20/calculator-mediator.png**, **org.wso2.integrationstudio.gmf.esb.edit/icons/full/obj16/calculator.png**. The former icon is for the mediator and the latter one is for the mediator palette.
@@ -1033,11 +1094,11 @@ Once the generation part is completed we need to follow the below steps to add a
     <xs:element ref="calculator"/>
     ```
 
-13. Then we need to add the relevant mediator in **DummyCreateMediator.java**, **DummyMediatorFactoryFinder.java**, **MediatorValidationUtil.java** and **ProcessSourceView.java** classes. You may refer the existing configurations and add similar configuration for calculator mediator.
+13. Then we need to add the relevant mediator in **DummyCreateMediator.java**, **DummyMediatorFactoryFinder.java**, **MediatorValidationUtil.java** classes in org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer package and **ProcessSourceView.java** class in org.wso2.integrationstudio.gmf.esb.diagram.validator package. You may refer the existing configurations and add similar configuration for calculator mediator.
 
 14. Create a transformer class called **CalculatorMediatorTransformer** extending **AbstractEsbNodeTransformer** class in  **org.wso2.integrationstudio/gmf/esb/internal/persistence/CalculatorMediatorTransformer.java** directory. This class is needed to process source view of the mediator.
 
-15. Add the created transformer in **EsbTransformerRegistry.java** and **APIResourceTransformer.java** classes. Refer existing configurations for other mediators and follow the same approach.
+15. Add the created transformer in **EsbTransformerRegistry.java** in org.wso2.integrationstudio.gmf.esb.persistence package and **APIResourceTransformer.java** in org.wso2.integrationstudio.gmf.esb.internal.persistence package. Refer existing configurations for other mediators and follow the same approach.
 
 ## Add properties view
 
@@ -1082,7 +1143,7 @@ esb.components** file and revert other modifications (if any).
 
 3. You need to commit the following modified files, (on top of the newly created files) EsbViewsRepository.java, EsbEEFAdapterFactory.java, EsbMessages.java, EsbPropertiesEditionPartProvider.java, esbMessages.properties and esbMessages_fr.properties
 
-4. You may hide the auto generated unnecessary UI parts in properties view by configuring **CalculatorMediatorPropertiesEditionPartForm.java** class.
+4. You may hide the auto generated unnecessary UI parts in properties view by configuring **CalculatorMediatorPropertiesEditionPartForm.java** class in org.wso2.integrationstudio.gmf.esb.edit/src-gen/org/wso2/integrationstudio/gmf/esb/parts/forms.
 
 ## Add new Property element to a mediator
 

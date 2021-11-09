@@ -22,6 +22,7 @@ import java.util.Map;
 import org.apache.synapse.config.Entry;
 import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.endpoints.AddressEndpoint;
+import org.apache.synapse.endpoints.BasicAuthConfiguredHTTPEndpoint;
 import org.apache.synapse.endpoints.DefaultEndpoint;
 import org.apache.synapse.endpoints.FailoverEndpoint;
 import org.apache.synapse.endpoints.HTTPEndpoint;
@@ -193,6 +194,7 @@ public class EsbDeserializerRegistry {
         addDeserializer(DummyMessageProcessor.class, new MessageProcessorDeserializer());
         addDeserializer(HTTPEndpoint.class, new HTTPEndpointDeserializer());
         addDeserializer(OAuthConfiguredHTTPEndpoint.class, new HTTPEndpointDeserializer());
+        addDeserializer(BasicAuthConfiguredHTTPEndpoint.class, new HTTPEndpointDeserializer());
         addDeserializer(TemplateEndpoint.class, new TemplateEndpointDeserializer());
         addDeserializer(LoopBackMediator.class, new LoopBackMediatorDeserializer());
         addDeserializer(RespondMediator.class, new RespondMediatorDeserializer());

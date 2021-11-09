@@ -212,7 +212,7 @@ public class EsbMessages extends NLS {
 	public static String HTTPEndpointPropertiesEditionPart_FailoverErrorCodesGroupLabel;
 
 	
-	public static String HTTPEndpointPropertiesEditionPart_OAuthConfigurationGroupLabel;
+	public static String HTTPEndpointPropertiesEditionPart_AuthConfigurationGroupLabel;
 
 	
 	public static String HTTPEndPointInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
@@ -4117,7 +4117,16 @@ public class EsbMessages extends NLS {
 	public static String HTTPEndpointPropertiesEditionPart_FailoverNonRetryErrorCodesLabel;
 
 	
+	public static String HTTPEndpointPropertiesEditionPart_AuthTypeLabel;
+
+	
 	public static String HTTPEndpointPropertiesEditionPart_OAuthGrantTypeLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_BasicAuthUsernameLabel;
+
+	
+	public static String HTTPEndpointPropertiesEditionPart_BasicAuthPasswordLabel;
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_OAuthClientIdLabel;

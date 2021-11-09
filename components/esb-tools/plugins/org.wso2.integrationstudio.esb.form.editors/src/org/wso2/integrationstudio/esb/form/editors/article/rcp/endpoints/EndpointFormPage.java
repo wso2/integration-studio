@@ -203,7 +203,7 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
         createTemplateEndpointSection();
         createFormBasicSection();
         createFormMiscSection();
-        createFormOAuthSection();
+        createFormAuthSection();
         createFormQosSection();
         createFormErrorHandlingSection();
     }
@@ -382,7 +382,7 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
     public void createFormMiscSection() {
     }
 
-    public void createFormOAuthSection() {
+    public void createFormAuthSection() {
     }
 
     public void createFormQosSection() {

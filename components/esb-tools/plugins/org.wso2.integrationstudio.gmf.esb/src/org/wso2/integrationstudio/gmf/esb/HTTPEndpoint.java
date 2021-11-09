@@ -33,6 +33,9 @@ package org.wso2.integrationstudio.gmf.esb;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthClientSecret <em>OAuth Client Secret</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthTokenUrl <em>OAuth Token Url</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthRefreshToken <em>OAuth Refresh Token</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getAuthType <em>Auth Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getBasicAuthUsername <em>Basic Auth Username</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getBasicAuthPassword <em>Basic Auth Password</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint()
@@ -259,5 +262,74 @@ public interface HTTPEndpoint extends AbstractEndPoint {
      * @generated
      */
     void setOAuthRefreshToken(String value);
+
+    /**
+     * Returns the value of the '<em><b>Auth Type</b></em>' attribute.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.HTTPEndpointAuthType}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Auth Type</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.HTTPEndpointAuthType
+     * @see #setAuthType(HTTPEndpointAuthType)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_AuthType()
+     * @model
+     * @generated
+     */
+    HTTPEndpointAuthType getAuthType();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getAuthType <em>Auth Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Auth Type</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.HTTPEndpointAuthType
+     * @see #getAuthType()
+     * @generated
+     */
+    void setAuthType(HTTPEndpointAuthType value);
+
+    /**
+     * Returns the value of the '<em><b>Basic Auth Username</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Basic Auth Username</em>' attribute.
+     * @see #setBasicAuthUsername(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_BasicAuthUsername()
+     * @model
+     * @generated
+     */
+    String getBasicAuthUsername();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getBasicAuthUsername <em>Basic Auth Username</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Basic Auth Username</em>' attribute.
+     * @see #getBasicAuthUsername()
+     * @generated
+     */
+    void setBasicAuthUsername(String value);
+
+    /**
+     * Returns the value of the '<em><b>Basic Auth Password</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Basic Auth Password</em>' attribute.
+     * @see #setBasicAuthPassword(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_BasicAuthPassword()
+     * @model
+     * @generated
+     */
+    String getBasicAuthPassword();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getBasicAuthPassword <em>Basic Auth Password</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Basic Auth Password</em>' attribute.
+     * @see #getBasicAuthPassword()
+     * @generated
+     */
+    void setBasicAuthPassword(String value);
 
 } // HTTPEndpoint

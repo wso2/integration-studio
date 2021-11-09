@@ -550,6 +550,27 @@ public interface HTTPEndpointPropertiesEditionPart {
 
 
 	/**
+	 * @return the AuthType
+	 * 
+	 */
+	public Enumerator getAuthType();
+
+	/**
+	 * Init the AuthType
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initAuthType(Object input, Enumerator current);
+
+	/**
+	 * Defines a new AuthType
+	 * @param newValue the new AuthType to set
+	 * 
+	 */
+	public void setAuthType(Enumerator newValue);
+
+
+	/**
 	 * @return the oAuthGrantType
 	 * 
 	 */
@@ -568,6 +589,34 @@ public interface HTTPEndpointPropertiesEditionPart {
 	 * 
 	 */
 	public void setOAuthGrantType(Enumerator newValue);
+
+
+	/**
+	 * @return the BasicAuthUsername
+	 * 
+	 */
+	public String getBasicAuthUsername();
+
+	/**
+	 * Defines a new BasicAuthUsername
+	 * @param newValue the new BasicAuthUsername to set
+	 * 
+	 */
+	public void setBasicAuthUsername(String newValue);
+
+
+	/**
+	 * @return the BasicAuthPassword
+	 * 
+	 */
+	public String getBasicAuthPassword();
+
+	/**
+	 * Defines a new BasicAuthPassword
+	 * @param newValue the new BasicAuthPassword to set
+	 * 
+	 */
+	public void setBasicAuthPassword(String newValue);
 
 
 	/**

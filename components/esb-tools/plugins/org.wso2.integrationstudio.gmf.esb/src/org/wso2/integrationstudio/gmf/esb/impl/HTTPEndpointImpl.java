@@ -27,6 +27,7 @@ import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndPointInputConnector;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndPointOutputConnector;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpoint;
+import org.wso2.integrationstudio.gmf.esb.HTTPEndpointAuthType;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthGrantType;
 import org.wso2.integrationstudio.gmf.esb.HttpMethodType;
 
@@ -47,6 +48,9 @@ import org.wso2.integrationstudio.gmf.esb.HttpMethodType;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getOAuthClientSecret <em>OAuth Client Secret</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getOAuthTokenUrl <em>OAuth Token Url</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getOAuthRefreshToken <em>OAuth Refresh Token</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getAuthType <em>Auth Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getBasicAuthUsername <em>Basic Auth Username</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.HTTPEndpointImpl#getBasicAuthPassword <em>Basic Auth Password</em>}</li>
  * </ul>
  *
  * @generated
@@ -120,7 +124,7 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
      * @generated
      * @ordered
      */
-    protected static final HTTPEndpointOAuthGrantType OAUTH_GRANT_TYPE_EDEFAULT = HTTPEndpointOAuthGrantType.NONE;
+    protected static final HTTPEndpointOAuthGrantType OAUTH_GRANT_TYPE_EDEFAULT = HTTPEndpointOAuthGrantType.AUTHORIZATION_CODE_GRANT;
 
     /**
      * The cached value of the '{@link #getOAuthGrantType() <em>OAuth Grant Type</em>}' attribute.
@@ -211,6 +215,66 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
      * @ordered
      */
     protected String oAuthRefreshToken = OAUTH_REFRESH_TOKEN_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getAuthType() <em>Auth Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getAuthType()
+     * @generated
+     * @ordered
+     */
+    protected static final HTTPEndpointAuthType AUTH_TYPE_EDEFAULT = HTTPEndpointAuthType.NONE;
+
+    /**
+     * The cached value of the '{@link #getAuthType() <em>Auth Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getAuthType()
+     * @generated
+     * @ordered
+     */
+    protected HTTPEndpointAuthType authType = AUTH_TYPE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getBasicAuthUsername() <em>Basic Auth Username</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getBasicAuthUsername()
+     * @generated
+     * @ordered
+     */
+    protected static final String BASIC_AUTH_USERNAME_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getBasicAuthUsername() <em>Basic Auth Username</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getBasicAuthUsername()
+     * @generated
+     * @ordered
+     */
+    protected String basicAuthUsername = BASIC_AUTH_USERNAME_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getBasicAuthPassword() <em>Basic Auth Password</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getBasicAuthPassword()
+     * @generated
+     * @ordered
+     */
+    protected static final String BASIC_AUTH_PASSWORD_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getBasicAuthPassword() <em>Basic Auth Password</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getBasicAuthPassword()
+     * @generated
+     * @ordered
+     */
+    protected String basicAuthPassword = BASIC_AUTH_PASSWORD_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -471,6 +535,69 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
      * <!-- end-user-doc -->
      * @generated
      */
+    public HTTPEndpointAuthType getAuthType() {
+        return authType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setAuthType(HTTPEndpointAuthType newAuthType) {
+        HTTPEndpointAuthType oldAuthType = authType;
+        authType = newAuthType == null ? AUTH_TYPE_EDEFAULT : newAuthType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.HTTP_ENDPOINT__AUTH_TYPE, oldAuthType, authType));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getBasicAuthUsername() {
+        return basicAuthUsername;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setBasicAuthUsername(String newBasicAuthUsername) {
+        String oldBasicAuthUsername = basicAuthUsername;
+        basicAuthUsername = newBasicAuthUsername;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_USERNAME, oldBasicAuthUsername, basicAuthUsername));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getBasicAuthPassword() {
+        return basicAuthPassword;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setBasicAuthPassword(String newBasicAuthPassword) {
+        String oldBasicAuthPassword = basicAuthPassword;
+        basicAuthPassword = newBasicAuthPassword;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_PASSWORD, oldBasicAuthPassword, basicAuthPassword));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -508,6 +635,12 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
                 return getOAuthTokenUrl();
             case EsbPackage.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN:
                 return getOAuthRefreshToken();
+            case EsbPackage.HTTP_ENDPOINT__AUTH_TYPE:
+                return getAuthType();
+            case EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_USERNAME:
+                return getBasicAuthUsername();
+            case EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_PASSWORD:
+                return getBasicAuthPassword();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -546,6 +679,15 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
                 return;
             case EsbPackage.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN:
                 setOAuthRefreshToken((String)newValue);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__AUTH_TYPE:
+                setAuthType((HTTPEndpointAuthType)newValue);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_USERNAME:
+                setBasicAuthUsername((String)newValue);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_PASSWORD:
+                setBasicAuthPassword((String)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -586,6 +728,15 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
             case EsbPackage.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN:
                 setOAuthRefreshToken(OAUTH_REFRESH_TOKEN_EDEFAULT);
                 return;
+            case EsbPackage.HTTP_ENDPOINT__AUTH_TYPE:
+                setAuthType(AUTH_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_USERNAME:
+                setBasicAuthUsername(BASIC_AUTH_USERNAME_EDEFAULT);
+                return;
+            case EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_PASSWORD:
+                setBasicAuthPassword(BASIC_AUTH_PASSWORD_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -616,6 +767,12 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
                 return OAUTH_TOKEN_URL_EDEFAULT == null ? oAuthTokenUrl != null : !OAUTH_TOKEN_URL_EDEFAULT.equals(oAuthTokenUrl);
             case EsbPackage.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN:
                 return OAUTH_REFRESH_TOKEN_EDEFAULT == null ? oAuthRefreshToken != null : !OAUTH_REFRESH_TOKEN_EDEFAULT.equals(oAuthRefreshToken);
+            case EsbPackage.HTTP_ENDPOINT__AUTH_TYPE:
+                return authType != AUTH_TYPE_EDEFAULT;
+            case EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_USERNAME:
+                return BASIC_AUTH_USERNAME_EDEFAULT == null ? basicAuthUsername != null : !BASIC_AUTH_USERNAME_EDEFAULT.equals(basicAuthUsername);
+            case EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_PASSWORD:
+                return BASIC_AUTH_PASSWORD_EDEFAULT == null ? basicAuthPassword != null : !BASIC_AUTH_PASSWORD_EDEFAULT.equals(basicAuthPassword);
         }
         return super.eIsSet(featureID);
     }
@@ -644,6 +801,12 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
         result.append(oAuthTokenUrl);
         result.append(", OAuthRefreshToken: ");
         result.append(oAuthRefreshToken);
+        result.append(", AuthType: ");
+        result.append(authType);
+        result.append(", BasicAuthUsername: ");
+        result.append(basicAuthUsername);
+        result.append(", BasicAuthPassword: ");
+        result.append(basicAuthPassword);
         result.append(')');
         return result.toString();
     }

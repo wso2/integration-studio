@@ -1272,22 +1272,31 @@ public class EsbViewsRepository {
 	
 		}
 	
-		public static class OAuthConfiguration {
+		public static class AuthConfiguration {
 	
 			
-			public static String oAuthGrantType = "esb::HTTPEndpoint::oAuthConfiguration::oAuthGrantType";
+			public static String authType = "esb::HTTPEndpoint::AuthConfiguration::AuthType";
 			
 			
-			public static String oAuthClientId = "esb::HTTPEndpoint::oAuthConfiguration::oAuthClientId";
+			public static String oAuthGrantType = "esb::HTTPEndpoint::AuthConfiguration::oAuthGrantType";
 			
 			
-			public static String oAuthClientSecret = "esb::HTTPEndpoint::oAuthConfiguration::oAuthClientSecret";
+			public static String basicAuthUsername = "esb::HTTPEndpoint::AuthConfiguration::BasicAuthUsername";
 			
 			
-			public static String oAuthRefreshToken = "esb::HTTPEndpoint::oAuthConfiguration::oAuthRefreshToken";
+			public static String basicAuthPassword = "esb::HTTPEndpoint::AuthConfiguration::BasicAuthPassword";
 			
 			
-			public static String oAuthTokenUrl = "esb::HTTPEndpoint::oAuthConfiguration::oAuthTokenUrl";
+			public static String oAuthClientId = "esb::HTTPEndpoint::AuthConfiguration::oAuthClientId";
+			
+			
+			public static String oAuthClientSecret = "esb::HTTPEndpoint::AuthConfiguration::oAuthClientSecret";
+			
+			
+			public static String oAuthRefreshToken = "esb::HTTPEndpoint::AuthConfiguration::oAuthRefreshToken";
+			
+			
+			public static String oAuthTokenUrl = "esb::HTTPEndpoint::AuthConfiguration::oAuthTokenUrl";
 			
 	
 		}

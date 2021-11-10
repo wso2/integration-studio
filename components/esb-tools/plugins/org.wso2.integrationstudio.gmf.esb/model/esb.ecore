@@ -373,6 +373,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="OAuthClientSecret" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="OAuthTokenUrl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="OAuthRefreshToken" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="AuthType" eType="#//HTTPEndpointAuthType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BasicAuthUsername" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BasicAuthPassword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HTTPEndPointInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="HTTPEndPointOutputConnector" eSuperTypes="#//OutputConnector"/>
@@ -387,9 +390,13 @@
     <eLiterals name="Leave_as_is" value="7" literal="Leave-as-is"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="HTTPEndpointOAuthGrantType">
+    <eLiterals name="Authorization_Code_Grant" literal="Authorization Code Grant"/>
+    <eLiterals name="Client_Credentials_Grant" value="1" literal="Client Credentials Grant"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HTTPEndpointAuthType">
     <eLiterals name="None"/>
-    <eLiterals name="Authorization_Code_Grant" value="1" literal="Authorization Code Grant"/>
-    <eLiterals name="Client_Credentials_Grant" value="2" literal="Client Credentials Grant"/>
+    <eLiterals name="Basic_Auth" value="1"/>
+    <eLiterals name="OAuth" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DropMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//DropMediatorInputConnector"

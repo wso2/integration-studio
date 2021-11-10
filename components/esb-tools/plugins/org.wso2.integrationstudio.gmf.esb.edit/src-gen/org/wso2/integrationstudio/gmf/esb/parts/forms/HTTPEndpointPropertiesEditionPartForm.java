@@ -135,8 +135,11 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 	
 	// Start of user code for
 	protected Text failoverNonRetryErrorCodes;
-	protected EMFComboViewer oAuthGrantType;
-	protected Text oAuthClientId;
+	protected EMFComboViewer authType;
+    protected EMFComboViewer oAuthGrantType;
+	protected Text basicAuthUsername;
+    protected Text basicAuthPassword;
+    protected Text oAuthClientId;
 	protected Text oAuthClientSecret;
 	protected Text oAuthRefreshToken;
 	protected Text oAuthTokenUrl;
@@ -146,10 +149,14 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected Section propertiesSection;
 	protected Composite filterAdvancedSubPropertiesGroup;
 
+	protected Control[] oAuthGrantTypeElements;
 	protected Control[] oAuthClientIdElements;
 	protected Control[] oAuthClientSecretElements;
 	protected Control[] oAuthRefreshTokenElements;
 	protected Control[] oAuthTokenUrlElements;
+	
+	protected Control[] basicAuthUsernameElements;
+    protected Control[] basicAuthPasswordElements;
 	// End of user code
 
 
@@ -220,12 +227,15 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointProperties.class)
 			.addStep(EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties);
 		
-		CompositionStep endpointOAuthStep = hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.class);
-		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType);
-		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId);
-		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret);
-		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken);
-		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl);
+		CompositionStep endpointOAuthStep = hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.class);
+		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType);
+		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername);
+		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword);
+		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType);
+		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId);
+		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret);
+		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken);
+		endpointOAuthStep.addStep(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl);
 
 		CompositionStep endpointSuspendStateStep = hTTPEndpointStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.class);
 		endpointSuspendStateStep.addStep(EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.suspendErrorCodes);
@@ -326,22 +336,31 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
 				if (key == EsbViewsRepository.HTTPEndpoint.EndpointProperties.properties) {
 					return createPropertiesTableComposition(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.class) {
-					return createOAuthConfigurationGroup(widgetFactory, filterAdvancedSubPropertiesGroup);
+				if (key == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.class) {
+					return createAuthConfigurationGroup(widgetFactory, filterAdvancedSubPropertiesGroup);
 				}
-				if (key == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType) {
+				if (key == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType) {
+                    return createAuthTypeEMFComboViewer(widgetFactory, parent);
+                }
+				if (key == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername) {
+                    return createBasicAuthUsernameText(widgetFactory, parent);
+                }
+                if (key == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword) {
+                    return createBasicAuthPasswordText(widgetFactory, parent);
+                }
+				if (key == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType) {
 					return createOAuthGrantTypeEMFComboViewer(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId) {
+				if (key == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId) {
 					return createOAuthClientIdText(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret) {
+				if (key == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret) {
 					return createOAuthClientSecretText(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken) {
+				if (key == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken) {
 					return createOAuthRefreshTokenText(widgetFactory, parent);
 				}
-				if (key == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl) {
+				if (key == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl) {
 					return createOAuthTokenUrlText(widgetFactory, parent);
 				}
 				if (key == EsbViewsRepository.HTTPEndpoint.EndpointSuspendState.class) {
@@ -1985,22 +2004,73 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
   /**
    * 
    */
-  protected Composite createOAuthConfigurationGroup(FormToolkit widgetFactory, final Composite parent) {
-    Section oAuthConfigurationSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-    oAuthConfigurationSection.setText(EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthConfigurationGroupLabel);
-    GridData oAuthConfigurationSectionData = new GridData(GridData.FILL_HORIZONTAL);
-    oAuthConfigurationSectionData.horizontalSpan = 3;
-    oAuthConfigurationSection.setLayoutData(oAuthConfigurationSectionData);
-    Composite oAuthConfigurationGroup = widgetFactory.createComposite(oAuthConfigurationSection);
-    GridLayout oAuthConfigurationGroupLayout = new GridLayout();
-    oAuthConfigurationGroupLayout.numColumns = 3;
-    oAuthConfigurationGroup.setLayout(oAuthConfigurationGroupLayout);
-    oAuthConfigurationSection.setClient(oAuthConfigurationGroup);
-    return oAuthConfigurationGroup;
+  protected Composite createAuthConfigurationGroup(FormToolkit widgetFactory, final Composite parent) {
+    Section authConfigurationSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    authConfigurationSection.setText(EsbMessages.HTTPEndpointPropertiesEditionPart_AuthConfigurationGroupLabel);
+    GridData authConfigurationSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    authConfigurationSectionData.horizontalSpan = 3;
+    authConfigurationSection.setLayoutData(authConfigurationSectionData);
+    Composite authConfigurationGroup = widgetFactory.createComposite(authConfigurationSection);
+    GridLayout authConfigurationGroupLayout = new GridLayout();
+    authConfigurationGroupLayout.numColumns = 3;
+    authConfigurationGroup.setLayout(authConfigurationGroupLayout);
+    authConfigurationSection.setClient(authConfigurationGroup);
+    return authConfigurationGroup;
   }
 
+  protected Composite createAuthTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+    createDescription(parent, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType, EsbMessages.HTTPEndpointPropertiesEditionPart_AuthTypeLabel);
+    authType = new EMFComboViewer(parent);
+    authType.setContentProvider(new ArrayContentProvider());
+    authType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+    GridData authTypeData = new GridData(GridData.FILL_HORIZONTAL);
+    authType.getCombo().setLayoutData(authTypeData);
+    authType.addSelectionChangedListener(new ISelectionChangedListener() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       * 	
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAuthType()));
+      }
+
+    });
+    authType.setID(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createAuthTypeEMFComboViewer
+    authType.addSelectionChangedListener(new ISelectionChangedListener() {
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            refresh();
+        }
+    });
+    // End of user code
+    return parent;
+  }
+
+  /**
+   * 
+   */
+//  protected Composite createOAuthConfigurationGroup(FormToolkit widgetFactory, final Composite parent) {
+//    Section oAuthConfigurationSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+//    oAuthConfigurationSection.setText(EsbMessages.HTTPEndpointPropertiesEditionPart_AuthConfigurationGroupLabel);
+//    GridData oAuthConfigurationSectionData = new GridData(GridData.FILL_HORIZONTAL);
+//    oAuthConfigurationSectionData.horizontalSpan = 3;
+//    oAuthConfigurationSection.setLayoutData(oAuthConfigurationSectionData);
+//    Composite oAuthConfigurationGroup = widgetFactory.createComposite(oAuthConfigurationSection);
+//    GridLayout oAuthConfigurationGroupLayout = new GridLayout();
+//    oAuthConfigurationGroupLayout.numColumns = 3;
+//    oAuthConfigurationGroup.setLayout(oAuthConfigurationGroupLayout);
+//    oAuthConfigurationSection.setClient(oAuthConfigurationGroup);
+//    return oAuthConfigurationGroup;
+//  }
+
   protected Composite createOAuthGrantTypeEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-    createDescription(parent, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType, EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthGrantTypeLabel);
+    Control oAuthGrantTypeLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType, EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthGrantTypeLabel);
     oAuthGrantType = new EMFComboViewer(parent);
     oAuthGrantType.setContentProvider(new ArrayContentProvider());
     oAuthGrantType.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
@@ -2016,13 +2086,14 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
        */
       public void selectionChanged(SelectionChangedEvent event) {
         if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOAuthGrantType()));
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOAuthGrantType()));
       }
 
     });
-    oAuthGrantType.setID(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType);
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    oAuthGrantType.setID(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType);
+    Control oAuthGrantTypeHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
     // Start of user code for createOAuthGrantTypeEMFComboViewer
+    oAuthGrantTypeElements = new Control[] { oAuthGrantTypeLabel, oAuthGrantType.getCombo(), oAuthGrantTypeHelp };
     oAuthGrantType.addSelectionChangedListener(new ISelectionChangedListener() {
         @Override
         public void selectionChanged(SelectionChangedEvent event) {
@@ -2033,8 +2104,142 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
     return parent;
   }
 
+  protected Composite createBasicAuthUsernameText(FormToolkit widgetFactory, Composite parent) {
+    Control authUsernameLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername, EsbMessages.HTTPEndpointPropertiesEditionPart_BasicAuthUsernameLabel);
+    basicAuthUsername = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+    basicAuthUsername.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+    widgetFactory.paintBordersFor(parent);
+    GridData basicAuthUsernameData = new GridData(GridData.FILL_HORIZONTAL);
+    basicAuthUsername.setLayoutData(basicAuthUsernameData);
+    basicAuthUsername.addFocusListener(new FocusAdapter() {
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              HTTPEndpointPropertiesEditionPartForm.this,
+              EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, basicAuthUsername.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  HTTPEndpointPropertiesEditionPartForm.this,
+                  EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, basicAuthUsername.getText()));
+        }
+      }
+
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  HTTPEndpointPropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    basicAuthUsername.addKeyListener(new KeyAdapter() {
+      /**
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, basicAuthUsername.getText()));
+        }
+      }
+    });
+    EditingUtils.setID(basicAuthUsername, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername);
+    EditingUtils.setEEFtype(basicAuthUsername, "eef::Text"); //$NON-NLS-1$
+    Control authUsernameHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createBasicAuthUsernameText
+    basicAuthUsernameElements = new Control[] {authUsernameLabel, basicAuthUsername, authUsernameHelp};
+    // End of user code
+    return parent;
+  }
+
+  protected Composite createBasicAuthPasswordText(FormToolkit widgetFactory, Composite parent) {
+    Control authPasswordLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword, EsbMessages.HTTPEndpointPropertiesEditionPart_BasicAuthPasswordLabel);
+    basicAuthPassword = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+    basicAuthPassword.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+    widgetFactory.paintBordersFor(parent);
+    GridData basicAuthPasswordData = new GridData(GridData.FILL_HORIZONTAL);
+    basicAuthPassword.setLayoutData(basicAuthPasswordData);
+    basicAuthPassword.addFocusListener(new FocusAdapter() {
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              HTTPEndpointPropertiesEditionPartForm.this,
+              EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, basicAuthPassword.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  HTTPEndpointPropertiesEditionPartForm.this,
+                  EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, basicAuthPassword.getText()));
+        }
+      }
+
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  HTTPEndpointPropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    basicAuthPassword.addKeyListener(new KeyAdapter() {
+      /**
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * 
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, basicAuthPassword.getText()));
+        }
+      }
+    });
+    EditingUtils.setID(basicAuthPassword, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword);
+    EditingUtils.setEEFtype(basicAuthPassword, "eef::Text"); //$NON-NLS-1$
+    Control authPasswordHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createBasicAuthPasswordText
+    basicAuthPasswordElements = new Control[] {authPasswordLabel, basicAuthPassword, authPasswordHelp};
+    // End of user code
+    return parent;
+  }
+
   protected Composite createOAuthClientIdText(FormToolkit widgetFactory, Composite parent) {
-	Control oauthClientIdLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId, EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthClientIdLabel);
+	Control oauthClientIdLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId, EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthClientIdLabel);
     oAuthClientId = widgetFactory.createText(parent, ""); //$NON-NLS-1$
     oAuthClientId.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
     widgetFactory.paintBordersFor(parent);
@@ -2051,12 +2256,12 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
         if (propertiesEditionComponent != null) {
           propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
               HTTPEndpointPropertiesEditionPartForm.this,
-              EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId,
+              EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId,
               PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthClientId.getText()));
           propertiesEditionComponent
               .firePropertiesChanged(new PropertiesEditionEvent(
                   HTTPEndpointPropertiesEditionPartForm.this,
-                  EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId,
+                  EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId,
                   PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
                   null, oAuthClientId.getText()));
         }
@@ -2087,13 +2292,13 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
       public void keyPressed(KeyEvent e) {
         if (e.character == SWT.CR) {
           if (propertiesEditionComponent != null)
-            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthClientId.getText()));
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthClientId.getText()));
         }
       }
     });
-    EditingUtils.setID(oAuthClientId, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId);
+    EditingUtils.setID(oAuthClientId, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId);
     EditingUtils.setEEFtype(oAuthClientId, "eef::Text"); //$NON-NLS-1$
-    Control oauthClientIdHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    Control oauthClientIdHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
     // Start of user code for createOAuthClientIdText
     oAuthClientIdElements = new Control[] {oauthClientIdLabel, oAuthClientId, oauthClientIdHelp};
     // End of user code
@@ -2101,7 +2306,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
   }
 
   protected Composite createOAuthClientSecretText(FormToolkit widgetFactory, Composite parent) {
-	Control oauthClientSecretLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret, EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthClientSecretLabel);
+	Control oauthClientSecretLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret, EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthClientSecretLabel);
     oAuthClientSecret = widgetFactory.createText(parent, ""); //$NON-NLS-1$
     oAuthClientSecret.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
     widgetFactory.paintBordersFor(parent);
@@ -2118,12 +2323,12 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
         if (propertiesEditionComponent != null) {
           propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
               HTTPEndpointPropertiesEditionPartForm.this,
-              EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret,
+              EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret,
               PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthClientSecret.getText()));
           propertiesEditionComponent
               .firePropertiesChanged(new PropertiesEditionEvent(
                   HTTPEndpointPropertiesEditionPartForm.this,
-                  EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret,
+                  EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret,
                   PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
                   null, oAuthClientSecret.getText()));
         }
@@ -2154,13 +2359,13 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
       public void keyPressed(KeyEvent e) {
         if (e.character == SWT.CR) {
           if (propertiesEditionComponent != null)
-            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthClientSecret.getText()));
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthClientSecret.getText()));
         }
       }
     });
-    EditingUtils.setID(oAuthClientSecret, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret);
+    EditingUtils.setID(oAuthClientSecret, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret);
     EditingUtils.setEEFtype(oAuthClientSecret, "eef::Text"); //$NON-NLS-1$
-    Control oauthClientSecretHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    Control oauthClientSecretHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
     // Start of user code for createOAuthClientSecretText
     oAuthClientSecretElements = new Control[] {oauthClientSecretLabel, oAuthClientSecret, oauthClientSecretHelp};
     // End of user code
@@ -2168,7 +2373,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
   }
 
   protected Composite createOAuthRefreshTokenText(FormToolkit widgetFactory, Composite parent) {
-	Control oauthRefreshTokenLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken, EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthRefreshTokenLabel);
+	Control oauthRefreshTokenLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken, EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthRefreshTokenLabel);
     oAuthRefreshToken = widgetFactory.createText(parent, ""); //$NON-NLS-1$
     oAuthRefreshToken.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
     widgetFactory.paintBordersFor(parent);
@@ -2185,12 +2390,12 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
         if (propertiesEditionComponent != null) {
           propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
               HTTPEndpointPropertiesEditionPartForm.this,
-              EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken,
+              EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken,
               PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthRefreshToken.getText()));
           propertiesEditionComponent
               .firePropertiesChanged(new PropertiesEditionEvent(
                   HTTPEndpointPropertiesEditionPartForm.this,
-                  EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken,
+                  EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken,
                   PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
                   null, oAuthRefreshToken.getText()));
         }
@@ -2221,13 +2426,13 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
       public void keyPressed(KeyEvent e) {
         if (e.character == SWT.CR) {
           if (propertiesEditionComponent != null)
-            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthRefreshToken.getText()));
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthRefreshToken.getText()));
         }
       }
     });
-    EditingUtils.setID(oAuthRefreshToken, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken);
+    EditingUtils.setID(oAuthRefreshToken, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken);
     EditingUtils.setEEFtype(oAuthRefreshToken, "eef::Text"); //$NON-NLS-1$
-    Control oauthRefreshTokenHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    Control oauthRefreshTokenHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
     // Start of user code for createOAuthRefreshTokenText
     oAuthRefreshTokenElements = new Control[] { oauthRefreshTokenLabel, oAuthRefreshToken, oauthRefreshTokenHelp};
     // End of user code
@@ -2235,7 +2440,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
   }
 
   protected Composite createOAuthTokenUrlText(FormToolkit widgetFactory, Composite parent) {
-	Control oauthTokenUrlLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl, EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthTokenUrlLabel);
+	Control oauthTokenUrlLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl, EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthTokenUrlLabel);
     oAuthTokenUrl = widgetFactory.createText(parent, ""); //$NON-NLS-1$
     oAuthTokenUrl.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
     widgetFactory.paintBordersFor(parent);
@@ -2252,12 +2457,12 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
         if (propertiesEditionComponent != null) {
           propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
               HTTPEndpointPropertiesEditionPartForm.this,
-              EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl,
+              EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl,
               PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthTokenUrl.getText()));
           propertiesEditionComponent
               .firePropertiesChanged(new PropertiesEditionEvent(
                   HTTPEndpointPropertiesEditionPartForm.this,
-                  EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl,
+                  EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl,
                   PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
                   null, oAuthTokenUrl.getText()));
         }
@@ -2288,13 +2493,13 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
       public void keyPressed(KeyEvent e) {
         if (e.character == SWT.CR) {
           if (propertiesEditionComponent != null)
-            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthTokenUrl.getText()));
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthTokenUrl.getText()));
         }
       }
     });
-    EditingUtils.setID(oAuthTokenUrl, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl);
+    EditingUtils.setID(oAuthTokenUrl, EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl);
     EditingUtils.setEEFtype(oAuthTokenUrl, "eef::Text"); //$NON-NLS-1$
-    Control oauthTokenUrlHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    Control oauthTokenUrlHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
     // Start of user code for createOAuthTokenUrlText
     oAuthTokenUrlElements = new Control[] {oauthTokenUrlLabel, oAuthTokenUrl, oauthTokenUrlHelp};
     // End of user code
@@ -3443,6 +3648,53 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
   /**
    * {@inheritDoc}
    * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getAuthType()
+   * 
+   */
+  public Enumerator getAuthType() {
+    Enumerator selection = (Enumerator) ((StructuredSelection) authType.getSelection()).getFirstElement();
+    return selection;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#initAuthType(Object input, Enumerator current)
+   */
+  public void initAuthType(Object input, Enumerator current) {
+    authType.setInput(input);
+    authType.modelUpdating(new StructuredSelection(current));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType);
+    if (eefElementEditorReadOnlyState && authType.isEnabled()) {
+      authType.setEnabled(false);
+      authType.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !authType.isEnabled()) {
+      authType.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setAuthType(Enumerator newValue)
+   * 
+   */
+  public void setAuthType(Enumerator newValue) {
+    authType.modelUpdating(new StructuredSelection(newValue));
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType);
+    if (eefElementEditorReadOnlyState && authType.isEnabled()) {
+      authType.setEnabled(false);
+      authType.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !authType.isEnabled()) {
+      authType.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
    * @see org.wso2.integrationstudio.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getOAuthGrantType()
    * 
    */
@@ -3459,7 +3711,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
   public void initOAuthGrantType(Object input, Enumerator current) {
     oAuthGrantType.setInput(input);
     oAuthGrantType.modelUpdating(new StructuredSelection(current));
-    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType);
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType);
     if (eefElementEditorReadOnlyState && oAuthGrantType.isEnabled()) {
       oAuthGrantType.setEnabled(false);
       oAuthGrantType.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
@@ -3477,12 +3729,76 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
    */
   public void setOAuthGrantType(Enumerator newValue) {
     oAuthGrantType.modelUpdating(new StructuredSelection(newValue));
-    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType);
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType);
     if (eefElementEditorReadOnlyState && oAuthGrantType.isEnabled()) {
       oAuthGrantType.setEnabled(false);
       oAuthGrantType.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
     } else if (!eefElementEditorReadOnlyState && !oAuthGrantType.isEnabled()) {
       oAuthGrantType.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getBasicAuthUsername()
+   * 
+   */
+  public String getBasicAuthUsername() {
+    return basicAuthUsername.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setBasicAuthUsername(String newValue)
+   * 
+   */
+  public void setBasicAuthUsername(String newValue) {
+    if (newValue != null) {
+      basicAuthUsername.setText(newValue);
+    } else {
+      basicAuthUsername.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername);
+    if (eefElementEditorReadOnlyState && basicAuthUsername.isEnabled()) {
+      basicAuthUsername.setEnabled(false);
+      basicAuthUsername.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !basicAuthUsername.isEnabled()) {
+      basicAuthUsername.setEnabled(true);
+    }	
+    
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#getBasicAuthPassword()
+   * 
+   */
+  public String getBasicAuthPassword() {
+    return basicAuthPassword.getText();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.HTTPEndpointPropertiesEditionPart#setBasicAuthPassword(String newValue)
+   * 
+   */
+  public void setBasicAuthPassword(String newValue) {
+    if (newValue != null) {
+      basicAuthPassword.setText(newValue);
+    } else {
+      basicAuthPassword.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword);
+    if (eefElementEditorReadOnlyState && basicAuthPassword.isEnabled()) {
+      basicAuthPassword.setEnabled(false);
+      basicAuthPassword.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !basicAuthPassword.isEnabled()) {
+      basicAuthPassword.setEnabled(true);
     }	
     
   }
@@ -3509,7 +3825,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
     } else {
       oAuthClientId.setText(""); //$NON-NLS-1$
     }
-    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId);
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId);
     if (eefElementEditorReadOnlyState && oAuthClientId.isEnabled()) {
       oAuthClientId.setEnabled(false);
       oAuthClientId.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
@@ -3541,7 +3857,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
     } else {
       oAuthClientSecret.setText(""); //$NON-NLS-1$
     }
-    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret);
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret);
     if (eefElementEditorReadOnlyState && oAuthClientSecret.isEnabled()) {
       oAuthClientSecret.setEnabled(false);
       oAuthClientSecret.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
@@ -3573,7 +3889,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
     } else {
       oAuthRefreshToken.setText(""); //$NON-NLS-1$
     }
-    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken);
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken);
     if (eefElementEditorReadOnlyState && oAuthRefreshToken.isEnabled()) {
       oAuthRefreshToken.setEnabled(false);
       oAuthRefreshToken.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
@@ -3605,7 +3921,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
     } else {
       oAuthTokenUrl.setText(""); //$NON-NLS-1$
     }
-    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl);
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl);
     if (eefElementEditorReadOnlyState && oAuthTokenUrl.isEnabled()) {
       oAuthTokenUrl.setEnabled(false);
       oAuthTokenUrl.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
@@ -3637,14 +3953,35 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
     public void validate() {
         ((GridData) propertiesSection.getLayoutData()).exclude = true;
         propertiesSection.setVisible(false);
-        viewUtil.showEntry(oAuthClientIdElements, false);
-        viewUtil.showEntry(oAuthClientSecretElements, false);
-        viewUtil.showEntry(oAuthTokenUrlElements, false);
-        if (getOAuthGrantType().getName().equals("Authorization_Code_Grant")) {
-            viewUtil.showEntry(oAuthRefreshTokenElements, false);
-        } else if (getOAuthGrantType().getName().equals("Client_Credentials_Grant")) {
+        if (getAuthType().getName().equals("Basic_Auth")) {
+            viewUtil.showEntry(basicAuthUsernameElements, false);
+            viewUtil.showEntry(basicAuthPasswordElements, false);
+            viewUtil.hideEntry(oAuthGrantTypeElements, false);
+            viewUtil.hideEntry(oAuthClientIdElements, false);
+            viewUtil.hideEntry(oAuthClientSecretElements, false);
             viewUtil.hideEntry(oAuthRefreshTokenElements, false);
+            viewUtil.hideEntry(oAuthTokenUrlElements, false);
+        } else if (getAuthType().getName().equals("OAuth")) {
+            viewUtil.showEntry(oAuthGrantTypeElements, false);
+            viewUtil.showEntry(oAuthClientIdElements, false);
+            viewUtil.showEntry(oAuthClientSecretElements, false);
+            viewUtil.showEntry(oAuthTokenUrlElements, false);
+            if (getOAuthGrantType().getName().equals("Authorization_Code_Grant")) {
+                viewUtil.showEntry(oAuthRefreshTokenElements, false);
+            } else if (getOAuthGrantType().getName().equals("Client_Credentials_Grant")) {
+                viewUtil.hideEntry(oAuthRefreshTokenElements, false);
+            } else {
+                viewUtil.hideEntry(oAuthClientIdElements, false);
+                viewUtil.hideEntry(oAuthClientSecretElements, false);
+                viewUtil.hideEntry(oAuthRefreshTokenElements, false);
+                viewUtil.hideEntry(oAuthTokenUrlElements, false);
+            }
+            viewUtil.hideEntry(basicAuthUsernameElements, false);
+            viewUtil.hideEntry(basicAuthPasswordElements, false);
         } else {
+            viewUtil.hideEntry(oAuthGrantTypeElements, false);
+            viewUtil.hideEntry(basicAuthUsernameElements, false);
+            viewUtil.hideEntry(basicAuthPasswordElements, false);
             viewUtil.hideEntry(oAuthClientIdElements, false);
             viewUtil.hideEntry(oAuthClientSecretElements, false);
             viewUtil.hideEntry(oAuthRefreshTokenElements, false);

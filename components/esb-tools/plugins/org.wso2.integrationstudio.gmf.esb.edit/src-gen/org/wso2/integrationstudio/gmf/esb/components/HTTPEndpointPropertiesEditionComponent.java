@@ -58,6 +58,7 @@ import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
 import org.wso2.integrationstudio.gmf.esb.EndPointTimeOutAction;
 import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpoint;
+import org.wso2.integrationstudio.gmf.esb.HTTPEndpointAuthType;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthGrantType;
 import org.wso2.integrationstudio.gmf.esb.HttpMethodType;
 import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
@@ -210,30 +211,36 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod)) {
 				basePart.initHttpMethod(EEFUtils.choiceOfValues(hTTPEndpoint, EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod()), hTTPEndpoint.getHttpMethod());
 			}
-
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType)) {
 				basePart.initOAuthGrantType(EEFUtils.choiceOfValues(hTTPEndpoint, EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthGrantType()), hTTPEndpoint.getOAuthGrantType());
 			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId))
 				basePart.setOAuthClientId(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthClientId()));
-			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret)) {
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret))
 				basePart.setOAuthClientSecret(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthClientSecret()));
-			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken)) {
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken))
 				basePart.setOAuthRefreshToken(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthRefreshToken()));
-			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl)) {
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl))
 				basePart.setOAuthTokenUrl(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthTokenUrl()));
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes))
+				basePart.setFailoverNonRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getFailoverNonRetryErrorCodes()));
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType)) {
+				basePart.initAuthType(EEFUtils.choiceOfValues(hTTPEndpoint, EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType()), hTTPEndpoint.getAuthType());
 			}
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername))
+				basePart.setBasicAuthUsername(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getBasicAuthUsername()));
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword))
+				basePart.setBasicAuthPassword(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getBasicAuthPassword()));
+			
 			// init filters
 			
-			// Start of user code for failover retry error codes
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
-				basePart.setFailoverNonRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING,
-						hTTPEndpoint.getFailoverNonRetryErrorCodes()));
-			}
-			// End of user code
+			
 			
 			
 			
@@ -420,26 +427,33 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.Basic.httpMethod) {
 			return EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType) {
 			return EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthGrantType();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId) {
 			return EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientId();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret) {
 			return EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientSecret();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken) {
 			return EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthRefreshToken();
 		}
-		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl) {
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl) {
 			return EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthTokenUrl();
 		}
-		// Start of user code for failover error codes
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes();
 		}
-		// End of user code
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType) {
+			return EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType();
+		}
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername) {
+			return EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthUsername();
+		}
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword) {
+			return EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthPassword();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -584,28 +598,33 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (EsbViewsRepository.HTTPEndpoint.Basic.httpMethod == event.getAffectedEditor()) {
 			hTTPEndpoint.setHttpMethod((HttpMethodType)event.getNewValue());
 		}
-		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType == event.getAffectedEditor()) {
 			hTTPEndpoint.setOAuthGrantType((HTTPEndpointOAuthGrantType)event.getNewValue());
 		}
-		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId == event.getAffectedEditor()) {
 			hTTPEndpoint.setOAuthClientId((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret == event.getAffectedEditor()) {
 			hTTPEndpoint.setOAuthClientSecret((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken == event.getAffectedEditor()) {
 			hTTPEndpoint.setOAuthRefreshToken((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl == event.getAffectedEditor()) {
+		if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl == event.getAffectedEditor()) {
 			hTTPEndpoint.setOAuthTokenUrl((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		// Start of user code for failover error codes
-		if (EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event
-		        .getAffectedEditor()) {
-			hTTPEndpoint.setFailoverNonRetryErrorCodes((java.lang.String) EEFConverterUtil
-			        .createFromString(EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
+		if (EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event.getAffectedEditor()) {
+			hTTPEndpoint.setFailoverNonRetryErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		// End of user code
+		if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType == event.getAffectedEditor()) {
+			hTTPEndpoint.setAuthType((HTTPEndpointAuthType)event.getNewValue());
+		}
+		if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername == event.getAffectedEditor()) {
+			hTTPEndpoint.setBasicAuthUsername((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword == event.getAffectedEditor()) {
+			hTTPEndpoint.setBasicAuthPassword((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
 	}
 
 	/**
@@ -753,49 +772,63 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			}
 			if (EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod))
 				basePart.setHttpMethod((HttpMethodType)msg.getNewValue());
-
-			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthGrantType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType))
+			
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthGrantType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType))
 				basePart.setOAuthGrantType((HTTPEndpointOAuthGrantType)msg.getNewValue());
-			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientId().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId)) {
+			
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientId().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId)) {
 				if (msg.getNewValue() != null) {
 					basePart.setOAuthClientId(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setOAuthClientId("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientSecret().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret)) {
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientSecret().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret)) {
 				if (msg.getNewValue() != null) {
 					basePart.setOAuthClientSecret(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setOAuthClientSecret("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthRefreshToken().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken)) {
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthRefreshToken().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken)) {
 				if (msg.getNewValue() != null) {
 					basePart.setOAuthRefreshToken(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setOAuthRefreshToken("");
 				}
 			}
-			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthTokenUrl().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl)) {
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthTokenUrl().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl)) {
 				if (msg.getNewValue() != null) {
 					basePart.setOAuthTokenUrl(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setOAuthTokenUrl("");
 				}
 			}
-			// Start of user code for failover error codes
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().equals(msg.getFeature())
-			        && msg.getNotifier().equals(semanticObject) && basePart != null
-			        && isAccessible(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
 				if (msg.getNewValue() != null) {
-					basePart.setFailoverNonRetryErrorCodes(
-					        EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					basePart.setFailoverNonRetryErrorCodes(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setFailoverNonRetryErrorCodes("");
 				}
 			}
-			// End of user code
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType))
+				basePart.setAuthType((HTTPEndpointAuthType)msg.getNewValue());
+			
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthUsername().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername)) {
+				if (msg.getNewValue() != null) {
+					basePart.setBasicAuthUsername(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setBasicAuthUsername("");
+				}
+			}
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthPassword().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword)) {
+				if (msg.getNewValue() != null) {
+					basePart.setBasicAuthPassword(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setBasicAuthPassword("");
+				}
+			}
+			
 		}
 	}
 
@@ -841,7 +874,10 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientSecret(),
 			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthRefreshToken(),
 			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthTokenUrl(),
-			EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes());
+			EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes(),
+			EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType(),
+			EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthUsername(),
+			EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthPassword()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -1045,42 +1081,41 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthGrantType == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthGrantType().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthGrantType().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientId == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientId().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientId().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthClientSecret == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientSecret().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientSecret().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthRefreshToken == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthRefreshToken().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthRefreshToken().getEAttributeType(), newValue);
 				}
-				if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl == event.getAffectedEditor()) {
+				if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.oAuthTokenUrl == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthTokenUrl().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthTokenUrl().getEAttributeType(), newValue);
 				}
-				// Start of user code for failover error codes
 				if (EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
@@ -1088,7 +1123,27 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().getEAttributeType(), newValue);
 				}
-				// End of user code
+				if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.authType == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthUsername == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthUsername().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthUsername().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.HTTPEndpoint.AuthConfiguration.basicAuthPassword == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthPassword().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthPassword().getEAttributeType(), newValue);
+				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

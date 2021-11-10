@@ -55,6 +55,12 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 	public Combo httpEP_Method;
 	public Button httpEP_Properties;
 
+	public Combo httpEP_AuthType;
+	public Label basicAuthUsernameLabel;
+	public Text basicAuthUsername;
+	public Label basicAuthPasswordLabel;
+	public Text basicAuthPassword;
+	public Label httpEP_OAuthTypeLabel;
 	public Combo httpEP_OAuthType;
 	public Label oAuthClientIdLabel;
 	public Text oAuthClientId;
@@ -69,7 +75,7 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 	
     Section basicSection;
     Section miscSection;
-    Section oauthSection;
+    Section authSection;
 
     public HttpEndpointFormPage(FormEditor editor, boolean isTemplate) {
 		super(editor);
@@ -280,24 +286,92 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		
 	}
 
-	public void createFormOAuthSection() {
+	public void createFormAuthSection() {
 
-		/* OAuth Section */
-		oauthSection = endpointCommons.createSection(form, toolkit, "OAuth Configuration");
+		/* Auth Section */
+		authSection = endpointCommons.createSection(form, toolkit, "Auth Configuration");
 
-		GridData oauthSectionGridData = new GridData();
-		oauthSectionGridData.horizontalSpan = 3;
-		oauthSectionGridData.horizontalAlignment = GridData.FILL;
-		oauthSectionGridData.grabExcessHorizontalSpace = true;
-		oauthSection.setLayoutData(oauthSectionGridData);
+		GridData authSectionGridData = new GridData();
+		authSectionGridData.horizontalSpan = 3;
+		authSectionGridData.horizontalAlignment = GridData.FILL;
+		authSectionGridData.grabExcessHorizontalSpace = true;
+		authSection.setLayoutData(authSectionGridData);
 
-		Composite oauthSectionClient = toolkit.createComposite(oauthSection);
-		oauthSectionClient.setLayout(new GridLayout());
-		oauthSection.setClient(oauthSectionClient);
+		Composite authSectionClient = toolkit.createComposite(authSection);
+		authSectionClient.setLayout(new GridLayout());
+		authSection.setClient(authSectionClient);
+		
+		toolkit.createLabel(authSectionClient, "Auth Type :");
+		httpEP_AuthType = new Combo(authSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
+		String[] authTypes = { "None", "Basic Auth", "OAuth" };
+		httpEP_AuthType.setItems(authTypes);
+		httpEP_AuthType.select(0);
+		httpEP_AuthType.setBackground(new Color(null, 229, 236, 253));
+		GridData httpEPAuthTypeGridData = new GridData();
+		httpEPAuthTypeGridData.horizontalSpan = 3;
+		httpEPAuthTypeGridData.horizontalAlignment = GridData.FILL;
+		httpEPAuthTypeGridData.grabExcessHorizontalSpace = true;
+		httpEP_AuthType.setLayoutData(httpEPAuthTypeGridData);
 
-		toolkit.createLabel(oauthSectionClient, "OAuth Grant Type :");
-		httpEP_OAuthType = new Combo(oauthSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
-		String[] oAuthTypes = { "None", "Authorization Code", "Client Credentials" };
+		httpEP_AuthType.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				if (httpEP_AuthType.getSelectionIndex() == 1) {
+					enableBasicAuthAuthorizationCodeFields();
+					disableOAuthParentFields();
+					disabeOAuthFields();
+				} else if (httpEP_AuthType.getSelectionIndex() == 2) {
+					disableBasicAuthAuthorizationCodeFields();
+					enableOAuthParentFields();
+					enableOAuthAuthorizationCodeFields();
+					;
+				} else {
+					disableBasicAuthAuthorizationCodeFields();
+					disableOAuthParentFields();
+					disabeOAuthFields();
+				}
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+
+		httpEP_AuthType.addListener(SWT.MouseVerticalWheel, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				event.doit = false;
+			}
+		});
+
+		basicAuthUsernameLabel = toolkit.createLabel(authSectionClient, "Basic Auth Username :");
+		basicAuthUsernameLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
+		basicAuthUsername = toolkit.createText(authSectionClient, "");
+		basicAuthUsername.setBackground(new Color(null, 229, 236, 253));
+		setGridLayout(basicAuthUsername);
+
+		basicAuthUsername.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+
+		basicAuthPasswordLabel = toolkit.createLabel(authSectionClient, "Basic Auth Password :");
+		basicAuthPasswordLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
+		basicAuthPassword = toolkit.createText(authSectionClient, "");
+		basicAuthPassword.setBackground(new Color(null, 229, 236, 253));
+		setGridLayout(basicAuthPassword);
+
+		basicAuthPassword.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+
+		httpEP_OAuthTypeLabel = toolkit.createLabel(authSectionClient, "OAuth Grant Type :");
+		httpEP_OAuthType = new Combo(authSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
+		String[] oAuthTypes = { "Authorization Code", "Client Credentials" };
 		httpEP_OAuthType.setItems(oAuthTypes);
 		httpEP_OAuthType.select(0);
 		httpEP_OAuthType.setBackground(new Color(null, 229, 236, 253));
@@ -309,12 +383,12 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 
 		httpEP_OAuthType.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				if (httpEP_OAuthType.getSelectionIndex() == 1) {
+			    enableOAuthParentFields();
+			    disableBasicAuthAuthorizationCodeFields();
+				if (httpEP_OAuthType.getSelectionIndex() == 0) {
 					enableOAuthAuthorizationCodeFields();
-				} else if (httpEP_OAuthType.getSelectionIndex() == 2) {
+				} else if (httpEP_OAuthType.getSelectionIndex() == 1) {
 					enableOAuthClientCredentialsFields();
-				} else {
-					disabeOAuthFields();
 				}
 				setSave(true);
 				updateDirtyState();
@@ -332,23 +406,23 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 
 			@Override
 			public void modifyText(ModifyEvent e) {
-				if (httpEP_OAuthType.getSelectionIndex() == 1) {
+			    enableOAuthParentFields();
+			    disableBasicAuthAuthorizationCodeFields();
+				if (httpEP_OAuthType.getSelectionIndex() == 0) {
 					enableOAuthAuthorizationCodeFields();
-				} else if (httpEP_OAuthType.getSelectionIndex() == 2) {
+				} else if (httpEP_OAuthType.getSelectionIndex() == 1) {
 					enableOAuthClientCredentialsFields();
-				} else {
-					disabeOAuthFields();
 				}
 			}
 		});
 
-		oAuthClientIdLabel = toolkit.createLabel(oauthSectionClient, "Client Id :");
+		oAuthClientIdLabel = toolkit.createLabel(authSectionClient, "Client Id :");
 		oAuthClientIdLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		oAuthClientId = toolkit.createText(oauthSectionClient, "");
+		oAuthClientId = toolkit.createText(authSectionClient, "");
 		oAuthClientId.setBackground(new Color(null, 229, 236, 253));
 		setGridLayout(oAuthClientId);
-
+		
 		oAuthClientId.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -357,10 +431,10 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 			}
 		});
 
-		oAuthClientSecretLabel = toolkit.createLabel(oauthSectionClient, "Client Secret :");
+		oAuthClientSecretLabel = toolkit.createLabel(authSectionClient, "Client Secret :");
 		oAuthClientSecretLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		oAuthClientSecret = toolkit.createText(oauthSectionClient, "");
+		oAuthClientSecret = toolkit.createText(authSectionClient, "");
 		oAuthClientSecret.setBackground(new Color(null, 229, 236, 253));
 		setGridLayout(oAuthClientSecret);
 
@@ -372,10 +446,10 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 			}
 		});
 
-		oAuthRefreshTokenLabel = toolkit.createLabel(oauthSectionClient, "Refresh Token :");
+		oAuthRefreshTokenLabel = toolkit.createLabel(authSectionClient, "Refresh Token :");
 		oAuthRefreshTokenLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		oAuthRefreshToken = toolkit.createText(oauthSectionClient, "");
+		oAuthRefreshToken = toolkit.createText(authSectionClient, "");
 		oAuthRefreshToken.setBackground(new Color(null, 229, 236, 253));
 		setGridLayout(oAuthRefreshToken);
 
@@ -387,10 +461,10 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 			}
 		});
 
-		oAuthTokenUrlLabel = toolkit.createLabel(oauthSectionClient, "Token Url :");
+		oAuthTokenUrlLabel = toolkit.createLabel(authSectionClient, "Token Url :");
 		oAuthTokenUrlLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		oAuthTokenUrl = toolkit.createText(oauthSectionClient, "");
+		oAuthTokenUrl = toolkit.createText(authSectionClient, "");
 		oAuthTokenUrl.setBackground(new Color(null, 229, 236, 253));
 		setGridLayout(oAuthTokenUrl);
 
@@ -401,8 +475,22 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 				updateDirtyState();
 			}
 		});
-
-		disabeOAuthFields();
+	}
+	
+	public void setAuthenticationFields() {
+	    if (httpEP_AuthType.getSelectionIndex() == 1) {
+	        disableOAuthParentFields();
+	        disabeOAuthFields();
+	    } else if (httpEP_AuthType.getSelectionIndex() == 2) {
+	        disableBasicAuthAuthorizationCodeFields();
+	        if (httpEP_OAuthType.getSelectionIndex() == 1) {
+	            setOAuthRefreshTokenVisibility(false);
+	        }
+	    } else {
+	        disableBasicAuthAuthorizationCodeFields();
+	        disableOAuthParentFields();
+	        disabeOAuthFields();
+	    }
 	}
 
 	public void createFormQosSection() {
@@ -416,6 +504,16 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 	public EndpointCommons getEndpointCommons() {
 		return endpointCommons;
 	}
+	
+	private void enableOAuthParentFields() {
+	    setOAuthParentFieldsVisibility(true);
+        enbaleVisualizingOAuthFields();
+    }
+	
+	private void disableOAuthParentFields() {
+        setOAuthParentFieldsVisibility(false);
+        enbaleVisualizingOAuthFields();
+    }
 
 	private void disabeOAuthFields() {
 		setOAuthCommonFieldsVisibility(false);
@@ -428,11 +526,33 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		setOAuthRefreshTokenVisibility(false);
 		enbaleVisualizingOAuthFields();
 	}
+	
+	private void enableBasicAuthAuthorizationCodeFields() {
+		setBasicAuthCommonFieldsVisibility(true);
+		enbaleVisualizingOAuthFields();
+	}
+
+	private void disableBasicAuthAuthorizationCodeFields() {
+		setBasicAuthCommonFieldsVisibility(false);
+		enbaleVisualizingOAuthFields();
+	}
 
 	private void enableOAuthAuthorizationCodeFields() {
 		setOAuthCommonFieldsVisibility(true);
 		setOAuthRefreshTokenVisibility(true);
 		enbaleVisualizingOAuthFields();
+	}
+	
+	private void setBasicAuthCommonFieldsVisibility(boolean visible) {
+		setFieldVisibility(basicAuthUsername, visible);
+		setFieldVisibility(basicAuthUsernameLabel, visible);
+		setFieldVisibility(basicAuthPassword, visible);
+		setFieldVisibility(basicAuthPasswordLabel, visible);
+	}
+
+	private void setOAuthParentFieldsVisibility(boolean visible) {
+		setFieldVisibility(httpEP_OAuthTypeLabel, visible);
+		setFieldVisibility(httpEP_OAuthType, visible);
 	}
 
 	private void setOAuthCommonFieldsVisibility(boolean visible) {
@@ -450,9 +570,9 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 	}
 
 	private void enbaleVisualizingOAuthFields() {
-		if (oauthSection.isExpanded() == true) {
-			oauthSection.setExpanded(false);
-			oauthSection.setExpanded(true);
+		if (authSection.isExpanded() == true) {
+			authSection.setExpanded(false);
+			authSection.setExpanded(true);
 		}
 	}
 

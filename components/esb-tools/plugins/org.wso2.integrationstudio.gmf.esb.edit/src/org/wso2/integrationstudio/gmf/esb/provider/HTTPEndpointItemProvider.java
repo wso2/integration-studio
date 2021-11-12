@@ -69,7 +69,10 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
         addDescriptionPropertyDescriptor(object);
         addPropertiesPropertyDescriptor(object);
 
-        // OAuth Configuration
+        // Auth Configuration
+        addAuthTypePropertyDescriptor(object);
+        addBasicAuthUsernamePropertyDescriptor(object);
+        addBasicAuthPasswordPropertyDescriptor(object);
         addOAuthGrantTypePropertyDescriptor(object);
         addOAuthClientIdPropertyDescriptor(object);
         addOAuthClientSecretPropertyDescriptor(object);
@@ -244,6 +247,72 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
                  getString("_UI_HTTPEndpoint_OAuthRefreshToken_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthRefreshToken_feature", "_UI_HTTPEndpoint_type"),
                  EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Auth Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addAuthTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_AuthType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_AuthType_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__AUTH_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Basic Auth Username feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addBasicAuthUsernamePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_BasicAuthUsername_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_BasicAuthUsername_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__BASIC_AUTH_USERNAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Basic Auth Password feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addBasicAuthPasswordPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_BasicAuthPassword_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_BasicAuthPassword_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__BASIC_AUTH_PASSWORD,
                  true,
                  false,
                  false,
@@ -514,6 +583,9 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
             case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_SECRET:
             case EsbPackage.HTTP_ENDPOINT__OAUTH_TOKEN_URL:
             case EsbPackage.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN:
+            case EsbPackage.HTTP_ENDPOINT__AUTH_TYPE:
+            case EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_USERNAME:
+            case EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_PASSWORD:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.HTTP_ENDPOINT__INPUT_CONNECTOR:

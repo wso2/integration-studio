@@ -58,6 +58,7 @@ import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
 import org.wso2.integrationstudio.gmf.esb.EndPointTimeOutAction;
 import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpoint;
+import org.wso2.integrationstudio.gmf.esb.HTTPEndpointAuthType;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthGrantType;
 import org.wso2.integrationstudio.gmf.esb.HttpMethodType;
 import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
@@ -210,30 +211,36 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(EsbViewsRepository.HTTPEndpoint.Basic.httpMethod)) {
 				basePart.initHttpMethod(EEFUtils.choiceOfValues(hTTPEndpoint, EsbPackage.eINSTANCE.getHTTPEndpoint_HttpMethod()), hTTPEndpoint.getHttpMethod());
 			}
-
 			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthGrantType)) {
 				basePart.initOAuthGrantType(EEFUtils.choiceOfValues(hTTPEndpoint, EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthGrantType()), hTTPEndpoint.getOAuthGrantType());
 			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId)) {
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId))
 				basePart.setOAuthClientId(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthClientId()));
-			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret)) {
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret))
 				basePart.setOAuthClientSecret(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthClientSecret()));
-			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken)) {
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken))
 				basePart.setOAuthRefreshToken(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthRefreshToken()));
-			}
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl)) {
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl))
 				basePart.setOAuthTokenUrl(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthTokenUrl()));
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes))
+				basePart.setFailoverNonRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getFailoverNonRetryErrorCodes()));
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.authType)) {
+				basePart.initAuthType(EEFUtils.choiceOfValues(hTTPEndpoint, EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType()), hTTPEndpoint.getAuthType());
 			}
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername))
+				basePart.setBasicAuthUsername(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getBasicAuthUsername()));
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword))
+				basePart.setBasicAuthPassword(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getBasicAuthPassword()));
+			
 			// init filters
 			
-			// Start of user code for failover retry error codes
-			if (isAccessible(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
-				basePart.setFailoverNonRetryErrorCodes(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING,
-						hTTPEndpoint.getFailoverNonRetryErrorCodes()));
-			}
-			// End of user code
+			
 			
 			
 			
@@ -289,6 +296,15 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			
 			
 			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -296,6 +312,15 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		}
 		setInitializing(false);
 	}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -435,11 +460,18 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl) {
 			return EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthTokenUrl();
 		}
-		// Start of user code for failover error codes
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes) {
 			return EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes();
 		}
-		// End of user code
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.authType) {
+			return EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType();
+		}
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername) {
+			return EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthUsername();
+		}
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword) {
+			return EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthPassword();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -599,13 +631,18 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl == event.getAffectedEditor()) {
 			hTTPEndpoint.setOAuthTokenUrl((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		// Start of user code for failover error codes
-		if (EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event
-		        .getAffectedEditor()) {
-			hTTPEndpoint.setFailoverNonRetryErrorCodes((java.lang.String) EEFConverterUtil
-			        .createFromString(EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
+		if (EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event.getAffectedEditor()) {
+			hTTPEndpoint.setFailoverNonRetryErrorCodes((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		// End of user code
+		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.authType == event.getAffectedEditor()) {
+			hTTPEndpoint.setAuthType((HTTPEndpointAuthType)event.getNewValue());
+		}
+		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername == event.getAffectedEditor()) {
+			hTTPEndpoint.setBasicAuthUsername((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword == event.getAffectedEditor()) {
+			hTTPEndpoint.setBasicAuthPassword((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
 	}
 
 	/**
@@ -784,18 +821,31 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 					basePart.setOAuthTokenUrl("");
 				}
 			}
-			// Start of user code for failover error codes
-			if (EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().equals(msg.getFeature())
-			        && msg.getNotifier().equals(semanticObject) && basePart != null
-			        && isAccessible(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
+			if (EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes)) {
 				if (msg.getNewValue() != null) {
-					basePart.setFailoverNonRetryErrorCodes(
-					        EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+					basePart.setFailoverNonRetryErrorCodes(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setFailoverNonRetryErrorCodes("");
 				}
 			}
-			// End of user code
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.authType))
+				basePart.setAuthType((HTTPEndpointAuthType)msg.getNewValue());
+			
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthUsername().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername)) {
+				if (msg.getNewValue() != null) {
+					basePart.setBasicAuthUsername(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setBasicAuthUsername("");
+				}
+			}
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthPassword().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword)) {
+				if (msg.getNewValue() != null) {
+					basePart.setBasicAuthPassword(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setBasicAuthPassword("");
+				}
+			}
+			
 		}
 	}
 
@@ -841,7 +891,10 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientSecret(),
 			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthRefreshToken(),
 			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthTokenUrl(),
-			EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes());
+			EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes(),
+			EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType(),
+			EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthUsername(),
+			EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthPassword()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -1080,7 +1133,6 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthTokenUrl().getEAttributeType(), newValue);
 				}
-				// Start of user code for failover error codes
 				if (EsbViewsRepository.HTTPEndpoint.FailoverErrorCodes.failoverNonRetryErrorCodes == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
@@ -1088,7 +1140,27 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes().getEAttributeType(), newValue);
 				}
-				// End of user code
+				if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.authType == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthUsername().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthUsername().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthPassword().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_BasicAuthPassword().getEAttributeType(), newValue);
+				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

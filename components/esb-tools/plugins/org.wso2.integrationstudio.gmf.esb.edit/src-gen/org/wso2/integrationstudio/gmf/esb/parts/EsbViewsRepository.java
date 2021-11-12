@@ -1275,6 +1275,15 @@ public class EsbViewsRepository {
 		public static class OAuthConfiguration {
 	
 			
+			public static String authType = "esb::HTTPEndpoint::oAuthConfiguration::AuthType";
+			
+			
+			public static String basicAuthUsername = "esb::HTTPEndpoint::oAuthConfiguration::BasicAuthUsername";
+			
+			
+			public static String basicAuthPassword = "esb::HTTPEndpoint::oAuthConfiguration::BasicAuthPassword";
+			
+			
 			public static String oAuthGrantType = "esb::HTTPEndpoint::oAuthConfiguration::oAuthGrantType";
 			
 			

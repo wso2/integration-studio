@@ -72,9 +72,13 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HttpMethodType/Leave_as_is"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//HTTPEndpointOAuthGrantType">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointOAuthGrantType/None"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointOAuthGrantType/Authorization_Code_Grant"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointOAuthGrantType/Client_Credentials_Grant"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//HTTPEndpointAuthType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointAuthType/None"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointAuthType/Basic_Auth"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointAuthType/OAuth"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FilterMediatorConditionType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FilterMediatorConditionType/SOURCE_REGEX"/>
@@ -1080,6 +1084,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/OAuthClientSecret"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/OAuthTokenUrl"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/OAuthRefreshToken"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/AuthType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/BasicAuthUsername"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/BasicAuthPassword"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//HTTPEndPointInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//HTTPEndPointOutputConnector"/>

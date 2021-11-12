@@ -777,6 +777,15 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_gY98sFw0EemiZdIEHfVl3g" name="failoverNonRetryErrorCodes" views="_7DhlsFwyEemiZdIEHfVl3g">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//AbstractEndPoint/failoverNonRetryErrorCodes"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tPslkEN3Eey7I4MwaaKwSA" name="AuthType" views="_kXIpcEN3Eey7I4MwaaKwSA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//HTTPEndpoint/AuthType"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_v1N2UEN3Eey7I4MwaaKwSA" name="BasicAuthUsername" views="_nqw9YEN3Eey7I4MwaaKwSA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//HTTPEndpoint/BasicAuthUsername"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yhZvwEN3Eey7I4MwaaKwSA" name="BasicAuthPassword" views="_ptjUgEN3Eey7I4MwaaKwSA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//HTTPEndpoint/BasicAuthPassword"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//HTTPEndpoint"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E7vUzfJnEei6boXzpRIfnA" name="HTTPEndPointInputConnector" views="_E7wjNPJnEei6boXzpRIfnA">
@@ -7024,6 +7033,15 @@
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_euZXIFlKEeuI6s6pBQ8u1A" name="oAuthConfiguration">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_kXIpcEN3Eey7I4MwaaKwSA" name="AuthType">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_nqw9YEN3Eey7I4MwaaKwSA" name="BasicAuthUsername">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_ptjUgEN3Eey7I4MwaaKwSA" name="BasicAuthPassword">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_t1BYAFlKEeuI6s6pBQ8u1A" name="oAuthGrantType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>

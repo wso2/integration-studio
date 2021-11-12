@@ -26,14 +26,17 @@ import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.endpoints.DefinitionFactory;
 import org.apache.synapse.config.xml.endpoints.EndpointDefinitionFactory;
+import org.apache.synapse.endpoints.BasicAuthConfiguredHTTPEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.endpoints.HTTPEndpoint;
 import org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint;
-import org.apache.synapse.endpoints.oauth.AuthorizationCodeHandler;
-import org.apache.synapse.endpoints.oauth.ClientCredentialsHandler;
-import org.apache.synapse.endpoints.oauth.OAuthConstants;
-import org.apache.synapse.endpoints.oauth.OAuthHandler;
+import org.apache.synapse.endpoints.auth.AuthConstants;
+import org.apache.synapse.endpoints.auth.AuthHandler;
+import org.apache.synapse.endpoints.auth.basicauth.BasicAuthHandler;
+import org.apache.synapse.endpoints.auth.oauth.AuthorizationCodeHandler;
+import org.apache.synapse.endpoints.auth.oauth.ClientCredentialsHandler;
+import org.apache.synapse.endpoints.auth.oauth.OAuthHandler;
 import org.apache.synapse.api.RESTConstants;
 
 import javax.xml.namespace.QName;
@@ -72,12 +75,20 @@ public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
 
         OMElement httpElement = epConfig.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "http"));
 
-        HTTPEndpoint httpEndpoint;
+        HTTPEndpoint httpEndpoint = null;
 
-        OAuthHandler oAuthhandler = createOAuthHandler(httpElement);
-
-        if (oAuthhandler != null) {
-            httpEndpoint = new OAuthConfiguredHTTPEndpoint(oAuthhandler);
+        AuthHandler authHandler = createAuthHandler(httpElement);
+        if (authHandler != null) {
+            switch (authHandler.getAuthType()) {
+                case AuthConstants.BASIC_AUTH:
+                    httpEndpoint = new BasicAuthConfiguredHTTPEndpoint(authHandler);
+                    break;
+                case AuthConstants.OAUTH:
+                    httpEndpoint = new OAuthConfiguredHTTPEndpoint(authHandler);
+                    break;
+                default:
+                    httpEndpoint = new HTTPEndpoint();
+            }
         } else {
             httpEndpoint = new HTTPEndpoint();
         }
@@ -133,30 +144,43 @@ public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
     }
 
     /**
-     * This method will return an OAuthHandler instance depending on the oauth configs
+     * This method will return an AuthHandler instance depending on the auth configs
      *
      * @param httpElement Element containing http configs
-     * @return OAuthHandler instance if valid oauth configuration is found
+     * @return AuthHandler instance if valid auth configuration is found
      */
-    private OAuthHandler createOAuthHandler(OMElement httpElement) {
+    private AuthHandler createAuthHandler(OMElement httpElement) {
         if (httpElement != null) {
             OMElement authElement = httpElement.getFirstChildWithName(
-                    new QName(SynapseConstants.SYNAPSE_NAMESPACE, OAuthConstants.AUTHENTICATION));
+                    new QName(SynapseConstants.SYNAPSE_NAMESPACE, AuthConstants.AUTHENTICATION));
 
             if (authElement != null) {
                 OMElement oauthElement = authElement
-                        .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, OAuthConstants.OAUTH));
+                        .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, AuthConstants.OAUTH));
+                OMElement basicAuthElement = authElement.getFirstChildWithName(
+                        new QName(SynapseConstants.SYNAPSE_NAMESPACE, AuthConstants.BASIC_AUTH));
 
+                AuthHandler authHandler = null;
                 if (oauthElement != null) {
-
-                    OAuthHandler oAuthHandler = getSpecificOAuthHandler(oauthElement);
-                    if (oAuthHandler != null) {
-                        return oAuthHandler;
-                    }
+                    authHandler = getSpecificOAuthHandler(oauthElement);
+                } else if (basicAuthElement != null) {
+                    authHandler = getBasicAuthHandler(basicAuthElement);
+                }
+                
+                // invalid auth configuration
+                if (authHandler != null) {
+                    return authHandler;
                 }
             }
         }
         return null;
+    }
+    
+    private static AuthHandler getBasicAuthHandler(OMElement basicAuthElement) {
+
+        String username = getChildValue(basicAuthElement, AuthConstants.BASIC_AUTH_USERNAME);
+        String password = getChildValue(basicAuthElement, AuthConstants.BASIC_AUTH_PASSWORD);
+        return new BasicAuthHandler(username, password);
     }
 
     /**
@@ -170,10 +194,10 @@ public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
         OAuthHandler oAuthHandler = null;
 
         OMElement authCodeElement = oauthElement.getFirstChildWithName(
-                new QName(SynapseConstants.SYNAPSE_NAMESPACE, OAuthConstants.AUTHORIZATION_CODE));
+                new QName(SynapseConstants.SYNAPSE_NAMESPACE, AuthConstants.AUTHORIZATION_CODE));
 
         OMElement clientCredentialsElement = oauthElement.getFirstChildWithName(
-                new QName(SynapseConstants.SYNAPSE_NAMESPACE, OAuthConstants.CLIENT_CREDENTIALS));
+                new QName(SynapseConstants.SYNAPSE_NAMESPACE, AuthConstants.CLIENT_CREDENTIALS));
 
         if (authCodeElement != null) {
             oAuthHandler = getAuthorizationCodeHandler(authCodeElement);
@@ -193,10 +217,10 @@ public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
      */
     private static AuthorizationCodeHandler getAuthorizationCodeHandler(OMElement authCodeElement) {
 
-        String clientId = getChildValue(authCodeElement, OAuthConstants.OAUTH_CLIENT_ID);
-        String clientSecret = getChildValue(authCodeElement, OAuthConstants.OAUTH_CLIENT_SECRET);
-        String refreshToken = getChildValue(authCodeElement, OAuthConstants.OAUTH_REFRESH_TOKEN);
-        String tokenApiUrl = getChildValue(authCodeElement, OAuthConstants.TOKEN_API_URL);
+        String clientId = getChildValue(authCodeElement, AuthConstants.OAUTH_CLIENT_ID);
+        String clientSecret = getChildValue(authCodeElement, AuthConstants.OAUTH_CLIENT_SECRET);
+        String refreshToken = getChildValue(authCodeElement, AuthConstants.OAUTH_REFRESH_TOKEN);
+        String tokenApiUrl = getChildValue(authCodeElement, AuthConstants.TOKEN_API_URL);
 
         return new AuthorizationCodeHandler(tokenApiUrl, clientId, clientSecret, refreshToken);
 
@@ -210,9 +234,9 @@ public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
      */
     private static ClientCredentialsHandler getClientCredentialsHandler(OMElement clientCredentialsElement) {
 
-        String clientId = getChildValue(clientCredentialsElement, OAuthConstants.OAUTH_CLIENT_ID);
-        String clientSecret = getChildValue(clientCredentialsElement, OAuthConstants.OAUTH_CLIENT_SECRET);
-        String tokenApiUrl = getChildValue(clientCredentialsElement, OAuthConstants.TOKEN_API_URL);
+        String clientId = getChildValue(clientCredentialsElement, AuthConstants.OAUTH_CLIENT_ID);
+        String clientSecret = getChildValue(clientCredentialsElement, AuthConstants.OAUTH_CLIENT_SECRET);
+        String tokenApiUrl = getChildValue(clientCredentialsElement, AuthConstants.TOKEN_API_URL);
 
         return new ClientCredentialsHandler(tokenApiUrl, clientId, clientSecret);
 

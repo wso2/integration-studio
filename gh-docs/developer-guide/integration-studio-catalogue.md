@@ -1008,8 +1008,8 @@ Once the generation part is completed we need to follow the below steps to add a
 3. Add NodeName, ToolTipMessage (to be shown in the mediators palette) for the mediator in **/integrationstudio/gmf/esb/diagram/edit/parts/messages.properties** file
 
     ```java=
-    CalculatorMediator51CreationTool_title=Calculator
-    CalculatorMediator51CreationTool_desc=Executes calculator operations
+    CalculatorMediatorEditPart_NodeName=Calculator
+    CalculatorMediatorEditPart_ToolTipMessage=Executes calculator operations
     ```
 
 4. We need to refactor the following methods to limit the size of the method to 65536 bytes,
@@ -1079,26 +1079,81 @@ Once the generation part is completed we need to follow the below steps to add a
 
 9. Add the createCalculatorMediatorCreationTool() method to palette container. Make sure the entry generated for CalculatorMediatorCreationTool is of type NodeToolEntry. Also, commit only the changes relevant to CalculatorMediator in **EsbPaletteFactory.java** class in org.wso2.integrationstudio.gmf.esb.diagram.part package.
 
-10. Add the mediator icons in the following directories,
+10. In package org.wso2.integrationstudio.gmf.esb.diagram.custom/EditorUtils.java
+    Append below else block in at the end of the if conditions in getInputConnectorFromMediator(Mediator mediator) function
+
+    ```java
+    else if (mediator instanceof CalculatorMediator) {
+        return ((CalculatorMediator) mediator).getInputConnector();
+    }
+    ```
+
+    Append below else block in at the end of the if conditions in getOutputConnectorFromMediator(Mediator mediator) function
+
+    ```java
+    else if (mediator instanceof CalculatorMediator) {
+        return ((CalculatorMediator) mediator).getOutputConnector();
+    }
+    ```
+
+11. In package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts, in both CalculatorMediatorInputConnectorEditPart.java and CalculatorMediatorOutputConnectorEditPart.java classes, make sure figure_ is assigned and createNodeShapeReverse() is called in createNodeFigure() as below.
+
+    ```java
+    protected NodeFigure createNodeFigure() {
+        NodeFigure figure = createNodePlate();
+        figure.setLayoutManager(new StackLayout());
+        IFigure shape = createNodeShapeForward();
+        figure.add(shape);
+        contentPane = setupContentPane(shape);
+        figure_ = figure;
+        createNodeShapeReverse();
+        return figure;
+    }
+    ```
+
+12. Add the mediator icons in the following directories,
 **org.wso2.integrationstudio.gmf.esb.diagram/icons/ico20/calculator-mediator.png**, **org.wso2.integrationstudio.gmf.esb.edit/icons/full/obj16/calculator.png**. The former icon is for the mediator and the latter one is for the mediator palette.
 
-11. Create the xml schema for the mediator as **org.wso2.integrationstudio.gmf.esb.diagram/resources/schema/mediators/core/calculator.xsd**
+    Declare a variable for the icon path in EditPartConstants class in org.wso2.integrationstudio.gmf.esb.diagram.edit.parts package.
 
-12. Add the created schema location in **org.wso2.integrationstudio.gmf.esb.diagram
+    ```java
+    public static final String CALCULATOR_MEDIATOR_ICON_PATH = "icons/ico20/calculator-mediator.png";
+    ```
+
+    Make sure the correct icon path is set in getImage(Object object) function in CalculatorMediatorItemProvider class in org.wso2.integrationstudio.gmf.esb.provider package.
+
+    ```java
+    public Object getImage(Object object) {
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CalculatorMediator.png"));
+    }
+    ```
+
+13. Create the xml schema for the mediator as **org.wso2.integrationstudio.gmf.esb.diagram/resources/schema/mediators/core/calculator.xsd**
+
+14. Add the created schema location in **org.wso2.integrationstudio.gmf.esb.diagram
 /resources/schema/mediators/mediators.xsd** as shown below,
+
     ```xml
     <xs:include schemaLocation="core/calculator.xsd"/>
     ```
+
     If the mediator elements can come inside a sequence then we need to add the following line under **<xs:group name="mediatorList">**,
+
     ```xml
     <xs:element ref="calculator"/>
     ```
 
-13. Then we need to add the relevant mediator in **DummyCreateMediator.java**, **DummyMediatorFactoryFinder.java**, **MediatorValidationUtil.java** classes in org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer package and **ProcessSourceView.java** class in org.wso2.integrationstudio.gmf.esb.diagram.validator package. You may refer the existing configurations and add similar configuration for calculator mediator.
+### If the mediator you are creating exists in the synapse-core then you can proceed with the steps below. Otherwise create the required classes and and implement the neccessary methods
 
-14. Create a transformer class called **CalculatorMediatorTransformer** extending **AbstractEsbNodeTransformer** class in  **org.wso2.integrationstudio/gmf/esb/internal/persistence/CalculatorMediatorTransformer.java** directory. This class is needed to process source view of the mediator.
+15. Then we need to add the relevant mediator in **DummyCreateMediator.java**, **DummyMediatorFactoryFinder.java** classes in org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer package and **MediatorValidationUtil.java** , **ProcessSourceView.java** classes in org.wso2.integrationstudio.gmf.esb.diagram.validator package. You may refer the existing configurations and add similar configuration for calculator mediator.
 
-15. Add the created transformer in **EsbTransformerRegistry.java** in org.wso2.integrationstudio.gmf.esb.persistence package and **APIResourceTransformer.java** in org.wso2.integrationstudio.gmf.esb.internal.persistence package. Refer existing configurations for other mediators and follow the same approach.
+16. Create a transformer class called **CalculatorMediatorTransformer** extending **AbstractEsbNodeTransformer** class in  org.wso2.integrationstudio/gmf/esb/internal/persistence/CalculatorMediatorTransformer.java directory. This class is needed to process source view of the mediator.
+
+17. Add the created transformer in **EsbTransformerRegistry.java** in org.wso2.integrationstudio.gmf.esb.persistence package and **APIResourceTransformer.java** in org.wso2.integrationstudio.gmf.esb.internal.persistence package. Refer existing configurations for other mediators and follow the same approach.
+
+18. Create a deserializer class called **CalculatorMediatorDeserializer** extending **AbstractEsbNodeDeserializer<AbstractMediator, CalculatorMediator>** class in org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer package.
+
+19. Add the created deserializer in **ESBDeserializerRegistry** in org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer package. Refer existing configurations for other mediators and follow the same approach.
 
 ## Add properties view
 

@@ -363,6 +363,9 @@ public class DSSMediatorOutputConnectorEditPart extends AbstractMediatorOutputCo
         if (targetEditPart instanceof DSSMediatorInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof NTLMMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         return types;
     }
 
@@ -417,6 +420,7 @@ public class DSSMediatorOutputConnectorEditPart extends AbstractMediatorOutputCo
             types.add(EsbElementTypes.MergeNodeSecondInputConnector_3015);
             types.add(EsbElementTypes.JsonTransformMediatorInputConnector_3792);
             types.add(EsbElementTypes.DSSMediatorInputConnector_3795);
+            types.add(EsbElementTypes.NTLMMediatorInputConnector_3798);
         }
         return types;
     }

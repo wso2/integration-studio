@@ -44,6 +44,7 @@ import org.eclipse.gmf.runtime.emf.core.GMFEditingDomainFactory;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.part.DefaultDiagramEditorUtil;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -190,10 +191,10 @@ public class EsbDiagramEditorUtil {
                 }
 
                 try {
-                    modelResource.save(org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorUtil
-                            .getSaveOptions());
-                    diagramResource.save(org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorUtil
-                            .getSaveOptions());
+                    modelResource.save(
+                            org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorUtil.getSaveOptions());
+                    diagramResource.save(
+                            org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorUtil.getSaveOptions());
                 } catch (IOException e) {
 
                     EsbDiagramEditorPlugin.getInstance().logError("Unable to store model and diagram resources", e); //$NON-NLS-1$
@@ -253,8 +254,8 @@ public class EsbDiagramEditorUtil {
                     esbServer.eSet(target, Arrays.asList(proxyServices));
                     esbServer.setType(ArtifactType.PROXY);
                 } else if (ArtifactType.ENDPOINT.getLiteral().equals(type)// reverting end point form editors, this
-                                                                          // needs to be reviewed when it is introduced
-                                                                          // back
+                        // needs to be reviewed when it is introduced
+                        // back
                         || ArtifactType.ENDPOINT_ADDRESS.getLiteral().equals(type)
                         || ArtifactType.ENDPOINT_HTTP.getLiteral().equals(type)
                         || ArtifactType.ENDPOINT_WSDL.getLiteral().equals(type)
@@ -395,10 +396,10 @@ public class EsbDiagramEditorUtil {
                 }
 
                 try {
-                    modelResource.save(org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorUtil
-                            .getSaveOptions());
-                    diagramResource.save(org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorUtil
-                            .getSaveOptions());
+                    modelResource.save(
+                            org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorUtil.getSaveOptions());
+                    diagramResource.save(
+                            org.wso2.integrationstudio.gmf.esb.diagram.part.EsbDiagramEditorUtil.getSaveOptions());
                 } catch (IOException e) {
 
                     EsbDiagramEditorPlugin.getInstance().logError("Unable to store model and diagram resources", e); //$NON-NLS-1$
@@ -428,11 +429,11 @@ public class EsbDiagramEditorUtil {
     }
 
     /**
-     * Store model element in the resource. <!-- begin-user-doc --> <!--
+    * Store model element in the resource.
+    * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @generated
-     */
+    * @generated
+    */
     private static void attachModelToResource(EsbDiagram model, Resource resource) {
         resource.getContents().add(model);
     }
@@ -476,8 +477,7 @@ public class EsbDiagramEditorUtil {
         String elementID = EMFCoreUtil.getProxyID(element);
         @SuppressWarnings("unchecked")
         List<EditPart> associatedParts = viewer.findEditPartsForElement(elementID, IGraphicalEditPart.class);
-        // perform the possible hierarchy disjoint -> take the top-most parts
-        // only
+        // perform the possible hierarchy disjoint -> take the top-most parts only
         for (EditPart nextPart : associatedParts) {
             EditPart parentPart = nextPart.getParent();
             while (parentPart != null && !associatedParts.contains(parentPart)) {
@@ -555,16 +555,12 @@ public class EsbDiagramEditorUtil {
         public final Map<EObject, View> getElement2ViewMap() {
             if (element2ViewMap == null) {
                 element2ViewMap = new HashMap<EObject, View>();
-                // map possible notation elements to itself as these can't be
-                // found by view.getElement()
+                // map possible notation elements to itself as these can't be found by view.getElement()
                 for (EObject element : elementSet) {
                     if (element instanceof View) {
                         View view = (View) element;
                         if (view.getDiagram() == scope.getDiagram()) {
-                            element2ViewMap.put(element, view); // take only
-                                                                // those that
-                                                                // part of our
-                                                                // diagram
+                            element2ViewMap.put(element, view); // take only those that part of our diagram
                         }
                     }
                 }

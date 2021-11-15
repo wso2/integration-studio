@@ -2036,6 +2036,24 @@
                id="org.wso2.integrationstudio.gmf.esb.section.JsonTransformMediatorProperty"
                tab="Base">
          </propertySection>
+         <propertySection
+               class="org.wso2.integrationstudio.gmf.esb.parts.forms.NTLMMediatorPropertiesEditionPartForm"
+               filter="org.wso2.integrationstudio.gmf.esb.providers.NTLMMediatorPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.integrationstudio.gmf.esb.section.NTLMMediator"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.wso2.integrationstudio.gmf.esb.parts.forms.NTLMMediatorOutputConnectorPropertiesEditionPartForm"
+               filter="org.wso2.integrationstudio.gmf.esb.providers.NTLMMediatorOutputConnectorPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.integrationstudio.gmf.esb.section.NTLMMediatorOutputConnector"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.wso2.integrationstudio.gmf.esb.parts.forms.NTLMMediatorInputConnectorPropertiesEditionPartForm"
+               filter="org.wso2.integrationstudio.gmf.esb.providers.NTLMMediatorInputConnectorPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.integrationstudio.gmf.esb.section.NTLMMediatorInputConnector"
+               tab="Base">
+         </propertySection>
       </propertySections>
    </extension>
  </plugin>

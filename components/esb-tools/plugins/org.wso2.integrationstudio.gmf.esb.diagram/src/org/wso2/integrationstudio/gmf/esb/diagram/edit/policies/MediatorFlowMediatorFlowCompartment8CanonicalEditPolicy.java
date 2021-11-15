@@ -61,6 +61,7 @@ import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.JsonTransformMediat
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.LoadBalanceEndPointEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.LogMediatorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.LoopBackMediatorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.NTLMMediatorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.NamedEndpointEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.OAuthMediatorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.PayloadFactoryMediatorEditPart;
@@ -209,6 +210,7 @@ public class MediatorFlowMediatorFlowCompartment8CanonicalEditPolicy extends Can
         case PublishEventMediatorEditPart.VISUAL_ID:
         case JsonTransformMediatorEditPart.VISUAL_ID:
         case DSSMediatorEditPart.VISUAL_ID:
+        case NTLMMediatorEditPart.VISUAL_ID:
             return true;
         }
         return false;

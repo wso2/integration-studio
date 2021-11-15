@@ -291,9 +291,8 @@ public class SequenceNameEditPart extends CompartmentEditPart implements ITextAw
      */
     public IParser getParser() {
         if (parser == null) {
-            parser = EsbParserProvider.getParser(EsbElementTypes.Sequence_3503, getParserElement(),
-                    EsbVisualIDRegistry.getType(
-                            org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceNameEditPart.VISUAL_ID));
+            parser = EsbParserProvider.getParser(EsbElementTypes.Sequence_3503, getParserElement(), EsbVisualIDRegistry
+                    .getType(org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceNameEditPart.VISUAL_ID));
         }
         return parser;
     }

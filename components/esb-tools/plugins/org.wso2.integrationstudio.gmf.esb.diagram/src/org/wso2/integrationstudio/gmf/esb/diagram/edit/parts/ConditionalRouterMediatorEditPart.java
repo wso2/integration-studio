@@ -375,7 +375,7 @@ public class ConditionalRouterMediatorEditPart extends FixedSizedAbstractMediato
         }
 
     }
-    
+
     /**
      * @generated NOT
      */

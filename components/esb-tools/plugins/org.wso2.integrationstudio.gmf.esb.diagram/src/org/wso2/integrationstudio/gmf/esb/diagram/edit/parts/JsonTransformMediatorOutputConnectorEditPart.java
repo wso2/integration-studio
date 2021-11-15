@@ -132,9 +132,9 @@ public class JsonTransformMediatorOutputConnectorEditPart extends AbstractMediat
         figure.add(shape);
         contentPane = setupContentPane(shape);
         figure_ = figure;
-        
+
         createNodeShapeReverse();
-        
+
         return figure;
     }
 
@@ -193,7 +193,7 @@ public class JsonTransformMediatorOutputConnectorEditPart extends AbstractMediat
             ((Shape) primaryShape).setLineStyle(style);
         }
     }
-    
+
     /**
      * @generated
      */
@@ -202,7 +202,7 @@ public class JsonTransformMediatorOutputConnectorEditPart extends AbstractMediat
         types.add(EsbElementTypes.EsbLink_4001);
         return types;
     }
-    
+
     /**
      * @generated
      */
@@ -343,9 +343,13 @@ public class JsonTransformMediatorOutputConnectorEditPart extends AbstractMediat
         if (targetEditPart instanceof DSSMediatorInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof NTLMMediatorInputConnectorEditPart) {
+                
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         return types;
     }
-    
+
     /**
      * @generated
      */
@@ -399,7 +403,6 @@ public class JsonTransformMediatorOutputConnectorEditPart extends AbstractMediat
         }
         return types;
     }
-
 
     /**
      * @generated

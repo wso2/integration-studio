@@ -388,7 +388,7 @@ public class SpringMediatorEditPart extends FixedSizedAbstractMediator {
         }
 
     }
-    
+
     @Override
     public void notifyChanged(Notification notification) {
         // this.getModel() will get EMF datamodel of the spring mediator datamodel

@@ -286,8 +286,8 @@ public class CloneTargetContainerEditPart extends ShapeNodeEditPart {
          * }
          * 
          *//**
-                 * @generated
-                 */
+                  * @generated
+                  */
         /*
          * public WrappingLabel getFigureCloneMediatorPropertyValue() {
          * return fFigureCloneMediatorPropertyValue;

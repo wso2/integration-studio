@@ -412,7 +412,8 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
             // Open the DataMapper Editor while double clicking on the DataMapperMediator
             String configName = getconfigName(datamapper);
             setType(new Class[] { IRegistryFile.class });
-            IIntegrationStudioProviderData[] providerProjectsList = RegistryResourcesUtils.loadProviderProjectsList(type);
+            IIntegrationStudioProviderData[] providerProjectsList = RegistryResourcesUtils
+                    .loadProviderProjectsList(type);
             String configLocalPath = getConfigurationLocalPath(providerProjectsList, filters, configName);
             if (StringUtils.isNotEmpty(configLocalPath)) {
                 openDataMapperEditor(configLocalPath);

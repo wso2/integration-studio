@@ -326,15 +326,6 @@ public class Messages extends NLS {
     /**
      * @generated
      */
-    public static String HideShowConnector_title;
-
-    /**
-     * @generated
-     */
-    public static String HideShowConnector_desc;
-    /**
-     * @generated
-     */
     public static String CloudConnectorOperation6CreationTool_title;
 
     /**
@@ -881,6 +872,16 @@ public class Messages extends NLS {
     * @generated
     */
     public static String DSSMediator51CreationTool_desc;
+
+    /**
+    * @generated
+    */
+    public static String NTLMMediator52CreationTool_title;
+
+    /**
+    * @generated
+    */
+    public static String NTLMMediator52CreationTool_desc;
 
     /**
      * @generated
@@ -1536,6 +1537,16 @@ public class Messages extends NLS {
     * @generated
     */
     public static String NavigatorGroupName_DSSMediatorOutputConnector_3796_outgoinglinks;
+
+    /**
+    * @generated
+    */
+    public static String NavigatorGroupName_NTLMMediatorInputConnector_3798_incominglinks;
+
+    /**
+    * @generated
+    */
+    public static String NavigatorGroupName_NTLMMediatorOutputConnector_3799_outgoinglinks;
 
     /**
      * @generated

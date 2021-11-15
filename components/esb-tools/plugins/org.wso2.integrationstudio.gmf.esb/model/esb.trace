@@ -1431,6 +1431,19 @@
   <childNodeTraces
       visualID="3796"
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/integrationstudio/eclipse/gmf/esb' and _eClass_.name = 'DSSMediatorOutputConnector') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/integrationstudio/eclipse/gmf/esb' and _eClass_.name = 'DSSMediator') and _containmentMF_.name = 'outputConnector')"/>
+  <childNodeTraces
+      visualID="3797"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/integrationstudio/eclipse/gmf/esb' and _eClass_.name = 'NTLMMediator') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/integrationstudio/eclipse/gmf/esb' and _eClass_.name = 'MediatorFlow') and _containmentMF_.name = 'children')">
+    <nodeLabelTraces
+        visualID="5218"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3798"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/integrationstudio/eclipse/gmf/esb' and _eClass_.name = 'NTLMMediatorInputConnector') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/integrationstudio/eclipse/gmf/esb' and _eClass_.name = 'NTLMMediator') and _containmentMF_.name = 'inputConnector')"/>
+  <childNodeTraces
+      visualID="3799"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/integrationstudio/eclipse/gmf/esb' and _eClass_.name = 'NTLMMediatorOutputConnector') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/integrationstudio/eclipse/gmf/esb' and _eClass_.name = 'NTLMMediator') and _containmentMF_.name = 'outputConnector')"/>
   <linkTraces
       visualID="4001"
       queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/integrationstudio/eclipse/gmf/esb' and _eClass_.name = 'EsbLink')"/>

@@ -368,6 +368,9 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
                 case DSSMediatorEditPart.VISUAL_ID:
                 case DSSMediatorInputConnectorEditPart.VISUAL_ID:
                 case DSSMediatorOutputConnectorEditPart.VISUAL_ID:
+                case NTLMMediatorEditPart.VISUAL_ID:
+                case NTLMMediatorInputConnectorEditPart.VISUAL_ID:
+                case NTLMMediatorOutputConnectorEditPart.VISUAL_ID:
                 case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
                 case EntitlementAdviceContainerEditPart.VISUAL_ID:
                 case EntitlementObligationsContainerEditPart.VISUAL_ID:
@@ -715,6 +718,9 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
                 || JsonTransformMediatorOutputConnectorEditPart.VISUAL_ID == visualID
                 || DSSMediatorEditPart.VISUAL_ID == visualID || DSSMediatorInputConnectorEditPart.VISUAL_ID == visualID
                 || DSSMediatorOutputConnectorEditPart.VISUAL_ID == visualID
+                || NTLMMediatorEditPart.VISUAL_ID == visualID
+                || NTLMMediatorInputConnectorEditPart.VISUAL_ID == visualID
+                || NTLMMediatorOutputConnectorEditPart.VISUAL_ID == visualID
                 || EntitlementOnAcceptContainerEditPart.VISUAL_ID == visualID
                 || MediatorFlow22EditPart.VISUAL_ID == visualID
                 || EntitlementAdviceContainerEditPart.VISUAL_ID == visualID
@@ -1507,6 +1513,14 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
                     preferencesHint);
         case DSSMediatorOutputConnectorEditPart.VISUAL_ID:
             return createDSSMediatorOutputConnector_3796(domainElement, containerView, index, persisted,
+                    preferencesHint);
+        case NTLMMediatorEditPart.VISUAL_ID:
+            return createNTLMMediator_3797(domainElement, containerView, index, persisted, preferencesHint);
+        case NTLMMediatorInputConnectorEditPart.VISUAL_ID:
+            return createNTLMMediatorInputConnector_3798(domainElement, containerView, index, persisted,
+                    preferencesHint);
+        case NTLMMediatorOutputConnectorEditPart.VISUAL_ID:
+            return createNTLMMediatorOutputConnector_3799(domainElement, containerView, index, persisted,
                     preferencesHint);
         case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
             return createEntitlementOnAcceptContainer_3755(domainElement, containerView, index, persisted,
@@ -9569,6 +9583,109 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
         node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
         node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
         node.setType(EsbVisualIDRegistry.getType(DSSMediatorOutputConnectorEditPart.VISUAL_ID));
+        ViewUtil.insertChildView(containerView, node, index, persisted);
+        node.setElement(domainElement);
+        // initializeFromPreferences 
+        final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+        org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+                IPreferenceConstants.PREF_LINE_COLOR);
+        ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+                FigureUtilities.RGBToInteger(lineRGB));
+        FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+        if (nodeFontStyle != null) {
+            FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+            nodeFontStyle.setFontName(fontData.getName());
+            nodeFontStyle.setFontHeight(fontData.getHeight());
+            nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+            nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+            org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+                    IPreferenceConstants.PREF_FONT_COLOR);
+            nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+        }
+        return node;
+    }
+
+    /**
+    * @generated
+    */
+    public Node createNTLMMediator_3797(EObject domainElement, View containerView, int index, boolean persisted,
+            PreferencesHint preferencesHint) {
+        Node node = NotationFactory.eINSTANCE.createNode();
+        node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
+        node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+        node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+        node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+        node.setType(EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        ViewUtil.insertChildView(containerView, node, index, persisted);
+        node.setElement(domainElement);
+        // initializeFromPreferences 
+        final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+        org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+                IPreferenceConstants.PREF_LINE_COLOR);
+        ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+                FigureUtilities.RGBToInteger(lineRGB));
+        FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+        if (nodeFontStyle != null) {
+            FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+            nodeFontStyle.setFontName(fontData.getName());
+            nodeFontStyle.setFontHeight(fontData.getHeight());
+            nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+            nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+            org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+                    IPreferenceConstants.PREF_FONT_COLOR);
+            nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+        }
+        Node label5218 = createLabel(node, EsbVisualIDRegistry.getType(NTLMMediatorDescriptionEditPart.VISUAL_ID));
+        return node;
+    }
+
+    /**
+    * @generated
+    */
+    public Node createNTLMMediatorInputConnector_3798(EObject domainElement, View containerView, int index,
+            boolean persisted, PreferencesHint preferencesHint) {
+        Node node = NotationFactory.eINSTANCE.createNode();
+        node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
+        node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+        node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+        node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+        node.setType(EsbVisualIDRegistry.getType(NTLMMediatorInputConnectorEditPart.VISUAL_ID));
+        ViewUtil.insertChildView(containerView, node, index, persisted);
+        node.setElement(domainElement);
+        // initializeFromPreferences 
+        final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+        org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+                IPreferenceConstants.PREF_LINE_COLOR);
+        ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+                FigureUtilities.RGBToInteger(lineRGB));
+        FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+        if (nodeFontStyle != null) {
+            FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+            nodeFontStyle.setFontName(fontData.getName());
+            nodeFontStyle.setFontHeight(fontData.getHeight());
+            nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+            nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+            org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+                    IPreferenceConstants.PREF_FONT_COLOR);
+            nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+        }
+        return node;
+    }
+
+    /**
+    * @generated
+    */
+    public Node createNTLMMediatorOutputConnector_3799(EObject domainElement, View containerView, int index,
+            boolean persisted, PreferencesHint preferencesHint) {
+        Node node = NotationFactory.eINSTANCE.createNode();
+        node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
+        node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+        node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+        node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+        node.setType(EsbVisualIDRegistry.getType(NTLMMediatorOutputConnectorEditPart.VISUAL_ID));
         ViewUtil.insertChildView(containerView, node, index, persisted);
         node.setElement(domainElement);
         // initializeFromPreferences 

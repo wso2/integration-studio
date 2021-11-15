@@ -91,10 +91,8 @@ public class EsbDomainNavigatorItem extends PlatformObject {
      */
     public boolean equals(Object obj) {
         if (obj instanceof org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) {
-            return EcoreUtil.getURI(getEObject())
-                    .equals(EcoreUtil.getURI(
-                            ((org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) obj)
-                                    .getEObject()));
+            return EcoreUtil.getURI(getEObject()).equals(EcoreUtil.getURI(
+                    ((org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) obj).getEObject()));
         }
         return super.equals(obj);
     }

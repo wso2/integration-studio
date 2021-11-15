@@ -379,12 +379,11 @@ public class EventMediatorEditPart extends FixedSizedAbstractMediator {
         }
 
     }
-    
+
     @Override
     public void notifyChanged(Notification notification) {
         super.notifyChanged(notification);
     }
-
 
     /**
      * @generated NOT

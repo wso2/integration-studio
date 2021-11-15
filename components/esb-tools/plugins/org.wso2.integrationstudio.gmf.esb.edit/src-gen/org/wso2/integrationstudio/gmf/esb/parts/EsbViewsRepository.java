@@ -9897,4 +9897,72 @@ public class EsbViewsRepository {
 	
 	}
 
+
+
+	/**
+	 * NTLMMediator view descriptor
+	 * 
+	 */
+	public static class NTLMMediator {
+		public static class Properties {
+	
+			
+			public static String description = "esb::NTLMMediator::properties::description";
+			
+			
+			public static String commentsList = "esb::NTLMMediator::properties::commentsList";
+			
+			
+			public static String reverse = "esb::NTLMMediator::properties::Reverse";
+			
+			
+			public static String username = "esb::NTLMMediator::properties::username";
+			
+			
+			public static String password = "esb::NTLMMediator::properties::password";
+			
+			
+			public static String host = "esb::NTLMMediator::properties::host";
+			
+			
+			public static String domain = "esb::NTLMMediator::properties::domain";
+			
+			
+			public static String ntlmVersion = "esb::NTLMMediator::properties::ntlmVersion";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * NTLMMediatorOutputConnector view descriptor
+	 * 
+	 */
+	public static class NTLMMediatorOutputConnector {
+		public static class Properties {
+	
+			
+			public static String commentMediators = "esb::NTLMMediatorOutputConnector::properties::commentMediators";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * NTLMMediatorInputConnector view descriptor
+	 * 
+	 */
+	public static class NTLMMediatorInputConnector {
+		public static class Properties {
+	
+			
+			public static String incomingLinks = "esb::NTLMMediatorInputConnector::properties::incomingLinks";
+			
+	
+		}
+	
+	}
+
 }

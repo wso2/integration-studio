@@ -216,6 +216,9 @@ import org.wso2.integrationstudio.gmf.esb.parts.forms.MessageProcessorProperties
 import org.wso2.integrationstudio.gmf.esb.parts.forms.MessageStoreParameterPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.MessageStorePropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.MethodArgumentPropertiesEditionPartForm;
+import org.wso2.integrationstudio.gmf.esb.parts.forms.NTLMMediatorInputConnectorPropertiesEditionPartForm;
+import org.wso2.integrationstudio.gmf.esb.parts.forms.NTLMMediatorOutputConnectorPropertiesEditionPartForm;
+import org.wso2.integrationstudio.gmf.esb.parts.forms.NTLMMediatorPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.NameValueTypePropertyPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.NamedEndpointInputConnectorPropertiesEditionPartForm;
 import org.wso2.integrationstudio.gmf.esb.parts.forms.NamedEndpointOutputConnectorPropertiesEditionPartForm;
@@ -573,6 +576,9 @@ import org.wso2.integrationstudio.gmf.esb.parts.impl.MessageProcessorPropertiesE
 import org.wso2.integrationstudio.gmf.esb.parts.impl.MessageStoreParameterPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.MessageStorePropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.MethodArgumentPropertiesEditionPartImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.impl.NTLMMediatorInputConnectorPropertiesEditionPartImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.impl.NTLMMediatorOutputConnectorPropertiesEditionPartImpl;
+import org.wso2.integrationstudio.gmf.esb.parts.impl.NTLMMediatorPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.NameValueTypePropertyPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.NamedEndpointInputConnectorPropertiesEditionPartImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.impl.NamedEndpointOutputConnectorPropertiesEditionPartImpl;
@@ -2881,6 +2887,24 @@ public class EsbPropertiesEditionPartProvider implements IPropertiesEditionPartP
 				return new JsonTransformMediatorPropertyPropertiesEditionPartImpl(component);
 			if (kind == EsbViewsRepository.FORM_KIND)
 				return new JsonTransformMediatorPropertyPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.NTLMMediator.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new NTLMMediatorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new NTLMMediatorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.NTLMMediatorOutputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new NTLMMediatorOutputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new NTLMMediatorOutputConnectorPropertiesEditionPartForm(component);
+		}
+		if (key == EsbViewsRepository.NTLMMediatorInputConnector.class) {
+			if (kind == EsbViewsRepository.SWT_KIND)
+				return new NTLMMediatorInputConnectorPropertiesEditionPartImpl(component);
+			if (kind == EsbViewsRepository.FORM_KIND)
+				return new NTLMMediatorInputConnectorPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

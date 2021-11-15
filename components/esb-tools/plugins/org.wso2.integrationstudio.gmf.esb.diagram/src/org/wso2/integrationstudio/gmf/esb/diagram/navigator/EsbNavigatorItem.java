@@ -71,8 +71,8 @@ public class EsbNavigatorItem extends EsbAbstractNavigatorItem {
      */
     public boolean equals(Object obj) {
         if (obj instanceof org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbNavigatorItem) {
-            return EcoreUtil.getURI(getView()).equals(EcoreUtil.getURI(
-                    ((org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbNavigatorItem) obj).getView()));
+            return EcoreUtil.getURI(getView()).equals(EcoreUtil
+                    .getURI(((org.wso2.integrationstudio.gmf.esb.diagram.navigator.EsbNavigatorItem) obj).getView()));
         }
         return super.equals(obj);
     }

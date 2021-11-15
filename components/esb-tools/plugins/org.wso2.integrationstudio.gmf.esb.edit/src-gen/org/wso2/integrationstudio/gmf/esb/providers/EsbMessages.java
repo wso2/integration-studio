@@ -1312,6 +1312,13 @@ public class EsbMessages extends NLS {
 	
 	public static String JsonTransformMediatorPropertyPropertiesEditionPart_PropertiesGroupLabel;
 
+	public static String NTLMMediatorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String NTLMMediatorOutputConnectorPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String NTLMMediatorInputConnectorPropertiesEditionPart_PropertiesGroupLabel;
 
 	
 	public static String EsbDiagram_ReadOnly;
@@ -3461,6 +3468,23 @@ public class EsbMessages extends NLS {
 	
 	public static String JsonTransformMediatorProperty_Part_Title;
 
+
+	public static String NTLMMediator_ReadOnly;
+
+	
+	public static String NTLMMediator_Part_Title;
+
+	
+	public static String NTLMMediatorOutputConnector_ReadOnly;
+
+	
+	public static String NTLMMediatorOutputConnector_Part_Title;
+
+	
+	public static String NTLMMediatorInputConnector_ReadOnly;
+
+	
+	public static String NTLMMediatorInputConnector_Part_Title;
 
 	
 	public static String EsbDiagramPropertiesEditionPart_TestLabel;
@@ -8536,6 +8560,35 @@ public class EsbMessages extends NLS {
 	public static String JsonTransformMediatorPropertyPropertiesEditionPart_PropertyValueLabel;
 
 
+	public static String NTLMMediatorPropertiesEditionPart_DescriptionLabel;
+
+	
+	public static String NTLMMediatorPropertiesEditionPart_CommentsListLabel;
+
+	
+	public static String NTLMMediatorPropertiesEditionPart_ReverseLabel;
+
+	
+	public static String NTLMMediatorPropertiesEditionPart_UsernameLabel;
+
+	
+	public static String NTLMMediatorPropertiesEditionPart_PasswordLabel;
+
+	
+	public static String NTLMMediatorPropertiesEditionPart_HostLabel;
+
+	
+	public static String NTLMMediatorPropertiesEditionPart_DomainLabel;
+
+	
+	public static String NTLMMediatorPropertiesEditionPart_NtlmVersionLabel;
+
+	
+	public static String NTLMMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;
+
+	
+	public static String NTLMMediatorInputConnectorPropertiesEditionPart_IncomingLinksLabel;
+	
 	
 	public static String PropertiesEditionPart_DocumentationLabel;
 

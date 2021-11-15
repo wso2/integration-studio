@@ -74,6 +74,7 @@ import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.LoopBackMediatorInp
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MergeNodeFirstInputConnectorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MergeNodeSecondInputConnectorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.MessageInputConnectorEditPart;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.NTLMMediatorInputConnectorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.NamedEndpointInputConnectorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.OAuthMediatorInputConnectorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.PayloadFactoryMediatorInputConnectorEditPart;
@@ -358,6 +359,9 @@ public class EsbModelingAssistantProviderOfPropertyGroupMediatorOutputConnectorE
         if (targetEditPart instanceof DSSMediatorInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof NTLMMediatorInputConnectorEditPart) {
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         if (targetEditPart instanceof ProxyInSequenceInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
@@ -500,6 +504,7 @@ public class EsbModelingAssistantProviderOfPropertyGroupMediatorOutputConnectorE
             types.add(EsbElementTypes.PublishEventMediatorInputConnector_3786);
             types.add(EsbElementTypes.JsonTransformMediatorInputConnector_3792);
             types.add(EsbElementTypes.DSSMediatorInputConnector_3795);
+            types.add(EsbElementTypes.NTLMMediatorInputConnector_3798);
             types.add(EsbElementTypes.ProxyInSequenceInputConnector_3731);
             types.add(EsbElementTypes.MessageInputConnector_3046);
             types.add(EsbElementTypes.MergeNodeFirstInputConnector_3014);

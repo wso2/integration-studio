@@ -46,7 +46,7 @@ public enum HTTPEndpointAuthType implements Enumerator {
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @see #BASIC_AUTH_VALUE
-     * @generated
+     * @generated NOT
      * @ordered
      */
     BASIC_AUTH(1, "Basic_Auth", "Basic Auth"),

@@ -131,9 +131,9 @@ public class JsonTransformMediatorInputConnectorEditPart extends AbstractMediato
         figure.add(shape);
         contentPane = setupContentPane(shape);
         figure_ = figure;
-        
+
         createNodeShapeReverse();
-        
+
         return figure;
     }
 
@@ -201,7 +201,7 @@ public class JsonTransformMediatorInputConnectorEditPart extends AbstractMediato
         types.add(EsbElementTypes.EsbLink_4001);
         return types;
     }
-    
+
     /**
      * @generated
      */
@@ -256,10 +256,11 @@ public class JsonTransformMediatorInputConnectorEditPart extends AbstractMediato
             types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
             types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
             types.add(EsbElementTypes.DSSMediatorInputConnector_3795);
+            types.add(EsbElementTypes.NTLMMediatorOutputConnector_3799);
         }
         return types;
     }
-    
+
     /**
      * @generated
      */

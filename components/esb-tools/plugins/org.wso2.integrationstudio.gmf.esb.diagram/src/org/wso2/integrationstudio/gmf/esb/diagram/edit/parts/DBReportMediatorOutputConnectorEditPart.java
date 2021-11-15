@@ -342,6 +342,10 @@ public class DBReportMediatorOutputConnectorEditPart extends AbstractMediatorOut
         if (targetEditPart instanceof DSSMediatorInputConnectorEditPart) {
             types.add(EsbElementTypes.EsbLink_4001);
         }
+        if (targetEditPart instanceof NTLMMediatorInputConnectorEditPart) {
+                
+            types.add(EsbElementTypes.EsbLink_4001);
+        }
         return types;
     }
 

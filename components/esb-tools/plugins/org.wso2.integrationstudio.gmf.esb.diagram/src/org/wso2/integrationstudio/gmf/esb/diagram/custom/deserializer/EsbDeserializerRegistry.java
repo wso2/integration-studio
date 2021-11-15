@@ -46,6 +46,7 @@ import org.apache.synapse.mediators.builtin.EnqueueMediator;
 import org.apache.synapse.mediators.builtin.ForEachMediator;
 import org.apache.synapse.mediators.builtin.LogMediator;
 import org.apache.synapse.mediators.builtin.LoopBackMediator;
+import org.apache.synapse.mediators.builtin.NTLMMediator;
 import org.apache.synapse.mediators.builtin.PropertyGroupMediator;
 import org.apache.synapse.mediators.builtin.PropertyMediator;
 import org.apache.synapse.mediators.builtin.RespondMediator;
@@ -207,6 +208,7 @@ public class EsbDeserializerRegistry {
         addDeserializer(PublishEventMediator.class, new PublishEventMediatorDeserializer());
         addDeserializer(JSONTransformMediator.class, new JsonTransformMediatorDeserializer());
         addDeserializer(DataServiceCallMediator.class, new DataServicesCallMediatorDeserializer());
+        addDeserializer(NTLMMediator.class, new NTLMMediatorDeserializer());;
     }
 
     /**

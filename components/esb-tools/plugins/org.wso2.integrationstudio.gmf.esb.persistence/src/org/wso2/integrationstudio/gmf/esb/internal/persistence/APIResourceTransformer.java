@@ -57,6 +57,7 @@ import org.wso2.integrationstudio.gmf.esb.HeaderMediator;
 import org.wso2.integrationstudio.gmf.esb.IterateMediator;
 import org.wso2.integrationstudio.gmf.esb.LogMediator;
 import org.wso2.integrationstudio.gmf.esb.LoopBackMediator;
+import org.wso2.integrationstudio.gmf.esb.NTLMMediator;
 import org.wso2.integrationstudio.gmf.esb.OAuthMediator;
 import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator;
 import org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator;
@@ -416,6 +417,10 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
                 }
             } else if (children.get(i) instanceof PublishEventMediator) {
                 if (((PublishEventMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            }else if (children.get(i) instanceof NTLMMediator) {
+                if (((NTLMMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
                     return children.get(i);
                 }
             }

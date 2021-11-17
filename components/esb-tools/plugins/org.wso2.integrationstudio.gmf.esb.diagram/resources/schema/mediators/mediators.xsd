@@ -72,6 +72,7 @@
     <xs:include schemaLocation="other/rule.xsd"/>
     <xs:include schemaLocation="other/bam.xsd"/>
     <xs:include schemaLocation="other/publishEvent.xsd"/>
+    <xs:include schemaLocation="other/ntlm.xsd"/>
 
     <xs:group name="mediatorList">
         <xs:annotation>
@@ -130,6 +131,7 @@
             <xs:element ref="rule"/>
             <xs:element ref="bam"/>
             <xs:element ref="publishEvent"/>
+            <xs:element ref="NTLM"/>
 
         </xs:choice>
     </xs:group>

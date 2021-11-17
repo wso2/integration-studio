@@ -332,6 +332,9 @@ import org.wso2.integrationstudio.gmf.esb.MessageStore;
 import org.wso2.integrationstudio.gmf.esb.MessageStoreParameter;
 import org.wso2.integrationstudio.gmf.esb.MessageStoreType;
 import org.wso2.integrationstudio.gmf.esb.MethodArgument;
+import org.wso2.integrationstudio.gmf.esb.NTLMMediator;
+import org.wso2.integrationstudio.gmf.esb.NTLMMediatorInputConnector;
+import org.wso2.integrationstudio.gmf.esb.NTLMMediatorOutputConnector;
 import org.wso2.integrationstudio.gmf.esb.NameValueTypeProperty;
 import org.wso2.integrationstudio.gmf.esb.NamedEndpoint;
 import org.wso2.integrationstudio.gmf.esb.NamedEndpointInputConnector;
@@ -2088,6 +2091,27 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     private EClass jsonTransformMediatorPropertyEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass ntlmMediatorEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass ntlmMediatorOutputConnectorEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass ntlmMediatorInputConnectorEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -13582,6 +13606,96 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getNTLMMediator() {
+        return ntlmMediatorEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getNTLMMediator_InputConnector() {
+        return (EReference)ntlmMediatorEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getNTLMMediator_OutputConnector() {
+        return (EReference)ntlmMediatorEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getNTLMMediator_Username() {
+        return (EAttribute)ntlmMediatorEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getNTLMMediator_Password() {
+        return (EAttribute)ntlmMediatorEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getNTLMMediator_Host() {
+        return (EAttribute)ntlmMediatorEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getNTLMMediator_Domain() {
+        return (EAttribute)ntlmMediatorEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getNTLMMediator_NtlmVersion() {
+        return (EAttribute)ntlmMediatorEClass.getEStructuralFeatures().get(6);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getNTLMMediatorOutputConnector() {
+        return ntlmMediatorOutputConnectorEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getNTLMMediatorInputConnector() {
+        return ntlmMediatorInputConnectorEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EEnum getArtifactType() {
         return artifactTypeEEnum;
     }
@@ -22489,6 +22603,19 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
         jsonTransformMediatorPropertyEClass = createEClass(JSON_TRANSFORM_MEDIATOR_PROPERTY);
 
+        ntlmMediatorEClass = createEClass(NTLM_MEDIATOR);
+        createEReference(ntlmMediatorEClass, NTLM_MEDIATOR__INPUT_CONNECTOR);
+        createEReference(ntlmMediatorEClass, NTLM_MEDIATOR__OUTPUT_CONNECTOR);
+        createEAttribute(ntlmMediatorEClass, NTLM_MEDIATOR__USERNAME);
+        createEAttribute(ntlmMediatorEClass, NTLM_MEDIATOR__PASSWORD);
+        createEAttribute(ntlmMediatorEClass, NTLM_MEDIATOR__HOST);
+        createEAttribute(ntlmMediatorEClass, NTLM_MEDIATOR__DOMAIN);
+        createEAttribute(ntlmMediatorEClass, NTLM_MEDIATOR__NTLM_VERSION);
+
+        ntlmMediatorOutputConnectorEClass = createEClass(NTLM_MEDIATOR_OUTPUT_CONNECTOR);
+
+        ntlmMediatorInputConnectorEClass = createEClass(NTLM_MEDIATOR_INPUT_CONNECTOR);
+
         // Create enums
         artifactTypeEEnum = createEEnum(ARTIFACT_TYPE);
         callMediatorEndpointTypeEEnum = createEEnum(CALL_MEDIATOR_ENDPOINT_TYPE);
@@ -23015,6 +23142,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         jsonTransformMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
         jsonTransformMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
         jsonTransformMediatorPropertyEClass.getESuperTypes().add(this.getAbstractNameValueExpressionProperty());
+        ntlmMediatorEClass.getESuperTypes().add(this.getMediator());
+        ntlmMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
+        ntlmMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
 
         // Initialize classes and features; add operations and parameters
         initEClass(esbDiagramEClass, EsbDiagram.class, "EsbDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -25062,6 +25192,19 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
         initEClass(jsonTransformMediatorPropertyEClass, JsonTransformMediatorProperty.class, "JsonTransformMediatorProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+        initEClass(ntlmMediatorEClass, NTLMMediator.class, "NTLMMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getNTLMMediator_InputConnector(), this.getNTLMMediatorInputConnector(), null, "inputConnector", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getNTLMMediator_OutputConnector(), this.getNTLMMediatorOutputConnector(), null, "outputConnector", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getNTLMMediator_Username(), ecorePackage.getEString(), "username", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getNTLMMediator_Password(), ecorePackage.getEString(), "password", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getNTLMMediator_Host(), ecorePackage.getEString(), "host", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getNTLMMediator_Domain(), ecorePackage.getEString(), "domain", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getNTLMMediator_NtlmVersion(), ecorePackage.getEString(), "ntlmVersion", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(ntlmMediatorOutputConnectorEClass, NTLMMediatorOutputConnector.class, "NTLMMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(ntlmMediatorInputConnectorEClass, NTLMMediatorInputConnector.class, "NTLMMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
         // Initialize enums and add enum literals
         initEEnum(artifactTypeEEnum, ArtifactType.class, "ArtifactType");
         addEEnumLiteral(artifactTypeEEnum, ArtifactType.SYNAPSE_CONFIG);
@@ -25220,7 +25363,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         addEEnumLiteral(propertyDataTypeEEnum, PropertyDataType.LONG);
         addEEnumLiteral(propertyDataTypeEEnum, PropertyDataType.SHORT);
         addEEnumLiteral(propertyDataTypeEEnum, PropertyDataType.OM);
-		addEEnumLiteral(propertyDataTypeEEnum, PropertyDataType.JSON);
+        addEEnumLiteral(propertyDataTypeEEnum, PropertyDataType.JSON);
 
         initEEnum(propertyActionEEnum, PropertyAction.class, "PropertyAction");
         addEEnumLiteral(propertyActionEEnum, PropertyAction.SET);

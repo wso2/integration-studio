@@ -28,6 +28,7 @@ import org.apache.synapse.config.xml.JSONTransformMediatorFactory;
 import org.apache.synapse.config.xml.LogMediatorFactory;
 import org.apache.synapse.config.xml.LoopBackMediatorFactory;
 import org.apache.synapse.config.xml.MessageStoreMediatorFactory;
+import org.apache.synapse.config.xml.NTLMMediatorFactory;
 import org.apache.synapse.config.xml.PayloadFactoryMediatorFactory;
 import org.apache.synapse.config.xml.PropertyGroupMediatorFactory;
 import org.apache.synapse.config.xml.PropertyMediatorFactory;
@@ -116,6 +117,7 @@ public class MediatorValidationUtil {
     private static BamMediatorExtFactory bamMediatorExtFactory;
     private static JSONTransformMediatorFactory jsonTransformMediatorFactory;
     private static DataServiceCallMediatorFactory dataServiceCallMediatorFactory;
+    private static NTLMMediatorFactory ntlmMediatorFactory;
 
 
     /**
@@ -523,6 +525,13 @@ public class MediatorValidationUtil {
 			    setNamespaceForChildren(omElement);
 			    dataServiceCallMediatorFactory.createMediator(omElement, null);
 			    break;
+			case "NTLM":
+                if (ntlmMediatorFactory == null) {
+                    ntlmMediatorFactory = new NTLMMediatorFactory();
+                }
+                setNamespaceForChildren(omElement);
+                dataServiceCallMediatorFactory.createMediator(omElement, null);
+                break;
 			default:
 				break;
 			}

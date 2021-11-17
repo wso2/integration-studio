@@ -1420,6 +1420,24 @@ public class EsbElementTypes {
             "org.wso2.integrationstudio.gmf.esb.diagram.DSSMediatorOutputConnector_3796"); //$NON-NLS-1$
 
     /**
+    * @generated
+    */
+    public static final IElementType NTLMMediator_3797 = getElementType(
+            "org.wso2.integrationstudio.gmf.esb.diagram.NTLMMediator_3797"); //$NON-NLS-1$
+
+    /**
+    * @generated
+    */
+    public static final IElementType NTLMMediatorInputConnector_3798 = getElementType(
+            "org.wso2.integrationstudio.gmf.esb.diagram.NTLMMediatorInputConnector_3798"); //$NON-NLS-1$
+
+    /**
+    * @generated
+    */
+    public static final IElementType NTLMMediatorOutputConnector_3799 = getElementType(
+            "org.wso2.integrationstudio.gmf.esb.diagram.NTLMMediatorOutputConnector_3799"); //$NON-NLS-1$
+
+    /**
      * @generated
      */
     public static final IElementType EntitlementOnAcceptContainer_3755 = getElementType(
@@ -2746,6 +2764,12 @@ public class EsbElementTypes {
 
             elements.put(DSSMediatorOutputConnector_3796, EsbPackage.eINSTANCE.getDSSMediatorOutputConnector());
 
+            elements.put(NTLMMediator_3797, EsbPackage.eINSTANCE.getNTLMMediator());
+
+            elements.put(NTLMMediatorInputConnector_3798, EsbPackage.eINSTANCE.getNTLMMediatorInputConnector());
+
+            elements.put(NTLMMediatorOutputConnector_3799, EsbPackage.eINSTANCE.getNTLMMediatorOutputConnector());
+
             elements.put(EntitlementOnAcceptContainer_3755, EsbPackage.eINSTANCE.getEntitlementOnAcceptContainer());
 
             elements.put(MediatorFlow_3756, EsbPackage.eINSTANCE.getMediatorFlow());
@@ -3214,6 +3238,9 @@ public class EsbElementTypes {
             KNOWN_ELEMENT_TYPES.add(DSSMediator_3794);
             KNOWN_ELEMENT_TYPES.add(DSSMediatorInputConnector_3795);
             KNOWN_ELEMENT_TYPES.add(DSSMediatorOutputConnector_3796);
+            KNOWN_ELEMENT_TYPES.add(NTLMMediator_3797);
+            KNOWN_ELEMENT_TYPES.add(NTLMMediatorInputConnector_3798);
+            KNOWN_ELEMENT_TYPES.add(NTLMMediatorOutputConnector_3799);
             KNOWN_ELEMENT_TYPES.add(EntitlementOnAcceptContainer_3755);
             KNOWN_ELEMENT_TYPES.add(MediatorFlow_3756);
             KNOWN_ELEMENT_TYPES.add(EntitlementAdviceContainer_3757);
@@ -3828,6 +3855,12 @@ public class EsbElementTypes {
             return DSSMediatorInputConnector_3795;
         case DSSMediatorOutputConnectorEditPart.VISUAL_ID:
             return DSSMediatorOutputConnector_3796;
+        case NTLMMediatorEditPart.VISUAL_ID:
+            return NTLMMediator_3797;
+        case NTLMMediatorInputConnectorEditPart.VISUAL_ID:
+            return NTLMMediatorInputConnector_3798;
+        case NTLMMediatorOutputConnectorEditPart.VISUAL_ID:
+            return NTLMMediatorOutputConnector_3799;
         case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
             return EntitlementOnAcceptContainer_3755;
         case MediatorFlow22EditPart.VISUAL_ID:

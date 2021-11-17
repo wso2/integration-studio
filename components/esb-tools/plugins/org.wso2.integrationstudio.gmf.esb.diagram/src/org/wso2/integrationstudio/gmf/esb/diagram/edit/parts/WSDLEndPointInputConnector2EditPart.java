@@ -284,6 +284,7 @@ public class WSDLEndPointInputConnector2EditPart extends AbstractEndpointInputCo
             types.add(EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3659);
             types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
             types.add(EsbElementTypes.DSSMediatorInputConnector_3795);
+            types.add(EsbElementTypes.NTLMMediatorOutputConnector_3799);
         }
         return types;
     }

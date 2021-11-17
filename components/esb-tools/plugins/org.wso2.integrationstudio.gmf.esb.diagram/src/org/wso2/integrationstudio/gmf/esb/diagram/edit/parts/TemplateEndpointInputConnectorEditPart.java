@@ -308,6 +308,7 @@ public class TemplateEndpointInputConnectorEditPart extends AbstractEndpointInpu
             types.add(EsbElementTypes.ComplexEndpointsOutputConnector_3679);
             types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
             types.add(EsbElementTypes.DSSMediatorInputConnector_3795);
+            types.add(EsbElementTypes.NTLMMediatorOutputConnector_3799);
         }
         return types;
     }

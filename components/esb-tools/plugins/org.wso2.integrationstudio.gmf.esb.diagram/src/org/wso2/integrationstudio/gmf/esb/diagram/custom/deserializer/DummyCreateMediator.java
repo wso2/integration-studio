@@ -88,7 +88,7 @@ public class DummyCreateMediator {
 	    "validate", "conditionalRouter", "bean", "class", "pojoCommand", "ejb", "script", "spring", "enrich",
 	    "makefault", "header", "payloadFactory", "smooks", "rewrite", "xquery", "xslt", "datamapper", "fastXSLT",
 	    "cache", "dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone",
-	    "iterate", "foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent", "jsontransform", "dataServiceCall"));
+	    "iterate", "foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent", "jsontransform", "dataServiceCall", "ntlm"));
     
     private static CloneMediatorFactory cloneMediatorFactory;
 
@@ -364,7 +364,12 @@ public class DummyCreateMediator {
 		DataServiceCallMediatorExtFactory factory = DataServiceCallMediatorExtFactory.getInstance();
 	    return factory.createMediator(omElement, null);
 	    
-	}
+    } else if ("NTLM".equals(localName)) {
+
+        NTLMMediatorExtFactory factory = NTLMMediatorExtFactory.getInstance();
+        return factory.createMediator(omElement, null);
+
+    }
 
         return mediator;
     }

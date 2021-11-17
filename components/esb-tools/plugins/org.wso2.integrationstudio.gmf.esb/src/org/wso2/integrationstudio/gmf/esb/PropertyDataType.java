@@ -256,6 +256,7 @@ public enum PropertyDataType implements Enumerator {
             LONG,
             SHORT,
             OM,
+            JSON,
         };
 
     /**
@@ -320,6 +321,7 @@ public enum PropertyDataType implements Enumerator {
             case LONG_VALUE: return LONG;
             case SHORT_VALUE: return SHORT;
             case OM_VALUE: return OM;
+            case JSON_VALUE: return JSON;
         }
         return null;
     }

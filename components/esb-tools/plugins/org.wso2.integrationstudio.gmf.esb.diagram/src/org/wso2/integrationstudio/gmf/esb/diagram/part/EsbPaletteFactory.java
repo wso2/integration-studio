@@ -247,6 +247,7 @@ public class EsbPaletteFactory {
 
         paletteContainer.add(createEntitlementMediator10CreationTool());
         paletteContainer.add(createOAuthMediator30CreationTool());
+        paletteContainer.add(createNTLMMediator52CreationTool());
 
         // Advanced Mediator Category separator.
         paletteContainer.add(new PaletteSeparator("Advanced2"));
@@ -1180,6 +1181,20 @@ public class EsbPaletteFactory {
          entry.setLargeIcon(entry.getSmallIcon());
          return entry;
      }
+
+     /**
+      * @generated
+      */
+     private ToolEntry createNTLMMediator52CreationTool() {
+         NodeToolEntry entry = new NodeToolEntry(Messages.NTLMMediator52CreationTool_title,
+                 Messages.NTLMMediator52CreationTool_desc,
+                 Collections.singletonList(EsbElementTypes.NTLMMediator_3797));
+         entry.setId("createNTLMMediator52CreationTool"); //$NON-NLS-1$
+         entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.NTLMMediator_3797));
+         entry.setLargeIcon(entry.getSmallIcon());
+         return entry;
+     }
+
     /**
      * @generated NOT
      */

@@ -641,6 +641,11 @@ public class TemplateItemProvider extends EsbElementItemProvider {
 
         newChildDescriptors.add
             (createChildParameter
+                (EsbPackage.Literals.TEMPLATE__CHILD,
+                 EsbFactory.eINSTANCE.createNTLMMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
                 (EsbPackage.Literals.TEMPLATE__PARAMETERS,
                  EsbFactory.eINSTANCE.createTemplateParameter()));
 

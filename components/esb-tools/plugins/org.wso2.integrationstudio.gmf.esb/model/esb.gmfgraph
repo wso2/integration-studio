@@ -2504,6 +2504,35 @@
           accessor="getFigureDSSMediatorDescriptionFigure"
           figure="//@figures.0/@descriptors.121/@actualFigure/@children.1"/>
     </descriptors>
+    <descriptors
+        name="NTLMMediatorFigure">
+      <actualFigure
+          xsi:type="gmfgraph:CustomFigure"
+          name="NTLMMediatorGraphicalFigure"
+          qualifiedClassName="org.wso2.integrationstudio.gmf.esb.diagram.custom.EsbGraphicalShape">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"/>
+        <backgroundColor
+            xsi:type="gmfgraph:RGBColor"
+            red="230"
+            green="230"
+            blue="230"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="NTLMMediatorPropertyLabel"
+            text="&lt;...>"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="NTLMMediatorDescriptionFIgure"
+            text="&lt;...>"/>
+      </actualFigure>
+      <accessors
+          accessor="getFigureNTLMMediatorPropertyLabel"
+          figure="//@figures.0/@descriptors.122/@actualFigure/@children.0"/>
+      <accessors
+          accessor="getFigureNTLMMediatorDescriptionFigure"
+          figure="//@figures.0/@descriptors.122/@actualFigure/@children.1"/>
+    </descriptors>
   </figures>
   <nodes
       name="EsbServer"
@@ -3581,6 +3610,17 @@
       name="DSSMediatorOutputConnector"
       figure="EastPointerFigure"
       affixedParentSide="EAST"/>
+  <nodes
+      name="NTLMMediator"
+      figure="NTLMMediatorFigure"/>
+  <nodes
+      name="NTLMMediatorInputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="WEST"/>
+  <nodes
+      name="NTLMMediatorOutputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="EAST"/>
   <connections
       name="EsbLink"
       figure="PlainConnectionFigure"/>
@@ -4089,4 +4129,14 @@
       figure="DSSMediatorFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.121/@accessors.1"/>
+  <labels
+      name="NTLMMediatorName"
+      figure="NTLMMediatorFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.122/@accessors.0"/>
+  <labels
+      name="NTLMMediatorDescription"
+      figure="NTLMMediatorFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.122/@accessors.1"/>
 </gmfgraph:Canvas>

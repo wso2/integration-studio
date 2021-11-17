@@ -60,6 +60,7 @@ import org.apache.synapse.config.xml.LoopBackMediatorFactory;
 import org.apache.synapse.config.xml.MediatorFactory;
 import org.apache.synapse.config.xml.MediatorFactoryFinder;
 import org.apache.synapse.config.xml.MessageStoreMediatorFactory;
+import org.apache.synapse.config.xml.NTLMMediatorFactory;
 import org.apache.synapse.config.xml.OutMediatorFactory;
 import org.apache.synapse.config.xml.POJOCommandMediatorFactory;
 import org.apache.synapse.config.xml.PayloadFactoryMediatorFactory;
@@ -120,7 +121,7 @@ public class DummyMediatorFactoryFinder {
             PublishEventMediatorFactory.class, EventMediatorFactory.class, ScriptMediatorFactory.class,
             SmooksMediatorFactory.class, XQueryMediatorFactory.class, FastXSLTMediatorFactory.class,
 			DataMapperMediatorFactory.class, ThrottleMediatorFactory.class, JSONTransformMediatorFactory.class,
-			DataServiceCallMediatorFactory.class };
+			DataServiceCallMediatorFactory.class, NTLMMediatorFactory.class };
 
     private final static DummyMediatorFactoryFinder instance = new DummyMediatorFactoryFinder();
 

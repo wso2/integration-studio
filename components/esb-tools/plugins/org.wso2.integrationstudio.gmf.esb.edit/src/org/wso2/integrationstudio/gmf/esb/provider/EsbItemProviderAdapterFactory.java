@@ -4817,6 +4817,75 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.NTLMMediator} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected NTLMMediatorItemProvider ntlmMediatorItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.NTLMMediator}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createNTLMMediatorAdapter() {
+        if (ntlmMediatorItemProvider == null) {
+            ntlmMediatorItemProvider = new NTLMMediatorItemProvider(this);
+        }
+
+        return ntlmMediatorItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.NTLMMediatorOutputConnector} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected NTLMMediatorOutputConnectorItemProvider ntlmMediatorOutputConnectorItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.NTLMMediatorOutputConnector}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createNTLMMediatorOutputConnectorAdapter() {
+        if (ntlmMediatorOutputConnectorItemProvider == null) {
+            ntlmMediatorOutputConnectorItemProvider = new NTLMMediatorOutputConnectorItemProvider(this);
+        }
+
+        return ntlmMediatorOutputConnectorItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.NTLMMediatorInputConnector} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected NTLMMediatorInputConnectorItemProvider ntlmMediatorInputConnectorItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.NTLMMediatorInputConnector}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createNTLMMediatorInputConnectorAdapter() {
+        if (ntlmMediatorInputConnectorItemProvider == null) {
+            ntlmMediatorInputConnectorItemProvider = new NTLMMediatorInputConnectorItemProvider(this);
+        }
+
+        return ntlmMediatorInputConnectorItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.ScriptMediator} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8949,6 +9018,9 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
         if (jsonTransformMediatorOutputConnectorItemProvider != null) jsonTransformMediatorOutputConnectorItemProvider.dispose();
         if (jsonTransformMediatorInputConnectorItemProvider != null) jsonTransformMediatorInputConnectorItemProvider.dispose();
         if (jsonTransformMediatorPropertyItemProvider != null) jsonTransformMediatorPropertyItemProvider.dispose();
+        if (ntlmMediatorItemProvider != null) ntlmMediatorItemProvider.dispose();
+        if (ntlmMediatorOutputConnectorItemProvider != null) ntlmMediatorOutputConnectorItemProvider.dispose();
+        if (ntlmMediatorInputConnectorItemProvider != null) ntlmMediatorInputConnectorItemProvider.dispose();
     }
 
 }

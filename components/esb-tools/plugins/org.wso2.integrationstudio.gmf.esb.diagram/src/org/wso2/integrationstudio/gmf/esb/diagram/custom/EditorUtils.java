@@ -94,6 +94,7 @@ import org.wso2.integrationstudio.gmf.esb.IterateMediator;
 import org.wso2.integrationstudio.gmf.esb.JsonTransformMediator;
 import org.wso2.integrationstudio.gmf.esb.LogMediator;
 import org.wso2.integrationstudio.gmf.esb.LoopBackMediator;
+import org.wso2.integrationstudio.gmf.esb.NTLMMediator;
 import org.wso2.integrationstudio.gmf.esb.OAuthMediator;
 import org.wso2.integrationstudio.gmf.esb.OutputConnector;
 import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator;
@@ -350,6 +351,8 @@ public class EditorUtils {
             return ((JsonTransformMediator) mediator).getInputConnector();
         } else if (mediator instanceof DSSMediator) {
             return ((DSSMediator) mediator).getInputConnector();
+        } else if (mediator instanceof NTLMMediator) {
+            return ((NTLMMediator) mediator).getInputConnector();
         }
         throw new IllegalArgumentException("Invalid/Unknown Mediator type found : " + mediator.toString());
     }
@@ -467,6 +470,8 @@ public class EditorUtils {
             return ((JsonTransformMediator) mediator).getOutputConnector();
         } else if (mediator instanceof DSSMediator) {
             return ((DSSMediator) mediator).getOutputConnector();
+        } else if (mediator instanceof NTLMMediator) {
+            return ((NTLMMediator) mediator).getOutputConnector();
         }
         throw new IllegalArgumentException("Invalid/Unknown Mediator type found : " + mediator.toString());
     }

@@ -1573,6 +1573,18 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
                 return createJsonTransformMediatorPropertyAdapter();
             }
             @Override
+            public Adapter caseNTLMMediator(NTLMMediator object) {
+                return createNTLMMediatorAdapter();
+            }
+            @Override
+            public Adapter caseNTLMMediatorOutputConnector(NTLMMediatorOutputConnector object) {
+                return createNTLMMediatorOutputConnectorAdapter();
+            }
+            @Override
+            public Adapter caseNTLMMediatorInputConnector(NTLMMediatorInputConnector object) {
+                return createNTLMMediatorInputConnectorAdapter();
+            }
+            @Override
             public Adapter defaultCase(EObject object) {
                 return createEObjectAdapter();
             }
@@ -4627,6 +4639,48 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createJsonTransformMediatorPropertyAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator <em>NTLM Mediator</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.integrationstudio.gmf.esb.NTLMMediator
+     * @generated
+     */
+    public Adapter createNTLMMediatorAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediatorOutputConnector <em>NTLM Mediator Output Connector</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.integrationstudio.gmf.esb.NTLMMediatorOutputConnector
+     * @generated
+     */
+    public Adapter createNTLMMediatorOutputConnectorAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediatorInputConnector <em>NTLM Mediator Input Connector</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.integrationstudio.gmf.esb.NTLMMediatorInputConnector
+     * @generated
+     */
+    public Adapter createNTLMMediatorInputConnectorAdapter() {
         return null;
     }
 

@@ -633,6 +633,11 @@ public class SequenceItemProvider extends MediatorItemProvider {
 
         newChildDescriptors.add
             (createChildParameter
+                (EsbPackage.Literals.SEQUENCE__INCLUDED_MEDIATORS,
+                 EsbFactory.eINSTANCE.createNTLMMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
                 (EsbPackage.Literals.SEQUENCE__DYNAMIC_REFERENCE_KEY,
                  EsbFactory.eINSTANCE.createNamespacedProperty()));
 

@@ -2777,5 +2777,16 @@
     <genClasses ecoreClass="esb.ecore#//JsonTransformMediatorOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//JsonTransformMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//JsonTransformMediatorProperty"/>
+    <genClasses ecoreClass="esb.ecore#//NTLMMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//NTLMMediator/inputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//NTLMMediator/outputConnector"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NTLMMediator/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NTLMMediator/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NTLMMediator/host"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NTLMMediator/domain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NTLMMediator/ntlmVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//NTLMMediatorOutputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//NTLMMediatorInputConnector"/>
   </genPackages>
 </genmodel:GenModel>

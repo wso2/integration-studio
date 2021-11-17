@@ -3667,4 +3667,17 @@
     <eLiterals name="BODY" value="2" literal="body"/>
     <eLiterals name="PROPERTY" value="3" literal="property"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NTLMMediator" eSuperTypes="#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//NTLMMediatorInputConnector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputConnector" eType="#//NTLMMediatorOutputConnector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="host" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ntlmVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NTLMMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NTLMMediatorInputConnector" eSuperTypes="#//InputConnector"/>
 </ecore:EPackage>

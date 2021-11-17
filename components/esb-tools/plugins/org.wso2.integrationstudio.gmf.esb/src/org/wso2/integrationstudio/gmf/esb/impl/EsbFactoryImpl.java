@@ -424,6 +424,9 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
             case EsbPackage.JSON_TRANSFORM_MEDIATOR_OUTPUT_CONNECTOR: return createJsonTransformMediatorOutputConnector();
             case EsbPackage.JSON_TRANSFORM_MEDIATOR_INPUT_CONNECTOR: return createJsonTransformMediatorInputConnector();
             case EsbPackage.JSON_TRANSFORM_MEDIATOR_PROPERTY: return createJsonTransformMediatorProperty();
+            case EsbPackage.NTLM_MEDIATOR: return createNTLMMediator();
+            case EsbPackage.NTLM_MEDIATOR_OUTPUT_CONNECTOR: return createNTLMMediatorOutputConnector();
+            case EsbPackage.NTLM_MEDIATOR_INPUT_CONNECTOR: return createNTLMMediatorInputConnector();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -3293,6 +3296,38 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
     public JsonTransformMediatorProperty createJsonTransformMediatorProperty() {
         JsonTransformMediatorPropertyImpl jsonTransformMediatorProperty = new JsonTransformMediatorPropertyImpl();
         return jsonTransformMediatorProperty;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    public NTLMMediator createNTLMMediator() {
+        NTLMMediatorImpl ntlmMediator = new NTLMMediatorImpl();
+        ntlmMediator.setInputConnector(createNTLMMediatorInputConnector());
+        ntlmMediator.setOutputConnector(createNTLMMediatorOutputConnector());
+        return ntlmMediator;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NTLMMediatorOutputConnector createNTLMMediatorOutputConnector() {
+        NTLMMediatorOutputConnectorImpl ntlmMediatorOutputConnector = new NTLMMediatorOutputConnectorImpl();
+        return ntlmMediatorOutputConnector;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NTLMMediatorInputConnector createNTLMMediatorInputConnector() {
+        NTLMMediatorInputConnectorImpl ntlmMediatorInputConnector = new NTLMMediatorInputConnectorImpl();
+        return ntlmMediatorInputConnector;
     }
 
     /**

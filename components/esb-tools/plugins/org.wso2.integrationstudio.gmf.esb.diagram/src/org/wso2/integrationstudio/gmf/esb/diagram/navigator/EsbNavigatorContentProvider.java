@@ -2257,7 +2257,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         }
 
         case MediatorFlow6EditPart.VISUAL_ID: {
-            mediatorFlow6EditPart(view, parentElement);
+            return mediatorFlow6EditPart(view, parentElement);
         }
 
         case FilterContainerEditPart.VISUAL_ID: {
@@ -2632,6 +2632,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
             connectedViews = getChildrenByType(connectedViews,
                     EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
             result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+            connectedViews = getChildrenByType(Collections.singleton(sv),
+                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment7EditPart.VISUAL_ID));
+            connectedViews = getChildrenByType(connectedViews,
+                    EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
             return result.toArray();
         }
 
@@ -2977,6 +2982,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                     EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment8EditPart.VISUAL_ID));
             connectedViews = getChildrenByType(connectedViews,
                     EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+            connectedViews = getChildrenByType(Collections.singleton(sv),
+                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment8EditPart.VISUAL_ID));
+            connectedViews = getChildrenByType(connectedViews,
+                    EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
             result.addAll(createNavigatorItems(connectedViews, parentElement, false));
             return result.toArray();
         }
@@ -3385,6 +3395,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
             connectedViews = getChildrenByType(connectedViews,
                     EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
             result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+            connectedViews = getChildrenByType(Collections.singleton(sv),
+                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment9EditPart.VISUAL_ID));
+            connectedViews = getChildrenByType(connectedViews,
+                    EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
             return result.toArray();
         }
 
@@ -3730,6 +3745,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                     EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment10EditPart.VISUAL_ID));
             connectedViews = getChildrenByType(connectedViews,
                     EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+            connectedViews = getChildrenByType(Collections.singleton(sv),
+                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment10EditPart.VISUAL_ID));
+            connectedViews = getChildrenByType(connectedViews,
+                    EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
             result.addAll(createNavigatorItems(connectedViews, parentElement, false));
             return result.toArray();
         }
@@ -4312,6 +4332,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
             connectedViews = getChildrenByType(connectedViews,
                     EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
             result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+            connectedViews = getChildrenByType(Collections.singleton(sv),
+                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment11EditPart.VISUAL_ID));
+            connectedViews = getChildrenByType(connectedViews,
+                    EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
             return result.toArray();
         }
 
@@ -4663,6 +4688,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                     EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment12EditPart.VISUAL_ID));
             connectedViews = getChildrenByType(connectedViews,
                     EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+            connectedViews = getChildrenByType(Collections.singleton(sv),
+                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment12EditPart.VISUAL_ID));
+            connectedViews = getChildrenByType(connectedViews,
+                    EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
             result.addAll(createNavigatorItems(connectedViews, parentElement, false));
             return result.toArray();
         }
@@ -6561,339 +6591,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         }
 
         case MediatorFlow20EditPart.VISUAL_ID: {
-            LinkedList<EsbAbstractNavigatorItem> result = new LinkedList<EsbAbstractNavigatorItem>();
-            Node sv = (Node) view;
-            Collection<View> connectedViews;
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DropMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyGroupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ThrottleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FilterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LogMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnrichMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SwitchMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(SequenceEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EntitlementMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ClassMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SpringMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ScriptMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FaultMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XQueryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CommandMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBLookupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBReportMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SmooksMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SendMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HeaderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloneMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CacheMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(IterateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CalloutMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TransactionMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RMSequenceMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RuleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(OAuthMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AggregateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(StoreMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BuilderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallTemplateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PayloadFactoryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnqueueMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(URLRewriteMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ValidateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ConditionalRouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BAMMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BeanMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EJBMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DefaultEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FailoverEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RecipientListEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(WSDLEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(NamedEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoadBalanceEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(APIResourceEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressingEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HTTPEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TemplateEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorOperationEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoopBackMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RespondMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DataMapperMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FastXSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ForEachMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PublishEventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(JsonTransformMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            return result.toArray();
+            return mediatorFlow20EditPart(view, parentElement);
         }
 
         case APIResourceInSequenceInputConnectorEditPart.VISUAL_ID: {
@@ -7006,339 +6704,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         }
 
         case MediatorFlow21EditPart.VISUAL_ID: {
-            LinkedList<EsbAbstractNavigatorItem> result = new LinkedList<EsbAbstractNavigatorItem>();
-            Node sv = (Node) view;
-            Collection<View> connectedViews;
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DropMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyGroupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ThrottleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FilterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LogMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnrichMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SwitchMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(SequenceEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EntitlementMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ClassMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SpringMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ScriptMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FaultMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XQueryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CommandMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBLookupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBReportMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SmooksMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SendMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HeaderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloneMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CacheMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(IterateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CalloutMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TransactionMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RMSequenceMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RuleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(OAuthMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AggregateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(StoreMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BuilderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallTemplateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PayloadFactoryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnqueueMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(URLRewriteMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ValidateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ConditionalRouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BAMMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BeanMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EJBMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DefaultEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FailoverEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RecipientListEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(WSDLEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(NamedEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoadBalanceEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(APIResourceEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressingEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HTTPEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TemplateEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorOperationEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoopBackMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RespondMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DataMapperMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FastXSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ForEachMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PublishEventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(JsonTransformMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            return result.toArray();
+            return mediatorFlow21EditPart(view, parentElement);
         }
 
         case EntitlementOnAcceptContainerEditPart.VISUAL_ID: {
@@ -7352,339 +6718,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         }
 
         case MediatorFlow22EditPart.VISUAL_ID: {
-            LinkedList<EsbAbstractNavigatorItem> result = new LinkedList<EsbAbstractNavigatorItem>();
-            Node sv = (Node) view;
-            Collection<View> connectedViews;
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DropMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyGroupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ThrottleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FilterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LogMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnrichMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SwitchMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(SequenceEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EntitlementMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ClassMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SpringMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ScriptMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FaultMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XQueryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CommandMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBLookupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBReportMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SmooksMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SendMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HeaderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloneMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CacheMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(IterateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CalloutMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TransactionMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RMSequenceMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RuleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(OAuthMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AggregateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(StoreMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BuilderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallTemplateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PayloadFactoryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnqueueMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(URLRewriteMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ValidateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ConditionalRouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BAMMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BeanMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EJBMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DefaultEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FailoverEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RecipientListEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(WSDLEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(NamedEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoadBalanceEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(APIResourceEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressingEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HTTPEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TemplateEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorOperationEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoopBackMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RespondMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DataMapperMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FastXSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ForEachMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PublishEventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(JsonTransformMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            return result.toArray();
+            return mediatorFlow22EditPart(view, parentElement);
         }
 
         case EntitlementAdviceContainerEditPart.VISUAL_ID: {
@@ -8012,7 +7046,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         }
 
         case MediatorFlow30EditPart.VISUAL_ID: {
-            return mediatorFlow30EditPart(view, parentElement);
+            return mediatorFlowEditPart(view, parentElement);
         }
 
         case PublishEventMediatorEditPart.VISUAL_ID: {
@@ -8184,6 +7218,51 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
             Node sv = (Node) view;
             EsbNavigatorGroup outgoinglinks = new EsbNavigatorGroup(
                     Messages.NavigatorGroupName_DSSMediatorOutputConnector_3796_outgoinglinks,
+                    "icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+            Collection<View> connectedViews;
+            connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+                    EsbVisualIDRegistry.getType(EsbLinkEditPart.VISUAL_ID));
+            outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
+            if (!outgoinglinks.isEmpty()) {
+                result.add(outgoinglinks);
+            }
+            return result.toArray();
+        }
+
+        case NTLMMediatorEditPart.VISUAL_ID: {
+            LinkedList<EsbAbstractNavigatorItem> result = new LinkedList<EsbAbstractNavigatorItem>();
+            Node sv = (Node) view;
+            Collection<View> connectedViews;
+            connectedViews = getChildrenByType(Collections.singleton(sv),
+                    EsbVisualIDRegistry.getType(NTLMMediatorInputConnectorEditPart.VISUAL_ID));
+            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+            connectedViews = getChildrenByType(Collections.singleton(sv),
+                    EsbVisualIDRegistry.getType(NTLMMediatorOutputConnectorEditPart.VISUAL_ID));
+            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+            return result.toArray();
+        }
+
+        case NTLMMediatorInputConnectorEditPart.VISUAL_ID: {
+            LinkedList<EsbAbstractNavigatorItem> result = new LinkedList<EsbAbstractNavigatorItem>();
+            Node sv = (Node) view;
+            EsbNavigatorGroup incominglinks = new EsbNavigatorGroup(
+                    Messages.NavigatorGroupName_NTLMMediatorInputConnector_3798_incominglinks,
+                    "icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+            Collection<View> connectedViews;
+            connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+                    EsbVisualIDRegistry.getType(EsbLinkEditPart.VISUAL_ID));
+            incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
+            if (!incominglinks.isEmpty()) {
+                result.add(incominglinks);
+            }
+            return result.toArray();
+        }
+
+        case NTLMMediatorOutputConnectorEditPart.VISUAL_ID: {
+            LinkedList<EsbAbstractNavigatorItem> result = new LinkedList<EsbAbstractNavigatorItem>();
+            Node sv = (Node) view;
+            EsbNavigatorGroup outgoinglinks = new EsbNavigatorGroup(
+                    Messages.NavigatorGroupName_NTLMMediatorOutputConnector_3799_outgoinglinks,
                     "icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
             Collection<View> connectedViews;
             connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
@@ -8406,6 +7485,9 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
             target.addChildren(createNavigatorItems(connectedViews, target, true));
             connectedViews = getLinksTargetByType(Collections.singleton(sv),
                     EsbVisualIDRegistry.getType(DSSMediatorInputConnectorEditPart.VISUAL_ID));
+            target.addChildren(createNavigatorItems(connectedViews, target, true));
+            connectedViews = getLinksTargetByType(Collections.singleton(sv),
+                    EsbVisualIDRegistry.getType(NTLMMediatorInputConnectorEditPart.VISUAL_ID));
             target.addChildren(createNavigatorItems(connectedViews, target, true));
             connectedViews = getLinksTargetByType(Collections.singleton(sv),
                     EsbVisualIDRegistry.getType(ProxyInSequenceInputConnectorEditPart.VISUAL_ID));
@@ -8733,6 +7815,9 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
             source.addChildren(createNavigatorItems(connectedViews, source, true));
             connectedViews = getLinksSourceByType(Collections.singleton(sv),
                     EsbVisualIDRegistry.getType(DSSMediatorOutputConnectorEditPart.VISUAL_ID));
+            source.addChildren(createNavigatorItems(connectedViews, source, true));
+            connectedViews = getLinksSourceByType(Collections.singleton(sv),
+                    EsbVisualIDRegistry.getType(NTLMMediatorOutputConnectorEditPart.VISUAL_ID));
             source.addChildren(createNavigatorItems(connectedViews, source, true));
             connectedViews = getLinksSourceByType(Collections.singleton(sv),
                     EsbVisualIDRegistry.getType(MessageOutputConnectorEditPart.VISUAL_ID));
@@ -9124,6 +8209,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment4EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment4EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -9447,6 +8537,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment3EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment3EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
@@ -9772,6 +8867,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment2EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment2EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -9814,329 +8914,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         }
 
         case MediatorFlow15EditPart.VISUAL_ID: {
-            LinkedList<EsbAbstractNavigatorItem> result = new LinkedList<EsbAbstractNavigatorItem>();
-            Node sv = (Node) view;
-            Collection<View> connectedViews;
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DropMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyGroupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ThrottleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FilterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LogMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnrichMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SwitchMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(SequenceEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EntitlementMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ClassMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SpringMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ScriptMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FaultMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XQueryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CommandMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBLookupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBReportMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SmooksMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SendMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HeaderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloneMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CacheMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(IterateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CalloutMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TransactionMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RMSequenceMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RuleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(OAuthMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AggregateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(StoreMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BuilderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallTemplateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PayloadFactoryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnqueueMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(URLRewriteMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ValidateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ConditionalRouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BAMMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BeanMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EJBMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DefaultEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FailoverEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RecipientListEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(WSDLEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(NamedEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoadBalanceEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(APIResourceEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressingEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HTTPEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TemplateEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorOperationEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoopBackMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RespondMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DataMapperMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FastXSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ForEachMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PublishEventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            return result.toArray();
+            return mediatorFlow15EditPart(view, parentElement);
         }
 
         case ConditionalRouterMediatorEditPart.VISUAL_ID: {
@@ -10207,329 +8985,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         }
 
         case MediatorFlow16EditPart.VISUAL_ID: {
-            LinkedList<EsbAbstractNavigatorItem> result = new LinkedList<EsbAbstractNavigatorItem>();
-            Node sv = (Node) view;
-            Collection<View> connectedViews;
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DropMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyGroupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ThrottleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FilterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LogMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnrichMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SwitchMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(SequenceEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EntitlementMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ClassMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SpringMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ScriptMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FaultMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XQueryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CommandMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBLookupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBReportMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SmooksMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SendMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HeaderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloneMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CacheMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(IterateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CalloutMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TransactionMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RMSequenceMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RuleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(OAuthMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AggregateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(StoreMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BuilderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallTemplateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PayloadFactoryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnqueueMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(URLRewriteMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ValidateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ConditionalRouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BAMMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BeanMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EJBMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DefaultEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FailoverEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RecipientListEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(WSDLEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(NamedEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoadBalanceEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(APIResourceEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressingEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HTTPEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TemplateEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorOperationEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoopBackMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RespondMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DataMapperMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FastXSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ForEachMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PublishEventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            return result.toArray();
+            return mediatorFlow16EditPart(view, parentElement);
         }
 
         case RuleMediatorChildMediatorsOutputConnectorEditPart.VISUAL_ID: {
@@ -10549,329 +9005,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         }
 
         case MediatorFlow17EditPart.VISUAL_ID: {
-            LinkedList<EsbAbstractNavigatorItem> result = new LinkedList<EsbAbstractNavigatorItem>();
-            Node sv = (Node) view;
-            Collection<View> connectedViews;
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DropMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyGroupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ThrottleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FilterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LogMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnrichMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SwitchMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(SequenceEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EntitlementMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ClassMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SpringMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ScriptMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FaultMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XQueryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CommandMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBLookupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBReportMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SmooksMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SendMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HeaderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloneMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CacheMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(IterateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CalloutMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TransactionMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RMSequenceMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RuleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(OAuthMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AggregateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(StoreMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BuilderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallTemplateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PayloadFactoryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnqueueMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(URLRewriteMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ValidateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ConditionalRouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BAMMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BeanMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EJBMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DefaultEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FailoverEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RecipientListEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(WSDLEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(NamedEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoadBalanceEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(APIResourceEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressingEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HTTPEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TemplateEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorOperationEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoopBackMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RespondMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DataMapperMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FastXSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ForEachMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PublishEventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            return result.toArray();
+            return mediatorFlow17EditPart(view, parentElement);
         }
 
         case EndpointDiagramEditPart.VISUAL_ID: {
@@ -11472,329 +9606,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         }
 
         case MediatorFlow18EditPart.VISUAL_ID: {
-            LinkedList<EsbAbstractNavigatorItem> result = new LinkedList<EsbAbstractNavigatorItem>();
-            Node sv = (Node) view;
-            Collection<View> connectedViews;
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DropMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PropertyGroupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ThrottleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FilterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LogMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnrichMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SwitchMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(SequenceEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EntitlementMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ClassMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SpringMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ScriptMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FaultMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(XQueryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CommandMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBLookupMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DBReportMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SmooksMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(SendMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HeaderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloneMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CacheMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(IterateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CalloutMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TransactionMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RMSequenceMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RuleMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(OAuthMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AggregateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(StoreMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BuilderMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallTemplateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PayloadFactoryMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EnqueueMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(URLRewriteMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ValidateMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ConditionalRouterMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BAMMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(BeanMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(EJBMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DefaultEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FailoverEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RecipientListEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(WSDLEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(NamedEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoadBalanceEndPointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(APIResourceEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(AddressingEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(HTTPEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(TemplateEndpointEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CloudConnectorOperationEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(LoopBackMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(RespondMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(CallMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(DataMapperMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(FastXSLTMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(ForEachMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            connectedViews = getChildrenByType(Collections.singleton(sv),
-                    EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
-            connectedViews = getChildrenByType(connectedViews,
-                    EsbVisualIDRegistry.getType(PublishEventMediatorEditPart.VISUAL_ID));
-            result.addAll(createNavigatorItems(connectedViews, parentElement, false));
-            return result.toArray();
+            return mediatorFlow18EditPart(view, parentElement);
         }
 
         case ComplexEndpointsOutputConnectorEditPart.VISUAL_ID: {
@@ -17007,6 +14819,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartmentEditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartmentEditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -17331,6 +15148,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment5EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment5EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -17340,8 +15162,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         Collection<View> connectedViews;
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
-        connectedViews = getChildrenByType(connectedViews,
-                EsbVisualIDRegistry.getType(DropMediatorEditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DropMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
@@ -17365,8 +15186,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
-        connectedViews = getChildrenByType(connectedViews,
-                EsbVisualIDRegistry.getType(LogMediatorEditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(LogMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
@@ -17375,8 +15195,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
-        connectedViews = getChildrenByType(connectedViews,
-                EsbVisualIDRegistry.getType(XSLTMediatorEditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(XSLTMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
@@ -17444,8 +15263,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
-        connectedViews = getChildrenByType(connectedViews,
-                EsbVisualIDRegistry.getType(SendMediatorEditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(SendMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
@@ -17484,8 +15302,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
-        connectedViews = getChildrenByType(connectedViews,
-                EsbVisualIDRegistry.getType(RuleMediatorEditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(RuleMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
@@ -17544,18 +15361,15 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
-        connectedViews = getChildrenByType(connectedViews,
-                EsbVisualIDRegistry.getType(BAMMediatorEditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(BAMMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
-        connectedViews = getChildrenByType(connectedViews,
-                EsbVisualIDRegistry.getType(BeanMediatorEditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(BeanMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
-        connectedViews = getChildrenByType(connectedViews,
-                EsbVisualIDRegistry.getType(EJBMediatorEditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(EJBMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
@@ -17579,8 +15393,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
-        connectedViews = getChildrenByType(connectedViews,
-                EsbVisualIDRegistry.getType(WSDLEndPointEditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(WSDLEndPointEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
@@ -17604,8 +15417,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
-        connectedViews = getChildrenByType(connectedViews,
-                EsbVisualIDRegistry.getType(HTTPEndpointEditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(HTTPEndpointEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
@@ -17634,8 +15446,7 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
-        connectedViews = getChildrenByType(connectedViews,
-                EsbVisualIDRegistry.getType(CallMediatorEditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(CallMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
@@ -17664,8 +15475,12 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment6EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews,
-                EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
@@ -17991,6 +15806,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment13EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment13EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -18314,6 +16134,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment14EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment14EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
@@ -18639,6 +16464,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment15EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -18962,6 +16792,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
@@ -19287,6 +17122,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -19610,6 +17450,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
@@ -19935,6 +17780,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment19EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment19EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -20249,6 +18099,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews,
                 EsbVisualIDRegistry.getType(PublishEventMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
@@ -20565,6 +18420,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         connectedViews = getChildrenByType(connectedViews,
                 EsbVisualIDRegistry.getType(PublishEventMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment21EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -20879,6 +18739,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews,
                 EsbVisualIDRegistry.getType(PublishEventMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
@@ -21204,6 +19069,16 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment23EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment23EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment23EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -21527,6 +19402,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment24EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment24EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
@@ -21852,6 +19732,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment25EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment25EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -22175,6 +20060,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment26EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment26EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
@@ -22500,6 +20390,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment27EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment27EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -22823,6 +20718,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment28EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment28EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
@@ -23148,6 +21048,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment29EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment29EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }
 
@@ -23471,6 +21376,11 @@ public class EsbNavigatorContentProvider implements ICommonContentProvider {
         connectedViews = getChildrenByType(Collections.singleton(sv),
                 EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment30EditPart.VISUAL_ID));
         connectedViews = getChildrenByType(connectedViews, EsbVisualIDRegistry.getType(DSSMediatorEditPart.VISUAL_ID));
+        result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+        connectedViews = getChildrenByType(Collections.singleton(sv),
+                EsbVisualIDRegistry.getType(MediatorFlowMediatorFlowCompartment30EditPart.VISUAL_ID));
+        connectedViews = getChildrenByType(connectedViews,
+                EsbVisualIDRegistry.getType(NTLMMediatorEditPart.VISUAL_ID));
         result.addAll(createNavigatorItems(connectedViews, parentElement, false));
         return result.toArray();
     }

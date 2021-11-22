@@ -54,7 +54,7 @@ public class ComboItems {
     private static String[] SERVICE_HEADER_VALUES = { "*", "application/xml", "text/plain", "application/json",
             "application/atom+xml", "application/soap+xml", "application/x-www-form-urlencoded" };
 
-    private static String[] REST_TYPES = { "GET", "POST", "PUT", "DELETE" };
+	private static String[] REST_TYPES = { "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD" };
     
     private static String[] PROTOCOL_TYPES = { "http","https"};
 

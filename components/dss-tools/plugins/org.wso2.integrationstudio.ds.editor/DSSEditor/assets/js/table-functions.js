@@ -1,8 +1,16 @@
+function showNotificationAlertModal(title, content) {
+    $("#alert-modal-title").text(title);
+    $("#alert-modal-content").text(content);
+
+    $('#alert-modal').modal({backdrop: 'static', show: false});
+    $("#alert-modal").modal('show');
+}
+
 $(document).ready(function(){
     
     //--- Start of Transport Settings param table ---//
     $("#ts-params-add-btn").click(function() {
-    	let authProviderClass = $('#ts-auth-prov-class-input').val().trim();
+    	var authProviderClass = $.trim($('#ts-auth-prov-class-input').val());
     	if (authProviderClass == "") {
     		showNotificationAlertModal("Error", "Please specify an authorization provider class.");
             return false;
@@ -37,8 +45,8 @@ $(document).ready(function(){
     });
     
     $(document).on('click','#ds-dynamic-auth-usermapping-table .fa-trash',function(){
-    	let row = $(this);
-    	let tds = $(this).closest("tr").find('td');
+    	var row = $(this);
+    	var tds = $(this).closest("tr").find('td');
     	if (tds[0].firstChild.value === "" && tds[1].firstChild.value === "" && tds[2].firstChild.value === "") {
     		row.closest("tr").remove();
     		return;
@@ -59,8 +67,8 @@ $(document).ready(function(){
     });
     
     $(document).on('click','#ds-ext-properties-table .fa-trash',function(){
-    	let row = $(this);
-    	let tds = $(this).closest("tr").find('td');
+    	var row = $(this);
+    	var tds = $(this).closest("tr").find('td');
     	if (tds[0].firstChild.value === "" && tds[1].firstChild.value === "") {
     		row.closest("tr").remove();
     		return;

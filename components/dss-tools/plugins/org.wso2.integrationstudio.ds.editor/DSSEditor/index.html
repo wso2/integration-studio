@@ -5,7 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>DSS-Dashboard</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+     <!-- Bootstrap core CSS -->
+    <!--[if lt IE 10]>
+        <link href="assets/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">  
+        <link href="assets/bootstrap-3.3.7/css/bootstrap-ie7.min.css" rel="stylesheet">
+    <![endif]-->
+     <!--[if gte IE 10]>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <![endif]-->
+
+    <![if !IE]>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <![endif]>
     <link rel="stylesheet" href="assets/css/pageguide.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/color-theme.css">
@@ -14,6 +26,7 @@
     <link rel="stylesheet" href="assets/css/panel-table-styles.css">
     <link rel="stylesheet" href="assets/css/query.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+
 </head>
 
 <body style="padding-top: 10px;padding-bottom: 10px;padding-right: 20px;padding-left: 20px;">
@@ -1264,7 +1277,7 @@
                                                 <option value="5_1_47">v5.1.47</option>
                                             </optgroup>
                                             <optgroup label="MSSQL">
-                                                <option value="7_20_0">v7.20.0 or Later</option>
+                                                <option value="7_20_0">v7.20.0</option>
                                                 <option value="6_4_0">v6.4.0</option>
                                             </optgroup>
                                             <optgroup label="PostgreSQL">
@@ -1387,7 +1400,7 @@
                                     <option value="UUID">UUID</option>
                                     <option value="VARINT">VARINT</option>
                                     <option value="INETADDRESS">INETADDRESS</option>
-                                    <option value="QUERY_STRING">QUERY_STRING</option>
+                                    <option value="QUERYSTRING">QUERY_STRING</option>
                                 </select></div>
                         </div>
                         <div class="form-group">
@@ -2109,9 +2122,17 @@
             </div>
         </div>
     </div>
+    <script src="assets/jquery_1.11.3/jquery.min.js"></script>
+    <!--[if lt IE 10]>
+        <script src="assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <![endif]-->
+    <!--[if gte IE 10]>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <![endif]-->
 
-    <script src="assets/js/jquery.min.js"></script>
+    <![if !IE]>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <![endif]>
     <script src="assets/js/pageguide.min.js"></script>
     <script src="assets/js/datasources-util.js"></script>
     <script src="assets/js/query-util.js"></script>
@@ -2125,6 +2146,10 @@
     <script src="assets/js/query-validation.js"></script>
     <script src="assets/js/advanced-validation.js"></script>
     <script src="assets/js/q-advanced-validation.js"></script>
+
+    <!--[if lt IE 10]>
+        <script src="assets/js/ie7-fixes.js"></script>
+    <![endif]-->
 </body>
 
 </html>

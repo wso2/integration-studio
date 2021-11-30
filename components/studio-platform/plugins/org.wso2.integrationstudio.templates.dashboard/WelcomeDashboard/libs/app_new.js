@@ -5,17 +5,17 @@ var rectAnimationDuration = 50;
 var centerLogo;
 var portValue = resolveGetParam("port");
 var highestLength = 0;
-
 function resolveGetParam(param) {
     var paramValue = null,
         tmp = [];
-    location.search
+    var searchSplits = location.search
         .substr(1)
-        .split("&")
-        .forEach(function (item) {
-          tmp = item.split("=");
-          if (tmp[0] === param) paramValue = decodeURIComponent(tmp[1]);
-        });
+        .split("&");
+    for(var i=0; i < searchSplits.length; i++){
+        var item = searchSplits[i];
+        tmp = item.split("=");
+        if (tmp[0] === param) paramValue = decodeURIComponent(tmp[1]);
+    }
     return paramValue;
 }
 
@@ -40,13 +40,16 @@ loadDisableWelcomePageParameter();
 function loadWelcomeNodes(contributionsString) {
     var contributions = JSON.parse(contributionsString);
     var welcomeNodes = [];
-    contributions.forEach(function (contribution) {
+    for(var i=0; i < contributions.length; i++){
+        var contribution = contributions[i];
         var welcomeNode = {};
         welcomeNode.title = contribution.name;
         // welcomeNode.title = welcomeNode.title.split(/ /g)[0];
         welcomeNode.icon = contribution.iconURL;
         welcomeNode.nodes = [];
-        contribution.wizards.forEach(function (wizard) {
+        var contribWizards = contribution.wizards;
+        for(var j=0; j < contribWizards.length; j++){
+            var wizard = contribWizards[j];
             var wizardNode = {};
             wizardNode.title = wizard.id;
             wizardNode.wizardID = wizard.name;
@@ -57,9 +60,10 @@ function loadWelcomeNodes(contributionsString) {
             wizardNode.parent = welcomeNode;
             welcomeNode.nodes.push(wizardNode);
             sortedNodes[wizard.priority] = wizardNode;
-        });
+        }
+        
         welcomeNodes.push(welcomeNode);
-    });
+    }
     welcomeNodeArray = welcomeNodes;
     drawWelcomeNodes();
 }
@@ -173,15 +177,16 @@ function GetDashboardWizards() {
     });
 }
 
-function drawWelcomeNodes(){
-	sortedNodes.forEach(function (childNode) {
-		escapedChildTitle = childNode.title.replace(/\./g, '');		
-		templateNode = createTemplateNode(escapedChildTitle, childNode.label, childNode.description, childNode.image, childNode.parent.title);
-		$("#esb-templates").append(templateNode);
-		$("#"+escapedChildTitle).click(function(){
-			openWizard(childNode.wizardID);
-	    });
-	});
+function drawWelcomeNodes() {
+    for (var i = 0; i < sortedNodes.length; i++) {
+        var childNode = sortedNodes[i];
+        escapedChildTitle = childNode.title.replace(/\./g, '');
+        templateNode = createTemplateNode(escapedChildTitle, childNode.label, childNode.description, childNode.image, childNode.parent.title);
+        $("#esb-templates").append(templateNode);
+        $("#" + escapedChildTitle).click(function () {
+            openWizard(childNode.wizardID);
+        });
+    }
 }
 
 function createTemplateNode(templateID, templateName, templateDescription, image, category){
@@ -213,32 +218,34 @@ function setOpacityOfLogo(op, dur) {
 
 function hideUnselectedNodes() {
     if (selectedNode != null) {
-        centerCircle.animate({opacity: 0}, animationDuration);
+        centerCircle.animate({ opacity: 0 }, animationDuration);
         setOpacityOfLogo(0, animationDuration);
-        centeredMainText.animate({opacity: 0}, animationDuration);
-        welcomeNodeArray.forEach(function (node) {
-            node.line.animate({opacity: 0}, animationDuration / 5);
+        centeredMainText.animate({ opacity: 0 }, animationDuration);
+        for (var i = 0; i < welcomeNodeArray; i++) {
+            var node = welcomeNodeArray[i];
+            node.line.animate({ opacity: 0 }, animationDuration / 5);
             if (node != selectedNode) {
-                node.circle.animate({opacity: 0}, animationDuration);
-                node.text.animate({opacity: 0}, animationDuration);
-                node.image.animate({opacity: 0}, animationDuration);
+                node.circle.animate({ opacity: 0 }, animationDuration);
+                node.text.animate({ opacity: 0 }, animationDuration);
+                node.image.animate({ opacity: 0 }, animationDuration);
             }
-        });
+        }
     }
 }
 
 function showUnselectedNodes() {
-    centerCircle.animate({opacity: 100}, animationDuration);
+    centerCircle.animate({ opacity: 100 }, animationDuration);
     setOpacityOfLogo(100, animationDuration);
-    centeredMainText.animate({opacity: 100}, animationDuration);
-    welcomeNodeArray.forEach(function (node) {
-        node.line.animate({opacity: 100}, animationDuration);
+    centeredMainText.animate({ opacity: 100 }, animationDuration);
+    for (var i = 0; i < welcomeNodeArray; i++) {
+        var node = welcomeNodeArray[i];
+        node.line.animate({ opacity: 100 }, animationDuration);
         if (node != selectedNode) {
-            node.circle.animate({opacity: 100}, animationDuration);
-            node.text.animate({opacity: 100}, animationDuration);
-            node.image.animate({opacity: 100}, animationDuration);
+            node.circle.animate({ opacity: 100 }, animationDuration);
+            node.text.animate({ opacity: 100 }, animationDuration);
+            node.image.animate({ opacity: 100 }, animationDuration);
         }
-    });
+    }
 }
 
 function searchTemplates(searchInput, templateList){

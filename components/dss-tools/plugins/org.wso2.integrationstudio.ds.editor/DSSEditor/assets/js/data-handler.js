@@ -1,9 +1,9 @@
 $(document).ready(function ($) {
 
-    let portValue = resolveGetParam("port");
-    let url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
-    let root = "";
-    let resultElement;
+    var portValue = resolveGetParam("port");
+    var url = "http://127.0.0.1:" + portValue + "/dsseditor/service";
+    var root = "";
+    var resultElement;
     var onKeyChangeTimer;
     var checkSpecialCharacterRegex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
@@ -16,7 +16,7 @@ $(document).ready(function ($) {
     // Retrieve the XML source from backend.
 //    $.get(url, {}, function (data, status) {
 //
-//        let parser = new DOMParser();
+//        var parser = new DOMParser();
 //        root = parser.parseFromString(data, "text/xml");
 //        populateGeneralDetails(root);
 //        populateTransportSettings(root);
@@ -39,7 +39,7 @@ $(document).ready(function ($) {
                 dataType: 'text',
                 cache: false,
                 success: function (result) {
-                   let parser = new DOMParser();
+                   var parser = new DOMParser();
                    root = parser.parseFromString(result, "text/xml");
                    populateGeneralDetails(root);
                    populateTransportSettings(root);
@@ -72,7 +72,7 @@ $(document).ready(function ($) {
     $("#ts-txmjndi-name-input").on("keyup", function(){
         clearInterval(onKeyChangeTimer);
         onKeyChangeTimer = setTimeout(function() {
-        	let txJndiName = $('#ts-txmjndi-name-input').val();
+        	var txJndiName = $('#ts-txmjndi-name-input').val();
             if (txJndiName.trim() != "") {
             	root.getElementsByTagName("data")[0].setAttribute("txManagerJNDIName", txJndiName);
             } else {
@@ -85,18 +85,18 @@ $(document).ready(function ($) {
     $("#ts-auth-prov-class-input").on("keyup", function(){
         clearInterval(onKeyChangeTimer);
         onKeyChangeTimer = setTimeout(function() {
-        	let providerClass = $('#ts-auth-prov-class-input').val();
+        	var providerClass = $('#ts-auth-prov-class-input').val();
             if (providerClass.trim() != "") {
-            	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+            	var authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
             	if (authProvider.length > 0) {
             		authProvider[0].setAttribute("class", providerClass);
             	} else {
-            		let provider = root.createElement("authorization_provider");
+            		var provider = root.createElement("authorization_provider");
             		provider.setAttribute("class", providerClass);
             		root.getElementsByTagName("data")[0].appendChild(provider);
             	}
             } else {
-            	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+            	var authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
             	if (authProvider.length > 0) {
             		root.getElementsByTagName("data")[0].removeChild(authProvider[0]);
             	}
@@ -121,10 +121,10 @@ $(document).ready(function ($) {
     
     $("#ds-add-save-btn").click(function (e) {
     	//check validation
-        let RDBMS_DS_TYPE = "rdbms_ds";
-        let MONGO_DB_TYPE = "mongodb_ds";
-        let CSV_DB_TYPE = "csv";
-        let DS_TYPE_CASSANDRA = "cassandra";
+        var RDBMS_DS_TYPE = "rdbms_ds";
+        var MONGO_DB_TYPE = "mongodb_ds";
+        var CSV_DB_TYPE = "csv";
+        var DS_TYPE_CASSANDRA = "cassandra";
     	
     	if ($("#ds-ds-id-input").val().trim() == "") {
     		showErrorNotification("danger", "Please provide a datasource identifier", 3000, "ds-notification-alert-holder");
@@ -182,7 +182,7 @@ $(document).ready(function ($) {
         }
 
         e.preventDefault();
-        let result = addDataSource(root);
+        var result = addDataSource(root);
 
         if (result.status) {
             $("#ds-add-edit-ds-modal").modal('hide');
@@ -211,7 +211,7 @@ $(document).ready(function ($) {
     	}
     	
         e.preventDefault();
-        let status = addResource(root);
+        var status = addResource(root);
         if (status) {
             $("#r-resource-addedit-modal").modal('hide');
         	saveAll(root, url, function() {
@@ -236,9 +236,9 @@ $(document).ready(function ($) {
     });
 
     $("#ds-test-conn-btn").click(function() {
-        let dbType = $("#ds-db-engine-select").val();
-        let username = $("#ds-username-input").val();
-        let password = $("#ds-password-input").val();
+        var dbType = $("#ds-db-engine-select").val();
+        var username = $("#ds-username-input").val();
+        var password = $("#ds-password-input").val();
         
         if ($("#ds-secret-alias-check").is(":checked")) {
             password = $("#ds-test-password-sa").val();
@@ -259,13 +259,13 @@ $(document).ready(function ($) {
 //        	return false;
 //        }
         
-        let version = $("#ds-db-version-select").val();
+        var version = $("#ds-db-version-select").val();
         
-        let host = $("#ds-host-input").val();
-        let port = $("#ds-port-input").val();
-        let dbName = $("#ds-dbname-input").val();
+        var host = $("#ds-host-input").val();
+        var port = $("#ds-port-input").val();
+        var dbName = $("#ds-dbname-input").val();
 
-        let connStr = dbType + DS_METADATA_KEYVALUE_SEPARATOR + version + DS_METADATA_KEYVALUE_SEPARATOR + username +
+        var connStr = dbType + DS_METADATA_KEYVALUE_SEPARATOR + version + DS_METADATA_KEYVALUE_SEPARATOR + username +
             DS_METADATA_KEYVALUE_SEPARATOR + password + DS_METADATA_KEYVALUE_SEPARATOR + host +
             DS_METADATA_KEYVALUE_SEPARATOR + port + DS_METADATA_KEYVALUE_SEPARATOR + dbName;
 
@@ -273,7 +273,7 @@ $(document).ready(function ($) {
     });
 
     $(document).on('click','#ds-datasources-table .fa-trash',function() {
-        let dsId = $(this).closest("tr").data('id');
+        var dsId = $(this).closest("tr").data('id');
 
         $("#ds-delete-confirm-btn").click(function(event) {
             deleteDatasource(root, dsId);
@@ -289,15 +289,15 @@ $(document).ready(function ($) {
     });
 
     $(document).on('click','#ds-datasources-table .fa-edit',function() {
-        let dsId = $(this).closest("tr").data('id');
-        let dsMetadata = retrieveDSMetadata(dsId, url);
+        var dsId = $(this).closest("tr").data('id');
+        var dsMetadata = retrieveDSMetadata(dsId, url);
         populateDSModal(root, dsId, dsMetadata);
         openDSModal(true);
     });
 
     $('#ds-db-engine-select').change(function(e) {
         e.preventDefault();
-        let dbEngineType = $("#ds-db-engine-select").val();
+        var dbEngineType = $("#ds-db-engine-select").val();
         populateDBEngineDefaults(root, dbEngineType);
         setTestConnectionRDBMSVersion(dbEngineType);
     });
@@ -356,9 +356,9 @@ $(document).ready(function ($) {
         	resultElement = root.createElement("result");
         }
         resultElement = saveResultToQueryElement(resultElement, root);
-        let queryElement = replaceResultInQuery(resultElement);
+        var queryElement = replaceResultInQuery(resultElement);
         queryElement = replacePropertiesInQuery(root, queryElement);
-        let result = addQuery(root, queryElement);
+        var result = addQuery(root, queryElement);
 
         if (result) {
             saveAll(root, url, function() {
@@ -381,10 +381,10 @@ $(document).ready(function ($) {
     // Start of query general
     $("#q-query-id-input").change(function() {
         // Check if data source name already exists
-        let queries = root.getElementsByTagName("query");
-        let queryId = $("#q-query-id-input").val();
+        var queries = root.getElementsByTagName("query");
+        var queryId = $("#q-query-id-input").val();
 
-        for (let i = 0, len = queries.length; i < len; i++) {
+        for (var i = 0, len = queries.length; i < len; i++) {
             if (queries[i].getAttribute("id") == queryId && !$("#q-query-id-input").prop('disabled')) {
                 showNotificationAlertModal("Error", "A query with ID " + queryId + " already exists.");
                 $("#q-query-id-input").val("");
@@ -417,34 +417,34 @@ $(document).ready(function ($) {
     $("#q-im-validators-save-btn").click(function (e) {
         e.preventDefault();
         
-        let validator = $('#q-im-validator-select').val().trim();
+        var validator = $('#q-im-validator-select').val().trim();
         if (validator == "default") {
         	showNotificationAlertModal("Error", "Please select a validator type.");
         	return false;
         }
         
         if (validator != "validatePattern") {
-        	let min = $('#im-val-minvalue-input').val().trim();
+        	var min = $('#im-val-minvalue-input').val().trim();
             if (min == "") {
             	showNotificationAlertModal("Error", "Please define a minimum value.");
             	return false;
             }
             
-            let max = $('#im-val-maxvalue-input').val().trim();
+            var max = $('#im-val-maxvalue-input').val().trim();
             if (max == "") {
             	showNotificationAlertModal("Error", "Please define a maximum value.");
             	return false;
             }
             
         } else {
-        	let pattern = $('#im-val-pattern-input').val().trim();
+        	var pattern = $('#im-val-pattern-input').val().trim();
         	if (pattern == "") {
         		showNotificationAlertModal("Error", "Please define a pattern.");
         		return false;
         	}
         }
         
-        let selectedValidator = $("#q-im-validator-select").val();
+        var selectedValidator = $("#q-im-validator-select").val();
         addValidator(root, selectedValidator);
     });
 
@@ -455,7 +455,7 @@ $(document).ready(function ($) {
     });
 
     $("#im-mappingname-input").change(function() {
-        let mappingName = $("#im-mappingname-input").val();
+        var mappingName = $("#im-mappingname-input").val();
         if(checkIfIMappingExists(root, mappingName)) {
             showInputMappingNotification("danger", "A mapping with the name " + mappingName +
                 " already exists.", 4000);
@@ -464,13 +464,13 @@ $(document).ready(function ($) {
     });
 
     $(document).on('click','#q-im-validators-table .fa-edit',function() {
-        let validatorName = $(this).closest("tr").attr('name');
+        var validatorName = $(this).closest("tr").attr('name');
         editValidator(root, validatorName);
     });
 
     $(document).on('click','#q-im-validators-table .fa-trash',function() {
-    	let validatorName = $(this).closest("tr").attr('name');
-    	let row = $(this);
+    	var validatorName = $(this).closest("tr").attr('name');
+    	var row = $(this);
     	
     	$("#q-input-mapping-validator-delete-confirm-btn").click(function(event) {
     		removeIfValidatorExists(validatorName);
@@ -482,12 +482,12 @@ $(document).ready(function ($) {
     });
 
     $(document).on('click','#q-im-entries-table .fa-edit',function() {
-        let mappingName = $(this).closest("tr").attr('name');
+        var mappingName = $(this).closest("tr").attr('name');
         editInputMapping(root, mappingName);
     });
 
     $(document).on('click','#q-im-entries-table .fa-trash',function() {
-        let mappingName = $(this).closest("tr").attr('name');
+        var mappingName = $(this).closest("tr").attr('name');
         
         $("#q-im-delete-confirm-btn").click(function(event) {
         	deleteInputMapping(mappingName);
@@ -499,7 +499,7 @@ $(document).ready(function ($) {
     });
 
     $("#im-val-maxvalue-input").keypress(function(e){
-    	let validatorType = $("#q-im-validator-select").val();
+    	var validatorType = $("#q-im-validator-select").val();
     	if (validatorType == "validateLength") {
     		return isInputEventAllowedForNonNegativeIntegerField(e);
     	}
@@ -507,7 +507,7 @@ $(document).ready(function ($) {
     });
 
     $("#im-val-minvalue-input").keypress(function(e){
-    	let validatorType = $("#q-im-validator-select").val();
+    	var validatorType = $("#q-im-validator-select").val();
     	if (validatorType == "validateLength") {
     		return isInputEventAllowedForNonNegativeIntegerField(e);
     	}
@@ -520,13 +520,13 @@ $(document).ready(function ($) {
     
     $(document).on('click','#q-output-mapping-table .fa-edit',function() {
     	$('#output-mapping-modal-header').text("Edit Output Mapping");
-    	let tds = $(this).closest("tr").find('td');
+    	var tds = $(this).closest("tr").find('td');
     	populateQueryOutputMappingModal(resultElement, tds, root);
     });
     
     $(document).on('click','#q-output-mapping-table .fa-trash',function() {
-    	let tds = $(this).closest("tr").find('td');
-    	let row = $(this);
+    	var tds = $(this).closest("tr").find('td');
+    	var row = $(this);
     	
     	$("#q-om-delete-confirm-btn").click(function(event) {
     		deleteQueryOutputMappingFromResult(resultElement, tds);
@@ -539,15 +539,15 @@ $(document).ready(function ($) {
     });
 
     $(document).on('click','#q-queries-table .fa-edit',function() {
-        let queryId = $(this).closest("tr").attr('data-id');
+        var queryId = $(this).closest("tr").attr('data-id');
         resultElement = editQuery(root, queryId);
     });
 
     $(document).on('click','#q-queries-table .fa-trash',function() {
-        let queryId = $(this).closest("tr").attr('data-id');
+        var queryId = $(this).closest("tr").attr('data-id');
 
         $("#q-delete-confirm-btn").click(function(event) {
-            let result = deleteQuery(root, queryId);
+            var result = deleteQuery(root, queryId);
             if (result) {
                 saveAll(root, url, function() {
                     populateQueryTable(root);
@@ -576,21 +576,21 @@ $(document).ready(function ($) {
     
     //generate output mapping
     $('#q-output_mapping-gen-btn').click(function (e) {
-    	let rslt = generateOutputMapping(root, portValue);
+    	var rslt = generateOutputMapping(root, portValue);
     	if (rslt != null) {
     		resultElement = rslt;
     	}
     });
     
     $('#q-om-addedit-query-select').change(function(e) {
-    	let queryid = $("#q-om-addedit-query-select").val(); 
+    	var queryid = $("#q-om-addedit-query-select").val(); 
     	populateQueryOutputMappingParamaterTable(root, queryid);
     });
     
     $('#input-mapping-modal-save').click(function(e) {
     	e.preventDefault();
     	
-    	let mappingType = $('#q-om-addedit-mappingtype-select').val();
+    	var mappingType = $('#q-om-addedit-mappingtype-select').val();
     	if (mappingType == "element" || mappingType == "attribute") {
     		if ($('#q-om-addedit-outputfn-input').val() == "") {
     			showOutputMappingNotification("danger", "Output field name cannot be empty.", 4000);
@@ -609,7 +609,7 @@ $(document).ready(function ($) {
     			return false;
     		}
     		
-    		let childElementString = $('#om-complex-child-input').val();
+    		var childElementString = $('#om-complex-child-input').val();
     		
     		if (childElementString == "") {
     			showOutputMappingNotification("danger", "Child elements cannot be empty.", 4000);
@@ -617,7 +617,7 @@ $(document).ready(function ($) {
     		}
     	}
     			
-    	let element = processOutputMappingModal(root);
+    	var element = processOutputMappingModal(root);
     	resultElement = updateResultElement(root, resultElement, element);
     	
     });
@@ -647,10 +647,10 @@ $(document).ready(function ($) {
     $("#dss-description-input").on("keyup", function(){
         clearInterval(onKeyChangeTimer);
         onKeyChangeTimer = setTimeout(function() {
-        	let exists = false;
-        	let description = root.getElementsByTagName("description");
+        	var exists = false;
+        	var description = root.getElementsByTagName("description");
             if (description.length > 0) {
-            	for (let i = 0, len = description.length; i < len; i++) {
+            	for (var i = 0, len = description.length; i < len; i++) {
             		if ((description[i].parentElement != undefined && description[i].parentElement != null && description[i].parentElement.localName == "data") 
             				|| (description[i].parentNode != undefined && description[i].parentNode != null && description[i].parentNode.localName == "data")) {
             			exists = true;
@@ -661,8 +661,8 @@ $(document).ready(function ($) {
             }
             
             if (!exists && $('#dss-description-input').val().trim() != "") {
-            	let descriptionElement = root.createElement("description");
-                let text_node = root.createTextNode($('#dss-description-input').val());
+            	var descriptionElement = root.createElement("description");
+                var text_node = root.createTextNode($('#dss-description-input').val());
                 descriptionElement.appendChild(text_node);
                 root.getElementsByTagName("data")[0].appendChild(descriptionElement);
             }
@@ -674,7 +674,7 @@ $(document).ready(function ($) {
     $("#dss-namespace-input").on("keyup", function(){
         clearInterval(onKeyChangeTimer);
         onKeyChangeTimer = setTimeout(function() {
-        	let namespaceValue = $('#dss-namespace-input').val();
+        	var namespaceValue = $('#dss-namespace-input').val();
         	if (namespaceValue != undefined && namespaceValue != "") {
         		root.getElementsByTagName("data")[0].setAttribute("serviceNamespace", namespaceValue);
         	} else {
@@ -689,7 +689,7 @@ $(document).ready(function ($) {
         clearInterval(onKeyChangeTimer);
         onKeyChangeTimer = setTimeout(function() {
         	
-        	let serviceGroupValue = $('#dss-service-group-input').val();
+        	var serviceGroupValue = $('#dss-service-group-input').val();
         	if (serviceGroupValue != undefined && serviceGroupValue != "") {
         		root.getElementsByTagName("data")[0].setAttribute("serviceGroup", serviceGroupValue);
         	} else {
@@ -704,7 +704,7 @@ $(document).ready(function ($) {
         clearInterval(onKeyChangeTimer);
         onKeyChangeTimer = setTimeout(function() {
         	
-        	let publishSwaggerValue = $('#dss-publish-swagger-input').val();
+        	var publishSwaggerValue = $('#dss-publish-swagger-input').val();
         	if (publishSwaggerValue != undefined && publishSwaggerValue != "") {
         		root.getElementsByTagName("data")[0].setAttribute("publishSwagger", publishSwaggerValue);
         	} else {
@@ -716,18 +716,18 @@ $(document).ready(function ($) {
     });
     
     $(document).on('click','#auth-provider-param-table .fa-trash',function() {
-    	let tds = $(this).closest("tr").find('td');
-    	let row = $(this);
+    	var tds = $(this).closest("tr").find('td');
+    	var row = $(this);
     	if (tds[0].firstChild.value === "" && tds[1].firstChild.value === "") {
     		row.closest("tr").remove();
     		return;
     	}
     	
     	$("#transport-auth-param-delete-confirm-btn").click(function(event) {
-        	let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+        	var authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
         	if (authProvider.length > 0) {
-        		let props = authProvider[0].getElementsByTagName("property");
-        		for (let i = 0, len = props.length; i < len; i++) {
+        		var props = authProvider[0].getElementsByTagName("property");
+        		for (var i = 0, len = props.length; i < len; i++) {
         			if (props[i].attributes.getNamedItem("name").value == tds[0].firstChild.value) {
         				authProvider[0].removeChild(props[i]);
         				break;
@@ -745,17 +745,17 @@ $(document).ready(function ($) {
     $("#auth-provider-param-table > tbody").on("keyup", function(){
         clearInterval(onKeyChangeTimer);
         onKeyChangeTimer = setTimeout(function() {
-        	let authProvider;
-        	let authProviders = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+        	var authProvider;
+        	var authProviders = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
             if (authProviders.length == 0) {
             	authProvider = root.createElement("authorization_provider");
             } else {
             	authProvider = authProviders[0];
-            	let props = authProvider.children;
+            	var props = authProvider.children;
             	if (props == undefined) {
             		props = authProvider.childNodes;
             	}
-        		for (let i = 0, len = props.length; i < len; i++) {
+        		for (var i = 0, len = props.length; i < len; i++) {
         			if (authProvider.children != undefined) {
         				authProvider.children[0].remove();
         			} else if (authProvider.childNodes != undefined) {
@@ -765,9 +765,9 @@ $(document).ready(function ($) {
             	}
             }
             
-            let trs = $('#auth-provider-param-table').find('tr');
-            for (let i = 1, len = trs.length; i < len; i++) {
-            	let prop = root.createElement("property");
+            var trs = $('#auth-provider-param-table').find('tr');
+            for (var i = 1, len = trs.length; i < len; i++) {
+            	var prop = root.createElement("property");
             	prop.setAttribute("name", trs[i].cells[0].firstChild.value);
             	prop.textContent = trs[i].cells[1].firstChild.value;
             	authProvider.appendChild(prop);
@@ -798,7 +798,7 @@ $(document).ready(function ($) {
     $("#operation-form-save-btn").click(function (e) {
         e.preventDefault();
         
-        let opName = $('#o-addedit-opname-input').val().trim();
+        var opName = $('#o-addedit-opname-input').val().trim();
         if (opName == "") {
         	showErrorNotification("danger", "Please define an Operation Name", 3000, "operation-notification-alert-holder");
         	return false;
@@ -810,15 +810,15 @@ $(document).ready(function ($) {
         }
 
         
-        let qId = $('#o-addedit-queryid-select').val().trim();
+        var qId = $('#o-addedit-queryid-select').val().trim();
         if (qId == "") {
         	showErrorNotification("danger", "Please provide a query ID", 3000, "operation-notification-alert-holder");
         	return false;
         }
         
         // Check for empty values in parameters
-        let op_parameters = $('#operation-param-table > tbody')[0].rows;
-        for (let i = 0, len = op_parameters.length; i < len; i++) {
+        var op_parameters = $('#operation-param-table > tbody')[0].rows;
+        for (var i = 0, len = op_parameters.length; i < len; i++) {
         	if (op_parameters.item(i).cells[0].firstChild.value != EMPTY_STRING || op_parameters.item(i).cells[1].firstChild.value != EMPTY_STRING) {
 	    		if (op_parameters.item(i).cells[0].firstChild.value == EMPTY_STRING) {
 	    			showErrorNotification("danger", "Please provide a query parameter name", 3000, "operation-notification-alert-holder");
@@ -830,7 +830,7 @@ $(document).ready(function ($) {
         	}
     	}
 
-        let status = addOperation(root);
+        var status = addOperation(root);
         if (status) {
         	saveAll(root, url, function() { });
         }
@@ -840,7 +840,7 @@ $(document).ready(function ($) {
      * Deletes operation table entry and root entry upon delete.
      */
     $(document).on('click','#o-operation-table .fa-trash',function() {
-    	let tds = $(this).closest("tr").find('td');
+    	var tds = $(this).closest("tr").find('td');
 
         $("#o-delete-confirm-btn").click(function(event) {
             deleteOperation(root, tds[0].innerText);
@@ -859,7 +859,7 @@ $(document).ready(function ($) {
      */
     $('#o-addedit-queryid-select').change(function(e) {
     	e.preventDefault();
-    	let queryid = $("#o-addedit-queryid-select").val(); 
+    	var queryid = $("#o-addedit-queryid-select").val(); 
     	populateOperationParamaterTable(root, queryid);
     });
     
@@ -867,7 +867,7 @@ $(document).ready(function ($) {
      * Populates operation modal upon edit option.
      */
     $(document).on('click','#o-operation-table .fa-edit',function() {
-    	let tds = $(this).closest("tr").find('td');
+    	var tds = $(this).closest("tr").find('td');
     	populateOperationForm(root, tds[0].innerText, tds[1].innerText);
     });
     
@@ -889,8 +889,8 @@ $(document).ready(function ($) {
      * Deletes specific resource.
      */
     $(document).on('click','#r-resources-table .fa-trash',function() {
-    	let tds = $(this).closest("tr").data('id');
-    	let method = $(this).closest("tr").find('td')[1].innerText;
+    	var tds = $(this).closest("tr").data('id');
+    	var method = $(this).closest("tr").find('td')[1].innerText;
 
         $("#r-delete-confirm-btn").click(function(event) {
             //deleteOperation(root, tds[0].innerText);
@@ -911,8 +911,8 @@ $(document).ready(function ($) {
      * Opens modal for editing specific resource.
      */
     $(document).on('click','#r-resources-table .fa-edit',function() {
-        let resourceId = $(this).closest("tr").data('id');
-        let method = $(this).closest("tr").find('td')[1].innerText;
+        var resourceId = $(this).closest("tr").data('id');
+        var method = $(this).closest("tr").find('td')[1].innerText;
         populateResourcesModal(root, resourceId, method);
         openResourcesModal(true);
     });
@@ -920,13 +920,13 @@ $(document).ready(function ($) {
     $("#input-mapping-save-btn").click(function (e) {
         e.preventDefault();
 
-        let inMappingName = $('#im-mappingname-input').val();
+        var inMappingName = $('#im-mappingname-input').val();
         if (inMappingName.trim() == "") {
         	showInputMappingNotification("danger", "Please enter a mapping name.", 4000);
         	return false;
         }
         
-        let result = addInputMapping(root);
+        var result = addInputMapping(root);
 
         if (result) {
             $("#q-input-mapping-modal").modal('hide');
@@ -979,11 +979,11 @@ $(document).ready(function ($) {
         } else {
         	$('#ac-disable-legacy-boxcarring-check').prop("checked", false);
         	$('#ac-disable-legacy-boxcarring-group').toggle(false);
-        	let enableBoxcarring = root.getElementsByTagName("data")[0].attributes.getNamedItem("enableBoxcarring");
+        	var enableBoxcarring = root.getElementsByTagName("data")[0].attributes.getNamedItem("enableBoxcarring");
         	if (enableBoxcarring != null && enableBoxcarring != undefined) {
         		root.getElementsByTagName("data")[0].removeAttribute("enableBoxcarring");
         	}
-        	let disableLegacyBoxcarringMode = root.getElementsByTagName("data")[0].attributes.getNamedItem("disableLegacyBoxcarringMode");
+        	var disableLegacyBoxcarringMode = root.getElementsByTagName("data")[0].attributes.getNamedItem("disableLegacyBoxcarringMode");
         	if (disableLegacyBoxcarringMode != null && disableLegacyBoxcarringMode != undefined) {
         		root.getElementsByTagName("data")[0].removeAttribute("disableLegacyBoxcarringMode");
         	}
@@ -993,7 +993,7 @@ $(document).ready(function ($) {
 
     $("#ac-enable-streaming-check").change(function() {
         if (this.checked) {
-        	let disableStreaming = root.getElementsByTagName("data")[0].attributes.getNamedItem("disableStreaming");
+        	var disableStreaming = root.getElementsByTagName("data")[0].attributes.getNamedItem("disableStreaming");
         	if (disableStreaming != null && disableStreaming != undefined) {
         		root.getElementsByTagName("data")[0].removeAttribute("disableStreaming");
         	}
@@ -1007,7 +1007,7 @@ $(document).ready(function ($) {
         if (this.checked) {
         	root.getElementsByTagName("data")[0].setAttribute("enableBatchRequests", "true");
         } else {
-        	let enableBatchRequests = root.getElementsByTagName("data")[0].attributes.getNamedItem("enableBatchRequests");
+        	var enableBatchRequests = root.getElementsByTagName("data")[0].attributes.getNamedItem("enableBatchRequests");
         	if (enableBatchRequests != null && enableBatchRequests != undefined) {
         		root.getElementsByTagName("data")[0].removeAttribute("enableBatchRequests");
         	}
@@ -1019,7 +1019,7 @@ $(document).ready(function ($) {
         if (this.checked) {
         	root.getElementsByTagName("data")[0].setAttribute("serviceStatus", "active");
         } else {
-        	let activeServiceStatus = root.getElementsByTagName("data")[0].attributes.getNamedItem("serviceStatus");
+        	var activeServiceStatus = root.getElementsByTagName("data")[0].attributes.getNamedItem("serviceStatus");
         	if (activeServiceStatus != null && activeServiceStatus != undefined) {
         		root.getElementsByTagName("data")[0].removeAttribute("serviceStatus");
         	}
@@ -1031,7 +1031,7 @@ $(document).ready(function ($) {
         if (this.checked) {
         	root.getElementsByTagName("data")[0].setAttribute("disableLegacyBoxcarringMode", "true");
         } else {
-        	let disableLegacyBoxcarringMode = root.getElementsByTagName("data")[0].attributes.getNamedItem("disableLegacyBoxcarringMode");
+        	var disableLegacyBoxcarringMode = root.getElementsByTagName("data")[0].attributes.getNamedItem("disableLegacyBoxcarringMode");
         	if (disableLegacyBoxcarringMode != null && disableLegacyBoxcarringMode != undefined) {
         		root.getElementsByTagName("data")[0].removeAttribute("disableLegacyBoxcarringMode");
         	}
@@ -1055,9 +1055,9 @@ function populateGeneralDetails(root) {
     $('#dss-name-header').text(root.getElementsByTagName("data")[0].attributes.getNamedItem("name").value);
 
     $('#dss-description-input').val("");
-    let description = root.getElementsByTagName("description");
+    var description = root.getElementsByTagName("description");
     if (description.length > 0) {
-    	for (let i = 0, len = description.length; i < len; i++) {
+    	for (var i = 0, len = description.length; i < len; i++) {
     		if ((description[i].parentElement != undefined && description[i].parentElement != null && description[i].parentElement.localName == "data")
     				|| (description[i].parentNode != undefined && description[i].parentNode != null && description[i].parentNode.localName == "data")) {
     			$('#dss-description-input').val(description[i].textContent);
@@ -1066,23 +1066,23 @@ function populateGeneralDetails(root) {
     	}
     }
     
-    let dataObject = root.getElementsByTagName("data")[0];
+    var dataObject = root.getElementsByTagName("data")[0];
     if (dataObject != undefined && dataObject.hasChildNodes()) {
-    	let serviceNamespace = dataObject.attributes.getNamedItem("serviceNamespace");
+    	var serviceNamespace = dataObject.attributes.getNamedItem("serviceNamespace");
     	if (serviceNamespace != undefined && serviceNamespace != null) {
     		$('#dss-namespace-input').val(serviceNamespace.value);
     	} else {
     		$('#dss-namespace-input').val("");
     	}
     	
-    	let serviceGroup = dataObject.attributes.getNamedItem("serviceGroup");
+    	var serviceGroup = dataObject.attributes.getNamedItem("serviceGroup");
     	if (serviceGroup != undefined && serviceGroup != null) {
     		$('#dss-service-group-input').val(serviceGroup.value);
     	} else {
     		$('#dss-service-group-input').val("");
     	}
     	
-    	let publishSwagger = dataObject.attributes.getNamedItem("publishSwagger");
+    	var publishSwagger = dataObject.attributes.getNamedItem("publishSwagger");
     	if (publishSwagger != undefined && publishSwagger != null) {
     		$('#dss-publish-swagger-input').val(publishSwagger.value);
     	} else {
@@ -1097,8 +1097,8 @@ function populateGeneralDetails(root) {
  * @param root Document object.
  */
 function populateTransportSettings(root) {
-    let transports = root.getElementsByTagName("data")[0].attributes.getNamedItem("transports");
-    let transportValues;
+    var transports = root.getElementsByTagName("data")[0].attributes.getNamedItem("transports");
+    var transportValues;
 
     if (transports !== undefined && transports !== null) {
         transportValues = transports.value.split(" ");
@@ -1108,22 +1108,22 @@ function populateTransportSettings(root) {
         $('#ts-jms-check').prop('checked', (transportValues.indexOf("jms") >=0 ));
     }
     
-    let txManagerJNDIName = root.getElementsByTagName("data")[0].attributes.getNamedItem("txManagerJNDIName");
+    var txManagerJNDIName = root.getElementsByTagName("data")[0].attributes.getNamedItem("txManagerJNDIName");
     if (txManagerJNDIName != null && txManagerJNDIName != undefined) {
     	$('#ts-txmjndi-name-input').val(txManagerJNDIName.value);
     }
-    let authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
+    var authProvider = root.getElementsByTagName("data")[0].getElementsByTagName("authorization_provider");
     if (authProvider.length > 0) {
-    	let className = authProvider[0].attributes.getNamedItem("class");
+    	var className = authProvider[0].attributes.getNamedItem("class");
     	$('#ts-auth-prov-class-input').val(className.value);
     	$('#auth-provider-param-table').find('tbody').find('tr').detach();
-    	let props = authProvider[0].getElementsByTagName("property");
+    	var props = authProvider[0].getElementsByTagName("property");
     	$.each(props, function (index, prop) {
-    		let propVal = prop.innerHTML;
+    		var propVal = prop.innerHTML;
     		if (propVal == undefined) {
     			propVal = prop.textContent;
     		}
-    		let prop_row = "<tr><td><input type=\"text\" placeholder=\"Name\" style=\"width: 100%;\" value='" + prop.attributes.getNamedItem("name").value + "' /></td><td>" 
+    		var prop_row = "<tr><td><input type=\"text\" placeholder=\"Name\" style=\"width: 100%;\" value='" + prop.attributes.getNamedItem("name").value + "' /></td><td>" 
     			+ "<input type=\"text\" placeholder=\"Value\" style=\"width: 100%;\" value='" + propVal + "' /></td><td class=\"text-center\"><i class=\"fa fa-trash\"></i></td></tr>";
     		$('#auth-provider-param-table > tbody').append(prop_row);
     	});
@@ -1139,7 +1139,7 @@ function populateTransportSettings(root) {
  * @param root Document object.
  */
 function populateQueries(root) {
-    let queryConfigs = root.getElementsByTagName("query");
+    var queryConfigs = root.getElementsByTagName("query");
     if (queryConfigs.length == 0 || queryConfigs === undefined || queryConfigs === null)  {
         $("#q-queries-table").hide();
         showQueriesTableNotification("info", "No queries available. Click 'Add New' to create a new query.", 0);
@@ -1172,7 +1172,7 @@ function openResourcesModal(isEditEnabled) {
  * notification will stay forever.
  */
 function showResourceTableNotification(type, message, interval) {
-    let alertHtml = "<span><div id='resource-table-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div></span>";
+    var alertHtml = "<span><div id='resource-table-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div></span>";
     $("#resource-table-notification-alert-holder").html(alertHtml);
     $("#resource-table-notification-alert").show();
 
@@ -1188,7 +1188,7 @@ function showResourceTableNotification(type, message, interval) {
  * notification will stay forever.
  */
 function showResourceNotification(type, message, interval) {
-    let alertHtml = "<div id='resource-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div>";
+    var alertHtml = "<div id='resource-notification-alert' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div>";
     $("#resource-notification-alert-holder").html(alertHtml);
     $("#resource-notification-alert").show();
 
@@ -1218,7 +1218,7 @@ function showAlert(selector, interval) {
  * @returns {HTMLElement | any | ActiveX.IXMLDOMElement} Created node.
  */
 function createPropertyNode(root, name) {
-    let newNode = root.createElement("property");
+    var newNode = root.createElement("property");
     newNode.setAttribute("name", name);
     return newNode;
 }
@@ -1232,7 +1232,7 @@ function createPropertyNode(root, name) {
  * @returns {*} Parent node object.
  */
 function createTextNode(root, parentNode, textContent) {
-    let newTextNode = root.createTextNode(textContent);
+    var newTextNode = root.createTextNode(textContent);
     parentNode.appendChild(newTextNode);
     return parentNode;
 }
@@ -1246,7 +1246,7 @@ function createTextNode(root, parentNode, textContent) {
  * @returns {HTMLElement | any | ActiveX.IXMLDOMElement} Created node.
  */
 function createWithParamNode(root, name, queryParam) {
-    let newNode = root.createElement("with-param");
+    var newNode = root.createElement("with-param");
     newNode.setAttribute("name", name);
     newNode.setAttribute("query-param", queryParam);
     return newNode;
@@ -1280,15 +1280,15 @@ function replaceNode(newNode, refNode) {
  * @param successFunc Success callback function.
  */
 function saveAll(root, url, successFunc) {
-    let serializedData = new XMLSerializer().serializeToString(root);
+    var serializedData = new XMLSerializer().serializeToString(root);
     serializedData = serializedData.split(/xmlns\:NS[0-9]+=\"\" NS[0-9]+\:/).join("");
-    let prettyXmlText;
-    let isIE = false || !!document.documentMode;
+    var prettyXmlText;
+    var isIE = false || !!document.documentMode;
 
     prettyXmlText = new XmlBeautify().beautify(serializedData, 
          {indent: "  ",useSelfClosingElement: true});
 
-    let request = $.ajax({
+    var request = $.ajax({
         url: url,
         type: "post",
         headers: {"x-operation-type":OPERATION_TYPE_HEADER_SAVE_ALL},
@@ -1299,11 +1299,11 @@ function saveAll(root, url, successFunc) {
 
 
 function resolveMetadata(metadata) {
-    let dataPairs = metadata.split(",");
-    let mdMap = new Map();
+    var dataPairs = metadata.split(",");
+    var mdMap = new Map();
 
     for (i = 0; i < dataPairs.length; i++) {
-        let tempArr = dataPairs[i].split(":");
+        var tempArr = dataPairs[i].split(":");
         mdMap.set(tempArr[0], tempArr[1]);
     }
 
@@ -1317,13 +1317,13 @@ function resolveMetadata(metadata) {
  */
 function addResource(root) {
     // Check if data source name already exists
-    let resourceConfigs = root.getElementsByTagName("resource");
-    let resourceId = $("#r-addedit-opname-input").val();
-    let methodValue = $("#r-addedit-resourcemethod-select-original").val();
-    let resourceMethod = $("#r-addedit-resourcemethod-select").val();
-    let resourceIndex = -1;
-    let editResource = false;
-    let isValid = validateResourceFields(resourceId, resourceMethod);
+    var resourceConfigs = root.getElementsByTagName("resource");
+    var resourceId = $("#r-addedit-opname-input").val();
+    var methodValue = $("#r-addedit-resourcemethod-select-original").val();
+    var resourceMethod = $("#r-addedit-resourcemethod-select").val();
+    var resourceIndex = -1;
+    var editResource = false;
+    var isValid = validateResourceFields(resourceId, resourceMethod);
     if (!isValid) {
     	showResourceNotification("danger",
 		"Please complete all the required fields", 4000);
@@ -1341,7 +1341,7 @@ function addResource(root) {
     	editResource = true;
     }
 
-	for (let i = 0, len = resourceConfigs.length; i < len; i++) {
+	for (var i = 0, len = resourceConfigs.length; i < len; i++) {
 		if ((resourceConfigs[i].getAttribute("path") == resourceId)
 				&& (resourceConfigs[i].getAttribute("method").toLowerCase() == resourceMethod.toLowerCase())) {
 			if (editResource) {
@@ -1356,8 +1356,8 @@ function addResource(root) {
 	}
 
     // Process the form
-    let formData = $("#resource-form").find(':visible').serializeArray();
-    let dataObj = {};
+    var formData = $("#resource-form").find(':visible').serializeArray();
+    var dataObj = {};
 
     $(formData).each(function(i, field){
         dataObj[field.name] = field.value;
@@ -1375,22 +1375,22 @@ function addResource(root) {
  * @param resourceId resource ID.
  */
 function populateResourcesModal(root, resourceId, method) {
-	let resourceConfigs = root.getElementsByTagName("resource");
+	var resourceConfigs = root.getElementsByTagName("resource");
 	$('#r-addedit-opname-input').val(resourceId);
 	$("#r-addedit-opname-input").prop('disabled', true);
-    for (let i = 0, len = resourceConfigs.length; i < len; i++) {
+    for (var i = 0, len = resourceConfigs.length; i < len; i++) {
         if ((resourceConfigs[i].getAttribute("path") == resourceId) && (resourceConfigs[i].getAttribute("method") == method)) {
-			let resourceMethod = resourceConfigs[i].getAttribute("method").toLowerCase();
+			var resourceMethod = resourceConfigs[i].getAttribute("method").toLowerCase();
 			$('#r-addedit-resourcemethod-select').val(resourceMethod.toUpperCase());
 			$('#r-addedit-resourcemethod-select-original').val(resourceMethod);
-			let queryName = resourceConfigs[i]
+			var queryName = resourceConfigs[i]
 					.getElementsByTagName("call-query")[0].getAttribute("href");
 			$('#r-addedit-queryid-select').val(queryName).trigger('change');
 			if (resourceConfigs[i].getElementsByTagName("description")[0] != undefined) {
 				$('#r-addedit-description-input').val(resourceConfigs[i]
 				.getElementsByTagName("description")[0].textContent);
 			}
-			let returnRequest = resourceConfigs[i]
+			var returnRequest = resourceConfigs[i]
 					.getAttribute("returnRequestStatus");
 			if (returnRequest == "true") {
 				$('#r-addedit-returnreqstatus-checkbox').prop("checked", true);
@@ -1398,7 +1398,7 @@ function populateResourcesModal(root, resourceId, method) {
 				$('#r-addedit-returnreqstatus-checkbox').prop("checked", false);
 			}
 			
-			let disableStreaming = resourceConfigs[i].getAttribute("disableStreaming");
+			var disableStreaming = resourceConfigs[i].getAttribute("disableStreaming");
 			if (disableStreaming == "true") {
 				$('#r-addedit-enablestreaming-checkbox').prop("checked", false);
 			} else {
@@ -1419,18 +1419,18 @@ function populateResourcesModal(root, resourceId, method) {
  *            index of the resource node
  */
 function processResourceInputData(root, data, index, editResource) {
-    let dataRoot = root.getElementsByTagName("data")[0];
-    let resourceConfigs = root.getElementsByTagName("resource");
+    var dataRoot = root.getElementsByTagName("data")[0];
+    var resourceConfigs = root.getElementsByTagName("resource");
 
-    let resourceMethod = $("#r-addedit-resourcemethod-select").val();
-    let resourcePath = $("#r-addedit-opname-input").val();
-    let queryID = $("#r-addedit-queryid-select").val();
-    let description = $("#r-addedit-description-input").val();
-    let returnRequest = $("#r-addedit-returnreqstatus-checkbox:checked").val() ? true : false;
-    let disableStreaming = $("#r-addedit-enablestreaming-checkbox:checked").val() ? true : false;
+    var resourceMethod = $("#r-addedit-resourcemethod-select").val();
+    var resourcePath = $("#r-addedit-opname-input").val();
+    var queryID = $("#r-addedit-queryid-select").val();
+    var description = $("#r-addedit-description-input").val();
+    var returnRequest = $("#r-addedit-returnreqstatus-checkbox:checked").val() ? true : false;
+    var disableStreaming = $("#r-addedit-enablestreaming-checkbox:checked").val() ? true : false;
 
     // Create a new config element
-    let resourceElement = root.createElement("resource");
+    var resourceElement = root.createElement("resource");
     resourceElement.setAttribute("method", resourceMethod);
     resourceElement.setAttribute("path", resourcePath);
     if (returnRequest) {
@@ -1441,15 +1441,15 @@ function processResourceInputData(root, data, index, editResource) {
     	resourceElement.setAttribute("disableStreaming", true);
     }
 
-    let descriptionElement = root.createElement("description");
+    var descriptionElement = root.createElement("description");
     descriptionElement.textContent = description;
     resourceElement.appendChild(descriptionElement);
 
-    let callQueryElement = root.createElement("call-query");
+    var callQueryElement = root.createElement("call-query");
     callQueryElement.setAttribute("href", queryID);
     resourceElement.appendChild(callQueryElement);
 
-    let properties = [];
+    var properties = [];
 
 	var items=[];
 	//Iterate all tr's in second column
@@ -1466,12 +1466,12 @@ function processResourceInputData(root, data, index, editResource) {
 	//restrict array to unique items
 	var items = $.unique( items );
     // Append properties to config node
-    for (let i = 0, len = items.length; i < len; i++) {
+    for (var i = 0, len = items.length; i < len; i++) {
     	properties.push(createWithParamNode(root, items[i][0], items[i][1]));
     }
 
     // Append properties to config node
-    for (let i = 0, len = properties.length; i < len; i++) {
+    for (var i = 0, len = properties.length; i < len; i++) {
     	callQueryElement.appendChild(properties[i]);
     }
 
@@ -1479,16 +1479,16 @@ function processResourceInputData(root, data, index, editResource) {
 //    	replaceNode(resourceElement, resourceConfigs[index]);
 //    }
     
-    let exists = editResource && index != -1;
+    var exists = editResource && index != -1;
     if (resourceConfigs.length > 0 && exists) {
     	// Deletes if operation node exists
-        for (let i = 0, len = resourceConfigs.length; i < len; i++) {
+        for (var i = 0, len = resourceConfigs.length; i < len; i++) {
             if (index == i) {
             	// Delete the node.
             	dataRoot.removeChild(resourceConfigs[0]);
             	dataRoot.appendChild(resourceElement);
             } else {
-            	let current_op = resourceConfigs[0];
+            	var current_op = resourceConfigs[0];
             	dataRoot.removeChild(resourceConfigs[0]);
             	dataRoot.appendChild(current_op);
             }
@@ -1527,11 +1527,11 @@ function populateQueriesListForResources(tableId, selectId, columnNo, root) {
 	var items=[], options=[];
 
 	$('#'+selectId).find('option').remove();
-	let option = new Option("-- Select Query --", "", true, "");
+	var option = new Option("-- Select Query --", "", true, "");
 	$('#'+selectId).append(option);
-	let queries = root.getElementsByTagName("query");
-	for (let i = 0, len = queries.length; i < len; i++) {
-		let name = queries[i].getAttribute("id");
+	var queries = root.getElementsByTagName("query");
+	for (var i = 0, len = queries.length; i < len; i++) {
+		var name = queries[i].getAttribute("id");
 		items.push(name);
 	}
 
@@ -1548,7 +1548,7 @@ function populateQueriesListForResources(tableId, selectId, columnNo, root) {
 
     $('#'+selectId).change(function(e) {
     	e.preventDefault();
-    	let queryid = $('#'+selectId).val();
+    	var queryid = $('#'+selectId).val();
     	populateResourceParameterTable(root, queryid);
     });
     $('#'+selectId).trigger('change');
@@ -1572,11 +1572,11 @@ function populateResources(root) {
     $("#r-resources-table").show();
     $("#resource-table-notification-alert-holder").hide();
     $("#r-resources-table tbody").empty();
-    for (let i = 0, len = resourceConfigs.length; i < len; i++) {
-        let resourceName = resourceConfigs[i].getAttribute("path");
-        let method = resourceConfigs[i].getAttribute("method");
-        let queryID = resourceConfigs[i].getElementsByTagName("call-query")[0].getAttribute("href");
-        let markup = "<tr" + " data-id='" + resourceName + "'" + "><td>" + resourceName + "</td><td>" + method + "</td><td>" + queryID + "</td><td class='text-center'>" +
+    for (var i = 0, len = resourceConfigs.length; i < len; i++) {
+        var resourceName = resourceConfigs[i].getAttribute("path");
+        var method = resourceConfigs[i].getAttribute("method");
+        var queryID = resourceConfigs[i].getElementsByTagName("call-query")[0].getAttribute("href");
+        var markup = "<tr" + " data-id='" + resourceName + "'" + "><td>" + resourceName + "</td><td>" + method + "</td><td>" + queryID + "</td><td class='text-center'>" +
             "<i class='fa fa-edit'></i><i class='fa fa-trash'></i></td></tr>";
 
         $("#r-resources-table tbody").append(markup);
@@ -1592,16 +1592,16 @@ function populateResources(root) {
  * @param resourceName resource name which should be deleted.
  */
 function deleteResource(root, resourceName, method) {
-    let resources = root.getElementsByTagName("resource");
-    let deletables = [];
-    for (let i = 0, len = resources.length; i < len; i++) {
+    var resources = root.getElementsByTagName("resource");
+    var deletables = [];
+    for (var i = 0, len = resources.length; i < len; i++) {
         if ((resources[i].getAttribute("path") == resourceName) && (resources[i].getAttribute("method") == method)) {
             // Delete the node.
             deletables.push(resources[i]);
         }
     }
 
-    for (let i = 0, len = deletables.length; i < len; i++) {
+    for (var i = 0, len = deletables.length; i < len; i++) {
        root.documentElement.removeChild(deletables[i]);
     }
 
@@ -1614,22 +1614,22 @@ function deleteResource(root, resourceName, method) {
  * @param queryId query name which should be deleted.
  */
 function populateResourceParameterTable(root, queryId) {
-    let queries = root.getElementsByTagName("query");
-    let items = [];
-    for (let i = 0, len = queries.length; i < len; i++) {
+    var queries = root.getElementsByTagName("query");
+    var items = [];
+    for (var i = 0, len = queries.length; i < len; i++) {
 		if (queries[i].getAttribute("id") == queryId) {
 			// Delete the node.
-			let params = queries[i].getElementsByTagName("param");
-			for (let j = 0, len = params.length; j < len; j++) {
-				let paramName = params[j].getAttribute("name");
+			var params = queries[i].getElementsByTagName("param");
+			for (var j = 0, len = params.length; j < len; j++) {
+				var paramName = params[j].getAttribute("name");
 				items.push(paramName);
 			}
 		}
     }
 
     $("#resource-param-table tbody").empty();
-    for (let i = 0, len = items.length; i < len; i++) {
-        let markup = "<tr" + " data-id='" + items[i] + "'" + "><td>" + items[i] + "</td><td>" + items[i] + "</td></tr>";
+    for (var i = 0, len = items.length; i < len; i++) {
+        var markup = "<tr" + " data-id='" + items[i] + "'" + "><td>" + items[i] + "</td><td>" + items[i] + "</td></tr>";
         $("#resource-param-table tbody").append(markup);
     }
 }
@@ -1652,8 +1652,8 @@ function showNotificationAlertModal(title, content) {
 }
 
 function showErrorNotification(type, message, interval, modalId) {
-	let errorTagId = "error-notification-alert-" + message.replace(/\s/g, "").toLowerCase();
-    let alertHtml = "<div id='" + errorTagId + "' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div>";
+	var errorTagId = "error-notification-alert-" + message.replace(/\s/g, "").toLowerCase();
+    var alertHtml = "<div id='" + errorTagId + "' class=\"alert " + "alert-" + type + "\"" + ">" + message + "</div>";
     $("#" + modalId).html(alertHtml);
     $("#" + errorTagId).show();
 
@@ -1679,13 +1679,13 @@ function isInputEventAllowedForNonNegativeIntegerField(event) {
  * @param isInputEventAllowedForNumericField event validity.
  */
 function isInputEventAllowedForNumericField(event,inputFieldName) {
-	let oldValue = $(inputFieldName).val();
-	let characterPosition = $(inputFieldName).prop('selectionStart');
+	var oldValue = $(inputFieldName).val();
+	var characterPosition = $(inputFieldName).prop('selectionStart');
 	// Allow negative sign or . as the first character
 	if (oldValue == EMPTY_STRING && (event.keyCode == 45 || event.keyCode == 46)) {
 		return true;
 	}
-	let newValue = oldValue.slice(0, characterPosition) + String.fromCharCode(event.keyCode) + oldValue.slice(characterPosition);
+	var newValue = oldValue.slice(0, characterPosition) + String.fromCharCode(event.keyCode) + oldValue.slice(characterPosition);
 	return !isNaN(newValue);
 }
 

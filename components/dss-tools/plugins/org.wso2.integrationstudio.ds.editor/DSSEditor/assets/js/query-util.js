@@ -525,7 +525,7 @@ function processQueryDetails(root, queryElement) {
 	} else {
 		sqlQueryElement = root.createElement("sql");
 	}
-    let sqlQuery = $("#q-sql-query-input").val().replace(/\n/g, " ");
+    let sqlQuery = $("#q-sql-query-input").val();
     if (sqlQuery.indexOf("<") != -1 || sqlQuery.indexOf(">") != -1) {
     	sqlQuery = "<![CDATA[" + sqlQuery + "]]>";
     }

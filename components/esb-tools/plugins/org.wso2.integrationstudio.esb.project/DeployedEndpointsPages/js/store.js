@@ -122,7 +122,6 @@ function openDashboard() {
 		type: "GET",
 		cache: false,
 		success: function(data) {
-			alert(data);
 			$(LOADING_ALERT).modal(HIDE);
 			$(CREDENTIAL_ALERT).prop(HIDDEN, false);
 			setTimeout(function() {

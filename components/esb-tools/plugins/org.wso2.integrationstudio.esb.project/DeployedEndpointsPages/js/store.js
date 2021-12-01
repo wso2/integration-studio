@@ -8,17 +8,17 @@ var HIDE = "hide";
 var FAILED_ALERT = "#failed-alert";
 var LOADING_ALERT = "#open-dashboard-modal";
 var CREDENTIAL_ALERT = "#credential-alert";
-
 function resolveGetParam(param) {
     var paramValue = null,
         tmp = [];
-    location.search
+    var items = location.search
         .substr(1)
-        .split("&")
-        .forEach(function (item) {
-          tmp = item.split("=");
-          if (tmp[0] === param) paramValue = decodeURIComponent(tmp[1]);
-        });
+        .split("&");
+	for(var i=0; i < items.length; i++){
+		var item = items[i];
+		tmp = item.split("=");
+		if (tmp[0] === param) paramValue = decodeURIComponent(tmp[1]);
+	}
     return paramValue;
 }
 
@@ -45,17 +45,17 @@ function populateAPIList() {
 					resourcePath = "";
 				}
 				resourcePath = item.url + resourcePath;
-				$table = $('#table-container-api table tbody');
+				$table = $('#table-container-api table');
 				$table.append('<tr><td><pre><code class="language-bash">' + serviceName + '</code></pre></td><td><pre><code class="language-bash">' + resourcePath + '</code></pre></td></tr>');
 			}
 		} else {
-			$table = $('#table-container-api table tbody');
+			$table = $('#table-container-api table');
 			$table.append('<tr><td><pre><code class="language-bash">' + item.name + '</code></pre></td><td><pre><code class="language-bash">' + item.url + '</code></pre></td></tr>');
 		}
 	}
 	
 	if (apiList.length == 0) {
-		$table = $('#table-container-api table tbody');
+		$table = $('#table-container-api table');
 		$table.append('<tr><td>No services</td><td>-</td><td>-</td>');
 		
 	}
@@ -68,13 +68,13 @@ function populateProxyList() {
 	var proxyList = proxyjsontemp.list;
 	for(var i = 0; i < proxyList.length; i++) {
 	    var item = proxyList[i];
-	    $table = $('#table-container-proxy table tbody');
+	    $table = $('#table-container-proxy table');
 		$table.append('<tr><td><pre><code class="language-bash">' + item.name + '</code></pre></td><td><pre><code class="language-bash">' + 
 				item.wsdl1_1 + '</code></pre></td><td><pre><code class="language-bash">' + item.wsdl2_0 + '</code></pre></td></tr>');
 	}
 	
 	if (proxyList.length == 0) {
-		$table = $('#table-container-proxy table tbody');
+		$table = $('#table-container-proxy table');
 		$table.append('<tr><td>No services</td><td>-</td><td>-</td>');
 		
 	}
@@ -87,13 +87,13 @@ function populateDataServiceList() {
 	var dataserviceList = dataservicejsontemp.list;
 	for(var i = 0; i < dataserviceList.length; i++) {
 	    var item = dataserviceList[i];
-	    $table = $('#table-container-ds table tbody');
+	    $table = $('#table-container-ds table');
 		$table.append('<tr><td><pre><code class="language-bash">' + item.name + '</code></pre></td><td><pre><code class="language-bash">' + 
 				item.wsdl1_1 + '</code></pre></td><td><pre><code class="language-bash">' + item.wsdl2_0 + '</code></pre></td></tr>');
 	}
 
 	if (dataserviceList.length == 0) {
-		$table = $('#table-container-ds table tbody');
+		$table = $('#table-container-ds table');
 		$table.append('<tr><td>No services</td><td>-</td><td>-</td>');
 		
 	}
@@ -138,7 +138,7 @@ function openDashboard() {
 					$(FAILED_ALERT).prop(HIDDEN, true);
 				}, 10000);
 			}
-		},
+		}
 	});
 }
 

@@ -6,7 +6,7 @@ package org.wso2.integrationstudio.gmf.esb.parts.impl;
 // Start of user code for imports
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -26,10 +26,15 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
+import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 
 import org.eclipse.swt.SWT;
@@ -50,7 +55,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import org.wso2.integrationstudio.gmf.esb.EsbPackage;
-
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart;
 
@@ -74,6 +79,11 @@ public class NTLMMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 	protected Text host;
 	protected Text domain;
 	protected Text ntlmVersion;
+	protected EObjectFlatComboViewer usernameExpression;
+	protected EObjectFlatComboViewer passwordExpression;
+	protected EObjectFlatComboViewer hostExpression;
+	protected EObjectFlatComboViewer domainExpression;
+	protected EObjectFlatComboViewer ntlmVersionExpression;
 
 
 
@@ -120,6 +130,11 @@ public class NTLMMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		propertiesStep.addStep(EsbViewsRepository.NTLMMediator.Properties.host);
 		propertiesStep.addStep(EsbViewsRepository.NTLMMediator.Properties.domain);
 		propertiesStep.addStep(EsbViewsRepository.NTLMMediator.Properties.ntlmVersion);
+		propertiesStep.addStep(EsbViewsRepository.NTLMMediator.Properties.usernameExpression);
+		propertiesStep.addStep(EsbViewsRepository.NTLMMediator.Properties.passwordExpression);
+		propertiesStep.addStep(EsbViewsRepository.NTLMMediator.Properties.hostExpression);
+		propertiesStep.addStep(EsbViewsRepository.NTLMMediator.Properties.domainExpression);
+		propertiesStep.addStep(EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression);
 		
 		
 		composer = new PartComposer(nTLMMediatorStep) {
@@ -152,6 +167,21 @@ public class NTLMMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 				}
 				if (key == EsbViewsRepository.NTLMMediator.Properties.ntlmVersion) {
 					return createNtlmVersionText(parent);
+				}
+				if (key == EsbViewsRepository.NTLMMediator.Properties.usernameExpression) {
+					return createUsernameExpressionFlatComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.NTLMMediator.Properties.passwordExpression) {
+					return createPasswordExpressionFlatComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.NTLMMediator.Properties.hostExpression) {
+					return createHostExpressionFlatComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.NTLMMediator.Properties.domainExpression) {
+					return createDomainExpressionFlatComboViewer(parent);
+				}
+				if (key == EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression) {
+					return createNtlmVersionExpressionFlatComboViewer(parent);
 				}
 				return parent;
 			}
@@ -541,6 +571,136 @@ public class NTLMMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
+	/**
+	 * @param parent the parent composite
+	 * 
+	 */
+	protected Composite createUsernameExpressionFlatComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.NTLMMediator.Properties.usernameExpression, EsbMessages.NTLMMediatorPropertiesEditionPart_UsernameExpressionLabel);
+		usernameExpression = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EsbViewsRepository.NTLMMediator.Properties.usernameExpression, EsbViewsRepository.SWT_KIND));
+		usernameExpression.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+
+		usernameExpression.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(NTLMMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.NTLMMediator.Properties.usernameExpression, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getUsernameExpression()));
+			}
+
+		});
+		GridData usernameExpressionData = new GridData(GridData.FILL_HORIZONTAL);
+		usernameExpression.setLayoutData(usernameExpressionData);
+		usernameExpression.setID(EsbViewsRepository.NTLMMediator.Properties.usernameExpression);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.NTLMMediator.Properties.usernameExpression, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createUsernameExpressionFlatComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param parent the parent composite
+	 * 
+	 */
+	protected Composite createPasswordExpressionFlatComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.NTLMMediator.Properties.passwordExpression, EsbMessages.NTLMMediatorPropertiesEditionPart_PasswordExpressionLabel);
+		passwordExpression = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EsbViewsRepository.NTLMMediator.Properties.passwordExpression, EsbViewsRepository.SWT_KIND));
+		passwordExpression.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+
+		passwordExpression.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(NTLMMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.NTLMMediator.Properties.passwordExpression, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getPasswordExpression()));
+			}
+
+		});
+		GridData passwordExpressionData = new GridData(GridData.FILL_HORIZONTAL);
+		passwordExpression.setLayoutData(passwordExpressionData);
+		passwordExpression.setID(EsbViewsRepository.NTLMMediator.Properties.passwordExpression);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.NTLMMediator.Properties.passwordExpression, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createPasswordExpressionFlatComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param parent the parent composite
+	 * 
+	 */
+	protected Composite createHostExpressionFlatComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.NTLMMediator.Properties.hostExpression, EsbMessages.NTLMMediatorPropertiesEditionPart_HostExpressionLabel);
+		hostExpression = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EsbViewsRepository.NTLMMediator.Properties.hostExpression, EsbViewsRepository.SWT_KIND));
+		hostExpression.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+
+		hostExpression.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(NTLMMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.NTLMMediator.Properties.hostExpression, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getHostExpression()));
+			}
+
+		});
+		GridData hostExpressionData = new GridData(GridData.FILL_HORIZONTAL);
+		hostExpression.setLayoutData(hostExpressionData);
+		hostExpression.setID(EsbViewsRepository.NTLMMediator.Properties.hostExpression);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.NTLMMediator.Properties.hostExpression, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createHostExpressionFlatComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param parent the parent composite
+	 * 
+	 */
+	protected Composite createDomainExpressionFlatComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.NTLMMediator.Properties.domainExpression, EsbMessages.NTLMMediatorPropertiesEditionPart_DomainExpressionLabel);
+		domainExpression = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EsbViewsRepository.NTLMMediator.Properties.domainExpression, EsbViewsRepository.SWT_KIND));
+		domainExpression.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+
+		domainExpression.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(NTLMMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.NTLMMediator.Properties.domainExpression, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getDomainExpression()));
+			}
+
+		});
+		GridData domainExpressionData = new GridData(GridData.FILL_HORIZONTAL);
+		domainExpression.setLayoutData(domainExpressionData);
+		domainExpression.setID(EsbViewsRepository.NTLMMediator.Properties.domainExpression);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.NTLMMediator.Properties.domainExpression, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createDomainExpressionFlatComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param parent the parent composite
+	 * 
+	 */
+	protected Composite createNtlmVersionExpressionFlatComboViewer(Composite parent) {
+		createDescription(parent, EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression, EsbMessages.NTLMMediatorPropertiesEditionPart_NtlmVersionExpressionLabel);
+		ntlmVersionExpression = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression, EsbViewsRepository.SWT_KIND));
+		ntlmVersionExpression.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+
+		ntlmVersionExpression.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(NTLMMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getNtlmVersionExpression()));
+			}
+
+		});
+		GridData ntlmVersionExpressionData = new GridData(GridData.FILL_HORIZONTAL);
+		ntlmVersionExpression.setLayoutData(ntlmVersionExpressionData);
+		ntlmVersionExpression.setID(EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createNtlmVersionExpressionFlatComboViewer
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -827,6 +987,436 @@ public class NTLMMediatorPropertiesEditionPartImpl extends CompositePropertiesEd
 			ntlmVersion.setEnabled(true);
 		}	
 		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#getUsernameExpression()
+	 * 
+	 */
+	public NamespacedProperty getUsernameExpression() {
+		if (usernameExpression.getSelection() instanceof StructuredSelection) {
+			Object firstElement = ((StructuredSelection) usernameExpression.getSelection()).getFirstElement();
+			if (firstElement instanceof EObject)
+				return (NamespacedProperty) firstElement;
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#initUsernameExpression(EObjectFlatComboSettings)
+	 */
+	public void initUsernameExpression(EObjectFlatComboSettings settings) {
+		usernameExpression.setInput(settings);
+		if (current != null) {
+			usernameExpression.setSelection(new StructuredSelection(settings.getValue()));
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.NTLMMediator.Properties.usernameExpression);
+		if (eefElementEditorReadOnlyState && usernameExpression.isEnabled()) {
+			usernameExpression.setEnabled(false);
+			usernameExpression.setToolTipText(EsbMessages.NTLMMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !usernameExpression.isEnabled()) {
+			usernameExpression.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#setUsernameExpression(EObject newValue)
+	 * 
+	 */
+	public void setUsernameExpression(NamespacedProperty newValue) {
+		if (newValue != null) {
+			usernameExpression.setSelection(new StructuredSelection(newValue));
+		} else {
+			usernameExpression.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.NTLMMediator.Properties.usernameExpression);
+		if (eefElementEditorReadOnlyState && usernameExpression.isEnabled()) {
+			usernameExpression.setEnabled(false);
+			usernameExpression.setToolTipText(EsbMessages.NTLMMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !usernameExpression.isEnabled()) {
+			usernameExpression.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#setUsernameExpressionButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setUsernameExpressionButtonMode(ButtonsModeEnum newValue) {
+		usernameExpression.setButtonMode(newValue);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#addFilterUsernameExpression(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToUsernameExpression(ViewerFilter filter) {
+		usernameExpression.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#addBusinessFilterUsernameExpression(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToUsernameExpression(ViewerFilter filter) {
+		usernameExpression.addBusinessRuleFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#getPasswordExpression()
+	 * 
+	 */
+	public NamespacedProperty getPasswordExpression() {
+		if (passwordExpression.getSelection() instanceof StructuredSelection) {
+			Object firstElement = ((StructuredSelection) passwordExpression.getSelection()).getFirstElement();
+			if (firstElement instanceof EObject)
+				return (NamespacedProperty) firstElement;
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#initPasswordExpression(EObjectFlatComboSettings)
+	 */
+	public void initPasswordExpression(EObjectFlatComboSettings settings) {
+		passwordExpression.setInput(settings);
+		if (current != null) {
+			passwordExpression.setSelection(new StructuredSelection(settings.getValue()));
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.NTLMMediator.Properties.passwordExpression);
+		if (eefElementEditorReadOnlyState && passwordExpression.isEnabled()) {
+			passwordExpression.setEnabled(false);
+			passwordExpression.setToolTipText(EsbMessages.NTLMMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !passwordExpression.isEnabled()) {
+			passwordExpression.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#setPasswordExpression(EObject newValue)
+	 * 
+	 */
+	public void setPasswordExpression(NamespacedProperty newValue) {
+		if (newValue != null) {
+			passwordExpression.setSelection(new StructuredSelection(newValue));
+		} else {
+			passwordExpression.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.NTLMMediator.Properties.passwordExpression);
+		if (eefElementEditorReadOnlyState && passwordExpression.isEnabled()) {
+			passwordExpression.setEnabled(false);
+			passwordExpression.setToolTipText(EsbMessages.NTLMMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !passwordExpression.isEnabled()) {
+			passwordExpression.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#setPasswordExpressionButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setPasswordExpressionButtonMode(ButtonsModeEnum newValue) {
+		passwordExpression.setButtonMode(newValue);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#addFilterPasswordExpression(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToPasswordExpression(ViewerFilter filter) {
+		passwordExpression.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#addBusinessFilterPasswordExpression(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToPasswordExpression(ViewerFilter filter) {
+		passwordExpression.addBusinessRuleFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#getHostExpression()
+	 * 
+	 */
+	public NamespacedProperty getHostExpression() {
+		if (hostExpression.getSelection() instanceof StructuredSelection) {
+			Object firstElement = ((StructuredSelection) hostExpression.getSelection()).getFirstElement();
+			if (firstElement instanceof EObject)
+				return (NamespacedProperty) firstElement;
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#initHostExpression(EObjectFlatComboSettings)
+	 */
+	public void initHostExpression(EObjectFlatComboSettings settings) {
+		hostExpression.setInput(settings);
+		if (current != null) {
+			hostExpression.setSelection(new StructuredSelection(settings.getValue()));
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.NTLMMediator.Properties.hostExpression);
+		if (eefElementEditorReadOnlyState && hostExpression.isEnabled()) {
+			hostExpression.setEnabled(false);
+			hostExpression.setToolTipText(EsbMessages.NTLMMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !hostExpression.isEnabled()) {
+			hostExpression.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#setHostExpression(EObject newValue)
+	 * 
+	 */
+	public void setHostExpression(NamespacedProperty newValue) {
+		if (newValue != null) {
+			hostExpression.setSelection(new StructuredSelection(newValue));
+		} else {
+			hostExpression.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.NTLMMediator.Properties.hostExpression);
+		if (eefElementEditorReadOnlyState && hostExpression.isEnabled()) {
+			hostExpression.setEnabled(false);
+			hostExpression.setToolTipText(EsbMessages.NTLMMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !hostExpression.isEnabled()) {
+			hostExpression.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#setHostExpressionButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setHostExpressionButtonMode(ButtonsModeEnum newValue) {
+		hostExpression.setButtonMode(newValue);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#addFilterHostExpression(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToHostExpression(ViewerFilter filter) {
+		hostExpression.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#addBusinessFilterHostExpression(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToHostExpression(ViewerFilter filter) {
+		hostExpression.addBusinessRuleFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#getDomainExpression()
+	 * 
+	 */
+	public NamespacedProperty getDomainExpression() {
+		if (domainExpression.getSelection() instanceof StructuredSelection) {
+			Object firstElement = ((StructuredSelection) domainExpression.getSelection()).getFirstElement();
+			if (firstElement instanceof EObject)
+				return (NamespacedProperty) firstElement;
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#initDomainExpression(EObjectFlatComboSettings)
+	 */
+	public void initDomainExpression(EObjectFlatComboSettings settings) {
+		domainExpression.setInput(settings);
+		if (current != null) {
+			domainExpression.setSelection(new StructuredSelection(settings.getValue()));
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.NTLMMediator.Properties.domainExpression);
+		if (eefElementEditorReadOnlyState && domainExpression.isEnabled()) {
+			domainExpression.setEnabled(false);
+			domainExpression.setToolTipText(EsbMessages.NTLMMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !domainExpression.isEnabled()) {
+			domainExpression.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#setDomainExpression(EObject newValue)
+	 * 
+	 */
+	public void setDomainExpression(NamespacedProperty newValue) {
+		if (newValue != null) {
+			domainExpression.setSelection(new StructuredSelection(newValue));
+		} else {
+			domainExpression.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.NTLMMediator.Properties.domainExpression);
+		if (eefElementEditorReadOnlyState && domainExpression.isEnabled()) {
+			domainExpression.setEnabled(false);
+			domainExpression.setToolTipText(EsbMessages.NTLMMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !domainExpression.isEnabled()) {
+			domainExpression.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#setDomainExpressionButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setDomainExpressionButtonMode(ButtonsModeEnum newValue) {
+		domainExpression.setButtonMode(newValue);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#addFilterDomainExpression(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToDomainExpression(ViewerFilter filter) {
+		domainExpression.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#addBusinessFilterDomainExpression(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToDomainExpression(ViewerFilter filter) {
+		domainExpression.addBusinessRuleFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#getNtlmVersionExpression()
+	 * 
+	 */
+	public NamespacedProperty getNtlmVersionExpression() {
+		if (ntlmVersionExpression.getSelection() instanceof StructuredSelection) {
+			Object firstElement = ((StructuredSelection) ntlmVersionExpression.getSelection()).getFirstElement();
+			if (firstElement instanceof EObject)
+				return (NamespacedProperty) firstElement;
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#initNtlmVersionExpression(EObjectFlatComboSettings)
+	 */
+	public void initNtlmVersionExpression(EObjectFlatComboSettings settings) {
+		ntlmVersionExpression.setInput(settings);
+		if (current != null) {
+			ntlmVersionExpression.setSelection(new StructuredSelection(settings.getValue()));
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression);
+		if (eefElementEditorReadOnlyState && ntlmVersionExpression.isEnabled()) {
+			ntlmVersionExpression.setEnabled(false);
+			ntlmVersionExpression.setToolTipText(EsbMessages.NTLMMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !ntlmVersionExpression.isEnabled()) {
+			ntlmVersionExpression.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#setNtlmVersionExpression(EObject newValue)
+	 * 
+	 */
+	public void setNtlmVersionExpression(NamespacedProperty newValue) {
+		if (newValue != null) {
+			ntlmVersionExpression.setSelection(new StructuredSelection(newValue));
+		} else {
+			ntlmVersionExpression.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression);
+		if (eefElementEditorReadOnlyState && ntlmVersionExpression.isEnabled()) {
+			ntlmVersionExpression.setEnabled(false);
+			ntlmVersionExpression.setToolTipText(EsbMessages.NTLMMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !ntlmVersionExpression.isEnabled()) {
+			ntlmVersionExpression.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#setNtlmVersionExpressionButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setNtlmVersionExpressionButtonMode(ButtonsModeEnum newValue) {
+		ntlmVersionExpression.setButtonMode(newValue);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#addFilterNtlmVersionExpression(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToNtlmVersionExpression(ViewerFilter filter) {
+		ntlmVersionExpression.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart#addBusinessFilterNtlmVersionExpression(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToNtlmVersionExpression(ViewerFilter filter) {
+		ntlmVersionExpression.addBusinessRuleFilter(filter);
 	}
 
 

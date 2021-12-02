@@ -32,6 +32,11 @@ package org.wso2.integrationstudio.gmf.esb;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getHost <em>Host</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getDomain <em>Domain</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getNtlmVersion <em>Ntlm Version</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getUsernameExpression <em>Username Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getPasswordExpression <em>Password Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getHostExpression <em>Host Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getDomainExpression <em>Domain Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getNtlmVersionExpression <em>Ntlm Version Expression</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getNTLMMediator()
@@ -192,5 +197,115 @@ public interface NTLMMediator extends Mediator {
      * @generated
      */
     void setNtlmVersion(String value);
+
+    /**
+     * Returns the value of the '<em><b>Username Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Username Expression</em>' reference.
+     * @see #setUsernameExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getNTLMMediator_UsernameExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getUsernameExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getUsernameExpression <em>Username Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Username Expression</em>' reference.
+     * @see #getUsernameExpression()
+     * @generated
+     */
+    void setUsernameExpression(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Password Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Password Expression</em>' reference.
+     * @see #setPasswordExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getNTLMMediator_PasswordExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getPasswordExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getPasswordExpression <em>Password Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Password Expression</em>' reference.
+     * @see #getPasswordExpression()
+     * @generated
+     */
+    void setPasswordExpression(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Host Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Host Expression</em>' reference.
+     * @see #setHostExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getNTLMMediator_HostExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getHostExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getHostExpression <em>Host Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Host Expression</em>' reference.
+     * @see #getHostExpression()
+     * @generated
+     */
+    void setHostExpression(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Domain Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Domain Expression</em>' reference.
+     * @see #setDomainExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getNTLMMediator_DomainExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getDomainExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getDomainExpression <em>Domain Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Domain Expression</em>' reference.
+     * @see #getDomainExpression()
+     * @generated
+     */
+    void setDomainExpression(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Ntlm Version Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Ntlm Version Expression</em>' reference.
+     * @see #setNtlmVersionExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getNTLMMediator_NtlmVersionExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getNtlmVersionExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getNtlmVersionExpression <em>Ntlm Version Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Ntlm Version Expression</em>' reference.
+     * @see #getNtlmVersionExpression()
+     * @generated
+     */
+    void setNtlmVersionExpression(NamespacedProperty value);
 
 } // NTLMMediator

@@ -9930,6 +9930,21 @@ public class EsbViewsRepository {
 			
 			public static String ntlmVersion = "esb::NTLMMediator::properties::ntlmVersion";
 			
+			
+			public static String usernameExpression = "esb::NTLMMediator::properties::usernameExpression";
+			
+			
+			public static String passwordExpression = "esb::NTLMMediator::properties::passwordExpression";
+			
+			
+			public static String hostExpression = "esb::NTLMMediator::properties::hostExpression";
+			
+			
+			public static String domainExpression = "esb::NTLMMediator::properties::domainExpression";
+			
+			
+			public static String ntlmVersionExpression = "esb::NTLMMediator::properties::ntlmVersionExpression";
+			
 	
 		}
 	

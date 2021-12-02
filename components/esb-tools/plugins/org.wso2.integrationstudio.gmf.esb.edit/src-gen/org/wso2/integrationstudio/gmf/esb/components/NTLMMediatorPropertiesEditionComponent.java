@@ -10,9 +10,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
 
 import org.eclipse.emf.ecore.EObject;
@@ -29,16 +27,19 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
-
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.wso2.integrationstudio.gmf.esb.EsbFactory;
 import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 import org.wso2.integrationstudio.gmf.esb.NTLMMediator;
-
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.integrationstudio.gmf.esb.parts.NTLMMediatorPropertiesEditionPart;
 
@@ -54,6 +55,31 @@ public class NTLMMediatorPropertiesEditionComponent extends SinglePartProperties
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
+	/**
+	 * Settings for usernameExpression EObjectFlatComboViewer
+	 */
+	private EObjectFlatComboSettings usernameExpressionSettings;
+	
+	/**
+	 * Settings for passwordExpression EObjectFlatComboViewer
+	 */
+	private EObjectFlatComboSettings passwordExpressionSettings;
+	
+	/**
+	 * Settings for hostExpression EObjectFlatComboViewer
+	 */
+	private EObjectFlatComboSettings hostExpressionSettings;
+	
+	/**
+	 * Settings for domainExpression EObjectFlatComboViewer
+	 */
+	private EObjectFlatComboSettings domainExpressionSettings;
+	
+	/**
+	 * Settings for ntlmVersionExpression EObjectFlatComboViewer
+	 */
+	private EObjectFlatComboSettings ntlmVersionExpressionSettings;
 	
 	
 	/**
@@ -100,8 +126,22 @@ public class NTLMMediatorPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(EsbViewsRepository.NTLMMediator.Properties.ntlmVersion))
 				basePart.setNtlmVersion(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, nTLMMediator.getNtlmVersion()));
 			
-			// init filters
+			if (isAccessible(EsbViewsRepository.NTLMMediator.Properties.usernameExpression))
+				basePart.setUsernameExpression(nTLMMediator.getUsernameExpression());
 			
+			if (isAccessible(EsbViewsRepository.NTLMMediator.Properties.passwordExpression))
+                basePart.setPasswordExpression(nTLMMediator.getPasswordExpression());
+			
+			if (isAccessible(EsbViewsRepository.NTLMMediator.Properties.hostExpression))
+                basePart.setHostExpression(nTLMMediator.getHostExpression());
+			
+			if (isAccessible(EsbViewsRepository.NTLMMediator.Properties.domainExpression))
+                basePart.setDomainExpression(nTLMMediator.getDomainExpression());
+			
+			if (isAccessible(EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression))
+                basePart.setNtlmVersionExpression(nTLMMediator.getNtlmVersionExpression());
+			
+			// init filters
 			
 			
 			
@@ -116,14 +156,6 @@ public class NTLMMediatorPropertiesEditionComponent extends SinglePartProperties
 		}
 		setInitializing(false);
 	}
-
-
-
-
-
-
-
-
 
 
 
@@ -156,6 +188,21 @@ public class NTLMMediatorPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == EsbViewsRepository.NTLMMediator.Properties.ntlmVersion) {
 			return EsbPackage.eINSTANCE.getNTLMMediator_NtlmVersion();
 		}
+		if (editorKey == EsbViewsRepository.NTLMMediator.Properties.usernameExpression) {
+			return EsbPackage.eINSTANCE.getNTLMMediator_UsernameExpression();
+		}
+		if (editorKey == EsbViewsRepository.NTLMMediator.Properties.passwordExpression) {
+			return EsbPackage.eINSTANCE.getNTLMMediator_PasswordExpression();
+		}
+		if (editorKey == EsbViewsRepository.NTLMMediator.Properties.hostExpression) {
+			return EsbPackage.eINSTANCE.getNTLMMediator_HostExpression();
+		}
+		if (editorKey == EsbViewsRepository.NTLMMediator.Properties.domainExpression) {
+			return EsbPackage.eINSTANCE.getNTLMMediator_DomainExpression();
+		}
+		if (editorKey == EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression) {
+			return EsbPackage.eINSTANCE.getNTLMMediator_NtlmVersionExpression();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -168,15 +215,6 @@ public class NTLMMediatorPropertiesEditionComponent extends SinglePartProperties
 		NTLMMediator nTLMMediator = (NTLMMediator)semanticObject;
 		if (EsbViewsRepository.NTLMMediator.Properties.description == event.getAffectedEditor()) {
 			nTLMMediator.setDescription((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
-		}
-		if (EsbViewsRepository.NTLMMediator.Properties.commentsList == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				nTLMMediator.getCommentsList().clear();
-				nTLMMediator.getCommentsList().addAll(((EList) event.getNewValue()));
-			}
-		}
-		if (EsbViewsRepository.NTLMMediator.Properties.reverse == event.getAffectedEditor()) {
-			nTLMMediator.setReverse((Boolean)event.getNewValue());
 		}
 		if (EsbViewsRepository.NTLMMediator.Properties.username == event.getAffectedEditor()) {
 			nTLMMediator.setUsername((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
@@ -192,6 +230,86 @@ public class NTLMMediatorPropertiesEditionComponent extends SinglePartProperties
 		}
 		if (EsbViewsRepository.NTLMMediator.Properties.ntlmVersion == event.getAffectedEditor()) {
 			nTLMMediator.setNtlmVersion((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.NTLMMediator.Properties.usernameExpression == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				usernameExpressionSettings.setToReference((NamespacedProperty)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
+				NamespacedProperty eObject = EsbFactory.eINSTANCE.createNamespacedProperty();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				usernameExpressionSettings.setToReference(eObject);
+			}
+		}
+		if (EsbViewsRepository.NTLMMediator.Properties.passwordExpression == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				passwordExpressionSettings.setToReference((NamespacedProperty)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
+				NamespacedProperty eObject = EsbFactory.eINSTANCE.createNamespacedProperty();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				passwordExpressionSettings.setToReference(eObject);
+			}
+		}
+		if (EsbViewsRepository.NTLMMediator.Properties.hostExpression == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				hostExpressionSettings.setToReference((NamespacedProperty)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
+				NamespacedProperty eObject = EsbFactory.eINSTANCE.createNamespacedProperty();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				hostExpressionSettings.setToReference(eObject);
+			}
+		}
+		if (EsbViewsRepository.NTLMMediator.Properties.domainExpression == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				domainExpressionSettings.setToReference((NamespacedProperty)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
+				NamespacedProperty eObject = EsbFactory.eINSTANCE.createNamespacedProperty();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				domainExpressionSettings.setToReference(eObject);
+			}
+		}
+		if (EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				ntlmVersionExpressionSettings.setToReference((NamespacedProperty)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
+				NamespacedProperty eObject = EsbFactory.eINSTANCE.createNamespacedProperty();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				ntlmVersionExpressionSettings.setToReference(eObject);
+			}
 		}
 	}
 
@@ -247,6 +365,22 @@ public class NTLMMediatorPropertiesEditionComponent extends SinglePartProperties
 					basePart.setNtlmVersion("");
 				}
 			}
+            if (EsbPackage.eINSTANCE.getNTLMMediator_UsernameExpression().equals(msg.getFeature()) && basePart != null
+                    && isAccessible(EsbViewsRepository.NTLMMediator.Properties.usernameExpression))
+                basePart.setUsernameExpression((NamespacedProperty) msg.getNewValue());
+            if (EsbPackage.eINSTANCE.getNTLMMediator_PasswordExpression().equals(msg.getFeature()) && basePart != null
+                    && isAccessible(EsbViewsRepository.NTLMMediator.Properties.passwordExpression))
+                basePart.setPasswordExpression((NamespacedProperty) msg.getNewValue());
+            if (EsbPackage.eINSTANCE.getNTLMMediator_HostExpression().equals(msg.getFeature()) && basePart != null
+                    && isAccessible(EsbViewsRepository.NTLMMediator.Properties.hostExpression))
+                basePart.setHostExpression((NamespacedProperty) msg.getNewValue());
+            if (EsbPackage.eINSTANCE.getNTLMMediator_DomainExpression().equals(msg.getFeature()) && basePart != null
+                    && isAccessible(EsbViewsRepository.NTLMMediator.Properties.domainExpression))
+                basePart.setDomainExpression((NamespacedProperty) msg.getNewValue());
+            if (EsbPackage.eINSTANCE.getNTLMMediator_NtlmVersionExpression().equals(msg.getFeature())
+                    && basePart != null
+                    && isAccessible(EsbViewsRepository.NTLMMediator.Properties.ntlmVersionExpression))
+                basePart.setNtlmVersionExpression((NamespacedProperty) msg.getNewValue());
 			
 		}
 	}
@@ -266,7 +400,12 @@ public class NTLMMediatorPropertiesEditionComponent extends SinglePartProperties
 			EsbPackage.eINSTANCE.getNTLMMediator_Password(),
 			EsbPackage.eINSTANCE.getNTLMMediator_Host(),
 			EsbPackage.eINSTANCE.getNTLMMediator_Domain(),
-			EsbPackage.eINSTANCE.getNTLMMediator_NtlmVersion()		);
+			EsbPackage.eINSTANCE.getNTLMMediator_NtlmVersion(),
+			EsbPackage.eINSTANCE.getNTLMMediator_UsernameExpression(),
+			EsbPackage.eINSTANCE.getNTLMMediator_PasswordExpression(),
+			EsbPackage.eINSTANCE.getNTLMMediator_HostExpression(),
+			EsbPackage.eINSTANCE.getNTLMMediator_DomainExpression(),
+			EsbPackage.eINSTANCE.getNTLMMediator_NtlmVersionExpression()		);
 		return new NotificationFilter[] {filter,};
 	}
 

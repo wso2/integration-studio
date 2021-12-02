@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <eef-gen:EEFGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" genDirectory="/org.wso2.integrationstudio.gmf.esb.edit/src-gen">
   <editionContexts basePackage="org.wso2.integrationstudio.gmf" descriptorsGenericPropertiesViews="true">
-    <PropertiesEditionContext href="esb.components#_cum6MENpEeyHy__7a10ilw"/>
+    <PropertiesEditionContext href="esb.components#_cBeY4FKHEeytLvTPN0Qx6A"/>
   </editionContexts>
   <viewsRepositories basePackage="org.wso2.integrationstudio.gmf.esb" swtViews="true" formViews="true">
-    <viewsRepository href="esb.components#_cuu2AENpEeyHy__7a10ilw"/>
+    <viewsRepository href="esb.components#_cBgO3VKHEeytLvTPN0Qx6A"/>
   </viewsRepositories>
 </eef-gen:EEFGenModel>

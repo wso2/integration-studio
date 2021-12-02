@@ -13678,6 +13678,51 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EReference getNTLMMediator_UsernameExpression() {
+        return (EReference)ntlmMediatorEClass.getEStructuralFeatures().get(7);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getNTLMMediator_PasswordExpression() {
+        return (EReference)ntlmMediatorEClass.getEStructuralFeatures().get(8);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getNTLMMediator_HostExpression() {
+        return (EReference)ntlmMediatorEClass.getEStructuralFeatures().get(9);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getNTLMMediator_DomainExpression() {
+        return (EReference)ntlmMediatorEClass.getEStructuralFeatures().get(10);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getNTLMMediator_NtlmVersionExpression() {
+        return (EReference)ntlmMediatorEClass.getEStructuralFeatures().get(11);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getNTLMMediatorOutputConnector() {
         return ntlmMediatorOutputConnectorEClass;
     }
@@ -22611,6 +22656,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(ntlmMediatorEClass, NTLM_MEDIATOR__HOST);
         createEAttribute(ntlmMediatorEClass, NTLM_MEDIATOR__DOMAIN);
         createEAttribute(ntlmMediatorEClass, NTLM_MEDIATOR__NTLM_VERSION);
+        createEReference(ntlmMediatorEClass, NTLM_MEDIATOR__USERNAME_EXPRESSION);
+        createEReference(ntlmMediatorEClass, NTLM_MEDIATOR__PASSWORD_EXPRESSION);
+        createEReference(ntlmMediatorEClass, NTLM_MEDIATOR__HOST_EXPRESSION);
+        createEReference(ntlmMediatorEClass, NTLM_MEDIATOR__DOMAIN_EXPRESSION);
+        createEReference(ntlmMediatorEClass, NTLM_MEDIATOR__NTLM_VERSION_EXPRESSION);
 
         ntlmMediatorOutputConnectorEClass = createEClass(NTLM_MEDIATOR_OUTPUT_CONNECTOR);
 
@@ -25200,6 +25250,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getNTLMMediator_Host(), ecorePackage.getEString(), "host", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNTLMMediator_Domain(), ecorePackage.getEString(), "domain", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNTLMMediator_NtlmVersion(), ecorePackage.getEString(), "ntlmVersion", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getNTLMMediator_UsernameExpression(), this.getNamespacedProperty(), null, "usernameExpression", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getNTLMMediator_PasswordExpression(), this.getNamespacedProperty(), null, "passwordExpression", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getNTLMMediator_HostExpression(), this.getNamespacedProperty(), null, "hostExpression", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getNTLMMediator_DomainExpression(), this.getNamespacedProperty(), null, "domainExpression", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getNTLMMediator_NtlmVersionExpression(), this.getNamespacedProperty(), null, "ntlmVersionExpression", null, 0, 1, NTLMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(ntlmMediatorOutputConnectorEClass, NTLMMediatorOutputConnector.class, "NTLMMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

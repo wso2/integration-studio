@@ -8582,6 +8582,21 @@ public class EsbMessages extends NLS {
 
 	
 	public static String NTLMMediatorPropertiesEditionPart_NtlmVersionLabel;
+	
+
+	public static String NTLMMediatorPropertiesEditionPart_UsernameExpressionLabel;
+	
+
+	public static String NTLMMediatorPropertiesEditionPart_PasswordExpressionLabel;
+
+	
+	public static String NTLMMediatorPropertiesEditionPart_HostExpressionLabel;
+
+	
+	public static String NTLMMediatorPropertiesEditionPart_DomainExpressionLabel;
+
+	
+	public static String NTLMMediatorPropertiesEditionPart_NtlmVersionExpressionLabel;
 
 	
 	public static String NTLMMediatorOutputConnectorPropertiesEditionPart_CommentMediatorsLabel;

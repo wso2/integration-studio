@@ -3677,6 +3677,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="host" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="domain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ntlmVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="usernameExpression" eType="#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="passwordExpression" eType="#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hostExpression" eType="#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domainExpression" eType="#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ntlmVersionExpression"
+        eType="#//NamespacedProperty"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NTLMMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="NTLMMediatorInputConnector" eSuperTypes="#//InputConnector"/>

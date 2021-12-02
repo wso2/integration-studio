@@ -25,6 +25,7 @@ public class EEFPropertyConstants {
     public static final String EXPRESSION_DIALOG_BOX_BUTTON_IMAGE = "icons/full/obj16/expression-editor-02.png";
     public static final String CONNECTION_EDIT_ELEMENT_IMG = "icons/full/obj16/edit-icon-16x16.png";
     public static final int TEXT_AREA_DEFAULT_HEIGHT = 50;
+    public static final String EXPRESSION_COMPOSITE = "expressioncomposite";
     public static String ASSOCIATED_BUTTON = "associatedbutton";
     public static String REQUIRED_FIELD_INDICATOR = "*";
     public static String EXPRESSION_FIELD_SUFFIX = "exp";

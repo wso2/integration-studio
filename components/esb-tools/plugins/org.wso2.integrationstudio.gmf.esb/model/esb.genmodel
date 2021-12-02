@@ -2785,6 +2785,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NTLMMediator/host"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NTLMMediator/domain"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NTLMMediator/ntlmVersion"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//NTLMMediator/usernameExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//NTLMMediator/passwordExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//NTLMMediator/hostExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//NTLMMediator/domainExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//NTLMMediator/ntlmVersionExpression"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//NTLMMediatorOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//NTLMMediatorInputConnector"/>

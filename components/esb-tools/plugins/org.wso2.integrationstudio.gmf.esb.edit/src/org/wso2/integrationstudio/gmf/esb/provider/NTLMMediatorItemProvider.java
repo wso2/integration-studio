@@ -66,6 +66,11 @@ public class NTLMMediatorItemProvider extends MediatorItemProvider {
             addHostPropertyDescriptor(object);
             addDomainPropertyDescriptor(object);
             addNtlmVersionPropertyDescriptor(object);
+            addUsernameExpressionPropertyDescriptor(object);
+            addPasswordExpressionPropertyDescriptor(object);
+            addHostExpressionPropertyDescriptor(object);
+            addDomainExpressionPropertyDescriptor(object);
+            addNtlmVersionExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -176,6 +181,116 @@ public class NTLMMediatorItemProvider extends MediatorItemProvider {
                  false,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Username Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addUsernameExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NTLMMediator_usernameExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NTLMMediator_usernameExpression_feature", "_UI_NTLMMediator_type"),
+                 EsbPackage.Literals.NTLM_MEDIATOR__USERNAME_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Password Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addPasswordExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NTLMMediator_passwordExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NTLMMediator_passwordExpression_feature", "_UI_NTLMMediator_type"),
+                 EsbPackage.Literals.NTLM_MEDIATOR__PASSWORD_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Host Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addHostExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NTLMMediator_hostExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NTLMMediator_hostExpression_feature", "_UI_NTLMMediator_type"),
+                 EsbPackage.Literals.NTLM_MEDIATOR__HOST_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Domain Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addDomainExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NTLMMediator_domainExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NTLMMediator_domainExpression_feature", "_UI_NTLMMediator_type"),
+                 EsbPackage.Literals.NTLM_MEDIATOR__DOMAIN_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Ntlm Version Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addNtlmVersionExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NTLMMediator_ntlmVersionExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NTLMMediator_ntlmVersionExpression_feature", "_UI_NTLMMediator_type"),
+                 EsbPackage.Literals.NTLM_MEDIATOR__NTLM_VERSION_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
                  null,
                  null));
     }

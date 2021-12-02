@@ -27195,13 +27195,58 @@ public interface EsbPackage extends EPackage {
     int NTLM_MEDIATOR__NTLM_VERSION = MEDIATOR_FEATURE_COUNT + 6;
 
     /**
+     * The feature id for the '<em><b>Username Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NTLM_MEDIATOR__USERNAME_EXPRESSION = MEDIATOR_FEATURE_COUNT + 7;
+
+    /**
+     * The feature id for the '<em><b>Password Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NTLM_MEDIATOR__PASSWORD_EXPRESSION = MEDIATOR_FEATURE_COUNT + 8;
+
+    /**
+     * The feature id for the '<em><b>Host Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NTLM_MEDIATOR__HOST_EXPRESSION = MEDIATOR_FEATURE_COUNT + 9;
+
+    /**
+     * The feature id for the '<em><b>Domain Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NTLM_MEDIATOR__DOMAIN_EXPRESSION = MEDIATOR_FEATURE_COUNT + 10;
+
+    /**
+     * The feature id for the '<em><b>Ntlm Version Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NTLM_MEDIATOR__NTLM_VERSION_EXPRESSION = MEDIATOR_FEATURE_COUNT + 11;
+
+    /**
      * The number of structural features of the '<em>NTLM Mediator</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int NTLM_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 7;
+    int NTLM_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 12;
 
     /**
      * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.impl.NTLMMediatorOutputConnectorImpl <em>NTLM Mediator Output Connector</em>}' class.
@@ -39962,6 +40007,61 @@ public interface EsbPackage extends EPackage {
      * @generated
      */
     EAttribute getNTLMMediator_NtlmVersion();
+
+    /**
+     * Returns the meta object for the reference '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getUsernameExpression <em>Username Expression</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Username Expression</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.NTLMMediator#getUsernameExpression()
+     * @see #getNTLMMediator()
+     * @generated
+     */
+    EReference getNTLMMediator_UsernameExpression();
+
+    /**
+     * Returns the meta object for the reference '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getPasswordExpression <em>Password Expression</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Password Expression</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.NTLMMediator#getPasswordExpression()
+     * @see #getNTLMMediator()
+     * @generated
+     */
+    EReference getNTLMMediator_PasswordExpression();
+
+    /**
+     * Returns the meta object for the reference '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getHostExpression <em>Host Expression</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Host Expression</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.NTLMMediator#getHostExpression()
+     * @see #getNTLMMediator()
+     * @generated
+     */
+    EReference getNTLMMediator_HostExpression();
+
+    /**
+     * Returns the meta object for the reference '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getDomainExpression <em>Domain Expression</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Domain Expression</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.NTLMMediator#getDomainExpression()
+     * @see #getNTLMMediator()
+     * @generated
+     */
+    EReference getNTLMMediator_DomainExpression();
+
+    /**
+     * Returns the meta object for the reference '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediator#getNtlmVersionExpression <em>Ntlm Version Expression</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Ntlm Version Expression</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.NTLMMediator#getNtlmVersionExpression()
+     * @see #getNTLMMediator()
+     * @generated
+     */
+    EReference getNTLMMediator_NtlmVersionExpression();
 
     /**
      * Returns the meta object for class '{@link org.wso2.integrationstudio.gmf.esb.NTLMMediatorOutputConnector <em>NTLM Mediator Output Connector</em>}'.
@@ -56856,6 +56956,46 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute NTLM_MEDIATOR__NTLM_VERSION = eINSTANCE.getNTLMMediator_NtlmVersion();
+
+        /**
+         * The meta object literal for the '<em><b>Username Expression</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference NTLM_MEDIATOR__USERNAME_EXPRESSION = eINSTANCE.getNTLMMediator_UsernameExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Password Expression</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference NTLM_MEDIATOR__PASSWORD_EXPRESSION = eINSTANCE.getNTLMMediator_PasswordExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Host Expression</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference NTLM_MEDIATOR__HOST_EXPRESSION = eINSTANCE.getNTLMMediator_HostExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Domain Expression</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference NTLM_MEDIATOR__DOMAIN_EXPRESSION = eINSTANCE.getNTLMMediator_DomainExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Ntlm Version Expression</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference NTLM_MEDIATOR__NTLM_VERSION_EXPRESSION = eINSTANCE.getNTLMMediator_NtlmVersionExpression();
 
         /**
          * The meta object literal for the '{@link org.wso2.integrationstudio.gmf.esb.impl.NTLMMediatorOutputConnectorImpl <em>NTLM Mediator Output Connector</em>}' class.

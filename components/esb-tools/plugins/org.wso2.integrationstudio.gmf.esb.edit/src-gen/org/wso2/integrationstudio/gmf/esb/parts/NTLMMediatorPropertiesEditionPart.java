@@ -3,8 +3,7 @@
  */
 package org.wso2.integrationstudio.gmf.esb.parts;
 
-// Start of user code for imports
-import org.eclipse.emf.common.util.EList;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 
 
 // End of user code
@@ -27,7 +26,6 @@ public interface NTLMMediatorPropertiesEditionPart {
 	 * 
 	 */
 	public void setDescription(String newValue);
-
 
 	/**
 	 * @return the username
@@ -99,7 +97,74 @@ public interface NTLMMediatorPropertiesEditionPart {
 	public void setNtlmVersion(String newValue);
 
 
+	/**
+	 * @return the usernameExpression
+	 * 
+	 */
+	public NamespacedProperty getUsernameExpression();
 
+
+	/**
+	 * Defines a new usernameExpression
+	 * @param newValue the new usernameExpression to set
+	 * 
+	 */
+	public void setUsernameExpression(NamespacedProperty newValue);
+	
+
+	/**
+	 * @return the passwordExpression
+	 * 
+	 */
+	public NamespacedProperty getPasswordExpression();
+
+
+	/**
+	 * Defines a new passwordExpression
+	 * @param newValue the new passwordExpression to set
+	 * 
+	 */
+	public void setPasswordExpression(NamespacedProperty newValue);
+
+	/**
+	 * @return the hostExpression
+	 * 
+	 */
+	public NamespacedProperty getHostExpression();
+
+	/**
+	 * Defines a new hostExpression
+	 * @param newValue the new hostExpression to set
+	 * 
+	 */
+	public void setHostExpression(NamespacedProperty newValue);
+
+	/**
+	 * @return the domainExpression
+	 * 
+	 */
+	public NamespacedProperty getDomainExpression();
+
+	/**
+	 * Defines a new domainExpression
+	 * @param newValue the new domainExpression to set
+	 * 
+	 */
+	public void setDomainExpression(NamespacedProperty newValue);
+
+
+	/**
+	 * @return the ntlmVersionExpression
+	 * 
+	 */
+	public NamespacedProperty getNtlmVersionExpression();
+
+	/**
+	 * Defines a new ntlmVersionExpression
+	 * @param newValue the new ntlmVersionExpression to set
+	 * 
+	 */
+	public void setNtlmVersionExpression(NamespacedProperty newValue);
 
 
 	/**

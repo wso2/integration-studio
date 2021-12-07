@@ -183,8 +183,9 @@ function drawWelcomeNodes() {
         escapedChildTitle = childNode.title.replace(/\./g, '');
         templateNode = createTemplateNode(escapedChildTitle, childNode.label, childNode.description, childNode.image, childNode.parent.title);
         $("#esb-templates").append(templateNode);
-        $("#" + escapedChildTitle).click(function () {
-            openWizard(childNode.wizardID);
+        $("#" + escapedChildTitle).attr('wizardId', childNode.wizardID);
+        $("#" + escapedChildTitle).click(function(){
+            openWizard($(this).attr('wizardId'));
         });
     }
 }

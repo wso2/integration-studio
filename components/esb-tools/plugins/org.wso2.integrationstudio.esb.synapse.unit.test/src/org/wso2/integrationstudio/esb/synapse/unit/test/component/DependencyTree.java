@@ -777,7 +777,13 @@ public class DependencyTree {
                 OMElement registryItemNode = artifact.getFirstChildWithName(registryItem);
                 if (registryItemNode != null) {
                     OMElement registryItemFileNode = registryItemNode.getFirstChildWithName(registryItemFile);
-                    String fileName = registryItemFileNode.getText();
+                    String originalFileName = registryItemFileNode.getText();
+                    String fileName = originalFileName;
+                    if (originalFileName.contains(File.separator)) {
+                        fileName = originalFileName.substring(originalFileName.lastIndexOf(File.separator) + 1);
+                    } else if (originalFileName.contains("/")) {
+                        fileName = originalFileName.substring(originalFileName.lastIndexOf("/") + 1);
+                    }
                     resource.setFileName(fileName);
 
                     OMElement registryItemFilePathNode = registryItemNode.getFirstChildWithName(registryItemPath);
@@ -801,7 +807,7 @@ public class DependencyTree {
                     } catch (CoreException e) {
                         // ignore;
                     }
-                    String absolutePath = grandParentPath + Constants.PATH_PREFIX + registry.getProject().getName() + Constants.PATH_PREFIX + fileName;
+                    String absolutePath = grandParentPath + Constants.PATH_PREFIX + registry.getProject().getName() + Constants.PATH_PREFIX + originalFileName;
                     resource.setAbsolutePath(absolutePath);
                 }
 

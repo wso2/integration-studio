@@ -344,14 +344,24 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
                 + "server" + File.separator + "carbonapps";
         String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
         String microInteratorPath;
-
+        
         if (OS.indexOf("windows") >= 0) {
             java.nio.file.Path path = Paths.get("");
             microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath;
         } else {
             // check if EI Tooling is in Application folder for MAC
-            File macOSEIToolingAppFile = new File(TOOLING_PATH_MAC);
-            if (macOSEIToolingAppFile.exists()) {
+            boolean isRelativeToolingAppExists = false;
+            File macOSRelativeToolingApp = null;
+            try {
+                macOSRelativeToolingApp = new File((new File(".").getCanonicalFile()).getParent().toString() 
+                        + File.separator + "Eclipse");
+                if (macOSRelativeToolingApp.exists()) {
+                    isRelativeToolingAppExists = true;
+                }
+            } catch (IOException e) {}
+            if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                microInteratorPath = macOSRelativeToolingApp.getAbsolutePath() + File.separator + microesbPath;
+            } else if (new File(TOOLING_PATH_MAC).exists()) {
                 microInteratorPath = TOOLING_PATH_MAC + File.separator + microesbPath;
             } else {
                 java.nio.file.Path path = Paths.get("");
@@ -361,7 +371,7 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
 
         // check carbonapps contains any files
         File carbonAppsFolder = new File(microInteratorPath + carbonAppsFolderPath);
-        if (carbonAppsFolder.listFiles().length > 0) {
+        if (carbonAppsFolder != null && carbonAppsFolder.exists() && carbonAppsFolder.listFiles().length > 0) {
             try {
                 FileUtils.cleanDirectory(carbonAppsFolder);
             } catch (IOException e) {

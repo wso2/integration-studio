@@ -21,6 +21,7 @@
 		<option id="create.api" default="true">Create A New API Artifact</option>
 		<option id="create.swagger">Generate API using Swagger Definition</option>
 		<option id="import.api">Import API Artifact</option>
+		<option id="import.api.publisher">Import API from APIM Publisher</option>
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="create.api" title="Synapse API Artifact"

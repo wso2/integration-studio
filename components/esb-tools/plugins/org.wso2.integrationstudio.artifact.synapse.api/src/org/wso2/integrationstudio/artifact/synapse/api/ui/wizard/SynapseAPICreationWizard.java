@@ -52,12 +52,14 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.json.simple.JSONValue;
 import org.wso2.carbon.rest.api.APIException;
 import org.wso2.carbon.rest.api.service.RestApiAdmin;
 import org.wso2.integrationstudio.artifact.synapse.api.Activator;
 import org.wso2.integrationstudio.artifact.synapse.api.exceptions.SwaggerDefinitionProcessingException;
 import org.wso2.integrationstudio.artifact.synapse.api.model.APIArtifactModel;
+import org.wso2.integrationstudio.artifact.synapse.api.model.APIMAPIArtifactModel;
 import org.wso2.integrationstudio.artifact.synapse.api.util.APIImageUtils;
 import org.wso2.integrationstudio.artifact.synapse.api.util.MetadataUtils;
 import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
@@ -78,6 +80,7 @@ import org.wso2.integrationstudio.maven.util.MavenUtils;
 import org.wso2.integrationstudio.platform.ui.editor.Openable;
 import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsPage;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfo;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfoDoc;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceUtils;
@@ -109,11 +112,18 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 
     private String version;
 
+    private ImportPublisherAPIWizardPage importPublisherAPIWizard;
+    private APIMAPIArtifactModel aPIMAPIArtifactModel;
+    private IWizardPage[] pages;
+
     public SynapseAPICreationWizard() {
         artifactModel = new APIArtifactModel();
         setModel(artifactModel);
         setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
         setDefaultPageImageDescriptor(APIImageUtils.getInstance().getImageDescriptor("synapseAPILarge.png"));
+        
+        aPIMAPIArtifactModel = new APIMAPIArtifactModel();
+        importPublisherAPIWizard = new ImportPublisherAPIWizardPage(aPIMAPIArtifactModel);
     }
 
     @Override
@@ -138,9 +148,13 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             // can finish only if artifact file is selected.
             return false;
         } else if (getModel().getSelectedOption().equals("create.swagger")
-                && (artifactModel.getSwaggerFile().getPath().equals(EMPTY_STRING) 
+                && (artifactModel.getSwaggerFile().getPath().equals(EMPTY_STRING)
                         || artifactModel.getSwaggerAPIName().equals(EMPTY_STRING)
                         || artifactModel.getSwaggerAPIName().contains(WHITE_SPACE))) {
+            // If option to generate API from swagger definition is selected,
+            // can finish only if swagger definition is selected.
+            return false;
+        } else if (getModel().getSelectedOption().equals("import.api.apim")) {
             // If option to generate API from swagger definition is selected,
             // can finish only if swagger definition is selected.
             return false;
@@ -161,7 +175,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             esbProjectArtifact = new ESBProjectArtifact();
             esbProjectArtifact.fromFile(esbProject.getFile("artifact.xml").getLocation().toFile());
             updatePom();
-            esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());            
+            esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             String mavenGroupId = getMavenGroupId(pomfile);
             String groupId = mavenGroupId + ".api";
             String metadataGroupId = mavenGroupId + ".metadata";
@@ -181,17 +195,17 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     isNewArtifact = false;
                 }
                 copyImportFile(location, isNewArtifact, groupId);
-              if (meadataEnabled) {
-                  File file = api.getLocation().toFile();
-                  String fileContent = FileUtils.getContentAsString(file);
-                  OMElement omElement = AXIOMUtil.stringToOM(fileContent);
-                  synapseApi = APIFactory.createAPI(omElement);
-                  apiFileName = api.getName().substring(0, api.getName().indexOf(".xml"));
-                  String swagger = restAPIAdmin.generateSwaggerFromSynapseAPIByFormat(synapseApi, false);
-                  IFile swaggerFile = metadataLocation.getFile(new Path(apiFileName + "_swagger.yaml"));
-                  FileUtils.createFile(swaggerFile.getLocation().toFile(), swagger);
-                  createMetadataArtifactEntry(metadataLocation, apiFileName, metadataGroupId, true);
-              }
+                if (meadataEnabled) {
+                    File file = api.getLocation().toFile();
+                    String fileContent = FileUtils.getContentAsString(file);
+                    OMElement omElement = AXIOMUtil.stringToOM(fileContent);
+                    synapseApi = APIFactory.createAPI(omElement);
+                    apiFileName = api.getName().substring(0, api.getName().indexOf(".xml"));
+                    String swagger = restAPIAdmin.generateSwaggerFromSynapseAPIByFormat(synapseApi, false);
+                    IFile swaggerFile = metadataLocation.getFile(new Path(apiFileName + "_swagger.yaml"));
+                    FileUtils.createFile(swaggerFile.getLocation().toFile(), swagger);
+                    createMetadataArtifactEntry(metadataLocation, apiFileName, metadataGroupId, true);
+                }
             } else if (getModel().getSelectedOption().equals("create.swagger")) {
                 String apiName = artifactModel.getSwaggerAPIName();
                 artifactModel.setName(apiName);
@@ -207,14 +221,14 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                         .replaceAll(Pattern.quote(File.separator), "/");
                 esbProjectArtifact.addESBArtifact(createArtifact(apiName, groupId, version, relativePath));
                 esbProjectArtifact.toFile();
-                
+
                 // Copy swagger file to the registry
-                if (artifactModel.getSwaggerRegistryLocation() != null 
+                if (artifactModel.getSwaggerRegistryLocation() != null
                         && artifactModel.getSwaggerRegistryLocation().exists()) {
                     createRegistryResource(artifactModel.getSwaggerRegistryLocation(), artifactModel.getSwaggerFile(),
                             REGISTRY_RESOURCE_PATH);
                 }
-                
+
                 if (meadataEnabled) {
                     synapseApi = APIFactory.createAPI(omElement);
                     IFile swaggerFile = metadataLocation.getFile(new Path(apiName + "_swagger.yaml"));
@@ -222,10 +236,42 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     createMetadataArtifactEntry(metadataLocation, apiName, metadataGroupId, true);
                     apiFileName = apiName;
                 }
+            } else if (getModel().getSelectedOption().equals("import.api.apim")) {
+                String apiName = artifactModel.getSwaggerAPIName();
+                artifactModel.setName(apiName);
+                artifactFile = location.getFile(new Path(apiName + ".xml"));
+                File destFile = artifactFile.getLocation().toFile();
+                String swaggerYaml = getSwaggerFileAsYAML(artifactModel.getSwaggerFile(), apiName);
+                OMElement omElement = getSynapseAPIFromSwagger(swaggerYaml, apiName);
+                FileUtils.createFile(destFile, omElement.toString());
+                fileLst.add(destFile);
+                String relativePath = FileUtils
+                        .getRelativePath(esbProject.getLocation().toFile(),
+                                new File(location.getLocation().toFile(), apiName + ".xml"))
+                        .replaceAll(Pattern.quote(File.separator), "/");
+                esbProjectArtifact.addESBArtifact(createArtifact(apiName, groupId, version, relativePath));
+                esbProjectArtifact.toFile();
+
+                // Copy swagger file to the registry
+                if (artifactModel.getSwaggerRegistryLocation() != null
+                        && artifactModel.getSwaggerRegistryLocation().exists()) {
+                    createRegistryResource(artifactModel.getSwaggerRegistryLocation(), artifactModel.getSwaggerFile(),
+                            REGISTRY_RESOURCE_PATH);
+                }
+
+                if (meadataEnabled) {
+                    synapseApi = APIFactory.createAPI(omElement);
+                    IFile swaggerFile = metadataLocation.getFile(new Path(apiName + "_swagger.yaml"));
+                    FileUtils.createFile(swaggerFile.getLocation().toFile(), swaggerYaml);
+                    createMetadataArtifactEntry(metadataLocation, apiName, metadataGroupId, true);
+                    apiFileName = apiName;
+                }
+
             } else {
                 String resolvedArtifactName = artifactModel.getName();
                 if (artifactModel.getVersion() != "") {
-                    artifactFile = location.getFile(new Path(artifactModel.getName() + "_" + artifactModel.getVersion() + ".xml"));
+                    artifactFile = location
+                            .getFile(new Path(artifactModel.getName() + "_" + artifactModel.getVersion() + ".xml"));
                     resolvedArtifactName = resolvedArtifactName + "_" + artifactModel.getVersion();
                     version = artifactModel.getVersion();
                 } else {
@@ -238,8 +284,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                         .getRelativePath(esbProject.getLocation().toFile(),
                                 new File(location.getLocation().toFile(), resolvedArtifactName + ".xml"))
                         .replaceAll(Pattern.quote(File.separator), "/");
-                esbProjectArtifact
-                        .addESBArtifact(createArtifact(resolvedArtifactName, groupId, version, relativePath));
+                esbProjectArtifact.addESBArtifact(createArtifact(resolvedArtifactName, groupId, version, relativePath));
                 esbProjectArtifact.toFile();
                 if (meadataEnabled) {
                     String fileContent = FileUtils.getContentAsString(destFile);
@@ -248,13 +293,14 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     String swagger = restAPIAdmin.generateSwaggerFromSynapseAPIByFormat(synapseApi, false);
                     IFile swaggerFile = null;
                     if (synapseApi.getVersion() != "") {
-                        swaggerFile = metadataLocation.getFile(new Path(synapseApi.getAPIName() + "_" + synapseApi.getVersion() + "_swagger.yaml"));
+                        swaggerFile = metadataLocation.getFile(
+                                new Path(synapseApi.getAPIName() + "_" + synapseApi.getVersion() + "_swagger.yaml"));
                     } else {
                         swaggerFile = metadataLocation.getFile(new Path(synapseApi.getAPIName() + "_swagger.yaml"));
                     }
                     FileUtils.createFile(swaggerFile.getLocation().toFile(), swagger);
                     String apiName = artifactModel.getName();
-                    if (artifactModel.getVersion() !=  "") {
+                    if (artifactModel.getVersion() != "") {
                         apiName = apiName + "_" + artifactModel.getVersion();
                     }
                     createMetadataArtifactEntry(metadataLocation, apiName, metadataGroupId, true);
@@ -307,7 +353,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         }
         return artifact;
     }
-    
+
     protected boolean isRequireProjectLocationSection() {
         return false;
     }
@@ -347,7 +393,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         return content.toString();
     }
 
-    private OMElement getSynapseAPIFromSwagger(String swaggerYaml, String apiName) throws SwaggerDefinitionProcessingException {
+    private OMElement getSynapseAPIFromSwagger(String swaggerYaml, String apiName)
+            throws SwaggerDefinitionProcessingException {
         RestApiAdmin restAPIAdmin = new RestApiAdmin();
 
         try {
@@ -368,19 +415,19 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         }
     }
 
-//    private String getAPINameFromSwagger(File swaggerFile) throws SwaggerDefinitionProcessingException {
-//        String apiName = "";
-//        try {
-//            String swaggerJson = getSwaggerFileAsJSON(swaggerFile);
-//            JSONObject fullSwaggerJSON = new JSONObject(swaggerJson);
-//            JSONObject swaggerInfo = (JSONObject) fullSwaggerJSON.get("info");
-//            apiName = swaggerInfo.get("title").toString();
-//        } catch (Exception e) {
-//            log.error("Exception occured while extracting API name from the swagger file", e);
-//            throw new SwaggerDefinitionProcessingException("Invalid swagger definition.", e);
-//        }
-//        return apiName;
-//    }
+    // private String getAPINameFromSwagger(File swaggerFile) throws SwaggerDefinitionProcessingException {
+    // String apiName = "";
+    // try {
+    // String swaggerJson = getSwaggerFileAsJSON(swaggerFile);
+    // JSONObject fullSwaggerJSON = new JSONObject(swaggerJson);
+    // JSONObject swaggerInfo = (JSONObject) fullSwaggerJSON.get("info");
+    // apiName = swaggerInfo.get("title").toString();
+    // } catch (Exception e) {
+    // log.error("Exception occured while extracting API name from the swagger file", e);
+    // throw new SwaggerDefinitionProcessingException("Invalid swagger definition.", e);
+    // }
+    // return apiName;
+    // }
 
     public void copyImportFile(IContainer importLocation, boolean isNewAritfact, String groupId) throws IOException {
         File importFile = getModel().getImportFile();
@@ -443,7 +490,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         Object object = yaml.load(yamlSource);
         return JSONValue.toJSONString(object);
     }
-    
+
     public static String convertJSONtoYaml(String jsonSource) throws Exception {
         try {
             Yaml yaml = new Yaml();
@@ -457,7 +504,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         } catch (Exception e) {
             log.error("Exception while converting json to yaml", e);
             throw new Exception(e);
-        } 
+        }
     }
 
     private String getSwaggerFileAsYAML(File swaggerFile, String apiName) {
@@ -483,8 +530,11 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
      * This method will create a resource inside the given registry project
      * 
      * @param regProject the registry project
+     * 
      * @param importFile the file that needs to add to the registry project
+     * 
      * @param registryPath the path to the resource inside the registry project
+     * 
      * @return the status of the operation
      */
     public boolean createRegistryResource(IContainer regProject, File importFile, String registryPath) {
@@ -595,7 +645,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         pluginExecution.setConfiguration(configurationNode);
         MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
     }
-    
+
     public void updatePom() throws IOException, XmlPullParserException {
         File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
         MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
@@ -623,7 +673,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             plugin.addExecution(pluginExecution);
             MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
         }
-        if(!metaPluginExists) {
+        if (!metaPluginExists) {
             Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-metadata-plugin",
                     ESBMavenConstants.WSO2_ESB_METADATA_VERSION, true);
             PluginExecution pluginExecution = new PluginExecution();
@@ -656,6 +706,24 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         } catch (Exception e) {
             log.error("Cannot open the editor", e);
         }
+    }
+
+    public void addPages() {
+        super.addPages();
+        pages = getPages();
+        aPIMAPIArtifactModel.setLocation(artifactModel.getLocation());
+        addPage(importPublisherAPIWizard);
+        pages = getPages();
+    }
+
+    public IWizardPage getNextPage(IWizardPage page) {
+        IWizardPage nextPage = super.getNextPage(page);
+        if (page instanceof ProjectOptionsPage) {
+            if (getModel().getSelectedOption().equals("import.api.apim")) {
+                nextPage = importPublisherAPIWizard;
+            }
+        }
+        return nextPage;
     }
 
 }

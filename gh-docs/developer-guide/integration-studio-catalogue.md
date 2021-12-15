@@ -150,6 +150,33 @@ Integration Studio has been released with the following package components.
 
 3. Clone Integration Studio GitHub repository https://github.com/wso2/integration-studio.git. and proceed with **main** branch.
 
+---
+**If you are using maven version 3.8.1 or higher**
+
+From maven version 3.8.1, maven default settings file updated with http blocker mirror. To prevent maven from blocking the http transfer we can 
+
+- Option 1 (not recommended) : Go to your $MAVEN_HOME/conf/settings.xml file and comment out mirror with id : "maven-default-http-blocker". This is a global change and will affect all of you maven project. 
+- Option 2 (recommended) : We can add project level maven settings file to disble http blocker for our wso2 repository. 
+  - Go to integration-studio folder create a folder .mvn
+  - inside the newly created .mvn folder create two files named local-settings.xml, maven.config.
+  - Copy paste the following to your maven.config file : **--settings ./.mvn/local-settings.xml**
+  - Copy paste the following text to your local-settings.xml file
+  ```xml
+    <settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd">
+        <mirrors>
+            <mirror>
+                <id>wso-nexus-repository-http-unblocker</id>
+                <mirrorOf>wso2-nexus</mirrorOf>
+                <name>wso2 nexus repo http access</name>
+                <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+            </mirror>
+        </mirrors>
+    </settings>
+  ```
+
+---
 4. Import the **studio-platform** component source to eclipse. 
     * Import the **plugins directory** which located in the **<TOOLING_ROOT>/components/studio-platform** to the eclipse workspace by  selecting **File -> Import -> General -> Existing Projects into workspace** 
     * Untick the **plugins** project (if it is there) and select the rest of the plugins when importing the plugins folder

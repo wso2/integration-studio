@@ -124,6 +124,8 @@ function setVisibleDSTypeMongo(isVisible) {
 	$('#ds-password-formgroup').toggle(isVisible);
 	$('#ds-write-concern-input').toggle(isVisible);
 	$('#ds-read-pref-input').toggle(isVisible);
+       $('#ds-ssl-enabled-input').toggle(isVisible);
+       $('#ds-con-auth-source-inputgroup').toggle(isVisible);
 	$('#ds-con-timeout-inputgroup').toggle(isVisible);
 	$('#ds-max-wait-inputgroup').toggle(isVisible);
 	$('#ds-socket-timeout-inputgroup').toggle(isVisible);

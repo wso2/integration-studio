@@ -22,7 +22,6 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.updater.Messages;

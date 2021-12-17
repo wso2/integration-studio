@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.workbench,
  org.eclipse.ui.ide;bundle-version="3.13.1"
 Bundle-ActivationPolicy: lazy
-Import-Package: net.consensys.cava.toml,
+Import-Package: javax.xml.bind;version="2.2.0",
+ net.consensys.cava.toml,
  org.apache.commons.codec.digest;version="1.4.0.wso2v1",
  org.apache.commons.lang;version="2.6.0.wso2v1",
  org.apache.xerces.parsers;version="2.9.0",

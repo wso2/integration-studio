@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.wso2.integrationstudio.appcloud.utils
 Bundle-SymbolicName: org.wso2.integrationstudio.appcloud.utils;singleton:=true
-Bundle-Version: 8.0.0.qualifier
+Bundle-Version: 8.0.1.qualifier
 Bundle-Vendor: WSO2
 Bundle-Activator: org.wso2.integrationstudio.appcloud.utils.Activator
 Require-Bundle: org.eclipse.ui;bundle-version="3.106.0",

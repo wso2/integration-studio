@@ -120,28 +120,34 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
      */
     private void createAndRunMavenTestAnProfile(ILaunchManager launchManager, IProject project, String targetFolder,
             UnitTestConfigurationDetailPage unitTestConfigDetailPage) throws CoreException {
-        // remove existing maven launcher for unit testing
-        if (findLaunchConfigurationByName(launchManager, MAVEN_UNIT_TEST) != null) {
-            findLaunchConfigurationByName(launchManager, MAVEN_UNIT_TEST).delete();
+
+        // update if unit test profile exists
+        String mavenTestGoal = generateMavenTestGoal(unitTestConfigDetailPage);
+        ILaunchConfiguration unitTestLauncher = findLaunchConfigurationByName(launchManager, MAVEN_UNIT_TEST);
+        
+        if (unitTestLauncher != null) {
+            unitTestLauncher.getWorkingCopy().setAttribute(MAVEN_GOAL_KEY, mavenTestGoal);
+            unitTestLauncher.getWorkingCopy().setAttribute(MAVEN_WORKING_DIR_KEY, "${workspace_loc:/" + project.getName() + "}");
+            unitTestLauncher.getWorkingCopy().doSave();
+        } else {
+            // creating a new Launcher for unit testing
+            ILaunchConfigurationType mavenTestLaunchType = launchManager
+                    .getLaunchConfigurationType(MAVEN_CONFIGURATION_TYPE);
+            ILaunchConfigurationWorkingCopy mavenTestLaunchConfig = mavenTestLaunchType.newInstance(null,
+                    DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(MAVEN_UNIT_TEST));
+
+            // set maven properties for the created launcher
+            mavenTestLaunchConfig.setAttribute(MAVEN_GOAL_KEY, mavenTestGoal);
+            mavenTestLaunchConfig.setAttribute(MAVEN_WORKING_DIR_KEY, "${workspace_loc:/" + project.getName() + "}");
+            String javaHomePath = getJavaHomePath();
+            Map<String, String> environmentVariableMap = new HashMap<>();
+            environmentVariableMap.put(JAVA_HOME_KEY, javaHomePath);
+            mavenTestLaunchConfig.setAttribute(MAVEN_ENVIRONMENT_KEY, environmentVariableMap);
+
+            // save the launcher with configuration data
+            mavenTestLaunchConfig.doSave();
         }
 
-        // creating a new Launcher for unit testing
-        ILaunchConfigurationType mavenTestLaunchType = launchManager
-                .getLaunchConfigurationType(MAVEN_CONFIGURATION_TYPE);
-        ILaunchConfigurationWorkingCopy mavenTestLaunchConfig = mavenTestLaunchType.newInstance(null,
-                DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(MAVEN_UNIT_TEST));
-
-        // set maven properties for the created launcher
-        String mavenTestGoal = generateMavenTestGoal(unitTestConfigDetailPage);
-        mavenTestLaunchConfig.setAttribute(MAVEN_GOAL_KEY, mavenTestGoal);
-        mavenTestLaunchConfig.setAttribute(MAVEN_WORKING_DIR_KEY, "${workspace_loc:/" + project.getName() + "}");
-        String javaHomePath = getJavaHomePath();
-        Map<String, String> environmentVariableMap = new HashMap<>();
-        environmentVariableMap.put(JAVA_HOME_KEY, javaHomePath);
-        mavenTestLaunchConfig.setAttribute(MAVEN_ENVIRONMENT_KEY, environmentVariableMap);
-
-        // save the launcher with configuration data
-        mavenTestLaunchConfig.doSave();
 
         // Select the maven launcher and run it
         for (ILaunchConfiguration launchConfig : launchManager.getLaunchConfigurations()) {
@@ -344,14 +350,24 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
                 + "server" + File.separator + "carbonapps";
         String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
         String microInteratorPath;
-
+        
         if (OS.indexOf("windows") >= 0) {
             java.nio.file.Path path = Paths.get("");
             microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath;
         } else {
             // check if EI Tooling is in Application folder for MAC
-            File macOSEIToolingAppFile = new File(TOOLING_PATH_MAC);
-            if (macOSEIToolingAppFile.exists()) {
+            boolean isRelativeToolingAppExists = false;
+            File macOSRelativeToolingApp = null;
+            try {
+                macOSRelativeToolingApp = new File((new File(".").getCanonicalFile()).getParent().toString() 
+                        + File.separator + "Eclipse");
+                if (macOSRelativeToolingApp.exists()) {
+                    isRelativeToolingAppExists = true;
+                }
+            } catch (IOException e) {}
+            if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                microInteratorPath = macOSRelativeToolingApp.getAbsolutePath() + File.separator + microesbPath;
+            } else if (new File(TOOLING_PATH_MAC).exists()) {
                 microInteratorPath = TOOLING_PATH_MAC + File.separator + microesbPath;
             } else {
                 java.nio.file.Path path = Paths.get("");
@@ -361,7 +377,7 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
 
         // check carbonapps contains any files
         File carbonAppsFolder = new File(microInteratorPath + carbonAppsFolderPath);
-        if (carbonAppsFolder.listFiles().length > 0) {
+        if (carbonAppsFolder != null && carbonAppsFolder.exists() && carbonAppsFolder.listFiles().length > 0) {
             try {
                 FileUtils.cleanDirectory(carbonAppsFolder);
             } catch (IOException e) {

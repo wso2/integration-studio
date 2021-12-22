@@ -297,6 +297,16 @@ function populateDSModal(root, dsId, metadata) {
                 } else {
                 	$('#ds-read-pref-select').val("");
                 }
+
+                let readSSLEnabled = getDSConfigPropertyValue(properties, "mongoDB_ssl_enabled");
+                if (readSSLEnabled != null && readSSLEnabled != "" && (readSSLEnabled === "true" || readSSLEnabled === "false")) {
+                	$('#ds-ssl-enabled-select').val(readSSLEnabled);
+                } else {
+                	$('#ds-ssl-enabled-select').val("false");
+                }
+
+                let authSource = getDSConfigPropertyValue(properties, "mongoDB_auth_source");
+                $('#ds-con-auth-source-input').val(authSource);
                 
                 let connectTimeout = getDSConfigPropertyValue(properties, "mongoDB_connectTimeout");
                 $('#ds-con-timeout-input').val(connectTimeout);
@@ -737,6 +747,16 @@ function processDSInputData(root, data, deleteIfExists) {
         let readPref = data['ds-read-pref-select'];
         if (readPref != "") {
         	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_read_preference"), readPref));
+        }
+
+        let readSSLEnabled = data['ds-ssl-enabled-select'];
+        if (readSSLEnabled != "") {
+        	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_ssl_enabled"), readSSLEnabled));
+        }
+
+        let authSource = data['ds-con-auth-source-input'];
+        if (authSource != "") {
+        	properties.push(createTextNode(root, createPropertyNode(root, "mongoDB_auth_source"), authSource));
         }
         
         let conTimeout = data['ds-con-timeout-input'];

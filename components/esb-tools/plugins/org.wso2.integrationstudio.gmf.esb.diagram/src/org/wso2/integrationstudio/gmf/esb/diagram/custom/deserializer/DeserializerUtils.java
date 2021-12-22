@@ -33,11 +33,12 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractConnectorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorFlowCompartmentEditPart;
+import org.eclipse.emf.common.notify.Notifier;
 
 public class DeserializerUtils {
 
     public static boolean isInteger(String numberString) {
-
+    	Notifier notifier = null;
         try {
             Integer.parseInt(numberString);
         } catch (NumberFormatException e) {

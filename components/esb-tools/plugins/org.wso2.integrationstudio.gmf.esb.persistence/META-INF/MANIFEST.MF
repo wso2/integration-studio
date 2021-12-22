@@ -23,7 +23,8 @@ Require-Bundle: org.wso2.integrationstudio.gmf.esb,
  org.eclipse.gmf.runtime.notation;bundle-version="1.8.0",
  org.wso2.integrationstudio.esb.libraries,
  org.wso2.integrationstudio.kernel.libraries
-Export-Package: org.wso2.integrationstudio.gmf.esb.internal.persistence,
+Export-Package: org.codehaus.jettison.json,
+ org.wso2.integrationstudio.gmf.esb.internal.persistence,
  org.wso2.integrationstudio.gmf.esb.internal.persistence.custom,
  org.wso2.integrationstudio.gmf.esb.persistence
 Import-Package: com.damnhandy.uri.template;version="2.1.6.wso2v2",

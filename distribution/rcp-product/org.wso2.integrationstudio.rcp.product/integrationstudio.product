@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.integrationstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="8.1.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.integrationstudio.rcp.plugin.devstudio" application="org.eclipse.wst.jsdt.core.JavaCodeFormatter" version="8.1.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.wso2.integrationstudio.rcp.plugin/icons/about_banner.png"/>
@@ -21,6 +21,7 @@ Please visit : http://wso2.com/products/integration-studio/
 -Xmx2048m
 -XX:MaxPermSize=512m
 -Dosgi.instance.area.default=@user.home/IntegrationStudio/8.1.0-m1/workspace
+-Dorg.eclipse.swt.graphics.Resource.reportNonDisposed=false
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
@@ -332,20 +333,13 @@ Please visit : http://wso2.com/products/integration-studio/
       <feature id="org.eclipse.jdt"/>
       <feature id="org.roussev.http4e.feature" version="5.0.12"/>
       <feature id="de.jcup.yamleditor"/>
-      <!-- Integration Studio kernel/platform features -->
       <feature id="org.wso2.integrationstudio.platform.feature" installMode="root"/>
       <feature id="org.wso2.integrationstudio.platform.dependencies.feature" installMode="root"/>
-      <!-- Integration Studio Server features -->
       <feature id="org.wso2.integrationstudio.server.feature" installMode="root"/>
-      <!-- Integration Studio ESB features -->
       <feature id="org.wso2.integrationstudio.esb.feature" installMode="root"/>
-      <!-- Integration Studio DSS features -->
       <feature id="org.wso2.integrationstudio.dss.feature" installMode="root"/>
-      <!-- Integration Studio BPS features -->
       <feature id="org.wso2.integrationstudio.bps.feature" installMode="root"/>
-      <!-- Integration Studio RCP features -->
       <feature id="org.wso2.integrationstudio.rcp.feature" installMode="root"/>
-
    </features>
 
    <configurations>

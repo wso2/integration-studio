@@ -123,7 +123,7 @@ public class CloudAdminServiceClient {
 			provider = (BindingProvider) dispatch;
 
 			MessageFactory mf = MessageFactory
-					.newInstance(SOAPConstants.SOAP_1_1_PROTOCOL);
+					.newInstance();
 
 			request = mf.createMessage();
 			part = request.getSOAPPart();
@@ -204,7 +204,7 @@ public class CloudAdminServiceClient {
 		provider = (BindingProvider) dispatch;
 
 		MessageFactory mf = MessageFactory
-				.newInstance(SOAPConstants.SOAP_1_1_PROTOCOL);
+				.newInstance();
 
 		request = mf.createMessage();
 		part = request.getSOAPPart();

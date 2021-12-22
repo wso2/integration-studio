@@ -6,12 +6,12 @@ Bundle-Version: 8.1.0.qualifier
 Bundle-Vendor: WSO2
 Bundle-ActivationPolicy: lazy
 Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
+ com.google.gson,
  com.jayway.jsonpath;uses:="com.jayway.jsonpath.internal,com.jayway.jsonpath.spi,new com.jayway.jsonpath",
  com.jayway.jsonpath.internal,
  com.jayway.jsonpath.internal.path,
  com.jayway.jsonpath.spi.json,
  com.sun.phobos.script.javascript;uses:="com.sun.phobos.script.util,org.mozilla.javascript,javax.script",
- javax.activation,
  javax.wsdl;version="1.6.2.wso2v1";uses:="javax.wsdl.extensions,org.w3c.dom,javax.xml.namespace",
  javax.wsdl.extensions;version="1.6.2.wso2v1";uses:="org.w3c.dom,javax.wsdl,javax.xml.namespace",
  javax.wsdl.extensions.schema;version="1.6.2.wso2v1";uses:="javax.wsdl.extensions,org.w3c.dom",
@@ -808,7 +808,6 @@ Bundle-ClassPath: .,
  lib/jarchivelib-0.3.0.jar,
  lib/cava-toml-0.3.1.jar,
  lib/antlr4-runtime-4.7.1.jar,
- lib/activation-1.1.1.jar,
  lib/javax.xml.soap-api-1.4.0.jar,
  lib/jaxws-api-2.3.1.jar,
  lib/jaxb-api-2.3.1.jar

@@ -42,6 +42,7 @@ import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.JsonTransformMed
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.LoadBalanceEndPointCreateCommand;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.LogMediatorCreateCommand;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.LoopBackMediatorCreateCommand;
+import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.NTLMMediatorCreateCommand;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.NamedEndpointCreateCommand;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.OAuthMediatorCreateCommand;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.commands.PayloadFactoryMediatorCreateCommand;
@@ -283,6 +284,9 @@ public class MediatorFlowMediatorFlowCompartment12ItemSemanticEditPolicy extends
         }
         if (EsbElementTypes.DSSMediator_3794 == req.getElementType()) {
             return getGEFWrapper(new DSSMediatorCreateCommand(req));
+        }
+        if (EsbElementTypes.NTLMMediator_3797 == req.getElementType()) {
+            return getGEFWrapper(new NTLMMediatorCreateCommand(req));
         }
         return super.getCreateCommand(req);
     }

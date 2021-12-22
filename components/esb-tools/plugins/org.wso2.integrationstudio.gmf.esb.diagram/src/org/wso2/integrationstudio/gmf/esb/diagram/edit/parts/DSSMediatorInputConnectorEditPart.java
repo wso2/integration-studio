@@ -273,7 +273,7 @@ public class DSSMediatorInputConnectorEditPart extends AbstractMediatorInputConn
             types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
             types.add(EsbElementTypes.JsonTransformMediatorOutputConnector_3793);
             types.add(EsbElementTypes.DSSMediatorOutputConnector_3796);
-
+            types.add(EsbElementTypes.NTLMMediatorOutputConnector_3799);
         }
         return types;
     }

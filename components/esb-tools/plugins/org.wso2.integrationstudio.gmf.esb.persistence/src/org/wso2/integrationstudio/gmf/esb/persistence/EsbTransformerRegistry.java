@@ -64,6 +64,7 @@ import org.wso2.integrationstudio.gmf.esb.JsonTransformMediator;
 import org.wso2.integrationstudio.gmf.esb.LoadBalanceEndPoint;
 import org.wso2.integrationstudio.gmf.esb.LogMediator;
 import org.wso2.integrationstudio.gmf.esb.MessageMediator;
+import org.wso2.integrationstudio.gmf.esb.NTLMMediator;
 import org.wso2.integrationstudio.gmf.esb.OAuthMediator;
 import org.wso2.integrationstudio.gmf.esb.PayloadFactoryMediator;
 import org.wso2.integrationstudio.gmf.esb.PropertyGroupMediator;
@@ -128,6 +129,7 @@ import org.wso2.integrationstudio.gmf.esb.internal.persistence.LoadBalanceEndPoi
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.LogMediatorTransformer;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.LoopBackMediatorTransformer;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.MessageMediatorTransformer;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.NTLMMediatorTransformer;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.NamedEndPointTransformer;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.OAuthMediatorTransformer;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.PayloadFactoryMediatorTransformer;
@@ -246,6 +248,7 @@ public class EsbTransformerRegistry {
         addTransformer(PublishEventMediator.class, new PublishEventMediatorTransformer());
         addTransformer(JsonTransformMediator.class, new JsonTransformMediatorTransformer());
         addTransformer(DSSMediator.class, new DataServiceCallMediatorTransformer());
+        addTransformer(NTLMMediator.class, new NTLMMediatorTransformer());
     }
 
     /**

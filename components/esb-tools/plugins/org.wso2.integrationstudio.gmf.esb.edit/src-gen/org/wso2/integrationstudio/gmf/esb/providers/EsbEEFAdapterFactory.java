@@ -2653,5 +2653,29 @@ public class EsbEEFAdapterFactory extends EsbAdapterFactory {
 	public Adapter createJsonTransformMediatorPropertyAdapter() {
 		return new JsonTransformMediatorPropertyPropertiesEditionProvider();
 	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createNTLMMediatorAdapter()
+	 * 
+	 */
+	public Adapter createNTLMMediatorAdapter() {
+		return new NTLMMediatorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createNTLMMediatorOutputConnectorAdapter()
+	 * 
+	 */
+	public Adapter createNTLMMediatorOutputConnectorAdapter() {
+		return new NTLMMediatorOutputConnectorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.wso2.integrationstudio.gmf.esb.util.EsbAdapterFactory#createNTLMMediatorInputConnectorAdapter()
+	 * 
+	 */
+	public Adapter createNTLMMediatorInputConnectorAdapter() {
+		return new NTLMMediatorInputConnectorPropertiesEditionProvider();
+	}
 
 }

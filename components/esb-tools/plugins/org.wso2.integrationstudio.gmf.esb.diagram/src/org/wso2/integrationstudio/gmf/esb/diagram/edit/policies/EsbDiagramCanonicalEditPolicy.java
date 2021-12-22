@@ -2039,6 +2039,27 @@ public class EsbDiagramCanonicalEditPolicy extends CanonicalEditPolicy {
             domain2NotationMap.putView(view.getElement(), view);
             break;
         }
+        case NTLMMediatorEditPart.VISUAL_ID: {
+            if (!domain2NotationMap.containsKey(view.getElement())) {
+                result.addAll(EsbDiagramUpdater.getNTLMMediator_3797ContainedLinks(view));
+            }
+            domain2NotationMap.putView(view.getElement(), view);
+            break;
+        }
+        case NTLMMediatorInputConnectorEditPart.VISUAL_ID: {
+            if (!domain2NotationMap.containsKey(view.getElement())) {
+                result.addAll(EsbDiagramUpdater.getNTLMMediatorInputConnector_3798ContainedLinks(view));
+            }
+            domain2NotationMap.putView(view.getElement(), view);
+            break;
+        }
+        case NTLMMediatorOutputConnectorEditPart.VISUAL_ID: {
+            if (!domain2NotationMap.containsKey(view.getElement())) {
+                result.addAll(EsbDiagramUpdater.getNTLMMediatorOutputConnector_3799ContainedLinks(view));
+            }
+            domain2NotationMap.putView(view.getElement(), view);
+            break;
+        }
         case EntitlementOnAcceptContainerEditPart.VISUAL_ID: {
             if (!domain2NotationMap.containsKey(view.getElement())) {
                 result.addAll(EsbDiagramUpdater.getEntitlementOnAcceptContainer_3755ContainedLinks(view));

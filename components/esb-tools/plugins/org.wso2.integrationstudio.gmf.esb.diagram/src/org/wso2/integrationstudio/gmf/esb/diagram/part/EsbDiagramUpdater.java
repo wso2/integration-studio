@@ -194,6 +194,8 @@ public class EsbDiagramUpdater {
             return getJsonTransformMediator_3791SemanticChildren(view);
         case DSSMediatorEditPart.VISUAL_ID:
             return getDSSMediator_3794SemanticChildren(view);
+        case NTLMMediatorEditPart.VISUAL_ID:
+            return getNTLMMediator_3797SemanticChildren(view);
         case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
             return getEntitlementOnAcceptContainer_3755SemanticChildren(view);
         case EntitlementAdviceContainerEditPart.VISUAL_ID:
@@ -2733,6 +2735,32 @@ public class EsbDiagramUpdater {
     }
 
     /**
+    * @generated
+    */
+    public static List<EsbNodeDescriptor> getNTLMMediator_3797SemanticChildren(View view) {
+        if (!view.isSetElement()) {
+            return Collections.emptyList();
+        }
+        NTLMMediator modelElement = (NTLMMediator) view.getElement();
+        LinkedList<EsbNodeDescriptor> result = new LinkedList<EsbNodeDescriptor>();
+        {
+            NTLMMediatorInputConnector childElement = modelElement.getInputConnector();
+            int visualID = EsbVisualIDRegistry.getNodeVisualID(view, childElement);
+            if (visualID == NTLMMediatorInputConnectorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+            }
+        }
+        {
+            NTLMMediatorOutputConnector childElement = modelElement.getOutputConnector();
+            int visualID = EsbVisualIDRegistry.getNodeVisualID(view, childElement);
+            if (visualID == NTLMMediatorOutputConnectorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+            }
+        }
+        return result;
+    }
+
+    /**
      * @generated
      */
     public static List<EsbNodeDescriptor> getEntitlementOnAcceptContainer_3755SemanticChildren(View view) {
@@ -3827,6 +3855,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -4108,6 +4140,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -4395,6 +4431,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -4676,6 +4716,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -4963,6 +5007,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -5244,6 +5292,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -5531,6 +5583,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -5812,6 +5868,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -6099,6 +6159,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -6380,6 +6444,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -6667,6 +6735,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -6948,6 +7020,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -7235,6 +7311,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -7516,6 +7596,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -7803,6 +7887,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -8084,6 +8172,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -8371,6 +8463,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -8652,6 +8748,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -8939,6 +9039,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -9220,6 +9324,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -9507,6 +9615,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -9788,6 +9900,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -10075,6 +10191,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -10356,6 +10476,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -10687,6 +10811,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -10971,6 +11099,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -11252,6 +11384,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -11633,6 +11769,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -11917,6 +12057,10 @@ public class EsbDiagramUpdater {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
         }
         return result;
     }
@@ -12198,6 +12342,10 @@ public class EsbDiagramUpdater {
                 continue;
             }
             if (visualID == DSSMediatorEditPart.VISUAL_ID) {
+                result.add(new EsbNodeDescriptor(childElement, visualID));
+                continue;
+            }
+            if (visualID == NTLMMediatorEditPart.VISUAL_ID) {
                 result.add(new EsbNodeDescriptor(childElement, visualID));
                 continue;
             }
@@ -12747,6 +12895,12 @@ public class EsbDiagramUpdater {
             return getDSSMediatorInputConnector_3795ContainedLinks(view);
         case DSSMediatorOutputConnectorEditPart.VISUAL_ID:
             return getDSSMediatorOutputConnector_3796ContainedLinks(view);
+        case NTLMMediatorEditPart.VISUAL_ID:
+            return getNTLMMediator_3797ContainedLinks(view);
+        case NTLMMediatorInputConnectorEditPart.VISUAL_ID:
+            return getNTLMMediatorInputConnector_3798ContainedLinks(view);
+        case NTLMMediatorOutputConnectorEditPart.VISUAL_ID:
+            return getNTLMMediatorOutputConnector_3799ContainedLinks(view);
         case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
             return getEntitlementOnAcceptContainer_3755ContainedLinks(view);
         case MediatorFlow22EditPart.VISUAL_ID:
@@ -13446,6 +13600,12 @@ public class EsbDiagramUpdater {
             return getDSSMediatorInputConnector_3795IncomingLinks(view);
         case DSSMediatorOutputConnectorEditPart.VISUAL_ID:
             return getDSSMediatorOutputConnector_3796IncomingLinks(view);
+        case NTLMMediatorEditPart.VISUAL_ID:
+            return getNTLMMediator_3797IncomingLinks(view);
+        case NTLMMediatorInputConnectorEditPart.VISUAL_ID:
+            return getNTLMMediatorInputConnector_3798IncomingLinks(view);
+        case NTLMMediatorOutputConnectorEditPart.VISUAL_ID:
+            return getNTLMMediatorOutputConnector_3799IncomingLinks(view);
         case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
             return getEntitlementOnAcceptContainer_3755IncomingLinks(view);
         case MediatorFlow22EditPart.VISUAL_ID:
@@ -14145,6 +14305,12 @@ public class EsbDiagramUpdater {
             return getDSSMediatorInputConnector_3795OutgoingLinks(view);
         case DSSMediatorOutputConnectorEditPart.VISUAL_ID:
             return getDSSMediatorOutputConnector_3796OutgoingLinks(view);
+        case NTLMMediatorEditPart.VISUAL_ID:
+            return getNTLMMediator_3797OutgoingLinks(view);
+        case NTLMMediatorInputConnectorEditPart.VISUAL_ID:
+            return getNTLMMediatorInputConnector_3798OutgoingLinks(view);
+        case NTLMMediatorOutputConnectorEditPart.VISUAL_ID:
+            return getNTLMMediatorOutputConnector_3799OutgoingLinks(view);
         case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
             return getEntitlementOnAcceptContainer_3755OutgoingLinks(view);
         case MediatorFlow22EditPart.VISUAL_ID:
@@ -16157,6 +16323,30 @@ public class EsbDiagramUpdater {
     */
     public static List<EsbLinkDescriptor> getDSSMediatorOutputConnector_3796ContainedLinks(View view) {
         DSSMediatorOutputConnector modelElement = (DSSMediatorOutputConnector) view.getElement();
+        LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
+        result.addAll(getContainedTypeModelFacetLinks_EsbLink_4001(modelElement));
+        return result;
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getNTLMMediator_3797ContainedLinks(View view) {
+        return Collections.emptyList();
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getNTLMMediatorInputConnector_3798ContainedLinks(View view) {
+        return Collections.emptyList();
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getNTLMMediatorOutputConnector_3799ContainedLinks(View view) {
+        NTLMMediatorOutputConnector modelElement = (NTLMMediatorOutputConnector) view.getElement();
         LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
         result.addAll(getContainedTypeModelFacetLinks_EsbLink_4001(modelElement));
         return result;
@@ -19001,6 +19191,32 @@ public class EsbDiagramUpdater {
     }
 
     /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getNTLMMediator_3797IncomingLinks(View view) {
+        return Collections.emptyList();
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getNTLMMediatorInputConnector_3798IncomingLinks(View view) {
+        NTLMMediatorInputConnector modelElement = (NTLMMediatorInputConnector) view.getElement();
+        Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+                .find(view.eResource().getResourceSet().getResources());
+        LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
+        result.addAll(getIncomingTypeModelFacetLinks_EsbLink_4001(modelElement, crossReferences));
+        return result;
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getNTLMMediatorOutputConnector_3799IncomingLinks(View view) {
+        return Collections.emptyList();
+    }
+
+    /**
      * @generated
      */
     public static List<EsbLinkDescriptor> getEntitlementOnAcceptContainer_3755IncomingLinks(View view) {
@@ -21772,6 +21988,30 @@ public class EsbDiagramUpdater {
     */
     public static List<EsbLinkDescriptor> getDSSMediatorOutputConnector_3796OutgoingLinks(View view) {
         DSSMediatorOutputConnector modelElement = (DSSMediatorOutputConnector) view.getElement();
+        LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
+        result.addAll(getOutgoingTypeModelFacetLinks_EsbLink_4001(modelElement));
+        return result;
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getNTLMMediator_3797OutgoingLinks(View view) {
+        return Collections.emptyList();
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getNTLMMediatorInputConnector_3798OutgoingLinks(View view) {
+        return Collections.emptyList();
+    }
+
+    /**
+    * @generated
+    */
+    public static List<EsbLinkDescriptor> getNTLMMediatorOutputConnector_3799OutgoingLinks(View view) {
+        NTLMMediatorOutputConnector modelElement = (NTLMMediatorOutputConnector) view.getElement();
         LinkedList<EsbLinkDescriptor> result = new LinkedList<EsbLinkDescriptor>();
         result.addAll(getOutgoingTypeModelFacetLinks_EsbLink_4001(modelElement));
         return result;

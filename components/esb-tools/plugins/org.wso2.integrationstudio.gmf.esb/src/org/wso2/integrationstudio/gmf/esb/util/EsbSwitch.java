@@ -3037,6 +3037,31 @@ public class EsbSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case EsbPackage.NTLM_MEDIATOR: {
+                NTLMMediator ntlmMediator = (NTLMMediator)theEObject;
+                T result = caseNTLMMediator(ntlmMediator);
+                if (result == null) result = caseMediator(ntlmMediator);
+                if (result == null) result = caseEsbElement(ntlmMediator);
+                if (result == null) result = caseEsbNode(ntlmMediator);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case EsbPackage.NTLM_MEDIATOR_OUTPUT_CONNECTOR: {
+                NTLMMediatorOutputConnector ntlmMediatorOutputConnector = (NTLMMediatorOutputConnector)theEObject;
+                T result = caseNTLMMediatorOutputConnector(ntlmMediatorOutputConnector);
+                if (result == null) result = caseOutputConnector(ntlmMediatorOutputConnector);
+                if (result == null) result = caseEsbConnector(ntlmMediatorOutputConnector);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case EsbPackage.NTLM_MEDIATOR_INPUT_CONNECTOR: {
+                NTLMMediatorInputConnector ntlmMediatorInputConnector = (NTLMMediatorInputConnector)theEObject;
+                T result = caseNTLMMediatorInputConnector(ntlmMediatorInputConnector);
+                if (result == null) result = caseInputConnector(ntlmMediatorInputConnector);
+                if (result == null) result = caseEsbConnector(ntlmMediatorInputConnector);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             default: return defaultCase(theEObject);
         }
     }
@@ -6293,6 +6318,51 @@ public class EsbSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseJsonTransformMediatorProperty(JsonTransformMediatorProperty object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>NTLM Mediator</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>NTLM Mediator</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseNTLMMediator(NTLMMediator object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>NTLM Mediator Output Connector</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>NTLM Mediator Output Connector</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseNTLMMediatorOutputConnector(NTLMMediatorOutputConnector object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>NTLM Mediator Input Connector</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>NTLM Mediator Input Connector</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseNTLMMediatorInputConnector(NTLMMediatorInputConnector object) {
         return null;
     }
 

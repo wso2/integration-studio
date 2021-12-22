@@ -1876,6 +1876,33 @@ public interface EsbFactory extends EFactory {
     JsonTransformMediatorProperty createJsonTransformMediatorProperty();
 
     /**
+     * Returns a new object of class '<em>NTLM Mediator</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>NTLM Mediator</em>'.
+     * @generated
+     */
+    NTLMMediator createNTLMMediator();
+
+    /**
+     * Returns a new object of class '<em>NTLM Mediator Output Connector</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>NTLM Mediator Output Connector</em>'.
+     * @generated
+     */
+    NTLMMediatorOutputConnector createNTLMMediatorOutputConnector();
+
+    /**
+     * Returns a new object of class '<em>NTLM Mediator Input Connector</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>NTLM Mediator Input Connector</em>'.
+     * @generated
+     */
+    NTLMMediatorInputConnector createNTLMMediatorInputConnector();
+
+    /**
      * Returns a new object of class '<em>Script Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

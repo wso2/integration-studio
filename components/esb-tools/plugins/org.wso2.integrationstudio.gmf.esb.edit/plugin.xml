@@ -377,6 +377,12 @@
                tab="Base">
          </propertySection>
          <propertySection
+               class="org.wso2.integrationstudio.gmf.esb.parts.forms.NTLMMediatorPropertiesEditionPartForm"
+               filter="org.wso2.integrationstudio.gmf.esb.providers.NTLMMediatorPropertiesEditionProvider$EditionFilter"
+               id="org.wso2.integrationstudio.gmf.esb.section.NTLMMediator"
+               tab="Base">
+         </propertySection>
+         <propertySection
                class="org.wso2.integrationstudio.gmf.esb.parts.forms.DSSoperationPropertyPropertiesEditionPartForm"
                filter="org.wso2.integrationstudio.gmf.esb.providers.DSSoperationPropertyPropertiesEditionProvider$EditionFilter"
                id="org.wso2.integrationstudio.gmf.esb.section.DSSoperationProperty"

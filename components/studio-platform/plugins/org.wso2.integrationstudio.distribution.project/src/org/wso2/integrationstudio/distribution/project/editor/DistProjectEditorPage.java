@@ -359,9 +359,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 			}
 		});
 		
-		managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Include Metadata", SWT.NONE);
-		btnPublishEnableChecker = managedForm.getToolkit().createButton(managedForm.getForm().getBody(),
-                "Required to publish to Service Catalog", SWT.CHECK);
+		managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Publish to Service Catalog", SWT.NONE);
+		btnPublishEnableChecker = managedForm.getToolkit().createButton(managedForm.getForm().getBody(), "", SWT.CHECK);
 		btnPublishEnableChecker.setSelection(isPublishToServiceCatalog());
         GridData gdBtnPublishEnableChecker = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
         btnPublishEnableChecker.setLayoutData(gdBtnPublishEnableChecker);

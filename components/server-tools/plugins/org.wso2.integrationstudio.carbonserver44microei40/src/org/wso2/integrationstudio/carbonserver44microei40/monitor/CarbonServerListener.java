@@ -77,14 +77,8 @@ public class CarbonServerListener implements IServerListener {
     }
 
     private void triggerStarting(IServer server) {
-        File cappMonitorBundle = carbonServer44eiUtils.getCappMonitorBundle();
         EmbeddedServerConfigurationUtil.configureEmbeddedServerConfigurations();
         IPath dropins = CarbonServerManager.getServerHome(server).append("dropins");
-        try {
-            FileUtils.copyFileToDirectory(cappMonitorBundle, new File(dropins.toOSString()));
-        } catch (IOException e1) {
-            log.error(e1);
-        }
         for (ICarbonServerMonitor monitor : serverMonitors) {
             try {
                 monitor.starting(server);
@@ -122,13 +116,6 @@ public class CarbonServerListener implements IServerListener {
         CarbonServerConsole console = new CarbonServerConsole();
         console.printMessageInConsole(server.getName(), "Carbon Server " + server.getName() + " has shut down...\n");
         EmbeddedServerConfigurationUtil.revertEmbeddedServerConfigurations();
-        File cappMonitorBundle = carbonServer44eiUtils.getCappMonitorBundle();
-        IPath dropins = CarbonServerManager.getServerHome(server).append("repository").append("components")
-                .append("dropins").append(cappMonitorBundle.getName());
-        File cappMonitorFile = new File(dropins.toOSString());
-        if (cappMonitorFile.exists()) {
-            cappMonitorFile.delete();
-        }
         for (ICarbonServerMonitor monitor : serverMonitors) {
             try {
                 monitor.stopped(server);

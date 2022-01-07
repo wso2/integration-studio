@@ -57,6 +57,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TreeEditor;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
@@ -112,6 +113,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 	private static final String API_TYPE = "synapse/api";
 	private static final String PROXY_SERVICE_TYPE = "synapse/proxy-service";
 	private static final String METADATA_SUFFIX = "_metadata";
+	private static final String DIR_DOT_METADATA = ".metadata";
 	private static final String SWAGGER_SUFFIX = "_swagger";
 	private static final String PROXY_METADATA_SUFFIX = "_proxy";
 	
@@ -131,6 +133,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 	private Text txtArtifactId;
 	private Text txtVersion;
 	private Text txtDescription;
+	private Button btnPublishEnableChecker;
 	private boolean pageDirty;
 
 	IStatus editorStatus = new Status(IStatus.OK, Activator.PLUGIN_ID, "");
@@ -157,6 +160,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 	private Action exportAction;
 	private Action refreshAction;
 	private ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
+	
+	private boolean publishToServiceCatalog = true;
 
 	public DistProjectEditorPage(String id, String title) {
 		super(id, title);
@@ -218,6 +223,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 		setProjectList(projectList);
 		setDependencyList(dependencyMap);
 		setMissingDependencyList((Map<String, Dependency>) ((HashMap) getDependencyList()).clone());
+		setPublishToServiceCatalog(isMetaDataDependenciesIncluded());
 	}
 
 	public void savePOM() throws Exception {
@@ -334,11 +340,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 			}
 		});
 
-		Label lblDescription =
-		                       managedForm.getToolkit()
-		                                  .createLabel(managedForm.getForm().getBody(),
+		managedForm.getToolkit().createLabel(managedForm.getForm().getBody(),
 		                                               "Description", SWT.NONE);
-		lblDescription.setLayoutData(new GridData(SWT.RIGHT, SWT.TOP, false, false, 1, 1));
 
 		txtDescription =
 		                 managedForm.getToolkit().createText(managedForm.getForm().getBody(), "",
@@ -355,6 +358,26 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 				updateDirtyState();
 			}
 		});
+		
+		managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Publish to Service Catalog", SWT.NONE);
+		btnPublishEnableChecker = managedForm.getToolkit().createButton(managedForm.getForm().getBody(), "", SWT.CHECK);
+		btnPublishEnableChecker.setSelection(isPublishToServiceCatalog());
+        GridData gdBtnPublishEnableChecker = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+        btnPublishEnableChecker.setLayoutData(gdBtnPublishEnableChecker);
+        btnPublishEnableChecker.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                setPageDirty(true);
+                if (btnPublishEnableChecker.getSelection()) {
+                	addMetadataDependencies();
+                	setPublishToServiceCatalog(true);
+                } else {
+                    removeMetadataDependencies();
+                    setPublishToServiceCatalog(false);
+                }
+                updateDirtyState();
+            }
+        });
 
 		Section sctnDependencies =
 		                           managedForm.getToolkit()
@@ -363,6 +386,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 		GridData gd_sctnNewSection = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
 		gd_sctnNewSection.heightHint = 250;
 		gd_sctnNewSection.widthHint = 411;
+		gd_sctnNewSection.verticalSpan = 55;
 		sctnDependencies.setLayoutData(gd_sctnNewSection);
 		managedForm.getToolkit().paintBordersFor(sctnDependencies);
 		sctnDependencies.setText("Dependencies");
@@ -635,6 +659,70 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     }
     
 	/**
+	 * Remove metadata dependencies from the maven model
+	 */
+    private void removeMetadataDependencies() {
+    	List<String> removingArtifacts = new ArrayList<>();
+		List<Dependency> listdep = parentPrj.getDependencies();
+		for (Dependency dep : listdep) {
+			String groupId = dep.getGroupId();
+			String artifactId = dep.getArtifactId();
+			if (groupId != null && groupId.endsWith(DIR_DOT_METADATA) && 
+					artifactId != null && artifactId.endsWith(METADATA_SUFFIX)) {
+				removingArtifacts.add(artifactIdToDependencyMapping.get(dep.getArtifactId()));
+			}
+		}
+		removeDependency(removingArtifacts); 
+	}
+
+    /**
+	 * Add metadata dependencies to the maven model
+	 */
+    private void addMetadataDependencies() {
+
+    	List<Dependency> listdep = parentPrj.getDependencies();
+		for (Dependency dep : listdep) {
+			String groupId = dep.getGroupId();
+			if (!(groupId != null && groupId.endsWith(DIR_DOT_METADATA))) {
+				String metadataName;
+				if (dep.getGroupId().endsWith(".proxy-service")) {
+					metadataName = dep.getArtifactId() + PROXY_METADATA_SUFFIX + METADATA_SUFFIX;
+				} else {
+					metadataName = dep.getArtifactId() + METADATA_SUFFIX;
+				}
+				String metadataArtifactInfo = artifactIdToDependencyMapping.get(metadataName);
+				if (projectListToDependencyMapping.containsKey(metadataArtifactInfo)) {
+					Dependency metaDependency = projectList
+							.get(projectListToDependencyMapping.get(metadataArtifactInfo)).getDependency();
+					if (metaDependency != null && !getDependencyList().containsKey(metadataArtifactInfo)) {
+						serverRoleList.put(metadataArtifactInfo, "capp/EnterpriseServiceBus");
+						getDependencyList().put(metadataArtifactInfo, metaDependency);
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Check if metadata dependencies are included in the maven model
+	 */
+	private boolean isMetaDataDependenciesIncluded() {
+    	List<Dependency> listdep = parentPrj.getDependencies();
+    	if (listdep.size() == 0) {
+    		return true;
+    	}
+		for (Dependency dep : listdep) {
+			String groupId = dep.getGroupId();
+			String artifactId = dep.getArtifactId();
+			if (groupId != null && groupId.endsWith(DIR_DOT_METADATA) && 
+					artifactId != null && artifactId.endsWith(METADATA_SUFFIX)) {
+				return true;
+			}
+		}
+		return false;
+	}
+    
+	/**
 	 * Add a project dependencies to the maven model
 	 * 
 	 * @param nodeData
@@ -657,7 +745,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                     if (projectListToDependencyMapping.containsKey(metadataArtifactInfo)) {
                         Dependency metaDependency = projectList
                                 .get(projectListToDependencyMapping.get(metadataArtifactInfo)).getDependency();
-                        if (metaDependency != null && !getDependencyList().containsKey(metadataArtifactInfo)) {
+                        if (metaDependency != null && !getDependencyList().containsKey(metadataArtifactInfo) 
+                        		&& publishToServiceCatalog) {
                             serverRoleList.put(metadataArtifactInfo, "capp/" + serverRole);
                             getDependencyList().put(metadataArtifactInfo, metaDependency);
                         }
@@ -676,7 +765,8 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                     if (projectListToDependencyMapping.containsKey(metadataArtifactInfo)) {
                         Dependency metaDependency = projectList
                                 .get(projectListToDependencyMapping.get(metadataArtifactInfo)).getDependency();
-                        if (metaDependency != null && !getDependencyList().containsKey(metadataArtifactInfo)) {
+                        if (metaDependency != null && !getDependencyList().containsKey(metadataArtifactInfo)
+                        		&& publishToServiceCatalog) {
                             serverRoleList.put(metadataArtifactInfo, "capp/" + serverRole);
                             getDependencyList().put(metadataArtifactInfo, metaDependency);
                         }
@@ -1031,6 +1121,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                         txtArtifactId.setText(getArtifactId());
                         txtDescription.setText(getDescription());
                         txtGroupId.setText(getGroupId());
+                        btnPublishEnableChecker.setSelection(isPublishToServiceCatalog());
                     }
                 });
             }
@@ -1100,6 +1191,14 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public boolean isPublishToServiceCatalog() {
+        return publishToServiceCatalog;
+    }
+	
+	public void setPublishToServiceCatalog(boolean publishToServiceCatalog) {
+        this.publishToServiceCatalog = publishToServiceCatalog;
+    }
 
 	public boolean isPageDirty() {
 		return pageDirty;

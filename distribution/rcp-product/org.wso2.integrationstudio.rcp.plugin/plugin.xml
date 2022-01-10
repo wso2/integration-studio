@@ -23,10 +23,10 @@
                name="windowImages"
                value="icons/icon-16.gif,icons/icon-32.gif,icons/icon-48.gif,icons/icon-64.gif,icons/icon-128.gif,icons/icon-256.gif">
          </property>
-         <property
+         <!--<property
 		   name="cssTheme"
 	         value="org.wso2.integrationstudio.esb.light.theme">
-         </property>      
+         </property>-->
          <property
            name="lifeCycleURI"
            value="bundleclass://org.wso2.integrationstudio.rcp.plugin/org.wso2.integrationstudio.rcp.plugin.LifeCycleManager">
@@ -54,16 +54,16 @@
          value="plugin_customization.ini">
    </property>
       </product>
-   </extension>
-   <!--extension
+   <!--</extension>
+   <extension
          point="org.eclipse.ui.perspectives">
       <perspective
             name="WSO2"
             icon="icons/perspective.png"
             class="org.wso2.integrationstudio.rcp.plugin.perspective.IntegrationStudioPerspective"
             id="org.wso2.integrationstudio.WSO2IntegrationStudioPerspective">
-      </perspective>
-   </extension-->
+      </perspective>-->
+   </extension>
    <extension point="org.eclipse.ui.intro">
  		<introProductBinding
 			introId="org.eclipse.ui.intro.universal"
@@ -71,7 +71,7 @@
 		</introProductBinding>
 	</extension>
 
-<!-- 	<extension point="org.eclipse.ui.intro.configExtension">
+ 	<!--<extension point="org.eclipse.ui.intro.configExtension">
         <configExtension content="intro/welcome.xml"
                          configId="org.eclipse.ui.intro.universalConfig"></configExtension>
     </extension> -->

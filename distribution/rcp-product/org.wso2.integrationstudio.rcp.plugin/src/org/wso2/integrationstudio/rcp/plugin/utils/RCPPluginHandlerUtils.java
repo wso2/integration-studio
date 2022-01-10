@@ -28,7 +28,7 @@ public class RCPPluginHandlerUtils {
         final Display display = splashDisplay;
         // If Integration Studio starts with an unsupported version, then show a
         // warning
-        if (detectedJavaVersion > 1.8) {
+        if (detectedJavaVersion > 11) {
             display.asyncExec(new Runnable() {
                 public void run() {
                     if (display != null) {

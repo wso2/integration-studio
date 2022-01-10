@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.integrationstudio.rcp.plugin.devstudio" application="org.eclipse.wst.jsdt.core.JavaCodeFormatter" version="8.1.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.eclipse.platform.ide" application="org.eclipse.ui.ide.workbench" version="8.1.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.wso2.integrationstudio.rcp.plugin/icons/about_banner.png"/>
@@ -338,7 +338,6 @@ Please visit : http://wso2.com/products/integration-studio/
       <feature id="org.wso2.integrationstudio.server.feature" installMode="root"/>
       <feature id="org.wso2.integrationstudio.esb.feature" installMode="root"/>
       <feature id="org.wso2.integrationstudio.dss.feature" installMode="root"/>
-      <feature id="org.wso2.integrationstudio.bps.feature" installMode="root"/>
       <feature id="org.wso2.integrationstudio.rcp.feature" installMode="root"/>
    </features>
 
@@ -351,6 +350,15 @@ Please visit : http://wso2.com/products/integration-studio/
    </configurations>
 
    <repositories>
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
       <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
    </repositories>
 

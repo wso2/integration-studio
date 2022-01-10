@@ -177,7 +177,6 @@ public class RunUpdaterRootJob extends Job {
         localTimestampList.add(getLatestTimestampOfPlstform());
         localTimestampList.add(getLatestTimestampOfESB());
         localTimestampList.add(getLatestTimestampOfDSS());
-        localTimestampList.add(getLatestTimestampOfBPS());
         localTimestampList.add(getLatestTimestampOfServer());
 
         return Collections.max(localTimestampList);

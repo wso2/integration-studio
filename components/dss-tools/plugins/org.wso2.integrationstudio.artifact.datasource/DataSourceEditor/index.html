@@ -1,0 +1,616 @@
+<!-- * Copyright (c) 2022, WSO2 Inc. (http://www.wso2.org) All Rights Reserved. 
+	* * Licensed under the Apache License, Version 2.0 (the "License"); * you 
+	may not use this file except in compliance with the License. * You may obtain 
+	a copy of the License at * * http://www.apache.org/licenses/LICENSE-2.0 * 
+	* Unless required by applicable law or agreed to in writing, software * distributed 
+	under the License is distributed on an "AS IS" BASIS, * WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. * See the License for 
+	the specific language governing permissions and * limitations under the License. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>DataSource-Dashboard</title>
+    <!-- Bootstrap core CSS -->
+    <!--[if lt IE 10]>
+        <link href="assets/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">  
+        <link href="assets/bootstrap-3.3.7/css/bootstrap-ie7.min.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if gte IE 10]>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <![endif]-->
+
+    <![if !IE]>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <![endif]>
+    <link rel="stylesheet" href="assets/css/pageguide.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/color-theme.css">
+    <link rel="stylesheet" href="assets/css/input.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
+    <link rel="stylesheet" href="assets/css/panel-table-styles.css">
+    <link rel="stylesheet" href="assets/css/query.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+
+<body style="padding-top: 10px;padding-bottom: 10px;padding-right: 20px;padding-left: 20px;">
+    <div id="console-log"></div>
+    <div class="container main-content">
+
+        <div class="modal-header">
+            <h4 class="modal-title" id="ds-modal-header">New Datasource</h4>
+        </div>
+        <div class="modal-body">
+            <form id="ds-form" class="general-form" name="ds-form">
+                <div class="form-group required">
+                    <div id="ds-name-inputgroup" class="field inputgroup"><input class="form-control" autocomplete="off"
+                            autocorrect="off" autocapitalize="off" spellcheck="false" type="text" placeholder=" "
+                            id="ds-name-input" name="ds-name-input"><label class="mb-0 control-label"
+                            for="ds-name-input">Datasource Name</label></div>
+                </div>
+                <div class="form-group">
+                    <div id="ds-desc-inputgroup" class="field inputgroup"><input class="form-control" autocomplete="off"
+                            autocorrect="off" autocapitalize="off" spellcheck="false" type="text" placeholder=" "
+                            id="ds-desc-input" desc="ds-desc-input"><label class="mb-0 control-label"
+                            for="ds-desc-input">Description</label></div>
+                </div>
+                <div class="form-group form-inline" id="ds-type-formgroup">
+                    <div class="form-group required"><label class="control-label control-label">Datasource
+                            Type</label><select class="form-control" required="" id="ds-type-select"
+                            name="ds-type-select">
+                            <option value="rdbms_ds" selected="">RDBMS</option>
+                            <option value="custom_ds">Custom</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="ds-rdbms-input-group">
+                    <div class="form-group form-inline" id="ds-provider-formgroup">
+                        <div class="form-group required">
+                            <label class="control-label control-label">Datasource
+                                Provider</label><select class="form-control" value="default" required=""
+                                id="ds-provider-select" name="ds-provider-select">
+                                <option value="default_ds">Default</option>
+                                <option value="external_ds">External Datasource</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="ds-external-input-group">
+                        <div class="form-group required">
+                            <div id="ds-class-name-inputgroup" class="field inputgroup"><input class="form-control"
+                                    autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                                    type="text" placeholder=" " id="ds-class-name-input"
+                                    desc="ds-class-name-input"><label class="mb-0 control-label"
+                                    for="ds-class-name-input">Datasource Class Name</label></div>
+                        </div>
+                        <div class="table-responsive" id="ds-ext-properties-table">
+                            <table class="table table-sm">
+                                <thead class="align-items-center">
+                                    <tr class="text-center">
+                                        <th>Property Name</th>
+                                        <th>Property Value</th>
+                                        <th><i class="fa fa-cog delete-row"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input class="form-control" type="text" placeholder="Property Name"
+                                                autocomplete="off" autocorrect="off" autocapitalize="off"
+                                                spellcheck="false" style="width: 100%;"></td>
+                                        <td><input class="form-control" type="text" placeholder="Property Value"
+                                                autocomplete="off" autocorrect="off" autocapitalize="off"
+                                                spellcheck="false" style="width: 100%;"></td>
+                                        <td class="text-center"><i class="fa fa-trash"></i></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-lg-flex justify-content-lg-end"><button
+                                class="btn btn-primary d-lg-flex justify-content-lg-center btn-sm" type="button"
+                                id="ds-ext-properties-add-btn">Add New</button></div>
+                    </div>
+
+                    <div id="ds-default-input-group">
+                        <div class="form-group form-inline" id="ds-db-engine-formgroup">
+                            <div class="form-group"><label class="control-label">Database Engine</label>
+                                <select class="form-control" id="ds-db-engine-select" name="ds-db-engine-select"
+                                    required="">
+                                    <option value="" selected="">- Select Engine -</option>
+                                    <option value="mysql">MySQL</option>
+                                    <option value="apachederby">Apache Derby</option>
+                                    <option value="mssql">Microsoft SQL Server</option>
+                                    <option value="oracle">Oracle</option>
+                                    <option value="ibmdb2">IBM DB2</option>
+                                    <option value="hsqldb">HSQLDB</option>
+                                    <option value="informix">Informix</option>
+                                    <option value="postgresql">PostgreSQL</option>
+                                    <option value="sybasease">Sybase ASE</option>
+                                    <option value="h2">H2</option>
+                                    <option value="generic">Generic</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <div id="ds-driver-class-inputgroup" class="field inputgroup"><input class="form-control"
+                                    type="text" autocomplete="off" autocorrect="off" autocapitalize="off"
+                                    spellcheck="false" placeholder=" " id="ds-driver-class-input"
+                                    name="ds-driver-class-input"><label class="mb-0 control-label"
+                                    for="ds-driver-class-input">Driver
+                                    Class</label></div>
+                        </div>
+                        <div class="form-group required">
+                            <div id="ds-url-inputgroup" class="field inputgroup"><input class="form-control" type="text"
+                                    autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                                    placeholder=" " id="ds-url-input" name="ds-url-input"><label
+                                    class="mb-0 control-label" for="ds-url-input">URL</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div id="ds-username-inputgroup" class="field inputgroup"><input class="form-control"
+                                    autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                                    type="text" placeholder=" " id="ds-username-input" name="ds-username-input"><label
+                                    class="mb-0" for="ds-username-input">Username</label></div>
+                        </div>
+                        <div class="form-group form-inline" id="ds-password-formgroup">
+                            <div id="ds-password-inputgroup" class="field inputgroup" style="width: 70%;"><input
+                                    class="form-control" type="password" placeholder=" " id="ds-password-input"
+                                    autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                                    name="ds-password-input"><label
+                                    class="d-lg-flex justify-content-lg-start mb-0 justify-content-md-start justify-content-sm-start"
+                                    for="ds-password-input">Password</label></div>
+                        </div>
+                    </div>
+                    <div id="ds-collapse" class="collapse-custom"><a id="ds-jndi-collapse-header"
+                            class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false"
+                            aria-controls="jndi-collapse" role="button" href="#jndi-collapse">Expose as a JNDI
+                            Datasource</a>
+                        <div class="collapse table-bordered" id="jndi-collapse">
+                            <div class="form-group">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-jndi-name-input" name="ds-jndi-name-input"><label
+                                        class="mb-0 control-label" for="ds-jndi-name-input">JNDIConfig
+                                        Name</label></div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                        id="ds-use-factory-check" name="ds-use-factory-check"
+                                        style="margin-left: 15px;"><label class="form-check-label"
+                                        for="ds-use-factory-check">Use datasource factory</label>
+                                </div>
+                            </div>
+                            <div class="table-responsive" id="jndi-properties-table">
+                                <table class="table table-sm">
+                                    <thead class="align-items-center">
+                                        <tr class="text-center">
+                                            <th>Property Name</th>
+                                            <th>Property Value</th>
+                                            <th><i class="fa fa-cog delete-row"></i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input class="form-control" type="text" placeholder="Property Name"
+                                                    autocomplete="off" autocorrect="off" autocapitalize="off"
+                                                    spellcheck="false" style="width: 100%;"></td>
+                                            <td><input class="form-control" type="text" placeholder="Property Value"
+                                                    autocomplete="off" autocorrect="off" autocapitalize="off"
+                                                    spellcheck="false" style="width: 100%;"></td>
+                                            <td class="text-center"><i class="fa fa-trash"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-lg-flex justify-content-lg-end"><button
+                                    class="btn btn-primary d-lg-flex justify-content-lg-center btn-sm" type="button"
+                                    id="jndi-properties-add-btn">Add New</button></div>
+
+                        </div>
+                    </div>
+                    <div id="ds-collapse" class="collapse-custom"><a id="ds-config-para-collapse-header"
+                            class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="false"
+                            aria-controls="ds-conf-para-collapse" role="button" href="#ds-conf-para-collapse">Datasource
+                            Configuration Parameters</a>
+                        <div class="collapse table-bordered" id="ds-conf-para-collapse">
+                            <div class="form-group form-inline">
+                                <label>Default Auto Commit</label> <select class="form-control" value=""
+                                    id="ds-default-auto-commit-select" name="ds-default-auto-commit-select">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label>Default Read Only</label> <select class="form-control" value=""
+                                    id="ds-default-read-only-select" name="ds-default-read-only-select">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label class="control-label control-label">Default Transaction Isolation</label><select
+                                    class="form-control" value="default" required=""
+                                    id="ds-default-transaction-isolation" name="ds-default-transaction-isolation">
+                                    <option value="NONE">NONE</option>
+                                    <option value="READ_COMMITED">READ_COMMITED</option>
+                                    <option value="READ_UNCOMMITED">READ_UNCOMMITED</option>
+                                    <option value="REPEATABLE_READ">REPEATABLE_READ</option>
+                                    <option value="SERIALIZABLE">SERIALIZABLE</option>
+                                </select>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-default-catalog-input"
+                                        desc="ds-default-catalog-input"><label class="mb-0 control-label"
+                                        for="ds-default-catalog-input">Default Catalog</label>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-max-active-input" desc="ds-max-active-input"><label
+                                        class="mb-0 control-label" for="ds-max-active-input">Max Active (int)</label>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-max-idle-input" desc="ds-max-idle-input"><label
+                                        class="mb-0 control-label" for="ds-max-idle-input">Max Idle (int)</label>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-min-idle-input" desc="ds-min-idle-input"><label
+                                        class="mb-0 control-label" for="ds-min-idle-input">Min Idle (int)</label>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-initial-size-input" desc="ds-initial-size-input"><label
+                                        class="mb-0 control-label" for="ds-initial-size-input">Initial Size
+                                        (int)</label>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-max-wait-input" desc="ds-max-wait-input"><label
+                                        class="mb-0 control-label" for="ds-max-wait-input">Max Wait (Millis)
+                                        (int)</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label>Test On Borrow</label> <select class="form-control" value=""
+                                    id="ds-test-on-borrow-select" name="ds-test-on-borrow-select">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label>Test On Return</label> <select class="form-control" value=""
+                                    id="ds-test-on-return-select" name="ds-test-on-return-select">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label>Test While Idle</label> <select class="form-control" value=""
+                                    id="ds-test-while-idle-select" name="ds-test-while-idle-select">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-validation-query-input"
+                                        desc="ds-validation-query-input"><label class="mb-0 control-label"
+                                        for="ds-validation-query-input">Validation Query</label>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-validation-class-name-input"
+                                        desc="ds-validation-class-name-input"><label class="mb-0 control-label"
+                                        for="ds-validation-class-name-input">Validation Class
+                                        Name</label></div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-time-between-eviction-runs-input"
+                                        desc="ds-time-between-eviction-runs-input"><label class="mb-0 control-label"
+                                        for="ds-time-between-eviction-runs-input">Time Between Eviction Runs
+                                        (Millis) (int)</label></div>
+                            </div>
+                            <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                    autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                    placeholder=" " id="ds-tests-per-eviction-run-input"
+                                    desc="ds-tests-per-eviction-run-input"><label class="mb-0 control-label"
+                                    for="ds-tests-per-eviction-run-input">Number of Tests Per
+                                    Eviction Run (int)</label>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-min-evictable-idle-time-input"
+                                        desc="ds-min-evictable-idle-time-input"><label class="mb-0 control-label"
+                                        for="ds-min-evictable-idle-time-input">Min Evictable Idle
+                                        Time (Millis) (int)</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label>Access To Underlying Connection Allowed</label> <select class="form-control"
+                                    value="" id="ds-access-underlying-connection-select"
+                                    name="ds-access-underlying-connection-select">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label>Remove Abandoned</label> <select class="form-control" value=""
+                                    id="ds-remove-abandoned-select" name="ds-remove-abandoned-select">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-remove-abandoned-timeout-input"
+                                        desc="ds-remove-abandoned-input"><label class="mb-0 control-label"
+                                        for="ds-remove-abandoned-input">Remove Abandoned
+                                        Timeout (int)</label></div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label>Log Abandoned</label> <select class="form-control" value=""
+                                    id="ds-log-abandoned-select" name="ds-log-abandoned-select">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-connection-properties-input"
+                                        desc="ds-connection-properties-input"><label class="mb-0 control-label"
+                                        for="ds-connection-properties-input">Connection
+                                        Properties</label></div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-init-sql-input" desc="ds-init-sql-input"><label
+                                        class="mb-0 control-label" for="ds-init-sql-input">Init Sql</label></div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-jdbc-interceptors-input"
+                                        desc="ds-jdbc-interceptors-input"><label class="mb-0 control-label"
+                                        for="ds-jdbc-interceptors-input">JDBC Interceptors</label>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-validation-interval-input"
+                                        desc="ds-validation-interval-input"><label class="mb-0 control-label"
+                                        for="ds-validation-interval-input">Validation Interval
+                                        (long)</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label>Fair Queue</label> <select class="form-control" value=""
+                                    id="ds-fair-queue-select" name="ds-fair-queue-select">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label>JMX Enabled</label> <select class="form-control" value=""
+                                    id="ds-jmx-enabled-select" name="ds-jmx-enabled-select">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-abandon-when-percentage-full-input"
+                                        desc="ds-abandon-when-percentage-full-input"><label class="mb-0 control-label"
+                                        for="ds-abandon-when-percentage-full-input">Abandon When Percentage Full</label>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-max-age-input" desc="ds-max-age-input"><label
+                                        class="mb-0 control-label" for="ds-max-age-input">Max Age (long)</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label>Use Equals</label> <select class="form-control" value=""
+                                    id="ds-use-equals-select" name="ds-use-equals-select">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-suspect-timeout-input"
+                                        desc="ds-suspect-timeout-input"><label class="mb-0 control-label"
+                                        for="ds-suspect-timeout-input">Suspect Timeout
+                                        (int)</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label>Alternate Username Allowed</label> <select class="form-control" value=""
+                                    id="ds-alternate-username-allowed-select"
+                                    name="ds-alternate-username-allowed-select">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                </select>
+                            </div>
+                            <div class="form-group ">
+                                <div class="field inputgroup"><input class="form-control" autocomplete="off"
+                                        autocorrect="off" autocapitalize="off" spellcheck="false" type="text"
+                                        placeholder=" " id="ds-validation-query-timeout-input"
+                                        desc="ds-validation-query-timeout-input"><label class="mb-0 control-label"
+                                        for="ds-validation-query-timeout-input">Validation Query
+                                        Timeout
+                                        (int)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="ds-custom-input-group">
+                    <div class="form-group required">
+                        <div class="field inputgroup"><input class="form-control" autocomplete="off" autocorrect="off"
+                                autocapitalize="off" spellcheck="false" type="text" placeholder=" "
+                                id="ds-custom-ds-type-input" desc="ds-custom-ds-type-input"><label
+                                class="mb-0 control-label" for="ds-custom-ds-type-input">Custom Datasource
+                                Type</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field inputgroup">
+                            <textarea class="form-control" autocomplete="off" autocapitalize="off" spellcheck="false"
+                                placeholder=" " id="ds-configuration-input" rows="5"></textarea>
+                            <label class="mb-0 control-label" for="ds-configuration-input">Configuration</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="ds-test-con-collapse-group" class="collapse-custom"><a
+                        class="btn btn-primary btn-collapse-header" data-toggle="collapse" aria-expanded="true"
+                        aria-controls="ds-test-connection-collapse" role="button"
+                        href="#ds-test-connection-collapse">Test
+                        Connection</a>
+                    <div class="collapse" id="ds-test-connection-collapse">
+                        <form>
+                            <div class="form-group form-inline">
+                                <div id="ds-host-inputgroup" class="field inputgroup"><input type="text"
+                                        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                                        placeholder=" " class="form-control" id="ds-host-input"
+                                        name="ds-host-input" /><label
+                                        class="mb-0 justify-content-md-start justify-content-sm-start"
+                                        for="ds-host-input">Host</label></div>
+                                <div id="ds-port-inputgroup" class="field inputgroup" style="margin-left: 20px;"><input
+                                        type="text" placeholder=" " autocomplete="off" autocorrect="off"
+                                        autocapitalize="off" spellcheck="false" class="form-control" id="ds-port-input"
+                                        name="ds-port-input" /><label
+                                        class="mb-0 justify-content-md-start justify-content-sm-start"
+                                        for="ds-port-input">Port</label></div>
+                                <div id="ds-dbname-inputgroup" class="field inputgroup" style="margin-left: 20px;">
+                                    <input type="text" placeholder=" " autocomplete="off" autocorrect="off"
+                                        autocapitalize="off" spellcheck="false" class="form-control"
+                                        id="ds-dbname-input" name="ds-dbname-input" /><label
+                                        class="mb-0 justify-content-md-start justify-content-sm-start"
+                                        for="ds-dbname-input">DB Name</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="ds-test-password-sa-inputgroup" class="field inputgroup"><input type="text"
+                                        placeholder=" " class="form-control" autocomplete="off" autocorrect="off"
+                                        autocapitalize="off" spellcheck="false" id="ds-test-password-sa"
+                                        name="ds-test-password-sa" /><label
+                                        class="mb-0 justify-content-md-start justify-content-sm-start"
+                                        for="ds-test-password-sa">Password</label></div>
+                            </div>
+                            <div class="form-group d-xl-flex form-inline"><label>RDBMS Version</label><select
+                                    class="form-control" id="ds-db-version-select"
+                                    style="margin-left: 5px;margin-right: 0;">
+                                    <optgroup label="MySQL">
+                                        <option value="8_0_15" selected>v8.0.15</option>
+                                        <option value="5_1_47">v5.1.47</option>
+                                    </optgroup>
+                                    <optgroup label="MSSQL">
+                                        <option value="7_20_0">v7.20.0</option>
+                                        <option value="6_4_0">v6.4.0</option>
+                                    </optgroup>
+                                    <optgroup label="PostgreSQL">
+                                        <option value="42_2_11">v42.2.11</option>
+                                    </optgroup>
+                                    <optgroup label="Generic">
+                                        <option value="4_50_1">v4.50.1</option>
+                                    </optgroup>
+                                    <optgroup label="Derby">
+                                        <option value="10_14_2_0">v10.14.2.0</option>
+                                    </optgroup>
+                                    <optgroup label="H2">
+                                        <option value="1_4_200">v1.4.200</option>
+                                    </optgroup>
+                                </select>
+                                <button class="btn btn-secondary btn-sm d-lg-flex justify-content-xl-end" type="button"
+                                    id="ds-test-conn-btn" style="margin-left: 15px;">Test
+                                    Connection</button>
+                            </div>
+                            <div class="form-group">
+                                <div id="ds-notification-alert-holder" class="alert mr-auto"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Properties table item delete confirmation Modal -->
+    <div id="properties-table-validator-delete-confirm-modal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Property</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Property will be deleted permenetly.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="properties-table-validator-delete-confirm-btn" type="button"
+                        class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="assets/jquery_1.11.3/jquery.min.js"></script>
+    <!--[if lt IE 10]>
+        <script src="assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <![endif]-->
+    <!--[if gte IE 10]>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <![endif]-->
+
+    <![if !IE]>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <![endif]>
+    <script src="assets/js/pageguide.min.js"></script>
+    <script src="assets/js/datasources-util.js"></script>
+    <script src="assets/js/constants.js"></script>
+    <script src="assets/js/data-handler.js"></script>
+    <script src="assets/js/domutils.js"></script>
+
+    <!--[if lt IE 10]>
+        <script src="assets/js/ie7-fixes.js"></script>
+    <![endif]-->
+</body>
+
+</html>

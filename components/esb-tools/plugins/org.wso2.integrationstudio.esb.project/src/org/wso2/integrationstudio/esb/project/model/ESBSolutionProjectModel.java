@@ -29,12 +29,14 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
     private String kubernetesExporterProjectName;
     private String mmmProjectName;
     private String dataServiceProjectName;
+    private String dataSourceProjectName;
     private boolean registryProjectChecked = false;
     private boolean connectorExporterProjectChecked = false;
     private boolean cappProjectChecked = true;
     private boolean isConfigProjectChecked = true;
     private boolean isMMMProjectChecked = true;
     private boolean isDataServiceProjectChecked = false;
+    private boolean isDataSourceProjectChecked = false;
 
     public void setMMMProjectName(String projectName) {
         this.mmmProjectName = projectName;
@@ -108,6 +110,14 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
         this.isDataServiceProjectChecked = isDataServiceProjectChecked;
     }
     
+    public boolean isDataSourceProjectChecked() {
+        return this.isDataSourceProjectChecked;
+    }
+
+    public void setDataSourceProjectChecked(boolean isDataSourceProjectChecked) {
+        this.isDataSourceProjectChecked = isDataSourceProjectChecked;
+    }
+    
     public Object getModelPropertyValue(String key) {
         Object modelPropertyValue = super.getModelPropertyValue(key);
         if (modelPropertyValue == null) {
@@ -143,6 +153,10 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
                 return isDataServiceProjectChecked();
             } else if (key.equals(DATA_SERVICE_PROJECT_NAME)) {
                 return getDataServiceProjectName();
+            } else if (key.equals(DATA_SOURCE_PROJECT_CHECKED)) {
+                return isDataSourceProjectChecked();
+            } else if (key.equals(DATA_SOURCE_PROJECT_NAME)) {
+                return getDataSourceProjectName();
             }
         }
         return modelPropertyValue;
@@ -169,6 +183,7 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
                 setDockerExporterProjectName(value + "DockerExporter");
                 setKubernetesExporterProjectName(value + "KubernetesExporter");
                 setDataServiceProjectName(value + "DataServiceConfigs");
+                setDataSourceProjectName(value + "DataSourceConfigs");
             } else {
                 setEsbProjectName("");
                 setRegistryProjectName("");
@@ -177,6 +192,7 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
                 setDockerExporterProjectName("");
                 setKubernetesExporterProjectName("");
                 setDataServiceProjectName("");
+                setDataSourceProjectName("");
             }
         } else if (key.equals(ESB_PROJECT_NAME)) {
             setEsbProjectName(value);
@@ -198,6 +214,8 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
             setKubernetesExporterProjectName(value);
         } else if (key.equals(DATA_SERVICE_PROJECT_NAME)) {
             setDataServiceProjectName(value);
+        } else if (key.equals(DATA_SOURCE_PROJECT_NAME)) {
+            setDataSourceProjectName(value);
         } else if (key.equals(REGISTRY_PROJECT_CHECKED)) {
             setRegistryProjectChecked((boolean) data);
         } else if (key.equals(CONNECTOR_EXPORTER_PROJECT_CHECKED)) {
@@ -212,6 +230,8 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
             return (boolean) data;
         } else if (key.equals(DATA_SERVICE_PROJECT_CHECKED)) {
             setDataServiceProjectChecked((boolean) data);
+        } else if (key.equals(DATA_SOURCE_PROJECT_CHECKED)) {
+            setDataSourceProjectChecked((boolean) data);
         }
 
         return returnResult;
@@ -255,6 +275,14 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
     
     public String getDataServiceProjectName() {
         return dataServiceProjectName;
+    }
+    
+    public void setDataSourceProjectName(String dataSourceProjectName) {
+        this.dataSourceProjectName = dataSourceProjectName;
+    }
+    
+    public String getDataSourceProjectName() {
+        return dataSourceProjectName;
     }
 
 }

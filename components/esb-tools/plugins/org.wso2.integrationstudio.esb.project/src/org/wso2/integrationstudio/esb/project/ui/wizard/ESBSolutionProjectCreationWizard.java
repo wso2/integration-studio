@@ -30,6 +30,8 @@ import org.wso2.integrationstudio.artifact.connector.model.ConnectorModel;
 import org.wso2.integrationstudio.artifact.connector.ui.wizard.ConnectorCreationWizard;
 import org.wso2.integrationstudio.artifact.dataserviceProject.model.DataServiceModel;
 import org.wso2.integrationstudio.artifact.dataserviceProject.ui.wizard.DataServiceProjectCreationWizard;
+import org.wso2.integrationstudio.artifact.datasourceProject.model.DataSourceModel;
+import org.wso2.integrationstudio.artifact.datasourceProject.ui.wizard.DataSourceProjectCreationWizard;
 import org.wso2.integrationstudio.distribution.project.model.DistributionProjectModel;
 import org.wso2.integrationstudio.distribution.project.ui.wizard.DistributionProjectWizard;
 import org.wso2.integrationstudio.docker.distribution.model.DockerModel;
@@ -348,7 +350,28 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
             dataServiceProjectCreationWizard.performFinish();
         }
 		
-		
+
+        // Creating Data Source project
+        if (esbSolutionProjectModel.isDataSourceProjectChecked()) {
+            DataSourceProjectCreationWizard dataSourceProjectCreationWizard = new DataSourceProjectCreationWizard();
+            DataSourceModel dataSourceModel = new DataSourceModel();
+            String dataSourceProjectName = esbSolutionProjectModel.getDataSourceProjectName();
+            try {
+                dataSourceModel.setProjectName(dataSourceProjectName);
+                dataSourceModel.setLocation(new File(projectRootPath + File.separator + dataSourceProjectName));
+                dataSourceModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
+                updateMavenInformation(pomFile, dataSourceProjectName);
+                dataSourceModel.setGroupId(esbSolutionProjectModel.getGroupId());
+                dataSourceModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
+                dataSourceModel.setSelectedOption(esbSolutionProjectModel.getSelectedOption());
+                dataSourceModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());
+            } catch (ObserverFailedException e) {
+                log.error("Failed to set properties for project : " + dataSourceProjectName, e);
+            }
+            dataSourceProjectCreationWizard.setModel(dataSourceModel);
+            dataSourceProjectCreationWizard.performFinish();
+        }
+
         getShell().getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {

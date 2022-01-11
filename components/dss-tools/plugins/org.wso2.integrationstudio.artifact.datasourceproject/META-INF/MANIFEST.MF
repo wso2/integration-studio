@@ -50,3 +50,5 @@ Import-Package: org.eclipse.jdt.core,
  org.wso2.integrationstudio.utils.template,
  org.wso2.integrationstudio.utils.ui,
  org.wso2.integrationstudio.utils.wst
+Export-Package: org.wso2.integrationstudio.artifact.datasourceProject.model,
+ org.wso2.integrationstudio.artifact.datasourceProject.ui.wizard

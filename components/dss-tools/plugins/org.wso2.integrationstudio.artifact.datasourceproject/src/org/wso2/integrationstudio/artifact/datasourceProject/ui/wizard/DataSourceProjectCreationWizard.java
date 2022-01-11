@@ -66,7 +66,6 @@ public class DataSourceProjectCreationWizard extends AbstractWSO2ProjectCreation
 
 	public boolean performFinish() {
 		try {
-			setProjectNature(DS_PROJECT_NATURE);
 			// creates a new project
 			project = createNewProject();
 

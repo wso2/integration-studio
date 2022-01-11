@@ -35,7 +35,9 @@ public final class SolutionProjectArtifactConstants extends NLS {
 	public static String CAPP_PROJECT_CHECKED;
 	public static String DOCKER_EXPORTER_PROJECT_CHECKED;
 	public static String KUBERNETES_EXPORTER_PROJECT_CHECKED;
-
+	public static String DATA_SERVICE_PROJECT_NAME;
+	public static String DATA_SERVICE_PROJECT_CHECKED;
+	
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, SolutionProjectArtifactConstants.class);

@@ -330,7 +330,6 @@ Please visit : http://wso2.com/products/integration-studio/
       <feature id="org.eclipse.jst.web_userdoc.feature"/>
       <feature id="org.eclipse.pde"/>
       <feature id="org.eclipse.jdt"/>
-      <feature id="org.roussev.http4e.feature" version="5.0.12"/>
       <feature id="de.jcup.yamleditor"/>
       <!-- Integration Studio kernel/platform features -->
       <feature id="org.wso2.integrationstudio.platform.feature" installMode="root"/>

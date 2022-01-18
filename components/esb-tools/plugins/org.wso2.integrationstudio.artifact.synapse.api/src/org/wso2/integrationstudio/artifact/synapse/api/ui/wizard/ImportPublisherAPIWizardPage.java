@@ -19,6 +19,7 @@ package org.wso2.integrationstudio.artifact.synapse.api.ui.wizard;
 import java.awt.Event;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -59,7 +60,9 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
     Text txtPassword;
     Text txtAPIMHostUrl;
     private ArrayList<PublisherAPI> apiList;
-
+    HashMap<Integer, String> tableAPIMapper;
+    ArrayList<String> selectedApis = new ArrayList<String>();
+    
     public ImportPublisherAPIWizardPage(APIMAPIArtifactModel artifactModel) {
         super("importPublisherApi");
         setTitle("Import API from APIM Publisher");
@@ -164,47 +167,6 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         Integer nrows = 4;
         Integer ncols = 3;
         
-       /* Group tableListGroup = new Group(container, SWT.NONE);
-        {
-           
-            
-            
-            
-            
-            
-        }
-        
-        FormLayout groupLayout = new FormLayout();
-        tableListGroup.setLayout(groupLayout);
-        
-        tblDataTables = new Table(container, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL | SWT.MULTI);
-        
-        data = new FormData();
-        data.top = new FormAttachment(listAPIBtn, 5, 5);
-        data.left = new FormAttachment(2);
-        data.right = new FormAttachment(98);
-        data.height = 120;
-        data.width = 350;
-        
-        tblDataTables.setLayoutData(data);       
-        tblDataTables.setLinesVisible(true);
-        tblDataTables.setHeaderVisible(true);
-        //tblDataTables.setVisible(true);
-        
-        
-        TableColumn tblclmnGet = new TableColumn(tblDataTables,  SWT.NONE);
-        tblclmnGet.setText("Select API");
-        
-        TableColumn tblclmnName = new TableColumn(tblDataTables,  SWT.NONE);
-        tblclmnName.setText("API Name");
-        
-        TableColumn tblclmnName2 = new TableColumn(tblDataTables,  SWT.NONE);
-        tblclmnName2.setText("API Version");
-        
-        TableColumn tblclmnName3 = new TableColumn(tblDataTables,  SWT.NONE);
-        tblclmnName3.setText("API Context");
-        
-        */
         
         Table table = new Table(
                 container, SWT.CHECK | SWT.BORDER | SWT.V_SCROLL | SWT.MULTI
@@ -261,12 +223,16 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
                        artifactModel.getApimHostUrl());
                apiList = artifactModel.getAPIList();
                
+               table.clearAll();;
+               tableAPIMapper = new HashMap<Integer, String>();;
+               
                for(int i=0; i< apiList.size(); i++) {
                    String apiName = apiList.get(i).getApiName();
                    String apiVersion = apiList.get(i).getApiVersion();
                    String apiContext = apiList.get(i).getApiContext();
+                   tableAPIMapper.put(i,apiList.get(i).getApiId());
                    new TableItem(table, SWT.NONE).setText(new String[] { apiName , apiVersion, apiContext });
-                 
+                   
                }
                
                
@@ -288,15 +254,27 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
             @Override
             public void handleEvent(org.eclipse.swt.widgets.Event event) {
                 if ( event.detail == SWT.CHECK ) {
-                    System.out.println( "You checked " + event.item );
+                    
                     if( table.indexOf( ( TableItem )event.item ) == table.getSelectionIndex() ) {
                       TableItem ti = ( TableItem )event.item;
+                      if (ti.getChecked()) {
+                          System.out.println( "You checked " + event.item );
+                          System.out.println( "You checked item index" + tableAPIMapper.get(table.getSelectionIndex()) );
+                          selectedApis.add(tableAPIMapper.get(table.getSelectionIndex()));
+                          System.out.println(selectedApis.toString());
+                      }
+                      else {
+                          System.out.println( "You Un checked " + event.item );
+                          selectedApis.remove(tableAPIMapper.get(table.getSelectionIndex()));
+                          System.out.println(selectedApis.toString());
+                      }
                       // ti.setChecked( !ti.getChecked() );
                    
                   } else {
-                    System.out.println( "You selected " + event.item);
+                    // System.out.println( "You selected " + event.item);
                     TableItem ti = ( TableItem )event.item;
                     // ti.setChecked( !ti.getChecked() );
+                    
                   }
                   }
                

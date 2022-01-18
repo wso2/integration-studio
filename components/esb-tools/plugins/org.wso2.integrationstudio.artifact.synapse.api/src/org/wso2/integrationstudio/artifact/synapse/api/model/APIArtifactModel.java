@@ -72,6 +72,7 @@ public class APIArtifactModel extends ProjectDataModel {
 	private String publishSwagger = "";
 	private File importSwaggerFile;
 	private String swaggerAPIName = "";
+	private boolean importAPIFromAPIM = false;
 	
 	public APIArtifactModel() {
 		availableAPIslist = new ArrayList<OMElement>();
@@ -164,6 +165,14 @@ public class APIArtifactModel extends ProjectDataModel {
 
     public void setSwaggerAPIName(String swaggerAPIName) {
         this.swaggerAPIName = swaggerAPIName;
+    }
+    
+    public boolean isImportAPIFromAPIM() {
+        return importAPIFromAPIM;
+    }
+
+    private void setImportAPIFromAPIM(boolean importAPIFromAPIM) {
+        this.importAPIFromAPIM = importAPIFromAPIM;
     }
 
     @Override

@@ -185,7 +185,7 @@ public class CommonFieldValidator {
 	}
 
 	public static boolean isValidArtifactName(String name) {
-		Pattern pattern = Pattern.compile("^[A-z0-9]*([.][-_A-z0-9]+)*$");
+		Pattern pattern = Pattern.compile("^[A-z0-9]*[.\\\\-_A-z0-9]*$");
 		Matcher matcher = pattern.matcher(name);
 		return matcher.matches();
 	}

@@ -216,7 +216,7 @@ public class DataSourceMultipageEditor extends MultiPageEditorPart implements IR
                 marker.setAttribute(IMarker.CHAR_END, 2);
             }
         } catch (Exception e) {
-            // ignore
+            log.error("Error while adding markers", e);
         }
     }
 

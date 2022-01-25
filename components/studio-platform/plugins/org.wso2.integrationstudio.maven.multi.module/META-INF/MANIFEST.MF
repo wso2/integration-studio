@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Import-Package: org.apache.commons.io;version="2.0.0.wso2v1",
+Import-Package: javax.xml.bind;version="2.2.0",
+ org.apache.commons.io;version="2.0.0.wso2v1",
  org.eclipse.core.expressions,
  org.eclipse.core.internal.resources,
  org.eclipse.core.resources,

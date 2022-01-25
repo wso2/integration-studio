@@ -21,6 +21,7 @@ Please visit : http://wso2.com/products/integration-studio/
 -Xmx2048m
 -XX:MaxPermSize=512m
 -Dosgi.instance.area.default=@user.home/IntegrationStudio/8.1.0-m1/workspace
+-Dorg.eclipse.swt.graphics.Resource.reportNonDisposed=false
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
@@ -50,6 +51,7 @@ Please visit : http://wso2.com/products/integration-studio/
             winExtraLargeHigh="./icons/256x256_32bit.bmp"/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -332,20 +334,12 @@ Please visit : http://wso2.com/products/integration-studio/
       <feature id="org.eclipse.jdt"/>
       <feature id="org.roussev.http4e.feature" version="5.0.12"/>
       <feature id="de.jcup.yamleditor"/>
-      <!-- Integration Studio kernel/platform features -->
       <feature id="org.wso2.integrationstudio.platform.feature" installMode="root"/>
       <feature id="org.wso2.integrationstudio.platform.dependencies.feature" installMode="root"/>
-      <!-- Integration Studio Server features -->
       <feature id="org.wso2.integrationstudio.server.feature" installMode="root"/>
-      <!-- Integration Studio ESB features -->
       <feature id="org.wso2.integrationstudio.esb.feature" installMode="root"/>
-      <!-- Integration Studio DSS features -->
       <feature id="org.wso2.integrationstudio.dss.feature" installMode="root"/>
-      <!-- Integration Studio BPS features -->
-      <feature id="org.wso2.integrationstudio.bps.feature" installMode="root"/>
-      <!-- Integration Studio RCP features -->
       <feature id="org.wso2.integrationstudio.rcp.feature" installMode="root"/>
-
    </features>
 
    <configurations>
@@ -357,6 +351,15 @@ Please visit : http://wso2.com/products/integration-studio/
    </configurations>
 
    <repositories>
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
+      <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
       <repository location="https://product-dist.wso2.com/p2/integration-studio/secure-updates/8.1.0" enabled="true" />
    </repositories>
 

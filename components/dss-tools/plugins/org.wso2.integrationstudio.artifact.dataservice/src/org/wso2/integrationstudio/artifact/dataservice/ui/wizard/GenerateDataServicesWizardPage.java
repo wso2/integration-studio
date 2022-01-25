@@ -88,8 +88,6 @@ import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.platform.core.utils.Constants;
 import org.wso2.integrationstudio.platform.core.utils.SWTResourceManager;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.MethodAccessor_Short;
-
 import org.wso2.integrationstudio.artifact.dataservice.Activator;
 
 public class GenerateDataServicesWizardPage extends WizardPage {

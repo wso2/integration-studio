@@ -1,6 +1,6 @@
 # WSO2 Integration Studio Catalog
 
-WSO2 Integration Studio is an Eclipse 2020-06 based development environment used to design your integration scenarios and develop them. It can be used to develop services, features, and artifacts as well as manage their links and dependencies through a simplified graphical editor. It provides inbuilt debugging and testing capabilities to troubleshoot and identify the integration aspects while creating the artifacts. Furthermore, WSO2 Integration Studio offers different deployment approaches, including CAR (Carbon Application Archive) deployment, docker deployment, kubernetes deployment, WSO2 integration cloud deployment, etc., to cater your CI/CD (Continuous Integration/Continuous Development) requirements.
+WSO2 Integration Studio is an Eclipse 2021-12 based development environment used to design your integration scenarios and develop them. It can be used to develop services, features, and artifacts as well as manage their links and dependencies through a simplified graphical editor. It provides inbuilt debugging and testing capabilities to troubleshoot and identify the integration aspects while creating the artifacts. Furthermore, WSO2 Integration Studio offers different deployment approaches, including CAR (Carbon Application Archive) deployment, docker deployment, kubernetes deployment, WSO2 integration cloud deployment, etc., to cater your CI/CD (Continuous Integration/Continuous Development) requirements.
 
 **Note:** During development refer to plugin names by replacing **developerstudio.eclipse** with keyword **integrationstudio** wherever possible.
 i.e. The plugin name **org.wso2.developerstudio.eclipse.gmf.esb.edit** in the document/screenshot need to be referred as  **org.wso2.integrationstudio.gmf.esb.edit** 
@@ -83,7 +83,7 @@ The Eclipse Graphical Editing Framework (GEF) provides Eclipse-integrated end-us
 EEF is a presentation framework for the Eclipse Modeling Framework (EMF). It allows users to create rich user interfaces (Properties view of ESB components like mediators, proxies, API resources, Inbound Endpoints, etc.) to edit EMF models.
 
 ### How is the Integration Studio designed with Eclipse Frameworks?
-The Integration Studio IDE is an Eclipse 2020-06 based Rich Client Platform(RCP). All the synapse level constructs (including mediators, proxies, inbound endpoints, etc), are first described as an XMI model using the Eclipse Modeling Framework(EMF). The EMF XMI model is in the devstudio-tooling-esb repository: https://github.com/wso2/integration-studio/blob/main/components/esb-tools/plugins/org.wso2.integrationstudio.gmf.esb/model/esb.ecore
+The Integration Studio IDE is an Eclipse 2021-12 based Rich Client Platform(RCP). All the synapse level constructs (including mediators, proxies, inbound endpoints, etc), are first described as an XMI model using the Eclipse Modeling Framework(EMF). The EMF XMI model is in the devstudio-tooling-esb repository: https://github.com/wso2/integration-studio/blob/main/components/esb-tools/plugins/org.wso2.integrationstudio.gmf.esb/model/esb.ecore
 Then, the EMF framework generates the model classes for the MVC architecture. 
 The EMF generated classes include Mediators(Interface of the model), and MediatorImpl(model).
 
@@ -144,9 +144,9 @@ Integration Studio has been released with the following package components.
     * Micro Integration Monitoring Dashboard latest runtime
 
 # Setting up Integration Studio for Developers
-1. Download [Eclipse IDE 2020-06 IDE](https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-enterprise-java-developers) based on the OS [Eclipse IDE for Java EE Developers]
+1. Download [Eclipse IDE 2021-12 IDE](https://www.eclipse.org/downloads/packages/release/2021-12/r) based on the OS [Eclipse IDE for Java EE Developers] If you are a MAC user use "X86-64" installer.
 
-2. Use [JDK 8u202](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html) for development(Other java versions might not work).
+2. Use [Java11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) for development(Other java versions might not work).
 
 3. Clone Integration Studio GitHub repository https://github.com/wso2/integration-studio.git. and proceed with **main** branch.
 
@@ -195,7 +195,7 @@ From maven version 3.8.1, maven default settings file updated with http blocker 
     
 8. Install Modeling features(EMF) to eclipse
     * Click on Help -> Install New Software
-    * Select **2020-06 - http://download.eclipse.org/releases/2020-06/** from work with drop down list 
+    * Select **2021-12 - https://download.eclipse.org/releases/2021-12/** from work with drop down list 
     * Click on **Modeling** checkbox in the install window
     * Then untick **Contact all updates sites during install to find required software** and Click on **Next**
     * Then you will get Install details page, again click on **Next**
@@ -203,7 +203,7 @@ From maven version 3.8.1, maven default settings file updated with http blocker 
     * It will take sometime to install the software, during the process you will get a security warning pop-up, click on **Install anyway**.
     * Then it will ask to restart the server, click on **Yes**.
 
-9. Install GMF related tooling runtime for 2020-06, using the p2. (some features might not be able to install but install what is allowed)
+9. Install GMF related tooling runtime for 2021-12, using the p2. (some features might not be able to install but install what is allowed)
     * Click on **Help** -> Install New Software
     * Click on **Add** -> Add the url http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/ into **Location**, and click OK.
     * Select only **GMF Tooling** from the dropdown list.

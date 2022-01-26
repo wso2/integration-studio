@@ -153,7 +153,7 @@ public class EndPointDuplicator {
                 return null;
             }
 
-            public Iterator<?> getPrefixes(String str) {
+            public Iterator<String> getPrefixes(String str) {
                 return null;
             }
         };

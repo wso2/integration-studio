@@ -65,6 +65,22 @@
 			<data modelProperty="solution.kubernetes" type="string"
 				fieldController="org.wso2.integrationstudio.esb.project.controller.ESBSolutionProjectFieldController"
 				group="solution.projects.group">Module Name</data>	
+				
+			<data modelProperty="solution.dataservice.choice" type="choice"
+				fieldController="org.wso2.integrationstudio.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Create Data Service Configs</data>
+			
+			<data modelProperty="solution.dataservice" type="string"
+				fieldController="org.wso2.integrationstudio.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Module Name</data>
+				
+			<data modelProperty="solution.datasource.choice" type="choice"
+				fieldController="org.wso2.integrationstudio.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Create Data Source Configs</data>
+			
+			<data modelProperty="solution.datasource" type="string"
+				fieldController="org.wso2.integrationstudio.esb.project.controller.ESBSolutionProjectFieldController"
+				group="solution.projects.group">Module Name</data>
 			
 			<projectNatures>
 				<nature>org.eclipse.jdt.core.javanature</nature>

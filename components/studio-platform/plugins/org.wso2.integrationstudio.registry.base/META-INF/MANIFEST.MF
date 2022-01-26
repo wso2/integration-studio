@@ -4,7 +4,8 @@ Bundle-Name: Base
 Bundle-SymbolicName: org.wso2.integrationstudio.registry.base;singleton:=true
 Bundle-Version: 8.1.0.qualifier
 Bundle-Activator: org.wso2.integrationstudio.registry.base.Activator
-Require-Bundle: org.eclipse.ui,
+Require-Bundle: javax.activation,
+ org.eclipse.ui,
  org.eclipse.core.runtime,
  org.wso2.integrationstudio.libraries,
  org.wso2.integrationstudio.kernel.libraries

@@ -8,7 +8,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.wso2.integrationstudio.libraries
 Bundle-ActivationPolicy: lazy
-Import-Package: javax.activation;version="1.1.0",
+Import-Package: javax.activation,
  javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
  javax.xml.stream;version="1.0.1.wso2v1",
  org.apache.axiom.om,

@@ -139,7 +139,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jdt.ui,
  org.eclipse.core.resources,
- javax.servlet;bundle-version="3.0.0",
  javax.servlet.jsp;bundle-version="2.2.0",
  org.wso2.integrationstudio.libraries,
  org.wso2.integrationstudio.kernel.libraries

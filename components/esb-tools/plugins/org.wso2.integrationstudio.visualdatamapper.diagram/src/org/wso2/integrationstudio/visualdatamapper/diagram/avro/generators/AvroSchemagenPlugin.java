@@ -314,7 +314,7 @@ public class AvroSchemagenPlugin extends Plugin {
 	private String getJson(AvroType type) {
 		try {
 			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(
-					type);
+				type);
 		} catch (Exception ex) {
 			throw new SchemagenException(ex);
 		}

@@ -57,6 +57,12 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
                 if (esbSolutionModel.isKubernetesExporterProjectChecked()) {
                     updateFields.add(KUBERNETES_EXPORTER_PROJECT_NAME);
                 }
+                if (esbSolutionModel.isDataServiceProjectChecked()) {
+                    updateFields.add(DATA_SERVICE_PROJECT_NAME);
+                }
+                if (esbSolutionModel.isDataSourceProjectChecked()) {
+                    updateFields.add(DATA_SOURCE_PROJECT_NAME);
+                }
             }
         } else if (modelProperty.equals(ESB_PROJECT_CHOICE)) {
             updateFields.add(ESB_PROJECT_NAME);
@@ -73,6 +79,10 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
             updateFields.add(DOCKER_EXPORTER_PROJECT_NAME);
         } else if (modelProperty.equals(KUBERNETES_EXPORTER_PROJECT_CHECKED)) {
             updateFields.add(KUBERNETES_EXPORTER_PROJECT_NAME);
+        } else if (modelProperty.equals(DATA_SERVICE_PROJECT_CHECKED)) {
+            updateFields.add(DATA_SERVICE_PROJECT_NAME);
+        } else if (modelProperty.equals(DATA_SOURCE_PROJECT_CHECKED)) {
+            updateFields.add(DATA_SOURCE_PROJECT_NAME);
         }
         return updateFields;
     }
@@ -93,6 +103,10 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
             return ((ESBSolutionProjectModel) model).isDockerExporterProjectChecked();
         } else if (modelProperty.equals(KUBERNETES_EXPORTER_PROJECT_NAME)) {
             return ((ESBSolutionProjectModel) model).isKubernetesExporterProjectChecked();
+        } else if (modelProperty.equals(DATA_SERVICE_PROJECT_NAME)) {
+            return ((ESBSolutionProjectModel) model).isDataServiceProjectChecked();
+        } else if (modelProperty.equals(DATA_SOURCE_PROJECT_NAME)) {
+            return ((ESBSolutionProjectModel) model).isDataSourceProjectChecked();
         } else if (modelProperty.equals(ESB_PROJECT_NAME)) {
             if (!mmmProjectEnabled) {
                 return false;

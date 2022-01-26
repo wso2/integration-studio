@@ -78,7 +78,6 @@ public class DataServiceProjectCreationWizard extends AbstractWSO2ProjectCreatio
 
 	public boolean performFinish() {
 		try {
-			setProjectNature(DS_PROJECT_NATURE);
 			// creates a new project
 			project = createNewProject();
 
@@ -110,7 +109,6 @@ public class DataServiceProjectCreationWizard extends AbstractWSO2ProjectCreatio
                 IWorkbenchPage page = window.getActivePage();
                 ProjectPresentation.setHierarchicalProjectPresentation();
                 ((CommonNavigator) page.findViewReference(IPageLayout.ID_PROJECT_EXPLORER, null).getView(true)).setLinkingEnabled(true);
-                IDE.openEditor(page, project.getFile(POM_FILE).getLocationURI(), MAVEN_POM_EDITOR_ID, true);
                 IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                         .findView(IPageLayout.ID_PROJECT_EXPLORER);
                 ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(pomfile));

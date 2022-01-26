@@ -35,6 +35,5 @@
         <module>server-tools</module>
         <module>esb-tools</module>
         <module>dss-tools</module>
-        <module>bps-tools</module>
     </modules>
 </project>

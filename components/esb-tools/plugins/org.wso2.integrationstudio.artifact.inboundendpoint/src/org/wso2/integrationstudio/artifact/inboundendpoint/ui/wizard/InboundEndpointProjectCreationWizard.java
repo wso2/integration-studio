@@ -237,7 +237,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 			inboundEndpoint.setName(ieModel.getName());
 			
 			if(ieModel.getProtocol().equals(CUSTOM)){
-				inboundEndpoint.setClassImpl("org.wso2.sample.inbound.CustomClass");
+				inboundEndpoint.setClassImpl("org.wso2.carbon.inbound.kafka.KafkaMessageConsumer");
 			} else {
 				inboundEndpoint.setProtocol(ieModel.getProtocol());
 				if(ieModel.getProtocol().equals(KAFKA)){

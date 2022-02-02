@@ -125,15 +125,7 @@ public abstract class ConfigurationOtherCommonEditorSection extends ServerEditor
 			public void run() {
 				while (true) {
 					Boolean serverConfigMapValue = CarbonServerCommonUtils.isServerStartBrowserPopup(server.getOriginal());
-					if (serverConfigMapValue == null) {
-						try {
-							Thread.sleep(2000);
-						} catch (InterruptedException e) {
-							log.error(e);
-						}
-						continue;
-					}
-					boolean startWSASBrowser = serverConfigMapValue;
+					boolean startWSASBrowser = serverConfigMapValue == null ? false : serverConfigMapValue;
 					boolean enableAxis2Hotupdate = CarbonServerCommonUtils.isServerHotUpdate(server.getOriginal());
 					boolean enableOSGIConsole = CarbonServerCommonUtils.isServerStartWithOSGiConsole(server.getOriginal());
 					if (startWSASCheck != null) {

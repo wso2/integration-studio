@@ -148,7 +148,9 @@ Integration Studio has been released with the following package components.
 
 2. Use [Java11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) for development(Other java versions might not work).
 
-3. Clone Integration Studio GitHub repository https://github.com/wso2/integration-studio.git. and proceed with **main** branch.
+3. Clone Integration Studio GitHub repository https://github.com/wso2/integration-studio.git. and proceed with **main** branch. 
+
+	- **NOTE :** If you are cloning it on windows, before cloning the project run this command "git config --system core.longpaths true". Otherwise git checkout will fail with "Filename too long error: unable to create file"
 
 ---
 **If you are using maven version 3.8.1 or higher**

@@ -23,6 +23,7 @@ public class ESBArtifact {
 	private String serverRole;
 	private String type;
 	private String groupId;
+	private String apiId;
 	
 //	This is the file path for the actual artifact.
 //	<artifact name="testEndpoint3" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
@@ -71,5 +72,11 @@ public class ESBArtifact {
 	public String getGroupId() {
 		return groupId;
 	}
+	public String getApiId() {
+        return apiId;
+    }
+    public void setApiId(String apiId) {
+        this.apiId = apiId;
+    }
 
 }

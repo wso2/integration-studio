@@ -21,7 +21,7 @@
 		<option id="create.api" default="true">Create A New API Artifact</option>
 		<option id="create.swagger">Generate API using Swagger Definition</option>
 		<option id="import.api">Import API Artifact</option>
-		<option id="import.api.publisher">Import API from APIM Publisher</option>
+		<option id="import.api.publisher">Import API from API Manager</option>
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="create.api" title="Synapse API Artifact"
@@ -84,6 +84,10 @@
 				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController"
 				group="location"
 				controlData="align=right">&lt;a&gt;Create a new ESB project...&lt;/a&gt;</data>
+		</settings>
+		<settings optionId="import.api.publisher">
+			<data modelProperty="publisher.api" type="file" filter="*.yaml;*.yml;*.json"
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Swagger Definition File*</data>
 		</settings>
 	</projectOptionSettings>
 </wizard>

@@ -84,69 +84,7 @@ public class HttpClientUtil {
         }
     }
 
-    /**
-     * Send a Get request with url encoded parameters.
-     * 
-     * @param url target url
-     * @param headers request headers
-     * @param data parameters to set
-     * @return response message
-     * @throws InvalidTokenException auth failures
-     * @throws HttpClientException request failures
-     * @throws EndpointRegistryConnectException connection failures
-     */
-    /*public static String sendGetWithParams(String url, Map<String, String> headers, Map<String, String> data)
-            throws InvalidTokenException, HttpClientException, URISyntaxException, EndpointRegistryConnectException {
-        try {
-            // Discard SSL certificate
-            Protocol easyhttps = new Protocol(EndpointRegistryServiceConstants.Common.HTTPS,
-                    (ProtocolSocketFactory) new EasySSLProtocolSocketFactory(), 443);
-            Protocol.registerProtocol(EndpointRegistryServiceConstants.Common.HTTPS, easyhttps);
-
-            // Initialize client and method
-            HttpClient client = new HttpClient();
-            GetMethod getMethod = new GetMethod(url);
-            String response;
-
-            // set headers
-            for (Map.Entry<String, String> header : headers.entrySet()) {
-                getMethod.addRequestHeader(header.getKey(), header.getValue());
-            }
-            getMethod.addRequestHeader(EndpointRegistryServiceConstants.HEADERS.CONTENT_TYPE,
-                    EndpointRegistryServiceConstants.HEADERS.APPLICATION_FORM_URL_ENCODED);
-
-            // set parameters
-            NameValuePair[] parameters = new NameValuePair[data.size()];
-            int index = 0;
-            for (Map.Entry<String, String> param : data.entrySet()) {
-                parameters[index] = new NameValuePair(param.getKey(), param.getValue());
-                index++;
-            }
-            getMethod.setQueryString(parameters);
-
-            // Send request
-            int statusCode = client.executeMethod(getMethod);
-
-            // build response
-            StringBuilder result = new StringBuilder();
-            BufferedReader bufferedReader = new BufferedReader(
-                    new InputStreamReader(getMethod.getResponseBodyAsStream(), getMethod.getResponseCharSet()));
-            String line = EndpointRegistryServiceConstants.Common.EMPTY_STRING;
-            while ((line = bufferedReader.readLine()) != null) {
-                result.append(line);
-            }
-            response = result.toString();
-            handleResponseStatus(statusCode, response);
-            return response;
-        } catch (UnknownHostException | SocketException e) {
-            log.error(EndpointRegistryServiceConstants.Errors.CONNECTION_FAILS, e);
-            throw new EndpointRegistryConnectException(EndpointRegistryServiceConstants.Errors.CONNECTION_FAILS, e);
-        } catch (IOException | GeneralSecurityException e) {
-            throw new HttpClientException(EndpointRegistryServiceConstants.Errors.HTTP_ERROR_SENDING_REQUEST, e);
-        }
-    } */
-
-  
+    
 
     /**
      * Handles error statuses.

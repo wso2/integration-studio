@@ -28,6 +28,7 @@ public class APIMAPIArtifactModel extends ProjectDataModel {
     private String userName;
     private String password;
     private String apimHostUrl;
+    String selectedApiId;
 
     private ArrayList<PublisherAPI> apiList = new ArrayList<PublisherAPI>();
     
@@ -57,6 +58,14 @@ public class APIMAPIArtifactModel extends ProjectDataModel {
         this.apimHostUrl = apimHostUrl;
     }
     
+    public void setSelectedApiId(String selectedApiId) {
+        this.selectedApiId = selectedApiId;
+    }
+    
+    public String getSelectedApiId() {
+        return selectedApiId;
+    }
+    
     /**
      * Get API List.
      * 
@@ -73,11 +82,11 @@ public class APIMAPIArtifactModel extends ProjectDataModel {
         JsonParser parser = new JsonParser();
         Map<String, String> headers = new HashMap<>();
         String encodedToken = Base64.getEncoder().encodeToString(
-                (userName + ":" + password).getBytes());
+                (userName.trim() + ":" + password.trim()).getBytes());
         headers.put(ArtifactConstants.HEADERS.AUTHORIZATION,
                 ArtifactConstants.HEADERS.BASIC + encodedToken);
         Map<String, String> params = new HashMap<>();
-        String getAPIsURL = hostUrl + ArtifactConstants.PublisherAPI.getAPis;
+        String getAPIsURL = hostUrl.trim()+ ArtifactConstants.PublisherAPI.getAPis;
        
         String response = HttpClientUtil.sendGet(getAPIsURL, headers);
         JsonElement jsonResponse = parser.parse(response);
@@ -87,23 +96,28 @@ public class APIMAPIArtifactModel extends ProjectDataModel {
         
     }
     
-    public void getAPISwagger(String userName, String password, String hostUrl)
+    public String getAPISwagger(String userName, String password, String hostUrl, String apiId)
             throws HttpClientException, URISyntaxException, InvalidTokenException, APIMConnectException {
-        JsonParser parser = new JsonParser();
         Map<String, String> headers = new HashMap<>();
         String encodedToken = Base64.getEncoder().encodeToString(
-                (userName + ":" + password).getBytes());
+                (userName.trim() + ":" + password).getBytes());
         headers.put(ArtifactConstants.HEADERS.AUTHORIZATION,
                 ArtifactConstants.HEADERS.BASIC + encodedToken);
         Map<String, String> params = new HashMap<>();
-        String getAPIsURL = hostUrl + ArtifactConstants.PublisherAPI.getAPis;
+        String getSwaggerURL = hostUrl.trim() + ArtifactConstants.PublisherAPI.getAPis + "/" + apiId + "/" + "swagger";
        
-        String response = HttpClientUtil.sendGet(getAPIsURL, headers);
-        JsonElement jsonResponse = parser.parse(response);
-        int apiCount = jsonResponse.getAsJsonObject().get("count").getAsInt();
-        JsonArray jsonArray = (JsonArray) jsonResponse.getAsJsonObject().get("list");
-        setApiList(apiCount, jsonArray);
+        String response = HttpClientUtil.sendGet(getSwaggerURL, headers);
+        String swaggerContent = response;
+        return swaggerContent;
         
+    }
+    
+    public String getApiNameFromSwagger (String swaggerContect) {
+        JsonParser parser = new JsonParser();
+        JsonElement jsonResponse = parser.parse(swaggerContect);
+        String apiName = jsonResponse.getAsJsonObject().get("info").getAsJsonObject()
+                .get("title").getAsString();
+        return apiName;
     }
     
     public void setApiList(int apiCount, JsonArray ApiArray) {

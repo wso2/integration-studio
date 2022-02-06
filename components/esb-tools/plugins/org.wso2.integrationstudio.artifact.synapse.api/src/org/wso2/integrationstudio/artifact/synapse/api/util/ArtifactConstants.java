@@ -35,6 +35,7 @@ public class ArtifactConstants extends NLS {
 	public static String ID_API_PUBLISHSWAGGER;
 	public static String ID_API_SWAGGER_FILE;
 	public static String ID_SWAGGER_API_NAME;
+	public static String WIZARD_OPTION_APIM_API;
 	
 	//Messages
 	public static String ERRMSG_SAVE_LOCATION;

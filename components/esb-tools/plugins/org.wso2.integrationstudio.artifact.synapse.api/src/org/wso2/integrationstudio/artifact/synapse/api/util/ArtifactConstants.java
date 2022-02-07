@@ -47,6 +47,12 @@ public class ArtifactConstants extends NLS {
 	public static String API_VERSION_TYPE_CONTEXT;
 	public static String API_VERSION_TYPE_URL;
 	
+	public static String API_TYPE_WSDL_URL;
+	public static String API_TYPE_WSDL_FILE;
+	public static String API_WSDL_TYPE;
+	public static String API_WSDL_FILE;
+	public static String API_WSDL_URL;
+	
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, ArtifactConstants.class);

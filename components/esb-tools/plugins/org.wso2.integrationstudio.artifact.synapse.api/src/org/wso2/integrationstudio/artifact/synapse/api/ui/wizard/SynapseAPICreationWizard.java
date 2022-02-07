@@ -737,16 +737,6 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         pages = getPages();
     }
 
-    /*public IWizardPage getNextPage(IWizardPage page) {
-        IWizardPage nextPage = super.getNextPage(page);
-        if (page instanceof ProjectOptionsPage) {
-            if (getModel().getSelectedOption().equals("import.api.apim")) {
-                nextPage = importPublisherAPIWizard;
-            }
-        }
-        return nextPage;
-    } */
-    
     public IWizardPage getNextPage(IWizardPage page) {
         IWizardPage nextPage = super.getNextPage(page);
         if (page instanceof ProjectOptionsDataPage &&

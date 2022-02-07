@@ -23,6 +23,7 @@ import java.util.HashMap;
 
 import javax.swing.JRadioButton;
 
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableEditor;
@@ -90,9 +91,7 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         container.setLayout(new FormLayout());
         FormData data;
         Table tblDataTables;
-        
         Button listAPIsButton;
-        
         Label labelUserName;
         Label labelPassword;
         Label labelAPIMHostUrl;
@@ -177,13 +176,11 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         
         data = new FormData();
         data.top = new FormAttachment(listAPIBtn, 10);
-        //data.width = 800;
         data.left = new FormAttachment(3);
         table.setLayoutData(data);
         data.height = 200;
         data.width = 500;
        
-        
         table.setLayoutData(data);
         table.setBounds(25, 25, 220, 200);
         Device d = Display.getCurrent ();
@@ -232,7 +229,6 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
                    table.getItems()[0].setChecked(true);
                }
                
-               
            } catch (HttpClientException | URISyntaxException | InvalidTokenException | APIMConnectException e) {
                log.error("Exception has occurred while retireving the APIs", e);
            }
@@ -242,7 +238,7 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
                 
             }
           });
- 
+        
         table.addListener( SWT.Selection, new Listener() {
            
             @Override
@@ -270,10 +266,7 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
                     }
                   }
             }
- 
         });
-        
     }
-
 }
 

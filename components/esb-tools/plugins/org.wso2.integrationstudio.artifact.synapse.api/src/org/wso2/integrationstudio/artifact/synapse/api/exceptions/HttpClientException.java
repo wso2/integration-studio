@@ -25,3 +25,4 @@ public class HttpClientException extends Exception {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }
+

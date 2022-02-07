@@ -29,3 +29,5 @@ Import-Package: com.fasterxml.jackson.databind;version="2.7.2",
  org.wso2.integrationstudio.gmf.esb,
  org.wso2.integrationstudio.registry.core.utils,
  org.yaml.snakeyaml
+Bundle-ClassPath: lib/xercesImpl-2.8.1.wso2v2.jar,
+ .

@@ -18,6 +18,7 @@ package org.wso2.integrationstudio.artifact.synapse.api.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.api.API;
+import org.apache.xerces.util.SecurityManager;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
@@ -87,8 +89,15 @@ import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfoDoc;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceUtils;
 import org.wso2.integrationstudio.utils.file.FileUtils;
 import org.wso2.integrationstudio.utils.project.ProjectUtils;
+import org.wso2.soaptorest.WSDLProcessor;
+import org.wso2.soaptorest.models.SOAPtoRESTConversionData;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+
+//import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+
+//import io.swagger.oas.inflector.processors.JsonNodeExampleSerializer;
 
 /**
  * WSO2 ESB API creation wizard class
@@ -110,7 +119,10 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     private static final String WHITE_SPACE = " ";
     private static final String METADATA_TYPE = "synapse/metadata";
     private static final String REGISTRY_RESOURCE_PATH = "/_system/governance/swagger_files";
-
+    private static SecurityManager securityManager = new SecurityManager();
+ // private static YAMLFactory yamlFactory = new YAMLFactory();
+//    private static JsonFactory jsonFactory = new JsonFactory();
+//    static JsonNodeExampleSerializer jsonSerializer = new JsonNodeExampleSerializer();
     private String version;
 
     private ImportPublisherAPIWizardPage importPublisherAPIWizard;
@@ -276,6 +288,32 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     apiFileName = apiName;
                 } 
 
+            } else if (getModel().getSelectedOption().equals("create.api.from.wsdl")) {
+                String apiName = artifactModel.getName();
+                artifactModel.setName(apiName);
+                artifactFile = location.getFile(new Path(apiName + ".xml"));
+                File destFile = artifactFile.getLocation().toFile();
+                URL url = new URL(artifactModel.getAPIWSDLurl());
+                SOAPtoRESTConversionData soaPtoRESTConversionData = WSDLProcessor.getSOAPtoRESTConversionData(url, apiName, "1.0.0");
+                
+                String swaggerYaml = soaPtoRESTConversionData.getOASString();
+                OMElement omElement = getSynapseAPIFromSwagger(swaggerYaml, apiName);
+                FileUtils.createFile(destFile, omElement.toString());
+                fileLst.add(destFile);
+                String relativePath = FileUtils
+                        .getRelativePath(esbProject.getLocation().toFile(),
+                                new File(location.getLocation().toFile(), apiName + ".xml"))
+                        .replaceAll(Pattern.quote(File.separator), "/");
+                esbProjectArtifact.addESBArtifact(createArtifact(apiName, groupId, version, relativePath));
+                esbProjectArtifact.toFile();
+                
+                if (meadataEnabled) {
+                    synapseApi = APIFactory.createAPI(omElement);
+                    IFile swaggerFile = metadataLocation.getFile(new Path(apiName + "_swagger.yaml"));
+                    FileUtils.createFile(swaggerFile.getLocation().toFile(), swaggerYaml);
+                    createMetadataArtifactEntry(metadataLocation, apiName, metadataGroupId, true);
+                    apiFileName = apiName;
+                }
             } else {
                 String resolvedArtifactName = artifactModel.getName();
                 if (artifactModel.getVersion() != "") {

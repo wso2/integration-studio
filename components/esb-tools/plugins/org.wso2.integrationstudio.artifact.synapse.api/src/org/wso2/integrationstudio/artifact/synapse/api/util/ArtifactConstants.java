@@ -83,6 +83,11 @@ public class ArtifactConstants extends NLS {
         public static final String getAPis = "/api/am/publisher/v2/apis";
 
     }
+	public static String API_TYPE_WSDL_URL;
+	public static String API_TYPE_WSDL_FILE;
+	public static String API_WSDL_TYPE;
+	public static String API_WSDL_FILE;
+	public static String API_WSDL_URL;
 	
 	static {
 		// initialize resource bundle

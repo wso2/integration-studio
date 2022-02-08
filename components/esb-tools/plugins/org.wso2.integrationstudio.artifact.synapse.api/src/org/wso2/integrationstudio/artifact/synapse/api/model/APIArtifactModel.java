@@ -72,6 +72,7 @@ public class APIArtifactModel extends ProjectDataModel {
 	private String publishSwagger = "";
 	private File importSwaggerFile;
 	private String swaggerAPIName = "";
+	private boolean importAPIFromAPIM = false;
 	
 	public APIArtifactModel() {
 		availableAPIslist = new ArrayList<OMElement>();
@@ -165,6 +166,14 @@ public class APIArtifactModel extends ProjectDataModel {
     public void setSwaggerAPIName(String swaggerAPIName) {
         this.swaggerAPIName = swaggerAPIName;
     }
+    
+    public boolean isImportAPIFromAPIM() {
+        return importAPIFromAPIM;
+    }
+
+    public void setImportAPIFromAPIM(boolean importAPIFromAPIM) {
+        this.importAPIFromAPIM = importAPIFromAPIM;
+    }
 
     @Override
 	public Object getModelPropertyValue(String key) {
@@ -201,6 +210,9 @@ public class APIArtifactModel extends ProjectDataModel {
 				modelPropertyValue = getSwaggerRegistryLocation();
 			}  else if (key.equals(ArtifactConstants.ID_SWAGGER_API_NAME)) {
                 modelPropertyValue = getSwaggerAPIName();
+            } else if (key.equals(ArtifactConstants.WIZARD_OPTION_APIM_API)) {
+                setImportAPIFromAPIM(true);
+                modelPropertyValue = null;
             }
 		}
 	 

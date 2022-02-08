@@ -39,6 +39,8 @@ import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
  * @generated
  */
 public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
+	private static final String NAME_VALUE_SEPERATOR = "  -  ";
+	private static final String OPERATING_SYSTEM_WINDOWS = "windows";
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
@@ -190,6 +192,12 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
 
         if (parameterType.equalsIgnoreCase(RuleOptionType.VALUE.getName())) {
             if (parameterValue != null) {
+            	String operatingSystem = System.getProperty("os.name");
+            	if (operatingSystem != null && operatingSystem.toLowerCase().contains(OPERATING_SYSTEM_WINDOWS)) {
+            		return parameterName == null || parameterName.length() == 0
+                            ? getString("_UI_CallTemplateParameter_type")
+                            :parameterNameLabel + NAME_VALUE_SEPERATOR + parameterValue;
+            	}
                 return parameterName == null || parameterName.length() == 0
                         ? getString("_UI_CallTemplateParameter_type")
                         : EEFPropertyViewUtil.spaceFormat(parameterNameLabel)

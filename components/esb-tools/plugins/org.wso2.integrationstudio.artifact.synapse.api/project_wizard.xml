@@ -99,8 +99,9 @@
 				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Name*</data>
 			<data modelProperty="wsdl.file.type" type="list" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.integrationstudio.artifact.synapse.api.validator.APIWSDLTypes">Generate API Using</data>
 			<data modelProperty="apiwsdl.url" type="string" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Enter WSDL URL</data>
-			<data modelProperty="apiwsdl.file" type="file" filter="*.wsdl;*.xml"
-				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Use Local WSDL file</data>
+			<data modelProperty="apiwsdl.file" type="file" filter="*.wsdl;*.xml;*.zip"
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Use Local WSDL file or Zip file</data>
+			<data modelProperty="apiwsdl.endpoint" type="string" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Enter SOAP Endpoint</data>
 			<group id ="location"/>
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" controlData="filterClass=org.wso2.integrationstudio.artifact.synapse.api.validator.ESBProjectFilter">Save in:</data>
 			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>

@@ -17,31 +17,52 @@
 package org.wso2.integrationstudio.artifact.synapse.api.ui.wizard;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.StringWriter;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.FactoryConfigurationError;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.rest.APIFactory;
+import org.apache.synapse.config.xml.rest.APISerializer;
+import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.mediators.builtin.RespondMediator;
 import org.apache.synapse.api.API;
+import org.apache.synapse.api.Resource;
+import org.apache.synapse.api.dispatch.URLMappingHelper;
 import org.apache.xerces.util.SecurityManager;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
@@ -63,6 +84,7 @@ import org.wso2.integrationstudio.artifact.synapse.api.exceptions.SwaggerDefinit
 import org.wso2.integrationstudio.artifact.synapse.api.model.APIArtifactModel;
 import org.wso2.integrationstudio.artifact.synapse.api.model.APIMAPIArtifactModel;
 import org.wso2.integrationstudio.artifact.synapse.api.util.APIImageUtils;
+import org.wso2.integrationstudio.artifact.synapse.api.util.ArtifactConstants;
 import org.wso2.integrationstudio.artifact.synapse.api.util.MetadataUtils;
 import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
 import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
@@ -89,7 +111,9 @@ import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfoDoc;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceUtils;
 import org.wso2.integrationstudio.utils.file.FileUtils;
 import org.wso2.integrationstudio.utils.project.ProjectUtils;
+import org.wso2.soaptorest.SOAPToRESTConverter;
 import org.wso2.soaptorest.WSDLProcessor;
+import org.wso2.soaptorest.models.SOAPRequestElement;
 import org.wso2.soaptorest.models.SOAPtoRESTConversionData;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
@@ -107,6 +131,9 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Synapse API";
+    private static final String DIR_DOT_METADATA = ".metadata";
+    private static final String DIR_SOAPTOREST= "SoapToREST";
+    
     private final APIArtifactModel artifactModel;
     private IFile artifactFile;
     private ESBProjectArtifact esbProjectArtifact;
@@ -293,12 +320,83 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                 artifactModel.setName(apiName);
                 artifactFile = location.getFile(new Path(apiName + ".xml"));
                 File destFile = artifactFile.getLocation().toFile();
-                URL url = new URL(artifactModel.getAPIWSDLurl());
-                SOAPtoRESTConversionData soaPtoRESTConversionData = WSDLProcessor.getSOAPtoRESTConversionData(url, apiName, "1.0.0");
-                
+                SOAPtoRESTConversionData soaPtoRESTConversionData;
+
+                if (artifactModel.getAPIWSDLType().equals(ArtifactConstants.API_TYPE_WSDL_URL)) {
+                    URL url = new URL(artifactModel.getAPIWSDLurl());
+                    soaPtoRESTConversionData = SOAPToRESTConverter.getSOAPtoRESTConversionData(url, apiName, "1.0.0");
+                } else {
+                    String wsdlFilePath = null;
+                    if (artifactModel.getAPIWSDLFile().getAbsolutePath().endsWith("zip")) {
+                        String parentDirectoryPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
+                                + File.separator + DIR_DOT_METADATA + File.separator + DIR_SOAPTOREST + File.separator
+                                + apiName;
+                        File outputDir = new File(parentDirectoryPath);
+                        if (!outputDir.exists()) {
+                            outputDir.mkdir();
+                        }
+
+                        try (ZipFile zipFile = new ZipFile(artifactModel.getAPIWSDLFile())) {
+                            Enumeration<? extends ZipEntry> entries = zipFile.entries();
+                            while (entries.hasMoreElements()) {
+                                ZipEntry entry = entries.nextElement();
+                                File entryDestination = new File(outputDir, entry.getName());
+                                if (entry.isDirectory()) {
+                                    entryDestination.mkdirs();
+                                } else {
+                                    entryDestination.getParentFile().mkdirs();
+                                    try (InputStream in = zipFile.getInputStream(entry);
+                                            OutputStream out = new FileOutputStream(entryDestination)) {
+                                        IOUtils.copy(in, out);
+                                    }
+                                }
+                            }
+                        } catch (IOException e) {
+                            log.error("Error while unziping wsdl zip", e);
+                        }
+
+                        Collection<File> foundWSDLFiles = org.apache.commons.io.FileUtils.listFiles(outputDir,
+                                new String[] { "wsdl" }, true);
+                        for (File file : foundWSDLFiles) {
+                            wsdlFilePath = file.getAbsolutePath();
+                            // set the first found WSDL as wsdlDefinition assuming that it is the root WSDL
+                            break;
+                        }
+                    } else {
+                        wsdlFilePath = artifactModel.getAPIWSDLFile().getAbsolutePath();
+                    }
+                    soaPtoRESTConversionData = SOAPToRESTConverter.getSOAPtoRESTConversionData(wsdlFilePath, apiName,
+                            "1.0.0");
+
+                }
                 String swaggerYaml = soaPtoRESTConversionData.getOASString();
                 OMElement omElement = getSynapseAPIFromSwagger(swaggerYaml, apiName);
-                FileUtils.createFile(destFile, omElement.toString());
+                API api = APIFactory.createAPI(omElement);
+                
+                TransformerFactory tf = TransformerFactory.newInstance();
+                Transformer transformer = tf.newTransformer();
+                transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+                StringWriter writer = new StringWriter();
+               
+                Set<Entry<String, SOAPRequestElement>>  entry = soaPtoRESTConversionData.getAllSOAPRequestBodies();
+                for(Entry<String, SOAPRequestElement> entry1: entry) {
+                    Resource [] resources = api.getResources();
+                    for(Resource resource: resources) {
+                        URLMappingHelper urlMappingHelper = (URLMappingHelper)resource.getDispatcherHelper();
+                        urlMappingHelper.getString();
+                        SequenceMediator sequence = new SequenceMediator();
+                        RespondMediator respondMediator = new RespondMediator();
+                        sequence.addChild(respondMediator);
+                        resource.setInSequence(sequence);
+                        resource.setOutSequence(new SequenceMediator());
+                    }
+            
+                    SOAPRequestElement soapRequestElement = entry1.getValue();
+                    transformer.transform(new DOMSource(soapRequestElement.getSoapRequestBody()), new StreamResult(writer));
+                    String output = writer.getBuffer().toString().replaceAll("\n|\r", "");
+                }
+                
+                FileUtils.createFile(destFile, APISerializer.serializeAPI(api).toString());
                 fileLst.add(destFile);
                 String relativePath = FileUtils
                         .getRelativePath(esbProject.getLocation().toFile(),
@@ -306,7 +404,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                         .replaceAll(Pattern.quote(File.separator), "/");
                 esbProjectArtifact.addESBArtifact(createArtifact(apiName, groupId, version, relativePath));
                 esbProjectArtifact.toFile();
-                
+
                 if (meadataEnabled) {
                     synapseApi = APIFactory.createAPI(omElement);
                     IFile swaggerFile = metadataLocation.getFile(new Path(apiName + "_swagger.yaml"));

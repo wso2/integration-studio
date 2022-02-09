@@ -80,6 +80,7 @@ public class APIArtifactModel extends ProjectDataModel {
 	private File apiWSDLFile;
     private String apiWSDLurl;
     private String apiWSDLType;
+    private String apiWSDLEndpoint;
 	
 	public APIArtifactModel() {
 		availableAPIslist = new ArrayList<OMElement>();
@@ -323,8 +324,11 @@ public class APIArtifactModel extends ProjectDataModel {
             if (data instanceof String) {
                 setAPIWSDLType((String) data);
             }
+        } else if (key.equals(ArtifactConstants.API_WSDL_ENDPOINT)) {
+            if (data instanceof String) {
+                setApiWSDLEndpoint((String) data);
+            }
         }
-		
 		return result;
 	}
 	
@@ -451,6 +455,14 @@ public class APIArtifactModel extends ProjectDataModel {
 
     public void setAPIWSDLType(String wsdlType) {
         this.apiWSDLType = wsdlType;
+    }
+
+    public String getApiWSDLEndpoint() {
+        return apiWSDLEndpoint;
+    }
+
+    public void setApiWSDLEndpoint(String apiWSDLEndpoint) {
+        this.apiWSDLEndpoint = apiWSDLEndpoint;
     }
 
 }

@@ -59,7 +59,11 @@ import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.config.xml.rest.APISerializer;
 import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.mediators.builtin.PropertyMediator;
 import org.apache.synapse.mediators.builtin.RespondMediator;
+import org.apache.synapse.mediators.transform.HeaderMediator;
+import org.apache.synapse.mediators.transform.PayloadFactoryMediator;
+import org.apache.synapse.mediators.transform.pfutils.FreeMarkerTemplateProcessor;
 import org.apache.synapse.api.API;
 import org.apache.synapse.api.Resource;
 import org.apache.synapse.api.dispatch.URLMappingHelper;
@@ -146,10 +150,9 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     private static final String WHITE_SPACE = " ";
     private static final String METADATA_TYPE = "synapse/metadata";
     private static final String REGISTRY_RESOURCE_PATH = "/_system/governance/swagger_files";
-    private static SecurityManager securityManager = new SecurityManager();
- // private static YAMLFactory yamlFactory = new YAMLFactory();
-//    private static JsonFactory jsonFactory = new JsonFactory();
-//    static JsonNodeExampleSerializer jsonSerializer = new JsonNodeExampleSerializer();
+    private static final String SOAP_BODY_PREFIX = "<soapenv:Envelope xmlns:soapenv"
+            + "=\"http://www.w3.org/2003/05/soap-envelope\">\r\n<soapenv:Header/>\r\n<soapenv:Body>\r\n";
+    private static final String SOAP_BODY_POSTFIX = "</soapenv:Body>\r\n</soapenv:Envelope>\r\n";
     private String version;
 
     private ImportPublisherAPIWizardPage importPublisherAPIWizard;
@@ -372,30 +375,64 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                 String swaggerYaml = soaPtoRESTConversionData.getOASString();
                 OMElement omElement = getSynapseAPIFromSwagger(swaggerYaml, apiName);
                 API api = APIFactory.createAPI(omElement);
-                
+
                 TransformerFactory tf = TransformerFactory.newInstance();
                 Transformer transformer = tf.newTransformer();
                 transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
                 StringWriter writer = new StringWriter();
-               
-                Set<Entry<String, SOAPRequestElement>>  entry = soaPtoRESTConversionData.getAllSOAPRequestBodies();
-                for(Entry<String, SOAPRequestElement> entry1: entry) {
-                    Resource [] resources = api.getResources();
-                    for(Resource resource: resources) {
-                        URLMappingHelper urlMappingHelper = (URLMappingHelper)resource.getDispatcherHelper();
-                        urlMappingHelper.getString();
-                        SequenceMediator sequence = new SequenceMediator();
-                        RespondMediator respondMediator = new RespondMediator();
-                        sequence.addChild(respondMediator);
-                        resource.setInSequence(sequence);
-                        resource.setOutSequence(new SequenceMediator());
-                    }
-            
+
+                Set<Entry<String, SOAPRequestElement>> entry = soaPtoRESTConversionData.getAllSOAPRequestBodies();
+                for (Entry<String, SOAPRequestElement> entry1 : entry) {
                     SOAPRequestElement soapRequestElement = entry1.getValue();
-                    transformer.transform(new DOMSource(soapRequestElement.getSoapRequestBody()), new StreamResult(writer));
-                    String output = writer.getBuffer().toString().replaceAll("\n|\r", "");
+
+                    Resource[] resources = api.getResources();
+                    for (Resource resource : resources) {
+                        String resourcePath = ((URLMappingHelper) resource.getDispatcherHelper()).getString();
+                        if (resourcePath.contains(entry1.getKey())) {
+                            transformer.transform(new DOMSource(soapRequestElement.getSoapRequestBody()),
+                                    new StreamResult(writer));
+                            String soapPayload = writer.getBuffer().toString().replaceAll("\n|\r", "");
+                            SequenceMediator sequence = new SequenceMediator();
+
+                            if (soapRequestElement.getSoapAction() != null) {
+                                HeaderMediator headerMediator = new HeaderMediator();
+                                headerMediator.setDescription("SOAPAction");
+                                headerMediator.setScope("transport");
+                                headerMediator.setValue(soapRequestElement.getSoapAction());
+                                headerMediator.setQName(new QName("SOAPAction"));
+                                sequence.addChild(headerMediator);
+                            }
+                            PropertyMediator propertyMediator1 = new PropertyMediator();
+                            propertyMediator1.setName("REST_URL_POSTFIX");
+                            propertyMediator1.setScope("axis2");
+                            propertyMediator1.setAction(PropertyMediator.ACTION_REMOVE);
+                            sequence.addChild(propertyMediator1);
+                            
+                            
+                            PayloadFactoryMediator payloadFactoryMediator = new PayloadFactoryMediator();
+                            payloadFactoryMediator.setTemplateType("freemarker");
+                            payloadFactoryMediator.setTemplateProcessor(new FreeMarkerTemplateProcessor());
+                            payloadFactoryMediator.setType("xml");
+                            payloadFactoryMediator.setFormat(SOAP_BODY_PREFIX + soapPayload + SOAP_BODY_POSTFIX);
+                            sequence.addChild(payloadFactoryMediator);
+                            
+                            //<property description="messageProperty" name="messageType" scope="axis2" type="STRING" value="application/soap+xml"/>
+                            PropertyMediator propertyMediator2 = new PropertyMediator();
+                            propertyMediator2.setName("messageType");
+                            propertyMediator2.setScope("axis2");
+                            propertyMediator2.setValue("application/soap+xml","STRING");
+                            sequence.addChild(propertyMediator2);
+                            
+
+                            RespondMediator respondMediator = new RespondMediator();
+                            sequence.addChild(respondMediator);
+                            resource.setInSequence(sequence);
+                            resource.setOutSequence(new SequenceMediator());
+                        }
+                    }
+
                 }
-                
+
                 FileUtils.createFile(destFile, APISerializer.serializeAPI(api).toString());
                 fileLst.add(destFile);
                 String relativePath = FileUtils

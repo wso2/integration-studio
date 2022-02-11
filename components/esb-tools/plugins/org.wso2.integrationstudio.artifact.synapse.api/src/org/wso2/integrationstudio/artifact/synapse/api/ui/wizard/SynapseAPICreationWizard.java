@@ -332,7 +332,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                                 "1.0.0");
                     } else {
                         String wsdlFilePath = null;
-                        if (artifactModel.getAPIWSDLFile().getAbsolutePath().endsWith("zip")) {
+                        if (artifactModel.getAPIWSDLFile().getAbsolutePath().endsWith(".zip")) {
                             String parentDirectoryPath = ResourcesPlugin.getWorkspace().getRoot().getLocation()
                                     .toOSString() + File.separator + DIR_DOT_METADATA + File.separator + DIR_SOAPTOREST
                                     + File.separator + apiName;
@@ -358,6 +358,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                                 }
                             } catch (IOException e) {
                                 log.error("Error while unziping wsdl zip", e);
+                                initSuccess = false;
                             }
 
                             Collection<File> foundWSDLFiles = org.apache.commons.io.FileUtils.listFiles(outputDir,

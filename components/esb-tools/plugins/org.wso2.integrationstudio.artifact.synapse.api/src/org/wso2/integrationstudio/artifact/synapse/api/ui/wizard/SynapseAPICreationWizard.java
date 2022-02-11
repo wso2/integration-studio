@@ -57,11 +57,8 @@ import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.endpoints.EndpointSerializer;
-import org.apache.synapse.config.xml.endpoints.WSDLEndpointSerializer;
 import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.config.xml.rest.APISerializer;
-import org.apache.synapse.endpoints.AddressEndpoint;
-import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.endpoints.IndirectEndpoint;
 import org.apache.synapse.endpoints.WSDLEndpoint;
@@ -75,7 +72,6 @@ import org.apache.synapse.mediators.transform.pfutils.FreeMarkerTemplateProcesso
 import org.apache.synapse.api.API;
 import org.apache.synapse.api.Resource;
 import org.apache.synapse.api.dispatch.URLMappingHelper;
-import org.apache.xerces.util.SecurityManager;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
@@ -117,23 +113,16 @@ import org.wso2.integrationstudio.platform.ui.editor.Openable;
 import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsDataPage;
-import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsPage;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfo;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfoDoc;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceUtils;
 import org.wso2.integrationstudio.utils.file.FileUtils;
 import org.wso2.integrationstudio.utils.project.ProjectUtils;
 import org.wso2.soaptorest.SOAPToRESTConverter;
-import org.wso2.soaptorest.WSDLProcessor;
 import org.wso2.soaptorest.models.SOAPRequestElement;
 import org.wso2.soaptorest.models.SOAPtoRESTConversionData;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
-
-//import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-
-//import io.swagger.oas.inflector.processors.JsonNodeExampleSerializer;
 
 /**
  * WSO2 ESB API creation wizard class

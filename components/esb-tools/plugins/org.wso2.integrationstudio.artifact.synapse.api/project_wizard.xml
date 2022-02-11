@@ -23,7 +23,6 @@
 		<option id="import.api">Import API Artifact</option>
 		<option id="import.api.publisher">Import API from API Manager</option>
 		<option id="create.api.from.wsdl">Generate REST API from WSDL</option>
-		
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="create.api" title="Synapse API Artifact"

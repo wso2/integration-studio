@@ -75,13 +75,12 @@ public class APIArtifactModel extends ProjectDataModel {
 	private String publishSwagger = "";
 	private File importSwaggerFile;
 	private String swaggerAPIName = "";
-	private boolean importAPIFromAPIM = false;
-
-	private File apiWSDLFile;
+    private boolean importAPIFromAPIM = false;
+    private File apiWSDLFile;
     private String apiWSDLurl;
     private String apiWSDLType;
     private String apiWSDLEndpoint;
-	
+
 	public APIArtifactModel() {
 		availableAPIslist = new ArrayList<OMElement>();
 		selectedAPIsList = new ArrayList<OMElement>();
@@ -309,17 +308,15 @@ public class APIArtifactModel extends ProjectDataModel {
 			setSwaggerRegistryLocation((IProject)data);
 		} else if (key.equals(ArtifactConstants.ID_SWAGGER_API_NAME)) {
             setSwaggerAPIName(data.toString());
-        }  else if (key.equals(ArtifactConstants.API_WSDL_FILE)) {
+        } else if (key.equals(ArtifactConstants.API_WSDL_FILE)) {
             if (data instanceof File && ((File) data).exists()) {
                 setAPIWSDLFile((File) data);
             }
-
         } else if (key.equals(ArtifactConstants.API_WSDL_URL)) {
             String url = (String) data;
             if (StringUtils.isNotBlank(url)) {
                 setAPIWSDLurl(url);
             }
-
         } else if (key.equals(ArtifactConstants.API_WSDL_TYPE)) {
             if (data instanceof String) {
                 setAPIWSDLType((String) data);
@@ -329,7 +326,7 @@ public class APIArtifactModel extends ProjectDataModel {
                 setApiWSDLEndpoint((String) data);
             }
         }
-		return result;
+        return result;
 	}
 	
 	@Override
@@ -432,7 +429,6 @@ public class APIArtifactModel extends ProjectDataModel {
 		return selectedAPIsList;
 	}
 
-
     public File getAPIWSDLFile() {
         return apiWSDLFile;
     }
@@ -464,5 +460,4 @@ public class APIArtifactModel extends ProjectDataModel {
     public void setApiWSDLEndpoint(String apiWSDLEndpoint) {
         this.apiWSDLEndpoint = apiWSDLEndpoint;
     }
-
 }

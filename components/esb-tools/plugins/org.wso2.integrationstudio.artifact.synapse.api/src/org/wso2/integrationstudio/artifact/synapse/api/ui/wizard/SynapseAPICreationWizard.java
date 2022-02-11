@@ -370,7 +370,6 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                         } else {
                             wsdlFilePath = artifactModel.getAPIWSDLFile().getAbsolutePath();
                         }
-
                         soaPtoRESTConversionData = SOAPToRESTConverter.getSOAPtoRESTConversionData(wsdlFilePath,
                                 apiName, "1.0.0");
                     }
@@ -462,7 +461,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 
                                 IndirectEndpoint indirectEndpoint = new IndirectEndpoint();
                                 indirectEndpoint.setKey(synapseWSDLEndpointName);
-                                
+
                                 CallMediator callMediator = new CallMediator();
                                 callMediator.setEndpoint(indirectEndpoint);
                                 sequence.addChild(callMediator);
@@ -476,7 +475,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                                 RespondMediator respondMediator = new RespondMediator();
                                 sequence.addChild(respondMediator);
                                 resource.setInSequence(sequence);
-                                
+
                                 resource.setOutSequence(new SequenceMediator());
                             }
                         }

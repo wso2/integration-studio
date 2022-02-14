@@ -19,6 +19,7 @@ package org.wso2.integrationstudio.artifact.synapse.api.model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,8 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.validator.routines.UrlValidator;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.core.resources.IContainer;
@@ -72,8 +75,12 @@ public class APIArtifactModel extends ProjectDataModel {
 	private String publishSwagger = "";
 	private File importSwaggerFile;
 	private String swaggerAPIName = "";
-	private boolean importAPIFromAPIM = false;
-	
+    private boolean importAPIFromAPIM = false;
+    private File apiWSDLFile;
+    private String apiWSDLurl;
+    private String apiWSDLType;
+    private String apiWSDLEndpoint;
+
 	public APIArtifactModel() {
 		availableAPIslist = new ArrayList<OMElement>();
 		selectedAPIsList = new ArrayList<OMElement>();
@@ -301,9 +308,25 @@ public class APIArtifactModel extends ProjectDataModel {
 			setSwaggerRegistryLocation((IProject)data);
 		} else if (key.equals(ArtifactConstants.ID_SWAGGER_API_NAME)) {
             setSwaggerAPIName(data.toString());
+        } else if (key.equals(ArtifactConstants.API_WSDL_FILE)) {
+            if (data instanceof File && ((File) data).exists()) {
+                setAPIWSDLFile((File) data);
+            }
+        } else if (key.equals(ArtifactConstants.API_WSDL_URL)) {
+            String url = (String) data;
+            if (StringUtils.isNotBlank(url)) {
+                setAPIWSDLurl(url);
+            }
+        } else if (key.equals(ArtifactConstants.API_WSDL_TYPE)) {
+            if (data instanceof String) {
+                setAPIWSDLType((String) data);
+            }
+        } else if (key.equals(ArtifactConstants.API_WSDL_ENDPOINT)) {
+            if (data instanceof String) {
+                setApiWSDLEndpoint((String) data);
+            }
         }
-		
-		return result;
+        return result;
 	}
 	
 	@Override
@@ -406,4 +429,35 @@ public class APIArtifactModel extends ProjectDataModel {
 		return selectedAPIsList;
 	}
 
+    public File getAPIWSDLFile() {
+        return apiWSDLFile;
+    }
+
+    public void setAPIWSDLFile(File wsdlFile) {
+        this.apiWSDLFile = wsdlFile;
+    }
+
+    public String getAPIWSDLurl() {
+        return apiWSDLurl;
+    }
+
+    public void setAPIWSDLurl(String wsdlUrl) {
+        this.apiWSDLurl = wsdlUrl;
+    }
+
+    public String getAPIWSDLType() {
+        return apiWSDLType;
+    }
+
+    public void setAPIWSDLType(String wsdlType) {
+        this.apiWSDLType = wsdlType;
+    }
+
+    public String getApiWSDLEndpoint() {
+        return apiWSDLEndpoint;
+    }
+
+    public void setApiWSDLEndpoint(String apiWSDLEndpoint) {
+        this.apiWSDLEndpoint = apiWSDLEndpoint;
+    }
 }

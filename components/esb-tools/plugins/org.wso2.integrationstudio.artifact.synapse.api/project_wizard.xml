@@ -22,6 +22,7 @@
 		<option id="create.swagger">Generate API using Swagger Definition</option>
 		<option id="import.api">Import API Artifact</option>
 		<option id="import.api.publisher">Import API from API Manager</option>
+		<option id="create.api.from.wsdl">Generate REST API from WSDL</option>
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="create.api" title="Synapse API Artifact"
@@ -88,6 +89,21 @@
 		<settings optionId="import.api.publisher">
 			<data modelProperty="publisher.api" type="file" filter="*.yaml;*.yml;*.json"
 				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Swagger Definition File*</data>
+		</settings>
+		<settings optionId="create.api.from.wsdl"
+				  title="Generate Synapse API using WSDL"
+				  description="Create a Synapse API Service Artifact using a WSDL file or WSDL URL"
+				  error="Browse and select a WSDL file">
+			<data modelProperty="api.name" type="string"
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Name*</data>
+			<data modelProperty="wsdl.file.type" type="list" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.integrationstudio.artifact.synapse.api.validator.APIWSDLTypes">Generate API Using</data>
+			<data modelProperty="apiwsdl.url" type="string" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Enter WSDL URL</data>
+			<data modelProperty="apiwsdl.file" type="file" filter="*.wsdl;*.xml;*.zip"
+				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Use Local WSDL file or Zip file</data>
+			<data modelProperty="apiwsdl.endpoint" type="string" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Enter SOAP Endpoint</data>
+			<group id ="location"/>
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" controlData="filterClass=org.wso2.integrationstudio.artifact.synapse.api.validator.ESBProjectFilter">Save in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
 		</settings>
 	</projectOptionSettings>
 </wizard>

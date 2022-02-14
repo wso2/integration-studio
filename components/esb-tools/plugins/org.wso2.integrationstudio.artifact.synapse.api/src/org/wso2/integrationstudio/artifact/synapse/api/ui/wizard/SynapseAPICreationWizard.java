@@ -17,30 +17,61 @@
 package org.wso2.integrationstudio.artifact.synapse.api.ui.wizard;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.StringWriter;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.FactoryConfigurationError;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.XMLConfigConstants;
+import org.apache.synapse.config.xml.endpoints.EndpointSerializer;
 import org.apache.synapse.config.xml.rest.APIFactory;
+import org.apache.synapse.config.xml.rest.APISerializer;
+import org.apache.synapse.endpoints.EndpointDefinition;
+import org.apache.synapse.endpoints.IndirectEndpoint;
+import org.apache.synapse.endpoints.WSDLEndpoint;
+import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.mediators.builtin.CallMediator;
+import org.apache.synapse.mediators.builtin.PropertyMediator;
+import org.apache.synapse.mediators.builtin.RespondMediator;
+import org.apache.synapse.mediators.transform.HeaderMediator;
+import org.apache.synapse.mediators.transform.PayloadFactoryMediator;
+import org.apache.synapse.mediators.transform.pfutils.FreeMarkerTemplateProcessor;
 import org.apache.synapse.api.API;
+import org.apache.synapse.api.Resource;
+import org.apache.synapse.api.dispatch.URLMappingHelper;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
@@ -61,6 +92,7 @@ import org.wso2.integrationstudio.artifact.synapse.api.exceptions.SwaggerDefinit
 import org.wso2.integrationstudio.artifact.synapse.api.model.APIArtifactModel;
 import org.wso2.integrationstudio.artifact.synapse.api.model.APIMAPIArtifactModel;
 import org.wso2.integrationstudio.artifact.synapse.api.util.APIImageUtils;
+import org.wso2.integrationstudio.artifact.synapse.api.util.ArtifactConstants;
 import org.wso2.integrationstudio.artifact.synapse.api.util.MetadataUtils;
 import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
 import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
@@ -81,12 +113,14 @@ import org.wso2.integrationstudio.platform.ui.editor.Openable;
 import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsDataPage;
-import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsPage;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfo;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfoDoc;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceUtils;
 import org.wso2.integrationstudio.utils.file.FileUtils;
 import org.wso2.integrationstudio.utils.project.ProjectUtils;
+import org.wso2.soaptorest.SOAPToRESTConverter;
+import org.wso2.soaptorest.models.SOAPRequestElement;
+import org.wso2.soaptorest.models.SOAPtoRESTConversionData;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
@@ -98,6 +132,9 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Synapse API";
+    private static final String DIR_DOT_METADATA = ".metadata";
+    private static final String DIR_SOAPTOREST= "SoapToREST";
+    
     private final APIArtifactModel artifactModel;
     private IFile artifactFile;
     private ESBProjectArtifact esbProjectArtifact;
@@ -110,7 +147,9 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     private static final String WHITE_SPACE = " ";
     private static final String METADATA_TYPE = "synapse/metadata";
     private static final String REGISTRY_RESOURCE_PATH = "/_system/governance/swagger_files";
-
+    private static final String SOAP_BODY_PREFIX = "<soapenv:Envelope xmlns:soapenv"
+            + "=\"http://www.w3.org/2003/05/soap-envelope\">\r\n<soapenv:Header/>\r\n<soapenv:Body>\r\n";
+    private static final String SOAP_BODY_POSTFIX = "</soapenv:Body>\r\n</soapenv:Envelope>\r\n";
     private String version;
 
     private ImportPublisherAPIWizardPage importPublisherAPIWizard;
@@ -169,6 +208,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             boolean isNewArtifact = true;
             esbProject = artifactModel.getSaveLocation().getProject();
             IContainer location = esbProject.getFolder("src/main/synapse-config/api");
+            IContainer endpointLocation = esbProject.getFolder("src/main/synapse-config/endpoints");
             File pomfile = esbProject.getFile("pom.xml").getLocation().toFile();
             if (!pomfile.exists()) {
                 createPOM(pomfile);
@@ -179,6 +219,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             String mavenGroupId = getMavenGroupId(pomfile);
             String groupId = mavenGroupId + ".api";
+            String endpointGroupId = mavenGroupId + ".endpoint";
             String metadataGroupId = mavenGroupId + ".metadata";
             IContainer metadataLocation = esbProject.getFolder("src/main/resources/metadata");
             // no medatadata folder-> old project structure
@@ -276,6 +317,188 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     apiFileName = apiName;
                 } 
 
+            } else if (getModel().getSelectedOption().equals("create.api.from.wsdl")) {
+                String apiName = artifactModel.getName();
+                artifactModel.setName(apiName);
+                artifactFile = location.getFile(new Path(apiName + ".xml"));
+                File destFile = artifactFile.getLocation().toFile();
+                SOAPtoRESTConversionData soaPtoRESTConversionData = null;
+                boolean initSuccess = true;
+
+                try {
+                    if (artifactModel.getAPIWSDLType().equals(ArtifactConstants.API_TYPE_WSDL_URL)) {
+                        URL url = new URL(artifactModel.getAPIWSDLurl());
+                        soaPtoRESTConversionData = SOAPToRESTConverter.getSOAPtoRESTConversionData(url, apiName,
+                                "1.0.0");
+                    } else {
+                        String wsdlFilePath = null;
+                        if (artifactModel.getAPIWSDLFile().getAbsolutePath().endsWith(".zip")) {
+                            String parentDirectoryPath = ResourcesPlugin.getWorkspace().getRoot().getLocation()
+                                    .toOSString() + File.separator + DIR_DOT_METADATA + File.separator + DIR_SOAPTOREST
+                                    + File.separator + apiName;
+                            File outputDir = new File(parentDirectoryPath);
+                            if (!outputDir.exists()) {
+                                outputDir.mkdir();
+                            }
+
+                            try (ZipFile zipFile = new ZipFile(artifactModel.getAPIWSDLFile())) {
+                                Enumeration<? extends ZipEntry> entries = zipFile.entries();
+                                while (entries.hasMoreElements()) {
+                                    ZipEntry entry = entries.nextElement();
+                                    File entryDestination = new File(outputDir, entry.getName());
+                                    if (entry.isDirectory()) {
+                                        entryDestination.mkdirs();
+                                    } else {
+                                        entryDestination.getParentFile().mkdirs();
+                                        try (InputStream in = zipFile.getInputStream(entry);
+                                                OutputStream out = new FileOutputStream(entryDestination)) {
+                                            IOUtils.copy(in, out);
+                                        }
+                                    }
+                                }
+                            } catch (IOException e) {
+                                log.error("Error while unziping wsdl zip", e);
+                                initSuccess = false;
+                            }
+
+                            Collection<File> foundWSDLFiles = org.apache.commons.io.FileUtils.listFiles(outputDir,
+                                    new String[] { "wsdl" }, true);
+                            for (File file : foundWSDLFiles) {
+                                wsdlFilePath = file.getAbsolutePath();
+                                // set the first found WSDL as wsdlDefinition assuming that it is the root WSDL
+                                break;
+                            }
+                        } else {
+                            wsdlFilePath = artifactModel.getAPIWSDLFile().getAbsolutePath();
+                        }
+                        soaPtoRESTConversionData = SOAPToRESTConverter.getSOAPtoRESTConversionData(wsdlFilePath,
+                                apiName, "1.0.0");
+                    }
+                } catch (Exception e) {
+                    log.error("Could not generate REST API from provided WSDL File", e);
+                    initSuccess = false;
+                }
+
+                if (initSuccess) {
+                    // Create WSDL Endpoint
+                    String synapseWSDLEndpointName = apiName + "_SOAP_ENDPOINT";
+                    String synapseWSDLEndpointFileName = apiName + "_SOAP_ENDPOINT.xml";
+                    
+                    String endpoint = artifactModel.getApiWSDLEndpoint();
+                    
+                    WSDLEndpoint wsdlEndpoint = new WSDLEndpoint();
+                    wsdlEndpoint.setName(synapseWSDLEndpointName);
+                    if (!endpoint.endsWith("wsdl")) {
+                        endpoint = endpoint.concat("?wsdl");
+                    }
+                    wsdlEndpoint.setWsdlURI(endpoint);
+                    wsdlEndpoint.setServiceName(soaPtoRESTConversionData.getSoapService());
+                    wsdlEndpoint.setPortName(soaPtoRESTConversionData.getSoapPort());
+                    
+                    EndpointDefinition endpointDefinition = new EndpointDefinition();
+                    wsdlEndpoint.setDefinition(endpointDefinition);
+
+                    IFile endpointArtifactFile = endpointLocation
+                            .getFile(new Path(synapseWSDLEndpointFileName));
+                    File endpointDestFile = endpointArtifactFile.getLocation().toFile();
+                    FileUtils.createFile(endpointDestFile,
+                            EndpointSerializer.getElementFromEndpoint(wsdlEndpoint).toString());
+                    String relativePathForEP = FileUtils
+                            .getRelativePath(esbProject.getLocation().toFile(),
+                                    new File(endpointLocation.getLocation().toFile(), synapseWSDLEndpointFileName))
+                            .replaceAll(Pattern.quote(File.separator), "/");
+                    esbProjectArtifact.addESBArtifact(createArtifactForEndpoint(synapseWSDLEndpointName,
+                            endpointGroupId, version, relativePathForEP));
+
+                    // Generate Synapse API from WSDL File
+                    String swaggerYaml = soaPtoRESTConversionData.getOASString();
+                    OMElement omElement = getSynapseAPIFromSwagger(swaggerYaml, apiName);
+                    API api = APIFactory.createAPI(omElement);
+
+                    TransformerFactory tf = TransformerFactory.newInstance();
+                    Transformer transformer = tf.newTransformer();
+                    transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+
+                    Set<Entry<String, SOAPRequestElement>> soapElementEntry = soaPtoRESTConversionData.getAllSOAPRequestBodies();
+                    for (Entry<String, SOAPRequestElement> requestElementEntry : soapElementEntry) {
+                        SOAPRequestElement soapRequestElement = requestElementEntry.getValue();
+
+                        Resource[] resources = api.getResources();
+                        for (Resource resource : resources) {
+                            String resourcePath = ((URLMappingHelper) resource.getDispatcherHelper()).getString();
+                            if (resourcePath.contains(requestElementEntry.getKey())) {
+                                StringWriter writer = new StringWriter();
+                                transformer.transform(new DOMSource(soapRequestElement.getSoapRequestBody()),
+                                        new StreamResult(writer));
+                                String soapPayload = writer.getBuffer().toString();
+                                SequenceMediator sequence = new SequenceMediator();
+
+                                if (StringUtils.isNotBlank(soapRequestElement.getSoapAction())) {
+                                    HeaderMediator headerMediator = new HeaderMediator();
+                                    headerMediator.setDescription("SOAPAction");
+                                    headerMediator.setScope("transport");
+                                    headerMediator.setValue(soapRequestElement.getSoapAction());
+                                    headerMediator.setQName(new QName("SOAPAction"));
+                                    sequence.addChild(headerMediator);
+                                }
+                                PropertyMediator propertyMediator1 = new PropertyMediator();
+                                propertyMediator1.setName("REST_URL_POSTFIX");
+                                propertyMediator1.setScope("axis2");
+                                propertyMediator1.setAction(PropertyMediator.ACTION_REMOVE);
+                                sequence.addChild(propertyMediator1);
+
+                                PayloadFactoryMediator payloadFactoryMediator = new PayloadFactoryMediator();
+                                payloadFactoryMediator.setTemplateType("freemarker");
+                                payloadFactoryMediator.setTemplateProcessor(new FreeMarkerTemplateProcessor());
+                                payloadFactoryMediator.setType("xml");
+                                payloadFactoryMediator.setFormat(SOAP_BODY_PREFIX + soapPayload + SOAP_BODY_POSTFIX);
+                                sequence.addChild(payloadFactoryMediator);
+
+                                PropertyMediator propertyMediator2 = new PropertyMediator();
+                                propertyMediator2.setName("messageType");
+                                propertyMediator2.setScope("axis2");
+                                propertyMediator2.setValue("application/soap+xml", "STRING");
+                                sequence.addChild(propertyMediator2);
+
+                                IndirectEndpoint indirectEndpoint = new IndirectEndpoint();
+                                indirectEndpoint.setKey(synapseWSDLEndpointName);
+
+                                CallMediator callMediator = new CallMediator();
+                                callMediator.setEndpoint(indirectEndpoint);
+                                sequence.addChild(callMediator);
+
+                                PropertyMediator propertyMediator3 = new PropertyMediator();
+                                propertyMediator3.setName("messageType");
+                                propertyMediator3.setScope("axis2");
+                                propertyMediator3.setValue("application/json", "STRING");
+                                sequence.addChild(propertyMediator3);
+
+                                RespondMediator respondMediator = new RespondMediator();
+                                sequence.addChild(respondMediator);
+                                resource.setInSequence(sequence);
+
+                                resource.setOutSequence(new SequenceMediator());
+                            }
+                        }
+                    }
+
+                    FileUtils.createFile(destFile, APISerializer.serializeAPI(api).toString());
+                    fileLst.add(destFile);
+                    String relativePath = FileUtils
+                            .getRelativePath(esbProject.getLocation().toFile(),
+                                    new File(location.getLocation().toFile(), apiName + ".xml"))
+                            .replaceAll(Pattern.quote(File.separator), "/");
+                    esbProjectArtifact.addESBArtifact(createArtifact(apiName, groupId, version, relativePath));
+                    esbProjectArtifact.toFile();
+
+                    if (meadataEnabled) {
+                        synapseApi = APIFactory.createAPI(omElement);
+                        IFile swaggerFile = metadataLocation.getFile(new Path(apiName + "_swagger.yaml"));
+                        FileUtils.createFile(swaggerFile.getLocation().toFile(), swaggerYaml);
+                        createMetadataArtifactEntry(metadataLocation, apiName, metadataGroupId, true);
+                        apiFileName = apiName;
+                    }
+                }
             } else {
                 String resolvedArtifactName = artifactModel.getName();
                 if (artifactModel.getVersion() != "") {
@@ -424,20 +647,6 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         }
     }
 
-    // private String getAPINameFromSwagger(File swaggerFile) throws SwaggerDefinitionProcessingException {
-    // String apiName = "";
-    // try {
-    // String swaggerJson = getSwaggerFileAsJSON(swaggerFile);
-    // JSONObject fullSwaggerJSON = new JSONObject(swaggerJson);
-    // JSONObject swaggerInfo = (JSONObject) fullSwaggerJSON.get("info");
-    // apiName = swaggerInfo.get("title").toString();
-    // } catch (Exception e) {
-    // log.error("Exception occured while extracting API name from the swagger file", e);
-    // throw new SwaggerDefinitionProcessingException("Invalid swagger definition.", e);
-    // }
-    // return apiName;
-    // }
-
     public void copyImportFile(IContainer importLocation, boolean isNewAritfact, String groupId) throws IOException {
         File importFile = getModel().getImportFile();
         File destFile = null;
@@ -496,6 +705,17 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         artifact.setServerRole("EnterpriseServiceBus");
         artifact.setGroupId(groupId);
         artifact.setApiId(apiId);
+        artifact.setFile(path);
+        return artifact;
+    }
+    
+    private ESBArtifact createArtifactForEndpoint(String name, String groupId, String version, String path) {
+        ESBArtifact artifact = new ESBArtifact();
+        artifact.setName(name);
+        artifact.setVersion(version);
+        artifact.setType("synapse/endpoint");
+        artifact.setServerRole("EnterpriseServiceBus");
+        artifact.setGroupId(groupId);
         artifact.setFile(path);
         return artifact;
     }
@@ -676,6 +896,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         boolean apiPluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-api-plugin");
         boolean metaPluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
                 "wso2-esb-metadata-plugin");
+        boolean endpointPluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
+                "wso2-esb-endpoint-plugin");
 
         if (!apiPluginExists) {
             Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-api-plugin",
@@ -701,6 +923,23 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             pluginExecution.addGoal("pom-gen");
             pluginExecution.setPhase("process-resources");
             pluginExecution.setId("metadata");
+
+            Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+            Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+            artifactLocationNode.setValue(".");
+            Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+            typeListNode.setValue("${artifact.types}");
+            pluginExecution.setConfiguration(configurationNode);
+            plugin.addExecution(pluginExecution);
+            MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+        }
+        if (!endpointPluginExists) {
+            Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-endpoint-plugin",
+                    ESBMavenConstants.WSO2_ESB_ENDPOINT_VERSION, true);
+            PluginExecution pluginExecution = new PluginExecution();
+            pluginExecution.addGoal("pom-gen");
+            pluginExecution.setPhase("process-resources");
+            pluginExecution.setId("endpoint");
 
             Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
             Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");

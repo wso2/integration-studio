@@ -46,6 +46,8 @@ public class TemplateParameterPropertiesEditionComponent extends SinglePartPrope
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
+	private static final String DEFAULT_VALUE_VALIDATION_MESSAGE = "Mandatory 'Default Value' cannot be empty.";
+	private static final String NAME_VALIDATION_MESSAGE = "Mandatory 'Name' cannot be empty.";
 
 	
 	
@@ -228,6 +230,21 @@ public class TemplateParameterPropertiesEditionComponent extends SinglePartPrope
 			}
 		}
 		return ret;
+	}
+	
+	@Override
+	public Diagnostic validate() {
+		TemplateParameterPropertiesEditionPart basePart = (TemplateParameterPropertiesEditionPart)editingPart;
+		if (basePart.getIsMandatory() && (basePart.getName() == null || basePart.getName().length() == 0)) {
+			return new BasicDiagnostic
+				      (Diagnostic.ERROR, "org.eclipse.emf.common", 0, NAME_VALIDATION_MESSAGE, null);
+		}
+		if (basePart.getIsMandatory() && (basePart.getDefaultValue() == null || basePart.getDefaultValue().length() == 0)) {
+			return new BasicDiagnostic
+				      (Diagnostic.ERROR, "org.eclipse.emf.common", 0, DEFAULT_VALUE_VALIDATION_MESSAGE, null);
+		}
+		return super.validate();
+		
 	}
 
 

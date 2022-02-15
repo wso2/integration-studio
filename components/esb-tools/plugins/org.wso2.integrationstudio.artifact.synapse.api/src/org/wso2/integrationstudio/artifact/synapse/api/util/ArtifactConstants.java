@@ -80,7 +80,7 @@ public class ArtifactConstants extends NLS {
     }
     
     public static class PublisherAPI {
-        public static final String getAPis = "/api/am/publisher/v2/apis";
+        public static final String getAPis = "/api/am/publisher/v3/apis";
 
     }
 	

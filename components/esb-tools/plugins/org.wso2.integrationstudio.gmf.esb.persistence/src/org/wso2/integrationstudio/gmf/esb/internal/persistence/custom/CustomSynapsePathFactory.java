@@ -90,7 +90,9 @@ public class CustomSynapsePathFactory {
         if (StringUtils.isNotBlank(expression)) {
 
             if (expression.startsWith("json-eval(")) {
-                path = new SynapseJsonPath(expression.substring(10, expression.length() - 1));
+            	String pathString = expression.substring(10, expression.length() - 1);
+            	pathString = pathString.replaceAll("\\.+$", "");
+                path = new SynapseJsonPath(pathString);
             } else {
                 path = new SynapseXPath(expression);
             }

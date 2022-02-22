@@ -18,6 +18,7 @@
 package org.wso2.integrationstudio.gmf.esb.presentation;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -30,6 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
+import java.util.Scanner;
 
 import org.codehaus.jettison.json.JSONException;
 
@@ -358,6 +360,41 @@ public class EEFPropertyViewUtil {
         }
         return definedTemplates;
     }
+    
+	public static File getFileContent(String fileName) throws FileNotFoundException {
+		File projectPath = null;
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+		File artifact = null;
+		for (IProject activeProject : projects) {
+			if (activeProject != null) {
+				try {
+					if (activeProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
+						ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
+						projectPath = activeProject.getLocation().toFile();
+						try {
+							esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml").getLocation().toFile());
+							List<ESBArtifact> allESBArtifacts = esbProjectArtifact.getAllESBArtifacts();
+							for (ESBArtifact esbArtifact : allESBArtifacts) {
+								if (TYPE_TEMPLATE_SEQ.equals(esbArtifact.getType())) {
+									artifact = new File(projectPath, esbArtifact.getFile());
+								} else if (TYPE_TEMPLATE_EPT.equals(esbArtifact.getType())) {
+									artifact = new File(projectPath, esbArtifact.getFile());
+								}
+								if (artifact != null && artifact.getName().equals(fileName)) {
+									return artifact;
+								}
+							}
+						} catch (Exception e) {
+							log.error("Error occured while scanning the project for artifacts", e);
+						}
+					}
+				} catch (CoreException e) {
+					log.error("Error occured while scanning the project", e);
+				}
+			}
+		}
+		throw new FileNotFoundException();
+	}
 
     public static String spaceFormat(String str) {
         int maxLength = 120;

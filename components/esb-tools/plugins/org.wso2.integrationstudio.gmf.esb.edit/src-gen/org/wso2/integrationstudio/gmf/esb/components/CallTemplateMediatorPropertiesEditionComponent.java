@@ -3,9 +3,17 @@
  */
 package org.wso2.integrationstudio.gmf.esb.components;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashSet;
 // Start of user code for imports
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,7 +22,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
-
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -49,14 +57,25 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSet
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.wso2.integrationstudio.gmf.esb.CallTemplateMediator;
 import org.wso2.integrationstudio.gmf.esb.CallTemplateParameter;
 import org.wso2.integrationstudio.gmf.esb.EsbPackage;
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
+import org.wso2.integrationstudio.gmf.esb.impl.CallTemplateParameterImpl;
 import org.wso2.integrationstudio.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.integrationstudio.gmf.esb.impl.NamespacedPropertyImpl;
 import org.wso2.integrationstudio.gmf.esb.parts.CallTemplateMediatorPropertiesEditionPart;
 import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
+import org.wso2.integrationstudio.gmf.esb.persistence.Activator;
+import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
+import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
+import org.wso2.integrationstudio.logging.core.Logger;
+import org.xml.sax.SAXException;
 
 
 // End of user code
@@ -75,7 +94,8 @@ public class CallTemplateMediatorPropertiesEditionComponent extends SinglePartPr
 	 * Settings for templateParameters ReferencesTable
 	 */
 	protected ReferencesTableSettings templateParametersSettings;
-	
+	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    
 	
 	/**
 	 * Default constructor
@@ -218,6 +238,43 @@ public class CallTemplateMediatorPropertiesEditionComponent extends SinglePartPr
 		}
 		if (EsbViewsRepository.CallTemplateMediator.Properties.availableTemplates == event.getAffectedEditor()) {
 			callTemplateMediator.setAvailableTemplates((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+			try {
+				File xmlFile = EEFPropertyViewUtil.getFileContent(((String) event.getNewValue()) + ".xml");
+				Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile);
+				doc.getDocumentElement().normalize();
+
+				NodeList nodeList = doc.getChildNodes().item(0).getChildNodes();
+				Set<String> callTemplateParameterNameSet = new HashSet<>();
+				for (CallTemplateParameter element : callTemplateMediator.getTemplateParameters()) {
+					callTemplateParameterNameSet.add(element.getParameterName());
+				}
+				for (int i = 0; i < nodeList.getLength(); i++) {
+					Node node = nodeList.item(i);
+					String tagName = node.getNodeName();
+					if (tagName.equals("parameter")) {
+						NamedNodeMap namedNodeMap = node.getAttributes();
+						String name = namedNodeMap.getNamedItem("name").getNodeValue();
+						if (callTemplateParameterNameSet.contains(name)) {
+							continue;
+						} else {
+							callTemplateParameterNameSet.add(name);
+						}
+						CallTemplateParameter callTemplateParameter = new CallTemplateParameterImpl();
+						callTemplateParameter.setParameterName(name);
+						callTemplateParameter.setParameterValue(namedNodeMap.getNamedItem("defaultValue").getNodeValue());
+						NamespacedProperty namespacedProperty =  new NamespacedPropertyImpl();
+				        namespacedProperty.setPrettyName("parameter expression");
+				        namespacedProperty.setPropertyName("expression");
+				        namespacedProperty.setPropertyValue("");
+				        namespacedProperty.setSupportsDynamicXPaths(true);
+				        callTemplateParameter.setParameterExpression(namespacedProperty);
+						callTemplateMediator.getTemplateParameters().add(callTemplateParameter);
+					}
+				}
+			} catch (IOException | SAXException | ParserConfigurationException e) {
+				log.error(String.format("Exception while auto generating parameters for template : %s.", (String) event.getNewValue()), e);
+			}
+			
 		}
 		if (EsbViewsRepository.CallTemplateMediator.Properties.templateParameters == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {

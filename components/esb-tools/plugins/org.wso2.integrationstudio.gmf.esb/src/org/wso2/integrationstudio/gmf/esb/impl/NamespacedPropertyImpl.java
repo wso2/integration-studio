@@ -175,7 +175,7 @@ public class NamespacedPropertyImpl extends EsbNodeImpl implements NamespacedPro
      * 
      * @generated NOT
      */
-    protected NamespacedPropertyImpl() {
+    public NamespacedPropertyImpl() {
         super();
         setNamespaces(new HashMap<String, String>());
     }

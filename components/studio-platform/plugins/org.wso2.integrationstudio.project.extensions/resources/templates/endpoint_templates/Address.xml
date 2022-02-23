@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template xmlns="http://ws.apache.org/ns/synapse" name="{ep.name}">
+<template xmlns="http://ws.apache.org/ns/synapse" name="{0}">
 	<endpoint name="$name">
-		<address uri="{address.uri}">
+		<address uri="{1}">
 			<suspendOnFailure>
 				<progressionFactor>1.0</progressionFactor>
 			</suspendOnFailure>

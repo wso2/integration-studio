@@ -403,19 +403,33 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
                 	// File may located in another open project in the workspace.
                 	IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
                     IProject[] projects = workspaceRoot.getProjects();
+                    boolean fileOpened = false;
                     for (int i = 0; i < projects.length; i++) {
                        IProject project = projects[i];
                        if (project == currentProject) {
                     	   continue;
                        }
                        if (project.isOpen()) {
-                    	   fileTobeOpened = project.getFile(SYNAPSE_CONFIG_DIR + "/templates/" + name + ".xml");
-                    	   if (fileTobeOpened.exists()) {
+                    	   IFile fileInOtherProject = project.getFile(SYNAPSE_CONFIG_DIR + "/templates/" + name + ".xml");
+                    	   if (fileInOtherProject.exists()) {
                                OpenEditorUtils oeUtils = new OpenEditorUtils();
-                               oeUtils.openSeparateEditor(fileTobeOpened);
+                               oeUtils.openSeparateEditor(fileInOtherProject);
+                               fileOpened = true;
                                break;
                            }
                        }
+                    }
+                    if (!fileOpened) {
+	                    updatePom();
+	                    addSequenceToArtifactXML(name);
+	                    String path = fileTobeOpened.getParent().getFullPath() + "/";
+	                    ArtifactTemplate sequenceArtifactTemplate = getTemplateArtifactTemplates()[0];
+	                    String source = FileUtils.getContentAsString(sequenceArtifactTemplate.getTemplateDataStream());
+	                    source = MessageFormat.format(source, name);
+	                    fileTobeOpened.create(new ByteArrayInputStream(source.getBytes()), true, new NullProgressMonitor());
+	                    Openable openable = ESBGraphicalEditor.getOpenable();
+	                    openable.editorOpen(fileTobeOpened.getName(), ArtifactType.TEMPLATE_SEQUENCE.getLiteral(), path,
+	                            source);
                     }
                 }
             } catch (Exception e) {

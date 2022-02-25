@@ -694,21 +694,21 @@ public class DependencyTree {
                 }
             }
         }
-		List<String> modifiedDepList = new ArrayList<>();
-		for (String element : dependencyList) {
-			modifiedDepList.add(element.replaceAll("\\\\", "").replaceAll("\\/", ""));
-		}
-		for (final TreeItem parentItem : trDependencies.getItems()) {
-			if (parentItem != null) {
-				for (final TreeItem item : parentItem.getItems()) {
-					String itemPath = item.getText(1).replaceAll("\\\\", "").replaceAll("\\/", "");
+        List<String> modifiedDepList = new ArrayList<>();
+        for (String element : dependencyList) {
+            modifiedDepList.add(element.replaceAll("\\\\", "").replaceAll("\\/", ""));
+        }
+        for (final TreeItem parentItem : trDependencies.getItems()) {
+            if (parentItem != null) {
+                for (final TreeItem item : parentItem.getItems()) {
+                    String itemPath = item.getText(1).replaceAll("\\\\", "").replaceAll("\\/", "");
 
-					if (modifiedDepList.stream().anyMatch(str -> str.trim().equals(itemPath))) {
-						item.setChecked(true);
-					}
-				}
-			}
-		}
+                    if (modifiedDepList.stream().anyMatch(str -> str.trim().equals(itemPath))) {
+                        item.setChecked(true);
+                    }
+                }
+            }
+        }
     }
 
     /**

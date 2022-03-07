@@ -19,6 +19,7 @@ package org.wso2.integrationstudio.esb.synapse.unit.test.component;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -693,13 +694,16 @@ public class DependencyTree {
                 }
             }
         }
-
+        List<String> modifiedDepList = new ArrayList<>();
+        for (String element : dependencyList) {
+            modifiedDepList.add(element.replaceAll("\\\\", "").replaceAll("\\/", ""));
+        }
         for (final TreeItem parentItem : trDependencies.getItems()) {
             if (parentItem != null) {
                 for (final TreeItem item : parentItem.getItems()) {
-                    String itemPath = item.getText(1);
+                    String itemPath = item.getText(1).replaceAll("\\\\", "").replaceAll("\\/", "");
 
-                    if (dependencyList.stream().anyMatch(str -> str.trim().equals(itemPath))) {
+                    if (modifiedDepList.stream().anyMatch(str -> str.trim().equals(itemPath))) {
                         item.setChecked(true);
                     }
                 }

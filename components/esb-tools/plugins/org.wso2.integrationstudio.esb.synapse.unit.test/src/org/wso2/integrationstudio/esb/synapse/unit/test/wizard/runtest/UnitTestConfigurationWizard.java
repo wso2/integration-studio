@@ -118,41 +118,38 @@ public class UnitTestConfigurationWizard extends Wizard implements IExportWizard
      * @param targetFolder
      *            target folder
      */
-    private void createAndRunMavenTestAnProfile(ILaunchManager launchManager, IProject project, String targetFolder,
+    private void createAndRunMavenTestAnProfile(ILaunchManager launchManager, IProject project, final String targetFolder,
             UnitTestConfigurationDetailPage unitTestConfigDetailPage) throws CoreException {
 
         // update if unit test profile exists
         String mavenTestGoal = generateMavenTestGoal(unitTestConfigDetailPage);
-        ILaunchConfiguration unitTestLauncher = findLaunchConfigurationByName(launchManager, MAVEN_UNIT_TEST);
         
-        if (unitTestLauncher != null) {
-            unitTestLauncher.getWorkingCopy().setAttribute(MAVEN_GOAL_KEY, mavenTestGoal);
-            unitTestLauncher.getWorkingCopy().setAttribute(MAVEN_WORKING_DIR_KEY, "${workspace_loc:/" + project.getName() + "}");
-            unitTestLauncher.getWorkingCopy().doSave();
-        } else {
-            // creating a new Launcher for unit testing
-            ILaunchConfigurationType mavenTestLaunchType = launchManager
-                    .getLaunchConfigurationType(MAVEN_CONFIGURATION_TYPE);
-            ILaunchConfigurationWorkingCopy mavenTestLaunchConfig = mavenTestLaunchType.newInstance(null,
-                    DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(MAVEN_UNIT_TEST));
-
-            // set maven properties for the created launcher
-            mavenTestLaunchConfig.setAttribute(MAVEN_GOAL_KEY, mavenTestGoal);
-            mavenTestLaunchConfig.setAttribute(MAVEN_WORKING_DIR_KEY, "${workspace_loc:/" + project.getName() + "}");
-            String javaHomePath = getJavaHomePath();
-            Map<String, String> environmentVariableMap = new HashMap<>();
-            environmentVariableMap.put(JAVA_HOME_KEY, javaHomePath);
-            mavenTestLaunchConfig.setAttribute(MAVEN_ENVIRONMENT_KEY, environmentVariableMap);
-
-            // save the launcher with configuration data
-            mavenTestLaunchConfig.doSave();
+        // remove existing maven launcher for unit testing
+        if (findLaunchConfigurationByName(launchManager, MAVEN_UNIT_TEST) != null) {
+            findLaunchConfigurationByName(launchManager, MAVEN_UNIT_TEST).delete();
         }
 
+        // creating a new Launcher for unit testing
+        ILaunchConfigurationType mavenTestLaunchType = launchManager
+                .getLaunchConfigurationType(MAVEN_CONFIGURATION_TYPE);
+        ILaunchConfigurationWorkingCopy mavenTestLaunchConfig = mavenTestLaunchType.newInstance(null,
+                DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(MAVEN_UNIT_TEST));
 
+        // set maven properties for the created launcher
+        mavenTestLaunchConfig.setAttribute(MAVEN_GOAL_KEY, mavenTestGoal);
+        mavenTestLaunchConfig.setAttribute(MAVEN_WORKING_DIR_KEY, "${workspace_loc:/" + project.getName() + "}");
+        String javaHomePath = getJavaHomePath();
+        Map<String, String> environmentVariableMap = new HashMap<>();
+        environmentVariableMap.put(JAVA_HOME_KEY, javaHomePath);
+        mavenTestLaunchConfig.setAttribute(MAVEN_ENVIRONMENT_KEY, environmentVariableMap);
+
+        // save the launcher with configuration data
+        mavenTestLaunchConfig.doSave();
+        
         // Select the maven launcher and run it
         for (ILaunchConfiguration launchConfig : launchManager.getLaunchConfigurations()) {
             if (launchConfig.getName().equals(MAVEN_UNIT_TEST)) {
-                ILaunch lauch = launchConfig.launch(LAUNCHER_RUN, null);
+                final ILaunch lauch = launchConfig.launch(LAUNCHER_RUN, null);
 
                 new Thread() {
                     public void run() {

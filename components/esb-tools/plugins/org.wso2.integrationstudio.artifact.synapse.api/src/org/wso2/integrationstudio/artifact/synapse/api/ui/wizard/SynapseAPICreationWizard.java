@@ -121,8 +121,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     private static final String METADATA_TYPE = "synapse/metadata";
     private static final String REGISTRY_RESOURCE_PATH = "/_system/governance/swagger_files";
     private static final String SWAGGER_CONVERTER_API_URL = "https://converter.swagger.io/api/convert";
-    private static final String SWAGGER_API_CALL_CONSENT_TITLE = "Swagger Api call";
-    private static final String SWAGGER_API_CALL_CONSENT_MESSAGE = "Swagger file with version 2 is detected.\nIntegration Studio supports swagger version 3 and above only.\nYou can convert to version 3 by clicking 'Yes'. Studio will use https://converter.swagger.io api to convert your payload.\nIf you think detected version is false you can continue with the original swagger content by clicking 'No'.\nClick 'Cancel' to terminate the API creation.";
+    private static final String SWAGGER_API_CALL_CONSENT_TITLE = "Convert to Swagger version 3?";
+    private static final String SWAGGER_API_CALL_CONSENT_MESSAGE = "Integration Studio supports Swagger version 3 and above only. The Swagger file you have uploaded is version 2. You can convert this file to version 3 by clicking “Yes”. Note that Integration Studio uses the https://converter.swagger.io API to convert your payload.\n\nYou can continue with the Swagger file you uploaded by clicking “No”, if you feel the detected version is incorrect.\n\nClick “Cancel” to terminate the API creation process.";
     private static final String SWAGGER_API_CALL_FAILED_TITLE = "Conversion failed";
     private static final String SWAGGER_API_CALL_FAILED_MESSAGE = "Failed to convert swagger 2 content to swagger 3. Please make sure you are connected to the internet and try again.";
     
@@ -721,7 +721,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     }
     
     private boolean isVersionTwoYamlFile(String yamlContent) {
-    	Pattern p = Pattern.compile("([ ]*)(swagger[ ]*:[ ]*\"[2])(.*)");
+    	Pattern p = Pattern.compile("([ ]*)(swagger[ ]*:[ ]*[\\\"]?[2][.])(.*)");
     	Matcher m = p.matcher(yamlContent.toLowerCase());
     	if (m.find()) {
     		return true;

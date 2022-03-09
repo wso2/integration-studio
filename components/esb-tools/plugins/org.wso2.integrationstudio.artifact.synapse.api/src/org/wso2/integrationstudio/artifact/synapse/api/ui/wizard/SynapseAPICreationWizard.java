@@ -16,13 +16,20 @@
 
 package org.wso2.integrationstudio.artifact.synapse.api.ui.wizard;
 
+import java.awt.PageAttributes.MediaType;
 import java.io.File;
 import java.io.IOException;
+import java.net.ConnectException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.xml.namespace.QName;
@@ -33,11 +40,13 @@ import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
 import org.apache.axiom.om.util.AXIOMUtil;
+import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
+import org.apache.maven.wagon.ConnectionException;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.api.API;
@@ -52,6 +61,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.json.simple.JSONValue;
 import org.wso2.carbon.rest.api.APIException;
 import org.wso2.carbon.rest.api.service.RestApiAdmin;
@@ -72,6 +85,7 @@ import org.wso2.integrationstudio.general.project.artifact.bean.RegistryElement;
 import org.wso2.integrationstudio.general.project.artifact.bean.RegistryItem;
 import org.wso2.integrationstudio.gmf.esb.APIVersionType;
 import org.wso2.integrationstudio.gmf.esb.ArtifactType;
+import org.wso2.integrationstudio.gmf.esb.ContentType;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.maven.util.MavenUtils;
@@ -106,7 +120,12 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     private static final String WHITE_SPACE = " ";
     private static final String METADATA_TYPE = "synapse/metadata";
     private static final String REGISTRY_RESOURCE_PATH = "/_system/governance/swagger_files";
-
+    private static final String SWAGGER_CONVERTER_API_URL = "https://converter.swagger.io/api/convert";
+    private static final String SWAGGER_API_CALL_CONSENT_TITLE = "Swagger Api call";
+    private static final String SWAGGER_API_CALL_CONSENT_MESSAGE = "Swagger file with version 2 is detected.\nIntegration Studio supports swagger version 3 and above only.\nYou can convert to version 3 by clicking 'Yes'. Studio will use https://converter.swagger.io api to convert your payload.\nIf you think detected version is false you can continue with the original swagger content by clicking 'No'.\nClick 'Cancel' to terminate the API creation.";
+    private static final String SWAGGER_API_CALL_FAILED_TITLE = "Conversion failed";
+    private static final String SWAGGER_API_CALL_FAILED_MESSAGE = "Failed to convert swagger 2 content to swagger 3. Please make sure you are connected to the internet and try again.";
+    
     private String version;
 
     public SynapseAPICreationWizard() {
@@ -462,11 +481,51 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 
     private String getSwaggerFileAsYAML(File swaggerFile, String apiName) {
         String swaggerContent = "";
+        boolean terminateFlag = false;
         try {
             swaggerContent = new String(Files.readAllBytes(Paths.get(swaggerFile.getAbsolutePath())));
             if (FilenameUtils.getExtension(swaggerFile.getAbsolutePath()).equals("json")) {
                 swaggerContent = convertJSONtoYaml(swaggerContent);
             }
+            if (isVersionTwoYamlFile(swaggerContent)) {
+	        	Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();;
+				MessageBox dialog = new MessageBox(shell, SWT.ICON_QUESTION | SWT.YES | SWT.NO | SWT.CANCEL);
+				dialog.setText(SWAGGER_API_CALL_CONSENT_TITLE);
+				dialog.setMessage(SWAGGER_API_CALL_CONSENT_MESSAGE);
+	
+				int returnCode = dialog.open();
+				if (SWT.YES == returnCode) {
+					HttpClient client = HttpClient.newHttpClient();
+			        HttpRequest request = HttpRequest.newBuilder()
+			                .uri(URI.create(SWAGGER_CONVERTER_API_URL))
+			                .POST(HttpRequest.BodyPublishers.ofString(swaggerContent))
+			                .setHeader("Content-Type", ContentType.YAML.getLiteral())
+			                .build();
+			        HttpResponse<String> response;
+			        try {
+			        	response = client.send(request,
+			                HttpResponse.BodyHandlers.ofString());
+			        	if (response.statusCode() == HttpStatus.SC_OK) {
+				        	swaggerContent = response.body();
+				        } else {
+				        	throw new ConnectionException(String.format("Unexpected response code received from api. %s", response.statusCode()));
+				        }
+			        } catch (ConnectException e) {
+			        	MessageBox dialogRequestFailed = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+						dialogRequestFailed.setText(SWAGGER_API_CALL_FAILED_TITLE);
+						dialogRequestFailed.setMessage(SWAGGER_API_CALL_FAILED_MESSAGE);
+						dialogRequestFailed.open();
+						terminateFlag = true;
+						log.error(e.getMessage());
+						throw new Exception(e.getMessage());
+			        }
+			        
+				} else if (SWT.CANCEL == returnCode) {
+					terminateFlag = true;
+					throw new Exception("User terminated api creation.");
+				}
+            }
+            
             RestApiAdmin restAPIAdmin = new RestApiAdmin();
             swaggerContent = restAPIAdmin.updateNameInSwagger(apiName, swaggerContent);
         } catch (IOException e) {
@@ -474,6 +533,9 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         } catch (APIException e) {
             log.error("Exception occured while updating swagger name", e);
         } catch (Exception e) {
+            if (terminateFlag) {
+            	throw new RuntimeException(e.getMessage());
+            }
             log.error("Exception occured while converting swagger JSON to YAML", e);
         }
         return swaggerContent;
@@ -657,5 +719,13 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             log.error("Cannot open the editor", e);
         }
     }
-
+    
+    private boolean isVersionTwoYamlFile(String yamlContent) {
+    	Pattern p = Pattern.compile("([ ]*)(swagger[ ]*:[ ]*\"[2])(.*)");
+    	Matcher m = p.matcher(yamlContent.toLowerCase());
+    	if (m.find()) {
+    		return true;
+    	} 
+    	return false;
+    }
 }

@@ -148,7 +148,9 @@ Integration Studio has been released with the following package components.
 
 2. Use [Java11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) for development(Other java versions might not work).
 
-3. Clone Integration Studio GitHub repository https://github.com/wso2/integration-studio.git. and proceed with **main** branch.
+3. Clone Integration Studio GitHub repository https://github.com/wso2/integration-studio.git. and proceed with **main** branch. 
+
+	- **NOTE :** If you are cloning it on windows, before cloning the project run this command "git config --system core.longpaths true". Otherwise git checkout will fail with "Filename too long error: unable to create file"
 
 ---
 **If you are using maven version 3.8.1 or higher**
@@ -226,6 +228,11 @@ From maven version 3.8.1, maven default settings file updated with http blocker 
     * Go to **windows > Preference > Java > Code Style >Clean up** and import **wso2-codestyle-eclipse-clean-up.xml**.
     * Download [wso2-codestyle-eclipse-formatter.xml](https://docs.google.com/a/wso2.com/viewer?a=v&pid=sites&srcid=d3NvMi5jb218ZW5naW5lZXJpbmd8Z3g6N2U0YzVlNWFjYmY5OGNmMA).
     * Go to **windows > Preference > Java > Code Style >Formatter** and import **wso2-codestyle-eclipse-formatter.xml**.
+
+13. Go to Eclipse Preference > Java > Compiler and set the "Compiler compilance level" to 1.8
+14. Go to Eclipse Preference > Java > Installed JREs and select jdk 11.
+15. Go to Eclipse Preference > Maven > Errors/Warnings and select "Ignore" for "Plugin execution not covered by lifecycle configuration"
+16. Now clean the project. In Eclipse Project > clean > Tick "Clean all projects". After the clean process, you should not see any errors in any plugins except "org.wso2.integrationstudio.apim.endpoint.central"
  
 
 # Running Integration Studio in Developer Mode

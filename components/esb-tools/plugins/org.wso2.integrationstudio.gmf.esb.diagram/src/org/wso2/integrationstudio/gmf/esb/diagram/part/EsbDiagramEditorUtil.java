@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+
 import org.apache.commons.lang.RandomStringUtils;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
@@ -23,6 +24,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -47,6 +49,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.osgi.service.datalocation.Location;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -222,7 +225,8 @@ public class EsbDiagramEditorUtil {
             final String type, final String fileName, final Object specificType) {
         progressMonitor.beginTask(Messages.EsbDiagramEditorUtil_CreateDiagramProgressTask, 3);
         final String name = fileName.replaceAll(".xml$", "");
-        String prefix = "resources/" + name;
+        Location instanceLoc = Platform.getInstanceLocation();
+        String prefix = instanceLoc.getURL().toString() + "resources/" + name;
         final Resource diagramResource = editingDomain.getResourceSet()
                 .createResource(URI.createURI(prefix.concat(".esb_diagram")));
         final Resource modelResource = editingDomain.getResourceSet()

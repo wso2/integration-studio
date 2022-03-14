@@ -30,8 +30,8 @@ import org.eclipse.core.runtime.Path;
  * This class will create a metadata file an API with the given details.
  */
 public class MetadataUtils {
-    public static void createMedataFile(IContainer metadataLocation, API synapseApi, String fileName)
-            throws IOException {
+    public static void createMedataFile(IContainer metadataLocation, API synapseApi, String fileName,
+            String apiId) throws IOException {
 
         IFile swaggerFile = metadataLocation.getFile(new Path(fileName + "_metadata.yaml"));
         String context = synapseApi.getContext();
@@ -59,6 +59,7 @@ public class MetadataUtils {
                 builder.append("definitionType: \"OAS3\"\n");
                 builder.append("securityType: \"BASIC\"\n");
                 builder.append("mutualSSLEnabled: false\n");
+                builder.append("apiId : \"").append(apiId).append("\"\n");
                 fw.write(builder.toString());
             }
         }

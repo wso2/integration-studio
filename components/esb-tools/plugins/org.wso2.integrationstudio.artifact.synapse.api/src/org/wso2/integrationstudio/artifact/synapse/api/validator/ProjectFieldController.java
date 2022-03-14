@@ -95,6 +95,9 @@ public class ProjectFieldController extends AbstractFieldController {
 			updateFields.add("swagger.reg.location");
 		} else if (modelProperty.equals(ArtifactConstants.ID_API_SWAGGER_FILE)) {
             updateFields.add(ArtifactConstants.ID_SWAGGER_API_NAME);
+        } else if (modelProperty.equals(ArtifactConstants.API_WSDL_TYPE)) {
+            updateFields.add(ArtifactConstants.API_WSDL_FILE);
+            updateFields.add(ArtifactConstants.API_WSDL_URL);
         }
 		return updateFields;
 	}
@@ -120,7 +123,21 @@ public class ProjectFieldController extends AbstractFieldController {
 					|| ((APIArtifactModel) model).getVersionType() == ArtifactConstants.API_VERSION_TYPE_URL) {
 				visibleField = true;
 			}
-		}
+		} else if (modelProperty.equals(ArtifactConstants.API_WSDL_FILE)) {
+			APIArtifactModel apiModel = (APIArtifactModel) model;
+            if (apiModel.getAPIWSDLType().equals(ArtifactConstants.API_TYPE_WSDL_URL)) {
+                visibleField = false;
+            } else {
+                visibleField = true;
+            }
+        } else if (modelProperty.equals(ArtifactConstants.API_WSDL_URL)) {
+        	APIArtifactModel apiModel = (APIArtifactModel) model;
+            if (apiModel.getAPIWSDLType().equals(ArtifactConstants.API_TYPE_WSDL_FILE)) {
+                visibleField = false;
+            } else {
+                visibleField = true;
+            }
+        }
 		return visibleField;
 	}
 }

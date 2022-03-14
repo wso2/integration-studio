@@ -1153,7 +1153,7 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
         propertyNameScopeMap.put("PRESERVE_WS_ADDRESSING", PropertyScope.SYNAPSE);
         propertyNameScopeMap.put("REQUEST_HOST_HEADER", PropertyScope.SYNAPSE);
         propertyNameScopeMap.put("RESPONSE", PropertyScope.SYNAPSE);
-        propertyNameScopeMap.put("REST_URL_POSTFIX", PropertyScope.SYNAPSE);
+        propertyNameScopeMap.put("REST_URL_POSTFIX", PropertyScope.AXIS2);
         propertyNameScopeMap.put("RelatesTo", PropertyScope.SYNAPSE);
         propertyNameScopeMap.put("ReplyTo", PropertyScope.SYNAPSE);
         propertyNameScopeMap.put("SERVER_IP", PropertyScope.SYNAPSE);

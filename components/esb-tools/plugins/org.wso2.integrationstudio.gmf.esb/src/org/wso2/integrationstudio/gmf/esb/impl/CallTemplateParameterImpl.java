@@ -111,7 +111,7 @@ public class CallTemplateParameterImpl extends EsbNodeImpl implements CallTempla
      * <!-- end-user-doc -->
      * @generated
      */
-    protected CallTemplateParameterImpl() {
+    public CallTemplateParameterImpl() {
         super();
     }
 

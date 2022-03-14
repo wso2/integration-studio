@@ -1,3 +1,4 @@
+jQuery.support.cors = true;
 $(document).ready(function ($) {
 
     var portValue = resolveGetParam("port");
@@ -32,12 +33,12 @@ $(document).ready(function ($) {
 //    });
 
 
-
     $.ajax({
                 url: url,
                 type: 'GET',
                 dataType: 'text',
                 cache: false,
+                contentType: "text/plain",
                 success: function (result) {
                    var parser = new DOMParser();
                    root = parser.parseFromString(result, "text/xml");

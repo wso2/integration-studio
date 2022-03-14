@@ -35,6 +35,7 @@ public class ArtifactConstants extends NLS {
 	public static String ID_API_PUBLISHSWAGGER;
 	public static String ID_API_SWAGGER_FILE;
 	public static String ID_SWAGGER_API_NAME;
+	public static String WIZARD_OPTION_APIM_API;
 	
 	//Messages
 	public static String ERRMSG_SAVE_LOCATION;
@@ -46,6 +47,48 @@ public class ArtifactConstants extends NLS {
 	public static String API_VERSION_TYPE_NONE;
 	public static String API_VERSION_TYPE_CONTEXT;
 	public static String API_VERSION_TYPE_URL;
+	
+	/**
+     * Holds common header values.
+     */
+    public static class HEADERS {
+        public static final String APPLICATION_JSON = "application/json";
+        public static final String TEXT_JSON = "text/json";
+        public static final String CONTENT_TYPE = "Content-Type";
+        public static final String AUTHORIZATION = "Authorization";
+        public static final String BASIC = "Basic ";
+        public static final String BEARER = "Bearer ";
+        public static final String ACCEPT = "Accept";
+        public static final String UTF_8 = "UTF-8";
+        public static final String APPLICATION_FORM_URL_ENCODED = "application/x-www-form-urlencoded";
+        public static final String MULTI_PART_FORM_DATA = "multipart/form-data";
+    }
+    
+    public static class Errors {
+        public static final String CONNECTION_FAILS = "Cannot connect to the host.";
+        public static final String HTTP_ERROR_SENDING_REQUEST = "An error occured while trying to send request!";
+        public static final String AUTH_FAILED = "Authentication Failed.";
+        public static final String INVALID_CREDENTIAL = "Invalid Login details.";
+        public static final String REFRSH_FAIL = "Failed to refresh the connection, Please login agian";
+    }
+    
+    public static class Common {
+        public static final String EMPTY_STRING = "";
+        public static final String SLASH = "/";
+        public static final String COLON = ":";
+        public static final String HTTPS = "https";
+    }
+    
+    public static class PublisherAPI {
+        public static final String getAPis = "/api/am/publisher/v3/apis";
+
+    }
+	public static String API_TYPE_WSDL_URL;
+	public static String API_TYPE_WSDL_FILE;
+	public static String API_WSDL_TYPE;
+	public static String API_WSDL_FILE;
+	public static String API_WSDL_URL;
+	public static String API_WSDL_ENDPOINT;
 	
 	static {
 		// initialize resource bundle

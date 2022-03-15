@@ -74,11 +74,16 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//HTTPEndpointOAuthGrantType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointOAuthGrantType/Authorization_Code_Grant"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointOAuthGrantType/Client_Credentials_Grant"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointOAuthGrantType/Password_Credentials_Grant"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//HTTPEndpointAuthType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointAuthType/None"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointAuthType/Basic_Auth"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointAuthType/OAuth"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//HTTPEndpointOAuthAuthenticationMode">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointOAuthAuthenticationMode/Header_OAuth_Authentication_Mode"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HTTPEndpointOAuthAuthenticationMode/Payload_OAuth_Authentication_Mode"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FilterMediatorConditionType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FilterMediatorConditionType/SOURCE_REGEX"/>
@@ -1080,6 +1085,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/URITemplate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/HttpMethod"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/OAuthGrantType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/OAuthAuthenticationMode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/OAuthClientId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/OAuthClientSecret"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/OAuthTokenUrl"/>
@@ -1087,9 +1093,21 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/AuthType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/BasicAuthUsername"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/BasicAuthPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/OAuthUsername"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//HTTPEndpoint/OAuthPassword"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//HTTPEndpoint/OAuthClientIdExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//HTTPEndpoint/OAuthClientSecretExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//HTTPEndpoint/OAuthTokenUrlExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//HTTPEndpoint/OAuthRefreshTokenExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//HTTPEndpoint/BasicAuthUsernameExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//HTTPEndpoint/BasicAuthPasswordExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//HTTPEndpoint/OAuthUsernameExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//HTTPEndpoint/OAuthPasswordExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//HTTPEndpoint/OAuthParameters"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//HTTPEndPointInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//HTTPEndPointOutputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//HTTPEndpointOAuthParameter"/>
     <genClasses ecoreClass="esb.ecore#//DropMediator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DropMediator/inputConnector"/>
     </genClasses>

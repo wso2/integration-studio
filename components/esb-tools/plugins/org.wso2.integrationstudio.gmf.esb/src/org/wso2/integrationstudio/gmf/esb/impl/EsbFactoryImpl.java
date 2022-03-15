@@ -102,6 +102,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
             case EsbPackage.HTTP_ENDPOINT: return createHTTPEndpoint();
             case EsbPackage.HTTP_END_POINT_INPUT_CONNECTOR: return createHTTPEndPointInputConnector();
             case EsbPackage.HTTP_END_POINT_OUTPUT_CONNECTOR: return createHTTPEndPointOutputConnector();
+            case EsbPackage.HTTP_ENDPOINT_OAUTH_PARAMETER: return createHTTPEndpointOAuthParameter();
             case EsbPackage.DROP_MEDIATOR: return createDropMediator();
             case EsbPackage.DROP_MEDIATOR_INPUT_CONNECTOR: return createDropMediatorInputConnector();
             case EsbPackage.FILTER_MEDIATOR: return createFilterMediator();
@@ -457,6 +458,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return createHTTPEndpointOAuthGrantTypeFromString(eDataType, initialValue);
             case EsbPackage.HTTP_ENDPOINT_AUTH_TYPE:
                 return createHTTPEndpointAuthTypeFromString(eDataType, initialValue);
+            case EsbPackage.HTTP_ENDPOINT_OAUTH_AUTHENTICATION_MODE:
+                return createHTTPEndpointOAuthAuthenticationModeFromString(eDataType, initialValue);
             case EsbPackage.FILTER_MEDIATOR_CONDITION_TYPE:
                 return createFilterMediatorConditionTypeFromString(eDataType, initialValue);
             case EsbPackage.LOG_CATEGORY:
@@ -761,6 +764,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return convertHTTPEndpointOAuthGrantTypeToString(eDataType, instanceValue);
             case EsbPackage.HTTP_ENDPOINT_AUTH_TYPE:
                 return convertHTTPEndpointAuthTypeToString(eDataType, instanceValue);
+            case EsbPackage.HTTP_ENDPOINT_OAUTH_AUTHENTICATION_MODE:
+                return convertHTTPEndpointOAuthAuthenticationModeToString(eDataType, instanceValue);
             case EsbPackage.FILTER_MEDIATOR_CONDITION_TYPE:
                 return convertFilterMediatorConditionTypeToString(eDataType, instanceValue);
             case EsbPackage.LOG_CATEGORY:
@@ -1864,6 +1869,16 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
     public HTTPEndPointOutputConnector createHTTPEndPointOutputConnector() {
         HTTPEndPointOutputConnectorImpl httpEndPointOutputConnector = new HTTPEndPointOutputConnectorImpl();
         return httpEndPointOutputConnector;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public HTTPEndpointOAuthParameter createHTTPEndpointOAuthParameter() {
+        HTTPEndpointOAuthParameterImpl httpEndpointOAuthParameter = new HTTPEndpointOAuthParameterImpl();
+        return httpEndpointOAuthParameter;
     }
 
     /**
@@ -5218,6 +5233,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
      * @generated
      */
     public String convertHTTPEndpointAuthTypeToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public HTTPEndpointOAuthAuthenticationMode createHTTPEndpointOAuthAuthenticationModeFromString(EDataType eDataType, String initialValue) {
+        HTTPEndpointOAuthAuthenticationMode result = HTTPEndpointOAuthAuthenticationMode.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertHTTPEndpointOAuthAuthenticationModeToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

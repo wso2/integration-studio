@@ -17,14 +17,14 @@
 package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
 import java.util.List;
-
 import org.apache.axis2.Constants;
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.config.xml.endpoints.EndpointSerializer;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.auth.basicauth.BasicAuthHandler;
 import org.apache.synapse.endpoints.auth.oauth.AuthorizationCodeHandler;
 import org.apache.synapse.endpoints.auth.oauth.ClientCredentialsHandler;
+import org.apache.synapse.endpoints.auth.oauth.OAuthHandler;
+import org.apache.synapse.endpoints.auth.oauth.PasswordCredentialsHandler;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.api.RESTConstants;
@@ -36,10 +36,10 @@ import org.wso2.integrationstudio.gmf.esb.EndPoint;
 import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
 import org.wso2.integrationstudio.gmf.esb.EsbNode;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpoint;
+import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthAuthenticationMode;
 import org.wso2.integrationstudio.gmf.esb.InputConnector;
 import org.wso2.integrationstudio.gmf.esb.Sequence;
 import org.wso2.integrationstudio.gmf.esb.SequenceInputConnector;
-import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
 import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
 import org.wso2.integrationstudio.gmf.esb.persistence.TransformerException;
 import org.wso2.integrationstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
@@ -100,21 +100,38 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 
         switch (visualEndPoint.getAuthType()) {
         case OAUTH:
+            HTTPEndpointOAuthAuthenticationMode oAuthAuthenticationMode = visualEndPoint.getOAuthAuthenticationMode();
+            String authMode = "";
+            if (oAuthAuthenticationMode.getValue() == HTTPEndpointOAuthAuthenticationMode.HEADER_OAUTH_AUTHENTICATION_MODE_VALUE) {
+                authMode = "header";
+            }else if (oAuthAuthenticationMode.getValue() == HTTPEndpointOAuthAuthenticationMode.HEADER_OAUTH_AUTHENTICATION_MODE_VALUE) {
+                authMode = "payload";
+            }
             switch (visualEndPoint.getOAuthGrantType()) {
             case AUTHORIZATION_CODE_GRANT:
                 String clientId = visualEndPoint.getOAuthClientId();
                 String clientSecret = visualEndPoint.getOAuthClientSecret();
                 String tokenUrl = visualEndPoint.getOAuthTokenUrl();
                 String refreshToken = visualEndPoint.getOAuthRefreshToken();
+                OAuthHandler oAuthHandler = new AuthorizationCodeHandler(tokenUrl, clientId, clientSecret, refreshToken, authMode);
                 synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(
-                        new AuthorizationCodeHandler(tokenUrl, clientId, clientSecret, refreshToken));
+                        new AuthorizationCodeHandler(tokenUrl, clientId, clientSecret, refreshToken, authMode));
                 break;
             case CLIENT_CREDENTIALS_GRANT:
                 clientId = visualEndPoint.getOAuthClientId();
                 clientSecret = httpEndPoint.getOAuthClientSecret();
                 tokenUrl = httpEndPoint.getOAuthTokenUrl();
                 synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(
-                        new ClientCredentialsHandler(tokenUrl, clientId, clientSecret));
+                        new ClientCredentialsHandler(tokenUrl, clientId, clientSecret, authMode));
+                break;
+            case PASSWORD_CREDENTIALS_GRANT:
+                clientId = visualEndPoint.getOAuthClientId();
+                clientSecret = httpEndPoint.getOAuthClientSecret();
+                String username = httpEndPoint.getOAuthUsername();
+                String password = httpEndPoint.getOAuthPassword();
+                tokenUrl = httpEndPoint.getOAuthTokenUrl();
+                synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(
+                        new PasswordCredentialsHandler(tokenUrl, clientId, clientSecret, username, password, authMode));
                 break;
             default:
                 synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
@@ -181,24 +198,82 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
     	org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP;
 
     	if (httpFormPage.httpEP_AuthType.getSelectionIndex() == 1) {
-            String username = httpFormPage.basicAuthUsername.getText();
+    	    String username = httpFormPage.basicAuthUsername.getText();;
+    	    if (httpFormPage.basicAuthUsernameExpToggle.getSelection()) {
+    	        username = getExpressionFromText(httpFormPage.basicAuthUsernameExp.getText());
+    	    }
             String password = httpFormPage.basicAuthPassword.getText();
+            if (httpFormPage.basicAuthPasswordExpToggle.getSelection()) {
+    	        password = getExpressionFromText(httpFormPage.basicAuthPasswordExp.getText());
+    	    }
             synapseHttpEP = new org.apache.synapse.endpoints.BasicAuthConfiguredHTTPEndpoint(
                     new BasicAuthHandler(username, password));
         } else if (httpFormPage.httpEP_AuthType.getSelectionIndex() == 2) {
             if (httpFormPage.httpEP_OAuthType.getSelectionIndex() == 0) {
                 String clientId = httpFormPage.oAuthClientId.getText();
+                if (httpFormPage.oAuthClientIdExpToggle.getSelection()) {
+                    clientId = getExpressionFromText(httpFormPage.oAuthClientIdExp.getText());
+                }
                 String clientSecret = httpFormPage.oAuthClientSecret.getText();
+                if (httpFormPage.oAuthClientSecretExpToggle.getSelection()) {
+                    clientSecret = getExpressionFromText(httpFormPage.oAuthClientSecretExp.getText());
+                }
                 String tokenUrl = httpFormPage.oAuthTokenUrl.getText();
+                if (httpFormPage.oAuthTokenUrlExpToggle.getSelection()) {
+                    tokenUrl = getExpressionFromText(httpFormPage.oAuthTokenUrlExp.getText());
+                }
                 String refreshToken = httpFormPage.oAuthRefreshToken.getText();
-                synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(
-                        new AuthorizationCodeHandler(tokenUrl, clientId, clientSecret, refreshToken));
+                if (httpFormPage.oAuthRefreshTokenExpToggle.getSelection()) {
+                    refreshToken = getExpressionFromText(httpFormPage.oAuthRefreshTokenExp.getText());
+                }
+                String authMode = httpFormPage.httpEP_OAuthAuthenticationMode.getText();
+                OAuthHandler oAuthHandler = new AuthorizationCodeHandler(tokenUrl, clientId, clientSecret, refreshToken, authMode);
+                
+                oAuthHandler.setRequestParameters(httpFormPage.getOAuthParameters());
+                synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(oAuthHandler);
+                MediatorProperty mProperty = new MediatorProperty();
             } else if (httpFormPage.httpEP_OAuthType.getSelectionIndex() == 1) {
                 String clientId = httpFormPage.oAuthClientId.getText();
+                if (httpFormPage.oAuthClientIdExpToggle.getSelection()) {
+                    clientId = getExpressionFromText(httpFormPage.oAuthClientIdExp.getText());
+                }
                 String clientSecret = httpFormPage.oAuthClientSecret.getText();
+                if (httpFormPage.oAuthClientSecretExpToggle.getSelection()) {
+                    clientSecret = getExpressionFromText(httpFormPage.oAuthClientSecretExp.getText());
+                }
                 String tokenUrl = httpFormPage.oAuthTokenUrl.getText();
-                synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(
-                        new ClientCredentialsHandler(tokenUrl, clientId, clientSecret));
+                if (httpFormPage.oAuthTokenUrlExpToggle.getSelection()) {
+                    tokenUrl = getExpressionFromText(httpFormPage.oAuthTokenUrlExp.getText());
+                }
+                String authMode = httpFormPage.httpEP_OAuthAuthenticationMode.getText();
+                OAuthHandler oAuthHandler = new ClientCredentialsHandler(tokenUrl, clientId, clientSecret, authMode);
+                oAuthHandler.setRequestParameters(httpFormPage.getOAuthParameters());
+                synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(oAuthHandler);
+            } else if (httpFormPage.httpEP_OAuthType.getSelectionIndex() == 2) {
+                String clientId = httpFormPage.oAuthClientId.getText();
+                if (httpFormPage.oAuthClientIdExpToggle.getSelection()) {
+                    clientId = getExpressionFromText(httpFormPage.oAuthClientIdExp.getText());
+                }
+                String clientSecret = httpFormPage.oAuthClientSecret.getText();
+                if (httpFormPage.oAuthClientSecretExpToggle.getSelection()) {
+                    clientSecret = getExpressionFromText(httpFormPage.oAuthClientSecretExp.getText());
+                }
+                String username = httpFormPage.oAuthUsername.getText();
+                if (httpFormPage.oAuthUsernameExpToggle.getSelection()) {
+                    username = getExpressionFromText(httpFormPage.oAuthUsernameExp.getText());
+                }
+                String password = httpFormPage.oAuthPassword.getText();
+                if (httpFormPage.oAuthPasswordExpToggle.getSelection()) {
+                    password = getExpressionFromText(httpFormPage.oAuthPasswordExp.getText());
+                }
+                String tokenUrl = httpFormPage.oAuthTokenUrl.getText();
+                if (httpFormPage.oAuthTokenUrlExpToggle.getSelection()) {
+                    tokenUrl = getExpressionFromText(httpFormPage.oAuthTokenUrlExp.getText());
+                }
+                String authMode = httpFormPage.httpEP_OAuthAuthenticationMode.getText();
+                OAuthHandler oAuthHandler = new PasswordCredentialsHandler(tokenUrl, clientId, clientSecret, username, password, authMode);
+                oAuthHandler.setRequestParameters(httpFormPage.getOAuthParameters());
+                synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(oAuthHandler);
             } else {
                 synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
             }
@@ -246,6 +321,10 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
         } else {
             return synapseHttpEP;
         }
+    }
+    
+    protected String getExpressionFromText(String text) {
+        return "{" + text + "}";
     }
 
     /**

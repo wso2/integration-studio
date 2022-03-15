@@ -1806,6 +1806,29 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthParameter} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected HTTPEndpointOAuthParameterItemProvider httpEndpointOAuthParameterItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthParameter}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createHTTPEndpointOAuthParameterAdapter() {
+        if (httpEndpointOAuthParameterItemProvider == null) {
+            httpEndpointOAuthParameterItemProvider = new HTTPEndpointOAuthParameterItemProvider(this);
+        }
+
+        return httpEndpointOAuthParameterItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8696,6 +8719,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory
         if (httpEndpointItemProvider != null) httpEndpointItemProvider.dispose();
         if (httpEndPointInputConnectorItemProvider != null) httpEndPointInputConnectorItemProvider.dispose();
         if (httpEndPointOutputConnectorItemProvider != null) httpEndPointOutputConnectorItemProvider.dispose();
+        if (httpEndpointOAuthParameterItemProvider != null) httpEndpointOAuthParameterItemProvider.dispose();
         if (dropMediatorItemProvider != null) dropMediatorItemProvider.dispose();
         if (dropMediatorInputConnectorItemProvider != null) dropMediatorInputConnectorItemProvider.dispose();
         if (filterMediatorItemProvider != null) filterMediatorItemProvider.dispose();

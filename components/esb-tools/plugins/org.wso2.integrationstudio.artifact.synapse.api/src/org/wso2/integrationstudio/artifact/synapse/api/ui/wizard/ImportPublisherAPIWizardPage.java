@@ -100,6 +100,13 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         Text txtAPIMHostUrl;
         Button listAPIBtn;
         
+        // create dummy read-only text box to fix:
+        // https://github.com/wso2/integration-studio/issues/1057
+        Text initilizeText = new Text(container, SWT.NONE | SWT.READ_ONLY);
+        data = new FormData();
+        data.height = 1;
+        initilizeText.setLayoutData(data);
+        
         Composite credentialsContainer = new Composite(container, SWT.NULL);
         credentialsContainer.setLayout(new FormLayout());
         data = new FormData();
@@ -123,7 +130,7 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         data.right = new FormAttachment(98);
         txtUserName.setLayoutData(data);
         artifactModel.setUserName(txtUserName.getText());
-        
+
         labelPassword = new Label(container, SWT.NONE);
         labelPassword.setText("Password *");
         data = new FormData();
@@ -131,10 +138,10 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         data.width = 120;
         data.left = new FormAttachment(3);
         labelPassword.setLayoutData(data);
-        
+
         txtPassword = new Text(container, SWT.PASSWORD | SWT.BORDER);
         data = new FormData();
-        data.top = new FormAttachment(txtUserName, 10);
+        data.top = new FormAttachment(txtUserName, 25);
         data.left = new FormAttachment(labelPassword, 10);
         data.right = new FormAttachment(98);
         txtPassword.setLayoutData(data);
@@ -143,21 +150,20 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         labelAPIMHostUrl = new Label(container, SWT.NONE);
         labelAPIMHostUrl.setText("API Manager Host Url *");
         data = new FormData();
-        data.top = new FormAttachment(labelPassword, 20);
-        data.width = 120;
+        data.top = new FormAttachment(labelPassword, 30);
+        data.width = 140;
         data.left = new FormAttachment(3);
         labelAPIMHostUrl.setLayoutData(data);
         
         txtAPIMHostUrl = new Text(container, SWT.BORDER);
         data = new FormData();
-        data.top = new FormAttachment(txtPassword, 10);
+        data.top = new FormAttachment(txtPassword, 25);
         data.left = new FormAttachment(labelAPIMHostUrl, 10);
         data.right = new FormAttachment(98);
         txtAPIMHostUrl.setLayoutData(data);
         artifactModel.setApimHostUrl(txtAPIMHostUrl.getText());
 
         setControl(credentialsContainer);
-        
         listAPIBtn = new Button(container, SWT.NONE);
         listAPIBtn.setText("List APIs");
         data = new FormData();
@@ -182,10 +188,7 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         data.width = 500;
        
         table.setLayoutData(data);
-        table.setBounds(25, 25, 220, 200);
-        Device d = Display.getCurrent ();
-        table.setBackground(new Color(d,127,178,127));;
-        
+        table.setBounds(25, 25, 220, 200);        
         
         TableColumn column1 = new TableColumn(table, SWT.LEFT, 0);
         column1.setWidth(200);

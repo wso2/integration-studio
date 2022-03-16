@@ -127,6 +127,7 @@ import org.wso2.integrationstudio.platform.ui.editor.Openable;
 import org.wso2.integrationstudio.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.integrationstudio.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsDataPage;
+import org.wso2.integrationstudio.platform.ui.wizard.pages.ProjectOptionsPage;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfo;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceInfoDoc;
 import org.wso2.integrationstudio.registry.core.utils.RegistryResourceUtils;
@@ -1040,29 +1041,27 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     	return false;
     }
 
-    public void addPages() {
-        super.addPages();
-        pages = getPages();
-        aPIMAPIArtifactModel.setLocation(artifactModel.getLocation());
-        addPage(importPublisherAPIWizard);
-        pages = getPages();
-    }
+	@Override
+	public void addPages() {
+		super.addPages();
+		aPIMAPIArtifactModel.setLocation(artifactModel.getLocation());
+		addPage(importPublisherAPIWizard);
+	}
 
-    public IWizardPage getNextPage(IWizardPage page) {
-        IWizardPage nextPage = super.getNextPage(page);
-        if (page instanceof ProjectOptionsDataPage &&
-                !getModel().getSelectedOption().equalsIgnoreCase("import.api.apim")) {
-            nextPage = null;
-        } else if (artifactModel.isImportAPIFromAPIM()) {
-            IWizardPage currentPage = getContainer().getCurrentPage();
-            if (currentPage instanceof ImportPublisherAPIWizardPage) {
-                nextPage = null;
-            } else {
-                nextPage = importPublisherAPIWizard;
-                artifactModel.setImportAPIFromAPIM(false);
-                
-            }
-        } 
-        return nextPage;
-    }
+	@Override
+	public IWizardPage getNextPage(IWizardPage page) {
+		IWizardPage nextPage = super.getNextPage(page);
+		IWizardPage currentPage = getContainer().getCurrentPage();
+		if (page instanceof ProjectOptionsPage) {
+			ProjectOptionsPage projectOptionsPage = (ProjectOptionsPage) page;
+			if (projectOptionsPage.getSelectedProjectOption().getId().equals("import.api.publisher")) {
+				nextPage = importPublisherAPIWizard;
+			}
+			if (currentPage instanceof ImportPublisherAPIWizardPage) {
+				nextPage = super.getPage("wizardPage");
+			}
+		}
+		return nextPage;
+	}
+
 }

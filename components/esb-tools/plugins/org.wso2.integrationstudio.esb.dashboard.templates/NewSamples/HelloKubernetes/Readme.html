@@ -160,7 +160,7 @@
 				<label class="title" for="toggle2"  
                   style="border-bottom-color: rgba(68, 138, 255,.1); 
                       background-color: rgba(68, 138, 255,.1); box-shadow: none !important;">
-                	Set up EI Kubernetes Operator
+                	Set up API Kubernetes Operator
                 </label>
 				<div class="content">
 					<ol>
@@ -170,22 +170,22 @@
 						<li>
 							<h3>Clone the K8s operator</h3>
 							<p>
-								Clone the latest <b>k8s-ei-operator</b> GitHub repository.
+								Clone the latest <b>k8s-api-operator</b> GitHub repository.
 							</p>
 							<p style="margin-top:-30px;">
 								<pre>
-									<code class="language-bash">git clone https://github.com/wso2/k8s-ei-operator.git</code>
+									<code class="language-bash">git clone https://github.com/wso2/k8s-api-operator.git</code>
 								</pre>
 							</p>
 						</li>
 						<li>
 							<h3>Set up the K8s operator</h3>
 							<p>
-								- Navigate to the k8s-ei-operator directory that you cloned:
+								- Navigate to the k8s-api-operator/api-operator/deploy directory:
 							</p>
 							<p style="margin-top:-30px;">
 								<pre>
-									<code class="language-bash">cd k8s-ei-operator</code>
+									<code class="language-bash">cd k8s-api-operator/api-operator/deploy</code>
 								</pre>
 							</p>
 							<p>
@@ -193,7 +193,7 @@
 							</p>
 							<p style="margin-top:-30px;">
 								<pre>
-									<code class="language-bash">kubectl create -f deploy/service_account.yaml</code>
+									<code class="language-bash">kubectl create -f controller-artifacts/service_account.yaml</code>
 								</pre>
 							</p>
 							<p>
@@ -202,36 +202,47 @@
 							<p style="margin-top:-30px;">
 								<pre>
 									<code class="language-bash">
-										kubectl create -f deploy/role.yaml
-										kubectl create -f deploy/role_binding.yaml
+										kubectl create -f controller-artifacts/role.yaml
+										kubectl create -f controller-artifacts/role_binding.yaml
 									</code>
 								</pre>
 							</p>
 							<p>
-								- Deploy a <b>custom resource definition</b>, which enables a Kubernetes cluster to 
-								understand the custom resource type. The EI K8s operator introduces the Integration 
-								custom resource.
+								- Deploy <b>custom resource definitions</b> which enables a Kubernetes cluster to 
+								understand the custom resource types. The API K8s operator introduces Integration, 
+								API and TargetEndpoint custom resources.
 							</p>
 							<p style="margin-top:-30px;">
 								<pre>
-									<code class="language-bash">kubectl create -f deploy/crds/integration_v1alpha1_integration_crd.yaml</code>
+									<code class="language-bash">
+										kubectl create -f crds/wso2.com_integrations_crd.yaml
+										kubectl create -f crds/wso2.com_apis_crd.yaml
+										kubectl create -f crds/wso2.com_targetendpoints_crd.yaml
+										
+									</code>
 								</pre>
 							</p>
 							<p>
-								- Deploy the k8s-ei-operator:
+								- Deploy the k8s-api-operator:
 							</p>
 							<p style="margin-top:-30px;">
 								<pre>
-									<code class="language-bash">kubectl create -f deploy/operator.yaml</code>
+									<code class="language-bash">
+										kubectl create -f controller-artifacts/operator.yaml
+										kubectl create -f controller-artifacts/operator-service.yaml
+									</code>
 								</pre>
 							</p>
 							<p>
-								- Apply the Ingress controller configurations to the <b>config_map.yaml</b> file 
-								(configuration mapping file):.
+								- Apply the Ingress controller configurations to the configmap files 
+								(configuration mapping files):
 							</p>
 							<p style="margin-top:-30px;">
 								<pre>
-									<code class="language-bash">kubectl apply -f deploy/config_map.yaml</code>
+									<code class="language-bash">
+										kubectl apply -f controller-configs/integration_controller_conf.yaml
+										kubectl apply -f controller-configs/api_controller_conf.yaml
+									</code>
 								</pre>
 							</p>
 						</li>
@@ -253,7 +264,7 @@
 								<pre>
 									<code class="language-bash">
 										NAME               READY   UP-TO-DATE   AVAILABLE   AGE
-										k8s-ei-operator     1/1     1            1          1m
+										api-operator     	1/1     1            1          1m
 									</code>
 								</pre>
 							</p>

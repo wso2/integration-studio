@@ -86,15 +86,11 @@
                      </li>
                      <li>
                         <h3>Invoke the service</h3>
-                        <p>Open the <strong>HTTP Client</strong> of WSO2 Integration Studio (If you don't 
-                        see the HTTP Client pane, go to <strong>Window -> Show View - Other</strong> and 
-                        select HTTP Client to enable the client pane).</p>                      
-                      
-                        <p>Enter the request information as given below and click the Send 
-                        <span>
-                        	<img src="https://github.com/wso2/integration-studio/raw/main/components/esb-tools/plugins/org.wso2.integrationstudio.esb.dashboard.templates/NewSamples/Resources/play-head-icon.png" 
-                        		style="width:20px; margin: 0 2px -5px 2px;" />
-                       	</span> icon.</p>
+                        <p>Open the Postman application. If you do not have the application, download it from here :
+                           <a href="https://www.postman.com/downloads/">Postman</a>
+                        </p>
+                        
+                        <p>Enter the request information as given below and click the Send.</p>
                         
                         <p><b>Method:</b></p>
                         <p style="margin-top:-30px;"><pre><code class="language-bash">POST</code></pre></p>
@@ -208,7 +204,7 @@
                      </li>
                      <li>
                         <h3>Invoke the service</h3>
-                        <p>Use the <strong>HTTP Client</strong> 
+                        <p>Use <strong>Postman</strong> 
                         as mentioned in above or following cURL command to invoke the service.</p>
                         <pre><code class="language-bash">curl -X POST -d @input.xml http://localhost:8290/employeeservice -H "Content-Type: application/xml" </code></pre>
                         <p>Content of the input.xml as follows</p>

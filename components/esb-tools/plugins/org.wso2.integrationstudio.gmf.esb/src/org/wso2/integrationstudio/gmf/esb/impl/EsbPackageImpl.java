@@ -258,7 +258,9 @@ import org.wso2.integrationstudio.gmf.esb.HTTPEndPointInputConnector;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndPointOutputConnector;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpoint;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpointAuthType;
+import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthAuthenticationMode;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthGrantType;
+import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthParameter;
 import org.wso2.integrationstudio.gmf.esb.HashGenerator;
 import org.wso2.integrationstudio.gmf.esb.HeaderAction;
 import org.wso2.integrationstudio.gmf.esb.HeaderMediator;
@@ -901,6 +903,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     private EClass httpEndPointOutputConnectorEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass httpEndpointOAuthParameterEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -3274,6 +3283,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     private EEnum httpEndpointAuthTypeEEnum = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EEnum httpEndpointOAuthAuthenticationModeEEnum = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -5938,7 +5954,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getHTTPEndpoint_OAuthClientId() {
+    public EAttribute getHTTPEndpoint_OAuthAuthenticationMode() {
         return (EAttribute)httpEndpointEClass.getEStructuralFeatures().get(5);
     }
 
@@ -5947,7 +5963,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getHTTPEndpoint_OAuthClientSecret() {
+    public EAttribute getHTTPEndpoint_OAuthClientId() {
         return (EAttribute)httpEndpointEClass.getEStructuralFeatures().get(6);
     }
 
@@ -5956,7 +5972,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getHTTPEndpoint_OAuthTokenUrl() {
+    public EAttribute getHTTPEndpoint_OAuthClientSecret() {
         return (EAttribute)httpEndpointEClass.getEStructuralFeatures().get(7);
     }
 
@@ -5965,7 +5981,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getHTTPEndpoint_OAuthRefreshToken() {
+    public EAttribute getHTTPEndpoint_OAuthTokenUrl() {
         return (EAttribute)httpEndpointEClass.getEStructuralFeatures().get(8);
     }
 
@@ -5974,7 +5990,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getHTTPEndpoint_AuthType() {
+    public EAttribute getHTTPEndpoint_OAuthRefreshToken() {
         return (EAttribute)httpEndpointEClass.getEStructuralFeatures().get(9);
     }
 
@@ -5983,7 +5999,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getHTTPEndpoint_BasicAuthUsername() {
+    public EAttribute getHTTPEndpoint_AuthType() {
         return (EAttribute)httpEndpointEClass.getEStructuralFeatures().get(10);
     }
 
@@ -5992,8 +6008,116 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getHTTPEndpoint_BasicAuthPassword() {
+    public EAttribute getHTTPEndpoint_BasicAuthUsername() {
         return (EAttribute)httpEndpointEClass.getEStructuralFeatures().get(11);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getHTTPEndpoint_BasicAuthPassword() {
+        return (EAttribute)httpEndpointEClass.getEStructuralFeatures().get(12);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getHTTPEndpoint_OAuthUsername() {
+        return (EAttribute)httpEndpointEClass.getEStructuralFeatures().get(13);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getHTTPEndpoint_OAuthPassword() {
+        return (EAttribute)httpEndpointEClass.getEStructuralFeatures().get(14);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getHTTPEndpoint_OAuthClientIdExpression() {
+        return (EReference)httpEndpointEClass.getEStructuralFeatures().get(15);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getHTTPEndpoint_OAuthClientSecretExpression() {
+        return (EReference)httpEndpointEClass.getEStructuralFeatures().get(16);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getHTTPEndpoint_OAuthTokenUrlExpression() {
+        return (EReference)httpEndpointEClass.getEStructuralFeatures().get(17);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getHTTPEndpoint_OAuthRefreshTokenExpression() {
+        return (EReference)httpEndpointEClass.getEStructuralFeatures().get(18);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getHTTPEndpoint_BasicAuthUsernameExpression() {
+        return (EReference)httpEndpointEClass.getEStructuralFeatures().get(19);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getHTTPEndpoint_BasicAuthPasswordExpression() {
+        return (EReference)httpEndpointEClass.getEStructuralFeatures().get(20);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getHTTPEndpoint_OAuthUsernameExpression() {
+        return (EReference)httpEndpointEClass.getEStructuralFeatures().get(21);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getHTTPEndpoint_OAuthPasswordExpression() {
+        return (EReference)httpEndpointEClass.getEStructuralFeatures().get(22);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getHTTPEndpoint_OAuthParameters() {
+        return (EReference)httpEndpointEClass.getEStructuralFeatures().get(23);
     }
 
     /**
@@ -6012,6 +6136,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      */
     public EClass getHTTPEndPointOutputConnector() {
         return httpEndPointOutputConnectorEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getHTTPEndpointOAuthParameter() {
+        return httpEndpointOAuthParameterEClass;
     }
 
     /**
@@ -19366,6 +19499,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EEnum getHTTPEndpointOAuthAuthenticationMode() {
+        return httpEndpointOAuthAuthenticationModeEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EEnum getFilterMediatorConditionType() {
         return filterMediatorConditionTypeEEnum;
     }
@@ -20848,6 +20990,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(httpEndpointEClass, HTTP_ENDPOINT__URI_TEMPLATE);
         createEAttribute(httpEndpointEClass, HTTP_ENDPOINT__HTTP_METHOD);
         createEAttribute(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_GRANT_TYPE);
+        createEAttribute(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_AUTHENTICATION_MODE);
         createEAttribute(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_CLIENT_ID);
         createEAttribute(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_CLIENT_SECRET);
         createEAttribute(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_TOKEN_URL);
@@ -20855,10 +20998,23 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(httpEndpointEClass, HTTP_ENDPOINT__AUTH_TYPE);
         createEAttribute(httpEndpointEClass, HTTP_ENDPOINT__BASIC_AUTH_USERNAME);
         createEAttribute(httpEndpointEClass, HTTP_ENDPOINT__BASIC_AUTH_PASSWORD);
+        createEAttribute(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_USERNAME);
+        createEAttribute(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_PASSWORD);
+        createEReference(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_CLIENT_ID_EXPRESSION);
+        createEReference(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_CLIENT_SECRET_EXPRESSION);
+        createEReference(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_TOKEN_URL_EXPRESSION);
+        createEReference(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN_EXPRESSION);
+        createEReference(httpEndpointEClass, HTTP_ENDPOINT__BASIC_AUTH_USERNAME_EXPRESSION);
+        createEReference(httpEndpointEClass, HTTP_ENDPOINT__BASIC_AUTH_PASSWORD_EXPRESSION);
+        createEReference(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_USERNAME_EXPRESSION);
+        createEReference(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_PASSWORD_EXPRESSION);
+        createEReference(httpEndpointEClass, HTTP_ENDPOINT__OAUTH_PARAMETERS);
 
         httpEndPointInputConnectorEClass = createEClass(HTTP_END_POINT_INPUT_CONNECTOR);
 
         httpEndPointOutputConnectorEClass = createEClass(HTTP_END_POINT_OUTPUT_CONNECTOR);
+
+        httpEndpointOAuthParameterEClass = createEClass(HTTP_ENDPOINT_OAUTH_PARAMETER);
 
         dropMediatorEClass = createEClass(DROP_MEDIATOR);
         createEReference(dropMediatorEClass, DROP_MEDIATOR__INPUT_CONNECTOR);
@@ -22675,6 +22831,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         httpMethodTypeEEnum = createEEnum(HTTP_METHOD_TYPE);
         httpEndpointOAuthGrantTypeEEnum = createEEnum(HTTP_ENDPOINT_OAUTH_GRANT_TYPE);
         httpEndpointAuthTypeEEnum = createEEnum(HTTP_ENDPOINT_AUTH_TYPE);
+        httpEndpointOAuthAuthenticationModeEEnum = createEEnum(HTTP_ENDPOINT_OAUTH_AUTHENTICATION_MODE);
         filterMediatorConditionTypeEEnum = createEEnum(FILTER_MEDIATOR_CONDITION_TYPE);
         logCategoryEEnum = createEEnum(LOG_CATEGORY);
         logLevelEEnum = createEEnum(LOG_LEVEL);
@@ -22886,6 +23043,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         httpEndpointEClass.getESuperTypes().add(this.getAbstractEndPoint());
         httpEndPointInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
         httpEndPointOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
+        httpEndpointOAuthParameterEClass.getESuperTypes().add(this.getAbstractNameValueExpressionProperty());
         dropMediatorEClass.getESuperTypes().add(this.getMediator());
         dropMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
         filterMediatorEClass.getESuperTypes().add(this.getMediator());
@@ -23432,6 +23590,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getHTTPEndpoint_URITemplate(), ecorePackage.getEString(), "URITemplate", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getHTTPEndpoint_HttpMethod(), this.getHttpMethodType(), "HttpMethod", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getHTTPEndpoint_OAuthGrantType(), this.getHTTPEndpointOAuthGrantType(), "OAuthGrantType", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getHTTPEndpoint_OAuthAuthenticationMode(), this.getHTTPEndpointOAuthAuthenticationMode(), "OAuthAuthenticationMode", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getHTTPEndpoint_OAuthClientId(), ecorePackage.getEString(), "OAuthClientId", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getHTTPEndpoint_OAuthClientSecret(), ecorePackage.getEString(), "OAuthClientSecret", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getHTTPEndpoint_OAuthTokenUrl(), ecorePackage.getEString(), "OAuthTokenUrl", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -23439,10 +23598,23 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getHTTPEndpoint_AuthType(), this.getHTTPEndpointAuthType(), "AuthType", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getHTTPEndpoint_BasicAuthUsername(), ecorePackage.getEString(), "BasicAuthUsername", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getHTTPEndpoint_BasicAuthPassword(), ecorePackage.getEString(), "BasicAuthPassword", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getHTTPEndpoint_OAuthUsername(), ecorePackage.getEString(), "OAuthUsername", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getHTTPEndpoint_OAuthPassword(), ecorePackage.getEString(), "OAuthPassword", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getHTTPEndpoint_OAuthClientIdExpression(), this.getNamespacedProperty(), null, "OAuthClientIdExpression", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getHTTPEndpoint_OAuthClientSecretExpression(), this.getNamespacedProperty(), null, "OAuthClientSecretExpression", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getHTTPEndpoint_OAuthTokenUrlExpression(), this.getNamespacedProperty(), null, "OAuthTokenUrlExpression", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getHTTPEndpoint_OAuthRefreshTokenExpression(), this.getNamespacedProperty(), null, "OAuthRefreshTokenExpression", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getHTTPEndpoint_BasicAuthUsernameExpression(), this.getNamespacedProperty(), null, "BasicAuthUsernameExpression", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getHTTPEndpoint_BasicAuthPasswordExpression(), this.getNamespacedProperty(), null, "BasicAuthPasswordExpression", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getHTTPEndpoint_OAuthUsernameExpression(), this.getNamespacedProperty(), null, "OAuthUsernameExpression", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getHTTPEndpoint_OAuthPasswordExpression(), this.getNamespacedProperty(), null, "OAuthPasswordExpression", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getHTTPEndpoint_OAuthParameters(), this.getHTTPEndpointOAuthParameter(), null, "OAuthParameters", null, 0, -1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(httpEndPointInputConnectorEClass, HTTPEndPointInputConnector.class, "HTTPEndPointInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(httpEndPointOutputConnectorEClass, HTTPEndPointOutputConnector.class, "HTTPEndPointOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(httpEndpointOAuthParameterEClass, HTTPEndpointOAuthParameter.class, "HTTPEndpointOAuthParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(dropMediatorEClass, DropMediator.class, "DropMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDropMediator_InputConnector(), this.getDropMediatorInputConnector(), null, "inputConnector", null, 0, 1, DropMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -25261,6 +25433,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEClass(ntlmMediatorInputConnectorEClass, NTLMMediatorInputConnector.class, "NTLMMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         // Initialize enums and add enum literals
+        initEnumsAndAddEnumLiterals();
+        
+        // Initialize data types
+        initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+
+        // Create resource
+        createResource(eNS_URI);
+    }
+    
+    private void initEnumsAndAddEnumLiterals() {
+        // Initialize enums and add enum literals
         initEEnum(artifactTypeEEnum, ArtifactType.class, "ArtifactType");
         addEEnumLiteral(artifactTypeEEnum, ArtifactType.SYNAPSE_CONFIG);
         addEEnumLiteral(artifactTypeEEnum, ArtifactType.PROXY);
@@ -25328,11 +25511,16 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEEnum(httpEndpointOAuthGrantTypeEEnum, HTTPEndpointOAuthGrantType.class, "HTTPEndpointOAuthGrantType");
         addEEnumLiteral(httpEndpointOAuthGrantTypeEEnum, HTTPEndpointOAuthGrantType.AUTHORIZATION_CODE_GRANT);
         addEEnumLiteral(httpEndpointOAuthGrantTypeEEnum, HTTPEndpointOAuthGrantType.CLIENT_CREDENTIALS_GRANT);
+        addEEnumLiteral(httpEndpointOAuthGrantTypeEEnum, HTTPEndpointOAuthGrantType.PASSWORD_CREDENTIALS_GRANT);
 
         initEEnum(httpEndpointAuthTypeEEnum, HTTPEndpointAuthType.class, "HTTPEndpointAuthType");
         addEEnumLiteral(httpEndpointAuthTypeEEnum, HTTPEndpointAuthType.NONE);
         addEEnumLiteral(httpEndpointAuthTypeEEnum, HTTPEndpointAuthType.BASIC_AUTH);
         addEEnumLiteral(httpEndpointAuthTypeEEnum, HTTPEndpointAuthType.OAUTH);
+
+        initEEnum(httpEndpointOAuthAuthenticationModeEEnum, HTTPEndpointOAuthAuthenticationMode.class, "HTTPEndpointOAuthAuthenticationMode");
+        addEEnumLiteral(httpEndpointOAuthAuthenticationModeEEnum, HTTPEndpointOAuthAuthenticationMode.HEADER_OAUTH_AUTHENTICATION_MODE);
+        addEEnumLiteral(httpEndpointOAuthAuthenticationModeEEnum, HTTPEndpointOAuthAuthenticationMode.PAYLOAD_OAUTH_AUTHENTICATION_MODE);
 
         initEEnum(filterMediatorConditionTypeEEnum, FilterMediatorConditionType.class, "FilterMediatorConditionType");
         addEEnumLiteral(filterMediatorConditionTypeEEnum, FilterMediatorConditionType.SOURCE_REGEX);
@@ -26106,12 +26294,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         addEEnumLiteral(callTargetTypeEEnum, CallTargetType.NONE);
         addEEnumLiteral(callTargetTypeEEnum, CallTargetType.BODY);
         addEEnumLiteral(callTargetTypeEEnum, CallTargetType.PROPERTY);
-
-        // Initialize data types
-        initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-
-        // Create resource
-        createResource(eNS_URI);
     }
 
 } // EsbPackageImpl

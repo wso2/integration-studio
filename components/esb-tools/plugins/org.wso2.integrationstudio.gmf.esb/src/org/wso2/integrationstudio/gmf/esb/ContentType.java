@@ -49,7 +49,17 @@ public enum ContentType implements Enumerator {
      * @generated
      * @ordered
      */
-    JSON(1, "json", "application/json");
+    JSON(1, "json", "application/json"),
+	
+	/**
+     * The '<em><b>Yaml</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #JSON_VALUE
+     * @generated
+     * @ordered
+     */
+    YAML(2, "yaml", "application/yaml");
 
     /**
      * The '<em><b>Xml</b></em>' literal value.

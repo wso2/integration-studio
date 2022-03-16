@@ -368,6 +368,15 @@ public interface EsbFactory extends EFactory {
     HTTPEndPointOutputConnector createHTTPEndPointOutputConnector();
 
     /**
+     * Returns a new object of class '<em>HTTP Endpoint OAuth Parameter</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>HTTP Endpoint OAuth Parameter</em>'.
+     * @generated
+     */
+    HTTPEndpointOAuthParameter createHTTPEndpointOAuthParameter();
+
+    /**
      * Returns a new object of class '<em>Drop Mediator</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

@@ -369,6 +369,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="URITemplate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="HttpMethod" eType="#//HttpMethodType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="OAuthGrantType" eType="#//HTTPEndpointOAuthGrantType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="OAuthAuthenticationMode"
+        eType="#//HTTPEndpointOAuthAuthenticationMode"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="OAuthClientId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="OAuthClientSecret" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="OAuthTokenUrl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -376,6 +378,26 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="AuthType" eType="#//HTTPEndpointAuthType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="BasicAuthUsername" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="BasicAuthPassword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="OAuthUsername" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="OAuthPassword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OAuthClientIdExpression"
+        eType="#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OAuthClientSecretExpression"
+        eType="#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OAuthTokenUrlExpression"
+        eType="#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OAuthRefreshTokenExpression"
+        eType="#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="BasicAuthUsernameExpression"
+        eType="#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="BasicAuthPasswordExpression"
+        eType="#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OAuthUsernameExpression"
+        eType="#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OAuthPasswordExpression"
+        eType="#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OAuthParameters" upperBound="-1"
+        eType="#//HTTPEndpointOAuthParameter" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HTTPEndPointInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="HTTPEndPointOutputConnector" eSuperTypes="#//OutputConnector"/>
@@ -392,12 +414,18 @@
   <eClassifiers xsi:type="ecore:EEnum" name="HTTPEndpointOAuthGrantType">
     <eLiterals name="Authorization_Code_Grant" literal="Authorization Code Grant"/>
     <eLiterals name="Client_Credentials_Grant" value="1" literal="Client Credentials Grant"/>
+    <eLiterals name="Password_Credentials_Grant" value="2" literal="Password Credentials Grant"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="HTTPEndpointAuthType">
     <eLiterals name="None"/>
     <eLiterals name="Basic_Auth" value="1"/>
     <eLiterals name="OAuth" value="2"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HTTPEndpointOAuthAuthenticationMode">
+    <eLiterals name="Header_OAuth_Authentication_Mode" literal="Header OAuth Authentication Mode"/>
+    <eLiterals name="Payload_OAuth_Authentication_Mode" value="1" literal="Payload OAuth Authentication Mode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HTTPEndpointOAuthParameter" eSuperTypes="#//AbstractNameValueExpressionProperty"/>
   <eClassifiers xsi:type="ecore:EClass" name="DropMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//DropMediatorInputConnector"
         containment="true"/>

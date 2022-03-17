@@ -32,20 +32,24 @@
             <xs:sequence>
                 <xs:element name="target" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType>
+                    	<xs:sequence>
+            				<xs:element name="sequence" minOccurs="1" maxOccurs="1">
+			                    <xs:complexType>
+			                        <xs:group ref="mediatorList" minOccurs="1" maxOccurs="unbounded" />
+			                    </xs:complexType>
+			                </xs:element>
+			                <xs:element name="endpoint" type="Endpoint" minOccurs="0" maxOccurs="1"/>
+            			</xs:sequence>
                         <xs:attribute name="to" type="xs:string" use="optional"/>
+                        <xs:attribute name="soapAction" type="xs:boolean" use="required"/>
+            			<xs:attribute name="sequence" type="xs:boolean" use="required"/>
+            			<xs:attribute name="endpoint" type="xs:boolean" use="required"/>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="sequence" minOccurs="1" maxOccurs="1">
-                    <xs:complexType>
-                        <xs:group ref="mediatorList" minOccurs="1" maxOccurs="unbounded"/>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="endpoint" type="Endpoint" minOccurs="0" maxOccurs="1"/>
+                
             </xs:sequence>
             <xs:attribute name="continueParent" type="xs:boolean" use="required"/>
-            <xs:attribute name="soapAction" type="xs:boolean" use="required"/>
-            <xs:attribute name="sequence" type="xs:boolean" use="required"/>
-            <xs:attribute name="endpoint" type="xs:boolean" use="required"/>
+            <xs:attribute name="sequential" type="xs:boolean" use="required"/>
             <xs:attribute name="description" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>

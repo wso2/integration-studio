@@ -131,6 +131,9 @@ public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWiz
 			getModel().getMavenInfo().setPackageName("bundle");
 			if(!pomfile.exists()){
 				createPOM(pomfile);
+				MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
+				mavenProject.getModel().getProperties().put("CApp.type", "lib/synapse/mediator");
+				MavenUtils.saveMavenProject(mavenProject, pomfile);
 				addDependancies(project);
 			}
 			MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);

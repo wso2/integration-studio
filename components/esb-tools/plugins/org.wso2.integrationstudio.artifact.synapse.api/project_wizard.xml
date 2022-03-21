@@ -96,7 +96,7 @@
 				  error="Browse and select a WSDL file">
 			<data modelProperty="api.name" type="string"
 				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Name*</data>
-			<data modelProperty="wsdl.file.type" type="list" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.integrationstudio.artifact.synapse.api.validator.APIWSDLTypes">Generate API Using</data>
+			<data modelProperty="wsdl.file.type" type="list" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.integrationstudio.artifact.synapse.api.validator.APIWSDLTypes">Generate API</data>
 			<data modelProperty="apiwsdl.url" type="string" fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Enter WSDL URL</data>
 			<data modelProperty="apiwsdl.file" type="file" filter="*.wsdl;*.xml;*.zip"
 				fieldController="org.wso2.integrationstudio.artifact.synapse.api.validator.ProjectFieldController">Use Local WSDL file or Zip file</data>

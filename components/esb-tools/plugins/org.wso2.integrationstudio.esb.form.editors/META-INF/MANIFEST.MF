@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.ui,
  org.wso2.integrationstudio.project.extensions,
  org.eclipse.emf.edit;bundle-version="2.12.0",
  org.wso2.integrationstudio.esb.synapse.unit.test,
- org.eclipse.jface
+ org.eclipse.jface,
+ org.eclipse.emf.eef.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.axiom.om;version="1.2.11.wso2v10",
@@ -39,6 +40,7 @@ Import-Package: org.apache.axiom.om;version="1.2.11.wso2v10",
  org.eclipse.ui.forms.widgets,
  org.eclipse.ui.ide,
  org.eclipse.ui.part,
+ org.eclipse.wst.xml.xpath.core.util,
  org.wso2.integrationstudio.capp.core.artifacts.manager,
  org.wso2.integrationstudio.capp.core.model,
  org.wso2.integrationstudio.esb.core,

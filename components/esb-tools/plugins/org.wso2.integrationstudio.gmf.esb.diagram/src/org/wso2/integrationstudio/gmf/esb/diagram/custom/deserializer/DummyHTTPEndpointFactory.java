@@ -22,6 +22,7 @@ import com.damnhandy.uri.template.UriTemplate;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axis2.Constants;
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.endpoints.DefinitionFactory;
@@ -37,10 +38,15 @@ import org.apache.synapse.endpoints.auth.basicauth.BasicAuthHandler;
 import org.apache.synapse.endpoints.auth.oauth.AuthorizationCodeHandler;
 import org.apache.synapse.endpoints.auth.oauth.ClientCredentialsHandler;
 import org.apache.synapse.endpoints.auth.oauth.OAuthHandler;
+import org.apache.synapse.endpoints.auth.oauth.PasswordCredentialsHandler;
 import org.apache.synapse.api.RESTConstants;
-
+import org.apache.synapse.commons.resolvers.ResolverFactory;
 import javax.xml.namespace.QName;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
+import java.util.Iterator;
 
 public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
 
@@ -198,6 +204,9 @@ public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
 
         OMElement clientCredentialsElement = oauthElement.getFirstChildWithName(
                 new QName(SynapseConstants.SYNAPSE_NAMESPACE, AuthConstants.CLIENT_CREDENTIALS));
+        
+        OMElement passwordCredentialsElement = oauthElement.getFirstChildWithName(new QName(
+                SynapseConstants.SYNAPSE_NAMESPACE, AuthConstants.PASSWORD_CREDENTIALS));
 
         if (authCodeElement != null) {
             oAuthHandler = getAuthorizationCodeHandler(authCodeElement);
@@ -205,6 +214,10 @@ public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
 
         if (clientCredentialsElement != null) {
             oAuthHandler = getClientCredentialsHandler(clientCredentialsElement);
+        }
+        
+        if (passwordCredentialsElement != null) {
+            oAuthHandler = getPasswordCredentialsHandler(passwordCredentialsElement);
         }
         return oAuthHandler;
     }
@@ -216,13 +229,26 @@ public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
      * @return AuthorizationCodeHandler object
      */
     private static AuthorizationCodeHandler getAuthorizationCodeHandler(OMElement authCodeElement) {
-
+        
         String clientId = getChildValue(authCodeElement, AuthConstants.OAUTH_CLIENT_ID);
         String clientSecret = getChildValue(authCodeElement, AuthConstants.OAUTH_CLIENT_SECRET);
         String refreshToken = getChildValue(authCodeElement, AuthConstants.OAUTH_REFRESH_TOKEN);
         String tokenApiUrl = getChildValue(authCodeElement, AuthConstants.TOKEN_API_URL);
+        String authMode = getChildValue(authCodeElement, AuthConstants.OAUTH_AUTHENTICATION_MODE);
 
-        return new AuthorizationCodeHandler(tokenApiUrl, clientId, clientSecret, refreshToken);
+        if (clientId == null || clientSecret == null || refreshToken == null || tokenApiUrl == null) {
+            return null;
+        }
+        AuthorizationCodeHandler handler = new AuthorizationCodeHandler(tokenApiUrl, clientId, clientSecret,
+                refreshToken, authMode);
+        if (hasRequestParameters(authCodeElement)) {
+            Map<String, String> requestParameters = getRequestParameters(authCodeElement);
+            if (requestParameters == null) {
+                return null;
+            }
+            handler.setRequestParameters(requestParameters);
+        }
+        return handler;
 
     }
 
@@ -237,8 +263,51 @@ public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
         String clientId = getChildValue(clientCredentialsElement, AuthConstants.OAUTH_CLIENT_ID);
         String clientSecret = getChildValue(clientCredentialsElement, AuthConstants.OAUTH_CLIENT_SECRET);
         String tokenApiUrl = getChildValue(clientCredentialsElement, AuthConstants.TOKEN_API_URL);
+        String authMode = getChildValue(clientCredentialsElement, AuthConstants.OAUTH_AUTHENTICATION_MODE);
 
-        return new ClientCredentialsHandler(tokenApiUrl, clientId, clientSecret);
+        if (clientId == null || clientSecret == null || tokenApiUrl == null) {
+            return null;
+        }
+        ClientCredentialsHandler handler = new ClientCredentialsHandler(tokenApiUrl, clientId, clientSecret, authMode);
+        if (hasRequestParameters(clientCredentialsElement)) {
+            Map<String, String> requestParameters = getRequestParameters(clientCredentialsElement);
+            if (requestParameters == null) {
+                return null;
+            }
+            handler.setRequestParameters(requestParameters);
+        }
+        return handler;
+
+    }
+    
+    /**
+     * Method to get a PasswordCredentialsHandler
+     *
+     * @param clientCredentialsElement Element containing client credentials configs
+     * @return ClientCredentialsHandler object
+     */
+    private static PasswordCredentialsHandler getPasswordCredentialsHandler(OMElement passwordCredentialsElement) {
+
+        String clientId = getChildValue(passwordCredentialsElement, AuthConstants.OAUTH_CLIENT_ID);
+        String clientSecret = getChildValue(passwordCredentialsElement, AuthConstants.OAUTH_CLIENT_SECRET);
+        String username = getChildValue(passwordCredentialsElement, AuthConstants.OAUTH_USERNAME);
+        String password = getChildValue(passwordCredentialsElement, AuthConstants.OAUTH_PASSWORD);
+        String tokenApiUrl = getChildValue(passwordCredentialsElement, AuthConstants.TOKEN_API_URL);
+        String authMode = getChildValue(passwordCredentialsElement, AuthConstants.OAUTH_AUTHENTICATION_MODE);
+
+        if (username == null || password == null || tokenApiUrl == null || clientId == null || clientSecret == null) {
+            return null;
+        }
+        PasswordCredentialsHandler handler = new PasswordCredentialsHandler(tokenApiUrl, clientId, clientSecret,
+                username, password, authMode);
+        if (hasRequestParameters(passwordCredentialsElement)) {
+            Map<String, String> requestParameters = getRequestParameters(passwordCredentialsElement);
+            if (requestParameters == null) {
+                return null;
+            }
+            handler.setRequestParameters(requestParameters);
+        }
+        return handler;
 
     }
 
@@ -258,5 +327,52 @@ public class DummyHTTPEndpointFactory extends DummyEndpointFactory {
             return childElement.getText().trim();
         }
         return "";
+    }
+    
+    /**
+     * Method to return the request parameters as a Map.
+     *
+     * @param oauthElement OAuth config OMElement
+     * @return Map<String, String> containing request parameters
+     */
+    private static Map<String, String> getRequestParameters(OMElement oauthElement) {
+
+        HashMap<String, String> parameterMap = new HashMap<>();
+
+        OMElement requestParametersElement = oauthElement.getFirstChildWithName(
+                new QName(XMLConfigConstants.SYNAPSE_NAMESPACE,
+                        AuthConstants.REQUEST_PARAMETERS));
+
+        Iterator parameters =
+                requestParametersElement.getChildrenWithName(
+                        new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, AuthConstants.REQUEST_PARAMETER));
+
+        while (parameters.hasNext()) {
+            OMElement parameter = (OMElement) parameters.next();
+            String paramName = parameter.getAttributeValue(new QName(AuthConstants.NAME));
+            String paramValue = parameter.getText().trim();
+            if (StringUtils.isBlank(paramName) || StringUtils.isBlank(paramValue)) {
+                return null;
+            }
+            paramValue = ResolverFactory.getInstance().getResolver(paramValue).resolve();
+            parameterMap.put(paramName, paramValue);
+        }
+        return parameterMap;
+    }
+    
+    /**
+     * Method to check whether there are request parameters are defined in the OAuth config.
+     *
+     * @param oauthElement OAuth config OMElement
+     * @return true if there are request parameters in the oauth element
+     */
+    private static boolean hasRequestParameters(OMElement oauthElement) {
+
+        OMElement requestParametersElement = oauthElement.getFirstChildWithName(
+                new QName(XMLConfigConstants.SYNAPSE_NAMESPACE,
+                        AuthConstants.REQUEST_PARAMETERS));
+        return (requestParametersElement != null && requestParametersElement.getChildrenWithName(
+                new QName(XMLConfigConstants.SYNAPSE_NAMESPACE,
+                        AuthConstants.REQUEST_PARAMETER)).hasNext());
     }
 }

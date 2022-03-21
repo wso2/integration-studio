@@ -15,6 +15,8 @@
  */
 package org.wso2.integrationstudio.gmf.esb;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>HTTP Endpoint</b></em>'.
@@ -29,6 +31,7 @@ package org.wso2.integrationstudio.gmf.esb;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getURITemplate <em>URI Template</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getHttpMethod <em>Http Method</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthGrantType <em>OAuth Grant Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthAuthenticationMode <em>OAuth Authentication Mode</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthClientId <em>OAuth Client Id</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthClientSecret <em>OAuth Client Secret</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthTokenUrl <em>OAuth Token Url</em>}</li>
@@ -36,6 +39,17 @@ package org.wso2.integrationstudio.gmf.esb;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getAuthType <em>Auth Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getBasicAuthUsername <em>Basic Auth Username</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getBasicAuthPassword <em>Basic Auth Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthUsername <em>OAuth Username</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthPassword <em>OAuth Password</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthClientIdExpression <em>OAuth Client Id Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthClientSecretExpression <em>OAuth Client Secret Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthTokenUrlExpression <em>OAuth Token Url Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthRefreshTokenExpression <em>OAuth Refresh Token Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getBasicAuthUsernameExpression <em>Basic Auth Username Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getBasicAuthPasswordExpression <em>Basic Auth Password Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthUsernameExpression <em>OAuth Username Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthPasswordExpression <em>OAuth Password Expression</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthParameters <em>OAuth Parameters</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint()
@@ -174,6 +188,31 @@ public interface HTTPEndpoint extends AbstractEndPoint {
      * @generated
      */
     void setOAuthGrantType(HTTPEndpointOAuthGrantType value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Authentication Mode</b></em>' attribute.
+     * The literals are from the enumeration {@link org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthAuthenticationMode}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Authentication Mode</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthAuthenticationMode
+     * @see #setOAuthAuthenticationMode(HTTPEndpointOAuthAuthenticationMode)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthAuthenticationMode()
+     * @model
+     * @generated
+     */
+    HTTPEndpointOAuthAuthenticationMode getOAuthAuthenticationMode();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthAuthenticationMode <em>OAuth Authentication Mode</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Authentication Mode</em>' attribute.
+     * @see org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthAuthenticationMode
+     * @see #getOAuthAuthenticationMode()
+     * @generated
+     */
+    void setOAuthAuthenticationMode(HTTPEndpointOAuthAuthenticationMode value);
 
     /**
      * Returns the value of the '<em><b>OAuth Client Id</b></em>' attribute.
@@ -331,5 +370,237 @@ public interface HTTPEndpoint extends AbstractEndPoint {
      * @generated
      */
     void setBasicAuthPassword(String value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Username</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Username</em>' attribute.
+     * @see #setOAuthUsername(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthUsername()
+     * @model
+     * @generated
+     */
+    String getOAuthUsername();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthUsername <em>OAuth Username</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Username</em>' attribute.
+     * @see #getOAuthUsername()
+     * @generated
+     */
+    void setOAuthUsername(String value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Password</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Password</em>' attribute.
+     * @see #setOAuthPassword(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthPassword()
+     * @model
+     * @generated
+     */
+    String getOAuthPassword();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthPassword <em>OAuth Password</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Password</em>' attribute.
+     * @see #getOAuthPassword()
+     * @generated
+     */
+    void setOAuthPassword(String value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Client Id Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Client Id Expression</em>' reference.
+     * @see #setOAuthClientIdExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthClientIdExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getOAuthClientIdExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthClientIdExpression <em>OAuth Client Id Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Client Id Expression</em>' reference.
+     * @see #getOAuthClientIdExpression()
+     * @generated
+     */
+    void setOAuthClientIdExpression(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Client Secret Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Client Secret Expression</em>' reference.
+     * @see #setOAuthClientSecretExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthClientSecretExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getOAuthClientSecretExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthClientSecretExpression <em>OAuth Client Secret Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Client Secret Expression</em>' reference.
+     * @see #getOAuthClientSecretExpression()
+     * @generated
+     */
+    void setOAuthClientSecretExpression(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Token Url Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Token Url Expression</em>' reference.
+     * @see #setOAuthTokenUrlExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthTokenUrlExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getOAuthTokenUrlExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthTokenUrlExpression <em>OAuth Token Url Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Token Url Expression</em>' reference.
+     * @see #getOAuthTokenUrlExpression()
+     * @generated
+     */
+    void setOAuthTokenUrlExpression(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Refresh Token Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Refresh Token Expression</em>' reference.
+     * @see #setOAuthRefreshTokenExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthRefreshTokenExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getOAuthRefreshTokenExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthRefreshTokenExpression <em>OAuth Refresh Token Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Refresh Token Expression</em>' reference.
+     * @see #getOAuthRefreshTokenExpression()
+     * @generated
+     */
+    void setOAuthRefreshTokenExpression(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Basic Auth Username Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Basic Auth Username Expression</em>' reference.
+     * @see #setBasicAuthUsernameExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_BasicAuthUsernameExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getBasicAuthUsernameExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getBasicAuthUsernameExpression <em>Basic Auth Username Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Basic Auth Username Expression</em>' reference.
+     * @see #getBasicAuthUsernameExpression()
+     * @generated
+     */
+    void setBasicAuthUsernameExpression(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>Basic Auth Password Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Basic Auth Password Expression</em>' reference.
+     * @see #setBasicAuthPasswordExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_BasicAuthPasswordExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getBasicAuthPasswordExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getBasicAuthPasswordExpression <em>Basic Auth Password Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Basic Auth Password Expression</em>' reference.
+     * @see #getBasicAuthPasswordExpression()
+     * @generated
+     */
+    void setBasicAuthPasswordExpression(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Username Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Username Expression</em>' reference.
+     * @see #setOAuthUsernameExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthUsernameExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getOAuthUsernameExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthUsernameExpression <em>OAuth Username Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Username Expression</em>' reference.
+     * @see #getOAuthUsernameExpression()
+     * @generated
+     */
+    void setOAuthUsernameExpression(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Password Expression</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Password Expression</em>' reference.
+     * @see #setOAuthPasswordExpression(NamespacedProperty)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthPasswordExpression()
+     * @model
+     * @generated
+     */
+    NamespacedProperty getOAuthPasswordExpression();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpoint#getOAuthPasswordExpression <em>OAuth Password Expression</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>OAuth Password Expression</em>' reference.
+     * @see #getOAuthPasswordExpression()
+     * @generated
+     */
+    void setOAuthPasswordExpression(NamespacedProperty value);
+
+    /**
+     * Returns the value of the '<em><b>OAuth Parameters</b></em>' containment reference list.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthParameter}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>OAuth Parameters</em>' containment reference list.
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpoint_OAuthParameters()
+     * @model containment="true"
+     * @generated
+     */
+    EList<HTTPEndpointOAuthParameter> getOAuthParameters();
 
 } // HTTPEndpoint

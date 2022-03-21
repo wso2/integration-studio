@@ -1,5 +1,5 @@
 /**
- * Copyright 2009-2012 WSO2, Inc. (http://wso2.com)
+ * Copyright 2021 WSO2, Inc. (http://wso2.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,107 +23,87 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>HTTP Endpoint OAuth Grant Type</b></em>',
+ * A representation of the literals of the enumeration '<em><b>HTTP Endpoint OAuth Authentication Mode</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpointOAuthGrantType()
+ * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getHTTPEndpointOAuthAuthenticationMode()
  * @model
  * @generated
  */
-public enum HTTPEndpointOAuthGrantType implements Enumerator {
+public enum HTTPEndpointOAuthAuthenticationMode implements Enumerator {
     /**
-     * The '<em><b>Authorization Code Grant</b></em>' literal object.
+     * The '<em><b>Header OAuth Authentication Mode</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #AUTHORIZATION_CODE_GRANT_VALUE
+     * @see #HEADER_OAUTH_AUTHENTICATION_MODE_VALUE
      * @generated
      * @ordered
      */
-    AUTHORIZATION_CODE_GRANT(0, "Authorization_Code_Grant", "Authorization Code Grant"),
+    HEADER_OAUTH_AUTHENTICATION_MODE(0, "Header_OAuth_Authentication_Mode", "Header OAuth Authentication Mode"),
 
     /**
-     * The '<em><b>Client Credentials Grant</b></em>' literal object.
+     * The '<em><b>Payload OAuth Authentication Mode</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #CLIENT_CREDENTIALS_GRANT_VALUE
+     * @see #PAYLOAD_OAUTH_AUTHENTICATION_MODE_VALUE
      * @generated
      * @ordered
      */
-    CLIENT_CREDENTIALS_GRANT(1, "Client_Credentials_Grant", "Client Credentials Grant"), /**
-     * The '<em><b>Password Credentials Grant</b></em>' literal object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #PASSWORD_CREDENTIALS_GRANT_VALUE
-     * @generated
-     * @ordered
-     */
-    PASSWORD_CREDENTIALS_GRANT(2, "Password_Credentials_Grant", "Password Credentials Grant");
+    PAYLOAD_OAUTH_AUTHENTICATION_MODE(1, "Payload_OAuth_Authentication_Mode", "Payload OAuth Authentication Mode");
 
     /**
-     * The '<em><b>Authorization Code Grant</b></em>' literal value.
+     * The '<em><b>Header OAuth Authentication Mode</b></em>' literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #AUTHORIZATION_CODE_GRANT
-     * @model name="Authorization_Code_Grant" literal="Authorization Code Grant"
+     * @see #HEADER_OAUTH_AUTHENTICATION_MODE
+     * @model name="Header_OAuth_Authentication_Mode" literal="Header OAuth Authentication Mode"
      * @generated
      * @ordered
      */
-    public static final int AUTHORIZATION_CODE_GRANT_VALUE = 0;
+    public static final int HEADER_OAUTH_AUTHENTICATION_MODE_VALUE = 0;
 
     /**
-     * The '<em><b>Client Credentials Grant</b></em>' literal value.
+     * The '<em><b>Payload OAuth Authentication Mode</b></em>' literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #CLIENT_CREDENTIALS_GRANT
-     * @model name="Client_Credentials_Grant" literal="Client Credentials Grant"
+     * @see #PAYLOAD_OAUTH_AUTHENTICATION_MODE
+     * @model name="Payload_OAuth_Authentication_Mode" literal="Payload OAuth Authentication Mode"
      * @generated
      * @ordered
      */
-    public static final int CLIENT_CREDENTIALS_GRANT_VALUE = 1;
+    public static final int PAYLOAD_OAUTH_AUTHENTICATION_MODE_VALUE = 1;
 
     /**
-     * The '<em><b>Password Credentials Grant</b></em>' literal value.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #PASSWORD_CREDENTIALS_GRANT
-     * @model name="Password_Credentials_Grant" literal="Password Credentials Grant"
-     * @generated
-     * @ordered
-     */
-    public static final int PASSWORD_CREDENTIALS_GRANT_VALUE = 2;
-
-    /**
-     * An array of all the '<em><b>HTTP Endpoint OAuth Grant Type</b></em>' enumerators.
+     * An array of all the '<em><b>HTTP Endpoint OAuth Authentication Mode</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    private static final HTTPEndpointOAuthGrantType[] VALUES_ARRAY =
-        new HTTPEndpointOAuthGrantType[] {
-            AUTHORIZATION_CODE_GRANT,
-            CLIENT_CREDENTIALS_GRANT,
-            PASSWORD_CREDENTIALS_GRANT,
+    private static final HTTPEndpointOAuthAuthenticationMode[] VALUES_ARRAY =
+        new HTTPEndpointOAuthAuthenticationMode[] {
+            HEADER_OAUTH_AUTHENTICATION_MODE,
+            PAYLOAD_OAUTH_AUTHENTICATION_MODE,
         };
 
     /**
-     * A public read-only list of all the '<em><b>HTTP Endpoint OAuth Grant Type</b></em>' enumerators.
+     * A public read-only list of all the '<em><b>HTTP Endpoint OAuth Authentication Mode</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    public static final List<HTTPEndpointOAuthGrantType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<HTTPEndpointOAuthAuthenticationMode> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>HTTP Endpoint OAuth Grant Type</b></em>' literal with the specified literal value.
+     * Returns the '<em><b>HTTP Endpoint OAuth Authentication Mode</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
-    public static HTTPEndpointOAuthGrantType get(String literal) {
+    public static HTTPEndpointOAuthAuthenticationMode get(String literal) {
         for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            HTTPEndpointOAuthGrantType result = VALUES_ARRAY[i];
+            HTTPEndpointOAuthAuthenticationMode result = VALUES_ARRAY[i];
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -132,16 +112,16 @@ public enum HTTPEndpointOAuthGrantType implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>HTTP Endpoint OAuth Grant Type</b></em>' literal with the specified name.
+     * Returns the '<em><b>HTTP Endpoint OAuth Authentication Mode</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
-    public static HTTPEndpointOAuthGrantType getByName(String name) {
+    public static HTTPEndpointOAuthAuthenticationMode getByName(String name) {
         for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            HTTPEndpointOAuthGrantType result = VALUES_ARRAY[i];
+            HTTPEndpointOAuthAuthenticationMode result = VALUES_ARRAY[i];
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -150,18 +130,17 @@ public enum HTTPEndpointOAuthGrantType implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>HTTP Endpoint OAuth Grant Type</b></em>' literal with the specified integer value.
+     * Returns the '<em><b>HTTP Endpoint OAuth Authentication Mode</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
-    public static HTTPEndpointOAuthGrantType get(int value) {
+    public static HTTPEndpointOAuthAuthenticationMode get(int value) {
         switch (value) {
-            case AUTHORIZATION_CODE_GRANT_VALUE: return AUTHORIZATION_CODE_GRANT;
-            case CLIENT_CREDENTIALS_GRANT_VALUE: return CLIENT_CREDENTIALS_GRANT;
-            case PASSWORD_CREDENTIALS_GRANT_VALUE: return PASSWORD_CREDENTIALS_GRANT;
+            case HEADER_OAUTH_AUTHENTICATION_MODE_VALUE: return HEADER_OAUTH_AUTHENTICATION_MODE;
+            case PAYLOAD_OAUTH_AUTHENTICATION_MODE_VALUE: return PAYLOAD_OAUTH_AUTHENTICATION_MODE;
         }
         return null;
     }
@@ -193,7 +172,7 @@ public enum HTTPEndpointOAuthGrantType implements Enumerator {
      * <!-- end-user-doc -->
      * @generated
      */
-    private HTTPEndpointOAuthGrantType(int value, String name, String literal) {
+    private HTTPEndpointOAuthAuthenticationMode(int value, String name, String literal) {
         this.value = value;
         this.name = name;
         this.literal = literal;
@@ -237,4 +216,4 @@ public enum HTTPEndpointOAuthGrantType implements Enumerator {
         return literal;
     }
     
-} //HTTPEndpointOAuthGrantType
+} //HTTPEndpointOAuthAuthenticationMode

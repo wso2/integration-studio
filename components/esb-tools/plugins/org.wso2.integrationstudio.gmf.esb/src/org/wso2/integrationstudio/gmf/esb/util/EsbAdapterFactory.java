@@ -261,6 +261,10 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
                 return createHTTPEndPointOutputConnectorAdapter();
             }
             @Override
+            public Adapter caseHTTPEndpointOAuthParameter(HTTPEndpointOAuthParameter object) {
+                return createHTTPEndpointOAuthParameterAdapter();
+            }
+            @Override
             public Adapter caseDropMediator(DropMediator object) {
                 return createDropMediatorAdapter();
             }
@@ -2259,6 +2263,20 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createHTTPEndPointOutputConnectorAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthParameter <em>HTTP Endpoint OAuth Parameter</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthParameter
+     * @generated
+     */
+    public Adapter createHTTPEndpointOAuthParameterAdapter() {
         return null;
     }
 

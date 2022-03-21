@@ -168,6 +168,28 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the OAuth Authentication Mode feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthAuthenticationModePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthAuthenticationMode_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthAuthenticationMode_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_AUTHENTICATION_MODE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This adds a property descriptor for the OAuth Client Id feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -317,6 +339,226 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
                  false,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Username feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthUsernamePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthUsername_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthUsername_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_USERNAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Password feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthPasswordPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthPassword_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthPassword_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_PASSWORD,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Client Id Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthClientIdExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthClientIdExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthClientIdExpression_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_CLIENT_ID_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Client Secret Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthClientSecretExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthClientSecretExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthClientSecretExpression_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_CLIENT_SECRET_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Token Url Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthTokenUrlExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthTokenUrlExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthTokenUrlExpression_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_TOKEN_URL_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Refresh Token Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthRefreshTokenExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthRefreshTokenExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthRefreshTokenExpression_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Basic Auth Username Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addBasicAuthUsernameExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_BasicAuthUsernameExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_BasicAuthUsernameExpression_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__BASIC_AUTH_USERNAME_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Basic Auth Password Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addBasicAuthPasswordExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_BasicAuthPasswordExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_BasicAuthPasswordExpression_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__BASIC_AUTH_PASSWORD_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Username Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthUsernameExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthUsernameExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthUsernameExpression_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_USERNAME_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the OAuth Password Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addOAuthPasswordExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HTTPEndpoint_OAuthPasswordExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HTTPEndpoint_OAuthPasswordExpression_feature", "_UI_HTTPEndpoint_type"),
+                 EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_PASSWORD_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 null,
                  null,
                  null));
     }
@@ -522,6 +764,7 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
             super.getChildrenFeatures(object);
             childrenFeatures.add(EsbPackage.Literals.HTTP_ENDPOINT__INPUT_CONNECTOR);
             childrenFeatures.add(EsbPackage.Literals.HTTP_ENDPOINT__OUTPUT_CONNECTOR);
+            childrenFeatures.add(EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_PARAMETERS);
         }
         return childrenFeatures;
     }
@@ -579,6 +822,7 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
             case EsbPackage.HTTP_ENDPOINT__URI_TEMPLATE:
             case EsbPackage.HTTP_ENDPOINT__HTTP_METHOD:
             case EsbPackage.HTTP_ENDPOINT__OAUTH_GRANT_TYPE:
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_AUTHENTICATION_MODE:
             case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_ID:
             case EsbPackage.HTTP_ENDPOINT__OAUTH_CLIENT_SECRET:
             case EsbPackage.HTTP_ENDPOINT__OAUTH_TOKEN_URL:
@@ -586,10 +830,13 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
             case EsbPackage.HTTP_ENDPOINT__AUTH_TYPE:
             case EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_USERNAME:
             case EsbPackage.HTTP_ENDPOINT__BASIC_AUTH_PASSWORD:
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_USERNAME:
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_PASSWORD:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.HTTP_ENDPOINT__INPUT_CONNECTOR:
             case EsbPackage.HTTP_ENDPOINT__OUTPUT_CONNECTOR:
+            case EsbPackage.HTTP_ENDPOINT__OAUTH_PARAMETERS:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -616,6 +863,11 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
             (createChildParameter
                 (EsbPackage.Literals.HTTP_ENDPOINT__OUTPUT_CONNECTOR,
                  EsbFactory.eINSTANCE.createHTTPEndPointOutputConnector()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_PARAMETERS,
+                 EsbFactory.eINSTANCE.createHTTPEndpointOAuthParameter()));
     }
 
     /**

@@ -199,7 +199,13 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                
             return true;
             
-        }
+		} else if (getModel().getSelectedOption().equals("create.api.from.wsdl")
+				&& artifactModel.getName().equals(EMPTY_STRING)
+				|| (StringUtils.isEmpty(artifactModel.getAPIWSDLurl()) && artifactModel.getAPIWSDLFile() == null)) {
+			// If option to generate API from swagger definition is selected,
+			// can finish only if swagger definition is selected.
+			return false;
+		}
         return true;
     }
 
@@ -377,11 +383,12 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     }
                 } catch (Exception e) {
                     log.error("Could not generate REST API from provided WSDL File", e);
+                    MessageDialog.openError(getShell(), "Could not generate REST API from provided WSDL File", e.getMessage());
                     initSuccess = false;
                 }
 
                 if (initSuccess) {
-                    // Create WSDL Endpoint
+                    // Create WSDL end-point
                     String synapseWSDLEndpointName = apiName + "_SOAP_ENDPOINT";
                     String synapseWSDLEndpointFileName = apiName + "_SOAP_ENDPOINT.xml";
                     
@@ -389,6 +396,10 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     
                     WSDLEndpoint wsdlEndpoint = new WSDLEndpoint();
                     wsdlEndpoint.setName(synapseWSDLEndpointName);
+                    //Check the user provided WSDL end-point and set default one if empty
+                    if(StringUtils.isEmpty(endpoint)) {
+                    	endpoint = "http://yoursoapep.com?wsdl";
+                    }
                     if (!endpoint.endsWith("wsdl")) {
                         endpoint = endpoint.concat("?wsdl");
                     }
@@ -978,15 +989,15 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 
 	@Override
 	public IWizardPage getNextPage(IWizardPage page) {
-		IWizardPage nextPage = super.getNextPage(page);
+		IWizardPage nextPage = null;
 		IWizardPage currentPage = getContainer().getCurrentPage();
 		if (page instanceof ProjectOptionsPage) {
 			ProjectOptionsPage projectOptionsPage = (ProjectOptionsPage) page;
 			if (projectOptionsPage.getSelectedProjectOption().getId().equals("import.api.publisher")) {
 				nextPage = importPublisherAPIWizard;
 			}
-			if (currentPage instanceof ImportPublisherAPIWizardPage) {
-				nextPage = super.getPage("wizardPage");
+			else if (currentPage instanceof ProjectOptionsPage) {
+				nextPage = super.getNextPage(page);
 			}
 		}
 		return nextPage;

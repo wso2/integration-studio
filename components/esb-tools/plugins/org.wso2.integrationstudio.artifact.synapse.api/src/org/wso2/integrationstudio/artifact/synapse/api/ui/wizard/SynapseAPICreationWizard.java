@@ -220,8 +220,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             return true;
             
 		} else if (getModel().getSelectedOption().equals("create.api.from.wsdl")
-				&& artifactModel.getName().equals(EMPTY_STRING)
-				|| (StringUtils.isEmpty(artifactModel.getAPIWSDLurl()) && artifactModel.getAPIWSDLFile() == null)) {
+				&& (artifactModel.getName().equals(EMPTY_STRING)
+				|| (StringUtils.isEmpty(artifactModel.getAPIWSDLurl()) && artifactModel.getAPIWSDLFile() == null))) {
 			// If option to generate API from swagger definition is selected,
 			// can finish only if swagger definition is selected.
 			return false;

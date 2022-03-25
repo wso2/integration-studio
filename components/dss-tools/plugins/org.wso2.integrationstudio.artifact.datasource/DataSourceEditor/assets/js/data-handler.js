@@ -69,6 +69,7 @@ $(document).ready(function ($) {
     if (currentPage == CURRENT_PAGE_VAL_DESIGN) {
         // Switching to design view
         //Get xml source code edited by user
+        $("#ds-form :input").prop("disabled", true);
         $.ajax({
             url: url,
             type: 'GET',
@@ -95,10 +96,12 @@ $(document).ready(function ($) {
 
                         // Populate the design view with new dataModel
                         populateDesignViewFromDataModel(dataModel);
+                        $("#ds-form :input").prop("disabled", false);
                     });
                 }
             },
             error: function (error) {
+                $("#ds-form :input").prop("disabled", false);
             }
         });
     } else if (currentPage == CURRENT_PAGE_VAL_SOURCE) {
@@ -165,8 +168,11 @@ $(document).ready(function ($) {
         dataModel.definition.rdbms_conf.provider = dsProvider;
 
         var dbEngineType = $("#ds-db-engine-select").val();
-        populateDBEngineDefaults(xmlSource, dbEngineType);
         dataModel.definition.rdbms_conf.default_conf.db_engine = dbEngineType;
+
+        if (dataModel.definition.rdbms_conf.default_conf.driverClassName == EMPTY_STRING && dataModel.definition.rdbms_conf.default_conf.url == EMPTY_STRING) {
+            populateDBEngineDefaults(dbEngineType);
+        }
 
         setTestConnectionRDBMSVersion(dbEngineType);
 

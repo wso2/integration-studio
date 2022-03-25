@@ -388,10 +388,9 @@ function populateDesignViewFromDataModel(dataModel) {
         $("#ds-default-input-group").toggle(false);
 
     }
-    if (dataModel.definition.rdbms_conf.default_conf.driverClassName == EMPTY_STRING && dataModel.definition.rdbms_conf.default_conf.url == dsUrl) {
-        populateDBEngineDefaults(xmlSource, dbEngineType);
-        dataModel.definition.rdbms_conf.default_conf.db_engine = dbEngineType;
-    }
+
+    $("#ds-driver-class-input").val(dataModel.definition.rdbms_conf.default_conf.driverClassName);
+    $("#ds-url-input").val(dataModel.definition.rdbms_conf.default_conf.url);
 
     if (jndiConf.name != EMPTY_STRING || jndiConf.properties.length > 0) {
         $("#jndi-collapse").collapse("show");
@@ -444,6 +443,7 @@ function saveDSMetadata(metadata, url, successFunc) {
     let request = $.ajax({
         url: url,
         type: "post",
+        async: false,
         headers: { "x-operation-type": HEADER_VALUE_SAVE_DS_METADATA },
         data: { content: metadata },
         success: successFunc
@@ -502,7 +502,7 @@ function testDBConnection(connectionDetails, url) {
  * @param root Document root object.
  * @param dbEngineType Database engine type.
  */
-function populateDBEngineDefaults(root, dbEngineType) {
+function populateDBEngineDefaults(dbEngineType) {
     if (dbEngineType === DB_ENGINE_MYSQL) {
         $("#ds-driver-class-input").val(DEFAULT_MYSQL_DRIVER_CLASS);
         $("#ds-url-input").val(DEFAULT_MYSQL_URL);

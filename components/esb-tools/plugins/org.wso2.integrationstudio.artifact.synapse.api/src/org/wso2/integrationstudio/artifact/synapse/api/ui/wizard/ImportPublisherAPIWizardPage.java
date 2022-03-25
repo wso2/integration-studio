@@ -156,6 +156,8 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         labelAPIMHostUrl.setLayoutData(data);
         
         txtAPIMHostUrl = new Text(container, SWT.BORDER);
+        // set an example host value
+        txtAPIMHostUrl.setText("https://localhost:9443");
         data = new FormData();
         data.top = new FormAttachment(txtPassword, 25);
         data.left = new FormAttachment(labelAPIMHostUrl, 10);

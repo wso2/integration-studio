@@ -995,6 +995,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 			ProjectOptionsPage projectOptionsPage = (ProjectOptionsPage) page;
 			if (projectOptionsPage.getSelectedProjectOption().getId().equals("import.api.publisher")) {
 				nextPage = importPublisherAPIWizard;
+				importPublisherAPIWizard.initilizeText.setVisible(false);
 			}
 			else if (currentPage instanceof ProjectOptionsPage) {
 				nextPage = super.getNextPage(page);

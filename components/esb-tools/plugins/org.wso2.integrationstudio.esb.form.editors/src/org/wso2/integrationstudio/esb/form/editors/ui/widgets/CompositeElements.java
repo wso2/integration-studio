@@ -62,6 +62,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -377,11 +378,12 @@ public class CompositeElements {
      * @generated NOT
      */
     public static Composite createOAuthParameterListItem(FormToolkit toolkit, Composite parent) {
-        Composite listItemComposite = CompositeElements.createComposite(toolkit, parent, 5, 0);
+        Composite listItemComposite = CompositeElements.createComposite(toolkit, parent, 7, 0);
         listItemComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         NamespacedProperty namespacedProperty = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
-
+        toolkit.createLabel(listItemComposite, "Name:");
         Text keyText = toolkit.createText(listItemComposite, "");
+        toolkit.createLabel(listItemComposite, "Value:");
         Composite textboxComposite = CompositeElements.createTextBoxFieldWithButton(toolkit, listItemComposite,
                 namespacedProperty);
         Text valueText = (Text) textboxComposite.getData(CompositeElements.VALUE_TEXT_BOX);

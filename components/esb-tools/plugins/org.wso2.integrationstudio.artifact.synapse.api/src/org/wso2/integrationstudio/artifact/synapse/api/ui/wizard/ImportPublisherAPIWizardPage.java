@@ -104,7 +104,8 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         // https://github.com/wso2/integration-studio/issues/1057
         Text initilizeText = new Text(container, SWT.NONE | SWT.READ_ONLY);
         data = new FormData();
-        data.height = 1;
+        data.height = 0;
+        data.width = 0;
         initilizeText.setLayoutData(data);
         
         Composite credentialsContainer = new Composite(container, SWT.NULL);
@@ -118,8 +119,8 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         labelUserName = new Label(container, SWT.NONE);
         labelUserName.setText("UserName *");
         data = new FormData();
-        data.top = new FormAttachment(credentialsContainer, 10);
-        data.width = 120;
+        data.top = new FormAttachment(credentialsContainer, 20);
+        data.width = 155;
         data.left = new FormAttachment(3);
         labelUserName.setLayoutData(data);
         
@@ -135,7 +136,7 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         labelPassword.setText("Password *");
         data = new FormData();
         data.top = new FormAttachment(labelUserName, 30);
-        data.width = 120;
+        data.width = 155;
         data.left = new FormAttachment(3);
         labelPassword.setLayoutData(data);
 
@@ -151,7 +152,7 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         labelAPIMHostUrl.setText("API Manager Host Url *");
         data = new FormData();
         data.top = new FormAttachment(labelPassword, 30);
-        data.width = 140;
+        data.width = 155;
         data.left = new FormAttachment(3);
         labelAPIMHostUrl.setLayoutData(data);
         

@@ -73,6 +73,7 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
     Text txtUserName;
     Text txtPassword;
     Text txtAPIMHostUrl;
+    public Text initilizeText;
     private ArrayList<PublisherAPI> apiList;
     HashMap<Integer, String> tableAPIMapper;
     String selectedApi;
@@ -102,12 +103,11 @@ public class ImportPublisherAPIWizardPage extends WizardPage  {
         
         // create dummy read-only text box to fix:
         // https://github.com/wso2/integration-studio/issues/1057
-        Text initilizeText = new Text(container, SWT.NONE | SWT.READ_ONLY);
+        initilizeText = new Text(container, SWT.NONE | SWT.READ_ONLY);
         data = new FormData();
-        data.height = 0;
-        data.width = 0;
+        data.height = 1;
+  
         initilizeText.setLayoutData(data);
-        
         Composite credentialsContainer = new Composite(container, SWT.NULL);
         credentialsContainer.setLayout(new FormLayout());
         data = new FormData();

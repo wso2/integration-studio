@@ -237,7 +237,7 @@
         <activti.designer.version>5.18.0</activti.designer.version>
         <mi.product.version>4.1.0</mi.product.version>
         <mi.product.directory>4.1.0</mi.product.directory>
-        <mi.dashboard.version>4.1.0-rc1</mi.dashboard.version>
+        <mi.dashboard.version>4.1.0</mi.dashboard.version>
         <apache.maven.version>3.6.3</apache.maven.version>
         <version.sortpom.plugin>2.3.0</version.sortpom.plugin>
     </properties>

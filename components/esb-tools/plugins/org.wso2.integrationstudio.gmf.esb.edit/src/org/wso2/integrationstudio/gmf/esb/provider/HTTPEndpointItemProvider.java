@@ -78,6 +78,9 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
         addOAuthClientSecretPropertyDescriptor(object);
         addOAuthRefreshTokenPropertyDescriptor(object);
         addOAuthTokenUrlPropertyDescriptor(object);
+        addOAuthAuthenticationModePropertyDescriptor(object);
+        addOAuthUsernamePropertyDescriptor(object);
+        addOAuthPasswordPropertyDescriptor(object);
 
         // Suspend.
         addSuspendErrorCodesPropertyDescriptor(object);
@@ -867,7 +870,7 @@ public class HTTPEndpointItemProvider extends AbstractEndPointItemProvider {
         newChildDescriptors.add
             (createChildParameter
                 (EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_PARAMETERS,
-                 EsbFactory.eINSTANCE.createHTTPEndpointOAuthParameter()));
+                 EsbFactory.eINSTANCE.createEndPointProperty()));
     }
 
     /**

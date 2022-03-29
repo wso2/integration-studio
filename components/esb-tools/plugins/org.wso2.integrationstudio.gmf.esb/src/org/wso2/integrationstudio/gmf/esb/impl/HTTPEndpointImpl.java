@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
 import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndPointInputConnector;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndPointOutputConnector;
@@ -443,7 +444,7 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
      * @generated
      * @ordered
      */
-    protected EList<HTTPEndpointOAuthParameter> oAuthParameters;
+    protected EList<EndPointProperty> oAuthParameters;
 
     /**
      * <!-- begin-user-doc -->
@@ -1134,9 +1135,9 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
      * <!-- end-user-doc -->
      * @generated
      */
-    public EList<HTTPEndpointOAuthParameter> getOAuthParameters() {
+    public EList<EndPointProperty> getOAuthParameters() {
         if (oAuthParameters == null) {
-            oAuthParameters = new EObjectContainmentEList<HTTPEndpointOAuthParameter>(HTTPEndpointOAuthParameter.class, this, EsbPackage.HTTP_ENDPOINT__OAUTH_PARAMETERS);
+            oAuthParameters = new EObjectContainmentEList<EndPointProperty>(EndPointProperty.class, this, EsbPackage.HTTP_ENDPOINT__OAUTH_PARAMETERS);
         }
         return oAuthParameters;
     }
@@ -1307,7 +1308,7 @@ public class HTTPEndpointImpl extends AbstractEndPointImpl implements HTTPEndpoi
                 return;
             case EsbPackage.HTTP_ENDPOINT__OAUTH_PARAMETERS:
                 getOAuthParameters().clear();
-                getOAuthParameters().addAll((Collection<? extends HTTPEndpointOAuthParameter>)newValue);
+                getOAuthParameters().addAll((Collection<? extends EndPointProperty>)newValue);
                 return;
         }
         super.eSet(featureID, newValue);

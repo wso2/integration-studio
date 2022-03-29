@@ -102,7 +102,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
             case EsbPackage.HTTP_ENDPOINT: return createHTTPEndpoint();
             case EsbPackage.HTTP_END_POINT_INPUT_CONNECTOR: return createHTTPEndPointInputConnector();
             case EsbPackage.HTTP_END_POINT_OUTPUT_CONNECTOR: return createHTTPEndPointOutputConnector();
-            case EsbPackage.HTTP_ENDPOINT_OAUTH_PARAMETER: return createHTTPEndpointOAuthParameter();
             case EsbPackage.DROP_MEDIATOR: return createDropMediator();
             case EsbPackage.DROP_MEDIATOR_INPUT_CONNECTOR: return createDropMediatorInputConnector();
             case EsbPackage.FILTER_MEDIATOR: return createFilterMediator();
@@ -1869,16 +1868,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
     public HTTPEndPointOutputConnector createHTTPEndPointOutputConnector() {
         HTTPEndPointOutputConnectorImpl httpEndPointOutputConnector = new HTTPEndPointOutputConnectorImpl();
         return httpEndPointOutputConnector;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public HTTPEndpointOAuthParameter createHTTPEndpointOAuthParameter() {
-        HTTPEndpointOAuthParameterImpl httpEndpointOAuthParameter = new HTTPEndpointOAuthParameterImpl();
-        return httpEndpointOAuthParameter;
     }
 
     /**

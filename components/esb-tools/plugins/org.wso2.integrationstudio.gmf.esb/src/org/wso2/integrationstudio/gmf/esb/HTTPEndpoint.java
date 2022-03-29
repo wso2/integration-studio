@@ -593,7 +593,7 @@ public interface HTTPEndpoint extends AbstractEndPoint {
 
     /**
      * Returns the value of the '<em><b>OAuth Parameters</b></em>' containment reference list.
-     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthParameter}.
+     * The list contents are of type {@link org.wso2.integrationstudio.gmf.esb.EndPointProperty}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @return the value of the '<em>OAuth Parameters</em>' containment reference list.
@@ -601,6 +601,6 @@ public interface HTTPEndpoint extends AbstractEndPoint {
      * @model containment="true"
      * @generated
      */
-    EList<HTTPEndpointOAuthParameter> getOAuthParameters();
+    EList<EndPointProperty> getOAuthParameters();
 
 } // HTTPEndpoint

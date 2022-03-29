@@ -909,13 +909,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    private EClass httpEndpointOAuthParameterEClass = null;
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     private EClass dropMediatorEClass = null;
 
     /**
@@ -6136,15 +6129,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      */
     public EClass getHTTPEndPointOutputConnector() {
         return httpEndPointOutputConnectorEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EClass getHTTPEndpointOAuthParameter() {
-        return httpEndpointOAuthParameterEClass;
     }
 
     /**
@@ -21014,8 +20998,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
         httpEndPointOutputConnectorEClass = createEClass(HTTP_END_POINT_OUTPUT_CONNECTOR);
 
-        httpEndpointOAuthParameterEClass = createEClass(HTTP_ENDPOINT_OAUTH_PARAMETER);
-
         dropMediatorEClass = createEClass(DROP_MEDIATOR);
         createEReference(dropMediatorEClass, DROP_MEDIATOR__INPUT_CONNECTOR);
 
@@ -23043,7 +23025,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         httpEndpointEClass.getESuperTypes().add(this.getAbstractEndPoint());
         httpEndPointInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
         httpEndPointOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
-        httpEndpointOAuthParameterEClass.getESuperTypes().add(this.getAbstractNameValueExpressionProperty());
         dropMediatorEClass.getESuperTypes().add(this.getMediator());
         dropMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
         filterMediatorEClass.getESuperTypes().add(this.getMediator());
@@ -23608,13 +23589,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEReference(getHTTPEndpoint_BasicAuthPasswordExpression(), this.getNamespacedProperty(), null, "BasicAuthPasswordExpression", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getHTTPEndpoint_OAuthUsernameExpression(), this.getNamespacedProperty(), null, "OAuthUsernameExpression", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getHTTPEndpoint_OAuthPasswordExpression(), this.getNamespacedProperty(), null, "OAuthPasswordExpression", null, 0, 1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getHTTPEndpoint_OAuthParameters(), this.getHTTPEndpointOAuthParameter(), null, "OAuthParameters", null, 0, -1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getHTTPEndpoint_OAuthParameters(), this.getEndPointProperty(), null, "OAuthParameters", null, 0, -1, HTTPEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(httpEndPointInputConnectorEClass, HTTPEndPointInputConnector.class, "HTTPEndPointInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(httpEndPointOutputConnectorEClass, HTTPEndPointOutputConnector.class, "HTTPEndPointOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-        initEClass(httpEndpointOAuthParameterEClass, HTTPEndpointOAuthParameter.class, "HTTPEndpointOAuthParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(dropMediatorEClass, DropMediator.class, "DropMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDropMediator_InputConnector(), this.getDropMediatorInputConnector(), null, "inputConnector", null, 0, 1, DropMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

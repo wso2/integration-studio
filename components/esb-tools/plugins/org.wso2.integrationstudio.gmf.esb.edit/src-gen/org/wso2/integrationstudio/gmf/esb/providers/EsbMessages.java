@@ -4151,18 +4151,22 @@ public class EsbMessages extends NLS {
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_OAuthGrantTypeLabel;
+	public static String HTTPEndpointPropertiesEditionPart_OAuthAuthenticationModeLabel;
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_OAuthClientIdLabel;
+	public static String HTTPEndpointPropertiesEditionPart_OAuthUsernameLabel;
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_OAuthClientSecretLabel;
+	public static String HTTPEndpointPropertiesEditionPart_OAuthPasswordLabel;
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_OAuthRefreshTokenLabel;
 
 	
 	public static String HTTPEndpointPropertiesEditionPart_OAuthTokenUrlLabel;
+	public static String HTTPEndpointPropertiesEditionPart_OAuthParametersLabel;
 
 	
 	public static String HTTPEndPointInputConnectorPropertiesEditionPart_IncomingLinksLabel;

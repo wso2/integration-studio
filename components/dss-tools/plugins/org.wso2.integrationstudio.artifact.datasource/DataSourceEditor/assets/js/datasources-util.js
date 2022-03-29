@@ -83,13 +83,13 @@ function generateXmlSource(dataModel) {
             configurationElement.appendChild(urlElement);
 
 
-            if (defaultConf.username != null && defaultConf.username != EMPTY_STRING && defaultConf.username != "null") {
+            if (defaultConf.username != null && defaultConf.username != "null") {
                 var usernameElement = xmlSourceRoot.createElement("username");
                 usernameElement.textContent = defaultConf.username;
                 configurationElement.appendChild(usernameElement);
             }
 
-            if (defaultConf.password != null && defaultConf.password != EMPTY_STRING && defaultConf.password != "null") {
+            if (defaultConf.password != null && defaultConf.password != "null") {
                 var passwordElement = xmlSourceRoot.createElement("password");
                 passwordElement.textContent = defaultConf.password;
                 configurationElement.appendChild(passwordElement);

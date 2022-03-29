@@ -104,23 +104,6 @@ $(document).ready(function ($) {
                 $("#ds-form :input").prop("disabled", false);
             }
         });
-    } else if (currentPage == CURRENT_PAGE_VAL_SOURCE) {
-        // Switching to source view
-        var xmlSourceValidity = retrieveDSMetadata(XML_SOURCE_VALIDITY_KEY, url);
-        if (xmlSourceValidity != XML_SOURCE_INVALID) {
-
-            // Get dataModel from the servlet
-            let retrievedDataModelStr = retrieveDSMetadata(DS_METADATA_DATA_MODEL, url);
-            if (retrievedDataModelStr != null && retrievedDataModelStr != "null") {
-                dataModel = JSON.parse(retrievedDataModelStr);
-            }
-
-            // Generate a new xml source code from dataModel
-            xmlSource = generateXmlSource(dataModel);
-
-            // Save the xml source code in the servlet
-            saveAll(xmlSource, url, function () { });
-        }
     }
 
     /** Start of Event handlers **/
@@ -167,12 +150,12 @@ $(document).ready(function ($) {
         }
         dataModel.definition.rdbms_conf.provider = dsProvider;
 
-        var dbEngineType = $("#ds-db-engine-select").val();
-        dataModel.definition.rdbms_conf.default_conf.db_engine = dbEngineType;
 
-        if (dataModel.definition.rdbms_conf.default_conf.driverClassName == EMPTY_STRING && dataModel.definition.rdbms_conf.default_conf.url == EMPTY_STRING) {
+        var dbEngineType = $("#ds-db-engine-select").val();
+        if (dataModel.definition.rdbms_conf.default_conf.db_engine != dbEngineType) {
             populateDBEngineDefaults(dbEngineType);
         }
+        dataModel.definition.rdbms_conf.default_conf.db_engine = dbEngineType;
 
         setTestConnectionRDBMSVersion(dbEngineType);
 
@@ -285,6 +268,8 @@ $(document).ready(function ($) {
         var dsUseDsFactory = $("#ds-use-factory-check").is(":checked");
         dataModel.definition.rdbms_conf.jndi_conf.useDSFactory = dsUseDsFactory;
 
+        xmlSource = generateXmlSource(dataModel);
+        saveAll(xmlSource, url, function () { });
         var metadata = DS_METADATA_DATA_MODEL + DS_METADATA_KEYVALUE_SEPARATOR + JSON.stringify(dataModel);
         saveDSMetadata(metadata, url, function () { });
     });

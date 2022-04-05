@@ -285,6 +285,8 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer {
         
         EList<EndPointProperty> list = new BasicEList<EndPointProperty>();
         
+        if (map == null) return null;
+        
         for(Entry<String, String> entry: map.entrySet()) {
             EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
             property.setName(entry.getKey());

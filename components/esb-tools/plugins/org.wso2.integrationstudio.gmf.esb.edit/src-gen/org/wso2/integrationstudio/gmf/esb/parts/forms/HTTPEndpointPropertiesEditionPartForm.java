@@ -57,11 +57,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 
 import org.eclipse.swt.SWT;
-
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
@@ -83,11 +85,13 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 import org.wso2.integrationstudio.gmf.esb.EsbPackage;
-
+import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
 import org.wso2.integrationstudio.gmf.esb.parts.EsbViewsRepository;
 import org.wso2.integrationstudio.gmf.esb.parts.HTTPEndpointPropertiesEditionPart;
 import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
 import org.wso2.integrationstudio.gmf.esb.providers.EsbMessages;
+
+import org.wso2.integrationstudio.esb.form.editors.ui.widgets.CompositeElements;
 
 // End of user code
 
@@ -137,19 +141,27 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
     // Start of user code for
     protected Text failoverNonRetryErrorCodes;
     protected EMFComboViewer authType;
-    protected Text basicAuthUsername;
-    protected Text basicAuthPassword;
+    protected Composite basicAuthUsernameComposite;
+    protected NamespacedProperty basicAuthUsernameNamespacedProperty;
+    protected Composite basicAuthPasswordComposite;
+    protected NamespacedProperty basicAuthPasswordNamespacedProperty;
     protected EMFComboViewer oAuthAuthenticationMode;
-    protected Text oAuthUsername;
-    protected Text oAuthPassword;
+    protected Composite oAuthUsernameComposite;
+    protected NamespacedProperty oAuthUsernameNamespacedProperty;
+    protected Composite oAuthPasswordComposite;
+    protected NamespacedProperty oAuthPasswordNamespacedProperty;
     protected ReferencesTable oAuthParameters;
     protected List<ViewerFilter> oAuthParametersBusinessFilters = new ArrayList<ViewerFilter>();
     protected List<ViewerFilter> oAuthParametersFilters = new ArrayList<ViewerFilter>();
     protected EMFComboViewer oAuthGrantType;
-    protected Text oAuthClientId;
-    protected Text oAuthClientSecret;
-    protected Text oAuthRefreshToken;
-    protected Text oAuthTokenUrl;
+    protected Composite oAuthClientIdComposite;
+    protected NamespacedProperty oAuthClientIdNamespacedProperty;
+    protected Composite oAuthClientSecretComposite;
+    protected NamespacedProperty oAuthClientSecretNamespacedProperty;
+    protected Composite oAuthRefreshTokenComposite;
+    protected NamespacedProperty oAuthRefreshTokenNamespacedProperty;
+    protected Composite oAuthTokenUrlComposite;
+    protected NamespacedProperty oAuthTokenUrlNamespacedProperty;
     protected Composite failoverErrorCodesGroup;
     protected Control[] failoverNonRetryErrorCodesElements;
 
@@ -2290,16 +2302,33 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
         return parent;
     }
 
-    protected Composite createBasicAuthUsernameText(FormToolkit widgetFactory, Composite parent) {
-        Control authUsernameLabel = createDescription(parent,
-                EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername,
-                EsbMessages.HTTPEndpointPropertiesEditionPart_BasicAuthUsernameLabel);
-        basicAuthUsername = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-        basicAuthUsername.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        widgetFactory.paintBordersFor(parent);
-        GridData basicAuthUsernameData = new GridData(GridData.FILL_HORIZONTAL);
-        basicAuthUsername.setLayoutData(basicAuthUsernameData);
-        basicAuthUsername.addFocusListener(new FocusAdapter() {
+    protected void bindListeners(Composite expressionTextComposite, String affectedEditor) {
+        Text text = (Text) expressionTextComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) expressionTextComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) expressionTextComposite
+                .getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+
+        toggleButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                if (toggleButton.getSelection()) {
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
+                                    affectedEditor,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    getExpressionFromText(expText.getText())));
+                } else {
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
+                                    affectedEditor,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    text.getText()));
+                }
+                
+            }
+        });
+        
+        text.addFocusListener(new FocusAdapter() {
             /**
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
              * 
@@ -2310,14 +2339,14 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
                 if (propertiesEditionComponent != null) {
                     propertiesEditionComponent.firePropertiesChanged(
                             new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername,
+                                    affectedEditor,
                                     PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                    basicAuthUsername.getText()));
+                                    text.getText()));
                     propertiesEditionComponent.firePropertiesChanged(
                             new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername,
+                                    affectedEditor,
                                     PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
-                                    basicAuthUsername.getText()));
+                                    text.getText()));
                 }
             }
 
@@ -2333,7 +2362,7 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
                 }
             }
         });
-        basicAuthUsername.addKeyListener(new KeyAdapter() {
+        text.addKeyListener(new KeyAdapter() {
             /**
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
              * 
@@ -2345,21 +2374,88 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
                     if (propertiesEditionComponent != null)
                         propertiesEditionComponent.firePropertiesChanged(
                                 new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername,
+                                        affectedEditor,
                                         PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                        basicAuthUsername.getText()));
+                                        text.getText()));
                 }
             }
         });
-        EditingUtils.setID(basicAuthUsername, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername);
-        EditingUtils.setEEFtype(basicAuthUsername, "eef::Text"); //$NON-NLS-1$
+        
+        expText.addFocusListener(new FocusAdapter() {
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
+                                    affectedEditor,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    getExpressionFromText(expText.getText())));
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
+                                    affectedEditor,
+                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+                                    getExpressionFromText(expText.getText())));
+                }
+            }
+
+            /**
+             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            HTTPEndpointPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
+                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
+                }
+            }
+        });
+        expText.addKeyListener(new KeyAdapter() {
+            /**
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             * 
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
+                                        affectedEditor,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        getExpressionFromText(expText.getText())));
+                }
+            }
+        });
+    }
+    
+    protected Composite createBasicAuthUsernameText(FormToolkit widgetFactory, Composite parent) {
+        
+        Control authUsernameLabel = createDescription(parent,
+                EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername,
+                EsbMessages.HTTPEndpointPropertiesEditionPart_BasicAuthUsernameLabel);
+        
+        basicAuthUsernameComposite = CompositeElements.createTextBoxFieldWithButton(widgetFactory, parent,
+                basicAuthUsernameNamespacedProperty);
+        
+        basicAuthUsernameComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        
+        bindListeners(basicAuthUsernameComposite, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername);
+        
         Control authUsernameHelp = FormUtils.createHelpButton(widgetFactory, parent,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername,
                         EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createBasicAuthUsernameText
-        basicAuthUsernameElements = new Control[] { authUsernameLabel, basicAuthUsername, authUsernameHelp };
+        basicAuthUsernameElements = new Control[] { authUsernameLabel, basicAuthUsernameComposite, authUsernameHelp };
+        
         // End of user code
         return parent;
     }
@@ -2368,72 +2464,21 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
         Control authPasswordLabel = createDescription(parent,
                 EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword,
                 EsbMessages.HTTPEndpointPropertiesEditionPart_BasicAuthPasswordLabel);
-        basicAuthPassword = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-        basicAuthPassword.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        widgetFactory.paintBordersFor(parent);
-        GridData basicAuthPasswordData = new GridData(GridData.FILL_HORIZONTAL);
-        basicAuthPassword.setLayoutData(basicAuthPasswordData);
-        basicAuthPassword.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword,
-                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                    basicAuthPassword.getText()));
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword,
-                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
-                                    basicAuthPassword.getText()));
-                }
-            }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                            HTTPEndpointPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
-                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
-                }
-            }
-        });
-        basicAuthPassword.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                if (e.character == SWT.CR) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                        basicAuthPassword.getText()));
-                }
-            }
-        });
-        EditingUtils.setID(basicAuthPassword, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword);
-        EditingUtils.setEEFtype(basicAuthPassword, "eef::Text"); //$NON-NLS-1$
+        
+        basicAuthPasswordComposite = CompositeElements.createTextBoxFieldWithButton(widgetFactory, parent,
+                basicAuthPasswordNamespacedProperty);
+        
+        basicAuthPasswordComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        
+        bindListeners(basicAuthPasswordComposite, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword);
+        
         Control authPasswordHelp = FormUtils.createHelpButton(widgetFactory, parent,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword,
                         EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createBasicAuthPasswordText
-        basicAuthPasswordElements = new Control[] { authPasswordLabel, basicAuthPassword, authPasswordHelp };
+        basicAuthPasswordElements = new Control[] { authPasswordLabel, basicAuthPasswordComposite, authPasswordHelp };
         // End of user code
         return parent;
     }
@@ -2486,70 +2531,20 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
     protected Composite createOAuthUsernameText(FormToolkit widgetFactory, Composite parent) {
         Control oauthUsernameLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername,
                 EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthUsernameLabel);
-        oAuthUsername = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-        oAuthUsername.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        widgetFactory.paintBordersFor(parent);
-        GridData oAuthUsernameData = new GridData(GridData.FILL_HORIZONTAL);
-        oAuthUsername.setLayoutData(oAuthUsernameData);
-        oAuthUsername.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                            HTTPEndpointPropertiesEditionPartForm.this,
-                            EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername,
-                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthUsername.getText()));
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername,
-                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
-                                    oAuthUsername.getText()));
-                }
-            }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                            HTTPEndpointPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
-                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
-                }
-            }
-        });
-        oAuthUsername.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                if (e.character == SWT.CR) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                        oAuthUsername.getText()));
-                }
-            }
-        });
-        EditingUtils.setID(oAuthUsername, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername);
-        EditingUtils.setEEFtype(oAuthUsername, "eef::Text"); //$NON-NLS-1$
+        
+        oAuthUsernameComposite = CompositeElements.createTextBoxFieldWithButton(widgetFactory, parent,
+                oAuthUsernameNamespacedProperty);
+        
+        oAuthUsernameComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        
+        bindListeners(oAuthUsernameComposite, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername);
+        
         Control oauthUsernameHelp = FormUtils.createHelpButton(widgetFactory, parent,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername, EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createOAuthUsernameText
-        oAuthUsernameElements = new Control[] { oauthUsernameLabel, oAuthUsername, oauthUsernameHelp };
+        oAuthUsernameElements = new Control[] { oauthUsernameLabel, oAuthUsernameComposite, oauthUsernameHelp };
         
         // End of user code
         return parent;
@@ -2558,70 +2553,20 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
     protected Composite createOAuthPasswordText(FormToolkit widgetFactory, Composite parent) {
         Control oauthPasswordLabel = createDescription(parent, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword,
                 EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthPasswordLabel);
-        oAuthPassword = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-        oAuthPassword.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        widgetFactory.paintBordersFor(parent);
-        GridData oAuthPasswordData = new GridData(GridData.FILL_HORIZONTAL);
-        oAuthPassword.setLayoutData(oAuthPasswordData);
-        oAuthPassword.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                            HTTPEndpointPropertiesEditionPartForm.this,
-                            EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword,
-                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthPassword.getText()));
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword,
-                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
-                                    oAuthPassword.getText()));
-                }
-            }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                            HTTPEndpointPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
-                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
-                }
-            }
-        });
-        oAuthPassword.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                if (e.character == SWT.CR) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                        oAuthPassword.getText()));
-                }
-            }
-        });
-        EditingUtils.setID(oAuthPassword, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword);
-        EditingUtils.setEEFtype(oAuthPassword, "eef::Text"); //$NON-NLS-1$
+        
+        oAuthPasswordComposite = CompositeElements.createTextBoxFieldWithButton(widgetFactory, parent,
+                oAuthPasswordNamespacedProperty);
+        
+        oAuthPasswordComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        
+        bindListeners(oAuthPasswordComposite, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword);
+        
         Control oauthPasswordHelp = FormUtils.createHelpButton(widgetFactory, parent,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword, EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createOAuthPasswordText
-        oAuthPasswordElements = new Control[] { oauthPasswordLabel, oAuthPassword, oauthPasswordHelp };
+        oAuthPasswordElements = new Control[] { oauthPasswordLabel, oAuthPasswordComposite, oauthPasswordHelp };
         
         // End of user code
         return parent;
@@ -2762,70 +2707,19 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
         Control oauthClientIdLabel = createDescription(parent,
                 EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId,
                 EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthClientIdLabel);
-        oAuthClientId = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-        oAuthClientId.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        widgetFactory.paintBordersFor(parent);
-        GridData oAuthClientIdData = new GridData(GridData.FILL_HORIZONTAL);
-        oAuthClientId.setLayoutData(oAuthClientIdData);
-        oAuthClientId.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                            HTTPEndpointPropertiesEditionPartForm.this,
-                            EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId,
-                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthClientId.getText()));
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId,
-                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
-                                    oAuthClientId.getText()));
-                }
-            }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                            HTTPEndpointPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
-                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
-                }
-            }
-        });
-        oAuthClientId.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                if (e.character == SWT.CR) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                        oAuthClientId.getText()));
-                }
-            }
-        });
-        EditingUtils.setID(oAuthClientId, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId);
-        EditingUtils.setEEFtype(oAuthClientId, "eef::Text"); //$NON-NLS-1$
+        
+        oAuthClientIdComposite = CompositeElements.createTextBoxFieldWithButton(widgetFactory, parent,
+                oAuthClientIdNamespacedProperty);
+        oAuthClientIdComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        
+        bindListeners(oAuthClientIdComposite, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId);
+        
         Control oauthClientIdHelp = FormUtils.createHelpButton(widgetFactory, parent,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId, EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createOAuthClientIdText
-        oAuthClientIdElements = new Control[] { oauthClientIdLabel, oAuthClientId, oauthClientIdHelp };
+        oAuthClientIdElements = new Control[] { oauthClientIdLabel, oAuthClientIdComposite, oauthClientIdHelp };
         // End of user code
         return parent;
     }
@@ -2834,72 +2728,20 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
         Control oauthClientSecretLabel = createDescription(parent,
                 EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret,
                 EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthClientSecretLabel);
-        oAuthClientSecret = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-        oAuthClientSecret.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        widgetFactory.paintBordersFor(parent);
-        GridData oAuthClientSecretData = new GridData(GridData.FILL_HORIZONTAL);
-        oAuthClientSecret.setLayoutData(oAuthClientSecretData);
-        oAuthClientSecret.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret,
-                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                    oAuthClientSecret.getText()));
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret,
-                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
-                                    oAuthClientSecret.getText()));
-                }
-            }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                            HTTPEndpointPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
-                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
-                }
-            }
-        });
-        oAuthClientSecret.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                if (e.character == SWT.CR) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                        oAuthClientSecret.getText()));
-                }
-            }
-        });
-        EditingUtils.setID(oAuthClientSecret, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret);
-        EditingUtils.setEEFtype(oAuthClientSecret, "eef::Text"); //$NON-NLS-1$
+        
+        oAuthClientSecretComposite = CompositeElements.createTextBoxFieldWithButton(widgetFactory, parent,
+                oAuthClientSecretNamespacedProperty);
+        oAuthClientSecretComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        
+        bindListeners(oAuthClientSecretComposite, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret);
+        
         Control oauthClientSecretHelp = FormUtils.createHelpButton(widgetFactory, parent,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret,
                         EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createOAuthClientSecretText
-        oAuthClientSecretElements = new Control[] { oauthClientSecretLabel, oAuthClientSecret, oauthClientSecretHelp };
+        oAuthClientSecretElements = new Control[] { oauthClientSecretLabel, oAuthClientSecretComposite, oauthClientSecretHelp };
         // End of user code
         return parent;
     }
@@ -2908,72 +2750,20 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
         Control oauthRefreshTokenLabel = createDescription(parent,
                 EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken,
                 EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthRefreshTokenLabel);
-        oAuthRefreshToken = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-        oAuthRefreshToken.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        widgetFactory.paintBordersFor(parent);
-        GridData oAuthRefreshTokenData = new GridData(GridData.FILL_HORIZONTAL);
-        oAuthRefreshToken.setLayoutData(oAuthRefreshTokenData);
-        oAuthRefreshToken.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken,
-                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                    oAuthRefreshToken.getText()));
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken,
-                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
-                                    oAuthRefreshToken.getText()));
-                }
-            }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                            HTTPEndpointPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
-                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
-                }
-            }
-        });
-        oAuthRefreshToken.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                if (e.character == SWT.CR) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                        oAuthRefreshToken.getText()));
-                }
-            }
-        });
-        EditingUtils.setID(oAuthRefreshToken, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken);
-        EditingUtils.setEEFtype(oAuthRefreshToken, "eef::Text"); //$NON-NLS-1$
+        
+        oAuthRefreshTokenComposite = CompositeElements.createTextBoxFieldWithButton(widgetFactory, parent,
+                oAuthRefreshTokenNamespacedProperty);
+        oAuthRefreshTokenComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        
+        bindListeners(oAuthRefreshTokenComposite, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken);
+        
         Control oauthRefreshTokenHelp = FormUtils.createHelpButton(widgetFactory, parent,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken,
                         EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createOAuthRefreshTokenText
-        oAuthRefreshTokenElements = new Control[] { oauthRefreshTokenLabel, oAuthRefreshToken, oauthRefreshTokenHelp };
+        oAuthRefreshTokenElements = new Control[] { oauthRefreshTokenLabel, oAuthRefreshTokenComposite, oauthRefreshTokenHelp };
         // End of user code
         return parent;
     }
@@ -2982,70 +2772,19 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
         Control oauthTokenUrlLabel = createDescription(parent,
                 EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl,
                 EsbMessages.HTTPEndpointPropertiesEditionPart_OAuthTokenUrlLabel);
-        oAuthTokenUrl = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-        oAuthTokenUrl.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        widgetFactory.paintBordersFor(parent);
-        GridData oAuthTokenUrlData = new GridData(GridData.FILL_HORIZONTAL);
-        oAuthTokenUrl.setLayoutData(oAuthTokenUrlData);
-        oAuthTokenUrl.addFocusListener(new FocusAdapter() {
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void focusLost(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                            HTTPEndpointPropertiesEditionPartForm.this,
-                            EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl,
-                            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oAuthTokenUrl.getText()));
-                    propertiesEditionComponent.firePropertiesChanged(
-                            new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                    EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl,
-                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
-                                    oAuthTokenUrl.getText()));
-                }
-            }
-
-            /**
-             * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-             */
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (propertiesEditionComponent != null) {
-                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-                            HTTPEndpointPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
-                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
-                }
-            }
-        });
-        oAuthTokenUrl.addKeyListener(new KeyAdapter() {
-            /**
-             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
-             */
-            @Override
-            @SuppressWarnings("synthetic-access")
-            public void keyPressed(KeyEvent e) {
-                if (e.character == SWT.CR) {
-                    if (propertiesEditionComponent != null)
-                        propertiesEditionComponent.firePropertiesChanged(
-                                new PropertiesEditionEvent(HTTPEndpointPropertiesEditionPartForm.this,
-                                        EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl,
-                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
-                                        oAuthTokenUrl.getText()));
-                }
-            }
-        });
-        EditingUtils.setID(oAuthTokenUrl, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl);
-        EditingUtils.setEEFtype(oAuthTokenUrl, "eef::Text"); //$NON-NLS-1$
+        
+        oAuthTokenUrlComposite = CompositeElements.createTextBoxFieldWithButton(widgetFactory, parent,
+                oAuthTokenUrlNamespacedProperty);
+        oAuthTokenUrlComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        
+        bindListeners(oAuthTokenUrlComposite, EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl);
+        
         Control oauthTokenUrlHelp = FormUtils.createHelpButton(widgetFactory, parent,
                 propertiesEditionComponent.getHelpContent(
                         EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl, EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createOAuthTokenUrlText
-        oAuthTokenUrlElements = new Control[] { oauthTokenUrlLabel, oAuthTokenUrl, oauthTokenUrlHelp };
+        oAuthTokenUrlElements = new Control[] { oauthTokenUrlLabel, oAuthTokenUrlComposite, oauthTokenUrlHelp };
         // End of user code
         return parent;
     }
@@ -4279,7 +4018,16 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public String getBasicAuthUsername() {
-        return basicAuthUsername.getText();
+        Text text = (Text) basicAuthUsernameComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) basicAuthUsernameComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) basicAuthUsernameComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        
+        if (toggleButton.getSelection()) {
+            return expText.getText();
+        } else {
+            return text.getText();
+        }
+        
     }
 
     /**
@@ -4290,18 +4038,35 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public void setBasicAuthUsername(String newValue) {
+        
+        Text text = (Text) basicAuthUsernameComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) basicAuthUsernameComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) basicAuthUsernameComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        Composite expressionComposite = (Composite) basicAuthUsernameComposite.getData(CompositeElements.EXPRESSION_COMPOSITE);
+        
         if (newValue != null) {
-            basicAuthUsername.setText(newValue);
+            if (isExpression(newValue)) {
+                expText.setText(getValueFromExpression(newValue));
+                toggleButton.setSelection(true); 
+                // Hide value text box
+                text.setVisible(false);
+                ((GridData) text.getLayoutData()).exclude = true;
+                // Show expression composite
+                expressionComposite.setVisible(true);
+                ((GridData) expressionComposite.getLayoutData()).exclude = false;
+            } else {
+                text.setText(newValue);
+                toggleButton.setSelection(false); 
+                // Show value text box
+                text.setVisible(true);
+                ((GridData) text.getLayoutData()).exclude = false;
+                // Hide expression composite
+                expressionComposite.setVisible(false);
+                ((GridData) expressionComposite.getLayoutData()).exclude = true;
+            }
         } else {
-            basicAuthUsername.setText(""); //$NON-NLS-1$
-        }
-        boolean eefElementEditorReadOnlyState = isReadOnly(
-                EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthUsername);
-        if (eefElementEditorReadOnlyState && basicAuthUsername.isEnabled()) {
-            basicAuthUsername.setEnabled(false);
-            basicAuthUsername.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-        } else if (!eefElementEditorReadOnlyState && !basicAuthUsername.isEnabled()) {
-            basicAuthUsername.setEnabled(true);
+            text.setText("");
+            expText.setText("");
         }
 
     }
@@ -4313,7 +4078,15 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public String getBasicAuthPassword() {
-        return basicAuthPassword.getText();
+        Text text = (Text) basicAuthPasswordComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) basicAuthPasswordComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) basicAuthPasswordComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        
+        if (toggleButton.getSelection()) {
+            return expText.getText();
+        } else {
+            return text.getText();
+        }
     }
 
     /**
@@ -4324,18 +4097,34 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public void setBasicAuthPassword(String newValue) {
+        Text text = (Text) basicAuthPasswordComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) basicAuthPasswordComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) basicAuthPasswordComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        Composite expressionComposite = (Composite) basicAuthPasswordComposite.getData(CompositeElements.EXPRESSION_COMPOSITE);
+        
         if (newValue != null) {
-            basicAuthPassword.setText(newValue);
+            if (isExpression(newValue)) {
+                expText.setText(getValueFromExpression(newValue));
+                toggleButton.setSelection(true); 
+                // Hide value text box
+                text.setVisible(false);
+                ((GridData) text.getLayoutData()).exclude = true;
+                // Show expression composite
+                expressionComposite.setVisible(true);
+                ((GridData) expressionComposite.getLayoutData()).exclude = false;
+            } else {
+                text.setText(newValue);
+                toggleButton.setSelection(false); 
+                // Show value text box
+                text.setVisible(true);
+                ((GridData) text.getLayoutData()).exclude = false;
+                // Hide expression composite
+                expressionComposite.setVisible(false);
+                ((GridData) expressionComposite.getLayoutData()).exclude = true;
+            }
         } else {
-            basicAuthPassword.setText(""); //$NON-NLS-1$
-        }
-        boolean eefElementEditorReadOnlyState = isReadOnly(
-                EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.basicAuthPassword);
-        if (eefElementEditorReadOnlyState && basicAuthPassword.isEnabled()) {
-            basicAuthPassword.setEnabled(false);
-            basicAuthPassword.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-        } else if (!eefElementEditorReadOnlyState && !basicAuthPassword.isEnabled()) {
-            basicAuthPassword.setEnabled(true);
+            text.setText("");
+            expText.setText("");
         }
 
     }
@@ -4399,7 +4188,15 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public String getOAuthUsername() {
-        return oAuthUsername.getText();
+        Text text = (Text) oAuthUsernameComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) oAuthUsernameComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) oAuthUsernameComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        
+        if (toggleButton.getSelection()) {
+            return expText.getText();
+        } else {
+            return text.getText();
+        }
     }
 
     /**
@@ -4409,18 +4206,34 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public void setOAuthUsername(String newValue) {
+        Text text = (Text) oAuthUsernameComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) oAuthUsernameComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) oAuthUsernameComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        Composite expressionComposite = (Composite) oAuthUsernameComposite.getData(CompositeElements.EXPRESSION_COMPOSITE);
+        
         if (newValue != null) {
-            oAuthUsername.setText(newValue);
+            if (isExpression(newValue)) {
+                expText.setText(getValueFromExpression(newValue));
+                toggleButton.setSelection(true); 
+                // Hide value text box
+                text.setVisible(false);
+                ((GridData) text.getLayoutData()).exclude = true;
+                // Show expression composite
+                expressionComposite.setVisible(true);
+                ((GridData) expressionComposite.getLayoutData()).exclude = false;
+            } else {
+                text.setText(newValue);
+                toggleButton.setSelection(false); 
+                // Show value text box
+                text.setVisible(true);
+                ((GridData) text.getLayoutData()).exclude = false;
+                // Hide expression composite
+                expressionComposite.setVisible(false);
+                ((GridData) expressionComposite.getLayoutData()).exclude = true;
+            }
         } else {
-            oAuthUsername.setText(""); //$NON-NLS-1$
-        }
-        boolean eefElementEditorReadOnlyState = isReadOnly(
-                EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername);
-        if (eefElementEditorReadOnlyState && oAuthUsername.isEnabled()) {
-            oAuthUsername.setEnabled(false);
-            oAuthUsername.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-        } else if (!eefElementEditorReadOnlyState && !oAuthUsername.isEnabled()) {
-            oAuthUsername.setEnabled(true);
+            text.setText("");
+            expText.setText("");
         }
 
     }
@@ -4432,7 +4245,15 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public String getOAuthPassword() {
-        return oAuthPassword.getText();
+        Text text = (Text) oAuthPasswordComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) oAuthPasswordComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) oAuthPasswordComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        
+        if (toggleButton.getSelection()) {
+            return expText.getText();
+        } else {
+            return text.getText();
+        }
     }
 
     /**
@@ -4442,20 +4263,35 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public void setOAuthPassword(String newValue) {
+        Text text = (Text) oAuthPasswordComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) oAuthPasswordComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) oAuthPasswordComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        Composite expressionComposite = (Composite) oAuthPasswordComposite.getData(CompositeElements.EXPRESSION_COMPOSITE);
+        
         if (newValue != null) {
-            oAuthPassword.setText(newValue);
+            if (isExpression(newValue)) {
+                expText.setText(getValueFromExpression(newValue));
+                toggleButton.setSelection(true); 
+                // Hide value text box
+                text.setVisible(false);
+                ((GridData) text.getLayoutData()).exclude = true;
+                // Show expression composite
+                expressionComposite.setVisible(true);
+                ((GridData) expressionComposite.getLayoutData()).exclude = false;
+            } else {
+                text.setText(newValue);
+                toggleButton.setSelection(false); 
+                // Show value text box
+                text.setVisible(true);
+                ((GridData) text.getLayoutData()).exclude = false;
+                // Hide expression composite
+                expressionComposite.setVisible(false);
+                ((GridData) expressionComposite.getLayoutData()).exclude = true;
+            }
         } else {
-            oAuthPassword.setText(""); //$NON-NLS-1$
+            text.setText("");
+            expText.setText("");
         }
-        boolean eefElementEditorReadOnlyState = isReadOnly(
-                EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword);
-        if (eefElementEditorReadOnlyState && oAuthPassword.isEnabled()) {
-            oAuthPassword.setEnabled(false);
-            oAuthPassword.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-        } else if (!eefElementEditorReadOnlyState && !oAuthPassword.isEnabled()) {
-            oAuthPassword.setEnabled(true);
-        }
-
     }
 
     /**
@@ -4585,7 +4421,15 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public String getOAuthClientId() {
-        return oAuthClientId.getText();
+        Text text = (Text) oAuthClientIdComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) oAuthClientIdComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) oAuthClientIdComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        
+        if (toggleButton.getSelection()) {
+            return expText.getText();
+        } else {
+            return text.getText();
+        }
     }
 
     /**
@@ -4595,20 +4439,35 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public void setOAuthClientId(String newValue) {
+        Text text = (Text) oAuthClientIdComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) oAuthClientIdComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) oAuthClientIdComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        Composite expressionComposite = (Composite) oAuthClientIdComposite.getData(CompositeElements.EXPRESSION_COMPOSITE);
+        
         if (newValue != null) {
-            oAuthClientId.setText(newValue);
+            if (isExpression(newValue)) {
+                expText.setText(getValueFromExpression(newValue));
+                toggleButton.setSelection(true); 
+                // Hide value text box
+                text.setVisible(false);
+                ((GridData) text.getLayoutData()).exclude = true;
+                // Show expression composite
+                expressionComposite.setVisible(true);
+                ((GridData) expressionComposite.getLayoutData()).exclude = false;
+            } else {
+                text.setText(newValue);
+                toggleButton.setSelection(false); 
+                // Show value text box
+                text.setVisible(true);
+                ((GridData) text.getLayoutData()).exclude = false;
+                // Hide expression composite
+                expressionComposite.setVisible(false);
+                ((GridData) expressionComposite.getLayoutData()).exclude = true;
+            }
         } else {
-            oAuthClientId.setText(""); //$NON-NLS-1$
+            text.setText("");
+            expText.setText("");
         }
-        boolean eefElementEditorReadOnlyState = isReadOnly(
-                EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientId);
-        if (eefElementEditorReadOnlyState && oAuthClientId.isEnabled()) {
-            oAuthClientId.setEnabled(false);
-            oAuthClientId.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-        } else if (!eefElementEditorReadOnlyState && !oAuthClientId.isEnabled()) {
-            oAuthClientId.setEnabled(true);
-        }
-
     }
 
     /**
@@ -4618,7 +4477,15 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public String getOAuthClientSecret() {
-        return oAuthClientSecret.getText();
+        Text text = (Text) oAuthClientSecretComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) oAuthClientSecretComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) oAuthClientSecretComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        
+        if (toggleButton.getSelection()) {
+            return expText.getText();
+        } else {
+            return text.getText();
+        }
     }
 
     /**
@@ -4629,20 +4496,35 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public void setOAuthClientSecret(String newValue) {
+        Text text = (Text) oAuthClientSecretComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) oAuthClientSecretComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) oAuthClientSecretComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        Composite expressionComposite = (Composite) oAuthClientSecretComposite.getData(CompositeElements.EXPRESSION_COMPOSITE);
+        
         if (newValue != null) {
-            oAuthClientSecret.setText(newValue);
+            if (isExpression(newValue)) {
+                expText.setText(getValueFromExpression(newValue));
+                toggleButton.setSelection(true); 
+                // Hide value text box
+                text.setVisible(false);
+                ((GridData) text.getLayoutData()).exclude = true;
+                // Show expression composite
+                expressionComposite.setVisible(true);
+                ((GridData) expressionComposite.getLayoutData()).exclude = false;
+            } else {
+                text.setText(newValue);
+                toggleButton.setSelection(false); 
+                // Show value text box
+                text.setVisible(true);
+                ((GridData) text.getLayoutData()).exclude = false;
+                // Hide expression composite
+                expressionComposite.setVisible(false);
+                ((GridData) expressionComposite.getLayoutData()).exclude = true;
+            }
         } else {
-            oAuthClientSecret.setText(""); //$NON-NLS-1$
+            text.setText("");
+            expText.setText("");
         }
-        boolean eefElementEditorReadOnlyState = isReadOnly(
-                EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret);
-        if (eefElementEditorReadOnlyState && oAuthClientSecret.isEnabled()) {
-            oAuthClientSecret.setEnabled(false);
-            oAuthClientSecret.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-        } else if (!eefElementEditorReadOnlyState && !oAuthClientSecret.isEnabled()) {
-            oAuthClientSecret.setEnabled(true);
-        }
-
     }
 
     /**
@@ -4652,7 +4534,15 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public String getOAuthRefreshToken() {
-        return oAuthRefreshToken.getText();
+        Text text = (Text) oAuthRefreshTokenComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) oAuthRefreshTokenComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) oAuthRefreshTokenComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        
+        if (toggleButton.getSelection()) {
+            return expText.getText();
+        } else {
+            return text.getText();
+        }
     }
 
     /**
@@ -4663,20 +4553,35 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public void setOAuthRefreshToken(String newValue) {
+        Text text = (Text) oAuthRefreshTokenComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) oAuthRefreshTokenComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) oAuthRefreshTokenComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        Composite expressionComposite = (Composite) oAuthRefreshTokenComposite.getData(CompositeElements.EXPRESSION_COMPOSITE);
+        
         if (newValue != null) {
-            oAuthRefreshToken.setText(newValue);
+            if (isExpression(newValue)) {
+                expText.setText(getValueFromExpression(newValue));
+                toggleButton.setSelection(true); 
+                // Hide value text box
+                text.setVisible(false);
+                ((GridData) text.getLayoutData()).exclude = true;
+                // Show expression composite
+                expressionComposite.setVisible(true);
+                ((GridData) expressionComposite.getLayoutData()).exclude = false;
+            } else {
+                text.setText(newValue);
+                toggleButton.setSelection(false); 
+                // Show value text box
+                text.setVisible(true);
+                ((GridData) text.getLayoutData()).exclude = false;
+                // Hide expression composite
+                expressionComposite.setVisible(false);
+                ((GridData) expressionComposite.getLayoutData()).exclude = true;
+            }
         } else {
-            oAuthRefreshToken.setText(""); //$NON-NLS-1$
+            text.setText("");
+            expText.setText("");
         }
-        boolean eefElementEditorReadOnlyState = isReadOnly(
-                EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken);
-        if (eefElementEditorReadOnlyState && oAuthRefreshToken.isEnabled()) {
-            oAuthRefreshToken.setEnabled(false);
-            oAuthRefreshToken.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-        } else if (!eefElementEditorReadOnlyState && !oAuthRefreshToken.isEnabled()) {
-            oAuthRefreshToken.setEnabled(true);
-        }
-
     }
 
     /**
@@ -4686,7 +4591,15 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public String getOAuthTokenUrl() {
-        return oAuthTokenUrl.getText();
+        Text text = (Text) oAuthTokenUrlComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) oAuthTokenUrlComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) oAuthTokenUrlComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        
+        if (toggleButton.getSelection()) {
+            return expText.getText();
+        } else {
+            return text.getText();
+        }
     }
 
     /**
@@ -4696,20 +4609,35 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
      * 
      */
     public void setOAuthTokenUrl(String newValue) {
+        Text text = (Text) oAuthTokenUrlComposite.getData(CompositeElements.VALUE_TEXT_BOX);
+        StyledText expText = (StyledText) oAuthTokenUrlComposite.getData(CompositeElements.EXPRESSION_TEXT_BOX);
+        Button toggleButton = (Button) oAuthTokenUrlComposite.getData(CompositeElements.EXPRESSION_TOGGLE_BUTTON);
+        Composite expressionComposite = (Composite) oAuthTokenUrlComposite.getData(CompositeElements.EXPRESSION_COMPOSITE);
+        
         if (newValue != null) {
-            oAuthTokenUrl.setText(newValue);
+            if (isExpression(newValue)) {
+                expText.setText(getValueFromExpression(newValue));
+                toggleButton.setSelection(true); 
+                // Hide value text box
+                text.setVisible(false);
+                ((GridData) text.getLayoutData()).exclude = true;
+                // Show expression composite
+                expressionComposite.setVisible(true);
+                ((GridData) expressionComposite.getLayoutData()).exclude = false;
+            } else {
+                text.setText(newValue);
+                toggleButton.setSelection(false); 
+                // Show value text box
+                text.setVisible(true);
+                ((GridData) text.getLayoutData()).exclude = false;
+                // Hide expression composite
+                expressionComposite.setVisible(false);
+                ((GridData) expressionComposite.getLayoutData()).exclude = true;
+            }
         } else {
-            oAuthTokenUrl.setText(""); //$NON-NLS-1$
+            text.setText("");
+            expText.setText("");
         }
-        boolean eefElementEditorReadOnlyState = isReadOnly(
-                EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl);
-        if (eefElementEditorReadOnlyState && oAuthTokenUrl.isEnabled()) {
-            oAuthTokenUrl.setEnabled(false);
-            oAuthTokenUrl.setToolTipText(EsbMessages.HTTPEndpoint_ReadOnly);
-        } else if (!eefElementEditorReadOnlyState && !oAuthTokenUrl.isEnabled()) {
-            oAuthTokenUrl.setEnabled(true);
-        }
-
     }
 
     /**
@@ -4789,6 +4717,36 @@ public class HTTPEndpointPropertiesEditionPartForm extends SectionPropertiesEdit
             viewUtil.hideEntry(oAuthParametersElements, false);
         }
         view.layout(true, true);
+    }
+    
+    /**
+     * Validate the given attribute to identify whether it is static or dynamic key
+     * If the name is in the {} format then it is dynamic key(XPath)
+     * Otherwise just a static name
+     *
+     * @param attributeValue string to validate as the attribute
+     * @return isDynamicAttribute representing the attribute type
+     */
+    private boolean isExpression(String value) {
+        if (value.length() < 2) {
+            return false;
+        }
+
+        final char startExpression = '{';
+        final char endExpression = '}';
+
+        char firstChar = value.charAt(0);
+        char lastChar = value.charAt(value.length() - 1);
+
+        return (startExpression == firstChar && endExpression == lastChar);
+    }
+
+    private String getValueFromExpression(String expression) {
+        return expression.substring(1, expression.length() - 1);
+    }
+    
+    protected String getExpressionFromText(String text) {
+        return "{" + text + "}";
     }
 
     // End of user code

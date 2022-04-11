@@ -140,6 +140,12 @@ public class InputPropertyDetailPage extends WizardPage {
         data.height = 21;
         lblPropertyPrefixName.setLayoutData(data);
         lblPropertyPrefixName.setText(" " + PROP_NAME_ITEMS[0]);
+        if ("transport".equalsIgnoreCase(this.propertyScope)) {
+            lblPropertyPrefixName.setText(" " + PROP_NAME_ITEMS[2]);
+        } else if ("axis2".equalsIgnoreCase(this.propertyScope)) {
+            lblPropertyPrefixName.setText(" " + PROP_NAME_ITEMS[1]);
+        }
+        
         lblPropertyPrefixName.setBackground(new Color(null, 229, 236, 253));
         Font boldFont = new Font(null, new FontData("Arial", 12, SWT.BOLD));
         lblPropertyPrefixName.setFont(boldFont);

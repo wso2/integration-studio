@@ -137,8 +137,12 @@ public class MediatorFigureReverser {
             /*
              * Reverse the mediators inside the Cache mediator.
              */
-            children = ((MediatorFlowMediatorFlowCompartment13EditPart) ((MediatorFlow13EditPart) editorPart
-                    .getChildren().get(4)).getChildren().get(0)).getChildren();
+            
+            if (editorPart.getChildren().size() > 4) {
+                children = ((MediatorFlowMediatorFlowCompartment13EditPart) ((MediatorFlow13EditPart) editorPart
+                        .getChildren().get(4)).getChildren().get(0)).getChildren();
+            }
+
         }
 
         /*

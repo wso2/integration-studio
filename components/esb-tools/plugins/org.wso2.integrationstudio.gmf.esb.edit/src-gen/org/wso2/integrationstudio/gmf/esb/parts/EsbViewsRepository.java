@@ -1268,6 +1268,13 @@ public class EsbViewsRepository {
 	
 			
 			public static String failoverNonRetryErrorCodes = "esb::HTTPEndpoint::Failover Error Codes::failoverNonRetryErrorCodes";
+			public static String httpMethod = "esb::HTTPEndpoint::properties::HttpMethod";
+			
+			
+			public static String oAuthGrantType = "esb::HTTPEndpoint::properties::OAuthGrantType";
+			
+			
+			public static String oAuthClientId = "esb::HTTPEndpoint::properties::OAuthClientId";
 			
 	
 		}
@@ -1288,15 +1295,19 @@ public class EsbViewsRepository {
 			
 			
 			public static String oAuthClientId = "esb::HTTPEndpoint::oAuthConfiguration::oAuthClientId";
+			public static String oAuthAuthenticationMode = "esb::HTTPEndpoint::properties::OAuthAuthenticationMode";
 			
 			
 			public static String oAuthClientSecret = "esb::HTTPEndpoint::oAuthConfiguration::oAuthClientSecret";
+			public static String oAuthUsername = "esb::HTTPEndpoint::properties::OAuthUsername";
 			
 			
 			public static String oAuthRefreshToken = "esb::HTTPEndpoint::oAuthConfiguration::oAuthRefreshToken";
+			public static String oAuthPassword = "esb::HTTPEndpoint::properties::OAuthPassword";
 			
 			
 			public static String oAuthTokenUrl = "esb::HTTPEndpoint::oAuthConfiguration::oAuthTokenUrl";
+			public static String oAuthParameters = "esb::HTTPEndpoint::properties::OAuthParameters";
 			
 	
 		}

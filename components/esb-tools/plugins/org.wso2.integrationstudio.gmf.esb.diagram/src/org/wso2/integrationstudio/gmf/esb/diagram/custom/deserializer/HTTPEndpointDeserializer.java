@@ -19,6 +19,7 @@ package org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.HTTP_ENDPOINT__HTTP_METHOD;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.HTTP_ENDPOINT__URI_TEMPLATE;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_GRANT_TYPE;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_AUTHENTICATION_MODE;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.HTTP_ENDPOINT__AUTH_TYPE;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.HTTP_ENDPOINT__BASIC_AUTH_USERNAME;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.HTTP_ENDPOINT__BASIC_AUTH_PASSWORD;
@@ -28,11 +29,15 @@ import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.HTTP_ENDPOI
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_PASSWORD;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_TOKEN_URL;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.HTTP_ENDPOINT__OAUTH_PARAMETERS;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+
 import org.apache.axis2.Constants;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.AbstractEndpoint;
@@ -46,6 +51,9 @@ import org.apache.synapse.endpoints.auth.oauth.PasswordCredentialsHandler;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.rest.RESTConstants;
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.BasicEList.UnmodifiableEList;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.swt.custom.StyledText;
@@ -58,6 +66,7 @@ import org.wso2.integrationstudio.gmf.esb.EndPointProperty;
 import org.wso2.integrationstudio.gmf.esb.EndPointPropertyScope;
 import org.wso2.integrationstudio.gmf.esb.EsbFactory;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpointAuthType;
+import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthAuthenticationMode;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthGrantType;
 import org.wso2.integrationstudio.gmf.esb.HttpMethodType;
 import org.wso2.integrationstudio.gmf.esb.NamespacedProperty;
@@ -112,31 +121,41 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer {
 
         if (object instanceof OAuthConfiguredHTTPEndpoint) {
             OAuthConfiguredHTTPEndpoint oauthEP = (OAuthConfiguredHTTPEndpoint) object;
+            
             executeSetValueCommand(HTTP_ENDPOINT__AUTH_TYPE,HTTPEndpointAuthType.OAUTH);
             if (oauthEP.getOauthHandler() instanceof AuthorizationCodeHandler) {
                 AuthorizationCodeHandler handler = (AuthorizationCodeHandler) oauthEP.getOauthHandler();
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_GRANT_TYPE,
                         HTTPEndpointOAuthGrantType.AUTHORIZATION_CODE_GRANT);
+                executeSetValueCommand(HTTP_ENDPOINT__OAUTH_AUTHENTICATION_MODE, handler.getAuthMode());
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_CLIENT_ID, handler.getClientId());
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_CLIENT_SECRET, handler.getClientSecret());
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_REFRESH_TOKEN, handler.getRefreshToken());
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_TOKEN_URL, handler.getTokenUrl());
+                executeSetValueCommand(HTTP_ENDPOINT__OAUTH_AUTHENTICATION_MODE, getOAuthMode(handler.getAuthMode()));
+                executeSetValueCommand(HTTP_ENDPOINT__OAUTH_PARAMETERS, getOAuthParametersList(handler.getRequestParametersMap()));
             } else if (oauthEP.getOauthHandler() instanceof ClientCredentialsHandler) {
                 ClientCredentialsHandler handler = (ClientCredentialsHandler) oauthEP.getOauthHandler();
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_GRANT_TYPE,
                         HTTPEndpointOAuthGrantType.CLIENT_CREDENTIALS_GRANT);
+                executeSetValueCommand(HTTP_ENDPOINT__OAUTH_AUTHENTICATION_MODE, handler.getAuthMode());
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_CLIENT_ID, handler.getClientId());
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_CLIENT_SECRET, handler.getClientSecret());
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_TOKEN_URL, handler.getTokenUrl());
+                executeSetValueCommand(HTTP_ENDPOINT__OAUTH_AUTHENTICATION_MODE, getOAuthMode(handler.getAuthMode()));
+                executeSetValueCommand(HTTP_ENDPOINT__OAUTH_PARAMETERS, getOAuthParametersList(handler.getRequestParametersMap()));
             } else if (oauthEP.getOauthHandler() instanceof PasswordCredentialsHandler) {
                 PasswordCredentialsHandler handler = (PasswordCredentialsHandler) oauthEP.getOauthHandler();
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_GRANT_TYPE,
-                        HTTPEndpointOAuthGrantType.CLIENT_CREDENTIALS_GRANT);
+                        HTTPEndpointOAuthGrantType.PASSWORD_CREDENTIALS_GRANT);
+                executeSetValueCommand(HTTP_ENDPOINT__OAUTH_AUTHENTICATION_MODE, handler.getAuthMode());
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_CLIENT_ID, handler.getClientId());
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_CLIENT_SECRET, handler.getClientSecret());
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_USERNAME, handler.getUsername());
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_PASSWORD, handler.getPassword());
                 executeSetValueCommand(HTTP_ENDPOINT__OAUTH_TOKEN_URL, handler.getTokenUrl());
+                executeSetValueCommand(HTTP_ENDPOINT__OAUTH_AUTHENTICATION_MODE, getOAuthMode(handler.getAuthMode()));
+                executeSetValueCommand(HTTP_ENDPOINT__OAUTH_PARAMETERS, getOAuthParametersList(handler.getRequestParametersMap()));
             }
         } else if (object instanceof BasicAuthConfiguredHTTPEndpoint) {
             BasicAuthConfiguredHTTPEndpoint basicAuthEP = (BasicAuthConfiguredHTTPEndpoint) object;
@@ -208,6 +227,7 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer {
                 AuthorizationCodeHandler handler = (AuthorizationCodeHandler) oauthEP.getOauthHandler();
                 httpEndpointPage.httpEP_AuthType.select(2);
                 httpEndpointPage.httpEP_OAuthType.select(0);
+                httpEndpointPage.httpEP_OAuthAuthenticationMode.select(HTTPEndpointOAuthAuthenticationMode.getByName(handler.getAuthMode()).getValue());
                 
                 httpEndpointPage.setOAuthClientId(handler.getClientId());
                 httpEndpointPage.setOAuthClientSecret(handler.getClientSecret());
@@ -218,6 +238,8 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer {
                 ClientCredentialsHandler handler = (ClientCredentialsHandler) oauthEP.getOauthHandler();
                 httpEndpointPage.httpEP_AuthType.select(2);
                 httpEndpointPage.httpEP_OAuthType.select(1);
+                httpEndpointPage.httpEP_OAuthAuthenticationMode.select(HTTPEndpointOAuthAuthenticationMode.getByName(handler.getAuthMode()).getValue());
+                
                 httpEndpointPage.setOAuthClientId(handler.getClientId());
                 httpEndpointPage.setOAuthClientSecret(handler.getClientSecret());
                 httpEndpointPage.setOAuthTokenUrl(handler.getTokenUrl());
@@ -226,6 +248,8 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer {
                 PasswordCredentialsHandler handler = (PasswordCredentialsHandler) oauthEP.getOauthHandler();
                 httpEndpointPage.httpEP_AuthType.select(2);
                 httpEndpointPage.httpEP_OAuthType.select(2);
+                httpEndpointPage.httpEP_OAuthAuthenticationMode.select(HTTPEndpointOAuthAuthenticationMode.getByName(handler.getAuthMode()).getValue());
+                
                 httpEndpointPage.setOAuthClientId(handler.getClientId());
                 httpEndpointPage.setOAuthClientSecret(handler.getClientSecret());
                 httpEndpointPage.getOAuthUsername(handler.getUsername());
@@ -246,6 +270,68 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer {
 
         httpEndpointPage.setAuthenticationFields();
         super.createNode(formEditor, endpointObject);
+    }
+    
+    private HTTPEndpointOAuthAuthenticationMode getOAuthMode(String value) {
+        if (value.equals("header")) {
+            return HTTPEndpointOAuthAuthenticationMode.HEADER_OAUTH_AUTHENTICATION_MODE;
+        } else {
+            return HTTPEndpointOAuthAuthenticationMode.PAYLOAD_OAUTH_AUTHENTICATION_MODE;
+        }
+        
+    }
+    
+    protected EList<EndPointProperty> getOAuthParametersList(Map<String, String> map) {
+        
+        EList<EndPointProperty> list = new BasicEList<EndPointProperty>();
+        
+        if (map == null) return null;
+        
+        for(Entry<String, String> entry: map.entrySet()) {
+            EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
+            property.setName(entry.getKey());
+            
+            if (isExpression(entry.getValue())) {
+                property.setValueType(PropertyValueType.EXPRESSION);
+                NamespacedProperty namespacedProperty = EsbFactory.eINSTANCE.createNamespacedProperty();
+                namespacedProperty.setPropertyValue(getValueFromExpression(entry.getValue()));
+                property.setValueExpression(namespacedProperty);
+            } else {
+                property.setValueType(PropertyValueType.LITERAL);
+                property.setValue(entry.getValue());
+            }
+            
+            list.add(property);
+            
+        }
+        
+        return list;
+    }
+    
+    /**
+     * Validate the given attribute to identify whether it is static or dynamic key
+     * If the name is in the {} format then it is dynamic key(XPath)
+     * Otherwise just a static name
+     *
+     * @param attributeValue string to validate as the attribute
+     * @return isDynamicAttribute representing the attribute type
+     */
+    private boolean isExpression(String value) {
+        if (value.length() < 2) {
+            return false;
+        }
+
+        final char startExpression = '{';
+        final char endExpression = '}';
+
+        char firstChar = value.charAt(0);
+        char lastChar = value.charAt(value.length() - 1);
+
+        return (startExpression == firstChar && endExpression == lastChar);
+    }
+    
+    private String getValueFromExpression(String expression) {
+        return expression.substring(1, expression.length() - 1);
     }
 
     /**

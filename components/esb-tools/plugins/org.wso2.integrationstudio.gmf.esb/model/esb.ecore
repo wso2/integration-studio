@@ -397,7 +397,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="OAuthPasswordExpression"
         eType="#//NamespacedProperty"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="OAuthParameters" upperBound="-1"
-        eType="#//HTTPEndpointOAuthParameter" containment="true"/>
+        eType="#//EndPointProperty" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HTTPEndPointInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="HTTPEndPointOutputConnector" eSuperTypes="#//OutputConnector"/>
@@ -425,7 +425,6 @@
     <eLiterals name="Header_OAuth_Authentication_Mode" literal="Header OAuth Authentication Mode"/>
     <eLiterals name="Payload_OAuth_Authentication_Mode" value="1" literal="Payload OAuth Authentication Mode"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HTTPEndpointOAuthParameter" eSuperTypes="#//AbstractNameValueExpressionProperty"/>
   <eClassifiers xsi:type="ecore:EClass" name="DropMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//DropMediatorInputConnector"
         containment="true"/>

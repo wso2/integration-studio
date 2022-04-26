@@ -1107,7 +1107,6 @@
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//HTTPEndPointInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//HTTPEndPointOutputConnector"/>
-    <genClasses ecoreClass="esb.ecore#//HTTPEndpointOAuthParameter"/>
     <genClasses ecoreClass="esb.ecore#//DropMediator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DropMediator/inputConnector"/>
     </genClasses>

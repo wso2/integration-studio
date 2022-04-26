@@ -433,14 +433,6 @@ public class EsbSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
-            case EsbPackage.HTTP_ENDPOINT_OAUTH_PARAMETER: {
-                HTTPEndpointOAuthParameter httpEndpointOAuthParameter = (HTTPEndpointOAuthParameter)theEObject;
-                T result = caseHTTPEndpointOAuthParameter(httpEndpointOAuthParameter);
-                if (result == null) result = caseAbstractNameValueExpressionProperty(httpEndpointOAuthParameter);
-                if (result == null) result = caseEsbNode(httpEndpointOAuthParameter);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
             case EsbPackage.DROP_MEDIATOR: {
                 DropMediator dropMediator = (DropMediator)theEObject;
                 T result = caseDropMediator(dropMediator);
@@ -3776,21 +3768,6 @@ public class EsbSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseHTTPEndPointOutputConnector(HTTPEndPointOutputConnector object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '<em>HTTP Endpoint OAuth Parameter</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>HTTP Endpoint OAuth Parameter</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseHTTPEndpointOAuthParameter(HTTPEndpointOAuthParameter object) {
         return null;
     }
 

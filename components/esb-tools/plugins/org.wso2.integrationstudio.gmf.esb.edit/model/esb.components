@@ -735,6 +735,18 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cBfA5VKHEeytLvTPN0Qx6A" name="BasicAuthPassword" views="_cBgP91KHEeytLvTPN0Qx6A">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//HTTPEndpoint/BasicAuthPassword"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_LWAAcK9VEeyh5NTblvuozA" name="OAuthAuthenticationMode" views="_zOrbIK9UEeyh5NTblvuozA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//HTTPEndpoint/OAuthAuthenticationMode"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_UDD3MK9VEeyh5NTblvuozA" name="OAuthUsername" views="_85t9EK9UEeyh5NTblvuozA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//HTTPEndpoint/OAuthUsername"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_XbiO4K9VEeyh5NTblvuozA" name="OAuthPassword" views="__1ejkK9UEeyh5NTblvuozA">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//HTTPEndpoint/OAuthPassword"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_aYhkcK9VEeyh5NTblvuozA" name="OAuthParameters" views="_F-1ugK9VEeyh5NTblvuozA">
+          <model xsi:type="ecore:EReference" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//HTTPEndpoint/OAuthParameters"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//HTTPEndpoint"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_cBfA5lKHEeytLvTPN0Qx6A" name="HTTPEndPointInputConnector" views="_cBgP-FKHEeytLvTPN0Qx6A">
@@ -6672,6 +6684,18 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_cBgP91KHEeytLvTPN0Qx6A" name="BasicAuthPassword">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_zOrbIK9UEeyh5NTblvuozA" name="OAuthAuthenticationMode">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_85t9EK9UEeyh5NTblvuozA" name="OAuthUsername">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="__1ejkK9UEeyh5NTblvuozA" name="OAuthPassword">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_F-1ugK9VEeyh5NTblvuozA" name="OAuthParameters">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>
       </views>

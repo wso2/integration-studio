@@ -39,7 +39,7 @@ public enum HTTPEndpointOAuthAuthenticationMode implements Enumerator {
      * @generated
      * @ordered
      */
-    HEADER_OAUTH_AUTHENTICATION_MODE(0, "Header_OAuth_Authentication_Mode", "Header OAuth Authentication Mode"),
+    HEADER_OAUTH_AUTHENTICATION_MODE(0, "Header_OAuth_Authentication_Mode", "Header"),
 
     /**
      * The '<em><b>Payload OAuth Authentication Mode</b></em>' literal object.
@@ -49,7 +49,7 @@ public enum HTTPEndpointOAuthAuthenticationMode implements Enumerator {
      * @generated
      * @ordered
      */
-    PAYLOAD_OAUTH_AUTHENTICATION_MODE(1, "Payload_OAuth_Authentication_Mode", "Payload OAuth Authentication Mode");
+    PAYLOAD_OAUTH_AUTHENTICATION_MODE(1, "Payload_OAuth_Authentication_Mode", "Payload");
 
     /**
      * The '<em><b>Header OAuth Authentication Mode</b></em>' literal value.

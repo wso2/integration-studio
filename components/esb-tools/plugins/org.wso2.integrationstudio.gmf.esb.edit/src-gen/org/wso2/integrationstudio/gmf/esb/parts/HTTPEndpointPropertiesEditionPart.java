@@ -605,6 +605,12 @@ public interface HTTPEndpointPropertiesEditionPart {
 	public Enumerator getOAuthGrantType();
 
 	/**
+	 * @return the OAuthAuthenticationMode
+	 * 
+	 */
+	public Enumerator getOAuthAuthenticationMode();
+
+	/**
 	 * Init the oAuthGrantType
 	 * @param input the viewer input
 	 * @param current the current value
@@ -612,11 +618,26 @@ public interface HTTPEndpointPropertiesEditionPart {
 	public void initOAuthGrantType(Object input, Enumerator current);
 
 	/**
+	 * Init the OAuthAuthenticationMode
+	 * @param input the viewer input
+	 * @param current the current value
+	 * 
+	 */
+	public void initOAuthAuthenticationMode(Object input, Enumerator current);
+
+	/**
 	 * Defines a new oAuthGrantType
 	 * @param newValue the new oAuthGrantType to set
 	 * 
 	 */
 	public void setOAuthGrantType(Enumerator newValue);
+
+	/**
+	 * Defines a new OAuthAuthenticationMode
+	 * @param newValue the new OAuthAuthenticationMode to set
+	 * 
+	 */
+	public void setOAuthAuthenticationMode(Enumerator newValue);
 
 
 	/**
@@ -626,11 +647,24 @@ public interface HTTPEndpointPropertiesEditionPart {
 	public String getOAuthClientId();
 
 	/**
+	 * @return the OAuthUsername
+	 * 
+	 */
+	public String getOAuthUsername();
+
+	/**
 	 * Defines a new oAuthClientId
 	 * @param newValue the new oAuthClientId to set
 	 * 
 	 */
 	public void setOAuthClientId(String newValue);
+
+	/**
+	 * Defines a new OAuthUsername
+	 * @param newValue the new OAuthUsername to set
+	 * 
+	 */
+	public void setOAuthUsername(String newValue);
 
 
 	/**
@@ -640,11 +674,26 @@ public interface HTTPEndpointPropertiesEditionPart {
 	public String getOAuthClientSecret();
 
 	/**
+	 * @return the OAuthPassword
+	 * 
+	 */
+	public String getOAuthPassword();
+
+	/**
 	 * Defines a new oAuthClientSecret
 	 * @param newValue the new oAuthClientSecret to set
 	 * 
 	 */
 	public void setOAuthClientSecret(String newValue);
+
+	/**
+	 * Defines a new OAuthPassword
+	 * @param newValue the new OAuthPassword to set
+	 * 
+	 */
+	public void setOAuthPassword(String newValue);
+
+
 
 
 	/**
@@ -654,12 +703,36 @@ public interface HTTPEndpointPropertiesEditionPart {
 	public String getOAuthRefreshToken();
 
 	/**
+	 * Init the OAuthParameters
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initOAuthParameters(ReferencesTableSettings settings);
+
+	/**
 	 * Defines a new oAuthRefreshToken
 	 * @param newValue the new oAuthRefreshToken to set
 	 * 
 	 */
 	public void setOAuthRefreshToken(String newValue);
 
+	/**
+	 * Update the OAuthParameters
+	 * @param newValue the OAuthParameters to update
+	 * 
+	 */
+	public void updateOAuthParameters();
+
+	/**
+	 * Adds the given filter to the OAuthParameters edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToOAuthParameters(ViewerFilter filter);
 
 	/**
 	 * @return the oAuthTokenUrl
@@ -668,11 +741,25 @@ public interface HTTPEndpointPropertiesEditionPart {
 	public String getOAuthTokenUrl();
 
 	/**
+	 * Adds the given filter to the OAuthParameters edition editor.
+	 * @param filter a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToOAuthParameters(ViewerFilter filter);
+
+	/**
 	 * Defines a new oAuthTokenUrl
 	 * @param newValue the new oAuthTokenUrl to set
 	 * 
 	 */
 	public void setOAuthTokenUrl(String newValue);
+
+	/**
+	 * @return true if the given element is contained inside the OAuthParameters table
+	 * 
+	 */
+	public boolean isContainedInOAuthParametersTable(EObject element);
 
 
 

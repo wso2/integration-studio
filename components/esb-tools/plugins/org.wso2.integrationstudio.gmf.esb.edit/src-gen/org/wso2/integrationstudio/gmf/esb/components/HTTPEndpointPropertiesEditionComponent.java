@@ -59,6 +59,7 @@ import org.wso2.integrationstudio.gmf.esb.EndPointTimeOutAction;
 import org.wso2.integrationstudio.gmf.esb.EsbPackage;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpoint;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpointAuthType;
+import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthAuthenticationMode;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthGrantType;
 import org.wso2.integrationstudio.gmf.esb.HttpMethodType;
 import org.wso2.integrationstudio.gmf.esb.TemplateParameter;
@@ -92,6 +93,12 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 	
 	
 	/**
+   * Settings for OAuthParameters ReferencesTable
+   */
+  protected ReferencesTableSettings oAuthParametersSettings;
+
+
+  /**
 	 * Default constructor
 	 * 
 	 */
@@ -220,8 +227,22 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthClientSecret))
 				basePart.setOAuthClientSecret(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthClientSecret()));
 			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername))
+				basePart.setOAuthUsername(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthUsername()));
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword))
+                basePart.setOAuthPassword(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthPassword()));
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthAuthenticationMode))
+                basePart.initOAuthAuthenticationMode(EEFUtils.choiceOfValues(hTTPEndpoint, EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthAuthenticationMode()), hTTPEndpoint.getOAuthAuthenticationMode());
+			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthParameters)) {
+			    oAuthParametersSettings = new ReferencesTableSettings(hTTPEndpoint, EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthParameters());
+                basePart.initOAuthParameters(oAuthParametersSettings);
+			}
+			
 			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken))
-				basePart.setOAuthRefreshToken(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthRefreshToken()));
+                basePart.setOAuthRefreshToken(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthRefreshToken()));
 			
 			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl))
 				basePart.setOAuthTokenUrl(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, hTTPEndpoint.getOAuthTokenUrl()));
@@ -293,7 +314,21 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 				// End of user code
 			}
 			
-			
+			if (isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthParameters)) {
+                basePart.addFilterToProperties(new ViewerFilter() {
+                    /**
+                     * {@inheritDoc}
+                     * 
+                     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+                     */
+                    public boolean select(Viewer viewer, Object parentElement, Object element) {
+                        return (element instanceof String && element.equals("")) || (element instanceof EndPointProperty); //$NON-NLS-1$ 
+                    }
+            
+                });
+                // Start of user code for additional businessfilters for properties
+                // End of user code
+            }
 			
 			
 			
@@ -457,6 +492,18 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken) {
 			return EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthRefreshToken();
 		}
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername) {
+            return EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthUsername();
+        }
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword) {
+            return EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthPassword();
+        }
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthAuthenticationMode) {
+            return EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthAuthenticationMode();
+        }
+		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthParameters) {
+            return EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthParameters();
+        }
 		if (editorKey == EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl) {
 			return EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthTokenUrl();
 		}
@@ -628,6 +675,40 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken == event.getAffectedEditor()) {
 			hTTPEndpoint.setOAuthRefreshToken((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
+		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername == event.getAffectedEditor()) {
+            hTTPEndpoint.setOAuthUsername((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+        }
+		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword == event.getAffectedEditor()) {
+            hTTPEndpoint.setOAuthPassword((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+        }
+		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthAuthenticationMode == event.getAffectedEditor()) {
+            hTTPEndpoint.setOAuthAuthenticationMode((HTTPEndpointOAuthAuthenticationMode)event.getNewValue());
+        }
+		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthParameters == event.getAffectedEditor()) {
+		    if (event.getKind() == PropertiesEditionEvent.ADD) {
+                EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, oAuthParametersSettings, editingContext.getAdapterFactory());
+                PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+                if (provider != null) {
+                    PropertiesEditingPolicy policy = provider.getPolicy(context);
+                    if (policy instanceof CreateEditingPolicy) {
+                        policy.execute();
+                    }
+                }
+            } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+                PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+                if (provider != null) {
+                    PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+                    if (editionPolicy != null) {
+                        editionPolicy.execute();
+                    }
+                }
+            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+                oAuthParametersSettings.removeFromReference((EObject) event.getNewValue());
+            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+                oAuthParametersSettings.move(event.getNewIndex(), (EndPointProperty) event.getNewValue());
+            }
+        }
 		if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl == event.getAffectedEditor()) {
 			hTTPEndpoint.setOAuthTokenUrl((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
@@ -814,6 +895,27 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 					basePart.setOAuthRefreshToken("");
 				}
 			}
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthUsername().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setOAuthUsername(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+                } else {
+                    basePart.setOAuthUsername("");
+                }
+            }
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthPassword().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword)) {
+                if (msg.getNewValue() != null) {
+                    basePart.setOAuthPassword(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+                } else {
+                    basePart.setOAuthPassword("");
+                }
+            }
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthAuthenticationMode().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthAuthenticationMode))
+                basePart.setOAuthAuthenticationMode((HTTPEndpointOAuthAuthenticationMode)msg.getNewValue());
+			
+			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthParameters().equals(msg.getFeature()) && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthParameters))
+                basePart.updateOAuthParameters();
+			
+			
 			if (EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthTokenUrl().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthTokenUrl)) {
 				if (msg.getNewValue() != null) {
 					basePart.setOAuthTokenUrl(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
@@ -890,6 +992,10 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientId(),
 			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientSecret(),
 			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthRefreshToken(),
+			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthUsername(),
+			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthPassword(),
+			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthAuthenticationMode(),
+			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthParameters(),
 			EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthTokenUrl(),
 			EsbPackage.eINSTANCE.getAbstractEndPoint_FailoverNonRetryErrorCodes(),
 			EsbPackage.eINSTANCE.getHTTPEndpoint_AuthType(),
@@ -1119,6 +1225,27 @@ public class HTTPEndpointPropertiesEditionComponent extends SinglePartProperties
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthClientSecret().getEAttributeType(), newValue);
 				}
+				if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthUsername == event.getAffectedEditor()) {
+                    Object newValue = event.getNewValue();
+                    if (newValue instanceof String) {
+                        newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthUsername().getEAttributeType(), (String)newValue);
+                    }
+                    ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthUsername().getEAttributeType(), newValue);
+                }
+				if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthPassword == event.getAffectedEditor()) {
+                    Object newValue = event.getNewValue();
+                    if (newValue instanceof String) {
+                        newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthPassword().getEAttributeType(), (String)newValue);
+                    }
+                    ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthPassword().getEAttributeType(), newValue);
+                }
+				if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthAuthenticationMode == event.getAffectedEditor()) {
+                    Object newValue = event.getNewValue();
+                    if (newValue instanceof String) {
+                        newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthAuthenticationMode().getEAttributeType(), (String)newValue);
+                    }
+                    ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getHTTPEndpoint_OAuthAuthenticationMode().getEAttributeType(), newValue);
+                }
 				if (EsbViewsRepository.HTTPEndpoint.OAuthConfiguration.oAuthRefreshToken == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {

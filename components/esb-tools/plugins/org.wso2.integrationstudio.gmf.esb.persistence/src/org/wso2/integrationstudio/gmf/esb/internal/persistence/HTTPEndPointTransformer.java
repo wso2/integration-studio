@@ -16,7 +16,10 @@
 
 package org.wso2.integrationstudio.gmf.esb.internal.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.axis2.Constants;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
@@ -30,6 +33,7 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.rest.RESTConstants;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
 import org.wso2.integrationstudio.gmf.esb.EndPoint;
@@ -38,6 +42,7 @@ import org.wso2.integrationstudio.gmf.esb.EsbNode;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpoint;
 import org.wso2.integrationstudio.gmf.esb.HTTPEndpointOAuthAuthenticationMode;
 import org.wso2.integrationstudio.gmf.esb.InputConnector;
+import org.wso2.integrationstudio.gmf.esb.PropertyValueType;
 import org.wso2.integrationstudio.gmf.esb.Sequence;
 import org.wso2.integrationstudio.gmf.esb.SequenceInputConnector;
 import org.wso2.integrationstudio.gmf.esb.persistence.TransformationInfo;
@@ -104,7 +109,7 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
             String authMode = "";
             if (oAuthAuthenticationMode.getValue() == HTTPEndpointOAuthAuthenticationMode.HEADER_OAUTH_AUTHENTICATION_MODE_VALUE) {
                 authMode = "header";
-            }else if (oAuthAuthenticationMode.getValue() == HTTPEndpointOAuthAuthenticationMode.HEADER_OAUTH_AUTHENTICATION_MODE_VALUE) {
+            }else if (oAuthAuthenticationMode.getValue() == HTTPEndpointOAuthAuthenticationMode.PAYLOAD_OAUTH_AUTHENTICATION_MODE_VALUE) {
                 authMode = "payload";
             }
             switch (visualEndPoint.getOAuthGrantType()) {
@@ -113,16 +118,17 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
                 String clientSecret = visualEndPoint.getOAuthClientSecret();
                 String tokenUrl = visualEndPoint.getOAuthTokenUrl();
                 String refreshToken = visualEndPoint.getOAuthRefreshToken();
-                OAuthHandler oAuthHandler = new AuthorizationCodeHandler(tokenUrl, clientId, clientSecret, refreshToken, authMode);
-                synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(
-                        new AuthorizationCodeHandler(tokenUrl, clientId, clientSecret, refreshToken, authMode));
+                OAuthHandler authCodeOAuthHandler = new AuthorizationCodeHandler(tokenUrl, clientId, clientSecret, refreshToken, authMode);
+                authCodeOAuthHandler.setRequestParameters(getOAuthParametersMap(visualEndPoint.getOAuthParameters()));
+                synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(authCodeOAuthHandler);
                 break;
             case CLIENT_CREDENTIALS_GRANT:
                 clientId = visualEndPoint.getOAuthClientId();
                 clientSecret = httpEndPoint.getOAuthClientSecret();
                 tokenUrl = httpEndPoint.getOAuthTokenUrl();
-                synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(
-                        new ClientCredentialsHandler(tokenUrl, clientId, clientSecret, authMode));
+                OAuthHandler clientOAuthHandler = new ClientCredentialsHandler(tokenUrl, clientId, clientSecret, authMode);
+                clientOAuthHandler.setRequestParameters(getOAuthParametersMap(visualEndPoint.getOAuthParameters()));
+                synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(clientOAuthHandler);
                 break;
             case PASSWORD_CREDENTIALS_GRANT:
                 clientId = visualEndPoint.getOAuthClientId();
@@ -130,8 +136,9 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
                 String username = httpEndPoint.getOAuthUsername();
                 String password = httpEndPoint.getOAuthPassword();
                 tokenUrl = httpEndPoint.getOAuthTokenUrl();
-                synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(
-                        new PasswordCredentialsHandler(tokenUrl, clientId, clientSecret, username, password, authMode));
+                OAuthHandler passwordOAuthHandler = new PasswordCredentialsHandler(tokenUrl, clientId, clientSecret, username, password, authMode);
+                passwordOAuthHandler.setRequestParameters(getOAuthParametersMap(visualEndPoint.getOAuthParameters()));
+                synapseHttpEP = new org.apache.synapse.endpoints.OAuthConfiguredHTTPEndpoint(passwordOAuthHandler);
                 break;
             default:
                 synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
@@ -325,6 +332,21 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
     
     protected String getExpressionFromText(String text) {
         return "{" + text + "}";
+    }
+    
+    protected Map<String, String> getOAuthParametersMap(EList<EndPointProperty> list) {
+        Map<String, String> retMap = new HashMap<String, String>();
+        
+        for(EndPointProperty property: list) {
+            if (property.getValueType().equals(PropertyValueType.EXPRESSION)) {
+                retMap.put(property.getName(), getExpressionFromText(property.getValueExpression().getPropertyValue()));
+            } else {
+                retMap.put(property.getName(), property.getValue());
+            }
+            
+        }
+        
+        return retMap;
     }
 
     /**

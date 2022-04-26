@@ -32,6 +32,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.wso2.integrationstudio.gmf.esb.APIResource;
+import org.wso2.integrationstudio.gmf.esb.APIVersionType;
 import org.wso2.integrationstudio.gmf.esb.EsbServer;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.integrationstudio.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
@@ -159,8 +160,15 @@ public class APIDebugPointBuilder extends AbstractESBDebugPointBuilder {
         }
         ESBAPIResourceBean resourse = new ESBAPIResourceBean(ESBDebuggerUtil.getMethodValuesFromResource(apiResource),
                 apiResource.getUrlMapping(), apiResource.getUriTemplate());
-
-        ESBAPIBean apiBean = new ESBAPIBean(api.getApiName(), resourse, sequenceType,
+        
+        StringBuilder apiName = new StringBuilder(api.getApiName());
+        
+        if (api.getVersionType() != APIVersionType.NONE) {
+            apiName.append(":v");
+            apiName.append(api.getVersion());
+        }
+        
+        ESBAPIBean apiBean = new ESBAPIBean(apiName.toString(), resourse, sequenceType,
                 new ESBMediatorPosition(position));
         ESBAPIDebugPointMessage apiDebugPoint = new ESBAPIDebugPointMessage(null, commandArgument,
                 new ESBAPISequenceBean(apiBean));

@@ -87,7 +87,7 @@ public class NTLMMediatorTransformer extends AbstractEsbNodeTransformer{
     @Override
     public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
             throws TransformerException {
-        // TODO Auto-generated method stub
+
         
     }
 

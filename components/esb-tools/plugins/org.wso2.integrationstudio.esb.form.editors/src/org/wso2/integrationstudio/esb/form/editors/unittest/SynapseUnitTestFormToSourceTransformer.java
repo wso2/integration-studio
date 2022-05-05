@@ -228,7 +228,7 @@ public class SynapseUnitTestFormToSourceTransformer {
                             Element assertMessage = doc.createElement(Constants.ASSERT_MESSAGE);
                             Node disableEscaping = doc.createProcessingInstruction(StreamResult.PI_DISABLE_OUTPUT_ESCAPING, "&");
                             assertActual.appendChild(disableEscaping );
-                            assertActual.appendChild(doc.createTextNode(assertElement.getActual()));
+                            assertActual.setTextContent(assertElement.getActual());
                             assertExpected.appendChild(doc.createTextNode(assertElement.getExpected()));
                             assertMessage.appendChild(doc.createTextNode(assertElement.getMessage()));
                             assertEquals.appendChild(assertActual);
@@ -241,7 +241,7 @@ public class SynapseUnitTestFormToSourceTransformer {
 
                             Element assertActual = doc.createElement(Constants.ASSERT_ACTUAL);
                             Element assertMessage = doc.createElement(Constants.ASSERT_MESSAGE);
-                            assertActual.appendChild(doc.createTextNode(assertElement.getActual()));
+                            assertActual.setTextContent(assertElement.getActual());
                             assertMessage.appendChild(doc.createTextNode(assertElement.getMessage()));
                             assertNotNull.appendChild(assertActual);
                             assertNotNull.appendChild(assertMessage);

@@ -109,7 +109,7 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
             String authMode = "";
             if (oAuthAuthenticationMode.getValue() == HTTPEndpointOAuthAuthenticationMode.HEADER_OAUTH_AUTHENTICATION_MODE_VALUE) {
                 authMode = "header";
-            }else if (oAuthAuthenticationMode.getValue() == HTTPEndpointOAuthAuthenticationMode.PAYLOAD_OAUTH_AUTHENTICATION_MODE_VALUE) {
+            } else if (oAuthAuthenticationMode.getValue() == HTTPEndpointOAuthAuthenticationMode.PAYLOAD_OAUTH_AUTHENTICATION_MODE_VALUE) {
                 authMode = "payload";
             }
             switch (visualEndPoint.getOAuthGrantType()) {

@@ -790,23 +790,24 @@ public class ValueExpressionWidgetNameSpacedPropertyEditorDialog extends Dialog 
             exprBrowserView.setLayout(exprBrowserViewLayout);
             
             URL url;
+            String html = "";
             try {
                 url = new URL(EXPR_HELP_HTML_FILE_PATH);
                 
                 InputStream inputStream = url.openConnection().getInputStream();
                 BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
                 String inputLine = "";
-                String html = "";
                 
                 while ((inputLine = in.readLine()) != null) {
                     html += inputLine;
                 }
                 
-                exprBrowserView.setBounds(100, 100, 1000, 800);
-                exprBrowserView.setText(html);
                 in.close();
             } catch (IOException e) {
                 log.error(e);
+            } finally {
+                exprBrowserView.setBounds(100, 100, 1000, 800);
+                exprBrowserView.setText(html);
             }
         
         }
@@ -1255,7 +1256,7 @@ public class ValueExpressionWidgetNameSpacedPropertyEditorDialog extends Dialog 
                             new ProgressMonitorDialog(dialogShell).run(true, false, runnable);
                         } catch (Exception ex) {
                             MessageDialog.openError(dialogShell, "Parsing Error",
-                                    "Error while parsing the specified xml file.");
+                                    "Error while parsing the specified xml file:" + ex.toString());
                         }
                     } else {
                         MessageDialog.openError(dialogShell, "I/O Error", "Unable to read specified input file.");
@@ -1628,16 +1629,9 @@ public class ValueExpressionWidgetNameSpacedPropertyEditorDialog extends Dialog 
     }
 
     private void saveConfiguration() throws Exception {
-//        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(nsProperty);
-//        domain.getCommandStack().execute(new RecordingCommand(domain) {
-//
-//            @Override
-//            protected void doExecute() {
-                nsProperty.setPropertyValue(expressionTextField.getText());
-                nsProperty.getNamespaces().clear();
-                nsProperty.getNamespaces().putAll(collectedNamespaces);
-//            }
-//        });
+        nsProperty.setPropertyValue(expressionTextField.getText());
+        nsProperty.getNamespaces().clear();
+        nsProperty.getNamespaces().putAll(collectedNamespaces);
     }
 
     private void setSaved(boolean saved) {
@@ -1680,13 +1674,6 @@ public class ValueExpressionWidgetNameSpacedPropertyEditorDialog extends Dialog 
             childTreeItem = new TreeItem(parent, SWT.NONE);
         }
         childTreeItem.setText(node.getNodeName());
-
-        // Select the icon based on the node type.
-/*        if (node.getNodeType() == Node.ELEMENT_NODE) {
-            childTreeItem.setImage(ImageHolder.getInstance().getXPathElementImage());
-        } else {
-            childTreeItem.setImage(ImageHolder.getInstance().getXPathAttributeImage());
-        }*/
 
         // Associated dom node with the newly created tree item.
         childTreeItem.setData(TREE_ITEM_DATA_KEY, new TreeItemData(node));

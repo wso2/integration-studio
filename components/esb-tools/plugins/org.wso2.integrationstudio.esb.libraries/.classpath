@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="lib/soaptorest-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-core-2.1.7-wso2v142.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swagger-inflector-oas3-2.0.5.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rest.api-4.7.92.jar"/>

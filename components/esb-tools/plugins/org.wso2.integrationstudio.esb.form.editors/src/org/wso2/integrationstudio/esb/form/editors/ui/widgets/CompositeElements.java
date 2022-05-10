@@ -290,38 +290,19 @@ public class CompositeElements {
 
         ReferencesTable properties = new ReferencesTable("Sample label to display", new ReferencesTableListener() {
             public void handleAdd() {
-                // propertiesEditionComponent.firePropertiesChanged(new
-                // PropertiesEditionEvent(LogMediatorPropertiesEditionPartForm.this,
-                // EsbViewsRepository.LogMediator.Properties.properties_, PropertiesEditionEvent.COMMIT,
-                // PropertiesEditionEvent.ADD, null, null));
-                // properties.refresh();
-                // Control valueExpressionText;
-                // openValueExpressionWidgetNamespacedPropertyEditor(parent, valueExpressionText, null);
-
+                
             }
 
             public void handleEdit(EObject element) {
-                // propertiesEditionComponent.firePropertiesChanged(new
-                // PropertiesEditionEvent(LogMediatorPropertiesEditionPartForm.this,
-                // EsbViewsRepository.LogMediator.Properties.properties_, PropertiesEditionEvent.COMMIT,
-                // PropertiesEditionEvent.EDIT, null, element));
-                // properties.refresh();
+                
             }
 
             public void handleMove(EObject element, int oldIndex, int newIndex) {
-                // propertiesEditionComponent.firePropertiesChanged(new
-                // PropertiesEditionEvent(LogMediatorPropertiesEditionPartForm.this,
-                // EsbViewsRepository.LogMediator.Properties.properties_, PropertiesEditionEvent.COMMIT,
-                // PropertiesEditionEvent.MOVE, element, newIndex));
-                // properties.refresh();
+                
             }
 
             public void handleRemove(EObject element) {
-                // propertiesEditionComponent.firePropertiesChanged(new
-                // PropertiesEditionEvent(LogMediatorPropertiesEditionPartForm.this,
-                // EsbViewsRepository.LogMediator.Properties.properties_, PropertiesEditionEvent.COMMIT,
-                // PropertiesEditionEvent.REMOVE, null, element));
-                // properties.refresh();
+                
             }
 
             public void navigateTo(EObject element) {
@@ -336,10 +317,7 @@ public class CompositeElements {
 
             public void widgetSelected(SelectionEvent e) {
                 if (e.item != null && e.item.getData() instanceof EObject) {
-                    // propertiesEditionComponent.firePropertiesChanged(new
-                    // PropertiesEditionEvent(LogMediatorPropertiesEditionPartForm.this,
-                    // EsbViewsRepository.LogMediator.Properties.properties_, PropertiesEditionEvent.CHANGE,
-                    // PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+                    
                 }
             }
 

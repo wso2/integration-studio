@@ -438,7 +438,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                         Resource[] resources = api.getResources();
                         for (Resource resource : resources) {
                             String resourcePath = ((URLMappingHelper) resource.getDispatcherHelper()).getString();
-                            if (resourcePath.contains(requestElementEntry.getKey())) {
+                            if (resourcePath.toLowerCase().contains(requestElementEntry.getKey().toLowerCase())) {
                                 StringWriter writer = new StringWriter();
                                 transformer.transform(new DOMSource(soapRequestElement.getSoapRequestBody()),
                                         new StreamResult(writer));

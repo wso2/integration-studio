@@ -40,7 +40,8 @@ Bundle-ClassPath: lib/axiom-1.2.11.wso2v10.jar,
  lib/wsdl4j_1.6.2.wso2v4.jar,
  lib/activation-1.1.1.jar,
  lib/org.eclipse.gmf.runtime.notation_1.10.0.202004160913.jar,
- lib/org.eclipse.emf.ecore_2.25.0.v20210816-0937.jar
+ lib/org.eclipse.emf.ecore_2.25.0.v20210816-0937.jar,
+ lib/soaptorest-1.0-jar-with-dependencies.jar
 Export-Package: javax.activation,
  javax.wsdl;version="1.6.2.wso2v1",
  javax.wsdl.extensions;version="1.6.2.wso2v1",
@@ -268,5 +269,9 @@ Export-Package: javax.activation,
  org.jaxen.saxpath.helpers;version="1.2.11.wso2v10",
  org.jaxen.util;version="1.2.11.wso2v10",
  org.jaxen.xom;version="1.2.11.wso2v10",
- org.wso2.integrationstudio.kernel.libraries
+ org.wso2.integrationstudio.kernel.libraries,
+ org.wso2.soaptorest,
+ org.wso2.soaptorest.exceptions,
+ org.wso2.soaptorest.models,
+ org.wso2.soaptorest.utils
 Bundle-ActivationPolicy: lazy

@@ -144,7 +144,7 @@ Integration Studio has been released with the following package components.
     * Micro Integration Monitoring Dashboard latest runtime
 
 # Setting up Integration Studio for Developers
-1. Download [Eclipse IDE 2021-12 IDE](https://www.eclipse.org/downloads/packages/release/2021-12/r) based on the OS [Eclipse IDE for Java EE Developers] If you are a MAC user use "X86-64" installer.
+1. Download **Eclipse IDE for Java EE Developers** from [here](https://www.eclipse.org/downloads/packages/release/2021-12/r) based on the OS. If you are a MAC user use "X86-64" installer.
 
 2. Use [Java11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) for development(Other java versions might not work).
 

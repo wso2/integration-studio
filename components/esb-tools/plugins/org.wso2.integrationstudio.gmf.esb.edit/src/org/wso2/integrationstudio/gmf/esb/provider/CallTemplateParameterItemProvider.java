@@ -48,7 +48,7 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
 	private static final String UI_PROPERTY_DESCRIPTOR_DESCRIPTION_IDENTIFIER = "_UI_PropertyDescriptor_description";
 	private static final String UI_CALL_TEMPLATE_PARAM_NAME_FEATURE_IDENTIFIER = "_UI_CallTemplateParameter_parameterName_feature";
 	
-	/**
+    /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

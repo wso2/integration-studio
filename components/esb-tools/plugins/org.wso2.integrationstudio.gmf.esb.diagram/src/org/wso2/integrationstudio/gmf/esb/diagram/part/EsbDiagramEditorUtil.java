@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
 import org.apache.commons.lang.RandomStringUtils;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
@@ -79,6 +78,8 @@ import org.wso2.integrationstudio.gmf.esb.diagram.edit.parts.SequenceEditPart.Se
  * @generated
  */
 public class EsbDiagramEditorUtil {
+
+    private static final String RESOURCES_PATH = "resources/";
 
     /**
      * @generated
@@ -226,7 +227,7 @@ public class EsbDiagramEditorUtil {
         progressMonitor.beginTask(Messages.EsbDiagramEditorUtil_CreateDiagramProgressTask, 3);
         final String name = fileName.replaceAll(".xml$", "");
         Location instanceLoc = Platform.getInstanceLocation();
-        String prefix = instanceLoc.getURL().toString() + "resources/" + name;
+        String prefix = instanceLoc.getURL().toString() + RESOURCES_PATH + name;
         final Resource diagramResource = editingDomain.getResourceSet()
                 .createResource(URI.createURI(prefix.concat(".esb_diagram")));
         final Resource modelResource = editingDomain.getResourceSet()

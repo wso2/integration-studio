@@ -41,7 +41,14 @@ import org.wso2.integrationstudio.gmf.esb.presentation.EEFPropertyViewUtil;
 public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
 	private static final String NAME_VALUE_SEPERATOR = "  -  ";
 	private static final String OPERATING_SYSTEM_WINDOWS = "windows";
-    /**
+	private static final String UI_CALL_TEMPLATE_PARAMETER_TYPE_IDENTIFIER = "_UI_CallTemplateParameter_type";
+	private static final String OS_NAME_IDENTIFIER = "os.name";
+	private static final String UI_CALL_TEMPLATE_PARAM_TYPE_FEATURE_IDENTIFIER = "_UI_CallTemplateParameter_templateParameterType_feature";
+	private static final String UI_CALL_TEMPLATE_PARAM_VALUE_FEATURE_IDENTIFIER = "_UI_CallTemplateParameter_parameterValue_feature";
+	private static final String UI_PROPERTY_DESCRIPTOR_DESCRIPTION_IDENTIFIER = "_UI_PropertyDescriptor_description";
+	private static final String UI_CALL_TEMPLATE_PARAM_NAME_FEATURE_IDENTIFIER = "_UI_CallTemplateParameter_parameterName_feature";
+	
+	/**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -80,8 +87,8 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_CallTemplateParameter_parameterName_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_CallTemplateParameter_parameterName_feature", "_UI_CallTemplateParameter_type"),
+                 getString(UI_CALL_TEMPLATE_PARAM_NAME_FEATURE_IDENTIFIER),
+                 getString(UI_PROPERTY_DESCRIPTOR_DESCRIPTION_IDENTIFIER, UI_CALL_TEMPLATE_PARAM_NAME_FEATURE_IDENTIFIER, UI_CALL_TEMPLATE_PARAMETER_TYPE_IDENTIFIER),
                  EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__PARAMETER_NAME,
                  true,
                  false,
@@ -102,8 +109,8 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_CallTemplateParameter_templateParameterType_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_CallTemplateParameter_templateParameterType_feature", "_UI_CallTemplateParameter_type"),
+                 getString(UI_CALL_TEMPLATE_PARAM_TYPE_FEATURE_IDENTIFIER),
+                 getString(UI_PROPERTY_DESCRIPTOR_DESCRIPTION_IDENTIFIER, UI_CALL_TEMPLATE_PARAM_TYPE_FEATURE_IDENTIFIER, UI_CALL_TEMPLATE_PARAMETER_TYPE_IDENTIFIER),
                  EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__TEMPLATE_PARAMETER_TYPE,
                  true,
                  false,
@@ -124,8 +131,8 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_CallTemplateParameter_parameterValue_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_CallTemplateParameter_parameterValue_feature", "_UI_CallTemplateParameter_type"),
+                 getString(UI_CALL_TEMPLATE_PARAM_VALUE_FEATURE_IDENTIFIER),
+                 getString(UI_PROPERTY_DESCRIPTOR_DESCRIPTION_IDENTIFIER, UI_CALL_TEMPLATE_PARAM_VALUE_FEATURE_IDENTIFIER, UI_CALL_TEMPLATE_PARAMETER_TYPE_IDENTIFIER),
                  EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__PARAMETER_VALUE,
                  true,
                  false,
@@ -192,23 +199,23 @@ public class CallTemplateParameterItemProvider extends EsbNodeItemProvider {
 
         if (parameterType.equalsIgnoreCase(RuleOptionType.VALUE.getName())) {
             if (parameterValue != null) {
-            	String operatingSystem = System.getProperty("os.name");
+            	String operatingSystem = System.getProperty(OS_NAME_IDENTIFIER);
             	if (operatingSystem != null && operatingSystem.toLowerCase().contains(OPERATING_SYSTEM_WINDOWS)) {
             		return parameterName == null || parameterName.length() == 0
-                            ? getString("_UI_CallTemplateParameter_type")
-                            :parameterNameLabel + NAME_VALUE_SEPERATOR + parameterValue;
+                            ? getString(UI_CALL_TEMPLATE_PARAMETER_TYPE_IDENTIFIER)
+                            : parameterNameLabel + NAME_VALUE_SEPERATOR + parameterValue;
             	}
                 return parameterName == null || parameterName.length() == 0
-                        ? getString("_UI_CallTemplateParameter_type")
+                        ? getString(UI_CALL_TEMPLATE_PARAMETER_TYPE_IDENTIFIER)
                         : EEFPropertyViewUtil.spaceFormat(parameterNameLabel)
                                 + EEFPropertyViewUtil.spaceFormat(parameterValue);
             } else {
                 return parameterName == null || parameterName.length() == 0
-                        ? getString("_UI_CallTemplateParameter_type")
+                        ? getString(UI_CALL_TEMPLATE_PARAMETER_TYPE_IDENTIFIER)
                         : EEFPropertyViewUtil.spaceFormat(parameterNameLabel);
             }
         } else {
-            return parameterName == null || parameterName.length() == 0 ? getString("_UI_CallTemplateParameter_type")
+            return parameterName == null || parameterName.length() == 0 ? getString(UI_CALL_TEMPLATE_PARAMETER_TYPE_IDENTIFIER)
                     : EEFPropertyViewUtil.spaceFormat(parameterNameLabel)
                             + EEFPropertyViewUtil.spaceFormat(parameterExpression);
         }

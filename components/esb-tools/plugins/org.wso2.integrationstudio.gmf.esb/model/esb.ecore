@@ -761,6 +761,7 @@
     <eLiterals name="OPERATION" value="4" literal="operation"/>
     <eLiterals name="REGISTRY" value="5" literal="registry"/>
     <eLiterals name="SYSTEM" value="6" literal="system"/>
+    <eLiterals name="ANALYTICS" value="7" literal="analytics"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PropertyValueType">
     <eLiterals name="LITERAL"/>

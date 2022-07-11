@@ -240,7 +240,10 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
                 propMediator.setScope(XMLConfigConstants.SCOPE_REGISTRY);
                 break;
             case SYSTEM:
-                propMediator.setScope(XMLConfigConstants.SCOPE_SYSTEM);    
+                propMediator.setScope(XMLConfigConstants.SCOPE_SYSTEM);
+                break;
+            case ANALYTICS:
+                propMediator.setScope(XMLConfigConstants.SCOPE_ANALYTICS);    
             }
 
             if (visualProp.getValueStringPattern() != null && !visualProp.getValueStringPattern().equals("")) {

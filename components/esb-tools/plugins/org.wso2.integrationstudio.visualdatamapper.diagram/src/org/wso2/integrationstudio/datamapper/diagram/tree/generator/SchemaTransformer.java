@@ -149,23 +149,28 @@ public class SchemaTransformer implements ISchemaTransformer {
 		setAttributesForElements(jsonSchema, count, namespaceMap, inputRootTreeNode);
 		isAttribute = false;
 
-		if (getSchemaType(jsonSchema).equals(JSON_SCHEMA_ARRAY)) {
-			ArrayList<Object> items = getSchemaItemsMap(jsonSchema);
-
-			List<Map> list = new ArrayList();
-			for (Object item : items) {
-				jsonSchema = (Map) item;
-				if (list.contains(jsonSchema)) {
-					break;
-				} else {
-					list.add(jsonSchema);
-					if (jsonSchema.containsKey(JSON_SCHEMA_PROPERTIES)) {
-						// Creates the tree by adding tree node and elements when
-						// the root is an array
-						inputRootTreeNode = setProperties(jsonSchema, inputRootTreeNode, count, namespaceMap);
-					}
-				}
-			}
+        if (getSchemaType(jsonSchema).equals(JSON_SCHEMA_ARRAY)) {
+            if (jsonSchema.get(JSON_SCHEMA_ITEMS) instanceof ArrayList) {
+                ArrayList<Object> items = getSchemaItemsMap(jsonSchema);
+                List<Map> list = new ArrayList();
+                for (Object item : items) {
+                    jsonSchema = (Map) item;
+                    if (list.contains(jsonSchema)) {
+                        break;
+                    } else {
+                        list.add(jsonSchema);
+                        if (jsonSchema.containsKey(JSON_SCHEMA_PROPERTIES)) {
+                            // Creates the tree by adding tree node and elements when
+                            // the root is an array
+                            inputRootTreeNode = setProperties(jsonSchema, inputRootTreeNode, count, namespaceMap);
+                        }
+                    }
+                }
+            } else {
+                // array with single definition for all elements
+                jsonSchema = (Map<String, Object>) jsonSchema.get(JSON_SCHEMA_ITEMS);
+                inputRootTreeNode = setProperties(jsonSchema, inputRootTreeNode, count, namespaceMap);
+            }
 		} else {
 			// Creates the tree by adding tree node and elements
 			inputRootTreeNode = setProperties(jsonSchema, inputRootTreeNode, count, namespaceMap);

@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -34,6 +35,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -71,6 +73,10 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.everit.json.schema.Schema;
+import org.everit.json.schema.ValidationException;
+import org.everit.json.schema.loader.SchemaLoader;
+import org.json.JSONObject;
 import org.wso2.integrationstudio.datamapper.diagram.Activator;
 import org.wso2.integrationstudio.datamapper.diagram.custom.action.Messages;
 import org.wso2.integrationstudio.datamapper.diagram.edit.parts.InputEditPart;
@@ -155,6 +161,7 @@ public class SchemaKeyEditorDialog extends Dialog {
                     FILE_SYSTEM + "</a> or <a>" + //$NON-NLS-1$
                     REGISTRY + "</a> or <a>" + //$NON-NLS-1$
                     WORKSPACE + "</a>";
+    private static final String JSON_SCHEMA_PATH = "resource/DatamapperSchemaValidation.json";
 
     private static final String ERROR_OPENING_FILE =
             Messages.SchemaKeyEditorDialog_ErrorOpeningFile;
@@ -162,6 +169,7 @@ public class SchemaKeyEditorDialog extends Dialog {
             Messages.SchemaKeyEditorDialog_WarnConnectorOperation;
     private static final String REASON_OPENING_FILE =
             Messages.SchemaKeyEditorDialog_ReasonOpeningFile;
+    private static final String ERROR_IN_SCHEMA = Messages.SchemaKeyEditorDialog_ValidationError;
     private static final String ERROR_REGISTRY_BROWSER =
             Messages.SchemaKeyEditorDialog_ErrorRegistryBrowser;
     private static final String REASON_REGISTRY_BROWSER =
@@ -988,6 +996,20 @@ public class SchemaKeyEditorDialog extends Dialog {
                     FileType.values()[schemaTypeCombo.getSelectionIndex()], schemaFileLocation,
                     delimiterTextField.getText());
             if (schema != null) {
+                // if JSON schema validate against data-mapper schema
+                if (option.equals(FileType.JSONSCHEMA)) {
+                    JSONObject jsonSubject = new JSONObject(schema);
+                    InputStream is = getClass().getClassLoader().getResourceAsStream(JSON_SCHEMA_PATH);
+                    JSONObject schemaObject = new JSONObject(IOUtils.toString(is));
+                    Schema schemaValidator = SchemaLoader.load(schemaObject);
+                    try {
+                        schemaValidator.validate(jsonSubject);
+                    } catch (ValidationException ex) {
+                        log.error(ERROR_IN_SCHEMA, ex);
+                        displayUserError(ERROR_IN_SCHEMA, ex.getMessage());
+                        return;
+                    }
+                }
                 String schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
                 if (!schemaFilePath.isEmpty()) {
                     setSelectedPath(schemaFilePath);

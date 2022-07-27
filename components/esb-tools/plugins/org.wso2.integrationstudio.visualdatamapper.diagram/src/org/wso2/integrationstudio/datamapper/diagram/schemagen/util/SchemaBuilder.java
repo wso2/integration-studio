@@ -184,7 +184,9 @@ public class SchemaBuilder {
 
 			JsonElement element = entry.getValue();
 			TypeEnum propertyValueType = RealTypeOf(element);
-
+			if (propertyValueType == TypeEnum.NULL) {
+				propertyValueType = TypeEnum.STRING;
+			}
 			if (entry.getKey().equals(HASHCONTENT)) {
 				addPrimitiveToParent(parent, id, entry.getValue().toString(), propertyValueType, elementIdentifierMap);
 			} else if (entry.getKey().startsWith(AT_PREFIX)) {

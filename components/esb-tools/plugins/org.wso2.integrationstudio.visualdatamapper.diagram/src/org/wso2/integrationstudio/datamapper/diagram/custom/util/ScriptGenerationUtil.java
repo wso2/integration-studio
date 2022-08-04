@@ -43,6 +43,7 @@ public class ScriptGenerationUtil {
 	private static final String SQ_BRACKET_OPEN = "[";
 	private static final String SQ_BRACKET_CLOSE = "]";
 	public static final String VALID_VARIABLE_NAME_REGEX = "^[a-zA-Z][a-zA-Z_$0-9]*$";
+	public static final String DEFAULT_ARRAY_NAME = "__";
 
 	public static String getPrettyVariableNameInForOperation(DMVariable variable, Map<String, List<SchemaDataType>> map,
 			Stack<ForLoopBean> parentForLoopBeanStackTemp, boolean isOperationVariable,
@@ -252,7 +253,20 @@ public class ScriptGenerationUtil {
 					} else if (nextName.startsWith("@")) {
 						prettyVariableName += getValidNextName(nextName.replaceFirst("@", "attr_"));
 					} else {
-						prettyVariableName += getValidNextName(nextName);
+					        String validNextName = getValidNextName(nextName);
+                                                if (DEFAULT_ARRAY_NAME.equals(nextName)) {
+                                                    if (variableName.length() > DEFAULT_ARRAY_NAME.length() + 1) {
+                                                        String parentVariableName = variableName.substring(0,
+                                                                variableName.length() - (DEFAULT_ARRAY_NAME.length() + 1));
+                                                        if (map.containsKey(parentVariableName)) {
+                                                            SchemaDataType parentVariableType = map.get(parentVariableName).get(VARIABLE_TYPE_INDEX);
+                                                            if (SchemaDataType.ARRAY.equals(parentVariableType)) {
+                                                                validNextName = "";
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                prettyVariableName += validNextName;
 					}
 					if (SchemaDataType.DOUBLE.equals(variableType) || SchemaDataType.INT.equals(variableType)
 							|| SchemaDataType.BOOLEAN.equals(variableType)
@@ -318,7 +332,7 @@ public class ScriptGenerationUtil {
 		} else if (nextName.contains(DOT_REPRESENTATION)) {
 		    return "['" + nextName.replace(DOT_REPRESENTATION, ".") + "']";
 		} else {
-			return "['" + nextName + "']";
+		        return "['" + nextName + "']";
 		}
 	}
 

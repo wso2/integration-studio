@@ -43,6 +43,7 @@ public class ScriptGenerationUtil {
 	private static final String SQ_BRACKET_OPEN = "[";
 	private static final String SQ_BRACKET_CLOSE = "]";
 	public static final String VALID_VARIABLE_NAME_REGEX = "^[a-zA-Z][a-zA-Z_$0-9]*$";
+	public static final String DEFAULT_ARRAY_NAME = "__";
 
 	public static String getPrettyVariableNameInForOperation(DMVariable variable, Map<String, List<SchemaDataType>> map,
 			Stack<ForLoopBean> parentForLoopBeanStackTemp, boolean isOperationVariable,
@@ -318,8 +319,11 @@ public class ScriptGenerationUtil {
 		} else if (nextName.contains(DOT_REPRESENTATION)) {
 		    return "['" + nextName.replace(DOT_REPRESENTATION, ".") + "']";
 		} else {
-			return "['" + nextName + "']";
+		    if (!DEFAULT_ARRAY_NAME.equals(nextName)) {
+		        return "['" + nextName + "']";
+		    }
 		}
+		return "";
 	}
 
 	private static boolean hasAttributeOrChild(String name, Map<String, List<SchemaDataType>> map) {

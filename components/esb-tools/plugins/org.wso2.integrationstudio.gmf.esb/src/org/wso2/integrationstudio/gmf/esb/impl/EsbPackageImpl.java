@@ -25414,6 +25414,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         // Initialize enums and add enum literals
         initEnumsAndAddEnumLiterals();
         
+
         // Initialize data types
         initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
@@ -25599,6 +25600,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         addEEnumLiteral(propertyScopeEEnum, PropertyScope.OPERATION);
         addEEnumLiteral(propertyScopeEEnum, PropertyScope.REGISTRY);
         addEEnumLiteral(propertyScopeEEnum, PropertyScope.SYSTEM);
+        addEEnumLiteral(propertyScopeEEnum, PropertyScope.ANALYTICS);
 
         initEEnum(propertyValueTypeEEnum, PropertyValueType.class, "PropertyValueType");
         addEEnumLiteral(propertyValueTypeEEnum, PropertyValueType.LITERAL);

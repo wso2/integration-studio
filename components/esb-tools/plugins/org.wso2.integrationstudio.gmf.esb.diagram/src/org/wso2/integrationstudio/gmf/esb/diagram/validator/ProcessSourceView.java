@@ -934,7 +934,7 @@ public class ProcessSourceView {
             } else {
 
                 while (insideTag) {
-                    
+
                     if (xmlTags.size() > 0) {
 
                         xmlTag = xmlTags.pop();

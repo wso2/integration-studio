@@ -765,7 +765,7 @@ public class ProcessSourceView {
                             if (intermediaryStack.size() > 0) {
                                 next = intermediaryStack.pop();
                                 if (next != null
-                                        && ((next.getqName().equals("validate")) || next.getqName().equals("filter"))) {
+                                        && (next.getqName().equals("validate") || next.getqName().equals("filter"))) {
                                     intermediaryStack.push(next);
 
                                 } else {

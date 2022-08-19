@@ -764,7 +764,8 @@ public class ProcessSourceView {
                             XMLTag next;
                             if (intermediaryStack.size() > 0) {
                                 next = intermediaryStack.pop();
-                                if (next != null && next.getqName().equals("validate")) {
+                                if ((next != null
+                                        && (next.getqName().equals("validate")) || next.getqName().equals("filter"))) {
                                     intermediaryStack.push(next);
 
                                 } else {
@@ -933,7 +934,7 @@ public class ProcessSourceView {
             } else {
 
                 while (insideTag) {
-
+                    
                     if (xmlTags.size() > 0) {
 
                         xmlTag = xmlTags.pop();

@@ -6,10 +6,10 @@ Bundle-Version: 8.1.0.qualifier
 Bundle-Activator: org.wso2.integrationstudio.registry.resource.authorization.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.wso2.integrationstudio.libraries
+ org.wso2.integrationstudio.libraries,
+ javax.activation;bundle-version="1.1.0"
 Bundle-ActivationPolicy: lazy
-Import-Package: javax.activation,
- javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
+Import-Package: javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
  javax.xml.stream;version="1.0.1.wso2v1",
  org.apache.axiom.om,
  org.apache.axiom.om.impl,

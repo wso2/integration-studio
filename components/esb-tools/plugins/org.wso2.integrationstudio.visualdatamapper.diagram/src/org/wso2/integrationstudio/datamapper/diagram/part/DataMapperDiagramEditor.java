@@ -530,7 +530,9 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		//Fixing DEVTOOLESB-651
 		if (success) {
 			super.doSave(monitor);
-			updateAssociatedXsltFile(monitor);
+			if ("XML".equalsIgnoreCase(getInputSchemaType()) && "XML".equalsIgnoreCase(getOutputSchemaType())) {
+			    updateAssociatedXsltFile(monitor);
+			}
 		}
 	}
 

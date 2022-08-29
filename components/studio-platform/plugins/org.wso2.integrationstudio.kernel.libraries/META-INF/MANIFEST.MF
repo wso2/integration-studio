@@ -7,7 +7,8 @@ Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.ui.workbench,
  org.eclipse.m2e.maven.runtime;bundle-version="1.6.2";visibility:=reexport,
  org.eclipse.ui;bundle-version="3.107.0";visibility:=reexport,
- org.eclipse.core.resources;bundle-version="3.10.1";visibility:=reexport
+ org.eclipse.core.resources;bundle-version="3.10.1";visibility:=reexport,
+ javax.activation;bundle-version="1.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: lib/axiom-1.2.11.wso2v10.jar,
  lib/commons-httpclient-3.1.0.wso2v2.jar,
@@ -38,7 +39,6 @@ Bundle-ClassPath: lib/axiom-1.2.11.wso2v10.jar,
  lib/org.wso2.carbon.authenticator.stub_4.0.0.jar,
  lib/org.wso2.carbon.securevault_4.0.0.jar,
  lib/wsdl4j_1.6.2.wso2v4.jar,
- lib/activation-1.1.1.jar,
  lib/org.eclipse.gmf.runtime.notation_1.10.0.202004160913.jar,
  lib/org.eclipse.emf.ecore_2.25.0.v20210816-0937.jar,
  lib/soaptorest-1.0-jar-with-dependencies.jar

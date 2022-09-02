@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.sun.xml.bind.v2.ContextFactory;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.PropertyException;
@@ -1058,8 +1060,11 @@ public class SecurityFormPage extends FormPage {
      * @throws JAXBException
      */
     private Unmarshaller getUnmarshaller() throws JAXBException {
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        Thread.currentThread().setContextClassLoader(ContextFactory.class.getClassLoader());
         JAXBContext jaxbContext = JAXBContext.newInstance(Policy2.class);
         Unmarshaller uUnmarshaller = jaxbContext.createUnmarshaller();
+        Thread.currentThread().setContextClassLoader(cl);
         return uUnmarshaller;
     }
 

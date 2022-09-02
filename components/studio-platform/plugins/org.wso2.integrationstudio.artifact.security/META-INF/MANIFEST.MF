@@ -8,7 +8,8 @@ Bundle-ActivationPolicy: lazy
 Bundle-Vendor: WSO2 Inc.
 Export-Package: org.wso2.integrationstudio.security.project.model,
  org.wso2.integrationstudio.security.project.ui.form
-Import-Package: javax.xml.bind;version="2.2.0",
+Import-Package: com.sun.xml.bind.v2;version="[2.2.0,2.2.0]",
+ javax.xml.bind;version="2.2.0",
  javax.xml.bind.annotation;version="2.2.0",
  javax.xml.bind.annotation.adapters;version="2.2.0",
  org.apache.commons.lang,

@@ -729,8 +729,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
         configEle.setAttribute("id", "default");
         Element configPropEle = doc.createElement("property");
         configPropEle.setAttribute("name", "carbon_datasource_name");
-        String datasource = generateDataServiceModel.getDatasource().split("/")[1];
-        configPropEle.setTextContent(datasource);
+        configPropEle.setTextContent(generateDataServiceModel.getDatasource());
         configEle.appendChild(configPropEle);
         return configEle;
     }

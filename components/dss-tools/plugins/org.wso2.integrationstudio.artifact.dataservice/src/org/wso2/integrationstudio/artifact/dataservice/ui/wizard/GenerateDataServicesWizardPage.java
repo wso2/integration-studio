@@ -592,7 +592,7 @@ public class GenerateDataServicesWizardPage extends WizardPage {
                         versionComboBox.setEnabled(true);
                     }
                     
-                    dataModel.setDatasource(selectedDatasource);
+                    dataModel.setDatasource(getElementValue(datasourceConfig, "name"));
                                 
                     selectDriverGroup.setVisible(true);
                     serverComposite.setVisible(true);

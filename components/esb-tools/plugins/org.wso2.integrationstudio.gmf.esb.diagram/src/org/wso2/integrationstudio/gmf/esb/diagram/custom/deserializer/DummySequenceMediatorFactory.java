@@ -159,12 +159,18 @@ public class DummySequenceMediatorFactory {
             OMNode child = (OMNode) it.next();
             if (child instanceof OMElement) {
                 if (!DESCRIPTION_Q.equals(((OMElement) child).getQName())) { // neglect the description tag
-                    Mediator med = DummyMediatorFactoryFinder.getInstance().getMediator((OMElement) child, properties);
-                    if (med != null) {
-                        m.addChild(med);
+                    if (((OMElement) child).getLocalName().startsWith("CUSTOM_")) {
+                        CommentMediator commentMediator = new CommentMediator();
+                        commentMediator.setCommentText(((OMElement) child).toString());
+                        m.addChild(commentMediator);
                     } else {
-                        String msg = "Unknown mediator : " + ((OMElement) child).getLocalName();
-                        throw new SynapseException(msg);
+                        Mediator med = DummyMediatorFactoryFinder.getInstance().getMediator((OMElement) child, properties);
+                        if (med != null) {
+                            m.addChild(med);
+                        } else {
+                            String msg = "Unknown mediator : " + ((OMElement) child).getLocalName();
+                            throw new SynapseException(msg);
+                        }
                     }
                 }
             } else if (child instanceof OMComment) {

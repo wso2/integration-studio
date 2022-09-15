@@ -66,8 +66,7 @@ public class ScriptGenerationUtil {
 			} else {
 				prettyVariableName = variable.getName();
 			}
-		} else if (DMVariableType.OUTPUT.equals(variable.getType())
-				&& getArrayElementCount(variable.getName(), map) == 1) {
+		} else if (DMVariableType.OUTPUT.equals(variable.getType())) {
 			// implement list to single mapping
 			String[] variableNameArray = variable.getName().split("\\.");
 			boolean isPerviousVariableTypePrimitive = false;
@@ -130,85 +129,6 @@ public class ScriptGenerationUtil {
 					} else if (nextName.startsWith("@")) {
 						prettyVariableName += getValidNextName(nextName.replaceFirst("@", "attr_"));
 					}  else if (!nextName.equals(DEFAULT_ARRAY_NAME)) {
-						prettyVariableName += getValidNextName(nextName);
-					}
-					if (SchemaDataType.DOUBLE.equals(variableType) || SchemaDataType.INT.equals(variableType)
-							|| SchemaDataType.BOOLEAN.equals(variableType)
-							|| SchemaDataType.STRING.equals(variableType)) {
-						isPerviousVariableTypePrimitive = true;
-					} else {
-						isPerviousVariableTypePrimitive = false;
-					}
-				} else {
-					throw new DataMapperException(
-							"Unregistered Variable name found : " + variableName + " in - [" + map.keySet() + "]");
-				}
-				variableName += ".";
-			}
-			prettyVariableName = prettyVariableName.substring(1);
-		} else if (DMVariableType.OUTPUT.equals(variable.getType())) {
-			String[] variableNameArray = variable.getName().split("\\.");
-			boolean isPerviousVariableTypePrimitive = false;
-			for (String nextName : variableNameArray) {
-				variableName += nextName;
-				if (map.containsKey(variableName)) {
-					variableType = map.get(variableName).get(VARIABLE_TYPE_INDEX);
-					if (SchemaDataType.ARRAY.equals(variableType)) {
-						if (!outputArrayVariableForLoop.containsKey(variableName)) {
-							throw new DataMapperException("Unknown variable name found : " + variableName);
-						}
-						int forLoopIndex = outputArrayVariableForLoop.get(variableName);
-						ForLoopBean tempForLoop = forLoopBeanList.get(forLoopIndex);
-						String mostInnerArrayVariableName = getMostChildArrayElementName(variable.getName(),map);
-						String iterateName;
-						if (variable.getMappedInputVariableArrayElement() != null
-								&& variableName.equals(mostInnerArrayVariableName)) {
-							if (variable.getMappedInputVariableRootArrayElement() != null) {
-								iterateName = getForLoopIterateName(
-										getForLoopFromMappedVariableArrayName(
-												variable.getMappedInputVariableArrayElement(), forLoopBeanList),
-										getForLoopFromMappedVariableArrayName(
-												variable.getMappedInputVariableRootArrayElement(), forLoopBeanList),
-										forLoopBeanList, true);
-							} else {
-								tempForLoop = getForLoopFromMappedVariableArrayName(
-										variable.getMappedInputVariableArrayElement(), forLoopBeanList);
-								iterateName = getForLoopIterateName(tempForLoop, null, forLoopBeanList, true);
-							}
-						} else {
-							int rootForLoopIndex = 0;
-							ForLoopBean rootTempForLoop = null;
-							if (outputRootArrayVariableForLoop.containsKey(variableName)) {
-								rootForLoopIndex = outputRootArrayVariableForLoop.get(variableName);
-								rootTempForLoop = forLoopBeanList.get(rootForLoopIndex);
-							}
-							if (rootTempForLoop != null) {
-								iterateName = getForLoopIterateName(tempForLoop, rootTempForLoop, forLoopBeanList,
-										true);
-							} else if (tempForLoop.getParentIndex() >= 0) {
-								iterateName = getForLoopIterateName(tempForLoop,
-										forLoopBeanList.get(tempForLoop.getParentIndex()), forLoopBeanList, true);
-							} else {
-								iterateName = getForLoopIterateName(tempForLoop, null, forLoopBeanList, true);
-							}
-						}
-
-						if (iterateName.isEmpty()) {
-							iterateName = "0";
-						}
-						// Discard unnamed variables.
-						if (unNamedVariables.contains(variableName)) {
-							prettyVariableName += SQ_BRACKET_OPEN + iterateName + 
-									SQ_BRACKET_CLOSE;
-						} else {
-							prettyVariableName += getValidNextName(nextName) + 
-									SQ_BRACKET_OPEN + iterateName + SQ_BRACKET_CLOSE;
-						}
-					} else if (nextName.startsWith("@") && isPerviousVariableTypePrimitive) {
-						prettyVariableName += "ATTR" + getValidNextName(nextName.replaceFirst("@", "attr_"));
-					} else if (nextName.startsWith("@")) {
-						prettyVariableName += getValidNextName(nextName.replaceFirst("@", "attr_"));
-					} else {
 						prettyVariableName += getValidNextName(nextName);
 					}
 					if (SchemaDataType.DOUBLE.equals(variableType) || SchemaDataType.INT.equals(variableType)

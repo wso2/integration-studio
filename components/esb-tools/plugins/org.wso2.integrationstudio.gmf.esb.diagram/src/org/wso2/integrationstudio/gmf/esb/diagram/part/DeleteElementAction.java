@@ -38,6 +38,7 @@ import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractInputConnectorE
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.deserializer.EsbDeserializerRegistry;
 import org.wso2.integrationstudio.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
 import org.wso2.integrationstudio.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
@@ -51,7 +52,6 @@ import org.wso2.integrationstudio.logging.core.Logger;
 public class DeleteElementAction extends DefaultDeleteElementAction {
 
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    private static EsbDiagramEditor diagramEditor;
 
     /**
      * @generated
@@ -194,9 +194,9 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
         return true;
     }
 
-    protected <E extends EObject> boolean executeAddValueCommand(final EList<E> list, final E value,
+    private <E extends EObject> boolean executeAddValueCommand(final EList<E> list, final E value,
             boolean addToFront) {
-        TransactionalEditingDomain editingDomain = getDiagramEditor().getEditingDomain();
+        TransactionalEditingDomain editingDomain = AbstractEsbNodeDeserializer.getDiagramEditor().getEditingDomain();
         RecordingCommand command;
         if (!addToFront) {
             command = new RecordingCommand(editingDomain) {
@@ -216,19 +216,5 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
             return true;
         }
         return false;
-    }
-    
-    public static EsbDiagramEditor getDiagramEditor() {
-        /*
-         * Always refers EsbDiagramEditor from EsbDeserializerRegistry unless it is NULL
-         * This ensures that the operations are executed by deserializer performs against the EsbDiagramEditor
-         * initialized in EsbDeserializerRegistry
-         */
-        EsbDiagramEditor diagramEditorRef = EsbDeserializerRegistry.getInstance().getDiagramEditor();
-        if (diagramEditorRef != null) {
-            diagramEditor = diagramEditorRef;
-            return diagramEditorRef;
-        }
-        return diagramEditor;
     }
 }

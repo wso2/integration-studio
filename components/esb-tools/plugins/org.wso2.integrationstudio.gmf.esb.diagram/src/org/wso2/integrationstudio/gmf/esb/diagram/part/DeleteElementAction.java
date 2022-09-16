@@ -148,6 +148,7 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
                         EList<CommentMediator> commentMediatorsPrev = outConnectorPrev.getCommentMediators();
 
                         for (int i = 0; i < commentMediatorSize; ++i) {
+                            // executeAddValueCommand will remove the commentMediators.get(0) element from commentMediators.
                             executeAddValueCommand(commentMediatorsPrev, commentMediators.get(0), false);
                         }
                     }

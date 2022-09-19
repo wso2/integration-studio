@@ -59,6 +59,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.e4.core.services.events.IEventBroker;
@@ -1058,19 +1059,18 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
     }
 
     private IFile updateAssociatedXMLFile(IProgressMonitor monitor) throws Exception {
-
+        
         IFile xmlFile = null;
         String source = null;
         if (isFormEditor) {
             FormPage formEditorPage = formEditor.getFormPageForArtifact(currArtifactType);
             if (currArtifactType.toString().equals(MOCK_SERVICE)) {
-            	source = MockServiceFormToSourceTransformer.generateMockServiceTemplate(formEditorPage);
+                source = MockServiceFormToSourceTransformer.generateMockServiceTemplate(formEditorPage);
             } else if (currArtifactType.toString().equals(SYNAPSE_UNIT_TEST)) {
-            	source = SynapseUnitTestFormToSourceTransformer.generateUnitTestTemplate(formEditorPage);
+                source = SynapseUnitTestFormToSourceTransformer.generateUnitTestTemplate(formEditorPage);
             } else {
                 source = EsbModelTransformer.instance.formToSource(formEditorPage, currArtifactType);
             }
-
         } else {
             EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
             EsbServer server = diagram.getServer();
@@ -1093,18 +1093,51 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
             log.warn("Could not get the source");
             return null;
         }
-        InputStream is = new ByteArrayInputStream(source.getBytes());
-        if (xmlFile.exists()) {
-            xmlFile.setContents(is, true, true, monitor);
-        } else {
-            xmlFile.create(is, true, monitor);
-        }
+        
+        /*******************************************
+         * @author isurumaduranga
+         * Fixing CS0193629
+         * Issue - There's a scheduling rule mismatch when trying to save .dmc and .xml files at the same time
+         * Reason - Trying to save .dmc and .xml files in the same job
+         * Explanation - Eclipse jobs API forbids holding two scheduling rules in the same job to avoid dead locks
+         * ( one for .dmc and the other one for .xml )
+         * Fix - Spawning a new job to update .xml file
+         ********************************************/
+        class UpdateXMLJob extends Job {
+            IFile xmlFile;
+            String source;
+            public UpdateXMLJob(IFile xmlFile, String source) {
+               super("Update Associated XML Job");
+               this.xmlFile = xmlFile;
+               this.source = source;
+            }
+            public IStatus run(IProgressMonitor monitor) {
+                try {
+                    InputStream is = new ByteArrayInputStream(source.getBytes());
+                    if (xmlFile.exists()) {
+                        xmlFile.setContents(is, true, true, monitor);
+                    } else {
+                        xmlFile.create(is, true, monitor);
+                    }
 
-        artifactXMLFiles.add(xmlFile);
-        xmlFile.deleteMarkers(SOURCE_VIEW_ERROR, false, 1);
-        if (getActivePage() == SOURCE_VIEW_PAGE_INDEX && file.findMarkers(CONFIG_ERROR, false, 1).length > 0) {
-            xmlFile.createMarker(SOURCE_VIEW_ERROR);
-        }
+                    artifactXMLFiles.add(xmlFile);
+                    xmlFile.deleteMarkers(SOURCE_VIEW_ERROR, false, 1);
+                    if (getActivePage() == SOURCE_VIEW_PAGE_INDEX && file.findMarkers(CONFIG_ERROR, false, 1).length > 0) {
+                        xmlFile.createMarker(SOURCE_VIEW_ERROR);
+                    }
+                } catch (CoreException e) {
+                    log.error("Error while saving xml file conetent for artifact", e);
+                } catch (Exception e1) {
+                    log.error("Error while saving xml file conetent for artifact", e1);
+                }
+               return Status.OK_STATUS;
+            }
+         }
+        
+        UpdateXMLJob job = new UpdateXMLJob(xmlFile, source);
+        job.setPriority(Job.INTERACTIVE);
+        job.schedule();
+        
         return xmlFile;
     }
 

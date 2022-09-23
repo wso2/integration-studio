@@ -1268,31 +1268,33 @@ public class DSSMediatorPropertiesEditionPartForm extends SectionPropertiesEditi
             // Fixing TOOLS-2322
             IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
             for (IProject workspaceProject : projects) {
-                try {
-                    if (workspaceProject.hasNature("org.wso2.developerstudio.eclipse.ds.project.nature")) {
-                    	DSSProjectArtifact dssProjectArtifact = new DSSProjectArtifact();
-                        projectPath = workspaceProject.getLocation().toFile();
-                        try {
-                            dssProjectArtifact
-                                    .fromFile(workspaceProject.getFile("artifact.xml").getLocation().toFile());
-                            List<DSSArtifact> allDSSArtifacts = dssProjectArtifact.getAllDSSArtifacts();
-                            for (DSSArtifact dssArtifact : allDSSArtifacts) {
-                                if (synapseArtifcatCategory.equals(dssArtifact.getType())) {
-                                    File artifact = new File(projectPath, dssArtifact.getFile());
-                                    String dbsName = artifact.getName().replaceAll("[.]dbs$", "");
-                                    availableList.add(dbsName);
-                                    dbsFileMap.put(dbsName, artifact);
+                if (workspaceProject != null) {
+                    try {
+                        if (workspaceProject.isOpen() && workspaceProject.hasNature("org.wso2.developerstudio.eclipse.ds.project.nature")) {
+                            DSSProjectArtifact dssProjectArtifact = new DSSProjectArtifact();
+                            projectPath = workspaceProject.getLocation().toFile();
+                            try {
+                                dssProjectArtifact
+                                        .fromFile(workspaceProject.getFile("artifact.xml").getLocation().toFile());
+                                List<DSSArtifact> allDSSArtifacts = dssProjectArtifact.getAllDSSArtifacts();
+                                for (DSSArtifact dssArtifact : allDSSArtifacts) {
+                                    if (synapseArtifcatCategory.equals(dssArtifact.getType())) {
+                                        File artifact = new File(projectPath, dssArtifact.getFile());
+                                        String dbsName = artifact.getName().replaceAll("[.]dbs$", "");
+                                        availableList.add(dbsName);
+                                        dbsFileMap.put(dbsName, artifact);
+                                    }
                                 }
+                            } catch (Exception e) {
+                                ErrorDialog.openError(shell, "Error occured while scanning the project for "
+                                        + synapseArtifcatCategory + " artifacts", e.getMessage(),
+                                        new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()));
                             }
-                        } catch (Exception e) {
-                            ErrorDialog.openError(shell, "Error occured while scanning the project for "
-                                    + synapseArtifcatCategory + " artifacts", e.getMessage(), 
-                                    new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()));
                         }
+                    } catch (CoreException e) {
+                        ErrorDialog.openError(shell, "Error occured while scanning the project", e.getMessage(),
+                                new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()));
                     }
-                } catch (CoreException e) {
-                    ErrorDialog.openError(shell, "Error occured while scanning the project", e.getMessage(), 
-                    		new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()));
                 }
             }
         }

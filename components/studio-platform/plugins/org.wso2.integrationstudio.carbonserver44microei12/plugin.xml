@@ -173,7 +173,4 @@
                 serverId="org.wso2.integrationstudio.carbon.runtime44microei12">
         </properties>
     </extension>
-    <extension point="org.eclipse.ui.startup">
-        <startup class="org.wso2.integrationstudio.carbonserver44microei12.handlers.PlatformEarlyStartUpHandler"/>
-    </extension>
 </plugin>

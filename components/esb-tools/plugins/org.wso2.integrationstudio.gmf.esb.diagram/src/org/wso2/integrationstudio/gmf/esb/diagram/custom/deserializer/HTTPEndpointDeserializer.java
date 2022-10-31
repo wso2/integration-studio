@@ -227,7 +227,7 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer {
                 AuthorizationCodeHandler handler = (AuthorizationCodeHandler) oauthEP.getOauthHandler();
                 httpEndpointPage.httpEP_AuthType.select(2);
                 httpEndpointPage.httpEP_OAuthType.select(0);
-                httpEndpointPage.httpEP_OAuthAuthenticationMode.select(HTTPEndpointOAuthAuthenticationMode.getByName(handler.getAuthMode()).getValue());
+                httpEndpointPage.httpEP_OAuthAuthenticationMode.select(HTTPEndpointOAuthAuthenticationMode.get(handler.getAuthMode()).getValue());
                 
                 httpEndpointPage.setOAuthClientId(handler.getClientId());
                 httpEndpointPage.setOAuthClientSecret(handler.getClientSecret());
@@ -238,7 +238,7 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer {
                 ClientCredentialsHandler handler = (ClientCredentialsHandler) oauthEP.getOauthHandler();
                 httpEndpointPage.httpEP_AuthType.select(2);
                 httpEndpointPage.httpEP_OAuthType.select(1);
-                httpEndpointPage.httpEP_OAuthAuthenticationMode.select(HTTPEndpointOAuthAuthenticationMode.getByName(handler.getAuthMode()).getValue());
+                httpEndpointPage.httpEP_OAuthAuthenticationMode.select(HTTPEndpointOAuthAuthenticationMode.get(handler.getAuthMode()).getValue());
                 
                 httpEndpointPage.setOAuthClientId(handler.getClientId());
                 httpEndpointPage.setOAuthClientSecret(handler.getClientSecret());
@@ -248,7 +248,7 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer {
                 PasswordCredentialsHandler handler = (PasswordCredentialsHandler) oauthEP.getOauthHandler();
                 httpEndpointPage.httpEP_AuthType.select(2);
                 httpEndpointPage.httpEP_OAuthType.select(2);
-                httpEndpointPage.httpEP_OAuthAuthenticationMode.select(HTTPEndpointOAuthAuthenticationMode.getByName(handler.getAuthMode()).getValue());
+                httpEndpointPage.httpEP_OAuthAuthenticationMode.select(HTTPEndpointOAuthAuthenticationMode.get(handler.getAuthMode()).getValue());
                 
                 httpEndpointPage.setOAuthClientId(handler.getClientId());
                 httpEndpointPage.setOAuthClientSecret(handler.getClientSecret());
@@ -273,12 +273,10 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer {
     }
     
     private HTTPEndpointOAuthAuthenticationMode getOAuthMode(String value) {
-        if (value.equals("header")) {
-            return HTTPEndpointOAuthAuthenticationMode.HEADER_OAUTH_AUTHENTICATION_MODE;
-        } else {
+        if ("payload".equalsIgnoreCase(value)) {
             return HTTPEndpointOAuthAuthenticationMode.PAYLOAD_OAUTH_AUTHENTICATION_MODE;
         }
-        
+        return HTTPEndpointOAuthAuthenticationMode.HEADER_OAUTH_AUTHENTICATION_MODE;
     }
     
     protected EList<EndPointProperty> getOAuthParametersList(Map<String, String> map) {

@@ -86,7 +86,15 @@ public enum PropertyScope implements Enumerator {
      * @generated
      * @ordered
      */
-    SYSTEM(6, "SYSTEM", "system");
+    SYSTEM(6, "SYSTEM", "system"), /**
+     * The '<em><b>ANALYTICS</b></em>' literal object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #ANALYTICS_VALUE
+     * @generated
+     * @ordered
+     */
+    ANALYTICS(7, "ANALYTICS", "analytics");
 
     /**
      * The '<em><b>SYNAPSE</b></em>' literal value.
@@ -190,6 +198,17 @@ public enum PropertyScope implements Enumerator {
     public static final int SYSTEM_VALUE = 6;
 
     /**
+     * The '<em><b>ANALYTICS</b></em>' literal value.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #ANALYTICS
+     * @model literal="analytics"
+     * @generated
+     * @ordered
+     */
+    public static final int ANALYTICS_VALUE = 7;
+
+    /**
      * An array of all the '<em><b>Property Scope</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -203,6 +222,7 @@ public enum PropertyScope implements Enumerator {
             OPERATION,
             REGISTRY,
             SYSTEM,
+            ANALYTICS,
         };
 
     /**
@@ -266,6 +286,7 @@ public enum PropertyScope implements Enumerator {
             case OPERATION_VALUE: return OPERATION;
             case REGISTRY_VALUE: return REGISTRY;
             case SYSTEM_VALUE: return SYSTEM;
+            case ANALYTICS_VALUE: return ANALYTICS;
         }
         return null;
     }

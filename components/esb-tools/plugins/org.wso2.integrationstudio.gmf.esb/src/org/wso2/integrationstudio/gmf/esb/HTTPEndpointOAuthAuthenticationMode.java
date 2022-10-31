@@ -104,11 +104,11 @@ public enum HTTPEndpointOAuthAuthenticationMode implements Enumerator {
     public static HTTPEndpointOAuthAuthenticationMode get(String literal) {
         for (int i = 0; i < VALUES_ARRAY.length; ++i) {
             HTTPEndpointOAuthAuthenticationMode result = VALUES_ARRAY[i];
-            if (result.toString().equals(literal)) {
+            if (result.toString().equalsIgnoreCase(literal)) {
                 return result;
             }
         }
-        return null;
+        return HEADER_OAUTH_AUTHENTICATION_MODE;
     }
 
     /**

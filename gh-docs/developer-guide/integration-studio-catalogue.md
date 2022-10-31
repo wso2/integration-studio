@@ -155,12 +155,12 @@ Integration Studio has been released with the following package components.
 ---
 **If you are using maven version 3.8.1 or higher**
 
-From maven version 3.8.1, maven default settings file updated with http blocker mirror. To prevent maven from blocking the http transfer we can 
+From maven version 3.8.1, maven default settings file is updated with http blocker mirror. To prevent maven from blocking the http transfer we can 
 
-- Option 1 (not recommended) : Go to your $MAVEN_HOME/conf/settings.xml file and comment out mirror with id : "maven-default-http-blocker". This is a global change and will affect all of you maven project. 
+- Option 1 (not recommended) : Go to your $MAVEN_HOME/conf/settings.xml file and comment out mirror with id : "maven-default-http-blocker". This is a global change and will affect all of your maven project. 
 - Option 2 (recommended) : We can add project level maven settings file to disble http blocker for our wso2 repository. 
-  - Go to integration-studio folder create a folder .mvn
-  - inside the newly created .mvn folder create two files named local-settings.xml, maven.config.
+  - Go to integration-studio folder and create a folder named .mvn.
+  - Inside the newly created .mvn folder create two files named local-settings.xml, maven.config.
   - Copy paste the following to your maven.config file : **--settings ./.mvn/local-settings.xml**
   - Copy paste the following text to your local-settings.xml file
   ```xml

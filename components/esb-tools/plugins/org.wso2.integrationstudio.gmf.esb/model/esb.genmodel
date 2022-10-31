@@ -183,6 +183,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyScope/OPERATION"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyScope/REGISTRY"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyScope/SYSTEM"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyScope/ANALYTICS"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//PropertyValueType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyValueType/LITERAL"/>

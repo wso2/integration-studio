@@ -100,8 +100,10 @@ public class EsbDiagramActionBarContributor extends MultiPageEditorActionBarCont
 						getTextAction(editor, ITextEditorActionConstants.PASTE));
 				actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(),
 						getTextAction(editor, ITextEditorActionConstants.DELETE));
-				actionBars.updateActionBars();
+			} else {
+			    actionBars.clearGlobalActionHandlers();
 			}
+			actionBars.updateActionBars();
 		}
 	}
 

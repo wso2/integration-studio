@@ -20,8 +20,8 @@ package org.wso2.integrationstudio.security.project.utils;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Unmarshaller;
 
 import org.eclipse.core.runtime.content.IContentDescription;
 import org.eclipse.core.runtime.content.XMLContentDescriber;

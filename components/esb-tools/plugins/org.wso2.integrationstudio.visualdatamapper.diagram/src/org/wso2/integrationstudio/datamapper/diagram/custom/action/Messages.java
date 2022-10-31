@@ -20,6 +20,7 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.wso2.integrationstudio.datamapper.diagram.custom.action.messages"; //$NON-NLS-1$
+	public static String SchemaKeyEditorDialog_ValidationError;
 	public static String SchemaKeyEditorDialog_ErrorRetreivingResource;
 	public static String SchemaKeyEditorFialog_NoSuchResource;
 	public static String SchemaKeyEditorFialog_VisibilityError;
@@ -130,6 +131,7 @@ public class Messages extends NLS {
 	public static String ExportSchemaAction_warnNotSavedToFile;
 	public static String ExportSchemaAction_warnNoSchematoExport;
 	public static String ExportSchemaAction_warnTitle;
+	public static String ExportSchemaAction_errorExportingSchema;
 	public static String Configure_Constant_Operator_Action_Id;
 	public static String Configure_Constant_Operator_Text;
 	public static String Configure_Constant_Operator_Tool_Tip;

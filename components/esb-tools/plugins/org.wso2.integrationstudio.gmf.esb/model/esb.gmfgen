@@ -10152,6 +10152,7 @@
           visualID="3797"
           editPartClassName="NTLMMediatorEditPart"
           itemSemanticEditPolicyClassName="NTLMMediatorItemSemanticEditPolicy"
+          notationViewFactoryClassName="NTLMMediatorViewFactory"
           canonicalEditPolicyClassName="NTLMMediatorCanonicalEditPolicy"
           childNodes="/0/@diagram/@childNodes.258 /0/@diagram/@childNodes.259"
           graphicalNodeEditPolicyClassName="NTLMMediatorGraphicalNodeEditPolicy"
@@ -10182,7 +10183,8 @@
         <labels
             visualID="5218"
             editPartClassName="NTLMMediatorDescriptionEditPart"
-            itemSemanticEditPolicyClassName="NTLMMediatorDescriptionItemSemanticEditPolicy">
+            itemSemanticEditPolicyClassName="NTLMMediatorDescriptionItemSemanticEditPolicy"
+            notationViewFactoryClassName="NTLMMediatorDescriptionViewFactory">
           <diagramRunTimeClass
               href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
           <viewmap
@@ -10202,6 +10204,7 @@
           visualID="3798"
           editPartClassName="NTLMMediatorInputConnectorEditPart"
           itemSemanticEditPolicyClassName="NTLMMediatorInputConnectorItemSemanticEditPolicy"
+          notationViewFactoryClassName="NTLMMediatorInputConnectorViewFactory"
           canonicalEditPolicyClassName="NTLMMediatorInputConnectorCanonicalEditPolicy"
           graphicalNodeEditPolicyClassName="NTLMMediatorInputConnectorGraphicalNodeEditPolicy"
           createCommandClassName="NTLMMediatorInputConnectorCreateCommand"
@@ -10238,6 +10241,7 @@
           visualID="3799"
           editPartClassName="NTLMMediatorOutputConnectorEditPart"
           itemSemanticEditPolicyClassName="NTLMMediatorOutputConnectorItemSemanticEditPolicy"
+          notationViewFactoryClassName="NTLMMediatorOutputConnectorViewFactory"
           canonicalEditPolicyClassName="NTLMMediatorOutputConnectorCanonicalEditPolicy"
           graphicalNodeEditPolicyClassName="NTLMMediatorOutputConnectorGraphicalNodeEditPolicy"
           createCommandClassName="NTLMMediatorOutputConnectorCreateCommand"

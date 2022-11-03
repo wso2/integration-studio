@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.integrationstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="8.1.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Integration Studio" uid="WSO2-Integration-Studio" id="org.wso2.integrationstudio.rcp.plugin.devstudio" application="org.eclipse.ui.ide.workbench" version="8.2.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.wso2.integrationstudio.rcp.plugin/icons/about_banner.png"/>

@@ -21,7 +21,7 @@
 	<parent>
 		<groupId>org.wso2.integrationstudio</groupId>
 		<artifactId>wso2-integrationstudio-esb-plugins</artifactId>
-		<version>8.1.0-SNAPSHOT</version>
+		<version>8.2.0-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.wso2.integrationstudio.esb.dashboard.templates</artifactId>

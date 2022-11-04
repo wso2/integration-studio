@@ -50,6 +50,7 @@ public class DSSVisualEditorConstants {
     public static class DBTypes {
         public static final String DB_TYPE_MYSQL = "mysql";
         public static final String DB_TYPE_ORACLE = "oracle";
+        public static final String DB_TYPE_ORACLE_CONN = "oracle:thin";
         public static final String DB_TYPE_MSSQL = "mssql";
         public static final String DB_TYPE_POSTGRESSQL = "postgresql";
         public static final String DB_TYPE_DERBY = "apachederby";
@@ -86,6 +87,8 @@ public class DSSVisualEditorConstants {
         public static final String POSTGRESSQL_JAR_42_2_11 = "postgresql-42.2.11.jar";
         public static final String DERBY_JAR_10_14_2_0 = "derbyclient-10.14.2.0.jar";
         public static final String H2_JAR_1_4_200 = "h2-1.4.200.jar";
+        public static final String ORACLE_JAR_8 = "ojdbc8.jar";
+        public static final String ORACLE_JAR_11 = "ojdbc11.jar";
         
         public static final String MYSQL_VERSION_5_1_47 = "5_1_47";
         public static final String MYSQL_VERSION_8_0_15 = "8_0_15";
@@ -94,5 +97,8 @@ public class DSSVisualEditorConstants {
         public static final String POSTGRESSQL_VERSION_42_2_11 = "42_2_11";
         public static final String DERBY_VERSION_10_14_2_0 = "10_14_2_0";
         public static final String H2_VERSION_1_4_200 = "1_4_200";
+        public static final String ORACLE_VERSION_8 = "8";
+        public static final String ORACLE_VERSION_11 = "11";
+
     }
 }

@@ -29,6 +29,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -37,6 +41,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 
 import org.eclipse.core.resources.IWorkspace;
@@ -62,7 +67,10 @@ public class DSSEditorUtils {
 
     // Path to the properties file where editor-related meta data is saved.
     private static final String PROPERTIES_FILE_PATH = File.separator + ".metadata" + File.separator
-            + "integration-studio.dsseditor.properties";
+            + "integration-studio.dsseditor.properties";    
+    private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
+    //relative path to where microesb is packaged
+    public static final String MICRO_ESB_PATH = "runtime" + File.separator + "microesb";
 
     private static IIntegrationStudioLog log = Logger.getLog("org.wso2.integrationstudio.ds.editor");
 
@@ -283,11 +291,17 @@ public class DSSEditorUtils {
             connectionUrl += DSSVisualEditorConstants.DBTypes.DB_TYPE_DERBY_CONN + "://" + host + ":" + port + "/"
                     + dbName;
             break;
-         case DSSVisualEditorConstants.DBTypes.DB_TYPE_H2:
+        case DSSVisualEditorConstants.DBTypes.DB_TYPE_H2:
             // Template: jdbc:h2:tcp://HOST/~/DBname
             connectionUrl += DSSVisualEditorConstants.DBTypes.DB_TYPE_H2 + ":tcp://" + host + "/~/" + dbName;
             break;
-            
+        
+        case DSSVisualEditorConstants.DBTypes.DB_TYPE_ORACLE:
+            // Template: jdbc:oracle:thin:@//<hostName>:<portNumber>/serviceName
+            connectionUrl += DSSVisualEditorConstants.DBTypes.DB_TYPE_ORACLE_CONN + ":@//" + host + ":" + port + "/"
+                    + dbName;
+            break;
+
         }
 
         return connectionUrl;
@@ -326,6 +340,15 @@ public class DSSEditorUtils {
                 jarName = DSSVisualEditorConstants.DBConnectionParams.H2_JAR_1_4_200;
             }
             break;
+
+        case DSSVisualEditorConstants.DBTypes.DB_TYPE_ORACLE:
+            if (DSSVisualEditorConstants.DBConnectionParams.ORACLE_VERSION_8.equals(version)) {
+                jarName = DSSVisualEditorConstants.DBConnectionParams.ORACLE_JAR_8;
+            } else if (DSSVisualEditorConstants.DBConnectionParams.ORACLE_VERSION_11.equals(version)) {
+                jarName = DSSVisualEditorConstants.DBConnectionParams.ORACLE_JAR_11;
+            }
+            break;
+
         }
 
         return jarName;
@@ -338,36 +361,40 @@ public class DSSEditorUtils {
         Connection connection = null;
         
         try {
-            String jarName = getDBDriverJarName(dbType, version);
-            String driverUrl = DSSVisualEditorConstants.DBUrlParams.DB_DRIVER_URL_BASE + getLibDirPath() + 
-                    DSSVisualEditorConstants.DBUrlParams.DB_DRIVER_JAR_BASE + jarName + 
-                    DSSVisualEditorConstants.DBUrlParams.DB_URL_JDBC_SUFFIX;
-            
-            URL url = new URL(driverUrl);
-            URLClassLoader classLoader = new URLClassLoader(new URL[] { url });
+            String driverUrl = getServerHome() + File.separator + "lib";
+            List<URL> urls = new ArrayList<>();
+            try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(driverUrl), "*.jar")) {
+                for (Path path : directoryStream) {
+                    urls.add(path.toUri().toURL());
+                }
+            }
+            URLClassLoader urlClassLoader = new URLClassLoader(urls.toArray(new URL[urls.size()]));
 
             Driver driver = null;
             switch (dbType) {
             case DSSVisualEditorConstants.DBTypes.DB_TYPE_MYSQL:
-                driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MYSQL_DRIVER, true, classLoader)
+                driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MYSQL_DRIVER, true, urlClassLoader)
                         .newInstance();
                 break;
             case DSSVisualEditorConstants.DBTypes.DB_TYPE_MSSQL:
-                driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MS_SQL_DRIVER, true, classLoader)
+                driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MS_SQL_DRIVER, true, urlClassLoader)
                         .newInstance();
                 break;
             case DSSVisualEditorConstants.DBTypes.DB_TYPE_POSTGRESSQL:
-                driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.POSTGRESQL_DRIVER, true, classLoader)
+                driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.POSTGRESQL_DRIVER, true, urlClassLoader)
                         .newInstance();
                 break;
             case DSSVisualEditorConstants.DBTypes.DB_TYPE_DERBY:
                 driver = (Driver) Class
-                        .forName(DSSVisualEditorConstants.DBDrivers.DERBY_CLIENT_DRIVER, true, classLoader)
+                        .forName(DSSVisualEditorConstants.DBDrivers.DERBY_CLIENT_DRIVER, true, urlClassLoader)
                         .newInstance();
                 break;
             case DSSVisualEditorConstants.DBTypes.DB_TYPE_H2:
-                driver = (Driver) Class
-                        .forName(DSSVisualEditorConstants.DBDrivers.H2_DRIVER, true, classLoader)
+                driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.H2_DRIVER, true, urlClassLoader)
+                        .newInstance();
+                break;
+            case DSSVisualEditorConstants.DBTypes.DB_TYPE_ORACLE:
+                driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.ORACLE_DRIVER, true, urlClassLoader)
                         .newInstance();
                 break;
             }
@@ -404,15 +431,17 @@ public class DSSEditorUtils {
         }
         
         try {
-            String jarName = getDBDriverJarName(dbType, version);
-            String driverUrl = DSSVisualEditorConstants.DBUrlParams.DB_DRIVER_URL_BASE + getLibDirPath() + 
-                    DSSVisualEditorConstants.DBUrlParams.DB_DRIVER_JAR_BASE + jarName + 
-                    DSSVisualEditorConstants.DBUrlParams.DB_URL_JDBC_SUFFIX;
-            
-            URL url = new URL(driverUrl);
-            URLClassLoader classLoader = new URLClassLoader(new URL[] { url });
+            String driverUrl = getServerHome() + File.separator + "lib";
+            List<URL> urls = new ArrayList<>();
+            try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(driverUrl), "*.jar")) {
+                for (Path path : directoryStream) {
+                    urls.add(path.toUri().toURL());
+                }
+            }
+            URLClassLoader urlClassLoader = new URLClassLoader(urls.toArray(new URL[urls.size()]));
 
-            Driver driver = (Driver) Class.forName(DSSVisualEditorConstants.DBDrivers.MYSQL_DRIVER, true, classLoader).newInstance();
+            Driver driver = (Driver) Class
+                    .forName(DSSVisualEditorConstants.DBDrivers.MYSQL_DRIVER, true, urlClassLoader).newInstance();
             DriverManager.registerDriver(new DriverShim(driver));
 
             connection = DriverManager.getConnection(conUrl, username, password);
@@ -425,20 +454,39 @@ public class DSSEditorUtils {
     }
 
     /**
-     * Returns the lib folder path of the DSS editor
+     * Get absolute path to server home folder
      * 
-     * @return lib folder path of the DSS editor
-     * 
-     * @throws URISyntaxException
-     * @throws IOException
+     * @return return path as a string
      */
-    public String getLibDirPath() throws URISyntaxException, IOException {
-        URL libURL = DsEditorPlugin.getPlugin().getBundle().getEntry("lib");
-        URL resolvedFolderURL = FileLocator.toFileURL(libURL);
-        URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
-        File resolvedLibFolder = new File(resolvedFolderURI);
+    public String getServerHome() {
+        String microInteratorPath = null;
+        String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
+        if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
+            // check if EI Tooling is in Application folder for MAC
+            boolean isRelativeToolingAppExists = false;
+            File macOSRelativeToolingApp = null;
+            try {
+                macOSRelativeToolingApp = new File(
+                        (new File(".").getCanonicalFile()).getParent().toString() + File.separator + "Eclipse");
+                if (macOSRelativeToolingApp.exists()) {
+                    isRelativeToolingAppExists = true;
+                }
+            } catch (IOException e) {
+            }
+            if (isRelativeToolingAppExists && macOSRelativeToolingApp != null) {
+                microInteratorPath = macOSRelativeToolingApp.getAbsolutePath() + File.separator + MICRO_ESB_PATH;
+            } else if (new File(TOOLING_PATH_MAC).exists()) {
+                microInteratorPath = TOOLING_PATH_MAC + File.separator + MICRO_ESB_PATH;
+            } else {
+                java.nio.file.Path path = Paths.get("");
+                microInteratorPath = (path).toAbsolutePath().toString() + File.separator + MICRO_ESB_PATH;
+            }
 
-        return resolvedLibFolder.getAbsolutePath();
+        } else {
+            java.nio.file.Path path = Paths.get("");
+            microInteratorPath = (path).toAbsolutePath().toString() + File.separator + MICRO_ESB_PATH;
+        }
+        return microInteratorPath;
     }
 
 }

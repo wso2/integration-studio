@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Libraries
 Bundle-SymbolicName: org.wso2.integrationstudio.libraries;singleton:=true
-Bundle-Version: 8.1.0.qualifier
+Bundle-Version: 8.2.0.qualifier
 Bundle-Vendor: WSO2
 Bundle-ActivationPolicy: lazy
 Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",

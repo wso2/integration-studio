@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Mediator
 Bundle-SymbolicName: org.wso2.integrationstudio.artifact.mediator;singleton:=true
-Bundle-Version: 8.1.0.qualifier
+Bundle-Version: 8.2.0.qualifier
 Bundle-Activator: org.wso2.integrationstudio.artifact.mediator.Activator
 Require-Bundle: org.wso2.integrationstudio.kernel.libraries,
  org.wso2.integrationstudio.esb.libraries,

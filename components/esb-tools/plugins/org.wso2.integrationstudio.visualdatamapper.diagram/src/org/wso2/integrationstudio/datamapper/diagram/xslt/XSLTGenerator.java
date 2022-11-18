@@ -61,6 +61,8 @@ import static org.wso2.integrationstudio.datamapper.diagram.xslt.config.XSLTGene
 import static org.wso2.integrationstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.EXTENSION_ELEMENT_PREFIXES;
 import static org.wso2.integrationstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.EXTENSION_ELEMENT_PREFIXES_VALUES;
 import static org.wso2.integrationstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.EXTENSION_ELEMENT_PREFIXES_VALUES_WITHOUT_PROPERTY;
+import static org.wso2.integrationstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.EXCLUDE_RESULT_PREFIXES;
+import static org.wso2.integrationstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.EXCLUDE_RESULT_PREFIXES_VALUES;
 import static org.wso2.integrationstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.FLOOR;
 import static org.wso2.integrationstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.FUNCTION_DEFINITION;
 import static org.wso2.integrationstudio.datamapper.diagram.xslt.config.XSLTGeneratorConstants.GLOBAL_VARIABLE;
@@ -314,6 +316,7 @@ public class XSLTGenerator {
             rootElement.setAttribute(EXTENSION_ELEMENT_PREFIXES, EXTENSION_ELEMENT_PREFIXES_VALUES_WITHOUT_PROPERTY);
         } else {
             rootElement.setAttribute(EXTENSION_ELEMENT_PREFIXES, EXTENSION_ELEMENT_PREFIXES_VALUES);
+            rootElement.setAttribute(EXCLUDE_RESULT_PREFIXES, EXCLUDE_RESULT_PREFIXES_VALUES);
             rootElement.setAttribute(RUN_TIME_PROPERTIES, propertyOperatorString);
         }
         return false;

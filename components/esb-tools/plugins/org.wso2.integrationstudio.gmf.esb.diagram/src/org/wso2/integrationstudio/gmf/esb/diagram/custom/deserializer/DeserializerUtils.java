@@ -23,6 +23,7 @@ import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CreateViewAndOptionallyElementCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
@@ -33,7 +34,6 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractConnectorEditPart;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.AbstractMediatorFlowCompartmentEditPart;
-import org.eclipse.emf.common.notify.Notifier;
 
 public class DeserializerUtils {
 

@@ -1042,22 +1042,27 @@ public class PropertiesWidgetProvider {
 				.getDependentInvisibleComposites();
 
 		for (Composite composite : dependentInvisibleComposites) {
-			for (Control control : composite.getChildren()) {
-				if (control instanceof Text || control instanceof Combo || control instanceof Table) {
-					if (!isConnectionWidgetProvider) {
-						CallTemplateParameter ctp = (CallTemplateParameter) control.getData();
-						AttributeValue uiSchemaValue = (AttributeValue) control
-								.getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
-						if (validateValue(uiSchemaValue.getValidation(), "", uiSchemaValue.getRequired(),
-								uiSchemaValue.getDisplayName())) {
-							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
-									EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters,
-									PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, ctp, ""));
-						}
-
-					}
+			recursiveModelUpdate(composite);
+		}
+		
+	}
+	
+	public void recursiveModelUpdate(Composite composite) {
+		for (Control control : composite.getChildren()) {
+			if (control instanceof Text || control instanceof StyledText || control instanceof Combo
+					|| control instanceof Table) {
+				CallTemplateParameter ctp = (CallTemplateParameter) control.getData();
+				setParameterType(RuleOptionType.VALUE, ctp);
+				AttributeValue uiSchemaValue = (AttributeValue) control
+						.getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+				if (validateValue(uiSchemaValue.getValidation(), "", uiSchemaValue.getRequired(),
+						uiSchemaValue.getDisplayName())) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
+							EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, ctp, ""));
 				}
-
+			} else if (control instanceof Composite) {
+				recursiveModelUpdate((Composite) control);
 			}
 		}
 		

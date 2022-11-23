@@ -66,7 +66,7 @@ public class EnableConditionManager {
             List<EnableCondition> enableConditions = enableConditionsMap.get(componentName);
             for (EnableCondition enableCondition : enableConditions) {
                 setComponentVisibility(enableCondition, enableCondition.isValid(dependantComponentValuesMap));
-                addToDependentControls(enableCondition, enableCondition.isValid(dependantComponentValuesMap));
+                addToDependentInvisibleComposites(enableCondition, enableCondition.isValid(dependantComponentValuesMap));
             }
         }
     }
@@ -88,7 +88,7 @@ public class EnableConditionManager {
         }
     }
     
-    private void addToDependentControls(EnableCondition enableCondition, boolean visibility) {
+    private void addToDependentInvisibleComposites(EnableCondition enableCondition, boolean visibility) {
     	String targetComponentName = enableCondition.getTargetComponentName();
         if (compositeList.containsKey(targetComponentName)) {
             Composite composite = compositeList.get(targetComponentName);

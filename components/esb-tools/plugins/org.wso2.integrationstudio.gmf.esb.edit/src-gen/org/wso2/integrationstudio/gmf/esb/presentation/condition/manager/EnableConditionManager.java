@@ -93,13 +93,9 @@ public class EnableConditionManager {
         if (compositeList.containsKey(targetComponentName)) {
             Composite composite = compositeList.get(targetComponentName);
             if (!visibility) {
-            	if (!dependentInvisibleComposites.containsKey(composite)) {
-            		dependentInvisibleComposites.put(composite, visibility);
-            	}
+            	dependentInvisibleComposites.putIfAbsent(composite, visibility);
             } else {
-            	if (dependentInvisibleComposites.containsKey(composite)) {
-            		dependentInvisibleComposites.remove(composite);
-            	}
+            	dependentInvisibleComposites.remove(composite);
             }
         }
     }

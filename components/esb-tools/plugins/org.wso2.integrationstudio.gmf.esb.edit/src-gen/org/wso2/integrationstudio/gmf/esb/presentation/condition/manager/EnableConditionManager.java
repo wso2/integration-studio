@@ -27,18 +27,21 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class EnableConditionManager {
 
     private final Map<String, List<EnableCondition>> enableConditionsMap;
     private final Map<String, Composite> compositeList;
     private final Map<String, String> dependantComponentValuesMap;
+    private Map<Composite, Boolean> dependentInvisibleComposites;
 
     public EnableConditionManager(Map<String, Composite> compositeList) {
 
         enableConditionsMap = new HashMap<>();
         dependantComponentValuesMap = new HashMap<>();
         this.compositeList = compositeList;
+        this.dependentInvisibleComposites = new HashMap<>();
     }
 
     public void addEnableCondition(final EnableCondition enableCondition, String targetComponent) {
@@ -63,6 +66,7 @@ public class EnableConditionManager {
             List<EnableCondition> enableConditions = enableConditionsMap.get(componentName);
             for (EnableCondition enableCondition : enableConditions) {
                 setComponentVisibility(enableCondition, enableCondition.isValid(dependantComponentValuesMap));
+                addToDependentInvisibleComposites(enableCondition, enableCondition.isValid(dependantComponentValuesMap));
             }
         }
     }
@@ -82,6 +86,22 @@ public class EnableConditionManager {
             ((GridData) composite.getLayoutData()).exclude = !visibility;
             composite.getParent().getParent().layout();
         }
+    }
+    
+    private void addToDependentInvisibleComposites(EnableCondition enableCondition, boolean visibility) {
+    	String targetComponentName = enableCondition.getTargetComponentName();
+        if (compositeList.containsKey(targetComponentName)) {
+            Composite composite = compositeList.get(targetComponentName);
+            if (!visibility) {
+            	dependentInvisibleComposites.putIfAbsent(composite, visibility);
+            } else {
+            	dependentInvisibleComposites.remove(composite);
+            }
+        }
+    }
+    
+    public Set<Composite> getDependentInvisibleComposites() {
+    	return dependentInvisibleComposites.keySet();
     }
 
 }

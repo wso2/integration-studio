@@ -100,6 +100,7 @@ import org.wso2.integrationstudio.logging.core.Logger;
 
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * Widget Provider class for the new properties framework.
@@ -978,6 +979,7 @@ public class PropertiesWidgetProvider {
                             .getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
                     updateModel(ctp, valueComboBox, uiSchemaValue);
                     updateEnableConditionValidation(jsonSchemaObject.getName(), ctp.getParameterValue());
+                    updateModelForInvisibleDependentControls();
                 }
             }
         });
@@ -1033,6 +1035,38 @@ public class PropertiesWidgetProvider {
 
         enableConditionManager.handleValueChange(componentName, componentValue);
     }
+	
+	private void updateModelForInvisibleDependentControls() {
+		// update model for dependent controls
+		Set<Composite> dependentInvisibleComposites = enableConditionManager
+				.getDependentInvisibleComposites();
+
+		for (Composite composite : dependentInvisibleComposites) {
+			recursiveModelUpdate(composite);
+		}
+		
+	}
+	
+	public void recursiveModelUpdate(Composite composite) {
+		for (Control control : composite.getChildren()) {
+			if (control instanceof Text || control instanceof StyledText || control instanceof Combo
+					|| control instanceof Table) {
+				CallTemplateParameter ctp = (CallTemplateParameter) control.getData();
+				setParameterType(RuleOptionType.VALUE, ctp);
+				AttributeValue uiSchemaValue = (AttributeValue) control
+						.getData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY);
+				if (validateValue(uiSchemaValue.getValidation(), "", uiSchemaValue.getRequired(),
+						uiSchemaValue.getDisplayName())) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(partForm,
+							EsbViewsRepository.CloudConnectorOperation.Properties.connectorParameters,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, ctp, ""));
+				}
+			} else if (control instanceof Composite) {
+				recursiveModelUpdate((Composite) control);
+			}
+		}
+		
+	}
 
     /**
      * Create expression composite which shows when expression toggle button is pressed

@@ -1119,6 +1119,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                     } else {
                         xmlFile.create(is, true, monitor);
                     }
+                    is.close();
 
                     artifactXMLFiles.add(xmlFile);
                     xmlFile.deleteMarkers(SOURCE_VIEW_ERROR, false, 1);

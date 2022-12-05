@@ -1088,7 +1088,7 @@ function saveResultToQueryElement(result, root) {
 		result.setAttribute("outputType", "json");
 		
 		let childElements = result.children;
-		if (childElements == undefined) {
+		if (childElements == undefined || childElements.length == 0) {
 			childElements = result.childNodes;
 		}
 		if (childElements.length > 0) {

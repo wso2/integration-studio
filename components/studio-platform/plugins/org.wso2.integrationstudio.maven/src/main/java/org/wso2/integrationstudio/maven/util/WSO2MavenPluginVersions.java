@@ -31,7 +31,7 @@ public class WSO2MavenPluginVersions {
 		PLUGIN_VERSIONS.put("maven-axis2-plugin", "2.1.0");
 		PLUGIN_VERSIONS.put("maven-bpel-plugin", "2.1.0");
 
-		PLUGIN_VERSIONS.put("maven-carbon-ui-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-carbon-ui-plugin", "5.2.40");
 		PLUGIN_VERSIONS.put("maven-cep-plugin", "1.1.0");
 		PLUGIN_VERSIONS.put("maven-dataservice-plugin", "2.1.0");
 		PLUGIN_VERSIONS.put("maven-ds-validator-plugin", "2.1.0");
@@ -64,13 +64,13 @@ public class WSO2MavenPluginVersions {
 		PLUGIN_VERSIONS.put("wso2-esb-messagestore-plugin", "1.1.0");
 		PLUGIN_VERSIONS.put("wso2-esb-connector-plugin", "1.0.0");
 
-		PLUGIN_VERSIONS.put("wso2-general-project-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("wso2-general-project-plugin", "5.2.40");
 
 		PLUGIN_VERSIONS.put("maven-qos-plugin", "1.1.0");
 
-		PLUGIN_VERSIONS.put("maven-car-deploy-plugin", "1.1.0");
-		PLUGIN_VERSIONS.put("maven-car-plugin", "2.1.0");
-		PLUGIN_VERSIONS.put("wso2-esb-metadata-plugin", "5.2.34");
+		PLUGIN_VERSIONS.put("maven-car-deploy-plugin", "5.2.40");
+		PLUGIN_VERSIONS.put("maven-car-plugin", "5.2.40");
+		PLUGIN_VERSIONS.put("wso2-esb-metadata-plugin", "5.2.40");
 	}
 	
 	private WSO2MavenPluginVersions(){

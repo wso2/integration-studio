@@ -43,6 +43,7 @@ public class DockerProjectConstants extends NLS {
     public static String DOCKER_FILE_EDITOR;
     public static String TOML_FILE_EDITOR;
     public static String DOCKER_FILE_NAME;
+    public static String DOCKER_ENTRYPOINT_FILE;
     public static String KUBE_YAML_FILE_NAME;
     public static String KUBE_DATA_YAML_FILE_NAME;
     public static String KUBE_YAML_K8S_FILE_NAME;
@@ -58,6 +59,8 @@ public class DockerProjectConstants extends NLS {
     public static String SECURITY_RESOURCES_FOLDER_LOCATION;
     public static String LIBS_FOLDER_LOCATION;
     public static String CONF_FOLDER_LOCATION;
+    public static String EXTENSION_RUNNER_LOCATION;
+    public static String DOCKER_ENTRYPOINT_FILE_LOCATION;
 
     public static String MAVEN_DEPENDENCY_PLUGIN_VERSION;
     public static String MAVEN_CLEAN_PLUGIN_VERSION;
@@ -101,6 +104,7 @@ public class DockerProjectConstants extends NLS {
     public static final String DOCKER_SPOTIFY_PLUGIN_BUILD_ARG = "/project/build/plugins/plugin/executions/execution/configuration/buildArgs";
     public static final String CONFIGMAP_PLUGIN_XPATH = "/project/build/plugins/plugin[artifactId='mi-container-config-mapper']/executions/execution/phase";
     public static final String DEPLOYMENT_TOML_FILE_PATH = "resources/deployment.toml";
+    public static final String DOCKER_ENTRYPOINT_FILE_PATH = "resources/docker-entrypoint.sh";
     public static final String DOCKER_USER_GUIDE_PATH = "resources/UserGuide/DockerGuideReadMe.html";
     public static final String K8S_USER_GUIDE_PATH = "resources/UserGuide/K8sGuideReadMe.html";
     public static final String DOCKER_USER_GUIDE_FILE = "DockerGuideReadMe.html";

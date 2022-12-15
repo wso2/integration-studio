@@ -146,10 +146,16 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                     + DockerProjectConstants.SECURITY_RESOURCES_FOLDER_LOCATION
                     + DockerProjectConstants.DEFAULT_TRUEST_STORE_FILE);
             stringBuilder.append(System.lineSeparator());
-            stringBuilder.append("#COPY " + DockerProjectConstants.LIBS_FOLDER + "/*.jar "
+            stringBuilder.append("# COPY " + DockerProjectConstants.LIBS_FOLDER + "/*.jar "
                     + DockerProjectConstants.LIBS_FOLDER_LOCATION);
             stringBuilder.append(System.lineSeparator());
-
+            stringBuilder.append("# RUN " + DockerProjectConstants.EXTENSION_RUNNER_LOCATION);
+            stringBuilder.append(System.lineSeparator());
+            stringBuilder.append("# COPY " + DockerProjectConstants.RESOURCES_FOLDER + "/"
+                    + DockerProjectConstants.DOCKER_ENTRYPOINT_FILE + " "
+                    + DockerProjectConstants.DOCKER_ENTRYPOINT_FILE_LOCATION);
+            stringBuilder.append(System.lineSeparator());
+            
             stringBuilder.append(System.lineSeparator());
             if (dockerModel.isDockerExporterProjectChecked() && dockerModel.getDockerEnvParameters().size() > 0) {
                 stringBuilder.append("ENV ");
@@ -189,6 +195,32 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
 				FileUtils.copy(deploymentFile, newFile);
 			} catch (URISyntaxException e) {
 				log.error("An error occurred generating a deployment.toml file: ", e);
+			}
+		}
+	}
+
+    /**
+	 * Create new docker-entrypoint.sh file in the project directory if not exists.
+	 * 
+	 * @throws IOException
+	 *             An error occurred while writing the file
+	 */
+	private void copyDockerEntryPointFile() throws IOException {
+		IFile entryPointFile = project.getFile(DockerProjectConstants.RESOURCES_FOLDER + File.separator
+                + DockerProjectConstants.DOCKER_ENTRYPOINT_FILE);
+		File newFile = new File(entryPointFile.getLocationURI().getPath());
+		if (!newFile.exists()) {
+			try {
+				Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
+				URL fileURL = bundle.getEntry(DockerProjectConstants.DOCKER_ENTRYPOINT_FILE_PATH);
+				File dockerEntryPointFile = null;
+
+				URL resolvedFileURL = FileLocator.toFileURL(fileURL);
+				URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
+				dockerEntryPointFile = new File(resolvedURI);
+				FileUtils.copy(dockerEntryPointFile, newFile);
+			} catch (URISyntaxException e) {
+				log.error("An error occurred generating a docker-entrypoint.sh file: ", e);
 			}
 		}
 	}
@@ -531,6 +563,9 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                         new File(MI_SECURITY_DIR + File.separator + DockerProjectConstants.DEFAULT_TRUEST_STORE_FILE),
                         new File(resourcesFolder.getRawLocation().toOSString() + File.separator
                                 + DockerProjectConstants.DEFAULT_TRUEST_STORE_FILE));
+                
+                // Copy docker-entrypoint.sh file
+                copyDockerEntryPointFile();                    
             }
             
             File pomfile = project.getFile(POM_FILE).getLocation().toFile();

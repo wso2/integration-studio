@@ -1332,8 +1332,6 @@ public class SecurityFormPage extends FormPage {
         policyOneUserRolesButton.setVisible(false);
         policySevenUserRolesButton.setVisible(false);
         policyEightUserRolesButton.setVisible(false);
-        policyFourteenUserRolesButton.setVisible(false);
-        policyFifteenUserRolesButton.setVisible(false);
     }
 
     /**
@@ -2322,43 +2320,21 @@ public class SecurityFormPage extends FormPage {
             policyOneUserRolesButton.setVisible(true);
             policySevenUserRolesButton.setVisible(false);
             policyEightUserRolesButton.setVisible(false);
-            policyFourteenUserRolesButton.setVisible(false);
-            policyFifteenUserRolesButton.setVisible(false);
 
         } else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_7)) {
             policyOneUserRolesButton.setVisible(false);
             policySevenUserRolesButton.setVisible(true);
             policyEightUserRolesButton.setVisible(false);
-            policyFourteenUserRolesButton.setVisible(false);
-            policyFifteenUserRolesButton.setVisible(false);
 
         } else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_8)) {
             policyOneUserRolesButton.setVisible(false);
             policySevenUserRolesButton.setVisible(false);
             policyEightUserRolesButton.setVisible(true);
-            policyFourteenUserRolesButton.setVisible(false);
-            policyFifteenUserRolesButton.setVisible(false);
-
-        } else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_14)) {
-            policyOneUserRolesButton.setVisible(false);
-            policySevenUserRolesButton.setVisible(false);
-            policyEightUserRolesButton.setVisible(false);
-            policyFourteenUserRolesButton.setVisible(true);
-            policyFifteenUserRolesButton.setVisible(false);
-
-        } else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_15)) {
-            policyOneUserRolesButton.setVisible(false);
-            policySevenUserRolesButton.setVisible(false);
-            policyEightUserRolesButton.setVisible(false);
-            policyFourteenUserRolesButton.setVisible(false);
-            policyFifteenUserRolesButton.setVisible(true);
 
         } else {
             policyOneUserRolesButton.setVisible(false);
             policySevenUserRolesButton.setVisible(false);
             policyEightUserRolesButton.setVisible(false);
-            policyFourteenUserRolesButton.setVisible(false);
-            policyFifteenUserRolesButton.setVisible(false);
 
         }
     }

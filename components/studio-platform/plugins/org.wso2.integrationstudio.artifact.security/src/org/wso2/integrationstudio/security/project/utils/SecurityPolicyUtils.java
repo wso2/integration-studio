@@ -45,13 +45,7 @@ public class SecurityPolicyUtils {
 	public String[] getAdvancedSecurityScenarios() {
 		String[] advancedSecurityScenarios = new String[] { SecurityPolicies.POLICY_TYPE_5,
 				SecurityPolicies.POLICY_TYPE_6, SecurityPolicies.POLICY_TYPE_7,
-				SecurityPolicies.POLICY_TYPE_8, SecurityPolicies.POLICY_TYPE_9,
-				SecurityPolicies.POLICY_TYPE_10, SecurityPolicies.POLICY_TYPE_11,
-				SecurityPolicies.POLICY_TYPE_12, SecurityPolicies.POLICY_TYPE_13,
-				SecurityPolicies.POLICY_TYPE_14, SecurityPolicies.POLICY_TYPE_15,
-				SecurityPolicies.POLICY_TYPE_16, SecurityPolicies.POLICY_TYPE_17,
-				SecurityPolicies.POLICY_TYPE_18, SecurityPolicies.POLICY_TYPE_19,
-				SecurityPolicies.POLICY_TYPE_20 };
+				SecurityPolicies.POLICY_TYPE_8 };
 
 		return advancedSecurityScenarios;
 	}

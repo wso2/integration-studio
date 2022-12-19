@@ -268,11 +268,6 @@
     </publisher>
     <publisher
           class="org.wso2.integrationstudio.distribution.project.publisher.CAppProjectPublisher"
-          id="org.wso2.integrationstudio.capp.project.publisher42"
-          serverid="org.wso2.integrationstudio.carbon.server42">
-    </publisher>
-    <publisher
-          class="org.wso2.integrationstudio.distribution.project.publisher.CAppProjectPublisher"
           id="org.wso2.integrationstudio.capp.project.publisher44"
           serverid="org.wso2.integrationstudio.carbon.server44">
     </publisher>

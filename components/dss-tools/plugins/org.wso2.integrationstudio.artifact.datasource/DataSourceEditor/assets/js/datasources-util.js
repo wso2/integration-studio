@@ -24,10 +24,10 @@
  */
 function generateXmlSource(dataModel) {
     var xmlString =
-        `<datasource>
-            <name>${dataModel.name}</name>
-            <description>${dataModel.description}</description>
-        </datasource>`;
+        "<datasource>" +
+        "<name>" + dataModel.name + "</name>" +
+        "<description>" + dataModel.description + "</description>" +
+        "</datasource>";
     var parser = new DOMParser();
     var xmlSourceRoot = parser.parseFromString(xmlString, "text/xml");
 
@@ -150,28 +150,28 @@ function generateXmlSource(dataModel) {
  * @param xmlSourceRoot XML source code object
  */
 function updateDataModelFromXml(dataModel, xmlSourceRoot) {
-
     if (typeof xmlSourceRoot == "object") {
+        let serializer = new XMLSerializer();
         let dss = xmlSourceRoot.getElementsByTagName("datasource");
         if (dss.length > 0) {
 
             let ds = dss[0];
             let nameElements = ds.getElementsByTagName("name");
-            let dsName = nameElements.length > 0 ? nameElements[0].innerHTML : EMPTY_STRING;
+            let dsName = nameElements.length > 0 ? serializer.serializeToString(nameElements[0].childNodes[0]) : EMPTY_STRING;
             dataModel.name = dsName;
 
             let descriptionElements = ds.getElementsByTagName("description");
-            let dsDescription = descriptionElements.length > 0 ? descriptionElements[0].innerHTML : EMPTY_STRING;
+            let dsDescription = descriptionElements.length > 0 ? serializer.serializeToString(descriptionElements[0].childNodes[0]) : EMPTY_STRING;
             dataModel.description = dsDescription;
 
             //JNDI configs
             let jndiConfigElements = ds.getElementsByTagName("jndiConfig");
             if (jndiConfigElements.length > 0) {
                 var jndiNameElements = jndiConfigElements[0].getElementsByTagName("name");
-                var jndiName = jndiNameElements.length > 0 ? jndiNameElements[0].innerHTML : EMPTY_STRING;
+                var jndiName = jndiNameElements.length > 0 ? serializer.serializeToString(jndiNameElements[0].childNodes[0]) : EMPTY_STRING;
                 dataModel.definition.rdbms_conf.jndi_conf.name = jndiName;
-                var useDSFactory = jndiConfigElements[0].getAttribute("useDataSourceFactory") == TRUE_STRING ? true : false;
 
+                var useDSFactory = jndiConfigElements[0].getAttribute("useDataSourceFactory") == TRUE_STRING ? true : false;
                 dataModel.definition.rdbms_conf.jndi_conf.useDSFactory = useDSFactory;
 
                 var jndiEnvElements = jndiConfigElements[0].getElementsByTagName("environment");
@@ -181,7 +181,7 @@ function updateDataModelFromXml(dataModel, xmlSourceRoot) {
                     for (var i = 0; i < propertyElements.length; i++) {
                         var propElement = propertyElements[i];
                         var propName = propElement.getAttribute('name');
-                        var propValue = propElement.innerHTML;
+                        var propValue = serializer.serializeToString(propElement.childNodes[0]);
                         if (propName != EMPTY_STRING && propValue != EMPTY_STRING) {
                             var newProp = { "name": propName, "value": propValue };
                             props.push(newProp);
@@ -189,7 +189,6 @@ function updateDataModelFromXml(dataModel, xmlSourceRoot) {
                     }
                     dataModel.definition.rdbms_conf.jndi_conf.properties = props;
                 }
-
             }
 
             let definitionElements = ds.getElementsByTagName('definition');
@@ -207,7 +206,7 @@ function updateDataModelFromXml(dataModel, xmlSourceRoot) {
                         if (dataSourceClassNameElements.length > 0 && driverClassNameElements.length == 0) {
                             dataModel.definition.rdbms_conf.provider = RDBMS_TYPE_EXTERNAL;
 
-                            var dsClassName = dataSourceClassNameElements[0].innerHTML;
+                            var dsClassName = serializer.serializeToString(dataSourceClassNameElements[0].childNodes[0]);
                             dataModel.definition.rdbms_conf.ext_conf.dsClassName = dsClassName;
 
                             var dsPropsElements = configurationElements[0].getElementsByTagName('dataSourceProps');
@@ -217,7 +216,7 @@ function updateDataModelFromXml(dataModel, xmlSourceRoot) {
                                 for (var i = 0; i < propertyElements.length; i++) {
                                     var propElement = propertyElements[i];
                                     var propName = propElement.getAttribute('name');
-                                    var propValue = propElement.innerHTML;
+                                    var propValue = serializer.serializeToString(propElement.childNodes[0]);
                                     if (propName != EMPTY_STRING && propValue != EMPTY_STRING) {
                                         var newProp = { "name": propName, "value": propValue };
                                         props.push(newProp);
@@ -225,33 +224,31 @@ function updateDataModelFromXml(dataModel, xmlSourceRoot) {
                                 }
                                 dataModel.definition.rdbms_conf.ext_conf.properties = props;
                             }
-
                         } else {
                             dataModel.definition.rdbms_conf.provider = RDBMS_TYPE_DEFAULT;
 
                             if (driverClassNameElements.length > 0) {
-                                var dbEngine = getDBEngineFromDriverClass(driverClassNameElements[0].innerHTML);
+                                var driverClass = serializer.serializeToString(driverClassNameElements[0].childNodes[0]);
+                                dataModel.definition.rdbms_conf.default_conf.driverClassName = driverClass;
+
+                                var dbEngine = getDBEngineFromDriverClass(driverClass);
                                 dataModel.definition.rdbms_conf.default_conf.db_engine = dbEngine;
                             } else {
+                                dataModel.definition.rdbms_conf.default_conf.driverClassName = EMPTY_STRING;
                                 dataModel.definition.rdbms_conf.default_conf.db_engine = EMPTY_STRING;
                             }
 
-                            var driverClassNameElements = configurationElements[0].getElementsByTagName('driverClassName');
-                            var driverClass = driverClassNameElements.length > 0 ? driverClassNameElements[0].innerHTML : EMPTY_STRING;
-                            dataModel.definition.rdbms_conf.default_conf.driverClassName = driverClass;
-
                             var urlElements = configurationElements[0].getElementsByTagName('url');
-                            var url = urlElements.length > 0 ? urlElements[0].innerHTML : EMPTY_STRING;
+                            var url = urlElements.length > 0 ? serializer.serializeToString(urlElements[0].childNodes[0]) : EMPTY_STRING;
                             dataModel.definition.rdbms_conf.default_conf.url = url;
 
                             var usernameElements = configurationElements[0].getElementsByTagName('username');
-                            var username = usernameElements.length > 0 ? usernameElements[0].innerHTML : EMPTY_STRING;
+                            var username = usernameElements.length > 0 ? serializer.serializeToString(usernameElements[0].childNodes[0]) : EMPTY_STRING;
                             dataModel.definition.rdbms_conf.default_conf.username = username;
 
                             var passwordElements = configurationElements[0].getElementsByTagName('password');
-                            var password = passwordElements.length > 0 ? passwordElements[0].innerHTML : EMPTY_STRING;
+                            var password = passwordElements.length > 0 ? serializer.serializeToString(passwordElements[0].childNodes[0]) : EMPTY_STRING;
                             dataModel.definition.rdbms_conf.default_conf.password = password;
-
                         }
 
                         //Configuration parameters
@@ -261,7 +258,7 @@ function updateDataModelFromXml(dataModel, xmlSourceRoot) {
                             var tagName = allParameterTagNames[i];
                             var parameterElements = configurationElements[0].getElementsByTagName(tagName);
                             if (parameterElements.length > 0) {
-                                var value = parameterElements[0].innerHTML;
+                                var value = serializer.serializeToString(parameterElements[0].childNodes[0]);
                                 parameters.push({ "tag": tagName, "value": value });
 
                             }
@@ -272,7 +269,7 @@ function updateDataModelFromXml(dataModel, xmlSourceRoot) {
                 } else {
                     dataModel.definition.type = DS_TYPE_CUSTOM;
                     dataModel.definition.custom_conf.ds_type = dsType;
-                    var config = definitionElements[0].innerHTML;
+                    var config = serializer.serializeToString(definitionElements[0].childNodes[0]);
                     dataModel.definition.custom_conf.config = config;
                 }
             }
@@ -288,7 +285,6 @@ function updateDataModelFromXml(dataModel, xmlSourceRoot) {
  * @param dataModel JSON dataModel object with data source configuration.
  */
 function populateDesignViewFromDataModel(dataModel) {
-
     $("#ds-name-input").val(dataModel.name);
     $("#ds-desc-input").val(dataModel.description);
 
@@ -306,14 +302,11 @@ function populateDesignViewFromDataModel(dataModel) {
             var tds = tr.find('td');
             tds[0].firstChild.value = prop.name;
             tds[1].firstChild.value = prop.value;
-
         } else {
-
-            var markup = `<tr>
-                <td><input type='text' placeholder='Property Name' class='form-control' style='width: 100%;' value="${prop.name}" autocomplete='off' autocorrect='off' autocapitalize'off' spellcheck='false'/></td>
-                <td><input type='text' placeholder='Property Value' class='form-control' style='width: 100%;' value="${prop.value}" autocomplete='off' autocorrect='off' autocapitalize'off' spellcheck='false'/></td>
-                <td class='text-center'><i class='fa fa-trash'></i></td></tr>`;
-
+            var markup = "<tr>" +
+                "<td><input type='text' placeholder='Property Name' class='form-control' style='width: 100%;' value='" + prop.name + "' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'/></td>" +
+                "<td><input type='text' placeholder='Property Value' class='form-control' style='width: 100%;' value='" + prop.value + "' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'/></td>" +
+                "<td class='text-center'><i class='fa fa-trash'></i></td></tr>";
             $("#jndi-properties-table tbody").append(markup);
         }
     }
@@ -342,14 +335,11 @@ function populateDesignViewFromDataModel(dataModel) {
             var tds = tr.find('td');
             tds[0].firstChild.value = prop.name;
             tds[1].firstChild.value = prop.value;
-
         } else {
-
-            var markup = `<tr>
-                <td><input type='text' placeholder='Property Name' class='form-control' style='width: 100%;' value="${prop.name}" autocomplete='off' autocorrect='off' autocapitalize'off' spellcheck='false'/></td>
-                <td><input type='text' placeholder='Property Value' class='form-control' style='width: 100%;' value="${prop.value}" autocomplete='off' autocorrect='off' autocapitalize'off' spellcheck='false'/></td>
-                <td class='text-center'><i class='fa fa-trash'></i></td></tr>`;
-
+            var markup = "<tr>" +
+                "<td><input type='text' placeholder='Property Name' class='form-control' style='width: 100%;' value='" + prop.name + "' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'/></td>" +
+                "<td><input type='text' placeholder='Property Value' class='form-control' style='width: 100%;' value='" + prop.value + "' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'/></td>" +
+                "<td class='text-center'><i class='fa fa-trash'></i></td></tr>";
             $("#ds-ext-properties-table tbody").append(markup);
         }
     }

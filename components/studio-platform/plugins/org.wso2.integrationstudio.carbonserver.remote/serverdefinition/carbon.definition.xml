@@ -104,7 +104,7 @@
 	<start>
 		<mainClass>org.wso2.carbon.bootstrap.Bootstrap</mainClass>
 		<workingDirectory>${carbon.home}</workingDirectory>
-        <vmParameters>-Xbootclasspath/a::"${carbon.home}/lib/xboot/org.wso2.carbon.xboot-3.2.0.jar" -Xms512m -Xmx1024m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote -Djava.io.tmpdir="${carbon.home}/tmp" -Dwso2.server.standalone=true -Dcarbon.home="${carbon.home}" -Dcarbon.registry.root=/ -Djava.endorsed.dirs="${carbon.home}/lib/endorsed" -Djava.util.logging.config.file=log4j.properties -Dcomponents.repo="${carbon.home}/repository/components/plugins" -Dcarbon.config.dir.path="${carbon.home}/repository/conf"</vmParameters>
+        <vmParameters>-Xbootclasspath/a::"${carbon.home}/lib/xboot/org.wso2.carbon.xboot-3.2.0.jar" -Xms512m -Xmx1024m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote -Djava.io.tmpdir="${carbon.home}/tmp" -Dwso2.server.standalone=true -Dcarbon.home="${carbon.home}" -Dcarbon.registry.root=/ -Djava.util.logging.config.file=log4j.properties -Dcomponents.repo="${carbon.home}/repository/components/plugins" -Dcarbon.config.dir.path="${carbon.home}/repository/conf"</vmParameters>
         <programArguments></programArguments>
 		<classpathReference>carbon.libs</classpathReference>
 		<debugPort>${carbon.debug}</debugPort>

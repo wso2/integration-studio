@@ -44,6 +44,7 @@ public class DockerProjectConstants extends NLS {
     public static String TOML_FILE_EDITOR;
     public static String DOCKER_FILE_NAME;
     public static String DOCKER_ENTRYPOINT_FILE;
+    public static String DOCKER_CHOREO_CONFGIS;
     public static String KUBE_YAML_FILE_NAME;
     public static String KUBE_DATA_YAML_FILE_NAME;
     public static String KUBE_YAML_K8S_FILE_NAME;
@@ -54,11 +55,15 @@ public class DockerProjectConstants extends NLS {
     public static String CARBON_APP_FOLDER;
     public static String LIBS_FOLDER;
     public static String RESOURCES_FOLDER;
+    public static String CHOREO_CONFIGS_FOLDER;
     public static String CARBON_HOME_FOLDER;
     public static String CARBON_APP_FOLDER_LOCATION;
+    public static String MI_STARTUP_SCRIPT_LOCATION;
+    public static String REGISTRY_FILE_LOCATION;
     public static String SECURITY_RESOURCES_FOLDER_LOCATION;
     public static String LIBS_FOLDER_LOCATION;
     public static String CONF_FOLDER_LOCATION;
+    public static String ETC_FOLDER_LOCATION;
     public static String EXTENSION_RUNNER_LOCATION;
     public static String DOCKER_ENTRYPOINT_FILE_LOCATION;
 
@@ -72,6 +77,8 @@ public class DockerProjectConstants extends NLS {
     public static String DOCKER_TAG_KEY;
     public static String DOCKER_REMOTE_REPOSITORY_KEY;
     public static String DOCKER_REMOTE_TAG_KEY;
+    
+    public static String CHOREO_USER_ID;
 
     public static final String DOCKER_REPOSITORY = "repository";
     public static final String DOCKER_TAG = "tag";
@@ -80,6 +87,11 @@ public class DockerProjectConstants extends NLS {
     public static final String DEFAULT_KEY_STORE_FILE = "wso2carbon.jks";
     public static final String DEFAULT_TRUEST_STORE_FILE = "client-truststore.jks";
     public static final String DEFAULT_KEY_STORE_ALIAS_PASSWORD = "wso2carbon";
+    public static final String MI_STARTUP_SCRIPT_FILE = "micro-integrator.sh";
+    public static final String OSGI_CONFIG_FILE = "launch.ini";
+    public static final String ACCESS_LOG_FILE = "access-log.properties";
+    public static final String MI_LOGGING_BRIDGE_CONF_FILE = "logging-bridge.properties";
+    public static final String REGISTRY_FILE = "registry.xml";
 
     public static final String UNIX_DEFAULT_DOCKER_HOST = "unix:///var/run/docker.sock";
     public static final String WINDOWS_DEFAULT_DOCKER_HOST = "tcp://localhost:2375";

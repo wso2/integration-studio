@@ -60,6 +60,7 @@ public abstract class ProjectDataModel extends Observable {
 	private String kubeRemoteTag;
 	private String kubeTargetRepository;
 	private String kubeTargetTag;
+	private boolean isDefaultEnvType = true;
 	private Map<String, String> dockerEnvParameters = new HashMap<String, String>();
 	private Map<String, String> kubernetesEnvParameters = new HashMap<String, String>();
 	private Map<String, String> kubernetesPortParameters = new HashMap<String, String>();
@@ -117,6 +118,14 @@ public abstract class ProjectDataModel extends Observable {
 	public Map<String, String> getDockerEnvParameters() {
 		return dockerEnvParameters;
 	}
+	
+	public boolean isDefaultDockerEnvType() {
+        return isDefaultEnvType;
+    }
+	
+	public void setDefaultDockerEnvType(boolean isDefault) {
+        this.isDefaultEnvType = isDefault;
+    }
 
 	public String getKubeRemoteTag() {
 		return kubeRemoteTag;

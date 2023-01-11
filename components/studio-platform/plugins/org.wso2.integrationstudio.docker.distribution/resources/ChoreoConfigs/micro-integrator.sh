@@ -327,7 +327,7 @@ do
     -Dproperties.file.path=default \
     -DenableReadinessProbe=true \
     -DenableManagementApi=true \
-    -DreadOnlyFileSystemMode=true \
+    -DskipStartupExtensions=true \
     -DavoidConfigUpdate=true \
     -Dlogfiles.home=/tmp \
     -Dconfig.backup.path="/tmp/backup" \

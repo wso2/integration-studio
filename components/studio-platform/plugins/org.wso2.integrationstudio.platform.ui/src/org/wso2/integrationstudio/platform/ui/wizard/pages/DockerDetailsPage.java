@@ -33,6 +33,7 @@ import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
@@ -137,25 +138,57 @@ public class DockerDetailsPage extends WizardPage {
 		data.left = new FormAttachment(2);
 		data.right = new FormAttachment(98);
 		separator.setLayoutData(data);
+		
+		// Docker environment type
+    	Label lblEnvironmentType = new Label(container, SWT.NONE);
+    	lblEnvironmentType.setText("Environment");
+    	data = new FormData();
+    	FormAttachment dataTop;
+    	if (dataModel.isDirectContainerProjectCreation()) {
+    		dataTop = new FormAttachment(projectNameContainer, 20);
+    		projectNameContainer.setVisible(true);
+    	} else {
+        	projectNameContainer.setVisible(false);
+        	dataTop = new FormAttachment(1);
+		}
+		data.top = dataTop;
+		data.width = 200;
+		data.left = new FormAttachment(3);
+		lblEnvironmentType.setLayoutData(data);
 
-		// section for docker project details
+		final Combo environmentType = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
+		String items[] = { "Default", "Choreo" };
+		environmentType.setItems(items);
+		environmentType.select(0);
+		data = new FormData();
+		data.top = dataTop;
+		data.left = new FormAttachment(lblEnvironmentType, 0);
+		data.right = new FormAttachment(97);
+		environmentType.setLayoutData(data);
+		environmentType.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				if (environmentType.getSelectionIndex() == 0) {
+					dataModel.setDefaultDockerEnvType(true);
+				} else {
+					dataModel.setDefaultDockerEnvType(false);
+					}
+				}
+			});
+        
+        
+     	// section for docker project details
 		dockerContainer = new Group(container, SWT.BORDER);
 		dockerContainer.setText(CONTAINER_PROJECT);
 		dockerContainer.setLayout(new FormLayout());
-
+		
 		// check project needs the project name entering section
 		data = new FormData();
+		data.top = new FormAttachment(lblEnvironmentType, 20);
 		data.left = new FormAttachment(2);
 		data.right = new FormAttachment(98);
-		if (dataModel.isDirectContainerProjectCreation()) {
-			data.top = new FormAttachment(projectNameContainer, 20);
-			projectNameContainer.setVisible(true);
-		} else {
-			projectNameContainer.setVisible(false);
-			data.top = new FormAttachment(1);
-		}
+        
 		dockerContainer.setLayoutData(data);
-
+		
 		Label lblRemoteRepository = new Label(dockerContainer, SWT.NONE);
 		data = new FormData();
 		data.top = new FormAttachment(dockerContainer, 20);

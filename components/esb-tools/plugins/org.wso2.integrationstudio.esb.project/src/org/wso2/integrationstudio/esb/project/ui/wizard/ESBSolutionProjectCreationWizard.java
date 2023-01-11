@@ -257,6 +257,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
                 dockerModel.setDockerTargetTag(esbSolutionProjectModel.getDockerTargetTag());
                 dockerModel.setDockerExporterProjectChecked(
                         esbSolutionProjectModel.isDockerExporterProjectChecked());
+                dockerModel.setDefaultDockerEnvType(esbSolutionProjectModel.isDefaultDockerEnvType());
                 
                 for (Map.Entry<String, String> item : esbSolutionProjectModel.getKubernetesEnvParameters().entrySet()) {
                     dockerModel.getDockerEnvParameters().put(item.getKey(), item.getValue());

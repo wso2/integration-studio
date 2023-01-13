@@ -626,6 +626,15 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                  // Copy Config files for Choreo
                     copyChoreoCustomFiles(dockerEntryPointFile.toString(), 
                             resourcesFolder.getRawLocation().toOSString() + File.separator + "ChoreoConfigs");
+                    
+                    // Give executable permissions to script files
+                    File miStartupFile = new File(resourcesFolder.getRawLocation().toOSString() + File.separator +
+                            "ChoreoConfigs" + File.separator + DockerProjectConstants.MI_STARTUP_SCRIPT_FILE);
+                    miStartupFile.setExecutable(true);
+                    File entryPointFile = new File(resourcesFolder.getRawLocation().toOSString() + File.separator +
+                            "ChoreoConfigs" + File.separator + DockerProjectConstants.DOCKER_ENTRYPOINT_FILE);
+                    entryPointFile.setExecutable(true);
+                    
                 }
             }
 

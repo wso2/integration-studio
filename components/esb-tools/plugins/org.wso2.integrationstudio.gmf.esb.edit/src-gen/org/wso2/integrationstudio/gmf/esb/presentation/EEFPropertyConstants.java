@@ -20,6 +20,7 @@ package org.wso2.integrationstudio.gmf.esb.presentation;
 public class EEFPropertyConstants {
 
     public static final int LABEL_WIDTH = 100;
+    public static final int TEXT_INPUTBOX_HEIGHT = 28;
     public static final String UI_SCHEMA_OBJECT_KEY = "uischema";
     public static final String EXPRESSION_TOGGLE_BUTTON_IMAGE = "icons/full/obj16/Artboard_2exp.png";
     public static final String EXPRESSION_DIALOG_BOX_BUTTON_IMAGE = "icons/full/obj16/expression-editor-02.png";

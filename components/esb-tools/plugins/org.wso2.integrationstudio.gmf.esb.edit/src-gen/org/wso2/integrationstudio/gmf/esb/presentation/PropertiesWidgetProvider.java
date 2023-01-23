@@ -404,7 +404,7 @@ public class PropertiesWidgetProvider {
         GridData configRefData = new GridData(GridData.FILL_HORIZONTAL);
         // Set the height of the value input text box since there is issue with toggling expression text box is
         // not visible when the height of the label is high
-        configRefData.heightHint = propertyLabel.computeSize(EEFPropertyConstants.LABEL_WIDTH, SWT.DEFAULT).y;
+        configRefData.heightHint = EEFPropertyConstants.TEXT_INPUTBOX_HEIGHT;
         valueTextBox.setLayoutData(configRefData);
         valueTextBox.setData(EEFPropertyConstants.UI_SCHEMA_OBJECT_KEY, jsonSchemaObject); // Set UI schema object as
         // control data

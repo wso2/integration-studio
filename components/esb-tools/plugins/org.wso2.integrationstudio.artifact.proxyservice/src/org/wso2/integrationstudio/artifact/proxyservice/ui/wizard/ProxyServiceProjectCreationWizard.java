@@ -116,7 +116,9 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 			updatePom();
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			
-			String groupId = getMavenGroupId(pomfile) + ".proxy-service";
+			String mavenGroupId = getMavenGroupId(pomfile);
+			String groupId = mavenGroupId + ".proxy-service";
+			String metadataGroupId = mavenGroupId + ".metadata";
 			
 			//Adding the metadata about the proxy service to the metadata store.
 			esbProjectArtifact=new ESBProjectArtifact();
@@ -196,7 +198,7 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 				MetadataUtils.createMedataFileForProxyServices(metadataLocation,
 						proxyServiceModel.getProxyServiceName());
 				createMetadataArtifactEntry(metadataLocation, proxyServiceModel.getProxyServiceName(),
-						groupId + ".metadata");
+				        metadataGroupId);
 			}
 			esbProjectArtifact.toFile();
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());

@@ -60,11 +60,13 @@ public class CustomMediatorProjectNature extends AbstractWSO2ProjectNature {
 							map.get(path)));
 				}
 			}
-			Dependency dependency = new Dependency();
-			dependency.setArtifactId(bean.getArtifactId());
-			dependency.setGroupId(bean.getGroupId());
-			dependency.setVersion(bean.getVersion());
-			dependencyList.add(dependency);
+			if (!isSynapseCore(bean) && !isAxis2(bean)) {
+			    Dependency dependency = new Dependency();
+			    dependency.setArtifactId(bean.getArtifactId());
+			    dependency.setGroupId(bean.getGroupId());
+			    dependency.setVersion(bean.getVersion());
+			    dependencyList.add(dependency);
+			}
 		}
 		MavenUtils.addMavenDependency(mavenProject, dependencyList);
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
@@ -74,5 +76,13 @@ public class CustomMediatorProjectNature extends AbstractWSO2ProjectNature {
 	public void deconfigure() throws CoreException {
 		// TODO Auto-generated method stub
 
+	}
+
+	private boolean isSynapseCore(JavaLibraryBean bean) {
+	    return bean.getGroupId().equals("org.apache.synapse") && bean.getArtifactId().equals("synapse-core");
+	}
+
+	private boolean isAxis2(JavaLibraryBean bean) {
+	    return bean.getGroupId().equals("org.apache.axis2.wso2") && bean.getArtifactId().equals("axis2");
 	}
 }

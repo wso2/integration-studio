@@ -112,7 +112,7 @@ public class EEFPropertyViewUtil {
     private static final String AVAILABLE_TEMPLATE_LIST_DEFAULT_VALUE = "Select From Templates";
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     public static final String PLUGIN_ID = "org.wso2.integrationstudio.gmf.esb.edit";
-    public static final String WSO2_ESB_LOCAL_ENTRY_VERSION="2.1.0";
+    public static final String WSO2_ESB_LOCAL_ENTRY_VERSION="5.2.42";
     private static final String LOCAL_ENTRY_LOCATION = File.separator + "src" + File.separator + "main" + File.separator
             + "synapse-config" + File.separator + "local-entries";
     private static final String XML_EXTENSION = ".xml";

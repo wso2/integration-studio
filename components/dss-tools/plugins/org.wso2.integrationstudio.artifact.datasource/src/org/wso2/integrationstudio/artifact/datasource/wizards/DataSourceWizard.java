@@ -63,7 +63,7 @@ public class DataSourceWizard extends Wizard implements INewWizard {
 	private static final String SERVER_ROLE = "DataServicesServer";
 	private static final String LINE_SEPERATOR = "line.separator";
 	private static final String DATASERVICE_TEMPLATE = "templates/DataSourceTemplate.datasource";
-	private String version = "5.2.40";
+	private String version = "5.2.42";
 	
 	private DataSourceProjectArtifact dssProjectArtifact;
 	private IProject project;

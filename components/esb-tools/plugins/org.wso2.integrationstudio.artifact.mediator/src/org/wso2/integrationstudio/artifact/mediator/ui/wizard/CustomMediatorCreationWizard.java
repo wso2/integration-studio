@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.maven.model.Dependency;
+import org.apache.maven.model.Exclusion;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
@@ -143,8 +144,13 @@ public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWiz
 			
 			// add dependencies
 			List<Dependency> dependencies = new ArrayList<>();
-            dependencies.add(MavenUtils.createDependency("org.apache.synapse", "synapse-core",
-                    "2.1.7-wso2v227"));
+            Dependency synapseDependency = MavenUtils.createDependency("org.apache.synapse", "synapse-core",
+                    "2.1.7-wso2v227");
+            Exclusion log4jExclusion = new Exclusion();
+            log4jExclusion.setGroupId("log4j");
+            log4jExclusion.setArtifactId("log4j");
+            synapseDependency.addExclusion(log4jExclusion);
+            dependencies.add(synapseDependency);
             dependencies.add(MavenUtils.createDependency("org.apache.axis2.wso2", "axis2",
                     "1.6.1-wso2v63"));
             dependencies.add(MavenUtils.createDependency("commons-logging", "commons-logging",

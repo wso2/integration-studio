@@ -569,6 +569,10 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
                 MavenUtils.addMavenDependency(mavenProject, dependencies);
             }
             
+            // adding maven-compiler-plugin
+            MavenUtils.createPluginEntry(mavenProject, "org.apache.maven.plugins",
+                    "maven-compiler-plugin", "3.10.1", false);
+
             // adding maven-clean-plugin to clear CompisiteApps directory before the build
             Plugin cleanPlugin = MavenUtils.createPluginEntry(mavenProject, "org.apache.maven.plugins",
                     "maven-clean-plugin", DockerProjectConstants.MAVEN_CLEAN_PLUGIN_VERSION, true);

@@ -31,7 +31,11 @@ public class SchemaGeneratorForJSON extends AbstractSchemaGenerator implements I
 
 	@Override
 	public String getSchemaContent(String fileText, FileType type, String delimiter) throws IOException {
-		SchemaBuilderWithNamepaces sb = new SchemaBuilderWithNamepaces();
+		
+	    JsonReferenceResolver jsonReferenceResolver = new JsonReferenceResolver();
+	    fileText = jsonReferenceResolver.resolve(fileText);
+	    
+	    SchemaBuilderWithNamepaces sb = new SchemaBuilderWithNamepaces();
 		String jsonSchema = sb.createSchema(fileText, type);
 		return  jsonSchema;
 	}

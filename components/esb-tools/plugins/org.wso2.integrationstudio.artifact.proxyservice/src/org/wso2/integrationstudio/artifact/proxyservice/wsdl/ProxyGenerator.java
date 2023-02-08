@@ -63,12 +63,7 @@ public class ProxyGenerator {
         inlineTargetSeq.addChild(new RespondMediator());
 
         proxyService.setTargetInLineInSequence(inlineTargetSeq);
-        try {
-            proxyService.setWsdlURI(new URI(wsdlUrl));
-        } catch (URISyntaxException e) {
-            // TODO: Add proper logger here
-            e.printStackTrace();
-        }
+        proxyService.setWsdlURI(wsdlUrl);
         return proxyService;
     }
 

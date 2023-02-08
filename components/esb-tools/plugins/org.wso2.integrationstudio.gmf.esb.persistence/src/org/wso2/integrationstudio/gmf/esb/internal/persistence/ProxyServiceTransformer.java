@@ -401,7 +401,7 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
                 proxyService.setInLineWSDL(node);
                 break;
             case SOURCE_URL:
-                proxyService.setWsdlURI(new URI(visualService.getWsdlURL()));
+                proxyService.setWsdlURI(visualService.getWsdlURL());
                 break;
             case REGISTRY_KEY:
                 proxyService.setWSDLKey(visualService.getWsdlKey().getKeyValue());

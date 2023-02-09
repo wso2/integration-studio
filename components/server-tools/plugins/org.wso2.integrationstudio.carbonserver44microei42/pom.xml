@@ -26,7 +26,7 @@
 						<goal>wget</goal>
 					</goals>
 					<configuration>
-						<url>https://github.com/wso2/micro-integrator/releases/download/v4.2.0-alpha/wso2mi-4.2.0-alpha.zip</url>
+						<url>https://wso2.org/jenkins/job/products/job/micro-integrator/1847/artifact/distribution/target/wso2mi-4.2.0-SNAPSHOT.zip</url>
 						<unpack>false</unpack>
 						<outputDirectory>${project.basedir}/resources/server/</outputDirectory>
 					</configuration>

@@ -19,6 +19,7 @@ package org.wso2.integrationstudio.platform.ui.wizard.pages;
 import org.eclipse.jface.dialogs.TrayDialog;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.TableEditor;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
@@ -29,6 +30,7 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
@@ -101,11 +103,21 @@ public class KubernetesDetailsPage extends WizardPage {
 	 */
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
-		container.setLayout(new FormLayout());
+		container.setLayout(new FillLayout(SWT.VERTICAL));
 		FormData data;
 
+		ScrolledComposite scrolledComposite = new ScrolledComposite(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		Composite child = new Composite(scrolledComposite, SWT.NONE);
+		child.setLayout(new FormLayout());
+
+		scrolledComposite.setContent(child);
+		scrolledComposite.setMinSize(400, 720);
+		scrolledComposite.setExpandHorizontal(true);
+		scrolledComposite.setExpandVertical(true);
+		scrolledComposite.setAlwaysShowScrollBars(true);
+
 		// project name enter section
-		Composite projectNameContainer = new Composite(container, SWT.NULL);
+		Composite projectNameContainer = new Composite(child, SWT.NULL);
 		projectNameContainer.setLayout(new FormLayout());
 		data = new FormData();
 		data.top = new FormAttachment(1);
@@ -115,7 +127,7 @@ public class KubernetesDetailsPage extends WizardPage {
 
 		Label lblDockerProjectName = new Label(projectNameContainer, SWT.NONE);
 		data = new FormData();
-		data.top = new FormAttachment(container, 10);
+		data.top = new FormAttachment(child, 10);
 		data.left = new FormAttachment(2);
 		data.width = 200;
 		lblDockerProjectName.setLayoutData(data);
@@ -123,7 +135,7 @@ public class KubernetesDetailsPage extends WizardPage {
 
 		txtProjectName = new Text(projectNameContainer, SWT.BORDER);
 		data = new FormData();
-		data.top = new FormAttachment(container, 10);
+		data.top = new FormAttachment(child, 10);
 		data.left = new FormAttachment(lblDockerProjectName, 0);
 		data.right = new FormAttachment(97);
 		txtProjectName.setLayoutData(data);
@@ -147,7 +159,7 @@ public class KubernetesDetailsPage extends WizardPage {
 		separator.setLayoutData(data);
 		
 		// Kubernetes artifact type
-        Label lblArtifactsType = new Label(container, SWT.NONE);
+        Label lblArtifactsType = new Label(child, SWT.NONE);
         lblArtifactsType.setText("Generate K8s Artifacts for");
         data = new FormData();
         FormAttachment dataTop;
@@ -163,7 +175,7 @@ public class KubernetesDetailsPage extends WizardPage {
         data.left = new FormAttachment(3);
         lblArtifactsType.setLayoutData(data);
 
-        final Combo kubeArtifactType = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
+        final Combo kubeArtifactType = new Combo(child, SWT.DROP_DOWN | SWT.READ_ONLY);
         String items[] = { "K8s EI Operator", "Pure K8s artifacts" };
         kubeArtifactType.setItems(items);
         kubeArtifactType.select(0);
@@ -185,7 +197,7 @@ public class KubernetesDetailsPage extends WizardPage {
             }
         });
 
-        kubernetsContainer = new Group(container, SWT.BORDER);
+        kubernetsContainer = new Group(child, SWT.BORDER);
 		kubernetsContainer.setLayout(new FormLayout());
 		data = new FormData();
 		data.top = new FormAttachment(lblArtifactsType, 20);

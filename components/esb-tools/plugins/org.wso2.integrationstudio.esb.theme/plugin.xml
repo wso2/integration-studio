@@ -18,29 +18,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension point="org.eclipse.e4.ui.css.swt.theme">
-      <theme
-      	basestylesheeturi="themes/css/wso2-theme-standalone-light.css"
-      	id="org.wso2.integrationstudio.esb.light.theme"
-      	label="WSO2EI Light"
-      	os="macosx"
-      	/>
-      	<theme
-      	basestylesheeturi="themes/css/wso2-theme-standalone-light-linux.css"
-      	id="org.wso2.integrationstudio.esb.light.theme"
-      	label="WSO2EI Light"
-      	os="linux"
-      	/>
-      	<theme
-      	basestylesheeturi="themes/css/wso2-theme-standalone-light-win.css"
-      	id="org.wso2.integrationstudio.esb.light.theme"
-      	label="WSO2EI Light"
-      	os="win32"
-      	os_version="6.0,6.1,6.2,6.3,10.0"
-      	/>
-      <property name="applicationCSSResources"
-      value="platform:/plugin/org.wso2.integrationstudio.esb.theme/themes/images/" />
-   </extension>
-   <extension point="org.eclipse.e4.ui.css.swt.theme">
 		<theme
 		basestylesheeturi="themes/css/wso2-theme-standalone.css"
       	id="org.wso2.integrationstudio.esb.theme" 

@@ -61,10 +61,10 @@ unzip $PRODUCT_PATH_ROOT/wso2mi-dashboard-${DASHBOARD_VERSION}.zip -d $PRODUCT_P
 unzip $PRODUCT_PATH_ROOT/wso2mi-dashboard-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_WIN_64/
 
 # Rename as "mi-dashboard" (this is the static name used in EI Tooling code)
-mv $PRODUCT_PATH_LINUX_64/wso2mi-dashboard-$DASHBOARD_VERSION $PRODUCT_PATH_LINUX_64/mi-dashboard
-mv $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/wso2mi-dashboard-$DASHBOARD_VERSION $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/mi-dashboard
-mv $PRODUCT_PATH_MACOS_AARCH64/IntegrationStudio.app/Contents/Eclipse/wso2mi-dashboard-$DASHBOARD_VERSION $PRODUCT_PATH_MACOS_AARCH64/IntegrationStudio.app/Contents/Eclipse/mi-dashboard
-mv $PRODUCT_PATH_WIN_64/wso2mi-dashboard-$DASHBOARD_VERSION $PRODUCT_PATH_WIN_64/mi-dashboard
+mv $PRODUCT_PATH_LINUX_64/wso2mi-dashboard-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_64/mi-dashboard
+mv $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/wso2mi-dashboard-$PRODUCT_VERSION $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/mi-dashboard
+mv $PRODUCT_PATH_MACOS_AARCH64/IntegrationStudio.app/Contents/Eclipse/wso2mi-dashboard-$PRODUCT_VERSION $PRODUCT_PATH_MACOS_AARCH64/IntegrationStudio.app/Contents/Eclipse/mi-dashboard
+mv $PRODUCT_PATH_WIN_64/wso2mi-dashboard-$PRODUCT_VERSION $PRODUCT_PATH_WIN_64/mi-dashboard
 
 # Unzip apche maven to relevant packages
 unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_LINUX_64/

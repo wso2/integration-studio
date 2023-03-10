@@ -53,7 +53,6 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
@@ -97,16 +96,8 @@ public class GenerateDataServicesWizardPage extends WizardPage {
     private Map<String, Boolean> allAvailableTables = new HashMap<String, Boolean>();   
     private Map<String, Document> avalableDatasources = new HashMap<String, Document>();    
     private String selectedDatasource;    
-    private String driverClassName;
     private Map<Button, String[]> buttonMap = new HashMap<Button, String[]>();    
     private Map<String, List<Button>> buttonTableMap = new HashMap<String, List<Button>>();  
-    private String mysqlVersionArr[] = new String[] { "Select Version", "8.0.15", "5.1.47" };    
-    private String mssqlVersionArr[] = new String[] { "Select Version", "6.4.0.jre8", "7.2.0.jre8" };   
-    private String postgresSqlVersionArr[] = new String[] { "Select Version", "42.2.5" };    
-    private String derbySqlVersionArr[] = new String[] { "Select Version", "10.15.1.3" };   
-    private String hsqlSqlVersionArr[] = new String[] { "Select Version", "2.5.0" };   
-    private String db2SqlVersionArr[] = new String[] { "Select Version", "db2jcc4" };    
-    private String informixSqlVersionArr[] = new String[] { "Select Version", "4.50.1" };    
     private Text jarLocationText; 
     private String jarLocation;
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -125,10 +116,6 @@ public class GenerateDataServicesWizardPage extends WizardPage {
         container.setLayout(new FormLayout());
         FormData data;
         Table tblDataTables;
-        Button serverRadioButton;
-        Button browseFileRadioButton;
-        Combo versionComboBox;
-        Label versionLabel;
         Label browseLabel;
         Button browseButton;
         Button fetchTablesButton;
@@ -198,67 +185,6 @@ public class GenerateDataServicesWizardPage extends WizardPage {
             selectDriverGroup.setText("Select driver to fetch tables");
             selectDriverGroup.setLayoutData(groupData);
             selectDriverGroup.setVisible(false);
-
-            serverRadioButton = new Button(selectDriverGroup, SWT.RADIO);
-            {
-                FormData layoutData = new FormData();
-                layoutData.top = new FormAttachment(selectDriverGroup, 10);
-                layoutData.left = new FormAttachment(3);
-
-                serverRadioButton.setText("Use an existing driver");
-                serverRadioButton.setSelection(true);
-                serverRadioButton.setLayoutData(layoutData);
-
-            }
-            browseFileRadioButton = new Button(selectDriverGroup, SWT.RADIO);
-            {
-
-                FormData layoutData = new FormData();
-                layoutData.top = new FormAttachment(selectDriverGroup, 10);
-                layoutData.left = new FormAttachment(50);
-                layoutData.right = new FormAttachment(95);
-                browseFileRadioButton.setSelection(false);
-                browseFileRadioButton.setText("Use a driver in your local machine");
-                browseFileRadioButton.setLayoutData(layoutData);
-            }
-
-        }
-
-        Composite serverComposite = new Composite(selectDriverGroup, SWT.NONE);
-        {
-
-            FormLayout groupLayout = new FormLayout();
-            serverComposite.setLayout(groupLayout);
-
-            FormData groupData = new FormData();
-            groupData.top = new FormAttachment(selectDriverGroup, 10);
-            groupData.left = new FormAttachment(0);
-            groupData.right = new FormAttachment(100);
-
-            serverComposite.setLayoutData(groupData);
-
-            versionLabel = new Label(serverComposite, SWT.NONE);
-            {
-                versionLabel.setText("Version");
-
-                FormData layoutData = new FormData();
-                layoutData.top = new FormAttachment(selectDriverGroup, 40);
-                layoutData.left = new FormAttachment(4);
-                layoutData.right = new FormAttachment(20);
-                versionLabel.setLayoutData(layoutData);
-            }
-
-            versionComboBox = new Combo(serverComposite, SWT.READ_ONLY);
-            {
-                versionComboBox.setItems(new String[] { "Select Version" });
-
-                FormData layoutData = new FormData();
-                layoutData.top = new FormAttachment(selectDriverGroup, 40);
-                layoutData.left = new FormAttachment(versionLabel, 10);
-                layoutData.right = new FormAttachment(99);
-                versionComboBox.setLayoutData(layoutData);
-            }
-
         }
 
         Composite browseLocalComposite = new Composite(selectDriverGroup, SWT.NONE);
@@ -311,7 +237,7 @@ public class GenerateDataServicesWizardPage extends WizardPage {
         {
 
             FormData layoutData = new FormData();
-            layoutData.top = new FormAttachment(serverComposite, 10);
+            layoutData.top = new FormAttachment(browseLocalComposite, 10);
             layoutData.right = new FormAttachment(99);
             layoutData.width = 150;
 
@@ -319,41 +245,7 @@ public class GenerateDataServicesWizardPage extends WizardPage {
             fetchTablesButton.setLayoutData(layoutData);
             fetchTablesButton.setEnabled(false);
         }
-        
-        serverRadioButton.addSelectionListener(new SelectionAdapter() {
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                Button source = (Button) e.getSource();
-                if (source.getSelection()) {
-                    serverComposite.setVisible(true);
-                    browseLocalComposite.setVisible(false);
 
-                    versionComboBox.select(0);
-                    jarLocationText.setText("");
-                    jarLocation = "";
-
-                }
-            }
-        });
-
-        browseFileRadioButton.addSelectionListener(new SelectionAdapter() {
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                Button source = (Button) e.getSource();
-                if (source.getSelection()) {
-                    browseLocalComposite.setVisible(true);
-                    serverComposite.setVisible(false);
-                    serverRadioButton.setEnabled(true);
-
-                    jarLocationText.setEnabled(true);
-                    jarLocationText.setText("");
-                    jarLocation = "";
-                    browseButton.setEnabled(true);
-                    versionComboBox.select(0);
-                }
-            }
-        });
-        
         // input type table group
         Group tableListGroup = new Group(container, SWT.NONE);
         {
@@ -562,8 +454,6 @@ public class GenerateDataServicesWizardPage extends WizardPage {
                 buttonMap = new HashMap<Button, String[]>();
                 buttonTableMap = new HashMap<String, List<Button>>();
                 allAvailableTables = new HashMap<String, Boolean>();
-                driverClassName = null;
-                serverComposite.setVisible(false);
                 tableListGroup.setVisible(false);
                 serviceModeGroup.setVisible(false);
                 fetchTablesButton.setEnabled(false);
@@ -579,29 +469,8 @@ public class GenerateDataServicesWizardPage extends WizardPage {
                 } else {
                     selectedDatasource = (String)avalableDatasources.keySet().toArray()[comboAvalableDatasources.getSelectionIndex()];
                     Document datasourceConfig = avalableDatasources.get(selectedDatasource);
-                    driverClassName = getElementValue(datasourceConfig, "driverClassName");
-                    boolean isDriverAvailable = populateExisitngDriver(driverClassName, versionComboBox);
-                    if (!isDriverAvailable) {
-                        browseFileRadioButton.setSelection(true);
-                        serverRadioButton.setSelection(false);
-                        serverRadioButton.setEnabled(false);
-                        serverComposite.setVisible(false);
-                        browseLocalComposite.setVisible(true);
-                        versionComboBox.setEnabled(false);
-                    } else {
-                        versionComboBox.setEnabled(true);
-                    }
-                    
                     dataModel.setDatasource(getElementValue(datasourceConfig, "name"));
-                                
                     selectDriverGroup.setVisible(true);
-                    serverComposite.setVisible(true);
-                    serverRadioButton.setSelection(true);
-                    serverRadioButton.setEnabled(true);
-                    browseFileRadioButton.setEnabled(true);
-                    browseFileRadioButton.setSelection(false); 
-                    serverComposite.setVisible(true);
-                    browseLocalComposite.setVisible(false);
                 }              
                 updatePageStatus();                     
             }
@@ -640,39 +509,6 @@ public class GenerateDataServicesWizardPage extends WizardPage {
                 }                 
                 updatePageStatus();
             }
-        });
-        
-        versionComboBox.addSelectionListener(new SelectionListener() {
-            @Override
-            public void widgetSelected(SelectionEvent event) {
-                jarLocationText.setText("");
-                jarLocation = "";
-                if (versionComboBox.getText() != null || !versionComboBox.getText().isEmpty()) {
-                    String jarName = getDBDriverJarName(driverClassName) + "-" +  
-                            versionComboBox.getText() + ".jar";                   
-                    String driverUrl = "";
-                    try {
-                        driverUrl = DataServicesWizardConstants.DBUrlParams.DB_DRIVER_URL_BASE + getLibDirPath() + 
-                                DataServicesWizardConstants.DBUrlParams.DB_DRIVER_JAR_BASE + jarName + 
-                                DataServicesWizardConstants.DBUrlParams.DB_URL_JDBC_SUFFIX;
-                    } catch (URISyntaxException | IOException e) {
-                        showMessageBox("Error while loading driver jar", e.getMessage(), SWT.ICON_ERROR);
-                    }
-                    jarLocationText.setText(driverUrl);
-                    jarLocation = driverUrl;
-                    fetchTablesButton.setEnabled(true);                 
-                }
-
-                if (versionComboBox.getText().equals("Select Version")) {
-                    fetchTablesButton.setEnabled(false);
-                } 
-            }
-
-            @Override
-            public void widgetDefaultSelected(SelectionEvent e) {
-                fetchTablesButton.setEnabled(false);
-            }
-
         });
 
         browseButton.addListener(SWT.Selection, new Listener() {
@@ -891,47 +727,7 @@ public class GenerateDataServicesWizardPage extends WizardPage {
         dia.open();
 
     }
-    
-    private boolean populateExisitngDriver(String driverClassName, Combo versionComboBox) {
-        boolean isAvaialble = true;
-        switch (driverClassName) {
 
-        case DataServicesWizardConstants.DBDrivers.MYSQL_DRIVER:
-            versionComboBox.setItems(mysqlVersionArr);
-            break;
-
-        case DataServicesWizardConstants.DBDrivers.MS_SQL_DRIVER:
-            versionComboBox.setItems(mssqlVersionArr);
-            break;
-
-        case DataServicesWizardConstants.DBDrivers.POSTGRESQL_DRIVER:
-            versionComboBox.setItems(postgresSqlVersionArr);
-            break;
-
-        case DataServicesWizardConstants.DBDrivers.DERBY_CLIENT_DRIVER:
-            versionComboBox.setItems(derbySqlVersionArr);
-            break;
-
-        case DataServicesWizardConstants.DBDrivers.HSQL_DRIVER:
-            versionComboBox.setItems(hsqlSqlVersionArr);
-            break;
-
-        case DataServicesWizardConstants.DBDrivers.DB2_DRIVER:
-            versionComboBox.setItems(db2SqlVersionArr);
-            break;
-
-        case DataServicesWizardConstants.DBDrivers.INFORMIX_DRIVER:
-            versionComboBox.setItems(informixSqlVersionArr);
-            break;
-
-        default:
-            isAvaialble = false;
-
-        }
-        versionComboBox.select(0);
-        return isAvaialble;
-    }
-    
     /**
      * Validate the wizard page field data and update the page when the validate is
      * failed.
@@ -1095,31 +891,7 @@ public class GenerateDataServicesWizardPage extends WizardPage {
         }
         return elementNode.getNodeValue();
     }
-    
-    private String getDBDriverJarName(String className) {
-        String jarName = "";
 
-        switch (className) {
-        case DataServicesWizardConstants.DBDrivers.MYSQL_DRIVER:
-            jarName = DataServicesWizardConstants.DBConnectionParams.MYSQL_JAR;
-            break;
-        case DataServicesWizardConstants.DBDrivers.MS_SQL_DRIVER:
-            jarName = DataServicesWizardConstants.DBConnectionParams.MSSQL_JAR;
-            break;
-        case DataServicesWizardConstants.DBDrivers.POSTGRESQL_DRIVER:
-            jarName = DataServicesWizardConstants.DBConnectionParams.POSTGRESSQL_JAR;
-            break;
-        case DataServicesWizardConstants.DBDrivers.DERBY_CLIENT_DRIVER:
-            jarName = DataServicesWizardConstants.DBConnectionParams.DERBY_JAR;
-            break;
-        case DataServicesWizardConstants.DBDrivers.H2_DRIVER:
-            jarName = DataServicesWizardConstants.DBConnectionParams.H2_JAR;
-            break;
-        }
-
-        return jarName;
-    }
-    
     public String getLibDirPath() throws URISyntaxException, IOException {
         URL libURL = DsEditorPlugin.getPlugin().getBundle().getEntry("lib");
         URL resolvedFolderURL = FileLocator.toFileURL(libURL);

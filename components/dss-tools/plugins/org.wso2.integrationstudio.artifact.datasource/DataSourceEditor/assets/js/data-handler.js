@@ -17,6 +17,7 @@
 */
 
 $(document).ready(function ($) {
+    var timeout = null;
     var portValue = resolveGetParam("port");
     var url = "http://127.0.0.1:" + portValue + "/datasourceeditor/service";
     // Data model JSON which is transfered between design and source views
@@ -108,7 +109,7 @@ $(document).ready(function ($) {
 
     /** Start of Event handlers **/
 
-    $("#ds-form").on("change", function (e) {
+    $("#ds-form").on("change keyup", function (e) {
         e.preventDefault();
 
         //input validation
@@ -269,10 +270,14 @@ $(document).ready(function ($) {
         updateDataModelFromJNDIPropTable(true);
         updateDataModelFromExtPropTable(true);
 
-        xmlSource = generateXmlSource(dataModel);
-        saveAll(xmlSource, url, function () { });
-        var metadata = DS_METADATA_DATA_MODEL + DS_METADATA_KEYVALUE_SEPARATOR + JSON.stringify(dataModel);
-        saveDSMetadata(metadata, url, function () { });
+        clearTimeout(timeout);
+
+        timeout = setTimeout(function() {
+	        xmlSource = generateXmlSource(dataModel);
+	        saveAll(xmlSource, url, function () { });
+	        var metadata = DS_METADATA_DATA_MODEL + DS_METADATA_KEYVALUE_SEPARATOR + JSON.stringify(dataModel);
+	        saveDSMetadata(metadata, url, function () { });
+        }, 500);
     });
 
     //--- Start of External Datasource - Properties table ---//

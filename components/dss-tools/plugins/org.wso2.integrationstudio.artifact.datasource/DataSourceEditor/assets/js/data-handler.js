@@ -17,6 +17,7 @@
 */
 
 $(document).ready(function ($) {
+    var timeout = null;
     var portValue = resolveGetParam("port");
     var url = "http://127.0.0.1:" + portValue + "/datasourceeditor/service";
     // Data model JSON which is transfered between design and source views
@@ -63,7 +64,7 @@ $(document).ready(function ($) {
     window.params = [];
     window.isInputMappingEdit = false;
     window.mappingToBeDeleted = EMPTY_STRING;
-
+    $.support.cors = true;
     var currentPage = retrieveDSMetadata(CURRENT_PAGE_KEY, url);
 
     if (currentPage == CURRENT_PAGE_VAL_DESIGN) {
@@ -108,7 +109,7 @@ $(document).ready(function ($) {
 
     /** Start of Event handlers **/
 
-    $("#ds-form").on("change", function (e) {
+    $("#ds-form").on("change keyup", function (e) {
         e.preventDefault();
 
         //input validation
@@ -156,8 +157,6 @@ $(document).ready(function ($) {
             populateDBEngineDefaults(dbEngineType);
         }
         dataModel.definition.rdbms_conf.default_conf.db_engine = dbEngineType;
-
-        setTestConnectionRDBMSVersion(dbEngineType);
 
         //input validation
         $("#ds-driver-class-inputgroup-error").remove();
@@ -268,10 +267,17 @@ $(document).ready(function ($) {
         var dsUseDsFactory = $("#ds-use-factory-check").is(":checked");
         dataModel.definition.rdbms_conf.jndi_conf.useDSFactory = dsUseDsFactory;
 
-        xmlSource = generateXmlSource(dataModel);
-        saveAll(xmlSource, url, function () { });
-        var metadata = DS_METADATA_DATA_MODEL + DS_METADATA_KEYVALUE_SEPARATOR + JSON.stringify(dataModel);
-        saveDSMetadata(metadata, url, function () { });
+        updateDataModelFromJNDIPropTable(true);
+        updateDataModelFromExtPropTable(true);
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(function() {
+	        xmlSource = generateXmlSource(dataModel);
+	        saveAll(xmlSource, url, function () { });
+	        var metadata = DS_METADATA_DATA_MODEL + DS_METADATA_KEYVALUE_SEPARATOR + JSON.stringify(dataModel);
+	        saveDSMetadata(metadata, url, function () { });
+        }, 500);
     });
 
     //--- Start of External Datasource - Properties table ---//
@@ -281,7 +287,7 @@ $(document).ready(function ($) {
         $("#ds-ext-properties-table tbody").append(markup);
     });
 
-    function updateDataModelFromExtPropTable() {
+    function updateDataModelFromExtPropTable(updateOnly) {
         var props = [];
 
         $("#ds-ext-properties-table table tbody tr").each(function () {
@@ -297,8 +303,10 @@ $(document).ready(function ($) {
 
         dataModel.definition.rdbms_conf.ext_conf.properties = props;
 
-        var metadata = DS_METADATA_DATA_MODEL + DS_METADATA_KEYVALUE_SEPARATOR + JSON.stringify(dataModel);
-        saveDSMetadata(metadata, url, function () { });
+        if (!updateOnly) {
+            var metadata = DS_METADATA_DATA_MODEL + DS_METADATA_KEYVALUE_SEPARATOR + JSON.stringify(dataModel);
+            saveDSMetadata(metadata, url, function () { });
+        }
     }
 
     $(document).on('change', '#ds-ext-properties-table', function () {
@@ -330,7 +338,7 @@ $(document).ready(function ($) {
         $("#jndi-properties-table tbody").append(markup);
     });
 
-    function updateDataModelFromJNDIPropTable() {
+    function updateDataModelFromJNDIPropTable(updateOnly) {
         var props = [];
 
         $("#jndi-properties-table table tbody tr").each(function () {
@@ -345,8 +353,10 @@ $(document).ready(function ($) {
         });
         dataModel.definition.rdbms_conf.jndi_conf.properties = props;
 
-        var metadata = DS_METADATA_DATA_MODEL + DS_METADATA_KEYVALUE_SEPARATOR + JSON.stringify(dataModel);
-        saveDSMetadata(metadata, url, function () { });
+        if (!updateOnly) {
+            var metadata = DS_METADATA_DATA_MODEL + DS_METADATA_KEYVALUE_SEPARATOR + JSON.stringify(dataModel);
+            saveDSMetadata(metadata, url, function () { });
+        }
     }
 
     $(document).on('change', '#jndi-properties-table', function () {

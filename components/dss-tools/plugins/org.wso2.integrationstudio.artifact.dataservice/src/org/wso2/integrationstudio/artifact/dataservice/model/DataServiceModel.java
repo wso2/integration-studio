@@ -119,6 +119,7 @@ public class DataServiceModel extends ProjectDataModel {
 			} else {
 				modelPropertyValue = container;
 			}
+			setGenerateDataService(false);
 		} else if (key.equals(DataServiceArtifactConstants.WIZARD_OPTION_DATASOURCE)) {
 		    setGenerateDataService(true);
 		    modelPropertyValue = null;

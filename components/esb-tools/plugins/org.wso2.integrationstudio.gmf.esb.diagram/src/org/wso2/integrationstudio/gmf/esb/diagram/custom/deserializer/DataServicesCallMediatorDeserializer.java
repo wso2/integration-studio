@@ -118,12 +118,21 @@ public class DataServicesCallMediatorDeserializer extends AbstractEsbNodeDeseria
 				for (Param synapseParam : synapseParams) {
 					DSSoperationProperty visualProperty = EsbFactory.eINSTANCE.createDSSoperationProperty();
 					visualProperty.setPropertyName(synapseParam.getParamName());
-					if (synapseParam.getEvaluator() != null && synapseParam.getEvaluator().contains("xml")) {
-						NamespacedProperty xpath1 = EsbFactory.eINSTANCE.createNamespacedProperty();
-						xpath1.setPropertyName(synapseParam.getParamName());
-						xpath1.setPropertyValue(synapseParam.getParamExpression().getExpression());
-						visualProperty.setPropertyExpression(xpath1);
-						visualProperty.setPropertyValueType(PropertyValueType.EXPRESSION);
+					if (synapseParam.getEvaluator() != null) {
+					    if (synapseParam.getEvaluator().contains("xml")) {
+    						NamespacedProperty xpath1 = EsbFactory.eINSTANCE.createNamespacedProperty();
+    						xpath1.setPropertyName(synapseParam.getParamName());
+    						xpath1.setPropertyValue(synapseParam.getParamExpression().getExpression());
+    						visualProperty.setPropertyExpression(xpath1);
+    						visualProperty.setPropertyValueType(PropertyValueType.EXPRESSION);
+					    } else if (synapseParam.getEvaluator().contains("json")) {
+					        NamespacedProperty xpath1 = EsbFactory.eINSTANCE.createNamespacedProperty();
+                            xpath1.setPropertyName(synapseParam.getParamName());
+                            xpath1.setPropertyValue(synapseParam.getParamExpression().toString());
+                            visualProperty.setPropertyExpression(xpath1);
+                            visualProperty.setPropertyValueType(PropertyValueType.EXPRESSION);
+                            visualProperty.setEvaluator("json");
+					    }
 					} else {
 						visualProperty.setPropertyValueType(PropertyValueType.LITERAL);
 						visualProperty.setPropertyValue(synapseParam.getParamValue());

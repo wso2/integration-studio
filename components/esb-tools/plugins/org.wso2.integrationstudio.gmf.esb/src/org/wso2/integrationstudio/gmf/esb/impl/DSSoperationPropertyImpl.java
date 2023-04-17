@@ -28,6 +28,9 @@ import org.wso2.integrationstudio.gmf.esb.EsbPackage;
  * @generated
  */
 public class DSSoperationPropertyImpl extends AbstractNameValueExpressionPropertyImpl implements DSSoperationProperty {
+    
+    private String evaluator = null;
+    
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -45,6 +48,16 @@ public class DSSoperationPropertyImpl extends AbstractNameValueExpressionPropert
     @Override
     protected EClass eStaticClass() {
         return EsbPackage.Literals.DS_SOPERATION_PROPERTY;
+    }
+
+    @Override
+    public void setEvaluator(String evaluator) {
+        this.evaluator = evaluator;
+    }
+
+    @Override
+    public String getEvaluator() {
+        return evaluator;
     }
 
 } //DSSoperationPropertyImpl

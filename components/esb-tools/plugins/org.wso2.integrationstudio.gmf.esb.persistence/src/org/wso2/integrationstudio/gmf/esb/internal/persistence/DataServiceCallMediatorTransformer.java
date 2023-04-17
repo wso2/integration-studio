@@ -39,6 +39,9 @@ import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator.Op
 import org.wso2.micro.integrator.mediator.dataservice.DataServiceCallMediator.Param;
 
 public class DataServiceCallMediatorTransformer extends AbstractEsbNodeTransformer {
+    
+    private static final String JSON_EVAL = "json-eval";
+    private static final String JSON = "json";
 
     @Override
     public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
@@ -85,8 +88,16 @@ public class DataServiceCallMediatorTransformer extends AbstractEsbNodeTransform
 
 					Param synapseParam = dataServicesCallMediator.new Param(visualProperty.getPropertyName());
 					if (visualProperty.getPropertyValueType().getLiteral().contains("EXPRESSION")) {
-						synapseParam.setEvaluator("xml");
-
+						if (visualProperty.getEvaluator() != null) {
+                            synapseParam.setEvaluator(visualProperty.getEvaluator());
+                        } else {
+                            if (visualProperty.getPropertyExpression().getPropertyValue().trim().startsWith(JSON_EVAL)) {
+                                synapseParam.setEvaluator(JSON);
+                            }
+                            else {
+                                synapseParam.setEvaluator("xml");
+                            }
+                        }
 						SynapsePath xpath = SynapseXPathExt
 								.createSynapsePath(visualProperty.getPropertyExpression().getPropertyValue());
 						synapseParam.setParamExpression(xpath);

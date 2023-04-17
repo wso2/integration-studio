@@ -27,4 +27,6 @@ package org.wso2.integrationstudio.gmf.esb;
  * @generated
  */
 public interface DSSoperationProperty extends AbstractNameValueExpressionProperty {
+    public void setEvaluator(String evaluator);
+    public String getEvaluator();
 } // DSSoperationProperty

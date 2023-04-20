@@ -17,6 +17,8 @@ package org.wso2.integrationstudio.esb.project.model;
 
 import org.wso2.integrationstudio.esb.project.utils.SolutionProjectArtifactConstants;
 import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
+import org.wso2.integrationstudio.platform.ui.utils.PlatformUIConstants;
+
 import static org.wso2.integrationstudio.esb.project.utils.SolutionProjectArtifactConstants.*;
 
 public class ESBSolutionProjectModel extends ESBProjectModel {
@@ -28,6 +30,8 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
     private String dockerExporterProjectName;
     private String kubernetesExporterProjectName;
     private String mmmProjectName;
+    private String projectRuntimeVersion = PlatformUIConstants.EMBEDDED_RUNTIME_DEFAULT_VERSION;
+    private boolean isDefaultRuntimeVersionChecked = true;
     private String dataServiceProjectName;
     private String dataSourceProjectName;
     private boolean registryProjectChecked = false;
@@ -46,6 +50,22 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
         return this.mmmProjectName;
     }
     
+    public String getProjectRuntimeVersion() {
+        return projectRuntimeVersion;
+    }
+
+    public void setProjectRuntimeVersion(String projectRuntimeVersion) {
+        this.projectRuntimeVersion = projectRuntimeVersion;
+    }
+
+    public boolean isDefaultRuntimeVersionChecked() {
+        return isDefaultRuntimeVersionChecked;
+    }
+
+    public void setDefaultRuntimeVersionChecked(boolean isDefaultRuntimeVersionChecked) {
+        this.isDefaultRuntimeVersionChecked = isDefaultRuntimeVersionChecked;
+    }
+
     public void setConfigProjectChecked(boolean isConfigProjectChecked) {
         this.isConfigProjectChecked = isConfigProjectChecked;
     }
@@ -157,6 +177,10 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
                 return isDataSourceProjectChecked();
             } else if (key.equals(DATA_SOURCE_PROJECT_NAME)) {
                 return getDataSourceProjectName();
+            } else if (key.equals(PROJECT_RUNTIME_VERSION)) {
+                return getProjectRuntimeVersion();
+            } else if (key.equals(PROJECT_RUNTIME_DEFAULT_VERSION_CHECKED)) {
+                return isDefaultRuntimeVersionChecked();
             }
         }
         return modelPropertyValue;
@@ -232,6 +256,11 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
             setDataServiceProjectChecked((boolean) data);
         } else if (key.equals(DATA_SOURCE_PROJECT_CHECKED)) {
             setDataSourceProjectChecked((boolean) data);
+        } else if (key.equals(PROJECT_RUNTIME_VERSION)) {
+            setProjectRuntimeVersion(value);
+        } else if (key.equals(PROJECT_RUNTIME_DEFAULT_VERSION_CHECKED)) {
+            setDefaultRuntimeVersionChecked((boolean) data);
+            setProjectRuntimeVersion(PlatformUIConstants.EMBEDDED_RUNTIME_DEFAULT_VERSION);
         }
 
         return returnResult;

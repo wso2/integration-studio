@@ -373,6 +373,8 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
             dataSourceProjectCreationWizard.performFinish();
         }
 
+        addRuntimeVersionToPOM(pomFile, esbSolutionProjectModel.getProjectRuntimeVersion());
+
         getShell().getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
@@ -395,6 +397,17 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		esbSolutionProjectModel.getMavenInfo().setGroupId(mavenProject.getGroupId());
 		esbSolutionProjectModel.getMavenInfo().setArtifactId(name);
 		esbSolutionProjectModel.getMavenInfo().setVersion(mavenProject.getVersion());
+	}
+
+	private void addRuntimeVersionToPOM(File pomLocation, String runtimeVersion) {
+	    MavenProject mavenProject = getMavenProject(pomLocation);
+	    // TODO define a constant which can be access by the Export and Run wizard
+	    mavenProject.getProperties().put("project.runtime.version", runtimeVersion);
+	    try {
+	        MavenUtils.saveMavenProject(mavenProject, pomFile);
+	    } catch (Exception e) {
+	        log.error("Error occured while trying to save the maven project", e);
+	    }
 	}
 
 	public MavenProject getMavenProject(File pomLocation) {

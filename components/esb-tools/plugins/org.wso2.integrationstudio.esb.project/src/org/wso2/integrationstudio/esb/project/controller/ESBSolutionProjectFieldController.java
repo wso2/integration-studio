@@ -83,6 +83,8 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
             updateFields.add(DATA_SERVICE_PROJECT_NAME);
         } else if (modelProperty.equals(DATA_SOURCE_PROJECT_CHECKED)) {
             updateFields.add(DATA_SOURCE_PROJECT_NAME);
+        } else if (modelProperty.equals(PROJECT_RUNTIME_DEFAULT_VERSION_CHECKED)) {
+            updateFields.add(PROJECT_RUNTIME_VERSION);
         }
         return updateFields;
     }
@@ -115,6 +117,8 @@ public class ESBSolutionProjectFieldController extends ESBProjectFieldController
             }
         } else if (modelProperty.equals(ESB_PROJECT_CHOICE) && !mmmProjectEnabled) {
             return false;
+        } else if (modelProperty.equals(PROJECT_RUNTIME_VERSION)) {
+            return !((ESBSolutionProjectModel) model).isDefaultRuntimeVersionChecked();
         }
         return super.isEnableField(modelProperty, model);
     }

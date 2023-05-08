@@ -284,13 +284,16 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         Profile dockerProfile = null;
         Profile kubernetesProfile = null;
         Profile defaultProfile = null;
+        Profile solutionsProfile = null;
 
         for (Profile profile : mavenProject.getModel().getProfiles()) {
             if (profile.getId().equals(Constants.DOCKER_PROFILE)) {
                 dockerProfile = profile;
             } else if (profile.getId().equals(Constants.KUBERNETES_PROFILE)) {
                 kubernetesProfile = profile;
-            } else {
+            } else if (profile.getId().equals(Constants.SOLUTION_PROFILE)) {
+            	solutionsProfile = profile;
+            } else if (profile.getId().equals(Constants.DEFAULT_PROFILE)) {
                 defaultProfile = profile;
             }
         }
@@ -298,11 +301,17 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         mavenProject.getModules().clear();
         dockerProfile.getModules().clear();
         kubernetesProfile.getModules().clear();
-        defaultProfile.getModules().clear();
+        solutionsProfile.getModules().clear();
 
         for (String module : modules) {
             if (!mavenProject.getModules().contains(module)) {
                 mavenProject.getModules().add(module);
+                // solutions profile has all modules except Docker and K8s
+                solutionsProfile.getModules().add(module);
+                // Default profile has all modules
+                if (!defaultProfile.getModules().contains(module)) {
+                    defaultProfile.getModules().add(module);
+                }
             }
         }
 

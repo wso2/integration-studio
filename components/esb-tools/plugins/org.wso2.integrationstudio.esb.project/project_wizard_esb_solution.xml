@@ -12,6 +12,16 @@
 			<data modelProperty="mmm.project.name" type="string"
 				fieldController="org.wso2.integrationstudio.esb.project.controller.ESBSolutionProjectFieldController">Integration Project Name</data>
 
+			<group id="project.runtime.group" title="Runtime Version" />
+
+			<data modelProperty="project.runtime.default.version.choice" type="choice"
+				fieldController="org.wso2.integrationstudio.esb.project.controller.ESBSolutionProjectFieldController"
+				group="project.runtime.group">Use Default version</data>
+
+			<data modelProperty="project.runtime.version" type="string"
+				fieldController="org.wso2.integrationstudio.esb.project.controller.ESBSolutionProjectFieldController"
+				group="project.runtime.group">Runtime version</data>
+
 			<data modelProperty="mmm.project.choice" type="choice"
 				fieldController="org.wso2.integrationstudio.esb.project.controller.ESBSolutionProjectFieldController">Wrap child modules with the parent project</data>
 			

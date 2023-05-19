@@ -40,5 +40,5 @@ public class PlatformUIConstants {
     public static final String DOCKER_DEFAULT_BASE_REPOSITORY = "wso2/wso2mi";
     public static final String DOCKER_DEFAULT_BASE_TAG = "4.2.0";
     public static final String MI_DEPLOYMENT_TOML_TEMPLATE_VERSION = "4.2.0";
-
+    public static final String EMBEDDED_RUNTIME_DEFAULT_VERSION = "4.2.0";
 }

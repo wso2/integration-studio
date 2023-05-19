@@ -22,6 +22,8 @@ public final class SolutionProjectArtifactConstants extends NLS {
 	public static final String BUNDLE_NAME = "org.wso2.integrationstudio.esb.project.utils.constants";
 	
 	public static String MMM_PROJECT_NAME;
+	public static String PROJECT_RUNTIME_DEFAULT_VERSION_CHECKED;
+	public static String PROJECT_RUNTIME_VERSION;
 	public static String MMM_PROJECT_CHOICE;
 	public static String ESB_PROJECT_NAME;
 	public static String ESB_PROJECT_CHOICE;

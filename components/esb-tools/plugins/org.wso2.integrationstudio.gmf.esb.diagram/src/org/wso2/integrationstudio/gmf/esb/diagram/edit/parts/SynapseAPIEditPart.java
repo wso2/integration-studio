@@ -1,5 +1,6 @@
 package org.wso2.integrationstudio.gmf.esb.diagram.edit.parts;
 
+import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.RectangleFigure;
@@ -8,8 +9,12 @@ import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.impl.EAttributeImpl;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
@@ -21,7 +26,9 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.runtime.notation.impl.BoundsImpl;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.integrationstudio.gmf.esb.diagram.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.EditPartDrawingHelper;
 import org.wso2.integrationstudio.gmf.esb.diagram.edit.policies.SynapseAPIItemSemanticEditPolicy;
 import org.wso2.integrationstudio.gmf.esb.diagram.custom.utils.DiagramCustomConstants;
@@ -62,6 +69,8 @@ public class SynapseAPIEditPart extends ShapeNodeEditPart {
         installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
         // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
         // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+        // Remove clickable corners to stop drag drop
+        installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
     }
 
     /**
@@ -89,6 +98,29 @@ public class SynapseAPIEditPart extends ShapeNodeEditPart {
         return lep;
     }
 
+    public void notifyChanged(Notification notification) {
+        super.notifyChanged(notification);
+        if (notification.getFeature() instanceof EAttributeImpl) {
+            if (notification.getNotifier() instanceof BoundsImpl) {
+                int y = ((BoundsImpl) notification.getNotifier()).getY();
+                if (y == -1) {
+                    y = +2;
+                }
+                alignLeft(y, ((BoundsImpl) notification.getNotifier()).getWidth(),
+                        ((BoundsImpl) notification.getNotifier()).getHeight());
+                FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
+                canvas.getViewport().repaint();
+
+            }
+        }
+    }
+    
+    private void alignLeft(int y, int width, int height) {
+        y = 0;
+        Rectangle constraints = new Rectangle(0, y, width, height);
+        ((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), constraints);
+    }
+    
     /**
      * @generated NOT
      */

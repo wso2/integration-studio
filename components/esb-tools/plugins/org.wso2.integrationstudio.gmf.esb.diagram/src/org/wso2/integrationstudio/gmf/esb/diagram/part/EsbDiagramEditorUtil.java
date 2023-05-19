@@ -229,9 +229,9 @@ public class EsbDiagramEditorUtil {
         Location instanceLoc = Platform.getInstanceLocation();
         String prefix = instanceLoc.getURL().toString() + RESOURCES_PATH + name;
         final Resource diagramResource = editingDomain.getResourceSet()
-                .createResource(URI.createURI(prefix.concat(".esb_diagram")));
+                .createResource(URI.createFileURI(prefix.concat(".esb_diagram")));
         final Resource modelResource = editingDomain.getResourceSet()
-                .createResource(URI.createURI(prefix.concat(".esb")));
+                .createResource(URI.createFileURI(prefix.concat(".esb")));
         editingDomain.getResourceSet().getResources().add(diagramResource);
         editingDomain.getResourceSet().getResources().add(modelResource);
         AbstractTransactionalCommand command = new AbstractTransactionalCommand(editingDomain,

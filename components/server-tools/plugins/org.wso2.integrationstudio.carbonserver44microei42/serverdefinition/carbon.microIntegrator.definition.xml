@@ -124,6 +124,8 @@
             -Dorg.apache.cxf.io.CachedOutputStream.Threshold=104857600 -Dprofile=micro-integrator-default
             -Desb.debug=${esb.debug} -DenableManagementApi=true -DenablePrometheusApi=true -DgracefulShutdown=false
             -Dorg.apache.activemq.SERIALIZABLE_PACKAGES="*"
+            -DskipStartupExtensions=false
+            -Dlogfiles.home=${carbon.home}/repository/logs
             --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens java.rmi/sun.rmi.transport=ALL-UNNAMED
         </vmParameters>
         <programArguments></programArguments>

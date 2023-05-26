@@ -85,7 +85,14 @@ public class RemoteWizardFragmentCompositie extends Composite {
 		new Label(grpServerDetails, SWT.NONE);
 
 		Label label = new Label(grpServerDetails, SWT.NONE);
-		label.setText("Eg: https://localhost:9443/<context-root>");
+		label.setText("e.g. (EI): https://localhost:9443/carbon");
+		label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
+		Label temp = new Label(grpServerDetails, SWT.NONE);
+		temp.setVisible(false);
+		temp.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
+		Label miLabel = new Label(grpServerDetails, SWT.NONE);
+		miLabel.setText("e.g. (MI): https://localhost:9164/management");
+		miLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
 		btnTestConnection = new Button(grpServerDetails, SWT.NONE);
 		btnTestConnection.addSelectionListener(new SelectionAdapter() {
@@ -220,15 +227,20 @@ public class RemoteWizardFragmentCompositie extends Composite {
 		}
 	}
 
-	private void validateCredentials() throws Exception {
-		validateURL();
-		String sessionCookie =
-		                       CarbonServerUtils.createSessionCookie(getServerURL().toString(), getUsername(),
-		                                                             getPassword());
-		if (sessionCookie == null) {
-			throw new Exception("Invalid credentials");
-		}
-	}
+    private void validateCredentials() throws Exception {
+        validateURL();
+        if ("mi".equals(getServerType())) {
+            if (!CarbonServerUtils.loginToMI(getServerURL().toString(), getUsername(), getPassword())) {
+                throw new Exception("Invalid credentials");
+            }
+        } else {
+            String sessionCookie = CarbonServerUtils.createSessionCookie(getServerURL().toString(), getUsername(),
+                    getPassword());
+            if (sessionCookie == null) {
+                throw new Exception("Invalid credentials");
+            }
+        }
+    }
 
 	protected String getValidateString() {
 		String msg = null;
@@ -254,8 +266,17 @@ public class RemoteWizardFragmentCompositie extends Composite {
 		// Disable the check that prevents subclassing of SWT components
 	}
 
+    public String getServerType() {
+        return remoteCarbonServer.getServerType();
+    }
+
+    public void setServerType(String type) {
+        remoteCarbonServer.setServerType(type);
+    }
+	
 	public void setServerURL(String url) throws MalformedURLException {
 		remoteCarbonServer.setServerURL(new URL(url));
+		remoteCarbonServer.setServerType(url.contains("management") ? "mi" : "ei");
 	}
 
 	public URL getServerURL() {

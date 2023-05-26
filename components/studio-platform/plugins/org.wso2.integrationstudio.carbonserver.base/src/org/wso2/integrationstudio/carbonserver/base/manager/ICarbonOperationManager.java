@@ -60,6 +60,7 @@ public interface ICarbonOperationManager {
 	public static final int OPERATION_SERVER_URL = 25;
 	public static final int OPERATION_SERVER_VERSION = 26;
 	public static final int OPERATION_GET_SERVER_CONF = 27;
+	public static final int OPERATION_GET_SERVER_TYPE = 28;
 
 	public Object executeOperation(Map<String, Object> operation) throws Exception;
 

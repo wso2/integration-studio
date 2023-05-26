@@ -20,8 +20,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.Iterator;
 
 import javax.xml.namespace.NamespaceContext;
@@ -71,6 +74,7 @@ public class CarbonServerUtils {
 	private static final String REPOSITORY = "repository";
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static String servicePath;
+	private static final String MI_LOGIN_RESOURCE = "login";
 
 	public static String createSessionCookie(String serverURL, String username, String pwd) throws Exception {
 		AuthenticationAdminStub authenticationStub;
@@ -90,6 +94,35 @@ public class CarbonServerUtils {
 			return null;
 		}
 	}
+	
+    /**
+     * Method to verify the credentials in the add remote server wizard
+     * 
+     * @param serverURL URL of the server given by the user
+     * @param username username
+     * @param pwd password
+     * @return Authenticated / not
+     */
+    public static boolean loginToMI(String serverURL, String username, String pwd) {
+        String logginURL = serverURL.endsWith("/") ? serverURL.concat(MI_LOGIN_RESOURCE)
+                : serverURL.concat("/").concat(MI_LOGIN_RESOURCE);
+        try {
+            URL url = new URL(logginURL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            String credentials = username + ":" + pwd;
+            String encodedCredentials = Base64.getEncoder()
+                    .encodeToString(credentials.getBytes(StandardCharsets.UTF_8));
+            connection.setRequestProperty("Authorization", "Basic " + encodedCredentials);
+
+            int responseCode = connection.getResponseCode();
+            // not interested in the token just interested in return code
+            connection.disconnect();
+            return responseCode == 200;
+        } catch (IOException e) {
+            return false;
+        }
+    }
 
 	public static String getURL(String serverURL) throws MalformedURLException {
 		URL url = new URL(serverURL);

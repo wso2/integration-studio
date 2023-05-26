@@ -582,6 +582,11 @@ public class RemoteCarbonServerUtils {
 		return registryRoot;
 	}
 
+    public static String getServerType(IServer server) {
+        RemoteCarbonServer serverDelegate = (RemoteCarbonServer) server.loadAdapter(RemoteCarbonServer.class, null);
+        return serverDelegate.getServerType();
+    }
+
 	public static URL getServerURL(IServer server) {
 		RemoteCarbonServer serverDelegate = (RemoteCarbonServer) server.loadAdapter(RemoteCarbonServer.class, null);
 		return serverDelegate.getServerURL();

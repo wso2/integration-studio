@@ -827,6 +827,26 @@ public final class CarbonServerManager implements IServerManager {
 		return credentials;
 	}
 
+    /**
+     * Get the type of the remote server (EI/MI)
+     * 
+     * @param server Server instance
+     * @return "ei" or "mi" depending on the server type
+     * @throws Exception error occurred while fetching information
+     */
+    public static String getRemoteServerType(IServer server) throws Exception {
+        Map<String, String> result = null;
+        if (server != null) {
+            IServerManager esbServerManager = ServerController.getInstance().getServerManager();
+            HashMap<String, Object> operationParameters = new HashMap<String, Object>();
+            operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
+                    ICarbonOperationManager.OPERATION_GET_SERVER_TYPE);
+            Object r = esbServerManager.executeOperationOnServer(server, operationParameters);
+            return r.toString();
+        }
+        return null;
+    }
+
 	public static URL getServerURL(IServer server) throws Exception {
 		if (server != null) {
 			IServerManager esbServerManager = ServerController.getInstance().getServerManager();

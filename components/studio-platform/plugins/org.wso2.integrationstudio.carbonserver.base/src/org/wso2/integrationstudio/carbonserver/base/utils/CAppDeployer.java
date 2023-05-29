@@ -1,15 +1,26 @@
 package org.wso2.integrationstudio.carbonserver.base.utils;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.Base64;
 import java.util.Enumeration;
 
 import javax.activation.DataHandler;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
 
 import org.apache.axis2.AxisFault;
 import org.apache.axis2.Constants;
@@ -30,11 +41,133 @@ import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.platform.ui.preferences.ClientTrustStorePreferencePage;
 import org.wso2.integrationstudio.platform.ui.utils.SSLUtils;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 public class CAppDeployer {
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static IPreferencesService preferenceStore;
+	private static final String MI_LOGIN_RESOURCE = "login";
+	private static final String MI_CAPP_RESOURCE = "applications";
+	
+    public void deployCApp(String username, String pwd, String url, File carFile, String serverType) throws Exception {
+        if (serverType == null || "ei".equals(serverType)) {
+            deployCApp(username, pwd, url, carFile);
+        } else if ("mi".equals(serverType)) {
+            String accessToken = getAccessToken(url, username, pwd);
+            if (accessToken != null) {
+                uploadCAppToMI(url, carFile, accessToken);
+            }
+        }
+    }
+	
+    /**
+     * Upload a CAPP to micro integrator via the management API
+     * 
+     * @param url MI management API URL
+     * @param carFile CAPP to be uploaded
+     * @param token Access token to management API
+     * @throws Exception 
+     */
+    private void uploadCAppToMI(String apiUrl, File carFile, String token) throws Exception {
+        String uploadURL = apiUrl.endsWith("/") ? apiUrl.concat(MI_CAPP_RESOURCE)
+                : apiUrl.concat("/").concat(MI_CAPP_RESOURCE);
 
+        String boundary = "------------------------" + Long.toHexString(System.currentTimeMillis());
+        // Generate some unique random value.
+        String CRLF = "\r\n"; // Line separator required by multipart/form-data.
+        HttpsURLConnection connection = (HttpsURLConnection) new URL(uploadURL).openConnection();
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+        connection.addRequestProperty("Accept", "application/json");
+        connection.addRequestProperty("Authorization", "Bearer ".concat(token));
+        connection.setHostnameVerifier(getHostnameVerifier());
+
+        OutputStream output = connection.getOutputStream();
+
+        // Send binary file - part
+        PrintWriter writer = new PrintWriter(new OutputStreamWriter(output, StandardCharsets.UTF_8), true);
+        writer.append("--").append(boundary).append(CRLF);
+        writer.append("Content-Disposition: form-data; name=\"file\"; filename=\"").append(carFile.getName())
+                .append("\"").append(CRLF);
+        writer.append("Content-Type: application/octet-stream").append(CRLF);
+        writer.append(CRLF).flush();
+
+        // File data
+        Files.copy(carFile.toPath(), output);
+        output.flush();
+
+        writer.append(CRLF);
+
+        // End of multipart/form-data.
+        writer.append(CRLF).append("--").append(boundary).append("--").flush();
+
+        StringBuilder response = new StringBuilder();
+        BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        int responseCode = connection.getResponseCode();
+        if (responseCode != 200) {
+            throw new Exception("Error occurred while uploading the CAPP to MI");
+        }
+        String strCurrentLine;
+        while ((strCurrentLine = br.readLine()) != null) {
+            response.append(strCurrentLine);
+        }
+        br.close();
+        System.out.println(response);
+    }
+    
+    /**
+     * Disabling the hostname verification.
+     *
+     * @return true for all the host names.
+     */
+    private static HostnameVerifier getHostnameVerifier() {
+        return (s, sslSession) -> true;
+    }
+    
+    /**
+     * Get access token to MI management API
+     * 
+     * @param url Management API URL
+     * @param username username
+     * @param pwd password
+     * @return Access token for MI, null if error occurs
+     */
+    private String getAccessToken(String url, String username, String pwd) {
+        String logginURL = url.endsWith("/") ? url.concat(MI_LOGIN_RESOURCE)
+                : url.concat("/").concat(MI_LOGIN_RESOURCE);
+        try {
+            URL serverURL = new URL(logginURL);
+            HttpURLConnection connection = (HttpURLConnection) serverURL.openConnection();
+            connection.setRequestMethod("GET");
+            String credentials = username + ":" + pwd;
+            String encodedCredentials = Base64.getEncoder()
+                    .encodeToString(credentials.getBytes(StandardCharsets.UTF_8));
+            connection.setRequestProperty("Authorization", "Basic " + encodedCredentials);
+
+            int responseCode = connection.getResponseCode();
+            if (200 == responseCode) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String line;
+                StringBuilder response = new StringBuilder();
+
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+                reader.close();
+                JsonObject jsonResponse = new Gson().fromJson(response.toString(), JsonObject.class);
+                if (jsonResponse.has("AccessToken")) {
+                    return jsonResponse.get("AccessToken").getAsString();
+                }
+            }
+            connection.disconnect();
+        } catch (IOException e) {
+            return null;
+        }
+        return null;
+    }
+    
 	/**
 	 * This method is used to upload car files in to your carbon server
 	 * instances and to a tanent in the cloud platform.
@@ -170,6 +303,33 @@ public class CAppDeployer {
 		return metadataPath;
 	}
 
+    public void unDeployCAR(String serverURL, String username, String pwd, String carName, String serverType)
+            throws Exception {
+        if (serverType == null || "ei".equals(serverType)) {
+            unDeployCAR(serverURL, username, pwd, carName);
+        } else if ("mi".equals(serverType)) {
+            String accessToken = getAccessToken(serverURL, username, pwd);
+            if (accessToken != null) {
+                undeployCAppFromMI(serverURL, carName, accessToken);
+            }
+        }
+    }
+
+    private void undeployCAppFromMI(String apiUrl, String carFileName, String token) throws Exception {
+        String apiURL = apiUrl.endsWith("/") ? apiUrl.concat(MI_CAPP_RESOURCE)
+                : apiUrl.concat("/").concat(MI_CAPP_RESOURCE);
+        String deleteURL = apiURL.concat("/").concat(carFileName);
+        HttpsURLConnection connection = (HttpsURLConnection) new URL(deleteURL).openConnection();
+        connection.setDoOutput(true);
+        connection.addRequestProperty("Accept", "application/json");
+        connection.addRequestProperty("Authorization", "Bearer ".concat(token));
+        connection.setHostnameVerifier(getHostnameVerifier());
+        connection.setRequestMethod("DELETE");
+        int responseCode = connection.getResponseCode();
+        if (responseCode != 200) {
+            throw new Exception("Error occurred while deleting the CAPP from MI");
+        }
+    }
 	/**
 	 * This method is used to remove car files from your carbon server instances
 	 * and from tanent in the cloud platform.

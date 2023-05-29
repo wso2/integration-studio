@@ -71,21 +71,26 @@ public class RemoteCarbonServerBehavior extends ServerBehaviourDelegate {
 		setServerStopped();
 	}
 
-	protected void startPingThread() {
-		try {
-			if (ping != null) {
-				ping.stop();
-			}
-			setServerState(IServer.STATE_STARTING);
-			RemoteCarbonServer rcs = (RemoteCarbonServer) getServer().loadAdapter(RemoteCarbonServer.class, null);
-			URL serverURL = rcs.getServerURL();
-			URL pingURL = new URL(serverURL.toString() + "/carbon");
-			ping = new CarbonPingThread(pingURL, this);
-			ping.startPing();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    protected void startPingThread() {
+        try {
+            if (ping != null) {
+                ping.stop();
+            }
+            setServerState(IServer.STATE_STARTING);
+            RemoteCarbonServer rcs = (RemoteCarbonServer) getServer().loadAdapter(RemoteCarbonServer.class, null);
+            URL serverURL = rcs.getServerURL();
+            String pingURLString = serverURL.toString();
+            if (!pingURLString.contains("management")) {
+                // concat "carbon" only for EI
+                pingURLString = pingURLString.concat("/carbon");
+            }
+            URL pingURL = new URL(pingURLString);
+            ping = new CarbonPingThread(pingURL, this);
+            ping.startPing();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 	private boolean isRemote() {
 		return true;
@@ -120,7 +125,7 @@ public class RemoteCarbonServerBehavior extends ServerBehaviourDelegate {
 			serviceModuleOperations.publishServiceModule(null, null);
 		} else if (deltaKind == REMOVED) {
 			serviceModuleOperations.unpublishServiceModule(null, null);
-		} else {
+		} else if (deltaKind == CHANGED) {
 			checkClosed(module);
 			serviceModuleOperations.hotUpdateModule();
 		}

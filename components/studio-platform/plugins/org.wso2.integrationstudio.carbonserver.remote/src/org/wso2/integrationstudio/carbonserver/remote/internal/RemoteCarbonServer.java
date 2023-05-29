@@ -69,6 +69,15 @@ public class RemoteCarbonServer extends ServerDelegate {
 	private static final String ATTR_USERNAME = "USERNAME";
 	private static final String ATTR_PASSWORD = "PASSWORD";
 	private static final String ATTR_URL = "SERVER_URL";
+	private static final String SERVER_TYPE = "SERVER_TYPE";
+	
+    public String getServerType() {
+        return getAttribute(SERVER_TYPE, "ei");
+    }
+
+    public void setServerType(String serverType) {
+        setAttribute(SERVER_TYPE, serverType);
+    }
 
 	public String getUsername() {
 		return getAttribute(ATTR_USERNAME, "admin");

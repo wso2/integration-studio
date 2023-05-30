@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -227,11 +228,17 @@ public class EsbDiagramEditorUtil {
         progressMonitor.beginTask(Messages.EsbDiagramEditorUtil_CreateDiagramProgressTask, 3);
         final String name = fileName.replaceAll(".xml$", "");
         Location instanceLoc = Platform.getInstanceLocation();
-        String prefix = instanceLoc.getURL().toString() + RESOURCES_PATH + name;
+        String prefix = "";
+        String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
+        if (OS.indexOf("windows") >= 0) {
+            prefix = instanceLoc.getURL().getPath().substring(1).concat(RESOURCES_PATH + name);
+        } else {
+            prefix = instanceLoc.getURL().getPath().concat(RESOURCES_PATH + name);
+        }
         final Resource diagramResource = editingDomain.getResourceSet()
-                .createResource(URI.createURI(prefix.concat(".esb_diagram")));
+                .createResource(URI.createFileURI(new java.io.File(prefix.concat(".esb_diagram")).getAbsolutePath()));
         final Resource modelResource = editingDomain.getResourceSet()
-                .createResource(URI.createURI(prefix.concat(".esb")));
+                .createResource(URI.createFileURI(new java.io.File(prefix.concat(".esb")).getAbsolutePath()));
         editingDomain.getResourceSet().getResources().add(diagramResource);
         editingDomain.getResourceSet().getResources().add(modelResource);
         AbstractTransactionalCommand command = new AbstractTransactionalCommand(editingDomain,

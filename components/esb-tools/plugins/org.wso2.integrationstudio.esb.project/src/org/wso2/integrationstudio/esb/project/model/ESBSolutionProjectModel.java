@@ -188,7 +188,12 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
     }
 
     public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
-        boolean returnResult = super.setModelPropertyValue(key, data);
+        
+        boolean returnResult =  false;
+        if (!key.equals(ESB_PROJECT_NAME)) {
+            returnResult = super.setModelPropertyValue(key, data);
+        }
+        
         String value = data.toString();
         if (key.equals(MMM_PROJECT_NAME)) {
             setMMMProjectName(value);

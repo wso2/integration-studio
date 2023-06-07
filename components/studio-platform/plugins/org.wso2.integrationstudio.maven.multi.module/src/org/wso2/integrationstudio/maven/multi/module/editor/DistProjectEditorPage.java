@@ -823,10 +823,18 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                             return;
                         }
                         createTreeContent();
-                        txtVersion.setText(getVersion());
-                        txtArtifactId.setText(getArtifactId());
-                        txtDescription.setText(getDescription());
-                        txtGroupId.setText(getGroupId());
+                        if (!getVersion().equals(txtVersion.getText())) {
+                            txtVersion.setText(getVersion());
+                        }
+                        if (!getArtifactId().equals(txtArtifactId.getText())) {
+                            txtArtifactId.setText(getArtifactId());
+                        }
+                        if (!getDescription().equals(txtDescription.getText())) {
+                            txtDescription.setText(getDescription());
+                        }
+                        if (!getGroupId().equals(txtGroupId.getText())) {
+                            txtGroupId.setText(getGroupId());
+                        }   
                     }
                 });
             }

@@ -15,17 +15,27 @@ package org.wso2.integrationstudio.esb.project.ui.wizard;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.integrationstudio.artifact.connector.model.ConnectorModel;
+import org.wso2.integrationstudio.artifact.connector.ui.wizard.AddRemoveConnectorWizard;
+import org.wso2.integrationstudio.artifact.connector.ui.wizard.ConnectorWizardPage;
 import org.wso2.integrationstudio.esb.project.Activator;
 import org.wso2.integrationstudio.esb.project.control.graphicalproject.GMFPluginDetails;
 import org.wso2.integrationstudio.esb.project.control.graphicalproject.IUpdateGMFPlugin;
@@ -43,10 +53,12 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     private ImportCloudConnectorWizardPage storeWizardPage;
     private RemoveCloudConnectorWizardPage removeWizardPage;
     private ImportRemoveSelectionWizardPage selectionPage;
+    private ConnectorExporterWizardPage connectorExporterWizardPage;
     private static final String DIR_DOT_METADATA = ".metadata";
     private static final String DIR_CONNECTORS = ".Connectors";
     private static final String ADD_CONNECTOR_FAILURE_MSG = "Failed to add connector/module";
-
+    private IProject project;
+    
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     @Override
@@ -54,6 +66,7 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
         setWindowTitle("Add or Remove Connectors/Modules");
         selectionPage = new ImportRemoveSelectionWizardPage(selection);
         storeWizardPage = new ImportCloudConnectorWizardPage(selection);
+        connectorExporterWizardPage = new ConnectorExporterWizardPage(selection);
         removeWizardPage = new RemoveCloudConnectorWizardPage(selection);
     }
 
@@ -63,6 +76,7 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     public void addPages() {
         addPage(selectionPage);
         addPage(storeWizardPage);
+        addPage(connectorExporterWizardPage);
         addPage(removeWizardPage);
         super.addPages();
     }
@@ -71,6 +85,8 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     public boolean canFinish() {
         if (selectionPage.equals(getContainer().getCurrentPage())) {
             return false;
+        } else if (storeWizardPage.equals(getContainer().getCurrentPage())) {
+            return true;
         }
         
         return true;
@@ -86,9 +102,14 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
             }
         } else if (removeWizardPage.equals(getContainer().getCurrentPage())) {
             return performFinishRemove();
+        } else if (connectorExporterWizardPage.equals(getContainer().getCurrentPage())) {
+            return performFinishAddToExporter();
         }
         return true;
     }
+    
+    
+
 
     /**
      * This method will extract connector zip file to the relevant location when user has selected import from file
@@ -127,6 +148,30 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     /**
      * This method will remove selected connectors from the file system.
      */
+    private boolean performFinishAddToExporter() {
+        
+        Map<Connector, List<ConnectorExporter>> map = connectorExporterWizardPage.getConnectorExporterMap();
+        for(Entry<Connector, List<ConnectorExporter>> entry : map.entrySet()) {
+            Connector connector = entry.getKey();
+            List<ConnectorExporter> exporters = entry.getValue();
+            
+            //Copy connectors to exporter folders
+            for(ConnectorExporter exporter : exporters) {
+                String connectorPath = connector.getConnectorFilePath() + ".zip";
+                String exporterPath = exporter.getConnectorExporterFilePath() + File.separator + connector.getConnectorName() + ".zip";
+                try {
+                    FileUtils.copyFile(new File(connectorPath), 
+                            new File(exporterPath));
+                } catch (IOException e) {
+                    log.error("Error while copying the connector : " + connectorPath + 
+                            " to connector exporter " + exporterPath, e);
+                }
+            }
+        }
+        
+        return true;
+    }
+    
     private boolean performFinishRemove() {
         for (TableItem tableItem : removeWizardPage.getTable().getItems()) {
             if (tableItem.getChecked()) {

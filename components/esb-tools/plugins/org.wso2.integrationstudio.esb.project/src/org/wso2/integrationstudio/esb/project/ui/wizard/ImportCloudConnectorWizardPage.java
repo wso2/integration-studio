@@ -60,6 +60,13 @@ import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 
 public class ImportCloudConnectorWizardPage extends WizardPage {
+
+    @Override
+    public IWizardPage getNextPage() {
+        ((ConnectorExporterWizardPage) super.getNextPage()).loadNewlyInstalledConnectors();
+        return super.getNextPage();
+    }
+
     private Text txtConnectorStoreURL;
     private String cloudConnectorPath;
     private IProject selectedProject;
@@ -183,11 +190,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
         in.close();
         out.close();
     }
-
-    @Override
-    public IWizardPage getNextPage() {
-        return null;
-    }
+    
 
     public String getCloudConnectorPath() {
         return cloudConnectorPath;

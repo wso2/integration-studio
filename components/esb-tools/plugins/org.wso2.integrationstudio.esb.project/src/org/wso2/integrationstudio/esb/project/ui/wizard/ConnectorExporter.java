@@ -16,7 +16,6 @@
 
 package org.wso2.integrationstudio.esb.project.ui.wizard;
 
-import java.io.File;
 import java.util.List;
 
 import org.apache.axiom.om.OMElement;

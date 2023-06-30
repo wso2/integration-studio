@@ -18,7 +18,6 @@ package org.wso2.integrationstudio.esb.project.ui.wizard;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,23 +31,13 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.custom.ScrolledComposite;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
@@ -57,7 +46,6 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.integrationstudio.artifact.connector.model.ConnectorModel;
 import org.wso2.integrationstudio.artifact.connector.ui.wizard.ConnectorCreationWizard;
 import org.wso2.integrationstudio.esb.project.Activator;
-import org.wso2.integrationstudio.esb.project.model.ESBSolutionProjectModel;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.platform.core.exception.ObserverFailedException;
@@ -70,13 +58,9 @@ public class ConnectorExporterWizardPage extends WizardPage {
     private static final String DIR_CONNECTORS = ".Connectors";
     private static final String DIR_DOT_PROJECT = ".project";
     private static final String CONNECTOR_XML = "connector.xml";
-    private static final String DIR_ICON = "icon";
-    private static final String ICON = "icon-large.gif";
-    private static final String ICON_NEW = "icon-large.png";
     private static final String COMBO_CONNECTOR = "combo.connector";
 
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    private static ConnectorExporterWizardPage wizard;
 
     static Map<String, Connector> existingConnectors;
     static Map<String, ConnectorExporter> allExporters;
@@ -96,7 +80,6 @@ public class ConnectorExporterWizardPage extends WizardPage {
         if (project != null) {
             setSelectedProject(project);
         }
-        wizard = this;
         existingConnectors = new HashMap<String, Connector>();
         allExporters = new HashMap<String, ConnectorExporter>();
     }
@@ -213,7 +196,7 @@ public class ConnectorExporterWizardPage extends WizardPage {
 
                     if (connectorExporter != null && connectorExporter.getConnectorExporterName() != null) {
                         connectorExporter.setConnectorExporterFilePath(children[i].getAbsolutePath());
-                        connectorExporters.put(connectorExporter.getConnectorExporterName(), connectorExporter);
+                        connectorExporters.putIfAbsent(connectorExporter.getConnectorExporterName(), connectorExporter);
                     }
 
                 }
@@ -402,7 +385,7 @@ public class ConnectorExporterWizardPage extends WizardPage {
         Map<Connector, List<ConnectorExporter>> map = new HashMap<Connector, List<ConnectorExporter>>();
         for (Combo combo : exporterCombos) {
             Object connectorObj = combo.getData(COMBO_CONNECTOR);
-            if (connectorObj != null) {
+            if (connectorObj != null && connectorObj instanceof Connector) {
                 Connector connector = (Connector) connectorObj;
                 String exporter = combo.getText();
                 if (!map.containsKey(connector)) {

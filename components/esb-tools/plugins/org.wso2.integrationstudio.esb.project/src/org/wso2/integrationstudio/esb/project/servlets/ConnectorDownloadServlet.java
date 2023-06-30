@@ -31,8 +31,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
 import org.wso2.integrationstudio.esb.project.connector.store.Connector;
 import org.wso2.integrationstudio.esb.project.exception.ConnectorException;
 import org.wso2.integrationstudio.esb.project.utils.WizardDialogUtils;

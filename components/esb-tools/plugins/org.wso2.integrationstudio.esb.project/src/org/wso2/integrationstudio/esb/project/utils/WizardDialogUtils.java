@@ -18,12 +18,9 @@
 package org.wso2.integrationstudio.esb.project.utils;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -41,7 +38,7 @@ public class WizardDialogUtils {
      * @param title
      */
     public static void showErrorMessage(String message, String title) {
-        Display.getDefault().asyncExec(new Runnable() {
+        Display.getDefault().syncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
                 Shell shell = display.getActiveShell();
@@ -92,7 +89,7 @@ public class WizardDialogUtils {
      * @param title
      */
     public static int showDownloadMessage(String message, String title, boolean isCancelEnabled) {
-        Display.getDefault().asyncExec(new Runnable() {
+        Display.getDefault().syncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
                 Shell shell = display.getActiveShell();

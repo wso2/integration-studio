@@ -25,17 +25,9 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
-import org.wso2.integrationstudio.artifact.connector.model.ConnectorModel;
-import org.wso2.integrationstudio.artifact.connector.ui.wizard.AddRemoveConnectorWizard;
-import org.wso2.integrationstudio.artifact.connector.ui.wizard.ConnectorWizardPage;
 import org.wso2.integrationstudio.esb.project.Activator;
 import org.wso2.integrationstudio.esb.project.control.graphicalproject.GMFPluginDetails;
 import org.wso2.integrationstudio.esb.project.control.graphicalproject.IUpdateGMFPlugin;
@@ -57,7 +49,6 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     private static final String DIR_DOT_METADATA = ".metadata";
     private static final String DIR_CONNECTORS = ".Connectors";
     private static final String ADD_CONNECTOR_FAILURE_MSG = "Failed to add connector/module";
-    private IProject project;
     
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 

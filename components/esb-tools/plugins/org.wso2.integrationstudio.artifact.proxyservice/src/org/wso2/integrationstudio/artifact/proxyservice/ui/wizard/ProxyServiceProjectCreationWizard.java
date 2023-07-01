@@ -253,6 +253,26 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 		typeListNode.setValue("${artifact.types}");
 		pluginExecution.setConfiguration(configurationNode);
 		plugin.addExecution(pluginExecution);
+		
+		boolean metaPluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
+				"wso2-esb-metadata-plugin");
+		if (!metaPluginExists) {
+			Plugin plugin2 = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-metadata-plugin",
+					ESBMavenConstants.WSO2_ESB_METADATA_VERSION, true);
+			PluginExecution pluginExecution2 = new PluginExecution();
+			pluginExecution2.addGoal("pom-gen");
+			pluginExecution2.setPhase("process-resources");
+			pluginExecution2.setId("metadata");
+
+			Xpp3Dom configurationNode2 = MavenUtils.createMainConfigurationNode();
+			Xpp3Dom artifactLocationNode2 = MavenUtils.createXpp3Node(configurationNode2, "artifactLocation");
+			artifactLocationNode2.setValue(".");
+			Xpp3Dom typeListNode2 = MavenUtils.createXpp3Node(configurationNode2, "typeList");
+			typeListNode2.setValue("${artifact.types}");
+			pluginExecution2.setConfiguration(configurationNode2);
+			plugin2.addExecution(pluginExecution2);
+		}
+		
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
 

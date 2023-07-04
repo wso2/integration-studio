@@ -185,7 +185,6 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
         in.close();
         out.close();
     }
-    
 
     public String getCloudConnectorPath() {
         return cloudConnectorPath;

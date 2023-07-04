@@ -52,9 +52,6 @@ public class ConnectorExporter extends AbstractXMLDoc{
 	            setConnectorExporterName(name);
 	        }
 	    }
-	    
-	    
-		
 	}
 
     @Override

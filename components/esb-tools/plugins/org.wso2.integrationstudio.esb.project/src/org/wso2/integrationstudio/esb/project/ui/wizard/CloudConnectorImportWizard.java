@@ -49,7 +49,6 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
     private static final String DIR_DOT_METADATA = ".metadata";
     private static final String DIR_CONNECTORS = ".Connectors";
     private static final String ADD_CONNECTOR_FAILURE_MSG = "Failed to add connector/module";
-    
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     @Override
@@ -98,9 +97,6 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
         }
         return true;
     }
-    
-    
-
 
     /**
      * This method will extract connector zip file to the relevant location when user has selected import from file

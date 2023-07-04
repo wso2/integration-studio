@@ -86,18 +86,15 @@ public class ConnectorDownloadServlet extends HttpServlet {
                                         
                                         WizardDialogUtils.showSuccessMessage(connector.getAttributes().getOverview_name()
                                                 + " connector is downloaded Successfully.", DOWNLOADING_CONNECTOR_MSG, false);
-                                        
                                         return Status.OK_STATUS;
                                     }
                                 } catch (ConnectorException e) {
                                     WizardDialogUtils.showErrorMessage(e.getMessage(), DOWNLOADING_CONNECTOR_FAILED_MSG);
-                                    
                                 }
                                 monitor.worked(100);
                                 monitor.done();
                                 return Status.CANCEL_STATUS;
                             }
-                            
                             
                         };
                         downloadJob.schedule();

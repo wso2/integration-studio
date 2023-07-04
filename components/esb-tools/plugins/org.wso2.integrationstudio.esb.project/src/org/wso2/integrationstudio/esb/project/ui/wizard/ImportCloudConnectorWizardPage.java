@@ -35,16 +35,11 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
-import org.eclipse.swt.events.ControlAdapter;
-import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -60,6 +55,13 @@ import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 
 public class ImportCloudConnectorWizardPage extends WizardPage {
+
+    @Override
+    public IWizardPage getNextPage() {
+        ((ConnectorExporterWizardPage) super.getNextPage()).loadNewlyInstalledConnectors();
+        return super.getNextPage();
+    }
+
     private Text txtConnectorStoreURL;
     private String cloudConnectorPath;
     private IProject selectedProject;
@@ -182,11 +184,6 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
         }
         in.close();
         out.close();
-    }
-
-    @Override
-    public IWizardPage getNextPage() {
-        return null;
     }
 
     public String getCloudConnectorPath() {

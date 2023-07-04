@@ -160,7 +160,7 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 		return false;
 	}	
 	
-	private boolean performFinishAdd(){
+	public boolean performFinishAdd(){
 		boolean result;
 		try {
 			copyConnectors();

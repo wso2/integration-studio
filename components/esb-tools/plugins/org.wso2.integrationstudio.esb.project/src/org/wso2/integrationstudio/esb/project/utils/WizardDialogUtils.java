@@ -38,10 +38,11 @@ public class WizardDialogUtils {
      * @param title
      */
     public static void showErrorMessage(String message, String title) {
-        Display.getDefault().asyncExec(new Runnable() {
+        Display.getDefault().syncExec(new Runnable() {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
                 Shell shell = display.getActiveShell();
+                shell.setEnabled(true);
 
                 MessageBox exportMsg = new MessageBox(shell, SWT.ICON_ERROR);
                 exportMsg.setText(title);
@@ -63,6 +64,7 @@ public class WizardDialogUtils {
             public void run() {
                 Display display = PlatformUI.getWorkbench().getDisplay();
                 Shell shell = display.getActiveShell();
+                shell.setEnabled(true);
 
                 MessageBox exportMsg;
                 if (isCancelEnabled) {
@@ -79,5 +81,33 @@ public class WizardDialogUtils {
         
         return isCanceled;
     }
+    
+    /**
+     * Show download message pop up
+     * 
+     * @param message
+     * @param title
+     */
+    public static int showDownloadMessage(String message, String title, boolean isCancelEnabled) {
+        Display.getDefault().syncExec(new Runnable() {
+            public void run() {
+                Display display = PlatformUI.getWorkbench().getDisplay();
+                Shell shell = display.getActiveShell();
 
+                MessageBox exportMsg;
+                if (isCancelEnabled) {
+                    exportMsg = new MessageBox(shell, SWT.ICON_WORKING | SWT.OK | SWT.CANCEL);
+                } else {
+                    exportMsg = new MessageBox(shell, SWT.ICON_WORKING);
+                }
+                exportMsg.setText(title);
+                exportMsg.setMessage(message);
+                shell.setEnabled(false);
+                isCanceled = exportMsg.open();
+            }
+        });
+        
+        return isCanceled;
+    }
+    
 }

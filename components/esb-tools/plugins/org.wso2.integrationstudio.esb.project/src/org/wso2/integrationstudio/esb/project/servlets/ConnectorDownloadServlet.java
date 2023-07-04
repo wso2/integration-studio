@@ -31,8 +31,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
 import org.wso2.integrationstudio.esb.project.connector.store.Connector;
 import org.wso2.integrationstudio.esb.project.exception.ConnectorException;
 import org.wso2.integrationstudio.esb.project.utils.WizardDialogUtils;
@@ -60,15 +58,14 @@ public class ConnectorDownloadServlet extends HttpServlet {
         final String function = request.getParameter("data");
         Connector connector = new Gson().fromJson(function, Connector.class);
         
-        int isCanceled = WizardDialogUtils.showSuccessMessage(
+        int isCanceled = WizardDialogUtils.showDownloadMessage(
                 "Click 'OK' to download the " + connector.getAttributes().getOverview_name() + " connector to the workspace.",
                 DOWNLOADING_CONNECTOR_MSG, true);
-
         // check user action is CANCEL or not
         if (isCanceled == SWT.CANCEL) {
             return;
         }
-
+        
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println("{ \"status\": \"ok\"}");
@@ -98,6 +95,7 @@ public class ConnectorDownloadServlet extends HttpServlet {
                                 monitor.done();
                                 return Status.CANCEL_STATUS;
                             }
+                            
                         };
                         downloadJob.schedule();
                     }

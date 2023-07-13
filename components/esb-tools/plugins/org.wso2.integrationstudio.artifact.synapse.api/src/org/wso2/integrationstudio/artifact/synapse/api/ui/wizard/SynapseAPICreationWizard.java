@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -135,6 +136,11 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Synapse API";
     private static final String DIR_DOT_METADATA = ".metadata";
     private static final String DIR_SOAPTOREST= "SoapToREST";
+    private static final String IF_PLACEHOLDER = "ifPlaceholder";
+    private static final String FREEMARKER_IF = "#if";
+    private static final String QUESTION_MARK_PLACEHOLDER = "questionPlaceholder";
+    private static final String ATTRIBUTE_REGEX = "attributePlaceholder=\"(.*?)\"";
+    
     
     private final APIArtifactModel artifactModel;
     private IFile artifactFile;
@@ -443,6 +449,11 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                                 transformer.transform(new DOMSource(soapRequestElement.getSoapRequestBody()),
                                         new StreamResult(writer));
                                 String soapPayload = writer.getBuffer().toString();
+                                soapPayload = soapPayload.replaceAll(IF_PLACEHOLDER, FREEMARKER_IF)
+                                        .replaceAll(QUESTION_MARK_PLACEHOLDER, "?");
+                                Pattern pattern = Pattern.compile(ATTRIBUTE_REGEX);
+                                Matcher matcher = pattern.matcher(soapPayload);
+                                soapPayload = matcher.replaceAll("$1");
                                 SequenceMediator sequence = new SequenceMediator();
 
                                 if (StringUtils.isNotBlank(soapRequestElement.getSoapAction())) {

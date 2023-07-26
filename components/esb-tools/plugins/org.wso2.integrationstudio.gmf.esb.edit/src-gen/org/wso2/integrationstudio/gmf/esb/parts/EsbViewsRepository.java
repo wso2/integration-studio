@@ -90,6 +90,8 @@ public class EsbViewsRepository {
 			
 			public static String enableBlockingCalls = "esb::CallMediator::properties::enableBlockingCalls";
 			
+			public static String initAxis2ClientOptions = "esb::CallMediator::properties::initAxis2ClientOptions";
+			
 			// Start of user code for endpointXpath ElementEditor key
 			public static String endpointXpath = "esb::CallMediator::properties::endpointXpath";
 			// End of user code

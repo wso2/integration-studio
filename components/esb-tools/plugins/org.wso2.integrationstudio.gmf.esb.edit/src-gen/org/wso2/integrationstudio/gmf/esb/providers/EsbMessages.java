@@ -3518,6 +3518,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String CallMediatorPropertiesEditionPart_EnableBlockingCallsLabel;
+	
+	
+	public static String CallMediatorPropertiesEditionPart_InitAxis2ClientOptionsLabel;
 
 	
 	public static String CallMediatorPropertiesEditionPart_EndpointXpathLabel;

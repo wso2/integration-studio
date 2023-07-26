@@ -118,6 +118,9 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(EsbViewsRepository.CallMediator.Properties.enableBlockingCalls)) {
 				basePart.setEnableBlockingCalls(callMediator.isEnableBlockingCalls());
 			}
+			if (isAccessible(EsbViewsRepository.CallMediator.Properties.initAxis2ClientOptions)) {
+                basePart.setInitAxis2ClientOptions(callMediator.isInitAxis2ClientOptions());
+            }
 			// Start of user code  for endpointXPath command update
 	        if (isAccessible(EsbViewsRepository.CallMediator.Properties.endpointXpath)) {
                   basePart.setEndpointXPath(callMediator.getEndpointXpath());
@@ -217,6 +220,9 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == EsbViewsRepository.CallMediator.Properties.enableBlockingCalls) {
 			return EsbPackage.eINSTANCE.getCallMediator_EnableBlockingCalls();
 		}
+		if (editorKey == EsbViewsRepository.CallMediator.Properties.initAxis2ClientOptions) {
+			return EsbPackage.eINSTANCE.getCallMediator_InitAxis2ClientOptions();
+		}
 		if (editorKey == EsbViewsRepository.CallMediator.Properties.endpointXpath) {
 			return EsbPackage.eINSTANCE.getCallMediator_EndpointXpath();
 		}
@@ -282,6 +288,9 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 		}
 		if (EsbViewsRepository.CallMediator.Properties.enableBlockingCalls == event.getAffectedEditor()) {
 			callMediator.setEnableBlockingCalls((Boolean)event.getNewValue());
+		}
+		if (EsbViewsRepository.CallMediator.Properties.initAxis2ClientOptions == event.getAffectedEditor()) {
+			callMediator.setInitAxis2ClientOptions((Boolean)event.getNewValue());
 		}
 		if (EsbViewsRepository.CallMediator.Properties.endpointXpath == event.getAffectedEditor()) {
 			// Start of user code for updateEndpointXPath method body
@@ -377,6 +386,9 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 			if (EsbPackage.eINSTANCE.getCallMediator_EnableBlockingCalls().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.CallMediator.Properties.enableBlockingCalls))
 				basePart.setEnableBlockingCalls((Boolean)msg.getNewValue());
 			
+			if (EsbPackage.eINSTANCE.getCallMediator_InitAxis2ClientOptions().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.CallMediator.Properties.initAxis2ClientOptions))
+                basePart.setInitAxis2ClientOptions((Boolean)msg.getNewValue());
+			
 					// Start of user code for endpointXPath live update
 			if (EsbPackage.eINSTANCE.getCallMediator_EndpointXpath().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.CallMediator.Properties.endpointXpath)) {
                 if (msg.getNewValue() != null) {
@@ -470,6 +482,7 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 			EsbPackage.eINSTANCE.getCallMediator_Endpoint(),
 			EsbPackage.eINSTANCE.getCallMediator_EndpointType(),
 			EsbPackage.eINSTANCE.getCallMediator_EnableBlockingCalls(),
+			EsbPackage.eINSTANCE.getCallMediator_InitAxis2ClientOptions(),
 			EsbPackage.eINSTANCE.getCallMediator_EndpointXpath(),
 			EsbPackage.eINSTANCE.getCallMediator_EndpointRegistrykey(),
             EsbPackage.eINSTANCE.getCallMediator_SourceXPath(),
@@ -528,6 +541,13 @@ public class CallMediatorPropertiesEditionComponent extends SinglePartProperties
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getCallMediator_EnableBlockingCalls().getEAttributeType(), newValue);
 				}
+				if (EsbViewsRepository.CallMediator.Properties.initAxis2ClientOptions == event.getAffectedEditor()) {
+                    Object newValue = event.getNewValue();
+                    if (newValue instanceof String) {
+                        newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getCallMediator_InitAxis2ClientOptions().getEAttributeType(), (String)newValue);
+                    }
+                    ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getCallMediator_InitAxis2ClientOptions().getEAttributeType(), newValue);
+                }
 				if (EsbViewsRepository.CallMediator.Source.sourceType == event.getAffectedEditor()) {
                     Object newValue = event.getNewValue();
                     if (newValue instanceof String) {

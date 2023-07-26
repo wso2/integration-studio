@@ -63,6 +63,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_cBfABVKHEeytLvTPN0Qx6A" name="contentType" views="_cBgO91KHEeytLvTPN0Qx6A">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//CallMediator/contentType"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Qa22gCvmEe6bWs3zbgJwEQ" name="initAxis2ClientOptions" views="_cBg331KHEeytLvTPN0Qx6A">
+          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//CalloutMediator/initAxis2ClientOptions"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/org.wso2.integrationstudio.gmf.esb/model/esb.ecore#//CallMediator"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_cBfABlKHEeytLvTPN0Qx6A" name="CallMediatorInputConnector" views="_cBgO-FKHEeytLvTPN0Qx6A">
@@ -5948,6 +5951,9 @@
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_cBgO91KHEeytLvTPN0Qx6A" name="contentType">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_E8924CvmEe6bWs3zbgJwEQ" name="initAxis2ClientOptions">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
       </views>

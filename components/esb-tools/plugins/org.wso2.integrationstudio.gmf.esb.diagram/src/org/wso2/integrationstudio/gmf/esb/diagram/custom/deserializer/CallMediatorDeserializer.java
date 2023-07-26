@@ -14,6 +14,7 @@ import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CALL_MEDIAT
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT_XPATH;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENDPOINT;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__ENABLE_BLOCKING_CALLS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.CALL_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMText;
@@ -60,6 +61,7 @@ public class CallMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
         CallMediatorEndpointType endPointType = getEndpointType(endPoint);
         executeSetValueCommand(CALL_MEDIATOR__ENDPOINT_TYPE, endPointType);
         executeSetValueCommand(CALL_MEDIATOR__ENABLE_BLOCKING_CALLS, callMediator.isBlocking());
+        executeSetValueCommand(CALL_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS, callMediator.getInitClientOptions());
         if (endPoint != null) {
             @SuppressWarnings("rawtypes")
             IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endPoint);

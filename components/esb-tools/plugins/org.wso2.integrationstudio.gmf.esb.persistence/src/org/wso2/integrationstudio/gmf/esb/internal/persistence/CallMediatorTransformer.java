@@ -129,6 +129,7 @@ public class CallMediatorTransformer extends AbstractEsbNodeTransformer {
             synapseCallMediator.setEndpoint(null);
         }
         synapseCallMediator.setBlocking(visualCallMediator.isEnableBlockingCalls());
+        synapseCallMediator.setInitClientOptions(visualCallMediator.isInitAxis2ClientOptions());
 
         org.apache.synapse.mediators.elementary.Source source = new org.apache.synapse.mediators.elementary.Source();
         org.apache.synapse.mediators.elementary.Target target = new org.apache.synapse.mediators.elementary.Target();

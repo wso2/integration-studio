@@ -357,6 +357,28 @@ public class CallMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Init Axis2 Client Options feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addInitAxis2ClientOptionsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CallMediator_initAxis2ClientOptions_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CallMediator_initAxis2ClientOptions_feature", "_UI_CallMediator_type"),
+                 EsbPackage.Literals.CALL_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -437,6 +459,7 @@ public class CallMediatorItemProvider extends MediatorItemProvider {
             case EsbPackage.CALL_MEDIATOR__SOURCE_TYPE:
             case EsbPackage.CALL_MEDIATOR__TARGET_TYPE:
             case EsbPackage.CALL_MEDIATOR__CONTENT_TYPE:
+            case EsbPackage.CALL_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.CALL_MEDIATOR__INPUT_CONNECTOR:

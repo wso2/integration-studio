@@ -182,9 +182,9 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 				ConnectorArtifact connectorArtifact= (ConnectorArtifact) tableItem.getData();
 				connectorProjectArtifact.removeESBArtifact(connectorArtifact);				
 				project.getFile(connectorArtifact.getFile()).delete(true, new NullProgressMonitor());
-				SynapseUtils.removeConnectorBuildArtifacts(project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER),
-						SynapseConstants.CONNECTOR_FOLDER, connectorArtifact.getName(), connectorArtifact.getVersion());
-			}
+                SynapseUtils.removeConnectorBuildArtifacts(project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER),
+                        SynapseConstants.CONNECTOR_FOLDER, connectorArtifact.getName(), connectorArtifact.getVersion());
+            }
 		}
 	
 		connectorProjectArtifact.toFile();

@@ -34,6 +34,7 @@ public class WSO2MavenPluginVersions {
 		PLUGIN_VERSIONS.put("maven-carbon-ui-plugin", "5.2.42");
 		PLUGIN_VERSIONS.put("maven-cep-plugin", "1.1.0");
 		PLUGIN_VERSIONS.put("maven-dataservice-plugin", "5.2.42");
+		PLUGIN_VERSIONS.put("maven-datasource-plugin", "5.2.42");
 		PLUGIN_VERSIONS.put("maven-ds-validator-plugin", "2.1.0");
 		PLUGIN_VERSIONS.put("maven-endpoint-plugin", "2.1.0");
 		PLUGIN_VERSIONS.put("maven-gadget-plugin", "2.1.0");
@@ -71,6 +72,7 @@ public class WSO2MavenPluginVersions {
 		PLUGIN_VERSIONS.put("maven-car-deploy-plugin", "5.2.42");
 		PLUGIN_VERSIONS.put("maven-car-plugin", "5.2.42");
 		PLUGIN_VERSIONS.put("wso2-esb-metadata-plugin", "5.2.42");
+		PLUGIN_VERSIONS.put("wso2-mi-synapse-plugin", "5.2.42");
 	}
 	
 	private WSO2MavenPluginVersions(){

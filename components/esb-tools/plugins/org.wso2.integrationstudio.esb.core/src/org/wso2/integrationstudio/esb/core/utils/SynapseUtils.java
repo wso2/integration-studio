@@ -225,8 +225,8 @@ public class SynapseUtils {
             String relativePathToRealArtifact) throws IOException, XmlPullParserException {
 
         createCappArtifactPom(groupId, artifactId, version, artifactType, artifactFileName, artifactFolderName,
-                cappArtifactsLocation, "../../pom.xml", "org.wso2.maven", "wso2-esb-api-plugin",
-                ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION, relativePathToRealArtifact);
+                cappArtifactsLocation, "../../pom.xml", "org.wso2.maven", "wso2-mi-synapse-plugin",
+                "5.2.43-SNAPSHOT", relativePathToRealArtifact);
 
     }
 
@@ -360,6 +360,5 @@ public class SynapseUtils {
         mavenParentProject.getModules().remove(module);
         MavenUtils.saveMavenProject(mavenParentProject, mavenParentProjectPomLocation);
     }
-	
-	
+
 }

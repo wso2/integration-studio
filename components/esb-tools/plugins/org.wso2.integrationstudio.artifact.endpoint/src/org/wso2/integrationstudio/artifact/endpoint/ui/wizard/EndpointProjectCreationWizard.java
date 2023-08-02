@@ -209,11 +209,12 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			artifact.setType(SynapseConstants.ENDPOINT_CONFIG_TYPE);
 			artifact.setServerRole("EnterpriseServiceBus");
 			artifact.setGroupId(groupId);
-			String fileLocation = FileUtils.getRelativePath(project.getLocation().toFile(),
-							new File(location.getLocation().toFile(), epModel.getEpName() + ".xml"))
-							.replaceAll(Pattern.quote(File.separator), "/");
-			artifact.setFile(fileLocation);
-			esbProjectArtifact.addESBArtifact(artifact);
+            String fileLocation = FileUtils
+                    .getRelativePath(project.getLocation().toFile(),
+                            new File(location.getLocation().toFile(), epModel.getEpName() + ".xml"))
+                    .replaceAll(Pattern.quote(File.separator), "/");
+            artifact.setFile(fileLocation);
+            esbProjectArtifact.addESBArtifact(artifact);
 			createEndpointConfigBuildArtifactPom(groupId, epModel.getEpName(), version, epModel.getEpName(), fileLocation);
 
 		}
@@ -297,11 +298,9 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		generalProjectArtifact.addArtifact(artifact);
 		generalProjectArtifact.toFile();
 
-		SynapseUtils.createRegsitryResourceBuildArtifactPom(groupId, epModel.getEpName(), version,
-				SynapseConstants.REGISTRY_RESOURCE_TYPE, epModel.getEpName(), SynapseConstants.REGISTRY_RESOURCE_FOLDER,
-				project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER));
-
-		// TODO: add registry resource build artifact
+        SynapseUtils.createRegsitryResourceBuildArtifactPom(groupId, epModel.getEpName(), version,
+                SynapseConstants.REGISTRY_RESOURCE_TYPE, epModel.getEpName(), SynapseConstants.REGISTRY_RESOURCE_FOLDER,
+                project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER));
 
 	}
 
@@ -309,21 +308,18 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		MavenProject mavenProject;
 
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
-		if (!mavenProjectPomLocation.exists()) {
-			mavenProject =
-					MavenUtils.createMavenProject("org.wso2.carbon." + project.getName(), project.getName(),
-							"1.0.0", "pom");
-		} else {
-			mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		}
+        if (!mavenProjectPomLocation.exists()) {
+            mavenProject = MavenUtils.createMavenProject("org.wso2.carbon." + project.getName(), project.getName(),
+                    "1.0.0", "pom");
+        } else {
+            mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+        }
 
-		boolean pluginExists =
-				MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
-						"wso2-general-project-plugin",
-						ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION);
-		if (pluginExists) {
-			return;
-		}
+        boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
+                "wso2-general-project-plugin", ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION);
+        if (pluginExists) {
+            return;
+        }
 
 		Plugin plugin =
 				MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-general-project-plugin",
@@ -332,7 +328,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		PluginExecution pluginExecution;
 
 		pluginExecution = new PluginExecution();
-		pluginExecution.addGoal("pom-gen");
+		pluginExecution.addGoal("copy-registry-dependencies");
 		pluginExecution.setPhase("process-resources");
 		pluginExecution.setId("registry");
 		plugin.addExecution(pluginExecution);
@@ -407,20 +403,19 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		}
 	}
 
-	private void createEndpointConfigBuildArtifactPom(String groupId, String artifactId, String version, String epName,
-												 String relativePathToRealArtifact)
-			throws BuildArtifactCreationException {
-	    
-	    IContainer buildArtifactsLocation = project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
-		try {
-			SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version,
-					SynapseConstants.ENDPOINT_CONFIG_TYPE, epName, SynapseConstants.ENDPOINT_FOLDER,
-					buildArtifactsLocation, "../../../" + relativePathToRealArtifact);
-		} catch (IOException | XmlPullParserException e) {
-			throw new BuildArtifactCreationException("Error while creating the build artifacts for Endpoint config "
-					+ epName + " at " + buildArtifactsLocation.getFullPath());
-		}
-	}
+    private void createEndpointConfigBuildArtifactPom(String groupId, String artifactId, String version, String epName,
+            String relativePathToRealArtifact) throws BuildArtifactCreationException {
+
+        IContainer buildArtifactsLocation = project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+        try {
+            SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version,
+                    SynapseConstants.ENDPOINT_CONFIG_TYPE, epName, SynapseConstants.ENDPOINT_FOLDER,
+                    buildArtifactsLocation, "../../../" + relativePathToRealArtifact);
+        } catch (IOException | XmlPullParserException e) {
+            throw new BuildArtifactCreationException("Error while creating the build artifacts for Endpoint config "
+                    + epName + " at " + buildArtifactsLocation.getFullPath());
+        }
+    }
 
 	private ESBArtifact createArtifactxml(String location, String artifactName, String groupId) {
 		ESBArtifact artifact = new ESBArtifact();

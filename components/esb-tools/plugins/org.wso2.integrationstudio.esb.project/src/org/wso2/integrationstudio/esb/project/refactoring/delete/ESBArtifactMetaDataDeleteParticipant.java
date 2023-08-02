@@ -94,15 +94,13 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
                              APIMetaFile.delete(true, null);
                          }
                          if (metadataBuildArtifactFile.exists()) {
-//                             metadataBuildArtifactFile.delete(true, null);
-							 deleteMetadataBuildArtifacts(APIName + "_metadata", buildArtifactsLocation);
+                             deleteMetadataBuildArtifacts(APIName + "_metadata", buildArtifactsLocation);
                          }
                          if(swaggerFile.exists()) {
                              swaggerFile.delete(true, null);
                          }
                          if (swaggerBuildArtifactFile.exists()) {
-//                             swaggerBuildArtifactFile.delete(true, null);
-							 deleteMetadataBuildArtifacts(APIName + "_swagger", buildArtifactsLocation);
+                             deleteMetadataBuildArtifacts(APIName + "_swagger", buildArtifactsLocation);
                          }
                      } else if (locationSegments[location.segmentCount() - 2].equals(SYNAPSE_CONFIG_DIR_PROXY_SERVICE)) {
                          String proxyXML = locationSegments[location.segmentCount()-1];
@@ -116,8 +114,7 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
                              proxyMetaFile.delete(true, null);
                          }
                          if (metadataBuildArtifactFile.exists()) {
-//                             metadataBuildArtifactFile.delete(true, null);
-							 deleteMetadataBuildArtifacts(proxyName + "_proxy_metadata", buildArtifactsLocation);
+                             deleteMetadataBuildArtifacts(proxyName + "_proxy_metadata", buildArtifactsLocation);
                          }
                      }
                  }
@@ -137,32 +134,32 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 		return emptychange;
 	}
 
-	private void deleteBuildArtifacts(List<IFile> fileList, IContainer buildArtifactsLocation) {
-		String synapseConfigDirectory = "";
-		for (IFile iFile : fileList) {
-			IPath location = originalFile.getLocation();
-			String[] locationSegments = location.segments();
-			synapseConfigDirectory = locationSegments[location.segmentCount()-2];
-			String originalFileFullName = iFile.getName();
-			try {
-				String originalFileName = originalFileFullName.substring(0, originalFileFullName.lastIndexOf("."));
+    private void deleteBuildArtifacts(List<IFile> fileList, IContainer buildArtifactsLocation) {
+        String synapseConfigDirectory = "";
+        for (IFile iFile : fileList) {
+            IPath location = originalFile.getLocation();
+            String[] locationSegments = location.segments();
+            synapseConfigDirectory = locationSegments[location.segmentCount() - 2];
+            String originalFileFullName = iFile.getName();
+            try {
+                String originalFileName = originalFileFullName.substring(0, originalFileFullName.lastIndexOf("."));
                 SynapseUtils.removeESBConfigBuildArtifacts(buildArtifactsLocation, synapseConfigDirectory,
-						originalFileName);
-			} catch (CoreException | IOException | XmlPullParserException e) {
+                        originalFileName);
+            } catch (CoreException | IOException | XmlPullParserException e) {
                 throw new OperationCanceledException("Error while deleting the build artifacts for "
-						+ originalFileFullName + " " + synapseConfigDirectory + "synapse config");
+                        + originalFileFullName + " " + synapseConfigDirectory + "synapse config");
             }
-		}
-	}
+        }
+    }
 
-	private void deleteMetadataBuildArtifacts(String metadataFolderName, IContainer buildArtifactsLocation) {
-		try {
+    private void deleteMetadataBuildArtifacts(String metadataFolderName, IContainer buildArtifactsLocation) {
+        try {
             SynapseUtils.removeESBConfigBuildArtifacts(buildArtifactsLocation, "metadata", metadataFolderName);
         } catch (CoreException | IOException | XmlPullParserException e) {
-            throw new OperationCanceledException("Error while deleting the build artifacts for "
-                    + metadataFolderName + "metadata.");
+            throw new OperationCanceledException(
+                    "Error while deleting the build artifacts for " + metadataFolderName + "metadata.");
         }
-	}
+    }
 
 	private void resetStaticVariables() {
 		changeFileList.clear();

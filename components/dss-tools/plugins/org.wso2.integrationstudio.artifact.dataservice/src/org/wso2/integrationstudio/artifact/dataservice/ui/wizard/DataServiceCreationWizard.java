@@ -214,7 +214,6 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
     private void createServiceArtifacts(File openFile) throws FactoryConfigurationError, CoreException, Exception {
         getModel().addToWorkingSet(project);
         File mavenProjectPom = project.getFile(POM_FILE).getLocation().toFile();
-        updateDSSPlugin(openFile, mavenProjectPom);
         String groupId = getMavenGroupId(mavenProjectPom) + ".dataservice";
         String relativePath = FileUtils.getRelativePath(project.getLocation().toFile(), openFile)
                 .replaceAll(Pattern.quote(File.separator), "/");
@@ -287,38 +286,6 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		artifact.setGroupId(groupId);
 		artifact.setFile(path);
 		return artifact;
-	}
-
-	/**
-	 * Updates the pom file
-	 * 
-	 * @param openFile
-	 *            current .dbs file
-	 * @throws Exception
-	 */
-	public void updateDSSPlugin(File openFile, File mavenProjectPom) throws IOException, XmlPullParserException {
-		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPom);
-
-		// Skip changing the pom file if group ID and artifact ID are matched
-		if (MavenUtils.checkOldPluginEntry(mavenProject, GROUP_ID, ARTIFACT_ID)) {
-			return;
-		}
-
-		Plugin pluginEntry = MavenUtils.createPluginEntry(mavenProject, GROUP_ID, ARTIFACT_ID,
-				MavenConstants.MAVEN_DATASERVICE_PLUGIN_VERSION, true);
-		PluginExecution pluginExecution = new PluginExecution();
-		pluginExecution.addGoal("pom-gen");
-		pluginExecution.setPhase("process-resources");
-		pluginExecution.setId("dataservice");
-
-		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
-		artifactLocationNode.setValue(".");
-		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
-		typeListNode.setValue("${artifact.types}");
-		pluginExecution.setConfiguration(configurationNode);
-		pluginEntry.addExecution(pluginExecution);
-		MavenUtils.saveMavenProject(mavenProject, mavenProjectPom);
 	}
 
 	/**

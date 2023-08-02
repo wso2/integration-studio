@@ -247,7 +247,7 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 				MavenConstants.WSO2_GENERAL_PROJECT_VERSION, true);
 		PluginExecution pluginExecution;
 		pluginExecution = new PluginExecution();
-		pluginExecution.addGoal("pom-gen");
+		pluginExecution.addGoal("copy-registry-dependencies");
 		pluginExecution.setPhase("process-resources");
 		pluginExecution.setId("registry");
 		plugin.addExecution(pluginExecution);

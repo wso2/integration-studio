@@ -107,7 +107,7 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		File pomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
 		
-		MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+        MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
         version = mavenProject.getVersion().replace("-SNAPSHOT", "");
         
 		String groupId = getMavenGroupId(pomLocation);
@@ -147,42 +147,42 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		return true;
 	}
 
-	private ESBArtifact createArtifact(String name, String groupId, String version, String path) {
-		ESBArtifact artifact = new ESBArtifact();
-		artifact.setName(name);
-		artifact.setVersion(version);
-		artifact.setType(SynapseConstants.LOCAL_ENTRY_CONFIG_TYPE);
-		artifact.setServerRole("EnterpriseServiceBus");
-		artifact.setGroupId(groupId);
-		artifact.setFile(path);
-		return artifact;
-	}
+    private ESBArtifact createArtifact(String name, String groupId, String version, String path) {
+        ESBArtifact artifact = new ESBArtifact();
+        artifact.setName(name);
+        artifact.setVersion(version);
+        artifact.setType(SynapseConstants.LOCAL_ENTRY_CONFIG_TYPE);
+        artifact.setServerRole("EnterpriseServiceBus");
+        artifact.setGroupId(groupId);
+        artifact.setFile(path);
+        return artifact;
+    }
 
-	private void addESBArtifactDetails(IContainer location, String localEntryName, String groupId, String version,
-									   String localEntryFileName, ESBProjectArtifact esbProjectArtifact) throws Exception {
+    private void addESBArtifactDetails(IContainer location, String localEntryName, String groupId, String version,
+            String localEntryFileName, ESBProjectArtifact esbProjectArtifact) throws Exception {
 
-		String relativeLocation = FileUtils.getRelativePath(esbProject.getLocation().toFile(),
-				new File(location.getLocation().toFile(), localEntryName + ".xml"))
-				.replaceAll(Pattern.quote(File.separator), "/");
-		esbProjectArtifact.addESBArtifact(createArtifact(localEntryName, groupId, version, relativeLocation));
-		esbProjectArtifact.toFile();
-		createLocalEntryBuildArtifactPom(groupId, localEntryName, version, localEntryFileName, relativeLocation);
-	}
+        String relativeLocation = FileUtils
+                .getRelativePath(esbProject.getLocation().toFile(),
+                        new File(location.getLocation().toFile(), localEntryName + ".xml"))
+                .replaceAll(Pattern.quote(File.separator), "/");
+        esbProjectArtifact.addESBArtifact(createArtifact(localEntryName, groupId, version, relativeLocation));
+        esbProjectArtifact.toFile();
+        createLocalEntryBuildArtifactPom(groupId, localEntryName, version, localEntryFileName, relativeLocation);
+    }
 
-	private void createLocalEntryBuildArtifactPom(String groupId, String artifactId, String version,
-												  String localEntryFileName, String relativePathToRealArtifact)
-			throws BuildArtifactCreationException {
-	    
-	    IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
-		try {
-			SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version,
-					SynapseConstants.LOCAL_ENTRY_CONFIG_TYPE, localEntryFileName, SynapseConstants.LOCAL_ENTRY_FOLDER,
-					buildArtifactsLocation, "../../../" + relativePathToRealArtifact);
-		} catch (IOException | XmlPullParserException e) {
-			throw new BuildArtifactCreationException("Error while creating the build artifacts for Local Entry config "
-					+ localEntryFileName + " at " + buildArtifactsLocation.getFullPath());
-		}
-	}
+    private void createLocalEntryBuildArtifactPom(String groupId, String artifactId, String version,
+            String localEntryFileName, String relativePathToRealArtifact) throws BuildArtifactCreationException {
+
+        IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+        try {
+            SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version,
+                    SynapseConstants.LOCAL_ENTRY_CONFIG_TYPE, localEntryFileName, SynapseConstants.LOCAL_ENTRY_FOLDER,
+                    buildArtifactsLocation, "../../../" + relativePathToRealArtifact);
+        } catch (IOException | XmlPullParserException e) {
+            throw new BuildArtifactCreationException("Error while creating the build artifacts for Local Entry config "
+                    + localEntryFileName + " at " + buildArtifactsLocation.getFullPath());
+        }
+    }
 
 	public boolean performFinish() {
 		if (LocalEntryArtifactConstants.TYPE_IN_LINE_XML_LE.equals(localEntryModel.getSelectedLocalEntryType()) &&

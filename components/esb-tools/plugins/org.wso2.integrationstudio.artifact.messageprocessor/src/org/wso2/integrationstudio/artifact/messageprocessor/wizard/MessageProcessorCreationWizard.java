@@ -104,11 +104,10 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 			if (!pomfile.exists()) {
 				createPOM(pomfile);
 			}
-			MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
-	        version = mavenProject.getVersion().replace("-SNAPSHOT", "");
-			esbProjectArtifact = new ESBProjectArtifact();
+            MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
+            version = mavenProject.getVersion().replace("-SNAPSHOT", "");
+            esbProjectArtifact = new ESBProjectArtifact();
 			esbProjectArtifact.fromFile(esbProject.getFile("artifact.xml").getLocation().toFile());
-//			updatePom();
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			String groupId = getMavenGroupId(pomfile) + ".message-processors";
 			if (getModel().getSelectedOption().equals("create.processor")) {
@@ -117,18 +116,9 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 				File destFile = artifactFile.getLocation().toFile();
 				FileUtils.createFile(destFile, getTemplateContent());
 				fileLst.add(destFile);
-//				String relativePath = FileUtils.getRelativePath(
-//						esbProject.getLocation().toFile(),
-//						new File(location.getLocation().toFile(), messageProcessorModel
-//								.getMessageProcessorName() + ".xml")).replaceAll(
-//										Pattern.quote(File.separator), "/");
-//				esbProjectArtifact.addESBArtifact(createArtifact(
-//						messageProcessorModel.getMessageProcessorName(), groupId, version,
-//						relativePath));
-//				esbProjectArtifact.toFile();
 
-				addESBArtifactDetails(location, messageProcessorModel.getMessageProcessorName(), groupId, version,
-						messageProcessorModel.getMessageProcessorName(), esbProjectArtifact);
+                addESBArtifactDetails(location, messageProcessorModel.getMessageProcessorName(), groupId, version,
+                        messageProcessorModel.getMessageProcessorName(), esbProjectArtifact);
 
 			} else {
 				IFile task = location.getFile(new Path(getModel().getImportFile().getName()));
@@ -144,37 +134,6 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 			}
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
-//			String artifactName = messageProcessorModel.getMessageProcessorName() + "_" + version;
-//			IContainer cappArtifactsLocation = esbProject.getFolder("src/main/resources/capp-artifacts");
-//			File mavenParentProjectPomLocation = esbProject.getFile("src/main/resources/capp-artifacts/pom.xml").getLocation().toFile();
-//			MavenProject mavenParentProject = MavenUtils.getMavenProject(mavenParentProjectPomLocation);
-//			mavenParentProject.getModules().add("message-processors/" + artifactName);
-//			MavenUtils.saveMavenProject(mavenParentProject, mavenParentProjectPomLocation);
-//
-//			IFile pomFile = cappLocation.getFile(new Path("message-processors" + File.separator + artifactName
-//					+ File.separator + "pom.xml"));
-//			FileUtils.createFile(pomFile.getLocation().toFile(), "");
-//
-//			File mavenProjectPomLocation = pomFile.getLocation().toFile();
-//
-//			MavenProject mavenProject = createCappArtifactPom(groupId, messageProcessorModel.getMessageProcessorName(), version,
-//					"synapse/message-processors", messageProcessorModel.getMessageProcessorName() + ".xml");
-//
-//			org.apache.maven.model.Parent parent = new org.apache.maven.model.Parent();
-//			parent.setGroupId(mavenParentProject.getGroupId());  // Set the parent's group ID
-//			parent.setArtifactId(mavenParentProject.getArtifactId());  // Set the parent's artifact ID
-//			parent.setVersion(mavenParentProject.getVersion());  // Set the parent's version
-//			parent.setRelativePath("../../pom.xml");
-//
-//			Model model = mavenProject.getModel();
-//			model.setParent(parent);
-//
-//			MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
-			
-//			SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, messageProcessorModel.getMessageProcessorName(),
-//			        version, "synapse/message-processors", messageProcessorModel.getMessageProcessorName(),
-//			        ".xml", "message-processors", cappArtifactsLocation);
-
 			for (File file : fileLst) {
 				if (file.exists()) {
 					openEditor(file);
@@ -187,20 +146,6 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 			log.error("An unexpected error has occurred", e);
 		}
 		return true;
-	}
-
-	private MavenProject createCappArtifactPom(String groupId, String artifactId, String version, String artifactType, String artifactFileName) {
-		MavenProject mavenProject = MavenUtils.createMavenProject(groupId, artifactId,
-				version, artifactType);
-
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-api-plugin",
-				ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION, true);
-
-		Xpp3Dom configuration = (Xpp3Dom) plugin.getConfiguration();
-		//add configuration
-		Xpp3Dom aritfact = MavenUtils.createXpp3Node(configuration, "artifact");
-		aritfact.setValue("../../../../synapse-config/message-processors/" + artifactFileName);
-		return mavenProject;
 	}
 
 	@Override
@@ -224,60 +169,33 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 		return artifact;
 	}
 
-	private void addESBArtifactDetails(IContainer location, String messageProcessorName, String groupId, String version,
-									   String messageProcessorFileName, ESBProjectArtifact esbProjectArtifact) throws Exception {
+    private void addESBArtifactDetails(IContainer location, String messageProcessorName, String groupId, String version,
+            String messageProcessorFileName, ESBProjectArtifact esbProjectArtifact) throws Exception {
 
-		String relativeLocation = FileUtils.getRelativePath(esbProject.getLocation().toFile(),
-						new File(location.getLocation().toFile(), messageProcessorName + ".xml"))
-				.replaceAll(Pattern.quote(File.separator), "/");
-		esbProjectArtifact.addESBArtifact(createArtifact(messageProcessorName, groupId, version, relativeLocation));
-		esbProjectArtifact.toFile();
-		createMessageProcessorBuildArtifactPom(groupId, messageProcessorName, version, messageProcessorFileName,
-				relativeLocation);
-	}
+        String relativeLocation = FileUtils
+                .getRelativePath(esbProject.getLocation().toFile(),
+                        new File(location.getLocation().toFile(), messageProcessorName + ".xml"))
+                .replaceAll(Pattern.quote(File.separator), "/");
+        esbProjectArtifact.addESBArtifact(createArtifact(messageProcessorName, groupId, version, relativeLocation));
+        esbProjectArtifact.toFile();
+        createMessageProcessorBuildArtifactPom(groupId, messageProcessorName, version, messageProcessorFileName,
+                relativeLocation);
+    }
 
-	private void createMessageProcessorBuildArtifactPom(String groupId, String artifactId, String version,
-												  String msgProcessorFileName, String relativePathToRealArtifact)
-			throws BuildArtifactCreationException {
+    private void createMessageProcessorBuildArtifactPom(String groupId, String artifactId, String version,
+            String msgProcessorFileName, String relativePathToRealArtifact) throws BuildArtifactCreationException {
 
-		IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
-		try {
-			SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version,
-					SynapseConstants.MESSAGE_PROCESSOR_CONFIG_TYPE, msgProcessorFileName,
-					SynapseConstants.MESSAGE_PROCESSOR_FOLDER, buildArtifactsLocation,
-					"../../../" + relativePathToRealArtifact);
-		} catch (IOException | XmlPullParserException e) {
-			throw new BuildArtifactCreationException("Error while creating the build artifacts for Local Entry config "
-					+ msgProcessorFileName + " at " + buildArtifactsLocation.getFullPath());
-		}
-	}
-
-	public void updatePom() throws IOException, XmlPullParserException {
-//		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
-//		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-//		version = mavenProject.getVersion().replace("-SNAPSHOT", "");
-//
-//		// Skip changing the pom file if group ID and artifact ID are matched
-//		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-messageprocessor-plugin")) {
-//			return;
-//		}
-//
-//		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
-//				"wso2-esb-messageprocessor-plugin", ESBMavenConstants.WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION, true);
-//		PluginExecution pluginExecution = new PluginExecution();
-//		pluginExecution.addGoal("pom-gen");
-//		pluginExecution.setPhase("process-resources");
-//		pluginExecution.setId("task");
-//
-//		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-//		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
-//		artifactLocationNode.setValue(".");
-//		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
-//		typeListNode.setValue("${artifact.types}");
-//		pluginExecution.setConfiguration(configurationNode);
-//		plugin.addExecution(pluginExecution);
-//		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
-	}
+        IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+        try {
+            SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version,
+                    SynapseConstants.MESSAGE_PROCESSOR_CONFIG_TYPE, msgProcessorFileName,
+                    SynapseConstants.MESSAGE_PROCESSOR_FOLDER, buildArtifactsLocation,
+                    "../../../" + relativePathToRealArtifact);
+        } catch (IOException | XmlPullParserException e) {
+            throw new BuildArtifactCreationException("Error while creating the build artifacts for Local Entry config "
+                    + msgProcessorFileName + " at " + buildArtifactsLocation.getFullPath());
+        }
+    }
 
 	private String getTemplateContent() {
 
@@ -572,14 +490,9 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 			FileUtils.copy(importFile, destFile);
 			fileLst.add(destFile);
 			String name = importFile.getName().replaceAll(".xml$", "");
-			if (isNewAritfact) {
-//				String relativePath = FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
-//						new File(importLocation.getLocation().toFile(), name + ".xml")).replaceAll(
-//						Pattern.quote(File.separator), "/");
-//				esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, version,
-//						relativePath));
-				addESBArtifactDetails(importLocation, name, groupId, version, name, esbProjectArtifact);
-			}
+            if (isNewAritfact) {
+                addESBArtifactDetails(importLocation, name, groupId, version, name, esbProjectArtifact);
+            }
 		}
 	}
 

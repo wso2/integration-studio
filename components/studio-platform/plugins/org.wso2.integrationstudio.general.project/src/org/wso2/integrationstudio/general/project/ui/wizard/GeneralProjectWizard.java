@@ -63,10 +63,10 @@ public class GeneralProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			File pomfile = project.getFile("pom.xml").getLocation().toFile();
 			createPOM(pomfile,"pom");
 			
-			IFolder buildArtifactsFolder = project.getFolder("build-artifacts");
+            IFolder buildArtifactsFolder = project.getFolder("build-artifacts");
             ProjectUtils.createFolder(buildArtifactsFolder);
             SynapseUtils.createBuildArtifactsModulePom(project, buildArtifactsFolder, "../pom.xml");
-			
+
 			ProjectUtils.addNatureToProject(project,
 			                                false, GENERAL_PROJECT_NATURE);
 			MavenUtils

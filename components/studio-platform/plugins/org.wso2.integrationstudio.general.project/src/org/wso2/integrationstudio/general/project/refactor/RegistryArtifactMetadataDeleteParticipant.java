@@ -61,34 +61,34 @@ public class RegistryArtifactMetadataDeleteParticipant extends DeleteParticipant
 
 			while (iterator.hasNext()) {
 				IResource res = iterator.next();
-				if (res instanceof IFile) {
-					registryMetadataFileDeleteChange = new RegistryMetadataFileDeleteChange(res.getProject().getName(),
-							res.getProject().getFile("artifact.xml"), res);
-					change.add(registryMetadataFileDeleteChange);
+                if (res instanceof IFile) {
+                    registryMetadataFileDeleteChange = new RegistryMetadataFileDeleteChange(res.getProject().getName(),
+                            res.getProject().getFile("artifact.xml"), res);
+                    change.add(registryMetadataFileDeleteChange);
 
-				}
+                }
 			}
 		}
 
-		registryMetadataFileDeleteChange = new RegistryMetadataFileDeleteChange(registryProject.getName(),
-				registryProject.getFile("artifact.xml"), originalResource);
-		change.add(registryMetadataFileDeleteChange);
+        registryMetadataFileDeleteChange = new RegistryMetadataFileDeleteChange(registryProject.getName(),
+                registryProject.getFile("artifact.xml"), originalResource);
+        change.add(registryMetadataFileDeleteChange);
 
 
 		deleteBuildAritfacts(originalResource, registryMetadataFileDeleteChange.getArtifactName());
 		return change;
 	}
 
-	private void deleteBuildAritfacts(IResource resource, String artifactName) {
-	    try {
-			SynapseUtils.removeRegsitryResourceBuildArtifacts(resource.getProject()
-					.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER), SynapseConstants.REGISTRY_RESOURCE_FOLDER,
-					artifactName);
-		} catch (CoreException | IOException | XmlPullParserException e) {
-			throw new OperationCanceledException("Error while deleting the build artifacts for " + artifactName
-					+ " in registry resources");
-		}
-	}
+    private void deleteBuildAritfacts(IResource resource, String artifactName) {
+        try {
+            SynapseUtils.removeRegsitryResourceBuildArtifacts(
+                    resource.getProject().getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER),
+                    SynapseConstants.REGISTRY_RESOURCE_FOLDER, artifactName);
+        } catch (CoreException | IOException | XmlPullParserException e) {
+            throw new OperationCanceledException(
+                    "Error while deleting the build artifacts for " + artifactName + " in registry resources");
+        }
+    }
 
 	public ArrayList<IResource> listFiles(IResource resource, ArrayList<IResource> list) {
 

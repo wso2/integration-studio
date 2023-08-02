@@ -87,8 +87,8 @@ public class ConnectorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 			pomfile = project.getFile("pom.xml").getLocation().toFile();
 			createPOM(pomfile, "pom");
 			updatePom();
-			IFolder buildArtifactsFolder = ProjectUtils.getWorkspaceFolder(project,
-					SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+            IFolder buildArtifactsFolder = ProjectUtils.getWorkspaceFolder(project,
+                    SynapseConstants.BUILD_ARTIFACTS_FOLDER);
             ProjectUtils.createFolder(buildArtifactsFolder);
 			SynapseUtils.createBuildArtifactsModulePom(project, buildArtifactsFolder, "../pom.xml");
 			ProjectUtils.addNatureToProject(project, false, CONNECTOR_PROJECT_NATURE);
@@ -116,39 +116,6 @@ public class ConnectorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 		}
 		return true;
 	}
-
-//	private void createBuildArtifactsModulePom(IFolder buildArtifactsFolder) {
-//
-//		try {
-//			File mavenParentProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
-//			MavenProject mavenParentProject = MavenUtils.getMavenProject(mavenParentProjectPomLocation);
-//
-//			IFile pomFile = buildArtifactsFolder.getFile(new Path("pom.xml"));
-//			FileUtils.createFile(pomFile.getLocation().toFile(), "");
-//			File mavenProjectPomLocation = pomFile.getLocation().toFile();
-//
-//			MavenProject mavenProject = MavenUtils.createMavenProject(mavenParentProject.getGroupId(),
-//					mavenParentProject.getArtifactId() + "_module", mavenParentProject.getVersion(), "pom");
-//
-//			org.apache.maven.model.Parent parent = new org.apache.maven.model.Parent();
-//			parent.setGroupId(mavenParentProject.getGroupId());  // Set the parent's group ID
-//			parent.setArtifactId(mavenParentProject.getArtifactId());  // Set the parent's artifact ID
-//			parent.setVersion(mavenParentProject.getVersion());  // Set the parent's version
-//			parent.setRelativePath("../pom.xml");
-//
-//			Model model = mavenProject.getModel();
-//			model.setParent(parent);
-//
-//			MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (XmlPullParserException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//	}
 
 	public void updatePom() throws IOException, XmlPullParserException {
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();

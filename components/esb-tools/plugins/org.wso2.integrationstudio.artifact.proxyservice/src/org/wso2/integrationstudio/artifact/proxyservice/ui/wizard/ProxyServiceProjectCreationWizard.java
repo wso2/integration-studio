@@ -111,9 +111,8 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 				getModel().getMavenInfo().setPackageName(SynapseConstants.PROXY_SERVICE_CONFIG_TYPE);
 				createPOM(pomfile);
 			}
-			MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
-	        version = mavenProject.getVersion().replace("-SNAPSHOT", "");
-//			updatePom();
+            MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
+            version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			
 			String mavenGroupId = getMavenGroupId(pomfile);
@@ -150,16 +149,8 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
                     File destFile = proxyServiceFile.getLocation().toFile();
                     FileUtils.createFile(destFile, template);
                     fileLst.add(destFile);
-//                    String relativePath = FileUtils
-//                            .getRelativePath(esbProject.getLocation().toFile(),
-//                                    new File(location.getLocation().toFile(),
-//                                            proxyServiceModel.getProxyServiceName() + ".xml"))
-//                            .replaceAll(Pattern.quote(File.separator), "/");
-//                    esbProjectArtifact.addESBArtifact(
-//                            createArtifact(proxyServiceModel.getProxyServiceName(), groupId, version, relativePath));
-
-					addESBArtifactDetails(location, proxyServiceModel.getProxyServiceName(), groupId, version,
-							proxyServiceModel.getProxyServiceName(), esbProjectArtifact);
+                    addESBArtifactDetails(location, proxyServiceModel.getProxyServiceName(), groupId, version,
+                            proxyServiceModel.getProxyServiceName(), esbProjectArtifact);
 					if (meadataEnabled) {
 						// Create the metadata file and update the artifact.xml file
 						MetadataUtils.createMedataFileForProxyServices(metadataLocation,
@@ -194,16 +185,9 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 				proxyServiceFile = location.getFile(new Path(proxyServiceModel.getProxyServiceName() + ".xml"));
 				File destFile = proxyServiceFile.getLocation().toFile();
 				FileUtils.createFile(destFile, template);
-				fileLst.add(destFile);
-//				String relativePath = FileUtils.getRelativePath(
-//						esbProject.getLocation().toFile(),
-//						new File(location.getLocation().toFile(), proxyServiceModel
-//								.getProxyServiceName() + ".xml")).replaceAll(Pattern.quote(File.separator), "/");
-//				esbProjectArtifact.addESBArtifact(createArtifact(
-//						proxyServiceModel.getProxyServiceName(), groupId, version, relativePath));
-
-				addESBArtifactDetails(location, proxyServiceModel.getProxyServiceName(), groupId, version,
-						proxyServiceModel.getProxyServiceName(), esbProjectArtifact);
+                fileLst.add(destFile);
+                addESBArtifactDetails(location, proxyServiceModel.getProxyServiceName(), groupId, version,
+                        proxyServiceModel.getProxyServiceName(), esbProjectArtifact);
 				if (meadataEnabled) {
 					// Create the metadata file and update the artifact.xml file
 					MetadataUtils.createMedataFileForProxyServices(metadataLocation,
@@ -243,26 +227,27 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 		createMetadataArtifactPom(metadataGroupId, artifactName, version, metaRelativePath);
 	}
 
-	private void addESBArtifactDetails(IContainer location, String proxyServiceName, String groupId, String version,
-									   String proxyServiceFileName, ESBProjectArtifact esbProjectArtifact) throws Exception {
+    private void addESBArtifactDetails(IContainer location, String proxyServiceName, String groupId, String version,
+            String proxyServiceFileName, ESBProjectArtifact esbProjectArtifact) throws Exception {
 
-		String relativePath = FileUtils.getRelativePath(location.getProject().getLocation().toFile(),
-				new File(location.getLocation().toFile(), proxyServiceName + ".xml")).replaceAll(
-				Pattern.quote(File.separator), "/");
-		esbProjectArtifact.addESBArtifact(createArtifact(proxyServiceName, groupId, version, relativePath));
+        String relativePath = FileUtils
+                .getRelativePath(location.getProject().getLocation().toFile(),
+                        new File(location.getLocation().toFile(), proxyServiceName + ".xml"))
+                .replaceAll(Pattern.quote(File.separator), "/");
+        esbProjectArtifact.addESBArtifact(createArtifact(proxyServiceName, groupId, version, relativePath));
 
-		IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
-		SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, proxyServiceName,
-				version, SynapseConstants.PROXY_SERVICE_CONFIG_TYPE, proxyServiceFileName,
-				SynapseConstants.PROXY_SERVICE_FOLDER, buildArtifactsLocation, "../../../" + relativePath);
-	}
-	
-	private void createMetadataArtifactPom(String groupId, String artifactName, String artifactVersion,
+        IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+        SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, proxyServiceName, version,
+                SynapseConstants.PROXY_SERVICE_CONFIG_TYPE, proxyServiceFileName, SynapseConstants.PROXY_SERVICE_FOLDER,
+                buildArtifactsLocation, "../../../" + relativePath);
+    }
+
+    private void createMetadataArtifactPom(String groupId, String artifactName, String artifactVersion,
             String metaRelativePath) throws IOException, XmlPullParserException {
 
-		IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
-        SynapseUtils.createMetadataBuildArtifactPom(groupId, artifactName, artifactVersion, METADATA_TYPE,
-				artifactName, SynapseConstants.METADATA_FOLDER, buildArtifactsLocation, "../../../" + metaRelativePath);
+        IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+        SynapseUtils.createMetadataBuildArtifactPom(groupId, artifactName, artifactVersion, METADATA_TYPE, artifactName,
+                SynapseConstants.METADATA_FOLDER, buildArtifactsLocation, "../../../" + metaRelativePath);
     }
 	
 	private String getFilePathPostFix() {
@@ -285,19 +270,14 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 				destFile  = new File(location.getLocation().toFile(),  name + ".xml");
 				FileUtils.createFile(destFile,  proxy.toString());
 				fileLst.add(destFile);
-				if(isNewArtifact){
-//					relativePath = FileUtils.getRelativePath(location.getProject().getLocation().toFile(),
-//							new File(location.getLocation().toFile(), name + ".xml")).replaceAll(
-//							Pattern.quote(File.separator), "/");
-//					esbProjectArtifact.addESBArtifact(createArtifact(name,groupId,version,relativePath) );
-
-					addESBArtifactDetails(location, name, groupId, version, name, esbProjectArtifact);
-					if (medataEnabled) {
-						// Create the metadata file and update the artifact.xml file
-						MetadataUtils.createMedataFileForProxyServices(metadataLocation, name);
-						createMetadataArtifactEntry(metadataLocation, name, metadataGroupId);
-					}
-				}
+                if (isNewArtifact) {
+                    addESBArtifactDetails(location, name, groupId, version, name, esbProjectArtifact);
+                    if (medataEnabled) {
+                        // Create the metadata file and update the artifact.xml file
+                        MetadataUtils.createMedataFileForProxyServices(metadataLocation, name);
+                        createMetadataArtifactEntry(metadataLocation, name, metadataGroupId);
+                    }
+                }
 			}			
 		}
 		else{
@@ -307,19 +287,14 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 			destFile = proxyServiceFile.getLocation().toFile();
 			FileUtils.copy(importFile, destFile);
 			fileLst.add(destFile);
-			if(isNewArtifact){
-//				relativePath = FileUtils.getRelativePath(location.getProject().getLocation().toFile(),
-//						new File(location.getLocation().toFile(), name + ".xml")).replaceAll(
-//						Pattern.quote(File.separator), "/");
-//				esbProjectArtifact.addESBArtifact(createArtifact(name,groupId,version,relativePath) );
-
-				addESBArtifactDetails(location, name, groupId, version, name, esbProjectArtifact);
-				if (medataEnabled) {
-					// Create the metadata file and update the artifact.xml file
-					MetadataUtils.createMedataFileForProxyServices(metadataLocation, name);
-					createMetadataArtifactEntry(metadataLocation, name, metadataGroupId);
-				}
-			}
+            if (isNewArtifact) {
+                addESBArtifactDetails(location, name, groupId, version, name, esbProjectArtifact);
+                if (medataEnabled) {
+                    // Create the metadata file and update the artifact.xml file
+                    MetadataUtils.createMedataFileForProxyServices(metadataLocation, name);
+                    createMetadataArtifactEntry(metadataLocation, name, metadataGroupId);
+                }
+            }
 		}
 	}
 

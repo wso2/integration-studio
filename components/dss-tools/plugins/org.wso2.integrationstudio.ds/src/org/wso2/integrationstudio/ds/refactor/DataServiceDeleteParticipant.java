@@ -86,21 +86,21 @@ public class DataServiceDeleteParticipant extends DeleteParticipant {
 		return change;
 	}
 
-	private void deleteBuildAritfacts(IFile file) {
-		int substringLength = originalFileFullName.lastIndexOf(".");
-		if (substringLength < 0) {
-			substringLength = originalFileFullName.length();
-		}
-		String originalFileName = originalFileFullName.substring(0, substringLength);
-		try {
-            SynapseUtils.removeDataServiceBuildArtifacts(file.getProject()
-							.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER), SynapseConstants.DATA_SERVICE_FOLDER,
-					originalFileName);
-        } catch (CoreException | IOException | XmlPullParserException e) {
-            throw new OperationCanceledException("Error while deleting the build artifacts for "
-					+ originalFileName + " in dataservices");
+    private void deleteBuildAritfacts(IFile file) {
+        int substringLength = originalFileFullName.lastIndexOf(".");
+        if (substringLength < 0) {
+            substringLength = originalFileFullName.length();
         }
-	}
+        String originalFileName = originalFileFullName.substring(0, substringLength);
+        try {
+            SynapseUtils.removeDataServiceBuildArtifacts(
+                    file.getProject().getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER),
+                    SynapseConstants.DATA_SERVICE_FOLDER, originalFileName);
+        } catch (CoreException | IOException | XmlPullParserException e) {
+            throw new OperationCanceledException(
+                    "Error while deleting the build artifacts for " + originalFileName + " in dataservices");
+        }
+    }
 	
 @Override
 public Change createChange(IProgressMonitor pm) throws CoreException, OperationCanceledException {

@@ -41,7 +41,7 @@ public class ESBProjectNature extends AbstractWSO2ProjectNature {
 		IFolder metadataFolder = ProjectUtils.getWorkspaceFolder(getProject(), "src", "main", "resources", "metadata");
 		IFolder buildArtifactsFolder = ProjectUtils.getWorkspaceFolder(getProject(), 
 		        SynapseConstants.BUILD_ARTIFACTS_FOLDER);
-		buildArtifactsFolder.setHidden(true);
+//		buildArtifactsFolder.setHidden(true);
 		ProjectUtils.createFolder(parentFolder);
 		ProjectUtils.createFolder(parentTestFolder);
 		ProjectUtils.createFolder(metadataFolder);

@@ -26,10 +26,7 @@ import java.util.regex.Pattern;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
-import org.apache.maven.model.Plugin;
-import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -46,7 +43,9 @@ import org.wso2.integrationstudio.artifact.localentry.model.LocalEntryModel;
 import org.wso2.integrationstudio.artifact.localentry.utils.LocalEntryArtifactConstants;
 import org.wso2.integrationstudio.artifact.localentry.utils.LocalEntryImageUtils;
 import org.wso2.integrationstudio.artifact.localentry.utils.LocalEntryTemplateUtils;
-import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.core.exceptions.BuildArtifactCreationException;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
 import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
@@ -105,9 +104,12 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		IContainer location = esbProject.getFolder("src" + File.separator + "main" + File.separator
 				+ "synapse-config" + File.separator + "local-entries");
 		
-		updatePom();
 		esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		File pomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
+		
+		MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+		version = mavenProject.getVersion().replace("-SNAPSHOT", "");
+        
 		String groupId = getMavenGroupId(pomLocation);
 		groupId += ".local-entry";
 
@@ -132,27 +134,55 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 					localEntryModel.getLocalENtryName() + ".xml");
 			writeTemplete(localEntryFile);
 
-			ESBArtifact artifact = new ESBArtifact();
-			artifact.setName(localEntryModel.getLocalENtryName());
-			artifact.setVersion(version);
-			artifact.setType("synapse/local-entry");
-			artifact.setServerRole("EnterpriseServiceBus");
-			artifact.setGroupId(groupId);
-			artifact.setFile(FileUtils.getRelativePath(
-					esbProject.getLocation().toFile(),
-					new File(location.getLocation().toFile(), localEntryModel.getLocalENtryName()
-							+ ".xml")).replaceAll(Pattern.quote(File.separator), "/"));
-			esbProjectArtifact.addESBArtifact(artifact);
+			addESBArtifactDetails(location, localEntryModel.getLocalENtryName(), groupId, version,
+					localEntryModel.getLocalENtryName(), esbProjectArtifact);
 		}
 		File pomfile = esbProject.getFile("pom.xml").getLocation().toFile();
-		getModel().getMavenInfo().setPackageName("synapse/local-entry");
+		getModel().getMavenInfo().setPackageName(SynapseConstants.LOCAL_ENTRY_CONFIG_TYPE);
 		if (!pomfile.exists()) {
 			createPOM(pomfile);
 		}
 
-		esbProjectArtifact.toFile();
 		esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		return true;
+	}
+
+	private ESBArtifact createArtifact(String name, String groupId, String version, String path) {
+		ESBArtifact artifact = new ESBArtifact();
+		artifact.setName(name);
+		artifact.setVersion(version);
+		artifact.setType(SynapseConstants.LOCAL_ENTRY_CONFIG_TYPE);
+		artifact.setServerRole("EnterpriseServiceBus");
+		artifact.setGroupId(groupId);
+		artifact.setFile(path);
+		return artifact;
+	}
+
+	private void addESBArtifactDetails(IContainer location, String localEntryName, String groupId,
+									   String version, String localEntryFileName,
+									   ESBProjectArtifact esbProjectArtifact) throws Exception {
+
+		String relativeLocation = FileUtils.getRelativePath(esbProject.getLocation().toFile(),
+				new File(location.getLocation().toFile(), localEntryName + ".xml"))
+				.replaceAll(Pattern.quote(File.separator), "/");
+		esbProjectArtifact.addESBArtifact(createArtifact(localEntryName, groupId, version, relativeLocation));
+		esbProjectArtifact.toFile();
+		createLocalEntryBuildArtifactPom(groupId, localEntryName, version, localEntryFileName, relativeLocation);
+	}
+
+	private void createLocalEntryBuildArtifactPom(String groupId, String artifactId, String version,
+												  String localEntryFileName, String relativePathToRealArtifact)
+			throws BuildArtifactCreationException {
+	    
+	    IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+		try {
+			SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version,
+					SynapseConstants.LOCAL_ENTRY_CONFIG_TYPE, localEntryFileName, SynapseConstants.LOCAL_ENTRY_FOLDER,
+					buildArtifactsLocation, "../../../" + relativePathToRealArtifact);
+		} catch (IOException | XmlPullParserException e) {
+			throw new BuildArtifactCreationException("Error while creating the build artifacts for Local Entry config "
+					+ localEntryFileName + " at " + buildArtifactsLocation.getFullPath());
+		}
 	}
 
 	public boolean performFinish() {
@@ -202,33 +232,6 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
         return fileURL;
     }
 	
-	public void updatePom() throws IOException, XmlPullParserException {
-		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
-		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		version = mavenProject.getVersion().replace("-SNAPSHOT", "");
-
-		// Skip changing the pom file if group ID and artifact ID are matched
-		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-localentry-plugin")) {
-			return;
-		}
-
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-localentry-plugin",
-				ESBMavenConstants.WSO2_ESB_LOCAL_ENTRY_VERSION, true);
-		PluginExecution pluginExecution = new PluginExecution();
-		pluginExecution.addGoal("pom-gen");
-		pluginExecution.setPhase("process-resources");
-		pluginExecution.setId("localentry");
-
-		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
-		artifactLocationNode.setValue(".");
-		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
-		typeListNode.setValue("${artifact.types}");
-		pluginExecution.setConfiguration(configurationNode);
-		plugin.addExecution(pluginExecution);
-		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
-	}
-	
 	protected boolean isRequiredWorkingSet() {
 		return false;
 	}
@@ -270,7 +273,7 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		}
 	}
 	
-	public void copyImportFile(IContainer importLocation,boolean isNewArtifact,String groupId) throws IOException {
+	public void copyImportFile(IContainer importLocation,boolean isNewArtifact,String groupId) throws Exception {
 		File importFile = getModel().getImportFile();
 		List<OMElement> selectedLEList = localEntryModel.getSelectedLEList();
 		File destFile = null;
@@ -281,35 +284,16 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 				FileUtils.createFile(destFile, element.toString());
 				fileLst.add(destFile);
 				if(isNewArtifact){
-					ESBArtifact artifact=new ESBArtifact();
-					artifact.setName(key);
-					artifact.setVersion(version);
-					artifact.setType("synapse/local-entry");
-					artifact.setServerRole("EnterpriseServiceBus");
-					artifact.setGroupId(groupId);
-					artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
-							new File(importLocation.getLocation().toFile(), key + ".xml")).replaceAll(
-							Pattern.quote(File.separator), "/"));
-					esbProjectArtifact.addESBArtifact(artifact);
+					addESBArtifactDetails(importLocation, key, groupId, version, key, esbProjectArtifact);
 				}
 			}
-			
 		}else{
 			destFile = new File(importLocation.getLocation().toFile(), importFile.getName());
 			FileUtils.copy(importFile, destFile);
 			fileLst.add(destFile);
 			String key = importFile.getName().replaceAll(".xml$", "");
 			if(isNewArtifact){
-				ESBArtifact artifact=new ESBArtifact();
-				artifact.setName(key);
-				artifact.setVersion(version);
-				artifact.setType("synapse/local-entry");
-				artifact.setServerRole("EnterpriseServiceBus");
-				artifact.setGroupId(groupId);
-				artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
-						new File(importLocation.getLocation().toFile(), key + ".xml")).replaceAll(
-						Pattern.quote(File.separator), "/"));
-				esbProjectArtifact.addESBArtifact(artifact);
+				addESBArtifactDetails(importLocation, key, groupId, version, key, esbProjectArtifact);
 			}
 		}
 	}

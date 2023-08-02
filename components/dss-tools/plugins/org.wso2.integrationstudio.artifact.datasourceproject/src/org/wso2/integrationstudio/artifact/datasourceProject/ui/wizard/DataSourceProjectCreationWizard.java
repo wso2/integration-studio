@@ -18,10 +18,7 @@ package org.wso2.integrationstudio.artifact.datasourceProject.ui.wizard;
 
 import java.io.File;
 
-import org.apache.maven.model.Plugin;
-import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -36,7 +33,8 @@ import org.wso2.integrationstudio.artifact.datasourceProject.artifact.DataSource
 import org.wso2.integrationstudio.artifact.datasourceProject.model.DataSourceModel;
 import org.wso2.integrationstudio.artifact.datasourceProject.utils.DataSourceImageUtils;
 import org.wso2.integrationstudio.artifact.datasourceProject.utils.DataSourceProjectConstants;
-import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.maven.util.MavenUtils;
@@ -80,6 +78,8 @@ public class DataSourceProjectCreationWizard extends AbstractWSO2ProjectCreation
 			getModel().getMavenInfo().setPackageName(PACKAGE_NAME);
 			// creates the pom file
 			createPOM(pomfile);
+			// creates the build-artifacts folder
+			createBuildArtifactFolder();
 			// updates pom file with data source plugin
 			updatePom(pomfile);
 
@@ -118,85 +118,8 @@ public class DataSourceProjectCreationWizard extends AbstractWSO2ProjectCreation
 			MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 			// Adding typrLidt property
 			MavenUtils.updateMavenProjectWithCAppType(mavenProject, CAPP_TYPE);
-			// Setting the directory
-			mavenProject.getBuild().setDirectory("target/capp");
 			// Adding maven test skip property
 			MavenUtils.updateMavenProjectWithSkipTests(mavenProject);
-
-			// Adding maven exec plugin entry
-			Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.codehaus.mojo", "exec-maven-plugin", "1.4.0",
-					true);
-
-			{
-				PluginExecution pluginExecution = new PluginExecution();
-				pluginExecution.setId(MavenConstants.PACKAGE_PHASE);
-				pluginExecution.addGoal(MavenConstants.EXEC_GOAL);
-				pluginExecution.setPhase(MavenConstants.PACKAGE_PHASE);
-
-				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.EXECUTABLE_TAG);
-				executableNode.setValue(MavenConstants.EXECUTABLE_VALUE);
-				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
-						MavenConstants.WORKING_DIRECTORY_TAG);
-				workingDirectoryNode.setValue(MavenConstants.WORKING_DIRECTORY_VALUE);
-				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.ARGUMENTS_TAG);
-				Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				cleanArgumentNode.setValue(MavenConstants.ARGUMENT_VALUE_CLEAN);
-				Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				installArgumentNode.setValue(MavenConstants.PACKAGE_PHASE);
-				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				testSkipArgumentNode.setValue(MavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
-
-				pluginExecution.setConfiguration(configurationNode);
-
-				plugin.addExecution(pluginExecution);
-			}
-			{
-				PluginExecution pluginExecution = new PluginExecution();
-				pluginExecution.setId(MavenConstants.INSTALL_PHASE);
-				pluginExecution.addGoal(MavenConstants.EXEC_GOAL);
-				pluginExecution.setPhase(MavenConstants.INSTALL_PHASE);
-
-				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.EXECUTABLE_TAG);
-				executableNode.setValue(MavenConstants.EXECUTABLE_VALUE);
-				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
-						MavenConstants.WORKING_DIRECTORY_TAG);
-				workingDirectoryNode.setValue(MavenConstants.WORKING_DIRECTORY_VALUE);
-				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.ARGUMENTS_TAG);
-				Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				cleanArgumentNode.setValue(MavenConstants.ARGUMENT_VALUE_CLEAN);
-				Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				installArgumentNode.setValue(MavenConstants.INSTALL_PHASE);
-				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				testSkipArgumentNode.setValue(MavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
-
-				pluginExecution.setConfiguration(configurationNode);
-
-				plugin.addExecution(pluginExecution);
-			}
-			{
-				PluginExecution pluginExecution = new PluginExecution();
-				pluginExecution.setId(MavenConstants.DEPLOY_PHASE);
-				pluginExecution.addGoal(MavenConstants.EXEC_GOAL);
-				pluginExecution.setPhase(MavenConstants.DEPLOY_PHASE);
-
-				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.EXECUTABLE_TAG);
-				executableNode.setValue(MavenConstants.EXECUTABLE_VALUE);
-				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
-						MavenConstants.WORKING_DIRECTORY_TAG);
-				workingDirectoryNode.setValue(MavenConstants.WORKING_DIRECTORY_VALUE);
-				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.ARGUMENTS_TAG);
-				Xpp3Dom deployArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				deployArgumentNode.setValue(MavenConstants.DEPLOY_PHASE);
-				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				testSkipArgumentNode.setValue(MavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
-
-				pluginExecution.setConfiguration(configurationNode);
-
-				plugin.addExecution(pluginExecution);
-			}
 			MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 		} catch (Exception e) {
 			log.error(DataSourceProjectConstants.ERROR_MESSAGE_UNEXPECTED_ERROR, e);
@@ -208,6 +131,12 @@ public class DataSourceProjectCreationWizard extends AbstractWSO2ProjectCreation
 			log.error(DataSourceProjectConstants.ERROR_MESSAGE_CORE_EXCEPTION, e);
 		}
 
+	}
+
+	private void createBuildArtifactFolder() throws CoreException {
+		IFolder buildArtifactsFolder = ProjectUtils.getWorkspaceFolder(project, SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+		ProjectUtils.createFolder(buildArtifactsFolder);
+		SynapseUtils.createBuildArtifactsModulePom(project, buildArtifactsFolder, "../pom.xml");
 	}
 
 	/**

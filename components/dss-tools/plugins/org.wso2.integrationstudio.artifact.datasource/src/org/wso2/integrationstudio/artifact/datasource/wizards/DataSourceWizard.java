@@ -1,15 +1,12 @@
 package org.wso2.integrationstudio.artifact.datasource.wizards;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.core.runtime.*;
 import org.eclipse.jface.operation.*;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 
 import org.apache.maven.model.Plugin;
@@ -33,6 +30,8 @@ import org.wso2.integrationstudio.artifact.datasource.artifact.DataSourceProject
 import org.wso2.integrationstudio.artifact.datasource.utils.DataSourceArtifactConstants;
 import org.wso2.integrationstudio.artifact.datasource.utils.DataSourceTemplateUtils;
 import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.maven.util.MavenUtils;
 import org.wso2.integrationstudio.platform.core.utils.XMLUtil;
 import org.wso2.integrationstudio.utils.data.ITemporaryFileTag;
@@ -59,7 +58,7 @@ public class DataSourceWizard extends Wizard implements INewWizard {
 	private static final String GROUP_ID = "org.wso2.maven";
 	private static final String ARTIFACT_ID = "maven-datasource-plugin";
 	private static final String ARTIFACT_FILE = "artifact.xml";
-	private static final String TYPE = "datasource/datasource";
+	private static final String TYPE = SynapseConstants.DATA_SOURCE_TYPE;
 	private static final String SERVER_ROLE = "DataServicesServer";
 	private static final String LINE_SEPERATOR = "line.separator";
 	private static final String DATASERVICE_TEMPLATE = "templates/DataSourceTemplate.datasource";
@@ -237,6 +236,9 @@ public class DataSourceWizard extends Wizard implements INewWizard {
 		String servieName = FilenameUtils.removeExtension(openFile.getName());
 		dssProjectArtifact.addDSSArtifact(createArtifact(servieName, groupId, version, relativePath));
 		dssProjectArtifact.toFile();
+		SynapseUtils.createDataSourceBuildArtifactPom(groupId, servieName, version, TYPE, servieName,
+				openFile.getName(), SynapseConstants.DATA_SOURCE_FOLDER,
+				project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER));
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 	}
 	

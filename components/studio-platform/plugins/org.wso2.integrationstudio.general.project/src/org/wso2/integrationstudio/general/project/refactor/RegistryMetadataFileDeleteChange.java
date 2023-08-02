@@ -317,4 +317,8 @@ public class RegistryMetadataFileDeleteChange extends  TextFileChange {
 		line+=System.getProperty( "line.separator" );
 		return line.length();
 	}
+
+	public String getArtifactName() {
+		return artifactName;
+	}
 }

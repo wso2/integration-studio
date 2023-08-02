@@ -19,6 +19,7 @@ package org.wso2.integrationstudio.general.project.ui.wizard;
 import java.io.File;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -26,6 +27,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.general.project.Activator;
 import org.wso2.integrationstudio.general.project.artifact.GeneralProjectArtifact;
 import org.wso2.integrationstudio.general.project.model.GeneralProjectModel;
@@ -60,6 +62,10 @@ public class GeneralProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			
 			File pomfile = project.getFile("pom.xml").getLocation().toFile();
 			createPOM(pomfile,"pom");
+			
+			IFolder buildArtifactsFolder = project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+			ProjectUtils.createFolder(buildArtifactsFolder);
+			SynapseUtils.createBuildArtifactsModulePom(project, buildArtifactsFolder, "../pom.xml");
 			
 			ProjectUtils.addNatureToProject(project,
 			                                false, GENERAL_PROJECT_NATURE);

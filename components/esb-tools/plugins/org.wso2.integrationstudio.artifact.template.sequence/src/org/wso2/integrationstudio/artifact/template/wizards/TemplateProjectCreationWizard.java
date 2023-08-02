@@ -29,10 +29,7 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.apache.commons.lang.StringUtils;
-import org.apache.maven.model.Plugin;
-import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -46,7 +43,9 @@ import org.wso2.integrationstudio.artifact.template.Activator;
 import org.wso2.integrationstudio.artifact.template.model.TemplateModel;
 import org.wso2.integrationstudio.artifact.template.utils.TemplateImageUtils;
 import org.wso2.integrationstudio.artifact.template.validators.HttpMethodList.HttpMethodType;
-import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.core.exceptions.BuildArtifactCreationException;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
 import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.integrationstudio.gmf.esb.ArtifactType;
@@ -70,6 +69,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	private IProject project;
 
 	private String version ="1.0.0";
+	String groupId;
 
 	
 	public TemplateProjectCreationWizard() {
@@ -104,16 +104,15 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		esbProjectArtifact = new ESBProjectArtifact();
 		esbProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());	
 		File pomfile = project.getFile("pom.xml").getLocation().toFile();
-		getModel().getMavenInfo().setPackageName("synapse/template");
+		getModel().getMavenInfo().setPackageName(SynapseConstants.TEMPLATE_CONFIG_TYPE);
 		if (!pomfile.exists()) {
 			createPOM(pomfile);
 		}
-
-		updatePom();
+		MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
+		version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 		project.refreshLocal(IResource.DEPTH_INFINITE,
 				new NullProgressMonitor());
-		String groupId = getMavenGroupId(pomfile);
-		groupId += ".template";
+		groupId = getMavenGroupId(pomfile) + ".template";
 
 		if (getModel().getSelectedOption().equals("import.template")) {
 			IFile sequence = location.getFile(new Path(getModel().getImportFile().getName()));
@@ -148,20 +147,15 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 					sequenceModel.getTemplateName() + ".xml");
 			FileUtils.createFile(destFile, template);
 			fileLst.add(destFile);
-			ESBArtifact artifact = new ESBArtifact();
-			artifact.setName(sequenceModel.getTemplateName());
-			artifact.setVersion(version);
+			String type;
 			if("Sequence Template".equals(selectedTemplate.getName())){
-				artifact.setType("synapse/sequenceTemplate");
+				type = SynapseConstants.SEQUENCE_TEMPLATE_CONFIG_TYPE;
 			}else{
-				artifact.setType("synapse/endpointTemplate");
-			}			
-			artifact.setServerRole("EnterpriseServiceBus");
-			artifact.setGroupId(groupId);
-			artifact.setFile(FileUtils.getRelativePath(project.getLocation()
-					.toFile(), new File(location.getLocation().toFile(),
-					sequenceModel.getTemplateName() + ".xml")).replaceAll(Pattern.quote(File.separator), "/"));
-			esbProjectArtifact.addESBArtifact(artifact);
+				type = SynapseConstants.ENDPOINT_TEMPLATE_CONFIG_TYPE;
+			}
+
+			addESBArtifactDetails(location, sequenceModel.getTemplateName(), groupId, version,
+					type, sequenceModel.getTemplateName(), esbProjectArtifact);
 		}
 		esbProjectArtifact.toFile();
 		project.refreshLocal(IResource.DEPTH_INFINITE,
@@ -195,35 +189,8 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		}
         return newContent;
 	}
-
-	public void updatePom() throws IOException, XmlPullParserException {
-		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
-		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		version = mavenProject.getVersion().replace("-SNAPSHOT", "");
-
-		// Skip changing the pom file if group ID and artifact ID are matched
-		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-template-plugin")) {
-			return;
-		}
-
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-template-plugin",
-				ESBMavenConstants.WSO2_ESB_TEMPLATE_VERSION, true);
-		PluginExecution pluginExecution = new PluginExecution();
-		pluginExecution.addGoal("pom-gen");
-		pluginExecution.setPhase("process-resources");
-		pluginExecution.setId("template");
-
-		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
-		artifactLocationNode.setValue(".");
-		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
-		typeListNode.setValue("${artifact.types}");
-		pluginExecution.setConfiguration(configurationNode);
-		plugin.addExecution(pluginExecution);
-		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
-	}
 	
-	public void copyImportFile(IContainer importLocation,boolean isNewAritfact, String groupId) throws IOException {
+	public void copyImportFile(IContainer importLocation,boolean isNewAritfact, String groupId) throws Exception {
 		File importFile = getModel().getImportFile();
 		File destFile = null;
 		List<OMElement> selectedSeqList = ((TemplateModel)getModel()).getSelectedTempSequenceList();
@@ -234,16 +201,8 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 				FileUtils.createFile(destFile, element.toString());
 				fileLst.add(destFile);
 				if(isNewAritfact){
-					ESBArtifact artifact = new ESBArtifact();
-					artifact.setName(name);
-					artifact.setVersion(version);
-					artifact.setType("synapse/template");
-					artifact.setServerRole("EnterpriseServiceBus");
-					artifact.setGroupId(groupId);
-					artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
-							new File(importLocation.getLocation().toFile(), name + ".xml")).replaceAll(
-							Pattern.quote(File.separator), "/"));
-					esbProjectArtifact.addESBArtifact(artifact);
+					addESBArtifactDetails(importLocation, name, groupId, version,
+							SynapseConstants.TEMPLATE_CONFIG_TYPE, name, esbProjectArtifact);
 				}
 			} 
 		}else{
@@ -252,16 +211,8 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			fileLst.add(destFile);
 			String name = importFile.getName().replaceAll(".xml$","");
 			if(isNewAritfact){
-				ESBArtifact artifact = new ESBArtifact();
-				artifact.setName(name);
-				artifact.setVersion(version);
-				artifact.setType("synapse/template");
-				artifact.setServerRole("EnterpriseServiceBus");
-				artifact.setGroupId(groupId);
-				artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
-						new File(importLocation.getLocation().toFile(), name + ".xml")).replaceAll(
-						Pattern.quote(File.separator), "/"));
-				esbProjectArtifact.addESBArtifact(artifact);
+				addESBArtifactDetails(importLocation, name, groupId, version,
+						SynapseConstants.TEMPLATE_CONFIG_TYPE, name, esbProjectArtifact);
 			}
 		}
 	}
@@ -316,6 +267,42 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	@Override
 	public IResource getCreatedResource() {
 		return null;
+	}
+
+	private ESBArtifact createArtifact(String name, String groupId, String version, String type, String path) {
+		ESBArtifact artifact = new ESBArtifact();
+		artifact.setName(name);
+		artifact.setVersion(version);
+		artifact.setType(type);
+		artifact.setServerRole("EnterpriseServiceBus");
+		artifact.setGroupId(groupId);
+		artifact.setFile(path);
+		return artifact;
+	}
+
+	private void addESBArtifactDetails(IContainer location, String templateName, String groupId, String version, String type,
+									   String templateFileName, ESBProjectArtifact esbProjectArtifact) throws Exception {
+
+		String relativeLocation = FileUtils.getRelativePath(project.getLocation().toFile(),
+						new File(location.getLocation().toFile(), templateName + ".xml"))
+				.replaceAll(Pattern.quote(File.separator), "/");
+		esbProjectArtifact.addESBArtifact(createArtifact(templateName, groupId, version, type, relativeLocation));
+		createTemplateBuildArtifactPom(groupId, templateName, version, templateFileName, relativeLocation);
+	}
+
+	private void createTemplateBuildArtifactPom(String groupId, String artifactId, String version,
+												String templateFileName, String relativePathToRealArtifact)
+			throws BuildArtifactCreationException {
+
+		IContainer buildArtifactsLocation = project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+		try {
+			SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version,
+					SynapseConstants.TEMPLATE_CONFIG_TYPE, templateFileName, SynapseConstants.TEMPLATE_FOLDER,
+					buildArtifactsLocation, "../../../" + relativePathToRealArtifact);
+		} catch (IOException | XmlPullParserException e) {
+			throw new BuildArtifactCreationException("Error while creating the build artifacts for Template: "
+					+ templateFileName + " at " + buildArtifactsLocation.getFullPath());
+		}
 	}
 
 }

@@ -12,6 +12,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,
  org.wso2.integrationstudio.esb.core,
+ org.wso2.integrationstudio.esb.core.exceptions,
  org.wso2.integrationstudio.esb.core.utils,
  org.wso2.integrationstudio.esb.project.artifact,
  org.wso2.integrationstudio.esb.project.utils,

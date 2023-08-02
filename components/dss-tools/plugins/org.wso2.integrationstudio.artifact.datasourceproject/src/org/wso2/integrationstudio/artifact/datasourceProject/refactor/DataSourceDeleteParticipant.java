@@ -18,6 +18,7 @@ package org.wso2.integrationstudio.artifact.datasourceProject.refactor;
 
 import java.io.IOException;
 
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -30,6 +31,8 @@ import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
 import org.wso2.integrationstudio.artifact.datasourceProject.Activator;
 import org.wso2.integrationstudio.artifact.datasourceProject.utils.DataSourceProjectConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 
@@ -76,12 +79,28 @@ public class DataSourceDeleteParticipant extends DeleteParticipant {
             change.add(new DataSourceMetaDataFileDeleteChange(
                     DataSourceProjectConstants.DataSourceRenameParticipant_MetaDataChange, artifactFile,
                     originalFileFullName));
+            deleteBuildAritfacts(artifactFile);
 
         } catch (IOException e) {
             throw new OperationCanceledException(
                     DataSourceProjectConstants.DataSourceDeleteParticipant_ArtifactXmlDeleteChangeFailed);
         }
         return change;
+    }
+
+    private void deleteBuildAritfacts(IFile file) {
+        int substringLength = originalFileFullName.lastIndexOf(".");
+        if (substringLength < 0) {
+            substringLength = originalFileFullName.length();
+        }
+        String originalFileName = originalFileFullName.substring(0, substringLength);
+        try {
+            SynapseUtils.removeDataServiceBuildArtifacts(file.getProject().getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER),
+                    SynapseConstants.DATA_SOURCE_FOLDER, originalFileName);
+        } catch (CoreException | IOException | XmlPullParserException e) {
+            throw new OperationCanceledException("Error while deleting the build artifacts for "
+                    + originalFileName + " in datasources");
+        }
     }
 
     @Override

@@ -4741,6 +4741,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getCallMediator_InitAxis2ClientOptions() {
+        return (EAttribute)callMediatorEClass.getEStructuralFeatures().get(16);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getCallMediatorInputConnector() {
         return callMediatorInputConnectorEClass;
     }
@@ -20807,6 +20816,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(callMediatorEClass, CALL_MEDIATOR__SOURCE_TYPE);
         createEAttribute(callMediatorEClass, CALL_MEDIATOR__TARGET_TYPE);
         createEAttribute(callMediatorEClass, CALL_MEDIATOR__CONTENT_TYPE);
+        createEAttribute(callMediatorEClass, CALL_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS);
 
         callMediatorInputConnectorEClass = createEClass(CALL_MEDIATOR_INPUT_CONNECTOR);
 
@@ -23404,6 +23414,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getCallMediator_SourceType(), this.getCallSourceType(), "sourceType", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getCallMediator_TargetType(), this.getCallTargetType(), "targetType", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getCallMediator_ContentType(), ecorePackage.getEString(), "contentType", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getCallMediator_InitAxis2ClientOptions(), ecorePackage.getEBoolean(), "initAxis2ClientOptions", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(callMediatorInputConnectorEClass, CallMediatorInputConnector.class, "CallMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -25413,7 +25424,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
         // Initialize enums and add enum literals
         initEnumsAndAddEnumLiterals();
-        
 
         // Initialize data types
         initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

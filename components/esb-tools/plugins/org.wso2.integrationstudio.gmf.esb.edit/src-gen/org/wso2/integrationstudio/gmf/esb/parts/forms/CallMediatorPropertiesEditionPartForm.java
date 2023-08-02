@@ -126,6 +126,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 	protected List<ViewerFilter> endpointFilters = new ArrayList<ViewerFilter>();
 	protected EMFComboViewer endpointType;
 	protected Button enableBlockingCalls;
+	protected Button initAxis2ClientOptions;
 	// Start of user code  for endpointXpath widgets declarations
     protected NamespacedProperty endpointXPath;
     protected Text endpointXPathText;
@@ -136,6 +137,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
     protected Text endpointRegistryKeyText;
     protected Control[] endpointTypeElements;
     protected Control[] enableBlockingCallsElements;
+	protected Control[] initAxis2ClientOptionsElements;
     protected Control[] endpointRegistryKeyElements;
     protected Control[] endpointXpathElements;
     protected Control[] descriptionElements;
@@ -213,6 +215,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.reverse);
         propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpoint);
         propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.enableBlockingCalls);
+		propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.initAxis2ClientOptions);
         propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointType);
         propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointXpath);
         propertiesStep.addStep(EsbViewsRepository.CallMediator.Properties.endpointRegistryKey);
@@ -251,6 +254,9 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 				}
 				if (key == EsbViewsRepository.CallMediator.Properties.enableBlockingCalls) {
 					return createEnableBlockingCallsCheckbox(widgetFactory, parent);
+				}
+				if (key == EsbViewsRepository.CallMediator.Properties.initAxis2ClientOptions) {
+					return createInitAxis2ClientOptionsCheckbox(widgetFactory, parent);
 				}
                 if (key == EsbViewsRepository.CallMediator.Properties.endpointXpath) {
                     return createEndpointXPathWidget(widgetFactory, filterEndpointTypeSubPropertiesGroup);
@@ -621,6 +627,38 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		// Start of user code for createEnableBlockingCallsCheckbox
 		enableBlockingCallsElements = new Control[] {enableBlockingCalls, enableBlockingCallsHelp};
         
+		// End of user code
+		return parent;
+	}
+
+
+	/**
+	 * @generated NOT
+	 */
+	protected Composite createInitAxis2ClientOptionsCheckbox(FormToolkit widgetFactory, Composite parent) {
+		initAxis2ClientOptions = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.CallMediator.Properties.initAxis2ClientOptions, EsbMessages.CallMediatorPropertiesEditionPart_InitAxis2ClientOptionsLabel), SWT.CHECK);
+		initAxis2ClientOptions.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 *
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(CallMediatorPropertiesEditionPartForm.this, EsbViewsRepository.CallMediator.Properties.initAxis2ClientOptions, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(initAxis2ClientOptions.getSelection())));
+			}
+
+		});
+		GridData initAxis2ClientOptionsData = new GridData(GridData.FILL_HORIZONTAL);
+		initAxis2ClientOptionsData.horizontalSpan = 2;
+		initAxis2ClientOptions.setLayoutData(initAxis2ClientOptionsData);
+		EditingUtils.setID(initAxis2ClientOptions, EsbViewsRepository.CallMediator.Properties.initAxis2ClientOptions);
+		EditingUtils.setEEFtype(initAxis2ClientOptions, "eef::Checkbox"); //$NON-NLS-1$
+		Control initAxis2ClientOptionsHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.CallMediator.Properties.initAxis2ClientOptions, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createInitAxis2ClientOptionsCheckbox
+		initAxis2ClientOptionsElements = new Control[] { initAxis2ClientOptions, initAxis2ClientOptionsHelp };
 		// End of user code
 		return parent;
 	}
@@ -1264,6 +1302,16 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallMediatorPropertiesEditionPart#getInitAxis2ClientOptions()
+	 *
+	 */
+	public Boolean getInitAxis2ClientOptions() {
+		return Boolean.valueOf(initAxis2ClientOptions.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * 
 	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallMediatorPropertiesEditionPart#setEnableBlockingCalls(Boolean newValue)
 	 * 
@@ -1284,6 +1332,27 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.wso2.integrationstudio.gmf.esb.parts.CallMediatorPropertiesEditionPart#setInitAxis2ClientOptions(Boolean newValue)
+	 *
+	 */
+	public void setInitAxis2ClientOptions(Boolean newValue) {
+		if (newValue != null) {
+			initAxis2ClientOptions.setSelection(newValue.booleanValue());
+		} else {
+			initAxis2ClientOptions.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.CallMediator.Properties.initAxis2ClientOptions);
+		if (eefElementEditorReadOnlyState && initAxis2ClientOptions.isEnabled()) {
+			initAxis2ClientOptions.setEnabled(false);
+			initAxis2ClientOptions.setToolTipText(EsbMessages.CallMediator_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !initAxis2ClientOptions.isEnabled()) {
+			initAxis2ClientOptions.setEnabled(true);
+		}
+
+	}
 
 
 
@@ -1676,6 +1745,7 @@ public class CallMediatorPropertiesEditionPartForm extends SectionPropertiesEdit
         epv.showEntry(dummyLabels, false);
         epv.showEntry(endpointTypeElements, false);
         epv.showEntry(enableBlockingCallsElements, false);
+		epv.showEntry(initAxis2ClientOptionsElements, false);
         epv.showEntry(sourceTypeElements, false);
         epv.showEntry(targetTypeElements, false);
         

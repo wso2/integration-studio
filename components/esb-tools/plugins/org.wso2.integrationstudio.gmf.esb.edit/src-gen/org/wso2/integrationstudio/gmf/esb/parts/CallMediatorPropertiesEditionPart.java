@@ -154,6 +154,18 @@ public interface CallMediatorPropertiesEditionPart {
 	 */
 	public void setEnableBlockingCalls(Boolean newValue);
 
+	/**
+     * @return the initAxis2ClientOptions
+     * 
+     */
+    public Boolean getInitAxis2ClientOptions();
+
+    /**
+     * Defines a new initAxis2ClientOptions
+     * @param newValue the new initAxis2ClientOptions to set
+     * 
+     */
+    public void setInitAxis2ClientOptions(Boolean newValue);
 
 	/**
 	 * @return the sourcePayload

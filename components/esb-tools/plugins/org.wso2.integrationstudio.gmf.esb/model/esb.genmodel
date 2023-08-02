@@ -931,6 +931,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/sourceType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/targetType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/contentType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/initAxis2ClientOptions"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CallMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//CallMediatorOutputConnector"/>

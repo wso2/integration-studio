@@ -66,6 +66,7 @@ import org.wso2.integrationstudio.gmf.esb.RegistryKeyProperty;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CallMediatorImpl#getSourceType <em>Source Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CallMediatorImpl#getTargetType <em>Target Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CallMediatorImpl#getContentType <em>Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.CallMediatorImpl#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
  * </ul>
  *
  * @generated
@@ -310,6 +311,26 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
      * @ordered
      */
     protected String contentType = CONTENT_TYPE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isInitAxis2ClientOptions() <em>Init Axis2 Client Options</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isInitAxis2ClientOptions()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isInitAxis2ClientOptions() <em>Init Axis2 Client Options</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isInitAxis2ClientOptions()
+     * @generated
+     * @ordered
+     */
+    protected boolean initAxis2ClientOptions = INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -833,6 +854,27 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
      * <!-- end-user-doc -->
      * @generated
      */
+    public boolean isInitAxis2ClientOptions() {
+        return initAxis2ClientOptions;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setInitAxis2ClientOptions(boolean newInitAxis2ClientOptions) {
+        boolean oldInitAxis2ClientOptions = initAxis2ClientOptions;
+        initAxis2ClientOptions = newInitAxis2ClientOptions;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS, oldInitAxis2ClientOptions, initAxis2ClientOptions));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -894,6 +936,8 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
                 return getTargetType();
             case EsbPackage.CALL_MEDIATOR__CONTENT_TYPE:
                 return getContentType();
+            case EsbPackage.CALL_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
+                return isInitAxis2ClientOptions();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -956,6 +1000,9 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
             case EsbPackage.CALL_MEDIATOR__CONTENT_TYPE:
                 setContentType((String)newValue);
                 return;
+            case EsbPackage.CALL_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
+                setInitAxis2ClientOptions((Boolean)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -1016,6 +1063,9 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
             case EsbPackage.CALL_MEDIATOR__CONTENT_TYPE:
                 setContentType(CONTENT_TYPE_EDEFAULT);
                 return;
+            case EsbPackage.CALL_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
+                setInitAxis2ClientOptions(INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -1060,6 +1110,8 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
                 return targetType != TARGET_TYPE_EDEFAULT;
             case EsbPackage.CALL_MEDIATOR__CONTENT_TYPE:
                 return CONTENT_TYPE_EDEFAULT == null ? contentType != null : !CONTENT_TYPE_EDEFAULT.equals(contentType);
+            case EsbPackage.CALL_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
+                return initAxis2ClientOptions != INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -1090,6 +1142,8 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
         result.append(targetType);
         result.append(", contentType: ");
         result.append(contentType);
+        result.append(", initAxis2ClientOptions: ");
+        result.append(initAxis2ClientOptions);
         result.append(')');
         return result.toString();
     }

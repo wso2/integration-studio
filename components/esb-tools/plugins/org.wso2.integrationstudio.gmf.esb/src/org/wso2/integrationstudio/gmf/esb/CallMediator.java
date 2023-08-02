@@ -42,6 +42,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.CallMediator#getSourceType <em>Source Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.CallMediator#getTargetType <em>Target Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.CallMediator#getContentType <em>Content Type</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.CallMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCallMediator()
@@ -437,5 +438,27 @@ public interface CallMediator extends Mediator {
      * @generated
      */
     void setContentType(String value);
+
+    /**
+     * Returns the value of the '<em><b>Init Axis2 Client Options</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Init Axis2 Client Options</em>' attribute.
+     * @see #setInitAxis2ClientOptions(boolean)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getCallMediator_InitAxis2ClientOptions()
+     * @model
+     * @generated
+     */
+    boolean isInitAxis2ClientOptions();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.CallMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Init Axis2 Client Options</em>' attribute.
+     * @see #isInitAxis2ClientOptions()
+     * @generated
+     */
+    void setInitAxis2ClientOptions(boolean value);
 
 } // CallMediator

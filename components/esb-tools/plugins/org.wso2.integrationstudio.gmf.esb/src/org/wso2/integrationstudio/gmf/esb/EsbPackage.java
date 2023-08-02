@@ -668,13 +668,22 @@ public interface EsbPackage extends EPackage {
     int CALL_MEDIATOR__CONTENT_TYPE = MEDIATOR_FEATURE_COUNT + 15;
 
     /**
+     * The feature id for the '<em><b>Init Axis2 Client Options</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CALL_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS = MEDIATOR_FEATURE_COUNT + 16;
+
+    /**
      * The number of structural features of the '<em>Call Mediator</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int CALL_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 16;
+    int CALL_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 17;
 
     /**
      * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.impl.CallMediatorInputConnectorImpl <em>Call Mediator Input Connector</em>}' class.
@@ -29398,6 +29407,17 @@ public interface EsbPackage extends EPackage {
     EAttribute getCallMediator_ContentType();
 
     /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.CallMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Init Axis2 Client Options</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.CallMediator#isInitAxis2ClientOptions()
+     * @see #getCallMediator()
+     * @generated
+     */
+    EAttribute getCallMediator_InitAxis2ClientOptions();
+
+    /**
      * Returns the meta object for class '{@link org.wso2.integrationstudio.gmf.esb.CallMediatorInputConnector <em>Call Mediator Input Connector</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -48852,6 +48872,14 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute CALL_MEDIATOR__CONTENT_TYPE = eINSTANCE.getCallMediator_ContentType();
+
+        /**
+         * The meta object literal for the '<em><b>Init Axis2 Client Options</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute CALL_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS = eINSTANCE.getCallMediator_InitAxis2ClientOptions();
 
         /**
          * The meta object literal for the '{@link org.wso2.integrationstudio.gmf.esb.impl.CallMediatorInputConnectorImpl <em>Call Mediator Input Connector</em>}' class.

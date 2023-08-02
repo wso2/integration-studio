@@ -27,6 +27,21 @@ import javax.xml.stream.XMLStreamException;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMException;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
+import org.apache.maven.model.Model;
+import org.apache.maven.model.Plugin;
+import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.maven.util.MavenUtils;
+import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class SynapseUtils {
 
@@ -122,4 +137,229 @@ public class SynapseUtils {
 			}
 		}
 	}
+
+    public static void createBuildArtifactsModulePom(IProject project, IFolder buildArtifactsFolder) {
+        createBuildArtifactsModulePom(project, buildArtifactsFolder, "../pom.xml");
+    }
+
+    public static void createBuildArtifactsModulePom(IProject project, IFolder buildArtifactsFolder,
+            String parentRelativePath) {
+
+        try {
+            File mavenParentProjectPomFile = project.getFile("pom.xml").getLocation().toFile();
+
+            if (!mavenParentProjectPomFile.exists()) {
+                return;
+            }
+            MavenProject mavenParentProject = MavenUtils.getMavenProject(mavenParentProjectPomFile);
+
+            IFile pomFile = buildArtifactsFolder.getFile(new Path("pom.xml"));
+            FileUtils.createFile(pomFile.getLocation().toFile(), "");
+            File mavenProjectPomLocation = pomFile.getLocation().toFile();
+
+            MavenProject mavenProject = MavenUtils.createMavenProject(mavenParentProject.getGroupId(),
+                    mavenParentProject.getArtifactId() + "_module", mavenParentProject.getVersion(), "pom");
+
+            org.apache.maven.model.Parent parent = new org.apache.maven.model.Parent();
+            parent.setGroupId(mavenParentProject.getGroupId()); // Set the parent's group ID
+            parent.setArtifactId(mavenParentProject.getArtifactId()); // Set the parent's artifact ID
+            parent.setVersion(mavenParentProject.getVersion()); // Set the parent's version
+            parent.setRelativePath(parentRelativePath);
+
+            Model model = mavenProject.getModel();
+            model.setParent(parent);
+            MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+
+            mavenParentProject.getModules().add(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+            MavenUtils.saveMavenProject(mavenParentProject, mavenParentProjectPomFile);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void createCappArtifactPom(String groupId, String artifactId, String version, String artifactType,
+            String targetFolder, String targetParentFolder, IContainer cappArtifactsLocation,
+            String parentPomRelativePath, String pluginGroupId, String pluginArtifactId, String pluginVersion,
+            String artifactRelativePath) throws IOException, XmlPullParserException {
+
+        // Initially create an empty pom.xml file for a given artifact
+        File mavenProjectPomFile = cappArtifactsLocation
+                .getFile(new Path(targetParentFolder + File.separator + targetFolder + File.separator + "pom.xml"))
+                .getLocation().toFile();
+        FileUtils.createFile(mavenProjectPomFile, "");
+
+        // Create a Maven project
+        MavenProject mavenProject = MavenUtils.createMavenProject(groupId, artifactId, version, artifactType);
+
+        // Set plugins to the Maven project
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, pluginGroupId, pluginArtifactId, pluginVersion,
+                true);
+
+        Xpp3Dom configuration = (Xpp3Dom) plugin.getConfiguration();
+        Xpp3Dom aritfact = MavenUtils.createXpp3Node(configuration, "artifact");
+        aritfact.setValue(artifactRelativePath);
+
+        // Set parent's details
+        File mavenParentProjectPomLocation = cappArtifactsLocation.getFile(new Path("pom.xml")).getLocation().toFile();
+        MavenProject mavenParentProject = MavenUtils.getMavenProject(mavenParentProjectPomLocation);
+        org.apache.maven.model.Parent parent = new org.apache.maven.model.Parent();
+        parent.setGroupId(mavenParentProject.getGroupId()); // Set the parent's group ID
+        parent.setArtifactId(mavenParentProject.getArtifactId()); // Set the parent's artifact ID
+        parent.setVersion(mavenParentProject.getVersion()); // Set the parent's version
+        parent.setRelativePath(parentPomRelativePath);
+        mavenProject.getModel().setParent(parent);
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPomFile);
+
+        // Set this capp-artifact pom as a module in the parent pom file
+        mavenParentProject.getModules().add(targetParentFolder + "/" + targetFolder);
+        MavenUtils.saveMavenProject(mavenParentProject, mavenParentProjectPomLocation);
+    }
+
+    public static void createSynapseConfigBuildArtifactPom(String groupId, String artifactId, String version,
+            String artifactType, String artifactFileName, String artifactFolderName, IContainer cappArtifactsLocation,
+            String relativePathToRealArtifact) throws IOException, XmlPullParserException {
+
+        createCappArtifactPom(groupId, artifactId, version, artifactType, artifactFileName, artifactFolderName,
+                cappArtifactsLocation, "../../pom.xml", "org.wso2.maven", "wso2-esb-api-plugin",
+                ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION, relativePathToRealArtifact);
+
+    }
+
+    public static void createMetadataBuildArtifactPom(String groupId, String artifactId, String version,
+            String artifactType, String artifactFileName, String artifactFolderName, IContainer cappArtifactsLocation,
+            String relativePathToRealArtifact) throws IOException, XmlPullParserException {
+
+        createCappArtifactPom(groupId, artifactId, version, artifactType, artifactFileName, artifactFolderName,
+                cappArtifactsLocation, "../../pom.xml", "org.wso2.maven", "wso2-esb-metadata-plugin",
+                ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION, relativePathToRealArtifact);
+
+    }
+
+    public static void createConnectorBuildArtifactPom(String groupId, String artifactId, String version,
+            String artifactType, String connectorFolderName, String connectorName, String connectorFileName,
+            IContainer connectorBuildArtifactLocation) throws IOException, XmlPullParserException {
+
+        createCappArtifactPom(groupId, artifactId, version, artifactType, connectorName + "-" + version,
+                connectorFolderName, connectorBuildArtifactLocation, "../../pom.xml", "org.wso2.maven",
+                "wso2-esb-connector-plugin", ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION,
+                "../../../" + connectorFileName);
+
+    }
+
+    public static void removeConnectorBuildArtifacts(IContainer connectorBuildArtifactLocation,
+            String connectorFolderName, String connectorName, String version)
+            throws CoreException, XmlPullParserException, IOException {
+
+        removeConnectorBuildArtifacts(connectorBuildArtifactLocation, connectorFolderName,
+                connectorName + "-" + version);
+    }
+
+    public static void removeConnectorBuildArtifacts(IContainer connectorBuildArtifactLocation,
+            String connectorFolderName, String connectorFileName)
+            throws CoreException, XmlPullParserException, IOException {
+        connectorBuildArtifactLocation.getFolder(new Path(connectorFolderName + File.separator + connectorFileName))
+                .delete(true, new NullProgressMonitor());
+
+        File mavenParentProjectPomLocation = connectorBuildArtifactLocation.getFile(new Path("pom.xml")).getLocation()
+                .toFile();
+        removeModuleFromPom(mavenParentProjectPomLocation, connectorFolderName + "/" + connectorFileName);
+    }
+
+    public static void createDataServiceBuildArtifactPom(String groupId, String artifactId, String version,
+            String artifactType, String artifactFileName, String artifactFileNameWithExtension,
+            String artifactFolderName, IContainer buildArtifactsLocation) throws IOException, XmlPullParserException {
+
+        createCappArtifactPom(groupId, artifactId, version, artifactType, artifactFileName, artifactFolderName,
+                buildArtifactsLocation, "../../pom.xml", "org.wso2.maven", "maven-dataservice-plugin",
+                ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION,
+                "../../../dataservice/" + artifactFileNameWithExtension);
+
+    }
+
+    public static void createDataSourceBuildArtifactPom(String groupId, String artifactId, String version,
+            String artifactType, String artifactFileName, String artifactFileNameWithExtension,
+            String artifactFolderName, IContainer buildArtifactsLocation) throws IOException, XmlPullParserException {
+
+        createCappArtifactPom(groupId, artifactId, version, artifactType, artifactFileName, artifactFolderName,
+                buildArtifactsLocation, "../../pom.xml", "org.wso2.maven", "maven-datasource-plugin",
+                ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION, "../../../datasource/" + artifactFileNameWithExtension);
+
+    }
+
+    public static void createRegsitryResourceBuildArtifactPom(String groupId, String artifactId, String version,
+            String artifactType, String artifactFileName, String artifactFolderName, IContainer cappArtifactsLocation)
+            throws IOException, XmlPullParserException {
+
+        createCappArtifactPom(groupId, artifactId, version, artifactType, artifactFileName, artifactFolderName,
+                cappArtifactsLocation, "../../pom.xml", "org.wso2.maven", "wso2-general-project-plugin",
+                "5.2.43-SNAPSHOT", "registry-info.xml");
+
+    }
+
+    public static void removeESBConfigBuildArtifacts(IContainer buildArtifactLocation, String artifactFolderName,
+            String artifactFileName) throws CoreException, IOException, XmlPullParserException {
+
+        buildArtifactLocation.getFolder(new Path(artifactFolderName + File.separator + artifactFileName)).delete(true,
+                new NullProgressMonitor());
+
+        File mavenParentProjectPomLocation = buildArtifactLocation.getFile(new Path("pom.xml")).getLocation().toFile();
+        removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+    }
+
+    public static void removeESBMetadataBuildArtifacts(IContainer buildArtifactLocation, String artifactFolderName,
+            String artifactFileName) throws CoreException, IOException, XmlPullParserException {
+
+        buildArtifactLocation.getFolder(new Path(artifactFolderName + File.separator + artifactFileName)).delete(true,
+                new NullProgressMonitor());
+
+        File mavenParentProjectPomLocation = buildArtifactLocation.getFile(new Path("pom.xml")).getLocation().toFile();
+        removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+    }
+
+    public static void removeRegsitryResourceBuildArtifacts(IContainer registryResourceBuildArtifactLocation,
+            String artifactFolderName, String artifactFileName)
+            throws CoreException, IOException, XmlPullParserException {
+
+        registryResourceBuildArtifactLocation
+                .getFolder(new Path(artifactFolderName + File.separator + artifactFileName))
+                .delete(true, new NullProgressMonitor());
+
+        File mavenParentProjectPomLocation = registryResourceBuildArtifactLocation.getFile(new Path("pom.xml"))
+                .getLocation().toFile();
+        removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+    }
+
+    public static void removeDataServiceBuildArtifacts(IContainer buildArtifactLocation, String artifactFolderName,
+            String artifactFileName) throws CoreException, IOException, XmlPullParserException {
+
+        buildArtifactLocation.getFolder(new Path(artifactFolderName + File.separator + artifactFileName)).delete(true,
+                new NullProgressMonitor());
+
+        File mavenParentProjectPomLocation = buildArtifactLocation.getFile(new Path("pom.xml")).getLocation().toFile();
+        removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+    }
+
+    public static void removeDataSourceBuildArtifacts(IContainer buildArtifactLocation, String artifactFolderName,
+            String artifactFileName) throws CoreException, IOException, XmlPullParserException {
+
+        buildArtifactLocation.getFolder(new Path(artifactFolderName + File.separator + artifactFileName)).delete(true,
+                new NullProgressMonitor());
+
+        File mavenParentProjectPomLocation = buildArtifactLocation.getFile(new Path("pom.xml")).getLocation().toFile();
+        removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+    }
+
+    private static void removeModuleFromPom(File mavenParentProjectPomLocation, String module)
+            throws IOException, XmlPullParserException {
+        MavenProject mavenParentProject = MavenUtils.getMavenProject(mavenParentProjectPomLocation);
+        mavenParentProject.getModules().remove(module);
+        MavenUtils.saveMavenProject(mavenParentProject, mavenParentProjectPomLocation);
+    }
+	
+	
 }

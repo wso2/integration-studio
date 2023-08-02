@@ -73,6 +73,8 @@ import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceArtifact
 import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceImageUtils;
 import org.wso2.integrationstudio.artifact.dataservice.utils.DataServiceTemplateUtils;
 import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.maven.util.MavenUtils;
@@ -100,7 +102,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	private static final String ARTIFACT_ID = "maven-dataservice-plugin";
 	private static final String ARTIFACT_FILE = "artifact.xml";
 	private static final String DBS_EXTENSION = ".dbs";
-	private static final String TYPE = "service/dataservice";
+	private static final String TYPE = SynapseConstants.DATA_SERVICE_TYPE;
 	private static final String SERVER_ROLE = "DataServicesServer";
 	private static final String LINE_SEPERATOR = "line.separator";
 	private static final String DATASERVICE_TEMPLATE = "templates/Dataservice1.dbs";
@@ -257,6 +259,9 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		String servieName = FilenameUtils.removeExtension(openFile.getName());
 		dssProjectArtifact.addDSSArtifact(createArtifact(servieName, groupId, version, relativePath));
 		dssProjectArtifact.toFile();
+		SynapseUtils.createDataServiceBuildArtifactPom(groupId, servieName, version, TYPE, servieName,
+				openFile.getName(), SynapseConstants.DATA_SERVICE_FOLDER,
+				project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER));
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 	}
 

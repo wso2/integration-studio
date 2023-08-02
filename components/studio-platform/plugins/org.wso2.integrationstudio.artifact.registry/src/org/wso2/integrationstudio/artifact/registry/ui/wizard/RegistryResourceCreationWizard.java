@@ -47,6 +47,8 @@ import org.wso2.integrationstudio.artifact.registry.utils.RegistryArtifactConsta
 import org.wso2.integrationstudio.artifact.registry.utils.RegistryResourceImageUtils;
 import org.wso2.integrationstudio.artifact.registry.utils.RegistryTemplate;
 import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.general.project.artifact.GeneralProjectArtifact;
 import org.wso2.integrationstudio.general.project.artifact.RegistryArtifact;
 import org.wso2.integrationstudio.general.project.artifact.bean.RegistryCollection;
@@ -168,7 +170,7 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 			//STOPPed serializing the reg-info.xml file to avoid generating the file but keep the process since we need to entries in the reg-info.xml file
 //			regResInfoDoc.toFile(registryInfoFile);
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-			getModel().getMavenInfo().setPackageName("registry/resource");
+			getModel().getMavenInfo().setPackageName(SynapseConstants.REGISTRY_RESOURCE_TYPE);
 			updatePOM(project);
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			File pomLocation = project.getFile("pom.xml").getLocation().toFile();
@@ -183,7 +185,7 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 			RegistryArtifact artifact=new RegistryArtifact();
 			artifact.setName(regModel.getArtifactName());
 			artifact.setVersion(version);
-			artifact.setType("registry/resource");
+			artifact.setType(SynapseConstants.REGISTRY_RESOURCE_TYPE);
 			artifact.setServerRole("EnterpriseIntegrator");
 			artifact.setGroupId(groupId);
 			List<RegistryResourceInfo> registryResources = regResInfoDoc.getRegistryResources();
@@ -211,6 +213,12 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 			generalProjectArtifact.addArtifact(artifact);
 			
 			generalProjectArtifact.toFile();
+
+			IContainer buildArtifactsFolder = project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+			SynapseUtils.createRegsitryResourceBuildArtifactPom(groupId, regModel.getArtifactName(), version,
+					SynapseConstants.REGISTRY_RESOURCE_TYPE, regModel.getArtifactName(),
+					SynapseConstants.REGISTRY_RESOURCE_FOLDER, buildArtifactsFolder);
+
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			openEditor(project);
 			
@@ -249,6 +257,8 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 		artifactLocationNode.setValue(".");
 		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
 		typeListNode.setValue("${artifact.types}");
+		Xpp3Dom outputLocationNode = MavenUtils.createXpp3Node(configurationNode, "outputLocation");
+		outputLocationNode.setValue("build-artifacts");
 		pluginExecution.setConfiguration(configurationNode);
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}

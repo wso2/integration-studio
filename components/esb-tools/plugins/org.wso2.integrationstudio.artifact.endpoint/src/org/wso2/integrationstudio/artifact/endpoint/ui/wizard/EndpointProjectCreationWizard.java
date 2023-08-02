@@ -57,6 +57,9 @@ import org.wso2.integrationstudio.artifact.endpoint.utils.EpArtifactConstants;
 import org.wso2.integrationstudio.artifact.endpoint.validators.HttpMethodList.HttpMethodType;
 import org.wso2.integrationstudio.artifact.endpoint.validators.ProjectFilter;
 import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.core.exceptions.BuildArtifactCreationException;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
 import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.integrationstudio.general.project.artifact.GeneralProjectArtifact;
@@ -154,11 +157,10 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		                                        File.separator + "endpoints");
 
 		File pomfile = project.getFile("pom.xml").getLocation().toFile();
-		getModel().getMavenInfo().setPackageName("synapse/endpoint");
+		getModel().getMavenInfo().setPackageName(SynapseConstants.ENDPOINT_CONFIG_TYPE);
 		if (!pomfile.exists()) {
 			createPOM(pomfile);
 		}
-		updatePom();
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		String groupId = getMavenGroupId(pomfile);
 		groupId += ".endpoint";
@@ -204,14 +206,15 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			ESBArtifact artifact = new ESBArtifact();
 			artifact.setName(epModel.getEpName());
 			artifact.setVersion(version);
-			artifact.setType("synapse/endpoint");
+			artifact.setType(SynapseConstants.ENDPOINT_CONFIG_TYPE);
 			artifact.setServerRole("EnterpriseServiceBus");
 			artifact.setGroupId(groupId);
-			artifact.setFile(FileUtils.getRelativePath(project.getLocation().toFile(),
-			                                           new File(location.getLocation().toFile(), epModel.getEpName() +
-			                                                                                     ".xml"))
-			                          .replaceAll(Pattern.quote(File.separator), "/"));
+			String fileLocation = FileUtils.getRelativePath(project.getLocation().toFile(),
+							new File(location.getLocation().toFile(), epModel.getEpName() + ".xml"))
+							.replaceAll(Pattern.quote(File.separator), "/");
+			artifact.setFile(fileLocation);
 			esbProjectArtifact.addESBArtifact(artifact);
+			createEndpointConfigBuildArtifactPom(groupId, epModel.getEpName(), version, epModel.getEpName(), fileLocation);
 
 		}
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -277,7 +280,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		RegistryArtifact artifact = new RegistryArtifact();
 		artifact.setName(epModel.getEpName());
 		artifact.setVersion(version);
-		artifact.setType("registry/resource");
+		artifact.setType(SynapseConstants.REGISTRY_RESOURCE_TYPE);
 		artifact.setServerRole("EnterpriseServiceBus");
 		artifact.setGroupId(groupId);
 		List<RegistryResourceInfo> registryResources = regResInfoDoc.getRegistryResources();
@@ -294,6 +297,12 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		generalProjectArtifact.addArtifact(artifact);
 		generalProjectArtifact.toFile();
 
+		SynapseUtils.createRegsitryResourceBuildArtifactPom(groupId, epModel.getEpName(), version,
+				SynapseConstants.REGISTRY_RESOURCE_TYPE, epModel.getEpName(), SynapseConstants.REGISTRY_RESOURCE_FOLDER,
+				project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER));
+
+		// TODO: add registry resource build artifact
+
 	}
 
 	private void addGeneralProjectPlugin(IProject project) throws Exception {
@@ -302,23 +311,23 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
 		if (!mavenProjectPomLocation.exists()) {
 			mavenProject =
-			               MavenUtils.createMavenProject("org.wso2.carbon." + project.getName(), project.getName(),
-			                                             "1.0.0", "pom");
+					MavenUtils.createMavenProject("org.wso2.carbon." + project.getName(), project.getName(),
+							"1.0.0", "pom");
 		} else {
 			mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		}
 
 		boolean pluginExists =
-		                       MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
-		                                                      "wso2-general-project-plugin",
-		                                                      ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION);
+				MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
+						"wso2-general-project-plugin",
+						ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION);
 		if (pluginExists) {
 			return;
 		}
 
 		Plugin plugin =
-		                MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-general-project-plugin",
-		                                             ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION, true);
+				MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-general-project-plugin",
+						ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION, true);
 
 		PluginExecution pluginExecution;
 
@@ -333,6 +342,8 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		artifactLocationNode.setValue(".");
 		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
 		typeListNode.setValue("${artifact.types}");
+		Xpp3Dom outputLocationNode = MavenUtils.createXpp3Node(configurationNode, "outputLocation");
+		outputLocationNode.setValue("build-artifacts");
 		pluginExecution.setConfiguration(configurationNode);
 
 		Repository repo = new Repository();
@@ -356,34 +367,8 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
 
-	public void updatePom() throws IOException, XmlPullParserException {
-		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
-		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-
-		// Skip changing the pom file if group ID and artifact ID are matched
-		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-endpoint-plugin")) {
-			return;
-		}
-
-		Plugin plugin =
-		                MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-endpoint-plugin",
-		                                             ESBMavenConstants.WSO2_ESB_ENDPOINT_VERSION, true);
-		PluginExecution pluginExecution = new PluginExecution();
-		pluginExecution.addGoal("pom-gen");
-		pluginExecution.setPhase("process-resources");
-		pluginExecution.setId("endpoint");
-
-		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
-		artifactLocationNode.setValue(".");
-		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
-		typeListNode.setValue("${artifact.types}");
-		pluginExecution.setConfiguration(configurationNode);
-		plugin.addExecution(pluginExecution);
-		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
-	}
-
-	public void copyImportFile(IContainer importLocation, boolean isNewArtifact, String groupId) throws IOException {
+	public void copyImportFile(IContainer importLocation, boolean isNewArtifact, String groupId) throws IOException,
+			BuildArtifactCreationException {
 		File importFile = getModel().getImportFile();
 		EndpointModel endpointModel = (EndpointModel) getModel();
 		List<OMElement> selectedEPList = endpointModel.getSelectedEPList();
@@ -401,6 +386,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 					                                                         name + ".xml"))
 					                               .replaceAll(Pattern.quote(File.separator), "/");
 					esbProjectArtifact.addESBArtifact(createArtifactxml(fileLocation, name, groupId));
+					createEndpointConfigBuildArtifactPom(groupId, name, version, name, fileLocation);
 				}
 			}
 
@@ -416,7 +402,23 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 				                                                                                                ".xml"))
 				                               .replaceAll(Pattern.quote(File.separator), "/");
 				esbProjectArtifact.addESBArtifact(createArtifactxml(fileLocation, name, groupId));
+				createEndpointConfigBuildArtifactPom(groupId, name, version, name, fileLocation);
 			}
+		}
+	}
+
+	private void createEndpointConfigBuildArtifactPom(String groupId, String artifactId, String version, String epName,
+												 String relativePathToRealArtifact)
+			throws BuildArtifactCreationException {
+	    
+	    IContainer buildArtifactsLocation = project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+		try {
+			SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version,
+					SynapseConstants.ENDPOINT_CONFIG_TYPE, epName, SynapseConstants.ENDPOINT_FOLDER,
+					buildArtifactsLocation, "../../../" + relativePathToRealArtifact);
+		} catch (IOException | XmlPullParserException e) {
+			throw new BuildArtifactCreationException("Error while creating the build artifacts for Endpoint config "
+					+ epName + " at " + buildArtifactsLocation.getFullPath());
 		}
 	}
 
@@ -424,7 +426,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		ESBArtifact artifact = new ESBArtifact();
 		artifact.setName(artifactName);
 		artifact.setVersion(version);
-		artifact.setType("synapse/endpoint");
+		artifact.setType(SynapseConstants.ENDPOINT_CONFIG_TYPE);
 		artifact.setServerRole("EnterpriseServiceBus");
 		artifact.setGroupId(groupId);
 		artifact.setFile(location);

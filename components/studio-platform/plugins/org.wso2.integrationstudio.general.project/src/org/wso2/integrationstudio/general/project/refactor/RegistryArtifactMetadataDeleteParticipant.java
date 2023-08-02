@@ -16,10 +16,12 @@
 
 package org.wso2.integrationstudio.general.project.refactor;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.apache.commons.io.FilenameUtils;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -32,6 +34,8 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 
 public class RegistryArtifactMetadataDeleteParticipant extends DeleteParticipant {
 	private IResource originalResource;
@@ -49,6 +53,7 @@ public class RegistryArtifactMetadataDeleteParticipant extends DeleteParticipant
 		CompositeChange change = new CompositeChange("Registry Artifact Deletion");
 
 		// If originalResource is a folder and sub folders contain artifacts
+		RegistryMetadataFileDeleteChange registryMetadataFileDeleteChange;
 		if (originalResource instanceof IFolder) {
 			IFolder iFolder = (IFolder) originalResource;
 			ArrayList<IResource> fList = listFiles(iFolder, new ArrayList<IResource>());
@@ -57,19 +62,32 @@ public class RegistryArtifactMetadataDeleteParticipant extends DeleteParticipant
 			while (iterator.hasNext()) {
 				IResource res = iterator.next();
 				if (res instanceof IFile) {
-					change.add(new RegistryMetadataFileDeleteChange(res.getProject().getName(),
-					                                                res.getProject()
-					                                                   .getFile("artifact.xml"),
-					                                                res));
+					registryMetadataFileDeleteChange = new RegistryMetadataFileDeleteChange(res.getProject().getName(),
+							res.getProject().getFile("artifact.xml"), res);
+					change.add(registryMetadataFileDeleteChange);
 
 				}
 			}
 		}
 
-		change.add(new RegistryMetadataFileDeleteChange(registryProject.getName(),
-		                                                registryProject.getFile("artifact.xml"),
-		                                                originalResource));
+		registryMetadataFileDeleteChange = new RegistryMetadataFileDeleteChange(registryProject.getName(),
+				registryProject.getFile("artifact.xml"), originalResource);
+		change.add(registryMetadataFileDeleteChange);
+
+
+		deleteBuildAritfacts(originalResource, registryMetadataFileDeleteChange.getArtifactName());
 		return change;
+	}
+
+	private void deleteBuildAritfacts(IResource resource, String artifactName) {
+	    try {
+			SynapseUtils.removeRegsitryResourceBuildArtifacts(resource.getProject()
+					.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER), SynapseConstants.REGISTRY_RESOURCE_FOLDER,
+					artifactName);
+		} catch (CoreException | IOException | XmlPullParserException e) {
+			throw new OperationCanceledException("Error while deleting the build artifacts for " + artifactName
+					+ " in registry resources");
+		}
 	}
 
 	public ArrayList<IResource> listFiles(IResource resource, ArrayList<IResource> list) {

@@ -19,12 +19,10 @@ package org.wso2.integrationstudio.artifact.connector.ui.wizard;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.maven.model.Plugin;
-import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -34,7 +32,8 @@ import org.wso2.integrationstudio.artifact.connector.Activator;
 import org.wso2.integrationstudio.artifact.connector.artifact.ConnectorProjectArtifact;
 import org.wso2.integrationstudio.artifact.connector.model.ConnectorModel;
 import org.wso2.integrationstudio.artifact.connector.utils.ConnectorImageUtils;
-import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.maven.util.MavenUtils;
@@ -88,6 +87,10 @@ public class ConnectorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 			pomfile = project.getFile("pom.xml").getLocation().toFile();
 			createPOM(pomfile, "pom");
 			updatePom();
+			IFolder buildArtifactsFolder = ProjectUtils.getWorkspaceFolder(project,
+					SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+            ProjectUtils.createFolder(buildArtifactsFolder);
+			SynapseUtils.createBuildArtifactsModulePom(project, buildArtifactsFolder, "../pom.xml");
 			ProjectUtils.addNatureToProject(project, false, CONNECTOR_PROJECT_NATURE);
 			MavenUtils
 					.updateWithMavenEclipsePlugin(pomfile, new String[] {}, new String[] { CONNECTOR_PROJECT_NATURE });
@@ -114,30 +117,43 @@ public class ConnectorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 		return true;
 	}
 
+//	private void createBuildArtifactsModulePom(IFolder buildArtifactsFolder) {
+//
+//		try {
+//			File mavenParentProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
+//			MavenProject mavenParentProject = MavenUtils.getMavenProject(mavenParentProjectPomLocation);
+//
+//			IFile pomFile = buildArtifactsFolder.getFile(new Path("pom.xml"));
+//			FileUtils.createFile(pomFile.getLocation().toFile(), "");
+//			File mavenProjectPomLocation = pomFile.getLocation().toFile();
+//
+//			MavenProject mavenProject = MavenUtils.createMavenProject(mavenParentProject.getGroupId(),
+//					mavenParentProject.getArtifactId() + "_module", mavenParentProject.getVersion(), "pom");
+//
+//			org.apache.maven.model.Parent parent = new org.apache.maven.model.Parent();
+//			parent.setGroupId(mavenParentProject.getGroupId());  // Set the parent's group ID
+//			parent.setArtifactId(mavenParentProject.getArtifactId());  // Set the parent's artifact ID
+//			parent.setVersion(mavenParentProject.getVersion());  // Set the parent's version
+//			parent.setRelativePath("../pom.xml");
+//
+//			Model model = mavenProject.getModel();
+//			model.setParent(parent);
+//
+//			MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (XmlPullParserException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//	}
+
 	public void updatePom() throws IOException, XmlPullParserException {
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		mavenProject.getModel().getProperties().put("CApp.type", "synapse/lib");
-
-		// Skip changing the pom file if group ID and artifact ID are matched
-		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-connector-plugin")) {
-			return;
-		}
-
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-connector-plugin",
-				ESBMavenConstants.WSO2_ESB_CONNECTOR_VERSION, true);
-		PluginExecution pluginExecution = new PluginExecution();
-		pluginExecution.addGoal("pom-gen");
-		pluginExecution.setPhase("process-resources");
-		pluginExecution.setId("connector");
-
-		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
-		artifactLocationNode.setValue(".");
-		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
-		typeListNode.setValue("${artifact.types}");
-		pluginExecution.setConfiguration(configurationNode);
-		plugin.addExecution(pluginExecution);
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
 

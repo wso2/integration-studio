@@ -51,6 +51,9 @@ import org.wso2.integrationstudio.artifact.sequence.model.SequenceModel;
 import org.wso2.integrationstudio.artifact.sequence.utils.SequenceImageUtils;
 import org.wso2.integrationstudio.artifact.sequence.validators.ProjectFilter;
 import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.core.exceptions.BuildArtifactCreationException;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
 import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.integrationstudio.general.project.artifact.GeneralProjectArtifact;
@@ -121,6 +124,9 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
+			File pomfile = project.getFile("pom.xml").getLocation().toFile();
+			String groupId = getMavenGroupId(pomfile) + ".sequence";
+
 			if (fileLst.size() > 0) {
 				openEditor(fileLst.get(0));
 			}
@@ -145,34 +151,6 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		return super.getPreviousPage(page);
 	}
 
-	public void updatePom() throws IOException, XmlPullParserException {
-		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
-		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		version = mavenProject.getVersion().replace("-SNAPSHOT", "");
-
-		// Skip changing the pom file if group ID and artifact ID are matched
-		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-sequence-plugin")) {
-			return;
-		}
-
-		Plugin plugin =
-		                MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-sequence-plugin",
-		                                             ESBMavenConstants.WSO2_ESB_SEQUENCE_VERSION, true);
-		PluginExecution pluginExecution = new PluginExecution();
-		pluginExecution.addGoal("pom-gen");
-		pluginExecution.setPhase("process-resources");
-		pluginExecution.setId("sequence");
-
-		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
-		artifactLocationNode.setValue(".");
-		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
-		typeListNode.setValue("${artifact.types}");
-		pluginExecution.setConfiguration(configurationNode);
-		plugin.addExecution(pluginExecution);
-		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
-	}
-
 	public boolean createSequenceArtifact(IProject prj, SequenceModel sequenceModel) throws Exception {
 		boolean isNewArtifact = true;
 		IContainer location =
@@ -188,9 +166,10 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		if (!pomfile.exists()) {
 			createPOM(pomfile);
 		}
+        MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
+        version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 
-		updatePom();
-		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+        project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		String groupId = getMavenGroupId(pomfile);
 		groupId += ".sequence";
 
@@ -217,17 +196,9 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			File destFile = new File(location.getLocation().toFile(), sequenceModel.getSequenceName() + ".xml");
 			FileUtils.createFile(destFile, content);
 			fileLst.add(destFile);
-			ESBArtifact artifact = new ESBArtifact();
-			artifact.setName(sequenceModel.getSequenceName());
-			artifact.setVersion(version);
-			artifact.setType("synapse/sequence");
-			artifact.setServerRole("EnterpriseServiceBus");
-			artifact.setGroupId(groupId);
-			artifact.setFile(FileUtils.getRelativePath(project.getLocation().toFile(),
-			                                           new File(location.getLocation().toFile(),
-			                                                    sequenceModel.getSequenceName() + ".xml"))
-			                          .replaceAll(Pattern.quote(File.separator), "/"));
-			esbProjectArtifact.addESBArtifact(artifact);
+
+            addESBArtifactDetails(location, sequenceModel.getSequenceName(), groupId, version,
+                    sequenceModel.getSequenceName(), esbProjectArtifact);
 		}
 		esbProjectArtifact.toFile();
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -292,6 +263,10 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		}
 		generalProjectArtifact.addArtifact(artifact);
 		generalProjectArtifact.toFile();
+
+		SynapseUtils.createRegsitryResourceBuildArtifactPom(groupId, sequenceModel.getSequenceName(), version,
+				SynapseConstants.REGISTRY_RESOURCE_TYPE, sequenceModel.getSequenceName(),
+				SynapseConstants.REGISTRY_RESOURCE_FOLDER, project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER));
 	}
 
 	private void addGeneralProjectPlugin(IProject project) throws Exception {
@@ -321,7 +296,7 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		PluginExecution pluginExecution;
 
 		pluginExecution = new PluginExecution();
-		pluginExecution.addGoal("pom-gen");
+		pluginExecution.addGoal("copy-registry-dependencies");
 		pluginExecution.setPhase("process-resources");
 		pluginExecution.setId("registry");
 		plugin.addExecution(pluginExecution);
@@ -331,6 +306,8 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		artifactLocationNode.setValue(".");
 		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
 		typeListNode.setValue("${artifact.types}");
+		Xpp3Dom outputLocationNode = MavenUtils.createXpp3Node(configurationNode, "outputLocation");
+		outputLocationNode.setValue(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
 		pluginExecution.setConfiguration(configurationNode);
 
 		Repository repo = new Repository();
@@ -354,7 +331,7 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
 
-	public void copyImportFile(IContainer importLocation, boolean isNewAritfact, String groupId) throws IOException {
+	public void copyImportFile(IContainer importLocation, boolean isNewAritfact, String groupId) throws Exception {
 		File importFile = getModel().getImportFile();
 		File destFile = null;
 		List<OMElement> selectedSeqList = ((SequenceModel) getModel()).getSelectedSeqList();
@@ -364,19 +341,9 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 				destFile = new File(importLocation.getLocation().toFile(), name + ".xml");
 				FileUtils.createFile(destFile, element.toString());
 				fileLst.add(destFile);
-				if (isNewAritfact) {
-					ESBArtifact artifact = new ESBArtifact();
-					artifact.setName(name);
-					artifact.setVersion(version);
-					artifact.setType("synapse/sequence");
-					artifact.setServerRole("EnterpriseServiceBus");
-					artifact.setGroupId(groupId);
-					artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
-					                                           new File(importLocation.getLocation().toFile(), name +
-					                                                                                           ".xml"))
-					                          .replaceAll(Pattern.quote(File.separator), "/"));
-					esbProjectArtifact.addESBArtifact(artifact);
-				}
+                if (isNewAritfact) {
+                    addESBArtifactDetails(importLocation, name, groupId, version, name, esbProjectArtifact);
+                }
 			}
 
 		} else {
@@ -384,21 +351,47 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			FileUtils.copy(importFile, destFile);
 			fileLst.add(destFile);
 			String name = importFile.getName().replaceAll(".xml$", "");
-			if (isNewAritfact) {
-				ESBArtifact artifact = new ESBArtifact();
-				artifact.setName(name);
-				artifact.setVersion(version);
-				artifact.setType("synapse/sequence");
-				artifact.setServerRole("EnterpriseServiceBus");
-				artifact.setGroupId(groupId);
-				artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
-				                                           new File(importLocation.getLocation().toFile(), name +
-				                                                                                           ".xml"))
-				                          .replaceAll(Pattern.quote(File.separator), "/"));
-				esbProjectArtifact.addESBArtifact(artifact);
-			}
+            if (isNewAritfact) {
+                addESBArtifactDetails(importLocation, name, groupId, version, name, esbProjectArtifact);
+            }
 		}
 	}
+
+    private ESBArtifact createArtifact(String name, String groupId, String version, String path) {
+        ESBArtifact artifact = new ESBArtifact();
+        artifact.setName(name);
+        artifact.setVersion(version);
+        artifact.setType(SynapseConstants.SEQUENCE_CONFIG_TYPE);
+        artifact.setServerRole("EnterpriseServiceBus");
+        artifact.setGroupId(groupId);
+        artifact.setFile(path);
+        return artifact;
+    }
+
+    private void addESBArtifactDetails(IContainer location, String sequenceName, String groupId, String version,
+            String sequenceFileName, ESBProjectArtifact esbProjectArtifact) throws Exception {
+
+        String relativeLocation = FileUtils
+                .getRelativePath(project.getLocation().toFile(),
+                        new File(location.getLocation().toFile(), sequenceName + ".xml"))
+                .replaceAll(Pattern.quote(File.separator), "/");
+        esbProjectArtifact.addESBArtifact(createArtifact(sequenceName, groupId, version, relativeLocation));
+        createSequenceBuildArtifactPom(groupId, sequenceName, version, sequenceFileName, relativeLocation);
+    }
+
+    private void createSequenceBuildArtifactPom(String groupId, String artifactId, String version,
+            String sequenceFileName, String relativePathToRealArtifact) throws BuildArtifactCreationException {
+
+        IContainer buildArtifactsLocation = project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+        try {
+            SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version,
+                    SynapseConstants.SEQUENCE_CONFIG_TYPE, sequenceFileName, SynapseConstants.SEQUECE_FOLDER,
+                    buildArtifactsLocation, "../../../" + relativePathToRealArtifact);
+        } catch (IOException | XmlPullParserException e) {
+            throw new BuildArtifactCreationException("Error while creating the build artifacts for Local Entry config "
+                    + sequenceFileName + " at " + buildArtifactsLocation.getFullPath());
+        }
+    }
 
 	public String createSequenceTemplate(String templateContent) throws IOException {
 		// String defaultNS = ESBPreferenceData.getDefaultNamesapce();

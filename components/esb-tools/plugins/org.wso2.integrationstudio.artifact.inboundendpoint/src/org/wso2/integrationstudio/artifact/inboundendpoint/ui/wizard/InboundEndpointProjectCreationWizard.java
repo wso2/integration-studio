@@ -26,12 +26,9 @@ import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
-import org.apache.maven.model.Plugin;
-import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.inbound.InboundEndpointSerializer;
 import org.apache.synapse.inbound.InboundEndpoint;
-import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -46,7 +43,9 @@ import org.wso2.integrationstudio.artifact.inboundendpoint.Activator;
 import org.wso2.integrationstudio.artifact.inboundendpoint.model.InboundEndpointModel;
 import org.wso2.integrationstudio.artifact.inboundendpoint.utils.InboundEndpointArtifactProperties;
 import org.wso2.integrationstudio.artifact.inboundendpoint.utils.InboundEndpointImageUtils;
-import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.core.exceptions.BuildArtifactCreationException;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
 import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.integrationstudio.gmf.esb.ArtifactType;
@@ -83,19 +82,12 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 	private static final String SRC_FOLDER ="src";
 	private static final String MAIN_FOLDER="main";
 	private static final String SYNAPSE_FOLDER= "synapse-config";
-	private static final String INBOUND_EP_FOLDER="inbound-endpoints";
+	private static final String INBOUND_EP_FOLDER = SynapseConstants.INBOUND_EP_FOLDER;
 	private static final String POM_FILE ="pom.xml";
 	private static final String GROUP_ID =".inbound-endpoint";	
 	private static final String ARTIFACT_XML_FILE = "artifact.xml";
-	private static final String TYPE ="synapse/inbound-endpoint"; 
+	private static final String TYPE = SynapseConstants.INBOUND_ENDPOINT_CONFIG_TYPE;
 	private static final String SERVER_ROLE ="EnterpriseServiceBus";
-	private static final String MAVEN_ID = "org.wso2.maven";
-	private static final String INBOUND_EP_PLUGIN_ID= "wso2-esb-inboundendpoint-plugin";
-	private static final String PLUGIN_GOAL = "pom-gen";
-	private static final String PLUGIN_PHASE = "process-resources";
-	private static final String PLUGIN_ID = "inboundendpoint";
-	private static final String ARTIFACT_LOCATION ="artifactLocation";
-	private static final String TYPE_LIST ="typeList";
 	private static final String CUSTOM = "custom";
 	private static final String KEY ="key";
 	private static final String WS = "ws";
@@ -131,9 +123,11 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		IContainer location = esbProject.getFolder(SRC_FOLDER + File.separator + MAIN_FOLDER+ File.separator
 				+ SYNAPSE_FOLDER + File.separator + INBOUND_EP_FOLDER);
 		
-		updatePom();
 		esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		File pomLocation = esbProject.getFile(POM_FILE).getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+        version = mavenProject.getVersion().replace("-SNAPSHOT", "");
+        
 		String groupId = getMavenGroupId(pomLocation);
 		groupId += GROUP_ID;
 
@@ -164,11 +158,14 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 			artifact.setType(TYPE);
 			artifact.setServerRole(SERVER_ROLE);
 			artifact.setGroupId(groupId);
-			artifact.setFile(FileUtils.getRelativePath(
+			String fileLocation = FileUtils.getRelativePath(
 					esbProject.getLocation().toFile(),
 					new File(location.getLocation().toFile(), inboundEndpointModel.getName()
-							+ XML_EXTENSION)).replaceAll(Pattern.quote(File.separator), "/"));
+							+ XML_EXTENSION)).replaceAll(Pattern.quote(File.separator), "/");
+			artifact.setFile(fileLocation);
 			esbProjectArtifact.addESBArtifact(artifact);
+			createInboundEndpointBuildArtifactPom(groupId, inboundEndpointModel.getName(), version,
+					inboundEndpointModel.getName(), fileLocation);
 		}
 		File pomfile = esbProject.getFile(POM_FILE).getLocation().toFile();
 		getModel().getMavenInfo().setPackageName(TYPE);
@@ -198,34 +195,20 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		}
 		return true;
 	}
-	
-	public void updatePom() throws IOException, XmlPullParserException {
-		File mavenProjectPomLocation = esbProject.getFile(POM_FILE).getLocation().toFile();
-		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 
-		// Skip changing the pom file if group ID and artifact ID are matched
-		if (MavenUtils.checkOldPluginEntry(mavenProject, MAVEN_ID, INBOUND_EP_PLUGIN_ID)) {
-			return;
-		}
+    private void createInboundEndpointBuildArtifactPom(String groupId, String artifactId, String version,
+            String inboundEpName, String relativePathToRealArtifact) throws BuildArtifactCreationException {
 
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, MAVEN_ID, INBOUND_EP_PLUGIN_ID,
-				ESBMavenConstants.WSO2_ESB_INBOUND_ENDPOINT_VERSION, true);
-		PluginExecution pluginExecution = new PluginExecution();
-		pluginExecution.addGoal(PLUGIN_GOAL);
-		pluginExecution.setPhase(PLUGIN_PHASE);
-		pluginExecution.setId(PLUGIN_ID);
+        IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+        try {
+            SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version, TYPE, inboundEpName,
+                    INBOUND_EP_FOLDER, buildArtifactsLocation, "../../../" + relativePathToRealArtifact);
+        } catch (IOException | XmlPullParserException e) {
+            throw new BuildArtifactCreationException("Error while creating the build artifacts for Inbound Endpoint "
+                    + "config: " + inboundEpName + " at " + buildArtifactsLocation.getFullPath());
+        }
+    }
 
-		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, ARTIFACT_LOCATION);
-		artifactLocationNode.setValue(".");
-		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, TYPE_LIST);
-		typeListNode.setValue("${artifact.types}");
-		pluginExecution.setConfiguration(configurationNode);
-		plugin.addExecution(pluginExecution);
-		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
-	}
-	
 	protected boolean isRequiredWorkingSet() {
 		return false;
 	}
@@ -309,7 +292,8 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		return false;
 	}
 	
-	public void copyImportFile(IContainer importLocation,boolean isNewArtifact,String groupId) throws IOException {
+	public void copyImportFile(IContainer importLocation,boolean isNewArtifact,String groupId) throws IOException,
+			BuildArtifactCreationException {
 		File importFile = getModel().getImportFile();
 		List<OMElement> selectedLEList = ieModel.getSelectedLEList();
 		File destFile = null;
@@ -319,18 +303,21 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 				destFile  = new File(importLocation.getLocation().toFile(), key + XML_EXTENSION);
 				FileUtils.createFile(destFile, element.toString());
 				fileList.add(destFile);
-				if(isNewArtifact){
-				ESBArtifact artifact=new ESBArtifact();
-				artifact.setName(key);
-				artifact.setVersion(version);
-				artifact.setType(TYPE);
-				artifact.setServerRole(SERVER_ROLE);
-				artifact.setGroupId(groupId);
-					artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
-							new File(importLocation.getLocation().toFile(), key + XML_EXTENSION)).replaceAll(
-							Pattern.quote(File.separator), "/"));
-				esbProjectArtifact.addESBArtifact(artifact);
-				}
+                if (isNewArtifact) {
+                    ESBArtifact artifact = new ESBArtifact();
+                    artifact.setName(key);
+                    artifact.setVersion(version);
+                    artifact.setType(TYPE);
+                    artifact.setServerRole(SERVER_ROLE);
+                    artifact.setGroupId(groupId);
+                    String fileLocation = FileUtils
+                            .getRelativePath(importLocation.getProject().getLocation().toFile(),
+                                    new File(importLocation.getLocation().toFile(), key + XML_EXTENSION))
+                            .replaceAll(Pattern.quote(File.separator), "/");
+                    artifact.setFile(fileLocation);
+                    esbProjectArtifact.addESBArtifact(artifact);
+                    createInboundEndpointBuildArtifactPom(groupId, key, version, key, fileLocation);
+                }
 			}
 			
 		}else{
@@ -338,18 +325,21 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 			FileUtils.copy(importFile, destFile);
 			fileList.add(destFile);
 			String key = importFile.getName().replaceAll(".xml$", "");
-			if(isNewArtifact){
-			ESBArtifact artifact=new ESBArtifact();
-			artifact.setName(key);
-			artifact.setVersion(version);
-			artifact.setType(TYPE);
-			artifact.setServerRole(SERVER_ROLE);
-			artifact.setGroupId(groupId);
-				artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
-						new File(importLocation.getLocation().toFile(), key + XML_EXTENSION)).replaceAll(
-						Pattern.quote(File.separator), "/"));
-			esbProjectArtifact.addESBArtifact(artifact);
-			}
+            if (isNewArtifact) {
+                ESBArtifact artifact = new ESBArtifact();
+                artifact.setName(key);
+                artifact.setVersion(version);
+                artifact.setType(TYPE);
+                artifact.setServerRole(SERVER_ROLE);
+                artifact.setGroupId(groupId);
+                String fileLocation = FileUtils
+                        .getRelativePath(importLocation.getProject().getLocation().toFile(),
+                                new File(importLocation.getLocation().toFile(), key + XML_EXTENSION))
+                        .replaceAll(Pattern.quote(File.separator), "/");
+                artifact.setFile(fileLocation);
+                esbProjectArtifact.addESBArtifact(artifact);
+                createInboundEndpointBuildArtifactPom(groupId, key, version, key, fileLocation);
+            }
 		}
 	}
 	

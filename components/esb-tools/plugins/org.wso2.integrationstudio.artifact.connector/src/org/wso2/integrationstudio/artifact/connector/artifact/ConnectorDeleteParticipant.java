@@ -17,6 +17,7 @@ package org.wso2.integrationstudio.artifact.connector.artifact;
 
 import java.io.IOException;
 
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -28,6 +29,8 @@ import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
 import org.wso2.integrationstudio.artifact.connector.Activator;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 
@@ -72,12 +75,28 @@ public class ConnectorDeleteParticipant extends DeleteParticipant {
         try {
             change.add(new ConnectorMetaDataFileDeleteChange("Meta data file (arifact.xml) change", artifactFile,
                     originalFileFullName));
+            deleteBuildAritfacts(artifactFile);
 
         } catch (IOException e) {
             throw new OperationCanceledException(
                     "Failed to update the artifact.xml file while deleting the connector ZIP");
         }
         return change;
+    }
+
+    private void deleteBuildAritfacts(IFile file) {
+        int substringLength = originalFileFullName.lastIndexOf(".");
+        if (substringLength < 0) {
+            substringLength = originalFileFullName.length();
+        }
+        String originalFileName = originalFileFullName.substring(0, substringLength);
+        try {
+            SynapseUtils.removeDataServiceBuildArtifacts(file.getProject().getFolder(
+                    SynapseConstants.BUILD_ARTIFACTS_FOLDER), SynapseConstants.CONNECTOR_FOLDER, originalFileName);
+        } catch (CoreException | IOException | XmlPullParserException e) {
+            throw new OperationCanceledException("Error while deleting the build artifacts for the connector: "
+                    + originalFileName);
+        }
     }
 
     @Override

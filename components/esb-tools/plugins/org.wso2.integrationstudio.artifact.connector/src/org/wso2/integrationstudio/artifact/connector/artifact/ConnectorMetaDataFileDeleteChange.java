@@ -40,11 +40,15 @@ public class ConnectorMetaDataFileDeleteChange extends TextFileChange {
 
     private IFile metaDataFile;
     private String originalFileName;
+    private String version;
 
     public ConnectorMetaDataFileDeleteChange(String name, IFile file, String originalFileFullName) throws IOException {
         super(name, file);
         this.metaDataFile = file;
         this.originalFileName = originalFileFullName.substring(0, originalFileFullName.lastIndexOf("-"));
+        String fileNameWithoutExtension = originalFileFullName.substring(0, originalFileFullName.lastIndexOf("."));
+        this.version = fileNameWithoutExtension.substring(fileNameWithoutExtension.lastIndexOf("-") + 1,
+                fileNameWithoutExtension.length());
 
         addTextEdits();
         identyfyAndRemoveChangingItemFromCompositePOM(metaDataFile);
@@ -96,6 +100,7 @@ public class ConnectorMetaDataFileDeleteChange extends TextFileChange {
             String artifactStart = "<artifact";
             String artifactEnd = "</artifact>";
             String nameProperty = "name=\"";
+            String versionProperty = "version=\"";
 
             List<String> artifactEntry = new ArrayList<String>();
             boolean isArtifact = false;
@@ -122,7 +127,7 @@ public class ConnectorMetaDataFileDeleteChange extends TextFileChange {
                     if (!isArtifact && line.trim().startsWith(artifactStart)) {
                         int artifactTagIndex = line.indexOf(artifactStart);
                         startIndex = fullIndex + artifactTagIndex;
-                        if (line.contains(nameProperty + originalFileName + "\"")) {
+                        if (line.contains(nameProperty + originalFileName + "\"") && line.contains(versionProperty + version + "\"")) {
                             isArtifact = true;
                             artifactEntry.add(line.substring(artifactTagIndex));
                             isArtifactLine = true;

@@ -18,6 +18,7 @@ package org.wso2.integrationstudio.ds.refactor;
 
 import java.io.IOException;
 
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -30,6 +31,8 @@ import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
 import org.wso2.integrationstudio.ds.Activator;
 import org.wso2.integrationstudio.ds.util.Messages;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 
@@ -75,12 +78,29 @@ public class DataServiceDeleteParticipant extends DeleteParticipant {
 		try {
 			change.add(new DataServiceMetaDataFileDeleteChange(Messages.DataServiceRenameParticipant_MetaDataChange,
 					artifactFile, originalFileFullName));
+			deleteBuildAritfacts(artifactFile);
 			
 		} catch (IOException e) {
 			throw new OperationCanceledException(Messages.DataServiceDeleteParticipant_ArtifactXmlDeleteChangeFailed);
 		}
 		return change;
 	}
+
+    private void deleteBuildAritfacts(IFile file) {
+        int substringLength = originalFileFullName.lastIndexOf(".");
+        if (substringLength < 0) {
+            substringLength = originalFileFullName.length();
+        }
+        String originalFileName = originalFileFullName.substring(0, substringLength);
+        try {
+            SynapseUtils.removeDataServiceBuildArtifacts(
+                    file.getProject().getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER),
+                    SynapseConstants.DATA_SERVICE_FOLDER, originalFileName);
+        } catch (CoreException | IOException | XmlPullParserException e) {
+            throw new OperationCanceledException(
+                    "Error while deleting the build artifacts for " + originalFileName + " in dataservices");
+        }
+    }
 	
 @Override
 public Change createChange(IProgressMonitor pm) throws CoreException, OperationCanceledException {

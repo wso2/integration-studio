@@ -25,10 +25,7 @@ import java.util.regex.Pattern;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
-import org.apache.maven.model.Plugin;
-import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -43,7 +40,9 @@ import org.wso2.integrationstudio.artifact.task.Activator;
 import org.wso2.integrationstudio.artifact.task.model.TaskModel;
 import org.wso2.integrationstudio.artifact.task.util.TaskImageUtils;
 import org.wso2.integrationstudio.artifact.task.validator.TriggerTypeList.TriggerType;
-import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.core.exceptions.BuildArtifactCreationException;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
 import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.integrationstudio.gmf.esb.ArtifactType;
@@ -91,10 +90,11 @@ public class TaskCreationWizard extends AbstractWSO2ProjectCreationWizard {
 			File pomfile = esbProject.getFile("pom.xml").getLocation().toFile();
 			if (!pomfile.exists()) {
 				createPOM(pomfile);
-			}
+            }
+            MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
+            version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 			esbProjectArtifact = new ESBProjectArtifact();
 			esbProjectArtifact.fromFile(esbProject.getFile("artifact.xml").getLocation().toFile());
-			updatePom();
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			String groupId = getMavenGroupId(pomfile) + ".task";
             if(getModel().getSelectedOption().equals("import.task")){
@@ -106,19 +106,18 @@ public class TaskCreationWizard extends AbstractWSO2ProjectCreationWizard {
 					isNewArtifact = false;
 				} 	
 				copyImportFile(location,isNewArtifact,groupId);
-            }else{
-			artifactFile = location.getFile(new Path(artifactModel.getName() + ".xml"));
-			File destFile = artifactFile.getLocation().toFile();
-			FileUtils.createFile(destFile, getTemplateContent());
-			fileLst.add(destFile);
-			String relativePath = FileUtils.getRelativePath(esbProject.getLocation().toFile(),
-					new File(location.getLocation().toFile(), artifactModel.getName() + ".xml"))
-					.replaceAll(Pattern.quote(File.separator), "/");
-			esbProjectArtifact.addESBArtifact(createArtifact(artifactModel.getName(), groupId,
-					version, relativePath));
-			esbProjectArtifact.toFile();
+            } else {
+                artifactFile = location.getFile(new Path(artifactModel.getName() + ".xml"));
+                File destFile = artifactFile.getLocation().toFile();
+                FileUtils.createFile(destFile, getTemplateContent());
+                fileLst.add(destFile);
+
+                addESBArtifactDetails(location, artifactModel.getName(), groupId, version, artifactModel.getName(),
+                        esbProjectArtifact);
+
+                esbProjectArtifact.toFile();
             }
-			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+            esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             
 			for (File file : fileLst) {
 				if (file.exists()) {
@@ -133,7 +132,7 @@ public class TaskCreationWizard extends AbstractWSO2ProjectCreationWizard {
 		return true;
 	}
 	
-	public void copyImportFile(IContainer importLocation,boolean isNewAritfact, String groupId) throws IOException {
+	public void copyImportFile(IContainer importLocation,boolean isNewAritfact, String groupId) throws Exception {
 		File importFile = getModel().getImportFile();
 		File destFile = null;
 		List<OMElement> selectedList = ((TaskModel)getModel()).getSelectedTasksList();
@@ -143,13 +142,9 @@ public class TaskCreationWizard extends AbstractWSO2ProjectCreationWizard {
 				destFile = new File(importLocation.getLocation().toFile(), name + ".xml");
 				FileUtils.createFile(destFile, element.toString());
 				fileLst.add(destFile);
-				if(isNewAritfact){
-					String relativePath = FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
-							new File(importLocation.getLocation().toFile(), name + ".xml")).replaceAll(
-							Pattern.quote(File.separator), "/");
-					esbProjectArtifact.addESBArtifact(createArtifact(name, groupId,
-							version, relativePath));
-				}
+                if (isNewAritfact) {
+                    addESBArtifactDetails(importLocation, name, groupId, version, name, esbProjectArtifact);
+                }
 			} 
 			
 		}else{
@@ -157,13 +152,9 @@ public class TaskCreationWizard extends AbstractWSO2ProjectCreationWizard {
 			FileUtils.copy(importFile, destFile);
 			fileLst.add(destFile);
 			String name = importFile.getName().replaceAll(".xml$","");
-			if(isNewAritfact){
-				String relativePath = FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
-						new File(importLocation.getLocation().toFile(), name + ".xml")).replaceAll(
-						Pattern.quote(File.separator), "/");
-				esbProjectArtifact.addESBArtifact(createArtifact(name, groupId,
-						version, relativePath));
-			}
+            if (isNewAritfact) {
+                addESBArtifactDetails(importLocation, name, groupId, version, name, esbProjectArtifact);
+            }
 		}
 		try {
 			esbProjectArtifact.toFile();
@@ -172,7 +163,30 @@ public class TaskCreationWizard extends AbstractWSO2ProjectCreationWizard {
 		}
 	}
 
-	
+    private void addESBArtifactDetails(IContainer location, String taskName, String groupId, String version,
+            String taskFileName, ESBProjectArtifact esbProjectArtifact) throws Exception {
+
+        String relativeLocation = FileUtils
+                .getRelativePath(esbProject.getLocation().toFile(),
+                        new File(location.getLocation().toFile(), taskName + ".xml"))
+                .replaceAll(Pattern.quote(File.separator), "/");
+        esbProjectArtifact.addESBArtifact(createArtifact(taskName, groupId, version, relativeLocation));
+        createTaskBuildArtifactPom(groupId, taskName, version, taskFileName, relativeLocation);
+    }
+
+    private void createTaskBuildArtifactPom(String groupId, String artifactId, String version, String taskFileName,
+            String relativePathToRealArtifact) throws BuildArtifactCreationException {
+
+        IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+        try {
+            SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version,
+                    SynapseConstants.TASK_CONFIG_TYPE, taskFileName, SynapseConstants.TASK_FOLDER,
+                    buildArtifactsLocation, "../../../" + relativePathToRealArtifact);
+        } catch (IOException | XmlPullParserException e) {
+            throw new BuildArtifactCreationException("Error while creating the build artifacts for Task: "
+                    + taskFileName + " at " + buildArtifactsLocation.getFullPath());
+        }
+    }
 	
 	protected boolean isRequireProjectLocationSection() {
 		return false;
@@ -221,38 +235,11 @@ public class TaskCreationWizard extends AbstractWSO2ProjectCreationWizard {
 		ESBArtifact artifact=new ESBArtifact();
 		artifact.setName(name);
 		artifact.setVersion(version);
-		artifact.setType("synapse/task");
+		artifact.setType(SynapseConstants.TASK_CONFIG_TYPE);
 		artifact.setServerRole("EnterpriseServiceBus");
 		artifact.setGroupId(groupId);
 		artifact.setFile(path);
 		return artifact;
-	}
-
-	public void updatePom() throws IOException, XmlPullParserException {
-		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
-		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		version = mavenProject.getVersion().replace("-SNAPSHOT", "");
-
-		// Skip changing the pom file if group ID and artifact ID are matched
-		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-task-plugin")) {
-			return;
-		}
-
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-task-plugin",
-				ESBMavenConstants.WSO2_ESB_TASK_VERSION, true);
-		PluginExecution pluginExecution = new PluginExecution();
-		pluginExecution.addGoal("pom-gen");
-		pluginExecution.setPhase("process-resources");
-		pluginExecution.setId("task");
-
-		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
-		artifactLocationNode.setValue(".");
-		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
-		typeListNode.setValue("${artifact.types}");
-		pluginExecution.setConfiguration(configurationNode);
-		plugin.addExecution(pluginExecution);
-		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
 
 	@Override

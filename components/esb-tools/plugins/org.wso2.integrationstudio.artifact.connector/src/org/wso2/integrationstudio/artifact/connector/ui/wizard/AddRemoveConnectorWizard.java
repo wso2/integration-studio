@@ -25,6 +25,7 @@ import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -41,6 +42,8 @@ import org.wso2.integrationstudio.artifact.connector.Activator;
 import org.wso2.integrationstudio.artifact.connector.artifact.ConnectorArtifact;
 import org.wso2.integrationstudio.artifact.connector.artifact.ConnectorProjectArtifact;
 import org.wso2.integrationstudio.artifact.connector.model.ConnectorModel;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
 import org.wso2.integrationstudio.logging.core.Logger;
 import org.wso2.integrationstudio.maven.util.MavenUtils;
@@ -179,7 +182,9 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 				ConnectorArtifact connectorArtifact= (ConnectorArtifact) tableItem.getData();
 				connectorProjectArtifact.removeESBArtifact(connectorArtifact);				
 				project.getFile(connectorArtifact.getFile()).delete(true, new NullProgressMonitor());
-			}
+                SynapseUtils.removeConnectorBuildArtifacts(project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER),
+                        SynapseConstants.CONNECTOR_FOLDER, connectorArtifact.getName(), connectorArtifact.getVersion());
+            }
 		}
 	
 		connectorProjectArtifact.toFile();
@@ -216,7 +221,7 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 			String version = segment[segment.length - 1].split(".zip")[0];
 			connectorArtifact.setName(connectorName);
 			connectorArtifact.setVersion(version);
-			connectorArtifact.setType("synapse/lib");
+			connectorArtifact.setType(SynapseConstants.CONNECTOR_TYPE);
 			connectorArtifact.setServerRole("EnterpriseServiceBus");
 			connectorArtifact.setGroupId(mavenProject.getGroupId() + GROUP_ID);
 			connectorArtifact.setFile(FileUtils.getRelativePath(project.getLocation().toFile(),
@@ -224,6 +229,12 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 					Pattern.quote(File.separator), "/"));
 			artifact.addESBArtifact(connectorArtifact);
 			artifact.toFile();
+
+			IContainer connectorBuildArtifactLocation = project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+			SynapseUtils.createConnectorBuildArtifactPom(mavenProject.getGroupId() + GROUP_ID, connectorName, 
+			        version, SynapseConstants.CONNECTOR_TYPE, SynapseConstants.CONNECTOR_FOLDER, connectorName,
+					libraryResource.getName(), connectorBuildArtifactLocation);
+
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			refreshDistProjects();
 		}

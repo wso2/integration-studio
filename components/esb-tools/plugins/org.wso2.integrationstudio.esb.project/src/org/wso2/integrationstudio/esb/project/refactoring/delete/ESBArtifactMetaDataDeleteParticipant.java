@@ -16,13 +16,17 @@
 
 package org.wso2.integrationstudio.esb.project.refactoring.delete;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -34,6 +38,8 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 
 public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 	
@@ -67,8 +73,8 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 			CompositeChange change = new CompositeChange(
 					UPDATE_ARTIFACT_XML_CHANGE_OBJECT_NAME);
 			for (IProject project : projectList) {
+			    IContainer buildArtifactsLocation = project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
 				List<IFile> fileList = changeFileList.get(project);
-				
 				List<IFile> metaFileList = new ArrayList<>();
                 for (IFile file : fileList) {
                      IPath location = file.getLocation();
@@ -79,25 +85,43 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
                          IContainer metadataLocation = project.getFolder("src/main/resources/metadata");
                          IFile APIMetaFile = metadataLocation.getFile(new Path(APIName+"_metadata.yaml"));
                          IFile swaggerFile = metadataLocation.getFile(new Path(APIName+"_swagger.yaml"));
+                         IFolder metadataBuildArtifactFile = buildArtifactsLocation.getFolder(
+								 new Path("metadata" + File.separator + APIName + "_metadata"));
+                         IFolder swaggerBuildArtifactFile = buildArtifactsLocation.getFolder(
+								 new Path("metadata" + File.separator + APIName + "_swagger"));
                          metaFileList.add(APIMetaFile);
                          metaFileList.add(swaggerFile);
                          if(APIMetaFile.exists()) {
                              APIMetaFile.delete(true, null);
                          }
+                         if (metadataBuildArtifactFile.exists()) {
+                             deleteMetadataBuildArtifacts(APIName + "_metadata", buildArtifactsLocation);
+                         }
                          if(swaggerFile.exists()) {
                              swaggerFile.delete(true, null);
+                         }
+                         if (swaggerBuildArtifactFile.exists()) {
+                             deleteMetadataBuildArtifacts(APIName + "_swagger", buildArtifactsLocation);
                          }
                      } else if (locationSegments[location.segmentCount() - 2].equals(SYNAPSE_CONFIG_DIR_PROXY_SERVICE)) {
                          String proxyXML = locationSegments[location.segmentCount()-1];
                          String proxyName = proxyXML.substring(0, proxyXML.length() - 4);
                          IContainer metadataLocation = project.getFolder("src/main/resources/metadata");
                          IFile proxyMetaFile = metadataLocation.getFile(new Path(proxyName + "_proxy_metadata.yaml"));
+                         IFolder metadataBuildArtifactFile = buildArtifactsLocation.getFolder(
+								 new Path("metadata" + File.separator + proxyName + "_proxy_metadata"));
                          metaFileList.add(proxyMetaFile);
                          if(proxyMetaFile.exists()) {
                              proxyMetaFile.delete(true, null);
                          }
+                         if (metadataBuildArtifactFile.exists()) {
+                             deleteMetadataBuildArtifacts(proxyName + "_proxy_metadata", buildArtifactsLocation);
+                         }
                      }
                  }
+                
+				deleteBuildArtifacts(fileList, buildArtifactsLocation);
+                
                 // adding to fileList to remove entries from artifact.xml file 
                 for (IFile file : metaFileList) {
                     fileList.add(file);
@@ -110,6 +134,33 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 		}
 		return emptychange;
 	}
+
+    private void deleteBuildArtifacts(List<IFile> fileList, IContainer buildArtifactsLocation) {
+        String synapseConfigDirectory = "";
+        for (IFile iFile : fileList) {
+            IPath location = originalFile.getLocation();
+            String[] locationSegments = location.segments();
+            synapseConfigDirectory = locationSegments[location.segmentCount() - 2];
+            String originalFileFullName = iFile.getName();
+            try {
+                String originalFileName = originalFileFullName.substring(0, originalFileFullName.lastIndexOf("."));
+                SynapseUtils.removeESBConfigBuildArtifacts(buildArtifactsLocation, synapseConfigDirectory,
+                        originalFileName);
+            } catch (CoreException | IOException | XmlPullParserException e) {
+                throw new OperationCanceledException("Error while deleting the build artifacts for "
+                        + originalFileFullName + " " + synapseConfigDirectory + "synapse config");
+            }
+        }
+    }
+
+    private void deleteMetadataBuildArtifacts(String metadataFolderName, IContainer buildArtifactsLocation) {
+        try {
+            SynapseUtils.removeESBConfigBuildArtifacts(buildArtifactsLocation, "metadata", metadataFolderName);
+        } catch (CoreException | IOException | XmlPullParserException e) {
+            throw new OperationCanceledException(
+                    "Error while deleting the build artifacts for " + metadataFolderName + "metadata.");
+        }
+    }
 
 	private void resetStaticVariables() {
 		changeFileList.clear();

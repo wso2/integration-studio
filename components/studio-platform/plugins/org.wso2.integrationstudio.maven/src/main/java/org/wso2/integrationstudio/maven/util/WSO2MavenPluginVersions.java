@@ -31,9 +31,10 @@ public class WSO2MavenPluginVersions {
 		PLUGIN_VERSIONS.put("maven-axis2-plugin", "2.1.0");
 		PLUGIN_VERSIONS.put("maven-bpel-plugin", "2.1.0");
 
-		PLUGIN_VERSIONS.put("maven-carbon-ui-plugin", "5.2.42");
+		PLUGIN_VERSIONS.put("maven-carbon-ui-plugin", "5.2.44");
 		PLUGIN_VERSIONS.put("maven-cep-plugin", "1.1.0");
-		PLUGIN_VERSIONS.put("maven-dataservice-plugin", "5.2.42");
+		PLUGIN_VERSIONS.put("maven-dataservice-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("maven-datasource-plugin", "5.2.44");
 		PLUGIN_VERSIONS.put("maven-ds-validator-plugin", "2.1.0");
 		PLUGIN_VERSIONS.put("maven-endpoint-plugin", "2.1.0");
 		PLUGIN_VERSIONS.put("maven-gadget-plugin", "2.1.0");
@@ -48,29 +49,30 @@ public class WSO2MavenPluginVersions {
 		PLUGIN_VERSIONS.put("maven-sequence-plugin", "2.1.0");
 		PLUGIN_VERSIONS.put("maven-stratos-plugin", "2.1.0");
 		PLUGIN_VERSIONS.put("maven-synapse-mediator-plugin", "2.1.0");
-		PLUGIN_VERSIONS.put("maven-synapse-plugin", "5.2.42");
+		PLUGIN_VERSIONS.put("maven-synapse-plugin", "5.2.44");
 		PLUGIN_VERSIONS.put("maven-war-plugin", "2.1.0");
 
-		PLUGIN_VERSIONS.put("wso2-esb-api-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("wso2-esb-endpoint-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("wso2-esb-inboundendpoint-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("wso2-esb-localentry-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("wso2-esb-proxy-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("wso2-esb-sequence-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("wso2-esb-synapse-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("wso2-esb-task-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("wso2-esb-template-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("wso2-esb-messageprocessor-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("wso2-esb-messagestore-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("wso2-esb-connector-plugin", "5.2.42");
+		PLUGIN_VERSIONS.put("wso2-esb-api-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-esb-endpoint-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-esb-inboundendpoint-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-esb-localentry-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-esb-proxy-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-esb-sequence-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-esb-synapse-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-esb-task-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-esb-template-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-esb-messageprocessor-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-esb-messagestore-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-esb-connector-plugin", "5.2.44");
 
-		PLUGIN_VERSIONS.put("wso2-general-project-plugin", "5.2.42");
+		PLUGIN_VERSIONS.put("wso2-general-project-plugin", "5.2.44");
 
 		PLUGIN_VERSIONS.put("maven-qos-plugin", "1.1.0");
 
-		PLUGIN_VERSIONS.put("maven-car-deploy-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("maven-car-plugin", "5.2.42");
-		PLUGIN_VERSIONS.put("wso2-esb-metadata-plugin", "5.2.42");
+		PLUGIN_VERSIONS.put("maven-car-deploy-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("maven-car-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-esb-metadata-plugin", "5.2.44");
+		PLUGIN_VERSIONS.put("wso2-mi-synapse-plugin", "5.2.44");
 	}
 	
 	private WSO2MavenPluginVersions(){

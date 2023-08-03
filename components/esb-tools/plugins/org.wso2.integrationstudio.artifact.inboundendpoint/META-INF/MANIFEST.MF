@@ -11,6 +11,7 @@ Require-Bundle: org.wso2.integrationstudio.kernel.libraries,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.wso2.integrationstudio.esb.core,
  org.wso2.integrationstudio.esb.core.configuration.impl,
+ org.wso2.integrationstudio.esb.core.exceptions,
  org.wso2.integrationstudio.esb.core.interfaces,
  org.wso2.integrationstudio.esb.core.utils,
  org.wso2.integrationstudio.esb.project.artifact,

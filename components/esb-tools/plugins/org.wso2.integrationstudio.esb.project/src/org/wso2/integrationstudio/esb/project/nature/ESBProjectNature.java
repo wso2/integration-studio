@@ -19,15 +19,13 @@ package org.wso2.integrationstudio.esb.project.nature;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import org.apache.maven.model.Plugin;
-import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.maven.util.MavenUtils;
 import org.wso2.integrationstudio.platform.core.nature.AbstractWSO2ProjectNature;
 import org.wso2.integrationstudio.utils.project.ProjectUtils;
@@ -41,13 +39,18 @@ public class ESBProjectNature extends AbstractWSO2ProjectNature {
 		IFolder parentFolder = ProjectUtils.getWorkspaceFolder(getProject(), "src", "main", "synapse-config");
 		IFolder parentTestFolder = ProjectUtils.getWorkspaceFolder(getProject(), "test", "resources", "mock-services");
 		IFolder metadataFolder = ProjectUtils.getWorkspaceFolder(getProject(), "src", "main", "resources", "metadata");
+		IFolder buildArtifactsFolder = ProjectUtils.getWorkspaceFolder(getProject(), 
+		        SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+//		buildArtifactsFolder.setHidden(true);
 		ProjectUtils.createFolder(parentFolder);
 		ProjectUtils.createFolder(parentTestFolder);
 		ProjectUtils.createFolder(metadataFolder);
+		ProjectUtils.createFolder(buildArtifactsFolder);
 		getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		for (String child : childrenList) {
 			createChildren(parentFolder, child);
 		}
+		SynapseUtils.createBuildArtifactsModulePom(getProject(), buildArtifactsFolder);
 		updatePom();
 	}
 
@@ -58,84 +61,9 @@ public class ESBProjectNature extends AbstractWSO2ProjectNature {
 			MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 			//Adding typrLidt property
 			MavenUtils.updateMavenProjectWithCAppType(mavenProject, CAPP_TYPE);
-			//Setting the directory
-			mavenProject.getBuild().setDirectory("target/capp");
 //			Adding maven test skip property
 			MavenUtils.updateMavenProjectWithSkipTests(mavenProject);
-			
-			//Adding maven exec plugin entry
-			Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.codehaus.mojo", "exec-maven-plugin", "1.4.0", true);
-		
-			{
-				PluginExecution pluginExecution = new PluginExecution();
-				pluginExecution.setId(ESBMavenConstants.PACKAGE_PHASE);
-				pluginExecution.addGoal(ESBMavenConstants.EXEC_GOAL);
-				pluginExecution.setPhase(ESBMavenConstants.PACKAGE_PHASE);
 
-				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, ESBMavenConstants.EXECUTABLE_TAG);
-				executableNode.setValue(ESBMavenConstants.EXECUTABLE_VALUE);
-				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
-						ESBMavenConstants.WORKING_DIRECTORY_TAG);
-				workingDirectoryNode.setValue(ESBMavenConstants.WORKING_DIRECTORY_VALUE);
-				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, ESBMavenConstants.ARGUMENTS_TAG);
-				Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
-				cleanArgumentNode.setValue(ESBMavenConstants.ARGUMENT_VALUE_CLEAN);
-				Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
-				installArgumentNode.setValue(ESBMavenConstants.PACKAGE_PHASE);
-				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
-				testSkipArgumentNode.setValue(ESBMavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
-
-				pluginExecution.setConfiguration(configurationNode);
-
-				plugin.addExecution(pluginExecution);
-			}
-			{
-				PluginExecution pluginExecution = new PluginExecution();
-				pluginExecution.setId(ESBMavenConstants.INSTALL_PHASE);
-				pluginExecution.addGoal(ESBMavenConstants.EXEC_GOAL);
-				pluginExecution.setPhase(ESBMavenConstants.INSTALL_PHASE);
-
-				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, ESBMavenConstants.EXECUTABLE_TAG);
-				executableNode.setValue(ESBMavenConstants.EXECUTABLE_VALUE);
-				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
-						ESBMavenConstants.WORKING_DIRECTORY_TAG);
-				workingDirectoryNode.setValue(ESBMavenConstants.WORKING_DIRECTORY_VALUE);
-				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, ESBMavenConstants.ARGUMENTS_TAG);
-				Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
-				cleanArgumentNode.setValue(ESBMavenConstants.ARGUMENT_VALUE_CLEAN);
-				Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
-				installArgumentNode.setValue(ESBMavenConstants.INSTALL_PHASE);
-				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
-				testSkipArgumentNode.setValue(ESBMavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
-
-				pluginExecution.setConfiguration(configurationNode);
-
-				plugin.addExecution(pluginExecution);
-			}
-			{
-				PluginExecution pluginExecution = new PluginExecution();
-				pluginExecution.setId(ESBMavenConstants.DEPLOY_PHASE);
-				pluginExecution.addGoal(ESBMavenConstants.EXEC_GOAL);
-				pluginExecution.setPhase(ESBMavenConstants.DEPLOY_PHASE);
-
-				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, ESBMavenConstants.EXECUTABLE_TAG);
-				executableNode.setValue(ESBMavenConstants.EXECUTABLE_VALUE);
-				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
-						ESBMavenConstants.WORKING_DIRECTORY_TAG);
-				workingDirectoryNode.setValue(ESBMavenConstants.WORKING_DIRECTORY_VALUE);
-				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, ESBMavenConstants.ARGUMENTS_TAG);
-				Xpp3Dom deployArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
-				deployArgumentNode.setValue(ESBMavenConstants.DEPLOY_PHASE);
-				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
-				testSkipArgumentNode.setValue(ESBMavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
-
-				pluginExecution.setConfiguration(configurationNode);
-
-				plugin.addExecution(pluginExecution);
-			}
 			MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 			
 		} catch (FileNotFoundException e) {

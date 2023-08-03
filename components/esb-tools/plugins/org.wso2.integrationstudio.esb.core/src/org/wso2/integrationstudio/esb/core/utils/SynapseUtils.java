@@ -226,7 +226,7 @@ public class SynapseUtils {
 
         createCappArtifactPom(groupId, artifactId, version, artifactType, artifactFileName, artifactFolderName,
                 cappArtifactsLocation, "../../pom.xml", "org.wso2.maven", "wso2-mi-synapse-plugin",
-                "5.2.43-SNAPSHOT", relativePathToRealArtifact);
+                ESBMavenConstants.WSO2_MI_SYNAPSE_VERSION, relativePathToRealArtifact);
 
     }
 
@@ -236,7 +236,7 @@ public class SynapseUtils {
 
         createCappArtifactPom(groupId, artifactId, version, artifactType, artifactFileName, artifactFolderName,
                 cappArtifactsLocation, "../../pom.xml", "org.wso2.maven", "wso2-esb-metadata-plugin",
-                ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION, relativePathToRealArtifact);
+                ESBMavenConstants.WSO2_ESB_METADATA_VERSION, relativePathToRealArtifact);
 
     }
 
@@ -246,7 +246,7 @@ public class SynapseUtils {
 
         createCappArtifactPom(groupId, artifactId, version, artifactType, connectorName + "-" + version,
                 connectorFolderName, connectorBuildArtifactLocation, "../../pom.xml", "org.wso2.maven",
-                "wso2-esb-connector-plugin", ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION,
+                "wso2-esb-connector-plugin", ESBMavenConstants.WSO2_ESB_CONNECTOR_VERSION,
                 "../../../" + connectorFileName);
 
     }
@@ -276,8 +276,7 @@ public class SynapseUtils {
 
         createCappArtifactPom(groupId, artifactId, version, artifactType, artifactFileName, artifactFolderName,
                 buildArtifactsLocation, "../../pom.xml", "org.wso2.maven", "maven-dataservice-plugin",
-                ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION,
-                "../../../dataservice/" + artifactFileNameWithExtension);
+                ESBMavenConstants.WSO2_DATA_SERVICE_VERSION, "../../../dataservice/" + artifactFileNameWithExtension);
 
     }
 
@@ -287,7 +286,7 @@ public class SynapseUtils {
 
         createCappArtifactPom(groupId, artifactId, version, artifactType, artifactFileName, artifactFolderName,
                 buildArtifactsLocation, "../../pom.xml", "org.wso2.maven", "maven-datasource-plugin",
-                ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION, "../../../datasource/" + artifactFileNameWithExtension);
+                ESBMavenConstants.WSO2_DATA_SOURCE_VERSION, "../../../datasource/" + artifactFileNameWithExtension);
 
     }
 
@@ -297,7 +296,7 @@ public class SynapseUtils {
 
         createCappArtifactPom(groupId, artifactId, version, artifactType, artifactFileName, artifactFolderName,
                 cappArtifactsLocation, "../../pom.xml", "org.wso2.maven", "wso2-general-project-plugin",
-                "5.2.43-SNAPSHOT", "registry-info.xml");
+                ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION, "registry-info.xml");
 
     }
 

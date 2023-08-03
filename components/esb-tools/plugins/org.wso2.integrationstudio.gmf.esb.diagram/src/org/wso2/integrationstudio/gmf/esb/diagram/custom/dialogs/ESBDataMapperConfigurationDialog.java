@@ -53,6 +53,8 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.integrationstudio.capp.maven.utils.MavenConstants;
 import org.wso2.integrationstudio.esb.core.utils.ESBUtils;
 import org.wso2.integrationstudio.esb.core.utils.EsbTemplateFormatter;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.general.project.artifact.GeneralProjectArtifact;
 import org.wso2.integrationstudio.general.project.artifact.RegistryArtifact;
 import org.wso2.integrationstudio.general.project.artifact.bean.RegistryElement;
@@ -105,6 +107,7 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
     private static final String REGISTRY = "registry"; //$NON-NLS-1$
     private static final String PROCESS_RESOURCES = "process-resources"; //$NON-NLS-1$
     private static final String POM_GEN = "pom-gen"; //$NON-NLS-1$
+    private static final String COPY_RESOURCE_DEPENDENCIES = "copy-registry-dependencies"; //$NON-NLS-1$
     private static final String MAVEN_ARTIFACT_ID = "wso2-general-project-plugin"; //$NON-NLS-1$
     private static final String MAVEN_GROUP_ID = "org.wso2.maven"; //$NON-NLS-1$
     private static final String POM_PACKAGING_TYPE = "pom"; //$NON-NLS-1$
@@ -472,6 +475,12 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
         }
         generalProjectArtifact.addArtifact(artifact);
         generalProjectArtifact.toFile();
+        
+        IContainer buildArtifactsFolder = project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+        SynapseUtils.createRegsitryResourceBuildArtifactPom(groupId, resourceName, ARTIFACT_VERSION,
+                SynapseConstants.REGISTRY_RESOURCE_TYPE, resourceName, SynapseConstants.REGISTRY_RESOURCE_FOLDER,
+                buildArtifactsFolder);
+        
         addGeneralProjectPlugin(project);
         project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
         ESBUtils.refreshDistProjects();
@@ -525,7 +534,7 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
         PluginExecution pluginExecution;
 
         pluginExecution = new PluginExecution();
-        pluginExecution.addGoal(POM_GEN);
+        pluginExecution.addGoal(COPY_RESOURCE_DEPENDENCIES);
         pluginExecution.setPhase(PROCESS_RESOURCES);
         pluginExecution.setId(REGISTRY);
         plugin.addExecution(pluginExecution);
@@ -535,6 +544,8 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
         artifactLocationNode.setValue("."); //$NON-NLS-1$
         Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, TYPE_LIST);
         typeListNode.setValue(ARTIFACT_TYPES);
+        Xpp3Dom outputLocationNode = MavenUtils.createXpp3Node(configurationNode, "outputLocation");
+        outputLocationNode.setValue(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
         pluginExecution.setConfiguration(configurationNode);
 
         Repository repo = new Repository();

@@ -258,7 +258,7 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
 		typeListNode.setValue("${artifact.types}");
 		Xpp3Dom outputLocationNode = MavenUtils.createXpp3Node(configurationNode, "outputLocation");
-		outputLocationNode.setValue("build-artifacts");
+		outputLocationNode.setValue(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
 		pluginExecution.setConfiguration(configurationNode);
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}

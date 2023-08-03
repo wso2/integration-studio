@@ -38,6 +38,7 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
 import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 
 public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
@@ -72,7 +73,7 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 			CompositeChange change = new CompositeChange(
 					UPDATE_ARTIFACT_XML_CHANGE_OBJECT_NAME);
 			for (IProject project : projectList) {
-			    IContainer buildArtifactsLocation = project.getFolder("build-artifacts");
+			    IContainer buildArtifactsLocation = project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
 				List<IFile> fileList = changeFileList.get(project);
 				List<IFile> metaFileList = new ArrayList<>();
                 for (IFile file : fileList) {

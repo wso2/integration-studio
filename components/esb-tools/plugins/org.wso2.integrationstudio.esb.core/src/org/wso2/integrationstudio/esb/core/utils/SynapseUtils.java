@@ -187,6 +187,9 @@ public class SynapseUtils {
             String parentPomRelativePath, String pluginGroupId, String pluginArtifactId, String pluginVersion,
             String artifactRelativePath) throws IOException, XmlPullParserException {
 
+        if (!cappArtifactsLocation.exists()) {
+            return;
+        }
         // Initially create an empty pom.xml file for a given artifact
         File mavenProjectPomFile = cappArtifactsLocation
                 .getFile(new Path(targetParentFolder + File.separator + targetFolder + File.separator + "pom.xml"))

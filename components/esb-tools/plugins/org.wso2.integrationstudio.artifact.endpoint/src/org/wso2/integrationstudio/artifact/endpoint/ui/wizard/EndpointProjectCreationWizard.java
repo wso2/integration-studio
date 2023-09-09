@@ -161,6 +161,9 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		if (!pomfile.exists()) {
 			createPOM(pomfile);
 		}
+        if (!project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+            updatePom();
+        }
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		String groupId = getMavenGroupId(pomfile);
 		groupId += ".endpoint";
@@ -362,6 +365,32 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
+
+    public void updatePom() throws IOException, XmlPullParserException {
+        File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+
+        // Skip changing the pom file if group ID and artifact ID are matched
+        if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-endpoint-plugin")) {
+            return;
+        }
+
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-endpoint-plugin",
+                ESBMavenConstants.WSO2_ESB_ENDPOINT_VERSION, true);
+        PluginExecution pluginExecution = new PluginExecution();
+        pluginExecution.addGoal("pom-gen");
+        pluginExecution.setPhase("process-resources");
+        pluginExecution.setId("endpoint");
+
+        Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+        Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+        artifactLocationNode.setValue(".");
+        Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+        typeListNode.setValue("${artifact.types}");
+        pluginExecution.setConfiguration(configurationNode);
+        plugin.addExecution(pluginExecution);
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+    }
 
 	public void copyImportFile(IContainer importLocation, boolean isNewArtifact, String groupId) throws IOException,
 			BuildArtifactCreationException {

@@ -196,7 +196,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		}
         return newContent;
 	}
-	
+
     public void updatePom() throws IOException, XmlPullParserException {
         File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
         MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
@@ -223,7 +223,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
         plugin.addExecution(pluginExecution);
         MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
     }
-	
+
 	public void copyImportFile(IContainer importLocation,boolean isNewAritfact, String groupId) throws Exception {
 		File importFile = getModel().getImportFile();
 		File destFile = null;

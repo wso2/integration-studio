@@ -263,6 +263,7 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 
         MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
     }
+
 	private void createMetadataArtifactEntry(IContainer metadataLocation, String proxyName, String metadataGroupId)
 			throws Exception {
 		String filePathPostfix = getFilePathPostFix();

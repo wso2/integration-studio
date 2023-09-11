@@ -290,7 +290,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		artifact.setFile(path);
 		return artifact;
 	}
-	
+
     /**
      * Updates the pom file
      * 

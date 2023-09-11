@@ -198,7 +198,6 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
         if (!project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
             updatePom();
         }
-
         project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		String groupId = getMavenGroupId(pomfile);
 		groupId += ".sequence";

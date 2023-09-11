@@ -243,7 +243,7 @@ public class DataSourceWizard extends Wizard implements INewWizard {
 				project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER));
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 	}
-	
+
     /**
      * Updates the pom file
      * 

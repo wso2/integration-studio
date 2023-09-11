@@ -107,11 +107,9 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		boolean isNewArtifact = true;
 		IContainer location = esbProject.getFolder("src" + File.separator + "main" + File.separator
 				+ "synapse-config" + File.separator + "local-entries");
-
         if (!esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
             updatePom();
         }
-
 		esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		File pomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
 		

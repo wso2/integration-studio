@@ -109,9 +109,9 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
             version = mavenProject.getVersion().replace("-SNAPSHOT", "");
             esbProjectArtifact = new ESBProjectArtifact();
 			esbProjectArtifact.fromFile(esbProject.getFile("artifact.xml").getLocation().toFile());
-			if (!esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
-	            updatePom();
-	        }
+            if (!esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+                updatePom();
+            }
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			String groupId = getMavenGroupId(pomfile) + ".message-processors";
 			if (getModel().getSelectedOption().equals("create.processor")) {

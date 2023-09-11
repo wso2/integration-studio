@@ -28,9 +28,12 @@ import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
+import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.ProxyServiceSerializer;
 import org.apache.synapse.core.axis2.ProxyService;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -48,6 +51,7 @@ import org.wso2.integrationstudio.artifact.proxyservice.utils.PsArtifactConstant
 import org.wso2.integrationstudio.artifact.proxyservice.wsdl.ProxyGenerator;
 import org.wso2.integrationstudio.artifact.proxyservice.wsdl.WSDL2Java;
 import org.wso2.integrationstudio.artifact.synapse.api.util.MetadataUtils;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
 import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
 import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
@@ -113,6 +117,9 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 			}
             MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
             version = mavenProject.getVersion().replace("-SNAPSHOT", "");
+            if (!esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+                updatePom();
+            }
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			
 			String mavenGroupId = getMavenGroupId(pomfile);
@@ -213,6 +220,49 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 		return true;
 	}
 	
+    public void updatePom() throws IOException, XmlPullParserException {
+        File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+
+        // Skip changing the pom file if group ID and artifact ID are matched
+        if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-proxy-plugin")) {
+            return;
+        }
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-proxy-plugin",
+                ESBMavenConstants.WSO2_ESB_PROXY_VERSION, true);
+        PluginExecution pluginExecution = new PluginExecution();
+        pluginExecution.addGoal("pom-gen");
+        pluginExecution.setPhase("process-resources");
+        pluginExecution.setId("proxy");
+        Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+        Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+        artifactLocationNode.setValue(".");
+        Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+        typeListNode.setValue("${artifact.types}");
+        pluginExecution.setConfiguration(configurationNode);
+        plugin.addExecution(pluginExecution);
+
+        boolean metaPluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
+                "wso2-esb-metadata-plugin");
+        if (!metaPluginExists) {
+            Plugin plugin2 = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-metadata-plugin",
+                    ESBMavenConstants.WSO2_ESB_METADATA_VERSION, true);
+            PluginExecution pluginExecution2 = new PluginExecution();
+            pluginExecution2.addGoal("pom-gen");
+            pluginExecution2.setPhase("process-resources");
+            pluginExecution2.setId("metadata");
+            Xpp3Dom configurationNode2 = MavenUtils.createMainConfigurationNode();
+            Xpp3Dom artifactLocationNode2 = MavenUtils.createXpp3Node(configurationNode2, "artifactLocation");
+            artifactLocationNode2.setValue(".");
+            Xpp3Dom typeListNode2 = MavenUtils.createXpp3Node(configurationNode2, "typeList");
+            typeListNode2.setValue("${artifact.types}");
+            pluginExecution2.setConfiguration(configurationNode2);
+            plugin2.addExecution(pluginExecution2);
+        }
+
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+    }
+
 	private void createMetadataArtifactEntry(IContainer metadataLocation, String proxyName, String metadataGroupId)
 			throws Exception {
 		String filePathPostfix = getFilePathPostFix();

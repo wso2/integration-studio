@@ -233,13 +233,16 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
             version = MavenUtils.getMavenProject(pomfile).getVersion().replace("-SNAPSHOT", "");
             esbProjectArtifact = new ESBProjectArtifact();
             esbProjectArtifact.fromFile(esbProject.getFile("artifact.xml").getLocation().toFile());
+            IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+            if (!buildArtifactsLocation.exists()) {
+                updatePom();
+            }
             esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             String mavenGroupId = getMavenGroupId(pomfile);
             String groupId = mavenGroupId + ".api";
             String endpointGroupId = mavenGroupId + ".endpoint";
             String metadataGroupId = mavenGroupId + ".metadata";
             IContainer metadataLocation = esbProject.getFolder("src/main/resources/metadata");
-            IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
             // no medatadata folder-> old project structure
             boolean meadataEnabled = metadataLocation.exists();
             RestApiAdmin restAPIAdmin = new RestApiAdmin();
@@ -618,7 +621,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     relativePathToRealArtifact);
         } catch (IOException | XmlPullParserException e) {
             throw new BuildArtifactCreationException("Error while creating the build artifacts for API config "
-                    + apiName + " at " + buildArtifactsLocation.getFullPath());
+                    + apiName + " at " + buildArtifactsLocation.getFullPath(), e);
         }
     }
 
@@ -631,7 +634,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     buildArtifactsLocation, relativePathToRealArtifact);
         } catch (IOException | XmlPullParserException e) {
             throw new BuildArtifactCreationException("Error while creating the build artifacts for API config "
-                    + endpointName + " at " + buildArtifactsLocation.getFullPath());
+                    + endpointName + " at " + buildArtifactsLocation.getFullPath(), e);
         }
     }
 
@@ -977,6 +980,70 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
         outputLocationNode.setValue(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
         pluginExecution.setConfiguration(configurationNode);
         MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+    }
+
+    public void updatePom() throws IOException, XmlPullParserException {
+        File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+
+        // Skip changing the pom file if group ID and artifact ID are matched
+        boolean apiPluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-api-plugin");
+        boolean metaPluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
+                "wso2-esb-metadata-plugin");
+        boolean endpointPluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
+                "wso2-esb-endpoint-plugin");
+
+        if (!apiPluginExists) {
+            Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-api-plugin",
+                    ESBMavenConstants.WSO2_ESB_API_VERSION, true);
+            PluginExecution pluginExecution = new PluginExecution();
+            pluginExecution.addGoal("pom-gen");
+            pluginExecution.setPhase("process-resources");
+            pluginExecution.setId("api");
+
+            Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+            Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+            artifactLocationNode.setValue(".");
+            Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+            typeListNode.setValue("${artifact.types}");
+            pluginExecution.setConfiguration(configurationNode);
+            plugin.addExecution(pluginExecution);
+            MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+        }
+        if (!metaPluginExists) {
+            Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-metadata-plugin",
+                    ESBMavenConstants.WSO2_ESB_METADATA_VERSION, true);
+            PluginExecution pluginExecution = new PluginExecution();
+            pluginExecution.addGoal("pom-gen");
+            pluginExecution.setPhase("process-resources");
+            pluginExecution.setId("metadata");
+
+            Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+            Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+            artifactLocationNode.setValue(".");
+            Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+            typeListNode.setValue("${artifact.types}");
+            pluginExecution.setConfiguration(configurationNode);
+            plugin.addExecution(pluginExecution);
+            MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+        }
+        if (!endpointPluginExists) {
+            Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-endpoint-plugin",
+                    ESBMavenConstants.WSO2_ESB_ENDPOINT_VERSION, true);
+            PluginExecution pluginExecution = new PluginExecution();
+            pluginExecution.addGoal("pom-gen");
+            pluginExecution.setPhase("process-resources");
+            pluginExecution.setId("endpoint");
+
+            Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+            Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+            artifactLocationNode.setValue(".");
+            Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+            typeListNode.setValue("${artifact.types}");
+            pluginExecution.setConfiguration(configurationNode);
+            plugin.addExecution(pluginExecution);
+            MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+        }
     }
 
     @Override

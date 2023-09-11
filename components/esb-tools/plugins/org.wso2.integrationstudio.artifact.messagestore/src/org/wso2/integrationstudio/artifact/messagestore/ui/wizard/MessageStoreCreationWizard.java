@@ -157,6 +157,9 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
             version = mavenProject.getVersion().replace("-SNAPSHOT", "");
             esbProjectArtifact = new ESBProjectArtifact();
 			esbProjectArtifact.fromFile(esbProject.getFile("artifact.xml").getLocation().toFile());
+            if (!esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+                updatePom();
+            }
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			String groupId = getMavenGroupId(pomfile) + ".message-store";
             if(getModel().getSelectedOption().equals(FIELD_IMPORT_STORE)){
@@ -477,6 +480,33 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 		}
 		return messageStoreElement.toString().replace("><", ">" + lineSeparator + "<");
 	}
+
+    public void updatePom() throws IOException, XmlPullParserException {
+        File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+
+        // Skip changing the pom file if group ID and artifact ID are matched
+        if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-messagestore-plugin",
+                ESBMavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION)) {
+            return;
+        }
+
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-messagestore-plugin",
+                ESBMavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION, true);
+        PluginExecution pluginExecution = new PluginExecution();
+        pluginExecution.addGoal("pom-gen");
+        pluginExecution.setPhase("process-resources");
+        pluginExecution.setId("task");
+
+        Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+        Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+        artifactLocationNode.setValue(".");
+        Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+        typeListNode.setValue("${artifact.types}");
+        pluginExecution.setConfiguration(configurationNode);
+        plugin.addExecution(pluginExecution);
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+    }
 
 	@Override
 		public void openEditor(File file) {

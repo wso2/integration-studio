@@ -25,7 +25,10 @@ import java.util.regex.Pattern;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -40,6 +43,7 @@ import org.wso2.integrationstudio.artifact.task.Activator;
 import org.wso2.integrationstudio.artifact.task.model.TaskModel;
 import org.wso2.integrationstudio.artifact.task.util.TaskImageUtils;
 import org.wso2.integrationstudio.artifact.task.validator.TriggerTypeList.TriggerType;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
 import org.wso2.integrationstudio.esb.core.exceptions.BuildArtifactCreationException;
 import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
 import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
@@ -95,6 +99,9 @@ public class TaskCreationWizard extends AbstractWSO2ProjectCreationWizard {
             version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 			esbProjectArtifact = new ESBProjectArtifact();
 			esbProjectArtifact.fromFile(esbProject.getFile("artifact.xml").getLocation().toFile());
+            if (!esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+                updatePom();
+            }
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			String groupId = getMavenGroupId(pomfile) + ".task";
             if(getModel().getSelectedOption().equals("import.task")){
@@ -241,6 +248,32 @@ public class TaskCreationWizard extends AbstractWSO2ProjectCreationWizard {
 		artifact.setFile(path);
 		return artifact;
 	}
+
+    public void updatePom() throws IOException, XmlPullParserException {
+        File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+
+        // Skip changing the pom file if group ID and artifact ID are matched
+        if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-task-plugin")) {
+            return;
+        }
+
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-task-plugin",
+                ESBMavenConstants.WSO2_ESB_TASK_VERSION, true);
+        PluginExecution pluginExecution = new PluginExecution();
+        pluginExecution.addGoal("pom-gen");
+        pluginExecution.setPhase("process-resources");
+        pluginExecution.setId("task");
+
+        Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+        Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+        artifactLocationNode.setValue(".");
+        Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+        typeListNode.setValue("${artifact.types}");
+        pluginExecution.setConfiguration(configurationNode);
+        plugin.addExecution(pluginExecution);
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+    }
 
 	@Override
 		public void openEditor(File file) {

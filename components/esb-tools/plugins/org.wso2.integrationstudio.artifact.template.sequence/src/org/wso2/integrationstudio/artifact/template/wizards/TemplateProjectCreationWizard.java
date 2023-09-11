@@ -29,7 +29,10 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.apache.commons.lang.StringUtils;
+import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -43,6 +46,7 @@ import org.wso2.integrationstudio.artifact.template.Activator;
 import org.wso2.integrationstudio.artifact.template.model.TemplateModel;
 import org.wso2.integrationstudio.artifact.template.utils.TemplateImageUtils;
 import org.wso2.integrationstudio.artifact.template.validators.HttpMethodList.HttpMethodType;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
 import org.wso2.integrationstudio.esb.core.exceptions.BuildArtifactCreationException;
 import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
 import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
@@ -110,6 +114,9 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		}
         MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
         version = mavenProject.getVersion().replace("-SNAPSHOT", "");
+        if (!project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+            updatePom();
+        }
 		project.refreshLocal(IResource.DEPTH_INFINITE,
 				new NullProgressMonitor());
 		groupId = getMavenGroupId(pomfile) + ".template";
@@ -189,7 +196,33 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		}
         return newContent;
 	}
-	
+
+    public void updatePom() throws IOException, XmlPullParserException {
+        File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+
+        // Skip changing the pom file if group ID and artifact ID are matched
+        if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-template-plugin")) {
+            return;
+        }
+
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-template-plugin",
+                ESBMavenConstants.WSO2_ESB_TEMPLATE_VERSION, true);
+        PluginExecution pluginExecution = new PluginExecution();
+        pluginExecution.addGoal("pom-gen");
+        pluginExecution.setPhase("process-resources");
+        pluginExecution.setId("template");
+
+        Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+        Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+        artifactLocationNode.setValue(".");
+        Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+        typeListNode.setValue("${artifact.types}");
+        pluginExecution.setConfiguration(configurationNode);
+        plugin.addExecution(pluginExecution);
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+    }
+
 	public void copyImportFile(IContainer importLocation,boolean isNewAritfact, String groupId) throws Exception {
 		File importFile = getModel().getImportFile();
 		File destFile = null;
@@ -301,7 +334,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
                     buildArtifactsLocation, "../../../" + relativePathToRealArtifact);
         } catch (IOException | XmlPullParserException e) {
             throw new BuildArtifactCreationException("Error while creating the build artifacts for Template: "
-                    + templateFileName + " at " + buildArtifactsLocation.getFullPath());
+                    + templateFileName + " at " + buildArtifactsLocation.getFullPath(), e);
         }
     }
 

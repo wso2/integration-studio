@@ -158,6 +158,9 @@ public class DataSourceWizard extends Wizard implements INewWizard {
 		}
 		File mavenProjectPom = project.getFile(POM_FILE).getLocation().toFile();
 		File dataSourceFile = file.getLocation().toFile();
+        if (!project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+            updateMavenPlugin(dataSourceFile, mavenProjectPom);
+        }
 		String groupId = getMavenGroupID(mavenProjectPom)+ ".datasource";
 		String relativePath = FileUtils.getRelativePath(project.getLocation().toFile(), dataSourceFile).replaceAll(
 				Pattern.quote(File.separator), "/");
@@ -240,6 +243,38 @@ public class DataSourceWizard extends Wizard implements INewWizard {
 				project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER));
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 	}
+
+    /**
+     * Updates the pom file
+     * 
+     * @param openFile
+     *            current .dbs file
+     * @throws Exception
+     */
+    public void updateMavenPlugin(File openFile, File mavenProjectPom) throws IOException, XmlPullParserException {
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPom);
+
+        // Skip changing the pom file if group ID and artifact ID are matched
+        if (MavenUtils.checkOldPluginEntry(mavenProject, GROUP_ID, ARTIFACT_ID)) {
+            return;
+        }
+
+        Plugin pluginEntry = MavenUtils.createPluginEntry(mavenProject, GROUP_ID, ARTIFACT_ID,
+                MavenConstants.MAVEN_DATASOURCE_PLUGIN_VERSION, true);
+        PluginExecution pluginExecution = new PluginExecution();
+        pluginExecution.addGoal("pom-gen");
+        pluginExecution.setPhase("process-resources");
+        pluginExecution.setId("datasource");
+
+        Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+        Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+        artifactLocationNode.setValue(".");
+        Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+        typeListNode.setValue("${artifact.types}");
+        pluginExecution.setConfiguration(configurationNode);
+        pluginEntry.addExecution(pluginExecution);
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPom);
+    }
 
 	/**
 	 * Creates artifact

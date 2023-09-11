@@ -146,11 +146,36 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		return super.performCancel();
 	}
 
-	@Override
-	public IWizardPage getPreviousPage(IWizardPage page) {
-		return super.getPreviousPage(page);
-	}
+    @Override
+    public IWizardPage getPreviousPage(IWizardPage page) {
+        return super.getPreviousPage(page);
+    }
 
+    public void updatePom() throws IOException, XmlPullParserException {
+        File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+
+        // Skip changing the pom file if group ID and artifact ID are matched
+        if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-sequence-plugin")) {
+            return;
+        }
+
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-sequence-plugin",
+                ESBMavenConstants.WSO2_ESB_SEQUENCE_VERSION, true);
+        PluginExecution pluginExecution = new PluginExecution();
+        pluginExecution.addGoal("pom-gen");
+        pluginExecution.setPhase("process-resources");
+        pluginExecution.setId("sequence");
+
+        Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+        Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+        artifactLocationNode.setValue(".");
+        Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+        typeListNode.setValue("${artifact.types}");
+        pluginExecution.setConfiguration(configurationNode);
+        plugin.addExecution(pluginExecution);
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+    }
 	public boolean createSequenceArtifact(IProject prj, SequenceModel sequenceModel) throws Exception {
 		boolean isNewArtifact = true;
 		IContainer location =
@@ -169,6 +194,9 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
         MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
         version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 
+        if (!project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+            updatePom();
+        }
         project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		String groupId = getMavenGroupId(pomfile);
 		groupId += ".sequence";

@@ -91,7 +91,7 @@ public class ConnectorDeleteParticipant extends DeleteParticipant {
         }
         String originalFileName = originalFileFullName.substring(0, substringLength);
         try {
-            SynapseUtils.removeDataServiceBuildArtifacts(file.getProject().getFolder(
+            SynapseUtils.removeConnectorBuildArtifacts(file.getProject().getFolder(
                     SynapseConstants.BUILD_ARTIFACTS_FOLDER), SynapseConstants.CONNECTOR_FOLDER, originalFileName);
         } catch (CoreException | IOException | XmlPullParserException e) {
             throw new OperationCanceledException("Error while deleting the build artifacts for the connector: "

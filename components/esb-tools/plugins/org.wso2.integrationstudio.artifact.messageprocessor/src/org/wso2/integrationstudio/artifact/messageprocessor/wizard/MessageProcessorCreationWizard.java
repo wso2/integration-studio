@@ -33,6 +33,7 @@ import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.MessageProcessorSerializer;
 import org.apache.synapse.message.processor.MessageProcessor;
@@ -108,6 +109,9 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
             version = mavenProject.getVersion().replace("-SNAPSHOT", "");
             esbProjectArtifact = new ESBProjectArtifact();
 			esbProjectArtifact.fromFile(esbProject.getFile("artifact.xml").getLocation().toFile());
+            if (!esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+                updatePom();
+            }
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			String groupId = getMavenGroupId(pomfile) + ".message-processors";
 			if (getModel().getSelectedOption().equals("create.processor")) {
@@ -168,6 +172,32 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 		artifact.setFile(path);
 		return artifact;
 	}
+
+    public void updatePom() throws IOException, XmlPullParserException {
+        File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+
+        // Skip changing the pom file if group ID and artifact ID are matched
+        if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-messageprocessor-plugin")) {
+            return;
+        }
+
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-messageprocessor-plugin",
+                ESBMavenConstants.WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION, true);
+        PluginExecution pluginExecution = new PluginExecution();
+        pluginExecution.addGoal("pom-gen");
+        pluginExecution.setPhase("process-resources");
+        pluginExecution.setId("task");
+
+        Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+        Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+        artifactLocationNode.setValue(".");
+        Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+        typeListNode.setValue("${artifact.types}");
+        pluginExecution.setConfiguration(configurationNode);
+        plugin.addExecution(pluginExecution);
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+    }
 
     private void addESBArtifactDetails(IContainer location, String messageProcessorName, String groupId, String version,
             String messageProcessorFileName, ESBProjectArtifact esbProjectArtifact) throws Exception {

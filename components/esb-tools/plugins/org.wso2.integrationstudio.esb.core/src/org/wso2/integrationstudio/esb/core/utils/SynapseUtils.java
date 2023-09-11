@@ -187,6 +187,9 @@ public class SynapseUtils {
             String parentPomRelativePath, String pluginGroupId, String pluginArtifactId, String pluginVersion,
             String artifactRelativePath) throws IOException, XmlPullParserException {
 
+        if (!cappArtifactsLocation.exists()) {
+            return;
+        }
         // Initially create an empty pom.xml file for a given artifact
         File mavenProjectPomFile = cappArtifactsLocation
                 .getFile(new Path(targetParentFolder + File.separator + targetFolder + File.separator + "pom.xml"))
@@ -262,12 +265,14 @@ public class SynapseUtils {
     public static void removeConnectorBuildArtifacts(IContainer connectorBuildArtifactLocation,
             String connectorFolderName, String connectorFileName)
             throws CoreException, XmlPullParserException, IOException {
-        connectorBuildArtifactLocation.getFolder(new Path(connectorFolderName + File.separator + connectorFileName))
-                .delete(true, new NullProgressMonitor());
+        if (connectorBuildArtifactLocation.exists()) {
+            connectorBuildArtifactLocation.getFolder(new Path(connectorFolderName + File.separator + connectorFileName))
+                    .delete(true, new NullProgressMonitor());
 
-        File mavenParentProjectPomLocation = connectorBuildArtifactLocation.getFile(new Path("pom.xml")).getLocation()
-                .toFile();
-        removeModuleFromPom(mavenParentProjectPomLocation, connectorFolderName + "/" + connectorFileName);
+            File mavenParentProjectPomLocation = connectorBuildArtifactLocation.getFile(new Path("pom.xml"))
+                    .getLocation().toFile();
+            removeModuleFromPom(mavenParentProjectPomLocation, connectorFolderName + "/" + connectorFileName);
+        }
     }
 
     public static void createDataServiceBuildArtifactPom(String groupId, String artifactId, String version,
@@ -302,55 +307,64 @@ public class SynapseUtils {
 
     public static void removeESBConfigBuildArtifacts(IContainer buildArtifactLocation, String artifactFolderName,
             String artifactFileName) throws CoreException, IOException, XmlPullParserException {
+        if (buildArtifactLocation.exists()) {
+            buildArtifactLocation.getFolder(new Path(artifactFolderName + File.separator + artifactFileName))
+                    .delete(true, new NullProgressMonitor());
 
-        buildArtifactLocation.getFolder(new Path(artifactFolderName + File.separator + artifactFileName)).delete(true,
-                new NullProgressMonitor());
-
-        File mavenParentProjectPomLocation = buildArtifactLocation.getFile(new Path("pom.xml")).getLocation().toFile();
-        removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+            File mavenParentProjectPomLocation = buildArtifactLocation.getFile(new Path("pom.xml")).getLocation()
+                    .toFile();
+            removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+        }
     }
 
     public static void removeESBMetadataBuildArtifacts(IContainer buildArtifactLocation, String artifactFolderName,
             String artifactFileName) throws CoreException, IOException, XmlPullParserException {
+        if (buildArtifactLocation.exists()) {
+            buildArtifactLocation.getFolder(new Path(artifactFolderName + File.separator + artifactFileName))
+                    .delete(true, new NullProgressMonitor());
 
-        buildArtifactLocation.getFolder(new Path(artifactFolderName + File.separator + artifactFileName)).delete(true,
-                new NullProgressMonitor());
-
-        File mavenParentProjectPomLocation = buildArtifactLocation.getFile(new Path("pom.xml")).getLocation().toFile();
-        removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+            File mavenParentProjectPomLocation = buildArtifactLocation.getFile(new Path("pom.xml")).getLocation()
+                    .toFile();
+            removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+        }
     }
 
     public static void removeRegsitryResourceBuildArtifacts(IContainer registryResourceBuildArtifactLocation,
             String artifactFolderName, String artifactFileName)
             throws CoreException, IOException, XmlPullParserException {
+        if (registryResourceBuildArtifactLocation.exists()) {
+            registryResourceBuildArtifactLocation
+                    .getFolder(new Path(artifactFolderName + File.separator + artifactFileName))
+                    .delete(true, new NullProgressMonitor());
 
-        registryResourceBuildArtifactLocation
-                .getFolder(new Path(artifactFolderName + File.separator + artifactFileName))
-                .delete(true, new NullProgressMonitor());
-
-        File mavenParentProjectPomLocation = registryResourceBuildArtifactLocation.getFile(new Path("pom.xml"))
-                .getLocation().toFile();
-        removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+            File mavenParentProjectPomLocation = registryResourceBuildArtifactLocation.getFile(new Path("pom.xml"))
+                    .getLocation().toFile();
+            removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+        }
     }
 
     public static void removeDataServiceBuildArtifacts(IContainer buildArtifactLocation, String artifactFolderName,
             String artifactFileName) throws CoreException, IOException, XmlPullParserException {
+        if (buildArtifactLocation.exists()) {
+            buildArtifactLocation.getFolder(new Path(artifactFolderName + File.separator + artifactFileName))
+                    .delete(true, new NullProgressMonitor());
 
-        buildArtifactLocation.getFolder(new Path(artifactFolderName + File.separator + artifactFileName)).delete(true,
-                new NullProgressMonitor());
-
-        File mavenParentProjectPomLocation = buildArtifactLocation.getFile(new Path("pom.xml")).getLocation().toFile();
-        removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+            File mavenParentProjectPomLocation = buildArtifactLocation.getFile(new Path("pom.xml")).getLocation()
+                    .toFile();
+            removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+        }
     }
 
     public static void removeDataSourceBuildArtifacts(IContainer buildArtifactLocation, String artifactFolderName,
             String artifactFileName) throws CoreException, IOException, XmlPullParserException {
+        if (buildArtifactLocation.exists()) {
+            buildArtifactLocation.getFolder(new Path(artifactFolderName + File.separator + artifactFileName))
+                    .delete(true, new NullProgressMonitor());
 
-        buildArtifactLocation.getFolder(new Path(artifactFolderName + File.separator + artifactFileName)).delete(true,
-                new NullProgressMonitor());
-
-        File mavenParentProjectPomLocation = buildArtifactLocation.getFile(new Path("pom.xml")).getLocation().toFile();
-        removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+            File mavenParentProjectPomLocation = buildArtifactLocation.getFile(new Path("pom.xml")).getLocation()
+                    .toFile();
+            removeModuleFromPom(mavenParentProjectPomLocation, artifactFolderName + "/" + artifactFileName);
+        }
     }
 
     private static void removeModuleFromPom(File mavenParentProjectPomLocation, String module)

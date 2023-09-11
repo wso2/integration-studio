@@ -26,7 +26,10 @@ import java.util.regex.Pattern;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -43,6 +46,7 @@ import org.wso2.integrationstudio.artifact.localentry.model.LocalEntryModel;
 import org.wso2.integrationstudio.artifact.localentry.utils.LocalEntryArtifactConstants;
 import org.wso2.integrationstudio.artifact.localentry.utils.LocalEntryImageUtils;
 import org.wso2.integrationstudio.artifact.localentry.utils.LocalEntryTemplateUtils;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
 import org.wso2.integrationstudio.esb.core.exceptions.BuildArtifactCreationException;
 import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
 import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
@@ -103,13 +107,17 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		boolean isNewArtifact = true;
 		IContainer location = esbProject.getFolder("src" + File.separator + "main" + File.separator
 				+ "synapse-config" + File.separator + "local-entries");
-		
-		esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+        
 		File pomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
 		
         MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
         version = mavenProject.getVersion().replace("-SNAPSHOT", "");
         
+        if (!esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+            updatePom();
+        }
+        
+        esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		String groupId = getMavenGroupId(pomLocation);
 		groupId += ".local-entry";
 
@@ -213,7 +221,32 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		}
 		return true;
 	}
-	
+
+    public void updatePom() throws IOException, XmlPullParserException {
+        File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+        // Skip changing the pom file if group ID and artifact ID are matched
+        if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-localentry-plugin")) {
+            return;
+        }
+
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-localentry-plugin",
+                ESBMavenConstants.WSO2_ESB_LOCAL_ENTRY_VERSION, true);
+        PluginExecution pluginExecution = new PluginExecution();
+        pluginExecution.addGoal("pom-gen");
+        pluginExecution.setPhase("process-resources");
+        pluginExecution.setId("localentry");
+
+        Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+        Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+        artifactLocationNode.setValue(".");
+        Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+        typeListNode.setValue("${artifact.types}");
+        pluginExecution.setConfiguration(configurationNode);
+        plugin.addExecution(pluginExecution);
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+    }
+
 	private String createFileURL(String fullFilePath){
         //check how it happens in windows
         //linux - file:/home/chathuri/Desktop/input.txt

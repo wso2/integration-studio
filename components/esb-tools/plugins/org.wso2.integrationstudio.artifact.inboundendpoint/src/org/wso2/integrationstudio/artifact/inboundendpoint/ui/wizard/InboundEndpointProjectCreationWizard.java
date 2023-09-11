@@ -26,9 +26,12 @@ import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
+import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.inbound.InboundEndpointSerializer;
 import org.apache.synapse.inbound.InboundEndpoint;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -43,6 +46,7 @@ import org.wso2.integrationstudio.artifact.inboundendpoint.Activator;
 import org.wso2.integrationstudio.artifact.inboundendpoint.model.InboundEndpointModel;
 import org.wso2.integrationstudio.artifact.inboundendpoint.utils.InboundEndpointArtifactProperties;
 import org.wso2.integrationstudio.artifact.inboundendpoint.utils.InboundEndpointImageUtils;
+import org.wso2.integrationstudio.esb.core.ESBMavenConstants;
 import org.wso2.integrationstudio.esb.core.exceptions.BuildArtifactCreationException;
 import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
 import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
@@ -59,38 +63,45 @@ import org.wso2.integrationstudio.utils.file.FileUtils;
 
 public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	
-	private static final String RABBITMQ_EXCHANGE_NAME = "rabbitmq.exchange.name";
-	private static final String RABBITMQ_QUEUE_NAME = "rabbitmq.queue.name";
-	private static final String RABBITMQ_SERVER_PASSWORD = "rabbitmq.server.password";
-	private static final String RABBITMQ_SERVER_USER_NAME = "rabbitmq.server.user.name";
-	private static final String RABBITMQ_SERVER_PORT = "rabbitmq.server.port";
-	private static final String RABBITMQ_SERVER_HOST_NAME = "rabbitmq.server.host.name";
-	private static final String RABBITMQ_CONNECTION_FACTORY = "rabbitmq.connection.factory";
-	private static final String WSO2_MB_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
-	private static final String WSO2_MB_TOPIC_CONNECTION_URL ="connectionfactory.TopicConnectionFactory";
-	private static final String JMS_CONNECTION_FACTORY_TYPE = "transport.jms.ConnectionFactoryType";
-	private static final String WS_CLIENT_SIDE_BROADCAST_LEVEL ="ws.client.side.broadcast.level";
-	private static final String RABBITMQ = "rabbitmq";
-	private static final String INTERVAL = "interval";
-	private static final String TOPICS = "topics";
-	private static final String KAFKA_GROUP_ID = "group.id";
-	private static final String ZOOKEEPER_CONNECT = "zookeeper.connect";
-	private static final String KAFKA = "kafka";
-	private static final String JMS ="jms";
-	private static final String WSO2_MB="WSO2_MB";
-	private static final String XML_EXTENSION = ".xml";
-	private static final String SRC_FOLDER ="src";
-	private static final String MAIN_FOLDER="main";
-	private static final String SYNAPSE_FOLDER= "synapse-config";
-	private static final String INBOUND_EP_FOLDER = SynapseConstants.INBOUND_EP_FOLDER;
-	private static final String POM_FILE ="pom.xml";
-	private static final String GROUP_ID =".inbound-endpoint";	
-	private static final String ARTIFACT_XML_FILE = "artifact.xml";
-	private static final String TYPE = SynapseConstants.INBOUND_ENDPOINT_CONFIG_TYPE;
-	private static final String SERVER_ROLE ="EnterpriseServiceBus";
-	private static final String CUSTOM = "custom";
-	private static final String KEY ="key";
-	private static final String WS = "ws";
+    private static final String RABBITMQ_EXCHANGE_NAME = "rabbitmq.exchange.name";
+    private static final String RABBITMQ_QUEUE_NAME = "rabbitmq.queue.name";
+    private static final String RABBITMQ_SERVER_PASSWORD = "rabbitmq.server.password";
+    private static final String RABBITMQ_SERVER_USER_NAME = "rabbitmq.server.user.name";
+    private static final String RABBITMQ_SERVER_PORT = "rabbitmq.server.port";
+    private static final String RABBITMQ_SERVER_HOST_NAME = "rabbitmq.server.host.name";
+    private static final String RABBITMQ_CONNECTION_FACTORY = "rabbitmq.connection.factory";
+    private static final String WSO2_MB_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
+    private static final String WSO2_MB_TOPIC_CONNECTION_URL = "connectionfactory.TopicConnectionFactory";
+    private static final String JMS_CONNECTION_FACTORY_TYPE = "transport.jms.ConnectionFactoryType";
+    private static final String WS_CLIENT_SIDE_BROADCAST_LEVEL = "ws.client.side.broadcast.level";
+    private static final String RABBITMQ = "rabbitmq";
+    private static final String INTERVAL = "interval";
+    private static final String TOPICS = "topics";
+    private static final String KAFKA_GROUP_ID = "group.id";
+    private static final String ZOOKEEPER_CONNECT = "zookeeper.connect";
+    private static final String KAFKA = "kafka";
+    private static final String JMS = "jms";
+    private static final String WSO2_MB = "WSO2_MB";
+    private static final String XML_EXTENSION = ".xml";
+    private static final String SRC_FOLDER = "src";
+    private static final String MAIN_FOLDER = "main";
+    private static final String SYNAPSE_FOLDER = "synapse-config";
+    private static final String INBOUND_EP_FOLDER = SynapseConstants.INBOUND_EP_FOLDER;
+    private static final String POM_FILE = "pom.xml";
+    private static final String GROUP_ID = ".inbound-endpoint";
+    private static final String ARTIFACT_XML_FILE = "artifact.xml";
+    private static final String TYPE = SynapseConstants.INBOUND_ENDPOINT_CONFIG_TYPE;
+    private static final String SERVER_ROLE = "EnterpriseServiceBus";
+    private static final String MAVEN_ID = "org.wso2.maven";
+    private static final String INBOUND_EP_PLUGIN_ID = "wso2-esb-inboundendpoint-plugin";
+    private static final String PLUGIN_GOAL = "pom-gen";
+    private static final String PLUGIN_PHASE = "process-resources";
+    private static final String PLUGIN_ID = "inboundendpoint";
+    private static final String ARTIFACT_LOCATION = "artifactLocation";
+    private static final String TYPE_LIST = "typeList";
+    private static final String CUSTOM = "custom";
+    private static final String KEY = "key";
+    private static final String WS = "ws";
 	
 	private InboundEndpointModel inboundEndpointModel;
 	private IFile inboundEndpointFile;
@@ -122,7 +133,9 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		boolean isNewArtifact =true;
 		IContainer location = esbProject.getFolder(SRC_FOLDER + File.separator + MAIN_FOLDER+ File.separator
 				+ SYNAPSE_FOLDER + File.separator + INBOUND_EP_FOLDER);
-		
+        if (!esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+            updatePom();
+        }
 		esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		File pomLocation = esbProject.getFile(POM_FILE).getLocation().toFile();
         MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
@@ -195,6 +208,32 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		}
 		return true;
 	}
+
+    public void updatePom() throws IOException, XmlPullParserException {
+        File mavenProjectPomLocation = esbProject.getFile(POM_FILE).getLocation().toFile();
+        MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+        version = mavenProject.getVersion().replace("-SNAPSHOT", "");
+
+        // Skip changing the pom file if group ID and artifact ID are matched
+        if (MavenUtils.checkOldPluginEntry(mavenProject, MAVEN_ID, INBOUND_EP_PLUGIN_ID)) {
+            return;
+        }
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, MAVEN_ID, INBOUND_EP_PLUGIN_ID,
+                ESBMavenConstants.WSO2_ESB_INBOUND_ENDPOINT_VERSION, true);
+        PluginExecution pluginExecution = new PluginExecution();
+        pluginExecution.addGoal(PLUGIN_GOAL);
+        pluginExecution.setPhase(PLUGIN_PHASE);
+        pluginExecution.setId(PLUGIN_ID);
+
+        Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+        Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, ARTIFACT_LOCATION);
+        artifactLocationNode.setValue(".");
+        Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, TYPE_LIST);
+        typeListNode.setValue("${artifact.types}");
+        pluginExecution.setConfiguration(configurationNode);
+        plugin.addExecution(pluginExecution);
+        MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+    }
 
     private void createInboundEndpointBuildArtifactPom(String groupId, String artifactId, String version,
             String inboundEpName, String relativePathToRealArtifact) throws BuildArtifactCreationException {

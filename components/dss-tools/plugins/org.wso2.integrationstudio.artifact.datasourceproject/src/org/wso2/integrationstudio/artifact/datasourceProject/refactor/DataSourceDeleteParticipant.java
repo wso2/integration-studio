@@ -95,7 +95,7 @@ public class DataSourceDeleteParticipant extends DeleteParticipant {
         }
         String originalFileName = originalFileFullName.substring(0, substringLength);
         try {
-            SynapseUtils.removeDataServiceBuildArtifacts(file.getProject().getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER),
+            SynapseUtils.removeDataSourceBuildArtifacts(file.getProject().getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER),
                     SynapseConstants.DATA_SOURCE_FOLDER, originalFileName);
         } catch (CoreException | IOException | XmlPullParserException e) {
             throw new OperationCanceledException("Error while deleting the build artifacts for "

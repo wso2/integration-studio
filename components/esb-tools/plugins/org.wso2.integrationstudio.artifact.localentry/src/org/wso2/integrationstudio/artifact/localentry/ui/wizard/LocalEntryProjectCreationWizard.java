@@ -107,15 +107,17 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		boolean isNewArtifact = true;
 		IContainer location = esbProject.getFolder("src" + File.separator + "main" + File.separator
 				+ "synapse-config" + File.separator + "local-entries");
-        if (!esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
-            updatePom();
-        }
-		esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+        
 		File pomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
 		
         MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
         version = mavenProject.getVersion().replace("-SNAPSHOT", "");
         
+        if (!esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+            updatePom();
+        }
+        
+        esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		String groupId = getMavenGroupId(pomLocation);
 		groupId += ".local-entry";
 
@@ -223,8 +225,6 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
     public void updatePom() throws IOException, XmlPullParserException {
         File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
         MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-        version = mavenProject.getVersion().replace("-SNAPSHOT", "");
-
         // Skip changing the pom file if group ID and artifact ID are matched
         if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-localentry-plugin")) {
             return;

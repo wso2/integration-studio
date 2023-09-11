@@ -621,7 +621,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     relativePathToRealArtifact);
         } catch (IOException | XmlPullParserException e) {
             throw new BuildArtifactCreationException("Error while creating the build artifacts for API config "
-                    + apiName + " at " + buildArtifactsLocation.getFullPath());
+                    + apiName + " at " + buildArtifactsLocation.getFullPath(), e);
         }
     }
 
@@ -634,7 +634,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
                     buildArtifactsLocation, relativePathToRealArtifact);
         } catch (IOException | XmlPullParserException e) {
             throw new BuildArtifactCreationException("Error while creating the build artifacts for API config "
-                    + endpointName + " at " + buildArtifactsLocation.getFullPath());
+                    + endpointName + " at " + buildArtifactsLocation.getFullPath(), e);
         }
     }
 
@@ -985,7 +985,6 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
     public void updatePom() throws IOException, XmlPullParserException {
         File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
         MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-        version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 
         // Skip changing the pom file if group ID and artifact ID are matched
         boolean apiPluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-api-plugin");

@@ -115,11 +115,11 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 				getModel().getMavenInfo().setPackageName(SynapseConstants.PROXY_SERVICE_CONFIG_TYPE);
 				createPOM(pomfile);
 			}
+            MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
+            version = mavenProject.getVersion().replace("-SNAPSHOT", "");
             if (!esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
                 updatePom();
             }
-            MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
-            version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			
 			String mavenGroupId = getMavenGroupId(pomfile);
@@ -223,7 +223,6 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
     public void updatePom() throws IOException, XmlPullParserException {
         File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
         MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-        version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 
         // Skip changing the pom file if group ID and artifact ID are matched
         if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-proxy-plugin")) {

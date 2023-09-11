@@ -112,11 +112,11 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		if (!pomfile.exists()) {
 			createPOM(pomfile);
 		}
+        MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
+        version = mavenProject.getVersion().replace("-SNAPSHOT", "");
         if (!project.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
             updatePom();
         }
-        MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
-        version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 		project.refreshLocal(IResource.DEPTH_INFINITE,
 				new NullProgressMonitor());
 		groupId = getMavenGroupId(pomfile) + ".template";
@@ -200,7 +200,6 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
     public void updatePom() throws IOException, XmlPullParserException {
         File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
         MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-        version = mavenProject.getVersion().replace("-SNAPSHOT", "");
 
         // Skip changing the pom file if group ID and artifact ID are matched
         if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-template-plugin")) {
@@ -335,7 +334,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
                     buildArtifactsLocation, "../../../" + relativePathToRealArtifact);
         } catch (IOException | XmlPullParserException e) {
             throw new BuildArtifactCreationException("Error while creating the build artifacts for Template: "
-                    + templateFileName + " at " + buildArtifactsLocation.getFullPath());
+                    + templateFileName + " at " + buildArtifactsLocation.getFullPath(), e);
         }
     }
 

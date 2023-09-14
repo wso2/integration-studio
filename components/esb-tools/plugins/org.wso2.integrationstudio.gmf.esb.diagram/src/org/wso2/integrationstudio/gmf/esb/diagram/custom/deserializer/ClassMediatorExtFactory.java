@@ -24,6 +24,7 @@ import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.MediatorPropertyFactory;
 import org.apache.synapse.config.xml.ClassMediatorFactory;
 import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.ClassMediatorExt;
+import org.wso2.integrationstudio.gmf.esb.internal.persistence.custom.DummyClassMediator;
 
 public class ClassMediatorExtFactory extends ClassMediatorFactory {
 
@@ -37,6 +38,8 @@ public class ClassMediatorExtFactory extends ClassMediatorFactory {
         } else {
             classMediator = new ClassMediatorExt("sample-class-mediator");
         }
+        Mediator m = new DummyClassMediator();
+        classMediator.setMediator((Mediator) m);
 
         classMediator.addAllProperties(MediatorPropertyFactory.getMediatorProperties(elem));
         processAuditStatus(classMediator, elem);

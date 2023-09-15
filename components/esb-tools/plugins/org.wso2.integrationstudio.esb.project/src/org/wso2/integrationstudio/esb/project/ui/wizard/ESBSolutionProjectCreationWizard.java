@@ -399,18 +399,25 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		esbSolutionProjectModel.getMavenInfo().setVersion(mavenProject.getVersion());
 	}
 
-	private void addRuntimeVersionToPOM(File pomLocation, String runtimeVersion) {
+	public static void addRuntimeVersionToPOM(File pomLocation, String runtimeVersion) {
 	    MavenProject mavenProject = getMavenProject(pomLocation);
 	    // TODO define a constant which can be access by the Export and Run wizard
 	    mavenProject.getProperties().put("project.runtime.version", runtimeVersion);
 	    try {
-	        MavenUtils.saveMavenProject(mavenProject, pomFile);
+	        MavenUtils.saveMavenProject(mavenProject, pomLocation);
 	    } catch (Exception e) {
 	        log.error("Error occured while trying to save the maven project", e);
 	    }
 	}
+	
+    public static String getRuntimeVersionFromPOM(File pomFile) {
+        MavenProject mavenProject = getMavenProject(pomFile);
+        Object runtimeVersion = mavenProject.getProperties().get("project.runtime.version");
+        return runtimeVersion == null ? "" : runtimeVersion.toString();
+        
+    }
 
-	public MavenProject getMavenProject(File pomLocation) {
+	public static MavenProject getMavenProject(File pomLocation) {
 		MavenProject mavenProject = null;
 		if (pomLocation != null && pomLocation.exists()) {
 			try {

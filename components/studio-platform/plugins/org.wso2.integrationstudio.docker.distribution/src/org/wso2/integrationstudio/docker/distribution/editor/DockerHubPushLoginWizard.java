@@ -26,16 +26,16 @@ import org.wso2.integrationstudio.docker.distribution.model.DockerHubAuth;
 /**
  * Class responsible for creation of wizard for get docker hub credentials.
  */
-public class DockerHubLoginWizard extends Wizard implements IExportWizard {
+public class DockerHubPushLoginWizard extends Wizard implements IExportWizard {
 
     private final String WINDOW_TITLE = "Docker Registry Credentials";
 
-    private DockerHubLoginPage dockerHubDetailPage;
+    private DockerHubPushLoginPage dockerHubDetailPage;
     private boolean initError = false;
     private DockerHubAuth configuration;
     private IFile containerPomFile;
 
-    public DockerHubLoginWizard(DockerHubAuth newConfiguration, IFile pomFile) {
+    public DockerHubPushLoginWizard(DockerHubAuth newConfiguration, IFile pomFile) {
         configuration = newConfiguration;
         containerPomFile = pomFile;
     }
@@ -43,7 +43,7 @@ public class DockerHubLoginWizard extends Wizard implements IExportWizard {
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         setWindowTitle(WINDOW_TITLE);
-        dockerHubDetailPage = new DockerHubLoginPage(workbench, selection, containerPomFile);
+        dockerHubDetailPage = new DockerHubPushLoginPage(workbench, selection, containerPomFile);
     }
 
     @Override

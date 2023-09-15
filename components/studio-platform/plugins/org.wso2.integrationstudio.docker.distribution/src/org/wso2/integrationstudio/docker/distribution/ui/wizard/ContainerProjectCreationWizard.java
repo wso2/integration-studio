@@ -722,7 +722,7 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
 
 			// Check base image contains deployment.toml and apply config-map plugin and other resources
 			if (dockerModel.isDeploymentTomlEnabled()) {
-				deploymentTomlPluginExecution.setPhase("package");
+				deploymentTomlPluginExecution.setPhase("generate-resources");
 			} else {
 				deploymentTomlPluginExecution.setPhase("none");
 			}
@@ -740,15 +740,45 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
 			deploymentTomlPluginExecution.setConfiguration(tomlDom);
 			deploymentTomlPlugin.addExecution(deploymentTomlPluginExecution);
 
-			// Adding spotify docker plugin - two executions for Docker build and push
-			Plugin spotifyPlugin = MavenUtils.createPluginEntry(mavenProject, "com.spotify", "dockerfile-maven-plugin",
-			        DockerProjectConstants.SPOTIFY_DOCKER_PLUGIN_VERSION, true);
+			// Adding maven-antrun-plugin to make the hidden files visible (Because docker maven plugin doesn't support
+			// hidden files).
+			Plugin antRunPlugin = MavenUtils.createPluginEntry(mavenProject, "org.apache.maven.plugins",
+			        "maven-antrun-plugin", DockerProjectConstants.MAVEN_ANTRUN_PLUGIN_VERSION, true);
+
+			// Antrun edit docker file, and rename hidden folder execution section
+			PluginExecution antRunPluginDockerBuildExecution = new PluginExecution();
+			antRunPluginDockerBuildExecution.addGoal("run");
+			antRunPluginDockerBuildExecution.setId("antrun-edit");
+
+			// Check base image contains deployment.toml and execute antRun plugin
+			if (dockerModel.isDeploymentTomlEnabled()) {
+				antRunPluginDockerBuildExecution.setPhase("process-resources");
+			} else {
+				antRunPluginDockerBuildExecution.setPhase("none");
+			}
+
+			String antRunPluginDockerBuildConfig = "<configuration>\n" + "<target>\n"
+			        + "<move todir=\"${basedir}/CarbonHome/metadata\">\n"
+			        + "<fileset dir=\"${basedir}/CarbonHome/.metadata\"/>\n" + "</move>\n"
+			        + "<replace file=\"${basedir}/Dockerfile\">\n"
+			        + "<replacefilter token=\"CarbonHome/.metadata/metadata_config.properties\" value=\"CarbonHome/metadata/metadata_config.properties\"/>\n"
+			        + "<replacefilter token=\"CarbonHome/.metadata/references.properties\" value=\"CarbonHome/metadata/references.properties\"/>\n"
+			        + "</replace>\n" + "</target>\n" + "</configuration>";
+
+			Xpp3Dom antRunDockerBuildDom = Xpp3DomBuilder
+			        .build(new ByteArrayInputStream(antRunPluginDockerBuildConfig.getBytes()), "UTF-8");
+			antRunPluginDockerBuildExecution.setConfiguration(antRunDockerBuildDom);
+			antRunPlugin.addExecution(antRunPluginDockerBuildExecution);
+
+			// Adding io.fabric8 docker plugin - two executions for Docker build and push
+			Plugin fabric8Plugin = MavenUtils.createPluginEntry(mavenProject, "io.fabric8", "docker-maven-plugin",
+			        DockerProjectConstants.FABRIC8_DOCKER_PLUGIN_VERSION, true);
 
 			// Docker build execution section
-			PluginExecution spotifyPluginDockerBuildExecution = new PluginExecution();
-			spotifyPluginDockerBuildExecution.addGoal("build");
-			spotifyPluginDockerBuildExecution.setId("docker-build");
-			spotifyPluginDockerBuildExecution.setPhase("package");
+			PluginExecution fabric8PluginDockerBuildExecution = new PluginExecution();
+			fabric8PluginDockerBuildExecution.addGoal("build");
+			fabric8PluginDockerBuildExecution.setId("docker-build");
+			fabric8PluginDockerBuildExecution.setPhase("package");
 
 			String repository;
 			String tag;
@@ -779,32 +809,55 @@ public class ContainerProjectCreationWizard extends AbstractWSO2ProjectCreationW
 			mavenProject.getProperties().put("dockerfile.base.image", remoteRepository + ":" + remoteTag);
 			mavenProject.getProperties().put("dockerfile.repository", repository);
 			mavenProject.getProperties().put("dockerfile.tag", tag);
-			String spotifyPluginDockerBuildConfig = "<configuration>\n"
-			        + "<dockerfile.repository>${dockerfile.repository}</dockerfile.repository>\n"
-			        + "<dockerfile.tag>${dockerfile.tag}</dockerfile.tag>\n"
-			        + "<buildArgs><BASE_IMAGE>${dockerfile.base.image}</BASE_IMAGE></buildArgs></configuration>";
 
-			Xpp3Dom spotifyDockerBuildDom = Xpp3DomBuilder
-			        .build(new ByteArrayInputStream(spotifyPluginDockerBuildConfig.getBytes()), "UTF-8");
-			spotifyPluginDockerBuildExecution.setConfiguration(spotifyDockerBuildDom);
-			spotifyPlugin.addExecution(spotifyPluginDockerBuildExecution);
+			String fabric8PluginDockerBuildConfig = "<configuration>\n"
+			+ "<images>\n"
+			+ "<image>\n"
+			+ "<name>${dockerfile.repository}:${dockerfile.tag}</name>\n"
+			+ "<build>\n"
+			+ "<from>${dockerfile.base.image}</from>\n"
+			+ "<dockerFile>${basedir}/Dockerfile</dockerFile>\n"
+			+ "<args>\n"
+			+ "<BASE_IMAGE>${dockerfile.base.image}</BASE_IMAGE>\n"
+			+ "</args>\n"
+			+ "</build>\n"
+			+ "</image>\n"
+			+ "</images>\n"
+			+ "<authConfig>\n"
+			+ "<username>${dockerfile.pull.username}</username>\n"
+			+ "<password>${dockerfile.pull.password}</password>\n"
+			+ "</authConfig>\n"
+			+ "<verbose>true</verbose>\n"
+			+ "</configuration>";
+
+			Xpp3Dom fabric8DockerBuildDom = Xpp3DomBuilder
+			        .build(new ByteArrayInputStream(fabric8PluginDockerBuildConfig.getBytes()), "UTF-8");
+			fabric8PluginDockerBuildExecution.setConfiguration(fabric8DockerBuildDom);
+			fabric8Plugin.addExecution(fabric8PluginDockerBuildExecution);
 
 			// Docker build execution section
-			PluginExecution spotifyPluginDockerPushExecution = new PluginExecution();
-			spotifyPluginDockerPushExecution.addGoal("push");
-			spotifyPluginDockerPushExecution.setId("docker-push");
-			spotifyPluginDockerPushExecution.setPhase("package");
+			PluginExecution fabric8PluginDockerPushExecution = new PluginExecution();
+			fabric8PluginDockerPushExecution.addGoal("push");
+			fabric8PluginDockerPushExecution.setId("docker-push");
+			fabric8PluginDockerPushExecution.setPhase("package");
 
-			String spotifyPluginDockerPushConfig = "<configuration>\n"
-			        + "<dockerfile.username>${dockerfile.username}</dockerfile.username>\n"
-			        + "<dockerfile.password>${dockerfile.password}</dockerfile.password>\n"
-			        + "<dockerfile.repository>${dockerfile.repository}</dockerfile.repository>\n"
-			        + "<dockerfile.tag>${dockerfile.tag}</dockerfile.tag></configuration>";
+			String fabric8PluginDockerPushConfig = "<configuration>\n"
+			+ "<images>\n"
+			+ "<image>\n"
+			+ "<name>${dockerfile.repository}:${dockerfile.tag}</name>\n"
+			+ "</image>\n"
+			+ "</images>\n"
+			+ "<authConfig>\n"
+			+ "<username>${dockerfile.push.username}</username>\n"
+			+ "<password>${dockerfile.push.password}</password>\n"
+			+ "</authConfig>\n"
+			+ "<skip>${dockerfile.skipPush}</skip>\n"
+			+ "</configuration>";
 
-			Xpp3Dom spotifyDockerPushDom = Xpp3DomBuilder
-			        .build(new ByteArrayInputStream(spotifyPluginDockerPushConfig.getBytes()), "UTF-8");
-			spotifyPluginDockerPushExecution.setConfiguration(spotifyDockerPushDom);
-			spotifyPlugin.addExecution(spotifyPluginDockerPushExecution);
+			Xpp3Dom fabric8DockerPushDom = Xpp3DomBuilder
+			        .build(new ByteArrayInputStream(fabric8PluginDockerPushConfig.getBytes()), "UTF-8");
+			fabric8PluginDockerPushExecution.setConfiguration(fabric8DockerPushDom);
+			fabric8Plugin.addExecution(fabric8PluginDockerPushExecution);
 
 			// Adding dependencies
 			List<Dependency> dependencyList = new ArrayList<Dependency>();

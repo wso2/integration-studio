@@ -49,7 +49,7 @@ import org.eclipse.ui.PlatformUI;
 import org.w3c.dom.Document;
 import org.wso2.integrationstudio.docker.distribution.Activator;
 import org.wso2.integrationstudio.docker.distribution.editor.CustomWizardDialog;
-import org.wso2.integrationstudio.docker.distribution.editor.DockerHubLoginWizard;
+import org.wso2.integrationstudio.docker.distribution.editor.DockerHubPushLoginWizard;
 import org.wso2.integrationstudio.docker.distribution.model.DockerHubAuth;
 import org.wso2.integrationstudio.docker.distribution.utils.DockerProjectConstants;
 import org.wso2.integrationstudio.logging.core.IIntegrationStudioLog;
@@ -110,7 +110,7 @@ public class DockerRunMavenAction implements IActionDelegate, IExecutableExtensi
 
 			// it checks buildArg parameter is there in docker plugin to verify whether this pom is a new one or not
 			XPathExpression xpBuildArgs = XPathFactory.newInstance().newXPath()
-			        .compile(DockerProjectConstants.DOCKER_SPOTIFY_PLUGIN_BUILD_ARG);
+			        .compile(DockerProjectConstants.DOCKER_MAVEN_PLUGIN_BUILD_ARG);
 			if (xpBuildArgs.evaluate(doc).isEmpty()) {
 				isThisOldContainerProject = true;
 			}
@@ -137,10 +137,10 @@ public class DockerRunMavenAction implements IActionDelegate, IExecutableExtensi
 		DockerHubAuth newConfiguration = null;
 		if (getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER) || isDockerPushOnly != null) {
 			newConfiguration = new DockerHubAuth();
-			DockerHubLoginWizard wizard = new DockerHubLoginWizard(newConfiguration, pomIFile);
+			DockerHubPushLoginWizard wizard = new DockerHubPushLoginWizard(newConfiguration, pomIFile);
 			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			wizard.init(PlatformUI.getWorkbench(), null);
-			CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard);
+			CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard, CustomWizardDialog.PUSH_BUTTON);
 			headerWizardDialog.setHelpAvailable(false);
 			headerWizardDialog.setPageSize(580, 260);
 			headerWizardDialog.open();

@@ -69,7 +69,8 @@ public class DockerProjectConstants extends NLS {
 
     public static String MAVEN_DEPENDENCY_PLUGIN_VERSION;
     public static String MAVEN_CLEAN_PLUGIN_VERSION;
-    public static String SPOTIFY_DOCKER_PLUGIN_VERSION;
+    public static String FABRIC8_DOCKER_PLUGIN_VERSION;
+    public static String MAVEN_ANTRUN_PLUGIN_VERSION;
 
     public static String PLUGIN_ID;
 
@@ -83,6 +84,7 @@ public class DockerProjectConstants extends NLS {
     public static final String DOCKER_REPOSITORY = "repository";
     public static final String DOCKER_TAG = "tag";
     public static final String REPOSITORY_SEPERATOR = "/";
+    public static final String TAG_SEPERATOR = ":";
     
     public static final String DEFAULT_KEY_STORE_FILE = "wso2carbon.jks";
     public static final String DEFAULT_TRUEST_STORE_FILE = "client-truststore.jks";
@@ -111,10 +113,12 @@ public class DockerProjectConstants extends NLS {
     public static final String TARGET_REPOSITORY_XPATH = "/project/properties/dockerfile.repository";
     public static final String TARGET_TAG_XPATH = "/project/properties/dockerfile.tag";
     public static final String CIPHER_TOOL_ENABLE_XPATH = "/project/properties/ciphertool.enable";
-    public static final String TARGET_REPOSITORY_XPATH_OLD = "/project/build/plugins/plugin/executions/execution/configuration/repository";
-    public static final String TARGET_TAG_XPATH_OLD = "/project/build/plugins/plugin/executions/execution/configuration/tag";
-    public static final String DOCKER_SPOTIFY_PLUGIN_BUILD_ARG = "/project/build/plugins/plugin/executions/execution/configuration/buildArgs";
+    public static final String BASE_IMAGE_XPATH_OLD = "/project/build/plugins/plugin/executions/execution/configuration/images/image/build/from";
+    public static final String TARGET_REPOSITORY_XPATH_OLD = "/project/build/plugins/plugin/executions/execution/configuration/images/image/name";
+    public static final String TARGET_TAG_XPATH_OLD = "/project/build/plugins/plugin/executions/execution/configuration/images/image/tag";
+    public static final String DOCKER_MAVEN_PLUGIN_BUILD_ARG = "/project/build/plugins/plugin/executions/execution/configuration/images/image/build/args";
     public static final String CONFIGMAP_PLUGIN_XPATH = "/project/build/plugins/plugin[artifactId='mi-container-config-mapper']/executions/execution/phase";
+    public static final String ANTRUN_PLUGIN_XPATH = "/project/build/plugins/plugin[artifactId='maven-antrun-plugin']/executions/execution/phase";
     public static final String DEPLOYMENT_TOML_FILE_PATH = "resources/deployment.toml";
     public static final String DOCKER_ENTRYPOINT_FILE_PATH = "resources/docker-entrypoint.sh";
     public static final String DOCKER_USER_GUIDE_PATH = "resources/UserGuide/DockerGuideReadMe.html";

@@ -275,8 +275,8 @@
 			<xs:enumeration value="IN" />
 			<xs:enumeration value="out" />
 			<xs:enumeration value="OUT" />
-			<xs:enumeration value="in-out" />
-			<xs:enumeration value="IN-OUT" />
+			<xs:enumeration value="inout" />
+			<xs:enumeration value="INOUT" />
 		</xs:restriction>
 	</xs:simpleType>
 

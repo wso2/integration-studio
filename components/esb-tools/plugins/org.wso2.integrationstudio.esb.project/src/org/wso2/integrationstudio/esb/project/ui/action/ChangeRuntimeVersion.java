@@ -48,9 +48,9 @@ public class ChangeRuntimeVersion implements IActionDelegate {
 
                     public String isValid(String str) {
                         if (str.trim().isEmpty()) {
-                            return "Sequence name cannot be empty";
+                            return "Runtime version cannot be empty";
                         } else if (str.indexOf(0x20) != -1) {
-                            return "Sequence name cannot contain spaces";
+                            return "Runtime version cannot contain spaces";
                         }
                         return null;
                     }

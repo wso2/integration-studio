@@ -320,6 +320,24 @@
 	          </objectContribution>     
 	 </extension>
 	 
+	<extension point="org.eclipse.ui.popupMenus">
+	        <objectContribution objectClass="org.eclipse.core.resources.IProject" id="org.wso2.integrationstudio.esb.project.popup.MIVersionChange">
+	               <action
+	                   label="Change Runtime MI Version"
+	                   class="org.wso2.integrationstudio.esb.project.ui.action.ChangeRuntimeVersion"
+	                   id="org.wso2.integrationstudio.esb.project.action.MIVersionChange">
+	               </action>
+	               <enablement>
+						<adapt type="org.eclipse.core.resources.IProject">
+						 <or>
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+		 				</or>
+						</adapt>
+				</enablement>
+	          </objectContribution>     
+	 </extension>
+
 	 <extension point="org.eclipse.ui.navigator.linkHelper">
        	<linkHelper
              class="org.wso2.integrationstudio.esb.project.esblinkhelper.ESBExplorerLinkHelper"

@@ -18,49 +18,49 @@
 package org.wso2.integrationstudio.docker.distribution.model;
 
 public class DockerHubAuth {
-    private boolean isKubernetesProject = false;
-    private boolean isDockerRegistry = true;
-    private String remoteRegistryURL;
-    private String authUsername;
-    private String authPassword;
+	private boolean isKubernetesProject = false;
+	private boolean isDockerRegistry = true;
+	private String remoteRegistryURL;
+	private String authUsername;
+	private String authPassword;
 
-    public boolean isKubernetesProject() {
-        return isKubernetesProject;
-    }
+	public boolean isKubernetesProject() {
+		return isKubernetesProject;
+	}
 
-    public void setKubernetesProject(boolean isKubernetesProject) {
-        this.isKubernetesProject = isKubernetesProject;
-    }
-    
-    public String getAuthUsername() {
-        return authUsername;
-    }
+	public void setKubernetesProject(boolean isKubernetesProject) {
+		this.isKubernetesProject = isKubernetesProject;
+	}
 
-    public void setAuthUsername(String authUsername) {
-        this.authUsername = authUsername;
-    }
+	public String getAuthUsername() {
+		return authUsername;
+	}
 
-    public String getAuthPassword() {
-        return authPassword;
-    }
+	public void setAuthUsername(String authUsername) {
+		this.authUsername = authUsername;
+	}
 
-    public void setAuthPassword(String authPassword) {
-        this.authPassword = authPassword;
-    }
+	public String getAuthPassword() {
+		return authPassword;
+	}
 
-    public boolean isDockerRegistry() {
-        return isDockerRegistry;
-    }
+	public void setAuthPassword(String authPassword) {
+		this.authPassword = authPassword;
+	}
 
-    public void setDockerRegistry(boolean isDockerRegistry) {
-        this.isDockerRegistry = isDockerRegistry;
-    }
+	public boolean isDockerRegistry() {
+		return isDockerRegistry;
+	}
 
-    public String getRemoteRegistryURL() {
-        return remoteRegistryURL;
-    }
+	public void setDockerRegistry(boolean isDockerRegistry) {
+		this.isDockerRegistry = isDockerRegistry;
+	}
 
-    public void setRemoteRegistryURL(String remoteRegistryURL) {
-        this.remoteRegistryURL = remoteRegistryURL;
-    }
+	public String getRemoteRegistryURL() {
+		return remoteRegistryURL;
+	}
+
+	public void setRemoteRegistryURL(String remoteRegistryURL) {
+		this.remoteRegistryURL = remoteRegistryURL;
+	}
 }

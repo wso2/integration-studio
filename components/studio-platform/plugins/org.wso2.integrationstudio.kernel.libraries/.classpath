@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="lib/soaptorest-1.5-jar-with-dependencies.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/soaptorest-1.6-jar-with-dependencies.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.emf.ecore_2.25.0.v20210816-0937.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.gmf.runtime.notation_1.10.0.202004160913.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-codec_1.4.0.wso2v1.jar"/>

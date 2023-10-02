@@ -21,8 +21,14 @@ public class DockerHubAuth {
 	private boolean isKubernetesProject = false;
 	private boolean isDockerRegistry = true;
 	private String remoteRegistryURL;
+
+	// Credentials for pushing the image to a registry
 	private String authUsername;
 	private String authPassword;
+
+	// Credentials for pulling the base image from wso2 registry
+	private String pullAuthUsername;
+	private String pullAuthPassword;
 
 	public boolean isKubernetesProject() {
 		return isKubernetesProject;
@@ -46,6 +52,22 @@ public class DockerHubAuth {
 
 	public void setAuthPassword(String authPassword) {
 		this.authPassword = authPassword;
+	}
+
+	public String getPullAuthUsername() {
+		return pullAuthUsername;
+	}
+
+	public void setPullAuthUsername(String authUsername) {
+		this.pullAuthUsername = authUsername;
+	}
+
+	public String getPullAuthPassword() {
+		return pullAuthPassword;
+	}
+
+	public void setPullAuthPassword(String authPassword) {
+		this.pullAuthPassword = authPassword;
 	}
 
 	public boolean isDockerRegistry() {

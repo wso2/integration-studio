@@ -103,7 +103,7 @@ public class MavenJobThread implements Runnable {
 					revertDockerConfigurationFile();
 					if (isBuildSuccess == 0 && authConfiguration != null && authConfiguration.isKubernetesProject()) {
 						executeMavenPushJob();
-					} else if (isBuildSuccess == 0 && authConfiguration == null) {
+					} else if (isBuildSuccess == 0 && !authConfiguration.isKubernetesProject()) {
 						DockerBuildActionUtil.showMessageBox(DockerProjectConstants.MESSAGE_BOX_TITLE,
 						        DockerProjectConstants.DOCKER_IMAGE_GEN_SUCCESS_MESSAGE, SWT.ICON_WORKING);
 					} else {
@@ -112,8 +112,8 @@ public class MavenJobThread implements Runnable {
 					}
 				}
 
-				// skip the the await after two minutes
-				if (loopCount > 120) {
+				// skip the the await after ten minutes
+				if (loopCount > 600) {
 					break;
 				}
 
@@ -209,8 +209,8 @@ public class MavenJobThread implements Runnable {
 						}
 					}
 
-					// skip the the await after two minutes
-					if (loopCount > 120) {
+					// skip the the await after ten minutes
+					if (loopCount > 600) {
 						break;
 					}
 
@@ -231,8 +231,9 @@ public class MavenJobThread implements Runnable {
 	 */
 	private String mavenDockerBuildGoal() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("dockerfile:push").append(" -Ddockerfile.username=" + authConfiguration.getAuthUsername())
-		        .append(" -Ddockerfile.password=" + authConfiguration.getAuthPassword());
+		builder.append("io.fabric8:docker-maven-plugin:push@docker-push")
+		        .append(" -Ddockerfile.push.username=" + authConfiguration.getAuthUsername())
+		        .append(" -Ddockerfile.push.password=" + authConfiguration.getAuthPassword());
 		return builder.toString();
 	}
 

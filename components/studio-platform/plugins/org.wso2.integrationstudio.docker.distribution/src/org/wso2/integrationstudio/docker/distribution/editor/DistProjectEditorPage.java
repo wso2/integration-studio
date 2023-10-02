@@ -224,20 +224,21 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 			// check pom is an old project or not
 			// it checks buildArg parameter is there in docker plugin to verify whether this pom is a new one or not
 			XPathExpression xpBuildArgs = XPathFactory.newInstance().newXPath()
-			        .compile(DockerProjectConstants.DOCKER_SPOTIFY_PLUGIN_BUILD_ARG);
+			        .compile(DockerProjectConstants.DOCKER_MAVEN_PLUGIN_BUILD_ARG);
 			if (xpBuildArgs.evaluate(doc).isEmpty()) {
 				isThisOldContainerProject = true;
 
-				// Read target repository name and the tag from the pom spotify plugin tags
-				XPathExpression xpRepo = XPathFactory.newInstance().newXPath()
+				// Read target repository name and the tag from the pom docker plugin tags
+				XPathExpression xpRepoTag = XPathFactory.newInstance().newXPath()
 				        .compile(DockerProjectConstants.TARGET_REPOSITORY_XPATH_OLD);
-				String repository = xpRepo.evaluate(doc);
-				setTargetRepository(repository);
-
-				XPathExpression xpTag = XPathFactory.newInstance().newXPath()
-				        .compile(DockerProjectConstants.TARGET_TAG_XPATH_OLD);
-				String tag = xpTag.evaluate(doc);
-				setTargetTag(tag);
+				String repositoryTag = xpRepoTag.evaluate(doc);
+				String[] repositoryTagArray = repositoryTag.split(DockerProjectConstants.TAG_SEPERATOR);
+				if (repositoryTagArray.length == 2) {
+					String repository = repositoryTagArray[0];
+					String tag = repositoryTagArray[1];
+					setTargetRepository(repository);
+					setTargetTag(tag);
+				}
 			} else {
 				// Read target repository name and the tag from the pom properties tags
 				XPathExpression xpBaseImage = XPathFactory.newInstance().newXPath()
@@ -263,7 +264,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 			XPathExpression xPathConfigMapEnabled = XPathFactory.newInstance().newXPath()
 			        .compile(DockerProjectConstants.CONFIGMAP_PLUGIN_XPATH);
 			String configMapEnable = xPathConfigMapEnabled.evaluate(doc);
-			if (configMapEnable.equals("package")) {
+			if (configMapEnable.equals("generate-resources")) {
 				setDeploymentConfigEnabled(true);
 			} else {
 				setDeploymentConfigEnabled(false);
@@ -966,12 +967,12 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 					DockerHubAuth newConfiguration = null;
 					if (getContainerType().equals(DockerProjectConstants.KUBERNETES_CONTAINER)) {
 						newConfiguration = new DockerHubAuth();
-						DockerHubLoginWizard wizard = new DockerHubLoginWizard(newConfiguration, pomFileRes);
+						KubernetesLoginWizard wizard = new KubernetesLoginWizard(newConfiguration, pomFileRes);
 						IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 						wizard.init(PlatformUI.getWorkbench(), null);
-						CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard);
+						CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard, CustomWizardDialog.BUILD_PUSH_BUTTON);
 						headerWizardDialog.setHelpAvailable(false);
-						headerWizardDialog.setPageSize(580, 260);
+						headerWizardDialog.setPageSize(580, 400);
 						headerWizardDialog.open();
 
 						if (newConfiguration.getAuthUsername() == null || newConfiguration.getAuthPassword() == null) {
@@ -981,6 +982,19 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 						newConfiguration.setKubernetesProject(true);
 						dockerBuildAction.setToolTipText("Build & Push Docker Image");
 					} else {
+						newConfiguration = new DockerHubAuth();
+						DockerHubPullLoginWizard wizard = new DockerHubPullLoginWizard(newConfiguration, pomFileRes);
+						IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+						wizard.init(PlatformUI.getWorkbench(), null);
+						CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard, CustomWizardDialog.BUILD_BUTTON);
+						headerWizardDialog.setHelpAvailable(false);
+						headerWizardDialog.setPageSize(580, 200);
+						headerWizardDialog.open();
+
+						if (newConfiguration.getPullAuthUsername() == null
+						        || newConfiguration.getPullAuthPassword() == null) {
+							return;
+						}
 						dockerBuildAction.setToolTipText("Build Docker Image");
 					}
 
@@ -1005,12 +1019,23 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 			dockerPushAction = new Action("Push Docker Image",
 			        ImageDescriptor.createFromImage(SWTResourceManager.getImage(this.getClass(), actionIconType))) {
 				public void run() {
+					// save all the existing editors
+					IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
+					if (pages != null) {
+						for (IWorkbenchPage page : pages) {
+							IEditorPart editor = page.getActiveEditor();
+							if (editor != null) {
+								page.saveEditor(editor, true);
+							}
+						}
+					}
 
 					DockerHubAuth newConfiguration = new DockerHubAuth();
-					DockerHubLoginWizard wizard = new DockerHubLoginWizard(newConfiguration, pomFileRes);
+					DockerHubPushLoginWizard wizard = new DockerHubPushLoginWizard(newConfiguration, pomFileRes);
 					IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 					wizard.init(PlatformUI.getWorkbench(), null);
-					CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard);
+
+					CustomWizardDialog headerWizardDialog = new CustomWizardDialog(window.getShell(), wizard, CustomWizardDialog.PUSH_BUTTON);
 					headerWizardDialog.setHelpAvailable(false);
 					headerWizardDialog.setPageSize(580, 260);
 					headerWizardDialog.open();
@@ -1059,11 +1084,25 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 			DockerBuildActionUtil.changeDockerImageDataInPOMPlugin(pomFile, targetRepository,
 			        isThisOldContainerProject);
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-			DockerBuildActionUtil.runDockerBuildWithMavenProfile(project, DockerBuildActionUtil.MAVEN_BUILD_GOAL,
+			DockerBuildActionUtil.runDockerBuildWithMavenProfile(project, mavenDockerBuildGoal(configuration),
 			        configuration, isThisOldContainerProject);
 		} catch (CoreException e) {
 			log.error("CoreException in while executing the docker build process", e);
 		}
+	}
+
+	/**
+	 * Method of generating the testing maven goal according to the local or remote server.
+	 * 
+	 * @param DcokerHubAUth config detail
+	 * @return string of maven goal
+	 */
+	private String mavenDockerBuildGoal(DockerHubAuth configuration) {
+		StringBuilder builder = new StringBuilder();
+		builder.append("clean install -Ddockerfile.skipPush=true")
+		        .append(" -Ddockerfile.pull.username=" + configuration.getPullAuthUsername())
+		        .append(" -Ddockerfile.pull.password=" + configuration.getPullAuthPassword());
+		return builder.toString();
 	}
 
 	/**

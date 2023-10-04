@@ -110,6 +110,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     private static final String EMPTY_STRING = "";
     private static final String SLASH = "/";
     private static final String REFRESH = "Refresh";
+    private static final String RUNTIME_VERSION = "project.runtime.version";
     private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private final Image NEW_ELEMENT_IMG = EEFRuntimePlugin.getImage(EEFRuntimePlugin.ICONS_16x16 + "Add_16x16.gif");
 
@@ -125,6 +126,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
     private Text txtVersion;
     private Text txtDescription;
     private boolean pageDirty;
+    private Text txtRuntimeVersion;
 
     IStatus editorStatus = new Status(IStatus.OK, Activator.PLUGIN_ID, EMPTY_STRING);
 
@@ -498,7 +500,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         // Create Desciption text box
         Label lblDescription = managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Description",
                 SWT.NONE);
-        lblDescription.setLayoutData(new GridData(SWT.RIGHT, SWT.TOP, false, false, 1, 1));
+        lblDescription.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1));
         txtDescription = managedForm.getToolkit().createText(managedForm.getForm().getBody(), EMPTY_STRING,
                 SWT.MULTI | SWT.V_SCROLL | SWT.WRAP);
         txtDescription.setText(getDescription());
@@ -509,6 +511,21 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
             public void modifyText(ModifyEvent evt) {
                 setPageDirty(true);
                 setDescription(txtDescription.getText().trim());
+                updateDirtyState();
+            }
+        });
+        
+        managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Runtime Version: ", SWT.NONE);
+        txtRuntimeVersion = managedForm.getToolkit().createText(managedForm.getForm().getBody(), "", SWT.NONE);
+        txtRuntimeVersion.setText(getRuntimeVersion());
+        GridData gd_txtRuntimeVersion = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+        gd_txtRuntimeVersion.widthHint = TEXT_BOX_WIDTH;
+        txtRuntimeVersion.setLayoutData(gd_txtRuntimeVersion);
+        txtRuntimeVersion.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent evt) {
+                setPageDirty(true);
+                setRuntimeVersion(txtRuntimeVersion.getText().trim());
                 updateDirtyState();
             }
         });
@@ -1212,4 +1229,16 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         }
     }
 
+    private String getRuntimeVersion() {
+        if (parentPrj != null && parentPrj.getProperties() != null
+                && parentPrj.getProperties().get(RUNTIME_VERSION) != null) {
+            return (String) parentPrj.getProperties().get(RUNTIME_VERSION);
+        } else {
+            return "";
+        }
+    }
+    
+    private void setRuntimeVersion(String mainSeqence) {
+        parentPrj.getProperties().setProperty(RUNTIME_VERSION, mainSeqence);
+    }
 }

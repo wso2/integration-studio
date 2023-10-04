@@ -116,6 +116,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 	private static final String DIR_DOT_METADATA = ".metadata";
 	private static final String SWAGGER_SUFFIX = "_swagger";
 	private static final String PROXY_METADATA_SUFFIX = "_proxy";
+	private static final String MAIN_SEQUENCE = "mainSequence";
 	
 
 	private static IIntegrationStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -135,6 +136,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 	private Text txtDescription;
 	private Button btnPublishEnableChecker;
 	private boolean pageDirty;
+	private Text txtMainSeq;
 
 	IStatus editorStatus = new Status(IStatus.OK, Activator.PLUGIN_ID, "");
 
@@ -375,6 +377,21 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
                     removeMetadataDependencies();
                     setPublishToServiceCatalog(false);
                 }
+                updateDirtyState();
+            }
+        });
+
+        managedForm.getToolkit().createLabel(managedForm.getForm().getBody(), "Main Sequence: ", SWT.NONE);
+        txtMainSeq = managedForm.getToolkit().createText(managedForm.getForm().getBody(), "", SWT.NONE);
+        txtMainSeq.setText(getMainSequence());
+        GridData gd_txtMainSeq = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+        gd_txtMainSeq.widthHint = TEXT_BOX_WIDTH;
+        txtMainSeq.setLayoutData(gd_txtMainSeq);
+        txtMainSeq.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent evt) {
+                setPageDirty(true);
+                setMainSequence(txtMainSeq.getText().trim());
                 updateDirtyState();
             }
         });
@@ -1313,6 +1330,19 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
         } catch (CoreException e) {
             log.error("event is failed to capture", e);
         }
+    }
+    
+    private String getMainSequence() {
+        if (parentPrj != null && parentPrj.getProperties() != null
+                && parentPrj.getProperties().get(MAIN_SEQUENCE) != null) {
+            return (String) parentPrj.getProperties().get(MAIN_SEQUENCE);
+        } else {
+            return "";
+        }
+    }
+    
+    private void setMainSequence(String mainSeqence) {
+        parentPrj.getProperties().setProperty(MAIN_SEQUENCE, mainSeqence);
     }
 
 }

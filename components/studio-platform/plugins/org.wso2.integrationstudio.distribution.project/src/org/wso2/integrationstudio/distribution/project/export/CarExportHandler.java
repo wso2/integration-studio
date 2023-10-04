@@ -60,6 +60,7 @@ public class CarExportHandler extends ProjectArtifactHandler {
     private static final String SPLIT_DIR_NAME = "split_esb_resources";
     private static final String METADATA_TYPE = "synapse/metadata";
     private static final String METADATA_FOLDER_NAME = "metadata";
+    private static final String MAIN_SEQUENCE = "mainSequence";
     IntegrationStudioProviderUtils devStudioUtils = new IntegrationStudioProviderUtils();
     boolean isExecClassFound;
 
@@ -155,6 +156,9 @@ public class CarExportHandler extends ProjectArtifactHandler {
                 null);
         artifactEltMetadata.addAttribute("type", "carbon/application", null);
 
+        if (parentPrj.getProperties().containsKey(MAIN_SEQUENCE)) {
+            artifactEltMetadata.addAttribute(MAIN_SEQUENCE, parentPrj.getProperties().getProperty(MAIN_SEQUENCE), null);
+        }
         Collections.sort(artifactList);
 
         for (ArtifactData artifact : artifactList) {

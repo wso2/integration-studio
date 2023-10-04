@@ -707,4 +707,23 @@
                 type="org.eclipse.core.resources.IFolder">
         </propertyTester>
     </extension>
+    
+    <extension point="org.eclipse.ui.popupMenus">
+	        <objectContribution objectClass="org.eclipse.core.resources.IProject" id="org.wso2.integrationstudio.esb.project.popup.SelectMainSequence">
+	               <action
+	                   label="Select Main Sequence"
+	                   icon="icons/synapse-16x16png.png"
+	                   class="org.wso2.integrationstudio.esb.project.ui.action.SelectMainSequence"
+	                   id="org.wso2.integrationstudio.esb.project.action.SelectMainSequence">
+	               </action>
+	               <enablement>
+						<adapt type="org.eclipse.core.resources.IProject">
+						 <or>
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.distribution.project.nature" />
+		 				</or>
+						</adapt>
+				</enablement>
+	          </objectContribution>     
+	 </extension>
 </plugin>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediation.commons-4.7.181.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-core-2.1.7-wso2studio143.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swagger-inflector-oas3-2.0.5.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rest.api-4.7.92.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediation.commons-4.7.178.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.micro.integrator.dataservices.core_4.0.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.micro.integrator.mediator.dataservice_4.0.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/swagger-annotations-1.6.1.jar"/>

@@ -130,7 +130,8 @@
 		</xs:annotation>
 		<xs:complexType mixed="true">
 			<xs:sequence minOccurs="0">
-				<xs:element name="configuration">
+				<xs:element name="configuration" minOccurs="0"
+					maxOccurs="unbounded">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
@@ -144,6 +145,16 @@
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="property" minOccurs="0"
+					maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute name="name" type="xs:string" />
+							</xs:extension>
+						</xs:simpleContent>
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>

@@ -116,7 +116,7 @@ function populateDSModal(root, dsId, metadata) {
         		$('#ds-enable-odata-check').prop("checked", false);
         	}
         		
-            let properties = config.getElementsByTagName("property");
+            let properties = config.querySelectorAll("config > property");
 
             // Populate data source ID
             $("#ds-ds-id-input").val(dsId.toString().trim());
@@ -216,6 +216,24 @@ function populateDSModal(root, dsId, metadata) {
                     let dsClassName = getDSConfigPropertyValue(properties, "dataSourceClassName");
                     if (dsClassName != null && dsClassName != undefined) {
                         $("#ds-class-name-input").val(dsClassName.trim());
+                    }
+
+                    $("#ds-ext-properties-table tbody tr").remove();
+
+                    for (let i = 0, len = properties.length; i < len; i++) {
+                        let propertyName = properties[i].attributes.getNamedItem("name").value;
+                        let propertyValue = properties[i].innerHTML;
+                        if (propertyName != "dynamicUserAuthMapping" && propertyName != "dataSourceClassName" &&
+                            propertyName != "dynamicUserAuthClass") {
+                            let tableRow = "<tr><td><input class=\"form-control\" type=\"text\" " +
+                                "placeholder=\"Property Name\" style=\"width: 100%;\" value='" + propertyName + "'></td>" +
+                                "<td><input class=\"form-control\" type=\"text\" placeholder=\"Property Value\" " +
+                                "style=\"width: 100%;\" value='" + propertyValue + "'></td><td " +
+                                "class=\"text-center\"><input type=\"checkbox\"'></td><td class=\"text-center\">" +
+                                "<i class=\"fa fa-trash\"></i></td></tr>";
+                            $('#ds-ext-properties-table > tbody').append(tableRow);
+
+                        }
                     }
                 }
             } else if (dsType === DS_TYPE_CARBONDS) {
@@ -704,6 +722,18 @@ function processDSInputData(root, data, deleteIfExists) {
 
         if (dbTypeExt === "external_ds") {
             properties.push(createTextNode(root, createPropertyNode(root, "dataSourceClassName"), data['ds-class-name-input']));
+            //Add additional properties for data source 
+            let rows = $('#ds-ext-properties-table').find('tr');
+            if (rows.length > 1) {
+                // Process external properties
+                for (let i = 1, len = rows.length; i < len; i++) {
+                    let name = rows[i].cells[0].firstChild.value;
+                    let value = rows[i].cells[1].firstChild.value;
+                    let propertyItem = createPropertyNode(root, name);
+                    createTextNode(root, propertyItem, value);
+                    configElement.appendChild(propertyItem);
+                }
+            }
         }
     } else if (dsType === "carbon_ds") {
         properties.push(createTextNode(root, createPropertyNode(root, "carbon_datasource_name"), data['ds-ds-name-input']));

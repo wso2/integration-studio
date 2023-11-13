@@ -126,6 +126,7 @@
             -Dorg.apache.activemq.SERIALIZABLE_PACKAGES="*"
             -DskipStartupExtensions=false
             -Dlogfiles.home=${carbon.home}/repository/logs
+            -Djavax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom=net.sf.saxon.xpath.XPathFactoryImpl
             --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens java.rmi/sun.rmi.transport=ALL-UNNAMED
         </vmParameters>
         <programArguments></programArguments>

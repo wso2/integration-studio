@@ -260,20 +260,39 @@ public class DataMapperRootEditPart extends DiagramEditPart {
 
             @Override
             public void mousePressed(MouseEvent me) {
-                try {
-                    if (getIsAIDataMapperEnabled()) {
-                        drawMappings();
+                // Introducing new thread to fix issue
+                // https://github.com/wso2/integration-studio/issues/1265
+                new Thread() {
+                    public void run() {
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e1) {
+                            log.error(e1);
+                        }
+                        Display.getDefault().asyncExec(new Runnable() {
+
+                            @Override
+                            public void run() {
+
+                                try {
+                                    if (getIsAIDataMapperEnabled()) {
+                                        drawMappings();
+                                    }
+                                } catch (ConnectTimeoutException e) {
+                                    log.error("Connecting to the service timed out", e);
+                                    popupDialogBox(IStatus.ERROR, "Cannot connect to the service.");
+                                } catch (SocketTimeoutException e) {
+                                    log.error("Generation of AI Mapping timed out", e);
+                                    popupDialogBox(IStatus.ERROR, "Mapping generation takes too long.");
+                                } catch (IOException | InvocationTargetException | InterruptedException e) {
+                                    log.error("Error getting mapping suggestions from the server", e);
+                                    popupDialogBox(IStatus.ERROR, e.getMessage());
+                                }
+                            }
+
+                        });
                     }
-                } catch (ConnectTimeoutException e) {
-                    log.error("Connecting to the service timed out", e);
-                    popupDialogBox(IStatus.ERROR, "Cannot connect to the service.");
-                } catch (SocketTimeoutException e) {
-                    log.error("Generation of AI Mapping timed out", e);
-                    popupDialogBox(IStatus.ERROR, "Mapping generation takes too long.");
-                } catch (IOException | InvocationTargetException | InterruptedException e) {
-                    log.error("Error getting mapping suggestions from the server", e);
-                    popupDialogBox(IStatus.ERROR, e.getMessage());
-                }
+                }.start();
             }
 
             @Override

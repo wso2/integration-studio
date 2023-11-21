@@ -50,6 +50,7 @@ import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -86,6 +87,9 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.FileEditorInput;
 import org.osgi.framework.Bundle;
 import org.w3c.dom.Document;
+import org.wso2.integrationstudio.esb.core.exceptions.BuildArtifactCreationException;
+import org.wso2.integrationstudio.esb.core.utils.SynapseConstants;
+import org.wso2.integrationstudio.esb.core.utils.SynapseUtils;
 import org.wso2.integrationstudio.esb.project.artifact.ESBArtifact;
 import org.wso2.integrationstudio.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.integrationstudio.gmf.esb.CallTemplateParameter;
@@ -556,19 +560,26 @@ public class EEFPropertyViewUtil {
     public static void updateArtifact(HashMap<String, Control> generatedElements, IProject currentProject) throws FactoryConfigurationError, Exception {
         Text connectionNameText = (Text)generatedElements.get("connectionName");
         String localEntryName =  connectionNameText.getText();
-        MavenProject mvp = EEFPropertyViewUtil.updatePom(currentProject);
+        if (!currentProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER).exists()) {
+            EEFPropertyViewUtil.updatePom(currentProject);
+        }
+        File mavenProjectPomLocation = currentProject.getFile("pom.xml").getLocation().toFile();
+        MavenProject mvp = MavenUtils.getMavenProject(mavenProjectPomLocation);
+        String version = mvp.getVersion().replace("-SNAPSHOT", "");
+        String groupId = mvp.getGroupId() + CONNECTION_LOCAL_ENTRY_ARTIFACT_XML_PREFIX;
+        String artifactRelativePath = LOCAL_ENTRY_LOCATION + File.separator + localEntryName + XML_EXTENSION;
         ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
         esbProjectArtifact.fromFile(currentProject.getFile("artifact.xml").getLocation().toFile());
         ESBArtifact artifact = new ESBArtifact();
         artifact.setName(localEntryName);
-        artifact.setVersion(mvp.getVersion().replace("-SNAPSHOT", ""));
+        artifact.setVersion(version);
         artifact.setType("synapse/local-entry");
         artifact.setServerRole("EnterpriseServiceBus");
-        artifact.setGroupId(mvp.getGroupId() + CONNECTION_LOCAL_ENTRY_ARTIFACT_XML_PREFIX);
-        artifact.setFile(LOCAL_ENTRY_LOCATION
-                + File.separator + localEntryName + XML_EXTENSION);
+        artifact.setGroupId(groupId);
+        artifact.setFile(artifactRelativePath);
         esbProjectArtifact.addESBArtifact(artifact);
         esbProjectArtifact.toFile();
+        createLocalEntryBuildArtifactPom(currentProject, groupId, localEntryName, version, localEntryName, artifactRelativePath);
         currentProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
     }
 
@@ -598,6 +609,21 @@ public class EEFPropertyViewUtil {
         plugin.addExecution(pluginExecution);
         MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
         return mavenProject;
+    }
+    
+    private static void createLocalEntryBuildArtifactPom(IProject esbProject, String groupId, String artifactId,
+            String version, String localEntryFileName, String relativePathToRealArtifact)
+            throws BuildArtifactCreationException {
+
+        IContainer buildArtifactsLocation = esbProject.getFolder(SynapseConstants.BUILD_ARTIFACTS_FOLDER);
+        try {
+            SynapseUtils.createSynapseConfigBuildArtifactPom(groupId, artifactId, version,
+                    SynapseConstants.LOCAL_ENTRY_CONFIG_TYPE, localEntryFileName, SynapseConstants.LOCAL_ENTRY_FOLDER,
+                    buildArtifactsLocation, "../../.." + relativePathToRealArtifact);
+        } catch (IOException | XmlPullParserException e) {
+            throw new BuildArtifactCreationException("Error while creating the build artifacts for Local Entry config "
+                    + localEntryFileName + " at " + buildArtifactsLocation.getFullPath());
+        }
     }
 
     /**

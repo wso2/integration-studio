@@ -37,6 +37,7 @@ import org.apache.synapse.config.SynapseConfiguration;
 import org.apache.synapse.core.SynapseEnvironment;
 import org.apache.synapse.core.axis2.Axis2MessageContext;
 import org.apache.synapse.core.axis2.Axis2SynapseEnvironment;
+import org.wso2.integrationstudio.visualdatamapper.Activator;
 
 import javax.xml.stream.XMLStreamReader;
 import java.io.File;
@@ -143,8 +144,11 @@ public class TestMessageContextBuilder {
             //synCtx = new Axis2MessageContext(null, testConfig, synEnv);
             SOAPEnvelope envelope = OMAbstractFactory.getSOAP11Factory().getDefaultEnvelope();
             synCtx.setEnvelope(envelope);
+            ClassLoader currentClassLoader = Thread.currentThread().getContextClassLoader();
+            Thread.currentThread().setContextClassLoader(Activator.getDefaultClassLoader());
             JsonUtil.getNewJsonPayload(((Axis2MessageContext) synCtx).getAxis2MessageContext(), contentStringJson, true,
                                        true);
+            Thread.currentThread().setContextClassLoader(currentClassLoader);
             return synCtx;
         }
         

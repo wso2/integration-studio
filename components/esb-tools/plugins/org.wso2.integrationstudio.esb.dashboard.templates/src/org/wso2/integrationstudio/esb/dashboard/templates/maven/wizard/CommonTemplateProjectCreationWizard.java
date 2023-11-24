@@ -179,7 +179,7 @@ public class CommonTemplateProjectCreationWizard extends Wizard implements INewW
                 content = content.replaceAll(TemplateProjectConstants.GENERAL_TEMPLATE_NAME, userEnteredProjectName);
                 if (file.getName().equals("pom.xml") && file.getParentFile().getName().contains("Configs")) {
                     //replace unit test plugin version
-                    content = content.replaceAll("<version>5.2.27</version>", "<version>5.2.41</version>");
+                    content = content.replaceAll("<version>5.2.27</version>", "<version>5.2.42</version>");
                 }
                 if (file.getName().equals("pom.xml") && (file.getParentFile().getName().contains("DockerExporter")
                         || file.getParentFile().getName().contains("KubernetesExporter"))) {

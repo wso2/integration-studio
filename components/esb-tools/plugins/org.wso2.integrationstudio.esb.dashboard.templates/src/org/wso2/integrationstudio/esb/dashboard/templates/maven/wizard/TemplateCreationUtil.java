@@ -109,7 +109,7 @@ public class TemplateCreationUtil {
         try {
             MavenProject mavenProject = MavenUtils.getMavenProject(pomFile);
             Plugin unitTestPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
-                    "synapse-unit-test-maven-plugin", "5.2.41", false);
+                    "synapse-unit-test-maven-plugin", "5.2.42", false);
 
             PluginExecution pluginExecution = new PluginExecution();
             pluginExecution.addGoal("synapse-unit-test");

@@ -122,6 +122,8 @@ import org.wso2.integrationstudio.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportVFSSFTPIdentityPassPhrase <em>Transport VFSSFTP Identity Pass Phrase</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#isTransportVFSSFTPUserDirIsRoot <em>Transport VFSSFTP User Dir Is Root</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getJavaNamingSecurityCredentials <em>Java Naming Security Credentials</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getJavaNamingSecurityPrincipal <em>Java Naming Security Principal</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryType <em>Transport JMS Connection Factory Type</em>}</li>
@@ -1408,6 +1410,46 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @ordered
      */
     protected String javaNamingFactoryInitial = JAVA_NAMING_FACTORY_INITIAL_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getJavaNamingSecurityCredentials() <em>Java Naming Security Credentials</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getJavaNamingSecurityCredentials()
+     * @generated
+     * @ordered
+     */
+    protected static final String JAVA_NAMING_SECURITY_CREDENTIALS_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getJavaNamingSecurityCredentials() <em>Java Naming Security Credentials</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getJavaNamingSecurityCredentials()
+     * @generated
+     * @ordered
+     */
+    protected String javaNamingSecurityCredentials = JAVA_NAMING_SECURITY_CREDENTIALS_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getJavaNamingSecurityPrincipal() <em>Java Naming Security Principal</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getJavaNamingSecurityPrincipal()
+     * @generated
+     * @ordered
+     */
+    protected static final String JAVA_NAMING_SECURITY_PRINCIPAL_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getJavaNamingSecurityPrincipal() <em>Java Naming Security Principal</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getJavaNamingSecurityPrincipal()
+     * @generated
+     * @ordered
+     */
+    protected String javaNamingSecurityPrincipal = JAVA_NAMING_SECURITY_PRINCIPAL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getJavaNamingProviderUrl() <em>Java Naming Provider Url</em>}' attribute.
@@ -8808,6 +8850,48 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getJavaNamingSecurityCredentials() {
+        return javaNamingSecurityCredentials;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setJavaNamingSecurityCredentials(String newJavaNamingSecurityCredentials) {
+        String oldJavaNamingSecurityCredentials = javaNamingSecurityCredentials;
+        javaNamingSecurityCredentials = newJavaNamingSecurityCredentials;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_CREDENTIALS, oldJavaNamingSecurityCredentials, javaNamingSecurityCredentials));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getJavaNamingSecurityPrincipal() {
+        return javaNamingSecurityPrincipal;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setJavaNamingSecurityPrincipal(String newJavaNamingSecurityPrincipal) {
+        String oldJavaNamingSecurityPrincipal = javaNamingSecurityPrincipal;
+        javaNamingSecurityPrincipal = newJavaNamingSecurityPrincipal;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_PRINCIPAL, oldJavaNamingSecurityPrincipal, javaNamingSecurityPrincipal));
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
@@ -9812,6 +9896,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return isTransportVFSSFTPUserDirIsRoot();
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
                 return getJavaNamingFactoryInitial();
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_CREDENTIALS:
+                return getJavaNamingSecurityCredentials();
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_PRINCIPAL:
+                return getJavaNamingSecurityPrincipal();
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
                 return getJavaNamingProviderUrl();
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
@@ -10346,6 +10434,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return;
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
                 setJavaNamingFactoryInitial((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_CREDENTIALS:
+                setJavaNamingSecurityCredentials((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_PRINCIPAL:
+                setJavaNamingSecurityPrincipal((String)newValue);
                 return;
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
                 setJavaNamingProviderUrl((String)newValue);
@@ -11058,6 +11152,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
                 setJavaNamingFactoryInitial(JAVA_NAMING_FACTORY_INITIAL_EDEFAULT);
                 return;
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_CREDENTIALS:
+                setJavaNamingSecurityCredentials(JAVA_NAMING_SECURITY_CREDENTIALS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_PRINCIPAL:
+                setJavaNamingSecurityPrincipal(JAVA_NAMING_SECURITY_PRINCIPAL_EDEFAULT);
+                return;
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
                 setJavaNamingProviderUrl(JAVA_NAMING_PROVIDER_URL_EDEFAULT);
                 return;
@@ -11711,6 +11811,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return transportVFSSFTPUserDirIsRoot != TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT_EDEFAULT;
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
                 return JAVA_NAMING_FACTORY_INITIAL_EDEFAULT == null ? javaNamingFactoryInitial != null : !JAVA_NAMING_FACTORY_INITIAL_EDEFAULT.equals(javaNamingFactoryInitial);
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_CREDENTIALS:
+                return JAVA_NAMING_SECURITY_CREDENTIALS_EDEFAULT == null ? javaNamingSecurityCredentials != null : !JAVA_NAMING_SECURITY_CREDENTIALS_EDEFAULT.equals(javaNamingSecurityCredentials);
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_PRINCIPAL:
+                return JAVA_NAMING_SECURITY_PRINCIPAL_EDEFAULT == null ? javaNamingSecurityPrincipal != null : !JAVA_NAMING_SECURITY_PRINCIPAL_EDEFAULT.equals(javaNamingSecurityPrincipal);
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
                 return JAVA_NAMING_PROVIDER_URL_EDEFAULT == null ? javaNamingProviderUrl != null : !JAVA_NAMING_PROVIDER_URL_EDEFAULT.equals(javaNamingProviderUrl);
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
@@ -12180,6 +12284,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         result.append(transportVFSSFTPUserDirIsRoot);
         result.append(", javaNamingFactoryInitial: ");
         result.append(javaNamingFactoryInitial);
+        result.append(", javaNamingSecurityCredentials: ");
+        result.append(javaNamingSecurityCredentials);
+        result.append(", javaNamingSecurityPrincipal: ");
+        result.append(javaNamingSecurityPrincipal);
         result.append(", javaNamingProviderUrl: ");
         result.append(javaNamingProviderUrl);
         result.append(", transportJMSConnectionFactoryJNDIName: ");

@@ -288,6 +288,14 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.javaNamingProviderUrl))
 				basePart.setJavaNamingProviderUrl(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getJavaNamingProviderUrl()));
 			
+			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials))
+				basePart.setJavaNamingSecurityCredentials(EEFConverterUtil.convertToString(
+						EcorePackage.Literals.ESTRING, inboundEndpoint.getJavaNamingSecurityCredentials()));
+
+			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal))
+				basePart.setJavaNamingSecurityPrincipal(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING,
+						inboundEndpoint.getJavaNamingSecurityPrincipal()));
+
 			if (isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryJNDIName))
 				basePart.setTransportJMSConnectionFactoryJNDIName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, inboundEndpoint.getTransportJMSConnectionFactoryJNDIName()));
 			
@@ -1168,6 +1176,12 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.javaNamingProviderUrl) {
 			return EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingProviderUrl();
 		}
+		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials) {
+			return EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingSecurityCredentials();
+		}
+		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal) {
+			return EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingSecurityPrincipal();
+		}
 		if (editorKey == EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryJNDIName) {
 			return EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSConnectionFactoryJNDIName();
 		}
@@ -1870,6 +1884,14 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 		}
 		if (EsbViewsRepository.InboundEndpoint.Properties.javaNamingProviderUrl == event.getAffectedEditor()) {
 			inboundEndpoint.setJavaNamingProviderUrl((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials == event.getAffectedEditor()) {
+			inboundEndpoint.setJavaNamingSecurityCredentials((java.lang.String) EEFConverterUtil
+					.createFromString(EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
+		}
+		if (EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal == event.getAffectedEditor()) {
+			inboundEndpoint.setJavaNamingSecurityPrincipal((java.lang.String) EEFConverterUtil
+					.createFromString(EcorePackage.Literals.ESTRING, (String) event.getNewValue()));
 		}
 		if (EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryJNDIName == event.getAffectedEditor()) {
 			inboundEndpoint.setTransportJMSConnectionFactoryJNDIName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
@@ -2764,6 +2786,26 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 					basePart.setJavaNamingProviderUrl(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setJavaNamingProviderUrl("");
+				}
+			}
+			if (EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingSecurityCredentials().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials)) {
+				if (msg.getNewValue() != null) {
+					basePart.setJavaNamingSecurityCredentials(
+							EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setJavaNamingSecurityCredentials("");
+				}
+			}
+			if (EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingSecurityPrincipal().equals(msg.getFeature())
+					&& msg.getNotifier().equals(semanticObject) && basePart != null
+					&& isAccessible(EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal)) {
+				if (msg.getNewValue() != null) {
+					basePart.setJavaNamingSecurityPrincipal(
+							EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setJavaNamingSecurityPrincipal("");
 				}
 			}
 			if (EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSConnectionFactoryJNDIName().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryJNDIName)) {
@@ -3916,6 +3958,8 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportVFSSFTPUserDirIsRoot(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingFactoryInitial(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingProviderUrl(),
+			EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingSecurityPrincipal(),
+			EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingSecurityCredentials(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSConnectionFactoryJNDIName(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSConnectionFactoryType(),
 			EsbPackage.eINSTANCE.getInboundEndpoint_TransportJMSConcurrentConsumers(),
@@ -4499,6 +4543,30 @@ public class InboundEndpointPropertiesEditionComponent extends SinglePartPropert
 						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingProviderUrl().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingProviderUrl().getEAttributeType(), newValue);
+				}
+				if (EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials == event
+						.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE
+								.getInboundEndpoint_JavaNamingSecurityCredentials().getEAttributeType(),
+								(String) newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(
+							EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingSecurityCredentials().getEAttributeType(),
+							newValue);
+				}
+				if (EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal == event
+						.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE
+								.getInboundEndpoint_JavaNamingSecurityPrincipal().getEAttributeType(),
+								(String) newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(
+							EsbPackage.eINSTANCE.getInboundEndpoint_JavaNamingSecurityPrincipal().getEAttributeType(),
+							newValue);
 				}
 				if (EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryJNDIName == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();

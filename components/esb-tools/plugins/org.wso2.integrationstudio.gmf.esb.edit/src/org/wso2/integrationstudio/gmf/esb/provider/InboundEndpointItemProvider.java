@@ -3707,6 +3707,50 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Java Naming Security Credentials feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addJavaNamingSecurityCredentialsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_javaNamingSecurityCredentials_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_javaNamingSecurityCredentials_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_CREDENTIALS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Java Naming Security Principal feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addJavaNamingSecurityPrincipalPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_javaNamingSecurityPrincipal_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_javaNamingSecurityPrincipal_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_PRINCIPAL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This adds a property descriptor for the Java Naming Provider Url feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4580,6 +4624,8 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_IDENTITY_PASS_PHRASE:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFSSFTP_USER_DIR_IS_ROOT:
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_CREDENTIALS:
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_PRINCIPAL:
             case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:

@@ -153,6 +153,8 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     protected Button transportVFSSFTPUserDirIsRoot;
     protected Text javaNamingFactoryInitial;
     protected Text javaNamingProviderUrl;
+    protected Text javaNamingSecurityPrincipal;
+    protected Text javaNamingSecurityCredentials;
     protected Text transportJMSConnectionFactoryJNDIName;
     protected EMFComboViewer transportJMSConnectionFactoryType;
     protected Text transportJMSConcurrentConsumers;
@@ -474,6 +476,8 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportVFSSFTPUserDirIsRoot);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.javaNamingFactoryInitial);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.javaNamingProviderUrl);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials);
+        propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryJNDIName);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryType);
         propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSConcurrentConsumers);
@@ -1079,6 +1083,22 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                     Composite composite =  createJavaNamingProviderUrlText(widgetFactory, filterBasicSubPropertiesGroup);
                     Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
                     EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
+                    return composite;
+                }
+                if (key == EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials) {
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite =  createJavaNamingSecurityCredentialsText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
+                    EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
+                    return composite;
+                }
+                if (key == EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal) {
+                    Control[] previousControls = filterBasicSubPropertiesGroup.getChildren();
+                    Composite composite =  createJavaNamingSecurityPrincipalText(widgetFactory, filterBasicSubPropertiesGroup);
+                    Control[] newControls = filterBasicSubPropertiesGroup.getChildren();
+                    EEFPropertyViewUtil.addTableElementsAsList(jmsPropertyIDs, previousControls, newControls);
+                    EEFPropertyViewUtil.addTableElementsAsList(wso2MBPropertyIDs, previousControls, newControls);
                     return composite;
                 }
                 if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryJNDIName) {
@@ -5889,6 +5909,152 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
                         EsbViewsRepository.FORM_KIND),
                 null); // $NON-NLS-1$
         // Start of user code for createJavaNamingProviderUrlText
+
+        // End of user code
+        return parent;
+    }
+
+    protected Composite createJavaNamingSecurityCredentialsText(FormToolkit widgetFactory, Composite parent) {
+        createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials,
+                EsbMessages.InboundEndpointPropertiesEditionPart_JavaNamingSecurityCredentialsLabel);
+        javaNamingSecurityCredentials = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+        javaNamingSecurityCredentials.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData javaNamingSecurityCredentialsData = new GridData(GridData.FILL_HORIZONTAL);
+        javaNamingSecurityCredentials.setLayoutData(javaNamingSecurityCredentialsData);
+        javaNamingSecurityCredentials.addFocusListener(new FocusAdapter() {
+            /**
+                * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+                * 
+                */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    javaNamingSecurityCredentials.getText()));
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials,
+                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+                                    javaNamingSecurityCredentials.getText()));
+                }
+            }
+
+            /**
+                * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+                */
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            InboundEndpointPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
+                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
+                }
+            }
+        });
+        javaNamingSecurityCredentials.addKeyListener(new KeyAdapter() {
+            /**
+                * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+                * 
+                */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartForm.this,
+                                        EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        javaNamingSecurityCredentials.getText()));
+                }
+            }
+        });
+        EditingUtils.setID(javaNamingSecurityCredentials, EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials);
+        EditingUtils.setEEFtype(javaNamingSecurityCredentials, "eef::Text"); //$NON-NLS-1$
+        FormUtils.createHelpButton(widgetFactory, parent,
+                propertiesEditionComponent.getHelpContent(
+                        EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials,
+                        EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
+        // Start of user code for createJavaNamingSecurityCredentials
+
+        // End of user code
+        return parent;
+    }
+
+    protected Composite createJavaNamingSecurityPrincipalText(FormToolkit widgetFactory, Composite parent) {
+        createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal,
+                EsbMessages.InboundEndpointPropertiesEditionPart_JavaNamingSecurityPrincipalLabel);
+        javaNamingSecurityPrincipal = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+        javaNamingSecurityPrincipal.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+        widgetFactory.paintBordersFor(parent);
+        GridData javaNamingSecurityPrincipalData = new GridData(GridData.FILL_HORIZONTAL);
+        javaNamingSecurityPrincipal.setLayoutData(javaNamingSecurityPrincipalData);
+        javaNamingSecurityPrincipal.addFocusListener(new FocusAdapter() {
+            /**
+                * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+                * 
+                */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal,
+                                    PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                    javaNamingSecurityPrincipal.getText()));
+                    propertiesEditionComponent.firePropertiesChanged(
+                            new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartForm.this,
+                                    EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal,
+                                    PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST, null,
+                                    javaNamingSecurityPrincipal.getText()));
+                }
+            }
+
+            /**
+                * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+                */
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (propertiesEditionComponent != null) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+                            InboundEndpointPropertiesEditionPartForm.this, null, PropertiesEditionEvent.FOCUS_CHANGED,
+                            PropertiesEditionEvent.FOCUS_GAINED, null, null));
+                }
+            }
+        });
+        javaNamingSecurityPrincipal.addKeyListener(new KeyAdapter() {
+            /**
+                * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+                * 
+                */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(
+                                new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartForm.this,
+                                        EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal,
+                                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null,
+                                        javaNamingSecurityPrincipal.getText()));
+                }
+            }
+        });
+        EditingUtils.setID(javaNamingSecurityPrincipal, EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal);
+        EditingUtils.setEEFtype(javaNamingSecurityPrincipal, "eef::Text"); //$NON-NLS-1$
+        FormUtils.createHelpButton(widgetFactory, parent,
+                propertiesEditionComponent.getHelpContent(
+                        EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal,
+                        EsbViewsRepository.FORM_KIND),
+                null); // $NON-NLS-1$
+        // Start of user code for createjavaNamingSecurityPrincipalText
 
         // End of user code
         return parent;
@@ -25883,7 +26049,47 @@ public class InboundEndpointPropertiesEditionPartForm extends SectionPropertiesE
     }
     // End of user code
 
+    @Override
+    public String getJavaNamingSecurityPrincipal() {
+        return javaNamingSecurityPrincipal.getText();
+    }
 
+    @Override
+    public void setJavaNamingSecurityPrincipal(String newValue) {
+        if (newValue != null) {
+            javaNamingSecurityPrincipal.setText(newValue);
+        } else {
+            javaNamingSecurityPrincipal.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal);
+        if (eefElementEditorReadOnlyState && javaNamingSecurityPrincipal.isEnabled()) {
+            javaNamingSecurityPrincipal.setEnabled(false);
+            javaNamingSecurityPrincipal.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !javaNamingSecurityPrincipal.isEnabled()) {
+            javaNamingSecurityPrincipal.setEnabled(true);
+        }
+    }
 
+    @Override
+    public String getJavaNamingSecurityCredentials() {
+        return javaNamingSecurityCredentials.getText();
+    }
 
+    @Override
+    public void setJavaNamingSecurityCredentials(String newValue) {
+        if (newValue != null) {
+            javaNamingSecurityCredentials.setText(newValue);
+        } else {
+            javaNamingSecurityCredentials.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials);
+        if (eefElementEditorReadOnlyState && javaNamingSecurityCredentials.isEnabled()) {
+            javaNamingSecurityCredentials.setEnabled(false);
+            javaNamingSecurityCredentials.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !javaNamingSecurityCredentials.isEnabled()) {
+            javaNamingSecurityCredentials.setEnabled(true);
+        }
+    }
 }

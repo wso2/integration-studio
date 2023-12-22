@@ -11760,6 +11760,12 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_cBhd7FKHEeytLvTPN0Qx6A" name="javaNamingProviderUrl">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_sfLIQJ_WEe6qq4FC9FGhMQ" name="javaNamingSecurityCredentials">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_2MRfsJ_WEe6qq4FC9FGhMQ" name="javaNamingSecurityPrincipal">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_cBhd7VKHEeytLvTPN0Qx6A" name="transportJMSConnectionFactoryJNDIName">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>

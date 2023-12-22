@@ -9151,8 +9151,14 @@ public class EsbViewsRepository {
 			
 			
 			public static String javaNamingProviderUrl = "esb::InboundEndpoint::properties::javaNamingProviderUrl";
-			
-			
+
+
+			public static String javaNamingSecurityPrincipal = "esb::InboundEndpoint::properties::javaNamingSecurityPrincipal";
+
+
+			public static String javaNamingSecurityCredentials = "esb::InboundEndpoint::properties::javaNamingSecurityCredentials";
+
+
 			public static String transportJMSConnectionFactoryJNDIName = "esb::InboundEndpoint::properties::transportJMSConnectionFactoryJNDIName";
 			
 			

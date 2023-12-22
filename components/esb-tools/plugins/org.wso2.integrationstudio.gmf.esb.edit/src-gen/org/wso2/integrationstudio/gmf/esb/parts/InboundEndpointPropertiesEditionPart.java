@@ -845,7 +845,32 @@ public interface InboundEndpointPropertiesEditionPart {
 	 * 
 	 */
 	public void setJavaNamingProviderUrl(String newValue);
+	
+	/**
+	 * @return the javaNamingSecurityPrincipal
+	 * 
+	 */
+	public String getJavaNamingSecurityPrincipal();
 
+	/**
+	 * Defines a new javaNamingSecurityPrincipal
+	 * @param newValue the new javaNamingSecurityPrincipal to set
+	 * 
+	 */
+	public void setJavaNamingSecurityPrincipal(String newValue);
+
+	/**
+	 * @return the javaNamingSecurityCredentials
+	 * 
+	 */
+	public String getJavaNamingSecurityCredentials();
+
+	/**
+	 * Defines a new javaNamingSecurityCredentials
+	 * @param newValue the new javaNamingSecurityCredentials to set
+	 * 
+	 */
+	public void setJavaNamingSecurityCredentials(String newValue);
 
 	/**
 	 * @return the transportJMSConnectionFactoryJNDIName

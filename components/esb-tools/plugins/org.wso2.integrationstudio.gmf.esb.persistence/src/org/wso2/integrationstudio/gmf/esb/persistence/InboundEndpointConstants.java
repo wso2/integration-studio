@@ -108,6 +108,8 @@ public class InboundEndpointConstants {
 
     public static final String JMS_JAVA_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
     public static final String JMS_JAVA_NAMING_PROVIDER_URL = "java.naming.provider.url";
+    public static final String JMS_JAVA_NAMING_SECURITY_PRINCIPAL = "java.naming.security.principal";
+    public static final String JMS_JAVA_NAMING_SECURITY_CREDENTIALS = "java.naming.security.credentials";
     public static final String JMS_CONNECTION_FACTORY_JNDI_NAME = "transport.jms.ConnectionFactoryJNDIName";
     public static final String JMS_CONNECTION_FACTORY_TYPE = "transport.jms.ConnectionFactoryType";
     public static final String JMS_DESTINATION = "transport.jms.Destination";

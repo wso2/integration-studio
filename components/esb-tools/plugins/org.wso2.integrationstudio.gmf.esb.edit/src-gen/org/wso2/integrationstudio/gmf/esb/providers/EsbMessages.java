@@ -7971,6 +7971,12 @@ public class EsbMessages extends NLS {
 
 	
 	public static String InboundEndpointPropertiesEditionPart_JavaNamingProviderUrlLabel;
+	
+	
+	public static String InboundEndpointPropertiesEditionPart_JavaNamingSecurityCredentialsLabel;
+	
+	
+	public static String InboundEndpointPropertiesEditionPart_JavaNamingSecurityPrincipalLabel;
 
 	
 	public static String InboundEndpointPropertiesEditionPart_TransportJMSConnectionFactoryJNDINameLabel;

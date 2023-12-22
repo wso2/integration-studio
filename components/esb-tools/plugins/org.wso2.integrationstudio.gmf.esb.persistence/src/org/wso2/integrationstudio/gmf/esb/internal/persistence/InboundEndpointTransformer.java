@@ -396,6 +396,14 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_JAVA_NAMING_PROVIDER_URL,
                         visualInboundEndpoint.getJavaNamingProviderUrl());
             }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getJavaNamingSecurityPrincipal())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_JAVA_NAMING_SECURITY_PRINCIPAL,
+                        visualInboundEndpoint.getJavaNamingSecurityPrincipal());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getJavaNamingSecurityCredentials())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_JAVA_NAMING_SECURITY_CREDENTIALS,
+                        visualInboundEndpoint.getJavaNamingSecurityCredentials());
+            }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSUserName())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_USERNAME,
                         visualInboundEndpoint.getTransportJMSUserName());

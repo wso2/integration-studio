@@ -47,6 +47,8 @@ import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_END
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL;
 import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_CREDENTIALS;
+import static org.wso2.integrationstudio.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_PRINCIPAL;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.integrationstudio.gmf.esb.persistence.InboundEndpointConstants;
@@ -145,7 +147,11 @@ public enum JMSInboundEndpointParameter {
                                                                                                                                                                                                                                                     false), JMS_MESSAGE_PROPERTY_HYPHENS(
                                                                                                                                                                                                                                                             InboundEndpointConstants.JMS_MESSAGE_PROPERTY_HYPHENS,
                                                                                                                                                                                                                                                             INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_PROPERTY_HYPHENS,
-                                                                                                                                                                                                                                                            true);
+                                                                                                                                                                                                                                                            true), JMS_JAVA_NAMING_SECURITY_CREDENTIALS_TYPE(
+                                                                                                                                                                                                                                                                    InboundEndpointConstants.JMS_JAVA_NAMING_SECURITY_CREDENTIALS,
+                                                                                                                                                                                                                                                                    INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_CREDENTIALS, true), JMS_JAVA_NAMING_SECURITY_PRINCIPAL_TYPE(
+                                                                                                                                                                                                                                                                            InboundEndpointConstants.JMS_JAVA_NAMING_SECURITY_PRINCIPAL,
+                                                                                                                                                                                                                                                                            INBOUND_ENDPOINT__JAVA_NAMING_SECURITY_PRINCIPAL, true);
 
     private final String name;
     private final EAttribute eAttributeValue;

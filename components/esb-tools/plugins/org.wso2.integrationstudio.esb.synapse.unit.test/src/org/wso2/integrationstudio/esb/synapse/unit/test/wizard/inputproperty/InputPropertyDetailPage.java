@@ -36,6 +36,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
+import org.wso2.integrationstudio.esb.synapse.unit.test.constant.Constants;
 import org.wso2.integrationstudio.esb.synapse.unit.test.model.InputProperty;
 import org.wso2.integrationstudio.esb.synapse.unit.test.model.SynapseUnitTest;
 import org.wso2.integrationstudio.esb.synapse.unit.test.model.TestCase;
@@ -140,10 +141,12 @@ public class InputPropertyDetailPage extends WizardPage {
         data.height = 21;
         lblPropertyPrefixName.setLayoutData(data);
         lblPropertyPrefixName.setText(" " + PROP_NAME_ITEMS[0]);
-        if ("transport".equalsIgnoreCase(this.propertyScope)) {
-            lblPropertyPrefixName.setText(" " + PROP_NAME_ITEMS[2]);
-        } else if ("axis2".equalsIgnoreCase(this.propertyScope)) {
-            lblPropertyPrefixName.setText(" " + PROP_NAME_ITEMS[1]);
+        if (Constants.SEQUENCE_ARTIFACTS.equals(synapseTestDataHolder.getTestArtifactType())) {
+            if ("transport".equalsIgnoreCase(this.propertyScope)) {
+                lblPropertyPrefixName.setText(" " + PROP_NAME_ITEMS[2]);
+            } else if ("axis2".equalsIgnoreCase(this.propertyScope)) {
+                lblPropertyPrefixName.setText(" " + PROP_NAME_ITEMS[1]);
+            }
         }
         
         lblPropertyPrefixName.setBackground(new Color(null, 229, 236, 253));

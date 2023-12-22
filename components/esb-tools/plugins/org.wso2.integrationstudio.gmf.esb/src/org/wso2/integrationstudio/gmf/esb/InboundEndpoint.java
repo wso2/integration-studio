@@ -83,6 +83,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportVFSSFTPIdentityPassPhrase <em>Transport VFSSFTP Identity Pass Phrase</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#isTransportVFSSFTPUserDirIsRoot <em>Transport VFSSFTP User Dir Is Root</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getJavaNamingSecurityCredentials <em>Java Naming Security Credentials</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getJavaNamingSecurityPrincipal <em>Java Naming Security Principal</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryType <em>Transport JMS Connection Factory Type</em>}</li>
@@ -5269,6 +5271,50 @@ public interface InboundEndpoint extends EsbElement {
      * @generated
      */
     void setJavaNamingFactoryInitial(String value);
+
+    /**
+     * Returns the value of the '<em><b>Java Naming Security Credentials</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Java Naming Security Credentials</em>' attribute.
+     * @see #setJavaNamingSecurityCredentials(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_JavaNamingSecurityCredentials()
+     * @model
+     * @generated
+     */
+    String getJavaNamingSecurityCredentials();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getJavaNamingSecurityCredentials <em>Java Naming Security Credentials</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Java Naming Security Credentials</em>' attribute.
+     * @see #getJavaNamingSecurityCredentials()
+     * @generated
+     */
+    void setJavaNamingSecurityCredentials(String value);
+
+    /**
+     * Returns the value of the '<em><b>Java Naming Security Principal</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Java Naming Security Principal</em>' attribute.
+     * @see #setJavaNamingSecurityPrincipal(String)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getInboundEndpoint_JavaNamingSecurityPrincipal()
+     * @model
+     * @generated
+     */
+    String getJavaNamingSecurityPrincipal();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.InboundEndpoint#getJavaNamingSecurityPrincipal <em>Java Naming Security Principal</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Java Naming Security Principal</em>' attribute.
+     * @see #getJavaNamingSecurityPrincipal()
+     * @generated
+     */
+    void setJavaNamingSecurityPrincipal(String value);
 
     /**
      * Returns the value of the '<em><b>Java Naming Provider Url</b></em>' attribute.

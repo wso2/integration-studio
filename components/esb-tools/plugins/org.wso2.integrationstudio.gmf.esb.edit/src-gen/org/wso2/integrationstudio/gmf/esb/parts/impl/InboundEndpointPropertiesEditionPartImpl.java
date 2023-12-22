@@ -145,6 +145,8 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
   protected Button transportVFSSFTPUserDirIsRoot;
   protected Text javaNamingFactoryInitial;
 	protected Text javaNamingProviderUrl;
+	protected Text javaNamingSecurityPrincipal;
+	protected Text javaNamingSecurityCredentials;
 	protected Text transportJMSConnectionFactoryJNDIName;
 	protected EMFComboViewer transportJMSConnectionFactoryType;
 	protected Text transportJMSConcurrentConsumers;
@@ -427,6 +429,8 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportVFSDistributedTimeout);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.javaNamingFactoryInitial);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.javaNamingProviderUrl);
+		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal);
+		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryJNDIName);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryType);
 		propertiesStep.addStep(EsbViewsRepository.InboundEndpoint.Properties.transportJMSConcurrentConsumers);
@@ -755,6 +759,12 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 				}
 				if (key == EsbViewsRepository.InboundEndpoint.Properties.javaNamingProviderUrl) {
 					return createJavaNamingProviderUrlText(parent);
+				}
+				if (key == EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials) {
+					return createJavaNamingSecurityCredentialsText(parent);
+				}
+				if (key == EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal) {
+					return createJavaNamingSecurityPrincipalText(parent);
 				}
 				if (key == EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryJNDIName) {
 					return createTransportJMSConnectionFactoryJNDINameText(parent);
@@ -3724,7 +3734,102 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
 		return parent;
 	}
 
-	
+	protected Composite createJavaNamingSecurityCredentialsText(Composite parent) {
+	    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials, EsbMessages.InboundEndpointPropertiesEditionPart_JavaNamingSecurityCredentialsLabel);
+	    javaNamingSecurityCredentials = SWTUtils.createScrollableText(parent, SWT.BORDER);
+	    GridData javaNamingSecurityCredentialsData = new GridData(GridData.FILL_HORIZONTAL);
+	    javaNamingSecurityCredentials.setLayoutData(javaNamingSecurityCredentialsData);
+	    javaNamingSecurityCredentials.addFocusListener(new FocusAdapter() {
+
+	        /**
+	            * {@inheritDoc}
+	            * 
+	            * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+	            * 
+	            */
+	        @Override
+	        @SuppressWarnings("synthetic-access")
+	        public void focusLost(FocusEvent e) {
+	            if (propertiesEditionComponent != null)
+	                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, javaNamingSecurityCredentials.getText()));
+	        }
+
+	    });
+	    javaNamingFactoryInitial.addKeyListener(new KeyAdapter() {
+
+	        /**
+	            * {@inheritDoc}
+	            * 
+	            * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+	            * 
+	            */
+	        @Override
+	        @SuppressWarnings("synthetic-access")
+	        public void keyPressed(KeyEvent e) {
+	            if (e.character == SWT.CR) {
+	                if (propertiesEditionComponent != null)
+	                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, javaNamingSecurityCredentials.getText()));
+	            }
+	        }
+
+	    });
+	    EditingUtils.setID(javaNamingSecurityCredentials, EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials);
+	    EditingUtils.setEEFtype(javaNamingSecurityCredentials, "eef::Text"); //$NON-NLS-1$
+	    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	    // Start of user code for createJavaNamingSecurityCredentialsText
+
+	    // End of user code
+	    return parent;
+	}
+
+	protected Composite createJavaNamingSecurityPrincipalText(Composite parent) {
+	    createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal, EsbMessages.InboundEndpointPropertiesEditionPart_JavaNamingSecurityPrincipalLabel);
+	    javaNamingSecurityPrincipal = SWTUtils.createScrollableText(parent, SWT.BORDER);
+	    GridData javaNamingSecurityPrincipalData = new GridData(GridData.FILL_HORIZONTAL);
+	    javaNamingSecurityPrincipal.setLayoutData(javaNamingSecurityPrincipalData);
+	    javaNamingSecurityPrincipal.addFocusListener(new FocusAdapter() {
+
+	        /**
+	            * {@inheritDoc}
+	            * 
+	            * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+	            * 
+	            */
+	        @Override
+	        @SuppressWarnings("synthetic-access")
+	        public void focusLost(FocusEvent e) {
+	            if (propertiesEditionComponent != null)
+	                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, javaNamingSecurityPrincipal.getText()));
+	        }
+
+	    });
+	    javaNamingFactoryInitial.addKeyListener(new KeyAdapter() {
+
+	        /**
+	            * {@inheritDoc}
+	            * 
+	            * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+	            * 
+	            */
+	        @Override
+	        @SuppressWarnings("synthetic-access")
+	        public void keyPressed(KeyEvent e) {
+	            if (e.character == SWT.CR) {
+	                if (propertiesEditionComponent != null)
+	                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InboundEndpointPropertiesEditionPartImpl.this, EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, javaNamingSecurityPrincipal.getText()));
+	            }
+	        }
+
+	    });
+	    EditingUtils.setID(javaNamingSecurityPrincipal, EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal);
+	    EditingUtils.setEEFtype(javaNamingSecurityPrincipal, "eef::Text"); //$NON-NLS-1$
+	    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+	    // Start of user code for createJavaNamingSecurityPrincipalText
+
+	    // End of user code
+	    return parent;
+	}
+
 	protected Composite createTransportJMSConnectionFactoryJNDINameText(Composite parent) {
 		createDescription(parent, EsbViewsRepository.InboundEndpoint.Properties.transportJMSConnectionFactoryJNDIName, EsbMessages.InboundEndpointPropertiesEditionPart_TransportJMSConnectionFactoryJNDINameLabel);
 		transportJMSConnectionFactoryJNDIName = SWTUtils.createScrollableText(parent, SWT.BORDER);
@@ -19466,5 +19571,47 @@ public class InboundEndpointPropertiesEditionPartImpl extends CompositePropertie
     }
 	// End of user code
 
+    @Override
+    public String getJavaNamingSecurityPrincipal() {
+        return javaNamingSecurityPrincipal.getText();
+    }
 
+    @Override
+    public void setJavaNamingSecurityPrincipal(String newValue) {
+        if (newValue != null) {
+            javaNamingSecurityPrincipal.setText(newValue);
+        } else {
+            javaNamingSecurityPrincipal.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityPrincipal);
+        if (eefElementEditorReadOnlyState && javaNamingSecurityPrincipal.isEnabled()) {
+            javaNamingSecurityPrincipal.setEnabled(false);
+            javaNamingSecurityPrincipal.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !javaNamingSecurityPrincipal.isEnabled()) {
+            javaNamingSecurityPrincipal.setEnabled(true);
+        }
+    }
+
+    @Override
+    public String getJavaNamingSecurityCredentials() {
+        return javaNamingSecurityCredentials.getText();
+    }
+
+    @Override
+    public void setJavaNamingSecurityCredentials(String newValue) {
+        if (newValue != null) {
+            javaNamingSecurityCredentials.setText(newValue);
+        } else {
+            javaNamingSecurityCredentials.setText(""); //$NON-NLS-1$
+        }
+        boolean eefElementEditorReadOnlyState = isReadOnly(
+                EsbViewsRepository.InboundEndpoint.Properties.javaNamingSecurityCredentials);
+        if (eefElementEditorReadOnlyState && javaNamingSecurityCredentials.isEnabled()) {
+            javaNamingSecurityCredentials.setEnabled(false);
+            javaNamingSecurityCredentials.setToolTipText(EsbMessages.InboundEndpoint_ReadOnly);
+        } else if (!eefElementEditorReadOnlyState && !javaNamingSecurityCredentials.isEnabled()) {
+            javaNamingSecurityCredentials.setEnabled(true);
+        }
+    }
 }

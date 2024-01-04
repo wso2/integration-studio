@@ -6,7 +6,7 @@ $(document).ready(function ($) {
     var root = "";
     var resultElement;
     var onKeyChangeTimer;
-    var checkSpecialCharacterRegex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    var checkSpecialCharacterRegex = /[ `!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?~]/;
 
     window.queryElement = [];
     window.validators = [];

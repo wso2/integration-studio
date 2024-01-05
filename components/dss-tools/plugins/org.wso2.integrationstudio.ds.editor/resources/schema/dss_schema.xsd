@@ -311,7 +311,13 @@
 			<xs:element ref="property" minOccurs="0"
 				maxOccurs="unbounded" />
 		</xs:sequence>
-		<xs:attribute name="id" type="xs:string" use="required" />
+		<xs:attribute name="id" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[a-zA-Z0-9_]+" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 		<xs:attribute name="enableOData" type="xs:boolean" />
 	</xs:complexType>
 
@@ -383,7 +389,13 @@
 			<xs:group ref="operationElements" minOccurs="0"
 				maxOccurs="unbounded" />
 		</xs:sequence>
-		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="name" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[a-zA-Z0-9_]+" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 		<xs:attribute name="disableStreaming" type="xs:boolean" />
 		<xs:attribute name="returnRequestStatus"
 			type="xs:boolean" />
@@ -422,7 +434,13 @@
 			<xs:group ref="queryElements" minOccurs="0"
 				maxOccurs="unbounded" />
 		</xs:sequence>
-		<xs:attribute name="id" type="xs:string" use="required" />
+		<xs:attribute name="id" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[a-zA-Z0-9_]+" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 		<xs:attribute name="useConfig" type="xs:string" />
 		<xs:attribute name="returnGeneratedKeys"
 			type="xs:boolean" />

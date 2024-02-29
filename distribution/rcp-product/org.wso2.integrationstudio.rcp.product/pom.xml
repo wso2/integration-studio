@@ -111,7 +111,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>https://downloads.apache.org/maven/maven-3/${apache.maven.version}/binaries/apache-maven-${apache.maven.version}-bin.zip</url>
+                            <url>https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/${apache.maven.version}/apache-maven-${apache.maven.version}-bin.zip</url>
                             <unpack>false</unpack>
                             <outputDirectory>${project.build.directory}/products</outputDirectory>
                         </configuration>

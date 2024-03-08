@@ -14,7 +14,7 @@
     "Samples" : [
         [1,0,"Hello World Service","This sample demonstrates a simple HTTP service.", "HelloWorldService"],
         [2,2,"Content Based Routing","This sample demonstrates content-based message routing in an integration solution.", "ContentBasedRouting"],
-        [2,9,"Header Based Routing","This sample demonstrates header-based message routing in an integration solution.", "HeaderBasedRouting"],
+        [2,2,"Header Based Routing","This sample demonstrates header-based message routing in an integration solution.", "HeaderBasedRouting"],
         [2,15,"Message Filtering","This sample demonstrates message filtering in an integration solution.", "MessageFiltering"],
         [2,17,"Protocol Switching","This sample demonstrates protocol switching in an integration solution.", "ProtocolSwitching"],
         [2,18,"Proxying a REST Service","This sample exposes a virtual service, which acts as a proxy to an existing RESTful service.", "ProxyingaRESTService"],
@@ -34,11 +34,11 @@
         [9,10,"Hello Docker","This sample demonstrates how to deploy a simple Hello World service on Docker.", "HelloDocker"],
         [9,11,"Hello Kubernetes","This sample demonstrates how to deploy a simple Hello World service on Kubernetes.", "HelloKubernetes"],
         [8,5,"Exception Handling","This sample demonstrates the exception handling capabilities of WSO2 Enterprise Integrator.", "ExceptionHandling"],
-        [10,1,"API Testing","This sample demonstrates unit testing of a REST API artifact using WSO2 Integration Studio.", "APITesting"],
-        [10,27,"Unit Test Tutorial","This sample demonstrates the Unit Testing capabilities of WSO2 Integration Studio.", "UnitTestTutorial"],
+        [10,101,"API Testing","This sample demonstrates unit testing of a REST API artifact using WSO2 Integration Studio.", "APITesting"],
+        [10,30,"Unit Test Tutorial","This sample demonstrates the Unit Testing capabilities of WSO2 Integration Studio.", "UnitTestTutorial"],
         [5,4,"Email Service","This sample demonstrates how to send and receive emails using WSO2 Email Connector.", "EmailService"],
         [5,6,"Fetch SalesForce Accounts","This sample demonstrates how to fetch leads from the Salesforce system.", "FetchSalesForceAccounts"],
-        [7,3,"Database Polling","This sample demonstrates how to periodically poll data from a database and then trigger a message flow.", "DatabasePolling"],
+        [7,103,"Database Polling","This sample demonstrates how to periodically poll data from a database and then trigger a message flow.", "DatabasePolling"],
         [7,16,"Periodical Scheduled Tasks","This sample demonstrates how scheduled integration tasks are created and periodically triggered.", "PeriodicalScheduledTasks"]
     ]   
 }

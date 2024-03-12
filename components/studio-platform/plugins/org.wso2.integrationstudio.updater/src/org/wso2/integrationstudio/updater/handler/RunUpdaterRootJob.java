@@ -35,6 +35,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -47,7 +48,7 @@ public class RunUpdaterRootJob extends Job {
 
     protected static IIntegrationStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
-    private static final String RELEASE_NOTE_URL = "https://product-dist.wso2.com/p2/integration-studio/release-notes/8.2.0";
+    private static final String RELEASE_NOTE_URL = "https://product-dist.wso2.com/p2/integration-studio/8.2.0/release-notes/";
     private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
     private static final String EMPTY_STRING = "";
 
@@ -185,7 +186,9 @@ public class RunUpdaterRootJob extends Job {
     private static void getReleaseNotes(List<String> stringArray, long timestamp) {
         try {
             List<Long> relasedTimestampList = new ArrayList<>();
-            Document doc = Jsoup.connect(RELEASE_NOTE_URL).get();
+            Connection connection = Jsoup.connect(RELEASE_NOTE_URL);
+            connection.userAgent("Integration-Studio");
+            Document doc = connection.get();
             Elements links = doc.select("a[href]");
             for (Element link : links) {
                 if (link.attr("href").startsWith("release_") && link.attr("href").endsWith(".txt")) {

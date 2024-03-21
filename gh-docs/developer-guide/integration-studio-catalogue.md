@@ -2399,15 +2399,51 @@ Only follow below steps to generate a new Developer ID certificate if you alread
 * Install intermediate certificates for Developer ID certificate from http://www.apple.com/certificateauthority/ if you already don’t have it in your KeyChain.
 * Install generated Developer ID certificate to you KeyChain.
 
+Create an app specific password with your apple ID
+
+* Follow https://support.apple.com/en-us/102654 to create an app specific password.
+* Store the created password.
+```shell
+xcrun notarytool store-credentials "notarytool-password" --apple-id "<your apple id>" --team-id XXXXXXXXXX --password <password>
+```
+
 #### Signing the .app package
 Go to Security and Privacy settings in your Mac. Select option to install only Apps downloaded from Appstore and identified developers. Now if you try to open your .app package you should get a warning saying the package is damaged and can’t be opened.
 
-Use following command to sign the package with newly installed Developer ID certificate.
-codesign --force --verbose --sign <Certificate name as shown in KeyChain Access> <App name>.app
-Ex: codesign --force --verbose --sign "Developer ID Application: WSO2, Inc. (XXXXXXX)" IntegrationStudio.app
+Use the following steps to sign the package and notarize.
+1. First, you have to sign all the files with the newly installed Developer ID certificate.
+- Note: To sign all the files inside a given directory recursively, you can use the apple_sign.sh script. Update the directory path and signing identity name.
+2. Then sign all the executable files inside the distribution with runtime hardening enabled.
+- Note: The entitlements that are required by the application to run properly are defined in the entitlements.plist file. Update the command with the file path to this file.
+```shell
+codesign --force --verbose --deep --entitlements <entitlements.plist_PATH> --options=runtime --timestamp --sign "Developer ID Application: WSO2, Inc. (XXXXXXXXXX)" "IntegrationStudio.app"
+```
+3. Sign the IntegrationStudio.app file with runtime hardening enabled.
 
---force will override any existing code signatures in the package. 
-Now your .app package should open without issues but **DON’T OPEN** it yet. 
+4. After signing, compress the distribution into a zip file.
+```shell
+ditto -c -k --sequesterRsrc --keepParent IntegrationStudio.app IntegrationStudio.zip
+```
+5. Upload the zip file to apple to get notarized.
+```shell
+xcrun notarytool submit IntegrationStudio.zip --keychain-profile "notarytool-password" --wait
+```
+6. If the notarization status is accepted, you can proceed to step 8 to staple the ticket.
+7. If the notarization status is invalid you can view the log file to see the issues associated with the distribution. Resolve the issues and again submit for notarization until the status is accepted.
+```shell
+xcrun notarytool log <id> --keychain-profile "notarytool-password" developer_log.json
+```
+8. Staple the ticket to the distribution.
+```shell
+xcrun stapler staple IntegrationStudio.app
+```
+
+Note: **DO NOT** open the .app directly. Copy the signed and notarized application bundle to the application folder and open it to ensure proper functionality.
+
+For further information see [Customizing the notarization workflow](https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow).
+
+
+
 
 #### Creating the DMG Installer package
 We haven’t used any third party tools to create the DMG other than the Disk Utility available with Mac OSX. 

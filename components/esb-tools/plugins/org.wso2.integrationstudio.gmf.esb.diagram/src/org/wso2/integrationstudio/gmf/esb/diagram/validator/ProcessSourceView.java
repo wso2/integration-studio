@@ -839,7 +839,7 @@ public class ProcessSourceView {
                         }
 
                     } else {
-                        if (currentMediator != null && !isComment) {
+                        if (currentMediator != null) {
                             if (currentMediator.getTagType() == 4 && tempTag.getTagType() == 5 
                                     && currentMediator.getValue().equals(prev.getValue())) {
                                 sourceError = mediatorValidation();
@@ -894,7 +894,11 @@ public class ProcessSourceView {
                 }
                 // no need to add encoding tag
             }
-
+            // If the current tag is a single line comment, set isComment to false
+            // before processing the next tag
+            if (isComment && tempTag.getValue().trim().endsWith(END_COMMENT)) {
+                isComment = false;
+            }
             prev = tempTag;
         }
         return sourceError;

@@ -303,6 +303,11 @@
                 extensions="yaml"
                 id="org.wso2.integrationstudio.platform.core.mediatype.yaml"
                 mediaType="application/yaml" name="YAML Media type" priority="2"/>
+        <resolver
+                class="org.wso2.integrationstudio.platform.core.internal.impl.mediatypes.FreeMarkerMediaTypeResolver"
+                extensions="ftl"
+                id="org.wso2.integrationstudio.platform.core.mediatype.ftl"
+                mediaType="text/plain" name="FreeMarker Media type"/>
     </extension>
     <!--
     <extension point="org.eclipse.ui.editors">

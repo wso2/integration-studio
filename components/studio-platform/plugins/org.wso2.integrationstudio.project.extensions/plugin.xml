@@ -210,5 +210,11 @@
              name="YAML File"
              mediaType="application/x-yml"
              extension="yaml"></template>
+        <template
+             file="resources/templates/other/freemarker-file.ftl"
+             id="org.wso2.integrationstudio.esb.template.freemarker"
+             name="Freemarker Template File"
+             mediaType="text/plain"
+             extension="ftl"></template>
     </extension>
 </plugin>

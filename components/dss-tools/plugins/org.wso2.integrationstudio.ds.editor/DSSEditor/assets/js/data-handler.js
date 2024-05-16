@@ -1625,6 +1625,7 @@ function populateResourceParameterTable(root, queryId) {
 				var paramName = params[j].getAttribute("name");
 				items.push(paramName);
 			}
+			break;
 		}
     }
 

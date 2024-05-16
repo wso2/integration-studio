@@ -23,6 +23,7 @@ import org.wso2.integrationstudio.datamapper.diagram.xslt.xmltree.OperatorNode;
 import org.wso2.integrationstudio.datamapper.diagram.xslt.xmltree.OutPutNode;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -1082,6 +1083,10 @@ public class XSLTGenerator {
                         .replace("{prefix=", "").replace(" url=", "").replace("}", "").split(",");
                 if (nameSpaceKeyValue.length == 2) {
                     customNameSpaceMap.put(nameSpaceKeyValue[0], nameSpaceKeyValue[1]);
+                    // For default namespace, axis2ns is added as the prefix when generating the DataMapper Schema 
+                    if (nameSpaceKeyValue[0].startsWith("axis2ns")) {
+                        rootElement.setAttribute("xpath-default-namespace", nameSpaceKeyValue[1]);
+                    }
                 }
             }
 

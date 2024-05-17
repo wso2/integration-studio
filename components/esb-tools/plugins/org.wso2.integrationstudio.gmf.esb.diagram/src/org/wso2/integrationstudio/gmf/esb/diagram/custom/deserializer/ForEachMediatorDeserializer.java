@@ -42,6 +42,7 @@ public class ForEachMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
         executeSetValueCommand(FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION,
                 createNamespacedProperty(mediator.getExpression()));
         executeSetValueCommand(FOR_EACH_MEDIATOR__FOR_EACH_ID, mediator.getId());
+        executeSetValueCommand(FOR_EACH_MEDIATOR__CONTINUE_LOOP_ON_FAILURE, mediator.getContinueLoopOnFailure());
 
         if (mediator.getSequence() != null) {
             executeSetValueCommand(FOR_EACH_MEDIATOR__SEQUENCE_TYPE, SequenceType.ANONYMOUS);

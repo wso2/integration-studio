@@ -55,6 +55,7 @@ import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
@@ -88,7 +89,8 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 
 	protected EMFComboViewer sequenceType;
 	protected Text sequenceName;
-	// Start of user code  for sequenceKey widgets declarations
+	protected Button continueLoopOnFailure;
+  // Start of user code  for sequenceKey widgets declarations
 	
 	// End of user code
 
@@ -174,7 +176,9 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 					return createSequenceNameText(parent);
 				}
 				// Start of user code for sequenceKey addToPart creation
-				
+                if (key == EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure) {
+                    return createContinueLoopOnFailureCheckbox(parent);
+                }
 				// End of user code
 				return parent;
 			}
@@ -472,7 +476,36 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 	}
 
 
-	/**
+	protected Composite createContinueLoopOnFailureCheckbox(Composite parent) {
+    continueLoopOnFailure = new Button(parent, SWT.CHECK);
+    continueLoopOnFailure.setText(getDescription(EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure, EsbMessages.ForEachMediatorPropertiesEditionPart_ContinueLoopOnFailureLabel));
+    continueLoopOnFailure.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ForEachMediatorPropertiesEditionPartImpl.this, EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(continueLoopOnFailure.getSelection())));
+      }
+
+    });
+    GridData continueLoopOnFailureData = new GridData(GridData.FILL_HORIZONTAL);
+    continueLoopOnFailureData.horizontalSpan = 2;
+    continueLoopOnFailure.setLayoutData(continueLoopOnFailureData);
+    EditingUtils.setID(continueLoopOnFailure, EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure);
+    EditingUtils.setEEFtype(continueLoopOnFailure, "eef::Checkbox"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure, EsbViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createContinueLoopOnFailureCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
@@ -715,7 +748,39 @@ public class ForEachMediatorPropertiesEditionPartImpl extends CompositePropertie
 
 
 
-	// Start of user code for forEachExpression specific getters and setters implementation
+	/**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachMediatorPropertiesEditionPart#getContinueLoopOnFailure()
+   * 
+   */
+  public Boolean getContinueLoopOnFailure() {
+    return Boolean.valueOf(continueLoopOnFailure.getSelection());
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachMediatorPropertiesEditionPart#setContinueLoopOnFailure(Boolean newValue)
+   * 
+   */
+  public void setContinueLoopOnFailure(Boolean newValue) {
+    if (newValue != null) {
+      continueLoopOnFailure.setSelection(newValue.booleanValue());
+    } else {
+      continueLoopOnFailure.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure);
+    if (eefElementEditorReadOnlyState && continueLoopOnFailure.isEnabled()) {
+      continueLoopOnFailure.setEnabled(false);
+      continueLoopOnFailure.setToolTipText(EsbMessages.ForEachMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !continueLoopOnFailure.isEnabled()) {
+      continueLoopOnFailure.setEnabled(true);
+    }	
+    
+  }
+
+  // Start of user code for forEachExpression specific getters and setters implementation
 	
 	// End of user code
 

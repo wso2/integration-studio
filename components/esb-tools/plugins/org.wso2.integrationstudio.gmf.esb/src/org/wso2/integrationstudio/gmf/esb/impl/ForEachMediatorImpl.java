@@ -50,6 +50,7 @@ import org.wso2.integrationstudio.gmf.esb.SequenceType;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#getSequenceName <em>Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorImpl#isContinueLoopOnFailure <em>Continue Loop On Failure</em>}</li>
  * </ul>
  *
  * @generated
@@ -200,6 +201,25 @@ public class ForEachMediatorImpl extends MediatorImpl implements ForEachMediator
      * @ordered
      */
     protected String sequenceName = SEQUENCE_NAME_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isContinueLoopOnFailure() <em>Continue Loop On Failure</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isContinueLoopOnFailure()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean CONTINUE_LOOP_ON_FAILURE_EDEFAULT = false;
+    /**
+     * The cached value of the '{@link #isContinueLoopOnFailure() <em>Continue Loop On Failure</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isContinueLoopOnFailure()
+     * @generated
+     * @ordered
+     */
+    protected boolean continueLoopOnFailure = CONTINUE_LOOP_ON_FAILURE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -652,6 +672,27 @@ public class ForEachMediatorImpl extends MediatorImpl implements ForEachMediator
      * <!-- end-user-doc -->
      * @generated
      */
+    public boolean isContinueLoopOnFailure() {
+        return continueLoopOnFailure;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setContinueLoopOnFailure(boolean newContinueLoopOnFailure) {
+        boolean oldContinueLoopOnFailure = continueLoopOnFailure;
+        continueLoopOnFailure = newContinueLoopOnFailure;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.FOR_EACH_MEDIATOR__CONTINUE_LOOP_ON_FAILURE, oldContinueLoopOnFailure, continueLoopOnFailure));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -705,6 +746,8 @@ public class ForEachMediatorImpl extends MediatorImpl implements ForEachMediator
                 return getSequenceKey();
             case EsbPackage.FOR_EACH_MEDIATOR__SEQUENCE_NAME:
                 return getSequenceName();
+            case EsbPackage.FOR_EACH_MEDIATOR__CONTINUE_LOOP_ON_FAILURE:
+                return isContinueLoopOnFailure();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -749,6 +792,9 @@ public class ForEachMediatorImpl extends MediatorImpl implements ForEachMediator
                 return;
             case EsbPackage.FOR_EACH_MEDIATOR__SEQUENCE_NAME:
                 setSequenceName((String)newValue);
+                return;
+            case EsbPackage.FOR_EACH_MEDIATOR__CONTINUE_LOOP_ON_FAILURE:
+                setContinueLoopOnFailure((Boolean)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -795,6 +841,9 @@ public class ForEachMediatorImpl extends MediatorImpl implements ForEachMediator
             case EsbPackage.FOR_EACH_MEDIATOR__SEQUENCE_NAME:
                 setSequenceName(SEQUENCE_NAME_EDEFAULT);
                 return;
+            case EsbPackage.FOR_EACH_MEDIATOR__CONTINUE_LOOP_ON_FAILURE:
+                setContinueLoopOnFailure(CONTINUE_LOOP_ON_FAILURE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -829,6 +878,8 @@ public class ForEachMediatorImpl extends MediatorImpl implements ForEachMediator
                 return sequenceKey != null;
             case EsbPackage.FOR_EACH_MEDIATOR__SEQUENCE_NAME:
                 return SEQUENCE_NAME_EDEFAULT == null ? sequenceName != null : !SEQUENCE_NAME_EDEFAULT.equals(sequenceName);
+            case EsbPackage.FOR_EACH_MEDIATOR__CONTINUE_LOOP_ON_FAILURE:
+                return continueLoopOnFailure != CONTINUE_LOOP_ON_FAILURE_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -849,6 +900,8 @@ public class ForEachMediatorImpl extends MediatorImpl implements ForEachMediator
         result.append(sequenceType);
         result.append(", sequenceName: ");
         result.append(sequenceName);
+        result.append(", continueLoopOnFailure: ");
+        result.append(continueLoopOnFailure);
         result.append(')');
         return result.toString();
     }

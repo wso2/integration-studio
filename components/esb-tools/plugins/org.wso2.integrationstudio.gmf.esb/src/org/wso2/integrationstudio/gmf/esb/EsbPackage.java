@@ -11454,13 +11454,22 @@ public interface EsbPackage extends EPackage {
     int FOR_EACH_MEDIATOR__SEQUENCE_NAME = MEDIATOR_FEATURE_COUNT + 10;
 
     /**
+     * The feature id for the '<em><b>Continue Loop On Failure</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int FOR_EACH_MEDIATOR__CONTINUE_LOOP_ON_FAILURE = MEDIATOR_FEATURE_COUNT + 11;
+
+    /**
      * The number of structural features of the '<em>For Each Mediator</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int FOR_EACH_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 11;
+    int FOR_EACH_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 12;
 
     /**
      * The meta object id for the '{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorInputConnectorImpl <em>For Each Mediator Input Connector</em>}' class.
@@ -41684,6 +41693,17 @@ public interface EsbPackage extends EPackage {
     EAttribute getForEachMediator_SequenceName();
 
     /**
+     * Returns the meta object for the attribute '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#isContinueLoopOnFailure <em>Continue Loop On Failure</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Continue Loop On Failure</em>'.
+     * @see org.wso2.integrationstudio.gmf.esb.ForEachMediator#isContinueLoopOnFailure()
+     * @see #getForEachMediator()
+     * @generated
+     */
+    EAttribute getForEachMediator_ContinueLoopOnFailure();
+
+    /**
      * Returns the meta object for class '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediatorInputConnector <em>For Each Mediator Input Connector</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -58476,6 +58496,14 @@ public interface EsbPackage extends EPackage {
          * @generated
          */
         EAttribute FOR_EACH_MEDIATOR__SEQUENCE_NAME = eINSTANCE.getForEachMediator_SequenceName();
+
+        /**
+         * The meta object literal for the '<em><b>Continue Loop On Failure</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute FOR_EACH_MEDIATOR__CONTINUE_LOOP_ON_FAILURE = eINSTANCE.getForEachMediator_ContinueLoopOnFailure();
 
         /**
          * The meta object literal for the '{@link org.wso2.integrationstudio.gmf.esb.impl.ForEachMediatorInputConnectorImpl <em>For Each Mediator Input Connector</em>}' class.

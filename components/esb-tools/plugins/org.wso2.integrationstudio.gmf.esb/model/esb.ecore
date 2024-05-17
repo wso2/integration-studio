@@ -1469,6 +1469,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceKey" eType="#//RegistryKeyProperty"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="continueLoopOnFailure"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ForEachMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="ForEachMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>

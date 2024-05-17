@@ -105,12 +105,14 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
 	protected EMFComboViewer sequenceType;
 	protected Text sequenceName;
-	// Start of user code  for sequenceKey widgets declarations
+	protected Button continueLoopOnFailure;
+    // Start of user code  for sequenceKey widgets declarations
     protected RegistryKeyProperty sequenceKey;
     protected Text sequenceKeyText;
     protected Control[] descriptionElements;
     protected Control[] forEachIDElements;
     protected Control[] forEachExpressionElements;
+    protected Control[] continueLoopOnFailureElements;
     protected Control[] sequenceKeyElements;
     protected Control[] sequenceTypeElements;
     protected Control[] sequenceNameElements;
@@ -166,6 +168,7 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
 		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.reverse);
 		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.forEachID);
 		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.forEachExpression);
+		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure);
 		propertiesStep.addStep(EsbViewsRepository.ForEachMediator.Properties.description);
 		
 		CompositionStep sequenceStep = forEachMediatorStep.addStep(EsbViewsRepository.ForEachMediator.Sequence.class);
@@ -210,6 +213,9 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
 				// Start of user code for sequenceKey addToPart creation
                 if(key == EsbViewsRepository.ForEachMediator.Sequence.sequenceKey) {
                     return createsequenceKeyWidget(widgetFactory, parent);
+                }
+                if(key == EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure) {
+                    return createContinueLoopOnFailureCheckbox(widgetFactory, parent);
                 }
 				// End of user code
 				return parent;
@@ -592,7 +598,35 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
 	}
 
 
-	/**
+	protected Composite createContinueLoopOnFailureCheckbox(FormToolkit widgetFactory, Composite parent) {
+    continueLoopOnFailure = widgetFactory.createButton(parent, getDescription(EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure, EsbMessages.ForEachMediatorPropertiesEditionPart_ContinueLoopOnFailureLabel), SWT.CHECK);
+    continueLoopOnFailure.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ForEachMediatorPropertiesEditionPartForm.this, EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(continueLoopOnFailure.getSelection())));
+      }
+
+    });
+    GridData continueLoopOnFailureData = new GridData(GridData.FILL_HORIZONTAL);
+    continueLoopOnFailureData.horizontalSpan = 2;
+    continueLoopOnFailure.setLayoutData(continueLoopOnFailureData);
+    EditingUtils.setID(continueLoopOnFailure, EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure);
+    EditingUtils.setEEFtype(continueLoopOnFailure, "eef::Checkbox"); //$NON-NLS-1$
+    Control continueLoopOnFailureHelp = FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure, EsbViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createContinueLoopOnFailureCheckbox
+    continueLoopOnFailureElements = new Control[] { continueLoopOnFailure, continueLoopOnFailureHelp };
+    // End of user code
+    return parent;
+  }
+
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
@@ -835,7 +869,39 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
 
 
 
-	// Start of user code for forEachExpression specific getters and setters implementation
+	/**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachMediatorPropertiesEditionPart#getContinueLoopOnFailure()
+   * 
+   */
+  public Boolean getContinueLoopOnFailure() {
+    return Boolean.valueOf(continueLoopOnFailure.getSelection());
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see org.wso2.integrationstudio.gmf.esb.parts.ForEachMediatorPropertiesEditionPart#setContinueLoopOnFailure(Boolean newValue)
+   * 
+   */
+  public void setContinueLoopOnFailure(Boolean newValue) {
+    if (newValue != null) {
+      continueLoopOnFailure.setSelection(newValue.booleanValue());
+    } else {
+      continueLoopOnFailure.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure);
+    if (eefElementEditorReadOnlyState && continueLoopOnFailure.isEnabled()) {
+      continueLoopOnFailure.setEnabled(false);
+      continueLoopOnFailure.setToolTipText(EsbMessages.ForEachMediator_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !continueLoopOnFailure.isEnabled()) {
+      continueLoopOnFailure.setEnabled(true);
+    }	
+    
+  }
+
+    // Start of user code for forEachExpression specific getters and setters implementation
     @Override
     public NamespacedProperty getForEachExpression() {
         return forEachExpression;
@@ -1006,6 +1072,7 @@ public class ForEachMediatorPropertiesEditionPartForm extends SectionPropertiesE
         epv.showEntry(forEachIDElements, false);
         epv.showEntry(forEachExpressionElements, false);
         epv.showEntry(sequenceTypeElements, false);
+        epv.showEntry(continueLoopOnFailureElements, false);
         switch (getSequenceType().getLiteral()) {
         case "Registry Reference": {
             epv.showEntry(sequenceKeyElements, false);

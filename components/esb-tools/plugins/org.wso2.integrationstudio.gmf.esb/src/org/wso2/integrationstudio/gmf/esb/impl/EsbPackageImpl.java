@@ -14965,6 +14965,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getForEachMediator_ContinueLoopOnFailure() {
+        return (EAttribute)forEachMediatorEClass.getEStructuralFeatures().get(11);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getForEachMediatorInputConnector() {
         return forEachMediatorInputConnectorEClass;
     }
@@ -21600,6 +21609,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(forEachMediatorEClass, FOR_EACH_MEDIATOR__SEQUENCE_TYPE);
         createEReference(forEachMediatorEClass, FOR_EACH_MEDIATOR__SEQUENCE_KEY);
         createEAttribute(forEachMediatorEClass, FOR_EACH_MEDIATOR__SEQUENCE_NAME);
+        createEAttribute(forEachMediatorEClass, FOR_EACH_MEDIATOR__CONTINUE_LOOP_ON_FAILURE);
 
         forEachMediatorInputConnectorEClass = createEClass(FOR_EACH_MEDIATOR_INPUT_CONNECTOR);
 
@@ -24210,6 +24220,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getForEachMediator_SequenceType(), this.getSequenceType(), "sequenceType", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getForEachMediator_SequenceKey(), this.getRegistryKeyProperty(), null, "sequenceKey", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getForEachMediator_SequenceName(), ecorePackage.getEString(), "sequenceName", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getForEachMediator_ContinueLoopOnFailure(), ecorePackage.getEBoolean(), "continueLoopOnFailure", "false", 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(forEachMediatorInputConnectorEClass, ForEachMediatorInputConnector.class, "ForEachMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

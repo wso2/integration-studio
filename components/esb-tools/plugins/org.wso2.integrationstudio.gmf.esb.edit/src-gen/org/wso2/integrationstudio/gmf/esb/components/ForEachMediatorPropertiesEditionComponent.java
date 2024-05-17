@@ -115,6 +115,9 @@ public class ForEachMediatorPropertiesEditionComponent extends SinglePartPropert
             if (isAccessible(EsbViewsRepository.ForEachMediator.Sequence.sequenceKey)) {
                 basePart.setSequenceKey(forEachMediator.getSequenceKey());
             }
+            if (isAccessible(EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure)) {
+                basePart.setContinueLoopOnFailure(forEachMediator.isContinueLoopOnFailure());
+            }
 			// End of user code
 			
 			// init filters
@@ -177,6 +180,9 @@ public class ForEachMediatorPropertiesEditionComponent extends SinglePartPropert
 		if (editorKey == EsbViewsRepository.ForEachMediator.Sequence.sequenceKey) {
 			return EsbPackage.eINSTANCE.getForEachMediator_SequenceKey();
 		}
+		if (editorKey == EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure) {
+            return EsbPackage.eINSTANCE.getForEachMediator_ContinueLoopOnFailure();
+        }
 		return super.associatedFeature(editorKey);
 	}
 
@@ -230,6 +236,9 @@ public class ForEachMediatorPropertiesEditionComponent extends SinglePartPropert
 			// End of user code
 			
 		}
+		if (EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure == event.getAffectedEditor()) {
+            forEachMediator.setContinueLoopOnFailure((Boolean)event.getNewValue()); 
+        }
 	}
 
 	/**
@@ -297,6 +306,9 @@ public class ForEachMediatorPropertiesEditionComponent extends SinglePartPropert
 	                   basePart.setSequenceKey(EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty());
 	               }
 	           }
+	           if (EsbPackage.eINSTANCE.getForEachMediator_ContinueLoopOnFailure().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure)) {
+	               basePart.setContinueLoopOnFailure((Boolean)msg.getNewValue());
+	           }
 					// End of user code
 			
 			
@@ -318,6 +330,7 @@ public class ForEachMediatorPropertiesEditionComponent extends SinglePartPropert
 			EsbPackage.eINSTANCE.getForEachMediator_SequenceType(),
 			EsbPackage.eINSTANCE.getForEachMediator_SequenceName(),
 			EsbPackage.eINSTANCE.getForEachMediator_ForEachExpression(),
+			EsbPackage.eINSTANCE.getForEachMediator_ContinueLoopOnFailure(),
 			EsbPackage.eINSTANCE.getForEachMediator_SequenceKey()		);
 		return new NotificationFilter[] {filter,};
 	}
@@ -375,6 +388,13 @@ public class ForEachMediatorPropertiesEditionComponent extends SinglePartPropert
 					}
 					ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getForEachMediator_SequenceName().getEAttributeType(), newValue);
 				}
+				if (EsbViewsRepository.ForEachMediator.Properties.continueLoopOnFailure == event.getAffectedEditor()) {
+                    Object newValue = event.getNewValue();
+                    if (newValue instanceof String) {
+                        newValue = EEFConverterUtil.createFromString(EsbPackage.eINSTANCE.getForEachMediator_ContinueLoopOnFailure().getEAttributeType(), (String)newValue);
+                    }
+                    ret = Diagnostician.INSTANCE.validate(EsbPackage.eINSTANCE.getForEachMediator_ContinueLoopOnFailure().getEAttributeType(), newValue);
+                }
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {

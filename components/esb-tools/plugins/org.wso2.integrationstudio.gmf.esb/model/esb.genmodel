@@ -1619,6 +1619,7 @@
       <genFeatures children="true" createChild="true" propertyCategory="Sequence"
           ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/sequenceKey"/>
       <genFeatures createChild="false" propertyCategory="Sequence" ecoreFeature="ecore:EAttribute esb.ecore#//ForEachMediator/sequenceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ForEachMediator/continueLoopOnFailure"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//ForEachMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//ForEachMediatorOutputConnector"/>

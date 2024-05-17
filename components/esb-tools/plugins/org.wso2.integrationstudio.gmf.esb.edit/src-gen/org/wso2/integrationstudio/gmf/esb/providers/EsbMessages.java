@@ -5280,6 +5280,9 @@ public class EsbMessages extends NLS {
 
 	
 	public static String ForEachMediatorPropertiesEditionPart_DescriptionLabel;
+	
+	
+	public static String ForEachMediatorPropertiesEditionPart_ContinueLoopOnFailureLabel;
 
 	
 	public static String ForEachMediatorPropertiesEditionPart_CommentsListLabel;

@@ -35,6 +35,7 @@ package org.wso2.integrationstudio.gmf.esb;
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getSequenceType <em>Sequence Type</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getSequenceKey <em>Sequence Key</em>}</li>
  *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#getSequenceName <em>Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#isContinueLoopOnFailure <em>Continue Loop On Failure</em>}</li>
  * </ul>
  *
  * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator()
@@ -330,5 +331,28 @@ public interface ForEachMediator extends Mediator {
      * @generated
      */
     void setSequenceName(String value);
+
+    /**
+     * Returns the value of the '<em><b>Continue Loop On Failure</b></em>' attribute.
+     * The default value is <code>"false"</code>.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Continue Loop On Failure</em>' attribute.
+     * @see #setContinueLoopOnFailure(boolean)
+     * @see org.wso2.integrationstudio.gmf.esb.EsbPackage#getForEachMediator_ContinueLoopOnFailure()
+     * @model default="false"
+     * @generated
+     */
+    boolean isContinueLoopOnFailure();
+
+    /**
+     * Sets the value of the '{@link org.wso2.integrationstudio.gmf.esb.ForEachMediator#isContinueLoopOnFailure <em>Continue Loop On Failure</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Continue Loop On Failure</em>' attribute.
+     * @see #isContinueLoopOnFailure()
+     * @generated
+     */
+    void setContinueLoopOnFailure(boolean value);
 
 } // ForEachMediator

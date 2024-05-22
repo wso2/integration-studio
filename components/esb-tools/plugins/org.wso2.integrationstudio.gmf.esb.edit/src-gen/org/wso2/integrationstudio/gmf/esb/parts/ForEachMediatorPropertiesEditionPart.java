@@ -144,7 +144,18 @@ public interface ForEachMediatorPropertiesEditionPart {
 	public String getTitle();
 
 	// Start of user code for additional methods
-	
+	/**
+     * @return the continueLoopOnFailure
+     * 
+     */
+    public Boolean getContinueLoopOnFailure();
+    
+    /**
+     * Defines a new continueLoopOnFailure
+     * @param newValue the new continueLoopOnFailure to set
+     * 
+     */
+    public void setContinueLoopOnFailure(Boolean newValue);
 	// End of user code
 
 }

@@ -83,6 +83,7 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
         }
         }
         addDescriptionPropertyDescriptor(object);
+        addContinueLoopOnFailurePropertyDescriptor(object);
         return itemPropertyDescriptors;
     }
 
@@ -197,6 +198,28 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Continue Loop On Failure feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addContinueLoopOnFailurePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ForEachMediator_continueLoopOnFailure_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_continueLoopOnFailure_feature", "_UI_ForEachMediator_type"),
+                 EsbPackage.Literals.FOR_EACH_MEDIATOR__CONTINUE_LOOP_ON_FAILURE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -273,6 +296,7 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
             case EsbPackage.FOR_EACH_MEDIATOR__FOR_EACH_ID:
             case EsbPackage.FOR_EACH_MEDIATOR__SEQUENCE_TYPE:
             case EsbPackage.FOR_EACH_MEDIATOR__SEQUENCE_NAME:
+            case EsbPackage.FOR_EACH_MEDIATOR__CONTINUE_LOOP_ON_FAILURE:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION:

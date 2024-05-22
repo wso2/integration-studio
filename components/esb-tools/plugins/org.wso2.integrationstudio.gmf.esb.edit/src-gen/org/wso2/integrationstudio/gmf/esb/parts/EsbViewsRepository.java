@@ -3975,6 +3975,7 @@ public class EsbViewsRepository {
 			
 			// Start of user code for forEachExpression ElementEditor key
 			public static String forEachExpression = "esb::ForEachMediator::properties::forEachExpression";
+			public static String continueLoopOnFailure = "esb::ForEachMediator::properties::continueLoopOnFailure";
 			// End of user code
 			
 	

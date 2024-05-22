@@ -86,6 +86,7 @@ public class ForEachMediatorTransformer extends AbstractEsbNodeTransformer {
         }
 
         forEachMediator.setId(visualForEach.getForEachID());
+        forEachMediator.setContinueLoopOnFailure(visualForEach.isContinueLoopOnFailure());
 
         switch (visualForEach.getSequenceType()) {
         case ANONYMOUS:

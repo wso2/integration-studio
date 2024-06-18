@@ -173,6 +173,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
     }
 
     private boolean serializeConnector(HashMap<String, Control> generatedElements, String localEntryPath) {
+        Map<String, String> missingParameters = new HashMap<>(requiredAttributes);
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -208,30 +209,27 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                     } else {
                         value = ((Text) elementControl).getText();
                     }
-                    if (elementId.equals("connectionName") && !StringUtils.isEmpty(value)) {
-                        localEntryPath = localEntryPath + removeExpressionBrackets(value) + XML_EXTENSION;
-                        if (valueExpressionCombo != null) {
-                            Combo connectionCombo = (Combo) valueExpressionCombo;
-                            connectionCombo.add(removeExpressionBrackets(value));
-                            connectionCombo.select(connectionCombo.getItemCount() - 1);
-                        }
-                        Attr localEntryKey = doc.createAttribute("key");
-                        localEntryKey.setValue(removeExpressionBrackets(value));
-                        localEntryTag.setAttributeNode(localEntryKey);
+                    if (!StringUtils.isEmpty(value)) {
+                        if (elementId.equals("connectionName")) {
+                            localEntryPath = localEntryPath + removeExpressionBrackets(value) + XML_EXTENSION;
+                            if (valueExpressionCombo != null) {
+                                Combo connectionCombo = (Combo) valueExpressionCombo;
+                                connectionCombo.add(removeExpressionBrackets(value));
+                                connectionCombo.select(connectionCombo.getItemCount() - 1);
+                            }
+                            Attr localEntryKey = doc.createAttribute("key");
+                            localEntryKey.setValue(removeExpressionBrackets(value));
+                            localEntryTag.setAttributeNode(localEntryKey);
 
-                        org.w3c.dom.Element configElement = doc.createElement("name");
-                        connectorRoot.appendChild(configElement);
-                        configElement.appendChild(doc.createTextNode(value));
-                    } else { 
-                    	if (!StringUtils.isEmpty(value)) {
+                            org.w3c.dom.Element configElement = doc.createElement("name");
+                            connectorRoot.appendChild(configElement);
+                            configElement.appendChild(doc.createTextNode(value));
+                        } else {
                             org.w3c.dom.Element configElement = doc.createElement(elementId);
                             connectorRoot.appendChild(configElement);
                             configElement.appendChild(doc.createTextNode(value));
-                        }else if (requiredAttributes.containsKey(elementId) && !elementId.equals("connectionName") 
-                        		&& !isExpElement) {
-                        	showRequiredElementMissingWarning(requiredAttributes.get(elementId));
-                        	return false;
                         }
+                        missingParameters.remove(elementId);
                     }
                 } else if (elementControl instanceof Combo) {
                     String value = ((Combo) elementControl).getText();
@@ -244,9 +242,7 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
                         org.w3c.dom.Element configElement = doc.createElement(elementId);
                         connectorRoot.appendChild(configElement);
                         configElement.appendChild(doc.createTextNode(value));
-                    }else if (requiredAttributes.containsKey(elementId)) {
-                    	showRequiredElementMissingWarning(requiredAttributes.get(elementId));
-                    	return false;
+                        missingParameters.remove(elementId);
                     }
                 }
             }
@@ -279,11 +275,15 @@ public class ConnectionParameterWizard extends Wizard implements IExportWizard {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        if (!missingParameters.isEmpty()) {
+            showRequiredElementMissingWarning(missingParameters);
+            return false;
+        }
         return true;
     }
     
-    private void showRequiredElementMissingWarning(String element) {
-    	MessageDialog.openWarning(getShell(), "Missing required value", "\"" + element + "\" is required");
+    private void showRequiredElementMissingWarning(Map<String, String> missingParameters) {
+        MessageDialog.openWarning(getShell(), "Missing required values", missingParameters.values().toString().substring(1, missingParameters.values().toString().length() - 1) + " required");
     }
 
     private void deserializeConnector(OMElement localEntryNode) {

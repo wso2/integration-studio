@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Libraries
 Bundle-SymbolicName: org.wso2.integrationstudio.registry.libraries
-Bundle-Version: 8.2.0.qualifier
+Bundle-Version: 8.3.0.qualifier
 Bundle-ActivationPolicy: lazy
 Export-Package: org.wso2.integrationstudio.registry.libraries,
  org.wso2.integrationstudio.registry.libraries.utils

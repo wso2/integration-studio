@@ -105,14 +105,19 @@ algorithm = "AES"
 # [secrets]
 # secret_key = "[secret value]"
 
+[synapse_properties]
+'synapse.rest.CORSConfig.enabled' = "true"
+'synapse.rest.CORSConfig.Access-Control-Allow-Origin' = "*"
+'synapse.rest.CORSConfig.Access-Control-Allow-Headers' = "content-type"
+
 # [[service_catalog]]
 # apim_host = "https://localhost:9443"
 # enable = true
 # username = "admin"
 # password = "admin"
 
-# [dashboard_config]
-# dashboard_url = "https://localhost:9743/dashboard/api/"
+[dashboard_config]
+dashboard_url = "https://localhost:9743/dashboard/api/"
 
 # [integration.transaction_counter]
 # enable = true

@@ -1,1 +1,2 @@
 components/server-tools/plugins/org.wso2.integrationstudio.carbonserver44microei40/resources/server/microesb.zip filter=lfs diff=lfs merge=lfs -text
+components/server-tools/plugins/org.wso2.integrationstudio.carbonserver44microei43/resources/server/microesb.zip filter=lfs diff=lfs merge=lfs -text

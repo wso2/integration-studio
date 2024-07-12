@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: KernelLibraries
 Bundle-SymbolicName: org.wso2.integrationstudio.kernel.libraries;singleton:=true
-Bundle-Version: 8.2.0.qualifier
+Bundle-Version: 8.3.0.qualifier
 Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.ui.workbench,
  org.eclipse.m2e.maven.runtime;bundle-version="1.6.2";visibility:=reexport,

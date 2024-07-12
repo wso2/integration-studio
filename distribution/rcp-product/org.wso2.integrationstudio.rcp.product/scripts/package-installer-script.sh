@@ -55,16 +55,16 @@ unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-macosx.cocoa.aarch64.zip -d $PR
 unzip $PRODUCT_PATH_ROOT/WSO2-Integration-Studio-win32.win32.x86_64.zip -d $PRODUCT_PATH_WIN_64
 
 # Unzip mi-dashboard to relevant packages
-unzip $PRODUCT_PATH_ROOT/wso2mi-dashboard-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_LINUX_64/
-unzip $PRODUCT_PATH_ROOT/wso2mi-dashboard-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/
-unzip $PRODUCT_PATH_ROOT/wso2mi-dashboard-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_MACOS_AARCH64/IntegrationStudio.app/Contents/Eclipse/
-unzip $PRODUCT_PATH_ROOT/wso2mi-dashboard-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_WIN_64/
+unzip $PRODUCT_PATH_ROOT/wso2-integration-control-plane-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_LINUX_64/
+unzip $PRODUCT_PATH_ROOT/wso2-integration-control-plane-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/
+unzip $PRODUCT_PATH_ROOT/wso2-integration-control-plane-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_MACOS_AARCH64/IntegrationStudio.app/Contents/Eclipse/
+unzip $PRODUCT_PATH_ROOT/wso2-integration-control-plane-${DASHBOARD_VERSION}.zip -d $PRODUCT_PATH_WIN_64/
 
 # Rename as "mi-dashboard" (this is the static name used in EI Tooling code)
-mv $PRODUCT_PATH_LINUX_64/wso2mi-dashboard-$PRODUCT_VERSION $PRODUCT_PATH_LINUX_64/mi-dashboard
-mv $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/wso2mi-dashboard-$PRODUCT_VERSION $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/mi-dashboard
-mv $PRODUCT_PATH_MACOS_AARCH64/IntegrationStudio.app/Contents/Eclipse/wso2mi-dashboard-$PRODUCT_VERSION $PRODUCT_PATH_MACOS_AARCH64/IntegrationStudio.app/Contents/Eclipse/mi-dashboard
-mv $PRODUCT_PATH_WIN_64/wso2mi-dashboard-$PRODUCT_VERSION $PRODUCT_PATH_WIN_64/mi-dashboard
+mv $PRODUCT_PATH_LINUX_64/wso2-integration-control-plane-$DASHBOARD_VERSION $PRODUCT_PATH_LINUX_64/mi-dashboard
+mv $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/wso2-integration-control-plane-$DASHBOARD_VERSION $PRODUCT_PATH_MACOS/IntegrationStudio.app/Contents/Eclipse/mi-dashboard
+mv $PRODUCT_PATH_MACOS_AARCH64/IntegrationStudio.app/Contents/Eclipse/wso2-integration-control-plane-$DASHBOARD_VERSION $PRODUCT_PATH_MACOS_AARCH64/IntegrationStudio.app/Contents/Eclipse/mi-dashboard
+mv $PRODUCT_PATH_WIN_64/wso2-integration-control-plane-$DASHBOARD_VERSION $PRODUCT_PATH_WIN_64/mi-dashboard
 
 # Unzip apche maven to relevant packages
 unzip $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip -d $PRODUCT_PATH_LINUX_64/
@@ -207,7 +207,7 @@ popd
 
 # Cleanup
 rm $PRODUCT_PATH_ROOT/wso2mi-$PRODUCT_VERSION.zip
-rm $PRODUCT_PATH_ROOT/wso2mi-dashboard-$DASHBOARD_VERSION.zip
+rm $PRODUCT_PATH_ROOT/wso2-integration-control-plane-$DASHBOARD_VERSION.zip
 rm $PRODUCT_PATH_ROOT/apache-maven-${APACHE_MAVEN_VERSION}-bin.zip
 rm -rf $APICTL_DISTRIBUTION_PATH
 rm -rf $PRODUCT_PATH_ROOT/temp

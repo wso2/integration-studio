@@ -19,7 +19,7 @@ limitations under the License.
     <parent>
         <artifactId>wso2-integrationstudio-platform-plugins</artifactId>
         <groupId>org.wso2.integrationstudio</groupId>
-        <version>8.2.0-SNAPSHOT</version>
+        <version>8.3.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 	<artifactId>org.wso2.integrationstudio.appcloud.utils</artifactId>

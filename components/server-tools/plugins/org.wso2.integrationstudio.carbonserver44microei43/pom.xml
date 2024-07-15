@@ -26,7 +26,7 @@
 						<goal>wget</goal>
 					</goals>
 					<configuration>
-						<url>https://github.com/wso2/micro-integrator/releases/download/v4.3.0-alpha/wso2mi-4.3.0-alpha.zip</url>
+						<url>https://github.com/wso2/micro-integrator/releases/download/v4.3.0-beta/wso2mi-4.3.0-beta.zip</url>
 						<unpack>false</unpack>
 						<outputDirectory>${project.basedir}/resources/server/</outputDirectory>
 					</configuration>
@@ -64,7 +64,7 @@
 						</arguments>
 					</configuration>
 				</execution>
-				<!--execution>
+				<execution>
 					<id>Run-inplace-mi-update-tool</id>
 					<phase>initialize</phase>
 					<goals>
@@ -74,7 +74,7 @@
 						<commandlineArgs>${WSO2_USERNAME} ${WSO2_PASSWORD} ${mi.product.version}</commandlineArgs>
 						<executable>${project.basedir}/resources/scripts/wso2-update.sh</executable>
 					</configuration>
-				</execution-->
+				</execution>
 				<execution>
 					<id>change-mi-deployment-toml</id>
 					<phase>initialize</phase>

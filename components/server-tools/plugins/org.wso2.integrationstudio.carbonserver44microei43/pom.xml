@@ -64,7 +64,7 @@
 						</arguments>
 					</configuration>
 				</execution>
-				<execution>
+				<!--execution>
 					<id>Run-inplace-mi-update-tool</id>
 					<phase>initialize</phase>
 					<goals>
@@ -74,7 +74,7 @@
 						<commandlineArgs>${WSO2_USERNAME} ${WSO2_PASSWORD} ${mi.product.version}</commandlineArgs>
 						<executable>${project.basedir}/resources/scripts/wso2-update.sh</executable>
 					</configuration>
-				</execution>
+				</execution-->
 				<execution>
 					<id>change-mi-deployment-toml</id>
 					<phase>initialize</phase>

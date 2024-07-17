@@ -1,0 +1,103 @@
+{
+    "data": [
+        {
+            "name": "AmazonSQS",
+            "version": "1.1.2",
+            "rank": 1,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-amazonsqs/releases/download/v1.1.2/org.apache.synapse.amazonsqs.poll.class-1.1.2.zip",
+            "description": "WSO2 Listner Connector for AmazonSQS",
+            "icon": "amazonsqs-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/amazonsqs-inbound.gif"
+        },
+        {
+            "name": "Kafka",
+            "version": "1.2.3",
+            "rank": 2,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-kafka/releases/download/v1.2.3/org.apache.synapse.kafka.poll-1.2.3.zip",
+            "description": "WSO2 Listner Connector for Kafka",
+            "icon": "kafka-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/kafka-inbound.gif"
+        },
+        {
+            "name": "Salesforce",
+            "version": "1.2.3",
+            "rank": 2,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-salesforce/releases/download/v2.0.6/org.apache.synapse.salesforce.poll.class-2.0.6.zip",
+            "description": "WSO2 Listner Connector for Salesforce",
+            "icon": "salesforce-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/salesforce-inbound.gif"
+        },
+        {
+            "name": "CDC",
+            "version": "1.0.0",
+            "rank": 3,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-cdc/releases/download/v1.0.0/org.apache.synapse.cdc.poll-1.0.0.zip",
+            "description": "WSO2 Listner Connector for CDC",
+            "icon": "cdc-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/cdc-inbound.gif"
+        },
+        {
+            "name": "ISO8583",
+            "version": "1.1.1",
+            "rank": 4,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-iso8583/releases/download/org.wso2.carbon.inbound.iso8583-1.1.1/org.wso2.carbon.inbound.iso8583-1.1.1.zip",
+            "description": "WSO2 Listner Connector for ISO8583",
+            "icon": "ISO8583-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/ISO8583-inbound.gif"
+        },
+        {
+            "name": "Twitter",
+            "version": "1.0.0",
+            "rank": 5,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-twitter/releases/download/org.apache.synapse.twitter.poll.class-1.0.0/org.apache.synapse.twitter.poll.class-1.0.0.zip",
+            "description": "WSO2 Listner Connector for Twitter",
+            "icon": "twitter-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/twitter-inbound.gif"
+        },
+        {
+            "name": "DBEvent",
+            "version": "1.0.6",
+            "rank": 6,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-dbevent/releases/download/v1.0.6/org.apache.synapse.poll.dbeventlistener-1.0.6.zip",
+            "description": "WSO2 Listner Connector for DBEvent",
+            "icon": "dbevent-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/dbevent-inbound.gif"
+        },
+        {
+            "name": "SMPP",
+            "version": "1.0.1",
+            "rank": 7,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-smpp/releases/download/org.apache.synapse.smpp.listen.class-1.0.1/org.apache.synapse.snmp.listen.class-1.0.1.zip",
+            "description": "WSO2 Listner Connector for SMPP",
+            "icon": "snmp-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/snmp-inbound.gif"
+        },
+        {
+            "name": "SNMP",
+            "version": "1.0.0",
+            "rank": 8,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-snmp/releases/download/org.apache.synapse.snmp.listen.class-1.0.0/org.apache.synapse.snmp.listen.class-1.0.0.zip",
+            "description": "WSO2 Listner Connector for SNMP",
+            "icon": "snmp-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/snmp-inbound.gif"
+        },
+        {
+            "name": "LocalFile",
+            "version": "1.0.0",
+            "rank": 9,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-localfile/releases/download/v1.0.0/org.apache.synapse.localfile.class-1.0.0.zip",
+            "description": "WSO2 Listner Connector for LocalFile",
+            "icon": "localfile-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/localfile-inbound.gif"
+        },
+        {
+            "name": "Feed",
+            "version": "1.0.1",
+            "rank": 10,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-feed/releases/download/v1.0.1/org.apache.synapse.feedep.class-1.0.1.zip",
+            "description": "WSO2 Listner Connector for Feed",
+            "icon": "feed-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/feed-inbound.gif"
+        }
+    ]
+}

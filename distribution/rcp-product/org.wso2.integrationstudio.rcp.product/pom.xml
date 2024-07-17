@@ -99,7 +99,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>https://github.com/wso2/product-mi-tooling/releases/download/v1.0.0-beta/wso2-integration-control-plane-1.0.0-beta.zip</url>
+                            <url>https://github.com/wso2/product-mi-tooling/releases/download/4.3.0-rc/wso2-integration-control-plane-1.0.0.zip</url>
                             <unpack>false</unpack>
                             <outputDirectory>${project.build.directory}/products</outputDirectory>
                         </configuration>

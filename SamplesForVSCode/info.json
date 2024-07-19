@@ -194,7 +194,7 @@
             "REST Data Service",
             "This sample demonstrates a data service exposed as a RESTful service.",
             "RESTDataService",
-            false
+            true
         ],
         [
             6,
@@ -202,7 +202,7 @@
             "Students Data Service",
             "This sample demonstrates a SOAP data service.",
             "StudentsDataService",
-            false
+            true
         ],
         [
             9,
@@ -210,15 +210,7 @@
             "Hello Docker",
             "This sample demonstrates how to deploy a simple Hello World service on Docker.",
             "HelloDocker",
-            false
-        ],
-        [
-            9,
-            11,
-            "Hello Kubernetes",
-            "This sample demonstrates how to deploy a simple Hello World service on Kubernetes.",
-            "HelloKubernetes",
-            false
+            true
         ],
         [
             8,
@@ -234,7 +226,7 @@
             "API Testing",
             "This sample demonstrates unit testing of a REST API artifact using WSO2 Integration Studio.",
             "APITesting",
-            false
+            true
         ],
         [
             10,
@@ -242,7 +234,7 @@
             "Unit Test Tutorial",
             "This sample demonstrates the Unit Testing capabilities of WSO2 Integration Studio.",
             "UnitTestTutorial",
-            false
+            true
         ],
         [
             5,
@@ -266,7 +258,7 @@
             "Database Polling",
             "This sample demonstrates how to periodically poll data from a database and then trigger a message flow.",
             "DatabasePolling",
-            false
+            true
         ],
         [
             7,

@@ -22096,7 +22096,7 @@
             "icon_url": "https://mi-connectors.wso2.com/icons/zuorasoap.gif"
         }
     ],
-    "outbound-connector-data": [
+    "inbound-connector-data": [
         {
             "name": "AmazonSQS",
             "version": "1.1.2",

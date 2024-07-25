@@ -22103,7 +22103,7 @@
             "type": "builtin-inbound-endpoint",
             "version": "1.0.0",
             "rank": 1,
-            "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/https.zip",
+            "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/http.zip",
             "description": "Inbuilt HTTP Inbound Endpoint",
             "icon": "http-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/http-inbound.gif"

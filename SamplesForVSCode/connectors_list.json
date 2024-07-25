@@ -22105,7 +22105,7 @@
             "rank": 1,
             "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/https.zip",
             "description": "Inbuilt HTTP Inbound Endpoint",
-            "icon": "kafka-inbound.gif",
+            "icon": "http-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/http-inbound.gif"
         },
         {
@@ -22116,7 +22116,7 @@
             "rank": 2,
             "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/https.zip",
             "description": "Inbuilt HTTPS Inbound Endpoint",
-            "icon": "salesforce-inbound.gif",
+            "icon": "https-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/https-inbound.gif"
         },
         {

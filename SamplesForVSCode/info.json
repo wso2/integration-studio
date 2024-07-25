@@ -162,7 +162,7 @@
             "JSON to XML Mapping",
             "This sample demonstrates JSON to XML mapping using the Data Mapper mediator.",
             "JSONtoXMLMapping",
-            false
+            true
         ],
         [
             3,
@@ -178,7 +178,7 @@
             "XML to JSON Mapping",
             "This sample demonstrates XML to JSON mapping using the Data Mapper mediator.",
             "XMLtoJSONMapping",
-            false
+            true
         ],
         [
             3,

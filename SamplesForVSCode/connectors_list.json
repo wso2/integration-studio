@@ -22120,11 +22120,44 @@
             "icon_url": "https://mi-connectors.wso2.com/icons/https-inbound.gif"
         },
         {
+            "name": "JMS",
+            "id": "jms",
+            "type": "builtin-inbound-endpoint",
+            "version": "1.0.0",
+            "rank": 3,
+            "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/jms.zip",
+            "description": "Inbuilt JMS Inbound Endpoint",
+            "icon": "jms-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/jms-inbound.gif"
+        },
+        {
+            "name": "File",
+            "id": "file",
+            "type": "builtin-inbound-endpoint",
+            "version": "1.0.0",
+            "rank": 4,
+            "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/file.zip",
+            "description": "Inbuilt File Inbound Endpoint",
+            "icon": "file-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/file-inbound.gif"
+        },
+        {
+            "name": "RabbitMQ",
+            "id": "rabbitmq",
+            "type": "builtin-inbound-endpoint",
+            "version": "1.0.0",
+            "rank": 5,
+            "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/rabbitmq.zip",
+            "description": "Inbuilt RabbitMQ Inbound Endpoint",
+            "icon": "rabbitmq-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/rabbitmq-inbound.gif"
+        },
+        {
             "name": "AmazonSQS",
             "id": "org.wso2.carbon.inbound.amazonsqs.AmazonSQSPollingConsumer",
             "type": "inbound-endpoint",
             "version": "1.1.2",
-            "rank": 3,
+            "rank": 6,
             "download_url": "https://github.com/wso2-extensions/esb-inbound-amazonsqs/releases/download/v1.1.2/org.apache.synapse.amazonsqs.poll.class-1.1.2.zip",
             "description": "WSO2 Listner Connector for AmazonSQS",
             "icon": "amazonsqs-inbound.gif",

@@ -22162,6 +22162,16 @@
             "description": "WSO2 Listner Connector for AmazonSQS",
             "icon": "amazonsqs-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/amazonsqs-inbound.gif"
+        },
+        {
+            "name": "ISO8583",
+            "id": "org.wso2.carbon.inbound.iso8583.listening.ISO8583MessageConsumer",
+            "version": "1.1.1",
+            "rank": 7,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-iso8583/releases/download/org.wso2.carbon.inbound.iso8583-1.1.1/org.wso2.carbon.inbound.iso8583-1.1.1.zip",
+            "description": "WSO2 Listner Connector for ISO8583",
+            "icon": "ISO8583-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/ISO8583-inbound.gif"
         }
     ]
 }

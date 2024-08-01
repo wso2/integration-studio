@@ -22157,7 +22157,7 @@
             "id": "org.wso2.carbon.inbound.amazonsqs.AmazonSQSPollingConsumer",
             "type": "inbound-endpoint",
             "version": "1.1.2",
-            "rank": 6,
+            "rank": 13,
             "download_url": "https://github.com/wso2-extensions/esb-inbound-amazonsqs/releases/download/v1.1.2/org.apache.synapse.amazonsqs.poll.class-1.1.2.zip",
             "description": "WSO2 Listner Connector for AmazonSQS",
             "icon": "amazonsqs-inbound.gif",
@@ -22167,11 +22167,21 @@
             "name": "ISO8583",
             "id": "org.wso2.carbon.inbound.iso8583.listening.ISO8583MessageConsumer",
             "version": "1.1.1",
-            "rank": 7,
+            "rank": 14,
             "download_url": "https://github.com/wso2-extensions/esb-inbound-iso8583/releases/download/org.wso2.carbon.inbound.iso8583-1.1.1/org.wso2.carbon.inbound.iso8583-1.1.1.zip",
             "description": "WSO2 Listner Connector for ISO8583",
             "icon": "ISO8583-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/ISO8583-inbound.gif"
+        },
+        {
+            "name": "SMPP",
+            "id": "org.wso2.carbon.inbound.smpp.SMPPListeningConsumer",
+            "version": "1.0.1",
+            "rank": 15,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-smpp/releases/download/org.apache.synapse.smpp.listen.class-1.0.1/org.apache.synapse.snmp.listen.class-1.0.1.zip",
+            "description": "WSO2 Listner Connector for SMPP",
+            "icon": "snmp-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/snmp-inbound.gif"
         }
     ]
 }

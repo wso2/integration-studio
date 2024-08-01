@@ -22178,10 +22178,10 @@
             "id": "org.wso2.carbon.inbound.smpp.SMPPListeningConsumer",
             "version": "1.0.1",
             "rank": 15,
-            "download_url": "https://github.com/wso2-extensions/esb-inbound-smpp/releases/download/org.apache.synapse.smpp.listen.class-1.0.1/org.apache.synapse.snmp.listen.class-1.0.1.zip",
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-smpp/releases/download/org.apache.synapse.smpp.listen.class-1.0.1/org.apache.synapse.smpp.listen.class-1.0.1.zip",
             "description": "WSO2 Listner Connector for SMPP",
-            "icon": "snmp-inbound.gif",
-            "icon_url": "https://mi-connectors.wso2.com/icons/snmp-inbound.gif"
+            "icon": "smpp-inbound.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/smpp-inbound.gif"
         }
     ]
 }
